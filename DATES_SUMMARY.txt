@@ -1,0 +1,37 @@
+COURSE SCHEDULE DATES - All 15 Courses from Excel Data
+========================================================
+
+File: supabase-course-schedules-data.sql
+
+1. Nov 29 - Nov 30, 2025 (Weekend) - Joe Puoci
+2. Dec 13 - Dec 14, 2025 (Weekend) - Joe Puoci  
+3. Dec 20 - Dec 21, 2025 (Weekend) - Joe Puoci
+4. Jan 3 - Jan 4, 2026 (Weekday) - Joe Puoci
+5. Jan 10 - Jan 11, 2026 (Weekend) - Deadra Stevenson
+6. Jan 17 - Jan 18, 2026 (Weekend) - Joe Puoci
+7. Jan 24 - Jan 25, 2026 (Weekend) - Joe Puoci
+8. Jan 31 - Feb 1, 2026 (Weekend) - Joe Puoci
+9. Feb 7 - Feb 8, 2026 (Weekend) - Deadra Stevenson
+10. Feb 14 - Feb 15, 2026 (Weekend) - Joe Puoci
+11. Feb 21 - Feb 22, 2026 (Weekend) - Joe Puoci
+12. Feb 28 - Mar 1, 2026 (Weekend) - Joe Puoci
+13. Mar 7 - Mar 8, 2026 (Weekday) - Joe Puoci
+14. Mar 14 - Mar 15, 2026 (Weekend) - Joe Puoci
+15. Mar 21 - Mar 22, 2026 (Weekend) - Deadra Stevenson
+
+All courses:
+- Time: 9:00 AM - 5:00 PM EST
+- Duration: 2 Days
+- Price: $555.55 (sale) / $899.00 (original)
+- Format: Live Virtual
+- Language: English
+- Exam: Included
+
+To see these dates on the page:
+1. Run supabase-course-schedules.sql in Supabase
+2. Run supabase-course-schedules-data.sql in Supabase
+3. Restart dev server
+4. Go to /courses/leading-safe and click "View Schedules"
+
+
+
