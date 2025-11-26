@@ -210,6 +210,172 @@ export default function LeadingSafeCoursePage() {
         </div>
       </section>
 
+      {/* AI-SEO: Page Summary - What is Leading SAFe? */}
+      <section className="w-full bg-blue-50 border-t-4 border-blue-600 py-8 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">What is Leading SAFe Certification?</h2>
+            <p className="text-lg text-gray-800 leading-relaxed mb-4">
+              Leading SAFe (SAFe Agilist or SA) certification validates your knowledge of the Scaled Agile Framework and qualifies you to lead enterprise Agile transformations. The certification teaches you to implement SAFe principles, coordinate Agile Release Trains (ARTs), facilitate Program Increment (PI) Planning events, and manage value streams across large organizations with 50-125+ team members.
+            </p>
+            <p className="text-lg text-gray-800 leading-relaxed">
+              The certification is earned by completing a 2-day (16-hour) course taught by a SAFe Program Consultant (SPC) and passing the online SAFe Agilist exam. Upon certification, you receive one year of access to the SAFe Community Platform, 16 PDUs/SEUs, and the credentials to lead organizational-scale Agile initiatives.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Quick Facts */}
+      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Leading SAFe Quick Facts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
+              <h3 className="font-bold text-sm text-gray-600 mb-2">Certification</h3>
+              <p className="text-xl font-semibold text-gray-900">SAFe Agilist (SA)</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
+              <h3 className="font-bold text-sm text-gray-600 mb-2">Duration</h3>
+              <p className="text-xl font-semibold text-gray-900">2 Days (16 Hours)</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
+              <h3 className="font-bold text-sm text-gray-600 mb-2">PDUs/SEUs</h3>
+              <p className="text-xl font-semibold text-gray-900">16 PDUs & 16 SEUs</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
+              <h3 className="font-bold text-sm text-gray-600 mb-2">Exam Attempts</h3>
+              <p className="text-xl font-semibold text-gray-900">1 Free + 1 Retake</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Key Definitions */}
+      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Key Definitions</h2>
+          <div className="space-y-6 max-w-4xl">
+            <div className="border-l-4 border-orange-500 pl-6 py-2">
+              <h3 className="font-bold text-xl text-gray-900 mb-2">What is SAFe (Scaled Agile Framework)?</h3>
+              <p className="text-gray-700 leading-relaxed">
+                SAFe (Scaled Agile Framework) is a set of organization and workflow patterns for implementing Agile practices at enterprise scale. It provides a knowledge base of proven, integrated principles, practices, and competencies for Lean, Agile, and DevOps. SAFe synchronizes alignment, collaboration, and delivery for multiple Agile teams working toward common business objectives.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-orange-500 pl-6 py-2">
+              <h3 className="font-bold text-xl text-gray-900 mb-2">What is an Agile Release Train (ART)?</h3>
+              <p className="text-gray-700 leading-relaxed">
+                An Agile Release Train (ART) is a long-lived team of Agile teams (typically 50-125 people) that plans, commits, and executes together. The ART operates on a fixed schedule called a Program Increment (PI), usually 8-12 weeks long. All teams on the ART align to a common mission and vision through PI Planning events and deliver value incrementally.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-orange-500 pl-6 py-2">
+              <h3 className="font-bold text-xl text-gray-900 mb-2">What is Program Increment (PI) Planning?</h3>
+              <p className="text-gray-700 leading-relaxed">
+                PI Planning is a cadence-based, face-to-face (or virtual) event that serves as the heartbeat of the Agile Release Train. It occurs every 8-12 weeks where all ART members gather for two days to align on objectives, dependencies, and risks. Teams create iteration plans, establish features and stories, and commit to PI Objectives that support business goals.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-orange-500 pl-6 py-2">
+              <h3 className="font-bold text-xl text-gray-900 mb-2">What is a Value Stream?</h3>
+              <p className="text-gray-700 leading-relaxed">
+                A value stream is the series of steps an organization uses to deliver a product or service to a customer. In SAFe, value streams are either operational (delivering goods/services to customers) or development (building systems and capabilities). Mapping value streams helps identify delays, inefficiencies, and opportunities for improvement in the flow of value.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Who Should Take This Course */}
+      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Who Should Take Leading SAFe Certification?</h2>
+          <p className="text-lg text-gray-700 mb-6 max-w-4xl">
+            Leading SAFe certification is designed for leaders, managers, and change agents responsible for implementing Agile at organizational scale:
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Executives and Senior Leaders</h3>
+                <p className="text-gray-700">CEOs, VPs, Directors, and C-suite executives driving organizational Agile transformation and portfolio strategy.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Program and Project Managers</h3>
+                <p className="text-gray-700">Leaders managing Agile Release Trains, coordinating multiple teams, and overseeing large-scale initiatives.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Agile Coaches and Consultants</h3>
+                <p className="text-gray-700">Professionals coaching organizations through Agile adoption and SAFe implementation at enterprise scale.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Product and Portfolio Managers</h3>
+                <p className="text-gray-700">Leaders responsible for product vision, portfolio management, and value stream optimization.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Development Managers</h3>
+                <p className="text-gray-700">Engineering leaders managing technical teams and implementing DevOps practices within SAFe.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-orange-500 font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-gray-900">Business Analysts and Architects</h3>
+                <p className="text-gray-700">Professionals defining solutions, managing requirements, and ensuring architectural alignment across teams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Related SAFe Certifications - Entity Linking */}
+      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Related SAFe Certifications</h2>
+          <p className="text-lg text-gray-700 mb-8 max-w-4xl">
+            After earning your Leading SAFe certification, consider these advanced SAFe certifications to deepen your expertise:
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/courses/product-owner-manager" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
+              <p className="text-gray-700 text-sm">Learn to define and prioritize Program Backlogs, manage stakeholder expectations, and deliver customer value through Agile Release Trains.</p>
+            </Link>
+            <Link href="/courses/scrum-master" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Scrum Master (SSM)</h3>
+              <p className="text-gray-700 text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
+            </Link>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Release Train Engineer (RTE)</h3>
+              <p className="text-gray-700 text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
+            </Link>
+            <Link href="/courses/lean-portfolio-management" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Lean Portfolio Management (LPM)</h3>
+              <p className="text-gray-700 text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
+            </Link>
+            <Link href="/courses/advanced-scrum-master" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Advanced Scrum Master (ASM)</h3>
+              <p className="text-gray-700 text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
+            </Link>
+            <Link href="/courses/value-stream-mapping" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Value Stream Mapping</h3>
+              <p className="text-gray-700 text-sm">Identify and eliminate waste, optimize flow, and accelerate value delivery through value stream analysis.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Key to Success Section */}
       <section className="w-full bg-gradient-to-b from-[#d3edff52] to-transparent py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
