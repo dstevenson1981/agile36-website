@@ -1498,63 +1498,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full bg-[#01203d] text-white py-16 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>About us</li>
-                <li>Accreditation</li>
-                <li>Careers</li>
-                <li>Contact us</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Offerings</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>Live virtual (Online)</li>
-                <li>Classroom (In-Person)</li>
-                <li>Corporate training</li>
-                <li>Training Schedule</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>Practice Tests</li>
-                <li>Webinars</li>
-                <li>Blogs</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Get Our Weekly Newsletter</h4>
-              <div className="flex gap-2 mb-4">
-                <input 
-                  type="email" 
-                  placeholder="Email*" 
-                  className="flex-1 px-4 py-2 rounded-md text-gray-900"
-                />
-                <button className="bg-[#34595f] hover:bg-[#2a474c] text-white font-bold px-6 py-2 rounded-md">
-                  Subscribe
-                </button>
-              </div>
-              <div className="flex gap-4 mt-6">
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-600 pt-8 text-center text-sm text-gray-300">
-            <p>© 2024 Agile36. All Rights Reserved</p>
-          </div>
-        </div>
-      </footer>
-
       {/* Consultation Modal */}
       {showConsultationModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
