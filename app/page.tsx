@@ -862,7 +862,7 @@ export default function Home() {
                 {/* Profile Pictures Row */}
                 <div className="mt-3">
                   <img 
-                    src="/frame_group.png" 
+                    src="/Frame_Group.png" 
                     alt="Happy learners" 
                     className="h-10"
                   />
@@ -1203,7 +1203,7 @@ export default function Home() {
                       {/* Enrolled with Profile Pictures */}
                       <div className="flex items-center gap-1.5">
                         <img 
-                          src="/frame_group.png" 
+                          src="/Frame_Group.png" 
                           alt="Enrolled students" 
                           className="h-6"
                         />
