@@ -49,6 +49,11 @@ TO service_role
 USING (true)
 WITH CHECK (true);
 
+-- 8. Fix search_path for update_updated_at_column function
+--    This fixes the "Function Search Path Mutable" security warning
+ALTER FUNCTION public.update_updated_at_column() 
+SET search_path = public, pg_temp;
+
 -- ===================================================================
 -- VERIFICATION QUERIES - Run these to verify policies are applied
 -- ===================================================================
