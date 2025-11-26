@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/safe-lean-portfolio-management-training',
+        destination: '/courses/lean-portfolio-management',
+        permanent: true,
+      },
+      {
         source: '/safe-scrum-master-course',
         destination: '/courses/scrum-master',
         permanent: true,
@@ -46,7 +51,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/safe-release-train-engineer-rte-certification-training',
-        destination: '/release-train-engineer-certification-training',
+        destination: '/courses/release-train-engineer',
         permanent: true,
       },
       {
