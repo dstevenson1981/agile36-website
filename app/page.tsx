@@ -654,7 +654,7 @@ export default function Home() {
             </div>
             
             {/* Search Bar */}
-            <div className="flex-1 max-w-xs sm:max-w-md mx-2 sm:mx-4">
+            <div className="flex-1 max-w-md mx-2 sm:mx-4">
               <div className="relative" ref={searchRef}>
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -663,7 +663,7 @@ export default function Home() {
                 </div>
                 <input
                   type="text"
-                  placeholder="What you want to learn today?"
+                  placeholder="Search courses..."
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className="w-full pl-9 sm:pl-10 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01203d] focus:border-transparent"
@@ -681,7 +681,7 @@ export default function Home() {
 
                 {/* Search Results Dropdown */}
                 {showSearchResults && searchResults.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto z-50">
+                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-[70vh] overflow-y-auto z-50 w-full sm:w-auto">
                     <div className="p-2">
                       <div className="text-xs text-gray-500 px-3 py-2 font-semibold">
                         {searchResults.length} {searchResults.length === 1 ? 'Course' : 'Courses'} Found
@@ -691,24 +691,24 @@ export default function Home() {
                           key={course.id}
                           href={getCourseUrl(course)}
                           onClick={handleClearSearch}
-                          className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors group"
+                          className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded-lg transition-colors group"
                         >
-                          <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
+                          <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 rounded-lg overflow-hidden">
                             <img
                               src={course.image}
                               alt={course.title}
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-semibold text-gray-900 group-hover:text-[#fa4a23] line-clamp-2">
+                          <div className="flex-1 min-w-0 overflow-hidden">
+                            <div className="text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-[#fa4a23] line-clamp-2">
                               {course.title}
                             </div>
-                            <div className="text-xs text-gray-500 mt-1">
+                            <div className="text-xs text-gray-500 mt-1 truncate">
                               {course.category} • {course.days}
                             </div>
                             <div className="flex items-center gap-2 mt-1">
-                              <span className="text-sm font-bold text-[#fa4a23]">${course.price}</span>
+                              <span className="text-xs sm:text-sm font-bold text-[#fa4a23]">${course.price}</span>
                               <span className="text-xs text-gray-400 line-through">${course.originalPrice}</span>
                             </div>
                           </div>
@@ -720,13 +720,13 @@ export default function Home() {
 
                 {/* No Results */}
                 {showSearchResults && searchQuery && searchResults.length === 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
-                    <div className="p-6 text-center">
-                      <svg className="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 w-full sm:w-auto">
+                    <div className="p-4 sm:p-6 text-center">
+                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <p className="text-sm text-gray-500 mb-1">No courses found</p>
-                      <p className="text-xs text-gray-400">Try searching with different keywords</p>
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">No courses found</p>
+                      <p className="text-xs text-gray-400">Try different keywords</p>
                     </div>
                   </div>
                 )}
