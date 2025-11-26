@@ -30,6 +30,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<Course[]>([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -731,7 +732,7 @@ export default function Header() {
               </div>
             </div>
             
-            {/* Navigation Links */}
+            {/* Navigation Links - Desktop */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-6">
               <Link href="/#blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Blogs
@@ -746,6 +747,20 @@ export default function Header() {
             
             {/* Utility Icons */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
               <Link 
                 href="/contact" 
                 className="p-2 text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
@@ -763,6 +778,49 @@ export default function Header() {
             </div>
           </div>
         </nav>
+
+        {/* Mobile Menu Panel */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div className="px-4 py-4 space-y-1">
+              <Link 
+                href="/courses" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                All Courses
+              </Link>
+              <Link 
+                href="/#blog" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Blogs
+              </Link>
+              <Link 
+                href="/test" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Practice Tests
+              </Link>
+              <Link 
+                href="/corporate" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Corporate
+              </Link>
+              <Link 
+                href="/contact" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

@@ -781,12 +781,12 @@ export default function Home() {
                 Take the next step in your career with a global leader in Agile and AI training. Start your learning journey today.
               </p>
               
-              <button className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-8 rounded-md transition-colors duration-200 flex items-center gap-2">
+              <Link href="/courses" className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-8 rounded-md transition-colors duration-200 flex items-center gap-2 w-fit">
                 Explore Courses
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </Link>
               
               {/* Trusted By Section */}
               <div className="pt-8 space-y-4">
