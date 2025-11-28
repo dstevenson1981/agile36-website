@@ -37,7 +37,7 @@ VALUES
     200,                        -- $200 discount
     'Black Friday Sale - $200 Off', 
     TRUE,                       -- ACTIVE
-    '2024-11-29 23:59:59+00'::timestamptz,  -- Expires Nov 29, 2024
+    '2025-12-01 23:59:59+00'::timestamptz,  -- Expires Dec 1, 2025
     NULL,                       -- No usage limit
     0,                          -- Usage count starts at 0
     NOW(),

@@ -11,7 +11,7 @@ DELETE FROM promo_codes WHERE UPPER(code) = 'BF200';
 INSERT INTO promo_codes (code, discount_type, discount_value, description, active, expires_at, usage_limit, usage_count)
 VALUES 
   ('BF200', 'fixed', 200, 'Black Friday Sale - $200 Off', TRUE, 
-   '2024-11-29 23:59:59+00'::timestamptz, 
+   '2025-12-01 23:59:59+00'::timestamptz, 
    NULL,
    0)
 ON CONFLICT (code) 
@@ -20,7 +20,7 @@ DO UPDATE SET
   discount_value = 200,
   description = 'Black Friday Sale - $200 Off',
   active = TRUE,
-  expires_at = '2024-11-29 23:59:59+00'::timestamptz,
+  expires_at = '2025-12-01 23:59:59+00'::timestamptz,
   updated_at = NOW();
 
 -- Verify the promo code was created/updated

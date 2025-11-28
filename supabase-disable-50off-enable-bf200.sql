@@ -33,7 +33,7 @@ VALUES
     200,                        -- $200 discount
     'Black Friday Sale - $200 Off', 
     TRUE,                       -- ACTIVE
-    '2024-12-31 23:59:59+00'::timestamptz,  -- Expires Dec 31, 2024 (end of year)
+    '2025-12-01 23:59:59+00'::timestamptz,  -- Expires Dec 1, 2025
     NULL,                       -- No usage limit
     0,                          -- Usage count starts at 0
     NOW(),
@@ -45,7 +45,7 @@ DO UPDATE SET
   discount_value = 200,
   description = 'Black Friday Sale - $200 Off',
   active = TRUE,
-  expires_at = '2024-12-31 23:59:59+00'::timestamptz,
+  expires_at = '2025-12-01 23:59:59+00'::timestamptz,
   updated_at = NOW();
 
 -- Step 3: Verify all promo codes status
