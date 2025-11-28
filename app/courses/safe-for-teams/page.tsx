@@ -809,8 +809,8 @@ export default function SafeForTeamsCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
-                  <div className="text-base text-gray-500 line-through">$1,030</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$599</div>
+                  <div className="text-base text-gray-500 line-through">$1,198</div>
                   <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
@@ -1311,7 +1311,7 @@ export default function SafeForTeamsCoursePage() {
               What is the Fee for SAFe Practitioner Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Practitioner certification course in the United States typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Practitioner certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Practitioner certification course in the United States typically ranges from <strong>$599 to $1,198</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Practitioner certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>

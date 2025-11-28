@@ -910,8 +910,8 @@ export default function GenerativeAIProjectManagersCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
-                  <div className="text-base text-gray-500 line-through">$1,030</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$555</div>
+                  <div className="text-base text-gray-500 line-through">$1,110</div>
                   <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
