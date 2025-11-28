@@ -15,12 +15,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate environment variables
+    if (!supabaseUrl || !supabaseServiceKey) {
+      console.error('Missing Supabase environment variables');
+      return NextResponse.json(
+        { 
+          valid: false, 
+          error: 'Server configuration error. Please contact support.' 
+        },
+        { status: 200 }
+      );
+    }
+
     // Create Supabase client with service role key for backend operations
-    // Using auth options to ensure service role bypasses RLS
+    // Service role key bypasses RLS policies
     const supabase = createClient(supabaseUrl, supabaseServiceKey, {
       auth: {
         autoRefreshToken: false,
         persistSession: false
+      },
+      db: {
+        schema: 'public'
       }
     });
 
