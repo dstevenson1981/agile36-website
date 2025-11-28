@@ -21,20 +21,46 @@ export async function POST(request: NextRequest) {
     // Look up the promo code (case-insensitive)
     // Trim and uppercase the input code for consistency
     const trimmedCode = code.trim().toUpperCase();
-    const { data: promoCode, error } = await supabase
+    
+    // Try exact match first
+    let { data: promoCode, error } = await supabase
       .from('promo_codes')
       .select('*')
       .eq('code', trimmedCode)
       .single();
 
+    // If not found, try case-insensitive search as fallback
     if (error || !promoCode) {
-      return NextResponse.json(
-        { 
-          valid: false, 
-          error: 'Invalid promo code' 
-        },
-        { status: 200 }
-      );
+      console.log('Exact match failed, trying case-insensitive search. Error:', error);
+      const { data: promoCodeFallback, error: errorFallback } = await supabase
+        .from('promo_codes')
+        .select('*')
+        .ilike('code', trimmedCode)
+        .single();
+      
+      if (!errorFallback && promoCodeFallback) {
+        promoCode = promoCodeFallback;
+        error = null;
+      } else {
+        console.error('Promo code lookup failed:', errorFallback || error);
+        console.error('Searched for code:', trimmedCode);
+        
+        // Debug: Check what codes exist
+        const { data: allCodes } = await supabase
+          .from('promo_codes')
+          .select('code, active, expires_at')
+          .limit(10);
+        console.log('Available promo codes:', allCodes);
+        
+        return NextResponse.json(
+          { 
+            valid: false, 
+            error: 'Invalid promo code',
+            debug: process.env.NODE_ENV === 'development' ? { searched: trimmedCode, error: error?.message || errorFallback?.message } : undefined
+          },
+          { status: 200 }
+        );
+      }
     }
 
     // Check if code is active
