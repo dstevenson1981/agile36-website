@@ -19,10 +19,12 @@ export async function POST(request: NextRequest) {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Look up the promo code (case-insensitive)
+    // Trim and uppercase the input code for consistency
+    const trimmedCode = code.trim().toUpperCase();
     const { data: promoCode, error } = await supabase
       .from('promo_codes')
       .select('*')
-      .ilike('code', code.trim())
+      .eq('code', trimmedCode)
       .single();
 
     if (error || !promoCode) {
