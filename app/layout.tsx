@@ -73,20 +73,20 @@ export default function RootLayout({
         </div>
         <Footer />
         
-        {/* Tawk.to Live Chat Widget */}
+        {/* Crisp Live Chat Widget */}
         <Script
-          id="tawk-to-chat"
+          id="crisp-chat"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              window.$crisp=[];
+              window.CRISP_WEBSITE_ID="fa52d23e-ef39-4fdb-8ecd-8c568cd46d15";
               (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/6926733472be541965eb9998/1jav341a5';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
+                d=document;
+                s=d.createElement("script");
+                s.src="https://client.crisp.chat/l.js";
+                s.async=1;
+                d.getElementsByTagName("head")[0].appendChild(s);
               })();
             `,
           }}
