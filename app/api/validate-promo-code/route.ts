@@ -29,91 +29,28 @@ export async function POST(request: NextRequest) {
 
     // Create Supabase client with service role key for backend operations
     // Service role key bypasses RLS policies
-    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false
-      },
-      db: {
-        schema: 'public'
-      }
-    });
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Look up the promo code (case-insensitive)
-    // Trim and uppercase the input code for consistency
-    const trimmedCode = code.trim().toUpperCase();
+    // Trim the input code
+    const trimmedCode = code.trim();
     
-    console.log('Validating promo code:', trimmedCode);
-    console.log('Supabase URL:', supabaseUrl ? 'Set' : 'Missing');
-    console.log('Service Key:', supabaseServiceKey ? 'Set' : 'Missing');
-    
-    // First, test if we can query the table at all
-    const { data: testQuery, error: testError } = await supabase
+    // Use ilike for case-insensitive search (this is what worked before)
+    const { data: promoCode, error } = await supabase
       .from('promo_codes')
-      .select('code')
-      .limit(1);
-    
-    if (testError) {
-      console.error('Cannot query promo_codes table:', testError);
+      .select('*')
+      .ilike('code', trimmedCode)
+      .single();
+
+    if (error || !promoCode) {
       return NextResponse.json(
         { 
           valid: false, 
-          error: 'Database connection error. Please contact support.',
-          debug: process.env.NODE_ENV === 'development' ? { error: testError.message } : undefined
+          error: 'Invalid promo code' 
         },
         { status: 200 }
       );
     }
-    
-    // Try case-insensitive search first (more reliable)
-    let { data: promoCode, error } = await supabase
-      .from('promo_codes')
-      .select('*')
-      .ilike('code', trimmedCode)
-      .maybeSingle();
-
-    // If not found with ilike, try exact match
-    if (error || !promoCode) {
-      console.log('Case-insensitive search failed, trying exact match. Error:', error);
-      const { data: promoCodeExact, error: errorExact } = await supabase
-        .from('promo_codes')
-        .select('*')
-        .eq('code', trimmedCode)
-        .maybeSingle();
-      
-      if (!errorExact && promoCodeExact) {
-        promoCode = promoCodeExact;
-        error = null;
-      } else {
-        console.error('Promo code lookup failed completely');
-        console.error('Searched for code:', trimmedCode);
-        console.error('ILike error:', error);
-        console.error('Exact match error:', errorExact);
-        
-        // Debug: Check what codes exist
-        const { data: allCodes } = await supabase
-          .from('promo_codes')
-          .select('code, active, expires_at')
-          .limit(10);
-        console.log('Available promo codes in database:', allCodes);
-        
-        return NextResponse.json(
-          { 
-            valid: false, 
-            error: 'Invalid promo code',
-            debug: process.env.NODE_ENV === 'development' ? { 
-              searched: trimmedCode, 
-              ilikeError: error?.message, 
-              exactError: errorExact?.message,
-              availableCodes: allCodes?.map(c => c.code)
-            } : undefined
-          },
-          { status: 200 }
-        );
-      }
-    }
-    
-    console.log('Found promo code:', promoCode?.code);
 
     // Check if code is active
     if (!promoCode.active) {
