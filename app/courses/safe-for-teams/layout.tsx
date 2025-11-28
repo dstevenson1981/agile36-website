@@ -70,7 +70,7 @@ export default function SafeForTeamsLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "515",
+      "price": "599",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/safe-for-teams/schedule"

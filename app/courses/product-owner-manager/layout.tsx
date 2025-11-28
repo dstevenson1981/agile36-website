@@ -70,7 +70,7 @@ export default function ProductOwnerManagerLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "515",
+      "price": "555",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/product-owner-manager/schedule"
