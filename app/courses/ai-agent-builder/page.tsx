@@ -63,12 +63,19 @@ export default function AIAgentBuilderCoursePage() {
                   </svg>
                   <span className="text-sm font-semibold text-blue-700">English</span>
                 </div>
-                {/* Certification Exam Included Badge */}
+                {/* Certification Badge */}
                 <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg border-2 border-green-500">
                   <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
+                  <span className="text-sm font-bold text-green-700">CAPI™ Certified AI Product Innovator</span>
+                </div>
+                {/* Course Format Badge */}
+                <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-sm font-semibold text-blue-700">2-Day Live Virtual</span>
                 </div>
               </div>
 
@@ -77,18 +84,21 @@ export default function AIAgentBuilderCoursePage() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                   No-Code AI Agents & Automation™ Certification Training
                 </h1>
-                <p className="text-xl text-gray-900 font-bold mb-4">
-                  Master No-Code AI Agents to Automate Tasks, Optimize Workflows, and Supercharge Productivity!
+                <p className="text-xl text-gray-900 font-bold mb-2">
+                  Build Real AI Products Without Code. Validate Faster. Launch Smarter.
+                </p>
+                <p className="text-lg text-[#fa4a23] font-semibold mb-4">
+                  Certification: CAPI™ Certified AI Product Innovator
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Build powerful AI agents without writing any code",
-                    "Automate complex workflows with no-code tools",
-                    "Connect ChatGPT API to real-world business processes",
-                    "Complete 25+ hands-on automation projects",
-                    "Replace manual tasks with intelligent AI systems"
+                    "Build working AI prototypes, workflows, and agents without code",
+                    "Validate product ideas rapidly with AI-powered tools",
+                    "Create portfolio-ready AI MVP during the course",
+                    "Earn CAPI™ Certified AI Product Innovator certification",
+                    "Launch smarter with proven frameworks for AI products"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,89 +144,62 @@ export default function AIAgentBuilderCoursePage() {
         </div>
       </section>
 
-      {/* Market Demand & Salary Section */}
+      {/* Why Agile36 Section */}
       <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why No-Code AI Skills Are in High Demand
+              Why Agile36?
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Businesses need professionals who can build AI solutions without coding. No-code AI skills open doors to higher-paying roles and transform how organizations operate.
+            <p className="text-lg text-gray-700 max-w-4xl mx-auto mb-6">
+              At Agile36, we don't just talk about AI — we train you to actually build with it.
+            </p>
+            <p className="text-base text-gray-600 max-w-4xl mx-auto mb-6">
+              Our AIPB™ course is for Product Managers, Entrepreneurs, and Innovators who want to bring AI ideas to life without needing an engineering background. In just two days, you'll learn how to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately.
+            </p>
+            <p className="text-base text-gray-600 max-w-4xl mx-auto">
+              Whether you are validating a new product concept, automating a business process, or building an AI-enabled MVP for your startup, this course gives you practical frameworks and a hands-on capstone project you can take straight into execution, pitches, or client work.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
-            {/* Stat 1 - Career Opportunity */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Career Advantage</div>
-              <p className="text-sm text-gray-600 mb-4">Professionals with no-code AI skills are highly sought after across industries.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-2xl md:text-3xl font-bold text-[#fa4a23]">$90K–$150K</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">typical salary range</div>
-              </div>
-            </div>
-
-            {/* Stat 2 - Productivity Gains */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Productivity Boost</div>
-              <p className="text-sm text-gray-600 mb-4">Automation dramatically reduces time spent on repetitive tasks.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-xl md:text-2xl font-bold text-blue-600">Major Time Savings</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">within weeks of adoption</div>
-              </div>
-            </div>
-
-            {/* Stat 3 - Business Impact */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Business Value</div>
-              <p className="text-sm text-gray-600 mb-4">Companies see measurable returns from no-code AI implementations.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-xl md:text-2xl font-bold text-[#fa4a23]">Fast ROI</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">proven business impact</div>
-              </div>
+          {/* Who This Is For Section */}
+          <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 mb-8">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Who This Is For</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                "Product Managers and Product Owners who need to prototype AI features quickly",
+                "Entrepreneurs and Founders testing AI-powered business models",
+                "Business Analysts, Consultants, and Innovators building AI workflows",
+                "Non-technical professionals who want to create AI products without writing code",
+                "Team leaders who want to equip their teams with hands-on AI building skills"
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-base text-gray-700">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Skills Section */}
+          {/* What You'll Walk Away With Section */}
           <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Key Skills You'll Master</h3>
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">No-Code AI Agent Development</div>
-                  <div className="text-sm text-gray-600">High Demand</div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">What You'll Walk Away With</h3>
+            <div className="space-y-4">
+              {[
+                "A portfolio-ready AI MVP that you build and launch during the course",
+                "Your own prompt workflows, automation templates, and integration blueprints",
+                "A proven framework for scoping and delivering AI products without engineers",
+                "The CAPI™ Certification and confidence to turn AI ideas into functioning solutions"
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-base text-gray-700 font-medium">{item}</span>
                 </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#fa4a23] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">Workflow Automation Design</div>
-                  <div className="text-sm text-gray-600">Essential Skill</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">API Integration & ChatGPT</div>
-                  <div className="text-sm text-gray-600">Critical Competency</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#fa4a23] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">Business Process Optimization</div>
-                  <div className="text-sm text-gray-600">Growing Priority</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">n8n, Make.com & Automation Platforms</div>
-                  <div className="text-sm text-gray-600">Industry Standard Tools</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -329,46 +312,11 @@ export default function AIAgentBuilderCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        The No-Code AI Agents & Automation™ Certification Training is a transformative 2-day intensive program (10 hours total) designed specifically for non-programmers who want to harness the power of AI automation. No coding experience required—just bring your curiosity and business challenges!
+                        The No-Code AI Agents & Automation™ Certification Training is a transformative 2-day intensive program designed for Product Leaders, Innovators, Entrepreneurs, and Product Managers who want to build real AI products without code. This hands-on course teaches you to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        This hands-on course empowers you to build sophisticated AI agents and automated workflows using cutting-edge no-code platforms like n8n, Make.com, Pipedream, and Langflow. You'll learn to connect ChatGPT and other AI models to real business processes, creating intelligent systems that work autonomously 24/7.
+                        Whether you are validating a new product concept, automating a business process, or building an AI-enabled MVP for your startup, this course gives you practical frameworks and a hands-on capstone project you can take straight into execution, pitches, or client work.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
-                        With 25+ practical projects and real-world use cases, you'll master the art of eliminating repetitive work, optimizing business operations, and building AI-powered solutions that deliver immediate ROI. By the end of this course, you'll have a portfolio of functional automations ready to deploy in your organization.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        {[
-                          "Build autonomous AI agents with zero coding",
-                          "Create multi-step automated workflow pipelines",
-                          "Integrate ChatGPT API with business systems",
-                          "Develop 25+ practical automation projects",
-                          "Automate emails, reports, and data processing",
-                          "Design AI-driven customer engagement systems"
-                        ].map((item, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-base text-gray-700">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                        <li>Business professionals with zero coding experience</li>
-                        <li>Operations managers seeking workflow automation</li>
-                        <li>Marketing and sales professionals</li>
-                        <li>Entrepreneurs and small business owners</li>
-                        <li>Anyone wanting to eliminate repetitive tasks with AI</li>
-                      </ul>
                     </div>
                   </div>
                 )}
@@ -394,92 +342,59 @@ export default function AIAgentBuilderCoursePage() {
                     <div className="space-y-4">
                       {[
                         { 
-                          title: "Module 1: Build No-Code AI Agents",
+                          title: "1. Foundations of No-Code AI",
                           topics: [
-                            "Design and configure autonomous AI agents",
-                            "Set up agents that research, summarize, and generate content",
-                            "Create agents that send emails and execute workflows",
-                            "Deploy agents that work without human intervention",
-                            "Configure agent triggers, conditions, and actions"
+                            "What no-code AI can and cannot do",
+                            "Overview of leading no-code platforms (Flowise, V0.dev, Zapier, Airtable, Bubble)",
+                            "Real-world examples of AI products built without code"
                           ],
-                          learningObjective: "Master the fundamentals of designing and deploying AI agents that perform complex tasks autonomously using no-code platforms"
+                          learningObjective: "Understand the capabilities and limitations of no-code AI platforms and see real-world examples of AI products built without code"
                         },
                         { 
-                          title: "Module 2: Create Multi-Step Automated Workflows",
+                          title: "2. Designing AI Workflows",
                           topics: [
-                            "Introduction to n8n, Make.com, Pipedream, and Langflow",
-                            "Orchestrate complex workflows with triggers and actions",
-                            "Build decision trees and conditional logic",
-                            "Transform and manipulate data across systems",
-                            "Create workflows that collaborate across platforms"
+                            "Mapping user flows for AI-driven apps",
+                            "Prompt chaining and structured prompt design",
+                            "Human-in-the-loop checkpoints and guardrails"
                           ],
-                          learningObjective: "Design and implement sophisticated multi-step automation workflows that connect systems, make decisions, and execute actions seamlessly"
+                          learningObjective: "Master the design of AI workflows with proper prompt engineering and human oversight mechanisms"
                         },
                         { 
-                          title: "Module 3: Integrate ChatGPT & API-Based Automations",
+                          title: "3. Building Your AI Product",
                           topics: [
-                            "Connect ChatGPT API to your workflows",
-                            "Retrieve and analyze data automatically",
-                            "Build agents that make intelligent decisions",
-                            "Create AI-powered data processing pipelines",
-                            "Integrate multiple AI models and services"
+                            "Hands-on labs with Flowise, V0.dev, and Zapier",
+                            "Connecting APIs and integrating LLMs like GPT and Claude",
+                            "Retrieval workflows with vector databases (Pinecone, Weaviate)",
+                            "Building and testing single-agent use cases"
                           ],
-                          learningObjective: "Connect AI models to real-world business processes through APIs and create intelligent agents that operate autonomously"
+                          learningObjective: "Build functional AI products using leading no-code platforms and integrate with LLMs and vector databases"
                         },
                         { 
-                          title: "Module 4: Develop Real-World Agent Use Cases",
+                          title: "4. Testing & Iterating",
                           topics: [
-                            "Build lead qualification and scoring systems",
-                            "Create automated outreach sequencing agents",
-                            "Design content generation pipelines",
-                            "Develop AI research assistants",
-                            "Build onboarding bots and operational task automation"
+                            "Validating outputs and monitoring AI performance",
+                            "Fail-safes, fallback logic, and error handling",
+                            "Rapid iteration cycles for fast MVP launches"
                           ],
-                          learningObjective: "Apply your skills to practical business scenarios and build production-ready automation systems for common business challenges"
+                          learningObjective: "Implement robust testing, monitoring, and iteration processes to ensure reliable AI product performance"
                         },
                         { 
-                          title: "Module 5: Hands-On No-Code Agent Projects",
+                          title: "5. Launch & Integrate",
                           topics: [
-                            "Complete 25+ practical automation builds",
-                            "Create functional AI agents for immediate deployment",
-                            "Build customer service automation systems",
-                            "Develop data processing and reporting agents",
-                            "Design personalized business productivity tools"
+                            "Connecting your AI product to Slack, email, or web apps",
+                            "Deploying prototypes to real users for feedback",
+                            "Packaging no-code builds for investors or enterprise demos"
                           ],
-                          learningObjective: "Gain extensive hands-on experience by completing 25+ real-world automation projects you can deploy immediately in your organization"
+                          learningObjective: "Launch your AI product by integrating with business systems and preparing it for stakeholder presentations"
                         },
                         { 
-                          title: "Module 6: Automate Repetitive Digital Work",
+                          title: "6. Growth & Scale",
                           topics: [
-                            "Replace manual email processing with AI agents",
-                            "Automate spreadsheet data entry and analysis",
-                            "Create document processing workflows",
-                            "Build automated reporting systems",
-                            "Design reminder and notification systems"
+                            "When to graduate from no-code to full-code builds",
+                            "Using AI analytics to improve product performance",
+                            "Preparing your MVP for enterprise adoption"
                           ],
-                          learningObjective: "Eliminate time-consuming manual tasks by building agents that autonomously handle emails, documents, spreadsheets, and routine operations"
-                        },
-                        { 
-                          title: "Module 7: AI-Enhanced Coding (No-Code + Low-Code Mix)",
-                          topics: [
-                            "Use AI to generate automation scripts",
-                            "Fix bugs and errors with AI assistance",
-                            "Enhance automation logic with AI suggestions",
-                            "Create modular workflow components",
-                            "Debug automations faster with AI tools"
-                          ],
-                          learningObjective: "Leverage AI to enhance your automations, generate helpful code snippets, and troubleshoot issues—even without programming experience"
-                        },
-                        { 
-                          title: "Module 8: AI-Driven User Interaction Design",
-                          topics: [
-                            "Create agents that respond intelligently to users",
-                            "Personalize interactions and user experiences",
-                            "Build conversational agents that answer questions",
-                            "Design task execution systems triggered by commands",
-                            "Deliver frictionless, AI-powered user experiences"
-                          ],
-                          learningObjective: "Design sophisticated AI agents that interact naturally with users, personalize responses, and execute tasks on command for exceptional user experiences"
+                          learningObjective: "Understand when and how to scale your no-code AI product and prepare it for enterprise-level adoption"
                         }
                       ].map((part, index) => (
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
@@ -519,6 +434,29 @@ export default function AIAgentBuilderCoursePage() {
                           )}
                         </div>
                       ))}
+                    </div>
+
+                    {/* What You'll Build Section */}
+                    <div className="mt-8 bg-gradient-to-br from-blue-50 to-orange-50 p-6 rounded-lg border-2 border-[#fa4a23]">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Build (Capstone Project)</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        Throughout the course, you will create and launch your own AI-powered MVP, including:
+                      </p>
+                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                        <li>Prompt workflow and chaining logic</li>
+                        <li>A working chatbot, copilot, or automation built in Flowise or V0.dev</li>
+                        <li>Integration with APIs or databases for real-world functionality</li>
+                        <li>Basic telemetry and feedback loop design</li>
+                        <li>A launch-ready demo you can showcase or deploy immediately</li>
+                      </ul>
+                    </div>
+
+                    {/* Tools Used Section */}
+                    <div className="mt-8 bg-white p-6 rounded-lg border border-gray-200">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">Tools Used</h3>
+                      <p className="text-base text-gray-700 mb-3">
+                        Flowise, V0.dev, Zapier, Airtable, Bubble, Retool, Notion AI, ChatGPT, Claude, Perplexity, Pinecone/Weaviate (vector DBs), Synthesia, and more.
+                      </p>
                     </div>
                   </div>
                 )}
@@ -708,10 +646,10 @@ export default function AIAgentBuilderCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials and resources. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "This is a comprehensive 2-day intensive program (10 hours total) designed for non-programmers to build AI agents and automated workflows without writing any code. You'll complete 25+ practical projects and learn to automate real business processes." },
-                  { q: "Who should take this course?", a: "This course is perfect for business professionals, operations managers, marketers, entrepreneurs, and anyone who wants to leverage AI automation without coding. If you spend time on repetitive tasks or want to optimize workflows, this course is for you." },
+                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "This is a comprehensive 2-day intensive program designed for Product Leaders, Innovators, Entrepreneurs, and Product Managers who want to build real AI products without code. You'll learn to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately." },
+                  { q: "Who should take this course?", a: "This course is for Product Managers and Product Owners who need to prototype AI features quickly, Entrepreneurs and Founders testing AI-powered business models, Business Analysts and Consultants building AI workflows, Non-technical professionals who want to create AI products without writing code, and Team leaders who want to equip their teams with hands-on AI building skills." },
                   { q: "What are the prerequisites for this course?", a: "No prerequisites! This course is designed specifically for non-technical professionals. All you need is basic computer skills and a desire to automate your work. No coding or technical background required." },
-                  { q: "Will I receive a certification?", a: "Yes! Upon completion, you'll receive the No-Code AI Agents & Automation™ Certification, issued through Accredible, the global credentialing platform used by top universities and training providers." }
+                  { q: "Will I receive a certification?", a: "Yes! Upon completion, you'll receive the CAPI™ (Certified AI Product Innovator) certification, issued through Accredible, the global credentialing platform used by top universities and training providers." }
                 ]
               };
 
