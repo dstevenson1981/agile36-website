@@ -26,6 +26,10 @@ function CheckoutContent() {
   const [courseName, setCourseName] = useState("Executive GenAI Leadership™");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
+  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoDiscountType, setPromoDiscountType] = useState<'fixed' | 'percentage'>('fixed');
+  const [promoError, setPromoError] = useState<string | null>(null);
+  const [isValidatingPromo, setIsValidatingPromo] = useState(false);
   const [showAlternativeContact, setShowAlternativeContact] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
@@ -111,6 +115,58 @@ function CheckoutContent() {
   const calculateDiscount = (originalPrice: number, salePrice: number) => {
     const discount = ((originalPrice - salePrice) / originalPrice) * 100;
     return Math.round(discount);
+  };
+
+  const handleApplyPromoCode = async () => {
+    if (appliedPromoCode) {
+      setPromoError('Please remove the current promo code before applying a new one');
+      return;
+    }
+
+    const code = promoCodeInput.trim();
+    
+    if (!code) {
+      setPromoError('Please enter a promo code');
+      return;
+    }
+
+    setIsValidatingPromo(true);
+    setPromoError(null);
+
+    try {
+      const response = await fetch('/api/validate-promo-code', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      const data = await response.json();
+
+      if (data.valid) {
+        setAppliedPromoCode(data.code);
+        setPromoDiscountType(data.discountType);
+        setPromoDiscount(data.discountValue);
+        setPromoCodeInput('');
+        setPromoError(null);
+      } else {
+        setPromoError(data.error || 'Invalid promo code');
+        setAppliedPromoCode(null);
+        setPromoDiscount(0);
+      }
+    } catch (error) {
+      console.error('Error validating promo code:', error);
+      setPromoError('Failed to validate promo code. Please try again.');
+    } finally {
+      setIsValidatingPromo(false);
+    }
+  };
+
+  const handleRemovePromoCode = () => {
+    setAppliedPromoCode(null);
+    setPromoDiscount(0);
+    setPromoError(null);
   };
 
   const handleContinue = async () => {
@@ -494,11 +550,22 @@ function CheckoutContent() {
                       <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
                     )}
                     <span className="font-semibold text-gray-900">${baseTotal.toFixed(2)}</span>
+                  {appliedPromoCode && calculatedPromoDiscount > 0 && (
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-gray-600">Promo Code ({appliedPromoCode})</span>
+                    <span className="text-sm font-semibold text-green-600">-${calculatedPromoDiscount.toFixed(2)}</span>
                   </div>
+                )}
+                </div>
                 </div>
                 <div className="border-t pt-3 flex items-center justify-between">
                   <span className="font-bold text-gray-900">Total</span>
                   <div className="flex items-center gap-2">
+                    {appliedPromoCode && calculatedPromoDiscount > 0 && (
+                      <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">
+                        -${calculatedPromoDiscount.toFixed(0)}
+                      </span>
+                    )}
                     {discount > 0 && (
                       <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
                     )}
@@ -515,6 +582,60 @@ function CheckoutContent() {
                 <p className="text-xs font-semibold text-gray-700 mb-2">Accepted Payment Methods:</p>
                 <p className="text-xs text-gray-600">Credit/Debit Cards • Apple Pay</p>
               </div>
+
+            
+              {/* Promo Codes */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <h4 className="font-semibold text-gray-900">Promo Codes</h4>
+                </div>
+                <div className="flex gap-2 mb-3">
+                  <input
+                    type="text"
+                    placeholder="Apply a Code"
+                    value={promoCodeInput}
+                    onChange={(e) => setPromoCodeInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && !appliedPromoCode && handleApplyPromoCode()}
+                    disabled={!!appliedPromoCode || isValidatingPromo}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#fa4a23] disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                  <button 
+                    onClick={handleApplyPromoCode}
+                    disabled={!!appliedPromoCode || isValidatingPromo || !promoCodeInput.trim()}
+                    className="bg-gray-800 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  >
+                    {isValidatingPromo ? 'Validating...' : 'Apply'}
+                  </button>
+                </div>
+                {promoError && (
+                  <div className="mb-3 p-2 bg-red-50 border border-red-200 rounded">
+                    <p className="text-xs text-red-600">{promoError}</p>
+                  </div>
+                )}
+                {appliedPromoCode && (
+                  <div className="mb-3 p-3 bg-green-50 border border-green-200 rounded flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <div>
+                        <span className="text-sm font-semibold text-green-700">{appliedPromoCode}</span>
+                        <p className="text-xs text-green-600">Promo code applied successfully</p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={handleRemovePromoCode}
+                      className="text-xs text-red-600 hover:text-red-800 font-semibold underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
+              </div>
+
 
             </div>
           </div>
