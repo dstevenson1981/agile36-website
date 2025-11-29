@@ -816,7 +816,6 @@ function CheckoutContent() {
                 <p className="text-xs text-gray-600">Credit/Debit Cards • Apple Pay</p>
               </div>
 
-            
               {/* Promo Codes */}
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
@@ -868,8 +867,6 @@ function CheckoutContent() {
                   </div>
                 )}
               </div>
-
-
             </div>
           </div>
         </div>
