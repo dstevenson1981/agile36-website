@@ -255,7 +255,18 @@ function CheckoutContent() {
   const baseTotal = basePrice * enrollmentQuantity;
   const totalOriginalPrice = originalPrice * enrollmentQuantity;
   
-  const totalPrice = baseTotal;
+  // Apply promo code discount
+  let calculatedPromoDiscount = 0;
+  if (appliedPromoCode && promoDiscount > 0) {
+    if (promoDiscountType === 'fixed') {
+      calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+    } else {
+      // percentage
+      calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
+    }
+  }
+  
+  const totalPrice = Math.max(0, baseTotal - calculatedPromoDiscount);
   const discount = calculateDiscount(originalPrice, basePrice);
 
   return (
@@ -550,14 +561,14 @@ function CheckoutContent() {
                       <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
                     )}
                     <span className="font-semibold text-gray-900">${baseTotal.toFixed(2)}</span>
-                  {appliedPromoCode && calculatedPromoDiscount > 0 && (
+                  </div>
+                </div>
+                {appliedPromoCode && calculatedPromoDiscount > 0 && (
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-gray-600">Promo Code ({appliedPromoCode})</span>
                     <span className="text-sm font-semibold text-green-600">-${calculatedPromoDiscount.toFixed(2)}</span>
                   </div>
                 )}
-                </div>
-                </div>
                 <div className="border-t pt-3 flex items-center justify-between">
                   <span className="font-bold text-gray-900">Total</span>
                   <div className="flex items-center gap-2">
