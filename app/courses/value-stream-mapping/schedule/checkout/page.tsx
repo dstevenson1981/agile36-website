@@ -269,8 +269,9 @@ function CheckoutContent() {
   let calculatedPromoDiscount = 0;
   if (appliedPromoCode && promoDiscount > 0) {
     if (promoDiscountType === 'fixed') {
-      calculatedPromoDiscount = promoDiscount;
-    } else if (promoDiscountType === 'percentage') {
+      calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+    } else {
+      // percentage
       calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
     }
   }
