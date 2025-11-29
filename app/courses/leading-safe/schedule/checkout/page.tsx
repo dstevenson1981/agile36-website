@@ -54,6 +54,7 @@ function CheckoutContent() {
     'lean-portfolio-management': 'Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
+    'responsible-ai': 'Achieving Responsible AI with SAFe Micro-credential Course',
   };
 
   useEffect(() => {
