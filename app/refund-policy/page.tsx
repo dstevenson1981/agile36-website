@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Refund and Cancellation Policy | Agile36",
@@ -18,26 +19,18 @@ export default function RefundPolicyPage() {
       {/* Content Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-gray-700 mb-12">
-            At Agile36, our priority is to deliver a high-quality and seamless learning experience. To ensure 
-            fairness and clarity for all participants, the following refund and cancellation guidelines apply.
-          </p>
-
           {/* Refunds */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Refunds</h2>
             <div className="space-y-4 text-gray-700">
               <p>
-                <strong>Full refunds</strong> are available for cancellations submitted <strong>thirty (30) or more 
-                days</strong> before the scheduled class start date.
+                Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date.
               </p>
               <p>
-                Cancellations received <strong>within thirty (30) days</strong> of the class start date are <strong>not 
-                eligible for a refund</strong>.
+                Cancellations received within thirty (30) days of the class start date are not eligible for a refund.
               </p>
               <p>
-                Registrations purchased using <strong>promotional codes, coupon codes, or any discounted pricing</strong> are{" "}
-                <strong>non-refundable at all times</strong>.
+                Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. If a coupon code or discounted rate was used and Agile36 reschedules the course on our end, a refund will not be issued; you will be moved to a future class date at no additional cost.
               </p>
             </div>
           </section>
@@ -47,11 +40,10 @@ export default function RefundPolicyPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Rescheduling</h2>
             <div className="space-y-4 text-gray-700">
               <p>
-                Participants may <strong>reschedule to another session at no additional cost</strong> when the request is 
-                submitted at least <strong>twenty-four (24) hours</strong> prior to the original class start time.
+                Participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time.
               </p>
               <p>
-                All rescheduling requests must be sent <strong>via email</strong> so they can be processed promptly.
+                All rescheduling requests must be submitted via email so they can be processed promptly.
               </p>
             </div>
           </section>
@@ -61,8 +53,7 @@ export default function RefundPolicyPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">No-Show Policy</h2>
             <div className="space-y-4 text-gray-700">
               <p>
-                Participants who <strong>do not attend a scheduled session</strong> and do not provide advance notice{" "}
-                <strong>forfeit all fees paid</strong>.
+                Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid.
               </p>
               <p>
                 No refunds, credits, or transfers are available for no-shows.
@@ -74,7 +65,7 @@ export default function RefundPolicyPage() {
           <section className="mb-12 bg-gradient-to-br from-blue-50 to-orange-50 p-8 rounded-2xl">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
             <p className="text-gray-700 mb-4">
-              For questions regarding cancellations or rescheduling, please email us at:
+              For questions regarding cancellations or rescheduling, please email:
             </p>
             <a 
               href="mailto:d.stevenson@agile36.com"
@@ -83,7 +74,7 @@ export default function RefundPolicyPage() {
               d.stevenson@agile36.com
             </a>
             <p className="text-gray-700 mt-4">
-              Our team is available to support you and ensure a smooth experience with your registration.
+              We are here to support you and ensure a smooth registration experience.
             </p>
           </section>
         </div>
@@ -91,4 +82,3 @@ export default function RefundPolicyPage() {
     </div>
   );
 }
-
