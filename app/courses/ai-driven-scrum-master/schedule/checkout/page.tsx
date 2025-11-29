@@ -551,24 +551,24 @@ function CheckoutContent() {
                       <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
                     )}
                     <span className="font-semibold text-gray-900">${baseTotal.toFixed(2)}</span>
-                  {appliedPromoCode && calculatedPromoDiscount > 0 && (
+                  </div>
+                </div>
+                {appliedPromoCode && calculatedPromoDiscount > 0 && (
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-gray-600">Promo Code ({appliedPromoCode})</span>
                     <span className="text-sm font-semibold text-green-600">-${calculatedPromoDiscount.toFixed(2)}</span>
                   </div>
                 )}
-                </div>
-                </div>
                 <div className="border-t pt-3 flex items-center justify-between">
                   <span className="font-bold text-gray-900">Total</span>
                   <div className="flex items-center gap-2">
+                    {discount > 0 && (
+                      <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
+                    )}
                     {appliedPromoCode && calculatedPromoDiscount > 0 && (
                       <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">
                         -${calculatedPromoDiscount.toFixed(0)}
                       </span>
-                    )}
-                    {discount > 0 && (
-                      <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
                     )}
                     {totalOriginalPrice && (
                       <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
@@ -584,7 +584,6 @@ function CheckoutContent() {
                 <p className="text-xs text-gray-600">Credit/Debit Cards • Apple Pay</p>
               </div>
 
-            
               {/* Promo Codes */}
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
@@ -636,8 +635,6 @@ function CheckoutContent() {
                   </div>
                 )}
               </div>
-
-
             </div>
           </div>
         </div>
