@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 interface Testimonial {
   id: number;
@@ -47,12 +47,44 @@ const generateTestimonials = (): Testimonial[] => {
   const testimonials: Testimonial[] = [];
   const avatarImages: string[] = [];
   
-  // Get 150 avatar images - using AVATAR2 folder (adult avatars)
+  // Get all avatar images from AVATAR2 folder (adult avatars)
   const avatar2Images = [
-    "image 472.png", "image 473.png", "image 474.png", "image 475.png", "image 476.png",
-    "image 477.png", "image 478.png", "image 479.png", "image 485.png", "image 486.png",
-    "image 487.png", "image 488.png", "image 489.png", "image 490.png", "image 491.png",
-    "image 492.png", "image 493.png", "image 494.png", "image 496.png", "image 497.png"
+    "image 1.png", "image 2.png", "image 3.png", "image 4.png", "image 5.png",
+    "image 7.png", "image 8.png", "image 9.png", "image 12.png", "image 13.png",
+    "image 14.png", "image 15.png", "image 16.png", "image 17.png", "image 18.png",
+    "image 19.png", "image 20.png", "image 21.png", "image 22.png", "image 23.png",
+    "image 24.png", "image 25.png", "image 26.png", "image 27.png", "image 29.png",
+    "image 31.png", "image 32.png", "image 33.png", "image 34.png", "image 36.png",
+    "image 37.png", "image 38.png", "image 39.png", "image 41.png", "image 44.png",
+    "image 46.png", "image 47.png", "image 48.png", "image 49.png", "image 50.png",
+    "image 51.png", "image 52.png", "image 53.png", "image 54.png", "image 55.png",
+    "image 57.png", "image 58.png", "image 59.png", "image 60.png", "image 61.png",
+    "image 62.png", "image 63.png", "image 64.png", "image 66.png", "image 67.png",
+    "image 68.png", "image 70.png", "image 71.png", "image 72.png", "image 73.png",
+    "image 74.png", "image 75.png", "image 77.png", "image 79.png", "image 81.png",
+    "image 82.png", "image 83.png", "image 87.png", "image 89.png", "image 90.png",
+    "image 91.png", "image 93.png", "image 94.png", "image 98.png", "image 146.png",
+    "image 151.png", "image 155.png", "image 157.png", "image 159.png", "image 167.png",
+    "image 168.png", "image 169.png", "image 170.png", "image 172.png", "image 174.png",
+    "image 175.png", "image 177.png", "image 178.png", "image 182.png", "image 183.png",
+    "image 186.png", "image 187.png", "image 190.png", "image 192.png", "image 193.png",
+    "image 194.png", "image 201.png", "image 202.png", "image 204.png", "image 206.png",
+    "image 207.png", "image 208.png", "image 209.png", "image 216.png", "image 219.png",
+    "image 277.png", "image 280.png", "image 281.png", "image 283.png", "image 285.png",
+    "image 291.png", "image 292.png", "image 293.png", "image 294.png", "image 295.png",
+    "image 297.png", "image 299.png", "image 307.png", "image 309.png", "image 310.png",
+    "image 321.png", "image 322.png", "image 323.png", "image 324.png", "image 332.png",
+    "image 342.png", "image 344.png", "image 345.png", "image 347.png", "image 353.png",
+    "image 354.png", "image 355.png", "image 357.png", "image 358.png", "image 360.png",
+    "image 362.png", "image 363.png", "image 364.png", "image 365.png", "image 380.png",
+    "image 384.png", "image 385.png", "image 393.png", "image 396.png", "image 397.png",
+    "image 398.png", "image 400.png", "image 401.png", "image 402.png", "image 404.png",
+    "image 406.png", "image 408.png", "image 411.png", "image 412.png", "image 413.png",
+    "image 416.png", "image 421.png", "image 425.png", "image 428.png", "image 472.png",
+    "image 473.png", "image 474.png", "image 475.png", "image 476.png", "image 477.png",
+    "image 478.png", "image 479.png", "image 485.png", "image 486.png", "image 487.png",
+    "image 488.png", "image 489.png", "image 490.png", "image 491.png", "image 492.png",
+    "image 493.png", "image 494.png", "image 496.png", "image 497.png"
   ];
   
   // Cycle through AVATAR2 images for all 150 testimonials
@@ -183,6 +215,8 @@ const generateTestimonials = (): Testimonial[] => {
 export default function TestimonialsPage() {
   const [activeTab, setActiveTab] = useState<"All" | "SAFe" | "Generative AI" | "Product AI">("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const allTestimonials = useMemo(() => generateTestimonials(), []);
 
@@ -204,6 +238,23 @@ export default function TestimonialsPage() {
 
     return filtered;
   }, [allTestimonials, activeTab, searchQuery]);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab, searchQuery]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredTestimonials.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedTestimonials = filteredTestimonials.slice(startIndex, endIndex);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -240,9 +291,12 @@ export default function TestimonialsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Category Tabs */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               <button
-                onClick={() => setActiveTab("All")}
+                onClick={() => {
+                  setActiveTab("All");
+                  setCurrentPage(1);
+                }}
                 className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                   activeTab === "All"
                     ? "bg-[#01203d] text-white"
@@ -252,7 +306,10 @@ export default function TestimonialsPage() {
                 All
               </button>
               <button
-                onClick={() => setActiveTab("SAFe")}
+                onClick={() => {
+                  setActiveTab("SAFe");
+                  setCurrentPage(1);
+                }}
                 className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                   activeTab === "SAFe"
                     ? "bg-[#01203d] text-white"
@@ -262,7 +319,10 @@ export default function TestimonialsPage() {
                 SAFe
               </button>
               <button
-                onClick={() => setActiveTab("Generative AI")}
+                onClick={() => {
+                  setActiveTab("Generative AI");
+                  setCurrentPage(1);
+                }}
                 className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                   activeTab === "Generative AI"
                     ? "bg-[#01203d] text-white"
@@ -272,7 +332,10 @@ export default function TestimonialsPage() {
                 Generative AI
               </button>
               <button
-                onClick={() => setActiveTab("Product AI")}
+                onClick={() => {
+                  setActiveTab("Product AI");
+                  setCurrentPage(1);
+                }}
                 className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                   activeTab === "Product AI"
                     ? "bg-[#01203d] text-white"
@@ -289,7 +352,10 @@ export default function TestimonialsPage() {
                 type="text"
                 placeholder="Search Testimonials"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
                 className="flex-1 sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01203d] focus:border-transparent"
               />
               <button className="bg-[#fa4a23] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#e03d1a] transition-colors">
@@ -309,7 +375,7 @@ export default function TestimonialsPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredTestimonials.map((testimonial) => (
+            {paginatedTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
                 className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
@@ -348,6 +414,70 @@ export default function TestimonialsPage() {
               </div>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-12 flex items-center justify-center gap-2">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                  currentPage === 1
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                Previous
+              </button>
+              
+              <div className="flex gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  // Show first page, last page, current page, and pages around current
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                          currentPage === page
+                            ? "bg-[#01203d] text-white"
+                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  } else if (
+                    page === currentPage - 2 ||
+                    page === currentPage + 2
+                  ) {
+                    return (
+                      <span key={page} className="px-4 py-2 text-gray-400">
+                        ...
+                      </span>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                  currentPage === totalPages
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </main>
