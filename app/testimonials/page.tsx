@@ -79,18 +79,19 @@ const generateTestimonials = (): Testimonial[] => {
   const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const lastNames = [
-    "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez",
-    "Lopez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Thompson",
-    "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen",
-    "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson",
-    "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez", "Phillips", "Evans",
-    "Turner", "Diaz", "Parker", "Cruz", "Edwards", "Collins", "Reyes", "Stewart", "Morris", "Morales",
-    "Murphy", "Cook", "Rogers", "Gutierrez", "Ortiz", "Morgan", "Cooper", "Peterson", "Bailey", "Reed",
-    "Kelly", "Howard", "Ramos", "Kim", "Cox", "Ward", "Richardson", "Watson", "Brooks", "Chavez",
-    "Wood", "James", "Bennett", "Gray", "Mendoza", "Ruiz", "Hughes", "Price", "Alvarez", "Castillo",
-    "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez", "Powell", "Jenkins", "Perry",
-    "Butler", "Barnes", "Fisher", "Henderson", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Hamilton",
-    "Graham", "Kim", "Gonzales", "Alexander", "Ramos", "Wallace", "Griffin", "West", "Cole", "Hayes"
+    "Chen", "Wang", "Li", "Zhang", "Liu", "Wu", "Yang", "Huang", "Zhou", "Zhao",
+    "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo",
+    "Song", "Zheng", "Tang", "Feng", "Han", "Cao", "Peng", "Zeng", "Jiang", "Xiao",
+    "Tan", "Pan", "Yu", "Yuan", "Qian", "Dai", "Jin", "Lu", "Jiang", "Xie",
+    "Cai", "Deng", "Kang", "Yao", "Kong", "Fang", "Shi", "Ye", "Liang", "Lei",
+    "Yin", "Zou", "Shen", "Du", "Jia", "Wen", "Jiang", "Ding", "Ruan", "Xue",
+    "Bai", "Yan", "Ren", "Jiang", "Tao", "Jiang", "Jiang", "Jiang", "Jiang", "Jiang",
+    "Kim", "Park", "Lee", "Choi", "Jung", "Kang", "Cho", "Yoon", "Jang", "Lim",
+    "Shin", "Han", "Oh", "Song", "Hong", "Moon", "Ahn", "Kwon", "Ryu", "Baek",
+    "Nguyen", "Tran", "Le", "Pham", "Hoang", "Vu", "Vo", "Dang", "Bui", "Do",
+    "Takahashi", "Sato", "Suzuki", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Kobayashi", "Kato",
+    "Singh", "Patel", "Kumar", "Sharma", "Gupta", "Shah", "Mehta", "Reddy", "Rao", "Agarwal",
+    "Wong", "Chan", "Lam", "Leung", "Cheung", "Ng", "Chu", "Lau", "Yip", "Ho"
   ];
 
   // Generate 50 SAFe Generative AI testimonials (mix of pure SAFe and SAFe+AI courses)
