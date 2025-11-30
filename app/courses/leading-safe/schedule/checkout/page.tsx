@@ -66,7 +66,7 @@ function CheckoutContent() {
     'agile-product-management': 'SAFe Agile Product Management',
     'responsible-ai': 'Achieving Responsible AI with SAFe',
     'safe-for-teams': 'SAFe for Teams',
-    'scrum-master': 'SAFe Scrum Master',
+    'advanced-scrum-master': 'Advanced SAFe Scrum Master',
     'ai-driven-scrum-master': 'AI-Driven Scrum Master',
     'certified-ai-product-manager': 'Certified AI Product Manager',
     'certified-genai-practitioner': 'Certified GenAI Practitioner',
