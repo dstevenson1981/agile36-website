@@ -387,7 +387,8 @@ export default function TestimonialsPage() {
                       alt={testimonial.name}
                       width={60}
                       height={60}
-                      className="w-15 h-15 rounded-full object-cover"
+                      className="w-[60px] h-[60px] rounded-full object-cover"
+                      unoptimized
                       onError={(e) => {
                         // Fallback to a default avatar if image fails to load
                         (e.target as HTMLImageElement).src = '/AVATAR2/image 472.png';
