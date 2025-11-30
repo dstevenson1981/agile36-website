@@ -47,51 +47,34 @@ const generateTestimonials = (): Testimonial[] => {
   const testimonials: Testimonial[] = [];
   const avatarImages: string[] = [];
   
-  // Get 150 avatar images - using available images with better distribution
-  // Using higher numbered images more to avoid children's avatars in lower numbers
-  const allAvailableImages = [
-    "image 1.png", "image 2.png", "image 3.png", "image 4.png", "image 5.png", "image 6.png", "image 7.png", "image 8.png", "image 9.png", "image 10.png",
-    "image 11.png", "image 12.png", "image 13.png", "image 14.png", "image 15.png", "image 16.png", "image 17.png", "image 18.png", "image 19.png", "image 20.png",
-    "image 21.png", "image 22.png", "image 23.png", "image 24.png", "image 25.png", "image 26.png", "image 27.png", "image 28.png", "image 29.png", "image 31.png",
-    "image 32.png", "image 33.png", "image 34.png", "image 36.png", "image 37.png", "image 38.png", "image 39.png", "image 40.png", "image 41.png", "image 42.png",
-    "image 44.png", "image 46.png", "image 47.png", "image 48.png", "image 49.png", "image 50.png", "image 51.png", "image 52.png", "image 53.png", "image 54.png",
-    "image 55.png", "image 56.png", "image 57.png", "image 58.png", "image 59.png", "image 60.png", "image 61.png", "image 62.png", "image 63.png", "image 64.png",
-    "image 65.png", "image 66.png", "image 67.png", "image 68.png", "image 69.png", "image 70.png", "image 71.png", "image 72.png", "image 73.png", "image 74.png",
-    "image 75.png", "image 76.png", "image 77.png", "image 78.png", "image 79.png", "image 80.png", "image 81.png", "image 82.png", "image 83.png", "image 84.png",
-    "image 85.png", "image 86.png", "image 87.png", "image 88.png", "image 89.png", "image 90.png", "image 91.png", "image 93.png", "image 94.png", "image 98.png",
-    "image 146.png", "image 147.png", "image 151.png", "image 155.png", "image 157.png", "image 158.png", "image 159.png", "image 167.png", "image 168.png", "image 169.png",
-    "image 170.png", "image 172.png", "image 174.png", "image 175.png", "image 177.png", "image 178.png", "image 179.png", "image 180.png", "image 182.png", "image 183.png",
-    "image 184.png", "image 186.png", "image 187.png", "image 188.png", "image 190.png", "image 192.png", "image 193.png", "image 194.png", "image 196.png", "image 197.png",
-    "image 201.png", "image 202.png", "image 204.png", "image 205.png", "image 206.png", "image 207.png", "image 208.png", "image 209.png", "image 216.png", "image 219.png",
-    "image 262.png", "image 275.png", "image 277.png", "image 278.png", "image 279.png", "image 280.png", "image 281.png", "image 282.png", "image 283.png", "image 284.png",
-    "image 285.png", "image 288.png", "image 291.png", "image 292.png", "image 293.png", "image 294.png", "image 295.png", "image 297.png", "image 298.png", "image 299.png"
+  // Get 150 avatar images - using AVATAR2 folder (adult avatars)
+  const avatar2Images = [
+    "image 472.png", "image 473.png", "image 474.png", "image 475.png", "image 476.png",
+    "image 477.png", "image 478.png", "image 479.png", "image 485.png", "image 486.png",
+    "image 487.png", "image 488.png", "image 489.png", "image 490.png", "image 491.png",
+    "image 492.png", "image 493.png", "image 494.png", "image 496.png", "image 497.png"
   ];
   
-  // Create a better distribution - prioritize higher numbered images and mix them
-  // Use a pattern that ensures each testimonial gets a different avatar
-  const imageCount = allAvailableImages.length;
+  // Cycle through AVATAR2 images for all 150 testimonials
   for (let i = 0; i < 150; i++) {
-    // Use a pattern that cycles through images with offset to ensure variety
-    const imageIndex = (i * 7 + Math.floor(i / imageCount) * 13) % imageCount;
-    avatarImages.push(`/Avatars/${allAvailableImages[imageIndex]}`);
+    avatarImages.push(`/AVATAR2/${avatar2Images[i % avatar2Images.length]}`);
   }
 
   const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const lastNames = [
-    "Chen", "Wang", "Li", "Zhang", "Liu", "Wu", "Yang", "Huang", "Zhou", "Zhao",
-    "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo",
-    "Song", "Zheng", "Tang", "Feng", "Han", "Cao", "Peng", "Zeng", "Jiang", "Xiao",
-    "Tan", "Pan", "Yu", "Yuan", "Qian", "Dai", "Jin", "Lu", "Jiang", "Xie",
-    "Cai", "Deng", "Kang", "Yao", "Kong", "Fang", "Shi", "Ye", "Liang", "Lei",
-    "Yin", "Zou", "Shen", "Du", "Jia", "Wen", "Jiang", "Ding", "Ruan", "Xue",
-    "Bai", "Yan", "Ren", "Jiang", "Tao", "Jiang", "Jiang", "Jiang", "Jiang", "Jiang",
-    "Kim", "Park", "Lee", "Choi", "Jung", "Kang", "Cho", "Yoon", "Jang", "Lim",
-    "Shin", "Han", "Oh", "Song", "Hong", "Moon", "Ahn", "Kwon", "Ryu", "Baek",
-    "Nguyen", "Tran", "Le", "Pham", "Hoang", "Vu", "Vo", "Dang", "Bui", "Do",
-    "Takahashi", "Sato", "Suzuki", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Kobayashi", "Kato",
-    "Singh", "Patel", "Kumar", "Sharma", "Gupta", "Shah", "Mehta", "Reddy", "Rao", "Agarwal",
-    "Wong", "Chan", "Lam", "Leung", "Cheung", "Ng", "Chu", "Lau", "Yip", "Ho"
+    "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez",
+    "Lopez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Thompson",
+    "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen",
+    "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson",
+    "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez", "Phillips", "Evans",
+    "Turner", "Diaz", "Parker", "Cruz", "Edwards", "Collins", "Reyes", "Stewart", "Morris", "Morales",
+    "Murphy", "Cook", "Rogers", "Gutierrez", "Ortiz", "Morgan", "Cooper", "Peterson", "Bailey", "Reed",
+    "Kelly", "Howard", "Ramos", "Kim", "Cox", "Ward", "Richardson", "Watson", "Brooks", "Chavez",
+    "Wood", "James", "Bennett", "Gray", "Mendoza", "Ruiz", "Hughes", "Price", "Alvarez", "Castillo",
+    "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez", "Powell", "Jenkins", "Perry",
+    "Butler", "Barnes", "Fisher", "Henderson", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Hamilton",
+    "Graham", "Gonzales", "Alexander", "Wallace", "Griffin", "West", "Cole", "Hayes", "Chen", "Wang"
   ];
 
   // Generate 50 SAFe Generative AI testimonials (mix of pure SAFe and SAFe+AI courses)
@@ -309,7 +292,7 @@ export default function TestimonialsPage() {
                       className="w-15 h-15 rounded-full object-cover"
                       onError={(e) => {
                         // Fallback to a default avatar if image fails to load
-                        (e.target as HTMLImageElement).src = '/Avatars/image 1.png';
+                        (e.target as HTMLImageElement).src = '/AVATAR2/image 472.png';
                       }}
                     />
                   </div>
