@@ -88,8 +88,12 @@ const generateTestimonials = (): Testimonial[] => {
   ];
   
   // Cycle through AVATAR2 images for all 150 testimonials
+  // URL encode the image paths to handle spaces in filenames
   for (let i = 0; i < 150; i++) {
-    avatarImages.push(`/AVATAR2/${avatar2Images[i % avatar2Images.length]}`);
+    const imageName = avatar2Images[i % avatar2Images.length];
+    // Encode the space in the filename
+    const encodedImageName = imageName.replace(/ /g, '%20');
+    avatarImages.push(`/AVATAR2/${encodedImageName}`);
   }
 
   const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -391,7 +395,7 @@ export default function TestimonialsPage() {
                       unoptimized
                       onError={(e) => {
                         // Fallback to a default avatar if image fails to load
-                        (e.target as HTMLImageElement).src = '/AVATAR2/image 472.png';
+                        (e.target as HTMLImageElement).src = '/AVATAR2/image%20472.png';
                       }}
                     />
                   </div>
