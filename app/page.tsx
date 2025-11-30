@@ -741,6 +741,9 @@ export default function Home() {
               <Link href="/test" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Practice Tests
               </Link>
+              <Link href="/testimonials" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+                Testimonials
+              </Link>
               <Link href="/corporate" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Corporate
               </Link>

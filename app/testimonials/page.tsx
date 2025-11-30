@@ -15,26 +15,32 @@ interface Testimonial {
 
 const trainers = ["Joe Puoci", "Deadra Stevenson", "Marcus Ball"];
 
-const safeGenerativeAICourses = [
+// Pure SAFe courses (no AI mentions)
+const safeCourses = [
   "Leading SAFe",
   "SAFe DevOps",
   "SAFe Lean Portfolio Management",
   "SAFe Agile Product Management",
   "SAFe for Teams",
   "SAFe Scrum Master",
-  "SAFe Product Owner/Product Manager",
-  "Generative AI for Project Managers",
-  "Certified GenAI Practitioner",
-  "Executive GenAI Leadership",
-  "AI-Driven Scrum Master",
-  "Achieving Responsible AI with SAFe"
+  "SAFe Product Owner/Product Manager"
 ];
 
-const productAICourses = [
+// Pure AI courses (no SAFe mentions)
+const aiCourses = [
   "Certified AI Product Manager",
   "No-Code AI Agents & Automation",
   "AI Agent Builder",
-  "AI Product Management"
+  "AI Product Management",
+  "Generative AI for Project Managers",
+  "Certified GenAI Practitioner",
+  "Executive GenAI Leadership"
+];
+
+// AI + SAFe hybrid courses
+const safeAICourses = [
+  "AI-Driven Scrum Master",
+  "Achieving Responsible AI with SAFe"
 ];
 
 const generateTestimonials = (): Testimonial[] => {
@@ -64,20 +70,7 @@ const generateTestimonials = (): Testimonial[] => {
     avatarImages.push(`/Avatars/${availableImages[i % availableImages.length]}`);
   }
 
-  const firstNames = [
-    "Sarah", "Michael", "Emily", "David", "Jessica", "James", "Amanda", "Robert", "Lisa", "Christopher",
-    "Michelle", "Daniel", "Ashley", "Matthew", "Melissa", "Andrew", "Nicole", "Joshua", "Stephanie", "Ryan",
-    "Jennifer", "Justin", "Lauren", "Brandon", "Rachel", "Tyler", "Samantha", "Kevin", "Kimberly", "Eric",
-    "Amy", "Brian", "Angela", "Jonathan", "Michelle", "Steven", "Patricia", "Thomas", "Nancy", "Richard",
-    "Karen", "Charles", "Betty", "Joseph", "Helen", "William", "Sandra", "Christopher", "Donna", "Daniel",
-    "Carol", "Paul", "Ruth", "Mark", "Sharon", "Donald", "Michelle", "Steven", "Laura", "Andrew",
-    "Sarah", "Kenneth", "Emily", "Joshua", "Kimberly", "Kevin", "Deborah", "Brian", "Lisa", "George",
-    "Nancy", "Edward", "Betty", "Ronald", "Helen", "Timothy", "Sandra", "Jason", "Donna", "Jeffrey",
-    "Carol", "Ryan", "Ruth", "Jacob", "Sharon", "Gary", "Michelle", "Nicholas", "Laura", "Eric",
-    "Sarah", "Jonathan", "Emily", "Stephen", "Kimberly", "Larry", "Deborah", "Justin", "Lisa", "Frank",
-    "Nancy", "Scott", "Betty", "Brandon", "Helen", "Benjamin", "Sandra", "Samuel", "Donna", "Gregory",
-    "Carol", "Raymond", "Ruth", "Alexander", "Sharon", "Patrick", "Michelle", "Jack", "Laura", "Dennis"
-  ];
+  const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const lastNames = [
     "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez",
@@ -89,32 +82,50 @@ const generateTestimonials = (): Testimonial[] => {
     "Murphy", "Cook", "Rogers", "Gutierrez", "Ortiz", "Morgan", "Cooper", "Peterson", "Bailey", "Reed",
     "Kelly", "Howard", "Ramos", "Kim", "Cox", "Ward", "Richardson", "Watson", "Brooks", "Chavez",
     "Wood", "James", "Bennett", "Gray", "Mendoza", "Ruiz", "Hughes", "Price", "Alvarez", "Castillo",
-    "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez", "Powell", "Jenkins", "Perry"
+    "Sanders", "Patel", "Myers", "Long", "Ross", "Foster", "Jimenez", "Powell", "Jenkins", "Perry",
+    "Butler", "Barnes", "Fisher", "Henderson", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Hamilton",
+    "Graham", "Kim", "Gonzales", "Alexander", "Ramos", "Wallace", "Griffin", "West", "Cole", "Hayes"
   ];
 
-  // Generate 50 SAFe Generative AI testimonials
+  // Generate 50 SAFe Generative AI testimonials (mix of pure SAFe and SAFe+AI courses)
   for (let i = 0; i < 50; i++) {
     const trainer = trainers[i % trainers.length];
-    const course = safeGenerativeAICourses[i % safeGenerativeAICourses.length];
-    const firstName = firstNames[i % firstNames.length];
-    const lastName = lastNames[i % lastNames.length];
+    let course: string;
+    let reviewTemplates: string[];
     
-    const reviewTemplates = [
-      `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career in SAFe and Generative AI.`,
-      `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise and teaching style made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions. This has been one of the best training experiences I've had.`,
-      `${trainer} delivered an exceptional ${course} training session. The depth of knowledge and practical insights shared were invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these concepts in my work.`,
-      `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in the field and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect. I'm already seeing the benefits in my daily work.`,
-      `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions and breakout activities helped reinforce the learning. Highly recommend!`,
-      `${trainer} is an outstanding instructor for the ${course} program. The way ${trainer} breaks down complex SAFe and AI concepts is remarkable. I appreciated ${trainer}'s patience and willingness to ensure everyone understood the material. This course has transformed my understanding.`,
-      `The ${course} training with ${trainer} was transformative. ${trainer}'s expertise in both SAFe and Generative AI is evident in every session. The practical exercises and case studies were particularly helpful. I feel equipped to implement these strategies immediately.`,
-      `I had an amazing experience with ${trainer} in the ${course} course. ${trainer}'s passion for the subject matter is contagious, and the structured approach made learning enjoyable. The real-world examples ${trainer} shared were incredibly insightful.`,
-      `${trainer} delivered a world-class ${course} training. The combination of ${trainer}'s industry experience and teaching skills created an optimal learning environment. I particularly appreciated how ${trainer} tailored examples to different industries.`,
-      `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
-    ];
+    if (i < 35) {
+      // First 35: Pure SAFe courses (no AI mentions)
+      course = safeCourses[i % safeCourses.length];
+      reviewTemplates = [
+        `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career in scaled agile.`,
+        `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise and teaching style made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions. This has been one of the best training experiences I've had.`,
+        `${trainer} delivered an exceptional ${course} training session. The depth of knowledge and practical insights shared were invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these SAFe principles in my work.`,
+        `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect. I'm already seeing the benefits in my daily work.`,
+        `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions and breakout activities helped reinforce the learning. Highly recommend!`,
+        `${trainer} is an outstanding instructor for the ${course} program. The way ${trainer} breaks down complex SAFe concepts is remarkable. I appreciated ${trainer}'s patience and willingness to ensure everyone understood the material. This course has transformed my understanding of scaled agile.`,
+        `The ${course} training with ${trainer} was transformative. ${trainer}'s expertise in SAFe is evident in every session. The practical exercises and case studies were particularly helpful. I feel equipped to implement these strategies immediately.`,
+        `I had an amazing experience with ${trainer} in the ${course} course. ${trainer}'s passion for SAFe is contagious, and the structured approach made learning enjoyable. The real-world examples ${trainer} shared were incredibly insightful.`,
+        `${trainer} delivered a world-class ${course} training. The combination of ${trainer}'s industry experience and teaching skills created an optimal learning environment. I particularly appreciated how ${trainer} tailored examples to different industries.`,
+        `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex SAFe topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
+      ];
+    } else {
+      // Last 15: SAFe+AI hybrid courses
+      course = safeAICourses[(i - 35) % safeAICourses.length];
+      reviewTemplates = [
+        `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe and AI concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career.`,
+        `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise in both SAFe and AI made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions.`,
+        `${trainer} delivered an exceptional ${course} training session. The depth of knowledge in SAFe and AI was invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these concepts.`,
+        `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and AI integration and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect.`,
+        `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions helped reinforce the learning. Highly recommend!`
+      ];
+    }
+    
+    const firstName = firstInitials[i % firstInitials.length];
+    const lastName = lastNames[i % lastNames.length];
 
     testimonials.push({
       id: i + 1,
-      name: `${firstName} ${lastName}`,
+      name: `${firstName}. ${lastName}`,
       avatar: avatarImages[i],
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
@@ -123,11 +134,11 @@ const generateTestimonials = (): Testimonial[] => {
     });
   }
 
-  // Generate 50 Product AI testimonials
+  // Generate 50 Product AI testimonials (pure AI courses, no SAFe mentions)
   for (let i = 0; i < 50; i++) {
     const trainer = trainers[i % trainers.length];
-    const course = productAICourses[i % productAICourses.length];
-    const firstName = firstNames[(i + 50) % firstNames.length];
+    const course = aiCourses[i % aiCourses.length];
+    const firstName = firstInitials[(i + 13) % firstInitials.length]; // Offset to get different initials
     const lastName = lastNames[(i + 50) % lastNames.length];
     
     const reviewTemplates = [
@@ -145,7 +156,7 @@ const generateTestimonials = (): Testimonial[] => {
 
     testimonials.push({
       id: i + 51,
-      name: `${firstName} ${lastName}`,
+      name: `${firstName}. ${lastName}`,
       avatar: avatarImages[i + 50],
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
@@ -320,4 +331,3 @@ export default function TestimonialsPage() {
     </main>
   );
 }
-
