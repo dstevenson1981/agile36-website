@@ -9,7 +9,7 @@ interface Testimonial {
   avatar: string;
   rating: number;
   review: string;
-  category: "SAFe Generative AI" | "Product AI";
+  category: "SAFe" | "Generative AI" | "Product AI";
   postedOn: string;
 }
 
@@ -26,21 +26,21 @@ const safeCourses = [
   "SAFe Product Owner/Product Manager"
 ];
 
-// Pure AI courses (no SAFe mentions)
-const aiCourses = [
+// Generative AI courses (includes SAFe+AI hybrid)
+const generativeAICourses = [
+  "Generative AI for Project Managers",
+  "Certified GenAI Practitioner",
+  "Executive GenAI Leadership",
+  "AI-Driven Scrum Master",
+  "Achieving Responsible AI with SAFe"
+];
+
+// Product AI courses
+const productAICourses = [
   "Certified AI Product Manager",
   "No-Code AI Agents & Automation",
   "AI Agent Builder",
-  "AI Product Management",
-  "Generative AI for Project Managers",
-  "Certified GenAI Practitioner",
-  "Executive GenAI Leadership"
-];
-
-// AI + SAFe hybrid courses
-const safeAICourses = [
-  "AI-Driven Scrum Master",
-  "Achieving Responsible AI with SAFe"
+  "AI Product Management"
 ];
 
 const generateTestimonials = (): Testimonial[] => {
@@ -77,41 +77,25 @@ const generateTestimonials = (): Testimonial[] => {
     "Graham", "Gonzales", "Alexander", "Wallace", "Griffin", "West", "Cole", "Hayes", "Chen", "Wang"
   ];
 
-  // Generate 50 SAFe Generative AI testimonials (mix of pure SAFe and SAFe+AI courses)
+  // Generate 50 SAFe testimonials (pure SAFe courses, no AI mentions)
   for (let i = 0; i < 50; i++) {
     const trainer = trainers[i % trainers.length];
-    let course: string;
-    let reviewTemplates: string[];
-    
-    if (i < 35) {
-      // First 35: Pure SAFe courses (no AI mentions)
-      course = safeCourses[i % safeCourses.length];
-      reviewTemplates = [
-        `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career in scaled agile.`,
-        `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise and teaching style made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions. This has been one of the best training experiences I've had.`,
-        `${trainer} delivered an exceptional ${course} training session. The depth of knowledge and practical insights shared were invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these SAFe principles in my work.`,
-        `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect. I'm already seeing the benefits in my daily work.`,
-        `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions and breakout activities helped reinforce the learning. Highly recommend!`,
-        `${trainer} is an outstanding instructor for the ${course} program. The way ${trainer} breaks down complex SAFe concepts is remarkable. I appreciated ${trainer}'s patience and willingness to ensure everyone understood the material. This course has transformed my understanding of scaled agile.`,
-        `The ${course} training with ${trainer} was transformative. ${trainer}'s expertise in SAFe is evident in every session. The practical exercises and case studies were particularly helpful. I feel equipped to implement these strategies immediately.`,
-        `I had an amazing experience with ${trainer} in the ${course} course. ${trainer}'s passion for SAFe is contagious, and the structured approach made learning enjoyable. The real-world examples ${trainer} shared were incredibly insightful.`,
-        `${trainer} delivered a world-class ${course} training. The combination of ${trainer}'s industry experience and teaching skills created an optimal learning environment. I particularly appreciated how ${trainer} tailored examples to different industries.`,
-        `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex SAFe topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
-      ];
-    } else {
-      // Last 15: SAFe+AI hybrid courses
-      course = safeAICourses[(i - 35) % safeAICourses.length];
-      reviewTemplates = [
-        `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe and AI concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career.`,
-        `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise in both SAFe and AI made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions.`,
-        `${trainer} delivered an exceptional ${course} training session. The depth of knowledge in SAFe and AI was invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these concepts.`,
-        `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and AI integration and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect.`,
-        `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions helped reinforce the learning. Highly recommend!`
-      ];
-    }
-    
+    const course = safeCourses[i % safeCourses.length];
     const firstName = firstInitials[i % firstInitials.length];
     const lastName = lastNames[i % lastNames.length];
+    
+    const reviewTemplates = [
+      `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career in scaled agile.`,
+      `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise and teaching style made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions. This has been one of the best training experiences I've had.`,
+      `${trainer} delivered an exceptional ${course} training session. The depth of knowledge and practical insights shared were invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these SAFe principles in my work.`,
+      `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect. I'm already seeing the benefits in my daily work.`,
+      `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions and breakout activities helped reinforce the learning. Highly recommend!`,
+      `${trainer} is an outstanding instructor for the ${course} program. The way ${trainer} breaks down complex SAFe concepts is remarkable. I appreciated ${trainer}'s patience and willingness to ensure everyone understood the material. This course has transformed my understanding of scaled agile.`,
+      `The ${course} training with ${trainer} was transformative. ${trainer}'s expertise in SAFe is evident in every session. The practical exercises and case studies were particularly helpful. I feel equipped to implement these strategies immediately.`,
+      `I had an amazing experience with ${trainer} in the ${course} course. ${trainer}'s passion for SAFe is contagious, and the structured approach made learning enjoyable. The real-world examples ${trainer} shared were incredibly insightful.`,
+      `${trainer} delivered a world-class ${course} training. The combination of ${trainer}'s industry experience and teaching skills created an optimal learning environment. I particularly appreciated how ${trainer} tailored examples to different industries.`,
+      `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex SAFe topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
+    ];
 
     testimonials.push({
       id: i + 1,
@@ -119,17 +103,55 @@ const generateTestimonials = (): Testimonial[] => {
       avatar: avatarImages[i],
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
-      category: "SAFe Generative AI",
+      category: "SAFe",
       postedOn: "Google"
     });
   }
 
-  // Generate 50 Product AI testimonials (pure AI courses, no SAFe mentions)
+  // Generate 50 Generative AI testimonials (Generative AI courses + SAFe+AI hybrid)
   for (let i = 0; i < 50; i++) {
     const trainer = trainers[i % trainers.length];
-    const course = aiCourses[i % aiCourses.length];
-    const firstName = firstInitials[(i + 13) % firstInitials.length]; // Offset to get different initials
+    const course = generativeAICourses[i % generativeAICourses.length];
+    const firstName = firstInitials[(i + 13) % firstInitials.length];
     const lastName = lastNames[(i + 50) % lastNames.length];
+    
+    // Check if it's a hybrid course (mentions both SAFe and AI)
+    const isHybrid = course === "AI-Driven Scrum Master" || course === "Achieving Responsible AI with SAFe";
+    
+    const reviewTemplates = isHybrid ? [
+      `The ${course} training with ${trainer} was absolutely outstanding! ${trainer} is an exceptional instructor who made complex SAFe and AI concepts easy to understand. The hands-on approach and real-world examples were incredibly valuable. I highly recommend this course to anyone looking to advance their career.`,
+      `I can't say enough good things about ${trainer} and the ${course} program. ${trainer}'s expertise in both SAFe and AI made the entire experience engaging and productive. The course materials were comprehensive, and ${trainer} was always available to answer questions.`,
+      `${trainer} delivered an exceptional ${course} training session. The depth of knowledge in SAFe and AI was invaluable. ${trainer} created an interactive learning environment that kept everyone engaged throughout. I feel much more confident applying these concepts.`,
+      `The ${course} course with ${trainer} exceeded all my expectations. ${trainer} is a true expert in SAFe and AI integration and has a gift for explaining complex topics clearly. The combination of theory and hands-on practice was perfect.`,
+      `I'm so grateful I took the ${course} training with ${trainer}. ${trainer}'s teaching methodology and real-world experience made this course incredibly valuable. The interactive sessions helped reinforce the learning. Highly recommend!`
+    ] : [
+      `The ${course} training with ${trainer} was absolutely phenomenal! ${trainer} is a master instructor who brought the world of generative AI to life. The hands-on projects and ${trainer}'s guidance helped me understand AI implementation. This course has been a game-changer for my career.`,
+      `I'm blown away by the quality of the ${course} program with ${trainer}. ${trainer}'s expertise in generative AI is unmatched. The practical approach and ${trainer}'s real-world insights made every session valuable. I can't recommend this enough!`,
+      `${trainer} delivered an incredible ${course} training experience. ${trainer}'s teaching style and deep knowledge of generative AI made complex concepts easy to grasp. The practical exercises with ${trainer}'s mentorship were particularly rewarding.`,
+      `The ${course} course with ${trainer} exceeded all expectations. ${trainer} is not just an instructor but a true mentor. The way ${trainer} explained generative AI strategies and implementation was outstanding. This course has opened new doors for me.`,
+      `I had an exceptional experience with ${trainer} in the ${course} program. ${trainer}'s ability to connect AI theory with practical application is remarkable. The interactive sessions and ${trainer}'s feedback were invaluable. Highly recommended!`,
+      `${trainer} is an outstanding instructor for the ${course} training. ${trainer}'s passion for generative AI is evident throughout. The course structure and ${trainer}'s teaching methodology created an optimal learning experience.`,
+      `The ${course} training with ${trainer} was transformative. ${trainer}'s expertise in generative AI and hands-on approach helped me build confidence. The real-world examples ${trainer} shared were incredibly valuable.`,
+      `I'm so grateful for the ${course} course with ${trainer}. ${trainer}'s teaching style and industry experience made this one of the best training programs I've attended. ${trainer} truly understands how to help professionals succeed with generative AI.`
+    ];
+
+    testimonials.push({
+      id: i + 51,
+      name: `${firstName}. ${lastName}`,
+      avatar: avatarImages[i + 50],
+      rating: 5,
+      review: reviewTemplates[i % reviewTemplates.length],
+      category: "Generative AI",
+      postedOn: "Google"
+    });
+  }
+
+  // Generate 50 Product AI testimonials (Product AI courses, no SAFe mentions)
+  for (let i = 0; i < 50; i++) {
+    const trainer = trainers[i % trainers.length];
+    const course = productAICourses[i % productAICourses.length];
+    const firstName = firstInitials[(i + 26) % firstInitials.length];
+    const lastName = lastNames[(i + 100) % lastNames.length];
     
     const reviewTemplates = [
       `The ${course} training with ${trainer} was absolutely phenomenal! ${trainer} is a master instructor who brought the world of AI product management to life. The hands-on projects and ${trainer}'s guidance helped me build real AI products. This course has been a game-changer for my career.`,
@@ -145,9 +167,9 @@ const generateTestimonials = (): Testimonial[] => {
     ];
 
     testimonials.push({
-      id: i + 51,
+      id: i + 101,
       name: `${firstName}. ${lastName}`,
-      avatar: avatarImages[i + 50],
+      avatar: avatarImages[i + 100],
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
       category: "Product AI",
@@ -159,7 +181,7 @@ const generateTestimonials = (): Testimonial[] => {
 };
 
 export default function TestimonialsPage() {
-  const [activeTab, setActiveTab] = useState<"All" | "SAFe Generative AI" | "Product AI">("All");
+  const [activeTab, setActiveTab] = useState<"All" | "SAFe" | "Generative AI" | "Product AI">("All");
   const [searchQuery, setSearchQuery] = useState("");
 
   const allTestimonials = useMemo(() => generateTestimonials(), []);
@@ -230,14 +252,24 @@ export default function TestimonialsPage() {
                 All
               </button>
               <button
-                onClick={() => setActiveTab("SAFe Generative AI")}
+                onClick={() => setActiveTab("SAFe")}
                 className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
-                  activeTab === "SAFe Generative AI"
+                  activeTab === "SAFe"
                     ? "bg-[#01203d] text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                SAFe Generative AI
+                SAFe
+              </button>
+              <button
+                onClick={() => setActiveTab("Generative AI")}
+                className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
+                  activeTab === "Generative AI"
+                    ? "bg-[#01203d] text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                Generative AI
               </button>
               <button
                 onClick={() => setActiveTab("Product AI")}
