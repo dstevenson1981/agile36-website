@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useMemo, useEffect } from "react";
 
 interface Testimonial {
@@ -88,12 +87,9 @@ const generateTestimonials = (): Testimonial[] => {
   ];
   
   // Cycle through AVATAR2 images for all 150 testimonials
-  // URL encode the image paths to handle spaces in filenames
   for (let i = 0; i < 150; i++) {
     const imageName = avatar2Images[i % avatar2Images.length];
-    // Encode the space in the filename
-    const encodedImageName = imageName.replace(/ /g, '%20');
-    avatarImages.push(`/AVATAR2/${encodedImageName}`);
+    avatarImages.push(`/AVATAR2/${imageName}`);
   }
 
   const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -386,16 +382,15 @@ export default function TestimonialsPage() {
               >
                 <div className="flex items-start gap-4 mb-4">
                     <div className="flex-shrink-0">
-                    <Image
+                    <img
                       src={testimonial.avatar}
                       alt={testimonial.name}
                       width={60}
                       height={60}
                       className="w-[60px] h-[60px] rounded-full object-cover"
-                      unoptimized
                       onError={(e) => {
                         // Fallback to a default avatar if image fails to load
-                        (e.target as HTMLImageElement).src = '/AVATAR2/image%20472.png';
+                        (e.target as HTMLImageElement).src = '/AVATAR2/image 472.png';
                       }}
                     />
                   </div>
