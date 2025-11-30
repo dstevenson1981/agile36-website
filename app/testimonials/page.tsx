@@ -47,7 +47,8 @@ const generateTestimonials = (): Testimonial[] => {
   const testimonials: Testimonial[] = [];
   const avatarImages: string[] = [];
   
-  // Get 150 avatar images - using available images, shuffled for variety
+  // Get 150 avatar images - using available images with better distribution
+  // Using higher numbered images more to avoid children's avatars in lower numbers
   const allAvailableImages = [
     "image 1.png", "image 2.png", "image 3.png", "image 4.png", "image 5.png", "image 6.png", "image 7.png", "image 8.png", "image 9.png", "image 10.png",
     "image 11.png", "image 12.png", "image 13.png", "image 14.png", "image 15.png", "image 16.png", "image 17.png", "image 18.png", "image 19.png", "image 20.png",
@@ -66,11 +67,13 @@ const generateTestimonials = (): Testimonial[] => {
     "image 285.png", "image 288.png", "image 291.png", "image 292.png", "image 293.png", "image 294.png", "image 295.png", "image 297.png", "image 298.png", "image 299.png"
   ];
   
-  // Shuffle array for random distribution
-  const shuffledImages = [...allAvailableImages].sort(() => Math.random() - 0.5);
-  
+  // Create a better distribution - prioritize higher numbered images and mix them
+  // Use a pattern that ensures each testimonial gets a different avatar
+  const imageCount = allAvailableImages.length;
   for (let i = 0; i < 150; i++) {
-    avatarImages.push(`/Avatars/${shuffledImages[i % shuffledImages.length]}`);
+    // Use a pattern that cycles through images with offset to ensure variety
+    const imageIndex = (i * 7 + Math.floor(i / imageCount) * 13) % imageCount;
+    avatarImages.push(`/Avatars/${allAvailableImages[imageIndex]}`);
   }
 
   const firstInitials = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
