@@ -20,9 +20,9 @@ INSERT INTO promo_codes (
 VALUES 
   (
     '50OFF',                    -- Exact code
-    'percentage',                -- Percentage discount (50% off)
-    50,                         -- 50% discount
-    '50OFF Special - 50% Off', 
+    'fixed',                     -- Fixed dollar amount ($50 off)
+    50,                         -- $50 discount
+    '50OFF Special - $50 Off', 
     TRUE,                       -- ACTIVE
     '2026-12-31 23:59:59+00'::timestamptz,  -- Expires Dec 31, 2026
     NULL,                       -- No usage limit
@@ -32,9 +32,9 @@ VALUES
   )
 ON CONFLICT (code) 
 DO UPDATE SET
-  discount_type = 'percentage',
+  discount_type = 'fixed',
   discount_value = 50,
-  description = '50OFF Special - 50% Off',
+  description = '50OFF Special - $50 Off',
   active = TRUE,
   expires_at = '2026-12-31 23:59:59+00'::timestamptz,
   updated_at = NOW();
