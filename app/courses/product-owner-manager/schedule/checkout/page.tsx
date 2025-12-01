@@ -70,7 +70,8 @@ function CheckoutContent() {
   };
 
   const getCertificationName = () => {
-    return certificationNames[courseSlug] || 'the certification';
+    const certName = certificationNames[courseSlug] || certificationNames['product-owner-manager'] || 'the certification';
+    return certName;
   };
 
   useEffect(() => {
