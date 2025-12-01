@@ -9,6 +9,7 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
+import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -396,20 +397,12 @@ function CheckoutContent() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number <span className="text-red-500">*</span>
                     </label>
-                    <div className="flex gap-2">
-                      <div className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
-                        <span className="text-2xl">🇺🇸</span>
-                        <span className="text-sm font-medium text-gray-700">+1</span>
-                      </div>
-                      <input
-                        type="tel"
-                        required
-                        value={enrollmentFormData.phone}
-                        onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, phone: e.target.value })}
-                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
-                        placeholder="4049217518"
-                      />
-                    </div>
+                    <InternationalPhoneInput
+                      value={enrollmentFormData.phone}
+                      onChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, phone: value })}
+                      required
+                      placeholder="Enter phone number"
+                    />
                   </div>
 
                   {/* Email */}
