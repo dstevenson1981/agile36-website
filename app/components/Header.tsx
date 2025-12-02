@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import CouponModal from "./CouponModal";
+import CouponDisplayModal from "./CouponDisplayModal";
 
 interface Course {
   id: string;
@@ -31,9 +33,17 @@ export default function Header() {
   const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<Course[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [showCouponModal, setShowCouponModal] = useState(false);
+  const [showCouponDisplay, setShowCouponDisplay] = useState(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleClaimCoupon = (email: string, course: string) => {
+    // Close the form modal and show the coupon code
+    setShowCouponModal(false);
+    setShowCouponDisplay(true);
+  };
   
   // Handle mouse enter with immediate show
   const handleMouseEnter = () => {
@@ -485,21 +495,63 @@ export default function Header() {
   return (
     <>
       {/* End of Year Sale Banner */}
-      <div className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-3 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <span className="text-white font-bold text-sm sm:text-base">End of Year Sale - $100 OFF</span>
-            <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
+      <div 
+        className="w-full bg-red-600 py-4 px-4 cursor-pointer hover:bg-red-700 transition-colors"
+        onClick={() => setShowCouponModal(true)}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+          {/* Left side with megaphone and sale label */}
+          <div className="flex items-center gap-4">
+            {/* Megaphone icon */}
+            <div className="relative">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+              {/* Sound waves */}
+              <div className="absolute -top-1 -right-1 w-3 h-3 border-2 border-yellow-400 rounded-full"></div>
+              <div className="absolute -top-2 -right-2 w-4 h-4 border-2 border-yellow-400 rounded-full"></div>
+            </div>
+            
+            {/* YEAR END MEGA SALE label */}
+            <div className="flex flex-col">
+              <div className="bg-yellow-400 px-3 py-0.5 rounded-t">
+                <span className="text-black font-bold text-xs">YEAR END</span>
+              </div>
+              <div className="bg-black px-4 py-1 rounded-b">
+                <span className="text-white font-bold text-sm">MEGA</span>
+                <span className="text-white font-bold text-sm ml-2">SALE</span>
+              </div>
+            </div>
           </div>
-          <span className="text-white text-sm sm:text-base">Use Code:</span>
-          <span className="bg-[#fa4a23] text-white font-bold px-4 py-1 rounded text-sm sm:text-base tracking-wider">100OFF</span>
+
+          {/* Center - Main text */}
+          <div className="flex-1 text-center">
+            <h2 className="text-yellow-300 font-bold text-lg sm:text-xl md:text-2xl drop-shadow-lg">
+              Get Flat <span className="text-white">$100 OFF</span> on Course Fee
+            </h2>
+          </div>
+
+          {/* Right side - Claim Coupon button */}
+          <button className="bg-white text-red-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Claim Coupon
+          </button>
         </div>
       </div>
+
+      {/* Coupon Modals */}
+      <CouponModal 
+        isOpen={showCouponModal}
+        onClose={() => setShowCouponModal(false)}
+        onClaimCoupon={handleClaimCoupon}
+      />
+      <CouponDisplayModal
+        isOpen={showCouponDisplay}
+        onClose={() => setShowCouponDisplay(false)}
+        couponCode="100OFF"
+      />
       
       {/* Top Banner */}
       <div className="w-full bg-[#fa4a23] h-1"></div>
