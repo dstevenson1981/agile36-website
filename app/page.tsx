@@ -499,47 +499,48 @@ export default function Home() {
     <main className="bg-[#f0f9ff]">
       {/* End of Year Sale Banner */}
       <div 
-        className="w-full bg-red-600 py-4 px-4 cursor-pointer hover:bg-red-700 transition-colors"
+        className="w-full bg-red-600 py-2 sm:py-3 md:py-4 px-2 sm:px-4 cursor-pointer hover:bg-red-700 transition-colors"
         onClick={() => setShowCouponModal(true)}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
           {/* Left side with megaphone and sale label */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Megaphone icon */}
-            <div className="relative">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div className="relative hidden sm:block">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
               </svg>
               {/* Sound waves */}
-              <div className="absolute -top-1 -right-1 w-3 h-3 border-2 border-yellow-400 rounded-full"></div>
-              <div className="absolute -top-2 -right-2 w-4 h-4 border-2 border-yellow-400 rounded-full"></div>
+              <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 border-2 border-yellow-400 rounded-full"></div>
+              <div className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400 rounded-full"></div>
             </div>
             
             {/* YEAR END MEGA SALE label */}
             <div className="flex flex-col">
-              <div className="bg-yellow-400 px-3 py-0.5 rounded-t">
-                <span className="text-black font-bold text-xs">YEAR END</span>
+              <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
+                <span className="text-black font-bold text-[10px] sm:text-xs">YEAR END</span>
               </div>
-              <div className="bg-black px-4 py-1 rounded-b">
-                <span className="text-white font-bold text-sm">MEGA</span>
-                <span className="text-white font-bold text-sm ml-2">SALE</span>
+              <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
+                <span className="text-white font-bold text-xs sm:text-sm">MEGA</span>
+                <span className="text-white font-bold text-xs sm:text-sm ml-1 sm:ml-2">SALE</span>
               </div>
             </div>
           </div>
 
           {/* Center - Main text */}
-          <div className="flex-1 text-center">
-            <h2 className="text-yellow-300 font-bold text-lg sm:text-xl md:text-2xl drop-shadow-lg">
+          <div className="flex-1 text-center min-w-0">
+            <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
               Get Flat <span className="text-white">$100 OFF</span> on Course Fee
             </h2>
           </div>
 
           {/* Right side - Claim Coupon button */}
-          <button className="bg-white text-red-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="bg-white text-red-600 font-bold px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2 rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            Claim Coupon
+            <span className="hidden sm:inline">Claim Coupon</span>
+            <span className="sm:hidden">Claim</span>
           </button>
         </div>
       </div>
