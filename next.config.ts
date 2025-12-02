@@ -55,6 +55,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/courses/safe-release-train-engineer',
+        destination: '/courses/release-train-engineer',
+        permanent: true,
+      },
+      {
         source: '/safe-value-stream-mapping-microcredential-course',
         destination: '/courses/value-stream-mapping',
         permanent: true,
