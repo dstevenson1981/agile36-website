@@ -635,8 +635,8 @@ export default function Home() {
                       </div>
                       
                       {/* Right Content - Courses */}
-                      <div className="flex-1 p-6 max-h-[500px] overflow-y-auto">
-                        <div className="flex items-center justify-between mb-4">
+                      <div className="flex-1 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500" style={{ maxHeight: '800px' }}>
+                        <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2 z-10">
                           <h3 className="font-bold text-gray-900 text-lg">
                             {selectedMegaMenuCategory} ({allCourses.filter(course => course.category === selectedMegaMenuCategory).length} Courses)
                           </h3>
@@ -648,10 +648,9 @@ export default function Home() {
                             View all Courses
                           </Link>
                         </div>
-                        <ul className="space-y-3">
+                        <ul className="space-y-3 pr-2">
                           {allCourses
                             .filter(course => course.category === selectedMegaMenuCategory)
-                            .slice(0, 8)
                             .map(course => (
                               <li key={course.id}>
                                 <Link
