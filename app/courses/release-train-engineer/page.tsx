@@ -525,7 +525,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">2 days (16 hours)</p>
+                            <p className="text-base text-gray-700">3 days (16 hours)</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Class Time:</p>
@@ -746,7 +746,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                       {[
                         { q: "What is the SAFe Scrum Master (SSM) certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of Scrum Master responsibilities in the Scaled Agile Framework and your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment." },
                         { q: "How long is the certification valid?", a: "The SAFe Scrum Master (SSM) certification is valid for one year from the date of issue. You can renew it by earning continuing education credits or taking advanced SAFe courses." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live training over 2 days (9 AM - 5 PM EST), comprehensive course materials, practice exam, and certification." },
+                        { q: "What is included in the course?", a: "The course includes 16 hours of live training over 3 days (9 AM - 5 PM EST), comprehensive course materials, practice exam, and certification." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners. Basic understanding of Scrum or Agile practices is recommended." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-6">
@@ -780,7 +780,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">2 Days Duration</span>
+                    <span className="text-sm text-gray-700">3 Days Duration</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1176,7 +1176,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               What is the Fee for SAFe SAFe Release Train Engineer Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Release Train Engineer certification training in the United States is <strong>$1,299</strong>. This is a private course, so please contact us to discuss your training needs and schedule. This investment includes two days of instructor-led training (9 AM - 5 PM EST), comprehensive digital study materials, practice exam, and certification. The pricing for SAFe Release Train Engineer certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Release Train Engineer certification training in the United States is <strong>$1,299</strong>. This is a private course, so please contact us to discuss your training needs and schedule. This investment includes three days of instructor-led training (9 AM - 5 PM EST), comprehensive digital study materials, practice exam, and certification. The pricing for SAFe Release Train Engineer certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
