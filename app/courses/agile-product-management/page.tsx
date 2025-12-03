@@ -125,7 +125,7 @@ export default function AgileProductManagementCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® 6.0 AI-Empowered Agile Product Management (APM) Certification Training
+                  SAFe® 6.0 Agile Product Management (APM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
                   Lead Agile Innovation & Design Thinking with SAFe® Agile Product Management Certification

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 Scrum Master (SSM) Certification Training | Agile36",
-  description: "Master SAFe Scrum Master skills with SAFe® SSM Certification Training. Learn team facilitation, PI planning support, impediment removal, and Agile Release Train support. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training | Agile36",
+  description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, impediment removal, and Agile Release Train support. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
   keywords: [
     "SAFe Scrum Master",
     "SAFe SSM certification",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® 6.0 Scrum Master (SSM) Certification Training | Agile36",
-    description: "Master SAFe Scrum Master skills with SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support. Earn 16 PDUs & SEUs.",
+    title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training | Agile36",
+    description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://agile36.com/courses/scrum-master",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 Scrum Master (SSM) Certification Training",
-    description: "Master SAFe Scrum Master skills with SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
+    title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
+    description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
   },
   alternates: {
     canonical: "https://agile36.com/courses/scrum-master",
@@ -45,7 +45,7 @@ export default function ScrumMasterLayout({
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": "SAFe® 6.0 Scrum Master (SSM) Certification Training",
+    "name": "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
     "description": "SAFe Scrum Master (SSM) certification teaches Scrum Masters to facilitate Agile teams within SAFe. Learn team ceremonies, PI Planning participation, impediment removal, servant leadership, ART support, and how to coach teams in large-scale Agile environments.",
     "provider": {
       "@type": "EducationalOrganization",

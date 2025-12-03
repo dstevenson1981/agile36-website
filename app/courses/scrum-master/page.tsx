@@ -125,7 +125,7 @@ export default function ScrumMasterCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® 6.0 Scrum Master (SSM) Certification Training
+                  SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
                   Master SAFe Scrum Master Skills to Facilitate Team Success in Agile Release Trains
