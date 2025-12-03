@@ -64,6 +64,11 @@ const nextConfig: NextConfig = {
         destination: '/courses/value-stream-mapping',
         permanent: true,
       },
+      {
+        source: '/safe-agile-product-management-course',
+        destination: '/courses/agile-product-management',
+        permanent: true,
+      },
       // AI Courses
       {
         source: '/certified-ai-product-manager-pmai',
