@@ -125,7 +125,7 @@ export default function LeanPortfolioManagementCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® 6.0 AI-Empowered Lean Portfolio Management (LPM) Certification Training
+                  SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
                   Lead Agile Portfolios with SAFe® LPM Training That Delivers Real Value
