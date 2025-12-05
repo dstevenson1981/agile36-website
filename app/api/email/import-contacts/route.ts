@@ -76,10 +76,21 @@ export async function POST(request: NextRequest) {
           }
         }
 
+        // Check if contact already exists
+        const { data: existingContact } = await supabase
+          .from('email_contacts')
+          .select('id')
+          .eq('email', csvRecord.email.toLowerCase().trim())
+          .maybeSingle();
+
+        const isUpdate = !!existingContact;
+
         const contactData = {
           email: csvRecord.email.toLowerCase().trim(),
-          first_name: csvRecord.first_name || csvRecord.firstName || null,
-          last_name: csvRecord.last_name || csvRecord.lastName || null,
+          first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || null,
+          last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || null,
+          role: csvRecord.role || csvRecord.Role || null,
+          company: csvRecord.company || csvRecord.Company || null,
           tags: tags.length > 0 ? tags : null,
           subscribed: csvRecord.subscribed !== 'false' && csvRecord.subscribed !== 'FALSE', // Default to true
         };
@@ -96,19 +107,10 @@ export async function POST(request: NextRequest) {
         if (error) {
           errors.push(`Error processing ${csvRecord.email}: ${error.message}`);
         } else {
-          if (data && data.length > 0) {
-            // Check if it was an update or insert
-            const existing = await supabase
-              .from('email_contacts')
-              .select('id')
-              .eq('email', contactData.email)
-              .single();
-
-            if (existing.data) {
-              updateCount++;
-            } else {
-              successCount++;
-            }
+          if (isUpdate) {
+            updateCount++;
+          } else {
+            successCount++;
           }
         }
       } catch (error: any) {

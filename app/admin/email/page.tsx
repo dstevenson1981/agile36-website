@@ -7,6 +7,8 @@ interface Contact {
   email: string;
   first_name: string | null;
   last_name: string | null;
+  role: string | null;
+  company: string | null;
   tags: string[] | null;
   subscribed: boolean;
   created_at: string;
@@ -134,6 +136,8 @@ export default function EmailAdminPage() {
     const email = formData.get('email') as string;
     const firstName = formData.get('firstName') as string;
     const lastName = formData.get('lastName') as string;
+    const role = formData.get('role') as string;
+    const company = formData.get('company') as string;
     const tagsInput = formData.get('tags') as string;
     const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
 
@@ -142,7 +146,14 @@ export default function EmailAdminPage() {
       const response = await fetch('/api/email/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, first_name: firstName, last_name: lastName, tags }),
+        body: JSON.stringify({ 
+          email, 
+          first_name: firstName, 
+          last_name: lastName, 
+          role: role || null,
+          company: company || null,
+          tags 
+        }),
       });
       const data = await response.json();
       if (data.success) {
@@ -341,19 +352,31 @@ export default function EmailAdminPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Import CSV</label>
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={handleImportCSV}
-                  className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                />
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="file"
+                    accept=".csv"
+                    onChange={handleImportCSV}
+                    className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                  <a
+                    href="/email-contacts-template.csv"
+                    download
+                    className="text-sm text-blue-600 hover:text-blue-800 underline"
+                  >
+                    Download Template
+                  </a>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  CSV format: Email, First Name, Last Name, Role, Company (optional: Tags, Subscribed)
+                </p>
               </div>
             </div>
 
             {/* Add Contact Form */}
             <form onSubmit={handleAddContact} className="mb-6 p-4 bg-gray-50 rounded-lg">
               <h3 className="font-semibold mb-3">Add New Contact</h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
                 <input
                   type="email"
                   name="email"
@@ -371,6 +394,18 @@ export default function EmailAdminPage() {
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
+                  className="px-3 py-2 border border-gray-300 rounded-md"
+                />
+                <input
+                  type="text"
+                  name="role"
+                  placeholder="Role"
+                  className="px-3 py-2 border border-gray-300 rounded-md"
+                />
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Company"
                   className="px-3 py-2 border border-gray-300 rounded-md"
                 />
                 <div className="flex gap-2">
@@ -401,6 +436,8 @@ export default function EmailAdminPage() {
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tags</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
@@ -412,6 +449,12 @@ export default function EmailAdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{contact.email}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {contact.first_name} {contact.last_name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {contact.role || '-'}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {contact.company || '-'}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {contact.tags?.join(', ') || '-'}

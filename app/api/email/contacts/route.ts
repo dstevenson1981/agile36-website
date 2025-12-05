@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%`);
+      query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`);
     }
 
     const { data: contacts, error } = await query.order('created_at', { ascending: false });
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, first_name, last_name, tags, subscribed = true } = await request.json();
+    const { email, first_name, last_name, role, company, tags, subscribed = true } = await request.json();
 
     if (!email || !email.includes('@')) {
       return NextResponse.json(
@@ -100,6 +100,8 @@ export async function POST(request: NextRequest) {
         email: email.toLowerCase().trim(),
         first_name: first_name || null,
         last_name: last_name || null,
+        role: role || null,
+        company: company || null,
         tags: tags && tags.length > 0 ? tags : null,
         subscribed,
       }, {
