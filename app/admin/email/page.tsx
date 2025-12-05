@@ -53,9 +53,16 @@ export default function EmailAdminPage() {
   // Analytics state
   const [analytics, setAnalytics] = useState<any>(null);
 
+  // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
     if (activeTab === 'contacts') {
-      fetchAllTags(); // Fetch all tags first
+      fetchAllTags(); // Fetch all tags - this should only run once or when tab changes
+    }
+  }, [activeTab]);
+
+  // Fetch contacts when tab changes
+  useEffect(() => {
+    if (activeTab === 'contacts') {
       fetchContacts();
     } else if (activeTab === 'campaigns') {
       fetchCampaigns();
@@ -64,6 +71,7 @@ export default function EmailAdminPage() {
     }
   }, [activeTab]);
 
+  // Fetch contacts when filters change (but don't refetch tags)
   useEffect(() => {
     if (activeTab === 'contacts') {
       fetchContacts();
@@ -82,15 +90,17 @@ export default function EmailAdminPage() {
         data.contacts.forEach((contact: Contact) => {
           if (contact.tags && Array.isArray(contact.tags)) {
             contact.tags.forEach(tag => {
-              if (tag && typeof tag === 'string') {
+              if (tag && typeof tag === 'string' && tag.trim()) {
                 tags.add(tag.trim());
               }
             });
           }
         });
         const sortedTags = Array.from(tags).sort();
-        console.log('All tags found:', sortedTags); // Debug log
-        setAllTags(sortedTags);
+        console.log('All tags found:', sortedTags, 'from', data.contacts.length, 'contacts'); // Debug log
+        if (sortedTags.length > 0) {
+          setAllTags(sortedTags);
+        }
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
@@ -406,25 +416,28 @@ export default function EmailAdminPage() {
                 />
               </div>
               <div className="min-w-[150px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Tags {allTags.length > 0 && `(${allTags.length})`}
+                </label>
                 <select
                   multiple
                   value={selectedTags}
-                  onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                  size={Math.min(allTags.length + 1, 10)}
+                  onChange={(e) => {
+                    const newTags = Array.from(e.target.selectedOptions, option => option.value);
+                    setSelectedTags(newTags);
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md min-h-[100px]"
+                  size={Math.min(Math.max(allTags.length, 3), 8)}
+                  style={{ minHeight: '100px' }}
                 >
                   {allTags.length > 0 ? (
                     allTags.map(tag => (
                       <option key={tag} value={tag}>{tag}</option>
                     ))
                   ) : (
-                    <option disabled>No tags available</option>
+                    <option disabled>Loading tags...</option>
                   )}
                 </select>
-                {allTags.length > 0 && (
-                  <p className="text-xs text-gray-500 mt-1">{allTags.length} tag(s) available</p>
-                )}
               </div>
               <div className="min-w-[150px]">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Subscription</label>
