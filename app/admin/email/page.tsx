@@ -47,6 +47,8 @@ export default function EmailAdminPage() {
   const [sendToAll, setSendToAll] = useState(false);
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
+  const [editingContact, setEditingContact] = useState<Contact | null>(null);
+  const [editTags, setEditTags] = useState<string>('');
 
   // Analytics state
   const [analytics, setAnalytics] = useState<any>(null);
@@ -185,6 +187,40 @@ export default function EmailAdminPage() {
       }
     } catch (error) {
       alert('Error deleting contact');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEditContact = (contact: Contact) => {
+    setEditingContact(contact);
+    setEditTags(contact.tags?.join(', ') || '');
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingContact) return;
+
+    const tags = editTags.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/email/contacts/${editingContact.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tags: tags.length > 0 ? tags : null,
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setEditingContact(null);
+        setEditTags('');
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to update contact');
+      }
+    } catch (error) {
+      alert('Error updating contact');
     } finally {
       setLoading(false);
     }
@@ -476,7 +512,51 @@ export default function EmailAdminPage() {
                           {contact.company || '-'}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {contact.tags?.join(', ') || '-'}
+                          {editingContact?.id === contact.id ? (
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                value={editTags}
+                                onChange={(e) => setEditTags(e.target.value)}
+                                placeholder="Tags (comma-separated)"
+                                className="px-2 py-1 border border-gray-300 rounded text-sm w-48"
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') {
+                                    handleSaveEdit();
+                                  } else if (e.key === 'Escape') {
+                                    setEditingContact(null);
+                                    setEditTags('');
+                                  }
+                                }}
+                              />
+                              <button
+                                onClick={handleSaveEdit}
+                                className="text-blue-600 hover:text-blue-900 text-sm"
+                              >
+                                Save
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setEditingContact(null);
+                                  setEditTags('');
+                                }}
+                                className="text-gray-600 hover:text-gray-900 text-sm"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2">
+                              <span>{contact.tags?.join(', ') || '-'}</span>
+                              <button
+                                onClick={() => handleEditContact(contact)}
+                                className="text-blue-600 hover:text-blue-900 text-xs"
+                                title="Edit tags"
+                              >
+                                ✏️
+                              </button>
+                            </div>
+                          )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2 py-1 text-xs rounded-full ${
