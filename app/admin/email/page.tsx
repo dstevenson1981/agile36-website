@@ -80,11 +80,14 @@ export default function EmailAdminPage() {
 
   const fetchAllTags = async () => {
     try {
+      console.log('Fetching all tags...');
       // Fetch all contacts (no filters) just to get all tags
       const response = await fetch('/api/email/contacts');
       const data = await response.json();
       
-      if (data.success && data.contacts) {
+      console.log('Tags API response:', data);
+      
+      if (data.success && data.contacts && Array.isArray(data.contacts)) {
         // Extract all unique tags from ALL contacts
         const tags = new Set<string>();
         data.contacts.forEach((contact: Contact) => {
@@ -98,9 +101,9 @@ export default function EmailAdminPage() {
         });
         const sortedTags = Array.from(tags).sort();
         console.log('All tags found:', sortedTags, 'from', data.contacts.length, 'contacts'); // Debug log
-        if (sortedTags.length > 0) {
-          setAllTags(sortedTags);
-        }
+        setAllTags(sortedTags);
+      } else {
+        console.warn('No contacts or invalid response:', data);
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
@@ -416,9 +419,19 @@ export default function EmailAdminPage() {
                 />
               </div>
               <div className="min-w-[150px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tags {allTags.length > 0 && `(${allTags.length})`}
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Tags {allTags.length > 0 && `(${allTags.length})`}
+                  </label>
+                  <button
+                    type="button"
+                    onClick={fetchAllTags}
+                    className="text-xs text-blue-600 hover:text-blue-800"
+                    title="Refresh tags"
+                  >
+                    🔄
+                  </button>
+                </div>
                 <select
                   multiple
                   value={selectedTags}
@@ -426,16 +439,16 @@ export default function EmailAdminPage() {
                     const newTags = Array.from(e.target.selectedOptions, option => option.value);
                     setSelectedTags(newTags);
                   }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md min-h-[100px]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
                   size={Math.min(Math.max(allTags.length, 3), 8)}
-                  style={{ minHeight: '100px' }}
+                  style={{ minHeight: '100px', maxHeight: '200px' }}
                 >
                   {allTags.length > 0 ? (
                     allTags.map(tag => (
                       <option key={tag} value={tag}>{tag}</option>
                     ))
                   ) : (
-                    <option disabled>Loading tags...</option>
+                    <option disabled>No tags found. Click refresh or add tags to contacts.</option>
                   )}
                 </select>
               </div>
