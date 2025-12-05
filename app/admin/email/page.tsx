@@ -194,6 +194,13 @@ export default function EmailAdminPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Validate file type
+    if (!file.name.endsWith('.csv')) {
+      alert('Please upload a CSV file');
+      e.target.value = '';
+      return;
+    }
+
     setLoading(true);
     const formData = new FormData();
     formData.append('file', file);
@@ -203,15 +210,27 @@ export default function EmailAdminPage() {
         method: 'POST',
         body: formData,
       });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      
       if (data.success) {
-        alert(`Successfully imported ${data.imported} contacts, updated ${data.updated}`);
+        const message = `Successfully imported ${data.imported} new contacts, updated ${data.updated} existing contacts.${data.errors > 0 ? ` ${data.errors} errors occurred.` : ''}`;
+        alert(message);
+        if (data.errorDetails && data.errorDetails.length > 0) {
+          console.error('Import errors:', data.errorDetails);
+        }
         fetchContacts();
       } else {
         alert(data.error || 'Failed to import contacts');
       }
-    } catch (error) {
-      alert('Error importing contacts');
+    } catch (error: any) {
+      console.error('Import error:', error);
+      alert(`Error importing contacts: ${error.message || 'Unknown error'}`);
     } finally {
       setLoading(false);
       e.target.value = '';

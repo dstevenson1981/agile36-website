@@ -18,15 +18,25 @@ export async function POST(request: NextRequest) {
     const fileContent = await file.text();
 
     // Parse CSV
-    const records = parse(fileContent, {
-      columns: true,
-      skip_empty_lines: true,
-      trim: true,
-    });
+    let records;
+    try {
+      records = parse(fileContent, {
+        columns: true,
+        skip_empty_lines: true,
+        trim: true,
+        relax_column_count: true,
+      });
+    } catch (parseError: any) {
+      console.error('CSV parse error:', parseError);
+      return NextResponse.json(
+        { error: `Failed to parse CSV file: ${parseError.message}` },
+        { status: 400 }
+      );
+    }
 
     if (!records || records.length === 0) {
       return NextResponse.json(
-        { error: 'CSV file is empty or invalid' },
+        { error: 'CSV file is empty or invalid. Please ensure it has a header row and at least one data row.' },
         { status: 400 }
       );
     }
@@ -60,11 +70,24 @@ export async function POST(request: NextRequest) {
         // Type assertion for CSV record
         const csvRecord = record as Record<string, string>;
         
-        // Validate required fields
-        if (!csvRecord.email || !csvRecord.email.includes('@')) {
-          errors.push(`Invalid email in row: ${JSON.stringify(csvRecord)}`);
+        // Validate required fields - check multiple possible column names
+        const email = csvRecord.email || csvRecord.Email || csvRecord.EMAIL || csvRecord['email'] || csvRecord['Email'];
+        
+        if (!email || typeof email !== 'string' || !email.includes('@')) {
+          errors.push(`Row ${contacts.length + errors.length + 1}: Missing or invalid email. Found: ${email || 'empty'}`);
           continue;
         }
+
+        const emailLower = email.toLowerCase().trim();
+
+        // Check if contact already exists
+        const { data: existingContact } = await supabase
+          .from('email_contacts')
+          .select('id')
+          .eq('email', emailLower)
+          .maybeSingle();
+
+        const isUpdate = !!existingContact;
 
         // Parse tags (can be comma-separated string or array)
         let tags: string[] = [];
@@ -76,15 +99,6 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Check if contact already exists
-        const { data: existingContact } = await supabase
-          .from('email_contacts')
-          .select('id')
-          .eq('email', csvRecord.email.toLowerCase().trim())
-          .maybeSingle();
-
-        const isUpdate = !!existingContact;
-
         // Determine subscription status - default to true unless explicitly false
         let subscribed = true;
         if (csvRecord.subscribed !== undefined && csvRecord.subscribed !== null) {
@@ -93,11 +107,11 @@ export async function POST(request: NextRequest) {
         }
 
         const contactData = {
-          email: csvRecord.email.toLowerCase().trim(),
-          first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || null,
-          last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || null,
-          role: csvRecord.role || csvRecord.Role || null,
-          company: csvRecord.company || csvRecord.Company || null,
+          email: emailLower,
+          first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || csvRecord['first_name'] || null,
+          last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || csvRecord['last_name'] || null,
+          role: csvRecord.role || csvRecord.Role || csvRecord['Role'] || null,
+          company: csvRecord.company || csvRecord.Company || csvRecord['Company'] || null,
           tags: tags.length > 0 ? tags : null,
           subscribed: subscribed, // Default to true unless explicitly set to false
         };
