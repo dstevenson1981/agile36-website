@@ -53,6 +53,37 @@ STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
 
 ---
 
+## 📧 SendGrid Email Configuration
+
+Get these from: [SendGrid API Keys](https://app.sendgrid.com/settings/api_keys)
+
+```
+SENDGRID_API_KEY=SG.your_sendgrid_api_key_here
+SENDGRID_FROM_EMAIL=m.ball@agile36.com
+NEXT_PUBLIC_SITE_URL=https://agile36.com
+```
+
+**Important Notes:**
+- ✅ Create an API key in SendGrid with "Mail Send" permissions
+- ✅ Verify your sender email domain in SendGrid
+- ✅ Set up webhook URL: `https://agile36.com/api/email/track` for event tracking
+- ✅ In SendGrid, go to Settings → Mail Settings → Event Webhook
+- ✅ Add webhook URL and enable: `open`, `click`, `bounce`, `unsubscribe` events
+
+### Setting up SendGrid Webhook:
+
+1. Go to: [SendGrid Event Webhook Settings](https://app.sendgrid.com/settings/mail_settings)
+2. Click **"Event Webhook"**
+3. Enter webhook URL: `https://agile36.com/api/email/track`
+4. Enable these events:
+   - `open` - Track email opens
+   - `click` - Track link clicks
+   - `bounce` - Track bounces
+   - `unsubscribe` - Track unsubscribes
+5. Click **"Save"**
+
+---
+
 ## 🌍 General Configuration
 
 ```
@@ -98,16 +129,19 @@ vercel env add STRIPE_WEBHOOK_SECRET
 
 After adding environment variables:
 
-- [ ] All 6 required variables are added in Vercel
+- [ ] All required variables are added in Vercel
 - [ ] Variables are saved for **Production** environment
 - [ ] Using **LIVE Stripe keys** (not test keys)
 - [ ] Supabase connection works (test by loading course schedules)
 - [ ] Stripe webhook is created at `https://www.agile36.com/api/webhooks`
 - [ ] Webhook secret is added to Vercel
+- [ ] SendGrid API key is added with Mail Send permissions
+- [ ] SendGrid webhook is configured at `https://agile36.com/api/email/track`
 - [ ] Site is redeployed after adding variables
 - [ ] Test checkout flow end-to-end
 - [ ] Test promo code validation (`150OFF`)
 - [ ] Test consultation form submissions
+- [ ] Test email marketing system (send test campaign)
 
 ---
 

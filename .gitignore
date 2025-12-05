@@ -48,3 +48,7 @@ next-env.d.ts
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Environment variables
+.env.local
+.env*.local

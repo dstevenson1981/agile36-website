@@ -9,10 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
     "@stripe/react-stripe-js": "^5.4.0",
     "@stripe/stripe-js": "^8.5.2",
     "@supabase/supabase-js": "^2.83.0",
+    "@tiptap/react": "^3.13.0",
+    "@tiptap/starter-kit": "^3.13.0",
     "@vercel/analytics": "^1.6.0",
+    "csv-parse": "^6.1.0",
     "next": "^16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
