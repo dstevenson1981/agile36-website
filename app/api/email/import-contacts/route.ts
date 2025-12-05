@@ -85,6 +85,13 @@ export async function POST(request: NextRequest) {
 
         const isUpdate = !!existingContact;
 
+        // Determine subscription status - default to true unless explicitly false
+        let subscribed = true;
+        if (csvRecord.subscribed !== undefined && csvRecord.subscribed !== null) {
+          const subValue = String(csvRecord.subscribed).toLowerCase().trim();
+          subscribed = subValue !== 'false' && subValue !== '0' && subValue !== 'no' && subValue !== 'n';
+        }
+
         const contactData = {
           email: csvRecord.email.toLowerCase().trim(),
           first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || null,
@@ -92,7 +99,7 @@ export async function POST(request: NextRequest) {
           role: csvRecord.role || csvRecord.Role || null,
           company: csvRecord.company || csvRecord.Company || null,
           tags: tags.length > 0 ? tags : null,
-          subscribed: csvRecord.subscribed !== 'false' && csvRecord.subscribed !== 'FALSE', // Default to true
+          subscribed: subscribed, // Default to true unless explicitly set to false
         };
 
         // Try to insert, update if exists
