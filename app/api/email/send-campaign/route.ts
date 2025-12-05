@@ -111,12 +111,43 @@ export async function POST(request: NextRequest) {
       .select('*')
       .eq('subscribed', true);
 
-    // Apply tag filters if provided
-    if (tagFilters && tagFilters.length > 0) {
-      contactsQuery = contactsQuery.contains('tags', tagFilters);
+    // Fetch all subscribed contacts first
+    const { data: allContacts, error: contactsError } = await contactsQuery;
+
+    if (contactsError) {
+      console.error('Error fetching contacts:', contactsError);
+      return NextResponse.json(
+        { error: 'Failed to fetch contacts' },
+        { status: 500 }
+      );
     }
 
-    const { data: contacts, error: contactsError } = await contactsQuery;
+    // Filter by tags in JavaScript if tag filters are provided
+    let contacts = allContacts || [];
+    if (tagFilters && tagFilters.length > 0) {
+      console.log('Filtering by tags:', tagFilters);
+      console.log(`Total subscribed contacts before filtering: ${contacts.length}`);
+      
+      contacts = contacts.filter((contact: any) => {
+        if (!contact.tags || !Array.isArray(contact.tags) || contact.tags.length === 0) {
+          return false; // No tags means doesn't match
+        }
+        // Check if contact has at least one of the selected tags
+        const hasMatchingTag = tagFilters.some((tag: string) => contact.tags.includes(tag));
+        return hasMatchingTag;
+      });
+      
+      console.log(`Filtered to ${contacts.length} contacts with tags: ${tagFilters.join(', ')}`);
+      
+      if (contacts.length === 0) {
+        return NextResponse.json(
+          { error: `No contacts found with tags: ${tagFilters.join(', ')}` },
+          { status: 400 }
+        );
+      }
+    } else {
+      console.log(`No tag filters - sending to all ${contacts.length} subscribed contacts`);
+    }
 
     if (contactsError) {
       console.error('Error fetching contacts:', contactsError);
@@ -128,7 +159,7 @@ export async function POST(request: NextRequest) {
 
     if (!contacts || contacts.length === 0) {
       return NextResponse.json(
-        { error: 'No contacts found matching criteria' },
+        { error: `No contacts found matching criteria${tagFilters && tagFilters.length > 0 ? ` with tags: ${tagFilters.join(', ')}` : ''}` },
         { status: 400 }
       );
     }
