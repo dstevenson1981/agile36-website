@@ -155,16 +155,8 @@ export async function POST(request: NextRequest) {
           // Generate unsubscribe token
           const token = generateUnsubscribeToken(contact.email, campaignId);
 
-          // Store token in unsubscribes table (for tracking)
-          await supabase
-            .from('email_unsubscribes')
-            .upsert({
-              email: contact.email,
-              token: token,
-              campaign_id: campaignId,
-            }, {
-              onConflict: 'token'
-            });
+          // Note: We don't store the token in unsubscribes table here
+          // It will only be added when someone actually unsubscribes
 
           // Add unsubscribe link to email
           const htmlWithUnsubscribe = addUnsubscribeLink(campaign.html_content, token);
@@ -241,20 +233,9 @@ export async function POST(request: NextRequest) {
       })
       .eq('id', campaignId);
 
-    // Also update contact subscription status if they unsubscribed
-    const unsubscribedEmails = await supabase
-      .from('email_unsubscribes')
-      .select('email')
-      .eq('campaign_id', campaignId);
-
-    if (unsubscribedEmails.data) {
-      for (const unsub of unsubscribedEmails.data) {
-        await supabase
-          .from('email_contacts')
-          .update({ subscribed: false })
-          .eq('email', unsub.email);
-      }
-    }
+    // Note: We don't update subscription status here
+    // Subscription status is only updated when someone actually clicks unsubscribe
+    // via the /api/email/unsubscribe endpoint or SendGrid webhook
 
     return NextResponse.json({
       success: true,
