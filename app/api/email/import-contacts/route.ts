@@ -57,28 +57,31 @@ export async function POST(request: NextRequest) {
 
     for (const record of records) {
       try {
+        // Type assertion for CSV record
+        const csvRecord = record as Record<string, string>;
+        
         // Validate required fields
-        if (!record.email || !record.email.includes('@')) {
-          errors.push(`Invalid email in row: ${JSON.stringify(record)}`);
+        if (!csvRecord.email || !csvRecord.email.includes('@')) {
+          errors.push(`Invalid email in row: ${JSON.stringify(csvRecord)}`);
           continue;
         }
 
         // Parse tags (can be comma-separated string or array)
         let tags: string[] = [];
-        if (record.tags) {
-          if (typeof record.tags === 'string') {
-            tags = record.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          } else if (Array.isArray(record.tags)) {
-            tags = record.tags;
+        if (csvRecord.tags) {
+          if (typeof csvRecord.tags === 'string') {
+            tags = csvRecord.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+          } else if (Array.isArray(csvRecord.tags)) {
+            tags = csvRecord.tags;
           }
         }
 
         const contactData = {
-          email: record.email.toLowerCase().trim(),
-          first_name: record.first_name || record.firstName || null,
-          last_name: record.last_name || record.lastName || null,
+          email: csvRecord.email.toLowerCase().trim(),
+          first_name: csvRecord.first_name || csvRecord.firstName || null,
+          last_name: csvRecord.last_name || csvRecord.lastName || null,
           tags: tags.length > 0 ? tags : null,
-          subscribed: record.subscribed !== 'false' && record.subscribed !== false, // Default to true
+          subscribed: csvRecord.subscribed !== 'false' && csvRecord.subscribed !== 'FALSE', // Default to true
         };
 
         // Try to insert, update if exists
@@ -91,7 +94,7 @@ export async function POST(request: NextRequest) {
           .select();
 
         if (error) {
-          errors.push(`Error processing ${record.email}: ${error.message}`);
+          errors.push(`Error processing ${csvRecord.email}: ${error.message}`);
         } else {
           if (data && data.length > 0) {
             // Check if it was an update or insert

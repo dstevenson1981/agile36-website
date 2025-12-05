@@ -40,9 +40,9 @@ export async function GET(request: NextRequest) {
     const totalClicked = sends?.filter(s => s.clicked_at).length || 0;
     const totalBounced = sends?.filter(s => s.bounced).length || 0;
 
-    const openRate = totalSent > 0 ? ((totalOpened / totalSent) * 100).toFixed(2) : 0;
-    const clickRate = totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(2) : 0;
-    const bounceRate = totalSent > 0 ? ((totalBounced / totalSent) * 100).toFixed(2) : 0;
+    const openRate = totalSent > 0 ? ((totalOpened / totalSent) * 100).toFixed(2) : '0';
+    const clickRate = totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(2) : '0';
+    const bounceRate = totalSent > 0 ? ((totalBounced / totalSent) * 100).toFixed(2) : '0';
 
     return NextResponse.json({
       success: true,
