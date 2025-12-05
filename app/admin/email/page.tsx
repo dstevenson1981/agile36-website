@@ -76,15 +76,21 @@ export default function EmailAdminPage() {
       const response = await fetch('/api/email/contacts');
       const data = await response.json();
       
-      if (data.success) {
+      if (data.success && data.contacts) {
         // Extract all unique tags from ALL contacts
         const tags = new Set<string>();
         data.contacts.forEach((contact: Contact) => {
-          if (contact.tags) {
-            contact.tags.forEach(tag => tags.add(tag));
+          if (contact.tags && Array.isArray(contact.tags)) {
+            contact.tags.forEach(tag => {
+              if (tag && typeof tag === 'string') {
+                tags.add(tag.trim());
+              }
+            });
           }
         });
-        setAllTags(Array.from(tags).sort());
+        const sortedTags = Array.from(tags).sort();
+        console.log('All tags found:', sortedTags); // Debug log
+        setAllTags(sortedTags);
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
@@ -406,11 +412,19 @@ export default function EmailAdminPage() {
                   value={selectedTags}
                   onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  size={Math.min(allTags.length + 1, 10)}
                 >
-                  {allTags.map(tag => (
-                    <option key={tag} value={tag}>{tag}</option>
-                  ))}
+                  {allTags.length > 0 ? (
+                    allTags.map(tag => (
+                      <option key={tag} value={tag}>{tag}</option>
+                    ))
+                  ) : (
+                    <option disabled>No tags available</option>
+                  )}
                 </select>
+                {allTags.length > 0 && (
+                  <p className="text-xs text-gray-500 mt-1">{allTags.length} tag(s) available</p>
+                )}
               </div>
               <div className="min-w-[150px]">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Subscription</label>
