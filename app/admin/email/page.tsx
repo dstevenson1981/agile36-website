@@ -561,7 +561,14 @@ export default function EmailAdminPage() {
         {/* Campaigns Tab */}
         {activeTab === 'campaigns' && (
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-bold mb-6">Campaigns</h2>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-bold">Campaigns</h2>
+              <div className="text-sm text-gray-600">
+                <p><strong>Draft:</strong> Saved but not ready to send</p>
+                <p><strong>Scheduled:</strong> Ready to send (click "Send Now" to send immediately)</p>
+                <p><strong>Sent:</strong> Already sent to recipients</p>
+              </div>
+            </div>
             {loading ? (
               <div className="text-center py-8">Loading...</div>
             ) : (
@@ -587,7 +594,7 @@ export default function EmailAdminPage() {
                       {campaign.sent_at && ` | Sent: ${new Date(campaign.sent_at).toLocaleDateString()}`}
                       {campaign.sent_count > 0 && ` | Sent to ${campaign.sent_count} contacts`}
                     </div>
-                    {campaign.status === 'draft' && (
+                    {(campaign.status === 'draft' || campaign.status === 'scheduled') && (
                       <button
                         onClick={() => handleSendCampaign(campaign.id)}
                         disabled={sending}
