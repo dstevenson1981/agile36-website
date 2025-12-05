@@ -55,6 +55,7 @@ export default function EmailAdminPage() {
 
   useEffect(() => {
     if (activeTab === 'contacts') {
+      fetchAllTags(); // Fetch all tags first
       fetchContacts();
     } else if (activeTab === 'campaigns') {
       fetchCampaigns();
@@ -64,8 +65,31 @@ export default function EmailAdminPage() {
   }, [activeTab]);
 
   useEffect(() => {
-    fetchContacts();
+    if (activeTab === 'contacts') {
+      fetchContacts();
+    }
   }, [selectedTags, filterSubscribed, searchTerm]);
+
+  const fetchAllTags = async () => {
+    try {
+      // Fetch all contacts (no filters) just to get all tags
+      const response = await fetch('/api/email/contacts');
+      const data = await response.json();
+      
+      if (data.success) {
+        // Extract all unique tags from ALL contacts
+        const tags = new Set<string>();
+        data.contacts.forEach((contact: Contact) => {
+          if (contact.tags) {
+            contact.tags.forEach(tag => tags.add(tag));
+          }
+        });
+        setAllTags(Array.from(tags).sort());
+      }
+    } catch (error) {
+      console.error('Error fetching tags:', error);
+    }
+  };
 
   const fetchContacts = async () => {
     setLoading(true);
@@ -86,14 +110,6 @@ export default function EmailAdminPage() {
       
       if (data.success) {
         setContacts(data.contacts);
-        // Extract all unique tags
-        const tags = new Set<string>();
-        data.contacts.forEach((contact: Contact) => {
-          if (contact.tags) {
-            contact.tags.forEach(tag => tags.add(tag));
-          }
-        });
-        setAllTags(Array.from(tags).sort());
       }
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -159,6 +175,7 @@ export default function EmailAdminPage() {
       });
       const data = await response.json();
       if (data.success) {
+        fetchAllTags(); // Refresh tags list
         fetchContacts();
         (e.target as HTMLFormElement).reset();
       } else {
@@ -215,6 +232,7 @@ export default function EmailAdminPage() {
       if (data.success) {
         setEditingContact(null);
         setEditTags('');
+        fetchAllTags(); // Refresh tags list
         fetchContacts();
       } else {
         alert(data.error || 'Failed to update contact');
@@ -260,6 +278,7 @@ export default function EmailAdminPage() {
         if (data.errorDetails && data.errorDetails.length > 0) {
           console.error('Import errors:', data.errorDetails);
         }
+        fetchAllTags(); // Refresh tags list
         fetchContacts();
       } else {
         alert(data.error || 'Failed to import contacts');
