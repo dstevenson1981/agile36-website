@@ -129,8 +129,13 @@ const generateTestimonials = (): Testimonial[] => {
       `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex SAFe topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
     ];
 
-    // Use a different avatar for C. Smith to avoid chatbot face
-    const avatarIndex = (firstName === "C" && lastName === "Smith") ? (i + 1) % avatarImages.length : i;
+    // Use a different avatar for C. Smith and F. Miller to avoid chatbot face
+    let avatarIndex = i;
+    if (firstName === "C" && lastName === "Smith") {
+      avatarIndex = (i + 1) % avatarImages.length;
+    } else if (firstName === "F" && lastName === "Miller") {
+      avatarIndex = (i + 2) % avatarImages.length;
+    }
     
     testimonials.push({
       id: i + 1,
