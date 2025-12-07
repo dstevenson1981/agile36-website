@@ -1,0 +1,51 @@
+-- Add Responsible AI class for December 12, 2025
+-- This is a 4-hour morning session (8 AM - 12 PM EST)
+
+INSERT INTO course_schedules (
+  course_name,
+  course_slug,
+  course_type,
+  start_date,
+  end_date,
+  start_time,
+  end_time,
+  timezone,
+  time_slot,
+  format,
+  duration,
+  instructor_name,
+  instructor_image,
+  price,
+  original_price,
+  currency,
+  seats_available,
+  total_seats,
+  language,
+  exam_included,
+  status,
+  is_weekend
+) VALUES (
+  'Achieving Responsible AI with SAFe Micro-credential Course',
+  'responsible-ai',
+  'Responsible AI',
+  '2025-12-12 08:00:00-05:00',
+  '2025-12-12 12:00:00-05:00',
+  '08:00:00',
+  '12:00:00',
+  'America/New_York',
+  'morning',
+  'live-virtual',
+  '4 Hours',
+  'Marcus Ball',
+  '/marcus.jpeg',
+  350.00,
+  700.00,
+  'USD',
+  15,
+  20,
+  'English',
+  false,
+  'active',
+  false
+);
+

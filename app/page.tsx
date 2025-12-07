@@ -238,7 +238,7 @@ export default function Home() {
       id: "17",
       title: "SAFe Release Train Engineer",
       category: "SAFe",
-      image: "/RTE.png",
+      image: "/headway-5QgIuuBxKwM-unsplash.jpg",
       price: 1299,
       originalPrice: 2598,
       hours: "16 Hrs",

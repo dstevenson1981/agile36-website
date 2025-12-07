@@ -149,6 +149,38 @@ function CheckoutContent() {
         alert('Please fill in all required fields');
         return;
       }
+      
+      // Save enrollment lead to database
+      try {
+        const response = await fetch('/api/save-enrollment-lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            scheduleId: selectedSchedule.id,
+            courseSlug,
+            courseName,
+            enrollingFor: enrollmentFormData.enrollingFor,
+            firstName: enrollmentFormData.firstName,
+            lastName: enrollmentFormData.lastName,
+            email: enrollmentFormData.email,
+            phone: enrollmentFormData.phone,
+            alternativeContact: enrollmentFormData.alternativeContact,
+            referralCode: enrollmentFormData.referralCode,
+          }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          console.error('Error saving enrollment lead:', data.error);
+          // Don't block the user from continuing, but log the error
+        }
+      } catch (error) {
+        console.error('Error saving enrollment lead:', error);
+        // Don't block the user from continuing
+      }
+      
       setCurrentStep(2);
     } else if (currentStep === 2) {
       // Create payment intent and move to payment step
