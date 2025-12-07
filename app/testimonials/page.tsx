@@ -129,10 +129,13 @@ const generateTestimonials = (): Testimonial[] => {
       `The ${course} program with ${trainer} was exceptional. ${trainer} has a unique ability to make complex SAFe topics accessible. The interactive format and ${trainer}'s engaging style kept me motivated throughout. This is training at its finest.`
     ];
 
+    // Use a different avatar for C. Smith to avoid chatbot face
+    const avatarIndex = (firstName === "C" && lastName === "Smith") ? (i + 1) % avatarImages.length : i;
+    
     testimonials.push({
       id: i + 1,
       name: `${firstName}. ${lastName}`,
-      avatar: avatarImages[i],
+      avatar: avatarImages[avatarIndex],
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
       category: "SAFe",
