@@ -511,7 +511,7 @@ function CourseScheduleContent() {
                             {/* Curriculum and Quantity */}
                             <div className="flex items-center gap-6">
                               <a 
-                                href="/APM_Brochure_Agile36.pdf" 
+                                href="/SSM_Agile36_Brochure.pdf" 
                                 download
                                 target="_blank"
                                 className="flex items-center gap-2 text-sm text-[#fa4a23] hover:underline"
