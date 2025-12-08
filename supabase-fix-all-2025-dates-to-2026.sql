@@ -44,3 +44,6 @@ WHERE start_date >= '2025-01-01'
 GROUP BY EXTRACT(YEAR FROM start_date)
 ORDER BY year;
 
+
+
+

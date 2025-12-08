@@ -63,3 +63,6 @@ FROM course_schedules
 WHERE course_slug = 'safe-for-teams'
   AND start_date = '2026-01-19 09:00:00-05:00';
 
+
+
+

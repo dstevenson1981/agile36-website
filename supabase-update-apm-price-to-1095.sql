@@ -20,3 +20,6 @@ FROM course_schedules
 WHERE course_slug = 'agile-product-management'
 ORDER BY start_date;
 
+
+
+

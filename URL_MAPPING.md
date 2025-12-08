@@ -104,3 +104,6 @@ Or simply visit old URLs in your browser - they should automatically redirect to
 - Works for all pages, schedule pages, and checkout flows
 - Old URLs in emails, bookmarks, and external links will continue to work
 
+
+
+

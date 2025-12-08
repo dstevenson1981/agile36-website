@@ -13,3 +13,6 @@ WHERE email ILIKE '%lenovo%';
 -- Verify it worked
 SELECT email, tags FROM email_contacts WHERE email ILIKE '%lenovo%' LIMIT 10;
 
+
+
+

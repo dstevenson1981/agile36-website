@@ -34,3 +34,6 @@ CREATE POLICY "Allow public inserts" ON coupon_leads
 --   TO authenticated
 --   USING (true);
 
+
+
+

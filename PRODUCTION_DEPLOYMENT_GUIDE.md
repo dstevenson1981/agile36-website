@@ -271,3 +271,6 @@ All your old URLs will automatically redirect to the new structure thanks to the
 3. Regularly check Stripe dashboard for enrollments
 4. Back up Supabase database regularly
 
+
+
+

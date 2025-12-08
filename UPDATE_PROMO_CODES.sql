@@ -12,3 +12,6 @@ SELECT code, discount_type, discount_value, description, expires_at, active, usa
 FROM promo_codes
 WHERE code IN ('150OFF', 'SAVE25');
 
+
+
+

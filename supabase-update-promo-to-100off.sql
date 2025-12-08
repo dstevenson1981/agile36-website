@@ -18,3 +18,6 @@ WHERE code = '100OFF';
 -- Note: You can change this back to 150OFF on Black Friday by running:
 -- UPDATE promo_codes SET code = '150OFF', discount_value = 150, description = 'Black Friday Sale - $150 Off' WHERE code = '100OFF';
 
+
+
+

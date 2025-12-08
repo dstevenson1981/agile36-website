@@ -1,11 +1,4 @@
--- Disable 50OFF and ensure BF200 is active
--- Run this in Supabase SQL Editor
-
--- Step 1: Disable 50OFF (set to inactive and expire it)
-UPDATE promo_codes 
-SET 
-  active = FALSE,
-  expires_at = NOW() - INTERVAL '1 day',
+OW() - INTERVAL '1 day',
   updated_at = NOW()
 WHERE UPPER(TRIM(code)) = '50OFF';
 
@@ -74,5 +67,12 @@ SELECT
 FROM promo_codes 
 WHERE active = TRUE 
   AND (expires_at IS NULL OR expires_at > NOW())
-ORDER BY code;
+ORDER BY code;-- Disable 50OFF and ensure BF200 is active
+-- Run this in Supabase SQL Editor
+
+-- Step 1: Disable 50OFF (set to inactive and expire it)
+UPDATE promo_codes 
+SET 
+  active = FALSE,
+  expires_at = N
 

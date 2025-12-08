@@ -13,3 +13,6 @@ CREATE INDEX IF NOT EXISTS idx_email_contacts_company ON email_contacts(company)
 COMMENT ON COLUMN email_contacts.role IS 'Professional role or job title';
 COMMENT ON COLUMN email_contacts.company IS 'Company or organization name';
 
+
+
+

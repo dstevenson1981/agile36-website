@@ -63,3 +63,6 @@ FROM course_schedules
 WHERE course_slug = 'leading-safe'
   AND start_date = '2026-01-14 09:00:00-05:00';
 
+
+
+

@@ -52,3 +52,6 @@ STRIPE_SECRET_KEY=sk_test_your_secret_key_here
 # - All NEXT_PUBLIC_ variables are safe to expose in browser
 # - Keep service_role and secret keys private (Vercel encrypts them)
 
+
+
+

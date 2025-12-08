@@ -30,3 +30,6 @@ DELETE FROM email_contacts WHERE email = 'test@example.com';
 
 SELECT '✅ All tables created successfully!' as status;
 
+
+
+

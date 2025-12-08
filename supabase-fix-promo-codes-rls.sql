@@ -38,3 +38,6 @@ AND tablename = 'promo_codes';
 -- Note: This will only work if you're running as service_role
 -- The API uses service_role key, so it should work there
 
+
+
+

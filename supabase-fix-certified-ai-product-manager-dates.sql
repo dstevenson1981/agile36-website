@@ -32,3 +32,6 @@ WHERE course_slug = 'certified-ai-product-manager'
   AND (DATE(start_date) IN ('2025-12-20', '2025-12-29'))
 ORDER BY start_date;
 
+
+
+

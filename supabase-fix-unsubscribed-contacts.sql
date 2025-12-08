@@ -18,3 +18,6 @@ SELECT
   SUM(CASE WHEN subscribed = false THEN 1 ELSE 0 END) as unsubscribed_count
 FROM email_contacts;
 
+
+
+

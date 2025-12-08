@@ -75,3 +75,6 @@ WHERE course_slug = 'safe-for-teams'
   AND start_date < '2026-01-15'::date
 ORDER BY start_date;
 
+
+
+

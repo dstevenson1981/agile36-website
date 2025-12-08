@@ -20,3 +20,6 @@ FROM course_schedules
 WHERE course_slug = 'lean-portfolio-management'
 ORDER BY start_date;
 
+
+
+
