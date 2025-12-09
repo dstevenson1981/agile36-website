@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
       // Use Supabase's contains filter - check if tags array contains any of the requested tags
       // Note: contains checks if the array contains ALL elements, so we need to check each tag separately
       // We'll use OR logic by checking each tag and combining results
-      const tagQueries = tagFilters.map(tag => 
+      const tagQueries = tagFilters.map((tag: string) => 
         supabase
           .from('email_contacts')
           .select('*')
