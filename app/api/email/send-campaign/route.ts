@@ -130,18 +130,45 @@ export async function POST(request: NextRequest) {
       
       // Debug: Show sample of contact tags
       const sampleContacts = allContacts?.slice(0, 5) || [];
-      console.log('Sample contact tags:', sampleContacts.map((c: any) => ({ email: c.email, tags: c.tags })));
+      console.log('Sample contact tags:', sampleContacts.map((c: any) => ({ email: c.email, tags: c.tags, tagsType: typeof c.tags, isArray: Array.isArray(c.tags) })));
+      console.log('Requested tag filters:', tagFilters);
+      console.log('Tag filters type:', tagFilters.map((t: string) => ({ tag: t, type: typeof t, length: t.length, charCodes: t.split('').map((c: string) => c.charCodeAt(0)) })));
       
       contacts = contacts.filter((contact: any) => {
-        if (!contact.tags || !Array.isArray(contact.tags) || contact.tags.length === 0) {
+        if (!contact.tags) {
           return false; // No tags means doesn't match
         }
+        
+        // Handle both array and non-array tags
+        let contactTags: string[] = [];
+        if (Array.isArray(contact.tags)) {
+          contactTags = contact.tags;
+        } else if (typeof contact.tags === 'string') {
+          // If tags is a string, try to parse it as JSON array
+          try {
+            contactTags = JSON.parse(contact.tags);
+          } catch {
+            contactTags = [contact.tags];
+          }
+        }
+        
+        if (contactTags.length === 0) {
+          return false;
+        }
+        
         // Check if contact has at least one of the selected tags (case-insensitive)
-        const hasMatchingTag = tagFilters.some((tag: string) => 
-          contact.tags.some((contactTag: string) => 
-            contactTag?.toString().trim().toLowerCase() === tag?.toString().trim().toLowerCase()
-          )
-        );
+        const hasMatchingTag = tagFilters.some((tag: string) => {
+          const normalizedTag = tag?.toString().trim().toLowerCase();
+          return contactTags.some((contactTag: string) => {
+            const normalizedContactTag = contactTag?.toString().trim().toLowerCase();
+            const matches = normalizedContactTag === normalizedTag;
+            if (matches) {
+              console.log(`Match found: "${contactTag}" matches "${tag}" for contact ${contact.email}`);
+            }
+            return matches;
+          });
+        });
+        
         return hasMatchingTag;
       });
       
