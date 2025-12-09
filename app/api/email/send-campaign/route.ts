@@ -180,11 +180,35 @@ export async function POST(request: NextRequest) {
           .from('email_contacts')
           .select('*');
         
-        const contactsWithTags = allContacts?.filter((c: any) => c.tags && Array.isArray(c.tags) && c.tags.length > 0) || [];
+        // Also try a direct database query using PostgreSQL array operators
+        const { data: directQueryResults } = await supabase
+          .from('email_contacts')
+          .select('*')
+          .eq('subscribed', true)
+          .contains('tags', tagFilters);
+        
+        console.log('Direct PostgreSQL query results:', directQueryResults?.length || 0);
+        
+        const contactsWithTags = allContacts?.filter((c: any) => {
+          if (!c.tags) return false;
+          const tags = Array.isArray(c.tags) ? c.tags : (typeof c.tags === 'string' ? JSON.parse(c.tags) : []);
+          return tags.length > 0;
+        }) || [];
+        
         const allContactsWithRequestedTags = allContactsIncludingUnsubscribed?.filter((c: any) => {
-          if (!c.tags || !Array.isArray(c.tags)) return false;
+          if (!c.tags) return false;
+          let contactTags: string[] = [];
+          if (Array.isArray(c.tags)) {
+            contactTags = c.tags;
+          } else if (typeof c.tags === 'string') {
+            try {
+              contactTags = JSON.parse(c.tags);
+            } catch {
+              contactTags = [c.tags];
+            }
+          }
           return tagFilters.some((tag: string) => 
-            c.tags.some((contactTag: string) => 
+            contactTags.some((contactTag: string) => 
               contactTag?.toString().trim().toLowerCase() === tag?.toString().trim().toLowerCase()
             )
           );
@@ -197,10 +221,22 @@ export async function POST(request: NextRequest) {
         console.log(`Total contacts (including unsubscribed) with requested tags: ${allContactsWithRequestedTags.length}`);
         console.log(`Subscribed contacts with requested tags: ${subscribedContactsWithTags.length}`);
         console.log(`Unsubscribed contacts with requested tags: ${unsubscribedContactsWithTags.length}`);
+        console.log(`Direct PostgreSQL query found: ${directQueryResults?.length || 0} contacts`);
+        
+        // Show sample of what tags actually look like
+        const sampleTagData = allContacts?.slice(0, 3).map((c: any) => ({
+          email: c.email,
+          tags: c.tags,
+          tagsType: typeof c.tags,
+          isArray: Array.isArray(c.tags),
+          tagsStringified: JSON.stringify(c.tags)
+        })) || [];
+        console.log('Sample tag data from database:', sampleTagData);
         
         const allUniqueTags = new Set<string>();
         contactsWithTags.forEach((c: any) => {
-          c.tags.forEach((tag: string) => allUniqueTags.add(tag));
+          const tags = Array.isArray(c.tags) ? c.tags : (typeof c.tags === 'string' ? JSON.parse(c.tags) : []);
+          tags.forEach((tag: string) => allUniqueTags.add(tag));
         });
         console.log(`All unique tags in subscribed contacts:`, Array.from(allUniqueTags));
         
@@ -220,8 +256,10 @@ export async function POST(request: NextRequest) {
               totalContactsWithRequestedTags: allContactsWithRequestedTags.length,
               subscribedContactsWithRequestedTags: subscribedContactsWithTags.length,
               unsubscribedContactsWithRequestedTags: unsubscribedContactsWithTags.length,
+              directPostgreSQLQueryResults: directQueryResults?.length || 0,
               allUniqueTags: Array.from(allUniqueTags),
-              requestedTags: tagFilters
+              requestedTags: tagFilters,
+              sampleTagData: sampleTagData
             }
           },
           { status: 400 }
