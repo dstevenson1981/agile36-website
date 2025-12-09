@@ -128,6 +128,10 @@ export async function POST(request: NextRequest) {
       console.log('Filtering by tags:', tagFilters);
       console.log(`Total subscribed contacts before filtering: ${contacts.length}`);
       
+      // Debug: Show sample of contact tags
+      const sampleContacts = allContacts?.slice(0, 5) || [];
+      console.log('Sample contact tags:', sampleContacts.map((c: any) => ({ email: c.email, tags: c.tags })));
+      
       contacts = contacts.filter((contact: any) => {
         if (!contact.tags || !Array.isArray(contact.tags) || contact.tags.length === 0) {
           return false; // No tags means doesn't match
@@ -144,8 +148,25 @@ export async function POST(request: NextRequest) {
       console.log(`Filtered to ${contacts.length} contacts with tags: ${tagFilters.join(', ')}`);
       
       if (contacts.length === 0) {
+        // Additional debug info
+        const contactsWithTags = allContacts?.filter((c: any) => c.tags && Array.isArray(c.tags) && c.tags.length > 0) || [];
+        console.log(`Total contacts with any tags: ${contactsWithTags.length}`);
+        const allUniqueTags = new Set<string>();
+        contactsWithTags.forEach((c: any) => {
+          c.tags.forEach((tag: string) => allUniqueTags.add(tag));
+        });
+        console.log(`All unique tags in database:`, Array.from(allUniqueTags));
+        
         return NextResponse.json(
-          { error: `No contacts found with tags: ${tagFilters.join(', ')}` },
+          { 
+            error: `No contacts found with tags: ${tagFilters.join(', ')}`,
+            debug: {
+              totalContacts: allContacts?.length || 0,
+              contactsWithTags: contactsWithTags.length,
+              allUniqueTags: Array.from(allUniqueTags),
+              requestedTags: tagFilters
+            }
+          },
           { status: 400 }
         );
       }
