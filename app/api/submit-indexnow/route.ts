@@ -7,9 +7,11 @@ const HOST = 'www.agile36.com';
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY_FILE}`;
 
 // Sitemap URLs to fetch
+// Note: For now, only submitting www.agile36.com URLs
+// learn.agile36.com will be handled separately
 const SITEMAP_URLS = [
   'https://www.agile36.com/sitemap.xml',
-  'https://learn.agile36.com/sitemap.xml',
+  // 'https://learn.agile36.com/sitemap.xml', // Will be added later
 ];
 
 /**
@@ -60,7 +62,7 @@ async function fetchSitemapUrls(sitemapUrl: string): Promise<string[]> {
 /**
  * Submit URLs to IndexNow API
  */
-async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; message: string }> {
+async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; message: string; batchResults?: any[] }> {
   // IndexNow supports up to 10,000 URLs per request
   const BATCH_SIZE = 10000;
   const batches: string[][] = [];
@@ -83,6 +85,7 @@ async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; mes
 
     try {
       console.log(`Submitting batch ${i + 1}/${batches.length} with ${batch.length} URLs to IndexNow...`);
+      console.log(`Payload:`, JSON.stringify(payload, null, 2));
       
       const response = await fetch(INDEXNOW_API_URL, {
         method: 'POST',
@@ -92,6 +95,10 @@ async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; mes
         body: JSON.stringify(payload),
       });
 
+      const responseText = await response.text().catch(() => '');
+      console.log(`IndexNow response status: ${response.status}`);
+      console.log(`IndexNow response body: ${responseText}`);
+
       if (response.ok || response.status === 202) {
         // 200 OK or 202 Accepted are both success
         results.push({
@@ -99,18 +106,18 @@ async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; mes
           success: true,
           status: response.status,
           urlCount: batch.length,
+          response: responseText || 'Success',
         });
         console.log(`Batch ${i + 1} submitted successfully (${response.status})`);
       } else {
-        const errorText = await response.text().catch(() => 'Unknown error');
         results.push({
           batch: i + 1,
           success: false,
           status: response.status,
-          error: errorText,
+          error: responseText || 'Unknown error',
           urlCount: batch.length,
         });
-        console.error(`Batch ${i + 1} failed: ${response.status} - ${errorText}`);
+        console.error(`Batch ${i + 1} failed: ${response.status} - ${responseText}`);
       }
     } catch (error: any) {
       results.push({
@@ -130,11 +137,13 @@ async function submitToIndexNow(urls: string[]): Promise<{ success: boolean; mes
     return {
       success: true,
       message: `Successfully submitted ${urls.length} URLs in ${totalBatches} batch(es)`,
+      batchResults: results,
     };
   } else {
     return {
       success: false,
       message: `Partially successful: ${successCount}/${totalBatches} batches succeeded`,
+      batchResults: results,
     };
   }
 }
@@ -168,30 +177,51 @@ export async function GET(request: NextRequest) {
 
     // Remove duplicates
     const uniqueUrls = Array.from(new Set(allUrls));
-    console.log(`Total unique URLs to submit: ${uniqueUrls.length}`);
+    console.log(`Total unique URLs found: ${uniqueUrls.length}`);
 
-    if (uniqueUrls.length === 0) {
+    // Filter URLs to only include those from the specified host (www.agile36.com)
+    // IndexNow requires all URLs to belong to the host specified in the request
+    const filteredUrls = uniqueUrls.filter(url => {
+      try {
+        const urlObj = new URL(url);
+        return urlObj.hostname === HOST || urlObj.hostname === 'agile36.com';
+      } catch {
+        return false;
+      }
+    });
+
+    console.log(`Filtered URLs for ${HOST}: ${filteredUrls.length} (removed ${uniqueUrls.length - filteredUrls.length} from other domains)`);
+
+    if (filteredUrls.length === 0) {
       return NextResponse.json(
         {
           success: false,
-          message: 'No URLs found in sitemaps',
-          sitemapResults,
+          message: 'No URLs found for the specified host',
+          stats: {
+            totalUrlsFound: uniqueUrls.length,
+            filteredUrls: filteredUrls.length,
+            sitemapsProcessed: sitemapResults.length,
+            sitemapResults,
+          },
         },
         { status: 400 }
       );
     }
 
     // Submit to IndexNow
-    const submissionResult = await submitToIndexNow(uniqueUrls);
+    const submissionResult = await submitToIndexNow(filteredUrls);
 
     return NextResponse.json({
       success: submissionResult.success,
       message: submissionResult.message,
       stats: {
-        totalUrls: uniqueUrls.length,
+        totalUrlsFound: uniqueUrls.length,
+        filteredUrls: filteredUrls.length,
+        submittedUrls: filteredUrls.length,
         sitemapsProcessed: sitemapResults.length,
         sitemapResults,
       },
+      batchResults: submissionResult.batchResults,
       timestamp: new Date().toISOString(),
     });
   } catch (error: any) {
