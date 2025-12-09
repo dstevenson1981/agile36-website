@@ -111,20 +111,64 @@ export async function POST(request: NextRequest) {
       .select('*')
       .eq('subscribed', true);
 
-    // Fetch all subscribed contacts first
-    const { data: allContacts, error: contactsError } = await contactsQuery;
-
-    if (contactsError) {
-      console.error('Error fetching contacts:', contactsError);
-      return NextResponse.json(
-        { error: 'Failed to fetch contacts' },
-        { status: 500 }
-      );
-    }
-
-    // Filter by tags in JavaScript if tag filters are provided
-    let contacts = allContacts || [];
+    // If tag filters are provided, use database-level filtering for better performance
     if (tagFilters && tagFilters.length > 0) {
+      // Use Supabase's contains filter - check if tags array contains any of the requested tags
+      // Note: contains checks if the array contains ALL elements, so we need to check each tag separately
+      // We'll use OR logic by checking each tag and combining results
+      const tagQueries = tagFilters.map(tag => 
+        supabase
+          .from('email_contacts')
+          .select('*')
+          .eq('subscribed', true)
+          .contains('tags', [tag])
+      );
+      
+      // Execute all tag queries
+      const tagQueryResults = await Promise.all(tagQueries);
+      const allTagContacts = new Map();
+      
+      // Combine results, removing duplicates
+      tagQueryResults.forEach(({ data, error }) => {
+        if (!error && data) {
+          data.forEach((contact: any) => {
+            allTagContacts.set(contact.id, contact);
+          });
+        }
+      });
+      
+      const { data: allContacts, error: contactsError } = { 
+        data: Array.from(allTagContacts.values()), 
+        error: null 
+      };
+      
+      if (contactsError) {
+        console.error('Error fetching contacts:', contactsError);
+        return NextResponse.json(
+          { error: 'Failed to fetch contacts' },
+          { status: 500 }
+        );
+      }
+      
+      contacts = allContacts || [];
+      console.log(`Database query found ${contacts.length} subscribed contacts with tags: ${tagFilters.join(', ')}`);
+    } else {
+      // Fetch all subscribed contacts if no tag filters
+      const { data: allContacts, error: contactsError } = await contactsQuery;
+
+      if (contactsError) {
+        console.error('Error fetching contacts:', contactsError);
+        return NextResponse.json(
+          { error: 'Failed to fetch contacts' },
+          { status: 500 }
+        );
+      }
+      
+      contacts = allContacts || [];
+    }
+    
+    // Additional JavaScript filtering for edge cases (if needed)
+    if (tagFilters && tagFilters.length > 0 && contacts.length === 0) {
       console.log('Filtering by tags:', tagFilters);
       console.log(`Total subscribed contacts before filtering: ${contacts.length}`);
       
