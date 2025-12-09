@@ -111,6 +111,9 @@ export async function POST(request: NextRequest) {
       .select('*')
       .eq('subscribed', true);
 
+    // Declare contacts variable
+    let contacts: any[] = [];
+
     // If tag filters are provided, use database-level filtering for better performance
     if (tagFilters && tagFilters.length > 0) {
       // Use Supabase's contains filter - check if tags array contains any of the requested tags
@@ -172,8 +175,14 @@ export async function POST(request: NextRequest) {
       console.log('Filtering by tags:', tagFilters);
       console.log(`Total subscribed contacts before filtering: ${contacts.length}`);
       
+      // Fetch all subscribed contacts for debugging
+      const { data: allContactsForDebug } = await supabase
+        .from('email_contacts')
+        .select('*')
+        .eq('subscribed', true);
+      
       // Debug: Show sample of contact tags
-      const sampleContacts = allContacts?.slice(0, 5) || [];
+      const sampleContacts = allContactsForDebug?.slice(0, 5) || [];
       console.log('Sample contact tags:', sampleContacts.map((c: any) => ({ email: c.email, tags: c.tags, tagsType: typeof c.tags, isArray: Array.isArray(c.tags) })));
       console.log('Requested tag filters:', tagFilters);
       console.log('Tag filters type:', tagFilters.map((t: string) => ({ tag: t, type: typeof t, length: t.length, charCodes: t.split('').map((c: string) => c.charCodeAt(0)) })));
@@ -242,7 +251,7 @@ export async function POST(request: NextRequest) {
         
         console.log('Direct PostgreSQL query results:', uniqueDirectResults.length);
         
-        const contactsWithTags = allContacts?.filter((c: any) => {
+        const contactsWithTags = allContactsForDebug?.filter((c: any) => {
           if (!c.tags) return false;
           const tags = Array.isArray(c.tags) ? c.tags : (typeof c.tags === 'string' ? JSON.parse(c.tags) : []);
           return tags.length > 0;
@@ -277,7 +286,7 @@ export async function POST(request: NextRequest) {
         console.log(`Direct PostgreSQL query found: ${directQueryResults?.length || 0} contacts`);
         
         // Show sample of what tags actually look like
-        const sampleTagData = allContacts?.slice(0, 3).map((c: any) => ({
+        const sampleTagData = allContactsForDebug?.slice(0, 3).map((c: any) => ({
           email: c.email,
           tags: c.tags,
           tagsType: typeof c.tags,
@@ -304,7 +313,7 @@ export async function POST(request: NextRequest) {
           { 
             error: errorMessage,
             debug: {
-              totalSubscribedContacts: allContacts?.length || 0,
+              totalSubscribedContacts: allContactsForDebug?.length || 0,
               subscribedContactsWithTags: contactsWithTags.length,
               totalContactsWithRequestedTags: allContactsWithRequestedTags.length,
               subscribedContactsWithRequestedTags: subscribedContactsWithTags.length,
@@ -320,14 +329,6 @@ export async function POST(request: NextRequest) {
       }
     } else {
       console.log(`No tag filters - sending to all ${contacts.length} subscribed contacts`);
-    }
-
-    if (contactsError) {
-      console.error('Error fetching contacts:', contactsError);
-      return NextResponse.json(
-        { error: 'Failed to fetch contacts' },
-        { status: 500 }
-      );
     }
 
     if (!contacts || contacts.length === 0) {
