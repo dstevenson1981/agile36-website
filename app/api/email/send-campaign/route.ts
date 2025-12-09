@@ -132,8 +132,12 @@ export async function POST(request: NextRequest) {
         if (!contact.tags || !Array.isArray(contact.tags) || contact.tags.length === 0) {
           return false; // No tags means doesn't match
         }
-        // Check if contact has at least one of the selected tags
-        const hasMatchingTag = tagFilters.some((tag: string) => contact.tags.includes(tag));
+        // Check if contact has at least one of the selected tags (case-insensitive)
+        const hasMatchingTag = tagFilters.some((tag: string) => 
+          contact.tags.some((contactTag: string) => 
+            contactTag?.toString().trim().toLowerCase() === tag?.toString().trim().toLowerCase()
+          )
+        );
         return hasMatchingTag;
       });
       
