@@ -22,7 +22,6 @@ function CourseScheduleContent() {
     name: "",
     email: "",
     message: "",
-    message: "",
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);

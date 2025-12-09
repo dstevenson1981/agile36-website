@@ -21,6 +21,7 @@ function CourseScheduleContent() {
   const [groupInquiryFormData, setGroupInquiryFormData] = useState({
     name: "",
     email: "",
+    message: "",
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
@@ -30,8 +31,8 @@ function CourseScheduleContent() {
   const [consultationFormData, setConsultationFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    message: ""
+    message: "",
+    phone: ""
   });
   
   
@@ -274,7 +275,7 @@ function CourseScheduleContent() {
       if (response.ok) {
         alert('Thank you for your inquiry! We will contact you shortly about group pricing.');
         setShowGroupInquiryModal(false);
-        setGroupInquiryFormData({ name: "", email: "" });
+        setGroupInquiryFormData({ name: "", email: "", message: "" });
         setSelectedScheduleForInquiry(null);
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -633,7 +634,7 @@ function CourseScheduleContent() {
             <button
               onClick={() => {
                 setShowGroupInquiryModal(false);
-                setGroupInquiryFormData({ name: "", email: "" });
+                setGroupInquiryFormData({ name: "", email: "", message: "" });
                 setSelectedScheduleForInquiry(null);
               }}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
