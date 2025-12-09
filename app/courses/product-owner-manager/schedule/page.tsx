@@ -21,6 +21,8 @@ function CourseScheduleContent() {
   const [groupInquiryFormData, setGroupInquiryFormData] = useState({
     name: "",
     email: "",
+    message: "",
+    message: "",
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
@@ -247,14 +249,15 @@ function CourseScheduleContent() {
           name: groupInquiryFormData.name,
           email: groupInquiryFormData.email,
           source: 'Group Inquiry - 5+ Participants',
-          exam_name: selectedScheduleForInquiry ? `${courseName} - ${selectedScheduleForInquiry.start_date}` : courseName
+          exam_name: selectedScheduleForInquiry ? `${courseName} - ${selectedScheduleForInquiry.start_date}` : courseName,
+          message: groupInquiryFormData.message || null
         }),
       });
 
       if (response.ok) {
         alert('Thank you for your inquiry! We will contact you shortly about group pricing.');
         setShowGroupInquiryModal(false);
-        setGroupInquiryFormData({ name: "", email: "" });
+        setGroupInquiryFormData({ name: "", email: "", message: "" });
         setSelectedScheduleForInquiry(null);
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -613,7 +616,7 @@ function CourseScheduleContent() {
             <button
               onClick={() => {
                 setShowGroupInquiryModal(false);
-                setGroupInquiryFormData({ name: "", email: "" });
+                setGroupInquiryFormData({ name: "", email: "", message: "" });
                 setSelectedScheduleForInquiry(null);
               }}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
@@ -706,6 +709,25 @@ function CourseScheduleContent() {
                     <p className="text-xs text-gray-500 mt-1">
                       We'll send you group pricing and available dates
                     </p>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="group-inquiry-message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Additional Details (Optional)
+                    </label>
+                    <textarea
+                      id="group-inquiry-message"
+                      rows={4}
+                      value={groupInquiryFormData.message}
+                      onChange={(e) =>
+                        setGroupInquiryFormData({ ...groupInquiryFormData, message: e.target.value })
+                      }
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                      placeholder="Tell us about your group size, preferred dates, training format, or any specific requirements..."
+                    />
                   </div>
 
                   {selectedScheduleForInquiry && (

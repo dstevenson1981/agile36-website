@@ -377,6 +377,26 @@ export default function EmailAdminPage() {
     }
   };
 
+  const handleDuplicateCampaign = async (campaignId: number) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/email/campaigns/${campaignId}/duplicate`, {
+        method: 'POST',
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert('Campaign duplicated successfully!');
+        fetchCampaigns();
+      } else {
+        alert(data.error || 'Failed to duplicate campaign');
+      }
+    } catch (error) {
+      alert('Error duplicating campaign');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
@@ -795,15 +815,25 @@ export default function EmailAdminPage() {
                       {campaign.sent_at && ` | Sent: ${new Date(campaign.sent_at).toLocaleDateString()}`}
                       {campaign.sent_count > 0 && ` | Sent to ${campaign.sent_count} contacts`}
                     </div>
-                    {(campaign.status === 'draft' || campaign.status === 'scheduled') && (
+                    <div className="flex gap-2">
+                      {(campaign.status === 'draft' || campaign.status === 'scheduled') && (
+                        <button
+                          onClick={() => handleSendCampaign(campaign.id)}
+                          disabled={sending}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                        >
+                          {sending ? 'Sending...' : 'Send Now'}
+                        </button>
+                      )}
                       <button
-                        onClick={() => handleSendCampaign(campaign.id)}
-                        disabled={sending}
-                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                        onClick={() => handleDuplicateCampaign(campaign.id)}
+                        disabled={loading}
+                        className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
+                        title="Duplicate this campaign"
                       >
-                        {sending ? 'Sending...' : 'Send Now'}
+                        {loading ? 'Duplicating...' : 'Duplicate'}
                       </button>
-                    )}
+                    </div>
                   </div>
                 ))}
                 {campaigns.length === 0 && (

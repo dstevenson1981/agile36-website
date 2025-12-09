@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, source, exam_name } = await request.json();
+    const { name, email, source, exam_name, message } = await request.json();
 
     if (!email || !email.includes('@')) {
       return NextResponse.json(
@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
           email,
           source: source || 'SA Free Assessment',
           exam_name: exam_name || null,
+          message: message || null,
           created_at: new Date().toISOString()
         }
       ])
