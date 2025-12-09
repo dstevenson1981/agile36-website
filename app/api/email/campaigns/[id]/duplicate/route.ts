@@ -3,10 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const campaignId = parseInt(params.id);
+    const { id } = await params;
+    const campaignId = parseInt(id);
 
     if (isNaN(campaignId)) {
       return NextResponse.json(
