@@ -181,13 +181,22 @@ export async function POST(request: NextRequest) {
           .select('*');
         
         // Also try a direct database query using PostgreSQL array operators
-        const { data: directQueryResults } = await supabase
-          .from('email_contacts')
-          .select('*')
-          .eq('subscribed', true)
-          .contains('tags', tagFilters);
+        // Try using Supabase's array contains operator
+        let directQueryResults: any[] = [];
+        for (const tag of tagFilters) {
+          const { data: results } = await supabase
+            .from('email_contacts')
+            .select('*')
+            .eq('subscribed', true)
+            .contains('tags', [tag]);
+          if (results) {
+            directQueryResults = [...directQueryResults, ...results];
+          }
+        }
+        // Remove duplicates
+        const uniqueDirectResults = Array.from(new Map(directQueryResults.map(c => [c.id, c])).values());
         
-        console.log('Direct PostgreSQL query results:', directQueryResults?.length || 0);
+        console.log('Direct PostgreSQL query results:', uniqueDirectResults.length);
         
         const contactsWithTags = allContacts?.filter((c: any) => {
           if (!c.tags) return false;
