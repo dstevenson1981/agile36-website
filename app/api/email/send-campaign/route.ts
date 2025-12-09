@@ -148,21 +148,51 @@ export async function POST(request: NextRequest) {
       console.log(`Filtered to ${contacts.length} contacts with tags: ${tagFilters.join(', ')}`);
       
       if (contacts.length === 0) {
-        // Additional debug info
+        // Additional debug info - check ALL contacts (including unsubscribed) to see if tag exists
+        const { data: allContactsIncludingUnsubscribed } = await supabase
+          .from('email_contacts')
+          .select('*');
+        
         const contactsWithTags = allContacts?.filter((c: any) => c.tags && Array.isArray(c.tags) && c.tags.length > 0) || [];
+        const allContactsWithRequestedTags = allContactsIncludingUnsubscribed?.filter((c: any) => {
+          if (!c.tags || !Array.isArray(c.tags)) return false;
+          return tagFilters.some((tag: string) => 
+            c.tags.some((contactTag: string) => 
+              contactTag?.toString().trim().toLowerCase() === tag?.toString().trim().toLowerCase()
+            )
+          );
+        }) || [];
+        
+        const subscribedContactsWithTags = allContactsWithRequestedTags.filter((c: any) => c.subscribed === true);
+        const unsubscribedContactsWithTags = allContactsWithRequestedTags.filter((c: any) => c.subscribed === false);
+        
         console.log(`Total contacts with any tags: ${contactsWithTags.length}`);
+        console.log(`Total contacts (including unsubscribed) with requested tags: ${allContactsWithRequestedTags.length}`);
+        console.log(`Subscribed contacts with requested tags: ${subscribedContactsWithTags.length}`);
+        console.log(`Unsubscribed contacts with requested tags: ${unsubscribedContactsWithTags.length}`);
+        
         const allUniqueTags = new Set<string>();
         contactsWithTags.forEach((c: any) => {
           c.tags.forEach((tag: string) => allUniqueTags.add(tag));
         });
-        console.log(`All unique tags in database:`, Array.from(allUniqueTags));
+        console.log(`All unique tags in subscribed contacts:`, Array.from(allUniqueTags));
+        
+        let errorMessage = `No subscribed contacts found with tags: ${tagFilters.join(', ')}`;
+        if (unsubscribedContactsWithTags.length > 0) {
+          errorMessage += `. Found ${unsubscribedContactsWithTags.length} unsubscribed contact(s) with this tag. They need to be subscribed to receive emails.`;
+        } else if (allContactsWithRequestedTags.length === 0) {
+          errorMessage += `. No contacts found with this tag (checked both subscribed and unsubscribed).`;
+        }
         
         return NextResponse.json(
           { 
-            error: `No contacts found with tags: ${tagFilters.join(', ')}`,
+            error: errorMessage,
             debug: {
-              totalContacts: allContacts?.length || 0,
-              contactsWithTags: contactsWithTags.length,
+              totalSubscribedContacts: allContacts?.length || 0,
+              subscribedContactsWithTags: contactsWithTags.length,
+              totalContactsWithRequestedTags: allContactsWithRequestedTags.length,
+              subscribedContactsWithRequestedTags: subscribedContactsWithTags.length,
+              unsubscribedContactsWithRequestedTags: unsubscribedContactsWithTags.length,
               allUniqueTags: Array.from(allUniqueTags),
               requestedTags: tagFilters
             }
