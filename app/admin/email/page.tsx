@@ -446,13 +446,20 @@ export default function EmailAdminPage() {
       const data = await response.json();
       
       if (data.success) {
-        const message = `Successfully imported ${data.imported} new contacts, updated ${data.updated} existing contacts.${data.errors > 0 ? ` ${data.errors} errors occurred.` : ''}`;
+        const message = `Successfully imported ${data.imported} new contacts, updated ${data.updated} existing contacts.${data.errors > 0 ? ` ${data.errors} errors occurred.` : ''}${data.importTag ? `\n\nContacts tagged with: "${data.importTag}"` : ''}`;
         alert(message);
         if (data.errorDetails && data.errorDetails.length > 0) {
           console.error('Import errors:', data.errorDetails);
         }
         fetchAllTags(); // Refresh tags list
         fetchContacts();
+        
+        // If we have an import tag, automatically select it in compose tab if user wants
+        if (data.importTag && confirm(`Would you like to send an email to the "${data.importTag}" contacts now?`)) {
+          setActiveTab('compose');
+          setSendToAll(false);
+          setSelectedContactTags([data.importTag]);
+        }
       } else {
         alert(data.error || 'Failed to import contacts');
       }
@@ -1228,18 +1235,67 @@ export default function EmailAdminPage() {
                         type="button"
                         onClick={async () => {
                           await fetchAllTags(); // Refresh tags first
-                          const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
-                          if (recentTags.length > 0) {
-                            // Get the most recent import tag
-                            const sorted = recentTags.sort().reverse();
-                            setSelectedContactTags([sorted[0]]);
+                          // Look for filename-based tags first (most reliable)
+                          // Then fall back to date-based import tags
+                          const filenameTags = allTags.filter(tag => 
+                            !tag.startsWith('Imported ') && 
+                            !tag.startsWith('Dec ') &&
+                            tag.length > 0
+                          );
+                          
+                          if (filenameTags.length > 0) {
+                            // Get the most recently added tag (usually last in sorted list, but check by finding most recent)
+                            // For now, just use the last one alphabetically (which often corresponds to most recent)
+                            const sorted = filenameTags.sort();
+                            setSelectedContactTags([sorted[sorted.length - 1]]);
                           } else {
-                            alert('No recently imported contacts found. Import contacts first.');
+                            // Fall back to date-based import tags
+                            const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
+                            if (recentTags.length > 0) {
+                              const sorted = recentTags.sort().reverse();
+                              setSelectedContactTags([sorted[0]]);
+                            } else {
+                              alert('No recently imported contacts found. Import contacts first.');
+                            }
                           }
                         }}
                         className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-md hover:bg-green-200"
                       >
-                        📥 Send to Most Recent Import
+                        📥 Send to Last Import
+                      </button>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await fetchAllTags(); // Refresh tags first
+                          // Show a simple dialog to select from recent imports
+                          const filenameTags = allTags.filter(tag => 
+                            !tag.startsWith('Imported ') && 
+                            !tag.startsWith('Dec ') &&
+                            tag.length > 0 &&
+                            tag !== 'JP Morgan' && // Exclude common tags
+                            tag !== 'capgemini' &&
+                            tag !== 'lenovo'
+                          );
+                          
+                          if (filenameTags.length === 0) {
+                            alert('No import tags found. Import a CSV file first.');
+                            return;
+                          }
+                          
+                          // Show most recent 5 filename tags
+                          const recentTags = filenameTags.slice(-5).reverse();
+                          const tagList = recentTags.map((tag, i) => `${i + 1}. ${tag}`).join('\n');
+                          const selection = prompt(`Select an import to send to:\n\n${tagList}\n\nEnter the tag name:`);
+                          
+                          if (selection && allTags.includes(selection)) {
+                            setSelectedContactTags([selection]);
+                          } else if (selection) {
+                            alert(`Tag "${selection}" not found. Available tags: ${recentTags.join(', ')}`);
+                          }
+                        }}
+                        className="px-3 py-1 text-sm bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200"
+                      >
+                        📋 Choose Import
                       </button>
                       <button
                         type="button"

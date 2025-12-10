@@ -99,11 +99,23 @@ export async function POST(request: NextRequest) {
           }
         }
         
-        // Auto-tag new imports with timestamp tag for easy filtering
-        const importDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-        const importTag = `Imported ${importDate}`;
-        if (!isUpdate && !tags.includes(importTag)) {
-          tags.push(importTag);
+        // Auto-tag new imports with filename (without .csv extension)
+        // e.g., "leadership.csv" → tag "leadership"
+        if (!isUpdate) {
+          const filename = file.name || '';
+          if (filename) {
+            const filenameTag = filename.replace(/\.csv$/i, '').trim();
+            if (filenameTag && !tags.includes(filenameTag)) {
+              tags.push(filenameTag);
+            }
+          }
+          
+          // Also add date-based tag for backwards compatibility
+          const importDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+          const importTag = `Imported ${importDate}`;
+          if (!tags.includes(importTag)) {
+            tags.push(importTag);
+          }
         }
 
         // Determine subscription status - default to true unless explicitly false
@@ -190,6 +202,10 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Extract filename tag for easy reference
+    const filename = file.name || '';
+    const filenameTag = filename.replace(/\.csv$/i, '').trim();
+
     return NextResponse.json({
       success: true,
       imported: successCount,
@@ -197,6 +213,7 @@ export async function POST(request: NextRequest) {
       errors: errors.length,
       errorDetails: errors.slice(0, 10), // Return first 10 errors
       total: records.length,
+      importTag: filenameTag || null, // Return the tag so UI can use it
     });
   } catch (error: any) {
     console.error('Error importing contacts:', error);
