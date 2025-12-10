@@ -6,7 +6,8 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "clean-suppressions": "node clean-suppressions.js"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^5.0.1",
