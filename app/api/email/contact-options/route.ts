@@ -32,11 +32,11 @@ export async function GET(request: NextRequest) {
 
     console.log('Fetching all companies and roles from database...');
 
-    // Fetch all contacts in batches
+    // Fetch all contacts in batches (include email to extract company from domain if needed)
     while (hasMore) {
       const { data: batchContacts, error } = await supabase
         .from('email_contacts')
-        .select('role, company')
+        .select('role, company, email')
         .range(offset, offset + batchSize - 1);
 
       if (error) {
@@ -62,11 +62,42 @@ export async function GET(request: NextRequest) {
           }
         }
         
-        // Handle company
+        // Handle company - check both stored company and email domain
+        let companyValue = null;
+        
+        // First, try the stored company field
         if (contact.company) {
-          const companyValue = typeof contact.company === 'string' ? contact.company.trim() : String(contact.company).trim();
+          companyValue = typeof contact.company === 'string' ? contact.company.trim() : String(contact.company).trim();
           if (companyValue && companyValue.length > 0 && companyValue !== 'null' && companyValue !== 'undefined') {
             companies.add(companyValue);
+          }
+        }
+        
+        // If no company stored, extract from email domain as fallback
+        if (!companyValue && contact.email && contact.email.includes('@')) {
+          const domain = contact.email.split('@')[1];
+          if (domain) {
+            const domainParts = domain.split('.');
+            if (domainParts.length > 0) {
+              const mainDomain = domainParts[0].toLowerCase();
+              // Map common domains to proper company names
+              const domainMap: Record<string, string> = {
+                'nationwide': 'Nationwide',
+                'visa': 'Visa',
+                'bny': 'BNY Mellon',
+                'bnymellon': 'BNY Mellon',
+                'tjx': 'TJX',
+              };
+              
+              const mappedCompany = domainMap[mainDomain];
+              if (mappedCompany) {
+                companies.add(mappedCompany);
+              } else if (!['gmail', 'yahoo', 'hotmail', 'outlook', 'icloud', 'aol'].includes(mainDomain)) {
+                // Only add if it's not a personal email domain
+                const formattedCompany = mainDomain.charAt(0).toUpperCase() + mainDomain.slice(1);
+                companies.add(formattedCompany);
+              }
+            }
           }
         }
       });

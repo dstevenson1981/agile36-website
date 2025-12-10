@@ -106,12 +106,42 @@ export async function POST(request: NextRequest) {
           subscribed = subValue !== 'false' && subValue !== '0' && subValue !== 'no' && subValue !== 'n';
         }
 
+        // Extract company from CSV or fallback to email domain
+        let company = csvRecord.company || csvRecord.Company || csvRecord['Company'] || null;
+        
+        // If no company column, extract from email domain
+        if (!company && email.includes('@')) {
+          const domain = email.split('@')[1];
+          if (domain) {
+            // Remove common TLDs and format nicely
+            const domainParts = domain.split('.');
+            if (domainParts.length > 0) {
+              // Take the main domain part (before .com, .org, etc.)
+              const mainDomain = domainParts[0];
+              // Capitalize and format common domains
+              const domainMap: Record<string, string> = {
+                'nationwide': 'Nationwide',
+                'visa': 'Visa',
+                'bny': 'BNY Mellon',
+                'bnymellon': 'BNY Mellon',
+                'tjx': 'TJX',
+                'gmail': null, // Don't use gmail as company
+                'yahoo': null,
+                'hotmail': null,
+                'outlook': null,
+              };
+              
+              company = domainMap[mainDomain.toLowerCase()] || mainDomain.charAt(0).toUpperCase() + mainDomain.slice(1);
+            }
+          }
+        }
+
         const contactData = {
           email: emailLower,
           first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || csvRecord['first_name'] || null,
           last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || csvRecord['last_name'] || null,
           role: csvRecord.role || csvRecord.Role || csvRecord['Role'] || null,
-          company: csvRecord.company || csvRecord.Company || csvRecord['Company'] || null,
+          company: company,
           tags: tags.length > 0 ? tags : null,
           subscribed: subscribed, // Default to true unless explicitly set to false
         };
