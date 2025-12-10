@@ -120,9 +120,6 @@ export default function EmailAdminPage() {
       if (selectedTags.length > 0) {
         params.append('tags', selectedTags.join(','));
       }
-      if (filterSubscribed !== null) {
-        params.append('subscribed', filterSubscribed.toString());
-      }
       if (searchTerm) {
         params.append('search', searchTerm);
       }
@@ -132,9 +129,8 @@ export default function EmailAdminPage() {
       if (filterCompany) {
         params.append('company', filterCompany);
       }
-      if (filterDateRange && filterDateRange !== 'all') {
-        params.append('dateRange', filterDateRange);
-      }
+      // Only show subscribed contacts by default
+      params.append('subscribed', 'true');
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
       const data = await response.json();
@@ -419,329 +415,72 @@ export default function EmailAdminPage() {
         {activeTab === 'contacts' && (
           <div className="bg-white rounded-lg shadow">
             {/* Primary Action Button - Always Visible */}
-            <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-lg">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-semibold text-white mb-1">Ready to Send?</h2>
-                  <p className="text-blue-100 text-sm">
-                    {contacts.length} contact{contacts.length !== 1 ? 's' : ''} match your current filters
-                  </p>
-                </div>
-                <button
-                  onClick={handleCreateCampaignFromContacts}
-                  disabled={contacts.length === 0}
-                  className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-                >
-                  Create Campaign ({contacts.length} contacts)
-                </button>
-              </div>
+            <div className="p-6 border-b border-gray-200">
+              <button
+                onClick={handleCreateCampaignFromContacts}
+                disabled={contacts.length === 0}
+                className="w-full px-6 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+              >
+                Create Campaign ({contacts.length} contacts)
+              </button>
             </div>
 
             <div className="p-6">
-              {/* Filters */}
-              <div className="mb-6 space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
-                    <input
-                      type="text"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Email or name..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
-                    <select
-                      value={filterRole}
-                      onChange={(e) => setFilterRole(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    >
-                      <option value="">All Roles</option>
-                      {allRoles.map(role => (
-                        <option key={role} value={role}>{role}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
-                    <select
-                      value={filterCompany}
-                      onChange={(e) => setFilterCompany(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    >
-                      <option value="">All Companies</option>
-                      {allCompanies.map(company => (
-                        <option key={company} value={company}>{company}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Created</label>
-                    <select
-                      value={filterDateRange}
-                      onChange={(e) => setFilterDateRange(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    >
-                      <option value="all">All Time</option>
-                      <option value="lastHour">Last Hour</option>
-                      <option value="today">Today</option>
-                      <option value="last24Hours">Last 24 Hours</option>
-                      <option value="lastWeek">Last Week</option>
-                    </select>
-                  </div>
+              {/* Simple Filter Bar */}
+              <div className="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Email or name..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
-                    <select
-                      multiple
-                      value={selectedTags}
-                      onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      size={4}
-                    >
-                      {allTags.map(tag => (
-                        <option key={tag} value={tag}>{tag}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Subscription</label>
-                    <select
-                      value={filterSubscribed === null ? 'all' : filterSubscribed.toString()}
-                      onChange={(e) => setFilterSubscribed(e.target.value === 'all' ? null : e.target.value === 'true')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    >
-                      <option value="all">All</option>
-                      <option value="true">Subscribed</option>
-                      <option value="false">Unsubscribed</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contact Count */}
-              <div className="mb-4 flex items-center justify-between">
-                <div className="text-sm text-gray-600">
-                  Showing <strong>{contacts.length.toLocaleString()}</strong> of <strong>{totalContactCount.toLocaleString()}</strong> total contacts
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setShowAddContact(!showAddContact)}
-                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm"
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                  <select
+                    multiple
+                    value={selectedTags}
+                    onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    size={3}
                   >
-                    + Add Contact
-                  </button>
-                  <button
-                    onClick={() => setShowImportModal(true)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm"
+                    {allTags.map(tag => (
+                      <option key={tag} value={tag}>{tag}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                  <select
+                    value={filterCompany}
+                    onChange={(e) => setFilterCompany(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
                   >
-                    📥 Import CSV
-                  </button>
+                    <option value="">All Companies</option>
+                    {allCompanies.map(company => (
+                      <option key={company} value={company}>{company}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                  <select
+                    value={filterRole}
+                    onChange={(e) => setFilterRole(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  >
+                    <option value="">All Roles</option>
+                    {allRoles.map(role => (
+                      <option key={role} value={role}>{role}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
-              {/* Manual Add Contact Form */}
-              {showAddContact && (
-                <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <h3 className="font-semibold mb-3">Add New Contact</h3>
-                  <form onSubmit={async (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(e.currentTarget);
-                    const email = formData.get('email') as string;
-                    const firstName = formData.get('firstName') as string;
-                    const lastName = formData.get('lastName') as string;
-                    const role = formData.get('role') as string;
-                    const company = formData.get('company') as string;
-                    const tagsInput = formData.get('tags') as string;
-                    const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
-
-                    setLoading(true);
-                    try {
-                      const response = await fetch('/api/email/contacts', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                          email, 
-                          first_name: firstName, 
-                          last_name: lastName, 
-                          role: role || null,
-                          company: company || null,
-                          tags 
-                        }),
-                      });
-                      const data = await response.json();
-                      if (data.success) {
-                        fetchAllTags();
-                        fetchContacts();
-                        (e.target as HTMLFormElement).reset();
-                        setShowAddContact(false);
-                      } else {
-                        alert(data.error || 'Failed to add contact');
-                      }
-                    } catch (error) {
-                      alert('Error adding contact');
-                    } finally {
-                      setLoading(false);
-                    }
-                  }}>
-                    <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-                      <input type="email" name="email" required placeholder="Email *" className="px-3 py-2 border border-gray-300 rounded-md" />
-                      <input type="text" name="firstName" placeholder="First Name" className="px-3 py-2 border border-gray-300 rounded-md" />
-                      <input type="text" name="lastName" placeholder="Last Name" className="px-3 py-2 border border-gray-300 rounded-md" />
-                      <input type="text" name="role" placeholder="Role" className="px-3 py-2 border border-gray-300 rounded-md" />
-                      <input type="text" name="company" placeholder="Company" className="px-3 py-2 border border-gray-300 rounded-md" />
-                      <div className="flex gap-2">
-                        <input type="text" name="tags" placeholder="Tags (comma-separated)" className="flex-1 px-3 py-2 border border-gray-300 rounded-md" />
-                        <button type="submit" disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50">
-                          Add
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              )}
-
-              {/* Bulk Actions */}
-              <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold mb-3">Bulk Actions</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Add Tags to Filtered Contacts</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        value={bulkTagInput}
-                        onChange={(e) => setBulkTagInput(e.target.value)}
-                        placeholder="Tags (comma-separated)"
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-                      />
-                      <button
-                        onClick={async () => {
-                          if (!bulkTagInput.trim()) {
-                            alert('Please enter tags');
-                            return;
-                          }
-                          const tags = bulkTagInput.split(',').map(t => t.trim()).filter(t => t);
-                          if (!confirm(`Add tags "${tags.join(', ')}" to ${contacts.length} contacts?`)) return;
-                          
-                          setBulkTagging(true);
-                          try {
-                            const filters: any = {};
-                            if (selectedTags.length > 0) filters.tags = selectedTags;
-                            if (filterSubscribed !== null) filters.subscribed = filterSubscribed;
-                            if (filterRole) filters.role = filterRole;
-                            if (filterCompany) filters.company = filterCompany;
-                            if (filterDateRange !== 'all') filters.dateRange = filterDateRange;
-
-                            const response = await fetch('/api/email/bulk-tag', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({ tags, filters: Object.keys(filters).length > 0 ? filters : null }),
-                            });
-                            const data = await response.json();
-                            if (data.success) {
-                              alert(`Successfully tagged ${data.updated} contacts`);
-                              setBulkTagInput('');
-                              fetchAllTags();
-                              fetchContacts();
-                            } else {
-                              alert(data.error || 'Failed to tag contacts');
-                            }
-                          } catch (error: any) {
-                            alert(`Error: ${error.message}`);
-                          } finally {
-                            setBulkTagging(false);
-                          }
-                        }}
-                        disabled={bulkTagging || !bulkTagInput.trim()}
-                        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
-                      >
-                        {bulkTagging ? 'Tagging...' : 'Add Tags'}
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Quick Tag Recent</label>
-                    <button
-                      onClick={async () => {
-                        const tagName = prompt('Enter tag name (e.g., "Dec 10"):');
-                        if (!tagName) return;
-                        if (!confirm(`Tag all contacts from last hour with "${tagName}"?`)) return;
-                        
-                        setBulkTagging(true);
-                        try {
-                          const response = await fetch('/api/email/tag-recent', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ tags: [tagName], hours: 1 }),
-                          });
-                          const data = await response.json();
-                          if (data.success) {
-                            alert(data.message);
-                            fetchAllTags();
-                            fetchContacts();
-                          } else {
-                            alert(data.error || 'Failed to tag');
-                          }
-                        } catch (error: any) {
-                          alert(`Error: ${error.message}`);
-                        } finally {
-                          setBulkTagging(false);
-                        }
-                      }}
-                      disabled={bulkTagging}
-                      className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
-                    >
-                      {bulkTagging ? 'Tagging...' : 'Tag Recent (Last Hour)'}
-                    </button>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">CSV Actions</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="file"
-                        accept=".csv"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (!file) return;
-                          setLoading(true);
-                          const formData = new FormData();
-                          formData.append('file', file);
-                          try {
-                            const response = await fetch('/api/email/import-contacts', { method: 'POST', body: formData });
-                            const data = await response.json();
-                            if (data.success) {
-                              alert(`Imported ${data.imported} contacts, updated ${data.updated}`);
-                              fetchAllTags();
-                              fetchContacts();
-                            } else {
-                              alert(data.error || 'Import failed');
-                            }
-                          } catch (error) {
-                            alert('Import error');
-                          } finally {
-                            setLoading(false);
-                            e.target.value = '';
-                          }
-                        }}
-                        className="hidden"
-                        id="csv-import"
-                      />
-                      <label htmlFor="csv-import" className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 cursor-pointer text-center text-sm">
-                        Import CSV
-                      </label>
-                      <a href="/email-contacts-template.csv" download className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm">
-                        Download Template
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contacts Table */}
+              {/* Contacts Table - Clean and Simple */}
               {loading ? (
                 <div className="text-center py-8">Loading...</div>
               ) : (
@@ -751,34 +490,22 @@ export default function EmailAdminPage() {
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tags</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       {contacts.map((contact) => (
-                        <tr key={contact.id}>
+                        <tr key={contact.id} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{contact.email}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {contact.first_name} {contact.last_name}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {contact.role || '-'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {contact.company || '-'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {contact.tags?.join(', ') || '-'}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 py-1 text-xs rounded-full ${
-                              contact.subscribed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                            }`}>
-                              {contact.subscribed ? 'Subscribed' : 'Unsubscribed'}
-                            </span>
                           </td>
                         </tr>
                       ))}
@@ -789,6 +516,168 @@ export default function EmailAdminPage() {
                   )}
                 </div>
               )}
+
+              {/* Bottom Actions - Simple */}
+              <div className="mt-6 pt-6 border-t border-gray-200 flex gap-3">
+                <button
+                  onClick={() => setShowImportModal(true)}
+                  className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
+                >
+                  Import Contacts
+                </button>
+                <button
+                  onClick={() => setShowAddContact(true)}
+                  className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
+                >
+                  Add Single Contact
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Import Modal */}
+        {showImportModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+              <h3 className="text-lg font-semibold mb-4">Import Contacts</h3>
+              <div className="mb-4">
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    setLoading(true);
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    try {
+                      const response = await fetch('/api/email/import-contacts', { method: 'POST', body: formData });
+                      const data = await response.json();
+                      if (data.success) {
+                        alert(`Imported ${data.imported} contacts, updated ${data.updated}`);
+                        fetchAllTags();
+                        fetchAllRolesAndCompanies();
+                        fetchContacts();
+                        setShowImportModal(false);
+                      } else {
+                        alert(data.error || 'Import failed');
+                      }
+                    } catch (error) {
+                      alert('Import error');
+                    } finally {
+                      setLoading(false);
+                      e.target.value = '';
+                    }
+                  }}
+                  className="w-full mb-2"
+                />
+                <a href="/email-contacts-template.csv" download className="text-sm text-blue-600 hover:text-blue-800">
+                  Download CSV Template
+                </a>
+              </div>
+              <button
+                onClick={() => setShowImportModal(false)}
+                className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Add Contact Modal */}
+        {showAddContact && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+              <h3 className="text-lg font-semibold mb-4">Add Contact</h3>
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const email = formData.get('email') as string;
+                const firstName = formData.get('firstName') as string;
+                const lastName = formData.get('lastName') as string;
+                const role = formData.get('role') as string;
+                const company = formData.get('company') as string;
+                const tagsInput = formData.get('tags') as string;
+                const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
+
+                setLoading(true);
+                try {
+                  const response = await fetch('/api/email/contacts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                      email, 
+                      first_name: firstName, 
+                      last_name: lastName, 
+                      role: role || null,
+                      company: company || null,
+                      tags 
+                    }),
+                  });
+                  const data = await response.json();
+                  if (data.success) {
+                    fetchAllTags();
+                    fetchAllRolesAndCompanies();
+                    fetchContacts();
+                    setShowAddContact(false);
+                  } else {
+                    alert(data.error || 'Failed to add contact');
+                  }
+                } catch (error) {
+                  alert('Error adding contact');
+                } finally {
+                  setLoading(false);
+                }
+              }}>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <input type="email" name="email" required className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                      <input type="text" name="firstName" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                      <input type="text" name="lastName" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                      <input type="text" name="role" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                      <input type="text" name="company" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Tags</label>
+                    <input type="text" name="tags" placeholder="Comma-separated" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
+                  </div>
+                </div>
+                <div className="mt-6 flex gap-3">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                  >
+                    {loading ? 'Adding...' : 'Add Contact'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowAddContact(false)}
+                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}
