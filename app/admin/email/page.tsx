@@ -640,7 +640,62 @@ export default function EmailAdminPage() {
       return;
     }
 
-    if (!confirm(`Add tags "${tags.join(', ')}" to all ${contacts.length} currently filtered contacts?`)) {
+    // Check if filters are applied
+    const hasFilters = selectedTags.length > 0 || 
+                      filterSubscribed !== null || 
+                      filterRole || 
+                      filterCompany || 
+                      filterDateRange !== 'all' ||
+                      showBlockedOnly ||
+                      searchTerm;
+
+    // If no filters and trying to tag many contacts, warn or default to recent
+    if (!hasFilters && contacts.length >= 100) {
+      const useRecent = confirm(
+        `You're about to tag ${contacts.length} contacts (no filters applied).\n\n` +
+        `Would you like to only tag contacts from the last hour instead?\n\n` +
+        `Click OK to tag last hour's contacts, or Cancel to tag all ${contacts.length} contacts.`
+      );
+      
+      if (useRecent) {
+        // Use the tag-recent API instead
+        setBulkTagging(true);
+        try {
+          const response = await fetch('/api/email/tag-recent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              tags,
+              hours: 1,
+            }),
+          });
+
+          const data = await response.json();
+          if (data.success) {
+            alert(data.message || `Successfully tagged ${data.updated} contacts.`);
+            setBulkTagInput('');
+            fetchAllTags();
+            fetchContacts();
+          } else {
+            alert(data.error || 'Failed to tag recent contacts');
+          }
+        } catch (error: any) {
+          alert(`Error tagging recent contacts: ${error.message || 'Unknown error'}`);
+        } finally {
+          setBulkTagging(false);
+        }
+        return;
+      }
+    }
+
+    // Warn if tagging a lot of contacts
+    if (contacts.length > 50 && !hasFilters) {
+      if (!confirm(`⚠️ WARNING: You're about to tag ${contacts.length} contacts with no filters applied.\n\nThis will tag ALL contacts in your database.\n\nAre you sure?`)) {
+        return;
+      }
+    }
+
+    if (!confirm(`Add tags "${tags.join(', ')}" to ${contacts.length} contact${contacts.length !== 1 ? 's' : ''}?`)) {
       return;
     }
 
@@ -658,6 +713,9 @@ export default function EmailAdminPage() {
       }
       if (filterCompany) {
         filters.company = filterCompany;
+      }
+      if (filterDateRange && filterDateRange !== 'all') {
+        filters.dateRange = filterDateRange;
       }
       if (showBlockedOnly) {
         filters.blocked = true;
@@ -921,14 +979,31 @@ export default function EmailAdminPage() {
               <div className="border-t pt-4 mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Bulk Tag Contacts</label>
                 <p className="text-xs text-gray-500 mb-2">
-                  Add tags to all contacts matching the current filters (tags, role, company, etc.)
+                  Add tags to contacts matching your current filters. <strong>Set filters first!</strong>
                 </p>
+                
+                {/* Show filter status */}
+                <div className="mb-2 p-2 bg-gray-50 rounded border border-gray-200">
+                  <p className="text-xs font-semibold text-gray-700 mb-1">Current Filters:</p>
+                  <div className="text-xs text-gray-600 space-y-1">
+                    {selectedTags.length > 0 && <div>• Tags: {selectedTags.join(', ')}</div>}
+                    {filterRole && <div>• Role: {filterRole}</div>}
+                    {filterCompany && <div>• Company: {filterCompany}</div>}
+                    {filterDateRange !== 'all' && <div>• Created: {filterDateRange}</div>}
+                    {filterSubscribed !== null && <div>• Subscribed: {filterSubscribed ? 'Yes' : 'No'}</div>}
+                    {searchTerm && <div>• Search: {searchTerm}</div>}
+                    {!selectedTags.length && !filterRole && !filterCompany && filterDateRange === 'all' && filterSubscribed === null && !searchTerm && (
+                      <div className="text-orange-600 font-semibold">⚠️ No filters applied - will tag ALL contacts!</div>
+                    )}
+                  </div>
+                </div>
+                
                 <div className="flex gap-2 items-center">
                   <input
                     type="text"
                     value={bulkTagInput}
                     onChange={(e) => setBulkTagInput(e.target.value)}
-                    placeholder="Tags (comma-separated, e.g., Dec 10, Newsletter)"
+                    placeholder="Tags (comma-separated, e.g., Leadership, Dec 10)"
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !bulkTagging) {
@@ -945,11 +1020,13 @@ export default function EmailAdminPage() {
                   </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  Will tag {contacts.length} contact{contacts.length !== 1 ? 's' : ''} currently displayed (matching filters)
+                  Will tag <strong>{contacts.length}</strong> contact{contacts.length !== 1 ? 's' : ''} matching your filters
                 </p>
-                <p className="text-xs text-orange-600 mt-1">
-                  Note: Only tags contacts currently displayed. For all contacts, use "Tag Recent" button above or clear filters.
-                </p>
+                {contacts.length >= 100 && (
+                  <p className="text-xs text-orange-600 mt-1 font-semibold">
+                    ⚠️ Large number! Make sure you've set the right filters (especially "Created: Last Hour" for recent imports).
+                  </p>
+                )}
               </div>
               <div className="border-t pt-4 mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Delete/Block Contacts from CSV</label>
