@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const tags = searchParams.get('tags');
     const subscribed = searchParams.get('subscribed');
+    const blocked = searchParams.get('blocked');
     const search = searchParams.get('search');
 
     // Supabase setup
@@ -36,6 +37,10 @@ export async function GET(request: NextRequest) {
 
     if (subscribed !== null) {
       query = query.eq('subscribed', subscribed === 'true');
+    }
+
+    if (blocked !== null) {
+      query = query.eq('blocked', blocked === 'true');
     }
 
     if (search) {

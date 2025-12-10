@@ -106,10 +106,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Get contacts based on filters
+    // Exclude blocked contacts and only get subscribed contacts
     let contactsQuery = supabase
       .from('email_contacts')
       .select('*')
-      .eq('subscribed', true);
+      .eq('subscribed', true)
+      .eq('blocked', false); // Exclude blocked contacts
 
     // Declare contacts variable
     let contacts: any[] = [];

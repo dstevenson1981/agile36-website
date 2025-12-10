@@ -95,8 +95,22 @@ export async function POST(request: NextRequest) {
 
         case 'bounce':
         case 'dropped':
+        case 'blocked':
+        case 'spamreport':
           updateData.bounced = true;
-          updateData.bounce_reason = event.reason || event.type || 'Unknown';
+          updateData.bounce_reason = event.reason || event.type || event.event || 'Unknown';
+          
+          // Auto-unsubscribe and block the contact
+          const bounceReason = event.reason || event.type || event.event || 'Bounced/Blocked';
+          await supabase
+            .from('email_contacts')
+            .update({ 
+              subscribed: false,
+              blocked: true,
+              blocked_at: new Date().toISOString(),
+              blocked_reason: `Auto-blocked: ${bounceReason}`
+            })
+            .eq('email', email);
           break;
 
         case 'unsubscribe':

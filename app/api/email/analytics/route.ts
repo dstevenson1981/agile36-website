@@ -34,11 +34,18 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Get blocked contacts count
+    const { data: blockedContacts, error: blockedError } = await supabase
+      .from('email_contacts')
+      .select('id', { count: 'exact', head: true })
+      .eq('blocked', true);
+
     // Calculate analytics
     const totalSent = sends?.length || 0;
     const totalOpened = sends?.filter(s => s.opened_at).length || 0;
     const totalClicked = sends?.filter(s => s.clicked_at).length || 0;
     const totalBounced = sends?.filter(s => s.bounced).length || 0;
+    const totalBlocked = blockedContacts?.length || 0;
 
     const openRate = totalSent > 0 ? ((totalOpened / totalSent) * 100).toFixed(2) : '0';
     const clickRate = totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(2) : '0';
@@ -51,6 +58,7 @@ export async function GET(request: NextRequest) {
         totalOpened,
         totalClicked,
         totalBounced,
+        totalBlocked,
         openRate: parseFloat(openRate),
         clickRate: parseFloat(clickRate),
         bounceRate: parseFloat(bounceRate),

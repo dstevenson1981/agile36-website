@@ -11,6 +11,9 @@ interface Contact {
   company: string | null;
   tags: string[] | null;
   subscribed: boolean;
+  blocked: boolean | null;
+  blocked_at: string | null;
+  blocked_reason: string | null;
   created_at: string;
 }
 
@@ -52,6 +55,9 @@ export default function EmailAdminPage() {
 
   // Analytics state
   const [analytics, setAnalytics] = useState<any>(null);
+  
+  // Blocked contacts state
+  const [showBlockedOnly, setShowBlockedOnly] = useState(false);
 
   // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
@@ -76,7 +82,7 @@ export default function EmailAdminPage() {
     if (activeTab === 'contacts') {
       fetchContacts();
     }
-  }, [selectedTags, filterSubscribed, searchTerm]);
+  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly]);
 
   const fetchAllTags = async () => {
     try {
@@ -122,6 +128,9 @@ export default function EmailAdminPage() {
       }
       if (searchTerm) {
         params.append('search', searchTerm);
+      }
+      if (showBlockedOnly) {
+        params.append('blocked', 'true');
       }
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
@@ -223,6 +232,57 @@ export default function EmailAdminPage() {
       }
     } catch (error) {
       alert('Error deleting contact');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBlockContact = async (id: number, email: string) => {
+    if (!confirm(`Mark ${email} as blocked/spam? They will be automatically excluded from future campaigns.`)) return;
+    
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/email/contacts/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          blocked: true,
+          subscribed: false,
+          blocked_reason: 'Manually marked as blocked/spam'
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to block contact');
+      }
+    } catch (error) {
+      alert('Error blocking contact');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUnblockContact = async (id: number, email: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/email/contacts/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          blocked: false,
+          blocked_reason: null
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to unblock contact');
+      }
+    } catch (error) {
+      alert('Error unblocking contact');
     } finally {
       setLoading(false);
     }
@@ -484,6 +544,17 @@ export default function EmailAdminPage() {
                   <option value="false">Unsubscribed</option>
                 </select>
               </div>
+              <div className="min-w-[150px]">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Blocked Status</label>
+                <select
+                  value={showBlockedOnly ? 'blocked' : 'all'}
+                  onChange={(e) => setShowBlockedOnly(e.target.value === 'blocked')}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="all">All Contacts</option>
+                  <option value="blocked">Blocked Only</option>
+                </select>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Import CSV</label>
                 <div className="flex gap-2 items-center">
@@ -638,19 +709,45 @@ export default function EmailAdminPage() {
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className={`px-2 py-1 text-xs rounded-full ${
-                            contact.subscribed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                          }`}>
-                            {contact.subscribed ? 'Subscribed' : 'Unsubscribed'}
-                          </span>
+                          <div className="flex flex-col gap-1">
+                            <span className={`px-2 py-1 text-xs rounded-full ${
+                              contact.subscribed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                            }`}>
+                              {contact.subscribed ? 'Subscribed' : 'Unsubscribed'}
+                            </span>
+                            {contact.blocked && (
+                              <span className="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800">
+                                Blocked
+                              </span>
+                            )}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          <button
-                            onClick={() => handleDeleteContact(contact.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Delete
-                          </button>
+                          <div className="flex gap-2">
+                            {!contact.blocked ? (
+                              <button
+                                onClick={() => handleBlockContact(contact.id, contact.email)}
+                                className="text-orange-600 hover:text-orange-900"
+                                title="Mark as blocked/spam"
+                              >
+                                Block
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => handleUnblockContact(contact.id, contact.email)}
+                                className="text-green-600 hover:text-green-900"
+                                title="Unblock contact"
+                              >
+                                Unblock
+                              </button>
+                            )}
+                            <button
+                              onClick={() => handleDeleteContact(contact.id)}
+                              className="text-red-600 hover:text-red-900"
+                            >
+                              Delete
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -851,27 +948,34 @@ export default function EmailAdminPage() {
             {loading ? (
               <div className="text-center py-8">Loading...</div>
             ) : analytics ? (
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-600">{analytics.totalSent || 0}</div>
-                  <div className="text-sm text-gray-600">Total Sent</div>
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">{analytics.totalSent || 0}</div>
+                    <div className="text-sm text-gray-600">Total Sent</div>
+                  </div>
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">{analytics.totalOpened || 0}</div>
+                    <div className="text-sm text-gray-600">Total Opened</div>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-600">{analytics.totalClicked || 0}</div>
+                    <div className="text-sm text-gray-600">Total Clicked</div>
+                  </div>
+                  <div className="bg-red-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-red-600">{analytics.totalBounced || 0}</div>
+                    <div className="text-sm text-gray-600">Total Bounced</div>
+                  </div>
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-orange-600">{analytics.totalBlocked || 0}</div>
+                    <div className="text-sm text-gray-600">Blocked/Spam</div>
+                  </div>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">{analytics.totalOpened || 0}</div>
-                  <div className="text-sm text-gray-600">Total Opened</div>
-                </div>
-                <div className="bg-purple-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-purple-600">{analytics.totalClicked || 0}</div>
-                  <div className="text-sm text-gray-600">Total Clicked</div>
-                </div>
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-red-600">{analytics.totalBounced || 0}</div>
-                  <div className="text-sm text-gray-600">Total Bounced</div>
-                </div>
-                <div className="md:col-span-4 mt-4">
+                <div className="bg-gray-50 p-4 rounded-lg">
                   <div className="text-sm text-gray-600 mb-2">Open Rate: {analytics.openRate || 0}%</div>
                   <div className="text-sm text-gray-600 mb-2">Click Rate: {analytics.clickRate || 0}%</div>
-                  <div className="text-sm text-gray-600">Bounce Rate: {analytics.bounceRate || 0}%</div>
+                  <div className="text-sm text-gray-600 mb-2">Bounce Rate: {analytics.bounceRate || 0}%</div>
+                  <div className="text-sm text-gray-600">Blocked Contacts: {analytics.totalBlocked || 0} (automatically excluded from campaigns)</div>
                 </div>
               </div>
             ) : (

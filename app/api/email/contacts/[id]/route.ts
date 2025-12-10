@@ -16,7 +16,7 @@ export async function PUT(
       );
     }
 
-    const { tags, first_name, last_name, role, company, subscribed } = await request.json();
+    const { tags, first_name, last_name, role, company, subscribed, blocked, blocked_reason } = await request.json();
 
     // Supabase setup
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -43,6 +43,17 @@ export async function PUT(
     if (role !== undefined) updateData.role = role || null;
     if (company !== undefined) updateData.company = company || null;
     if (subscribed !== undefined) updateData.subscribed = subscribed;
+    if (blocked !== undefined) {
+      updateData.blocked = blocked;
+      if (blocked) {
+        updateData.blocked_at = new Date().toISOString();
+        updateData.subscribed = false; // Auto-unsubscribe when blocked
+      } else {
+        updateData.blocked_at = null;
+        updateData.blocked_reason = null;
+      }
+    }
+    if (blocked_reason !== undefined) updateData.blocked_reason = blocked_reason || null;
 
     const { data, error } = await supabase
       .from('email_contacts')
