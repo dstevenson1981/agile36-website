@@ -98,6 +98,13 @@ export async function POST(request: NextRequest) {
             tags = csvRecord.tags;
           }
         }
+        
+        // Auto-tag new imports with timestamp tag for easy filtering
+        const importDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+        const importTag = `Imported ${importDate}`;
+        if (!isUpdate && !tags.includes(importTag)) {
+          tags.push(importTag);
+        }
 
         // Determine subscription status - default to true unless explicitly false
         let subscribed = true;

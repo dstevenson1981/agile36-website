@@ -71,7 +71,7 @@ export default function EmailAdminPage() {
 
   // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
-    if (activeTab === 'contacts') {
+    if (activeTab === 'contacts' || activeTab === 'compose') {
       fetchAllTags(); // Fetch all tags - this should only run once or when tab changes
     }
   }, [activeTab]);
@@ -1117,16 +1117,58 @@ export default function EmailAdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Recipients</label>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <label className="flex items-center">
                     <input
                       type="checkbox"
                       checked={sendToAll}
-                      onChange={(e) => setSendToAll(e.target.checked)}
+                      onChange={(e) => {
+                        setSendToAll(e.target.checked);
+                        if (e.target.checked) {
+                          setSelectedContactTags([]);
+                        }
+                      }}
                       className="mr-2"
                     />
                     Send to all subscribed contacts
                   </label>
+                  
+                  {/* Quick Actions */}
+                  {!sendToAll && (
+                    <div className="flex gap-2 flex-wrap">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const todayTag = `Imported ${new Date().toISOString().split('T')[0]}`;
+                          if (allTags.includes(todayTag)) {
+                            setSelectedContactTags([todayTag]);
+                          } else {
+                            alert(`No contacts found with tag "${todayTag}". Make sure you've imported contacts today.`);
+                          }
+                        }}
+                        className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200"
+                      >
+                        📥 Send to Today's Imports
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
+                          if (recentTags.length > 0) {
+                            // Get the most recent import tag
+                            const sorted = recentTags.sort().reverse();
+                            setSelectedContactTags([sorted[0]]);
+                          } else {
+                            alert('No recently imported contacts found. Import contacts first.');
+                          }
+                        }}
+                        className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-md hover:bg-green-200"
+                      >
+                        📥 Send to Most Recent Import
+                      </button>
+                    </div>
+                  )}
+                  
                   {!sendToAll && (
                     <div>
                       <label className="block text-sm text-gray-600 mb-2">Or select by tags:</label>
@@ -1134,12 +1176,18 @@ export default function EmailAdminPage() {
                         multiple
                         value={selectedContactTags}
                         onChange={(e) => setSelectedContactTags(Array.from(e.target.selectedOptions, option => option.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md min-h-[100px]"
+                        size={Math.min(Math.max(allTags.length, 5), 10)}
                       >
                         {allTags.map(tag => (
                           <option key={tag} value={tag}>{tag}</option>
                         ))}
                       </select>
+                      {selectedContactTags.length > 0 && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          Selected: {selectedContactTags.join(', ')}
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>
