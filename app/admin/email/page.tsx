@@ -371,6 +371,52 @@ export default function EmailAdminPage() {
     }
   };
 
+  const handleDeleteBlockedCSV = async (e: React.ChangeEvent<HTMLInputElement>, action: 'delete' | 'block') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.name.endsWith('.csv')) {
+      alert('Please upload a CSV file');
+      e.target.value = '';
+      return;
+    }
+
+    if (!confirm(`Are you sure you want to ${action} all contacts in this CSV file?`)) {
+      e.target.value = '';
+      return;
+    }
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('action', action);
+
+    try {
+      const response = await fetch('/api/email/delete-blocked-contacts', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        const actionText = action === 'delete' ? 'deleted' : 'blocked';
+        alert(`Successfully ${actionText} ${data[actionText]} contacts out of ${data.total} emails in the file.`);
+        fetchContacts();
+        if (activeTab === 'analytics') {
+          fetchAnalytics();
+        }
+      } else {
+        alert(data.error || `Failed to ${action} contacts`);
+      }
+    } catch (error: any) {
+      console.error('Error processing file:', error);
+      alert(`Error processing file: ${error.message || 'Unknown error'}`);
+    } finally {
+      setLoading(false);
+      e.target.value = '';
+    }
+  };
+
   const handleSaveCampaign = async (asDraft = true) => {
     if (!campaignName || !campaignSubject || !campaignHtml) {
       alert('Please fill in all required fields');
@@ -575,6 +621,36 @@ export default function EmailAdminPage() {
                 <p className="text-xs text-gray-500 mt-1">
                   CSV format: Email, First Name, Last Name, Role, Company (optional: Tags, Subscribed)
                 </p>
+              </div>
+              <div className="border-t pt-4 mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Delete/Block Contacts from CSV</label>
+                <p className="text-xs text-gray-500 mb-2">
+                  Upload a CSV file with email addresses (one per line, or first column). This will delete or block all matching contacts.
+                </p>
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="file"
+                    accept=".csv"
+                    onChange={(e) => handleDeleteBlockedCSV(e, 'delete')}
+                    className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
+                    id="delete-csv-input"
+                  />
+                  <label htmlFor="delete-csv-input" className="text-sm text-red-600 hover:text-red-800 cursor-pointer">
+                    Delete from CSV
+                  </label>
+                </div>
+                <div className="flex gap-2 items-center mt-2">
+                  <input
+                    type="file"
+                    accept=".csv"
+                    onChange={(e) => handleDeleteBlockedCSV(e, 'block')}
+                    className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100"
+                    id="block-csv-input"
+                  />
+                  <label htmlFor="block-csv-input" className="text-sm text-orange-600 hover:text-orange-800 cursor-pointer">
+                    Block from CSV
+                  </label>
+                </div>
               </div>
             </div>
 
