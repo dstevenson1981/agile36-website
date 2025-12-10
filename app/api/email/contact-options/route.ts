@@ -21,32 +21,65 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Get ALL contacts to extract unique values (no limit)
-    const { data: allContacts, error } = await supabase
-      .from('email_contacts')
-      .select('role, company')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Error fetching contacts:', error);
-      return NextResponse.json(
-        { error: 'Failed to fetch contact options' },
-        { status: 500 }
-      );
-    }
-
-    // Extract unique roles and companies
+    // Fetch ALL contacts in batches to ensure we get every single one
+    // Supabase has default limits, so we need to paginate
     const roles = new Set<string>();
     const companies = new Set<string>();
+    let offset = 0;
+    const batchSize = 1000;
+    let hasMore = true;
+    let totalFetched = 0;
 
-    allContacts?.forEach((contact: any) => {
-      if (contact.role && contact.role.trim()) {
-        roles.add(contact.role.trim());
+    console.log('Fetching all companies and roles from database...');
+
+    // Fetch all contacts in batches
+    while (hasMore) {
+      const { data: batchContacts, error } = await supabase
+        .from('email_contacts')
+        .select('role, company')
+        .range(offset, offset + batchSize - 1);
+
+      if (error) {
+        console.error('Error fetching contacts batch:', error);
+        // Continue with what we have
+        break;
       }
-      if (contact.company && contact.company.trim()) {
-        companies.add(contact.company.trim());
+
+      if (!batchContacts || batchContacts.length === 0) {
+        hasMore = false;
+        break;
       }
-    });
+
+      totalFetched += batchContacts.length;
+
+      // Extract unique roles and companies from this batch
+      batchContacts.forEach((contact: any) => {
+        // Handle role
+        if (contact.role) {
+          const roleValue = typeof contact.role === 'string' ? contact.role.trim() : String(contact.role).trim();
+          if (roleValue && roleValue.length > 0 && roleValue !== 'null' && roleValue !== 'undefined') {
+            roles.add(roleValue);
+          }
+        }
+        
+        // Handle company
+        if (contact.company) {
+          const companyValue = typeof contact.company === 'string' ? contact.company.trim() : String(contact.company).trim();
+          if (companyValue && companyValue.length > 0 && companyValue !== 'null' && companyValue !== 'undefined') {
+            companies.add(companyValue);
+          }
+        }
+      });
+
+      // If we got fewer than batchSize, we're done
+      if (batchContacts.length < batchSize) {
+        hasMore = false;
+      } else {
+        offset += batchSize;
+      }
+    }
+
+    console.log(`Fetched ${totalFetched} contacts, found ${roles.size} unique roles and ${companies.size} unique companies`);
 
     return NextResponse.json({
       success: true,
