@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
               // Take the main domain part (before .com, .org, etc.)
               const mainDomain = domainParts[0];
               // Capitalize and format common domains
-              const domainMap: Record<string, string> = {
+              const domainMap: Record<string, string | null> = {
                 'nationwide': 'Nationwide',
                 'visa': 'Visa',
                 'bny': 'BNY Mellon',
@@ -139,7 +139,13 @@ export async function POST(request: NextRequest) {
                 'outlook': null,
               };
               
-              company = domainMap[mainDomain.toLowerCase()] || mainDomain.charAt(0).toUpperCase() + mainDomain.slice(1);
+              const mappedCompany = domainMap[mainDomain.toLowerCase()];
+              if (mappedCompany) {
+                company = mappedCompany;
+              } else if (!['gmail', 'yahoo', 'hotmail', 'outlook', 'icloud', 'aol'].includes(mainDomain.toLowerCase())) {
+                // Only use domain as company if it's not a personal email domain
+                company = mainDomain.charAt(0).toUpperCase() + mainDomain.slice(1);
+              }
             }
           }
         }
