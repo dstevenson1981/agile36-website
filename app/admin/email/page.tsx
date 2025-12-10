@@ -43,6 +43,7 @@ export default function EmailAdminPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRole, setFilterRole] = useState<string>('');
   const [filterCompany, setFilterCompany] = useState<string>('');
+  const [filterDateRange, setFilterDateRange] = useState<string>('all');
   const [allRoles, setAllRoles] = useState<string[]>([]);
   const [allCompanies, setAllCompanies] = useState<string[]>([]);
   const [bulkTagInput, setBulkTagInput] = useState('');
@@ -91,7 +92,7 @@ export default function EmailAdminPage() {
     if (activeTab === 'contacts') {
       fetchContacts();
     }
-  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly, filterRole, filterCompany]);
+  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly, filterRole, filterCompany, filterDateRange]);
 
   // Fetch all roles and companies when contacts tab is active
   useEffect(() => {
@@ -134,24 +135,12 @@ export default function EmailAdminPage() {
 
   const fetchAllRolesAndCompanies = async () => {
     try {
-      const response = await fetch('/api/email/contacts');
+      const response = await fetch('/api/email/contact-options');
       const data = await response.json();
       
-      if (data.success && data.contacts && Array.isArray(data.contacts)) {
-        const roles = new Set<string>();
-        const companies = new Set<string>();
-        
-        data.contacts.forEach((contact: Contact) => {
-          if (contact.role && contact.role.trim()) {
-            roles.add(contact.role.trim());
-          }
-          if (contact.company && contact.company.trim()) {
-            companies.add(contact.company.trim());
-          }
-        });
-        
-        setAllRoles(Array.from(roles).sort());
-        setAllCompanies(Array.from(companies).sort());
+      if (data.success) {
+        setAllRoles(data.roles || []);
+        setAllCompanies(data.companies || []);
       }
     } catch (error) {
       console.error('Error fetching roles and companies:', error);
@@ -179,6 +168,9 @@ export default function EmailAdminPage() {
       }
       if (filterCompany) {
         params.append('company', filterCompany);
+      }
+      if (filterDateRange && filterDateRange !== 'all') {
+        params.append('dateRange', filterDateRange);
       }
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
@@ -773,7 +765,7 @@ export default function EmailAdminPage() {
                   onChange={(e) => setFilterRole(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 >
-                  <option value="">All Roles</option>
+                  <option value="">All Roles ({allRoles.length})</option>
                   {allRoles.map(role => (
                     <option key={role} value={role}>{role}</option>
                   ))}
@@ -786,10 +778,24 @@ export default function EmailAdminPage() {
                   onChange={(e) => setFilterCompany(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 >
-                  <option value="">All Companies</option>
+                  <option value="">All Companies ({allCompanies.length})</option>
                   {allCompanies.map(company => (
                     <option key={company} value={company}>{company}</option>
                   ))}
+                </select>
+              </div>
+              <div className="min-w-[150px]">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Created</label>
+                <select
+                  value={filterDateRange}
+                  onChange={(e) => setFilterDateRange(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="all">All Time</option>
+                  <option value="lastHour">Last Hour</option>
+                  <option value="today">Today</option>
+                  <option value="last24Hours">Last 24 Hours</option>
+                  <option value="lastWeek">Last Week</option>
                 </select>
               </div>
               <div>

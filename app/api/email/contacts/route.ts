@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search');
     const role = searchParams.get('role');
     const company = searchParams.get('company');
+    const dateRange = searchParams.get('dateRange');
 
     // Supabase setup
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -64,6 +65,32 @@ export async function GET(request: NextRequest) {
     if (company) {
       query = query.eq('company', company);
       countQuery = countQuery.eq('company', company);
+    }
+
+    // Apply date range filter
+    if (dateRange) {
+      const now = new Date();
+      let startDate: Date;
+      
+      switch (dateRange) {
+        case 'today':
+          startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          break;
+        case 'lastHour':
+          startDate = new Date(now.getTime() - 60 * 60 * 1000);
+          break;
+        case 'last24Hours':
+          startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+          break;
+        case 'lastWeek':
+          startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+          break;
+        default:
+          startDate = new Date(0); // All time
+      }
+      
+      query = query.gte('created_at', startDate.toISOString());
+      countQuery = countQuery.gte('created_at', startDate.toISOString());
     }
 
     // Get total count with same filters
