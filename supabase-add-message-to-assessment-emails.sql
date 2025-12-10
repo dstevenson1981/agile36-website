@@ -15,3 +15,5 @@ END $$;
 -- Add index for message searches (optional, but helpful if you want to search by message content)
 -- CREATE INDEX IF NOT EXISTS idx_assessment_emails_message ON assessment_emails USING gin(to_tsvector('english', message));
 
+
+

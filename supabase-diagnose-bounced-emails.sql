@@ -44,3 +44,5 @@ LEFT JOIN email_contacts ec ON ec.id = es.contact_id
 WHERE es.bounced = true
 LIMIT 10;
 
+
+

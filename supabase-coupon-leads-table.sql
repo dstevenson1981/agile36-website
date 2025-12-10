@@ -40,3 +40,5 @@ CREATE POLICY "Allow public inserts" ON coupon_leads
 
 
 
+
+

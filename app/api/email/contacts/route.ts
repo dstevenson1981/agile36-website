@@ -29,35 +29,50 @@ export async function GET(request: NextRequest) {
       },
     });
 
+    // Build count query (same filters as main query)
+    let countQuery = supabase.from('email_contacts').select('*', { count: 'exact', head: true });
     let query = supabase.from('email_contacts').select('*');
 
-    // Apply filters
+    // Apply filters to both queries
     if (tags) {
       const tagArray = tags.split(',').map(t => t.trim());
       query = query.contains('tags', tagArray);
+      countQuery = countQuery.contains('tags', tagArray);
     }
 
     if (subscribed !== null) {
       query = query.eq('subscribed', subscribed === 'true');
+      countQuery = countQuery.eq('subscribed', subscribed === 'true');
     }
 
     if (blocked !== null) {
       query = query.eq('blocked', blocked === 'true');
+      countQuery = countQuery.eq('blocked', blocked === 'true');
     }
 
     if (search) {
-      query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`);
+      const searchFilter = `email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`;
+      query = query.or(searchFilter);
+      countQuery = countQuery.or(searchFilter);
     }
 
     if (role) {
       query = query.eq('role', role);
+      countQuery = countQuery.eq('role', role);
     }
 
     if (company) {
       query = query.eq('company', company);
+      countQuery = countQuery.eq('company', company);
     }
 
-    const { data: contacts, error } = await query.order('created_at', { ascending: false });
+    // Get total count with same filters
+    const { count: totalCount } = await countQuery;
+
+    // Apply limit for display (but get accurate count)
+    const { data: contacts, error } = await query
+      .order('created_at', { ascending: false })
+      .limit(1000); // Limit display to 1000, but we have the accurate count
 
     if (error) {
       console.error('Error fetching contacts:', error);
@@ -70,6 +85,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       contacts: contacts || [],
+      totalCount: totalCount || 0,
+      displayedCount: contacts?.length || 0,
     });
   } catch (error: any) {
     console.error('Error in contacts API:', error);

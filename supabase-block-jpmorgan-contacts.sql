@@ -27,3 +27,5 @@ SELECT
 FROM email_contacts
 WHERE blocked = true;
 
+
+

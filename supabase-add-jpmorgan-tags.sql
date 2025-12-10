@@ -53,3 +53,5 @@ SELECT
 FROM email_contacts
 WHERE 'JP Morgan' = ANY(tags);
 
+
+

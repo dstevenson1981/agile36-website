@@ -132,32 +132,61 @@ async function deleteEmailsFromSupabase(emails) {
   const normalizedEmails = emails.map(email => email.toLowerCase().trim());
 
   // Delete in batches to avoid query size limits
-  const batchSize = 1000;
+  const batchSize = 100; // Reduced batch size for better reliability
   let totalDeleted = 0;
   let totalNotFound = 0;
 
   for (let i = 0; i < normalizedEmails.length; i += batchSize) {
     const batch = normalizedEmails.slice(i, i + batchSize);
+    const batchNum = Math.floor(i / batchSize) + 1;
     
     try {
+      // First, check how many exist
+      const { data: existing, error: checkError } = await supabase
+        .from('email_contacts')
+        .select('email')
+        .in('email', batch);
+
+      if (checkError) {
+        console.error(`❌ Error checking batch ${batchNum}:`, checkError.message);
+        continue;
+      }
+
+      const existingEmails = existing?.map(r => r.email.toLowerCase()) || [];
+      const toDelete = batch.filter(email => existingEmails.includes(email.toLowerCase()));
+
+      if (toDelete.length === 0) {
+        console.log(`   Batch ${batchNum}: No matching contacts found (${batch.length} emails checked)`);
+        totalNotFound += batch.length;
+        continue;
+      }
+
+      // Delete the emails that exist
       const { data: deleted, error } = await supabase
         .from('email_contacts')
         .delete()
-        .in('email', batch)
+        .in('email', toDelete)
         .select('email');
 
       if (error) {
-        console.error(`❌ Error deleting batch ${Math.floor(i / batchSize) + 1}:`, error.message);
+        console.error(`❌ Error deleting batch ${batchNum}:`, error.message);
+        console.error(`   Error details:`, error);
         continue;
       }
 
       const deletedCount = deleted?.length || 0;
       totalDeleted += deletedCount;
-      totalNotFound += batch.length - deletedCount;
+      totalNotFound += (batch.length - deletedCount);
 
-      console.log(`   Batch ${Math.floor(i / batchSize) + 1}: Deleted ${deletedCount} contacts`);
+      console.log(`   Batch ${batchNum}: Deleted ${deletedCount} contacts (${batch.length - deletedCount} not found)`);
+      
+      // Small delay between batches
+      if (i + batchSize < normalizedEmails.length) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
     } catch (error) {
-      console.error(`❌ Error processing batch ${Math.floor(i / batchSize) + 1}:`, error.message);
+      console.error(`❌ Error processing batch ${batchNum}:`, error.message);
+      console.error(`   Stack:`, error.stack);
     }
   }
 
@@ -165,10 +194,48 @@ async function deleteEmailsFromSupabase(emails) {
 }
 
 /**
+ * Test Supabase connection
+ */
+async function testSupabaseConnection() {
+  try {
+    console.log('🔍 Testing Supabase connection...');
+    const { data, error } = await supabase
+      .from('email_contacts')
+      .select('count')
+      .limit(1);
+    
+    if (error) {
+      console.error('❌ Supabase connection test failed:', error.message);
+      console.error('   Code:', error.code);
+      console.error('   Details:', error.details);
+      return false;
+    }
+    
+    console.log('✅ Supabase connection successful\n');
+    return true;
+  } catch (error) {
+    console.error('❌ Supabase connection test error:', error.message);
+    console.error('   Stack:', error.stack);
+    return false;
+  }
+}
+
+/**
  * Main function
  */
 async function main() {
   console.log('🚀 Starting clean-suppressions script...\n');
+  
+  // Test Supabase connection first
+  const connectionOk = await testSupabaseConnection();
+  if (!connectionOk) {
+    console.error('\n❌ Cannot connect to Supabase. Please check:');
+    console.error('   1. NEXT_PUBLIC_SUPABASE_URL is correct');
+    console.error('   2. SUPABASE_SERVICE_ROLE_KEY is correct');
+    console.error('   3. Network connectivity to Supabase');
+    process.exit(1);
+  }
+  
   console.log('📋 Fetching suppressed emails from SendGrid API...\n');
 
   const startTime = Date.now();
