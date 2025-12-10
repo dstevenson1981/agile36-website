@@ -192,6 +192,14 @@ export async function POST(request: NextRequest) {
       
       contacts = allContacts || [];
       console.log(`Database query found ${contacts.length} subscribed contacts with tags: ${tagFilters.join(', ')}`);
+      
+      // Apply role and company filters to tag-filtered results
+      if (role) {
+        contacts = contacts.filter((c: any) => c.role === role);
+      }
+      if (company) {
+        contacts = contacts.filter((c: any) => c.company === company);
+      }
     } else {
       // Fetch all subscribed contacts if no tag filters
       const { data: allContacts, error: contactsError } = await contactsQuery;
