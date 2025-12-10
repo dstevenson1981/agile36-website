@@ -1278,24 +1278,71 @@ export default function EmailAdminPage() {
                           );
                           
                           if (filenameTags.length === 0) {
-                            alert('No import tags found. Import a CSV file first.');
+                            // If no filename tags, let them type the tag name directly
+                            const tagName = prompt('No import tags found. Enter the tag name you want to send to (e.g., "leadership"):');
+                            if (tagName && tagName.trim()) {
+                              // Check if tag exists
+                              if (allTags.includes(tagName.trim())) {
+                                setSelectedContactTags([tagName.trim()]);
+                              } else {
+                                // Tag doesn't exist, offer to create it for recent contacts
+                                if (confirm(`Tag "${tagName.trim()}" not found. Would you like to tag all contacts from the last hour with this tag?`)) {
+                                  setBulkTagInput(tagName.trim());
+                                  // Switch to contacts tab to use bulk tag
+                                  setActiveTab('contacts');
+                                  setTimeout(() => {
+                                    setFilterDateRange('lastHour');
+                                    setTimeout(() => {
+                                      handleBulkTag();
+                                    }, 500);
+                                  }, 100);
+                                }
+                              }
+                            }
                             return;
                           }
                           
                           // Show most recent 5 filename tags
                           const recentTags = filenameTags.slice(-5).reverse();
                           const tagList = recentTags.map((tag, i) => `${i + 1}. ${tag}`).join('\n');
-                          const selection = prompt(`Select an import to send to:\n\n${tagList}\n\nEnter the tag name:`);
+                          const selection = prompt(`Select an import to send to:\n\n${tagList}\n\nOr enter a tag name:`);
                           
                           if (selection && allTags.includes(selection)) {
                             setSelectedContactTags([selection]);
                           } else if (selection) {
-                            alert(`Tag "${selection}" not found. Available tags: ${recentTags.join(', ')}`);
+                            // Tag doesn't exist, offer to create it
+                            if (confirm(`Tag "${selection}" not found. Would you like to tag all contacts from the last hour with this tag?`)) {
+                              setBulkTagInput(selection);
+                              setActiveTab('contacts');
+                              setTimeout(() => {
+                                setFilterDateRange('lastHour');
+                                setTimeout(() => {
+                                  handleBulkTag();
+                                }, 500);
+                              }, 100);
+                            }
                           }
                         }}
                         className="px-3 py-1 text-sm bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200"
                       >
                         📋 Choose Import
+                      </button>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          const tagName = prompt('Enter the tag name to send to (e.g., "leadership"):');
+                          if (tagName && tagName.trim()) {
+                            await fetchAllTags();
+                            if (allTags.includes(tagName.trim())) {
+                              setSelectedContactTags([tagName.trim()]);
+                            } else {
+                              alert(`Tag "${tagName.trim()}" not found. Available tags: ${allTags.slice(0, 10).join(', ')}${allTags.length > 10 ? '...' : ''}\n\nGo to Contacts tab and use "Tag Recent" to add this tag to recent imports.`);
+                            }
+                          }
+                        }}
+                        className="px-3 py-1 text-sm bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200"
+                      >
+                        🔍 Search Tag
                       </button>
                       <button
                         type="button"
