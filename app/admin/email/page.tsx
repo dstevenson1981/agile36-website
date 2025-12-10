@@ -58,6 +58,7 @@ export default function EmailAdminPage() {
   const [selectedContactTags, setSelectedContactTags] = useState<string[]>([]);
   const [campaignTagsToAdd, setCampaignTagsToAdd] = useState<string>('');
   const [sendToAll, setSendToAll] = useState(false);
+  const [sendByDateRange, setSendByDateRange] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
   const [recipientCount, setRecipientCount] = useState<number | null>(null);
@@ -153,6 +154,23 @@ export default function EmailAdminPage() {
       } finally {
         setLoadingRecipients(false);
       }
+    } else if (sendByDateRange) {
+      setLoadingRecipients(true);
+      try {
+        const params = new URLSearchParams();
+        params.append('dateRange', sendByDateRange);
+        params.append('subscribed', 'true');
+        params.append('blocked', 'false');
+        const response = await fetch(`/api/email/contacts?${params.toString()}`);
+        const data = await response.json();
+        if (data.success) {
+          setRecipientCount(data.totalCount || data.contacts?.length || 0);
+        }
+      } catch (error) {
+        console.error('Error fetching recipient count:', error);
+      } finally {
+        setLoadingRecipients(false);
+      }
     } else if (selectedContactTags.length > 0) {
       setLoadingRecipients(true);
       try {
@@ -180,7 +198,7 @@ export default function EmailAdminPage() {
     if (activeTab === 'compose') {
       fetchRecipientCount();
     }
-  }, [sendToAll, selectedContactTags, activeTab]);
+  }, [sendToAll, selectedContactTags, sendByDateRange, activeTab]);
 
   const fetchAllRolesAndCompanies = async () => {
     try {
@@ -569,6 +587,7 @@ export default function EmailAdminPage() {
         body: JSON.stringify({
           campaignId,
           tagFilters: sendToAll ? [] : selectedContactTags,
+          dateRange: sendByDateRange,
           tagsToAdd: tagsToAdd.length > 0 ? tagsToAdd : null,
           sendImmediately: true,
         }),
@@ -1186,12 +1205,27 @@ export default function EmailAdminPage() {
                         setSendToAll(e.target.checked);
                         if (e.target.checked) {
                           setSelectedContactTags([]);
+                          setSendByDateRange(null);
                         }
                       }}
                       className="mr-2"
                     />
                     Send to all subscribed contacts
                   </label>
+                  {sendByDateRange && (
+                    <div className="p-2 bg-green-50 border border-green-200 rounded">
+                      <p className="text-sm text-green-800">
+                        ✓ Sending to contacts from: <strong>{sendByDateRange === 'lastHour' ? 'Last Hour' : sendByDateRange === 'today' ? 'Today' : sendByDateRange}</strong>
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setSendByDateRange(null)}
+                        className="text-xs text-green-600 hover:text-green-800 mt-1"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  )}
                   
                   {/* Recipient Count Preview */}
                   <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
@@ -1215,54 +1249,87 @@ export default function EmailAdminPage() {
                   
                   {/* Quick Actions */}
                   {!sendToAll && (
-                    <div className="flex gap-2 flex-wrap">
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          await fetchAllTags(); // Refresh tags first
-                          const todayTag = `Imported ${new Date().toISOString().split('T')[0]}`;
-                          if (allTags.includes(todayTag)) {
-                            setSelectedContactTags([todayTag]);
-                          } else {
-                            alert(`No contacts found with tag "${todayTag}". Make sure you've imported contacts today.`);
-                          }
-                        }}
-                        className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200"
-                      >
-                        📥 Send to Today's Imports
-                      </button>
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          await fetchAllTags(); // Refresh tags first
-                          // Look for filename-based tags first (most reliable)
-                          // Then fall back to date-based import tags
-                          const filenameTags = allTags.filter(tag => 
-                            !tag.startsWith('Imported ') && 
-                            !tag.startsWith('Dec ') &&
-                            tag.length > 0
-                          );
-                          
-                          if (filenameTags.length > 0) {
-                            // Get the most recently added tag (usually last in sorted list, but check by finding most recent)
-                            // For now, just use the last one alphabetically (which often corresponds to most recent)
-                            const sorted = filenameTags.sort();
-                            setSelectedContactTags([sorted[sorted.length - 1]]);
-                          } else {
-                            // Fall back to date-based import tags
-                            const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
-                            if (recentTags.length > 0) {
-                              const sorted = recentTags.sort().reverse();
-                              setSelectedContactTags([sorted[0]]);
+                    <div className="space-y-2">
+                      <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+                        <p className="text-sm font-semibold text-yellow-900 mb-2">⚡ Quick Send (No Tags Needed)</p>
+                        <div className="flex gap-2 flex-wrap">
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              // Send to contacts created in last hour - no tags needed!
+                              setSendToAll(false);
+                              setSelectedContactTags([]);
+                              setSendByDateRange('lastHour');
+                            }}
+                            className="px-4 py-2 text-sm bg-yellow-600 text-white rounded-md hover:bg-yellow-700 font-semibold"
+                          >
+                            🚀 Send to Last Hour's Imports
+                          </button>
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              setSendToAll(false);
+                              setSelectedContactTags([]);
+                              setSendByDateRange('today');
+                            }}
+                            className="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold"
+                          >
+                            📅 Send to Today's Imports
+                          </button>
+                        </div>
+                        <p className="text-xs text-yellow-700 mt-2">
+                          These buttons find contacts by upload time, no tags needed!
+                        </p>
+                      </div>
+                      
+                      <div className="flex gap-2 flex-wrap">
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            await fetchAllTags(); // Refresh tags first
+                            const todayTag = `Imported ${new Date().toISOString().split('T')[0]}`;
+                            if (allTags.includes(todayTag)) {
+                              setSelectedContactTags([todayTag]);
                             } else {
-                              alert('No recently imported contacts found. Import contacts first.');
+                              alert(`No contacts found with tag "${todayTag}". Use "Send to Today's Imports" button above instead.`);
                             }
-                          }
-                        }}
-                        className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-md hover:bg-green-200"
-                      >
-                        📥 Send to Last Import
-                      </button>
+                          }}
+                          className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200"
+                        >
+                          📥 Send to Today's Imports (by tag)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            await fetchAllTags(); // Refresh tags first
+                            // Look for filename-based tags first (most reliable)
+                            // Then fall back to date-based import tags
+                            const filenameTags = allTags.filter(tag => 
+                              !tag.startsWith('Imported ') && 
+                              !tag.startsWith('Dec ') &&
+                              tag.length > 0
+                            );
+                            
+                            if (filenameTags.length > 0) {
+                              // Get the most recently added tag (usually last in sorted list, but check by finding most recent)
+                              // For now, just use the last one alphabetically (which often corresponds to most recent)
+                              const sorted = filenameTags.sort();
+                              setSelectedContactTags([sorted[sorted.length - 1]]);
+                            } else {
+                              // Fall back to date-based import tags
+                              const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
+                              if (recentTags.length > 0) {
+                                const sorted = recentTags.sort().reverse();
+                                setSelectedContactTags([sorted[0]]);
+                              } else {
+                                alert('No recently imported contacts found. Use "Send to Last Hour\'s Imports" button above instead.');
+                              }
+                            }
+                          }}
+                          className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded-md hover:bg-green-200"
+                        >
+                          📥 Send to Last Import (by tag)
+                        </button>
                       <button
                         type="button"
                         onClick={async () => {

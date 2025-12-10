@@ -49,7 +49,7 @@ function addUnsubscribeLinkText(textContent: string, token: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { campaignId, tagFilters, tagsToAdd, sendImmediately = true } = await request.json();
+    const { campaignId, tagFilters, tagsToAdd, dateRange, sendImmediately = true } = await request.json();
 
     if (!campaignId) {
       return NextResponse.json(
@@ -115,6 +115,31 @@ export async function POST(request: NextRequest) {
 
     // Declare contacts variable
     let contacts: any[] = [];
+
+    // If dateRange is provided, filter by creation date first
+    if (dateRange) {
+      const now = new Date();
+      let startDate: Date;
+      
+      switch (dateRange) {
+        case 'today':
+          startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          break;
+        case 'lastHour':
+          startDate = new Date(now.getTime() - 60 * 60 * 1000);
+          break;
+        case 'last24Hours':
+          startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+          break;
+        case 'lastWeek':
+          startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+          break;
+        default:
+          startDate = new Date(0);
+      }
+      
+      contactsQuery = contactsQuery.gte('created_at', startDate.toISOString());
+    }
 
     // If tag filters are provided, use database-level filtering for better performance
     if (tagFilters && tagFilters.length > 0) {
