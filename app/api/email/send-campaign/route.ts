@@ -49,7 +49,7 @@ function addUnsubscribeLinkText(textContent: string, token: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { campaignId, tagFilters, tagsToAdd, dateRange, sendImmediately = true } = await request.json();
+    const { campaignId, tagFilters, tagsToAdd, dateRange, role, company, sendImmediately = true } = await request.json();
 
     if (!campaignId) {
       return NextResponse.json(
@@ -115,6 +115,16 @@ export async function POST(request: NextRequest) {
 
     // Declare contacts variable
     let contacts: any[] = [];
+
+    // Apply role filter if provided
+    if (role) {
+      contactsQuery = contactsQuery.eq('role', role);
+    }
+
+    // Apply company filter if provided
+    if (company) {
+      contactsQuery = contactsQuery.eq('company', company);
+    }
 
     // If dateRange is provided, filter by creation date first
     if (dateRange) {

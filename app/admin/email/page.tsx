@@ -358,6 +358,8 @@ export default function EmailAdminPage() {
             campaignId: data.campaign.id,
             tagFilters: sendToAll ? [] : (recipientFilters.tags || []),
             dateRange: recipientFilters.dateRange,
+            role: recipientFilters.role,
+            company: recipientFilters.company,
             tagsToAdd: campaignTagsToAdd ? campaignTagsToAdd.split(',').map(t => t.trim()).filter(t => t) : null,
             sendImmediately: true,
           }),
@@ -806,7 +808,20 @@ export default function EmailAdminPage() {
                 </div>
                 {Object.keys(recipientFilters).length > 0 && (
                   <div className="text-sm text-gray-600 mt-2">
-                    Filters: {JSON.stringify(recipientFilters, null, 2)}
+                    <div className="flex flex-wrap gap-2">
+                      {recipientFilters.tags && recipientFilters.tags.length > 0 && (
+                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded">Tags: {recipientFilters.tags.join(', ')}</span>
+                      )}
+                      {recipientFilters.role && (
+                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded">Role: {recipientFilters.role}</span>
+                      )}
+                      {recipientFilters.company && (
+                        <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded">Company: {recipientFilters.company}</span>
+                      )}
+                      {recipientFilters.dateRange && (
+                        <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded">Created: {recipientFilters.dateRange}</span>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
@@ -988,7 +1003,14 @@ export default function EmailAdminPage() {
                 {saving ? 'Saving...' : 'Save as Draft'}
               </button>
               <button
-                onClick={() => setShowScheduleModal(true)}
+                onClick={() => {
+                  const dateTime = prompt('Enter date and time (YYYY-MM-DD HH:MM):');
+                  if (dateTime) {
+                    setScheduleDateTime(dateTime);
+                    // For now, just save as scheduled - full scheduling implementation would require backend changes
+                    handleSaveCampaign(false);
+                  }
+                }}
                 disabled={saving}
                 className="px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 disabled:opacity-50"
               >
