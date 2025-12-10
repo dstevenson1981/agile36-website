@@ -75,8 +75,22 @@ export async function POST(request: NextRequest) {
 
       const { data: emailSend, error: findError } = await emailSendQuery.single();
 
+      // If we can't find email_send record, still try to block the contact by email
       if (findError || !emailSend) {
         console.error('Could not find email_send record:', findError);
+        
+        // Still block the contact by email address if it's a bounce/block event
+        if (eventType === 'bounce' || eventType === 'dropped' || eventType === 'blocked' || eventType === 'spamreport') {
+          await supabase
+            .from('email_contacts')
+            .update({ 
+              subscribed: false,
+              blocked: true,
+              blocked_at: new Date().toISOString(),
+              blocked_reason: `Auto-blocked: ${eventType} - ${event.reason || 'Unknown'}`
+            })
+            .eq('email', email);
+        }
         continue;
       }
 
