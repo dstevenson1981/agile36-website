@@ -40,6 +40,12 @@ export default function EmailAdminPage() {
   const [allTags, setAllTags] = useState<string[]>([]);
   const [filterSubscribed, setFilterSubscribed] = useState<boolean | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [filterRole, setFilterRole] = useState<string>('');
+  const [filterCompany, setFilterCompany] = useState<string>('');
+  const [allRoles, setAllRoles] = useState<string[]>([]);
+  const [allCompanies, setAllCompanies] = useState<string[]>([]);
+  const [bulkTagInput, setBulkTagInput] = useState('');
+  const [bulkTagging, setBulkTagging] = useState(false);
 
   // Campaign composer state
   const [campaignName, setCampaignName] = useState('');
@@ -47,6 +53,7 @@ export default function EmailAdminPage() {
   const [campaignHtml, setCampaignHtml] = useState('');
   const [campaignText, setCampaignText] = useState('');
   const [selectedContactTags, setSelectedContactTags] = useState<string[]>([]);
+  const [campaignTagsToAdd, setCampaignTagsToAdd] = useState<string>('');
   const [sendToAll, setSendToAll] = useState(false);
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
@@ -82,7 +89,14 @@ export default function EmailAdminPage() {
     if (activeTab === 'contacts') {
       fetchContacts();
     }
-  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly]);
+  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly, filterRole, filterCompany]);
+
+  // Fetch all roles and companies when contacts tab is active
+  useEffect(() => {
+    if (activeTab === 'contacts') {
+      fetchAllRolesAndCompanies();
+    }
+  }, [activeTab]);
 
   const fetchAllTags = async () => {
     try {
@@ -116,6 +130,32 @@ export default function EmailAdminPage() {
     }
   };
 
+  const fetchAllRolesAndCompanies = async () => {
+    try {
+      const response = await fetch('/api/email/contacts');
+      const data = await response.json();
+      
+      if (data.success && data.contacts && Array.isArray(data.contacts)) {
+        const roles = new Set<string>();
+        const companies = new Set<string>();
+        
+        data.contacts.forEach((contact: Contact) => {
+          if (contact.role && contact.role.trim()) {
+            roles.add(contact.role.trim());
+          }
+          if (contact.company && contact.company.trim()) {
+            companies.add(contact.company.trim());
+          }
+        });
+        
+        setAllRoles(Array.from(roles).sort());
+        setAllCompanies(Array.from(companies).sort());
+      }
+    } catch (error) {
+      console.error('Error fetching roles and companies:', error);
+    }
+  };
+
   const fetchContacts = async () => {
     setLoading(true);
     try {
@@ -131,6 +171,12 @@ export default function EmailAdminPage() {
       }
       if (showBlockedOnly) {
         params.append('blocked', 'true');
+      }
+      if (filterRole) {
+        params.append('role', filterRole);
+      }
+      if (filterCompany) {
+        params.append('company', filterCompany);
       }
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
@@ -460,19 +506,24 @@ export default function EmailAdminPage() {
 
     setSending(true);
     try {
+      const tagsToAdd = campaignTagsToAdd ? campaignTagsToAdd.split(',').map(t => t.trim()).filter(t => t) : [];
+      
       const response = await fetch('/api/email/send-campaign', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           campaignId,
           tagFilters: sendToAll ? [] : selectedContactTags,
+          tagsToAdd: tagsToAdd.length > 0 ? tagsToAdd : null,
           sendImmediately: true,
         }),
       });
       const data = await response.json();
       if (data.success) {
-        alert(`Campaign sent! ${data.sent} emails sent successfully.`);
+        alert(`Campaign sent! ${data.sent} emails sent successfully.${tagsToAdd.length > 0 ? ` Tags "${tagsToAdd.join(', ')}" added to recipients.` : ''}`);
         fetchCampaigns();
+        setCampaignTagsToAdd('');
+        fetchAllTags(); // Refresh tags list
       } else {
         alert(data.error || 'Failed to send campaign');
       }
@@ -500,6 +551,66 @@ export default function EmailAdminPage() {
       alert('Error duplicating campaign');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleBulkTag = async () => {
+    if (!bulkTagInput.trim()) {
+      alert('Please enter at least one tag');
+      return;
+    }
+
+    const tags = bulkTagInput.split(',').map(t => t.trim()).filter(t => t);
+    if (tags.length === 0) {
+      alert('Please enter valid tags');
+      return;
+    }
+
+    if (!confirm(`Add tags "${tags.join(', ')}" to all ${contacts.length} currently filtered contacts?`)) {
+      return;
+    }
+
+    setBulkTagging(true);
+    try {
+      const filters: any = {};
+      if (selectedTags.length > 0) {
+        filters.tags = selectedTags;
+      }
+      if (filterSubscribed !== null) {
+        filters.subscribed = filterSubscribed;
+      }
+      if (filterRole) {
+        filters.role = filterRole;
+      }
+      if (filterCompany) {
+        filters.company = filterCompany;
+      }
+      if (showBlockedOnly) {
+        filters.blocked = true;
+      }
+
+      const response = await fetch('/api/email/bulk-tag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tags,
+          filters: Object.keys(filters).length > 0 ? filters : null,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert(`Successfully added tags "${tags.join(', ')}" to ${data.updated} out of ${data.total} contacts.${data.errors ? `\n\nErrors: ${data.errors.length}` : ''}`);
+        setBulkTagInput('');
+        fetchAllTags();
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to bulk tag contacts');
+      }
+    } catch (error: any) {
+      alert(`Error bulk tagging: ${error.message || 'Unknown error'}`);
+    } finally {
+      setBulkTagging(false);
     }
   };
 
@@ -601,6 +712,32 @@ export default function EmailAdminPage() {
                   <option value="blocked">Blocked Only</option>
                 </select>
               </div>
+              <div className="min-w-[150px]">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                <select
+                  value={filterRole}
+                  onChange={(e) => setFilterRole(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="">All Roles</option>
+                  {allRoles.map(role => (
+                    <option key={role} value={role}>{role}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="min-w-[150px]">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                <select
+                  value={filterCompany}
+                  onChange={(e) => setFilterCompany(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  <option value="">All Companies</option>
+                  {allCompanies.map(company => (
+                    <option key={company} value={company}>{company}</option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Import CSV</label>
                 <div className="flex gap-2 items-center">
@@ -620,6 +757,36 @@ export default function EmailAdminPage() {
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   CSV format: Email, First Name, Last Name, Role, Company (optional: Tags, Subscribed)
+                </p>
+              </div>
+              <div className="border-t pt-4 mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Bulk Tag Contacts</label>
+                <p className="text-xs text-gray-500 mb-2">
+                  Add tags to all contacts matching the current filters (tags, role, company, etc.)
+                </p>
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    value={bulkTagInput}
+                    onChange={(e) => setBulkTagInput(e.target.value)}
+                    placeholder="Tags (comma-separated, e.g., Dec 10, Newsletter)"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !bulkTagging) {
+                        handleBulkTag();
+                      }
+                    }}
+                  />
+                  <button
+                    onClick={handleBulkTag}
+                    disabled={bulkTagging || !bulkTagInput.trim()}
+                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
+                  >
+                    {bulkTagging ? 'Tagging...' : 'Add Tags'}
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  Will tag {contacts.length} contact{contacts.length !== 1 ? 's' : ''} matching current filters
                 </p>
               </div>
               <div className="border-t pt-4 mt-4">
@@ -893,6 +1060,20 @@ export default function EmailAdminPage() {
                     </div>
                   )}
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Add Tags to Recipients (optional)</label>
+                <input
+                  type="text"
+                  value={campaignTagsToAdd}
+                  onChange={(e) => setCampaignTagsToAdd(e.target.value)}
+                  placeholder="Tags to add to recipients (comma-separated, e.g., Dec 10, Newsletter)"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  These tags will be automatically added to all recipients when the campaign is sent.
+                </p>
               </div>
 
               <div>

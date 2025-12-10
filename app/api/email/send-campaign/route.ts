@@ -49,7 +49,7 @@ function addUnsubscribeLinkText(textContent: string, token: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { campaignId, tagFilters, sendImmediately = true } = await request.json();
+    const { campaignId, tagFilters, tagsToAdd, sendImmediately = true } = await request.json();
 
     if (!campaignId) {
       return NextResponse.json(
@@ -398,6 +398,27 @@ export async function POST(request: NextRequest) {
               sent_at: new Date().toISOString(),
               sendgrid_message_id: response.headers['x-message-id'] || null,
             });
+
+          // Add tags to recipient if specified
+          if (tagsToAdd && Array.isArray(tagsToAdd) && tagsToAdd.length > 0) {
+            const currentTags = contact.tags || [];
+            const tagsArray = Array.isArray(currentTags) ? currentTags : [];
+            const newTags = [...tagsArray];
+            
+            // Add new tags that don't already exist (case-insensitive)
+            tagsToAdd.forEach((tag: string) => {
+              const normalizedTag = tag.trim();
+              if (normalizedTag && !newTags.some(t => t.trim().toLowerCase() === normalizedTag.toLowerCase())) {
+                newTags.push(normalizedTag);
+              }
+            });
+            
+            // Update contact with new tags
+            await supabase
+              .from('email_contacts')
+              .update({ tags: newTags })
+              .eq('id', contact.id);
+          }
 
           sentCount++;
           return { success: true, email: contact.email };

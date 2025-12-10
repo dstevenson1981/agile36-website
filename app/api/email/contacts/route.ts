@@ -8,6 +8,8 @@ export async function GET(request: NextRequest) {
     const subscribed = searchParams.get('subscribed');
     const blocked = searchParams.get('blocked');
     const search = searchParams.get('search');
+    const role = searchParams.get('role');
+    const company = searchParams.get('company');
 
     // Supabase setup
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -45,6 +47,14 @@ export async function GET(request: NextRequest) {
 
     if (search) {
       query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`);
+    }
+
+    if (role) {
+      query = query.eq('role', role);
+    }
+
+    if (company) {
+      query = query.eq('company', company);
     }
 
     const { data: contacts, error } = await query.order('created_at', { ascending: false });
