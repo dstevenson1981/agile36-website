@@ -35,17 +35,38 @@ export async function GET(request: NextRequest) {
     }
 
     // Get blocked contacts count
-    const { data: blockedContacts, error: blockedError } = await supabase
+    // Try to count from blocked column first, fallback to bounced emails if column doesn't exist
+    let totalBlocked = 0;
+    
+    // First, try to get count from blocked column
+    const { count: blockedCount, error: blockedError } = await supabase
       .from('email_contacts')
-      .select('id', { count: 'exact', head: true })
+      .select('*', { count: 'exact', head: true })
       .eq('blocked', true);
+    
+    if (!blockedError && blockedCount !== null) {
+      totalBlocked = blockedCount;
+      console.log(`Found ${totalBlocked} blocked contacts from blocked column`);
+    } else {
+      // If blocked column doesn't exist or query failed, count unique contacts with bounced emails
+      console.log('Blocked column query failed or column missing, counting from bounced emails');
+      const { data: bouncedSends } = await supabase
+        .from('email_sends')
+        .select('contact_id')
+        .eq('bounced', true);
+      
+      if (bouncedSends && bouncedSends.length > 0) {
+        const uniqueBouncedContactIds = new Set(bouncedSends.map((s: any) => s.contact_id).filter(id => id !== null));
+        totalBlocked = uniqueBouncedContactIds.size;
+        console.log(`Found ${totalBlocked} unique contacts with bounced emails`);
+      }
+    }
 
     // Calculate analytics
     const totalSent = sends?.length || 0;
     const totalOpened = sends?.filter(s => s.opened_at).length || 0;
     const totalClicked = sends?.filter(s => s.clicked_at).length || 0;
     const totalBounced = sends?.filter(s => s.bounced).length || 0;
-    const totalBlocked = blockedContacts?.length || 0;
 
     const openRate = totalSent > 0 ? ((totalOpened / totalSent) * 100).toFixed(2) : '0';
     const clickRate = totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(2) : '0';
