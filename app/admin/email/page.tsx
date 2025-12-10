@@ -759,7 +759,17 @@ export default function EmailAdminPage() {
                 </select>
               </div>
               <div className="min-w-[150px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-medium text-gray-700">Role</label>
+                  <button
+                    type="button"
+                    onClick={fetchAllRolesAndCompanies}
+                    className="text-xs text-blue-600 hover:text-blue-800"
+                    title="Refresh roles and companies"
+                  >
+                    🔄
+                  </button>
+                </div>
                 <select
                   value={filterRole}
                   onChange={(e) => setFilterRole(e.target.value)}
@@ -772,7 +782,17 @@ export default function EmailAdminPage() {
                 </select>
               </div>
               <div className="min-w-[150px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-medium text-gray-700">Company</label>
+                  <button
+                    type="button"
+                    onClick={fetchAllRolesAndCompanies}
+                    className="text-xs text-blue-600 hover:text-blue-800"
+                    title="Refresh roles and companies"
+                  >
+                    🔄
+                  </button>
+                </div>
                 <select
                   value={filterCompany}
                   onChange={(e) => setFilterCompany(e.target.value)}
