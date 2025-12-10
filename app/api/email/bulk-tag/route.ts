@@ -107,14 +107,6 @@ export async function POST(request: NextRequest) {
       contacts = fetchedContacts || [];
     }
 
-    if (fetchError) {
-      console.error('Error fetching contacts:', fetchError);
-      return NextResponse.json(
-        { error: 'Failed to fetch contacts' },
-        { status: 500 }
-      );
-    }
-
     if (!contacts || contacts.length === 0) {
       return NextResponse.json(
         { error: 'No contacts found matching the criteria' },
