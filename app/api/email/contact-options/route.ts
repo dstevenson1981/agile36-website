@@ -112,10 +112,44 @@ export async function GET(request: NextRequest) {
 
     console.log(`Fetched ${totalFetched} contacts, found ${roles.size} unique roles and ${companies.size} unique companies`);
 
+    // Also fetch all tags
+    const tags = new Set<string>();
+    offset = 0;
+    hasMore = true;
+    
+    while (hasMore) {
+      const { data: batchContacts, error: tagError } = await supabase
+        .from('email_contacts')
+        .select('tags')
+        .range(offset, offset + batchSize - 1);
+
+      if (tagError || !batchContacts || batchContacts.length === 0) {
+        hasMore = false;
+        break;
+      }
+
+      batchContacts.forEach((contact: any) => {
+        if (contact.tags && Array.isArray(contact.tags)) {
+          contact.tags.forEach((tag: string) => {
+            if (tag && typeof tag === 'string' && tag.trim()) {
+              tags.add(tag.trim());
+            }
+          });
+        }
+      });
+
+      if (batchContacts.length < batchSize) {
+        hasMore = false;
+      } else {
+        offset += batchSize;
+      }
+    }
+
     return NextResponse.json({
       success: true,
       roles: Array.from(roles).sort(),
       companies: Array.from(companies).sort(),
+      tags: Array.from(tags).sort(),
     });
   } catch (error: any) {
     console.error('Error in contact-options API:', error);

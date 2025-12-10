@@ -60,6 +60,8 @@ export default function EmailAdminPage() {
   const [sendToAll, setSendToAll] = useState(false);
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
+  const [recipientCount, setRecipientCount] = useState<number | null>(null);
+  const [loadingRecipients, setLoadingRecipients] = useState(false);
   const [editingContact, setEditingContact] = useState<Contact | null>(null);
   const [editTags, setEditTags] = useState<string>('');
 
@@ -104,34 +106,81 @@ export default function EmailAdminPage() {
   const fetchAllTags = async () => {
     try {
       console.log('Fetching all tags...');
-      // Fetch all contacts (no filters) just to get all tags
-      const response = await fetch('/api/email/contacts');
+      // Use the contact-options endpoint which fetches ALL tags from ALL contacts
+      const response = await fetch('/api/email/contact-options');
       const data = await response.json();
       
       console.log('Tags API response:', data);
       
-      if (data.success && data.contacts && Array.isArray(data.contacts)) {
-        // Extract all unique tags from ALL contacts
-        const tags = new Set<string>();
-        data.contacts.forEach((contact: Contact) => {
-          if (contact.tags && Array.isArray(contact.tags)) {
-            contact.tags.forEach(tag => {
-              if (tag && typeof tag === 'string' && tag.trim()) {
-                tags.add(tag.trim());
-              }
-            });
-          }
-        });
-        const sortedTags = Array.from(tags).sort();
-        console.log('All tags found:', sortedTags, 'from', data.contacts.length, 'contacts'); // Debug log
-        setAllTags(sortedTags);
+      if (data.success && data.tags) {
+        setAllTags(data.tags);
+        console.log('All tags found:', data.tags.length, 'tags');
       } else {
-        console.warn('No contacts or invalid response:', data);
+        // Fallback to old method if new endpoint doesn't have tags yet
+        const fallbackResponse = await fetch('/api/email/contacts');
+        const fallbackData = await fallbackResponse.json();
+        
+        if (fallbackData.success && fallbackData.contacts && Array.isArray(fallbackData.contacts)) {
+          const tags = new Set<string>();
+          fallbackData.contacts.forEach((contact: Contact) => {
+            if (contact.tags && Array.isArray(contact.tags)) {
+              contact.tags.forEach(tag => {
+                if (tag && typeof tag === 'string' && tag.trim()) {
+                  tags.add(tag.trim());
+                }
+              });
+            }
+          });
+          setAllTags(Array.from(tags).sort());
+        }
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
     }
   };
+  
+  const fetchRecipientCount = async () => {
+    if (sendToAll) {
+      setLoadingRecipients(true);
+      try {
+        const response = await fetch('/api/email/contacts?subscribed=true&blocked=false');
+        const data = await response.json();
+        if (data.success) {
+          setRecipientCount(data.totalCount || data.contacts?.length || 0);
+        }
+      } catch (error) {
+        console.error('Error fetching recipient count:', error);
+      } finally {
+        setLoadingRecipients(false);
+      }
+    } else if (selectedContactTags.length > 0) {
+      setLoadingRecipients(true);
+      try {
+        const params = new URLSearchParams();
+        params.append('tags', selectedContactTags.join(','));
+        params.append('subscribed', 'true');
+        params.append('blocked', 'false');
+        const response = await fetch(`/api/email/contacts?${params.toString()}`);
+        const data = await response.json();
+        if (data.success) {
+          setRecipientCount(data.totalCount || data.contacts?.length || 0);
+        }
+      } catch (error) {
+        console.error('Error fetching recipient count:', error);
+      } finally {
+        setLoadingRecipients(false);
+      }
+    } else {
+      setRecipientCount(null);
+    }
+  };
+  
+  // Fetch recipient count when selection changes
+  useEffect(() => {
+    if (activeTab === 'compose') {
+      fetchRecipientCount();
+    }
+  }, [sendToAll, selectedContactTags, activeTab]);
 
   const fetchAllRolesAndCompanies = async () => {
     try {
@@ -141,6 +190,10 @@ export default function EmailAdminPage() {
       if (data.success) {
         setAllRoles(data.roles || []);
         setAllCompanies(data.companies || []);
+        // Also update tags if available
+        if (data.tags) {
+          setAllTags(data.tags);
+        }
       }
     } catch (error) {
       console.error('Error fetching roles and companies:', error);
@@ -1133,12 +1186,33 @@ export default function EmailAdminPage() {
                     Send to all subscribed contacts
                   </label>
                   
+                  {/* Recipient Count Preview */}
+                  <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
+                    {loadingRecipients ? (
+                      <p className="text-sm text-gray-600">Calculating recipients...</p>
+                    ) : recipientCount !== null ? (
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">
+                          📧 Will send to: <span className="text-blue-600">{recipientCount.toLocaleString()}</span> contact{recipientCount !== 1 ? 's' : ''}
+                        </p>
+                        {!sendToAll && selectedContactTags.length > 0 && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            Based on tags: {selectedContactTags.join(', ')}
+                          </p>
+                        )}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">Select recipients above to see count</p>
+                    )}
+                  </div>
+                  
                   {/* Quick Actions */}
                   {!sendToAll && (
                     <div className="flex gap-2 flex-wrap">
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
+                          await fetchAllTags(); // Refresh tags first
                           const todayTag = `Imported ${new Date().toISOString().split('T')[0]}`;
                           if (allTags.includes(todayTag)) {
                             setSelectedContactTags([todayTag]);
@@ -1152,7 +1226,8 @@ export default function EmailAdminPage() {
                       </button>
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
+                          await fetchAllTags(); // Refresh tags first
                           const recentTags = allTags.filter(tag => tag.startsWith('Imported '));
                           if (recentTags.length > 0) {
                             // Get the most recent import tag
@@ -1166,27 +1241,62 @@ export default function EmailAdminPage() {
                       >
                         📥 Send to Most Recent Import
                       </button>
+                      <button
+                        type="button"
+                        onClick={fetchAllTags}
+                        className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200"
+                        title="Refresh tag list"
+                      >
+                        🔄 Refresh Tags
+                      </button>
                     </div>
                   )}
                   
                   {!sendToAll && (
                     <div>
-                      <label className="block text-sm text-gray-600 mb-2">Or select by tags:</label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="block text-sm text-gray-600">Select by tags ({allTags.length} available):</label>
+                        <button
+                          type="button"
+                          onClick={fetchAllTags}
+                          className="text-xs text-blue-600 hover:text-blue-800"
+                        >
+                          Refresh
+                        </button>
+                      </div>
                       <select
                         multiple
                         value={selectedContactTags}
                         onChange={(e) => setSelectedContactTags(Array.from(e.target.selectedOptions, option => option.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md min-h-[100px]"
-                        size={Math.min(Math.max(allTags.length, 5), 10)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md min-h-[150px]"
+                        size={Math.min(Math.max(allTags.length, 5), 15)}
                       >
-                        {allTags.map(tag => (
-                          <option key={tag} value={tag}>{tag}</option>
-                        ))}
+                        {allTags.length > 0 ? (
+                          allTags.map(tag => (
+                            <option key={tag} value={tag}>{tag}</option>
+                          ))
+                        ) : (
+                          <option disabled>No tags found. Click Refresh or import contacts.</option>
+                        )}
                       </select>
                       {selectedContactTags.length > 0 && (
-                        <p className="text-xs text-gray-500 mt-1">
-                          Selected: {selectedContactTags.join(', ')}
-                        </p>
+                        <div className="mt-2 p-2 bg-blue-50 rounded border border-blue-200">
+                          <p className="text-xs font-semibold text-blue-900 mb-1">Selected Tags:</p>
+                          <div className="flex flex-wrap gap-1">
+                            {selectedContactTags.map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-blue-200 text-blue-800 text-xs rounded">
+                                {tag} ×
+                                <button
+                                  type="button"
+                                  onClick={() => setSelectedContactTags(selectedContactTags.filter(t => t !== tag))}
+                                  className="ml-1 hover:text-red-600"
+                                >
+                                  ×
+                                </button>
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </div>
                   )}
