@@ -106,8 +106,16 @@ export async function POST(request: NextRequest) {
           subscribed = subValue !== 'false' && subValue !== '0' && subValue !== 'no' && subValue !== 'n';
         }
 
-        // Extract company from CSV or fallback to email domain
-        let company = csvRecord.company || csvRecord.Company || csvRecord['Company'] || null;
+        // Extract company from CSV - check multiple possible column names
+        let company = csvRecord.company || 
+                      csvRecord.Company || 
+                      csvRecord['Company'] || 
+                      csvRecord['Company Name'] || 
+                      csvRecord['company name'] || 
+                      csvRecord['COMPANY NAME'] ||
+                      csvRecord.companyName ||
+                      csvRecord.company_name ||
+                      null;
         
         // If no company column, extract from email domain
         if (!company && email.includes('@')) {
