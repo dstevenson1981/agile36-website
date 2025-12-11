@@ -55,24 +55,24 @@ WHERE id IN (
 );
 */
 
--- RECOMMENDED: Tag contacts created in the last 2 hours (adjust as needed)
--- This is the safest option if you just imported
+-- RECOMMENDED: Tag contacts created YESTERDAY (all day)
+-- This tags all contacts imported yesterday
 UPDATE email_contacts
 SET tags = CASE 
   WHEN tags IS NULL THEN ARRAY['Leadership']
   WHEN 'Leadership' = ANY(tags) THEN tags  -- Already has it, keep as is
   ELSE tags || ARRAY['Leadership']  -- Add to existing tags
 END
-WHERE created_at >= NOW() - INTERVAL '2 hours';
+WHERE created_at::date = CURRENT_DATE - INTERVAL '1 day';
 
--- Verify the update
+-- Verify the update - Check how many contacts were tagged
 SELECT 
-  COUNT(*) as total_tagged,
-  COUNT(CASE WHEN 'Leadership' = ANY(tags) THEN 1 END) as has_leadership_tag
+  COUNT(*) as total_contacts_yesterday,
+  COUNT(CASE WHEN 'Leadership' = ANY(tags) THEN 1 END) as now_has_leadership_tag
 FROM email_contacts
-WHERE created_at >= NOW() - INTERVAL '2 hours';
+WHERE created_at::date = CURRENT_DATE - INTERVAL '1 day';
 
--- Show sample of tagged contacts
+-- Show sample of tagged contacts from yesterday
 SELECT 
   id,
   email,
@@ -82,6 +82,6 @@ SELECT
   created_at
 FROM email_contacts
 WHERE 'Leadership' = ANY(tags)
-  AND created_at >= NOW() - INTERVAL '2 hours'
+  AND created_at::date = CURRENT_DATE - INTERVAL '1 day'
 ORDER BY created_at DESC
-LIMIT 10;
+LIMIT 20;
