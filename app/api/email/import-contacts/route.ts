@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
         // Check if contact already exists
         const { data: existingContact } = await supabase
           .from('email_contacts')
-          .select('id')
+          .select('id, tags')
           .eq('email', emailLower)
           .maybeSingle();
 
@@ -101,10 +101,25 @@ export async function POST(request: NextRequest) {
           } else if (Array.isArray(csvRecord.tags)) {
             tags = csvRecord.tags;
           }
-        } else if (bulkTags && !isUpdate) {
-          // CSV has NO Tags column - use bulk tags provided by user (only for new contacts)
+        } else if (bulkTags) {
+          // CSV has NO Tags column - use bulk tags provided by user
+          // Apply to both new contacts and updates (so re-uploads can tag existing contacts)
           const bulkTagsArray = bulkTags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          tags = bulkTagsArray;
+          if (isUpdate) {
+            // For updates, merge with existing tags
+            const existingTags = (contact.tags || []) as string[];
+            const existingTagsArray = Array.isArray(existingTags) ? existingTags : [];
+            tags = [...existingTagsArray];
+            // Add bulk tags that don't already exist
+            bulkTagsArray.forEach(tag => {
+              if (!tags.some(t => t.trim().toLowerCase() === tag.trim().toLowerCase())) {
+                tags.push(tag);
+              }
+            });
+          } else {
+            // For new contacts, just use bulk tags
+            tags = bulkTagsArray;
+          }
         }
         
         // Note: We do NOT auto-tag with filename or date anymore
