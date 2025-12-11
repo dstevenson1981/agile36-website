@@ -480,17 +480,6 @@ function EmailAdminContent() {
         {/* Contacts Tab */}
         {activeTab === 'contacts' && (
           <div className="bg-white rounded-lg shadow">
-            {/* Primary Action Button - Always Visible */}
-            <div className="p-6 border-b border-gray-200">
-              <button
-                onClick={handleCreateCampaignFromContacts}
-                disabled={filteredContactCount === 0}
-                className="w-full px-6 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-              >
-                Create Campaign ({filteredContactCount.toLocaleString()} contacts)
-              </button>
-            </div>
-
             <div className="p-6">
               {/* Simple Filter Bar */}
               <div className="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
