@@ -634,15 +634,27 @@ function EmailAdminContent() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <label className="block text-sm font-medium text-gray-700">Tags</label>
-                    <button
-                      onClick={() => {
-                        setShowManageTagsModal(true);
-                        fetchTagStats();
-                      }}
-                      className="text-xs text-blue-600 hover:text-blue-800"
-                    >
-                      Manage Tags
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          fetchAllTags();
+                          fetchTagStats();
+                        }}
+                        className="text-xs text-gray-600 hover:text-gray-800"
+                        title="Refresh tags list"
+                      >
+                        🔄 Refresh
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowManageTagsModal(true);
+                          fetchTagStats();
+                        }}
+                        className="text-xs text-blue-600 hover:text-blue-800"
+                      >
+                        Manage Tags
+                      </button>
+                    </div>
                   </div>
                   <div className="relative">
                     <select
@@ -652,10 +664,17 @@ function EmailAdminContent() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md pr-8"
                       size={3}
                     >
-                      {allTags.map(tag => (
-                        <option key={tag} value={tag}>{tag}</option>
-                      ))}
+                      {allTags.length === 0 ? (
+                        <option disabled>No tags found. Click Refresh.</option>
+                      ) : (
+                        allTags.map(tag => (
+                          <option key={tag} value={tag}>{tag}</option>
+                        ))
+                      )}
                     </select>
+                  </div>
+                  <div className="mt-1 text-xs text-gray-500">
+                    {allTags.length} tag{allTags.length !== 1 ? 's' : ''} available
                   </div>
                   {selectedTags.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1">
@@ -1010,13 +1029,19 @@ function EmailAdminContent() {
                             setCsvFile(null);
                             setImportBulkTags('');
                             
-                            // Refresh data with a small delay to ensure database is updated
+                            // Refresh data immediately and again after delay to ensure database is updated
+                            fetchAllTags();
+                            fetchAllRolesAndCompanies();
+                            fetchContacts();
+                            fetchTagStats();
+                            
+                            // Also refresh again after a delay to catch any delayed database updates
                             setTimeout(() => {
                               fetchAllTags();
                               fetchAllRolesAndCompanies();
                               fetchContacts();
                               fetchTagStats();
-                            }, 500);
+                            }, 1000);
                           } else {
                             alert(data.error || 'Import failed');
                           }
