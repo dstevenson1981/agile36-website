@@ -194,9 +194,11 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Check if CSV had Tags column
-    const firstRecord = records[0] as Record<string, string> | undefined;
-    const hasTagsColumn = firstRecord && (firstRecord.tags !== undefined && firstRecord.tags !== null && firstRecord.tags !== '');
+    // Check if CSV had Tags column by checking if any record has tags
+    // We check the parsed records to see if 'tags' key exists (even if empty)
+    const hasTagsColumn = records.length > 0 && records.some((record: any) => 
+      'tags' in record || 'Tags' in record || 'TAGS' in record
+    );
 
     return NextResponse.json({
       success: true,

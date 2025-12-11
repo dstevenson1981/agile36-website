@@ -654,7 +654,9 @@ function EmailAdminContent() {
                           return;
                         }
                         
-                        const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
+                        // Check headers for Tags column (case-insensitive)
+                        const headerLine = lines[0];
+                        const headers = headerLine.split(',').map(h => h.trim().toLowerCase());
                         const hasTags = headers.includes('tags');
                         const recordCount = lines.length - 1; // Exclude header
                         
