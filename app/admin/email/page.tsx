@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 interface Contact {
@@ -40,7 +40,7 @@ interface RecipientFilters {
   search?: string;
 }
 
-export default function EmailAdminPage() {
+function EmailAdminContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('contacts');
@@ -1037,5 +1037,13 @@ export default function EmailAdminPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function EmailAdminPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><div>Loading...</div></div>}>
+      <EmailAdminContent />
+    </Suspense>
   );
 }
