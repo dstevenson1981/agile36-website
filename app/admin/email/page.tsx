@@ -89,6 +89,13 @@ function EmailAdminContent() {
   const [csvPreview, setCsvPreview] = useState<{ count: number; hasTags: boolean } | null>(null);
   const [csvFile, setCsvFile] = useState<File | null>(null);
   const [importBulkTags, setImportBulkTags] = useState('');
+  
+  // Tag management
+  const [showManageTagsModal, setShowManageTagsModal] = useState(false);
+  const [tagStats, setTagStats] = useState<{ tag: string; count: number }[]>([]);
+  const [removingTag, setRemovingTag] = useState<string | null>(null);
+  const [tagToRemove, setTagToRemove] = useState<string | null>(null);
+  const [tagRemoveConfirm, setTagRemoveConfirm] = useState(false);
 
   // Check URL parameters on mount and when tab changes
   useEffect(() => {
@@ -139,6 +146,7 @@ function EmailAdminContent() {
       fetchContacts();
       fetchAllTags();
       fetchAllRolesAndCompanies();
+      fetchTagStats();
     } else if (activeTab === 'campaigns') {
       fetchCampaigns();
     } else if (activeTab === 'analytics') {
@@ -213,6 +221,110 @@ function EmailAdminContent() {
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
+    }
+  };
+
+  const fetchTagStats = async () => {
+    try {
+      const response = await fetch('/api/email/tag-stats');
+      const data = await response.json();
+      if (data.success && data.tags) {
+        setTagStats(data.tags);
+      }
+    } catch (error) {
+      console.error('Error fetching tag stats:', error);
+    }
+  };
+
+  const handleRemoveTagFromContact = async (contactId: number, tagToRemove: string) => {
+    try {
+      const contact = contacts.find(c => c.id === contactId);
+      if (!contact) return;
+
+      const currentTags = contact.tags || [];
+      const newTags = currentTags.filter(t => t.trim().toLowerCase() !== tagToRemove.trim().toLowerCase());
+
+      const response = await fetch(`/api/email/contacts/${contactId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tags: newTags.length > 0 ? newTags : null }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        fetchContacts();
+        fetchAllTags();
+      } else {
+        alert(data.error || 'Failed to remove tag');
+      }
+    } catch (error) {
+      console.error('Error removing tag:', error);
+      alert('Failed to remove tag');
+    }
+  };
+
+  const handleRemoveTagFromAll = async (tag: string) => {
+    setRemovingTag(tag);
+    try {
+      const response = await fetch('/api/email/remove-tag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tag }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert(data.message || `Removed tag "${tag}" from ${data.removed} contacts`);
+        fetchContacts();
+        fetchAllTags();
+        fetchTagStats();
+        setTagToRemove(null);
+        setTagRemoveConfirm(false);
+      } else {
+        alert(data.error || 'Failed to remove tag');
+      }
+    } catch (error) {
+      console.error('Error removing tag:', error);
+      alert('Failed to remove tag');
+    } finally {
+      setRemovingTag(null);
+    }
+  };
+
+  const handleRemoveTagFromAllExceptSelected = async (tag: string) => {
+    const selectedContactIds = contacts.map(c => c.id);
+    
+    if (selectedContactIds.length === 0) {
+      alert('No contacts selected. Filter to show the contacts that should KEEP the tag, then try again.');
+      return;
+    }
+
+    if (!confirm(`Remove tag "${tag}" from all contacts EXCEPT the ${selectedContactIds.length} currently displayed contacts?`)) {
+      return;
+    }
+
+    setRemovingTag(tag);
+    try {
+      const response = await fetch('/api/email/remove-tag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tag, excludeContactIds: selectedContactIds }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert(data.message || `Removed tag "${tag}" from ${data.removed} contacts`);
+        fetchContacts();
+        fetchAllTags();
+        fetchTagStats();
+      } else {
+        alert(data.error || 'Failed to remove tag');
+      }
+    } catch (error) {
+      console.error('Error removing tag:', error);
+      alert('Failed to remove tag');
+    } finally {
+      setRemovingTag(null);
     }
   };
 
@@ -497,18 +609,56 @@ function EmailAdminContent() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
-                  <select
-                    multiple
-                    value={selectedTags}
-                    onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    size={3}
-                  >
-                    {allTags.map(tag => (
-                      <option key={tag} value={tag}>{tag}</option>
-                    ))}
-                  </select>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-sm font-medium text-gray-700">Tags</label>
+                    <button
+                      onClick={() => {
+                        setShowManageTagsModal(true);
+                        fetchTagStats();
+                      }}
+                      className="text-xs text-blue-600 hover:text-blue-800"
+                    >
+                      Manage Tags
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <select
+                      multiple
+                      value={selectedTags}
+                      onChange={(e) => setSelectedTags(Array.from(e.target.selectedOptions, option => option.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md pr-8"
+                      size={3}
+                    >
+                      {allTags.map(tag => (
+                        <option key={tag} value={tag}>{tag}</option>
+                      ))}
+                    </select>
+                  </div>
+                  {selectedTags.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1">
+                      {selectedTags.map(tag => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
+                        >
+                          {tag}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const tagCount = tagStats.find(t => t.tag === tag)?.count || 0;
+                              if (confirm(`Remove tag "${tag}" from all ${tagCount} contact${tagCount !== 1 ? 's' : ''}?`)) {
+                                handleRemoveTagFromAll(tag);
+                              }
+                            }}
+                            className="text-blue-600 hover:text-red-600 font-bold"
+                            title={`Remove "${tag}" from all contacts`}
+                          >
+                            ×
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
@@ -539,13 +689,29 @@ function EmailAdminContent() {
               </div>
 
               {/* Contact Count Display */}
-              <div className="mb-4 text-sm text-gray-600">
-                <strong>Total Contacts:</strong> {totalContactCount.toLocaleString()} | 
-                <strong> Displayed:</strong> {contacts.length.toLocaleString()}
-                {filteredContactCount !== contacts.length && (
-                  <span className="ml-2 text-blue-600">
-                    (Filtered: {filteredContactCount.toLocaleString()})
-                  </span>
+              <div className="mb-4 flex items-center justify-between">
+                <div className="text-sm text-gray-600">
+                  <strong>Total Contacts:</strong> {totalContactCount.toLocaleString()} | 
+                  <strong> Displayed:</strong> {contacts.length.toLocaleString()}
+                  {filteredContactCount !== contacts.length && (
+                    <span className="ml-2 text-blue-600">
+                      (Filtered: {filteredContactCount.toLocaleString()})
+                    </span>
+                  )}
+                </div>
+                {selectedTags.length > 0 && (
+                  <button
+                    onClick={() => {
+                      const tag = selectedTags[0];
+                      if (confirm(`Remove tag "${tag}" from all contacts EXCEPT the ${contacts.length} currently displayed?`)) {
+                        handleRemoveTagFromAllExceptSelected(tag);
+                      }
+                    }}
+                    className="text-xs px-3 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200"
+                    title="Remove tag from all contacts except those currently displayed"
+                  >
+                    Remove "{selectedTags[0]}" from all others
+                  </button>
                 )}
               </div>
 
@@ -574,7 +740,26 @@ function EmailAdminContent() {
                             {contact.company || '-'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {contact.tags?.join(', ') || '-'}
+                            {contact.tags && contact.tags.length > 0 ? (
+                              <div className="flex flex-wrap gap-1">
+                                {contact.tags.map((tag, idx) => (
+                                  <button
+                                    key={idx}
+                                    onClick={() => {
+                                      if (confirm(`Remove tag "${tag}" from ${contact.email}?`)) {
+                                        handleRemoveTagFromContact(contact.id, tag);
+                                      }
+                                    }}
+                                    className="px-2 py-1 bg-gray-100 text-gray-700 rounded hover:bg-red-100 hover:text-red-700 cursor-pointer text-xs"
+                                    title={`Click to remove "${tag}" from this contact`}
+                                  >
+                                    {tag}
+                                  </button>
+                                ))}
+                              </div>
+                            ) : (
+                              '-'
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -625,6 +810,108 @@ function EmailAdminContent() {
                 <span>Next: Create Campaign ({filteredContactCount.toLocaleString()} contacts)</span>
                 <span>→</span>
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Manage Tags Modal */}
+        {showManageTagsModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold">Manage Tags</h3>
+                <button
+                  onClick={() => {
+                    setShowManageTagsModal(false);
+                    setTagToRemove(null);
+                    setTagRemoveConfirm(false);
+                  }}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="mb-4 text-sm text-gray-600">
+                Click "Delete" to remove a tag from all contacts that have it.
+              </div>
+
+              {tagStats.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">Loading tag statistics...</div>
+              ) : (
+                <div className="space-y-2">
+                  {tagStats.map(({ tag, count }) => (
+                    <div
+                      key={tag}
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded border"
+                    >
+                      <div>
+                        <span className="font-medium text-gray-900">{tag}</span>
+                        <span className="ml-2 text-sm text-gray-500">
+                          ({count.toLocaleString()} contact{count !== 1 ? 's' : ''})
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => {
+                          if (tagRemoveConfirm && tagToRemove === tag) {
+                            handleRemoveTagFromAll(tag);
+                          } else {
+                            setTagToRemove(tag);
+                            setTagRemoveConfirm(true);
+                          }
+                        }}
+                        disabled={removingTag === tag}
+                        className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 disabled:opacity-50"
+                      >
+                        {removingTag === tag
+                          ? 'Removing...'
+                          : tagRemoveConfirm && tagToRemove === tag
+                          ? 'Confirm Delete'
+                          : 'Delete'}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {tagRemoveConfirm && tagToRemove && (
+                <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded">
+                  <p className="text-sm text-yellow-800">
+                    <strong>Confirm:</strong> Remove tag "{tagToRemove}" from all contacts? This cannot be undone.
+                  </p>
+                  <div className="mt-2 flex gap-2">
+                    <button
+                      onClick={() => handleRemoveTagFromAll(tagToRemove)}
+                      disabled={removingTag === tagToRemove}
+                      className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 disabled:opacity-50"
+                    >
+                      {removingTag === tagToRemove ? 'Removing...' : 'Yes, Delete'}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setTagToRemove(null);
+                        setTagRemoveConfirm(false);
+                      }}
+                      className="px-3 py-1 bg-gray-200 text-gray-800 text-sm rounded hover:bg-gray-300"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6 pt-4 border-t">
+                <button
+                  onClick={() => {
+                    setShowManageTagsModal(false);
+                    setTagToRemove(null);
+                    setTagRemoveConfirm(false);
+                  }}
+                  className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         )}
