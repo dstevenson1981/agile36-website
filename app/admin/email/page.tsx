@@ -596,6 +596,29 @@ function EmailAdminContent() {
         {activeTab === 'contacts' && (
           <div className="bg-white rounded-lg shadow">
             <div className="p-6">
+              {/* Action Buttons - Top of Page */}
+              <div className="mb-6 flex flex-wrap gap-3 pb-4 border-b border-gray-200">
+                <button
+                  onClick={() => setShowImportModal(true)}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm font-medium"
+                >
+                  📥 Import Contacts
+                </button>
+                <a
+                  href="/email-contacts-template.csv"
+                  download
+                  className="px-4 py-2 bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 text-sm font-medium inline-flex items-center gap-2"
+                >
+                  📄 Download CSV Template
+                </a>
+                <button
+                  onClick={() => setShowAddContact(true)}
+                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm font-medium"
+                >
+                  ➕ Add Single Contact
+                </button>
+              </div>
+
               {/* Simple Filter Bar */}
               <div className="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
@@ -771,33 +794,6 @@ function EmailAdminContent() {
                 </div>
               )}
 
-              {/* Bottom Actions - Simple */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="flex gap-3 mb-4">
-                  <button
-                    onClick={() => setShowImportModal(true)}
-                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
-                  >
-                    Import Contacts
-                  </button>
-                  <a
-                    href="/email-contacts-template.csv"
-                    download
-                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 text-sm inline-flex items-center"
-                  >
-                    Download CSV Template
-                  </a>
-                  <button
-                    onClick={() => setShowAddContact(true)}
-                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
-                  >
-                    Add Single Contact
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500">
-                  CSV Format: Email, First Name, Last Name, Role, Company, Tags (optional). Tags should be comma-separated (e.g., "Leadership, Executive, Dec 10").
-                </p>
-              </div>
             </div>
 
             {/* Sticky Next Button - Always Visible */}
