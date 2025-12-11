@@ -6,6 +6,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;
+    const bulkTags = formData.get('bulkTags') as string | null; // Optional tags to apply to all contacts if CSV has no Tags column
 
     if (!file) {
       return NextResponse.json(
@@ -89,34 +90,25 @@ export async function POST(request: NextRequest) {
 
         const isUpdate = !!existingContact;
 
-        // Parse tags (can be comma-separated string or array)
+        // Parse tags from CSV Tags column (if it exists)
         let tags: string[] = [];
-        if (csvRecord.tags) {
+        const hasTagsColumn = csvRecord.tags !== undefined && csvRecord.tags !== null && csvRecord.tags !== '';
+        
+        if (hasTagsColumn) {
+          // CSV has Tags column - use those tags for this contact
           if (typeof csvRecord.tags === 'string') {
             tags = csvRecord.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
           } else if (Array.isArray(csvRecord.tags)) {
             tags = csvRecord.tags;
           }
+        } else if (bulkTags && !isUpdate) {
+          // CSV has NO Tags column - use bulk tags provided by user (only for new contacts)
+          const bulkTagsArray = bulkTags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+          tags = bulkTagsArray;
         }
         
-        // Auto-tag new imports with filename (without .csv extension)
-        // e.g., "leadership.csv" → tag "leadership"
-        if (!isUpdate) {
-          const filename = file.name || '';
-          if (filename) {
-            const filenameTag = filename.replace(/\.csv$/i, '').trim();
-            if (filenameTag && !tags.includes(filenameTag)) {
-              tags.push(filenameTag);
-            }
-          }
-          
-          // Also add date-based tag for backwards compatibility
-          const importDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-          const importTag = `Imported ${importDate}`;
-          if (!tags.includes(importTag)) {
-            tags.push(importTag);
-          }
-        }
+        // Note: We do NOT auto-tag with filename or date anymore
+        // Tags come ONLY from CSV Tags column or user-provided bulk tags
 
         // Determine subscription status - default to true unless explicitly false
         let subscribed = true;
@@ -202,9 +194,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Extract filename tag for easy reference
-    const filename = file.name || '';
-    const filenameTag = filename.replace(/\.csv$/i, '').trim();
+    // Check if CSV had Tags column
+    const firstRecord = records[0] as Record<string, string> | undefined;
+    const hasTagsColumn = firstRecord && (firstRecord.tags !== undefined && firstRecord.tags !== null && firstRecord.tags !== '');
 
     return NextResponse.json({
       success: true,
@@ -213,7 +205,7 @@ export async function POST(request: NextRequest) {
       errors: errors.length,
       errorDetails: errors.slice(0, 10), // Return first 10 errors
       total: records.length,
-      importTag: filenameTag || null, // Return the tag so UI can use it
+      hasTagsColumn: hasTagsColumn || false,
     });
   } catch (error: any) {
     console.error('Error importing contacts:', error);

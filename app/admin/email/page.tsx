@@ -86,6 +86,9 @@ function EmailAdminContent() {
   const [bulkTagging, setBulkTagging] = useState(false);
   const [showAddContact, setShowAddContact] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [csvPreview, setCsvPreview] = useState<{ count: number; hasTags: boolean } | null>(null);
+  const [csvFile, setCsvFile] = useState<File | null>(null);
+  const [importBulkTags, setImportBulkTags] = useState('');
 
   // Check URL parameters on mount and when tab changes
   useEffect(() => {
@@ -584,19 +587,31 @@ function EmailAdminContent() {
               )}
 
               {/* Bottom Actions - Simple */}
-              <div className="mt-6 pt-6 border-t border-gray-200 flex gap-3">
-                <button
-                  onClick={() => setShowImportModal(true)}
-                  className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
-                >
-                  Import Contacts
-                </button>
-                <button
-                  onClick={() => setShowAddContact(true)}
-                  className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
-                >
-                  Add Single Contact
-                </button>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <div className="flex gap-3 mb-4">
+                  <button
+                    onClick={() => setShowImportModal(true)}
+                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
+                  >
+                    Import Contacts
+                  </button>
+                  <a
+                    href="/email-contacts-template.csv"
+                    download
+                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 text-sm inline-flex items-center"
+                  >
+                    Download CSV Template
+                  </a>
+                  <button
+                    onClick={() => setShowAddContact(true)}
+                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
+                  >
+                    Add Single Contact
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500">
+                  CSV Format: Email, First Name, Last Name, Role, Company, Tags (optional). Tags should be comma-separated (e.g., "Leadership, Executive, Dec 10").
+                </p>
               </div>
             </div>
 
@@ -617,49 +632,137 @@ function EmailAdminContent() {
         {/* Import Modal */}
         {showImportModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <div className="bg-white rounded-lg p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto">
               <h3 className="text-lg font-semibold mb-4">Import Contacts</h3>
-              <div className="mb-4">
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={async (e) => {
-                    const file = e.target.files?.[0];
-                    if (!file) return;
-                    setLoading(true);
-                    const formData = new FormData();
-                    formData.append('file', file);
-                    try {
-                      const response = await fetch('/api/email/import-contacts', { method: 'POST', body: formData });
-                      const data = await response.json();
-                      if (data.success) {
-                        alert(`Imported ${data.imported} contacts, updated ${data.updated}`);
-                        fetchAllTags();
-                        fetchAllRolesAndCompanies();
-                        fetchContacts();
+              
+              {!csvPreview ? (
+                <>
+                  <div className="mb-4">
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        setCsvFile(file);
+                        
+                        // Preview CSV to check for Tags column
+                        const text = await file.text();
+                        const lines = text.split('\n').filter(line => line.trim());
+                        if (lines.length < 2) {
+                          alert('CSV file appears to be empty or invalid');
+                          return;
+                        }
+                        
+                        const headers = lines[0].toLowerCase().split(',').map(h => h.trim());
+                        const hasTags = headers.includes('tags');
+                        const recordCount = lines.length - 1; // Exclude header
+                        
+                        setCsvPreview({ count: recordCount, hasTags });
+                      }}
+                      className="w-full mb-2"
+                    />
+                    <a href="/email-contacts-template.csv" download className="text-sm text-blue-600 hover:text-blue-800">
+                      Download CSV Template
+                    </a>
+                    <p className="text-xs text-gray-500 mt-2">
+                      CSV Format: Email, First Name, Last Name, Role, Company, Tags (optional)
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowImportModal(false)}
+                    className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="mb-4 p-4 bg-blue-50 rounded border border-blue-200">
+                    <p className="text-sm font-semibold text-blue-900 mb-2">
+                      Found {csvPreview.count} contact{csvPreview.count !== 1 ? 's' : ''}
+                    </p>
+                    {csvPreview.hasTags ? (
+                      <p className="text-sm text-blue-700">
+                        ✓ Tags column detected in CSV. Each contact will use tags from the CSV.
+                      </p>
+                    ) : (
+                      <div>
+                        <p className="text-sm text-blue-700 mb-2">
+                          No Tags column found. Add tags to all imported contacts? (optional)
+                        </p>
+                        <input
+                          type="text"
+                          value={importBulkTags}
+                          onChange={(e) => setImportBulkTags(e.target.value)}
+                          placeholder="Tags (comma-separated, e.g., Leadership, Dec 10)"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="flex gap-3">
+                    <button
+                      onClick={async () => {
+                        if (!csvFile) return;
+                        setLoading(true);
+                        const formData = new FormData();
+                        formData.append('file', csvFile);
+                        if (importBulkTags.trim()) {
+                          formData.append('bulkTags', importBulkTags.trim());
+                        }
+                        
+                        try {
+                          const response = await fetch('/api/email/import-contacts', { method: 'POST', body: formData });
+                          const data = await response.json();
+                          if (data.success) {
+                            alert(`Successfully imported ${data.imported} contacts, updated ${data.updated} existing contacts.${data.errors > 0 ? ` ${data.errors} errors occurred.` : ''}`);
+                            fetchAllTags();
+                            fetchAllRolesAndCompanies();
+                            fetchContacts();
+                            setShowImportModal(false);
+                            setCsvPreview(null);
+                            setCsvFile(null);
+                            setImportBulkTags('');
+                          } else {
+                            alert(data.error || 'Import failed');
+                          }
+                        } catch (error) {
+                          alert('Import error');
+                        } finally {
+                          setLoading(false);
+                        }
+                      }}
+                      disabled={loading}
+                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                    >
+                      {loading ? 'Importing...' : 'Import'}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setCsvPreview(null);
+                        setCsvFile(null);
+                        setImportBulkTags('');
+                      }}
+                      className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                    >
+                      Back
+                    </button>
+                    <button
+                      onClick={() => {
                         setShowImportModal(false);
-                      } else {
-                        alert(data.error || 'Import failed');
-                      }
-                    } catch (error) {
-                      alert('Import error');
-                    } finally {
-                      setLoading(false);
-                      e.target.value = '';
-                    }
-                  }}
-                  className="w-full mb-2"
-                />
-                <a href="/email-contacts-template.csv" download className="text-sm text-blue-600 hover:text-blue-800">
-                  Download CSV Template
-                </a>
-              </div>
-              <button
-                onClick={() => setShowImportModal(false)}
-                className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
-              >
-                Close
-              </button>
+                        setCsvPreview(null);
+                        setCsvFile(null);
+                        setImportBulkTags('');
+                      }}
+                      className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}
