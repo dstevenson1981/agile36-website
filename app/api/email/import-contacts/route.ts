@@ -105,10 +105,9 @@ export async function POST(request: NextRequest) {
           // CSV has NO Tags column - use bulk tags provided by user
           // Apply to both new contacts and updates (so re-uploads can tag existing contacts)
           const bulkTagsArray = bulkTags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          if (isUpdate) {
+          if (isUpdate && existingContact && existingContact.tags) {
             // For updates, merge with existing tags
-            const existingTags = (contact.tags || []) as string[];
-            const existingTagsArray = Array.isArray(existingTags) ? existingTags : [];
+            const existingTagsArray = Array.isArray(existingContact.tags) ? existingContact.tags : [];
             tags = [...existingTagsArray];
             // Add bulk tags that don't already exist
             bulkTagsArray.forEach(tag => {
@@ -176,13 +175,26 @@ export async function POST(request: NextRequest) {
           }
         }
 
+        // For updates, merge tags with existing tags
+        let finalTags = tags;
+        if (isUpdate && existingContact && existingContact.tags) {
+          const existingTagsArray = Array.isArray(existingContact.tags) ? existingContact.tags : [];
+          const mergedTags = [...existingTagsArray];
+          tags.forEach(tag => {
+            if (!mergedTags.some(t => t.trim().toLowerCase() === tag.trim().toLowerCase())) {
+              mergedTags.push(tag);
+            }
+          });
+          finalTags = mergedTags;
+        }
+
         const contactData = {
           email: emailLower,
           first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || csvRecord['first_name'] || null,
           last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || csvRecord['last_name'] || null,
           role: csvRecord.role || csvRecord.Role || csvRecord['Role'] || null,
           company: company,
-          tags: tags.length > 0 ? tags : null,
+          tags: finalTags.length > 0 ? finalTags : null,
           subscribed: subscribed, // Default to true unless explicitly set to false
         };
 
