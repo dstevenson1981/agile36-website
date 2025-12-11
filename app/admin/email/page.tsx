@@ -47,6 +47,7 @@ function EmailAdminContent() {
   const [filtersFromContacts, setFiltersFromContacts] = useState<RecipientFilters | null>(null);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [totalContactCount, setTotalContactCount] = useState<number>(0);
+  const [filteredContactCount, setFilteredContactCount] = useState<number>(0);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [loading, setLoading] = useState(false);
   
@@ -114,6 +115,21 @@ function EmailAdminContent() {
     }
   }, [searchParams]);
 
+  // Fetch total subscribed contacts count on mount (no filters)
+  useEffect(() => {
+    if (activeTab === 'contacts') {
+      // Fetch total subscribed contacts count
+      fetch('/api/email/contacts?subscribed=true&blocked=false')
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            setTotalContactCount(data.totalCount || 0);
+          }
+        })
+        .catch(err => console.error('Error fetching total count:', err));
+    }
+  }, [activeTab]);
+
   // Fetch data on mount and tab changes
   useEffect(() => {
     if (activeTab === 'contacts') {
@@ -169,7 +185,14 @@ function EmailAdminContent() {
       
       if (data.success) {
         setContacts(data.contacts);
-        setTotalContactCount(data.totalCount || data.contacts?.length || 0);
+        // totalCount is the total matching the filters
+        const filteredTotal = data.totalCount || data.contacts?.length || 0;
+        setFilteredContactCount(filteredTotal);
+        
+        // If no filters, this is also the total subscribed count
+        if (selectedTags.length === 0 && !searchTerm && !filterRole && !filterCompany) {
+          setTotalContactCount(filteredTotal);
+        }
       }
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -461,10 +484,10 @@ function EmailAdminContent() {
             <div className="p-6 border-b border-gray-200">
               <button
                 onClick={handleCreateCampaignFromContacts}
-                disabled={contacts.length === 0}
+                disabled={filteredContactCount === 0}
                 className="w-full px-6 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
-                Create Campaign ({contacts.length} contacts)
+                Create Campaign ({filteredContactCount.toLocaleString()} contacts)
               </button>
             </div>
 
@@ -521,6 +544,17 @@ function EmailAdminContent() {
                     ))}
                   </select>
                 </div>
+              </div>
+
+              {/* Contact Count Display */}
+              <div className="mb-4 text-sm text-gray-600">
+                <strong>Total Contacts:</strong> {totalContactCount.toLocaleString()} | 
+                <strong> Displayed:</strong> {contacts.length.toLocaleString()}
+                {filteredContactCount !== contacts.length && (
+                  <span className="ml-2 text-blue-600">
+                    (Filtered: {filteredContactCount.toLocaleString()})
+                  </span>
+                )}
               </div>
 
               {/* Contacts Table - Clean and Simple */}
@@ -581,10 +615,10 @@ function EmailAdminContent() {
             <div className="sticky bottom-0 left-0 right-0 p-6 bg-white border-t-2 border-blue-200 shadow-lg z-10">
               <button
                 onClick={handleCreateCampaignFromContacts}
-                disabled={contacts.length === 0}
+                disabled={filteredContactCount === 0}
                 className="w-full px-6 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center gap-2"
               >
-                <span>Next: Create Campaign ({contacts.length.toLocaleString()} contacts)</span>
+                <span>Next: Create Campaign ({filteredContactCount.toLocaleString()} contacts)</span>
                 <span>→</span>
               </button>
             </div>
