@@ -91,15 +91,17 @@ export async function POST(request: NextRequest) {
         const isUpdate = !!existingContact;
 
         // Parse tags from CSV Tags column (if it exists)
+        // Check multiple possible column name variations (case-insensitive)
         let tags: string[] = [];
-        const hasTagsColumn = csvRecord.tags !== undefined && csvRecord.tags !== null && csvRecord.tags !== '';
+        const tagsValue = csvRecord.tags || csvRecord.Tags || csvRecord.TAGS || csvRecord['tags'] || csvRecord['Tags'] || csvRecord['TAGS'] || null;
+        const hasTagsColumn = tagsValue !== undefined && tagsValue !== null && tagsValue !== '';
         
         if (hasTagsColumn) {
           // CSV has Tags column - use those tags for this contact
-          if (typeof csvRecord.tags === 'string') {
-            tags = csvRecord.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          } else if (Array.isArray(csvRecord.tags)) {
-            tags = csvRecord.tags;
+          if (typeof tagsValue === 'string') {
+            tags = tagsValue.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+          } else if (Array.isArray(tagsValue)) {
+            tags = tagsValue;
           }
         } else if (bulkTags) {
           // CSV has NO Tags column - use bulk tags provided by user
@@ -223,9 +225,10 @@ export async function POST(request: NextRequest) {
 
     // Check if CSV had Tags column by checking if any record has tags
     // We check the parsed records to see if 'tags' key exists (even if empty)
-    const hasTagsColumn = records.length > 0 && records.some((record: any) => 
-      'tags' in record || 'Tags' in record || 'TAGS' in record
-    );
+    const hasTagsColumn = records.length > 0 && records.some((record: any) => {
+      const tagsValue = record.tags || record.Tags || record.TAGS || record['tags'] || record['Tags'] || record['TAGS'];
+      return tagsValue !== undefined && tagsValue !== null && tagsValue !== '';
+    });
 
     return NextResponse.json({
       success: true,
