@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 interface Contact {
   id: number;
@@ -40,7 +41,10 @@ interface RecipientFilters {
 }
 
 export default function EmailAdminPage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('contacts');
+  const [filtersFromContacts, setFiltersFromContacts] = useState<RecipientFilters | null>(null);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [totalContactCount, setTotalContactCount] = useState<number>(0);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -81,6 +85,34 @@ export default function EmailAdminPage() {
   const [bulkTagging, setBulkTagging] = useState(false);
   const [showAddContact, setShowAddContact] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+
+  // Check URL parameters on mount and when tab changes
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab && ['contacts', 'compose', 'campaigns', 'analytics'].includes(tab)) {
+      setActiveTab(tab as Tab);
+    }
+
+    // If coming from Contacts page with filters
+    if (tab === 'compose') {
+      const filters: RecipientFilters = {};
+      const tags = searchParams.get('tags');
+      const role = searchParams.get('role');
+      const company = searchParams.get('company');
+      const search = searchParams.get('search');
+      
+      if (tags) filters.tags = tags.split(',');
+      if (role) filters.role = role;
+      if (company) filters.company = company;
+      if (search) filters.search = search;
+      
+      if (Object.keys(filters).length > 0) {
+        setFiltersFromContacts(filters);
+        setRecipientFilters(filters);
+        setSendToAll(false);
+      }
+    }
+  }, [searchParams]);
 
   // Fetch data on mount and tab changes
   useEffect(() => {
@@ -238,16 +270,24 @@ export default function EmailAdminPage() {
   };
 
   const handleCreateCampaignFromContacts = () => {
-    // Pass current filters to compose tab
-    setRecipientFilters({
-      tags: selectedTags.length > 0 ? selectedTags : undefined,
-      role: filterRole || undefined,
-      company: filterCompany || undefined,
-      dateRange: filterDateRange !== 'all' ? filterDateRange : undefined,
-      subscribed: filterSubscribed !== null ? filterSubscribed : undefined,
-      search: searchTerm || undefined,
-    });
-    setActiveTab('compose');
+    // Build URL with filter parameters
+    const params = new URLSearchParams();
+    params.set('tab', 'compose');
+    if (selectedTags.length > 0) {
+      params.set('tags', selectedTags.join(','));
+    }
+    if (filterRole) {
+      params.set('role', filterRole);
+    }
+    if (filterCompany) {
+      params.set('company', filterCompany);
+    }
+    if (searchTerm) {
+      params.set('search', searchTerm);
+    }
+    
+    // Navigate to compose tab with filters
+    router.push(`/admin/email?${params.toString()}`);
   };
 
   const handleSendTestEmail = async () => {
@@ -398,7 +438,10 @@ export default function EmailAdminPage() {
             {(['contacts', 'compose', 'campaigns', 'analytics'] as Tab[]).map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  router.push(`/admin/email?tab=${tab}`);
+                }}
                 className={`py-4 px-1 border-b-2 font-medium text-sm ${
                   activeTab === tab
                     ? 'border-blue-500 text-blue-600'
@@ -532,6 +575,18 @@ export default function EmailAdminPage() {
                   Add Single Contact
                 </button>
               </div>
+            </div>
+
+            {/* Sticky Next Button - Always Visible */}
+            <div className="sticky bottom-0 left-0 right-0 p-6 bg-white border-t-2 border-blue-200 shadow-lg z-10">
+              <button
+                onClick={handleCreateCampaignFromContacts}
+                disabled={contacts.length === 0}
+                className="w-full px-6 py-4 bg-blue-600 text-white font-semibold text-lg rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center gap-2"
+              >
+                <span>Next: Create Campaign ({contacts.length.toLocaleString()} contacts)</span>
+                <span>→</span>
+              </button>
             </div>
           </div>
         )}
@@ -695,7 +750,26 @@ export default function EmailAdminPage() {
                 <div className="text-2xl font-bold text-blue-600 mb-2">
                   {recipientCount.toLocaleString()} contact{recipientCount !== 1 ? 's' : ''} will receive this email
                 </div>
-                {Object.keys(recipientFilters).length > 0 && (
+                {filtersFromContacts && (
+                  <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded">
+                    <div className="text-sm font-semibold text-green-900 mb-1">
+                      ✓ Recipients from Contacts page
+                    </div>
+                    <div className="text-sm text-gray-700">
+                      {filtersFromContacts.tags && filtersFromContacts.tags.length > 0 && (
+                        <span>Tags: {filtersFromContacts.tags.join(', ')}</span>
+                      )}
+                      {filtersFromContacts.tags && filtersFromContacts.tags.length > 0 && (filtersFromContacts.role || filtersFromContacts.company) && ' • '}
+                      {filtersFromContacts.role && <span>Role: {filtersFromContacts.role}</span>}
+                      {filtersFromContacts.role && filtersFromContacts.company && ' • '}
+                      {filtersFromContacts.company && <span>Company: {filtersFromContacts.company}</span>}
+                      {!filtersFromContacts.tags?.length && !filtersFromContacts.role && !filtersFromContacts.company && (
+                        <span>All contacts</span>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {Object.keys(recipientFilters).length > 0 && !filtersFromContacts && (
                   <div className="text-sm text-gray-600 mt-2">
                     <div className="flex flex-wrap gap-2">
                       {recipientFilters.tags && recipientFilters.tags.length > 0 && (
