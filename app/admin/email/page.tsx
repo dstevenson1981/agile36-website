@@ -1003,13 +1003,20 @@ function EmailAdminContent() {
                           const data = await response.json();
                           if (data.success) {
                             alert(`Successfully imported ${data.imported} contacts, updated ${data.updated} existing contacts.${data.errors > 0 ? ` ${data.errors} errors occurred.` : ''}`);
-                            fetchAllTags();
-                            fetchAllRolesAndCompanies();
-                            fetchContacts();
+                            
+                            // Close modal first
                             setShowImportModal(false);
                             setCsvPreview(null);
                             setCsvFile(null);
                             setImportBulkTags('');
+                            
+                            // Refresh data with a small delay to ensure database is updated
+                            setTimeout(() => {
+                              fetchAllTags();
+                              fetchAllRolesAndCompanies();
+                              fetchContacts();
+                              fetchTagStats();
+                            }, 500);
                           } else {
                             alert(data.error || 'Import failed');
                           }
