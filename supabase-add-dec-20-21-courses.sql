@@ -1,4 +1,4 @@
--- Add AI Agents and Scrum Master courses for December 20-21, 2024
+-- Add AI Agents and Scrum Master courses for December 20-21, 2025
 -- Run this in your Supabase SQL Editor
 
 INSERT INTO course_schedules (
@@ -25,13 +25,13 @@ INSERT INTO course_schedules (
   is_weekend,
   description
 ) VALUES 
--- AI Agent Builder Course - Dec 20-21, 2024
+-- AI Agent Builder Course - Dec 20-21, 2025
 (
   'AI Agent Builder',
   'ai-agent-builder',
   'AI Agent Builder',
-  '2024-12-20 09:00:00-05:00', -- December 20, 2024, 9:00 AM EST
-  '2024-12-21 17:00:00-05:00', -- December 21, 2024, 5:00 PM EST
+  '2025-12-20 09:00:00-05:00', -- December 20, 2025, 9:00 AM EST
+  '2025-12-21 17:00:00-05:00', -- December 21, 2025, 5:00 PM EST
   '09:00:00',
   '17:00:00',
   'America/New_York',
@@ -50,13 +50,13 @@ INSERT INTO course_schedules (
   true, -- Weekend course
   'Join our comprehensive AI Agent Builder training. Learn to build, deploy, and manage AI agents effectively.'
 ),
--- Scrum Master Course - Dec 20-21, 2024
+-- Scrum Master Course - Dec 20-21, 2025
 (
   'SAFe Scrum Master',
   'scrum-master',
   'SAFe Scrum Master',
-  '2024-12-20 09:00:00-05:00', -- December 20, 2024, 9:00 AM EST
-  '2024-12-21 17:00:00-05:00', -- December 21, 2024, 5:00 PM EST
+  '2025-12-20 09:00:00-05:00', -- December 20, 2025, 9:00 AM EST
+  '2025-12-21 17:00:00-05:00', -- December 21, 2025, 5:00 PM EST
   '09:00:00',
   '17:00:00',
   'America/New_York',
@@ -88,5 +88,5 @@ SELECT
   seats_available,
   status
 FROM course_schedules
-WHERE start_date::date = '2024-12-20'::date
+WHERE start_date::date = '2025-12-20'::date
 ORDER BY course_name;

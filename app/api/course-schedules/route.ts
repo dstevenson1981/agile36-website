@@ -37,6 +37,11 @@ export async function GET(request: NextRequest) {
       .eq('status', status)
       .gte('start_date', new Date().toISOString()) // Only future courses
       .order('start_date', { ascending: true });
+    
+    // Debug logging
+    console.log('Fetching schedules for course_slug:', courseSlug);
+    console.log('Status filter:', status);
+    console.log('Date filter: >=', new Date().toISOString());
 
     // Filter by course if provided
     if (courseSlug) {
