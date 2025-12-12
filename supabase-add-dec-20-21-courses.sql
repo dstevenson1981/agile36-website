@@ -38,7 +38,7 @@ INSERT INTO course_schedules (
   'morning',
   'live-virtual',
   '2 Days',
-  NULL, -- Add instructor name if known
+  'Joe Puoci', -- Instructor
   515.00, -- Adjust price as needed
   899.00, -- Original price before discount
   'USD',
@@ -63,7 +63,7 @@ INSERT INTO course_schedules (
   'morning',
   'live-virtual',
   '2 Days',
-  NULL, -- Add instructor name if known
+  'Joe Puoci', -- Instructor
   515.00, -- Adjust price as needed
   899.00, -- Original price before discount
   'USD',
