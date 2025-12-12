@@ -82,8 +82,13 @@ export async function POST(request: NextRequest) {
         
         // Always update to ensure email and name are set
         console.log('Updating customer with:', updateData);
-        customer = await stripe.customers.update(customer.id, updateData);
-        console.log('Customer updated:', customer.id, customer.email, customer.name);
+        try {
+          customer = await stripe.customers.update(customer.id, updateData);
+          console.log('Customer updated:', customer.id, customer.email, customer.name);
+        } catch (updateError: any) {
+          console.error('Error updating customer, but continuing with existing customer:', updateError);
+          // Continue with existing customer even if update fails
+        }
       } else {
         // Create new customer with all available info
         const customerData: any = {
@@ -108,10 +113,16 @@ export async function POST(request: NextRequest) {
         
         console.log('Creating new customer with:', customerData);
         customer = await stripe.customers.create(customerData);
-        console.log('Customer created:', customer.id, customer.email, customer.name);
+        console.log('✅ Customer created successfully:', customer.id, customer.email, customer.name);
       }
     } catch (error: any) {
-      console.error('Error creating/retrieving customer:', error);
+      console.error('❌ Error creating/retrieving customer:', error);
+      console.error('Error details:', {
+        message: error.message,
+        type: error.type,
+        code: error.code,
+        statusCode: error.statusCode,
+      });
       // Don't continue without customer - throw error
       throw new Error(`Failed to create/retrieve customer: ${error.message}`);
     }
