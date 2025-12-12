@@ -1,7 +1,7 @@
--- Update AI Agent Builder and Certified AI Product Manager course prices to $400
+-- Update No-Code AI Agents & Automation™ and Certified AI Product Manager course prices to $400
 -- This updates all existing schedules for these courses
 
--- Update AI Agent Builder courses
+-- Update No-Code AI Agents & Automation™ courses (course_slug: ai-agent-builder)
 UPDATE course_schedules
 SET 
   price = 400.00,

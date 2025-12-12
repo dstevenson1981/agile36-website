@@ -26,11 +26,11 @@ INSERT INTO course_schedules (
   is_weekend,
   description
 ) VALUES 
--- AI Agent Builder Course - Dec 20-21, 2025
+-- No-Code AI Agents & Automation™ Course - Dec 20-21, 2025
 (
-  'AI Agent Builder',
+  'No-Code AI Agents & Automation™',
   'ai-agent-builder',
-  'AI Agent Builder',
+  'No-Code AI Agents & Automation™',
   '2025-12-20 09:00:00-05:00', -- December 20, 2025, 9:00 AM EST
   '2025-12-21 17:00:00-05:00', -- December 21, 2025, 5:00 PM EST
   '09:00:00',
@@ -50,7 +50,7 @@ INSERT INTO course_schedules (
   true,
   'active',
   true, -- Weekend course
-  'Join our comprehensive AI Agent Builder training. Learn to build, deploy, and manage AI agents effectively.'
+  'Join our comprehensive No-Code AI Agents & Automation™ training. Learn to build, deploy, and manage AI agents effectively.'
 ),
 -- Scrum Master Course - Dec 20-21, 2025
 (
