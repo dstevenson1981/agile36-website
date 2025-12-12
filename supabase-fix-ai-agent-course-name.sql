@@ -1,6 +1,7 @@
 -- Fix course name for ai-agent-builder courses
 -- Update any entries that say "AI Agent Builder" to "No-Code AI Agents & Automation™"
 
+-- Update course_name and course_type fields
 UPDATE course_schedules
 SET 
   course_name = 'No-Code AI Agents & Automation™',
@@ -15,8 +16,8 @@ SELECT
   course_name,
   course_type,
   course_slug,
-  price,
-  start_date
+  start_date,
+  price
 FROM course_schedules
 WHERE course_slug = 'ai-agent-builder'
 ORDER BY start_date DESC;
