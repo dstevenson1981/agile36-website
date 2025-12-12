@@ -14,6 +14,7 @@ INSERT INTO course_schedules (
   format,
   duration,
   instructor_name,
+  instructor_image,
   price,
   original_price,
   currency,
@@ -39,6 +40,7 @@ INSERT INTO course_schedules (
   'live-virtual',
   '2 Days',
   'Joe Puoci', -- Instructor
+  '/Joe.jpeg', -- Instructor image
   515.00, -- Adjust price as needed
   899.00, -- Original price before discount
   'USD',
@@ -64,6 +66,7 @@ INSERT INTO course_schedules (
   'live-virtual',
   '2 Days',
   'Joe Puoci', -- Instructor
+  '/Joe.jpeg', -- Instructor image
   515.00, -- Adjust price as needed
   899.00, -- Original price before discount
   'USD',
