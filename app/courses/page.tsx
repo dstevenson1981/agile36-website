@@ -391,11 +391,11 @@ function CoursesContent() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8">
-        <div className="flex flex-col lg:flex-row gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-6 sm:py-8">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
           {/* Left Sidebar - Categories */}
-          <aside className="w-full lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg border border-gray-200 p-6 lg:sticky lg:top-24">
+          <aside className="w-full lg:w-64 flex-shrink-0 order-1 lg:order-1">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 lg:sticky lg:top-24">
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">CATEGORIES</h3>
               <ul className="space-y-1">
                 {categories.map((category) => (
@@ -422,14 +422,14 @@ function CoursesContent() {
           </aside>
 
           {/* Main Content */}
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-6">
+          <div className="flex-1 order-2 lg:order-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {selectedCategory} ({courseCount} Courses)
               </h1>
               <Link 
                 href="/"
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                className="text-sm text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap"
               >
                 View all Courses
               </Link>
@@ -439,7 +439,7 @@ function CoursesContent() {
             <div className="space-y-3">
               {filteredCourses.map((course) => (
                 <Link href={getCourseUrl(course)} key={course.id}>
-                  <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-lg transition-shadow flex items-center gap-4 group">
+                  <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 hover:shadow-lg transition-shadow flex items-center gap-3 sm:gap-4 group">
                     {/* Course Image/Icon */}
                     <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
                       <Image
@@ -453,27 +453,29 @@ function CoursesContent() {
                     
                     {/* Course Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-sm font-medium text-gray-900 group-hover:text-[#fa4a23] transition-colors">
+                      <div className="flex items-start sm:items-center gap-2 mb-1 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-medium text-gray-900 group-hover:text-[#fa4a23] transition-colors flex-1 min-w-0">
                           {course.title}
                         </h3>
-                        {course.popular && (
-                          <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Popular
-                          </span>
-                        )}
-                        {course.trending && (
-                          <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Trending
-                          </span>
-                        )}
-                        {course.advanced && (
-                          <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Advanced
-                          </span>
-                        )}
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {course.popular && (
+                            <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
+                              Popular
+                            </span>
+                          )}
+                          {course.trending && (
+                            <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
+                              Trending
+                            </span>
+                          )}
+                          {course.advanced && (
+                            <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
+                              Advanced
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs sm:text-sm text-gray-600">
                         {course.days} | Live Remote Class
                       </p>
                     </div>
