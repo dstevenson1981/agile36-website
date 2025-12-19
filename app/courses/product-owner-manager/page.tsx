@@ -72,7 +72,7 @@ export default function ProductOwnerManagerCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe Product Owner/Product Manager Certification Training</span>
+            <span className="text-[#01203d]">SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -326,7 +326,8 @@ export default function ProductOwnerManagerCoursePage() {
                           "Working with Agile teams and stakeholders",
                           "Defining features and user stories",
                           "Participating in PI Planning and ART events",
-                          "Delivering value through continuous delivery"
+                          "Delivering value through continuous delivery",
+                          "Leverage AI: Apply AI for backlog refinement, prioritization, feature discovery, and responsible innovation"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -432,7 +433,8 @@ export default function ProductOwnerManagerCoursePage() {
                           "Approaches to participating in PI Planning and ART events",
                           "Best practices for delivering value through continuous delivery",
                           "How to collaborate effectively with teams and stakeholders",
-                          "Techniques for managing dependencies and risks"
+                          "Techniques for managing dependencies and risks",
+                          "Leverage AI: Apply AI for backlog refinement, prioritization, feature discovery, and responsible innovation"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">
