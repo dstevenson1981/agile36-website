@@ -79,7 +79,7 @@ function CoursesContent() {
     },
     {
       id: "9",
-      title: "SAFe Product Owner/Product Manager",
+      title: "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification",
       category: "SAFe",
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 555,
@@ -120,7 +120,7 @@ function CoursesContent() {
     },
     {
       id: "12",
-      title: "SAFe Scrum Master",
+      title: "SAFe AI-Empowered Scrum Master (6.0) Certification",
       category: "SAFe",
       image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
       price: 555,
