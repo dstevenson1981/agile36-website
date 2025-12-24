@@ -6,7 +6,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 export async function POST(request: NextRequest) {
   try {
-    const { code } = await request.json();
+    const { code, courseSlug } = await request.json();
 
     if (!code || typeof code !== 'string') {
       return NextResponse.json(
@@ -86,6 +86,31 @@ export async function POST(request: NextRequest) {
         },
         { status: 200 }
       );
+    }
+
+    // Check if code is course-specific and validate course match
+    // If a promo code has a course_slug, it MUST only work for that specific course
+    if (promoCode.course_slug) {
+      // Require courseSlug to be provided when validating a course-specific code
+      if (!courseSlug) {
+        return NextResponse.json(
+          { 
+            valid: false, 
+            error: 'This promo code is course-specific. Please use it on the correct course page.' 
+          },
+          { status: 200 }
+        );
+      }
+      // Strict match - must match exactly (case-sensitive)
+      if (courseSlug.trim() !== promoCode.course_slug.trim()) {
+        return NextResponse.json(
+          { 
+            valid: false, 
+            error: `This promo code is only valid for the ${promoCode.course_slug} course` 
+          },
+          { status: 200 }
+        );
+      }
     }
 
     // Code is valid - return the discount details

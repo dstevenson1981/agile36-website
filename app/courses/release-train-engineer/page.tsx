@@ -332,7 +332,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">16 PDUs & SEUs</p>
+                            <p className="font-semibold text-gray-900">21 PDUs</p>
                             <p className="text-sm text-gray-600">Earn professional development units</p>
                           </div>
                         </div>
@@ -525,7 +525,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">3 days (16 hours)</p>
+                            <p className="text-base text-gray-700">3 days</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Class Time:</p>
@@ -746,7 +746,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                       {[
                         { q: "What is the SAFe Scrum Master (SSM) certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of Scrum Master responsibilities in the Scaled Agile Framework and your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment." },
                         { q: "How long is the certification valid?", a: "The SAFe Scrum Master (SSM) certification is valid for one year from the date of issue. You can renew it by earning continuing education credits or taking advanced SAFe courses." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live training over 3 days (9 AM - 5 PM EST), comprehensive course materials, practice exam, and certification." },
+                        { q: "What is included in the course?", a: "The course includes 3 days of live training, comprehensive course materials, practice exam, and certification." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners. Basic understanding of Scrum or Agile practices is recommended." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-6">
@@ -774,7 +774,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">16 Hours Training (9 AM - 5 PM EST)</span>
+                    <span className="text-sm text-gray-700">3 Days Training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -792,7 +792,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">16 PDUs & SEUs</span>
+                    <span className="text-sm text-gray-700">21 PDUs</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -908,7 +908,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   { q: "What is SAFe Scrum Master certification?", a: "SAFe Scrum Master is a comprehensive course that provides the knowledge and skills needed to effectively facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment. It prepares you for the SAFe Scrum Master (SSM) certification exam." },
                   { q: "Who should take this course?", a: "This course is ideal for Product Managers, Product Directors, Executives, Enterprise Architects, Program Managers, and anyone interested in strategic product management in a SAFe environment." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in product management or software development is recommended." },
-                  { q: "How long is the course?", a: "The SAFe Release Train Engineer certification training is a 2-day intensive program, totaling 16 hours of instruction (9 AM - 5 PM EST each day)." },
+                  { q: "How long is the course?", a: "The SAFe Release Train Engineer certification training is a 3-day program." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
                   { q: "How do I maintain my certification?", a: "The SAFe Scrum Master certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
@@ -1049,7 +1049,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                     Earn PDUs and SEUs for Career Advancement
                   </h3>
                   <p className="text-base text-gray-700">
-                    Participants earn 24 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
+                    Participants earn 21 PDUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
                   </p>
                 </div>
               </div>
@@ -1176,7 +1176,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               What is the Fee for SAFe SAFe Release Train Engineer Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Release Train Engineer certification training in the United States is <strong>$1,299</strong>. This is a private course, so please contact us to discuss your training needs and schedule. This investment includes three days of instructor-led training (9 AM - 5 PM EST), comprehensive digital study materials, practice exam, and certification. The pricing for SAFe Release Train Engineer certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Release Train Engineer certification training in the United States is <strong>$1,299</strong>. This is a private course, so please contact us to discuss your training needs and schedule. This investment includes three days of instructor-led training, comprehensive digital study materials, practice exam, and certification. The pricing for SAFe Release Train Engineer certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>

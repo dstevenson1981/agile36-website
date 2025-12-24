@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "SAFe® Release Train Engineer (RTE) Certification Training | Agile36",
-  description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, program-level coaching, and value delivery optimization. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, program-level coaching, and value delivery optimization. Earn 21 PDUs. Expert-led 3-day course. Enroll now!",
   keywords: [
     "SAFe Release Train Engineer",
     "SAFe RTE certification",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "SAFe® Release Train Engineer (RTE) Certification Training | Agile36",
-    description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching. Earn 16 PDUs & SEUs.",
+    description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching. Earn 21 PDUs.",
     type: "website",
     url: "https://agile36.com/courses/release-train-engineer",
   },
