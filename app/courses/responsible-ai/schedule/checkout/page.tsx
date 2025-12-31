@@ -76,6 +76,10 @@ function CheckoutContent() {
     return certificationNames[courseSlug] || 'the certification';
   };
 
+  // Courses that don't have exams or PDUs
+  const coursesWithoutExamPDU = ['responsible-ai', 'value-stream-mapping'];
+  const hasExamAndPDU = !coursesWithoutExamPDU.includes(courseSlug);
+
   useEffect(() => {
     const fetchSchedule = async () => {
       if (!scheduleId) {
@@ -549,30 +553,36 @@ function CheckoutContent() {
                         </svg>
                         <span>16 Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
-                      </li>
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
+                        </li>
+                      )}
                       <li className="flex items-start gap-2 text-sm text-gray-700">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <span>Get Trained by Top SPCs: Learn from SPCs with deep expertise across domains.</span>
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
-                      </li>
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
+                        </li>
+                      )}
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
+                        </li>
+                      )}
                     </ul>
                     <div className="border-t pt-4">
                       <div className="flex items-center gap-2 mb-2">
@@ -616,43 +626,53 @@ function CheckoutContent() {
                         </svg>
                         <span>16 Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
-                      </li>
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
+                        </li>
+                      )}
                       <li className="flex items-start gap-2 text-sm text-gray-700">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <span>Get Trained by Top SPCs: Learn from SPCs with deep expertise across domains.</span>
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
-                      </li>
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
+                        </li>
+                      )}
+                      {hasExamAndPDU && (
+                        <li className="flex items-start gap-2 text-sm text-gray-700">
+                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
+                        </li>
+                      )}
                       {/* Pro extras */}
-                      <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Full Access to Practice Exams</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>One Additional Exam Attempt (Free)</span>
-                      </li>
+                      {hasExamAndPDU && (
+                        <>
+                          <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
+                            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>Full Access to Practice Exams</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
+                            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>One Additional Exam Attempt (Free)</span>
+                          </li>
+                        </>
+                      )}
                       <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
