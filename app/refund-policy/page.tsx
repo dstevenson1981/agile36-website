@@ -58,9 +58,6 @@ export default function RefundPolicyPage() {
               <p>
                 No refunds, credits, or transfers are available for no-shows.
               </p>
-              <p>
-                <strong>Late Arrival Policy:</strong> Participants who arrive more than fifteen (15) minutes late to a scheduled class session will be locked out of the classroom and marked as a no-call, no-show. No refunds, credits, or transfers are available for late arrivals that result in being locked out of the classroom.
-              </p>
             </div>
           </section>
 
