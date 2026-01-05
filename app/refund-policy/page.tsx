@@ -30,7 +30,7 @@ export default function RefundPolicyPage() {
                 Cancellations received within thirty (30) days of the class start date are not eligible for a refund.
               </p>
               <p>
-                Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. If a coupon code or discounted rate was used and Agile36 reschedules the course on our end, a refund will not be issued; you will be moved to a future class date at no additional cost.
+                Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times.
               </p>
             </div>
           </section>
