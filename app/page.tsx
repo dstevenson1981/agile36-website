@@ -501,7 +501,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* End of Year Sale Banner */}
+      {/* New Year Sale Banner */}
       <div 
         className="w-full bg-red-600 py-2 sm:py-3 md:py-4 px-2 sm:px-4 cursor-pointer hover:bg-red-700 transition-colors"
         onClick={() => setShowCouponModal(true)}
@@ -519,14 +519,14 @@ export default function Home() {
               <div className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400 rounded-full"></div>
             </div>
             
-            {/* YEAR END MEGA SALE label */}
+            {/* New Year! New You! 2026 label */}
             <div className="flex flex-col">
               <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
-                <span className="text-black font-bold text-[10px] sm:text-xs">YEAR END</span>
+                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YEAR!</span>
               </div>
               <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
-                <span className="text-white font-bold text-xs sm:text-sm">MEGA</span>
-                <span className="text-white font-bold text-xs sm:text-sm ml-1 sm:ml-2">SALE</span>
+                <span className="text-white font-bold text-xs sm:text-sm">NEW YOU!</span>
+                <span className="text-white font-bold text-xs sm:text-sm ml-1 sm:ml-2">2026</span>
               </div>
             </div>
           </div>
@@ -534,7 +534,7 @@ export default function Home() {
           {/* Center - Main text */}
           <div className="flex-1 text-center min-w-0">
             <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              Get Flat <span className="text-white">$100 OFF</span> on Course Fee
+              Get Flat <span className="text-white">$100 OFF</span> on Course Fee - <span className="text-white">Sales expire Jan 7th</span>
             </h2>
           </div>
 
