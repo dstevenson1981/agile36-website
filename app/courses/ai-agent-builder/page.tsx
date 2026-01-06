@@ -536,7 +536,7 @@ export default function AIAgentBuilderCoursePage() {
                         { 
                           name: "David Thompson", 
                           role: "Marketing Director", 
-                          review: "Absolutely transformative! I automated our entire lead qualification process and built a content generation pipeline that works 24/7. The instructors made complex automation concepts incredibly accessible. Worth every penny at $699!",
+                          review: "Absolutely transformative! I automated our entire lead qualification process and built a content generation pipeline that works 24/7. The instructors made complex automation concepts incredibly accessible. Worth every penny at $499!",
                           rating: 5
                         },
                         { 
@@ -594,8 +594,8 @@ export default function AIAgentBuilderCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$699</div>
-                  <div className="text-base text-gray-500 line-through">$1,398</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$499</div>
+                  <div className="text-base text-gray-500 line-through">$998</div>
                   <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
                 </div>
 

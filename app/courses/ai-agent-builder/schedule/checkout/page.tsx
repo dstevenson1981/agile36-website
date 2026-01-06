@@ -282,8 +282,8 @@ function CheckoutContent() {
   }
 
   // Flat rate of $400 for No-Code AI Agents & Automation
-  const basePrice = 400;
-  const originalPrice = 800;
+  const basePrice = 499;
+  const originalPrice = 998;
   
   // Calculate base totals
   const baseTotal = basePrice * enrollmentQuantity;
