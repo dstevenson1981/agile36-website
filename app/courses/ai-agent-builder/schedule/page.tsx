@@ -324,11 +324,29 @@ function CourseScheduleContent() {
           </div>
 
           {/* Title */}
-          <div className="mb-4">
-            <p className="text-sm text-gray-600 mb-1">COURSE SCHEDULES</p>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Schedules for {courseName} in USA
-            </h1>
+          <div className="mb-4 flex items-start justify-between gap-4">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">COURSE SCHEDULES</p>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+                Schedules for {courseName} in USA
+              </h1>
+            </div>
+            <button
+              onClick={fetchSchedules}
+              disabled={isLoadingSchedules}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-medium flex items-center gap-2 whitespace-nowrap"
+              title="Refresh schedules"
+            >
+              <svg 
+                className={`w-4 h-4 ${isLoadingSchedules ? 'animate-spin' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {isLoadingSchedules ? 'Loading...' : 'Refresh'}
+            </button>
           </div>
 
           {/* Filters */}
