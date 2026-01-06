@@ -61,12 +61,26 @@ function CourseScheduleContent() {
     const fetchSchedules = async () => {
       setIsLoadingSchedules(true);
       try {
-        const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${Date.now()}`, {
-          cache: 'no-store'
+        // Add timestamp and cache busting to ensure fresh data
+        const timestamp = Date.now();
+        const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${timestamp}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
         });
         const result = await response.json();
         if (result.success) {
           const data = result.data || [];
+          // Log for debugging
+          console.log('Fetched schedules:', data.map((s: any) => ({
+            id: s.id,
+            start_date: s.start_date,
+            is_weekend: s.is_weekend,
+            course_name: s.course_name
+          })));
           setSchedules(data);
           setFilteredSchedules(data);
           // Initialize quantities
