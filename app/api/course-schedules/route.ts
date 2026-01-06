@@ -67,13 +67,16 @@ export async function GET(request: NextRequest) {
     // Log the data for debugging
     console.log(`Fetched ${data?.length || 0} schedules for ${courseSlug || 'all courses'}`);
     if (data && data.length > 0) {
-      console.log('Sample schedule:', {
-        id: data[0].id,
-        start_date: data[0].start_date,
-        end_date: data[0].end_date,
-        is_weekend: data[0].is_weekend,
-        course_name: data[0].course_name
-      });
+      // Log all schedules, not just the first one
+      console.log('All schedules:', data.map((s: any) => ({
+        id: s.id,
+        start_date: s.start_date,
+        end_date: s.end_date,
+        is_weekend: s.is_weekend,
+        course_name: s.course_name,
+        start_date_parsed: new Date(s.start_date).toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
+        end_date_parsed: new Date(s.end_date).toLocaleDateString('en-US', { timeZone: 'America/New_York' })
+      })));
     }
 
     return NextResponse.json(
