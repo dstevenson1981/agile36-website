@@ -68,7 +68,7 @@ export default function AIAgentBuilderCoursePage() {
                   <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-sm font-bold text-green-700">CAPI™ Certified AI Product Innovator</span>
+                  <span className="text-sm font-bold text-green-700">Certified Agentic AI Automations (n8n & Cursor)</span>
                 </div>
                 {/* Course Format Badge */}
                 <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
@@ -85,28 +85,20 @@ export default function AIAgentBuilderCoursePage() {
                   No-Code AI Agents & Automation™ Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-2">
-                  Build Real AI Products Without Code. Validate Faster. Launch Smarter.
+                  Build, Orchestrate, and Launch Agentic AI Systems — Without Traditional Engineering Overhead
                 </p>
                 <p className="text-lg text-[#fa4a23] font-semibold mb-4">
-                  Certification: CAPI™ Certified AI Product Innovator
+                  Certification Earned: Certified Agentic AI Automations (n8n & Cursor)
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
-                  {[
-                    "Build working AI prototypes, workflows, and agents without code",
-                    "Validate product ideas rapidly with AI-powered tools",
-                    "Create portfolio-ready AI MVP during the course",
-                    "Earn CAPI™ Certified AI Product Innovator certification",
-                    "Launch smarter with proven frameworks for AI products"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-base text-gray-700">{item}</span>
-                    </div>
-                  ))}
+                  <p className="text-base text-gray-700 font-semibold mb-3">
+                    This is not a beginner AI course.
+                  </p>
+                  <p className="text-base text-gray-700 mb-3">
+                    This is a hands-on, build-intensive certification for anyone who wants to design and deploy real agentic AI systems and complex automations using modern no-code and low-code tools.
+                  </p>
                 </div>
               </div>
 
@@ -155,23 +147,30 @@ export default function AIAgentBuilderCoursePage() {
               At Agile36, we don't just talk about AI — we train you to actually build with it.
             </p>
             <p className="text-base text-gray-600 max-w-4xl mx-auto mb-6">
-              Our AIPB™ course is for Product Managers, Entrepreneurs, and Innovators who want to bring AI ideas to life without needing an engineering background. In just two days, you'll learn how to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately.
+              Most AI courses explain models. Most automation courses show isolated workflows. This course teaches how to design agentic systems end-to-end.
             </p>
             <p className="text-base text-gray-600 max-w-4xl mx-auto">
-              Whether you are validating a new product concept, automating a business process, or building an AI-enabled MVP for your startup, this course gives you practical frameworks and a hands-on capstone project you can take straight into execution, pitches, or client work.
+              Everything you build is grounded in real-world automation and product use cases. This course is focused on shipping working systems, not demos or theory.
             </p>
           </div>
 
           {/* Who This Is For Section */}
           <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 mb-8">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Who This Is For</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Who This Course Is For</h3>
+            <p className="text-base text-gray-700 mb-4 text-center">
+              This course is intentionally role-agnostic and execution-focused.
+            </p>
+            <p className="text-base text-gray-700 mb-6 text-center font-semibold">
+              It is designed for:
+            </p>
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                "Product Managers and Product Owners who need to prototype AI features quickly",
-                "Entrepreneurs and Founders testing AI-powered business models",
-                "Business Analysts, Consultants, and Innovators building AI workflows",
-                "Non-technical professionals who want to create AI products without writing code",
-                "Team leaders who want to equip their teams with hands-on AI building skills"
+                "Developers who want to build agentic systems faster",
+                "Product managers and builders creating AI-powered products",
+                "Entrepreneurs and founders automating operations or launching AI tools",
+                "Consultants and analysts building advanced AI workflows",
+                "Technical and non-technical professionals who want to automate complex, multi-step processes",
+                "Anyone serious about agentic AI, workflow orchestration, and autonomous systems"
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,6 +180,9 @@ export default function AIAgentBuilderCoursePage() {
                 </div>
               ))}
             </div>
+            <p className="text-base text-gray-600 mt-6 text-center italic">
+              No traditional ML background required — but comfort with logic and systems thinking is expected.
+            </p>
           </div>
 
           {/* What You'll Walk Away With Section */}
@@ -188,10 +190,11 @@ export default function AIAgentBuilderCoursePage() {
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">What You'll Walk Away With</h3>
             <div className="space-y-4">
               {[
-                "A portfolio-ready AI MVP that you build and launch during the course",
-                "Your own prompt workflows, automation templates, and integration blueprints",
-                "A proven framework for scoping and delivering AI products without engineers",
-                "The CAPI™ Certification and confidence to turn AI ideas into functioning solutions"
+                "A working agentic AI automation or product",
+                "Proven agent orchestration patterns you can reuse immediately",
+                "A repeatable method for turning ideas into autonomous AI systems",
+                "A certification that signals you can build, not just talk about AI",
+                "The confidence to design and deploy agent-based solutions in real environments"
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -312,10 +315,56 @@ export default function AIAgentBuilderCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        The No-Code AI Agents & Automation™ Certification Training is a transformative 2-day intensive program designed for Product Leaders, Innovators, Entrepreneurs, and Product Managers who want to build real AI products without code. This hands-on course teaches you to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately.
+                        No-Code AI Agents & Automation™ Certification Training
+                      </p>
+                      <p className="text-base text-gray-700 mb-4 font-semibold">
+                        Build, Orchestrate, and Launch Agentic AI Systems — Without Traditional Engineering Overhead
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        Whether you are validating a new product concept, automating a business process, or building an AI-enabled MVP for your startup, this course gives you practical frameworks and a hands-on capstone project you can take straight into execution, pitches, or client work.
+                        <strong>Certification Earned:</strong> Certified Agentic AI Automations (n8n & Cursor)
+                      </p>
+                      <p className="text-base text-gray-700 mb-4 font-semibold">
+                        This is not a beginner AI course.
+                      </p>
+                      <p className="text-base text-gray-700 mb-4">
+                        This is a hands-on, build-intensive certification for anyone who wants to design and deploy real agentic AI systems and complex automations using modern no-code and low-code tools.
+                      </p>
+                      
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">What You Will Build</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        By the end of this course, you will have designed, built, and deployed a working agentic AI workflow that coordinates tools, data, logic, and decision-making autonomously.
+                      </p>
+                      <p className="text-base text-gray-700 mb-4 font-semibold">
+                        You will leave with:
+                      </p>
+                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
+                        <li>A fully functioning agentic AI system built using n8n and Cursor</li>
+                        <li>A production-ready AI automation or agent-based MVP</li>
+                        <li>Reusable agent logic, orchestration patterns, and workflow architectures</li>
+                        <li>A practical framework for designing agentic products and automations</li>
+                        <li>The Certified Agentic AI Automations (n8n & Cursor) credential, proving real execution capability</li>
+                      </ul>
+                      <p className="text-base text-gray-700 mb-4 font-semibold italic">
+                        This course is focused on shipping working systems, not demos or theory.
+                      </p>
+
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">Why This Course Is Different</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        Most AI courses explain models. Most automation courses show isolated workflows. This course teaches how to design agentic systems end-to-end.
+                      </p>
+                      <p className="text-base text-gray-700 mb-4 font-semibold">
+                        You will learn how to:
+                      </p>
+                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
+                        <li>Architect multi-step agentic workflows that reason, act, and adapt</li>
+                        <li>Orchestrate AI agents across tools, APIs, and data sources using n8n</li>
+                        <li>Use Cursor to extend, customize, and validate agent behavior</li>
+                        <li>Design decision logic, memory, and tool-calling patterns</li>
+                        <li>Validate agent outputs and reliability before deployment</li>
+                        <li>Turn complex business or product problems into autonomous AI solutions</li>
+                      </ul>
+                      <p className="text-base text-gray-700 mb-4">
+                        Everything you build is grounded in real-world automation and product use cases.
                       </p>
                     </div>
                   </div>
@@ -649,7 +698,7 @@ export default function AIAgentBuilderCoursePage() {
                   { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "This is a comprehensive 2-day intensive program designed for Product Leaders, Innovators, Entrepreneurs, and Product Managers who want to build real AI products without code. You'll learn to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately." },
                   { q: "Who should take this course?", a: "This course is for Product Managers and Product Owners who need to prototype AI features quickly, Entrepreneurs and Founders testing AI-powered business models, Business Analysts and Consultants building AI workflows, Non-technical professionals who want to create AI products without writing code, and Team leaders who want to equip their teams with hands-on AI building skills." },
                   { q: "What are the prerequisites for this course?", a: "No prerequisites! This course is designed specifically for non-technical professionals. All you need is basic computer skills and a desire to automate your work. No coding or technical background required." },
-                  { q: "Will I receive a certification?", a: "Yes! Upon completion, you'll receive the CAPI™ (Certified AI Product Innovator) certification, issued through Accredible, the global credentialing platform used by top universities and training providers." }
+                  { q: "Will I receive a certification?", a: "Yes! Upon completion, you'll receive the Certified Agentic AI Automations (n8n & Cursor) certification, proving real execution capability in building agentic AI systems." }
                 ]
               };
 
