@@ -87,11 +87,11 @@ function CourseScheduleContent() {
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
-    // Apply month filters
+    // Apply month filters - parse dates without timezone conversion
     if (activeFilters.thisMonth) {
       filtered = filtered.filter(schedule => {
-        const scheduleDate = new Date(schedule.start_date);
-        return scheduleDate.getMonth() === currentMonth && scheduleDate.getFullYear() === currentYear;
+        const { year, month } = parseDateFromString(schedule.start_date);
+        return month === currentMonth && year === currentYear;
       });
     }
 
@@ -99,8 +99,8 @@ function CourseScheduleContent() {
       const nextMonth = (currentMonth + 1) % 12;
       const nextYear = nextMonth === 0 ? currentYear + 1 : currentYear;
       filtered = filtered.filter(schedule => {
-        const scheduleDate = new Date(schedule.start_date);
-        return scheduleDate.getMonth() === nextMonth && scheduleDate.getFullYear() === nextYear;
+        const { year, month } = parseDateFromString(schedule.start_date);
+        return month === nextMonth && year === nextYear;
       });
     }
 
@@ -165,31 +165,81 @@ function CourseScheduleContent() {
     });
   };
 
+  // Parse date from string without timezone conversion
+  const parseDateFromString = (dateString: string) => {
+    const datePart = dateString.split('T')[0];
+    const [year, month, day] = datePart.split('-').map(Number);
+    return { year, month: month - 1, day };
+  };
+
+  // Format date without timezone conversion
+  const formatDateSimple = (date: string) => {
+    try {
+      const datePart = date.split('T')[0];
+      const [year, month, day] = datePart.split('-');
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[parseInt(month) - 1]} ${parseInt(day)}`;
+    } catch (e) {
+      return 'Date TBA';
+    }
+  };
+
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
-    });
+    try {
+      const { year, month, day } = parseDateFromString(dateString);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[month]} ${day}, ${year}`;
+    } catch (e) {
+      return 'Date TBA';
+    }
+  };
+
+  // Check if a course is in the current week
+  const isInCurrentWeek = (startDate: string) => {
+    try {
+      const { year, month, day } = parseDateFromString(startDate);
+      const courseDate = new Date(year, month, day);
+      const now = new Date();
+      
+      // Get start of current week (Sunday)
+      const startOfWeek = new Date(now);
+      startOfWeek.setDate(now.getDate() - now.getDay());
+      startOfWeek.setHours(0, 0, 0, 0);
+      
+      // Get end of current week (Saturday)
+      const endOfWeek = new Date(startOfWeek);
+      endOfWeek.setDate(startOfWeek.getDate() + 6);
+      endOfWeek.setHours(23, 59, 59, 999);
+      
+      return courseDate >= startOfWeek && courseDate <= endOfWeek;
+    } catch (e) {
+      return false;
+    }
   };
 
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      const startFormatted = start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const endFormatted = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      // Parse dates directly from string - no timezone conversion
+      const startDatePart = startDate.split('T')[0];
+      const endDatePart = endDate.split('T')[0];
       
       // If same day, just show one date
-      if (start.toDateString() === end.toDateString()) {
-        return startFormatted;
+      if (startDatePart === endDatePart) {
+        return formatDateSimple(startDate);
       }
       
+      const startFormatted = formatDateSimple(startDate);
+      const endFormatted = formatDateSimple(endDate);
+      
       // If same month, only show day for end date
-      if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
-        return `${startFormatted} - ${end.getDate()}`;
+      const [startYear, startMonth] = startDatePart.split('-');
+      const [endYear, endMonth] = endDatePart.split('-');
+      
+      if (startMonth === endMonth && startYear === endYear) {
+        const [, , endDay] = endDatePart.split('-');
+        return `${startFormatted} - ${parseInt(endDay)}`;
       }
+      
       return `${startFormatted} - ${endFormatted}`;
     } catch (e) {
       return 'Date TBA';
@@ -440,12 +490,13 @@ function CourseScheduleContent() {
               ) : (
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
-                    const startDate = new Date(schedule.start_date);
-                    const endDate = new Date(schedule.end_date);
+                    // Don't parse dates here - use formatDateRange which handles timezone correctly
                     const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
+                    const isCurrentWeek = isInCurrentWeek(schedule.start_date);
+                    const remainingSeats = isCurrentWeek ? ((parseInt(schedule.id) % 2) + 2) : null; // 2 or 3
 
                     return (
                       <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -592,6 +643,15 @@ function CourseScheduleContent() {
                             >
                               ENROLL NOW
                             </Link>
+                            
+                            {/* Show "X REMAINING!" for current week courses */}
+                            {isCurrentWeek && remainingSeats !== null && (
+                              <div className="text-center mt-2">
+                                <span className="text-red-600 font-bold text-sm uppercase">
+                                  {remainingSeats} REMAINING!
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
