@@ -5,10 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 
-// Force dynamic rendering - no static generation
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
