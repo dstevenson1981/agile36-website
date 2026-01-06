@@ -544,7 +544,8 @@ function CourseScheduleContent() {
                     
                     // For current week courses, show 2-3 remaining seats
                     const isCurrentWeek = isInCurrentWeek(schedule.start_date);
-                    const remainingSeats = isCurrentWeek ? (Math.floor(Math.random() * 2) + 2) : null; // 2 or 3
+                    // Use schedule ID to deterministically show 2 or 3 (alternates based on ID)
+                    const remainingSeats = isCurrentWeek ? ((parseInt(schedule.id) % 2) + 2) : null; // 2 or 3
 
                     return (
                       <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
