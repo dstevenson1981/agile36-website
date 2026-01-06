@@ -3,6 +3,7 @@
 -- This applies to ALL courses, not just specific ones
 
 -- First, fix the specific Jan 30-31 course (should be Jan 31-Feb 1)
+-- This fixes it regardless of is_weekend flag since it's showing as Friday-Saturday
 UPDATE course_schedules
 SET
   start_date = '2026-01-31 09:00:00-05:00',
@@ -10,6 +11,17 @@ SET
   is_weekend = true
 WHERE course_slug = 'ai-agent-builder'
   AND start_date::date = '2026-01-30'::date
+  AND status = 'active';
+
+-- Fix any Friday-Saturday courses for ai-agent-builder regardless of is_weekend flag
+UPDATE course_schedules
+SET
+  start_date = start_date + INTERVAL '1 day',
+  end_date = end_date + INTERVAL '1 day',
+  is_weekend = true
+WHERE course_slug = 'ai-agent-builder'
+  AND EXTRACT(DOW FROM start_date) = 5  -- Friday
+  AND EXTRACT(DOW FROM end_date) = 6    -- Saturday
   AND status = 'active';
 
 -- Update ALL weekend courses that start on Friday (DOW = 5) to start on Saturday (add 1 day)
