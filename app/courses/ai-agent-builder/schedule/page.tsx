@@ -222,6 +222,29 @@ function CourseScheduleContent() {
     }
   };
 
+  // Check if a course is in the current week
+  const isInCurrentWeek = (startDate: string) => {
+    try {
+      const { year, month, day } = parseDateFromString(startDate);
+      const courseDate = new Date(year, month, day);
+      const now = new Date();
+      
+      // Get start of current week (Sunday)
+      const startOfWeek = new Date(now);
+      startOfWeek.setDate(now.getDate() - now.getDay());
+      startOfWeek.setHours(0, 0, 0, 0);
+      
+      // Get end of current week (Saturday)
+      const endOfWeek = new Date(startOfWeek);
+      endOfWeek.setDate(startOfWeek.getDate() + 6);
+      endOfWeek.setHours(23, 59, 59, 999);
+      
+      return courseDate >= startOfWeek && courseDate <= endOfWeek;
+    } catch (e) {
+      return false;
+    }
+  };
+
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
       // Parse dates directly from string - no timezone conversion
@@ -518,6 +541,10 @@ function CourseScheduleContent() {
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
+                    
+                    // For current week courses, show 2-3 remaining seats
+                    const isCurrentWeek = isInCurrentWeek(schedule.start_date);
+                    const remainingSeats = isCurrentWeek ? (Math.floor(Math.random() * 2) + 2) : null; // 2 or 3
 
                     return (
                       <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -665,6 +692,15 @@ function CourseScheduleContent() {
                             >
                               Enroll Now
                             </Link>
+                            
+                            {/* Show "X REMAINING!" for current week courses */}
+                            {isCurrentWeek && remainingSeats !== null && (
+                              <div className="text-center mt-2">
+                                <span className="text-red-600 font-bold text-sm uppercase">
+                                  {remainingSeats} REMAINING!
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
