@@ -30,18 +30,24 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Build query
+    // Build query - use start of today in UTC to avoid timezone issues
+    const now = new Date();
+    // Set to start of day in UTC to ensure we don't filter out courses starting today
+    const startOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));
+    const startOfTodayISO = startOfToday.toISOString();
+    
     let query = supabase
       .from('course_schedules')
       .select('*')
       .eq('status', status)
-      .gte('start_date', new Date().toISOString()) // Only future courses
+      .gte('start_date', startOfTodayISO) // Only future courses (including today)
       .order('start_date', { ascending: true });
     
     // Debug logging
     console.log('Fetching schedules for course_slug:', courseSlug);
     console.log('Status filter:', status);
-    console.log('Date filter: >=', new Date().toISOString());
+    console.log('Date filter: >=', startOfTodayISO);
+    console.log('Current time:', new Date().toISOString());
 
     // Filter by course if provided
     if (courseSlug) {
