@@ -201,22 +201,42 @@ function CourseScheduleContent() {
     });
   };
 
+  // Format date without timezone conversion - parse date string directly
+  const formatDateSimple = (date: string) => {
+    try {
+      // Extract date part (YYYY-MM-DD) before any timezone conversion
+      const datePart = date.split('T')[0];
+      const [year, month, day] = datePart.split('-');
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[parseInt(month) - 1]} ${parseInt(day)}`;
+    } catch (e) {
+      return 'Date TBA';
+    }
+  };
+
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      const startFormatted = start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const endFormatted = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      // Parse dates directly from string - no timezone conversion
+      const startDatePart = startDate.split('T')[0];
+      const endDatePart = endDate.split('T')[0];
       
       // If same day, just show one date
-      if (start.toDateString() === end.toDateString()) {
-        return startFormatted;
+      if (startDatePart === endDatePart) {
+        return formatDateSimple(startDate);
       }
       
+      const startFormatted = formatDateSimple(startDate);
+      const endFormatted = formatDateSimple(endDate);
+      
       // If same month, only show day for end date
-      if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
-        return `${startFormatted} - ${end.getDate()}`;
+      const [startYear, startMonth] = startDatePart.split('-');
+      const [endYear, endMonth] = endDatePart.split('-');
+      
+      if (startMonth === endMonth && startYear === endYear) {
+        const [, , endDay] = endDatePart.split('-');
+        return `${startFormatted} - ${parseInt(endDay)}`;
       }
+      
       return `${startFormatted} - ${endFormatted}`;
     } catch (e) {
       return 'Date TBA';
