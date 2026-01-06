@@ -58,7 +58,28 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true, data: data || [] });
+    // Log the data for debugging
+    console.log(`Fetched ${data?.length || 0} schedules for ${courseSlug || 'all courses'}`);
+    if (data && data.length > 0) {
+      console.log('Sample schedule:', {
+        id: data[0].id,
+        start_date: data[0].start_date,
+        end_date: data[0].end_date,
+        is_weekend: data[0].is_weekend,
+        course_name: data[0].course_name
+      });
+    }
+
+    return NextResponse.json(
+      { success: true, data: data || [] },
+      {
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        }
+      }
+    );
   } catch (error: any) {
     console.error('Error fetching course schedules:', error);
     return NextResponse.json(
