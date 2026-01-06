@@ -211,6 +211,28 @@ function CourseScheduleContent() {
     }
   };
 
+  // Calculate remaining seats deterministically (2 or 3) based on schedule ID
+  const getRemainingSeats = (scheduleId: string, startDate: string, courseSlug?: string) => {
+    // Special case: DevOps class Jan 22-23 should show 2 remaining
+    if (courseSlug === 'devops') {
+      const datePart = startDate.split('T')[0];
+      if (datePart === '2026-01-22' || datePart === '2026-01-23') {
+        return 2;
+      }
+    }
+    
+    // Convert any ID (UUID or number) to a deterministic number
+    let hash = 0;
+    for (let i = 0; i < scheduleId.length; i++) {
+      const char = scheduleId.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    
+    // Return 2 or 3 based on hash (deterministic)
+    return Math.abs(hash) % 2 === 0 ? 2 : 3;
+  };
+
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
       // Parse dates directly from string - no timezone conversion
@@ -488,7 +510,7 @@ function CourseScheduleContent() {
                     // Don't parse dates here - use formatDateRange which handles timezone correctly
                     const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
                     const isCurrentWeek = isInCurrentWeek(schedule.start_date);
-                    const remainingSeats = isCurrentWeek ? ((parseInt(schedule.id) % 2) + 2) : null; // 2 or 3
+                    const remainingSeats = isCurrentWeek ? getRemainingSeats(schedule.id, schedule.start_date, courseSlug) : null;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
