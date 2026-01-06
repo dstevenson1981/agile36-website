@@ -114,11 +114,11 @@ function CourseScheduleContent() {
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
-    // Apply month filters
+    // Apply month filters - parse dates without timezone conversion
     if (activeFilters.thisMonth) {
       filtered = filtered.filter(schedule => {
-        const scheduleDate = new Date(schedule.start_date);
-        return scheduleDate.getMonth() === currentMonth && scheduleDate.getFullYear() === currentYear;
+        const { year, month } = parseDateFromString(schedule.start_date);
+        return month === currentMonth && year === currentYear;
       });
     }
 
@@ -126,8 +126,8 @@ function CourseScheduleContent() {
       const nextMonth = (currentMonth + 1) % 12;
       const nextYear = nextMonth === 0 ? currentYear + 1 : currentYear;
       filtered = filtered.filter(schedule => {
-        const scheduleDate = new Date(schedule.start_date);
-        return scheduleDate.getMonth() === nextMonth && scheduleDate.getFullYear() === nextYear;
+        const { year, month } = parseDateFromString(schedule.start_date);
+        return month === nextMonth && year === nextYear;
       });
     }
 
@@ -192,13 +192,21 @@ function CourseScheduleContent() {
     });
   };
 
+  // Parse date from string without timezone conversion
+  const parseDateFromString = (dateString: string) => {
+    const datePart = dateString.split('T')[0];
+    const [year, month, day] = datePart.split('-').map(Number);
+    return { year, month: month - 1, day }; // month is 0-indexed for Date object compatibility
+  };
+
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
-    });
+    try {
+      const { year, month, day } = parseDateFromString(dateString);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[month]} ${day}, ${year}`;
+    } catch (e) {
+      return 'Date TBA';
+    }
   };
 
   // Format date without timezone conversion - parse date string directly
@@ -505,8 +513,7 @@ function CourseScheduleContent() {
               ) : (
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
-                    const startDate = new Date(schedule.start_date);
-                    const endDate = new Date(schedule.end_date);
+                    // Don't parse dates here - use formatDateRange which handles timezone correctly
                     const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
@@ -790,11 +797,7 @@ function CourseScheduleContent() {
                       <p className="text-xs text-gray-600 mb-1">Selected Course:</p>
                       <p className="text-sm font-medium text-gray-900">{courseName}</p>
                       <p className="text-xs text-gray-600">
-                        {new Date(selectedScheduleForInquiry.start_date).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          day: 'numeric', 
-                          year: 'numeric' 
-                        })}
+                        {formatDate(selectedScheduleForInquiry.start_date)}
                       </p>
                     </div>
                   )}
