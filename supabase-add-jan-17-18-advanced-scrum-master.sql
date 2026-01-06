@@ -46,7 +46,7 @@ INSERT INTO course_schedules (
   'English',
   true,
   'active',
-  false,
+  true,
   'Enhance your ability to facilitate Agile teams effectively. Master conflict resolution, boost team collaboration, and optimize team flow and Agile Release Train (ART) performance.'
 );
 
