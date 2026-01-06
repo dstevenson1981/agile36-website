@@ -57,50 +57,50 @@ function CourseScheduleContent() {
     'ai-agent-builder': 'No-Code AI Agents & Automation™',
   };
 
-  useEffect(() => {
-    const fetchSchedules = async () => {
-      setIsLoadingSchedules(true);
-      try {
-        // Add timestamp and cache busting to ensure fresh data
-        const timestamp = Date.now();
-        const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${timestamp}`, {
-          method: 'GET',
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
-            'Pragma': 'no-cache',
-            'Expires': '0',
-            'X-Request-ID': `${timestamp}-${Math.random()}`
-          }
-        });
-        const result = await response.json();
-        if (result.success) {
-          const data = result.data || [];
-          // Log for debugging - show full date info
-          console.log('Fetched schedules:', data.map((s: any) => ({
-            id: s.id,
-            start_date: s.start_date,
-            end_date: s.end_date,
-            is_weekend: s.is_weekend,
-            formatted: formatDateRange(s.start_date, s.end_date),
-            course_name: s.course_name
-          })));
-          setSchedules(data);
-          setFilteredSchedules(data);
-          // Initialize quantities
-          const initialQuantities: { [key: string]: number } = {};
-          data.forEach((schedule: any) => {
-            initialQuantities[schedule.id] = 1;
-          });
-          setQuantity(initialQuantities);
+  const fetchSchedules = async () => {
+    setIsLoadingSchedules(true);
+    try {
+      // Add timestamp and cache busting to ensure fresh data
+      const timestamp = Date.now();
+      const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${timestamp}`, {
+        method: 'GET',
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+          'X-Request-ID': `${timestamp}-${Math.random()}`
         }
-      } catch (error) {
-        console.error('Error fetching schedules:', error);
-      } finally {
-        setIsLoadingSchedules(false);
+      });
+      const result = await response.json();
+      if (result.success) {
+        const data = result.data || [];
+        // Log for debugging - show full date info
+        console.log('Fetched schedules:', data.map((s: any) => ({
+          id: s.id,
+          start_date: s.start_date,
+          end_date: s.end_date,
+          is_weekend: s.is_weekend,
+          formatted: formatDateRange(s.start_date, s.end_date),
+          course_name: s.course_name
+        })));
+        setSchedules(data);
+        setFilteredSchedules(data);
+        // Initialize quantities
+        const initialQuantities: { [key: string]: number } = {};
+        data.forEach((schedule: any) => {
+          initialQuantities[schedule.id] = 1;
+        });
+        setQuantity(initialQuantities);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching schedules:', error);
+    } finally {
+      setIsLoadingSchedules(false);
+    }
+  };
 
+  useEffect(() => {
     const displayName = courseNames[courseSlug] || 'Course';
     setCourseName(displayName);
     fetchSchedules();
