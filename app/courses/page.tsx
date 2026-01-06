@@ -327,6 +327,10 @@ function CoursesContent() {
   // Helper function to generate course URL
   const getCourseUrl = (course: Course): string => {
     // Special cases
+    if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
+      return "/courses/ai-agent-builder";
+    }
+    
     if (course.title.includes("Leading SAFe") || course.title.includes("SAFe Agilist")) {
       return "/courses/leading-safe";
     }

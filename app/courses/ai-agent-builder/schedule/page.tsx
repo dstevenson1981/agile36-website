@@ -5,6 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 
+// Force dynamic rendering - no static generation
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -65,6 +69,7 @@ function CourseScheduleContent() {
         const timestamp = Date.now();
         const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${timestamp}`, {
           cache: 'no-store',
+          next: { revalidate: 0 },
           headers: {
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
@@ -497,6 +502,7 @@ function CourseScheduleContent() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                                   </svg>
                                   <span>Online • {schedule.is_weekend === true ? 'Weekend' : 'Weekday'} Batch</span>
+                                  {/* Debug: {schedule.is_weekend ? 'true' : 'false'} - {new Date(schedule.start_date).toLocaleDateString()} */}
                                 </div>
                               </div>
                             </div>
