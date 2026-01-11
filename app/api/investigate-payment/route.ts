@@ -32,10 +32,19 @@ export async function GET(request: NextRequest) {
     // 1. Get customer details from Stripe
     try {
       const customer = await stripe.customers.retrieve(customerId);
+      
+      // Check if customer is deleted
+      if (customer.deleted) {
+        return NextResponse.json(
+          { error: 'Customer has been deleted' },
+          { status: 404 }
+        );
+      }
+      
       results.customer = {
         id: customer.id,
-        email: customer.email,
-        name: customer.name,
+        email: customer.email || null,
+        name: customer.name || null,
         created: new Date(customer.created * 1000).toISOString(),
       };
     } catch (error: any) {
