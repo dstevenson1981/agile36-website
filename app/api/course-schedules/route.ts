@@ -30,24 +30,13 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Build query - use start of today in UTC to avoid timezone issues
-    const now = new Date();
-    // Set to start of day in UTC to ensure we don't filter out courses starting today
-    const startOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));
-    const startOfTodayISO = startOfToday.toISOString();
-    
+    // Build query
     let query = supabase
       .from('course_schedules')
       .select('*')
       .eq('status', status)
-      .gte('start_date', startOfTodayISO) // Only future courses (including today)
+      .gte('start_date', new Date().toISOString()) // Only future courses
       .order('start_date', { ascending: true });
-    
-    // Debug logging
-    console.log('Fetching schedules for course_slug:', courseSlug);
-    console.log('Status filter:', status);
-    console.log('Date filter: >=', startOfTodayISO);
-    console.log('Current time:', new Date().toISOString());
 
     // Filter by course if provided
     if (courseSlug) {
@@ -64,31 +53,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Log the data for debugging
-    console.log(`Fetched ${data?.length || 0} schedules for ${courseSlug || 'all courses'}`);
-    if (data && data.length > 0) {
-      // Log all schedules, not just the first one
-      console.log('All schedules:', data.map((s: any) => ({
-        id: s.id,
-        start_date: s.start_date,
-        end_date: s.end_date,
-        is_weekend: s.is_weekend,
-        course_name: s.course_name,
-        start_date_parsed: new Date(s.start_date).toLocaleDateString('en-US', { timeZone: 'America/New_York' }),
-        end_date_parsed: new Date(s.end_date).toLocaleDateString('en-US', { timeZone: 'America/New_York' })
-      })));
-    }
-
-    return NextResponse.json(
-      { success: true, data: data || [] },
-      {
-        headers: {
-          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-        }
-      }
-    );
+    return NextResponse.json({ success: true, data: data || [] });
   } catch (error: any) {
     console.error('Error fetching course schedules:', error);
     return NextResponse.json(

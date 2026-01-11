@@ -48,3 +48,13 @@ CREATE POLICY "Allow anonymous inserts" ON visitor_logs
 
 
 
+
+
+
+
+
+
+
+
+
+

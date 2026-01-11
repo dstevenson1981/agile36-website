@@ -44,9 +44,7 @@ function CoursesContent() {
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification": "/POPM.jpg",
     "SAFe Scrum Master": "/SSM.jpeg",
-    "SAFe AI-Empowered Scrum Master (6.0) Certification": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "AI Product Management Certification": "/PMAI.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
@@ -81,7 +79,7 @@ function CoursesContent() {
     },
     {
       id: "9",
-      title: "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification",
+      title: "SAFe Product Owner/Product Manager",
       category: "SAFe",
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 555,
@@ -122,7 +120,7 @@ function CoursesContent() {
     },
     {
       id: "12",
-      title: "SAFe AI-Empowered Scrum Master (6.0) Certification",
+      title: "SAFe Scrum Master",
       category: "SAFe",
       image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
       price: 555,
@@ -251,16 +249,16 @@ function CoursesContent() {
     },
     // AI Product courses
     {
-      id: "29",
-      title: "No-Code AI Agents & Automation™",
+      id: "3",
+      title: "AI Product Management Certification",
       category: "AI Product",
-      image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
-      price: 699,
-      originalPrice: 1398,
-      hours: "10 Hrs",
+      image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
+      price: 400,
+      originalPrice: 800,
+      hours: "16 Hrs",
       days: "02 days",
-      enrolled: "2.8K+ Enrolled",
-      skills: "No-Code Automation, AI Agents, Workflow Optimization",
+      enrolled: "2K+ Enrolled",
+      skills: "Product Strategy, AI Integration",
       popular: true,
     },
     {
@@ -268,12 +266,25 @@ function CoursesContent() {
       title: "Certified AI Product Manager",
       category: "AI Product",
       image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
-      price: 450,
-      originalPrice: 900,
-      hours: "10 Hrs",
+      price: 555,
+      originalPrice: 1110,
+      hours: "16 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "AI Product Development, Prototype Building, Stakeholder Validation",
+      skills: "AI Product Strategy, Product Management with AI, AI Integration",
+      popular: true,
+    },
+    {
+      id: "25",
+      title: "Agentic Product Leader Certification",
+      category: "AI Product",
+      image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
+      price: 499,
+      originalPrice: 998,
+      hours: "16 Hrs",
+      days: "02 days",
+      enrolled: "1.8K+ Enrolled",
+      skills: "Agentic Product Leadership, Autonomous Product Systems, Strategic AI Product Vision",
       popular: true,
     },
     // PMI courses
@@ -327,10 +338,6 @@ function CoursesContent() {
   // Helper function to generate course URL
   const getCourseUrl = (course: Course): string => {
     // Special cases
-    if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
-      return "/courses/ai-agent-builder";
-    }
-    
     if (course.title.includes("Leading SAFe") || course.title.includes("SAFe Agilist")) {
       return "/courses/leading-safe";
     }
@@ -384,11 +391,11 @@ function CoursesContent() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-6 sm:py-8">
-        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left Sidebar - Categories */}
-          <aside className="w-full lg:w-64 flex-shrink-0 order-1 lg:order-1">
-            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 lg:sticky lg:top-24">
+          <aside className="w-full lg:w-64 flex-shrink-0">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 lg:sticky lg:top-24">
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">CATEGORIES</h3>
               <ul className="space-y-1">
                 {categories.map((category) => (
@@ -415,14 +422,14 @@ function CoursesContent() {
           </aside>
 
           {/* Main Content */}
-          <div className="flex-1 order-2 lg:order-2">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6">
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-6">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {selectedCategory} ({courseCount} Courses)
               </h1>
               <Link 
                 href="/"
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap"
+                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
               >
                 View all Courses
               </Link>
@@ -432,7 +439,7 @@ function CoursesContent() {
             <div className="space-y-3">
               {filteredCourses.map((course) => (
                 <Link href={getCourseUrl(course)} key={course.id}>
-                  <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 hover:shadow-lg transition-shadow flex items-center gap-3 sm:gap-4 group">
+                  <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-lg transition-shadow flex items-center gap-4 group">
                     {/* Course Image/Icon */}
                     <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
                       <Image
@@ -446,29 +453,27 @@ function CoursesContent() {
                     
                     {/* Course Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-start sm:items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-sm sm:text-base font-medium text-gray-900 group-hover:text-[#fa4a23] transition-colors flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <h3 className="text-sm font-medium text-gray-900 group-hover:text-[#fa4a23] transition-colors">
                           {course.title}
                         </h3>
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          {course.popular && (
-                            <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                              Popular
-                            </span>
-                          )}
-                          {course.trending && (
-                            <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                              Trending
-                            </span>
-                          )}
-                          {course.advanced && (
-                            <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                              Advanced
-                            </span>
-                          )}
-                        </div>
+                        {course.popular && (
+                          <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">
+                            Popular
+                          </span>
+                        )}
+                        {course.trending && (
+                          <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">
+                            Trending
+                          </span>
+                        )}
+                        {course.advanced && (
+                          <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-0.5 rounded-full">
+                            Advanced
+                          </span>
+                        )}
                       </div>
-                      <p className="text-xs sm:text-sm text-gray-600">
+                      <p className="text-xs text-gray-600">
                         {course.days} | Live Remote Class
                       </p>
                     </div>

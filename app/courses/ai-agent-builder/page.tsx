@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function AIAgentBuilderCoursePage() {
+export default function CertifiedGenAIPractitionerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
   const [expandedCurriculum, setExpandedCurriculum] = useState<number[]>([0]);
 
-  const courseSlug = "ai-agent-builder";
+  const courseSlug = "certified-genai-practitioner";
 
   const toggleCurriculum = (index: number) => {
     setExpandedCurriculum(prev => 
@@ -32,7 +32,7 @@ export default function AIAgentBuilderCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">Courses</span>
             <span>/</span>
-            <span className="text-[#01203d]">AI Agent Builder™ Certification Training</span>
+            <span className="text-[#01203d]">Certified GenAI Practitioner™ Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -54,7 +54,7 @@ export default function AIAgentBuilderCoursePage() {
                   <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
-                  <span className="text-lg font-semibold text-gray-900">2,800+ enrolled</span>
+                  <span className="text-lg font-semibold text-gray-900">3,000+ enrolled</span>
                 </div>
                 {/* English Language Indicator */}
                 <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
@@ -63,42 +63,33 @@ export default function AIAgentBuilderCoursePage() {
                   </svg>
                   <span className="text-sm font-semibold text-blue-700">English</span>
                 </div>
-                {/* Certification Badge */}
-                <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg border-2 border-green-500">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm font-bold text-green-700">Certified Agentic AI Automations (n8n & Cursor)</span>
-                </div>
-                {/* Course Format Badge */}
-                <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm font-semibold text-blue-700">2-Day Live Virtual</span>
-                </div>
               </div>
 
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  No-Code AI Agents & Automation™ Certification Training
+                  Certified GenAI Practitioner™ Certification Training
                 </h1>
-                <p className="text-xl text-gray-900 font-bold mb-2">
-                  Build, Orchestrate, and Launch Agentic AI Systems — Without Traditional Engineering Overhead
-                </p>
-                <p className="text-lg text-[#fa4a23] font-semibold mb-4">
-                  Certification Earned: Certified Agentic AI Automations (n8n & Cursor)
+                <p className="text-xl text-gray-900 font-bold mb-4">
+                  Master the Fundamentals of Generative AI and Practical Applications
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
-                  <p className="text-base text-gray-700 font-semibold mb-3">
-                    This is not a beginner AI course.
-                  </p>
-                  <p className="text-base text-gray-700 mb-3">
-                    This is a hands-on, build-intensive certification for anyone who wants to design and deploy real agentic AI systems and complex automations using modern no-code and low-code tools.
-                  </p>
+                  {[
+                    "Master GenAI fundamentals and core concepts",
+                    "Learn ethical AI practices and responsible implementation",
+                    "Develop advanced prompt engineering skills",
+                    "Apply GenAI tools across various business applications",
+                    "Build practical AI solutions with hands-on experience"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-base text-gray-700">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -114,7 +105,7 @@ export default function AIAgentBuilderCoursePage() {
                   Download Brochure
                 </button>
                 <Link 
-                  href={`/courses/ai-agent-builder/schedule?course=${courseSlug}`}
+                  href={`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`}
                   className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
                 >
                   View Schedules
@@ -126,83 +117,11 @@ export default function AIAgentBuilderCoursePage() {
             <div className="lg:flex lg:justify-end">
               <div className="max-w-md w-full mt-8 lg:mt-20">
                 <img 
-                  src="/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg" 
-                  alt="AI Agent Builder" 
+                  src="/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg" 
+                  alt="Certified GenAI Practitioner" 
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Agile36 Section */}
-      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Agile36?
-            </h2>
-            <p className="text-lg text-gray-700 max-w-4xl mx-auto mb-6">
-              At Agile36, we don't just talk about AI — we train you to actually build with it.
-            </p>
-            <p className="text-base text-gray-600 max-w-4xl mx-auto mb-6">
-              Most AI courses explain models. Most automation courses show isolated workflows. This course teaches how to design agentic systems end-to-end.
-            </p>
-            <p className="text-base text-gray-600 max-w-4xl mx-auto">
-              Everything you build is grounded in real-world automation and product use cases. This course is focused on shipping working systems, not demos or theory.
-            </p>
-          </div>
-
-          {/* Who This Is For Section */}
-          <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 mb-8">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Who This Course Is For</h3>
-            <p className="text-base text-gray-700 mb-4 text-center">
-              This course is intentionally role-agnostic and execution-focused.
-            </p>
-            <p className="text-base text-gray-700 mb-6 text-center font-semibold">
-              It is designed for:
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              {[
-                "Developers who want to build agentic systems faster",
-                "Product managers and builders creating AI-powered products",
-                "Entrepreneurs and founders automating operations or launching AI tools",
-                "Consultants and analysts building advanced AI workflows",
-                "Technical and non-technical professionals who want to automate complex, multi-step processes",
-                "Anyone serious about agentic AI, workflow orchestration, and autonomous systems"
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-base text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-base text-gray-600 mt-6 text-center italic">
-              No traditional ML background required — but comfort with logic and systems thinking is expected.
-            </p>
-          </div>
-
-          {/* What You'll Walk Away With Section */}
-          <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">What You'll Walk Away With</h3>
-            <div className="space-y-4">
-              {[
-                "A working agentic AI automation or product",
-                "Proven agent orchestration patterns you can reuse immediately",
-                "A repeatable method for turning ideas into autonomous AI systems",
-                "A certification that signals you can build, not just talk about AI",
-                "The confidence to design and deploy agent-based solutions in real environments"
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-base text-gray-700 font-medium">{item}</span>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -315,57 +234,43 @@ export default function AIAgentBuilderCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        No-Code AI Agents & Automation™ Certification Training
-                      </p>
-                      <p className="text-base text-gray-700 mb-4 font-semibold">
-                        Build, Orchestrate, and Launch Agentic AI Systems — Without Traditional Engineering Overhead
+                        The Certified GenAI Practitioner™ Certification Training provides a comprehensive introduction to Generative AI fundamentals, practical applications, and ethical implementation. This intensive 4-hour course covers core GenAI concepts, prompt engineering techniques, AI ethics, and real-world applications across various business domains.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        <strong>Certification Earned:</strong> Certified Agentic AI Automations (n8n & Cursor)
+                        Learn how to leverage Generative AI tools effectively, develop advanced prompting skills, and apply AI solutions responsibly in your professional environment. This course is designed for professionals who want to quickly gain practical GenAI skills without extensive technical background.
                       </p>
-                      <p className="text-base text-gray-700 mb-4 font-semibold">
-                        This is not a beginner AI course.
-                      </p>
-                      <p className="text-base text-gray-700 mb-4">
-                        This is a hands-on, build-intensive certification for anyone who wants to design and deploy real agentic AI systems and complex automations using modern no-code and low-code tools.
-                      </p>
-                      
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">What You Will Build</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        By the end of this course, you will have designed, built, and deployed a working agentic AI workflow that coordinates tools, data, logic, and decision-making autonomously.
-                      </p>
-                      <p className="text-base text-gray-700 mb-4 font-semibold">
-                        You will leave with:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
-                        <li>A fully functioning agentic AI system built using n8n and Cursor</li>
-                        <li>A production-ready AI automation or agent-based MVP</li>
-                        <li>Reusable agent logic, orchestration patterns, and workflow architectures</li>
-                        <li>A practical framework for designing agentic products and automations</li>
-                        <li>The Certified Agentic AI Automations (n8n & Cursor) credential, proving real execution capability</li>
-                      </ul>
-                      <p className="text-base text-gray-700 mb-4 font-semibold italic">
-                        This course is focused on shipping working systems, not demos or theory.
-                      </p>
+                    </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">Why This Course Is Different</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        Most AI courses explain models. Most automation courses show isolated workflows. This course teaches how to design agentic systems end-to-end.
-                      </p>
-                      <p className="text-base text-gray-700 mb-4 font-semibold">
-                        You will learn how to:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
-                        <li>Architect multi-step agentic workflows that reason, act, and adapt</li>
-                        <li>Orchestrate AI agents across tools, APIs, and data sources using n8n</li>
-                        <li>Use Cursor to extend, customize, and validate agent behavior</li>
-                        <li>Design decision logic, memory, and tool-calling patterns</li>
-                        <li>Validate agent outputs and reliability before deployment</li>
-                        <li>Turn complex business or product problems into autonomous AI solutions</li>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {[
+                          "Master GenAI fundamentals and core concepts",
+                          "Develop advanced prompt engineering techniques",
+                          "Understand AI ethics and responsible implementation",
+                          "Apply GenAI tools across business applications",
+                          "Build practical AI solutions with hands-on exercises",
+                          "Navigate AI governance and compliance requirements"
+                        ].map((item, index) => (
+                          <div key={index} className="flex items-start gap-3">
+                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-base text-gray-700">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
+                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                        <li>Business professionals seeking to understand Generative AI</li>
+                        <li>Product Managers and Business Analysts</li>
+                        <li>Marketing and Content Professionals</li>
+                        <li>Consultants and Advisors</li>
+                        <li>Anyone looking to leverage AI in their work</li>
                       </ul>
-                      <p className="text-base text-gray-700 mb-4">
-                        Everything you build is grounded in real-world automation and product use cases.
-                      </p>
                     </div>
                   </div>
                 )}
@@ -375,7 +280,7 @@ export default function AIAgentBuilderCoursePage() {
                     <div className="flex items-center justify-between mb-6">
                       <div>
                         <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">No-Code AI Agents & Automation™ Course Curriculum</h2>
+                        <h2 className="text-3xl font-bold text-gray-900">Certified GenAI Practitioner™ Course Curriculum</h2>
                       </div>
                       <button
                         onClick={() => setShowConsultationModal(true)}
@@ -391,59 +296,47 @@ export default function AIAgentBuilderCoursePage() {
                     <div className="space-y-4">
                       {[
                         { 
-                          title: "1. Foundations of No-Code AI",
+                          title: "Module 1: Introduction to Generative AI",
                           topics: [
-                            "What no-code AI can and cannot do",
-                            "Overview of leading no-code platforms (Flowise, V0.dev, Zapier, Airtable, Bubble)",
-                            "Real-world examples of AI products built without code"
+                            "What is Generative AI and how it works",
+                            "Key concepts: LLMs, transformers, and neural networks",
+                            "GenAI vs traditional AI",
+                            "Current state and future of GenAI"
                           ],
-                          learningObjective: "Understand the capabilities and limitations of no-code AI platforms and see real-world examples of AI products built without code"
+                          learningObjective: "Understand the fundamentals of Generative AI and its core technologies"
                         },
                         { 
-                          title: "2. Designing AI Workflows",
+                          title: "Module 2: Prompt Engineering Fundamentals",
                           topics: [
-                            "Mapping user flows for AI-driven apps",
-                            "Prompt chaining and structured prompt design",
-                            "Human-in-the-loop checkpoints and guardrails"
+                            "Basic prompting techniques",
+                            "Advanced prompt patterns",
+                            "Few-shot and zero-shot learning",
+                            "Chain-of-thought prompting",
+                            "Prompt optimization strategies"
                           ],
-                          learningObjective: "Master the design of AI workflows with proper prompt engineering and human oversight mechanisms"
+                          learningObjective: "Master effective prompt engineering techniques for optimal AI responses"
                         },
                         { 
-                          title: "3. Building Your AI Product",
+                          title: "Module 3: AI Ethics and Responsible Implementation",
                           topics: [
-                            "Hands-on labs with Flowise, V0.dev, and Zapier",
-                            "Connecting APIs and integrating LLMs like GPT and Claude",
-                            "Retrieval workflows with vector databases (Pinecone, Weaviate)",
-                            "Building and testing single-agent use cases"
+                            "Understanding AI bias and fairness",
+                            "Privacy and data protection",
+                            "Transparency and explainability",
+                            "AI governance frameworks",
+                            "Best practices for responsible AI"
                           ],
-                          learningObjective: "Build functional AI products using leading no-code platforms and integrate with LLMs and vector databases"
+                          learningObjective: "Apply ethical principles and responsible practices in AI implementation"
                         },
                         { 
-                          title: "4. Testing & Iterating",
+                          title: "Module 4: Practical GenAI Applications",
                           topics: [
-                            "Validating outputs and monitoring AI performance",
-                            "Fail-safes, fallback logic, and error handling",
-                            "Rapid iteration cycles for fast MVP launches"
+                            "Content generation and creation",
+                            "Data analysis and insights",
+                            "Customer service automation",
+                            "Code generation and assistance",
+                            "Business process optimization"
                           ],
-                          learningObjective: "Implement robust testing, monitoring, and iteration processes to ensure reliable AI product performance"
-                        },
-                        { 
-                          title: "5. Launch & Integrate",
-                          topics: [
-                            "Connecting your AI product to Slack, email, or web apps",
-                            "Deploying prototypes to real users for feedback",
-                            "Packaging no-code builds for investors or enterprise demos"
-                          ],
-                          learningObjective: "Launch your AI product by integrating with business systems and preparing it for stakeholder presentations"
-                        },
-                        { 
-                          title: "6. Growth & Scale",
-                          topics: [
-                            "When to graduate from no-code to full-code builds",
-                            "Using AI analytics to improve product performance",
-                            "Preparing your MVP for enterprise adoption"
-                          ],
-                          learningObjective: "Understand when and how to scale your no-code AI product and prepare it for enterprise-level adoption"
+                          learningObjective: "Apply GenAI tools to solve real-world business challenges"
                         }
                       ].map((part, index) => (
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
@@ -484,29 +377,6 @@ export default function AIAgentBuilderCoursePage() {
                         </div>
                       ))}
                     </div>
-
-                    {/* What You'll Build Section */}
-                    <div className="mt-8 bg-gradient-to-br from-blue-50 to-orange-50 p-6 rounded-lg border-2 border-[#fa4a23]">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Build (Capstone Project)</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        Throughout the course, you will create and launch your own AI-powered MVP, including:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                        <li>Prompt workflow and chaining logic</li>
-                        <li>A working chatbot, copilot, or automation built in Flowise or V0.dev</li>
-                        <li>Integration with APIs or databases for real-world functionality</li>
-                        <li>Basic telemetry and feedback loop design</li>
-                        <li>A launch-ready demo you can showcase or deploy immediately</li>
-                      </ul>
-                    </div>
-
-                    {/* Tools Used Section */}
-                    <div className="mt-8 bg-white p-6 rounded-lg border border-gray-200">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">Tools Used</h3>
-                      <p className="text-base text-gray-700 mb-3">
-                        Flowise, V0.dev, Zapier, Airtable, Bubble, Retool, Notion AI, ChatGPT, Claude, Perplexity, Pinecone/Weaviate (vector DBs), Synthesia, and more.
-                      </p>
-                    </div>
                   </div>
                 )}
 
@@ -528,21 +398,21 @@ export default function AIAgentBuilderCoursePage() {
                     <div className="space-y-6">
                       {[
                         { 
-                          name: "Jennifer Martinez", 
-                          role: "Operations Manager", 
-                          review: "I have zero coding background, but this course made me feel like an automation wizard! Built 15 working AI agents in 2 days that now save my team 20 hours per week. The no-code approach is pure genius—n8n and Make.com are now essential tools in our workflow.",
+                          name: "David Martinez", 
+                          role: "Business Analyst", 
+                          review: "Excellent introduction to Generative AI! The prompt engineering module was incredibly practical and I've already started applying these techniques in my work. The 4-hour format was perfect for a quick but comprehensive overview.",
                           rating: 5
                         },
                         { 
-                          name: "David Thompson", 
+                          name: "Jennifer Kim", 
                           role: "Marketing Director", 
-                          review: "Absolutely transformative! I automated our entire lead qualification process and built a content generation pipeline that works 24/7. The instructors made complex automation concepts incredibly accessible. Worth every penny at $499!",
+                          review: "This course gave me the confidence to start using GenAI tools effectively. The ethics section was particularly valuable, and the hands-on exercises helped me understand real-world applications. Highly recommend for anyone new to AI.",
                           rating: 5
                         },
                         { 
-                          name: "Rachel Chen", 
-                          role: "Small Business Owner", 
-                          review: "Best investment I've made in my business this year. Created automated customer onboarding, email workflows, and reporting systems—all without touching a line of code. The 25+ projects gave me real-world skills I use daily. Highly recommend for non-technical professionals!",
+                          name: "Robert Thompson", 
+                          role: "Consultant", 
+                          review: "Great foundational course on GenAI. The practical applications module showed me how to leverage AI across different business functions. The instructor was knowledgeable and the content was well-structured.",
                           rating: 5
                         }
                       ].map((review, index) => (
@@ -574,10 +444,10 @@ export default function AIAgentBuilderCoursePage() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "This is a comprehensive 2-day intensive program (10 hours total) designed for non-programmers to build AI agents and automated workflows without writing any code. You'll learn to use platforms like n8n, Make.com, Pipedream, and Langflow to create intelligent automation systems." },
-                  { q: "Do I need any programming or technical experience?", a: "No! This course is specifically designed for non-technical professionals. No coding experience required. If you can use a web browser and business software, you can build AI automations." },
-                        { q: "What is included in the course?", a: "The course includes 10 hours of live training, 25+ hands-on automation projects, access to no-code platforms, step-by-step guides, workflow templates, and lifetime access to course materials and community support." },
-                        { q: "What tools will I learn to use?", a: "You'll master industry-leading no-code automation platforms including n8n, Make.com, Pipedream, and Langflow. You'll also learn to integrate ChatGPT API, connect business systems, and build AI-powered workflows." }
+                  { q: "What is the Certified GenAI Practitioner™ Certification Training?", a: "The Certified GenAI Practitioner™ Certification Training is a comprehensive 4-hour course designed to help professionals master Generative AI fundamentals, prompt engineering, AI ethics, and practical applications. This course provides hands-on experience with GenAI tools and real-world use cases." },
+                  { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." },
+                        { q: "What is included in the course?", a: "The course includes live training sessions, comprehensive course materials, hands-on exercises with GenAI tools, and access to learning resources." },
+                        { q: "Do I need prior AI experience?", a: "No prior AI experience is required. This course is designed for professionals who are new to Generative AI and want to quickly gain practical skills." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-6">
                           <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
@@ -594,8 +464,8 @@ export default function AIAgentBuilderCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$499</div>
-                  <div className="text-base text-gray-500 line-through">$998</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$299</div>
+                  <div className="text-base text-gray-500 line-through">$598</div>
                   <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
@@ -633,7 +503,7 @@ export default function AIAgentBuilderCoursePage() {
                 </div>
 
                 <Link 
-                  href={`/courses/ai-agent-builder/schedule?course=${courseSlug}`}
+                  href={`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`}
                   className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center"
                 >
                   View Schedule
@@ -648,8 +518,8 @@ export default function AIAgentBuilderCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">No-Code AI Agents & Automation™ Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on No-Code AI Agents & Automation™ Certification Training</h2>
+            <p className="text-sm text-gray-600 mb-2">Certified GenAI Practitioner™ Course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on Certified GenAI Practitioner™ Certification Training</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -681,24 +551,24 @@ export default function AIAgentBuilderCoursePage() {
             {(() => {
               const faqs = {
                 courses: [
-                  { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. For questions, please email d.stevenson@agile36.com." },
+                  { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for more details." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Course Advisor' button on this page, or call our support team. We're available to answer any questions about the training program, schedules, and enrollment." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, we offer private/corporate training sessions that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "You can view all upcoming schedules by clicking the 'View Schedules' button on this page, or visit our course schedule page. Schedules are updated regularly and show both live virtual and in-person options." },
-                  { q: "After enrollment, can I change the date of my training class?", a: "Yes, participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time. All rescheduling requests must be submitted via email to d.stevenson@agile36.com so they can be processed promptly." }
+                  { q: "After enrollment, can I change the date of my training class?", a: "Yes, you can reschedule your training class as long as it's within 24 hours of the start time at no additional charge. Please contact our support team to make changes to your enrollment." }
                 ],
                 payment: [
                   { q: "What payment methods do you accept?", a: "We accept all major credit cards and debit cards. For corporate training, we also accept purchase orders and wire transfers." },
                   { q: "Are there any installment payment options?", a: "Yes, we offer flexible monthly payment plans. Contact our course advisors to discuss payment plan options that work for you." },
-                  { q: "Is there a refund policy?", a: "Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. Participants who arrive more than fifteen (15) minutes late to a scheduled class session will be locked out of the classroom and marked as a no-call, no-show. For questions, please email d.stevenson@agile36.com." },
+                  { q: "Is there a refund policy?", a: "Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for refund requests." },
                   { q: "Do you offer discounts for group enrollments?", a: "Yes, we offer significant discounts for group enrollments. Contact us for corporate training rates and group discounts." },
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials and resources. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "This is a comprehensive 2-day intensive program designed for Product Leaders, Innovators, Entrepreneurs, and Product Managers who want to build real AI products without code. You'll learn to use today's most powerful no-code platforms to create working AI prototypes, workflows, and agents that you can test, demo, or launch immediately." },
-                  { q: "Who should take this course?", a: "This course is for Product Managers and Product Owners who need to prototype AI features quickly, Entrepreneurs and Founders testing AI-powered business models, Business Analysts and Consultants building AI workflows, Non-technical professionals who want to create AI products without writing code, and Team leaders who want to equip their teams with hands-on AI building skills." },
-                  { q: "What are the prerequisites for this course?", a: "No prerequisites! This course is designed specifically for non-technical professionals. All you need is basic computer skills and a desire to automate your work. No coding or technical background required." },
-                  { q: "Will I receive a certification?", a: "Yes! Upon completion, you'll receive the Certified Agentic AI Automations (n8n & Cursor) certification, proving real execution capability in building agentic AI systems." }
+                  { q: "What is the Certified GenAI Practitioner™ Certification Training?", a: "The Certified GenAI Practitioner™ Certification Training is a comprehensive 4-hour course designed to help professionals master Generative AI fundamentals, prompt engineering, AI ethics, and practical applications. This course provides hands-on experience with GenAI tools and real-world use cases." },
+                  { q: "Who should take this course?", a: "This course is ideal for business professionals, Product Managers, Business Analysts, Marketing professionals, Consultants, and anyone looking to leverage Generative AI in their work without needing extensive technical background." },
+                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. This course is designed for professionals with no prior AI experience, though basic computer literacy is recommended." },
+                  { q: "Is there a certification exam?", a: "No, this course does not include a certification exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." }
                 ]
               };
 

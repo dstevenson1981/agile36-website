@@ -8,12 +8,12 @@ import { useSearchParams, useRouter } from "next/navigation";
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const courseSlug = searchParams.get('course') || 'ai-agent-builder';
+  const courseSlug = searchParams.get('course') || 'certified-genai-practitioner';
   const [schedules, setSchedules] = useState<any[]>([]);
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10); // Show 10 initially
-  const [courseName, setCourseName] = useState("No-Code AI Agents & Automation™");
+  const [courseName, setCourseName] = useState("Certified GenAI Practitioner™");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
   
   // Group inquiry modal state
@@ -21,7 +21,6 @@ function CourseScheduleContent() {
   const [groupInquiryFormData, setGroupInquiryFormData] = useState({
     name: "",
     email: "",
-    message: "",
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
@@ -31,8 +30,8 @@ function CourseScheduleContent() {
   const [consultationFormData, setConsultationFormData] = useState({
     name: "",
     email: "",
-    message: "",
-    phone: ""
+    phone: "",
+    message: ""
   });
   
   
@@ -54,53 +53,34 @@ function CourseScheduleContent() {
     'agile-product-management': 'SAFe Agile Product Management',
     'safe-for-teams': 'SAFe for Teams',
     'certified-genai-practitioner': 'Certified GenAI Practitioner™',
-    'ai-agent-builder': 'No-Code AI Agents & Automation™',
-  };
-
-  const fetchSchedules = async () => {
-    setIsLoadingSchedules(true);
-    try {
-      // Add timestamp and cache busting to ensure fresh data
-      const timestamp = Date.now();
-      const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${timestamp}`, {
-        method: 'GET',
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-          'X-Request-ID': `${timestamp}-${Math.random()}`
-        }
-      });
-      const result = await response.json();
-      if (result.success) {
-        const data = result.data || [];
-        // Log for debugging - show full date info
-        console.log('Fetched schedules:', data.map((s: any) => ({
-          id: s.id,
-          start_date: s.start_date,
-          end_date: s.end_date,
-          is_weekend: s.is_weekend,
-          formatted: formatDateRange(s.start_date, s.end_date),
-          course_name: s.course_name
-        })));
-        setSchedules(data);
-        setFilteredSchedules(data);
-        // Initialize quantities
-        const initialQuantities: { [key: string]: number } = {};
-        data.forEach((schedule: any) => {
-          initialQuantities[schedule.id] = 1;
-        });
-        setQuantity(initialQuantities);
-      }
-    } catch (error) {
-      console.error('Error fetching schedules:', error);
-    } finally {
-      setIsLoadingSchedules(false);
-    }
   };
 
   useEffect(() => {
+    const fetchSchedules = async () => {
+      setIsLoadingSchedules(true);
+      try {
+        const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active&_t=${Date.now()}`, {
+          cache: 'no-store'
+        });
+        const result = await response.json();
+        if (result.success) {
+          const data = result.data || [];
+          setSchedules(data);
+          setFilteredSchedules(data);
+          // Initialize quantities
+          const initialQuantities: { [key: string]: number } = {};
+          data.forEach((schedule: any) => {
+            initialQuantities[schedule.id] = 1;
+          });
+          setQuantity(initialQuantities);
+        }
+      } catch (error) {
+        console.error('Error fetching schedules:', error);
+      } finally {
+        setIsLoadingSchedules(false);
+      }
+    };
+
     const displayName = courseNames[courseSlug] || 'Course';
     setCourseName(displayName);
     fetchSchedules();
@@ -114,11 +94,11 @@ function CourseScheduleContent() {
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
-    // Apply month filters - parse dates without timezone conversion
+    // Apply month filters
     if (activeFilters.thisMonth) {
       filtered = filtered.filter(schedule => {
-        const { year, month } = parseDateFromString(schedule.start_date);
-        return month === currentMonth && year === currentYear;
+        const scheduleDate = new Date(schedule.start_date);
+        return scheduleDate.getMonth() === currentMonth && scheduleDate.getFullYear() === currentYear;
       });
     }
 
@@ -126,8 +106,8 @@ function CourseScheduleContent() {
       const nextMonth = (currentMonth + 1) % 12;
       const nextYear = nextMonth === 0 ? currentYear + 1 : currentYear;
       filtered = filtered.filter(schedule => {
-        const { year, month } = parseDateFromString(schedule.start_date);
-        return month === nextMonth && year === nextYear;
+        const scheduleDate = new Date(schedule.start_date);
+        return scheduleDate.getMonth() === nextMonth && scheduleDate.getFullYear() === nextYear;
       });
     }
 
@@ -192,104 +172,31 @@ function CourseScheduleContent() {
     });
   };
 
-  // Parse date from string without timezone conversion
-  const parseDateFromString = (dateString: string) => {
-    const datePart = dateString.split('T')[0];
-    const [year, month, day] = datePart.split('-').map(Number);
-    return { year, month: month - 1, day }; // month is 0-indexed for Date object compatibility
-  };
-
   const formatDate = (dateString: string) => {
-    try {
-      const { year, month, day } = parseDateFromString(dateString);
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return `${months[month]} ${day}, ${year}`;
-    } catch (e) {
-      return 'Date TBA';
-    }
-  };
-
-  // Format date without timezone conversion - parse date string directly
-  const formatDateSimple = (date: string) => {
-    try {
-      // Extract date part (YYYY-MM-DD) before any timezone conversion
-      const datePart = date.split('T')[0];
-      const [year, month, day] = datePart.split('-');
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return `${months[parseInt(month) - 1]} ${parseInt(day)}`;
-    } catch (e) {
-      return 'Date TBA';
-    }
-  };
-
-  // Check if a course is in the current week
-  const isInCurrentWeek = (startDate: string) => {
-    try {
-      const { year, month, day } = parseDateFromString(startDate);
-      const courseDate = new Date(year, month, day);
-      const now = new Date();
-      
-      // Get start of current week (Sunday)
-      const startOfWeek = new Date(now);
-      startOfWeek.setDate(now.getDate() - now.getDay());
-      startOfWeek.setHours(0, 0, 0, 0);
-      
-      // Get end of current week (Saturday)
-      const endOfWeek = new Date(startOfWeek);
-      endOfWeek.setDate(startOfWeek.getDate() + 6);
-      endOfWeek.setHours(23, 59, 59, 999);
-      
-      return courseDate >= startOfWeek && courseDate <= endOfWeek;
-    } catch (e) {
-      return false;
-    }
-  };
-
-  // Calculate remaining seats deterministically (2 or 3) based on schedule ID
-  const getRemainingSeats = (scheduleId: string, startDate: string, courseSlug?: string) => {
-    // Special case: DevOps class Jan 22-23 should show 2 remaining
-    if (courseSlug === 'devops' || courseSlug === 'ai-agent-builder') {
-      const datePart = startDate.split('T')[0];
-      if (datePart === '2026-01-22' || datePart === '2026-01-23') {
-        return 2;
-      }
-    }
-    
-    // Convert any ID (UUID or number) to a deterministic number
-    let hash = 0;
-    for (let i = 0; i < scheduleId.length; i++) {
-      const char = scheduleId.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
-    }
-    
-    // Return 2 or 3 based on hash (deterministic)
-    return Math.abs(hash) % 2 === 0 ? 2 : 3;
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
   };
 
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
-      // Parse dates directly from string - no timezone conversion
-      const startDatePart = startDate.split('T')[0];
-      const endDatePart = endDate.split('T')[0];
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const startFormatted = start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const endFormatted = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       
       // If same day, just show one date
-      if (startDatePart === endDatePart) {
-        return formatDateSimple(startDate);
+      if (start.toDateString() === end.toDateString()) {
+        return startFormatted;
       }
-      
-      const startFormatted = formatDateSimple(startDate);
-      const endFormatted = formatDateSimple(endDate);
       
       // If same month, only show day for end date
-      const [startYear, startMonth] = startDatePart.split('-');
-      const [endYear, endMonth] = endDatePart.split('-');
-      
-      if (startMonth === endMonth && startYear === endYear) {
-        const [, , endDay] = endDatePart.split('-');
-        return `${startFormatted} - ${parseInt(endDay)}`;
+      if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+        return `${startFormatted} - ${end.getDate()}`;
       }
-      
       return `${startFormatted} - ${endFormatted}`;
     } catch (e) {
       return 'Date TBA';
@@ -329,6 +236,10 @@ function CourseScheduleContent() {
     return Math.round(discount);
   };
 
+  const copyCouponCode = () => {
+    navigator.clipboard.writeText('50OFF');
+    alert('Coupon code copied!');
+  };
 
   const handleGroupInquiryClick = (schedule: any) => {
     setSelectedScheduleForInquiry(schedule);
@@ -365,7 +276,7 @@ function CourseScheduleContent() {
       if (response.ok) {
         alert('Thank you for your inquiry! We will contact you shortly about group pricing.');
         setShowGroupInquiryModal(false);
-        setGroupInquiryFormData({ name: "", email: "", message: "" });
+        setGroupInquiryFormData({ name: "", email: "" });
         setSelectedScheduleForInquiry(null);
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -391,35 +302,17 @@ function CourseScheduleContent() {
           <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
             <Link href="/" className="hover:text-[#01203d]">Home</Link>
             <span>/</span>
-            <Link href="/courses/ai-agent-builder" className="hover:text-[#01203d]">No-Code AI Agents & Automation™</Link>
+            <Link href="/courses/certified-genai-practitioner" className="hover:text-[#01203d]">Certified GenAI Practitioner™</Link>
             <span>/</span>
             <span className="text-[#01203d]">Schedule</span>
           </div>
 
           {/* Title */}
-          <div className="mb-4 flex items-start justify-between gap-4">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">COURSE SCHEDULES</p>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Schedules for {courseName} in USA
-              </h1>
-            </div>
-            <button
-              onClick={fetchSchedules}
-              disabled={isLoadingSchedules}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-medium flex items-center gap-2 whitespace-nowrap"
-              title="Refresh schedules"
-            >
-              <svg 
-                className={`w-4 h-4 ${isLoadingSchedules ? 'animate-spin' : ''}`} 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              {isLoadingSchedules ? 'Loading...' : 'Refresh'}
-            </button>
+          <div className="mb-4">
+            <p className="text-sm text-gray-600 mb-1">COURSE SCHEDULES</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Schedules for {courseName} in USA
+            </h1>
           </div>
 
           {/* Filters */}
@@ -464,6 +357,20 @@ function CourseScheduleContent() {
             >
               Weekend
             </button>
+            <button
+              onClick={() => toggleFilter('timeSlot')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
+                activeFilters.timeSlot
+                  ? 'bg-[#fa4a23] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Time Slot
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              {activeFilters.timeSlot && <span className="bg-white text-[#fa4a23] px-2 py-0.5 rounded text-xs">0</span>}
+            </button>
             {hasActiveFilters && (
               <button
                 onClick={clearAllFilters}
@@ -497,6 +404,25 @@ function CourseScheduleContent() {
             {/* Left Sidebar */}
             <aside className="w-full lg:w-80 flex-shrink-0">
               <div className="space-y-6">
+                {/* Discount Banner */}
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg p-6 text-white">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl font-bold">$50 OFF</span>
+                  </div>
+                  <p className="text-sm mb-3 opacity-90">Expires tonight</p>
+                  <div className="bg-white/20 rounded-md p-3 mb-3">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold">Coupon code '50OFF'</span>
+                      <button
+                        onClick={copyCouponCode}
+                        className="bg-white text-orange-600 px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100 transition-colors"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Reviews Card */}
                 <div className="bg-white rounded-lg border border-gray-200 p-6">
                   <div className="flex gap-4 mb-4">
@@ -558,16 +484,12 @@ function CourseScheduleContent() {
               ) : (
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
-                    // Don't parse dates here - use formatDateRange which handles timezone correctly
+                    const startDate = new Date(schedule.start_date);
+                    const endDate = new Date(schedule.end_date);
                     const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
-                    
-                    // For current week courses, show 2-3 remaining seats
-                    const isCurrentWeek = isInCurrentWeek(schedule.start_date);
-                    // Use schedule ID to deterministically show 2 or 3 (handles UUIDs and numeric IDs)
-                    const remainingSeats = isCurrentWeek ? getRemainingSeats(schedule.id, schedule.start_date, courseSlug) : null;
 
                     return (
                       <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -596,7 +518,6 @@ function CourseScheduleContent() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                                   </svg>
                                   <span>Online • {schedule.is_weekend === true ? 'Weekend' : 'Weekday'} Batch</span>
-                                  {/* Debug: {schedule.is_weekend ? 'true' : 'false'} - {new Date(schedule.start_date).toLocaleDateString()} */}
                                 </div>
                               </div>
                             </div>
@@ -627,7 +548,7 @@ function CourseScheduleContent() {
                                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                                   </svg>
-                                  <span>Language: {schedule.language || 'English'} • {schedule.exam_included ? 'Exam Included' : 'No Exam'}</span>
+                                  <span>Language: {schedule.language || 'English'} • No Exam</span>
                                 </div>
                               </div>
                             </div>
@@ -710,20 +631,11 @@ function CourseScheduleContent() {
                             
                             {/* Enroll Now Button */}
                             <Link
-                              href={`/courses/ai-agent-builder/schedule/checkout?course=ai-agent-builder&schedule=${schedule.id}&quantity=${qty}`}
+                              href={`/courses/certified-genai-practitioner/schedule/checkout?schedule=${schedule.id}&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
                             >
                               Enroll Now
                             </Link>
-                            
-                            {/* Show "X REMAINING!" for current week courses */}
-                            {isCurrentWeek && remainingSeats !== null && (
-                              <div className="text-center mt-2">
-                                <span className="text-red-600 font-bold text-sm uppercase">
-                                  {remainingSeats} REMAINING!
-                                </span>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -756,7 +668,7 @@ function CourseScheduleContent() {
             <button
               onClick={() => {
                 setShowGroupInquiryModal(false);
-                setGroupInquiryFormData({ name: "", email: "", message: "" });
+                setGroupInquiryFormData({ name: "", email: "" });
                 setSelectedScheduleForInquiry(null);
               }}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
@@ -856,7 +768,11 @@ function CourseScheduleContent() {
                       <p className="text-xs text-gray-600 mb-1">Selected Course:</p>
                       <p className="text-sm font-medium text-gray-900">{courseName}</p>
                       <p className="text-xs text-gray-600">
-                        {formatDate(selectedScheduleForInquiry.start_date)}
+                        {new Date(selectedScheduleForInquiry.start_date).toLocaleDateString('en-US', { 
+                          month: 'long', 
+                          day: 'numeric', 
+                          year: 'numeric' 
+                        })}
                       </p>
                     </div>
                   )}

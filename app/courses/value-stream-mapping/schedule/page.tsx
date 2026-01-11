@@ -21,7 +21,6 @@ function CourseScheduleContent() {
   const [groupInquiryFormData, setGroupInquiryFormData] = useState({
     name: "",
     email: "",
-    message: "",
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
@@ -87,11 +86,11 @@ function CourseScheduleContent() {
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
-    // Apply month filters - parse dates without timezone conversion
+    // Apply month filters
     if (activeFilters.thisMonth) {
       filtered = filtered.filter(schedule => {
-        const { year, month } = parseDateFromString(schedule.start_date);
-        return month === currentMonth && year === currentYear;
+        const scheduleDate = new Date(schedule.start_date);
+        return scheduleDate.getMonth() === currentMonth && scheduleDate.getFullYear() === currentYear;
       });
     }
 
@@ -99,8 +98,8 @@ function CourseScheduleContent() {
       const nextMonth = (currentMonth + 1) % 12;
       const nextYear = nextMonth === 0 ? currentYear + 1 : currentYear;
       filtered = filtered.filter(schedule => {
-        const { year, month } = parseDateFromString(schedule.start_date);
-        return month === nextMonth && year === nextYear;
+        const scheduleDate = new Date(schedule.start_date);
+        return scheduleDate.getMonth() === nextMonth && scheduleDate.getFullYear() === nextYear;
       });
     }
 
@@ -165,103 +164,31 @@ function CourseScheduleContent() {
     });
   };
 
-  // Parse date from string without timezone conversion
-  const parseDateFromString = (dateString: string) => {
-    const datePart = dateString.split('T')[0];
-    const [year, month, day] = datePart.split('-').map(Number);
-    return { year, month: month - 1, day };
-  };
-
-  // Format date without timezone conversion
-  const formatDateSimple = (date: string) => {
-    try {
-      const datePart = date.split('T')[0];
-      const [year, month, day] = datePart.split('-');
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return `${months[parseInt(month) - 1]} ${parseInt(day)}`;
-    } catch (e) {
-      return 'Date TBA';
-    }
-  };
-
   const formatDate = (dateString: string) => {
-    try {
-      const { year, month, day } = parseDateFromString(dateString);
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return `${months[month]} ${day}, ${year}`;
-    } catch (e) {
-      return 'Date TBA';
-    }
-  };
-
-  // Check if a course is in the current week
-  const isInCurrentWeek = (startDate: string) => {
-    try {
-      const { year, month, day } = parseDateFromString(startDate);
-      const courseDate = new Date(year, month, day);
-      const now = new Date();
-      
-      // Get start of current week (Sunday)
-      const startOfWeek = new Date(now);
-      startOfWeek.setDate(now.getDate() - now.getDay());
-      startOfWeek.setHours(0, 0, 0, 0);
-      
-      // Get end of current week (Saturday)
-      const endOfWeek = new Date(startOfWeek);
-      endOfWeek.setDate(startOfWeek.getDate() + 6);
-      endOfWeek.setHours(23, 59, 59, 999);
-      
-      return courseDate >= startOfWeek && courseDate <= endOfWeek;
-    } catch (e) {
-      return false;
-    }
-  };
-
-  // Calculate remaining seats deterministically (2 or 3) based on schedule ID
-  const getRemainingSeats = (scheduleId: string, startDate: string, courseSlug?: string) => {
-    // Special case: DevOps class Jan 22-23 should show 2 remaining
-    if (courseSlug === 'devops') {
-      const datePart = startDate.split('T')[0];
-      if (datePart === '2026-01-22' || datePart === '2026-01-23') {
-        return 2;
-      }
-    }
-    
-    // Convert any ID (UUID or number) to a deterministic number
-    let hash = 0;
-    for (let i = 0; i < scheduleId.length; i++) {
-      const char = scheduleId.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
-    }
-    
-    // Return 2 or 3 based on hash (deterministic)
-    return Math.abs(hash) % 2 === 0 ? 2 : 3;
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
   };
 
   const formatDateRange = (startDate: string, endDate: string) => {
     try {
-      // Parse dates directly from string - no timezone conversion
-      const startDatePart = startDate.split('T')[0];
-      const endDatePart = endDate.split('T')[0];
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const startFormatted = start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const endFormatted = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       
       // If same day, just show one date
-      if (startDatePart === endDatePart) {
-        return formatDateSimple(startDate);
+      if (start.toDateString() === end.toDateString()) {
+        return startFormatted;
       }
-      
-      const startFormatted = formatDateSimple(startDate);
-      const endFormatted = formatDateSimple(endDate);
       
       // If same month, only show day for end date
-      const [startYear, startMonth] = startDatePart.split('-');
-      const [endYear, endMonth] = endDatePart.split('-');
-      
-      if (startMonth === endMonth && startYear === endYear) {
-        const [, , endDay] = endDatePart.split('-');
-        return `${startFormatted} - ${parseInt(endDay)}`;
+      if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+        return `${startFormatted} - ${end.getDate()}`;
       }
-      
       return `${startFormatted} - ${endFormatted}`;
     } catch (e) {
       return 'Date TBA';
@@ -301,6 +228,10 @@ function CourseScheduleContent() {
     return Math.round(discount);
   };
 
+  const copyCouponCode = () => {
+    navigator.clipboard.writeText('50OFF');
+    alert('Coupon code copied!');
+  };
 
   const handleGroupInquiryClick = (schedule: any) => {
     setSelectedScheduleForInquiry(schedule);
@@ -337,7 +268,7 @@ function CourseScheduleContent() {
       if (response.ok) {
         alert('Thank you for your inquiry! We will contact you shortly about group pricing.');
         setShowGroupInquiryModal(false);
-        setGroupInquiryFormData({ name: "", email: "", message: "" });
+        setGroupInquiryFormData({ name: "", email: "" });
         setSelectedScheduleForInquiry(null);
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -418,6 +349,20 @@ function CourseScheduleContent() {
             >
               Weekend
             </button>
+            <button
+              onClick={() => toggleFilter('timeSlot')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
+                activeFilters.timeSlot
+                  ? 'bg-[#fa4a23] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Time Slot
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              {activeFilters.timeSlot && <span className="bg-white text-[#fa4a23] px-2 py-0.5 rounded text-xs">0</span>}
+            </button>
             {hasActiveFilters && (
               <button
                 onClick={clearAllFilters}
@@ -451,6 +396,25 @@ function CourseScheduleContent() {
             {/* Left Sidebar */}
             <aside className="w-full lg:w-80 flex-shrink-0">
               <div className="space-y-6">
+                {/* Discount Banner */}
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg p-6 text-white">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl font-bold">$50 OFF</span>
+                  </div>
+                  <p className="text-sm mb-3 opacity-90">Expires tonight</p>
+                  <div className="bg-white/20 rounded-md p-3 mb-3">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold">Coupon code '50OFF'</span>
+                      <button
+                        onClick={copyCouponCode}
+                        className="bg-white text-orange-600 px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100 transition-colors"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Reviews Card */}
                 <div className="bg-white rounded-lg border border-gray-200 p-6">
                   <div className="flex gap-4 mb-4">
@@ -512,13 +476,12 @@ function CourseScheduleContent() {
               ) : (
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
-                    // Don't parse dates here - use formatDateRange which handles timezone correctly
+                    const startDate = new Date(schedule.start_date);
+                    const endDate = new Date(schedule.end_date);
                     const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
-                    const isCurrentWeek = isInCurrentWeek(schedule.start_date);
-                    const remainingSeats = isCurrentWeek ? getRemainingSeats(schedule.id, schedule.start_date, courseSlug) : null;
 
                     return (
                       <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -660,20 +623,11 @@ function CourseScheduleContent() {
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
                             <Link
-                              href={`/courses/value-stream-mapping/schedule/checkout?schedule=${schedule.id}&course=value-stream-mapping&quantity=${qty}`}
+                              href={`/courses/value-stream-mapping/schedule/checkout?schedule_id=${schedule.id}&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg text-center transition-colors mt-4"
                             >
                               ENROLL NOW
                             </Link>
-                            
-                            {/* Show "X REMAINING!" for current week courses */}
-                            {isCurrentWeek && remainingSeats !== null && (
-                              <div className="text-center mt-2">
-                                <span className="text-red-600 font-bold text-sm uppercase">
-                                  {remainingSeats} REMAINING!
-                                </span>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -706,7 +660,7 @@ function CourseScheduleContent() {
             <button
               onClick={() => {
                 setShowGroupInquiryModal(false);
-                setGroupInquiryFormData({ name: "", email: "", message: "" });
+                setGroupInquiryFormData({ name: "", email: "" });
                 setSelectedScheduleForInquiry(null);
               }}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"

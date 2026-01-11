@@ -221,19 +221,50 @@ function CheckoutContent() {
     setPaymentError(null);
 
     try {
+      // Calculate discount at the time of payment intent creation to ensure it's current
+      const basePrice = parseFloat(selectedSchedule.price);
+      const baseTotal = basePrice * enrollmentQuantity;
+      
+      // Apply promo code discount
+      let calculatedPromoDiscount = 0;
+      if (appliedPromoCode && promoDiscount > 0) {
+        if (promoDiscountType === 'fixed') {
+          calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+        } else {
+          // percentage
+          calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
+        }
+      }
+      
+      const finalAmount = Math.max(0, baseTotal - calculatedPromoDiscount);
+      
+      // Log for debugging
+      console.log('Creating payment intent:', {
+        basePrice,
+        baseTotal,
+        appliedPromoCode,
+        promoDiscount,
+        promoDiscountType,
+        calculatedPromoDiscount,
+        finalAmount,
+      });
+
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: totalPrice,
+          amount: finalAmount,
           scheduleId: selectedSchedule.id,
           courseSlug,
           courseName,
           quantity: enrollmentQuantity,
           customerEmail: enrollmentFormData.email,
           customerName: `${enrollmentFormData.firstName} ${enrollmentFormData.lastName}`,
+          promoCode: appliedPromoCode || null,
+          promoDiscount: calculatedPromoDiscount || 0,
+          originalAmount: baseTotal,
           enrollmentData: {
             ...enrollmentFormData,
             scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),

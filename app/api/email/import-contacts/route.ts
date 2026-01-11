@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;
-    const bulkTags = formData.get('bulkTags') as string | null; // Optional tags to apply to all contacts if CSV has no Tags column
 
     if (!file) {
       return NextResponse.json(
@@ -84,47 +83,21 @@ export async function POST(request: NextRequest) {
         // Check if contact already exists
         const { data: existingContact } = await supabase
           .from('email_contacts')
-          .select('id, tags')
+          .select('id')
           .eq('email', emailLower)
           .maybeSingle();
 
         const isUpdate = !!existingContact;
 
-        // Parse tags from CSV Tags column (if it exists)
-        // Check multiple possible column name variations (case-insensitive)
+        // Parse tags (can be comma-separated string or array)
         let tags: string[] = [];
-        const tagsValue = csvRecord.tags || csvRecord.Tags || csvRecord.TAGS || csvRecord['tags'] || csvRecord['Tags'] || csvRecord['TAGS'] || null;
-        const hasTagsColumn = tagsValue !== undefined && tagsValue !== null && tagsValue !== '';
-        
-        if (hasTagsColumn) {
-          // CSV has Tags column - use those tags for this contact
-          if (typeof tagsValue === 'string') {
-            tags = tagsValue.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          } else if (Array.isArray(tagsValue)) {
-            tags = tagsValue;
-          }
-        } else if (bulkTags) {
-          // CSV has NO Tags column - use bulk tags provided by user
-          // Apply to both new contacts and updates (so re-uploads can tag existing contacts)
-          const bulkTagsArray = bulkTags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          if (isUpdate && existingContact && existingContact.tags) {
-            // For updates, merge with existing tags
-            const existingTagsArray = Array.isArray(existingContact.tags) ? existingContact.tags : [];
-            tags = [...existingTagsArray];
-            // Add bulk tags that don't already exist
-            bulkTagsArray.forEach(tag => {
-              if (!tags.some(t => t.trim().toLowerCase() === tag.trim().toLowerCase())) {
-                tags.push(tag);
-              }
-            });
-          } else {
-            // For new contacts, just use bulk tags
-            tags = bulkTagsArray;
+        if (csvRecord.tags) {
+          if (typeof csvRecord.tags === 'string') {
+            tags = csvRecord.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+          } else if (Array.isArray(csvRecord.tags)) {
+            tags = csvRecord.tags;
           }
         }
-        
-        // Note: We do NOT auto-tag with filename or date anymore
-        // Tags come ONLY from CSV Tags column or user-provided bulk tags
 
         // Determine subscription status - default to true unless explicitly false
         let subscribed = true;
@@ -133,70 +106,13 @@ export async function POST(request: NextRequest) {
           subscribed = subValue !== 'false' && subValue !== '0' && subValue !== 'no' && subValue !== 'n';
         }
 
-        // Extract company from CSV - check multiple possible column names
-        let company = csvRecord.company || 
-                      csvRecord.Company || 
-                      csvRecord['Company'] || 
-                      csvRecord['Company Name'] || 
-                      csvRecord['company name'] || 
-                      csvRecord['COMPANY NAME'] ||
-                      csvRecord.companyName ||
-                      csvRecord.company_name ||
-                      null;
-        
-        // If no company column, extract from email domain
-        if (!company && email.includes('@')) {
-          const domain = email.split('@')[1];
-          if (domain) {
-            // Remove common TLDs and format nicely
-            const domainParts = domain.split('.');
-            if (domainParts.length > 0) {
-              // Take the main domain part (before .com, .org, etc.)
-              const mainDomain = domainParts[0];
-              // Capitalize and format common domains
-              const domainMap: Record<string, string | null> = {
-                'nationwide': 'Nationwide',
-                'visa': 'Visa',
-                'bny': 'BNY Mellon',
-                'bnymellon': 'BNY Mellon',
-                'tjx': 'TJX',
-                'gmail': null, // Don't use gmail as company
-                'yahoo': null,
-                'hotmail': null,
-                'outlook': null,
-              };
-              
-              const mappedCompany = domainMap[mainDomain.toLowerCase()];
-              if (mappedCompany) {
-                company = mappedCompany;
-              } else if (!['gmail', 'yahoo', 'hotmail', 'outlook', 'icloud', 'aol'].includes(mainDomain.toLowerCase())) {
-                // Only use domain as company if it's not a personal email domain
-                company = mainDomain.charAt(0).toUpperCase() + mainDomain.slice(1);
-              }
-            }
-          }
-        }
-
-        // For updates, merge tags with existing tags
-        let finalTags = tags;
-        if (isUpdate && existingContact && existingContact.tags) {
-          const existingTagsArray = Array.isArray(existingContact.tags) ? existingContact.tags : [];
-          const mergedTags = [...existingTagsArray];
-          tags.forEach(tag => {
-            if (!mergedTags.some(t => t.trim().toLowerCase() === tag.trim().toLowerCase())) {
-              mergedTags.push(tag);
-            }
-          });
-          finalTags = mergedTags;
-        }
-
         const contactData = {
           email: emailLower,
           first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || csvRecord['first_name'] || null,
           last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || csvRecord['last_name'] || null,
           role: csvRecord.role || csvRecord.Role || csvRecord['Role'] || null,
-          company: company,
-          tags: finalTags.length > 0 ? finalTags : null,
+          company: csvRecord.company || csvRecord.Company || csvRecord['Company'] || null,
+          tags: tags.length > 0 ? tags : null,
           subscribed: subscribed, // Default to true unless explicitly set to false
         };
 
@@ -223,13 +139,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Check if CSV had Tags column by checking if any record has tags
-    // We check the parsed records to see if 'tags' key exists (even if empty)
-    const hasTagsColumn = records.length > 0 && records.some((record: any) => {
-      const tagsValue = record.tags || record.Tags || record.TAGS || record['tags'] || record['Tags'] || record['TAGS'];
-      return tagsValue !== undefined && tagsValue !== null && tagsValue !== '';
-    });
-
     return NextResponse.json({
       success: true,
       imported: successCount,
@@ -237,7 +146,6 @@ export async function POST(request: NextRequest) {
       errors: errors.length,
       errorDetails: errors.slice(0, 10), // Return first 10 errors
       total: records.length,
-      hasTagsColumn: hasTagsColumn || false,
     });
   } catch (error: any) {
     console.error('Error importing contacts:', error);

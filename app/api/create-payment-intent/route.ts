@@ -1,16 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-function getStripeClient() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  if (!secretKey) {
-    throw new Error('Stripe secret key not configured');
-  }
-  return new Stripe(secretKey);
-}
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: NextRequest) {
-  const stripe = getStripeClient();
   try {
     const body = await request.json();
     const {
@@ -24,6 +17,9 @@ export async function POST(request: NextRequest) {
       customerEmail,
       customerName,
       enrollmentData,
+      promoCode,
+      promoDiscount,
+      originalAmount,
     } = body;
 
     if (!amount || !scheduleId || !customerEmail) {
@@ -82,13 +78,8 @@ export async function POST(request: NextRequest) {
         
         // Always update to ensure email and name are set
         console.log('Updating customer with:', updateData);
-        try {
-          customer = await stripe.customers.update(customer.id, updateData);
-          console.log('Customer updated:', customer.id, customer.email, customer.name);
-        } catch (updateError: any) {
-          console.error('Error updating customer, but continuing with existing customer:', updateError);
-          // Continue with existing customer even if update fails
-        }
+        customer = await stripe.customers.update(customer.id, updateData);
+        console.log('Customer updated:', customer.id, customer.email, customer.name);
       } else {
         // Create new customer with all available info
         const customerData: any = {
@@ -113,16 +104,10 @@ export async function POST(request: NextRequest) {
         
         console.log('Creating new customer with:', customerData);
         customer = await stripe.customers.create(customerData);
-        console.log('✅ Customer created successfully:', customer.id, customer.email, customer.name);
+        console.log('Customer created:', customer.id, customer.email, customer.name);
       }
     } catch (error: any) {
-      console.error('❌ Error creating/retrieving customer:', error);
-      console.error('Error details:', {
-        message: error.message,
-        type: error.type,
-        code: error.code,
-        statusCode: error.statusCode,
-      });
+      console.error('Error creating/retrieving customer:', error);
       // Don't continue without customer - throw error
       throw new Error(`Failed to create/retrieve customer: ${error.message}`);
     }
@@ -211,6 +196,10 @@ export async function POST(request: NextRequest) {
         scheduleTime: scheduleTime || '',
         duration: duration || '',
         timezone: enrollmentData?.timezone || '',
+        promoCode: promoCode || '',
+        promoDiscount: promoDiscount ? promoDiscount.toString() : '0',
+        originalAmount: originalAmount ? originalAmount.toString() : amount.toString(),
+        finalAmount: amount.toString(),
       },
     });
 

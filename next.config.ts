@@ -112,12 +112,6 @@ const nextConfig: NextConfig = {
         destination: '/courses/pmp-certification',
         permanent: true,
       },
-      // Page redirects
-      {
-        source: '/aboutus',
-        destination: '/contact',
-        permanent: true,
-      },
     ];
   },
 };

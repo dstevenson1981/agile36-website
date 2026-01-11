@@ -102,14 +102,13 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
             </p>
           </div>
 
-          {/* YEAR END MEGA SALE Graphic */}
+          {/* New Year 2026 Sale Graphic */}
           <div className="relative z-10 flex flex-col items-center">
             <div className="bg-yellow-400 px-4 py-1 rounded-t-lg">
-              <span className="text-black font-bold text-sm">YEAR END</span>
+              <span className="text-black font-bold text-sm">NEW YEAR</span>
             </div>
             <div className="bg-gray-900 px-6 py-3 rounded-b-lg shadow-lg">
-              <div className="text-white font-bold text-3xl mb-1">MEGA</div>
-              <div className="text-red-500 font-bold text-3xl border-b-2 border-red-500">SALE</div>
+              <div className="text-yellow-400 font-bold text-4xl">2026</div>
             </div>
           </div>
 

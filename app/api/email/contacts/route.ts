@@ -8,9 +8,6 @@ export async function GET(request: NextRequest) {
     const subscribed = searchParams.get('subscribed');
     const blocked = searchParams.get('blocked');
     const search = searchParams.get('search');
-    const role = searchParams.get('role');
-    const company = searchParams.get('company');
-    const dateRange = searchParams.get('dateRange');
 
     // Supabase setup
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -30,76 +27,27 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Build count query (same filters as main query)
-    let countQuery = supabase.from('email_contacts').select('*', { count: 'exact', head: true });
     let query = supabase.from('email_contacts').select('*');
 
-    // Apply filters to both queries
+    // Apply filters
     if (tags) {
       const tagArray = tags.split(',').map(t => t.trim());
       query = query.contains('tags', tagArray);
-      countQuery = countQuery.contains('tags', tagArray);
     }
 
     if (subscribed !== null) {
       query = query.eq('subscribed', subscribed === 'true');
-      countQuery = countQuery.eq('subscribed', subscribed === 'true');
     }
 
     if (blocked !== null) {
       query = query.eq('blocked', blocked === 'true');
-      countQuery = countQuery.eq('blocked', blocked === 'true');
     }
 
     if (search) {
-      const searchFilter = `email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`;
-      query = query.or(searchFilter);
-      countQuery = countQuery.or(searchFilter);
+      query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`);
     }
 
-    if (role) {
-      query = query.eq('role', role);
-      countQuery = countQuery.eq('role', role);
-    }
-
-    if (company) {
-      query = query.eq('company', company);
-      countQuery = countQuery.eq('company', company);
-    }
-
-    // Apply date range filter
-    if (dateRange) {
-      const now = new Date();
-      let startDate: Date;
-      
-      switch (dateRange) {
-        case 'today':
-          startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          break;
-        case 'lastHour':
-          startDate = new Date(now.getTime() - 60 * 60 * 1000);
-          break;
-        case 'last24Hours':
-          startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-          break;
-        case 'lastWeek':
-          startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-          break;
-        default:
-          startDate = new Date(0); // All time
-      }
-      
-      query = query.gte('created_at', startDate.toISOString());
-      countQuery = countQuery.gte('created_at', startDate.toISOString());
-    }
-
-    // Get total count with same filters
-    const { count: totalCount } = await countQuery;
-
-    // Apply limit for display (but get accurate count)
-    const { data: contacts, error } = await query
-      .order('created_at', { ascending: false })
-      .limit(1000); // Limit display to 1000, but we have the accurate count
+    const { data: contacts, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
       console.error('Error fetching contacts:', error);
@@ -112,8 +60,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       contacts: contacts || [],
-      totalCount: totalCount || 0,
-      displayedCount: contacts?.length || 0,
     });
   } catch (error: any) {
     console.error('Error in contacts API:', error);

@@ -9,7 +9,6 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
-import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -18,14 +17,14 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const scheduleId = searchParams.get('schedule');
-  const courseSlug = searchParams.get('course') || 'value-stream-mapping';
+  const courseSlug = searchParams.get('course') || 'responsible-ai';
   
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedSchedule, setSelectedSchedule] = useState<any>(null);
   const [selectedPlan, setSelectedPlan] = useState<'basic' | 'pro'>('basic');
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("SAFe® Value Stream Mapping");
+  const [courseName, setCourseName] = useState("Achieving Responsible AI with SAFe Micro-credential Course");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -56,43 +55,14 @@ function CheckoutContent() {
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
     'responsible-ai': 'Achieving Responsible AI with SAFe Micro-credential Course',
-    'value-stream-mapping': 'SAFe® Value Stream Mapping',
-  };
-
-  const certificationNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
-    'lean-portfolio-management': 'SAFe Lean Portfolio Management',
-    'devops': 'SAFe DevOps',
-    'agile-product-management': 'SAFe Agile Product Management',
-    'responsible-ai': 'Achieving Responsible AI with SAFe',
-    'safe-for-teams': 'SAFe for Teams',
-    'advanced-scrum-master': 'Advanced SAFe Scrum Master',
-    'value-stream-mapping': 'SAFe Value Stream Mapping',
-  };
-
-  const getCertificationName = () => {
-    return certificationNames[courseSlug] || 'the certification';
-  };
-
-  // Courses that don't have exams or PDUs
-  const coursesWithoutExamPDU = ['responsible-ai', 'value-stream-mapping'];
-  const hasExamAndPDU = !coursesWithoutExamPDU.includes(courseSlug);
-  
-  // Training hours per course
-  const getTrainingHours = () => {
-    if (coursesWithoutExamPDU.includes(courseSlug)) {
-      return '4';
-    }
-    return '16';
+    'responsible-ai': 'Achieving Responsible AI with SAFe Micro-credential Course',
   };
 
   useEffect(() => {
     const fetchSchedule = async () => {
       if (!scheduleId) {
         // Redirect to schedule page if no schedule ID
-        router.push(`/courses/value-stream-mapping/schedule`);
+        router.push(`/courses/responsible-ai/schedule`);
         return;
       }
 
@@ -108,14 +78,14 @@ function CheckoutContent() {
             setEnrollmentQuantity(1);
           } else {
             // Schedule not found, redirect to schedule page
-            router.push(`/courses/value-stream-mapping/schedule`);
+            router.push(`/courses/responsible-ai/schedule`);
           }
         } else {
-          router.push(`/courses/value-stream-mapping/schedule`);
+          router.push(`/courses/responsible-ai/schedule`);
         }
       } catch (error) {
         console.error('Error fetching schedule:', error);
-        router.push(`/courses/value-stream-mapping/schedule`);
+        router.push(`/courses/responsible-ai/schedule`);
       } finally {
         setIsLoading(false);
       }
@@ -156,38 +126,6 @@ function CheckoutContent() {
         alert('Please fill in all required fields');
         return;
       }
-      
-      // Save enrollment lead to database
-      try {
-        const response = await fetch('/api/save-enrollment-lead', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            scheduleId: selectedSchedule.id,
-            courseSlug,
-            courseName,
-            enrollingFor: enrollmentFormData.enrollingFor,
-            firstName: enrollmentFormData.firstName,
-            lastName: enrollmentFormData.lastName,
-            email: enrollmentFormData.email,
-            phone: enrollmentFormData.phone,
-            alternativeContact: enrollmentFormData.alternativeContact,
-            referralCode: enrollmentFormData.referralCode,
-          }),
-        });
-
-        const data = await response.json();
-        if (!response.ok) {
-          console.error('Error saving enrollment lead:', data.error);
-          // Don't block the user from continuing, but log the error
-        }
-      } catch (error) {
-        console.error('Error saving enrollment lead:', error);
-        // Don't block the user from continuing
-      }
-      
       setCurrentStep(2);
     } else if (currentStep === 2) {
       // Create payment intent and move to payment step
@@ -202,13 +140,43 @@ function CheckoutContent() {
     setPaymentError(null);
 
     try {
+      // Calculate discount at the time of payment intent creation to ensure it's current
+      const basePrice = selectedPlan === 'pro' 
+        ? parseFloat(selectedSchedule.price) * 1.15 
+        : parseFloat(selectedSchedule.price);
+      const baseTotal = basePrice * enrollmentQuantity;
+      
+      // Apply promo code discount
+      let calculatedPromoDiscount = 0;
+      if (appliedPromoCode && promoDiscount > 0) {
+        if (promoDiscountType === 'fixed') {
+          calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+        } else {
+          // percentage
+          calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
+        }
+      }
+      
+      const finalAmount = Math.max(0, baseTotal - calculatedPromoDiscount);
+      
+      // Log for debugging
+      console.log('Creating payment intent:', {
+        basePrice,
+        baseTotal,
+        appliedPromoCode,
+        promoDiscount,
+        promoDiscountType,
+        calculatedPromoDiscount,
+        finalAmount,
+      });
+
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: totalPrice,
+          amount: finalAmount,
           scheduleId: selectedSchedule.id,
           courseSlug,
           courseName,
@@ -216,6 +184,9 @@ function CheckoutContent() {
           quantity: enrollmentQuantity,
           customerEmail: enrollmentFormData.email,
           customerName: `${enrollmentFormData.firstName} ${enrollmentFormData.lastName}`,
+          promoCode: appliedPromoCode || null,
+          promoDiscount: calculatedPromoDiscount || 0,
+          originalAmount: baseTotal,
           enrollmentData: {
             ...enrollmentFormData,
             scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),
@@ -272,7 +243,7 @@ function CheckoutContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code, courseSlug }),
+        body: JSON.stringify({ code }),
       });
 
       const data = await response.json();
@@ -331,9 +302,8 @@ function CheckoutContent() {
   let calculatedPromoDiscount = 0;
   if (appliedPromoCode && promoDiscount > 0) {
     if (promoDiscountType === 'fixed') {
-      calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
-    } else {
-      // percentage
+      calculatedPromoDiscount = promoDiscount;
+    } else if (promoDiscountType === 'percentage') {
       calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
     }
   }
@@ -444,12 +414,20 @@ function CheckoutContent() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number <span className="text-red-500">*</span>
                     </label>
-                    <InternationalPhoneInput
-                      value={enrollmentFormData.phone}
-                      onChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, phone: value })}
-                      required
-                      placeholder="Enter phone number"
-                    />
+                    <div className="flex gap-2">
+                      <div className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                        <span className="text-2xl">🇺🇸</span>
+                        <span className="text-sm font-medium text-gray-700">+1</span>
+                      </div>
+                      <input
+                        type="tel"
+                        required
+                        value={enrollmentFormData.phone}
+                        onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, phone: e.target.value })}
+                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                        placeholder="4049217518"
+                      />
+                    </div>
                   </div>
 
                   {/* Email */}
@@ -559,38 +537,32 @@ function CheckoutContent() {
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>{getTrainingHours()} Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
+                        <span>16 Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
                       </li>
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
-                        </li>
-                      )}
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
+                      </li>
                       <li className="flex items-start gap-2 text-sm text-gray-700">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <span>Get Trained by Top SPCs: Learn from SPCs with deep expertise across domains.</span>
                       </li>
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
-                        </li>
-                      )}
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
-                        </li>
-                      )}
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the Leading SAFe certification.</span>
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
+                      </li>
                     </ul>
                     <div className="border-t pt-4">
                       <div className="flex items-center gap-2 mb-2">
@@ -632,55 +604,45 @@ function CheckoutContent() {
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>{getTrainingHours()} Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
+                        <span>16 Hours of Live Training: Immerse yourself in a dynamic, interactive learning experience.</span>
                       </li>
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
-                        </li>
-                      )}
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>Earn 16 PDUs and 16 SEUs: Acquire 16 PDUs and SEUs for professional advancement.</span>
+                      </li>
                       <li className="flex items-start gap-2 text-sm text-gray-700">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <span>Get Trained by Top SPCs: Learn from SPCs with deep expertise across domains.</span>
                       </li>
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the {getCertificationName()} certification.</span>
-                        </li>
-                      )}
-                      {hasExamAndPDU && (
-                        <li className="flex items-start gap-2 text-sm text-gray-700">
-                          <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
-                        </li>
-                      )}
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>Certification from Scaled Agile, Inc.: Pass the exam and earn the Leading SAFe certification.</span>
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>1-Year SAFe Community Membership: Network with peers across the globe on the latest in SAFe.</span>
+                      </li>
                       {/* Pro extras */}
-                      {hasExamAndPDU && (
-                        <>
-                          <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            <span>Full Access to Practice Exams</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            <span>One Additional Exam Attempt (Free)</span>
-                          </li>
-                        </>
-                      )}
+                      <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>Full Access to Practice Exams</span>
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
+                        <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>One Additional Exam Attempt (Free)</span>
+                      </li>
                       <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
                         <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -781,10 +743,10 @@ function CheckoutContent() {
                         plan: selectedPlan,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/courses/value-stream-mapping/schedule/checkout/success?${params.toString()}`);
+                      router.push(`/courses/responsible-ai/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/value-stream-mapping/schedule?course=${courseSlug}`);
+                      router.push(`/courses/responsible-ai/schedule?course=${courseSlug}`);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

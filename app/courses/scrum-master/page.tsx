@@ -72,7 +72,7 @@ export default function ScrumMasterCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe AI-Empowered Scrum Master (6.0) Certification</span>
+            <span className="text-[#01203d]">SAFe Scrum Master Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -344,8 +344,7 @@ export default function ScrumMasterCoursePage() {
                           "Support Program Increment (PI) planning",
                           "Remove impediments and foster team collaboration",
                           "Apply SAFe principles in team context",
-                          "Support Agile Release Trains effectively",
-                          "Leverage AI: Apply AI for team facilitation, sprint planning, impediment identification, and continuous improvement"
+                          "Support Agile Release Trains effectively"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -451,8 +450,7 @@ export default function ScrumMasterCoursePage() {
                           "Apply SAFe principles in team context",
                           "Support Agile Release Trains effectively",
                           "Facilitate team retrospectives and improvements",
-                          "Build high-performing Agile teams",
-                          "Leverage AI: Apply AI for team facilitation, sprint planning, impediment identification, and continuous improvement"
+                          "Build high-performing Agile teams"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">

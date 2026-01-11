@@ -107,9 +107,7 @@ export default function Header() {
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification": "/POPM.jpg",
     "SAFe Scrum Master": "/SSM.jpeg",
-    "SAFe AI-Empowered Scrum Master (6.0) Certification": "/SSM.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "PMP® Certification Training": "/PMP.png",
     "Responsible AI": "/MicroCredential.jpeg",
@@ -265,7 +263,7 @@ export default function Header() {
     },
     {
       id: "9",
-      title: "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification",
+      title: "SAFe Product Owner/Product Manager",
       category: "SAFe",
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 555,
@@ -319,7 +317,7 @@ export default function Header() {
     },
     {
       id: "12",
-      title: "SAFe AI-Empowered Scrum Master (6.0) Certification",
+      title: "SAFe Scrum Master",
       category: "SAFe",
       image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
       price: 555,
@@ -496,7 +494,7 @@ export default function Header() {
 
   return (
     <>
-      {/* End of Year Sale Banner */}
+      {/* New Year 2026 Sale Banner */}
       <div 
         className="w-full bg-red-600 py-2 sm:py-3 md:py-4 px-2 sm:px-4 cursor-pointer hover:bg-red-700 transition-colors"
         onClick={() => setShowCouponModal(true)}
@@ -514,14 +512,13 @@ export default function Header() {
               <div className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400 rounded-full"></div>
             </div>
             
-            {/* YEAR END MEGA SALE label */}
+            {/* New Year 2026 label */}
             <div className="flex flex-col">
               <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
-                <span className="text-black font-bold text-[10px] sm:text-xs">YEAR END</span>
+                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YEAR</span>
               </div>
               <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
-                <span className="text-white font-bold text-xs sm:text-sm">MEGA</span>
-                <span className="text-white font-bold text-xs sm:text-sm ml-1 sm:ml-2">SALE</span>
+                <span className="text-white font-bold text-xs sm:text-sm">2026</span>
               </div>
             </div>
           </div>
@@ -529,7 +526,7 @@ export default function Header() {
           {/* Center - Main text */}
           <div className="flex-1 text-center min-w-0">
             <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              Get Flat <span className="text-white">$100 OFF</span> on Course Fee
+              New Year Sale Is Live - Get Flat <span className="text-white">$100 OFF</span> on Course Fee
             </h2>
           </div>
 

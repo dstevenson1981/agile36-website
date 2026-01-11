@@ -59,9 +59,7 @@ export default function Home() {
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification": "/POPM.jpg",
     "SAFe Scrum Master": "/SSM.jpeg",
-    "SAFe AI-Empowered Scrum Master (6.0) Certification": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "AI Product Management Certification": "/PMAI.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
@@ -144,7 +142,7 @@ export default function Home() {
     },
     {
       id: "9",
-      title: "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification",
+      title: "SAFe Product Owner/Product Manager",
       category: "SAFe",
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 555,
@@ -185,7 +183,7 @@ export default function Home() {
     },
     {
       id: "12",
-      title: "SAFe AI-Empowered Scrum Master (6.0) Certification",
+      title: "SAFe Scrum Master",
       category: "SAFe",
       image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
       price: 555,
@@ -391,11 +389,9 @@ export default function Home() {
       "Leading SAFe® 6.0 Certification Training": "/courses/leading-safe",
       "Leading SAFe/ SAFe Agilist": "/courses/leading-safe",
       "SAFe Product Owner/Product Manager": "/courses/product-owner-manager",
-      "SAFe AI-Empowered Product Owner/Product Manager (6.0) Certification": "/courses/product-owner-manager",
       "SAFe Lean Portfolio Management": "/courses/lean-portfolio-management",
       "SAFe Agile Product Management": "/courses/agile-product-management",
       "SAFe Scrum Master": "/courses/scrum-master",
-      "SAFe AI-Empowered Scrum Master (6.0) Certification": "/courses/scrum-master",
       "SAFe for Teams": "/courses/safe-for-teams",
       "SAFe DevOps": "/courses/safe-devops",
       "SAFe Advanced Scrum Master": "/courses/advanced-scrum-master",
@@ -501,7 +497,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* New Year Sale Banner */}
+      {/* New Year 2026 Sale Banner */}
       <div 
         className="w-full bg-red-600 py-2 sm:py-3 md:py-4 px-2 sm:px-4 cursor-pointer hover:bg-red-700 transition-colors"
         onClick={() => setShowCouponModal(true)}
@@ -519,14 +515,13 @@ export default function Home() {
               <div className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400 rounded-full"></div>
             </div>
             
-            {/* New Year! New You! 2026 label */}
+            {/* New Year 2026 label */}
             <div className="flex flex-col">
               <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
-                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YEAR!</span>
+                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YEAR</span>
               </div>
               <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
-                <span className="text-white font-bold text-xs sm:text-sm">NEW YOU!</span>
-                <span className="text-white font-bold text-xs sm:text-sm ml-1 sm:ml-2">2026</span>
+                <span className="text-white font-bold text-xs sm:text-sm">2026</span>
               </div>
             </div>
           </div>
@@ -534,7 +529,7 @@ export default function Home() {
           {/* Center - Main text */}
           <div className="flex-1 text-center min-w-0">
             <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              Get Flat <span className="text-white">$100 OFF</span> on Course Fee - <span className="text-white">Sales expire Jan 7th</span>
+              New Year Sale Is Live - Get Flat <span className="text-white">$100 OFF</span> on Course Fee
             </h2>
           </div>
 
