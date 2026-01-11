@@ -40,7 +40,6 @@ function CourseScheduleContent() {
     'leading-safe': 'Leading SAFe® 6.0 Training',
     'scrum-master': 'SAFe Scrum Master',
     'lean-portfolio-management': 'SAFe Lean Portfolio Management',
-    'lean-portfolio-management': 'Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
   };
