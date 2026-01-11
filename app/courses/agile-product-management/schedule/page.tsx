@@ -41,7 +41,6 @@ function CourseScheduleContent() {
     'scrum-master': 'SAFe Scrum Master',
     'agile-product-management': 'SAFe Agile Product Management',
     'devops': 'SAFe DevOps',
-    'agile-product-management': 'SAFe Agile Product Management',
   };
 
   useEffect(() => {
