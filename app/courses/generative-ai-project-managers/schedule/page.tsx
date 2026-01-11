@@ -288,6 +288,49 @@ function CourseScheduleContent() {
     }
   };
 
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!consultationFormData.email || !consultationFormData.email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!consultationFormData.name || consultationFormData.name.trim() === '') {
+      alert('Please enter your full name');
+      return;
+    }
+
+    setIsSubmittingConsultation(true);
+    try {
+      const response = await fetch('/api/store-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: consultationFormData.name,
+          email: consultationFormData.email,
+          source: 'Brochure Request - Generative AI for Project Managers',
+          exam_name: 'Generative AI for Project Managers Certification Training'
+        }),
+      });
+
+      if (response.ok) {
+        alert('Thank you for your interest! We will contact you shortly with the course brochure.');
+        setShowConsultationModal(false);
+        setConsultationFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API Error:', errorData);
+        alert(errorData.error || 'Failed to submit request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmittingConsultation(false);
+    }
+  };
+
   const hasActiveFilters = Object.values(activeFilters).some(v => v);
 
   return (
