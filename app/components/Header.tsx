@@ -515,7 +515,7 @@ export default function Header() {
             {/* New Year 2026 label */}
             <div className="flex flex-col">
               <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
-                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YEAR</span>
+                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YOU!</span>
               </div>
               <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
                 <span className="text-white font-bold text-xs sm:text-sm">2026</span>
@@ -526,7 +526,7 @@ export default function Header() {
           {/* Center - Main text */}
           <div className="flex-1 text-center min-w-0">
             <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              New Year Sale Is Live - Get Flat <span className="text-white">$100 OFF</span> on Course Fee
+              Get Flat <span className="text-white">$100 OFF</span> on Course Fee - Sales expire Jan 16
             </h2>
           </div>
 
