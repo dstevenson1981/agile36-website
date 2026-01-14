@@ -1,10 +1,10 @@
--- Add Loyal Promo Code - $255 Off
--- Run this in Supabase SQL Editor to create the Loyal promo code
+-- Add $250 Off Promo Code
+-- Run this in Supabase SQL Editor to create the $250 off promo code
 
--- Step 1: Delete any existing Loyal code to start fresh
-DELETE FROM promo_codes WHERE UPPER(TRIM(code)) = 'LOYAL';
+-- Step 1: Delete any existing 250OFF code to start fresh
+DELETE FROM promo_codes WHERE UPPER(TRIM(code)) = '250OFF';
 
--- Step 2: Insert Loyal with correct settings
+-- Step 2: Insert 250OFF with correct settings
 INSERT INTO promo_codes (
   code, 
   discount_type, 
@@ -19,10 +19,10 @@ INSERT INTO promo_codes (
 )
 VALUES 
   (
-    'Loyal',                    -- Code name
-    'fixed',                     -- Fixed dollar amount ($255 off)
-    255,                         -- $255 discount
-    'Loyal Customer Discount - $255 Off', 
+    '250OFF',                   -- Code name
+    'fixed',                     -- Fixed dollar amount ($250 off)
+    250,                         -- $250 discount
+    'Special Discount - $250 Off', 
     TRUE,                       -- ACTIVE
     NULL,                       -- No expiration (or set expiration date if needed)
     NULL,                       -- No usage limit
@@ -33,13 +33,13 @@ VALUES
 ON CONFLICT (code) 
 DO UPDATE SET
   discount_type = 'fixed',
-  discount_value = 255,
-  description = 'Loyal Customer Discount - $255 Off',
+  discount_value = 250,
+  description = 'Special Discount - $250 Off',
   active = TRUE,
   expires_at = NULL,
   updated_at = NOW();
 
--- Step 3: Verify Loyal code is active
+-- Step 3: Verify 250OFF code is active
 SELECT 
   code, 
   discount_type, 
@@ -52,4 +52,4 @@ SELECT
     ELSE 'ACTIVE ✓'
   END as status
 FROM promo_codes 
-WHERE UPPER(TRIM(code)) = 'LOYAL';
+WHERE UPPER(TRIM(code)) = '250OFF';

@@ -18,13 +18,13 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const scheduleId = searchParams.get('schedule');
-  const courseSlug = searchParams.get('course') || 'certified-genai-practitioner';
+  const courseSlug = searchParams.get('course') || 'release-train-engineer';
   
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedSchedule, setSelectedSchedule] = useState<any>(null);
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("Certified GenAI Practitioner™");
+  const [courseName, setCourseName] = useState("SAFe Release Train Engineer");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -48,20 +48,14 @@ function CheckoutContent() {
   });
 
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
-    'lean-portfolio-management': 'Lean Portfolio Management',
-    'agile-product-management': 'SAFe Agile Product Management',
-    'safe-for-teams': 'SAFe for Teams',
-    'certified-genai-practitioner': 'Certified GenAI Practitioner™',
+    'release-train-engineer': 'SAFe Release Train Engineer',
   };
 
   useEffect(() => {
     const fetchSchedule = async () => {
       if (!scheduleId) {
-        // Redirect to schedule page if no schedule ID
-        router.push(`/courses/certified-genai-practitioner/schedule`);
+        // For direct URL access, we'll allow it but show an error if schedule not found
+        setIsLoading(false);
         return;
       }
 
@@ -75,22 +69,16 @@ function CheckoutContent() {
           if (schedule) {
             setSelectedSchedule(schedule);
             setEnrollmentQuantity(1);
-          } else {
-            // Schedule not found, redirect to schedule page
-            router.push(`/courses/certified-genai-practitioner/schedule`);
           }
-        } else {
-          router.push(`/courses/certified-genai-practitioner/schedule`);
         }
       } catch (error) {
         console.error('Error fetching schedule:', error);
-        router.push(`/courses/certified-genai-practitioner/schedule`);
       } finally {
         setIsLoading(false);
       }
     };
 
-    const displayName = courseNames[courseSlug] || 'Course';
+    const displayName = courseNames[courseSlug] || 'SAFe Release Train Engineer';
     setCourseName(displayName);
     fetchSchedule();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -186,7 +174,7 @@ function CheckoutContent() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            scheduleId: selectedSchedule.id,
+            scheduleId: selectedSchedule?.id,
             courseSlug,
             courseName,
             enrollingFor: enrollmentFormData.enrollingFor,
@@ -202,11 +190,9 @@ function CheckoutContent() {
         const data = await response.json();
         if (!response.ok) {
           console.error('Error saving enrollment lead:', data.error);
-          // Don't block the user from continuing, but log the error
         }
       } catch (error) {
         console.error('Error saving enrollment lead:', error);
-        // Don't block the user from continuing
       }
       
       // Skip plan selection, go directly to payment
@@ -221,9 +207,8 @@ function CheckoutContent() {
     setPaymentError(null);
 
     try {
-      // Calculate discount at the time of payment intent creation to ensure it's current
-      // Flat rate of $299 for Certified GenAI Practitioner
-      const basePrice = 299;
+      // Use price from database schedule
+      const basePrice = parseFloat(selectedSchedule.price);
       const baseTotal = basePrice * enrollmentQuantity;
       
       // Apply promo code discount
@@ -238,17 +223,6 @@ function CheckoutContent() {
       }
       
       const finalAmount = Math.max(0, baseTotal - calculatedPromoDiscount);
-      
-      // Log for debugging
-      console.log('Creating payment intent:', {
-        basePrice,
-        baseTotal,
-        appliedPromoCode,
-        promoDiscount,
-        promoDiscountType,
-        calculatedPromoDiscount,
-        finalAmount,
-      });
 
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
@@ -298,8 +272,6 @@ function CheckoutContent() {
     }
   };
 
-
-
   if (isLoading) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -309,12 +281,20 @@ function CheckoutContent() {
   }
 
   if (!selectedSchedule) {
-    return null;
+    return (
+      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Schedule Not Found</h1>
+          <p className="text-gray-600 mb-4">The course schedule you're looking for is not available.</p>
+          <Link href="/" className="text-[#fa4a23] hover:underline">Return to Home</Link>
+        </div>
+      </main>
+    );
   }
 
-  // Flat rate of $299 for Certified GenAI Practitioner
-  const basePrice = 299;
-  const originalPrice = 598;
+  // Use price from database schedule
+  const basePrice = parseFloat(selectedSchedule.price);
+  const originalPrice = parseFloat(selectedSchedule.original_price || selectedSchedule.price);
   
   // Calculate base totals
   const baseTotal = basePrice * enrollmentQuantity;
@@ -492,7 +472,6 @@ function CheckoutContent() {
                     )}
                   </div>
 
-
                   {/* Continue Button */}
                   <button
                     onClick={handleContinue}
@@ -543,10 +522,10 @@ function CheckoutContent() {
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/courses/certified-genai-practitioner/schedule/checkout/success?${params.toString()}`);
+                      router.push(`/courses/release-train-engineer/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`);
+                      router.push(`/`);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}
@@ -571,11 +550,6 @@ function CheckoutContent() {
               <div className="bg-gray-50 rounded-lg p-4 mb-4">
                 <div className="flex items-start justify-between mb-2">
                   <span className="text-xs font-semibold text-gray-600 bg-gray-200 px-2 py-1 rounded">Standard</span>
-                  <button className="text-gray-400 hover:text-gray-600">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-3">{courseName}</h4>
                 <div className="space-y-2 text-sm text-gray-600">
@@ -614,8 +588,8 @@ function CheckoutContent() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-gray-600">Subtotal</span>
                   <div className="flex items-center gap-2">
-                    {totalOriginalPrice && (
-                      <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
+                    {totalOriginalPrice && totalOriginalPrice > baseTotal && (
+                      <span className="text-sm text-gray-400 line-through">${totalOriginalPrice.toFixed(2)}</span>
                     )}
                     <span className="font-semibold text-gray-900">${baseTotal.toFixed(2)}</span>
                   </div>
@@ -637,8 +611,8 @@ function CheckoutContent() {
                     {discount > 0 && (
                       <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
                     )}
-                    {totalOriginalPrice && (
-                      <span className="text-sm text-gray-400 line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
+                    {totalOriginalPrice && totalOriginalPrice > baseTotal && (
+                      <span className="text-sm text-gray-400 line-through">${totalOriginalPrice.toFixed(2)}</span>
                     )}
                     <span className="text-xl font-bold text-gray-900">${totalPrice.toFixed(2)}</span>
                   </div>
@@ -651,7 +625,6 @@ function CheckoutContent() {
                 <p className="text-xs text-gray-600">Credit/Debit Cards • Apple Pay</p>
               </div>
 
-            
               {/* Promo Codes */}
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
@@ -703,8 +676,6 @@ function CheckoutContent() {
                   </div>
                 )}
               </div>
-
-
             </div>
           </div>
         </div>
@@ -724,4 +695,3 @@ export default function CheckoutPage() {
     </Suspense>
   );
 }
-
