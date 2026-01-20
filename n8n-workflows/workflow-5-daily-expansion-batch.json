@@ -1,0 +1,285 @@
+{
+  "name": "Daily Expansion Batch (Multi-Source)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "trigger-daily",
+      "name": "Cron - Daily 9 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/orders",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Authorization", "value": "Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {"name": "created_at", "value": "=gte.{{ new Date(Date.now() - 30*24*60*60*1000).toISOString() }}"},
+            {"name": "email", "value": "=not.ilike.*@gmail.com"},
+            {"name": "company_name", "value": "=not.is.null"},
+            {"name": "select", "value": "company_name,email,job_title"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-new-customers",
+      "name": "Get New Customer Companies (Last 30 Days)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst companiesMap = new Map();\n\nitems.forEach(item => {\n  const company = item.json.company_name;\n  if (company) {\n    if (!companiesMap.has(company)) {\n      companiesMap.set(company, {\n        company_name: company,\n        emails: [],\n        job_titles: []\n      });\n    }\n    const companyData = companiesMap.get(company);\n    if (item.json.email && !companyData.emails.includes(item.json.email)) {\n      companyData.emails.push(item.json.email);\n    }\n    if (item.json.job_title && !companyData.job_titles.includes(item.json.job_title)) {\n      companyData.job_titles.push(item.json.job_title);\n    }\n  }\n});\n\nreturn Array.from(companiesMap.values()).map(company => ({ json: company }));"
+      },
+      "id": "group-by-company",
+      "name": "Group by Company",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apollo.io/v1/mixed_people/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-Api-Key", "value": "D2fPk6LElk4FnK7PAVSx3g"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  organization_name: $json.company_name,\n  person_titles: $json.job_titles,\n  person_seniorities: ['Manager', 'Senior', 'Director', 'VP'],\n  per_page: 15\n} }}",
+        "options": {"waitBetweenItems": 600}
+      },
+      "id": "search-apollo-source1",
+      "name": "Search Apollo - New Customer Expansion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/expansion_opportunities",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Authorization", "value": "Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"}
+        ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.people?.map(p => ({\n  company_name: p.organization?.name || $('group-by-company').item.json.company_name,\n  existing_customer_email: $('group-by-company').item.json.emails?.[0],\n  prospect_email: p.email,\n  prospect_name: p.name,\n  prospect_title: p.title,\n  prospect_seniority: p.seniority,\n  prospect_linkedin: p.linkedin_url,\n  company_size: p.organization?.estimated_num_employees,\n  source: 'new_customer_expansion',\n  opportunity_type: 'colleague',\n  created_at: new Date().toISOString()\n})) }}",
+        "options": {}
+      },
+      "id": "save-source1",
+      "name": "Save New Customer Expansion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/customers",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Authorization", "value": "Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"}
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {"name": "total_spend", "value": "=gte.1000"},
+            {"name": "company_name", "value": "=not.is.null"},
+            {"name": "email", "value": "=not.ilike.*@gmail.com"},
+            {"name": "select", "value": "company_name,email"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-high-value-customers",
+      "name": "Get High-Value Customers (Spend >= $1000)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [450, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst companiesMap = new Map();\n\nitems.forEach(item => {\n  const company = item.json.company_name;\n  if (company && !companiesMap.has(company)) {\n    companiesMap.set(company, {\n      company_name: company,\n      email: item.json.email\n    });\n  }\n});\n\nreturn Array.from(companiesMap.values()).map(company => ({ json: company }));"
+      },
+      "id": "group-high-value",
+      "name": "Group High-Value by Company",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 500]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apollo.io/v1/mixed_people/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-Api-Key", "value": "D2fPk6LElk4FnK7PAVSx3g"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  organization_name: $json.company_name,\n  person_titles: ['Product Manager', 'Scrum Master', 'Agile Coach', 'Program Manager', 'Engineering Manager', 'RTE'],\n  per_page: 10\n} }}",
+        "options": {"waitBetweenItems": 600}
+      },
+      "id": "search-apollo-source4",
+      "name": "Search Apollo - High-Value Expansion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [850, 500]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/expansion_opportunities",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Authorization", "value": "Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.people?.map(p => ({\n  company_name: p.organization?.name || $('group-high-value').item.json.company_name,\n  existing_customer_email: $('group-high-value').item.json.email,\n  prospect_email: p.email,\n  prospect_name: p.name,\n  prospect_title: p.title,\n  prospect_seniority: p.seniority,\n  prospect_linkedin: p.linkedin_url,\n  company_size: p.organization?.estimated_num_employees,\n  source: 'high_value_expansion',\n  opportunity_type: 'high_value',\n  created_at: new Date().toISOString()\n})) }}",
+        "options": {}
+      },
+      "id": "save-source4",
+      "name": "Save High-Value Expansion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1050, 500]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/expansion_opportunities",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"},
+            {"name": "Authorization", "value": "Bearer {{ $env.SUPABASE_SERVICE_ROLE_KEY }}"}
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {"name": "created_at", "value": "=gte.{{ new Date(Date.now() - 24*60*60*1000).toISOString() }}"},
+            {"name": "select", "value": "company_name,source,count"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "analyze-results",
+      "name": "Analyze Today's Results",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1250, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst alerts = [];\n\n// Group by company and source\nconst companyStats = {};\nitems.forEach(item => {\n  const company = item.json.company_name;\n  if (!companyStats[company]) {\n    companyStats[company] = { count: 0, sources: [] };\n  }\n  companyStats[company].count++;\n  if (!companyStats[company].sources.includes(item.json.source)) {\n    companyStats[company].sources.push(item.json.source);\n  }\n});\n\n// Generate alerts for companies with 5+ prospects\nObject.entries(companyStats).forEach(([company, stats]) => {\n  if (stats.count >= 5) {\n    alerts.push({\n      json: {\n        message: `Found ${stats.count} prospects at ${company} - sources: ${stats.sources.join(', ')}`\n      }\n    });\n  }\n});\n\nreturn alerts;"
+      },
+      "id": "generate-slack-alerts",
+      "name": "Generate Slack Alerts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1450, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SLACK_WEBHOOK_URL }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { text: $json.message } }}",
+        "options": {}
+      },
+      "id": "send-slack-alerts",
+      "name": "Send Slack Alerts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1650, 400]
+    }
+  ],
+  "connections": {
+    "Cron - Daily 9 AM": {
+      "main": [
+        [{"node": "Get New Customer Companies (Last 30 Days)", "type": "main", "index": 0}],
+        [{"node": "Get High-Value Customers (Spend >= $1000)", "type": "main", "index": 0}]
+      ]
+    },
+    "Get New Customer Companies (Last 30 Days)": {
+      "main": [[{"node": "Group by Company", "type": "main", "index": 0}]]
+    },
+    "Group by Company": {
+      "main": [[{"node": "Search Apollo - New Customer Expansion", "type": "main", "index": 0}]]
+    },
+    "Search Apollo - New Customer Expansion": {
+      "main": [[{"node": "Save New Customer Expansion", "type": "main", "index": 0}]]
+    },
+    "Save New Customer Expansion": {
+      "main": [[{"node": "Analyze Today's Results", "type": "main", "index": 0}]]
+    },
+    "Get High-Value Customers (Spend >= $1000)": {
+      "main": [[{"node": "Group High-Value by Company", "type": "main", "index": 0}]]
+    },
+    "Group High-Value by Company": {
+      "main": [[{"node": "Search Apollo - High-Value Expansion", "type": "main", "index": 0}]]
+    },
+    "Search Apollo - High-Value Expansion": {
+      "main": [[{"node": "Save High-Value Expansion", "type": "main", "index": 0}]]
+    },
+    "Save High-Value Expansion": {
+      "main": [[{"node": "Analyze Today's Results", "type": "main", "index": 0}]]
+    },
+    "Analyze Today's Results": {
+      "main": [[{"node": "Generate Slack Alerts", "type": "main", "index": 0}]]
+    },
+    "Generate Slack Alerts": {
+      "main": [[{"node": "Send Slack Alerts", "type": "main", "index": 0}]]
+    }
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-19T00:00:00.000Z",
+  "versionId": "1"
+}

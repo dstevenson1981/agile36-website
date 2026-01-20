@@ -1,28 +1,20 @@
--- Create a PostgreSQL function to get all unique tags from email_contacts
--- This is more efficient than fetching all contacts and extracting tags client-side
+-- Create or replace function to get unique tags from email_contacts
+-- This is more efficient than fetching all contacts
 
--- Drop existing function if it exists
 DROP FUNCTION IF EXISTS get_unique_tags();
 
--- Create function that returns tags with counts
 CREATE OR REPLACE FUNCTION get_unique_tags()
-RETURNS TABLE(tag TEXT, tag_count BIGINT) AS $$
-BEGIN
-  RETURN QUERY
-  SELECT 
-    unnest(tags)::TEXT as tag,
-    COUNT(*)::BIGINT as tag_count
+RETURNS TABLE(tag text) 
+LANGUAGE SQL
+STABLE
+AS $$
+  SELECT DISTINCT unnest(tags) as tag
   FROM email_contacts
-  WHERE tags IS NOT NULL
-  GROUP BY tag
-  ORDER BY tag_count DESC, tag ASC;
-END;
-$$ LANGUAGE plpgsql;
+  WHERE tags IS NOT NULL 
+    AND array_length(tags, 1) > 0
+  ORDER BY tag;
+$$;
 
 -- Grant execute permission
 GRANT EXECUTE ON FUNCTION get_unique_tags() TO authenticated;
 GRANT EXECUTE ON FUNCTION get_unique_tags() TO anon;
-GRANT EXECUTE ON FUNCTION get_unique_tags() TO service_role;
-
--- Test the function
-SELECT * FROM get_unique_tags();
