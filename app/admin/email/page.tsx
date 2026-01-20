@@ -74,8 +74,8 @@ export default function EmailAdminPage() {
   // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
     if (activeTab === 'contacts') {
-      // Always fetch tags fresh on page load (no caching)
-      fetchAllTags();
+      // Always fetch tags fresh on page load (no caching, no alert)
+      fetchAllTags(false);
       
       // Set up real-time subscription for email_contacts table
       if (typeof window !== 'undefined') {
@@ -98,10 +98,10 @@ export default function EmailAdminPage() {
                 },
                 (payload: any) => {
                   console.log('Real-time update detected:', payload);
-                  // Refresh tags when tags column changes
+                  // Refresh tags when tags column changes (no alert)
                   if (payload?.new?.tags || payload?.old?.tags) {
                     console.log('Tags changed, refreshing tag list...');
-                    fetchAllTags();
+                    fetchAllTags(false);
                   }
                   // Always refresh contacts
                   fetchContacts();
@@ -116,10 +116,10 @@ export default function EmailAdminPage() {
         }
       }
       
-      // Also refresh tags every 30 seconds to catch new tags added directly in database
+      // Also refresh tags every 30 seconds to catch new tags added directly in database (no alert)
       const interval = setInterval(() => {
         console.log('Auto-refreshing tags (30s interval)...');
-        fetchAllTags();
+        fetchAllTags(false);
       }, 30000); // 30 seconds
       
       // Cleanup function
@@ -192,18 +192,13 @@ export default function EmailAdminPage() {
         if (data.debug) {
           console.log('Debug info:', data.debug);
         }
-        // Verify "Program" tag
+        // Log tag count (no alerts - tags update silently)
+        console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
         if (data.tags.includes('Program')) {
-          console.log('✅ "Program" tag is in the response');
-          if (showLoading) {
-            alert(`Tags refreshed! Found ${data.tags.length} tags including "Program".`);
-          }
+          console.log('✅ "Program" tag is present');
         } else {
           console.warn('⚠️ "Program" tag is NOT in the response!');
           console.warn('Available tags:', data.tags);
-          if (showLoading) {
-            alert(`Tags refreshed! Found ${data.tags.length} tags, but "Program" is missing. Check console for details.`);
-          }
         }
         setAllTags(data.tags);
       } else {
@@ -232,7 +227,10 @@ export default function EmailAdminPage() {
     } catch (error: any) {
       console.error('❌ Error fetching tags:', error);
       const errorMessage = error?.message || 'Unknown error';
-      alert(`Error fetching tags: ${errorMessage}. Check console for details.`);
+      // Only show alert on manual refresh
+      if (showLoading) {
+        alert(`Error fetching tags: ${errorMessage}. Check console for details.`);
+      }
       
       // Try fallback on error
       try {
