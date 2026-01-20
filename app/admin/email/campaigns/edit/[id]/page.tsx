@@ -284,27 +284,21 @@ export default function CampaignEditorPage() {
   const selectedCount = selectedContactIds.length;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Campaign</h1>
-            <p className="text-gray-600">Edit campaign details and select recipients</p>
-          </div>
-          <button
-            onClick={() => router.push('/admin/email?tab=campaigns')}
-            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
-          >
-            Cancel
-          </button>
+    <div className="min-h-screen bg-gray-50 pb-24">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Campaign</h1>
+          <p className="text-gray-600">Edit campaign details and select recipients</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Main Content - Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 mb-24">
           {/* Left Column: Campaign Details */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-bold mb-4">Campaign Details</h2>
+          <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
+            <h2 className="text-xl font-bold text-gray-900 border-b border-gray-200 pb-3">Campaign Details</h2>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Campaign Name *
@@ -332,26 +326,29 @@ export default function CampaignEditorPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-3">
                   Email Content (HTML) *
                 </label>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
                   <div>
-                    <p className="text-xs text-gray-500 mb-2">Edit HTML:</p>
+                    <p className="text-xs text-gray-500 mb-2 font-medium">Edit HTML:</p>
                     <textarea
                       value={campaignHtml}
                       onChange={(e) => setCampaignHtml(e.target.value)}
-                      rows={12}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm"
+                      rows={10}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm resize-y"
                       placeholder="<html><body><h1>Your email content here</h1></body></html>"
                     />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-2">Preview:</p>
-                    <div
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white min-h-[200px]"
-                      dangerouslySetInnerHTML={{ __html: campaignHtml || '<p class="text-gray-400">Preview will appear here</p>' }}
-                    />
+                    <p className="text-xs text-gray-500 mb-2 font-medium">Preview:</p>
+                    <div className="border border-gray-300 rounded-md bg-white p-4 max-h-[300px] overflow-y-auto">
+                      <div
+                        className="max-w-full overflow-x-auto"
+                        style={{ transform: 'scale(0.9)', transformOrigin: 'top left' }}
+                        dangerouslySetInnerHTML={{ __html: campaignHtml || '<p class="text-gray-400 text-center py-8">Preview will appear here</p>' }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -372,11 +369,11 @@ export default function CampaignEditorPage() {
           </div>
 
           {/* Right Column: Recipient Selection */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-bold mb-4">Select Recipients</h2>
+          <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
+            <h2 className="text-xl font-bold text-gray-900 border-b border-gray-200 pb-3">Select Recipients</h2>
 
             {/* Filters */}
-            <div className="mb-4 space-y-3">
+            <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
                 <input
@@ -438,24 +435,23 @@ export default function CampaignEditorPage() {
             </div>
 
             {/* Selected Count */}
-            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-semibold text-gray-700">
                   {selectedCount} contact{selectedCount !== 1 ? 's' : ''} selected
                 </span>
-                <div className="flex gap-2">
-                  <button
-                    onClick={toggleSelectAll}
-                    className="text-sm text-blue-600 hover:text-blue-800"
-                  >
-                    {selectedCount === filteredContacts.length ? 'Deselect All' : 'Select All'}
-                  </button>
-                </div>
+                <button
+                  onClick={toggleSelectAll}
+                  className="text-sm font-medium text-blue-600 hover:text-blue-800 underline"
+                >
+                  {selectedCount === filteredContacts.length && filteredContacts.length > 0 ? 'Deselect All' : 'Select All'}
+                </button>
               </div>
             </div>
 
             {/* Contact List */}
-            <div className="border border-gray-300 rounded-md max-h-[400px] overflow-y-auto">
+            <div className="border border-gray-300 rounded-md overflow-hidden">
+              <div className="max-h-[500px] overflow-y-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50 sticky top-0">
                   <tr>
@@ -509,35 +505,47 @@ export default function CampaignEditorPage() {
                   ))}
                 </tbody>
               </table>
+              </div>
               {filteredContacts.length === 0 && (
                 <div className="text-center py-8 text-gray-500">No contacts found</div>
+              )}
+              {filteredContacts.length > 0 && (
+                <div className="px-4 py-2 bg-gray-50 border-t border-gray-200 text-xs text-gray-600 text-center">
+                  Showing {filteredContacts.length} contact{filteredContacts.length !== 1 ? 's' : ''}
+                </div>
               )}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Action Buttons */}
-        <div className="mt-6 flex gap-4 justify-end">
-          <button
-            onClick={() => router.push('/admin/email?tab=campaigns')}
-            className="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={() => handleSaveCampaign(true)}
-            disabled={saving}
-            className="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
-          >
-            {saving ? 'Saving...' : 'Save as Draft'}
-          </button>
-          <button
-            onClick={handleSendNow}
-            disabled={sending || selectedCount === 0}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
-          >
-            {sending ? 'Sending...' : `Send Now (${selectedCount})`}
-          </button>
+      {/* Sticky Footer with Action Buttons */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <button
+              onClick={() => router.push('/admin/email?tab=campaigns')}
+              className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors text-center"
+            >
+              Cancel
+            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => handleSaveCampaign(true)}
+                disabled={saving}
+                className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-center"
+              >
+                {saving ? 'Saving...' : 'Save as Draft'}
+              </button>
+              <button
+                onClick={handleSendNow}
+                disabled={sending || selectedCount === 0}
+                className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-center"
+              >
+                {sending ? 'Sending...' : `Send Now (${selectedCount})`}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
