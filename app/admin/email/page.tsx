@@ -96,10 +96,10 @@ export default function EmailAdminPage() {
                   schema: 'public',
                   table: 'email_contacts',
                 },
-                (payload) => {
+                (payload: any) => {
                   console.log('Real-time update detected:', payload);
                   // Refresh tags when tags column changes
-                  if (payload.new?.tags || payload.old?.tags) {
+                  if (payload?.new?.tags || payload?.old?.tags) {
                     console.log('Tags changed, refreshing tag list...');
                     fetchAllTags();
                   }

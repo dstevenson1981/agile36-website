@@ -89,6 +89,18 @@ export async function POST(request: NextRequest) {
 
         const isUpdate = !!existingContact;
         
+        // Parse tags FIRST (can be comma-separated string or array)
+        // Check multiple possible column names for tags
+        const tagsInput: any = csvRecord.tags || csvRecord.Tags || csvRecord.TAGS || csvRecord['Tags'] || csvRecord['tags'] || '';
+        let tags: string[] = [];
+        if (tagsInput) {
+          if (typeof tagsInput === 'string') {
+            tags = tagsInput.split(',').map((tag: string) => tag.trim()).filter((tag: string) => tag.length > 0);
+          } else if (Array.isArray(tagsInput)) {
+            tags = tagsInput.map((tag: any) => String(tag).trim()).filter((tag: string) => tag.length > 0);
+          }
+        }
+        
         // Merge tags if updating existing contact
         let finalTags: string[] = [];
         if (isUpdate && existingContact?.tags && Array.isArray(existingContact.tags)) {
@@ -103,18 +115,6 @@ export async function POST(request: NextRequest) {
               finalTags.push(tag);
             }
           });
-        }
-
-        // Parse tags (can be comma-separated string or array)
-        // Check multiple possible column names for tags
-        const tagsInput = csvRecord.tags || csvRecord.Tags || csvRecord.TAGS || csvRecord['Tags'] || csvRecord['tags'] || '';
-        let tags: string[] = [];
-        if (tagsInput) {
-          if (typeof tagsInput === 'string') {
-            tags = tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          } else if (Array.isArray(tagsInput)) {
-            tags = tagsInput.map(tag => String(tag).trim()).filter(tag => tag.length > 0);
-          }
         }
 
         // Determine subscription status - default to true unless explicitly false
