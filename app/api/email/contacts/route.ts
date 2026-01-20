@@ -27,11 +27,12 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    let query = supabase.from('email_contacts').select('*');
+    let query = supabase.from('email_contacts').select('*', { count: 'exact' });
 
     // Apply filters
     if (tags) {
       const tagArray = tags.split(',').map(t => t.trim());
+      // For array columns, use overlap operator (@>) or contains
       query = query.contains('tags', tagArray);
     }
 
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
       query = query.eq('subscribed', subscribed === 'true');
     }
 
-    if (blocked !== null) {
+    if (blocked !== null && blocked !== '') {
       query = query.eq('blocked', blocked === 'true');
     }
 
@@ -47,19 +48,41 @@ export async function GET(request: NextRequest) {
       query = query.or(`email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%,role.ilike.%${search}%,company.ilike.%${search}%`);
     }
 
-    const { data: contacts, error } = await query.order('created_at', { ascending: false });
+    // Add limit to prevent timeout on large datasets
+    // For tag extraction, we'll use a separate optimized query
+    const limit = searchParams.get('limit');
+    if (limit) {
+      query = query.limit(parseInt(limit, 10));
+    } else {
+      // Default limit of 1000 to prevent issues
+      query = query.limit(1000);
+    }
+
+    const { data: contacts, error, count } = await query.order('created_at', { ascending: false });
 
     if (error) {
       console.error('Error fetching contacts:', error);
       return NextResponse.json(
-        { error: 'Failed to fetch contacts' },
+        { 
+          success: false,
+          error: 'Failed to fetch contacts',
+          details: error.message,
+          code: error.code
+        },
         { status: 500 }
       );
     }
 
+    // Ensure tags are properly formatted as arrays
+    const formattedContacts = (contacts || []).map((contact: any) => ({
+      ...contact,
+      tags: Array.isArray(contact.tags) ? contact.tags : (contact.tags ? [contact.tags] : null)
+    }));
+
     return NextResponse.json({
       success: true,
-      contacts: contacts || [],
+      contacts: formattedContacts,
+      count: count || formattedContacts.length,
     });
   } catch (error: any) {
     console.error('Error in contacts API:', error);

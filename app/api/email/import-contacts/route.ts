@@ -80,22 +80,40 @@ export async function POST(request: NextRequest) {
 
         const emailLower = email.toLowerCase().trim();
 
-        // Check if contact already exists
+        // Check if contact already exists and get existing tags
         const { data: existingContact } = await supabase
           .from('email_contacts')
-          .select('id')
+          .select('id, tags')
           .eq('email', emailLower)
           .maybeSingle();
 
         const isUpdate = !!existingContact;
+        
+        // Merge tags if updating existing contact
+        let finalTags: string[] = [];
+        if (isUpdate && existingContact?.tags && Array.isArray(existingContact.tags)) {
+          // Start with existing tags
+          finalTags = [...existingContact.tags];
+        }
+        
+        // Add new tags from CSV (avoid duplicates)
+        if (tags.length > 0) {
+          tags.forEach(tag => {
+            if (!finalTags.includes(tag)) {
+              finalTags.push(tag);
+            }
+          });
+        }
 
         // Parse tags (can be comma-separated string or array)
+        // Check multiple possible column names for tags
+        const tagsInput = csvRecord.tags || csvRecord.Tags || csvRecord.TAGS || csvRecord['Tags'] || csvRecord['tags'] || '';
         let tags: string[] = [];
-        if (csvRecord.tags) {
-          if (typeof csvRecord.tags === 'string') {
-            tags = csvRecord.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
-          } else if (Array.isArray(csvRecord.tags)) {
-            tags = csvRecord.tags;
+        if (tagsInput) {
+          if (typeof tagsInput === 'string') {
+            tags = tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+          } else if (Array.isArray(tagsInput)) {
+            tags = tagsInput.map(tag => String(tag).trim()).filter(tag => tag.length > 0);
           }
         }
 
@@ -106,15 +124,23 @@ export async function POST(request: NextRequest) {
           subscribed = subValue !== 'false' && subValue !== '0' && subValue !== 'no' && subValue !== 'n';
         }
 
-        const contactData = {
+        const contactData: any = {
           email: emailLower,
           first_name: csvRecord.first_name || csvRecord['First Name'] || csvRecord.firstName || csvRecord['first_name'] || null,
           last_name: csvRecord.last_name || csvRecord['Last Name'] || csvRecord.lastName || csvRecord['last_name'] || null,
           role: csvRecord.role || csvRecord.Role || csvRecord['Role'] || null,
           company: csvRecord.company || csvRecord.Company || csvRecord['Company'] || null,
-          tags: tags.length > 0 ? tags : null,
           subscribed: subscribed, // Default to true unless explicitly set to false
         };
+
+        // Set tags (merged for updates, new for inserts)
+        if (finalTags.length > 0) {
+          contactData.tags = finalTags;
+        } else if (!isUpdate) {
+          // Only set to null for new contacts without tags
+          contactData.tags = null;
+        }
+        // For updates without new tags, don't include tags field (preserve existing)
 
         // Try to insert, update if exists
         const { data, error } = await supabase

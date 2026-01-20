@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "clean-suppressions": "node clean-suppressions.js"
+    "clean-suppressions": "node clean-suppressions.js",
+    "sync-stripe-names": "tsx sync-stripe-names.ts",
+    "enrich-apollo": "tsx enrich-apollo.ts"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^5.0.1",
@@ -33,6 +35,7 @@
     "eslint": "^9",
     "eslint-config-next": "^16.0.7",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
