@@ -22,54 +22,58 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Try to use RPC function first (more efficient), fallback to direct query
+    // Fetch all unique tags directly from database
+    // Use pagination to ensure we get ALL contacts, not just the first batch
     let sortedTags: string[] = [];
-    
-    try {
-      // Try RPC function if it exists
-      const { data: rpcData, error: rpcError } = await supabase.rpc('get_unique_tags');
-      
-      if (!rpcError && rpcData) {
-        // Handle RPC response format
-        if (Array.isArray(rpcData)) {
-          if (rpcData.length > 0 && typeof rpcData[0] === 'string') {
-            sortedTags = rpcData.sort();
-          } else if (rpcData.length > 0 && rpcData[0]?.tag) {
-            sortedTags = rpcData.map((item: any) => item.tag).filter(Boolean).sort();
-          }
-        }
-      } else {
-        throw new Error('RPC not available, using fallback');
-      }
-    } catch (rpcError) {
-      // Fallback: Fetch all contacts and extract tags client-side
-      // Query all contacts (including those with null tags) to ensure we get everything
+    const tagsSet = new Set<string>();
+    let page = 0;
+    const pageSize = 1000;
+    let hasMore = true;
+
+    console.log('Starting to fetch all tags from email_contacts...');
+
+    // Fetch all contacts in batches to ensure we get everything
+    while (hasMore) {
       const { data: sqlData, error: sqlError } = await supabase
         .from('email_contacts')
         .select('tags')
-        .limit(10000); // Increased limit for large datasets
-      
+        .range(page * pageSize, (page + 1) * pageSize - 1);
+
       if (sqlError) {
-        console.error('Error fetching tags:', sqlError);
+        console.error('Error fetching tags batch:', sqlError);
         return NextResponse.json(
           { error: 'Failed to fetch tags', details: sqlError.message },
           { status: 500 }
         );
       }
-      
-      const tagsSet = new Set<string>();
-      if (sqlData && Array.isArray(sqlData)) {
-        sqlData.forEach((contact: any) => {
-          // Handle both array format and potential string format
-          if (contact.tags) {
-            if (Array.isArray(contact.tags)) {
-              contact.tags.forEach((tag: string) => {
-                if (tag && typeof tag === 'string' && tag.trim()) {
-                  tagsSet.add(tag.trim());
-                }
-              });
-            } else if (typeof contact.tags === 'string') {
-              // Handle case where tags might be stored as comma-separated string
+
+      if (!sqlData || sqlData.length === 0) {
+        hasMore = false;
+        break;
+      }
+
+      // Extract tags from this batch
+      sqlData.forEach((contact: any) => {
+        if (contact.tags) {
+          if (Array.isArray(contact.tags)) {
+            contact.tags.forEach((tag: string) => {
+              if (tag && typeof tag === 'string' && tag.trim()) {
+                tagsSet.add(tag.trim());
+              }
+            });
+          } else if (typeof contact.tags === 'string') {
+            // Handle case where tags might be stored as comma-separated string
+            try {
+              const parsed = JSON.parse(contact.tags);
+              if (Array.isArray(parsed)) {
+                parsed.forEach((tag: string) => {
+                  if (tag && typeof tag === 'string' && tag.trim()) {
+                    tagsSet.add(tag.trim());
+                  }
+                });
+              }
+            } catch {
+              // If not JSON, treat as comma-separated
               contact.tags.split(',').forEach((tag: string) => {
                 const trimmed = tag.trim();
                 if (trimmed) {
@@ -78,10 +82,21 @@ export async function GET(request: NextRequest) {
               });
             }
           }
-        });
+        }
+      });
+
+      // If we got fewer results than pageSize, we've reached the end
+      if (sqlData.length < pageSize) {
+        hasMore = false;
+      } else {
+        page++;
       }
-      sortedTags = Array.from(tagsSet).sort();
+
+      console.log(`Fetched batch ${page}, found ${sqlData.length} contacts, ${tagsSet.size} unique tags so far`);
     }
+
+    sortedTags = Array.from(tagsSet).sort();
+    console.log(`Total unique tags found: ${sortedTags.length}`);
 
     return NextResponse.json({
       success: true,

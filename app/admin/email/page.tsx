@@ -75,6 +75,14 @@ export default function EmailAdminPage() {
     if (activeTab === 'contacts') {
       fetchAllTags(); // Fetch all tags - this should only run once or when tab changes
       
+      // Also refresh tags every 30 seconds to catch new tags added directly in database
+      const interval = setInterval(() => {
+        console.log('Auto-refreshing tags...');
+        fetchAllTags();
+      }, 30000); // 30 seconds
+      
+      return () => clearInterval(interval);
+      
       // Set up real-time subscription for email_contacts table
       if (typeof window !== 'undefined') {
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -138,15 +146,25 @@ export default function EmailAdminPage() {
 
   const fetchAllTags = async () => {
     try {
-      console.log('Fetching all tags...');
-      // Use the optimized tags endpoint
-      const response = await fetch('/api/email/tags');
+      console.log('Fetching all tags from API...');
+      // Use the optimized tags endpoint with cache-busting
+      const response = await fetch('/api/email/tags?' + new Date().getTime(), {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache',
+        },
+      });
       const data = await response.json();
       
-      console.log('Tags API response:', data);
+      console.log('Tags API response:', {
+        success: data.success,
+        tagCount: data.tags?.length || 0,
+        totalCount: data.count || 0,
+        sampleTags: data.tags?.slice(0, 5) || [],
+      });
       
       if (data.success && data.tags && Array.isArray(data.tags)) {
-        console.log('All tags found:', data.tags, 'total:', data.count);
+        console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
         setAllTags(data.tags);
       } else {
         console.warn('No tags or invalid response:', data);
