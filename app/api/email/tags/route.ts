@@ -44,17 +44,22 @@ export async function GET(request: NextRequest) {
         if (rpcData.length > 0) {
           if (typeof rpcData[0] === 'string') {
             // Simple array of strings
-            tags = rpcData.sort();
-          } else if (rpcData[0]?.tag) {
+            tags = rpcData
+              .filter((tag: any) => tag && typeof tag === 'string')
+              .map((tag: string) => tag.trim())
+              .filter((tag: string) => tag.length > 0)
+              .sort();
+          } else if (rpcData[0]?.tag !== undefined) {
             // Array of objects with 'tag' property
             tags = rpcData
               .map((item: any) => item.tag)
-              .filter((tag: any) => tag && typeof tag === 'string')
+              .filter((tag: any) => tag !== null && tag !== undefined && typeof tag === 'string')
               .map((tag: string) => tag.trim())
               .filter((tag: string) => tag.length > 0)
               .sort();
           } else {
             console.warn('Unexpected RPC response format:', rpcData[0]);
+            console.warn('Full RPC response:', JSON.stringify(rpcData.slice(0, 3), null, 2));
           }
         }
         
