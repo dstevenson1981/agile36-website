@@ -171,7 +171,9 @@ export default function EmailAdminPage() {
       });
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
       }
       
       const data = await response.json();
@@ -181,6 +183,7 @@ export default function EmailAdminPage() {
         tagCount: data.tags?.length || 0,
         totalCount: data.count || 0,
         sampleTags: data.tags?.slice(0, 10) || [],
+        method: data.method,
       });
       
       if (data.success && data.tags && Array.isArray(data.tags)) {
@@ -192,9 +195,15 @@ export default function EmailAdminPage() {
         // Verify "Program" tag
         if (data.tags.includes('Program')) {
           console.log('✅ "Program" tag is in the response');
+          if (showLoading) {
+            alert(`Tags refreshed! Found ${data.tags.length} tags including "Program".`);
+          }
         } else {
           console.warn('⚠️ "Program" tag is NOT in the response!');
           console.warn('Available tags:', data.tags);
+          if (showLoading) {
+            alert(`Tags refreshed! Found ${data.tags.length} tags, but "Program" is missing. Check console for details.`);
+          }
         }
         setAllTags(data.tags);
       } else {
@@ -220,10 +229,14 @@ export default function EmailAdminPage() {
           setAllTags([]);
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('❌ Error fetching tags:', error);
+      const errorMessage = error?.message || 'Unknown error';
+      alert(`Error fetching tags: ${errorMessage}. Check console for details.`);
+      
       // Try fallback on error
       try {
+        console.log('Trying fallback method: fetching contacts...');
         const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
         const fallbackData = await fallbackResponse.json();
         if (fallbackData.success && fallbackData.contacts) {
@@ -239,10 +252,21 @@ export default function EmailAdminPage() {
           });
           const sortedTags = Array.from(tags).sort();
           console.log(`✅ Fallback: Loaded ${sortedTags.length} tags from contacts`);
+          console.log('Fallback tags:', sortedTags);
+          if (sortedTags.includes('Program')) {
+            console.log('✅ "Program" tag found via fallback!');
+            alert(`Tags loaded via fallback! Found ${sortedTags.length} tags including "Program".`);
+          } else {
+            console.warn('⚠️ "Program" tag NOT found even in fallback');
+            alert(`Tags loaded via fallback: ${sortedTags.length} tags, but "Program" is missing.`);
+          }
           setAllTags(sortedTags);
+        } else {
+          throw new Error('Fallback also failed');
         }
-      } catch (fallbackError) {
+      } catch (fallbackError: any) {
         console.error('Fallback also failed:', fallbackError);
+        alert(`Both methods failed. Error: ${fallbackError?.message || 'Unknown error'}`);
         setAllTags([]);
       }
     } finally {

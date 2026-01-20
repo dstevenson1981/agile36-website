@@ -52,27 +52,45 @@ export async function GET(request: NextRequest) {
       console.log('RPC function not available, using direct query...');
     }
 
-    // Method 2: Use direct SQL query via REST API (most reliable)
-    // This directly executes: SELECT DISTINCT unnest(tags) FROM email_contacts WHERE tags IS NOT NULL
+    // Method 2: Fetch ALL contacts and extract tags (most reliable - no filtering)
     try {
+      console.log('Fetching ALL contacts to extract tags...');
       const { data: sqlResult, error: sqlError } = await supabase
         .from('email_contacts')
-        .select('tags')
-        .not('tags', 'is', null);
+        .select('tags, email');
 
       if (sqlError) {
         throw sqlError;
       }
 
+      console.log(`Fetched ${sqlResult?.length || 0} total contacts`);
+
       const tagsSet = new Set<string>();
+      let contactsWithTags = 0;
+      let programTagFound = false;
+      
       if (sqlResult && Array.isArray(sqlResult)) {
-        sqlResult.forEach((contact: any) => {
+        sqlResult.forEach((contact: any, index: number) => {
           if (contact.tags) {
+            contactsWithTags++;
             if (Array.isArray(contact.tags)) {
               contact.tags.forEach((tag: any) => {
                 if (tag && typeof tag === 'string' && tag.trim()) {
-                  tagsSet.add(tag.trim());
+                  const trimmedTag = tag.trim();
+                  tagsSet.add(trimmedTag);
+                  if (trimmedTag === 'Program') {
+                    programTagFound = true;
+                    console.log(`✅ Found "Program" tag on contact: ${contact.email}`);
+                  }
                 }
+              });
+            }
+            // Log first few contacts with tags for debugging
+            if (index < 5) {
+              console.log(`Contact ${index + 1}:`, {
+                email: contact.email,
+                tags: contact.tags,
+                isArray: Array.isArray(contact.tags),
               });
             }
           }
@@ -80,20 +98,26 @@ export async function GET(request: NextRequest) {
       }
 
       const sortedTags = Array.from(tagsSet).sort();
-      console.log(`✅ Direct query returned ${sortedTags.length} tags:`, sortedTags);
+      console.log(`✅ Direct query returned ${sortedTags.length} unique tags from ${contactsWithTags} contacts with tags`);
+      console.log('All tags found:', sortedTags);
       
-      if (sortedTags.includes('Program')) {
-        console.log('✅ "Program" tag found via direct query');
+      if (programTagFound || sortedTags.includes('Program')) {
+        console.log('✅ "Program" tag found!');
       } else {
-        console.warn('⚠️ "Program" tag NOT found!');
-        console.warn('Sample contacts with tags:', sqlResult?.slice(0, 5));
+        console.warn('⚠️ "Program" tag NOT found in any contact!');
+        console.warn('Checking sample contacts...');
+        const sampleWithTags = sqlResult?.filter((c: any) => c.tags && Array.isArray(c.tags) && c.tags.length > 0).slice(0, 10);
+        console.warn('Sample contacts with tags:', sampleWithTags);
       }
 
       return NextResponse.json({
         success: true,
         tags: sortedTags,
         count: sortedTags.length,
-        method: 'direct_query',
+        method: 'direct_query_all',
+        contactsWithTags,
+        totalContacts: sqlResult?.length || 0,
+        hasProgramTag: sortedTags.includes('Program'),
       });
     } catch (queryError: any) {
       console.error('Direct query failed:', queryError);
