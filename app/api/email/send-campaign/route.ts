@@ -105,16 +105,43 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get contacts based on filters
-    // Exclude blocked contacts and only get subscribed contacts
-    let contactsQuery = supabase
-      .from('email_contacts')
-      .select('*')
-      .eq('subscribed', true)
-      .eq('blocked', false); // Exclude blocked contacts
+    // Check if campaign has recipients set in junction table
+    const { data: recipients, error: recipientsError } = await supabase
+      .from('email_campaign_recipients')
+      .select('contact_id')
+      .eq('campaign_id', campaignId);
 
-    // Declare contacts variable
     let contacts: any[] = [];
+
+    // If recipients are set in junction table, use those
+    if (!recipientsError && recipients && recipients.length > 0) {
+      const contactIds = recipients.map(r => r.contact_id);
+      const { data: recipientContacts, error: contactsError } = await supabase
+        .from('email_contacts')
+        .select('*')
+        .in('id', contactIds)
+        .eq('subscribed', true)
+        .eq('blocked', false);
+
+      if (contactsError) {
+        console.error('Error fetching recipient contacts:', contactsError);
+        return NextResponse.json(
+          { error: 'Failed to fetch recipient contacts' },
+          { status: 500 }
+        );
+      }
+
+      contacts = recipientContacts || [];
+      console.log(`Found ${contacts.length} recipients from campaign_recipients table`);
+    } else {
+      // Fallback to tag filter logic (for backward compatibility)
+      // Get contacts based on filters
+      // Exclude blocked contacts and only get subscribed contacts
+      let contactsQuery = supabase
+        .from('email_contacts')
+        .select('*')
+        .eq('subscribed', true)
+        .eq('blocked', false); // Exclude blocked contacts
 
     // Apply role filter if provided
     if (role) {
@@ -213,6 +240,7 @@ export async function POST(request: NextRequest) {
       }
       
       contacts = allContacts || [];
+    }
     }
     
     // Additional JavaScript filtering for edge cases (if needed)
@@ -432,15 +460,24 @@ export async function POST(request: NextRequest) {
 
           const [response] = await sgMail.send(msg);
 
+          const sentAt = new Date().toISOString();
+
           // Log send to email_sends table
           await supabase
             .from('email_sends')
             .insert({
               campaign_id: campaignId,
               contact_id: contact.id,
-              sent_at: new Date().toISOString(),
+              sent_at: sentAt,
               sendgrid_message_id: response.headers['x-message-id'] || null,
             });
+
+          // Update sent_at in email_campaign_recipients table if recipient exists
+          await supabase
+            .from('email_campaign_recipients')
+            .update({ sent_at: sentAt })
+            .eq('campaign_id', campaignId)
+            .eq('contact_id', contact.id);
 
           // Add tags to recipient if specified
           if (tagsToAdd && Array.isArray(tagsToAdd) && tagsToAdd.length > 0) {

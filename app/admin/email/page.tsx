@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
 
 interface Contact {
@@ -33,6 +34,7 @@ interface Campaign {
 type Tab = 'contacts' | 'compose' | 'campaigns' | 'analytics';
 
 export default function EmailAdminPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('contacts');
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -683,9 +685,9 @@ export default function EmailAdminPage() {
         method: 'POST',
       });
       const data = await response.json();
-      if (data.success) {
-        alert('Campaign duplicated successfully!');
-        fetchCampaigns();
+      if (data.success && data.campaign) {
+        // Redirect to editor page
+        router.push(`/admin/email/campaigns/edit/${data.campaign.id}`);
       } else {
         alert(data.error || 'Failed to duplicate campaign');
       }
@@ -694,6 +696,10 @@ export default function EmailAdminPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEditCampaign = (campaignId: number) => {
+    router.push(`/admin/email/campaigns/edit/${campaignId}`);
   };
 
   return (
@@ -1288,6 +1294,15 @@ export default function EmailAdminPage() {
                       {campaign.sent_count > 0 && ` | Sent to ${campaign.sent_count} contacts`}
                     </div>
                     <div className="flex gap-2">
+                      {campaign.status === 'draft' && (
+                        <button
+                          onClick={() => handleEditCampaign(campaign.id)}
+                          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                          title="Edit this campaign"
+                        >
+                          Edit
+                        </button>
+                      )}
                       {(campaign.status === 'draft' || campaign.status === 'scheduled') && (
                         <button
                           onClick={() => handleSendCampaign(campaign.id)}

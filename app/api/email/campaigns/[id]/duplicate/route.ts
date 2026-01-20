@@ -49,11 +49,33 @@ export async function POST(
       );
     }
 
+    // Find existing copies to determine copy number
+    const baseName = originalCampaign.name.replace(/\s*\(Copy(?:\s+\d+)?\)$/, '');
+    const { data: existingCopies } = await supabase
+      .from('email_campaigns')
+      .select('name')
+      .ilike('name', `${baseName} (Copy%`);
+
+    let copyNumber = 1;
+    if (existingCopies && existingCopies.length > 0) {
+      const copyNumbers = existingCopies
+        .map(c => {
+          const match = c.name.match(/\(Copy(?:\s+(\d+))?\)$/);
+          return match ? (match[1] ? parseInt(match[1]) : 1) : 0;
+        })
+        .filter(n => n > 0);
+      copyNumber = copyNumbers.length > 0 ? Math.max(...copyNumbers) + 1 : existingCopies.length + 1;
+    }
+
+    const newName = copyNumber === 1 
+      ? `${baseName} (Copy)`
+      : `${baseName} (Copy ${copyNumber})`;
+
     // Create duplicate with new name and reset status
     const { data: duplicatedCampaign, error: duplicateError } = await supabase
       .from('email_campaigns')
       .insert({
-        name: `${originalCampaign.name} (Copy)`,
+        name: newName,
         subject: originalCampaign.subject,
         html_content: originalCampaign.html_content,
         text_content: originalCampaign.text_content,
@@ -76,6 +98,7 @@ export async function POST(
     return NextResponse.json({
       success: true,
       campaign: duplicatedCampaign,
+      message: 'Campaign duplicated. Select recipients to send.',
     });
   } catch (error: any) {
     console.error('Error in duplicate campaign API:', error);
