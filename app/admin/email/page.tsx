@@ -41,6 +41,7 @@ export default function EmailAdminPage() {
   const [loading, setLoading] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
+  const [tagsLoading, setTagsLoading] = useState(false);
   const [filterSubscribed, setFilterSubscribed] = useState<boolean | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -73,15 +74,8 @@ export default function EmailAdminPage() {
   // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
     if (activeTab === 'contacts') {
-      fetchAllTags(); // Fetch all tags - this should only run once or when tab changes
-      
-      // Also refresh tags every 30 seconds to catch new tags added directly in database
-      const interval = setInterval(() => {
-        console.log('Auto-refreshing tags...');
-        fetchAllTags();
-      }, 30000); // 30 seconds
-      
-      return () => clearInterval(interval);
+      // Always fetch tags fresh on page load (no caching)
+      fetchAllTags();
       
       // Set up real-time subscription for email_contacts table
       if (typeof window !== 'undefined') {
@@ -103,27 +97,41 @@ export default function EmailAdminPage() {
                   table: 'email_contacts',
                 },
                 (payload) => {
-                  console.log('Real-time update:', payload);
-                  // Refresh tags and contacts when any change occurs
-                  fetchAllTags();
+                  console.log('Real-time update detected:', payload);
+                  // Refresh tags when tags column changes
+                  if (payload.new?.tags || payload.old?.tags) {
+                    console.log('Tags changed, refreshing tag list...');
+                    fetchAllTags();
+                  }
+                  // Always refresh contacts
                   fetchContacts();
                 }
               )
               .subscribe();
+            
+            console.log('✅ Real-time subscription active for email_contacts');
           } catch (error) {
             console.error('Error setting up real-time subscription:', error);
           }
         }
       }
+      
+      // Also refresh tags every 30 seconds to catch new tags added directly in database
+      const interval = setInterval(() => {
+        console.log('Auto-refreshing tags (30s interval)...');
+        fetchAllTags();
+      }, 30000); // 30 seconds
+      
+      // Cleanup function
+      return () => {
+        clearInterval(interval);
+        if (subscriptionRef.current) {
+          subscriptionRef.current.unsubscribe();
+          subscriptionRef.current = null;
+          console.log('Real-time subscription cleaned up');
+        }
+      };
     }
-    
-    // Cleanup subscription when tab changes or component unmounts
-    return () => {
-      if (subscriptionRef.current) {
-        subscriptionRef.current.unsubscribe();
-        subscriptionRef.current = null;
-      }
-    };
   }, [activeTab]);
 
   // Fetch contacts when tab changes
@@ -144,28 +152,40 @@ export default function EmailAdminPage() {
     }
   }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly]);
 
-  const fetchAllTags = async () => {
+  const fetchAllTags = async (showLoading = true) => {
+    if (showLoading) {
+      setTagsLoading(true);
+    }
     try {
-      console.log('Fetching all tags from API...');
-      // Use the optimized tags endpoint with cache-busting
-      const response = await fetch('/api/email/tags?' + new Date().getTime(), {
+      console.log('🔄 Fetching all tags from API (fresh, no cache)...');
+      // Use the optimized tags endpoint with cache-busting - always fetch fresh
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/api/email/tags?t=${timestamp}`, {
         cache: 'no-store',
+        method: 'GET',
         headers: {
-          'Cache-Control': 'no-cache',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
         },
       });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       console.log('Tags API response:', {
         success: data.success,
         tagCount: data.tags?.length || 0,
         totalCount: data.count || 0,
-        sampleTags: data.tags?.slice(0, 5) || [],
+        sampleTags: data.tags?.slice(0, 10) || [],
       });
       
       if (data.success && data.tags && Array.isArray(data.tags)) {
         console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
-        console.log('Tags received:', data.tags);
+        console.log('All tags:', data.tags);
         if (data.debug) {
           console.log('Debug info:', data.debug);
         }
@@ -174,6 +194,7 @@ export default function EmailAdminPage() {
           console.log('✅ "Program" tag is in the response');
         } else {
           console.warn('⚠️ "Program" tag is NOT in the response!');
+          console.warn('Available tags:', data.tags);
         }
         setAllTags(data.tags);
       } else {
@@ -200,7 +221,7 @@ export default function EmailAdminPage() {
         }
       }
     } catch (error) {
-      console.error('Error fetching tags:', error);
+      console.error('❌ Error fetching tags:', error);
       // Try fallback on error
       try {
         const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
@@ -216,11 +237,17 @@ export default function EmailAdminPage() {
               });
             }
           });
-          setAllTags(Array.from(tags).sort());
+          const sortedTags = Array.from(tags).sort();
+          console.log(`✅ Fallback: Loaded ${sortedTags.length} tags from contacts`);
+          setAllTags(sortedTags);
         }
       } catch (fallbackError) {
         console.error('Fallback also failed:', fallbackError);
         setAllTags([]);
+      }
+    } finally {
+      if (showLoading) {
+        setTagsLoading(false);
       }
     }
   };
@@ -775,8 +802,9 @@ export default function EmailAdminPage() {
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Tags {allTags.length > 0 && `(${allTags.length})`}
+                    {tagsLoading && <span className="ml-2 text-xs text-gray-500">(Loading...)</span>}
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
                     {selectedTags.length > 0 && (
                       <button
                         type="button"
@@ -788,11 +816,20 @@ export default function EmailAdminPage() {
                     )}
                     <button
                       type="button"
-                      onClick={fetchAllTags}
-                      className="text-xs text-blue-600 hover:text-blue-800"
-                      title="Refresh tags"
+                      onClick={() => fetchAllTags(true)}
+                      disabled={tagsLoading}
+                      className="text-xs text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 px-2 py-1 border border-blue-300 rounded hover:bg-blue-50 transition-colors"
+                      title="Refresh tags from database"
                     >
-                      🔄
+                      {tagsLoading ? (
+                        <>
+                          <span className="animate-spin">⟳</span> Refreshing...
+                        </>
+                      ) : (
+                        <>
+                          🔄 Refresh
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
