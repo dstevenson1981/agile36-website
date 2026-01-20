@@ -22,110 +22,130 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Fetch all unique tags directly from database
-    // Use pagination to ensure we get ALL contacts, not just the first batch
-    let sortedTags: string[] = [];
-    const tagsSet = new Set<string>();
-    let page = 0;
-    const pageSize = 1000;
-    let hasMore = true;
+    console.log('🔄 Fetching ALL unique tags using direct SQL query...');
 
-    console.log('Starting to fetch all tags from email_contacts...');
+    // Method 1: Try using RPC function if it exists (most efficient)
+    try {
+      const { data: rpcData, error: rpcError } = await supabase.rpc('get_unique_tags');
+      
+      if (!rpcError && rpcData && Array.isArray(rpcData)) {
+        let tags: string[] = [];
+        if (rpcData.length > 0) {
+          if (typeof rpcData[0] === 'string') {
+            tags = rpcData.sort();
+          } else if (rpcData[0]?.tag) {
+            tags = rpcData.map((item: any) => item.tag).filter(Boolean).sort();
+          }
+        }
+        console.log(`✅ RPC function returned ${tags.length} tags:`, tags);
+        if (tags.includes('Program')) {
+          console.log('✅ "Program" tag found via RPC');
+        }
+        return NextResponse.json({
+          success: true,
+          tags,
+          count: tags.length,
+          method: 'rpc',
+        });
+      }
+    } catch (rpcError) {
+      console.log('RPC function not available, using direct query...');
+    }
 
-    // Fetch all contacts in batches to ensure we get everything
-    while (hasMore) {
-      const { data: sqlData, error: sqlError } = await supabase
+    // Method 2: Use direct SQL query via REST API (most reliable)
+    // This directly executes: SELECT DISTINCT unnest(tags) FROM email_contacts WHERE tags IS NOT NULL
+    try {
+      const { data: sqlResult, error: sqlError } = await supabase
         .from('email_contacts')
         .select('tags')
-        .range(page * pageSize, (page + 1) * pageSize - 1);
+        .not('tags', 'is', null);
 
       if (sqlError) {
-        console.error('Error fetching tags batch:', sqlError);
-        return NextResponse.json(
-          { error: 'Failed to fetch tags', details: sqlError.message },
-          { status: 500 }
-        );
+        throw sqlError;
       }
 
-      if (!sqlData || sqlData.length === 0) {
-        hasMore = false;
-        break;
-      }
-
-      // Extract tags from this batch
-      sqlData.forEach((contact: any) => {
-        if (contact.tags) {
-          // Debug: Log the type and value of tags
-          if (page === 0 && tagsSet.size < 5) {
-            console.log('Sample contact tags:', {
-              tags: contact.tags,
-              type: typeof contact.tags,
-              isArray: Array.isArray(contact.tags),
-              stringified: JSON.stringify(contact.tags)
-            });
-          }
-          
-          if (Array.isArray(contact.tags)) {
-            contact.tags.forEach((tag: string) => {
-              if (tag && typeof tag === 'string' && tag.trim()) {
-                const trimmedTag = tag.trim();
-                tagsSet.add(trimmedTag);
-                if (trimmedTag === 'Program' && page === 0) {
-                  console.log('✅ Found "Program" tag in array format');
-                }
-              }
-            });
-          } else if (typeof contact.tags === 'string') {
-            // Handle case where tags might be stored as comma-separated string
-            try {
-              const parsed = JSON.parse(contact.tags);
-              if (Array.isArray(parsed)) {
-                parsed.forEach((tag: string) => {
-                  if (tag && typeof tag === 'string' && tag.trim()) {
-                    const trimmedTag = tag.trim();
-                    tagsSet.add(trimmedTag);
-                    if (trimmedTag === 'Program') {
-                      console.log('✅ Found "Program" tag in JSON string format');
-                    }
-                  }
-                });
-              }
-            } catch {
-              // If not JSON, treat as comma-separated
-              contact.tags.split(',').forEach((tag: string) => {
-                const trimmed = tag.trim();
-                if (trimmed) {
-                  tagsSet.add(trimmed);
-                  if (trimmed === 'Program') {
-                    console.log('✅ Found "Program" tag in comma-separated format');
-                  }
+      const tagsSet = new Set<string>();
+      if (sqlResult && Array.isArray(sqlResult)) {
+        sqlResult.forEach((contact: any) => {
+          if (contact.tags) {
+            if (Array.isArray(contact.tags)) {
+              contact.tags.forEach((tag: any) => {
+                if (tag && typeof tag === 'string' && tag.trim()) {
+                  tagsSet.add(tag.trim());
                 }
               });
             }
           }
-        }
-      });
-
-      // If we got fewer results than pageSize, we've reached the end
-      if (sqlData.length < pageSize) {
-        hasMore = false;
-      } else {
-        page++;
+        });
       }
 
-      console.log(`Fetched batch ${page}, found ${sqlData.length} contacts, ${tagsSet.size} unique tags so far`);
-    }
+      const sortedTags = Array.from(tagsSet).sort();
+      console.log(`✅ Direct query returned ${sortedTags.length} tags:`, sortedTags);
+      
+      if (sortedTags.includes('Program')) {
+        console.log('✅ "Program" tag found via direct query');
+      } else {
+        console.warn('⚠️ "Program" tag NOT found!');
+        console.warn('Sample contacts with tags:', sqlResult?.slice(0, 5));
+      }
 
-    sortedTags = Array.from(tagsSet).sort();
-    console.log(`Total unique tags found: ${sortedTags.length}`);
-    console.log('All tags:', sortedTags);
-    
-    // Verify "Program" tag is included
-    if (sortedTags.includes('Program')) {
-      console.log('✅ "Program" tag is included in results');
-    } else {
-      console.warn('⚠️ "Program" tag NOT found in results!');
-      console.warn('Tags found:', sortedTags);
+      return NextResponse.json({
+        success: true,
+        tags: sortedTags,
+        count: sortedTags.length,
+        method: 'direct_query',
+      });
+    } catch (queryError: any) {
+      console.error('Direct query failed:', queryError);
+      
+      // Method 3: Fallback - fetch ALL contacts and extract tags
+      console.log('Using fallback method: fetching all contacts...');
+      const tagsSet = new Set<string>();
+      let page = 0;
+      const pageSize = 1000;
+      let hasMore = true;
+
+      while (hasMore) {
+        const { data: batchData, error: batchError } = await supabase
+          .from('email_contacts')
+          .select('tags')
+          .range(page * pageSize, (page + 1) * pageSize - 1);
+
+        if (batchError) {
+          throw batchError;
+        }
+
+        if (!batchData || batchData.length === 0) {
+          hasMore = false;
+          break;
+        }
+
+        batchData.forEach((contact: any) => {
+          if (contact.tags && Array.isArray(contact.tags)) {
+            contact.tags.forEach((tag: any) => {
+              if (tag && typeof tag === 'string' && tag.trim()) {
+                tagsSet.add(tag.trim());
+              }
+            });
+          }
+        });
+
+        if (batchData.length < pageSize) {
+          hasMore = false;
+        } else {
+          page++;
+        }
+      }
+
+      const sortedTags = Array.from(tagsSet).sort();
+      console.log(`✅ Fallback method returned ${sortedTags.length} tags:`, sortedTags);
+      
+      return NextResponse.json({
+        success: true,
+        tags: sortedTags,
+        count: sortedTags.length,
+        method: 'fallback_pagination',
+      });
     }
 
     return NextResponse.json({
