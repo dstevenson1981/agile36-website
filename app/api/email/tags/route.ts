@@ -55,10 +55,24 @@ export async function GET(request: NextRequest) {
       // Extract tags from this batch
       sqlData.forEach((contact: any) => {
         if (contact.tags) {
+          // Debug: Log the type and value of tags
+          if (page === 0 && tagsSet.size < 5) {
+            console.log('Sample contact tags:', {
+              tags: contact.tags,
+              type: typeof contact.tags,
+              isArray: Array.isArray(contact.tags),
+              stringified: JSON.stringify(contact.tags)
+            });
+          }
+          
           if (Array.isArray(contact.tags)) {
             contact.tags.forEach((tag: string) => {
               if (tag && typeof tag === 'string' && tag.trim()) {
-                tagsSet.add(tag.trim());
+                const trimmedTag = tag.trim();
+                tagsSet.add(trimmedTag);
+                if (trimmedTag === 'Program' && page === 0) {
+                  console.log('✅ Found "Program" tag in array format');
+                }
               }
             });
           } else if (typeof contact.tags === 'string') {
@@ -68,7 +82,11 @@ export async function GET(request: NextRequest) {
               if (Array.isArray(parsed)) {
                 parsed.forEach((tag: string) => {
                   if (tag && typeof tag === 'string' && tag.trim()) {
-                    tagsSet.add(tag.trim());
+                    const trimmedTag = tag.trim();
+                    tagsSet.add(trimmedTag);
+                    if (trimmedTag === 'Program') {
+                      console.log('✅ Found "Program" tag in JSON string format');
+                    }
                   }
                 });
               }
@@ -78,6 +96,9 @@ export async function GET(request: NextRequest) {
                 const trimmed = tag.trim();
                 if (trimmed) {
                   tagsSet.add(trimmed);
+                  if (trimmed === 'Program') {
+                    console.log('✅ Found "Program" tag in comma-separated format');
+                  }
                 }
               });
             }
@@ -97,11 +118,25 @@ export async function GET(request: NextRequest) {
 
     sortedTags = Array.from(tagsSet).sort();
     console.log(`Total unique tags found: ${sortedTags.length}`);
+    console.log('All tags:', sortedTags);
+    
+    // Verify "Program" tag is included
+    if (sortedTags.includes('Program')) {
+      console.log('✅ "Program" tag is included in results');
+    } else {
+      console.warn('⚠️ "Program" tag NOT found in results!');
+      console.warn('Tags found:', sortedTags);
+    }
 
     return NextResponse.json({
       success: true,
       tags: sortedTags,
       count: sortedTags.length,
+      debug: {
+        totalBatches: page + 1,
+        sampleTags: sortedTags.slice(0, 10),
+        hasProgramTag: sortedTags.includes('Program'),
+      },
     });
   } catch (error: any) {
     console.error('Error in tags API:', error);

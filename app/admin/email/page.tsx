@@ -165,6 +165,16 @@ export default function EmailAdminPage() {
       
       if (data.success && data.tags && Array.isArray(data.tags)) {
         console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
+        console.log('Tags received:', data.tags);
+        if (data.debug) {
+          console.log('Debug info:', data.debug);
+        }
+        // Verify "Program" tag
+        if (data.tags.includes('Program')) {
+          console.log('✅ "Program" tag is in the response');
+        } else {
+          console.warn('⚠️ "Program" tag is NOT in the response!');
+        }
         setAllTags(data.tags);
       } else {
         console.warn('No tags or invalid response:', data);
