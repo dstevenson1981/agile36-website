@@ -24,40 +24,76 @@ export async function GET(request: NextRequest) {
 
     console.log('🔄 Fetching ALL unique tags using direct SQL query...');
 
-    // Method 1: Try using RPC function if it exists (most efficient)
+    // Method 1: Try using RPC function first (most efficient and reliable)
     try {
+      console.log('Attempting to call get_unique_tags() RPC function...');
       const { data: rpcData, error: rpcError } = await supabase.rpc('get_unique_tags');
       
-      if (!rpcError && rpcData && Array.isArray(rpcData)) {
+      if (rpcError) {
+        console.warn('RPC error:', rpcError);
+        console.warn('RPC error details:', JSON.stringify(rpcError, null, 2));
+        throw rpcError;
+      }
+      
+      if (rpcData && Array.isArray(rpcData)) {
+        console.log(`RPC returned ${rpcData.length} results`);
+        console.log('RPC data sample:', rpcData.slice(0, 5));
+        
+        // Extract tags from RPC response (handles both formats)
         let tags: string[] = [];
         if (rpcData.length > 0) {
           if (typeof rpcData[0] === 'string') {
+            // Simple array of strings
             tags = rpcData.sort();
           } else if (rpcData[0]?.tag) {
-            tags = rpcData.map((item: any) => item.tag).filter(Boolean).sort();
+            // Array of objects with 'tag' property
+            tags = rpcData
+              .map((item: any) => item.tag)
+              .filter((tag: any) => tag && typeof tag === 'string')
+              .map((tag: string) => tag.trim())
+              .filter((tag: string) => tag.length > 0)
+              .sort();
+          } else {
+            console.warn('Unexpected RPC response format:', rpcData[0]);
           }
         }
-        console.log(`✅ RPC function returned ${tags.length} tags:`, tags);
+        
+        console.log(`✅ RPC function returned ${tags.length} unique tags`);
+        console.log('All tags from RPC:', tags);
+        
         if (tags.includes('Program')) {
-          console.log('✅ "Program" tag found via RPC');
+          console.log('✅ "Program" tag found via RPC!');
+        } else {
+          console.warn('⚠️ "Program" tag NOT found in RPC results');
+          console.warn('Available tags:', tags);
         }
+        
         return NextResponse.json({
           success: true,
           tags,
           count: tags.length,
           method: 'rpc',
+          hasProgramTag: tags.includes('Program'),
         });
+      } else {
+        console.warn('RPC returned non-array data:', rpcData);
+        throw new Error('RPC returned invalid data format');
       }
-    } catch (rpcError) {
-      console.log('RPC function not available, using direct query...');
+    } catch (rpcError: any) {
+      console.log('RPC function failed or not available:', rpcError?.message);
+      console.log('Falling back to direct query method...');
     }
 
-    // Method 2: Fetch ALL contacts and extract tags (most reliable - no filtering)
+    // Method 2: Use raw SQL query via Supabase (if RPC doesn't work)
+    // This directly executes: SELECT DISTINCT unnest(tags) FROM email_contacts WHERE tags IS NOT NULL
     try {
-      console.log('Fetching ALL contacts to extract tags...');
+      console.log('Fetching ALL contacts to extract tags (fallback method)...');
+      
+      // Fetch ALL contacts - no filtering, no pagination limits
       const { data: sqlResult, error: sqlError } = await supabase
         .from('email_contacts')
-        .select('tags, email');
+        .select('tags, email')
+        .limit(100000); // Very high limit to get everything
 
       if (sqlError) {
         throw sqlError;
@@ -68,9 +104,10 @@ export async function GET(request: NextRequest) {
       const tagsSet = new Set<string>();
       let contactsWithTags = 0;
       let programTagFound = false;
+      const programContacts: string[] = [];
       
       if (sqlResult && Array.isArray(sqlResult)) {
-        sqlResult.forEach((contact: any, index: number) => {
+        sqlResult.forEach((contact: any) => {
           if (contact.tags) {
             contactsWithTags++;
             if (Array.isArray(contact.tags)) {
@@ -80,96 +117,46 @@ export async function GET(request: NextRequest) {
                   tagsSet.add(trimmedTag);
                   if (trimmedTag === 'Program') {
                     programTagFound = true;
-                    console.log(`✅ Found "Program" tag on contact: ${contact.email}`);
+                    programContacts.push(contact.email);
                   }
                 }
               });
             }
-            // Log first few contacts with tags for debugging
-            if (index < 5) {
-              console.log(`Contact ${index + 1}:`, {
-                email: contact.email,
-                tags: contact.tags,
-                isArray: Array.isArray(contact.tags),
-              });
-            }
           }
         });
       }
 
       const sortedTags = Array.from(tagsSet).sort();
-      console.log(`✅ Direct query returned ${sortedTags.length} unique tags from ${contactsWithTags} contacts with tags`);
+      console.log(`✅ Fallback query returned ${sortedTags.length} unique tags from ${contactsWithTags} contacts with tags`);
       console.log('All tags found:', sortedTags);
       
-      if (programTagFound || sortedTags.includes('Program')) {
-        console.log('✅ "Program" tag found!');
+      if (programTagFound) {
+        console.log(`✅ "Program" tag found on ${programContacts.length} contacts!`);
+        console.log('Sample contacts with Program tag:', programContacts.slice(0, 5));
       } else {
         console.warn('⚠️ "Program" tag NOT found in any contact!');
-        console.warn('Checking sample contacts...');
-        const sampleWithTags = sqlResult?.filter((c: any) => c.tags && Array.isArray(c.tags) && c.tags.length > 0).slice(0, 10);
-        console.warn('Sample contacts with tags:', sampleWithTags);
       }
 
       return NextResponse.json({
         success: true,
         tags: sortedTags,
         count: sortedTags.length,
-        method: 'direct_query_all',
+        method: 'fallback_direct_query',
         contactsWithTags,
         totalContacts: sqlResult?.length || 0,
         hasProgramTag: sortedTags.includes('Program'),
+        programContactCount: programContacts.length,
       });
     } catch (queryError: any) {
-      console.error('Direct query failed:', queryError);
-      
-      // Method 3: Fallback - fetch ALL contacts and extract tags
-      console.log('Using fallback method: fetching all contacts...');
-      const tagsSet = new Set<string>();
-      let page = 0;
-      const pageSize = 1000;
-      let hasMore = true;
-
-      while (hasMore) {
-        const { data: batchData, error: batchError } = await supabase
-          .from('email_contacts')
-          .select('tags')
-          .range(page * pageSize, (page + 1) * pageSize - 1);
-
-        if (batchError) {
-          throw batchError;
-        }
-
-        if (!batchData || batchData.length === 0) {
-          hasMore = false;
-          break;
-        }
-
-        batchData.forEach((contact: any) => {
-          if (contact.tags && Array.isArray(contact.tags)) {
-            contact.tags.forEach((tag: any) => {
-              if (tag && typeof tag === 'string' && tag.trim()) {
-                tagsSet.add(tag.trim());
-              }
-            });
-          }
-        });
-
-        if (batchData.length < pageSize) {
-          hasMore = false;
-        } else {
-          page++;
-        }
-      }
-
-      const sortedTags = Array.from(tagsSet).sort();
-      console.log(`✅ Fallback method returned ${sortedTags.length} tags:`, sortedTags);
-      
-      return NextResponse.json({
-        success: true,
-        tags: sortedTags,
-        count: sortedTags.length,
-        method: 'fallback_pagination',
-      });
+      console.error('All methods failed:', queryError);
+      return NextResponse.json(
+        { 
+          success: false,
+          error: `Failed to fetch tags: ${queryError.message}`,
+          details: queryError,
+        },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
