@@ -44,6 +44,7 @@ export default function CampaignEditorPage() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
+  const [currentStep, setCurrentStep] = useState<'details' | 'recipients' | 'review'>('details');
 
   useEffect(() => {
     if (campaignId) {
@@ -283,20 +284,83 @@ export default function CampaignEditorPage() {
   const filteredContacts = contacts.filter(c => !c.blocked && c.subscribed);
   const selectedCount = selectedContactIds.length;
 
+  const handleNextStep = () => {
+    if (currentStep === 'details') {
+      if (!campaignName || !campaignSubject || !campaignHtml) {
+        alert('Please fill in all required fields (Campaign Name, Subject Line, and Email Content)');
+        return;
+      }
+      setCurrentStep('recipients');
+    } else if (currentStep === 'recipients') {
+      if (selectedCount === 0) {
+        alert('Please select at least one recipient');
+        return;
+      }
+      setCurrentStep('review');
+    }
+  };
+
+  const handlePreviousStep = () => {
+    if (currentStep === 'recipients') {
+      setCurrentStep('details');
+    } else if (currentStep === 'review') {
+      setCurrentStep('recipients');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-5xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Campaign</h1>
-          <p className="text-gray-600">Edit campaign details and select recipients</p>
+          <p className="text-gray-600">Step {currentStep === 'details' ? '1' : currentStep === 'recipients' ? '2' : '3'} of 3</p>
         </div>
 
-        {/* Main Content - Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 mb-24">
-          {/* Left Column: Campaign Details */}
-          <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
-            <h2 className="text-xl font-bold text-gray-900 border-b border-gray-200 pb-3">Campaign Details</h2>
+        {/* Step Indicator */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center flex-1">
+              <div className={`flex items-center ${currentStep === 'details' ? 'text-blue-600' : 'text-gray-400'}`}>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                  currentStep === 'details' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                }`}>
+                  1
+                </div>
+                <span className="ml-2 font-medium">Campaign Details</span>
+              </div>
+              <div className={`flex-1 h-1 mx-4 ${currentStep !== 'details' ? 'bg-blue-600' : 'bg-gray-200'}`}></div>
+            </div>
+            <div className="flex items-center flex-1">
+              <div className={`flex items-center ${currentStep === 'recipients' ? 'text-blue-600' : currentStep === 'review' ? 'text-blue-600' : 'text-gray-400'}`}>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                  currentStep === 'recipients' || currentStep === 'review' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                }`}>
+                  2
+                </div>
+                <span className="ml-2 font-medium">Select Recipients</span>
+              </div>
+              <div className={`flex-1 h-1 mx-4 ${currentStep === 'review' ? 'bg-blue-600' : 'bg-gray-200'}`}></div>
+            </div>
+            <div className="flex items-center">
+              <div className={`flex items-center ${currentStep === 'review' ? 'text-blue-600' : 'text-gray-400'}`}>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                  currentStep === 'review' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                }`}>
+                  3
+                </div>
+                <span className="ml-2 font-medium">Review & Send</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Step Content */}
+        <div className="mb-24">
+          {/* Step 1: Campaign Details */}
+          {currentStep === 'details' && (
+          <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Campaign Details</h2>
 
             <div className="space-y-6">
               <div>
@@ -367,10 +431,12 @@ export default function CampaignEditorPage() {
               </div>
             </div>
           </div>
+          )}
 
-          {/* Right Column: Recipient Selection */}
-          <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
-            <h2 className="text-xl font-bold text-gray-900 border-b border-gray-200 pb-3">Select Recipients</h2>
+          {/* Step 2: Select Recipients */}
+          {currentStep === 'recipients' && (
+          <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Select Recipients</h2>
 
             {/* Filters */}
             <div className="space-y-4">
@@ -516,34 +582,141 @@ export default function CampaignEditorPage() {
               )}
             </div>
           </div>
+          )}
+
+          {/* Step 3: Review & Send */}
+          {currentStep === 'review' && (
+          <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Review & Send</h2>
+            
+            {/* Campaign Summary */}
+            <div className="border border-gray-200 rounded-lg p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900">Campaign Information</h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-sm font-medium text-gray-500">Campaign Name</label>
+                  <p className="text-base text-gray-900 mt-1">{campaignName}</p>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-gray-500">Subject Line</label>
+                  <p className="text-base text-gray-900 mt-1">{campaignSubject}</p>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-gray-500">Recipients</label>
+                  <p className="text-base text-gray-900 mt-1">{selectedCount} contact{selectedCount !== 1 ? 's' : ''} selected</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Email Preview */}
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Email Preview</h3>
+              <div className="border border-gray-300 rounded-md bg-white p-4 max-h-[400px] overflow-y-auto">
+                <div
+                  className="max-w-full"
+                  dangerouslySetInnerHTML={{ __html: campaignHtml || '<p class="text-gray-400">No content</p>' }}
+                />
+              </div>
+            </div>
+
+            {/* Selected Recipients Preview */}
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Selected Recipients ({selectedCount})</h3>
+              <div className="max-h-[300px] overflow-y-auto">
+                <div className="space-y-2">
+                  {filteredContacts
+                    .filter(c => selectedContactIds.includes(c.id))
+                    .slice(0, 50)
+                    .map((contact) => (
+                      <div key={contact.id} className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">{contact.email}</p>
+                          <p className="text-xs text-gray-500">{contact.first_name} {contact.last_name}</p>
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {contact.tags?.slice(0, 2).map((tag, idx) => (
+                            <span key={idx} className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  {selectedCount > 50 && (
+                    <p className="text-sm text-gray-500 pt-2">... and {selectedCount - 50} more contacts</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
         </div>
       </div>
 
       {/* Sticky Footer with Action Buttons */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-            <button
-              onClick={() => router.push('/admin/email?tab=campaigns')}
-              className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors text-center"
-            >
-              Cancel
-            </button>
+            <div className="flex gap-3">
+              {currentStep !== 'details' && (
+                <button
+                  onClick={handlePreviousStep}
+                  className="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors text-center"
+                >
+                  ← Previous
+                </button>
+              )}
+              <button
+                onClick={() => router.push('/admin/email?tab=campaigns')}
+                className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors text-center"
+              >
+                Cancel
+              </button>
+            </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => handleSaveCampaign(true)}
-                disabled={saving}
-                className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-center"
-              >
-                {saving ? 'Saving...' : 'Save as Draft'}
-              </button>
-              <button
-                onClick={handleSendNow}
-                disabled={sending || selectedCount === 0}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-center"
-              >
-                {sending ? 'Sending...' : `Send Now (${selectedCount})`}
-              </button>
+              {currentStep === 'details' && (
+                <button
+                  onClick={handleNextStep}
+                  className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium text-center"
+                >
+                  Next: Select Recipients →
+                </button>
+              )}
+              {currentStep === 'recipients' && (
+                <>
+                  <button
+                    onClick={() => handleSaveCampaign(true)}
+                    disabled={saving}
+                    className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-center"
+                  >
+                    {saving ? 'Saving...' : 'Save as Draft'}
+                  </button>
+                  <button
+                    onClick={handleNextStep}
+                    className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium text-center"
+                  >
+                    Next: Review & Send →
+                  </button>
+                </>
+              )}
+              {currentStep === 'review' && (
+                <>
+                  <button
+                    onClick={() => handleSaveCampaign(true)}
+                    disabled={saving}
+                    className="px-6 py-2.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-center"
+                  >
+                    {saving ? 'Saving...' : 'Save as Draft'}
+                  </button>
+                  <button
+                    onClick={handleSendNow}
+                    disabled={sending}
+                    className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-center"
+                  >
+                    {sending ? 'Sending...' : `Send to ${selectedCount} Contact${selectedCount !== 1 ? 's' : ''}`}
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
