@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 interface Contact {
   id: number;
@@ -59,11 +60,60 @@ export default function EmailAdminPage() {
   // Blocked contacts state
   const [showBlockedOnly, setShowBlockedOnly] = useState(false);
 
+  // Bulk operations state
+  const [selectedContactIds, setSelectedContactIds] = useState<number[]>([]);
+  const [bulkTagInput, setBulkTagInput] = useState<string>('');
+  const [showBulkActions, setShowBulkActions] = useState(false);
+
+  // Real-time subscription ref
+  const subscriptionRef = useRef<any>(null);
+
   // Fetch all tags once when component mounts or when contacts tab is active
   useEffect(() => {
     if (activeTab === 'contacts') {
       fetchAllTags(); // Fetch all tags - this should only run once or when tab changes
+      
+      // Set up real-time subscription for email_contacts table
+      if (typeof window !== 'undefined') {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        
+        if (supabaseUrl && supabaseAnonKey) {
+          try {
+            const supabase = createClient(supabaseUrl, supabaseAnonKey);
+            
+            // Subscribe to changes in email_contacts
+            subscriptionRef.current = supabase
+              .channel('email_contacts_changes')
+              .on(
+                'postgres_changes',
+                {
+                  event: '*', // Listen to all events (INSERT, UPDATE, DELETE)
+                  schema: 'public',
+                  table: 'email_contacts',
+                },
+                (payload) => {
+                  console.log('Real-time update:', payload);
+                  // Refresh tags and contacts when any change occurs
+                  fetchAllTags();
+                  fetchContacts();
+                }
+              )
+              .subscribe();
+          } catch (error) {
+            console.error('Error setting up real-time subscription:', error);
+          }
+        }
+      }
     }
+    
+    // Cleanup subscription when tab changes or component unmounts
+    return () => {
+      if (subscriptionRef.current) {
+        subscriptionRef.current.unsubscribe();
+        subscriptionRef.current = null;
+      }
+    };
   }, [activeTab]);
 
   // Fetch contacts when tab changes
@@ -87,32 +137,61 @@ export default function EmailAdminPage() {
   const fetchAllTags = async () => {
     try {
       console.log('Fetching all tags...');
-      // Fetch all contacts (no filters) just to get all tags
-      const response = await fetch('/api/email/contacts');
+      // Use the optimized tags endpoint
+      const response = await fetch('/api/email/tags');
       const data = await response.json();
       
       console.log('Tags API response:', data);
       
-      if (data.success && data.contacts && Array.isArray(data.contacts)) {
-        // Extract all unique tags from ALL contacts
-        const tags = new Set<string>();
-        data.contacts.forEach((contact: Contact) => {
-          if (contact.tags && Array.isArray(contact.tags)) {
-            contact.tags.forEach(tag => {
-              if (tag && typeof tag === 'string' && tag.trim()) {
-                tags.add(tag.trim());
-              }
-            });
-          }
-        });
-        const sortedTags = Array.from(tags).sort();
-        console.log('All tags found:', sortedTags, 'from', data.contacts.length, 'contacts'); // Debug log
-        setAllTags(sortedTags);
+      if (data.success && data.tags && Array.isArray(data.tags)) {
+        console.log('All tags found:', data.tags, 'total:', data.count);
+        setAllTags(data.tags);
       } else {
-        console.warn('No contacts or invalid response:', data);
+        console.warn('No tags or invalid response:', data);
+        // Fallback: try fetching from contacts
+        const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
+        const fallbackData = await fallbackResponse.json();
+        
+        if (fallbackData.success && fallbackData.contacts && Array.isArray(fallbackData.contacts)) {
+          const tags = new Set<string>();
+          fallbackData.contacts.forEach((contact: Contact) => {
+            if (contact.tags && Array.isArray(contact.tags)) {
+              contact.tags.forEach(tag => {
+                if (tag && typeof tag === 'string' && tag.trim()) {
+                  tags.add(tag.trim());
+                }
+              });
+            }
+          });
+          const sortedTags = Array.from(tags).sort();
+          setAllTags(sortedTags);
+        } else {
+          setAllTags([]);
+        }
       }
     } catch (error) {
       console.error('Error fetching tags:', error);
+      // Try fallback on error
+      try {
+        const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
+        const fallbackData = await fallbackResponse.json();
+        if (fallbackData.success && fallbackData.contacts) {
+          const tags = new Set<string>();
+          fallbackData.contacts.forEach((contact: Contact) => {
+            if (contact.tags && Array.isArray(contact.tags)) {
+              contact.tags.forEach(tag => {
+                if (tag && typeof tag === 'string' && tag.trim()) {
+                  tags.add(tag.trim());
+                }
+              });
+            }
+          });
+          setAllTags(Array.from(tags).sort());
+        }
+      } catch (fallbackError) {
+        console.error('Fallback also failed:', fallbackError);
+        setAllTags([]);
+      }
     }
   };
 
@@ -132,15 +211,29 @@ export default function EmailAdminPage() {
       if (showBlockedOnly) {
         params.append('blocked', 'true');
       }
+      // Increase limit for contacts view
+      params.append('limit', '1000');
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
       const data = await response.json();
       
+      console.log('Contacts API response:', { 
+        success: data.success, 
+        count: data.contacts?.length || 0,
+        error: data.error 
+      });
+      
       if (data.success) {
-        setContacts(data.contacts);
+        setContacts(data.contacts || []);
+      } else {
+        console.error('Failed to fetch contacts:', data.error);
+        alert(data.error || 'Failed to fetch contacts');
+        setContacts([]);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error fetching contacts:', error);
+      alert(`Error fetching contacts: ${error.message || 'Unknown error'}`);
+      setContacts([]);
     } finally {
       setLoading(false);
     }
@@ -320,6 +413,106 @@ export default function EmailAdminPage() {
       alert('Error updating contact');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleAddTag = async (contactId: number, tag: string) => {
+    if (!tag || !tag.trim()) return;
+
+    setLoading(true);
+    try {
+      const response = await fetch('/api/email/contacts/tags', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contactId, tag: tag.trim() }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        fetchAllTags();
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to add tag');
+      }
+    } catch (error) {
+      alert('Error adding tag');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRemoveTag = async (contactId: number, tag: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/email/contacts/tags?contactId=${contactId}&tag=${encodeURIComponent(tag)}`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+      if (data.success) {
+        fetchAllTags();
+        fetchContacts();
+      } else {
+        alert(data.error || 'Failed to remove tag');
+      }
+    } catch (error) {
+      alert('Error removing tag');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBulkTagOperation = async (action: 'add' | 'remove') => {
+    if (selectedContactIds.length === 0) {
+      alert('Please select at least one contact');
+      return;
+    }
+
+    if (!bulkTagInput.trim()) {
+      alert('Please enter a tag');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch('/api/email/contacts/bulk-tags', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contactIds: selectedContactIds,
+          tag: bulkTagInput.trim(),
+          action,
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert(`${action === 'add' ? 'Added' : 'Removed'} tag "${bulkTagInput.trim()}" from ${data.updated} contact(s)`);
+        setBulkTagInput('');
+        setSelectedContactIds([]);
+        setShowBulkActions(false);
+        fetchAllTags();
+        fetchContacts();
+      } else {
+        alert(data.error || `Failed to ${action} tag`);
+      }
+    } catch (error) {
+      alert(`Error ${action}ing tag`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleContactSelection = (contactId: number) => {
+    setSelectedContactIds(prev => 
+      prev.includes(contactId) 
+        ? prev.filter(id => id !== contactId)
+        : [...prev, contactId]
+    );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedContactIds.length === contacts.length) {
+      setSelectedContactIds([]);
+    } else {
+      setSelectedContactIds(contacts.map(c => c.id));
     }
   };
 
@@ -544,39 +737,60 @@ export default function EmailAdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-              <div className="min-w-[150px]">
+              <div className="w-full">
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Tags {allTags.length > 0 && `(${allTags.length})`}
                   </label>
-                  <button
-                    type="button"
-                    onClick={fetchAllTags}
-                    className="text-xs text-blue-600 hover:text-blue-800"
-                    title="Refresh tags"
-                  >
-                    🔄
-                  </button>
+                  <div className="flex gap-2">
+                    {selectedTags.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedTags([])}
+                        className="text-xs text-blue-600 hover:text-blue-800 underline"
+                      >
+                        Clear filters
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={fetchAllTags}
+                      className="text-xs text-blue-600 hover:text-blue-800"
+                      title="Refresh tags"
+                    >
+                      🔄
+                    </button>
+                  </div>
                 </div>
-                <select
-                  multiple
-                  value={selectedTags}
-                  onChange={(e) => {
-                    const newTags = Array.from(e.target.selectedOptions, option => option.value);
-                    setSelectedTags(newTags);
-                  }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                  size={Math.min(Math.max(allTags.length, 3), 8)}
-                  style={{ minHeight: '100px', maxHeight: '200px' }}
-                >
+                <div className="flex flex-wrap gap-2 p-2 border border-gray-300 rounded-md min-h-[60px]">
                   {allTags.length > 0 ? (
-                    allTags.map(tag => (
-                      <option key={tag} value={tag}>{tag}</option>
-                    ))
+                    allTags.map(tag => {
+                      const isSelected = selectedTags.includes(tag);
+                      return (
+                        <button
+                          key={tag}
+                          type="button"
+                          onClick={() => {
+                            if (isSelected) {
+                              setSelectedTags(prev => prev.filter(t => t !== tag));
+                            } else {
+                              setSelectedTags(prev => [...prev, tag]);
+                            }
+                          }}
+                          className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+                            isSelected
+                              ? 'bg-blue-600 text-white border-blue-600'
+                              : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                          }`}
+                        >
+                          {tag}
+                        </button>
+                      );
+                    })
                   ) : (
-                    <option disabled>No tags found. Click refresh or add tags to contacts.</option>
+                    <span className="text-sm text-gray-500">No tags found. Click refresh or add tags to contacts.</span>
                   )}
-                </select>
+                </div>
               </div>
               <div className="min-w-[150px]">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Subscription</label>
@@ -707,6 +921,74 @@ export default function EmailAdminPage() {
               </div>
             </form>
 
+            {/* Bulk Actions Bar */}
+            {selectedContactIds.length > 0 && (
+              <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm font-medium text-gray-700">
+                      {selectedContactIds.length} contact{selectedContactIds.length !== 1 ? 's' : ''} selected
+                    </span>
+                    <button
+                      onClick={() => {
+                        setSelectedContactIds([]);
+                        setShowBulkActions(false);
+                      }}
+                      className="text-sm text-gray-600 hover:text-gray-800"
+                    >
+                      Clear selection
+                    </button>
+                  </div>
+                  {!showBulkActions ? (
+                    <button
+                      onClick={() => setShowBulkActions(true)}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm"
+                    >
+                      Bulk Tag Actions
+                    </button>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={bulkTagInput}
+                        onChange={(e) => setBulkTagInput(e.target.value)}
+                        placeholder="Enter tag name"
+                        className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && bulkTagInput.trim()) {
+                            handleBulkTagOperation('add');
+                          }
+                        }}
+                      />
+                      <button
+                        onClick={() => handleBulkTagOperation('add')}
+                        disabled={!bulkTagInput.trim() || loading}
+                        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 text-sm"
+                      >
+                        Add Tag
+                      </button>
+                      <button
+                        onClick={() => handleBulkTagOperation('remove')}
+                        disabled={!bulkTagInput.trim() || loading}
+                        className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 text-sm"
+                      >
+                        Remove Tag
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowBulkActions(false);
+                          setBulkTagInput('');
+                        }}
+                        className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 text-sm"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Contacts Table */}
             {loading ? (
               <div className="text-center py-8">Loading...</div>
@@ -715,6 +997,14 @@ export default function EmailAdminPage() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                        <input
+                          type="checkbox"
+                          checked={selectedContactIds.length === contacts.length && contacts.length > 0}
+                          onChange={toggleSelectAll}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                      </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
@@ -726,7 +1016,15 @@ export default function EmailAdminPage() {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {contacts.map((contact) => (
-                      <tr key={contact.id}>
+                      <tr key={contact.id} className={selectedContactIds.includes(contact.id) ? 'bg-blue-50' : ''}>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <input
+                            type="checkbox"
+                            checked={selectedContactIds.includes(contact.id)}
+                            onChange={() => toggleContactSelection(contact.id)}
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          />
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{contact.email}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {contact.first_name} {contact.last_name}
@@ -737,52 +1035,53 @@ export default function EmailAdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {contact.company || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {editingContact?.id === contact.id ? (
-                            <div className="flex gap-2">
-                              <input
-                                type="text"
-                                value={editTags}
-                                onChange={(e) => setEditTags(e.target.value)}
-                                placeholder="Tags (comma-separated)"
-                                className="px-2 py-1 border border-gray-300 rounded text-sm w-48"
-                                onKeyDown={(e) => {
-                                  if (e.key === 'Enter') {
-                                    handleSaveEdit();
-                                  } else if (e.key === 'Escape') {
-                                    setEditingContact(null);
-                                    setEditTags('');
-                                  }
-                                }}
-                              />
-                              <button
-                                onClick={handleSaveEdit}
-                                className="text-blue-600 hover:text-blue-900 text-sm"
-                              >
-                                Save
-                              </button>
+                        <td className="px-6 py-4 text-sm text-gray-500">
+                          <div className="flex flex-wrap items-center gap-2 max-w-md">
+                            {contact.tags && contact.tags.length > 0 ? (
+                              <>
+                                {contact.tags.map((tag, idx) => (
+                                  <span
+                                    key={idx}
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs"
+                                  >
+                                    {tag}
+                                    <button
+                                      onClick={() => handleRemoveTag(contact.id, tag)}
+                                      className="hover:text-blue-600 focus:outline-none"
+                                      title="Remove tag"
+                                    >
+                                      ×
+                                    </button>
+                                  </span>
+                                ))}
+                                <button
+                                  onClick={() => {
+                                    const newTag = prompt('Enter new tag:');
+                                    if (newTag && newTag.trim()) {
+                                      handleAddTag(contact.id, newTag.trim());
+                                    }
+                                  }}
+                                  className="text-blue-600 hover:text-blue-900 text-xs font-medium"
+                                  title="Add tag"
+                                >
+                                  + Add Tag
+                                </button>
+                              </>
+                            ) : (
                               <button
                                 onClick={() => {
-                                  setEditingContact(null);
-                                  setEditTags('');
+                                  const newTag = prompt('Enter new tag:');
+                                  if (newTag && newTag.trim()) {
+                                    handleAddTag(contact.id, newTag.trim());
+                                  }
                                 }}
-                                className="text-gray-600 hover:text-gray-900 text-sm"
+                                className="text-blue-600 hover:text-blue-900 text-xs font-medium"
+                                title="Add tag"
                               >
-                                Cancel
+                                + Add Tag
                               </button>
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2">
-                              <span>{contact.tags?.join(', ') || '-'}</span>
-                              <button
-                                onClick={() => handleEditContact(contact)}
-                                className="text-blue-600 hover:text-blue-900 text-xs"
-                                title="Edit tags"
-                              >
-                                ✏️
-                              </button>
-                            </div>
-                          )}
+                            )}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex flex-col gap-1">
