@@ -77,32 +77,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send webhook to n8n for high assessment score follow-up workflow
-    // Only send if exam_score >= 80 (workflow will filter, but we can optimize here)
-    if (process.env.N8N_WEBHOOK_URL_ASSESSMENT_EMAILS && data && data[0]) {
-      const assessmentData = data[0];
-      fetch(process.env.N8N_WEBHOOK_URL_ASSESSMENT_EMAILS, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: assessmentData.id,
-          email: assessmentData.email,
-          name: assessmentData.name,
-          exam_name: assessmentData.exam_name,
-          exam_score: assessmentData.exam_score || null,
-          source: assessmentData.source,
-          message: assessmentData.message,
-          created_at: assessmentData.created_at,
-          course_catalog_link: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://agile36.com'}/courses`,
-        }),
-      }).catch((error) => {
-        // Log error but don't fail the request
-        console.error('Error sending webhook to n8n:', error);
-      });
-    }
-
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
     console.error('Error storing email:', error);
