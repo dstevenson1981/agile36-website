@@ -116,23 +116,35 @@ export async function POST(request: NextRequest) {
     // If recipients are set in junction table, use those
     if (!recipientsError && recipients && recipients.length > 0) {
       const contactIds = recipients.map(r => r.contact_id);
-      const { data: recipientContacts, error: contactsError } = await supabase
-        .from('email_contacts')
-        .select('*')
-        .in('id', contactIds)
-        .eq('subscribed', true)
-        .eq('blocked', false);
+      
+      // Supabase .in() has a limit of ~1000 items, so we need to chunk large arrays
+      const CHUNK_SIZE = 1000;
+      const allRecipientContacts: any[] = [];
+      
+      for (let i = 0; i < contactIds.length; i += CHUNK_SIZE) {
+        const chunk = contactIds.slice(i, i + CHUNK_SIZE);
+        const { data: chunkContacts, error: contactsError } = await supabase
+          .from('email_contacts')
+          .select('*')
+          .in('id', chunk)
+          .eq('subscribed', true)
+          .eq('blocked', false);
 
-      if (contactsError) {
-        console.error('Error fetching recipient contacts:', contactsError);
-        return NextResponse.json(
-          { error: 'Failed to fetch recipient contacts' },
-          { status: 500 }
-        );
+        if (contactsError) {
+          console.error('Error fetching recipient contacts chunk:', contactsError);
+          return NextResponse.json(
+            { error: 'Failed to fetch recipient contacts' },
+            { status: 500 }
+          );
+        }
+
+        if (chunkContacts) {
+          allRecipientContacts.push(...chunkContacts);
+        }
       }
 
-      contacts = recipientContacts || [];
-      console.log(`Found ${contacts.length} recipients from campaign_recipients table`);
+      contacts = allRecipientContacts;
+      console.log(`Found ${contacts.length} recipients from campaign_recipients table (from ${contactIds.length} total recipient IDs)`);
     } else {
       // Fallback to tag filter logic (for backward compatibility)
       // Get contacts based on filters
