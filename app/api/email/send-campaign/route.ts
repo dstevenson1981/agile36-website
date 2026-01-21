@@ -105,48 +105,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if campaign has recipients set in junction table
-    const { data: recipients, error: recipientsError } = await supabase
-      .from('email_campaign_recipients')
-      .select('contact_id')
-      .eq('campaign_id', campaignId);
-
+    // Get contacts based on tag filters (simple approach - no junction table needed)
     let contacts: any[] = [];
-
-    // If recipients are set in junction table, use those
-    if (!recipientsError && recipients && recipients.length > 0) {
-      const contactIds = recipients.map(r => r.contact_id);
-      
-      // Supabase .in() has a limit of ~1000 items, so we need to chunk large arrays
-      const CHUNK_SIZE = 1000;
-      const allRecipientContacts: any[] = [];
-      
-      for (let i = 0; i < contactIds.length; i += CHUNK_SIZE) {
-        const chunk = contactIds.slice(i, i + CHUNK_SIZE);
-        const { data: chunkContacts, error: contactsError } = await supabase
-          .from('email_contacts')
-          .select('*')
-          .in('id', chunk)
-          .eq('subscribed', true)
-          .eq('blocked', false);
-
-        if (contactsError) {
-          console.error('Error fetching recipient contacts chunk:', contactsError);
-          return NextResponse.json(
-            { error: 'Failed to fetch recipient contacts' },
-            { status: 500 }
-          );
-        }
-
-        if (chunkContacts) {
-          allRecipientContacts.push(...chunkContacts);
-        }
-      }
-
-      contacts = allRecipientContacts;
-      console.log(`Found ${contacts.length} recipients from campaign_recipients table (from ${contactIds.length} total recipient IDs)`);
-    } else {
-      // Fallback to tag filter logic (for backward compatibility)
       // Get contacts based on filters
       // Exclude blocked contacts and only get subscribed contacts
       let contactsQuery = supabase
@@ -484,12 +444,7 @@ export async function POST(request: NextRequest) {
               sendgrid_message_id: response.headers['x-message-id'] || null,
             });
 
-          // Update sent_at in email_campaign_recipients table if recipient exists
-          await supabase
-            .from('email_campaign_recipients')
-            .update({ sent_at: sentAt })
-            .eq('campaign_id', campaignId)
-            .eq('contact_id', contact.id);
+          // Note: We don't update email_campaign_recipients table - using simple tag-based approach
 
           // Add tags to recipient if specified
           if (tagsToAdd && Array.isArray(tagsToAdd) && tagsToAdd.length > 0) {
