@@ -213,7 +213,6 @@ export async function POST(request: NextRequest) {
       
       contacts = allContacts || [];
     }
-    }
     
     // Additional JavaScript filtering for edge cases (if needed)
     if (tagFilters && tagFilters.length > 0 && contacts.length === 0) {
