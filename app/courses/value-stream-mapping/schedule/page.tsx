@@ -623,7 +623,7 @@ function CourseScheduleContent() {
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
                             <Link
-                              href={`/courses/value-stream-mapping/schedule/checkout?schedule_id=${schedule.id}&quantity=${qty}`}
+                              href={`/courses/value-stream-mapping/schedule/checkout?schedule=${schedule.id}&course=value-stream-mapping&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg text-center transition-colors mt-4"
                             >
                               ENROLL NOW
