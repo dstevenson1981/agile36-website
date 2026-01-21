@@ -17,14 +17,14 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const scheduleId = searchParams.get('schedule');
-  const courseSlug = searchParams.get('course') || 'responsible-ai';
+  const courseSlug = searchParams.get('course') || 'value-stream-mapping';
   
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedSchedule, setSelectedSchedule] = useState<any>(null);
   const [selectedPlan, setSelectedPlan] = useState<'basic' | 'pro'>('basic');
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("Achieving Responsible AI with SAFe Micro-credential Course");
+  const [courseName, setCourseName] = useState("SAFe Value Stream Mapping");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -54,6 +54,7 @@ function CheckoutContent() {
     'lean-portfolio-management': 'Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
+    'value-stream-mapping': 'SAFe Value Stream Mapping',
     'responsible-ai': 'Achieving Responsible AI with SAFe Micro-credential Course',
   };
 
@@ -61,7 +62,7 @@ function CheckoutContent() {
     const fetchSchedule = async () => {
       if (!scheduleId) {
         // Redirect to schedule page if no schedule ID
-        router.push(`/courses/responsible-ai/schedule`);
+        router.push(`/courses/value-stream-mapping/schedule`);
         return;
       }
 
@@ -77,14 +78,14 @@ function CheckoutContent() {
             setEnrollmentQuantity(1);
           } else {
             // Schedule not found, redirect to schedule page
-            router.push(`/courses/responsible-ai/schedule`);
+            router.push(`/courses/value-stream-mapping/schedule`);
           }
         } else {
-          router.push(`/courses/responsible-ai/schedule`);
+          router.push(`/courses/value-stream-mapping/schedule`);
         }
       } catch (error) {
         console.error('Error fetching schedule:', error);
-        router.push(`/courses/responsible-ai/schedule`);
+        router.push(`/courses/value-stream-mapping/schedule`);
       } finally {
         setIsLoading(false);
       }
@@ -742,10 +743,10 @@ function CheckoutContent() {
                         plan: selectedPlan,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/courses/responsible-ai/schedule/checkout/success?${params.toString()}`);
+                      router.push(`/courses/value-stream-mapping/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/responsible-ai/schedule?course=${courseSlug}`);
+                      router.push(`/courses/value-stream-mapping/schedule?course=${courseSlug}`);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}
