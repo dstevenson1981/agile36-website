@@ -130,7 +130,8 @@ export default function CampaignEditorPage() {
       if (showBlockedOnly) {
         params.append('blocked', 'true');
       }
-      params.append('limit', '1000');
+      // Request up to 50,000 contacts to handle large tag filters
+      params.append('limit', '50000');
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
       const data = await response.json();

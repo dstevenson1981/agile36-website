@@ -51,16 +51,20 @@ export async function GET(request: NextRequest) {
     // Add limit to prevent timeout on large datasets
     // For tag extraction, we'll use a separate optimized query
     const limit = searchParams.get('limit');
+    let limitValue = 10000; // Default
     if (limit) {
-      const limitValue = parseInt(limit, 10);
+      limitValue = parseInt(limit, 10);
       // Allow up to 50,000 contacts (reasonable limit to prevent memory issues)
-      query = query.limit(Math.min(limitValue, 50000));
-    } else {
-      // Default limit of 10,000 to allow fetching more contacts
-      query = query.limit(10000);
+      limitValue = Math.min(limitValue, 50000);
     }
+    
+    // Use range() instead of limit() to ensure we get all results
+    // Supabase PostgREST has a default max-rows limit, so we need to explicitly set it
+    query = query.range(0, limitValue - 1);
 
     const { data: contacts, error, count } = await query.order('created_at', { ascending: false });
+    
+    console.log(`Contacts API: Requested limit=${limitValue}, Received=${contacts?.length || 0}, Total count=${count || 'unknown'}`);
 
     if (error) {
       console.error('Error fetching contacts:', error);
