@@ -114,33 +114,6 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
-    // Send webhook to n8n for new order upsell workflow
-    if (order && process.env.N8N_WEBHOOK_URL_NEW_ORDER) {
-      fetch(process.env.N8N_WEBHOOK_URL_NEW_ORDER, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: order.id,
-          email: order.customer_email,
-          name: order.customer_name,
-          course_name: order.course_name,
-          course_slug: order.course_slug,
-          schedule_id: order.schedule_id,
-          schedule_date: order.schedule_date,
-          amount: order.amount,
-          quantity: order.quantity,
-          payment_intent_id: order.payment_intent_id,
-          stripe_customer_id: order.stripe_customer_id,
-          // These will need to be determined based on course
-          next_recommended_course: null, // Can be set based on course_slug logic
-          course_link: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://agile36.com'}/courses/${order.course_slug}`,
-          created_at: order.created_at,
-        }),
-      }).catch((error) => {
-        // Log error but don't fail the request
-        console.error('Error sending webhook to n8n:', error);
       });
     }
 

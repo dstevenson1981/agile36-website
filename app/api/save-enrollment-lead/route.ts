@@ -79,31 +79,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send webhook to n8n for abandoned checkout recovery workflow
-    // Fire and forget - don't wait for response to avoid slowing down the API
-    if (process.env.N8N_WEBHOOK_URL_ENROLLMENT_LEADS) {
-      fetch(process.env.N8N_WEBHOOK_URL_ENROLLMENT_LEADS, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: lead.id,
-          email: lead.email,
-          name: `${lead.first_name} ${lead.last_name}`,
-          first_name: lead.first_name,
-          last_name: lead.last_name,
-          phone: lead.phone,
-          course_name: lead.course_name,
-          course_slug: lead.course_slug,
-          schedule_id: lead.schedule_id,
-          cart_value: null, // Will need to be calculated if available
-          checkout_link: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://agile36.com'}/courses/${lead.course_slug}/schedule/checkout?schedule=${lead.schedule_id}`,
-          created_at: lead.created_at,
-        }),
-      }).catch((error) => {
-        // Log error but don't fail the request
-        console.error('Error sending webhook to n8n:', error);
       });
     }
 
