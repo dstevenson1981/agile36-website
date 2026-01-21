@@ -114,9 +114,6 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
-      });
-    }
-
     return NextResponse.json({
       success: true,
       orderId: order?.id,

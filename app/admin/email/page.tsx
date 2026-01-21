@@ -290,8 +290,8 @@ export default function EmailAdminPage() {
       if (showBlockedOnly) {
         params.append('blocked', 'true');
       }
-      // Increase limit for contacts view
-      params.append('limit', '1000');
+      // Request up to 50,000 contacts to handle large tag filters
+      params.append('limit', '50000');
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
       const data = await response.json();

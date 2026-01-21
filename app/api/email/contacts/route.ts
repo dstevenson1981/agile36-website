@@ -52,10 +52,12 @@ export async function GET(request: NextRequest) {
     // For tag extraction, we'll use a separate optimized query
     const limit = searchParams.get('limit');
     if (limit) {
-      query = query.limit(parseInt(limit, 10));
+      const limitValue = parseInt(limit, 10);
+      // Allow up to 50,000 contacts (reasonable limit to prevent memory issues)
+      query = query.limit(Math.min(limitValue, 50000));
     } else {
-      // Default limit of 1000 to prevent issues
-      query = query.limit(1000);
+      // Default limit of 10,000 to allow fetching more contacts
+      query = query.limit(10000);
     }
 
     const { data: contacts, error, count } = await query.order('created_at', { ascending: false });
