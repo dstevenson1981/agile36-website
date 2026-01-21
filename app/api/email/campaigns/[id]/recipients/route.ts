@@ -34,20 +34,9 @@ export async function GET(
       },
     });
 
-    const { data: recipients, error } = await supabase
-      .from('email_campaign_recipients')
-      .select('contact_id')
-      .eq('campaign_id', campaignId);
-
-    if (error) {
-      console.error('Error fetching recipients:', error);
-      return NextResponse.json(
-        { error: `Failed to fetch recipients: ${error.message}` },
-        { status: 500 }
-      );
-    }
-
-    const contactIds = recipients?.map(r => r.contact_id) || [];
+    // Recipients are now determined by tag filters, not stored in a junction table
+    // Return empty array - recipients are determined at send time via tag filters
+    const contactIds: number[] = [];
 
     return NextResponse.json({
       success: true,
@@ -105,39 +94,8 @@ export async function PUT(
       },
     });
 
-    // Delete existing recipients
-    const { error: deleteError } = await supabase
-      .from('email_campaign_recipients')
-      .delete()
-      .eq('campaign_id', campaignId);
-
-    if (deleteError) {
-      console.error('Error deleting existing recipients:', deleteError);
-      return NextResponse.json(
-        { error: `Failed to clear recipients: ${deleteError.message}` },
-        { status: 500 }
-      );
-    }
-
-    // Insert new recipients if any
-    if (contactIds.length > 0) {
-      const recipients = contactIds.map((contactId: number) => ({
-        campaign_id: campaignId,
-        contact_id: contactId,
-      }));
-
-      const { error: insertError } = await supabase
-        .from('email_campaign_recipients')
-        .insert(recipients);
-
-      if (insertError) {
-        console.error('Error inserting recipients:', insertError);
-        return NextResponse.json(
-          { error: `Failed to set recipients: ${insertError.message}` },
-          { status: 500 }
-        );
-      }
-    }
+    // Recipients are now determined by tag filters at send time, not stored in a junction table
+    // This endpoint is kept for API compatibility but doesn't store recipients
 
     return NextResponse.json({
       success: true,
