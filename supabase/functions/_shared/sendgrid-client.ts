@@ -10,6 +10,10 @@ const SENDGRID_BASE_URL = 'https://api.sendgrid.com/v3/mail/send';
 const FROM_EMAIL = Deno.env.get('SENDGRID_FROM_EMAIL') || 'm.ball@agile36.com';
 const FROM_NAME = Deno.env.get('SENDGRID_FROM_NAME') || 'Agile36';
 
+if (!SENDGRID_API_KEY) {
+  console.warn('Warning: SENDGRID_API_KEY not set. SendGrid email functions will fail.');
+}
+
 interface SendEmailOptions {
   to: string;
   name: string;
@@ -33,6 +37,13 @@ export async function sendEmail(
   body: string,
   htmlBody?: string
 ): Promise<{ success: boolean; messageId?: string; error?: string }> {
+  if (!SENDGRID_API_KEY) {
+    return {
+      success: false,
+      error: 'SENDGRID_API_KEY environment variable is not set',
+    };
+  }
+
   const maxRetries = 3;
   let lastError: Error | null = null;
 

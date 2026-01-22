@@ -7,6 +7,10 @@
 const APOLLO_API_KEY = Deno.env.get('APOLLO_API_KEY') || '';
 const APOLLO_BASE_URL = 'https://api.apollo.io';
 
+if (!APOLLO_API_KEY) {
+  console.warn('Warning: APOLLO_API_KEY not set. Apollo API functions will fail.');
+}
+
 interface ApolloPerson {
   id?: string;
   first_name?: string;
@@ -51,6 +55,10 @@ interface ApolloSearchResponse {
 export async function enrichPerson(email: string): Promise<ApolloPerson | null> {
   const maxRetries = 3;
   let lastError: Error | null = null;
+
+  if (!APOLLO_API_KEY) {
+    throw new Error('APOLLO_API_KEY environment variable is not set');
+  }
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
