@@ -9,8 +9,24 @@ CREATE OR REPLACE FUNCTION trigger_process_enrollment_lead()
 RETURNS TRIGGER AS $$
 DECLARE
   edge_function_url text;
+  service_role_key text;
   payload jsonb;
 BEGIN
+  -- Get service role key from environment or config
+  -- Option 1: Try to get from app_config table (if using config table approach)
+  SELECT value INTO service_role_key
+  FROM app_config
+  WHERE key = 'service_role_key'
+  LIMIT 1;
+  
+  -- Option 2: If not in config table, you can hardcode it here (less secure)
+  -- service_role_key := 'YOUR_SERVICE_ROLE_KEY_HERE';  -- Replace with actual key
+  
+  IF service_role_key IS NULL OR service_role_key = '' THEN
+    RAISE WARNING 'Service role key not configured. Please set it in app_config table or in the function.';
+    RETURN NEW;
+  END IF;
+  
   -- Construct the Edge Function URL
   -- Replace 'hjwdjlgtotsvxdnjxhmr' with your actual Supabase project reference ID if different
   edge_function_url := 'https://hjwdjlgtotsvxdnjxhmr.supabase.co/functions/v1/process-enrollment-lead';
@@ -33,14 +49,12 @@ BEGIN
   
   -- Make async HTTP POST request to Edge Function
   -- Using pg_net.http_post for async execution (doesn't block the INSERT)
-  -- Note: Replace 'YOUR_SERVICE_ROLE_KEY' with your actual Supabase service role key
-  -- You can get this from: Supabase Dashboard → Settings → API → service_role key
   PERFORM
     net.http_post(
       url := edge_function_url,
       headers := jsonb_build_object(
         'Content-Type', 'application/json',
-        'Authorization', 'Bearer YOUR_SERVICE_ROLE_KEY'  -- REPLACE THIS with your actual key
+        'Authorization', 'Bearer ' || service_role_key
       ),
       body := payload::text
     );
