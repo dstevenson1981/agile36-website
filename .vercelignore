@@ -1,0 +1,2 @@
+# Ignore Supabase Edge Functions - they are deployed separately to Supabase
+supabase/
