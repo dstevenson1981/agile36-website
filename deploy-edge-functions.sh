@@ -33,10 +33,14 @@ npx supabase link --project-ref "$PROJECT_REF" || {
   echo "⚠️  Project may already be linked, continuing..."
 }
 
-# Deploy the process-enrollment-lead function
+# Deploy all Edge Functions
 echo ""
 echo "📦 Deploying process-enrollment-lead function..."
 npx supabase functions deploy process-enrollment-lead --project-ref "$PROJECT_REF"
+
+echo ""
+echo "📦 Deploying send-scheduled-emails function..."
+npx supabase functions deploy send-scheduled-emails --project-ref "$PROJECT_REF"
 
 echo ""
 echo "✅ Deployment complete!"
