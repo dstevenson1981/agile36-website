@@ -313,9 +313,9 @@ function CheckoutContent() {
     return null;
   }
 
-  // Flat rate of $400 for Certified AI Product Manager™
-  const basePrice = 400;
-  const originalPrice = 800;
+  // Flat rate of $555 for Certified AI Product Manager™
+  const basePrice = 555;
+  const originalPrice = 1110;
   
   // Calculate base totals
   const baseTotal = basePrice * enrollmentQuantity;
