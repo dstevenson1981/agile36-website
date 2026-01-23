@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function CertifiedGenAIPractitionerCoursePage() {
+export default function NoCodeAIAgentsCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
@@ -32,7 +32,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">Courses</span>
             <span>/</span>
-            <span className="text-[#01203d]">Certified GenAI Practitioner™ Certification Training</span>
+            <span className="text-[#01203d]">No-Code AI Agents & Automation™ Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -54,7 +54,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                   <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
-                  <span className="text-lg font-semibold text-gray-900">3,000+ enrolled</span>
+                  <span className="text-lg font-semibold text-gray-900">2,800+ enrolled</span>
                 </div>
                 {/* English Language Indicator */}
                 <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
@@ -68,20 +68,20 @@ export default function CertifiedGenAIPractitionerCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  Certified GenAI Practitioner™ Certification Training
+                  No-Code AI Agents & Automation™ Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Master the Fundamentals of Generative AI and Practical Applications
+                  Build AI-Powered Automation Without Programming - Master No-Code AI Agents
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Master GenAI fundamentals and core concepts",
-                    "Learn ethical AI practices and responsible implementation",
-                    "Develop advanced prompt engineering skills",
-                    "Apply GenAI tools across various business applications",
-                    "Build practical AI solutions with hands-on experience"
+                    "Build AI agents and automation workflows without coding",
+                    "Master n8n, Make.com, and Langflow platforms",
+                    "Create 25+ practical business automations",
+                    "Integrate ChatGPT and Claude APIs into workflows",
+                    "Earn No-Code AI Agents & Automation™ certification"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
               <div className="max-w-md w-full mt-8 lg:mt-20">
                 <img 
                   src="/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg" 
-                  alt="Certified GenAI Practitioner" 
+                  alt="No-Code AI Agents & Automation" 
                   className="w-full h-auto rounded-lg"
                 />
               </div>
@@ -234,7 +234,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        The Certified GenAI Practitioner™ Certification Training provides a comprehensive introduction to Generative AI fundamentals, practical applications, and ethical implementation. This intensive 4-hour course covers core GenAI concepts, prompt engineering techniques, AI ethics, and real-world applications across various business domains.
+                        The No-Code AI Agents & Automation™ Certification Training teaches professionals to build AI-powered automation without programming. This intensive 2-day course covers creating intelligent agents, automating workflows using n8n and Make.com, integrating ChatGPT APIs, and building 25+ practical automations for business productivity.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
                         Learn how to leverage Generative AI tools effectively, develop advanced prompting skills, and apply AI solutions responsibly in your professional environment. This course is designed for professionals who want to quickly gain practical GenAI skills without extensive technical background.
@@ -280,7 +280,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                     <div className="flex items-center justify-between mb-6">
                       <div>
                         <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">Certified GenAI Practitioner™ Course Curriculum</h2>
+                        <h2 className="text-3xl font-bold text-gray-900">No-Code AI Agents & Automation™ Course Curriculum</h2>
                       </div>
                       <button
                         onClick={() => setShowConsultationModal(true)}
@@ -444,7 +444,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                  { q: "What is the Certified GenAI Practitioner™ Certification Training?", a: "The Certified GenAI Practitioner™ Certification Training is a comprehensive 4-hour course designed to help professionals master Generative AI fundamentals, prompt engineering, AI ethics, and practical applications. This course provides hands-on experience with GenAI tools and real-world use cases." },
+                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a comprehensive 2-day course designed to help professionals build AI-powered automation without programming. You learn to create intelligent agents using tools like n8n, Make.com, and Langflow, automate repetitive tasks, integrate ChatGPT and Claude APIs, and build 25+ practical business automations through hands-on projects." },
                   { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." },
                         { q: "What is included in the course?", a: "The course includes live training sessions, comprehensive course materials, hands-on exercises with GenAI tools, and access to learning resources." },
                         { q: "Do I need prior AI experience?", a: "No prior AI experience is required. This course is designed for professionals who are new to Generative AI and want to quickly gain practical skills." }
@@ -518,8 +518,8 @@ export default function CertifiedGenAIPractitionerCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">Certified GenAI Practitioner™ Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on Certified GenAI Practitioner™ Certification Training</h2>
+            <p className="text-sm text-gray-600 mb-2">No-Code AI Agents & Automation™ Course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on No-Code AI Agents & Automation™ Certification Training</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -565,7 +565,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials and resources. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is the Certified GenAI Practitioner™ Certification Training?", a: "The Certified GenAI Practitioner™ Certification Training is a comprehensive 4-hour course designed to help professionals master Generative AI fundamentals, prompt engineering, AI ethics, and practical applications. This course provides hands-on experience with GenAI tools and real-world use cases." },
+                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a comprehensive 2-day course designed to help professionals build AI-powered automation without programming. You learn to create intelligent agents using tools like n8n, Make.com, and Langflow, automate repetitive tasks, integrate ChatGPT and Claude APIs, and build 25+ practical business automations through hands-on projects." },
                   { q: "Who should take this course?", a: "This course is ideal for business professionals, Product Managers, Business Analysts, Marketing professionals, Consultants, and anyone looking to leverage Generative AI in their work without needing extensive technical background." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. This course is designed for professionals with no prior AI experience, though basic computer literacy is recommended." },
                   { q: "Is there a certification exam?", a: "No, this course does not include a certification exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." }
