@@ -303,7 +303,7 @@ function CourseScheduleContent() {
           <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
             <Link href="/" className="hover:text-[#01203d]">Home</Link>
             <span>/</span>
-            <Link href="/courses/ai-agent-builder" className="hover:text-[#01203d]">No-Code AI Agents & Automation™</Link>
+            <Link href="/courses/certified-ai-product-manager" className="hover:text-[#01203d]">Certified AI Product Manager™</Link>
             <span>/</span>
             <span className="text-[#01203d]">Schedule</span>
           </div>
@@ -632,7 +632,7 @@ function CourseScheduleContent() {
                             
                             {/* Enroll Now Button */}
                             <Link
-                              href={`/courses/ai-agent-builder/schedule/checkout?course=ai-agent-builder&schedule=${schedule.id}&quantity=${qty}`}
+                              href={`/courses/certified-ai-product-manager/schedule/checkout?course=certified-ai-product-manager&schedule=${schedule.id}&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
                             >
                               Enroll Now

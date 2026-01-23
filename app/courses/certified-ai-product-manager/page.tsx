@@ -32,7 +32,7 @@ export default function CertifiedAIProductManagerCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">Courses</span>
             <span>/</span>
-            <span className="text-[#01203d]">AI Agent Builder™ Certification Training</span>
+            <span className="text-[#01203d]">Certified AI Product Manager™ Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">

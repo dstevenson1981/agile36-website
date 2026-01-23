@@ -62,7 +62,7 @@ function CheckoutContent() {
     const fetchSchedule = async () => {
       if (!scheduleId) {
         // Redirect to schedule page if no schedule ID
-        router.push(`/courses/certified-genai-practitioner/schedule`);
+        router.push(`/courses/ai-agent-builder/schedule`);
         return;
       }
 
@@ -78,14 +78,14 @@ function CheckoutContent() {
             setEnrollmentQuantity(1);
           } else {
             // Schedule not found, redirect to schedule page
-            router.push(`/courses/certified-genai-practitioner/schedule`);
+            router.push(`/courses/ai-agent-builder/schedule`);
           }
         } else {
-          router.push(`/courses/certified-genai-practitioner/schedule`);
+          router.push(`/courses/ai-agent-builder/schedule`);
         }
       } catch (error) {
         console.error('Error fetching schedule:', error);
-        router.push(`/courses/certified-genai-practitioner/schedule`);
+        router.push(`/courses/ai-agent-builder/schedule`);
       } finally {
         setIsLoading(false);
       }
@@ -543,10 +543,10 @@ function CheckoutContent() {
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/courses/certified-genai-practitioner/schedule/checkout/success?${params.toString()}`);
+                      router.push(`/courses/ai-agent-builder/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`);
+                      router.push(`/courses/ai-agent-builder/schedule?course=${courseSlug}`);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

@@ -105,7 +105,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                   Download Brochure
                 </button>
                 <Link 
-                  href={`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`}
+                  href={`/courses/ai-agent-builder/schedule?course=${courseSlug}`}
                   className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
                 >
                   View Schedules
@@ -503,7 +503,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
                 </div>
 
                 <Link 
-                  href={`/courses/certified-genai-practitioner/schedule?course=${courseSlug}`}
+                  href={`/courses/ai-agent-builder/schedule?course=${courseSlug}`}
                   className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center"
                 >
                   View Schedule
