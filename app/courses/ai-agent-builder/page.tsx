@@ -237,7 +237,7 @@ export default function NoCodeAIAgentsCoursePage() {
                         The No-Code AI Agents & Automation™ Certification Training teaches professionals to build AI-powered automation without programming. This intensive 2-day course covers creating intelligent agents, automating workflows using n8n and Make.com, integrating ChatGPT APIs, and building 25+ practical automations for business productivity.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        Learn how to leverage Generative AI tools effectively, develop advanced prompting skills, and apply AI solutions responsibly in your professional environment. This course is designed for professionals who want to quickly gain practical GenAI skills without extensive technical background.
+                        Learn how to build intelligent AI agents that automate repetitive tasks, integrate with hundreds of apps and services, and make decisions autonomously. This course is designed for non-technical professionals who want to boost productivity with AI automation without learning to code.
                       </p>
                     </div>
 
@@ -245,12 +245,12 @@ export default function NoCodeAIAgentsCoursePage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
-                          "Master GenAI fundamentals and core concepts",
-                          "Develop advanced prompt engineering techniques",
-                          "Understand AI ethics and responsible implementation",
-                          "Apply GenAI tools across business applications",
-                          "Build practical AI solutions with hands-on exercises",
-                          "Navigate AI governance and compliance requirements"
+                          "Build AI agents and automation workflows without coding",
+                          "Master n8n, Make.com, and Langflow platforms",
+                          "Create 25+ practical business automations",
+                          "Integrate ChatGPT and Claude APIs into workflows",
+                          "Automate lead qualification and email outreach",
+                          "Build content generation and data processing pipelines"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -265,11 +265,11 @@ export default function NoCodeAIAgentsCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
                       <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                        <li>Business professionals seeking to understand Generative AI</li>
-                        <li>Product Managers and Business Analysts</li>
-                        <li>Marketing and Content Professionals</li>
-                        <li>Consultants and Advisors</li>
-                        <li>Anyone looking to leverage AI in their work</li>
+                        <li>Business professionals handling repetitive digital tasks</li>
+                        <li>Operations Managers and Process Improvement Specialists</li>
+                        <li>Marketing and Sales Professionals</li>
+                        <li>Customer Success and Support Teams</li>
+                        <li>Anyone who wants to automate workflows without programming</li>
                       </ul>
                     </div>
                   </div>
