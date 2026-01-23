@@ -236,15 +236,16 @@ function CoursesContent() {
     },
     {
       id: "23",
-      title: "AI Agent Builder™",
-      category: "Generative AI",
+      title: "No-Code AI Agents & Automation™",
+      category: "AI Product",
       image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
       price: 555,
       originalPrice: 1110,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: "1.5K+ Enrolled",
-      skills: "AI Agent Development, Autonomous Systems, Agent Architecture",
+      hours: "10 Hrs",
+      days: "02 days",
+      enrolled: "2.8K+ Enrolled",
+      skills: "No-Code Automation, AI Agents, Workflow Optimization",
+      popular: true,
     },
     // AI Product courses
     {
@@ -363,6 +364,22 @@ function CoursesContent() {
     
     if (course.title.includes("Value Stream Mapping") || course.title.includes("Value Stream")) {
       return "/courses/value-stream-mapping";
+    }
+    
+    if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
+      return "/courses/ai-agent-builder";
+    }
+    
+    if (course.title.includes("Certified AI Product Manager")) {
+      return "/courses/certified-ai-product-manager";
+    }
+    
+    if (course.title.includes("Executive GenAI Leadership")) {
+      return "/courses/executive-genai-leadership";
+    }
+    
+    if (course.title.includes("Certified GenAI Practitioner")) {
+      return "/courses/certified-genai-practitioner";
     }
     
     const titleSlug = course.title
