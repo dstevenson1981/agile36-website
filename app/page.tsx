@@ -392,7 +392,7 @@ export default function Home() {
       "SAFe Agile Product Management": "/courses/agile-product-management",
       "SAFe Scrum Master": "/courses/scrum-master",
       "SAFe for Teams": "/courses/safe-for-teams",
-      "SAFe DevOps": "/courses/safe-devops",
+      "SAFe DevOps": "/courses/devops",
       "SAFe Advanced Scrum Master": "/courses/advanced-scrum-master",
       "SAFe Release Train Engineer": "/courses/release-train-engineer",
       "SAFe Value Stream Mapping": "/courses/value-stream-mapping",
@@ -403,6 +403,8 @@ export default function Home() {
       "Certified GenAI Practitioner™": "/courses/certified-genai-practitioner",
       "No-Code AI Agents & Automation™": "/courses/ai-agent-builder",
       "Certified AI Product Manager": "/courses/certified-ai-product-manager",
+      "AI-Driven Project Manager™": "/courses/generative-ai-project-managers",
+      "Agentic Product Leader Certification": "/courses/certified-ai-product-manager",
       "PMP® Certification Training": "/courses/pmp-certification",
     };
     

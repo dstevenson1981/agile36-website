@@ -382,6 +382,14 @@ function CoursesContent() {
       return "/courses/certified-genai-practitioner";
     }
     
+    if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI-Driven Project Manager")) {
+      return "/courses/generative-ai-project-managers";
+    }
+    
+    if (course.title.includes("Agentic Product Leader")) {
+      return "/courses/certified-ai-product-manager";
+    }
+    
     const titleSlug = course.title
       .toLowerCase()
       .replace(/\s+/g, '-')
