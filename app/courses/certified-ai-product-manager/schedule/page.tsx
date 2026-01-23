@@ -13,7 +13,7 @@ function CourseScheduleContent() {
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10); // Show 10 initially
-  const [courseName, setCourseName] = useState("No-Code AI Agents & Automation™");
+  const [courseName, setCourseName] = useState("Certified AI Product Manager™");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
   
   // Group inquiry modal state
@@ -53,6 +53,7 @@ function CourseScheduleContent() {
     'agile-product-management': 'SAFe Agile Product Management',
     'safe-for-teams': 'SAFe for Teams',
     'certified-genai-practitioner': 'Certified GenAI Practitioner™',
+    'certified-ai-product-manager': 'Certified AI Product Manager™',
     'ai-agent-builder': 'No-Code AI Agents & Automation™',
   };
 
