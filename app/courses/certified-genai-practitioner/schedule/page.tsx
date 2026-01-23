@@ -624,7 +624,7 @@ function CourseScheduleContent() {
                             
                             {/* Enroll Now Button */}
                             <Link
-                              href={`/courses/certified-genai-practitioner/schedule/checkout?schedule=${schedule.id}&course=certified-genai-practitioner&quantity=${qty}`}
+                              href={`/courses/certified-genai-practitioner/schedule/checkout?course=certified-genai-practitioner&schedule=${schedule.id}&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
                             >
                               Enroll Now
