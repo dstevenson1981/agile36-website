@@ -8,7 +8,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const courseSlug = searchParams.get('course') || 'ai-agent-builder';
+  const courseSlug = searchParams.get('course') || 'certified-ai-product-manager';
   const [schedules, setSchedules] = useState<any[]>([]);
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);

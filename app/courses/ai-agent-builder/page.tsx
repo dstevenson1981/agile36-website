@@ -11,7 +11,7 @@ export default function CertifiedGenAIPractitionerCoursePage() {
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
   const [expandedCurriculum, setExpandedCurriculum] = useState<number[]>([0]);
 
-  const courseSlug = "certified-genai-practitioner";
+  const courseSlug = "ai-agent-builder";
 
   const toggleCurriculum = (index: number) => {
     setExpandedCurriculum(prev => 

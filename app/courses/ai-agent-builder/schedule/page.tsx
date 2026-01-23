@@ -8,7 +8,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const courseSlug = searchParams.get('course') || 'certified-genai-practitioner';
+  const courseSlug = searchParams.get('course') || 'ai-agent-builder';
   const [schedules, setSchedules] = useState<any[]>([]);
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
@@ -53,6 +53,8 @@ function CourseScheduleContent() {
     'agile-product-management': 'SAFe Agile Product Management',
     'safe-for-teams': 'SAFe for Teams',
     'certified-genai-practitioner': 'Certified GenAI Practitioner™',
+    'certified-ai-product-manager': 'Certified AI Product Manager™',
+    'ai-agent-builder': 'No-Code AI Agents & Automation™',
   };
 
   useEffect(() => {
