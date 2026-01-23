@@ -61,7 +61,6 @@ export default function Home() {
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "AI Product Management Certification": "/PMAI.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "PMP® Certification Training": "/PMP.png",

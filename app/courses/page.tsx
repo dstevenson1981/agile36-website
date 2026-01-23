@@ -46,7 +46,6 @@ function CoursesContent() {
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "AI Product Management Certification": "/PMAI.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "PMP® Certification Training": "/PMP.png",
@@ -248,19 +247,6 @@ function CoursesContent() {
       skills: "AI Agent Development, Autonomous Systems, Agent Architecture",
     },
     // AI Product courses
-    {
-      id: "3",
-      title: "AI Product Management Certification",
-      category: "AI Product",
-      image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2K+ Enrolled",
-      skills: "Product Strategy, AI Integration",
-      popular: true,
-    },
     {
       id: "24",
       title: "Certified AI Product Manager",
