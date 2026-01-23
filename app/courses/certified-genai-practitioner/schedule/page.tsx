@@ -621,6 +621,14 @@ function CourseScheduleContent() {
                             <div className="text-center">
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
+                            
+                            {/* Enroll Now Button */}
+                            <Link
+                              href={`/courses/certified-genai-practitioner/schedule/checkout?schedule=${schedule.id}&course=certified-genai-practitioner&quantity=${qty}`}
+                              className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
+                            >
+                              Enroll Now
+                            </Link>
                           </div>
                         </div>
                       </div>
