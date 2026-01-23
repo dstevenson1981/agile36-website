@@ -311,9 +311,9 @@ function CheckoutContent() {
     return null;
   }
 
-  // Flat rate of $950 for Executive GenAI Leadership
-  const basePrice = 950;
-  const originalPrice = 1900;
+  // Flat rate of $555 for Executive GenAI Leadership
+  const basePrice = 555;
+  const originalPrice = 1110;
   
   // Calculate base totals
   const baseTotal = basePrice * enrollmentQuantity;
