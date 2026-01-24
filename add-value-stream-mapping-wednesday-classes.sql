@@ -81,9 +81,17 @@ SELECT
   NOW() AS updated_at
 FROM wednesday_dates wd
 CROSS JOIN LATERAL (
-  SELECT instructor_name, instructor_image
-  FROM instructors
-  ORDER BY (wd.class_date::text || instructor_name)  -- Rotate instructors
+  SELECT 
+    instructor_name, 
+    instructor_image
+  FROM (
+    SELECT 
+      instructor_name,
+      instructor_image,
+      ROW_NUMBER() OVER (ORDER BY instructor_name) as rn
+    FROM instructors
+  ) ranked
+  WHERE rn = ((EXTRACT(EPOCH FROM (wd.class_date - '2026-01-28'::date)) / 86400)::int % 3) + 1
   LIMIT 1
 ) i
 WHERE NOT EXISTS (
