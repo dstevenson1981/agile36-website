@@ -91,7 +91,7 @@ CROSS JOIN LATERAL (
       ROW_NUMBER() OVER (ORDER BY instructor_name) as rn
     FROM instructors
   ) ranked
-  WHERE rn = ((EXTRACT(EPOCH FROM (wd.class_date - '2026-01-28'::date)) / 86400)::int % 3) + 1
+  WHERE rn = (((EXTRACT(EPOCH FROM (wd.class_date - '2026-01-28'::date)) / 86400)::int / 7) % 3) + 1
   LIMIT 1
 ) i
 WHERE NOT EXISTS (
