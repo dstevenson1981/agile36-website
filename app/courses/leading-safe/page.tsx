@@ -491,9 +491,9 @@ export default function LeadingSafeCoursePage() {
       {/* Main Content with Pricing Card */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main content area - 2 columns */}
-            <div className="lg:col-span-2 space-y-12">
+          <div className="space-y-12">
+            {/* Main content area - full width */}
+            <div className="space-y-12">
               {/* Tabs Navigation */}
               <div className="border-b border-gray-200">
                 <nav className="flex space-x-8">
