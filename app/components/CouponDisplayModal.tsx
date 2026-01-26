@@ -68,7 +68,7 @@ export default function CouponDisplayModal({
               Your Coupon Code
             </h2>
             <p className="text-gray-600 text-sm">
-              Use this code at checkout to get $100 OFF
+              Use this code at checkout to get $50 OFF
             </p>
           </div>
 

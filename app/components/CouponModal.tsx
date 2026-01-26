@@ -64,7 +64,7 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           body: JSON.stringify({
             email,
             course: selectedCourse,
-            couponCode: '100OFF'
+            couponCode: '50OFF'
           }),
         });
 
@@ -95,7 +95,7 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           <div className="relative z-10">
             <p className="text-gray-800 text-sm font-medium mb-2">Grow Smarter, Not Costlier</p>
             <h2 className="text-gray-900 text-2xl font-bold mb-4">
-              Get Flat <span className="underline">$100 OFF</span> on Course Fee
+              Get Flat <span className="underline">$50 OFF</span> on Course Fee
             </h2>
             <p className="text-gray-800 text-sm mb-6">
               Gain Free Self-learning courses and sharpen your skills for the future

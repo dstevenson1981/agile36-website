@@ -526,7 +526,7 @@ export default function Header() {
           {/* Center - Main text */}
           <div className="flex-1 text-center min-w-0">
             <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              Get Flat <span className="text-white">$100 OFF</span> on Course Fee - expires today
+              Get Flat <span className="text-white">$50 OFF</span> on Course Fee - expires today
             </h2>
           </div>
 
@@ -550,7 +550,7 @@ export default function Header() {
       <CouponDisplayModal
         isOpen={showCouponDisplay}
         onClose={() => setShowCouponDisplay(false)}
-        couponCode="100OFF"
+        couponCode="50OFF"
       />
       
       {/* Top Banner */}
