@@ -931,57 +931,6 @@ export default function LeadingSafeCoursePage() {
               </div>
             </div>
 
-            {/* Pricing Card - Sticky */}
-            <div className="lg:sticky lg:top-24 h-fit">
-              <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
-                <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
-                  <div className="text-base text-gray-500 line-through">$1,030</div>
-                  <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">16 Hours Training</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">2 Days Duration</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">SAFe Agilist Certification</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">16 PDUs & SEUs</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
-                  </div>
-                </div>
-
-                <Link 
-                  href={`/courses/leading-safe/schedule?course=${courseSlug}`}
-                  className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center"
-                >
-                  View Schedule
-                </Link>
-
-              </div>
-            </div>
           </div>
         </div>
       </section>
