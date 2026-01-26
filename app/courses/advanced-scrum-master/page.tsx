@@ -9,6 +9,7 @@ export default function AdvancedScrumMasterCoursePage() {
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
+  const [expandedModules, setExpandedModules] = useState<number[]>([]);
 
   const courseSlug = "advanced-scrum-master";
 
@@ -609,35 +610,93 @@ export default function AdvancedScrumMasterCoursePage() {
                       {[
                         { 
                           module: "Module 1: Advanced Facilitation and Coaching Techniques",
-                          expanded: false
+                          content: [
+                            "Advanced facilitation techniques for complex team dynamics",
+                            "Coaching models and frameworks for Agile teams",
+                            "Conflict resolution strategies and mediation skills",
+                            "Building psychological safety in teams",
+                            "Advanced questioning and active listening techniques"
+                          ]
                         },
                         { 
                           module: "Module 2: SAFe's Eight Flow Accelerators",
-                          expanded: false
+                          content: [
+                            "Understanding flow and its impact on delivery",
+                            "Visualizing and limiting work in progress (WIP)",
+                            "Reducing batch sizes and managing queue lengths",
+                            "Reducing delays and managing dependencies",
+                            "Applying cadence and synchronization",
+                            "Unlocking intrinsic motivation",
+                            "Decentralizing decision-making",
+                            "Measuring flow metrics and KPIs"
+                          ]
                         },
                         { 
                           module: "Module 3: Fostering High-Performing Agile Teams",
-                          expanded: false
+                          content: [
+                            "Characteristics of high-performing teams",
+                            "Team formation and storming phases",
+                            "Building trust and collaboration",
+                            "Creating effective team agreements",
+                            "Performance coaching and feedback techniques",
+                            "Removing impediments and blockers",
+                            "Celebrating wins and continuous improvement"
+                          ]
                         },
                         { 
                           module: "Module 4: Real-World Application and Case Studies",
-                          expanded: false
+                          content: [
+                            "Case studies from enterprise transformations",
+                            "Handling difficult team situations",
+                            "Scaling facilitation across multiple teams",
+                            "Measuring team performance improvements",
+                            "Creating your personal action plan",
+                            "Advanced Scrum Master certification exam preparation"
+                          ]
                         }
-                      ].map((module, index) => (
-                        <div key={index} className="border border-blue-200 rounded-lg bg-white">
-                          <button
-                            className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
-                            onClick={() => {
-                              // Toggle expansion logic can be added here if needed
-                            }}
-                          >
-                            <span className="text-lg font-semibold text-gray-900">{module.module}</span>
-                            <svg className="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </button>
-                        </div>
-                      ))}
+                      ].map((module, index) => {
+                        const isExpanded = expandedModules.includes(index);
+                        return (
+                          <div key={index} className="border border-blue-200 rounded-lg bg-white overflow-hidden">
+                            <button
+                              className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
+                              onClick={() => {
+                                setExpandedModules(prev => 
+                                  prev.includes(index) 
+                                    ? prev.filter(i => i !== index)
+                                    : [...prev, index]
+                                );
+                              }}
+                            >
+                              <span className="text-lg font-semibold text-gray-900">{module.module}</span>
+                              <svg 
+                                className={`w-5 h-5 text-gray-600 flex-shrink-0 transition-transform duration-200 ${
+                                  isExpanded ? 'rotate-180' : ''
+                                }`}
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                            {isExpanded && (
+                              <div className="px-4 pb-4 border-t border-blue-100">
+                                <ul className="mt-4 space-y-2">
+                                  {module.content.map((item, itemIndex) => (
+                                    <li key={itemIndex} className="flex items-start gap-2">
+                                      <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                      </svg>
+                                      <span className="text-base text-gray-700">{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
