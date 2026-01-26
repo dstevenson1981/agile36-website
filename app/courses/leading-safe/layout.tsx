@@ -73,7 +73,7 @@ export default function LeadingSafeLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "555.55",
+      "price": "515.00",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/leading-safe/schedule"
