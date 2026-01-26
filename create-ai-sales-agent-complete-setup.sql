@@ -241,8 +241,17 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Step 3: Schedule the cron job to run every hour
--- Remove existing job if it exists
-SELECT cron.unschedule('send-scheduled-emails-hourly');
+-- Remove existing job if it exists (handle error if it doesn't exist)
+DO $$
+BEGIN
+  BEGIN
+    PERFORM cron.unschedule('send-scheduled-emails-hourly');
+  EXCEPTION
+    WHEN OTHERS THEN
+      -- Job doesn't exist, that's fine
+      NULL;
+  END;
+END $$;
 
 -- Schedule new job to run every hour at minute 0
 SELECT cron.schedule(
