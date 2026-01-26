@@ -1,6 +1,6 @@
 -- Add SSM250 Promo Code: Flat Rate $250 for SAFe Scrum Master Course
--- This promo code provides a $305 discount to reduce the SAFe Scrum Master course from $555 to $250
--- Current course price: $555.00
+-- This promo code provides a $265 discount to reduce the SAFe Scrum Master course from $515 to $250
+-- Current course price: $515.00
 -- Target price: $250.00
 -- Required discount: $305.00
 -- Course-specific: Only applies to 'scrum-master' course
@@ -21,13 +21,13 @@ END $$;
 DELETE FROM promo_codes WHERE UPPER(code) = 'SSM250';
 
 -- Insert the SSM250 promo code
--- $305 off discount to achieve flat rate of $250 for SAFe Scrum Master course
+-- $265 off discount to achieve flat rate of $250 for SAFe Scrum Master course
 -- Course-specific: Only applies to 'scrum-master' course
 -- No expiration date (set to NULL for unlimited time)
 -- Storing in uppercase to ensure consistency
 INSERT INTO promo_codes (code, discount_type, discount_value, description, active, expires_at, usage_limit, usage_count, course_slug)
 VALUES
-  ('SSM250', 'fixed', 305, 'SAFe Scrum Master Flat Rate $250 (reduces price from $555 to $250)', TRUE,
+  ('SSM250', 'fixed', 265, 'SAFe Scrum Master Flat Rate $250 (reduces price from $515 to $250)', TRUE,
    NULL,
    NULL,
    0,
@@ -35,8 +35,8 @@ VALUES
 ON CONFLICT (code)
 DO UPDATE SET
   discount_type = 'fixed',
-  discount_value = 305,
-  description = 'SAFe Scrum Master Flat Rate $250 (reduces price from $555 to $250)',
+  discount_value = 265,
+  description = 'SAFe Scrum Master Flat Rate $250 (reduces price from $515 to $250)',
   active = TRUE,
   expires_at = NULL,
   course_slug = 'scrum-master',

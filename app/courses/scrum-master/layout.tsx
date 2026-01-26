@@ -71,7 +71,7 @@ export default function ScrumMasterLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "555",
+      "price": "515",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/scrum-master/schedule"
@@ -134,7 +134,7 @@ export default function ScrumMasterLayout({
         "name": "How much does SAFe Scrum Master cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe Scrum Master certification through Agile36 costs $555. This includes 2-day live training, course materials, exam fee, one free retake, one-year SAFe Community Platform access, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed annually."
+          "text": "SAFe Scrum Master certification through Agile36 costs $515. This includes 2-day live training, course materials, exam fee, one free retake, one-year SAFe Community Platform access, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed annually."
         }
       }
     ]
