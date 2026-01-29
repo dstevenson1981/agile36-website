@@ -4,6 +4,20 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
+type PromoDiscountType = 'fixed' | 'percentage';
+
+type PromoCodeRow = {
+  code: string;
+  discount_type: PromoDiscountType;
+  discount_value: string | number;
+  description: string | null;
+  active: boolean;
+  expires_at: string | null;
+  usage_limit: number | null;
+  usage_count: number | null;
+  course_slug?: string | null;
+};
+
 export async function POST(request: NextRequest) {
   try {
     const { code, courseSlug } = await request.json();
@@ -39,13 +53,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Prefer RPC for normalized lookup (trim + case-insensitive); fallback to ilike
-    let promoCode: Record<string, unknown> | null = null;
+    let promoCode: PromoCodeRow | null = null;
     const { data: rpcData } = await supabase.rpc('get_promo_code_by_code', {
       p_code: trimmedCode,
     });
     const first = Array.isArray(rpcData) ? rpcData[0] : rpcData;
     if (first && typeof first === 'object') {
-      promoCode = first as Record<string, unknown>;
+      promoCode = first as unknown as PromoCodeRow;
     }
     if (!promoCode) {
       const { data: row, error } = await supabase
@@ -53,7 +67,7 @@ export async function POST(request: NextRequest) {
         .select('*')
         .ilike('code', trimmedCode)
         .maybeSingle();
-      if (!error && row) promoCode = row as Record<string, unknown>;
+      if (!error && row) promoCode = row as unknown as PromoCodeRow;
     }
 
     if (!promoCode) {
@@ -89,7 +103,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check usage limit
-    if (promoCode.usage_limit && promoCode.usage_count >= promoCode.usage_limit) {
+    if (promoCode.usage_limit && (promoCode.usage_count ?? 0) >= promoCode.usage_limit) {
       return NextResponse.json(
         { 
           valid: false, 
@@ -130,7 +144,7 @@ export async function POST(request: NextRequest) {
         valid: true,
         code: promoCode.code,
         discountType: promoCode.discount_type,
-        discountValue: parseFloat(promoCode.discount_value),
+        discountValue: Number(promoCode.discount_value),
         description: promoCode.description
       },
       { status: 200 }
