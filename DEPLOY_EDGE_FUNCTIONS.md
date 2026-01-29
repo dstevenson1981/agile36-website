@@ -18,8 +18,8 @@ npx supabase login --token YOUR_ACCESS_TOKEN
 # 2. Link to your project
 npx supabase link --project-ref hjwdjlgtotsvxdnjxhmr
 
-# 3. Deploy all Edge Functions
-npx supabase functions deploy process-enrollment-lead
+# 3. Deploy Edge Functions (abandoned cart is N8N - see N8N_ABANDONED_CART_SETUP.md)
+npx supabase functions deploy send-scheduled-emails
 ```
 
 ### Option 2: Using Environment Variable
@@ -32,7 +32,7 @@ export SUPABASE_ACCESS_TOKEN=your_access_token_here
 npx supabase link --project-ref hjwdjlgtotsvxdnjxhmr
 
 # Deploy functions
-npx supabase functions deploy process-enrollment-lead
+npx supabase functions deploy send-scheduled-emails
 ```
 
 ### Option 3: Deploy All Functions at Once
@@ -45,15 +45,14 @@ npx supabase functions deploy --project-ref hjwdjlgtotsvxdnjxhmr
 ## Verify Deployment
 
 After deployment, check:
-1. Supabase Dashboard → Edge Functions → `process-enrollment-lead`
-2. Test the function with a sample request
-3. Check function logs for any errors
+1. Supabase Dashboard → Edge Functions → `send-scheduled-emails`
+2. Test the function; check logs for errors.
 
 ## Set Environment Variables
 
-Make sure to set these environment variables in Supabase Dashboard:
-- `APOLLO_API_KEY` - Your Apollo API key
-- `SUPABASE_URL` - https://hjwdjlgtotsvxdnjxhmr.supabase.co
+For **send-scheduled-emails**, set in Dashboard → Edge Functions → send-scheduled-emails → Settings → Secrets:
+- `SENDGRID_API_KEY` - Your SendGrid API key
+- `SUPABASE_URL` - Your project URL
 - `SUPABASE_SERVICE_ROLE_KEY` - Your service role key
 
-Go to: Supabase Dashboard → Edge Functions → `process-enrollment-lead` → Settings → Secrets
+**Abandoned cart (enrollment_leads):** handled by N8N. See `N8N_ABANDONED_CART_SETUP.md`.

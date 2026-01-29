@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -13,30 +13,7 @@ export default function CouponDisplayModal({
   onClose,
   couponCode,
 }: CouponDisplayModalProps) {
-  const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const interval = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [isOpen]);
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(couponCode);
@@ -68,7 +45,7 @@ export default function CouponDisplayModal({
               Your Coupon Code
             </h2>
             <p className="text-gray-600 text-sm">
-              Use this code at checkout to get $50 OFF
+              Use this code at checkout to get $100 OFF (ends Jan 30th)
             </p>
           </div>
 
@@ -100,13 +77,11 @@ export default function CouponDisplayModal({
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
             <p className="text-sm text-gray-700 mb-1">
-              <span className="font-semibold">Expires in:</span>{" "}
-              <span className="text-red-600 font-bold text-lg">
-                {formatTime(timeRemaining)}
-              </span>
+              <span className="font-semibold">Ends:</span>{" "}
+              <span className="text-red-600 font-bold text-lg">Jan 30th</span>
             </p>
             <p className="text-xs text-gray-600">
-              This code is valid for 30 minutes from now
+              Limited-time offer
             </p>
           </div>
 

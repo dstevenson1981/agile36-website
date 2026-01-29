@@ -293,7 +293,7 @@ export default function ScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main content area - 2 columns */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
               {/* Tabs Navigation */}
               <div className="border-b border-gray-200">
                 <nav className="flex space-x-8">
@@ -797,11 +797,11 @@ export default function ScrumMasterCoursePage() {
             </div>
 
             {/* Pricing Card - Sticky */}
-            <div className="lg:sticky lg:top-24 h-fit">
+            <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
-                  <div className="text-base text-gray-500 line-through">$1,030</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$555</div>
+                  <div className="text-base text-gray-500 line-through">$1,110</div>
                   <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
@@ -1302,7 +1302,7 @@ export default function ScrumMasterCoursePage() {
               What is the Fee for SAFe Scrum Master Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Scrum Master certification course in the United States typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Scrum Master certification course in the United States typically ranges from <strong>$555 to $1,110</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>

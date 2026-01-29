@@ -1,10 +1,10 @@
--- Update Agile Product Management (APM) course price to $1,095
+-- Update Agile Product Management (APM) course price to $950
 -- Run this in Supabase SQL Editor to update all APM schedules
 
 UPDATE course_schedules
 SET 
-  price = 1095.00,
-  original_price = 2190.00,
+  price = 950.00,
+  original_price = 1900.00,
   updated_at = NOW()
 WHERE course_slug = 'agile-product-management';
 

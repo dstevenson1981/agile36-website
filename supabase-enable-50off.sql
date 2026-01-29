@@ -1,36 +1,36 @@
 -- Enable 50OFF Promo Code
--- Run this in Supabase SQL Editor to ensure 50OFF code is active and working
+-- Run this in Supabase SQL Editor to ensure 50OFF code is active and working.
+-- If you see "column course_slug does not exist", run supabase-add-course-slug-to-promo-codes.sql first.
 
 -- Step 1: Delete any existing 50OFF to start fresh
 DELETE FROM promo_codes WHERE UPPER(TRIM(code)) = '50OFF';
 
 -- Step 2: Insert 50OFF with correct settings
 INSERT INTO promo_codes (
-  code, 
-  discount_type, 
-  discount_value, 
-  description, 
-  active, 
-  expires_at, 
-  usage_limit, 
+  code,
+  discount_type,
+  discount_value,
+  description,
+  active,
+  expires_at,
+  usage_limit,
   usage_count,
   created_at,
   updated_at
 )
-VALUES 
-  (
-    '50OFF',                    -- Exact code
-    'fixed',                     -- Fixed dollar amount ($50 off)
-    50,                         -- $50 discount
-    '50OFF Special - $50 Off', 
-    TRUE,                       -- ACTIVE
-    '2026-12-31 23:59:59+00'::timestamptz,  -- Expires Dec 31, 2026
-    NULL,                       -- No usage limit
-    0,                          -- Usage count starts at 0
-    NOW(),
-    NOW()
-  )
-ON CONFLICT (code) 
+VALUES (
+  '50OFF',
+  'fixed',
+  50,
+  '50OFF Special - $50 Off',
+  TRUE,
+  '2026-12-31 23:59:59+00'::timestamptz,
+  NULL,
+  0,
+  NOW(),
+  NOW()
+)
+ON CONFLICT (code)
 DO UPDATE SET
   discount_type = 'fixed',
   discount_value = 50,
@@ -38,6 +38,17 @@ DO UPDATE SET
   active = TRUE,
   expires_at = '2026-12-31 23:59:59+00'::timestamptz,
   updated_at = NOW();
+
+-- Step 2b: Ensure 50OFF applies to all courses (clear course_slug if column exists)
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'promo_codes' AND column_name = 'course_slug'
+  ) THEN
+    UPDATE promo_codes SET course_slug = NULL, updated_at = NOW() WHERE UPPER(TRIM(code)) = '50OFF';
+  END IF;
+END $$;
 
 -- Step 3: Disable BF200 (Black Friday is over)
 UPDATE promo_codes 

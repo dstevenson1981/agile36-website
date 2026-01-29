@@ -69,7 +69,7 @@ export default function LeanPortfolioManagementLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "1095",
+      "price": "950",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/lean-portfolio-management/schedule"

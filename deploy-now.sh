@@ -32,18 +32,7 @@ npx supabase link --project-ref "$PROJECT_REF" --password "" 2>&1 || {
   echo "⚠️  Project may already be linked, continuing..."
 }
 
-# Deploy process-enrollment-lead
-echo ""
-echo "📦 Deploying process-enrollment-lead..."
-npx supabase functions deploy process-enrollment-lead --project-ref "$PROJECT_REF" --no-verify-jwt 2>&1
-
-if [ $? -eq 0 ]; then
-  echo "✅ process-enrollment-lead deployed successfully!"
-else
-  echo "❌ Failed to deploy process-enrollment-lead"
-  exit 1
-fi
-
+# Abandoned-cart flow is handled by N8N (see N8N_ABANDONED_CART_SETUP.md).
 # Deploy send-scheduled-emails
 echo ""
 echo "📦 Deploying send-scheduled-emails..."
@@ -62,10 +51,6 @@ echo ""
 echo "Next steps:"
 echo "1. Set environment variables in Supabase Dashboard:"
 echo "   - Go to: Edge Functions → [function-name] → Settings → Secrets"
-echo "   - For process-enrollment-lead:"
-echo "     * APOLLO_API_KEY"
-echo "     * SUPABASE_URL"
-echo "     * SUPABASE_SERVICE_ROLE_KEY"
 echo "   - For send-scheduled-emails:"
 echo "     * SENDGRID_API_KEY"
 echo "     * SUPABASE_URL"

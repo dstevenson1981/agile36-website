@@ -28,23 +28,13 @@ export SUPABASE_ACCESS_TOKEN=your_token_here
 # Link to project
 npx supabase link --project-ref hjwdjlgtotsvxdnjxhmr
 
-# Deploy process-enrollment-lead
-npx supabase functions deploy process-enrollment-lead --project-ref hjwdjlgtotsvxdnjxhmr
-
-# Deploy send-scheduled-emails
+# Deploy send-scheduled-emails (abandoned cart is handled by N8N - see N8N_ABANDONED_CART_SETUP.md)
 npx supabase functions deploy send-scheduled-emails --project-ref hjwdjlgtotsvxdnjxhmr
 ```
 
 ## Step 3: Set Environment Variables
 
 After deployment, set these secrets in Supabase Dashboard:
-
-### For `process-enrollment-lead`:
-1. Go to: **Supabase Dashboard → Edge Functions → process-enrollment-lead → Settings → Secrets**
-2. Add:
-   - `APOLLO_API_KEY` = `D2fPk6LElk4Fn7PAVSx3g`
-   - `SUPABASE_URL` = `https://hjwdjlgtotsvxdnjxhmr.supabase.co`
-   - `SUPABASE_SERVICE_ROLE_KEY` = (your service role key)
 
 ### For `send-scheduled-emails`:
 1. Go to: **Supabase Dashboard → Edge Functions → send-scheduled-emails → Settings → Secrets**
@@ -56,9 +46,7 @@ After deployment, set these secrets in Supabase Dashboard:
 ## Step 4: Verify Deployment
 
 1. Go to: **Supabase Dashboard → Edge Functions**
-2. You should see both functions listed:
-   - `process-enrollment-lead`
-   - `send-scheduled-emails`
+2. You should see `send-scheduled-emails` (abandoned cart is handled by N8N).
 
 ## Troubleshooting
 

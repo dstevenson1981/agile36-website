@@ -1,10 +1,10 @@
--- Update SAFe Scrum Master course prices to $515
--- Original price set to $1030 (50% discount)
+-- Update SAFe Scrum Master course prices to $555
+-- Original price set to $1110 (50% discount)
 
 UPDATE course_schedules
 SET 
-  price = '515.00',
-  original_price = '1030.00'
+  price = '555.00',
+  original_price = '1110.00'
 WHERE 
   course_slug = 'scrum-master'
   AND status = 'active';

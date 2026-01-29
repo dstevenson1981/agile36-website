@@ -1,5 +1,7 @@
 # AI Sales Agent Setup Guide
 
+**Note:** Abandoned-cart flow (email + corporate lookalikes) is handled by **N8N**. See `N8N_ABANDONED_CART_SETUP.md`. The `apollo-client` Edge Function shared code was removed; use N8N + Apollo (or your enrichment API) for lookalikes. The tables and SendGrid usage below still apply.
+
 ## Part 1: Database Tables
 
 Run the SQL file `create-ai-sales-agent-tables.sql` in your Supabase SQL Editor. This will create:
@@ -36,14 +38,6 @@ Set these environment variables in your Supabase Edge Functions dashboard:
 
 The shared utility functions are located in `supabase/functions/_shared/`:
 
-### apollo-client.ts
-Exports:
-- `enrichPerson(email: string)` - Enrich a person by email
-- `searchLookalikes(companyName, jobTitle, limit)` - Find similar people
-- `searchExecutives(companyName, limit)` - Find VPs/Directors
-- `searchPractitioners(companyName, roles, limit)` - Find specific roles
-- `trackCredits(operation, creditsUsed)` - Track API credit usage
-
 ### sendgrid-client.ts
 Exports:
 - `sendEmail(to, name, subject, body, htmlBody?)` - Send email via SendGrid
@@ -54,17 +48,12 @@ Exports:
 - `supabase` - Pre-configured Supabase client instance
 - `getSupabaseClient()` - Get Supabase client
 
-## Usage Example
+## Usage Example (SendGrid + Supabase)
 
 ```typescript
-import { enrichPerson } from '../_shared/apollo-client.ts';
 import { sendEmail } from '../_shared/sendgrid-client.ts';
 import { supabase } from '../_shared/supabase-client.ts';
 
-// Enrich a person
-const person = await enrichPerson('john@example.com');
-
-// Send an email
 await sendEmail(
   'john@example.com',
   'John Doe',
@@ -72,13 +61,13 @@ await sendEmail(
   'Thank you for enrolling!'
 );
 
-// Query database
 const { data } = await supabase.from('expansion_opportunities').select('*');
 ```
+
+For enrichment and lookalikes, use N8N (see `N8N_ABANDONED_CART_SETUP.md`).
 
 ## Next Steps
 
 1. Run the SQL file in Supabase SQL Editor
-2. Set environment variables in Supabase Edge Functions settings
-3. Create your Edge Functions that use these shared utilities
-4. Deploy your functions
+2. Set environment variables for send-scheduled-emails (and N8N as needed)
+3. Deploy `send-scheduled-emails`; use N8N for abandoned-cart flow

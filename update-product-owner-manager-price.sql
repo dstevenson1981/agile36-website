@@ -1,10 +1,10 @@
--- Update SAFe Product Owner/Product Manager course prices to $525
--- Original price set to $1050 (50% discount)
+-- Update SAFe Product Owner/Product Manager course prices to $555
+-- Original price set to $1110 (50% discount)
 
 UPDATE course_schedules
 SET 
-  price = '525.00',
-  original_price = '1050.00'
+  price = '555.00',
+  original_price = '1110.00'
 WHERE 
   course_slug = 'product-owner-manager'
   AND status = 'active';

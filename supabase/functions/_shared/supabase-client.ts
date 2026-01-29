@@ -1,12 +1,11 @@
 /**
  * Supabase Client for Server-Side Database Operations
- * URL: https://hjwdjlgtotsvxdnjxhmr.supabase.co
- * Uses service role key for server-side operations (bypasses RLS)
+ * Uses SUPABASE_URL from Edge Function secrets (same project as deployment).
+ * Fallback: linked project ref from supabase/.temp/project-ref
  */
-
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || 'https://hjwdjlgtotsvxdnjxhmr.supabase.co';
+const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || 'https://slvpmjewohyncpmvjdkc.supabase.co';
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
 
 if (!SUPABASE_SERVICE_ROLE_KEY) {

@@ -28,26 +28,37 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Supabase client with service role key for backend operations
-    // Service role key bypasses RLS policies
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Look up the promo code (case-insensitive)
-    // Trim the input code
     const trimmedCode = code.trim();
-    
-    // Use ilike for case-insensitive search (this is what worked before)
-    const { data: promoCode, error } = await supabase
-      .from('promo_codes')
-      .select('*')
-      .ilike('code', trimmedCode)
-      .single();
-
-    if (error || !promoCode) {
+    if (!trimmedCode) {
       return NextResponse.json(
-        { 
-          valid: false, 
-          error: 'Invalid promo code' 
-        },
+        { valid: false, error: 'Invalid promo code' },
+        { status: 200 }
+      );
+    }
+
+    // Prefer RPC for normalized lookup (trim + case-insensitive); fallback to ilike
+    let promoCode: Record<string, unknown> | null = null;
+    const { data: rpcData } = await supabase.rpc('get_promo_code_by_code', {
+      p_code: trimmedCode,
+    });
+    const first = Array.isArray(rpcData) ? rpcData[0] : rpcData;
+    if (first && typeof first === 'object') {
+      promoCode = first as Record<string, unknown>;
+    }
+    if (!promoCode) {
+      const { data: row, error } = await supabase
+        .from('promo_codes')
+        .select('*')
+        .ilike('code', trimmedCode)
+        .maybeSingle();
+      if (!error && row) promoCode = row as Record<string, unknown>;
+    }
+
+    if (!promoCode) {
+      return NextResponse.json(
+        { valid: false, error: 'Invalid promo code' },
         { status: 200 }
       );
     }

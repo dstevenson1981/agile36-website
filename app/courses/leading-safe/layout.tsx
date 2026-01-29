@@ -73,7 +73,7 @@ export default function LeadingSafeLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "515.00",
+      "price": "555.00",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/leading-safe/schedule"
@@ -150,7 +150,7 @@ export default function LeadingSafeLayout({
         "name": "How much does Leading SAFe certification cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Leading SAFe certification through Agile36 costs $555.55. This includes the 2-day live training, course materials, one-year SAFe Community Platform access, exam fee, one free exam retake, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed."
+          "text": "Leading SAFe certification through Agile36 costs $555. This includes the 2-day live training, course materials, one-year SAFe Community Platform access, exam fee, one free exam retake, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed."
         }
       },
       {

@@ -33,11 +33,7 @@ npx supabase link --project-ref "$PROJECT_REF" || {
   echo "⚠️  Project may already be linked, continuing..."
 }
 
-# Deploy all Edge Functions
-echo ""
-echo "📦 Deploying process-enrollment-lead function..."
-npx supabase functions deploy process-enrollment-lead --project-ref "$PROJECT_REF"
-
+# Abandoned-cart flow is handled by N8N (see N8N_ABANDONED_CART_SETUP.md).
 echo ""
 echo "📦 Deploying send-scheduled-emails function..."
 npx supabase functions deploy send-scheduled-emails --project-ref "$PROJECT_REF"
@@ -49,15 +45,11 @@ echo "Next steps:"
 echo ""
 echo "1. Set environment variables in Supabase Dashboard:"
 echo "   - Go to: Edge Functions → [function-name] → Settings → Secrets"
-echo "   - For process-enrollment-lead: APOLLO_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY"
 echo "   - For send-scheduled-emails: SENDGRID_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY"
 echo ""
 echo "2. Set up cron schedule for send-scheduled-emails:"
 echo "   - See SETUP_CRON_SCHEDULE.md for instructions"
 echo "   - Recommended: Run every hour (0 * * * *)"
 echo ""
-echo "3. Test the functions:"
-echo "   - Go to: Edge Functions → [function-name] → Test"
-echo ""
-echo "4. Set up the database trigger:"
-echo "   - Run create-enrollment-lead-trigger.sql in Supabase SQL Editor"
+echo "3. Abandoned cart (enrollment_leads) is handled by N8N:"
+echo "   - See N8N_ABANDONED_CART_SETUP.md"
