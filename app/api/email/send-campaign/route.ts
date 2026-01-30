@@ -12,6 +12,68 @@ if (process.env.SENDGRID_API_KEY) {
 const RATE_LIMIT_PER_SECOND = 50; // Conservative limit
 const DELAY_BETWEEN_BATCHES = 1000; // 1 second
 
+async function fetchContactsPaged(params: {
+  // Avoid over-constraining supabase-js generics across versions
+  // (we only need the runtime query interface here).
+  supabase: any;
+  tag?: string;
+  role?: string;
+  company?: string;
+  dateRange?: string;
+}) {
+  const { supabase, tag, role, company, dateRange } = params;
+  const pageSize = 1000;
+  const contacts: any[] = [];
+  let page = 0;
+
+  const now = new Date();
+  let startDate: Date | null = null;
+  if (dateRange) {
+    switch (dateRange) {
+      case 'today':
+        startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        break;
+      case 'lastHour':
+        startDate = new Date(now.getTime() - 60 * 60 * 1000);
+        break;
+      case 'last24Hours':
+        startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+        break;
+      case 'lastWeek':
+        startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+        break;
+      default:
+        startDate = null;
+    }
+  }
+
+  while (true) {
+    let q = supabase
+      .from('email_contacts')
+      .select('*')
+      .eq('subscribed', true)
+      .eq('blocked', false);
+
+    if (role) q = q.eq('role', role);
+    if (company) q = q.eq('company', company);
+    if (startDate) q = q.gte('created_at', startDate.toISOString());
+    if (tag) q = q.contains('tags', [tag]);
+
+    const start = page * pageSize;
+    const end = start + pageSize - 1;
+    const { data, error } = await q.order('created_at', { ascending: false }).range(start, end);
+
+    if (error) throw error;
+    if (!data || data.length === 0) break;
+
+    contacts.push(...data);
+    if (data.length < pageSize) break;
+    page++;
+  }
+
+  return contacts;
+}
+
 // Helper function to generate unsubscribe token
 function generateUnsubscribeToken(email: string, campaignId: number): string {
   const data = `${email}-${campaignId}-${Date.now()}`;
@@ -125,93 +187,27 @@ export async function POST(request: NextRequest) {
       contactsQuery = contactsQuery.eq('company', company);
     }
 
-    // If dateRange is provided, filter by creation date first
-    if (dateRange) {
-      const now = new Date();
-      let startDate: Date;
-      
-      switch (dateRange) {
-        case 'today':
-          startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          break;
-        case 'lastHour':
-          startDate = new Date(now.getTime() - 60 * 60 * 1000);
-          break;
-        case 'last24Hours':
-          startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-          break;
-        case 'lastWeek':
-          startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-          break;
-        default:
-          startDate = new Date(0);
-      }
-      
-      contactsQuery = contactsQuery.gte('created_at', startDate.toISOString());
-    }
-
     // If tag filters are provided, use database-level filtering for better performance
     if (tagFilters && tagFilters.length > 0) {
-      // Use Supabase's contains filter - check if tags array contains any of the requested tags
-      // Note: contains checks if the array contains ALL elements, so we need to check each tag separately
-      // We'll use OR logic by checking each tag and combining results
-      const tagQueries = tagFilters.map((tag: string) => 
-        supabase
-          .from('email_contacts')
-          .select('*')
-          .eq('subscribed', true)
-          .contains('tags', [tag])
-      );
-      
-      // Execute all tag queries
-      const tagQueryResults = await Promise.all(tagQueries);
-      const allTagContacts = new Map();
-      
-      // Combine results, removing duplicates
-      tagQueryResults.forEach(({ data, error }) => {
-        if (!error && data) {
-          data.forEach((contact: any) => {
-            allTagContacts.set(contact.id, contact);
-          });
-        }
-      });
-      
-      const { data: allContacts, error: contactsError } = { 
-        data: Array.from(allTagContacts.values()), 
-        error: null 
-      };
-      
-      if (contactsError) {
-        console.error('Error fetching contacts:', contactsError);
-        return NextResponse.json(
-          { error: 'Failed to fetch contacts' },
-          { status: 500 }
-        );
+      // IMPORTANT:
+      // Supabase/PostgREST may cap each request at 1000 rows.
+      // We page through results per-tag and merge (OR logic across tags).
+      const allTagContacts = new Map<number, any>();
+      for (const tag of tagFilters) {
+        const tagContacts = await fetchContactsPaged({ supabase, tag, role, company, dateRange });
+        tagContacts.forEach((c: any) => allTagContacts.set(c.id, c));
       }
-      
-      contacts = allContacts || [];
-      console.log(`Database query found ${contacts.length} subscribed contacts with tags: ${tagFilters.join(', ')}`);
-      
-      // Apply role and company filters to tag-filtered results
-      if (role) {
-        contacts = contacts.filter((c: any) => c.role === role);
-      }
-      if (company) {
-        contacts = contacts.filter((c: any) => c.company === company);
-      }
-    } else {
-      // Fetch all subscribed contacts if no tag filters
-      const { data: allContacts, error: contactsError } = await contactsQuery;
 
-      if (contactsError) {
-        console.error('Error fetching contacts:', contactsError);
-        return NextResponse.json(
-          { error: 'Failed to fetch contacts' },
-          { status: 500 }
-        );
+      contacts = Array.from(allTagContacts.values());
+      console.log(`Database paging found ${contacts.length} subscribed contacts with tags: ${tagFilters.join(', ')}`);
+    } else {
+      // Fetch all subscribed contacts if no tag filters (paged)
+      try {
+        contacts = await fetchContactsPaged({ supabase, role, company, dateRange });
+      } catch (err: any) {
+        console.error('Error fetching contacts:', err);
+        return NextResponse.json({ error: 'Failed to fetch contacts' }, { status: 500 });
       }
-      
-      contacts = allContacts || [];
     }
     
     // Additional JavaScript filtering for edge cases (if needed)
