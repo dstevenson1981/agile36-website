@@ -44,6 +44,7 @@ export default function EmailAdminPage() {
   const [tagsLoading, setTagsLoading] = useState(false);
   const [filterSubscribed, setFilterSubscribed] = useState<boolean | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [importTag, setImportTag] = useState<string>('');
 
   // Campaign composer state
   const [campaignName, setCampaignName] = useState('');
@@ -609,6 +610,9 @@ export default function EmailAdminPage() {
     setLoading(true);
     const formData = new FormData();
     formData.append('file', file);
+    if (importTag.trim()) {
+      formData.append('importTag', importTag.trim());
+    }
 
     try {
       const response = await fetch('/api/email/import-contacts', {
@@ -924,6 +928,18 @@ export default function EmailAdminPage() {
                   >
                     Download Template
                   </a>
+                </div>
+                <div className="mt-2">
+                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                    Tag this import (optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={importTag}
+                    onChange={(e) => setImportTag(e.target.value)}
+                    placeholder="e.g. ProgramProduct"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                  />
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   CSV format: Email, First Name, Last Name, Role, Company (optional: Tags, Subscribed)

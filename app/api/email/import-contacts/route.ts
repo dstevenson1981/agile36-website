@@ -40,6 +40,8 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;
+    const importTagRaw = formData.get('importTag');
+    const importTags = parseTags(importTagRaw);
 
     if (!file) {
       return NextResponse.json(
@@ -173,8 +175,8 @@ export async function POST(request: NextRequest) {
         const existing = existingByEmail.get(email);
         const isUpdate = !!existing;
 
-        const tagsInput = getFirstValue(record, ['tags', 'Tags', 'TAGS']) ?? '';
-        const newTags = parseTags(tagsInput);
+        const tagsInput = getFirstValue(record, ['tags', 'tag', 'Tags', 'Tag', 'TAGS', 'TAG']) ?? '';
+        const newTags = [...parseTags(tagsInput), ...importTags];
 
         let finalTags: string[] | undefined;
         const existingTags = existing?.tags;
