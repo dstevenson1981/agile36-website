@@ -134,11 +134,6 @@ function CheckoutContent() {
   };
 
   const handleApplyPromoCode = async () => {
-    if (appliedPromoCode) {
-      setPromoError('Please remove the current promo code before applying a new one');
-      return;
-    }
-
     const code = promoCodeInput.trim();
     
     if (!code) {
@@ -182,6 +177,7 @@ function CheckoutContent() {
   const handleRemovePromoCode = () => {
     setAppliedPromoCode(null);
     setPromoDiscount(0);
+    setPromoDiscountType('fixed');
     setPromoError(null);
   };
 
@@ -904,13 +900,13 @@ function CheckoutContent() {
                     placeholder="Apply a Code"
                     value={promoCodeInput}
                     onChange={(e) => setPromoCodeInput(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && !appliedPromoCode && handleApplyPromoCode()}
-                    disabled={!!appliedPromoCode || isValidatingPromo}
+                    onKeyPress={(e) => e.key === 'Enter' && handleApplyPromoCode()}
+                    disabled={isValidatingPromo}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#fa4a23] disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
                   <button 
                     onClick={handleApplyPromoCode}
-                    disabled={!!appliedPromoCode || isValidatingPromo || !promoCodeInput.trim()}
+                    disabled={isValidatingPromo || !promoCodeInput.trim()}
                     className="bg-gray-800 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     {isValidatingPromo ? 'Validating...' : 'Apply'}

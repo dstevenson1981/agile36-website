@@ -6,6 +6,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 type PromoDiscountType = 'fixed' | 'percentage';
 
+/** Matches promo_codes table. One property per column—do not duplicate (e.g. course_slug). */
 type PromoCodeRow = {
   code: string;
   discount_type: PromoDiscountType;
