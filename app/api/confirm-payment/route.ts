@@ -114,6 +114,24 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
+    // Mark matching enrollment_leads as completed (same email + schedule)
+    if (order?.id && orderData.customer_email && orderData.schedule_id) {
+      const customerEmail = String(orderData.customer_email).trim().toLowerCase();
+      const { error: leadUpdateError } = await supabase
+        .from('enrollment_leads')
+        .update({
+          status: 'completed',
+          order_id: order.id,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('email', customerEmail)
+        .eq('schedule_id', orderData.schedule_id)
+        .eq('status', 'pending');
+      if (leadUpdateError) {
+        console.error('Error updating enrollment_leads status:', leadUpdateError);
+      }
+    }
+
     return NextResponse.json({
       success: true,
       orderId: order?.id,
