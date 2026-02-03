@@ -16,6 +16,7 @@ type PromoCodeRow = {
   usage_limit: number | null;
   usage_count: number | null;
   course_slug?: string | null;
+  course_slug?: string | null;
 };
 
 export async function POST(request: NextRequest) {
