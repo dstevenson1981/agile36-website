@@ -67,7 +67,7 @@ export default function CertifiedAIProductManagerLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "555",
+      "price": "400",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/certified-ai-product-manager/schedule"
