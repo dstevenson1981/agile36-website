@@ -498,52 +498,77 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Flash Sale Banner - brand colors #fa4a23, #01203d */}
+      {/* Flash Sale Banner - brand colors, books, tassels, confetti */}
       <div 
-        className="w-full bg-[#fa4a23] py-3 sm:py-4 md:py-5 px-3 sm:px-4 cursor-pointer hover:opacity-95 transition-opacity relative overflow-hidden"
+        className="w-full bg-[#fa4a23] py-4 sm:py-5 md:py-6 px-3 sm:px-4 cursor-pointer hover:opacity-98 transition-opacity relative overflow-hidden"
         onClick={() => setShowCouponModal(true)}
       >
-        {/* Subtle confetti / sparkle dots */}
-        <div className="absolute inset-0 pointer-events-none opacity-20">
-          <span className="absolute top-2 left-[10%] text-white text-lg">✦</span>
-          <span className="absolute top-3 right-[15%] text-[#01203d] text-sm">•</span>
-          <span className="absolute bottom-2 left-[20%] text-white text-xs">✦</span>
-          <span className="absolute bottom-3 right-[10%] text-[#01203d] text-base">•</span>
+        {/* Confetti / tassels - golden and white */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <span className="absolute top-1 left-[8%] text-amber-200/90 text-xl rotate-[-15deg]">✦</span>
+          <span className="absolute top-4 left-[12%] text-white/70 text-sm">◆</span>
+          <span className="absolute top-2 right-[22%] text-amber-200/80 text-lg rotate-12">✦</span>
+          <span className="absolute bottom-2 left-[15%] text-white/60 text-base rotate-6">•</span>
+          <span className="absolute bottom-4 right-[18%] text-amber-200/90 text-xl rotate-[-10deg]">✦</span>
+          <span className="absolute top-3 right-[8%] text-white/50 text-sm">◆</span>
+          <span className="absolute top-1/2 left-[5%] text-amber-100/60 text-xs -rotate-45">|</span>
+          <span className="absolute top-1/2 right-[5%] text-amber-100/60 text-xs rotate-45">|</span>
         </div>
 
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6 flex-wrap relative">
-          {/* Left - LIMITED TIME + Flash Sale ribbon style */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="bg-[#01203d] px-2 py-1 sm:px-3 sm:py-1.5 rounded transform -rotate-[-4deg] shadow">
-              <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wide">Limited time</span>
+          {/* Left - LIMITED TIME tag + FEB FLASH SALE ribbon + books & cap */}
+          <div className="flex items-center gap-3 sm:gap-5">
+            <div className="flex flex-col items-start gap-0.5">
+              <div className="bg-black px-2 py-0.5 sm:px-2.5 sm:py-1 rounded transform -rotate-[-5deg] shadow-md">
+                <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider">Limited time</span>
+              </div>
+              <div className="bg-[#01203d] px-3 py-1 sm:px-5 sm:py-1.5 rounded-b transform -rotate-[-2deg] shadow-md -mt-0.5">
+                <span className="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">Feb Flash Sale</span>
+              </div>
             </div>
-            <div className="bg-[#01203d] px-2.5 py-1 sm:px-4 sm:py-1.5 rounded transform rotate-[-2deg] shadow">
-              <span className="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">Flash sale</span>
-            </div>
-            {/* Book + cap icon */}
-            <div className="hidden md:flex items-center gap-1 text-white/90">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-              <svg className="w-5 h-5 -ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            {/* Stacked books + graduation cap */}
+            <div className="hidden md:flex flex-col items-center relative">
+              <div className="flex flex-col gap-0.5">
+                <div className="w-8 h-2 rounded-sm bg-[#5b21b6] shadow" />
+                <div className="w-9 h-2.5 rounded-sm bg-amber-700/90 shadow" />
+                <div className="w-8 h-2 rounded-sm bg-white/95 shadow" />
+              </div>
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+                <svg className="w-7 h-7 text-[#01203d]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+              </div>
+              <span className="absolute -top-1 -right-1 text-amber-200/80 text-xs">✦</span>
+              <span className="absolute -bottom-0.5 -left-0.5 text-white/60 text-xs">•</span>
             </div>
           </div>
 
-          {/* Center - Main offer */}
+          {/* Center - Main offer (cream/gold tint text) */}
           <div className="flex-1 text-center min-w-0 flex items-center justify-center gap-2 sm:gap-3">
-            <span className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">Flash sale is live</span>
-            <span className="text-white/80 font-bold hidden sm:inline">|</span>
-            <span className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">
-              Unlock <span className="underline underline-offset-2 decoration-2 decoration-white/90">$100 off</span> on all courses
+            <span className="text-amber-50 font-bold text-sm sm:text-base md:text-lg lg:text-xl drop-shadow">Feb Flash Sale Is Live</span>
+            <span className="text-amber-100/90 font-bold hidden sm:inline">|</span>
+            <span className="text-amber-50 font-bold text-sm sm:text-base md:text-lg lg:text-xl drop-shadow">
+              Unlock <span className="underline underline-offset-2 decoration-2 decoration-amber-200">$100 off</span> on all courses
             </span>
           </div>
 
-          {/* Right - Claim Coupon */}
-          <button className="bg-white text-[#fa4a23] font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg hover:bg-[#01203d] hover:text-white transition-colors shadow-lg flex items-center gap-2 text-sm sm:text-base whitespace-nowrap">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span className="hidden sm:inline">Claim coupon</span>
-            <span className="sm:hidden">Claim</span>
-          </button>
+          {/* Right - Dollar sign + gift box + Claim */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-1 text-amber-200/90">
+              <span className="text-2xl font-bold drop-shadow">$</span>
+            </div>
+            <div className="hidden md:block relative w-9 h-9">
+              <div className="absolute inset-0 bg-[#01203d] rounded shadow-md rotate-6" />
+              <div className="absolute inset-1.5 border-2 border-amber-200/90 rounded-sm" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-2 bg-amber-200/90 rounded-t" />
+              <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-3 bg-amber-200/80 rounded-full" />
+            </div>
+            <button className="bg-white text-[#fa4a23] font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg hover:bg-[#01203d] hover:text-white transition-colors shadow-lg flex items-center gap-2 text-sm sm:text-base whitespace-nowrap">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span className="hidden sm:inline">Claim coupon</span>
+              <span className="sm:hidden">Claim</span>
+            </button>
+          </div>
         </div>
       </div>
 
