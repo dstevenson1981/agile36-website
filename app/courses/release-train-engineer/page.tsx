@@ -152,10 +152,13 @@ export default function ReleaseTrainEngineerCoursePage() {
             {/* Right Side - Image Card */}
             <div className="lg:flex lg:justify-end">
               <div className="max-w-md w-full mt-8 lg:mt-20">
-                <img 
-                  src="/RTE_Header.jpg" 
-                  alt="SAFe Release Train Engineer" 
-                  className="w-full h-auto rounded-lg"
+                <Image
+                  src="/RTEimage.png"
+                  alt="SAFe Release Train Engineer"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto rounded-lg object-contain"
+                  priority
                 />
               </div>
             </div>

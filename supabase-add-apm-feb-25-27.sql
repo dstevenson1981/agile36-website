@@ -1,4 +1,4 @@
-/* Add Certified AI Product Manager class Feb 10-11. Run in Supabase SQL Editor. */
+/* Add SAFe Agile Product Management class Feb 25-27 (Wed-Thu-Fri). Run in Supabase SQL Editor. */
 
 INSERT INTO course_schedules (
   course_name,
@@ -24,21 +24,21 @@ INSERT INTO course_schedules (
   status,
   is_weekend
 ) VALUES (
-  'Certified AI Product Manager™',
-  'certified-ai-product-manager',
-  'AI Product',
-  '2026-02-10 09:00:00-05:00',
-  '2026-02-11 14:00:00-05:00',
+  'SAFe Agile Product Management',
+  'agile-product-management',
+  'SAFe APM',
+  '2026-02-25 09:00:00-05:00',
+  '2026-02-27 14:00:00-05:00',
   '09:00:00',
   '14:00:00',
   'America/New_York',
   'morning',
   'live-virtual',
-  '02 days',
+  '03 days',
   'Deadra Stevenson',
   '/Deadra.jpeg',
-  400.00,
-  800.00,
+  1095.00,
+  2190.00,
   'USD',
   25,
   25,
