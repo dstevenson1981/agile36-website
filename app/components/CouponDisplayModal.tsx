@@ -45,7 +45,7 @@ export default function CouponDisplayModal({
               Your Coupon Code
             </h2>
             <p className="text-gray-600 text-sm">
-              Use this code at checkout to get $100 OFF (ends Jan 30th)
+              Use this code at checkout to get $100 OFF (expires in 30 mins)
             </p>
           </div>
 
@@ -77,11 +77,11 @@ export default function CouponDisplayModal({
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
             <p className="text-sm text-gray-700 mb-1">
-              <span className="font-semibold">Ends:</span>{" "}
-              <span className="text-red-600 font-bold text-lg">Jan 30th</span>
+              <span className="font-semibold">Expires:</span>{" "}
+              <span className="text-red-600 font-bold text-lg">in 30 mins</span>
             </p>
             <p className="text-xs text-gray-600">
-              Limited-time offer
+              Limited-time offer — use it soon!
             </p>
           </div>
 
