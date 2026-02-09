@@ -494,48 +494,42 @@ export default function Header() {
 
   return (
     <>
-      {/* New Year 2026 Sale Banner */}
+      {/* Flash Sale Banner - brand colors #fa4a23, #01203d */}
       <div 
-        className="w-full bg-red-600 py-2 sm:py-3 md:py-4 px-2 sm:px-4 cursor-pointer hover:bg-red-700 transition-colors"
+        className="w-full bg-[#fa4a23] py-3 sm:py-4 md:py-5 px-3 sm:px-4 cursor-pointer hover:opacity-95 transition-opacity relative overflow-hidden"
         onClick={() => setShowCouponModal(true)}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
-          {/* Left side with megaphone and sale label */}
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <span className="absolute top-2 left-[10%] text-white text-lg">✦</span>
+          <span className="absolute top-3 right-[15%] text-[#01203d] text-sm">•</span>
+          <span className="absolute bottom-2 left-[20%] text-white text-xs">✦</span>
+          <span className="absolute bottom-3 right-[10%] text-[#01203d] text-base">•</span>
+        </div>
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6 flex-wrap relative">
           <div className="flex items-center gap-2 sm:gap-4">
-            {/* Megaphone icon */}
-            <div className="relative hidden sm:block">
-              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
-              {/* Sound waves */}
-              <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 border-2 border-yellow-400 rounded-full"></div>
-              <div className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400 rounded-full"></div>
+            <div className="bg-[#01203d] px-2 py-1 sm:px-3 sm:py-1.5 rounded transform -rotate-[-4deg] shadow">
+              <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wide">Limited time</span>
             </div>
-            
-            {/* New Year 2026 label */}
-            <div className="flex flex-col">
-              <div className="bg-yellow-400 px-2 py-0.5 sm:px-3 rounded-t">
-                <span className="text-black font-bold text-[10px] sm:text-xs">NEW YOU!</span>
-              </div>
-              <div className="bg-black px-2 sm:px-4 py-0.5 sm:py-1 rounded-b">
-                <span className="text-white font-bold text-xs sm:text-sm">2026</span>
-              </div>
+            <div className="bg-[#01203d] px-2.5 py-1 sm:px-4 sm:py-1.5 rounded transform rotate-[-2deg] shadow">
+              <span className="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">Flash sale</span>
+            </div>
+            <div className="hidden md:flex items-center gap-1 text-white/90">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+              <svg className="w-5 h-5 -ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
             </div>
           </div>
-
-          {/* Center - Main text */}
-          <div className="flex-1 text-center min-w-0">
-            <h2 className="text-yellow-300 font-bold text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl drop-shadow-lg truncate sm:whitespace-normal">
-              Get Flat <span className="text-white">$100 OFF</span> on Course Fee - ends Jan 30th
-            </h2>
+          <div className="flex-1 text-center min-w-0 flex items-center justify-center gap-2 sm:gap-3">
+            <span className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">Flash sale is live</span>
+            <span className="text-white/80 font-bold hidden sm:inline">|</span>
+            <span className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">
+              Unlock <span className="underline underline-offset-2 decoration-2 decoration-white/90">$100 off</span> on all courses
+            </span>
           </div>
-
-          {/* Right side - Claim Coupon button */}
-          <button className="bg-white text-red-600 font-bold px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2 rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="bg-white text-[#fa4a23] font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg hover:bg-[#01203d] hover:text-white transition-colors shadow-lg flex items-center gap-2 text-sm sm:text-base whitespace-nowrap">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span className="hidden sm:inline">Claim Coupon</span>
+            <span className="hidden sm:inline">Claim coupon</span>
             <span className="sm:hidden">Claim</span>
           </button>
         </div>
