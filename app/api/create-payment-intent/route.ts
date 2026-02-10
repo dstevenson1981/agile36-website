@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const getStripe = () => {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is required');
+  }
+  return new Stripe(secretKey);
+};
 
 export async function POST(request: NextRequest) {
   try {
@@ -44,6 +50,8 @@ export async function POST(request: NextRequest) {
       console.warn('Customer name not provided - this may cause issues with customer records');
       // Name should be provided from the form, but we'll continue with email only if needed
     }
+
+    const stripe = getStripe();
 
     // Create or retrieve Stripe customer
     let customer;
