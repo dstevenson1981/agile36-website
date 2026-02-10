@@ -611,6 +611,14 @@ function CourseScheduleContent() {
                             <div className="text-center">
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
+                            
+                            {/* Enroll Now Button */}
+                            <Link
+                              href={`/courses/responsible-ai/schedule/checkout?course=responsible-ai&schedule=${schedule.id}&quantity=${qty}`}
+                              className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
+                            >
+                              Enroll Now
+                            </Link>
                             {isLowSeats && (
                               <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
                                 Only {schedule.seats_available} {schedule.seats_available === 1 ? 'seat' : 'seats'} left
