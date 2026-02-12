@@ -37,14 +37,6 @@ function CheckoutContent() {
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
-
-  const resetPaymentIntentIfNeeded = () => {
-    if (clientSecret && currentStep === 3) {
-      setClientSecret(null);
-      setPaymentIntentId(null);
-      setCurrentStep(2);
-    }
-  };
   
   const [enrollmentFormData, setEnrollmentFormData] = useState({
     enrollingFor: 'myself',
@@ -169,7 +161,6 @@ function CheckoutContent() {
         setPromoDiscount(data.discountValue);
         setPromoCodeInput('');
         setPromoError(null);
-        resetPaymentIntentIfNeeded();
       } else {
         setPromoError(data.error || 'Invalid promo code');
         setAppliedPromoCode(null);
@@ -188,7 +179,6 @@ function CheckoutContent() {
     setPromoDiscount(0);
     setPromoDiscountType('fixed');
     setPromoError(null);
-    resetPaymentIntentIfNeeded();
   };
 
   const handleContinue = async () => {
