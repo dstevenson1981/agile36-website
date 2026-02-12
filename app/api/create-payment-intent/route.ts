@@ -51,7 +51,16 @@ export async function POST(request: NextRequest) {
       // Name should be provided from the form, but we'll continue with email only if needed
     }
 
-    const stripe = getStripe();
+    let stripe: Stripe;
+    try {
+      stripe = getStripe();
+    } catch (error: any) {
+      console.error('Stripe configuration error:', error);
+      return NextResponse.json(
+        { error: 'Stripe configuration error. Check STRIPE_SECRET_KEY.' },
+        { status: 500 }
+      );
+    }
 
     // Create or retrieve Stripe customer
     let customer;

@@ -1,97 +1,72 @@
--- Two-day classes: Mon-Tue, Thu-Fri, or Sat-Sun only. No overlapping dates for same course.
--- DO NOT touch February — all February dates are correct. Only fix March and later.
--- DOW: 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
--- Run in Supabase SQL Editor.
+-- SAFe Agile Product Management: weekday only OR 2-day Sat-Sun only. No 3-day, no Fri-Sun.
+-- Weekday = Mon-Fri (2-day e.g. Mon-Tue, Thu-Fri). Weekend = Saturday-Sunday only (2 days).
+-- Run in Supabase SQL Editor. Does not add any new dates.
 
--- Skip February: only apply to start_date before Feb or from March onward
--- (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01')
-
--- 1) Tue-Wed (2,3) -> Mon-Tue: subtract 1 day
-UPDATE course_schedules
-SET
-  start_date = start_date - INTERVAL '1 day',
-  end_date = end_date - INTERVAL '1 day',
-  updated_at = NOW()
-WHERE status = 'active'
-  AND (end_date::date - start_date::date) = 1
-  AND EXTRACT(DOW FROM start_date) = 2
-  AND EXTRACT(DOW FROM end_date) = 3
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01');
-
--- 2) Wed-Thu (3,4) -> Thu-Fri: add 1 day
+-- 0) Fix 3-day Fri-Sun → 2-day Sat-Sun (drop Friday; keep Sat-Sun)
 UPDATE course_schedules
 SET
   start_date = start_date + INTERVAL '1 day',
-  end_date = end_date + INTERVAL '1 day',
-  updated_at = NOW()
-WHERE status = 'active'
-  AND (end_date::date - start_date::date) = 1
-  AND EXTRACT(DOW FROM start_date) = 3
-  AND EXTRACT(DOW FROM end_date) = 4
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01');
-
--- 3) Fri-Sat (5,6) -> Sat-Sun: add 1 day
-UPDATE course_schedules
-SET
-  start_date = start_date + INTERVAL '1 day',
-  end_date = end_date + INTERVAL '1 day',
+  duration = '02 days',
   is_weekend = true,
   updated_at = NOW()
-WHERE status = 'active'
-  AND (end_date::date - start_date::date) = 1
-  AND EXTRACT(DOW FROM start_date) = 5
-  AND EXTRACT(DOW FROM end_date) = 6
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01');
+WHERE course_slug = 'agile-product-management'
+  AND status = 'active'
+  AND (end_date::date - start_date::date) = 2
+  AND EXTRACT(DOW FROM start_date) = 5   -- Friday
+  AND EXTRACT(DOW FROM end_date) = 0;   -- Sunday
 
--- 4) Sun-Mon (0,1) -> Sat-Sun: subtract 1 day
+-- 0b) Fix any other 3-day APM → 2-day (keep first two days, e.g. Mon-Wed → Mon-Tue)
+UPDATE course_schedules
+SET
+  end_date = (start_date::date + INTERVAL '1 day') + end_time,
+  duration = '02 days',
+  updated_at = NOW()
+WHERE course_slug = 'agile-product-management'
+  AND status = 'active'
+  AND (end_date::date - start_date::date) = 2;
+
+-- 1) Fix Sunday-Monday → Saturday-Sunday (shift back one day)
+--    e.g. Mar 15-16 (Sun-Mon) → Mar 14-15 (Sat-Sun)
 UPDATE course_schedules
 SET
   start_date = start_date - INTERVAL '1 day',
   end_date = end_date - INTERVAL '1 day',
   is_weekend = true,
   updated_at = NOW()
-WHERE status = 'active'
-  AND (end_date::date - start_date::date) = 1
-  AND EXTRACT(DOW FROM start_date) = 0
-  AND EXTRACT(DOW FROM end_date) = 1
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01');
+WHERE course_slug = 'agile-product-management'
+  AND status = 'active'
+  AND EXTRACT(DOW FROM start_date) = 0  -- Sunday
+  AND EXTRACT(DOW FROM end_date) = 1;  -- Monday
 
--- 5) Mon-Tue (1,2), Thu-Fri (4,5), and Sat-Sun (6,0) are already valid — no change
-
--- 6) Fix overlaps: same course_slug with overlapping dates. Shift overlapping row to start the day after the other ends. (Skip February.)
-UPDATE course_schedules c2
+-- 2) Fix Friday-Saturday → Saturday-Sunday (shift forward one day)
+UPDATE course_schedules
 SET
-  start_date = c2.start_date + (overlap.shift_days * INTERVAL '1 day'),
-  end_date = c2.end_date + (overlap.shift_days * INTERVAL '1 day'),
+  start_date = start_date + INTERVAL '1 day',
+  end_date = end_date + INTERVAL '1 day',
+  is_weekend = true,
   updated_at = NOW()
-FROM (
-  SELECT
-    c2.id AS id,
-    (MAX(c1.end_date::date) + 1 - c2.start_date::date)::int AS shift_days
-  FROM course_schedules c1
-  JOIN course_schedules c2 ON c1.course_slug = c2.course_slug AND c1.id <> c2.id
-  WHERE c1.status = 'active' AND c2.status = 'active'
-    AND c2.start_date::date <= c1.end_date::date
-    AND c2.end_date::date >= c1.start_date::date
-    AND (c2.start_date::date < '2026-02-01' OR c2.start_date::date >= '2026-03-01')
-  GROUP BY c2.id, c2.start_date
-) overlap
-WHERE c2.id = overlap.id AND overlap.shift_days > 0;
+WHERE course_slug = 'agile-product-management'
+  AND status = 'active'
+  AND EXTRACT(DOW FROM start_date) = 5  -- Friday
+  AND EXTRACT(DOW FROM end_date) = 6;   -- Saturday
 
--- 7) Verify: two-day classes should only be Mon-Tue, Thu-Fri, or Sat-Sun
+-- 3) Verify: list all APM schedules (must be 2-day only: Mon-Tue, Thu-Fri, or Sat-Sun)
 SELECT
-  course_slug,
+  id,
   start_date::date AS start_date,
   end_date::date AS end_date,
+  (end_date::date - start_date::date) + 1 AS calendar_days,
+  duration,
   TO_CHAR(start_date, 'Dy') AS start_day,
   TO_CHAR(end_date, 'Dy') AS end_day,
+  is_weekend,
   CASE
-    WHEN EXTRACT(DOW FROM start_date) = 1 AND EXTRACT(DOW FROM end_date) = 2 THEN 'Mon-Tue OK'
-    WHEN EXTRACT(DOW FROM start_date) = 4 AND EXTRACT(DOW FROM end_date) = 5 THEN 'Thu-Fri OK'
-    WHEN EXTRACT(DOW FROM start_date) = 6 AND EXTRACT(DOW FROM end_date) = 0 THEN 'Sat-Sun OK'
+    WHEN (end_date::date - start_date::date) <> 1 THEN 'INVALID (not 2-day)'
+    WHEN EXTRACT(DOW FROM start_date) = 6 AND EXTRACT(DOW FROM end_date) = 0 THEN 'Sat-Sun (OK)'
+    WHEN EXTRACT(DOW FROM start_date) BETWEEN 1 AND 5 AND EXTRACT(DOW FROM end_date) BETWEEN 1 AND 5 THEN 'Mon-Fri (OK)'
     ELSE 'CHECK'
   END AS pattern
 FROM course_schedules
-WHERE status = 'active'
-  AND (end_date::date - start_date::date) = 1
-ORDER BY course_slug, start_date;
+WHERE course_slug = 'agile-product-management'
+  AND status = 'active'
+ORDER BY start_date;
