@@ -4,7 +4,6 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -622,13 +621,13 @@ function CourseScheduleContent() {
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
                             
-                            <EnrollNowLink
-                              courseSlug="certified-ai-product-manager"
-                              scheduleId={schedule.id}
-                              quantity={qty}
+                            {/* Enroll Now Button */}
+                            <Link
+                              href={`/courses/certified-ai-product-manager/schedule/checkout?course=certified-ai-product-manager&schedule=${schedule.id}&quantity=${qty}`}
                               className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 rounded-lg text-center transition-colors"
-                              label="Enroll Now"
-                            />
+                            >
+                              Enroll Now
+                            </Link>
                             {isLowSeats && (
                               <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
                                 Only {schedule.seats_available} {schedule.seats_available === 1 ? 'seat' : 'seats'} left
