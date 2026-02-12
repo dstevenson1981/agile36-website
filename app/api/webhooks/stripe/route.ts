@@ -2,29 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-const getStripe = () => {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  if (!secretKey) {
-    throw new Error('STRIPE_SECRET_KEY is required');
-  }
-  return new Stripe(secretKey);
-};
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
-const getSupabase = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !supabaseKey) {
-    throw new Error('Supabase environment variables are required');
-  }
-  return createClient(supabaseUrl, supabaseKey);
-};
+// This is your Stripe webhook secret - get it from Stripe Dashboard > Webhooks
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
-
-  // This is your Stripe webhook secret - get it from Stripe Dashboard > Webhooks
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
   if (!signature || !webhookSecret) {
     console.error('Missing stripe-signature or webhook secret');
@@ -33,9 +22,6 @@ export async function POST(request: NextRequest) {
       { status: 400 }
     );
   }
-
-  const stripe = getStripe();
-  const supabase = getSupabase();
 
   let event: Stripe.Event;
 
