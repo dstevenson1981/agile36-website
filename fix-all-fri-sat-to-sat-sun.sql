@@ -1,6 +1,6 @@
 -- Fix ALL courses: Change Friday-Saturday classes to Saturday-Sunday
--- Applies to all courses. February is excluded (do not change February dates).
--- Valid two-day patterns: Mon-Tue, Thu-Fri, Sat-Sun only.
+-- Reference date: Saturday, Jan 24, 2026
+-- This applies to all courses that have Friday-Saturday schedules
 
 -- First, let's see what Friday-Saturday classes exist across all courses
 SELECT 
@@ -33,7 +33,6 @@ SELECT
   status
 FROM course_schedules
 WHERE status = 'active'
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01')
   AND EXTRACT(DOW FROM start_date) = 5  -- Friday
   AND EXTRACT(DOW FROM end_date) = 6    -- Saturday
 ORDER BY course_slug, start_date;
@@ -45,10 +44,8 @@ UPDATE course_schedules
 SET 
   start_date = start_date + INTERVAL '1 day',
   end_date = end_date + INTERVAL '1 day',
-  is_weekend = true,
-  updated_at = NOW()
+  is_weekend = true
 WHERE status = 'active'
-  AND (start_date::date < '2026-02-01' OR start_date::date >= '2026-03-01')
   AND EXTRACT(DOW FROM start_date) = 5  -- Friday
   AND EXTRACT(DOW FROM end_date) = 6;   -- Saturday
 

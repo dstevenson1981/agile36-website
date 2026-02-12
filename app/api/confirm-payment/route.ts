@@ -31,27 +31,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let stripe: Stripe;
-    try {
-      stripe = getStripe();
-    } catch (error: any) {
-      console.error('Stripe configuration error:', error);
-      return NextResponse.json(
-        { error: 'Stripe configuration error. Check STRIPE_SECRET_KEY.' },
-        { status: 500 }
-      );
-    }
-
-    let supabase;
-    try {
-      supabase = getSupabase();
-    } catch (error: any) {
-      console.error('Supabase configuration error:', error);
-      return NextResponse.json(
-        { error: 'Supabase configuration error. Check NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.' },
-        { status: 500 }
-      );
-    }
+    const stripe = getStripe();
+    const supabase = getSupabase();
 
     // Retrieve payment intent from Stripe
     const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
