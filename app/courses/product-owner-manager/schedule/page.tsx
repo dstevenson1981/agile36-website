@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
+import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -602,12 +603,12 @@ function CourseScheduleContent() {
                             <div className="text-center">
                               <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
                             </div>
-                            <Link
-                              href={`/courses/product-owner-manager/schedule/checkout?schedule=${schedule.id}&course=product-owner-manager&quantity=${qty}`}
+                            <EnrollNowLink
+                              courseSlug="product-owner-manager"
+                              scheduleId={schedule.id}
+                              quantity={qty}
                               className="w-full bg-[#01203d] hover:bg-[#023a5e] text-white font-bold py-3 px-6 rounded-lg transition-colors text-center block"
-                            >
-                              ENROLL NOW
-                            </Link>
+                            />
                             {isLowSeats && (
                               <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
                                 Only {schedule.seats_available} {schedule.seats_available === 1 ? 'seat' : 'seats'} left
