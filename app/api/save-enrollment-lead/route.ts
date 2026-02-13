@@ -43,7 +43,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = getSupabase();
+    let supabase;
+    try {
+      supabase = getSupabase();
+    } catch (error: any) {
+      console.error('Supabase configuration error:', error);
+      return NextResponse.json(
+        { error: 'Supabase configuration error. Check NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.' },
+        { status: 500 }
+      );
+    }
 
     // Store enrollment lead in Supabase
     const leadData = {
