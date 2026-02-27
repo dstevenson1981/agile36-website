@@ -135,23 +135,48 @@ export default function PopmPracticeTest() {
           {question.id}. {question.question}
         </h2>
         <ul className="space-y-3">
-          {question.options.map((option, idx) => (
-            <li key={idx}>
-              <button
-                type="button"
-                onClick={() => handleSelect(idx)}
-                className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
-                  answers[question.id] === idx
-                    ? 'border-[#fa4a23] bg-orange-50 text-slate-900'
-                    : 'border-slate-200 hover:border-slate-300 text-slate-700'
-                }`}
-              >
-                <span className="font-medium text-slate-500 mr-2">{OPTION_LETTERS[idx]}.</span>
-                {option}
-              </button>
-            </li>
-          ))}
+          {question.options.map((option, idx) => {
+            const hasAnswered = answers[question.id] !== undefined;
+            const isUserChoice = answers[question.id] === idx;
+            const isCorrect = idx === question.correctIndex;
+            const showAsCorrect = hasAnswered && isCorrect;
+            const showAsWrong = hasAnswered && isUserChoice && !isCorrect;
+
+            return (
+              <li key={idx}>
+                <button
+                  type="button"
+                  onClick={() => handleSelect(idx)}
+                  disabled={hasAnswered}
+                  className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors flex items-start gap-3 ${
+                    hasAnswered
+                      ? showAsCorrect
+                        ? 'border-green-500 bg-green-50 text-slate-900'
+                        : showAsWrong
+                          ? 'border-red-400 bg-red-50 text-slate-900'
+                          : isCorrect
+                            ? 'border-green-500 bg-green-50 text-slate-900'
+                            : 'border-slate-200 bg-slate-50 text-slate-500 cursor-default'
+                      : 'border-slate-200 hover:border-slate-300 text-slate-700'
+                  }`}
+                >
+                  <span className="font-medium text-slate-500 flex-shrink-0 w-6">
+                    {OPTION_LETTERS[idx]}.
+                  </span>
+                  <span className="flex-1">{option}</span>
+                  {hasAnswered && isCorrect && (
+                    <span className="text-green-600 font-bold flex-shrink-0" title="Correct answer">✔</span>
+                  )}
+                </button>
+              </li>
+            );
+          })}
         </ul>
+        {answers[question.id] !== undefined && (
+          <p className={`mt-4 text-sm font-medium ${answers[question.id] === question.correctIndex ? 'text-green-600' : 'text-amber-600'}`}>
+            {answers[question.id] === question.correctIndex ? '✓ Correct!' : `The correct answer is ${OPTION_LETTERS[question.correctIndex]}.`}
+          </p>
+        )}
       </div>
 
       <div className="flex justify-between items-center">
