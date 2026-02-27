@@ -815,6 +815,9 @@ export default function Header() {
               <Link href="/corporate" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Corporate
               </Link>
+              <Link href="/account" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+                My Account
+              </Link>
             </div>
             
             {/* Utility Icons */}
@@ -889,6 +892,13 @@ export default function Header() {
                 className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
               >
                 Corporate
+              </Link>
+              <Link 
+                href="/account" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                My Account
               </Link>
               <Link 
                 href="/contact" 
