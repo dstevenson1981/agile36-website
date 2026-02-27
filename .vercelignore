@@ -1,2 +1,3 @@
-# Ignore Supabase Edge Functions - they are deployed separately to Supabase
-supabase/
+# Ignore Supabase Edge Functions (root folder only) - deployed separately to Supabase
+# Use /supabase/ so we don't exclude app/lib/supabase/ (Next.js Supabase client)
+/supabase/
