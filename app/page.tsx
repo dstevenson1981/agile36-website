@@ -519,7 +519,7 @@ export default function Home() {
                 <span className="text-white font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">Limited time</span>
               </div>
               <div className="bg-[#01203d] px-2 py-0.5 sm:px-3 sm:py-1 rounded-b transform -rotate-[-2deg] shadow -mt-0.5">
-                <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wide">Feb Flash Sale</span>
+                <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wide">March Flash Sale</span>
               </div>
             </div>
             <div className="hidden md:flex flex-col items-center relative">
@@ -536,10 +536,10 @@ export default function Home() {
           </div>
 
           <div className="flex-1 text-center min-w-0 flex items-center justify-center gap-1.5 sm:gap-2">
-            <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">Feb Flash Sale Is Live</span>
+            <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">March Flash Sale</span>
             <span className="text-amber-100/90 font-bold hidden sm:inline text-sm">|</span>
             <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">
-              Unlock <span className="underline underline-offset-1 decoration-2 decoration-amber-200">$100 off</span> on all courses
+              <span className="underline underline-offset-1 decoration-2 decoration-amber-200">$100 off</span> on all courses
             </span>
           </div>
 
