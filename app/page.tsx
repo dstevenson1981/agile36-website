@@ -819,6 +819,9 @@ export default function Home() {
               <Link href="/corporate" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Corporate
               </Link>
+              <Link href="/account" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+                My Account
+              </Link>
             </div>
             
             {/* Utility Icons */}
