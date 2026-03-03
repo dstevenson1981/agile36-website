@@ -1,36 +1,50 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { createClient } from '@/app/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LoginPage() {
+function LoginForm() {
   const searchParams = useSearchParams();
-  const nextUrl = searchParams.get('next') || '/account';
+  const nextParam = searchParams.get('next') || '/account';
+  const nextUrl = nextParam.startsWith('/') && !nextParam.startsWith('//') ? nextParam : '/account';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const router = useRouter();
-  const supabase = createClient();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    try {
+      // Use server-side API to bypass corporate firewalls that block direct Supabase connections
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (error) {
-      setMessage({ type: 'error', text: error.message });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setMessage({ type: 'error', text: data.error || 'Login failed' });
+        setLoading(false);
+        return;
+      }
+
+      router.push(nextUrl);
+      router.refresh();
+    } catch (err) {
+      setMessage({
+        type: 'error',
+        text: 'Connection failed. If you\'re on a corporate network, try the "Email me a login link" option below, or use a personal device or mobile hotspot.',
+      });
       setLoading(false);
-      return;
     }
-
-    router.push(nextUrl);
-    router.refresh();
   };
 
   const handleMagicLink = async (e: React.FormEvent) => {
@@ -38,18 +52,31 @@ export default function LoginPage() {
     setLoading(true);
     setMessage(null);
 
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: `${window.location.origin}${nextUrl}` },
-    });
+    try {
+      const res = await fetch('/api/auth/magic-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          redirectTo: `${window.location.origin}${nextUrl}`,
+        }),
+      });
 
-    if (error) {
-      setMessage({ type: 'error', text: error.message });
-      setLoading(false);
-      return;
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setMessage({ type: 'error', text: data.error || 'Failed to send magic link' });
+        setLoading(false);
+        return;
+      }
+
+      setMessage({ type: 'success', text: 'Check your email for the login link!' });
+    } catch {
+      setMessage({
+        type: 'error',
+        text: 'Connection failed. Try from a personal device or mobile hotspot.',
+      });
     }
-
-    setMessage({ type: 'success', text: 'Check your email for the login link!' });
     setLoading(false);
   };
 
@@ -139,5 +166,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[60vh] flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

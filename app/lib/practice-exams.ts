@@ -51,11 +51,12 @@ export async function hasLpmProAccess(): Promise<boolean> {
   if ((orders?.length ?? 0) > 0) return true;
 
   // Check whitelist (grants access without Pro order)
-  const { data: whitelist } = await supabase
+  const { data: whitelist, error } = await supabase
     .from('lpm_pro_access_whitelist')
     .select('id')
     .eq('email', lookupEmail.toLowerCase())
     .limit(1);
 
+  if (error) return false;
   return (whitelist?.length ?? 0) > 0;
 }
