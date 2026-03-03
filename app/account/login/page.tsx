@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { createClient } from '@/app/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const nextUrl = searchParams.get('next') || '/account';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,7 +29,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push('/account');
+    router.push(nextUrl);
     router.refresh();
   };
 
@@ -37,7 +40,7 @@ export default function LoginPage() {
 
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${window.location.origin}/account` },
+      options: { emailRedirectTo: `${window.location.origin}${nextUrl}` },
     });
 
     if (error) {
