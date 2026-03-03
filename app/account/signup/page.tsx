@@ -36,7 +36,7 @@ export default function SignupPage() {
 
     setMessage({
       type: 'success',
-      text: 'Check your email to confirm your account, then sign in.',
+      text: 'Account created. You can sign in now.',
     });
     setLoading(false);
   };

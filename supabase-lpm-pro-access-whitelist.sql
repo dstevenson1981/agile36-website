@@ -18,6 +18,7 @@ CREATE POLICY "Users can check own whitelist status" ON lpm_pro_access_whitelist
   USING (LOWER(email) = LOWER((SELECT email FROM auth.users WHERE id = auth.uid())));
 
 -- Service role can manage
+DROP POLICY IF EXISTS "Service role can manage whitelist" ON lpm_pro_access_whitelist;
 CREATE POLICY "Service role can manage whitelist" ON lpm_pro_access_whitelist
   FOR ALL
   USING (auth.role() = 'service_role');

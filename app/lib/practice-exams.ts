@@ -1,4 +1,5 @@
 import { createClient } from '@/app/lib/supabase/server';
+import { createClient as createServiceClient } from '@supabase/supabase-js';
 
 /** Check if the logged-in user has Pro plan for POPM (product-owner-manager) */
 export async function hasPopmProAccess(): Promise<boolean> {
@@ -50,11 +51,16 @@ export async function hasLpmProAccess(): Promise<boolean> {
 
   if ((orders?.length ?? 0) > 0) return true;
 
-  // Check whitelist (grants access without Pro order)
-  const { data: whitelist, error } = await supabase
+  // Check whitelist (grants access without Pro order) - use service role to bypass RLS
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!serviceKey || !serviceUrl) return false;
+
+  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+  const { data: whitelist, error } = await serviceSupabase
     .from('lpm_pro_access_whitelist')
     .select('id')
-    .eq('email', lookupEmail.toLowerCase())
+    .ilike('email', lookupEmail)
     .limit(1);
 
   if (error) return false;

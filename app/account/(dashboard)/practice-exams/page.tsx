@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { hasPopmProAccess } from '@/app/lib/practice-exams';
+import { hasPopmProAccess, hasLpmProAccess } from '@/app/lib/practice-exams';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -8,6 +8,7 @@ export const metadata = {
 
 export default async function PracticeExamsPage() {
   const hasPopmPro = await hasPopmProAccess();
+  const hasLpmPro = await hasLpmProAccess();
 
   return (
     <div>
@@ -50,7 +51,7 @@ export default async function PracticeExamsPage() {
           )}
         </div>
 
-        {/* LPM Practice Test - public at /lpmpro */}
+        {/* LPM Practice Test - /lpmpro for those with URL; whitelisted users see it in account */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -63,12 +64,24 @@ export default async function PracticeExamsPage() {
               </p>
             </div>
           </div>
-          <Link
-            href="/lpmpro"
-            className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-          >
-            Start Test
-          </Link>
+          {hasLpmPro ? (
+            <Link
+              href="/lpmpro"
+              className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
+            >
+              Start Test
+            </Link>
+          ) : (
+            <div className="flex-shrink-0 text-right">
+              <p className="text-sm text-amber-600 font-medium">Pro plan required</p>
+              <Link
+                href="/courses/lean-portfolio-management/schedule"
+                className="text-sm text-[#fa4a23] hover:underline"
+              >
+                Upgrade to access
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Placeholder for future practice exams */}
