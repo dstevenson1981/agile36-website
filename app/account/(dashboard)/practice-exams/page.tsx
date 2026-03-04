@@ -51,7 +51,7 @@ export default async function PracticeExamsPage() {
           )}
         </div>
 
-        {/* LPM Practice Test - /lpmpro for those with URL; whitelisted users see it in account */}
+        {/* LPM Practice Test - whitelisted/Pro users see it in account */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -66,7 +66,7 @@ export default async function PracticeExamsPage() {
           </div>
           {hasLpmPro ? (
             <Link
-              href="/lpmpro"
+              href="/account/practice-exams/lpm"
               className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
             >
               Start Test
