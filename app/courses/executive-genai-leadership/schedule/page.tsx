@@ -530,11 +530,14 @@ function CourseScheduleContent() {
                     now.setHours(0, 0, 0, 0);
                     const sevenDaysFromNow = new Date(now);
                     sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
+                    const fourteenDaysFromNow = new Date(now);
+                    fourteenDaysFromNow.setDate(fourteenDaysFromNow.getDate() + 14);
                     const startDateOnly = new Date(startDate);
                     startDateOnly.setHours(0, 0, 0, 0);
                     const isWithinNext7Days = startDateOnly >= now && startDateOnly <= sevenDaysFromNow;
-                    const isLowSeats = !isWithinNext7Days && schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
-                    const showSeatsBadge = isWithinNext7Days || isLowSeats;
+                    const isWithin8to14Days = startDateOnly > sevenDaysFromNow && startDateOnly <= fourteenDaysFromNow;
+                    const isLowSeats = !isWithinNext7Days && !isWithin8to14Days && schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
+                    const showUrgencyBadge = isWithinNext7Days || isWithin8to14Days || isLowSeats;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
@@ -672,9 +675,9 @@ function CourseScheduleContent() {
                               quantity={qty}
                               className="w-full bg-[#01203d] hover:bg-[#023a5e] text-white font-bold py-3 px-6 rounded-lg transition-colors text-center block"
                             />
-                            {showSeatsBadge && (
+                            {showUrgencyBadge && (
                               <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
-                                {isWithinNext7Days ? '2 or 3 seats left' : `Only ${schedule.seats_available} ${schedule.seats_available === 1 ? 'seat' : 'seats'} left`}
+                                {isWithinNext7Days ? '2 or 3 seats left' : isWithin8to14Days ? 'Sale ending soon' : `Only ${schedule.seats_available} ${schedule.seats_available === 1 ? 'seat' : 'seats'} left`}
                               </div>
                             )}
                           </div>
