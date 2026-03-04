@@ -624,8 +624,8 @@ function CourseScheduleContent() {
                               className="w-full bg-[#01203d] hover:bg-[#023a5e] text-white font-bold py-3 px-6 rounded-lg transition-colors text-center block"
                             />
                             {showUrgencyBadge && (
-                              <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
-                                {isWithinNext7Days ? '2 or 3 seats left' : isWithin8to14Days ? 'Sale ending soon' : `Only ${schedule.seats_available} ${schedule.seats_available === 1 ? 'seat' : 'seats'} left`}
+                              <div className="text-[#fa4a23] text-center py-2 text-sm font-bold uppercase tracking-wide">
+                                {isWithinNext7Days ? '3 REMAINING!' : isWithin8to14Days ? 'SALES ENDING SOON!' : `${schedule.seats_available} REMAINING!`}
                               </div>
                             )}
                           </div>
