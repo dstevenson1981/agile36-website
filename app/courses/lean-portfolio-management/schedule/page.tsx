@@ -391,7 +391,7 @@ function CourseScheduleContent() {
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl font-bold">$100 OFF</span>
                   </div>
-                  <p className="text-sm mb-3 opacity-90">Ends Jan 30th</p>
+                  <p className="text-sm mb-3 opacity-90">Ends March 15th</p>
                   <div className="bg-white/20 rounded-md p-3 mb-3">
                     <div className="flex items-center justify-between">
                       <span className="font-semibold">Coupon code '100OFF'</span>
@@ -468,7 +468,15 @@ function CourseScheduleContent() {
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
                     const startDate = new Date(schedule.start_date);
                     const endDate = new Date(schedule.end_date);
-                    const isLowSeats = schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
+                    const now = new Date();
+                    now.setHours(0, 0, 0, 0);
+                    const sevenDaysFromNow = new Date(now);
+                    sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
+                    const startDateOnly = new Date(startDate);
+                    startDateOnly.setHours(0, 0, 0, 0);
+                    const isWithinNext7Days = startDateOnly >= now && startDateOnly <= sevenDaysFromNow;
+                    const isLowSeats = !isWithinNext7Days && schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
+                    const showSeatsBadge = isWithinNext7Days || isLowSeats;
                     const qty = quantity[schedule.id] || 1;
                     const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
                     const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
@@ -608,9 +616,9 @@ function CourseScheduleContent() {
                               quantity={qty}
                               className="w-full bg-[#01203d] hover:bg-[#023a5e] text-white font-bold py-3 px-6 rounded-lg transition-colors text-center block"
                             />
-                            {isLowSeats && (
+                            {showSeatsBadge && (
                               <div className="rounded-lg bg-[#fa4a23] text-white text-center py-2.5 px-4 text-sm font-bold shadow-sm">
-                                Only {schedule.seats_available} {schedule.seats_available === 1 ? 'seat' : 'seats'} left
+                                {isWithinNext7Days ? '2 or 3 seats left' : `Only ${schedule.seats_available} ${schedule.seats_available === 1 ? 'seat' : 'seats'} left`}
                               </div>
                             )}
                           </div>
