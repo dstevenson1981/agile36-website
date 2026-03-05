@@ -319,9 +319,9 @@ function CheckoutContent() {
     return null;
   }
 
-  // Flat rate of $555 for Generative AI for Project Managers
-  const basePrice = 555;
-  const originalPrice = 1110;
+  // Flat rate of $400 for Generative AI for Project Managers
+  const basePrice = 400;
+  const originalPrice = 800;
   
   // Calculate base totals
   const baseTotal = basePrice * enrollmentQuantity;

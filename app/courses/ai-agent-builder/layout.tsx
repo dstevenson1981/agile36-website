@@ -67,7 +67,7 @@ export default function AIAgentBuilderLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "699",
+      "price": "400",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/ai-agent-builder/schedule"

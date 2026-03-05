@@ -67,7 +67,7 @@ export default function ExecutiveGenAILeadershipLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "950",
+      "price": "400",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/executive-genai-leadership/schedule"
