@@ -45,6 +45,7 @@ export default function EmailAdminPage() {
   const [filterSubscribed, setFilterSubscribed] = useState<boolean | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [importTag, setImportTag] = useState<string>('');
+  const [pendingImportFile, setPendingImportFile] = useState<File | null>(null);
 
   // Campaign composer state
   const [campaignName, setCampaignName] = useState('');
@@ -596,20 +597,27 @@ export default function EmailAdminPage() {
     }
   };
 
-  const handleImportCSV = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    // Validate file type
     if (!file.name.endsWith('.csv')) {
       alert('Please upload a CSV file');
       e.target.value = '';
       return;
     }
+    setPendingImportFile(file);
+    e.target.value = '';
+  };
+
+  const handleImportCSV = async () => {
+    if (!pendingImportFile) {
+      alert('Please select a CSV file first');
+      return;
+    }
 
     setLoading(true);
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', pendingImportFile);
     if (importTag.trim()) {
       formData.append('importTag', importTag.trim());
     }
@@ -633,6 +641,7 @@ export default function EmailAdminPage() {
         if (data.errorDetails && data.errorDetails.length > 0) {
           console.error('Import errors:', data.errorDetails);
         }
+        setPendingImportFile(null);
         fetchAllTags(); // Refresh tags list
         fetchContacts();
       } else {
@@ -643,7 +652,6 @@ export default function EmailAdminPage() {
       alert(`Error importing contacts: ${error.message || 'Unknown error'}`);
     } finally {
       setLoading(false);
-      e.target.value = '';
     }
   };
 
@@ -914,32 +922,47 @@ export default function EmailAdminPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Import CSV</label>
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="file"
-                    accept=".csv"
-                    onChange={handleImportCSV}
-                    className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                  />
-                  <a
-                    href="/email-contacts-template.csv"
-                    download
-                    className="text-sm text-blue-600 hover:text-blue-800 underline"
-                  >
-                    Download Template
-                  </a>
-                </div>
-                <div className="mt-2">
-                  <label className="block text-xs font-medium text-gray-600 mb-1">
-                    Tag this import (optional)
-                  </label>
-                  <input
-                    type="text"
-                    value={importTag}
-                    onChange={(e) => setImportTag(e.target.value)}
-                    placeholder="e.g. ProgramProduct"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-                  />
+                <div className="space-y-2">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">
+                      Tag this import (optional) — enter before importing
+                    </label>
+                    <input
+                      type="text"
+                      value={importTag}
+                      onChange={(e) => setImportTag(e.target.value)}
+                      placeholder="e.g. Mar 5, ProgramProduct"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                    />
+                  </div>
+                  <div className="flex gap-2 items-center flex-wrap">
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={handleFileSelected}
+                      className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleImportCSV}
+                      disabled={!pendingImportFile || loading}
+                      className="px-4 py-2 bg-[#fa4a23] text-white font-semibold rounded-md hover:bg-[#e03d1a] disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {loading ? 'Importing…' : 'Import'}
+                    </button>
+                    {pendingImportFile && (
+                      <span className="text-sm text-gray-600">
+                        {pendingImportFile.name}
+                      </span>
+                    )}
+                    <a
+                      href="/email-contacts-template.csv"
+                      download
+                      className="text-sm text-blue-600 hover:text-blue-800 underline"
+                    >
+                      Download Template
+                    </a>
+                  </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   CSV format: Email, First Name, Last Name, Role, Company (optional: Tags, Subscribed)
