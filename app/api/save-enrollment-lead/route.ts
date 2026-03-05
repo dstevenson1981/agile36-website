@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import Stripe from 'stripe';
 
 const getSupabase = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -94,9 +95,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Create new Stripe customer when Basic Details are entered (always create new, no lookup)
+    let stripeCustomerId: string | null = null;
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (stripeKey) {
+      try {
+        const stripe = new Stripe(stripeKey);
+        const trimmedEmail = email.trim().toLowerCase();
+        const customerName = `${firstName.trim()} ${lastName.trim()}`;
+
+        const customer = await stripe.customers.create({
+          email: trimmedEmail,
+          name: customerName,
+          phone: phone.trim() || undefined,
+          metadata: {
+            courseSlug: courseSlug || '',
+            source: 'course_enrollment_lead',
+          },
+        });
+        stripeCustomerId = customer.id;
+        console.log('Stripe customer created:', customer.id, customer.email);
+      } catch (stripeError: any) {
+        console.error('Error creating Stripe customer (lead still saved):', stripeError);
+        // Don't fail the request - lead is saved; create-payment-intent will create customer at payment time
+      }
+    }
+
     return NextResponse.json({
       success: true,
       leadId: lead.id,
+      stripeCustomerId,
       message: 'Enrollment lead saved successfully',
     });
   } catch (error: any) {
