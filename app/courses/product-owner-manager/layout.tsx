@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training | Agile36",
-  description: "Master SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership, backlog management, epic management, and product strategy in SAFe. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe POPM Certification Training | Product Owner Product Manager | Agile36",
+  description: "Get SAFe POPM certified with Agile36. 2-day live training covering backlog management, PI Planning, and Lean-Agile product delivery. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Product Owner",
     "SAFe Product Manager",
@@ -78,7 +78,7 @@ export default function ProductOwnerManagerLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

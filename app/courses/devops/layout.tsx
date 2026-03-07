@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 DevOps (SDP) Certification Training | Agile36",
-  description: "Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe DevOps Practitioner (SDP) Certification Training | Agile36",
+  description: "Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included.",
   keywords: [
     "SAFe DevOps",
     "SAFe SDP certification",
@@ -79,7 +79,7 @@ export default function DevOpsLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

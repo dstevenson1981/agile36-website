@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 for Teams Certification Training | Agile36",
-  description: "Master SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, PI planning participation, and value delivery in Lean-Agile environments. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe for Teams (SP) Certification Training | SAFe Practitioner | Agile36",
+  description: "Earn your SAFe Practitioner (SP) certification with Agile36. 2-day training for Agile team members working on an ART. Learn Scrum, Kanban, XP in SAFe. Exam included.",
   keywords: [
     "SAFe for Teams",
     "SAFe Practitioner certification",
@@ -78,7 +78,7 @@ export default function SafeForTeamsLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

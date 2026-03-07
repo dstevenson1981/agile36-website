@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 Agile Product Management (APM) Certification Training | Agile36",
-  description: "Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, empathy-driven design, product strategy, and roadmap creation. Earn 24 PDUs & SEUs. Expert-led 3-day course. Enroll now!",
+  title: "SAFe Agile Product Management (APM) Certification Training | Agile36",
+  description: "Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Agile Product Management",
     "SAFe APM certification",
@@ -83,7 +83,7 @@ export default function AgileProductManagementLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

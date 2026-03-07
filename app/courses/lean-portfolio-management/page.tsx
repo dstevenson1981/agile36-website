@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import WhyAgile36Section from "@/app/components/WhyAgile36Section";
 
 export default function LeanPortfolioManagementCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -128,8 +129,24 @@ export default function LeanPortfolioManagementCoursePage() {
                   SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Lead Agile Portfolios with SAFe® LPM Training That Delivers Real Value
+                  Lead Agile portfolios in 2 days. Live, expert-led training from a SAFe Silver Partner with Fortune 100 experience.
                 </p>
+
+                {/* Key Stats Bar */}
+                <div className="flex flex-wrap gap-4 mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#01203d]">2-Day Live Training</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#01203d]">Exam Fee Included</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#01203d]">16 PDUs & SEUs</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#01203d]">SAFe Silver Partner</span>
+                  </div>
+                </div>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
@@ -467,65 +484,59 @@ export default function LeanPortfolioManagementCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Lean Portfolio Management Certification Training Course?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        There are no prerequisites to enroll in the <strong>SAFe Lean Portfolio Management Certification course.</strong> However, it is recommended for professionals to have:
+                        SAFe Lean Portfolio Management is designed for executives, portfolio managers, and program managers. Leading SAFe certification is recommended but not required.
                       </p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Basic understanding of Agile principles and practices</p>
+                          <p className="text-base text-gray-700">Executive, portfolio manager, or program manager role recommended</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Experience in portfolio management, program management, or executive leadership</p>
+                          <p className="text-base text-gray-700">Leading SAFe (SA) certification recommended</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Interest in strategic portfolio management and organizational transformation</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                          <p className="text-base text-gray-700">Willingness to learn and apply SAFe principles in your work environment</p>
+                          <p className="text-base text-gray-700">Experience with funding, prioritization, or governance at scale</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Career Advancement */}
+                    {/* Career & Salary */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® Lean Portfolio Management Certification Advance Your Career?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for SAFe Lean Portfolio Management Professionals</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        Earning your SAFe Lean Portfolio Management certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to effectively manage products and portfolios in a SAFe environment.
+                        Earning your SAFe Lean Portfolio Management certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to effectively manage portfolios, align strategy with execution, and optimize value delivery in a SAFe environment.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Career Growth</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Average Salary</h4>
                           <p className="text-base text-gray-700">
-                            SAFe LPM certification positions you for Portfolio Manager, Portfolio Director, and executive leadership roles in Agile organizations.
+                            $150,000–$250,000 (US)
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Salary Increase</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Common Roles</h4>
                           <p className="text-base text-gray-700">
-                            Certified SAFe Lean Portfolio Management professionals typically earn 25-35% more than their non-certified peers, with salaries ranging from $150,000 to $250,000 depending on experience and location.
+                            Portfolio Manager, Portfolio Director, Agile Portfolio Lead, Executive Sponsor
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Industry Recognition</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Top Hiring Industries</h4>
                           <p className="text-base text-gray-700">
-                            The SAFe LPM certification is recognized by top organizations worldwide, including Fortune 500 companies, making you a valuable asset in the job market.
+                            Financial services, healthcare, federal government, technology, manufacturing
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Network Expansion</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Demand</h4>
                           <p className="text-base text-gray-700">
-                            Join a global community of 1+ million SAFe professionals, access exclusive resources, and connect with industry leaders through the SAFe Community Platform.
+                            70% of Fortune 100 companies use SAFe — certified portfolio leaders are in high demand
                           </p>
                         </div>
                       </div>
@@ -567,24 +578,40 @@ export default function LeanPortfolioManagementCoursePage() {
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Lean Portfolio Management Exam Information</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe LPM Exam Details</h3>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, 60 questions</p>
+                            <p className="font-semibold text-gray-900 mb-2">Format:</p>
+                            <p className="text-base text-gray-700">Multiple choice, single select</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">120 minutes</p>
+                            <p className="font-semibold text-gray-900 mb-2">Questions:</p>
+                            <p className="text-base text-gray-700">45</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Time Limit:</p>
+                            <p className="text-base text-gray-700">90 minutes</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">42 out of 60 (70%)</p>
+                            <p className="text-base text-gray-700">77% (35 out of 45 correct)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Fee:</p>
-                            <p className="text-base text-gray-700">Included with course enrollment</p>
+                            <p className="font-semibold text-gray-900 mb-2">Delivery:</p>
+                            <p className="text-base text-gray-700">Online through SAFe Community Platform</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Exam Window:</p>
+                            <p className="text-base text-gray-700">Must be taken within 30 days of course completion</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Retake Cost:</p>
+                            <p className="text-base text-gray-700">$50 per attempt (paid to Scaled Agile)</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Certification Valid:</p>
+                            <p className="text-base text-gray-700">1 year (renewal fee: $295/year)</p>
                           </div>
                         </div>
                         <div className="pt-4 border-t border-gray-200">
@@ -983,11 +1010,12 @@ export default function LeanPortfolioManagementCoursePage() {
                   { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Lean Portfolio Management course and passing the certification exam, you'll receive the official SAFe Lean Portfolio Management (LPM) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Lean Portfolio Management exam?", a: "The SAFe Lean Portfolio Management exam is a multiple-choice exam with 60 questions. You have 120 minutes to complete it, and you need to score 42 out of 60 (70%) to pass." },
+                  { q: "What is the format of the SAFe Lean Portfolio Management exam?", a: "The SAFe Lean Portfolio Management exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 77% (35 out of 45) to pass. The exam is open book." },
                   { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
-                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." }
+                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." },
+                  { q: "How do I renew my SAFe LPM certification?", a: "The SAFe Lean Portfolio Management certification is valid for one year. Annual renewal is $295 paid to Scaled Agile. You can renew by earning continuing education credits or taking advanced SAFe courses." }
                 ],
                 payment: [
                   { q: "What payment methods do you accept?", a: "We accept all major credit cards and debit cards. For corporate training, we also accept purchase orders and wire transfers." },
@@ -1058,176 +1086,7 @@ export default function LeanPortfolioManagementCoursePage() {
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
-              Why Choose the SAFe Lean Portfolio Management Certification Course with Agile36?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Left Column */}
-            <div className="space-y-6">
-              {/* Benefit 1 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Globally Recognized SAFe® Certification
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 offers SAFe Lean Portfolio Management training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 2 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Hands-On Learning Experience
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 3 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Comprehensive Exam Preparation
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Get guided exam readiness support, including practice tests, learning resources, and expert mentoring to ensure success in the SAFe® Lean Portfolio Management Certification exam.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 4 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Earn PDUs and SEUs for Career Advancement
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-6">
-              {/* Benefit 5 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Expert-Led Training by Certified SPCs
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 6 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Flexible Learning Options
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 7 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Networking with Global SAFe® Professionals
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 8 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Post-Certification Career Support
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyAgile36Section />
 
       {/* SAFe Agilist Certification in the USA Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">

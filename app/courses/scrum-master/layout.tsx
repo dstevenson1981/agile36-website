@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training | Agile36",
-  description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, impediment removal, and Agile Release Train support. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
+  description: "Earn your SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
   keywords: [
     "SAFe Scrum Master",
     "SAFe SSM certification",
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training | Agile36",
-    description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support. Earn 16 PDUs & SEUs.",
+    title: "SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
+    description: "Earn your SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
     type: "website",
     url: "https://agile36.com/courses/scrum-master",
   },
@@ -79,7 +79,7 @@ export default function ScrumMasterLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -91,50 +91,50 @@ export default function ScrumMasterLayout({
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is SAFe Scrum Master (SSM)?",
+        "name": "How is the SAFe Scrum Master different from a regular Scrum Master?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe Scrum Master (SSM) is a 2-day certification teaching Scrum Masters to facilitate Agile teams within the Scaled Agile Framework. You learn to support teams on Agile Release Trains, participate in PI Planning, remove impediments at scale, coach teams in SAFe practices, and coordinate with other teams and stakeholders in large organizations."
+          "text": "The SAFe Scrum Master operates at enterprise scale — supporting not just one team but an entire Agile Release Train (ART). You'll learn PI Planning, program-level ceremonies, and how to coordinate across multiple teams, which goes well beyond traditional Scrum."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the difference between CSM and SAFe Scrum Master?",
+        "name": "Is the SAFe SSM exam included in the course price?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CSM (Certified Scrum Master) focuses on facilitating a single Scrum team using basic Scrum framework. SAFe Scrum Master adds enterprise-scale responsibilities: coordinating with other teams on an Agile Release Train, participating in PI Planning, managing dependencies across teams, and facilitating Scrum within a larger SAFe context with 50-125+ people."
+          "text": "Yes. Your first exam attempt is included in your Agile36 course fee. The exam must be taken within 30 days of completing the course."
         }
       },
       {
         "@type": "Question",
-        "name": "Do I need CSM before taking SAFe Scrum Master?",
+        "name": "How long does SAFe Scrum Master certification last?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, CSM is not required for SAFe Scrum Master. SSM is a standalone certification. However, understanding basic Scrum roles, events, and artifacts is helpful. If you're new to Scrum, consider taking CSM first or ensure you understand Scrum fundamentals before learning to scale it with SAFe."
+          "text": "One year. Renewal requires earning 24 Continuing Education Units (CEUs) and paying the $195 annual renewal fee to Scaled Agile."
         }
       },
       {
         "@type": "Question",
-        "name": "What does a SAFe Scrum Master do?",
+        "name": "Can I take the SAFe SSM exam online?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A SAFe Scrum Master facilitates Scrum events (daily standup, sprint planning, retrospectives), removes impediments, coaches the team in Agile practices, participates in PI Planning, coordinates with other teams on the ART, supports the Product Owner, escalates cross-team issues, and fosters continuous improvement within the SAFe framework."
+          "text": "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 30 days of course completion."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does it take to get SAFe Scrum Master certified?",
+        "name": "What is the passing score for the SAFe Scrum Master exam?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The SAFe Scrum Master course is 2 days (16 hours). After completing the course, you take the online SSM exam within 30 days. The exam takes 90 minutes with 45 questions. Most students pass on their first attempt. Total time from start to certification is typically 2-3 days."
+          "text": "You need to answer at least 33 out of 45 questions correctly (73%) to pass."
         }
       },
       {
         "@type": "Question",
-        "name": "How much does SAFe Scrum Master cost?",
+        "name": "Does Agile36 offer corporate/team training for SAFe Scrum Master?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe Scrum Master certification through Agile36 costs $555. This includes 2-day live training, course materials, exam fee, one free retake, one-year SAFe Community Platform access, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed annually."
+          "text": "Yes. Agile36 specializes in enterprise and Fortune 100 training. Contact us for private group pricing and custom scheduling."
         }
       }
     ]

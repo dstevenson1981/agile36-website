@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Leading SAFe® 6.0 Certification Training | SAFe Agilist (SA) | Agile36",
-  description: "Master Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation, Agile Release Trains, PI Planning, and value streams. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  description: "Get Leading SAFe certified with Agile36, a SAFe Silver Partner. 2-day live training, exam included. Learn to lead enterprise Agile transformation. Expert SPCs. Enroll now.",
   keywords: [
     "Leading SAFe",
     "SAFe Agilist",
@@ -81,7 +81,7 @@ export default function LeadingSafeLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     },

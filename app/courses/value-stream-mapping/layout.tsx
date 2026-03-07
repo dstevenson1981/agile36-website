@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® Value Stream Mapping Course | SAFe VSM Training | Agile36",
-  description: "Master value stream mapping with SAFe Value Stream Mapping course. Learn to map value streams, identify bottlenecks, eliminate waste, and optimize flow in SAFe environments. Expert-led SAFe training.",
+  title: "SAFe Value Stream Mapping Certification Training | Agile36",
+  description: "Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now.",
   keywords: [
     "Value Stream Mapping",
     "VSM",
@@ -77,7 +77,7 @@ export default function ValueStreamMappingLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "142",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

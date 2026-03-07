@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import WhyAgile36Section from "@/app/components/WhyAgile36Section";
 
 export default function ProductOwnerManagerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -125,13 +126,13 @@ export default function ProductOwnerManagerCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® 6.0 AI-Empowered Product Owner/Product Manager (POPM) Certification Training
+                  SAFe® Product Owner/Product Manager (POPM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Boost Your Agile leadership and land high-paying roles with SAFe POPM Certification
+                  Master product ownership at enterprise scale. 2-day live training with exam included, delivered by certified SAFe SPCs with real-world Fortune 100 experience.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  Accelerate your product management career with the AI-Empowered SAFe® POPM Certification Training by Agile36. This 2-day course equips you with real-world skills in Agile product ownership, Lean thinking, and SAFe principles. Gain hands-on experience with Agile Release Train (ART), enhance ROI, and lead innovation in scaled Agile environments. Learn from certified SAFe Practice Consultants, access study tools, and earn 16 SEUs & PDUs with exam fees included.
+                  Accelerate your product management career with SAFe® POPM Certification Training by Agile36. This 2-day course equips you with real-world skills in Agile product ownership, backlog management, PI Planning, and Lean-Agile product delivery. Learn from certified SAFe Practice Consultants, access study tools, and earn 16 SEUs & PDUs with exam fees included.
                 </p>
               </div>
 
@@ -448,68 +449,52 @@ export default function ProductOwnerManagerCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Product Owner/Product Manager Certification Training Course?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Who Should Attend SAFe POPM Training</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        There are no prerequisites to enroll in the <strong>SAFe Product Owner/Product Manager Certification course.</strong> However, it is recommended for professionals to have:
+                        This course is designed for:
                       </p>
+                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
+                        <li>Product Owners managing team-level backlogs</li>
+                        <li>Product Managers responsible for program-level vision and roadmaps</li>
+                        <li>Business Analysts transitioning into Agile product roles</li>
+                        <li>Anyone working in or with an Agile Release Train (ART)</li>
+                      </ul>
+                      <p className="text-base text-gray-700 font-semibold mb-2">Recommended (not required):</p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Basic understanding of Agile principles and practices</p>
+                          <p className="text-base text-gray-700">Basic understanding of Agile or Scrum</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Experience working in software development or IT projects</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                          <p className="text-base text-gray-700">Interest in leading organizational change and transformation</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                          <p className="text-base text-gray-700">Willingness to learn and apply SAFe principles in your work environment</p>
+                          <p className="text-base text-gray-700">Experience working with product backlogs or customer requirements</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Career Advancement */}
+                    {/* Career & Salary */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® Product Owner/Product Manager Certification Advance Your Career?</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        Earning your SAFe Product Owner/Product Manager certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to effectively manage products and backlogs in a SAFe environment.
-                      </p>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for SAFe POPM Certified Professionals</h3>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Career Growth</h4>
-                          <p className="text-base text-gray-700">
-                            SAFe POPM certification positions you for Product Owner, Product Manager, and Senior Product Manager roles in Agile organizations.
-                          </p>
+                          <h4 className="font-bold text-gray-900 mb-3">Average Salary</h4>
+                          <p className="text-base text-gray-700">$100,000–$141,000 (US)</p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Salary Increase</h4>
-                          <p className="text-base text-gray-700">
-                            Certified SAFe Product Owners and Product Managers typically earn 20-30% more than their non-certified peers, with salaries ranging from $140,000 to $200,000 depending on experience and location.
-                          </p>
+                          <h4 className="font-bold text-gray-900 mb-3">Common Roles</h4>
+                          <p className="text-base text-gray-700">Product Owner, Product Manager, Solution Manager, Business Owner</p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Industry Recognition</h4>
-                          <p className="text-base text-gray-700">
-                            The SAFe POPM certification is recognized by top organizations worldwide, including Fortune 500 companies, making you a valuable asset in the job market.
-                          </p>
+                          <h4 className="font-bold text-gray-900 mb-3">Advanced Paths</h4>
+                          <p className="text-base text-gray-700">Release Train Engineer, Portfolio Manager, Chief Product Officer</p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Network Expansion</h4>
-                          <p className="text-base text-gray-700">
-                            Join a global community of 1+ million SAFe professionals, access exclusive resources, and connect with industry leaders through the SAFe Community Platform.
-                          </p>
+                          <h4 className="font-bold text-gray-900 mb-3">Demand</h4>
+                          <p className="text-base text-gray-700">SAFe POPM is the most common certification held by product professionals in Fortune 500 companies</p>
                         </div>
                       </div>
                     </div>
@@ -550,30 +535,41 @@ export default function ProductOwnerManagerCoursePage() {
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Product Owner/Product Manager Exam Information</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe POPM Exam Details</h3>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, 45 questions</p>
+                            <p className="font-semibold text-gray-900 mb-2">Format:</p>
+                            <p className="text-base text-gray-700">Multiple choice, single select</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Duration:</p>
+                            <p className="font-semibold text-gray-900 mb-2">Questions:</p>
+                            <p className="text-base text-gray-700">45</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Time Limit:</p>
                             <p className="text-base text-gray-700">90 minutes</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">35 out of 45 (77%)</p>
+                            <p className="text-base text-gray-700">75% (34 out of 45 correct)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Fee:</p>
-                            <p className="text-base text-gray-700">Included with course enrollment</p>
+                            <p className="font-semibold text-gray-900 mb-2">Delivery:</p>
+                            <p className="text-base text-gray-700">Online through SAFe Community Platform</p>
                           </div>
-                        </div>
-                        <div className="pt-4 border-t border-gray-200">
-                          <p className="text-base text-gray-700 mb-2">
-                            <strong>Note:</strong> The exam can be taken online from anywhere, and you have 30 days after course completion to take the exam. If you don't pass on the first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile.
-                          </p>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Exam Window:</p>
+                            <p className="text-base text-gray-700">Must be taken within 30 days of course completion</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Retake Cost:</p>
+                            <p className="text-base text-gray-700">$50 per attempt (paid to Scaled Agile)</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 mb-2">Certification Valid:</p>
+                            <p className="text-base text-gray-700">1 year</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -937,11 +933,12 @@ export default function ProductOwnerManagerCoursePage() {
                   { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Product Owner/Product Manager course and passing the certification exam, you'll receive the official SAFe Product Owner/Product Manager (POPM) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Product Owner/Product Manager exam?", a: "The SAFe Product Owner/Product Manager exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
-                  { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
-                  { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
-                  { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
-                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." }
+                  { q: "What is the difference between a SAFe Product Owner and a SAFe Product Manager?", a: "In SAFe, the Product Owner (PO) works at the team level — managing the team backlog and writing stories. The Product Manager (PM) operates at the program level — defining the product vision, roadmap, and features for the Agile Release Train. The POPM course covers both roles." },
+                  { q: "Is the exam included in the Agile36 POPM course price?", a: "Yes. Your first SAFe POPM exam attempt is included. The exam must be completed within 30 days of the course." },
+                  { q: "What is the passing score for the SAFe POPM exam?", a: "You need 75% or higher — answering at least 34 out of 45 questions correctly." },
+                  { q: "How long is SAFe POPM certification valid?", a: "One year from the date you pass the exam. Annual renewal is required." },
+                  { q: "Do I need to be in a software company to take SAFe POPM?", a: "No. SAFe is used across industries including healthcare, financial services, government, and manufacturing. The POPM certification is valuable in any enterprise using SAFe." },
+                  { q: "Does Agile36 offer private POPM training for teams?", a: "Yes. We specialize in enterprise training and have delivered SAFe POPM to Fortune 100 teams. Contact us for group pricing." }
                 ],
                 payment: [
                   { q: "What payment methods do you accept?", a: "We accept all major credit cards and debit cards. For corporate training, we also accept purchase orders and wire transfers." },
@@ -951,9 +948,9 @@ export default function ProductOwnerManagerCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Product Owner/Product Manager certification?", a: "SAFe Product Owner/Product Manager is a comprehensive course that provides the knowledge and skills needed to effectively fulfill the Product Owner and Product Manager roles in a SAFe environment. It prepares you for the SAFe Product Owner/Product Manager (POPM) certification exam." },
-                  { q: "Who should take this course?", a: "This course is ideal for Product Owners, Product Managers, Business Analysts, Product Analysts, and anyone interested in product ownership and management in a SAFe environment." },
-                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in product management or software development is recommended." },
+                  { q: "What is SAFe Product Owner/Product Manager certification?", a: "SAFe POPM is a 2-day certification covering product ownership at scale — backlog management, PI Planning, epic and feature management, and Lean-Agile product delivery within Agile Release Trains." },
+                  { q: "Who should take this course?", a: "Product Owners managing team-level backlogs, Product Managers responsible for program-level vision and roadmaps, Business Analysts transitioning into Agile product roles, and anyone working in or with an Agile Release Train (ART)." },
+                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. Basic understanding of Agile or Scrum and experience with product backlogs or customer requirements are recommended but not required." },
                   { q: "How long is the course?", a: "The SAFe Product Owner/Product Manager course is a 2-day intensive training program, totaling 16 hours of instruction." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
@@ -1012,176 +1009,7 @@ export default function ProductOwnerManagerCoursePage() {
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
-              Why Choose the SAFe Product Owner/Product Manager Certification Course with Agile36?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Left Column */}
-            <div className="space-y-6">
-              {/* Benefit 1 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Globally Recognized SAFe® Certification
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 offers SAFe Product Owner/Product Manager training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 2 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Hands-On Learning Experience
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 3 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Comprehensive Exam Preparation
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Get guided exam readiness support, including practice tests, learning resources, and expert mentoring to ensure success in the SAFe® Product Owner/Product Manager Certification exam.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 4 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Earn PDUs and SEUs for Career Advancement
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-6">
-              {/* Benefit 5 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Expert-Led Training by Certified SPCs
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 6 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Flexible Learning Options
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 7 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Networking with Global SAFe® Professionals
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
-                  </p>
-                </div>
-              </div>
-
-              {/* Benefit 8 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Post-Certification Career Support
-                  </h3>
-                  <p className="text-base text-gray-700">
-                    Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyAgile36Section />
 
       {/* SAFe Agilist Certification in the USA Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">

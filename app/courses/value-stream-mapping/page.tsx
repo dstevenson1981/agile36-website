@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import WhyAgile36Section from "@/app/components/WhyAgile36Section";
 
 export default function ValueStreamMappingCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -300,6 +301,20 @@ export default function ValueStreamMappingCoursePage() {
                         <li>Anyone involved in optimizing value delivery within SAFe organizations</li>
                       </ul>
                     </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        Basic SAFe knowledge is helpful but not required. This course is open to product managers, architects, leaders, and anyone involved in process improvement or value delivery.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Pricing & What&apos;s Included</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        Agile36 offers competitive pricing with the certification exam included. Your enrollment includes live virtual training, digital materials, one exam attempt (within 30 days of course completion), and one year of SAFe Community Platform access. Retakes cost $50 if needed.
+                      </p>
+                    </div>
                   </div>
                 )}
 
@@ -537,6 +552,8 @@ export default function ValueStreamMappingCoursePage() {
           </div>
         </div>
       </section>
+
+      <WhyAgile36Section />
 
       {/* FAQ Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training | Agile36",
-  description: "Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy, investment funding, lean governance, and portfolio flow. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe Lean Portfolio Management (LPM) Certification Training | Agile36",
+  description: "Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
   keywords: [
     "SAFe Lean Portfolio Management",
     "SAFe LPM certification",
@@ -77,7 +77,7 @@ export default function LeanPortfolioManagementLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "234",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }

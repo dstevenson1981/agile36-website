@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Advanced Scrum Master Certification Path | Agile36",
-  description: "Master advanced SAFe Scrum Master skills with the Advanced Scrum Master Certification Path. Learn program-level coaching, facilitation, and advanced Agile Release Train support. Earn 16 PDUs & SEUs. Expert-led 2-day course. Enroll now!",
+  title: "SAFe Advanced Scrum Master (SASM) Certification Training | Agile36",
+  description: "Advance your Scrum Master career with SAFe SASM certification. Expert-led 2-day training covering program-level coaching, ART facilitation, and organizational agility. Exam included.",
   keywords: [
     "SAFe Advanced Scrum Master",
     "SAFe A-CSM certification",
@@ -78,7 +78,7 @@ export default function AdvancedScrumMasterLayout({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "198",
+      "reviewCount": "2500",
       "bestRating": "5",
       "worstRating": "1"
     }
