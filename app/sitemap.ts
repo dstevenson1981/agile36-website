@@ -1,215 +1,50 @@
 import { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://www.agile36.com';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.agile36.com';
   const currentDate = new Date();
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/courses`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/corporate`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/testimonials`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/refund-policy`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
+  // Main pages: priority 1.0 for homepage, 0.6 for everything else; monthly
+  const mainPages: MetadataRoute.Sitemap = [
+    { url: BASE_URL, lastModified: currentDate, changeFrequency: 'monthly', priority: 1.0 },
+    { url: `${BASE_URL}/about`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/corporate`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/contact`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/safe-certifications`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
-  // SAFe Certification Course Pages
-  const safeCourses: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/courses/leading-safe`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/product-owner-manager`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/lean-portfolio-management`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/agile-product-management`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/scrum-master`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/safe-for-teams`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/devops`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/advanced-scrum-master`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/release-train-engineer`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/value-stream-mapping`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/responsible-ai`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/safe-devops`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
+  // All course pages under /courses/: weekly, priority 0.8
+  const courseSlugs = [
+    'leading-safe',
+    'product-owner-manager',
+    'lean-portfolio-management',
+    'agile-product-management',
+    'scrum-master',
+    'safe-for-teams',
+    'devops',
+    'advanced-scrum-master',
+    'release-train-engineer',
+    'value-stream-mapping',
+    'responsible-ai',
+    'safe-devops',
+    'certified-ai-product-manager',
+    'ai-agent-builder',
+    'ai-driven-scrum-master',
+    'executive-genai-leadership',
+    'generative-ai-project-managers',
+    'certified-genai-practitioner',
+    'pmp-certification',
   ];
 
-  // AI Product Manager Certification Pages
-  const aiProductCourses: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/courses/certified-ai-product-manager`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/ai-agent-builder`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-  ];
+  const coursePages: MetadataRoute.Sitemap = courseSlugs.map((slug) => ({
+    url: `${BASE_URL}/courses/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
 
-  // Generative AI Course Pages
-  const genAICourses: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/courses/ai-driven-scrum-master`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/executive-genai-leadership`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/generative-ai-project-managers`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/courses/certified-genai-practitioner`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-  ];
-
-  // PMI Certification Pages
-  const pmiCourses: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/courses/pmp-certification`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-  ];
-
-  // Blog/Resource Pages
-  const blogPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/blog/ai-transformation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog/ai-tools-product-managers`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog/lean-portfolio-management`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-  ];
-
-  // City-specific certification training pages
-  // List of cities (30 major US cities)
+  // Geo pages (city-specific certification training): monthly, priority 0.6
   const cities = [
     'new-york',
     'los-angeles',
@@ -243,8 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'baltimore',
   ];
 
-  // Certification training routes
-  const certificationRoutes = [
+  const geoRoutes = [
     'leading-safe-certification-training',
     'safe-for-teams-certification-training',
     'scrum-master-certification-training',
@@ -254,28 +88,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'release-train-engineer-certification-training',
   ];
 
-  // Generate all city-specific certification training pages
-  const cityCertificationPages: MetadataRoute.Sitemap = [];
-  for (const route of certificationRoutes) {
+  const geoPages: MetadataRoute.Sitemap = [];
+  for (const route of geoRoutes) {
     for (const city of cities) {
-      cityCertificationPages.push({
-        url: `${baseUrl}/${route}/${city}`,
+      geoPages.push({
+        url: `${BASE_URL}/${route}/${city}`,
         lastModified: currentDate,
         changeFrequency: 'monthly',
-        priority: 0.8,
+        priority: 0.6,
       });
     }
   }
 
-  // Combine all pages
-  return [
-    ...staticPages,
-    ...safeCourses,
-    ...aiProductCourses,
-    ...genAICourses,
-    ...pmiCourses,
-    ...blogPages,
-    ...cityCertificationPages,
-  ];
+  return [...mainPages, ...coursePages, ...geoPages];
 }
-
