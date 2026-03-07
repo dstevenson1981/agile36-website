@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "SAFe® Value Stream Mapping Course | SAFe VSM Training | Agile36",
     description: "Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
     type: "website",
-    url: "https://agile36.com/courses/value-stream-mapping",
+    url: "https://www.agile36.com/courses/value-stream-mapping",
   },
   twitter: {
     card: "summary_large_image",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/value-stream-mapping",
+    canonical: "https://www.agile36.com/courses/value-stream-mapping",
   },
 };
 

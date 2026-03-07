@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training | Agile36",
     description: "Master SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management. Earn 16 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/product-owner-manager",
+    url: "https://www.agile36.com/courses/product-owner-manager",
   },
   twitter: {
     card: "summary_large_image",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Master SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/product-owner-manager",
+    canonical: "https://www.agile36.com/courses/product-owner-manager",
   },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Contact Us | Agile36",
     description: "Get in touch with Agile36 for enterprise agile training, AI transformation services, and certification programs.",
     type: "website",
-    url: "https://agile36.com/contact",
+    url: "https://www.agile36.com/contact",
     images: [
       {
         url: "/og-contact.jpg",

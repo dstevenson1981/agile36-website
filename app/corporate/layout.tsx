@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Enterprise Agile & AI Training Solutions | Agile36",
     description: "Transform your organization with world-class enterprise agile training, private group training, and AI transformation services.",
     type: "website",
-    url: "https://agile36.com/corporate",
+    url: "https://www.agile36.com/corporate",
     images: [
       {
         url: "/og-corporate.jpg",

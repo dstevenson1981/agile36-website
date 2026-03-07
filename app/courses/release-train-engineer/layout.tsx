@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "SAFe® Release Train Engineer (RTE) Certification Training | Agile36",
     description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching. Earn 21 PDUs.",
     type: "website",
-    url: "https://agile36.com/courses/release-train-engineer",
+    url: "https://www.agile36.com/courses/release-train-engineer",
   },
   twitter: {
     card: "summary_large_image",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/release-train-engineer",
+    canonical: "https://www.agile36.com/courses/release-train-engineer",
   },
 };
 
@@ -50,7 +50,7 @@ export default function ReleaseTrainEngineerLayout({
     "provider": {
       "@type": "Organization",
       "name": "Agile36",
-      "url": "https://agile36.com"
+      "url": "https://www.agile36.com"
     },
     "courseCode": "SAFe RTE",
     "educationalCredentialAwarded": "SAFe Release Train Engineer (RTE) Certification",

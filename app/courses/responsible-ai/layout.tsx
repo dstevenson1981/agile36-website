@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training | Agile36",
     description: "Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
     type: "website",
-    url: "https://agile36.com/courses/responsible-ai",
+    url: "https://www.agile36.com/courses/responsible-ai",
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/responsible-ai",
+    canonical: "https://www.agile36.com/courses/responsible-ai",
   },
 };
 

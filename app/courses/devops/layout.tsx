@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 DevOps (SDP) Certification Training | Agile36",
     description: "Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe. Earn 16 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/devops",
+    url: "https://www.agile36.com/courses/devops",
   },
   twitter: {
     card: "summary_large_image",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/devops",
+    canonical: "https://www.agile36.com/courses/devops",
   },
 };
 

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course | Agile36",
     description: "Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
     type: "website",
-    url: "https://agile36.com/courses/executive-genai-leadership",
+    url: "https://www.agile36.com/courses/executive-genai-leadership",
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/executive-genai-leadership",
+    canonical: "https://www.agile36.com/courses/executive-genai-leadership",
   },
 };
 

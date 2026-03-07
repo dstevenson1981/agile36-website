@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
     description: "Earn your SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
     type: "website",
-    url: "https://agile36.com/courses/scrum-master",
+    url: "https://www.agile36.com/courses/scrum-master",
   },
   twitter: {
     card: "summary_large_image",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/scrum-master",
+    canonical: "https://www.agile36.com/courses/scrum-master",
   },
 };
 

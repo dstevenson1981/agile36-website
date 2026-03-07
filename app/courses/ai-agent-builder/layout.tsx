@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers | Agile36",
     description: "Master no-code AI agents and automation without programming! Build intelligent workflows, automate tasks, and supercharge productivity with 25+ hands-on projects.",
     type: "website",
-    url: "https://agile36.com/courses/ai-agent-builder",
+    url: "https://www.agile36.com/courses/ai-agent-builder",
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Master no-code AI agents and automation without programming! Build intelligent workflows with 25+ hands-on projects.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/ai-agent-builder",
+    canonical: "https://www.agile36.com/courses/ai-agent-builder",
   },
 };
 

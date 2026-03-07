@@ -82,7 +82,7 @@ function generateUnsubscribeToken(email: string, campaignId: number): string {
 
 // Helper function to add unsubscribe link to email
 function addUnsubscribeLink(htmlContent: string, token: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://agile36.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agile36.com';
   const unsubscribeUrl = `${baseUrl}/unsubscribe/${token}`;
   
   const unsubscribeFooter = `
@@ -101,7 +101,7 @@ function addUnsubscribeLink(htmlContent: string, token: string): string {
 
 // Helper function to add unsubscribe link to plain text email
 function addUnsubscribeLinkText(textContent: string, token: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://agile36.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agile36.com';
   const unsubscribeUrl = `${baseUrl}/unsubscribe/${token}`;
   
   const unsubscribeFooter = `\n\n---\nYou're receiving this email because you subscribed to Agile36 updates.\nUnsubscribe: ${unsubscribeUrl}`;

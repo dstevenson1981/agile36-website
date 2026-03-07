@@ -851,8 +851,8 @@ export default function ReleaseTrainEngineerCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">SAFe Scrum Master Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Scrum Master Certification Course</h2>
+            <p className="text-sm text-gray-600 mb-2">SAFe Release Train Engineer Course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Release Train Engineer (RTE) Certification Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -887,14 +887,14 @@ export default function ReleaseTrainEngineerCoursePage() {
                 courses: [
                   { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. For questions, please email d.stevenson@agile36.com." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Us to Register' button on this page, or call our support team. We're available to answer any questions about the training program and enrollment. This is a private course, so please contact us to discuss your training needs." },
-                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Scrum Master training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
+                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Release Train Engineer training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, this is a private course that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule that fits your organization's requirements." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "This is a private course, so schedules are arranged based on your organization's needs. Please contact us using the 'Contact Us to Register' button to discuss available dates and schedule a training session that works for your team." },
                   { q: "After enrollment, can I change the date of my training class?", a: "Yes, since this is a private course, we can work with you to reschedule your training class. Please contact our support team to discuss rescheduling options and we'll accommodate your needs whenever possible." },
-                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Scrum Master course and passing the certification exam, you'll receive the official SAFe Scrum Master (SSM) certificate from Scaled Agile, Inc." }
+                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Release Train Engineer course and passing the certification exam, you'll receive the official SAFe Release Train Engineer (RTE) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Scrum Master exam?", a: "The SAFe Scrum Master exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
+                  { q: "What is the format of the SAFe Release Train Engineer exam?", a: "The SAFe Release Train Engineer exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
                   { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
@@ -908,13 +908,13 @@ export default function ReleaseTrainEngineerCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Scrum Master certification?", a: "SAFe Scrum Master is a comprehensive course that provides the knowledge and skills needed to effectively facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment. It prepares you for the SAFe Scrum Master (SSM) certification exam." },
-                  { q: "Who should take this course?", a: "This course is ideal for Product Managers, Product Directors, Executives, Enterprise Architects, Program Managers, and anyone interested in strategic product management in a SAFe environment." },
-                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in product management or software development is recommended." },
+                  { q: "What is SAFe Release Train Engineer (RTE) certification?", a: "SAFe Release Train Engineer is a comprehensive course that provides the knowledge and skills needed to facilitate Agile Release Train (ART) events, coach leaders and teams, and drive continuous improvement at the program level. It prepares you for the SAFe Release Train Engineer (RTE) certification exam." },
+                  { q: "Who should take this course?", a: "This course is ideal for Release Train Engineers, Agile Coaches, Scrum Masters, Program Managers, and anyone responsible for facilitating and improving Agile Release Trains in a SAFe environment." },
+                  { q: "What are the prerequisites for this course?", a: "Leading SAFe (SA) or SAFe Scrum Master (SSM) certification is recommended. Experience with Agile teams and PI Planning is helpful." },
                   { q: "How long is the course?", a: "The SAFe Release Train Engineer certification training is a 3-day program." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
-                  { q: "How do I maintain my certification?", a: "The SAFe Scrum Master certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
+                  { q: "How do I maintain my certification?", a: "The SAFe Release Train Engineer (RTE) certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
                 ]
               };
 

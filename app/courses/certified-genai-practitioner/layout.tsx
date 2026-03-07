@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Certified GenAI Practitioner™ Certification Training | GenAI Training | Agile36",
     description: "Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
     type: "website",
-    url: "https://agile36.com/courses/certified-genai-practitioner",
+    url: "https://www.agile36.com/courses/certified-genai-practitioner",
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/certified-genai-practitioner",
+    canonical: "https://www.agile36.com/courses/certified-genai-practitioner",
   },
 };
 

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 Agile Product Management (APM) Certification Training | Agile36",
     description: "Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy. Earn 24 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/agile-product-management",
+    url: "https://www.agile36.com/courses/agile-product-management",
   },
   twitter: {
     card: "summary_large_image",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/agile-product-management",
+    canonical: "https://www.agile36.com/courses/agile-product-management",
   },
 };
 

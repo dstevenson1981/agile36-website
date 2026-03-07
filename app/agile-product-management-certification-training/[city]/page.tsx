@@ -330,7 +330,7 @@ export default function CityAPMCoursePage() {
                     <div>
                       <h2 className="text-3xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        SAFe Lean Portfolio Management® 6.0 is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). This course prepares you to take the SAFe® 6 Agilist (SA) certification exam.
+                        SAFe Agile Product Management® 6.0 is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). This course prepares you to take the SAFe® Agile Product Management (APM) certification exam.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
                         During this two-day course, you'll learn how to lead an enterprise Agile transformation by leveraging the Scaled Agile Framework. You'll understand how to establish team and technical agility, organize around value, and lead the transformation.
@@ -377,7 +377,7 @@ export default function CityAPMCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">SAFe® 6 Agilist (SA) Certification</p>
+                            <p className="font-semibold text-gray-900">SAFe® Agile Product Management (APM) Certification</p>
                             <p className="text-sm text-gray-600">Valid for 1 year, renewable</p>
                           </div>
                         </div>
@@ -402,22 +402,22 @@ export default function CityAPMCoursePage() {
                       </div>
                     </div>
 
-                    {/* What is SAFe Lean Portfolio Management Training */}
+                    {/* What is SAFe Agile Product Management Training */}
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">What is SAFe Agile Product Management training?</h3>
                       <p className="text-base text-gray-700 mb-4">
                         SAFe Agile Product Management Training is a certification program designed to help professionals understand and effectively manage products within the Scaled Agile Framework (SAFe). This comprehensive course covers the principles, practices, and tools needed to drive continuous exploration, optimize product value, and deliver business outcomes in a SAFe environment.
                       </p>
                       <p className="text-base text-gray-700">
-                        The training prepares participants for the SAFe Lean Portfolio Management certificate exam, providing them with the knowledge and skills to scale Agile practices across large organizations and deliver value more effectively.
+                        The training prepares participants for the SAFe Agile Product Management certificate exam, providing them with the knowledge and skills to scale Agile practices across large organizations and deliver value more effectively.
                       </p>
                     </div>
 
-                    {/* Why SAFe Lean Portfolio Management */}
+                    {/* Why SAFe Agile Product Management */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why SAFe Lean Portfolio Management?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why SAFe Agile Product Management?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The SAFe Lean Portfolio Management® Certification empowers professionals to lead Agile transformations at an enterprise scale. It provides a comprehensive understanding of how to apply Lean-Agile principles across multiple teams and departments, ensuring alignment and continuous delivery of value.
+                        The SAFe Agile Product Management® Certification empowers professionals to lead Agile transformations at an enterprise scale. It provides a comprehensive understanding of how to apply Lean-Agile principles across multiple teams and departments, ensuring alignment and continuous delivery of value.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
                         By earning this certification, you gain the expertise to coordinate multiple teams, enhance collaboration, and deliver continuous value to customers. The certification is recognized globally and opens doors to leadership roles in Agile organizations.
@@ -436,12 +436,12 @@ export default function CityAPMCoursePage() {
 
                     {/* What Will You Learn */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in SAFe Lean Portfolio Management Certification Training?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in SAFe Agile Product Management Certification Training?</h3>
                       <p className="text-base text-gray-700 mb-4">
                         Complete your SAFe Agile certification course to gain the practical tools and leadership mindset needed to scale agility across your organization. This comprehensive training covers all aspects of the Scaled Agile Framework.
                       </p>
                       <p className="text-base text-gray-700 mb-6">
-                        Through SAFe Lean Portfolio Management Agilist Certification, you will learn:
+                        Through SAFe Agile Product Management Agilist Certification, you will learn:
                       </p>
                       <div className="space-y-4">
                         {[
@@ -468,9 +468,9 @@ export default function CityAPMCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Lean Portfolio Management Certification Training Course?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Agile Product Management Certification Training Course?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        There are no prerequisites to enroll in the <strong>SAFe Lean Portfolio Management Certification course.</strong> However, it is recommended for professionals to have:
+                        There are no prerequisites to enroll in the <strong>SAFe Agile Product Management Certification course.</strong> However, it is recommended for professionals to have:
                       </p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
@@ -504,7 +504,7 @@ export default function CityAPMCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® Agile Certification Advance Your Career?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        Earning your SAFe Lean Portfolio Management certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to lead Agile transformations and manage complex enterprise-level initiatives.
+                        Earning your SAFe Agile Product Management certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to lead Agile transformations and manage complex enterprise-level initiatives.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
@@ -570,7 +570,7 @@ export default function CityAPMCoursePage() {
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Lean Portfolio Management Exam Information</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Agile Product Management Exam Information</h3>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
@@ -652,7 +652,7 @@ export default function CityAPMCoursePage() {
                         { 
                           name: "Michael Rodriguez", 
                           role: "Agile Transformation Lead", 
-                          review: "The SAFe Lean Portfolio Management training exceeded my expectations. The real-world examples and case studies made the concepts easy to understand. The practice exam was particularly helpful.",
+                          review: "The SAFe Agile Product Management training exceeded my expectations. The real-world examples and case studies made the concepts easy to understand. The practice exam was particularly helpful.",
                           rating: 5
                         },
                         { 
@@ -676,7 +676,7 @@ export default function CityAPMCoursePage() {
                         { 
                           name: "Robert Anderson", 
                           role: "Scrum Master", 
-                          review: "The SAFe Lean Portfolio Management certification has opened new career opportunities for me. The training materials are comprehensive and the exam preparation was thorough.",
+                          review: "The SAFe Agile Product Management certification has opened new career opportunities for me. The training materials are comprehensive and the exam preparation was thorough.",
                           rating: 5
                         },
                         { 
@@ -720,8 +720,8 @@ export default function CityAPMCoursePage() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                        { q: "What is the SAFe Lean Portfolio Management certification?", a: "The SAFe Lean Portfolio Management (SA) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
-                        { q: "How long is the certification valid?", a: "The SAFe Lean Portfolio Management certification is valid for one year from the date of issue. You can renew it by earning continuing education credits." },
+                        { q: "What is the SAFe Agile Product Management certification?", a: "The SAFe Agile Product Management (APM) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
+                        { q: "How long is the certification valid?", a: "The SAFe Agile Product Management certification is valid for one year from the date of issue. You can renew it by earning continuing education credits." },
                         { q: "What is included in the course?", a: "The course includes 16 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners." }
                       ].map((faq, index) => (
@@ -762,7 +762,7 @@ export default function CityAPMCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">SAFe Lean Portfolio Management Certification</span>
+                    <span className="text-sm text-gray-700">SAFe Agile Product Management Certification</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -797,7 +797,7 @@ export default function CityAPMCoursePage() {
           <div className="text-center mb-8">
             <p className="text-sm text-gray-600 mb-2">Unsure about your prep?</p>
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-bold text-gray-900">SAFe Lean Portfolio Management® Practice Test</h2>
+              <h2 className="text-4xl font-bold text-gray-900">SAFe Agile Product Management® Practice Test</h2>
               <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
@@ -835,7 +835,7 @@ export default function CityAPMCoursePage() {
               {/* Title and Users */}
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-bold text-gray-900">
-                  SAFe Lean Portfolio Management Practice Test | SAFe Lean Portfolio Management Mock Test
+                  SAFe Agile Product Management Practice Test | SAFe Agile Product Management Mock Test
                 </h3>
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -885,7 +885,7 @@ export default function CityAPMCoursePage() {
       <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Lean Portfolio Management® Certification</p>
+            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Agile Product Management® Certification</p>
             <div className="flex items-center justify-center gap-2 mb-4">
               <h2 className="text-2xl font-bold text-gray-900">SAFe 6.0 Agilist Certificate</h2>
               <div className="flex gap-1">
@@ -914,8 +914,8 @@ export default function CityAPMCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">SAFe Lean Portfolio Management® Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Lean Portfolio Management® 6.0 Certification Course</h2>
+            <p className="text-sm text-gray-600 mb-2">SAFe Agile Product Management® Course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Agile Product Management® 6.0 Certification Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -950,14 +950,14 @@ export default function CityAPMCoursePage() {
                 courses: [
                   { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for more details." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Course Advisor' button on this page, or call our support team. We're available to answer any questions about the training program, schedules, and enrollment." },
-                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Lean Portfolio Management training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
+                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Agile Product Management training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, we offer private/corporate training sessions that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "You can view all upcoming schedules by clicking the 'View Schedules' button on this page, or visit our course schedule page. Schedules are updated regularly and show both live virtual and in-person options." },
                   { q: "After enrollment, can I change the date of my training class?", a: "Yes, you can reschedule your training class as long as it's within 24 hours of the start time at no additional charge. Please contact our support team to make changes to your enrollment." },
-                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Lean Portfolio Management course and passing the certification exam, you'll receive the official SAFe 6.0 Agilist (SA) certificate from Scaled Agile, Inc." }
+                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Agile Product Management course and passing the certification exam, you'll receive the official SAFe 6.0 Agilist (SA) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Lean Portfolio Management exam?", a: "The SAFe Lean Portfolio Management exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
+                  { q: "What is the format of the SAFe Agile Product Management exam?", a: "The SAFe Agile Product Management exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
                   { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
@@ -971,13 +971,13 @@ export default function CityAPMCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Lean Portfolio Management certification?", a: "SAFe Lean Portfolio Management is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
+                  { q: "What is SAFe Agile Product Management certification?", a: "SAFe Agile Product Management is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
                   { q: "Who should take this course?", a: "This course is ideal for executives, leaders, Agile coaches, program managers, product managers, and anyone interested in leading enterprise Agile transformations." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in software development or IT projects is recommended." },
-                  { q: "How long is the course?", a: "The SAFe Lean Portfolio Management course is a 2-day intensive training program, totaling 16 hours of instruction." },
+                  { q: "How long is the course?", a: "The SAFe Agile Product Management course is a 2-day intensive training program, totaling 16 hours of instruction." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
-                  { q: "How do I maintain my certification?", a: "The SAFe Lean Portfolio Management certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
+                  { q: "How do I maintain my certification?", a: "The SAFe Agile Product Management certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
                 ]
               };
 
@@ -1037,7 +1037,7 @@ export default function CityAPMCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
-              Why Choose the SAFe Lean Portfolio Management Certification Course with Agile36?
+              Why Choose the SAFe Agile Product Management Certification Course with Agile36?
             </h2>
           </div>
 
@@ -1058,7 +1058,7 @@ export default function CityAPMCoursePage() {
                     Globally Recognized SAFe® Certification
                   </h3>
                   <p className="text-base text-gray-700">
-                    Agile36 offers SAFe Lean Portfolio Management training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
+                    Agile36 offers SAFe Agile Product Management training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
                   </p>
                 </div>
               </div>
@@ -1203,26 +1203,26 @@ export default function CityAPMCoursePage() {
         </div>
       </section>
 
-      {/* SAFe Lean Portfolio Management Certification in the USA Section */}
+      {/* SAFe Agile Product Management Certification in the USA Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe Lean Portfolio Management Certification in the USA
+              SAFe Agile Product Management Certification in the USA
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              There has been a significant increase in demand for the SAFe Lean Portfolio Management 6.0 Agilist certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified professionals to spearhead enterprise-wide Agile transformations. These certified experts are highly valued for their expertise in connecting strategy with execution through Lean-Agile leadership principles. The SAFe Lean Portfolio Management certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
+              There has been a significant increase in demand for the SAFe Agile Product Management 6.0 Agilist certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified professionals to spearhead enterprise-wide Agile transformations. These certified experts are highly valued for their expertise in connecting strategy with execution through Lean-Agile leadership principles. The SAFe Agile Product Management certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Lean Portfolio Management Professionals in the USA?
+              What Are Job Opportunities for SAFe Agile Product Management Professionals in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              SAFe Lean Portfolio Management 6.0 certified professionals in the United States have access to a wide range of career opportunities. Popular roles include Agile Coach, Release Train Engineer, Product Owner, Program Manager, and Scrum Master. These positions are in high demand across various industries throughout the USA, including IT, finance, healthcare, and manufacturing sectors. As more enterprises in the United States adopt the Scaled Agile Framework to improve their outcomes and accelerate delivery, the need for certified SAFe professionals continues to grow across the country.
+              SAFe Agile Product Management 6.0 certified professionals in the United States have access to a wide range of career opportunities. Popular roles include Agile Coach, Release Train Engineer, Product Owner, Program Manager, and Scrum Master. These positions are in high demand across various industries throughout the USA, including IT, finance, healthcare, and manufacturing sectors. As more enterprises in the United States adopt the Scaled Agile Framework to improve their outcomes and accelerate delivery, the need for certified SAFe professionals continues to grow across the country.
             </p>
           </div>
 
@@ -1232,28 +1232,28 @@ export default function CityAPMCoursePage() {
               What Certifications Are Required for SAFe Agile Certification Training in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe Agile Certification Training in the United States. However, having foundational knowledge of Agile principles, Scrum methodologies, or project management (such as CSM or PMP certifications) can be beneficial for participants. The SAFe Lean Portfolio Management 6.0 course in the USA prepares candidates for the SAFe Lean Portfolio Management (SA) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
+              No prior certification is required to enroll in SAFe Agile Certification Training in the United States. However, having foundational knowledge of Agile principles, Scrum methodologies, or project management (such as CSM or PMP certifications) can be beneficial for participants. The SAFe Agile Product Management 6.0 course in the USA prepares candidates for the SAFe Agile Product Management (APM) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe Lean Portfolio Management Certification in the USA?
+              What is the Fee for SAFe Agile Product Management Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Lean Portfolio Management certification course in the United States typically ranges from <strong>$545 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Lean Portfolio Management certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Agile Product Management certification course in the United States typically ranges from <strong>$545 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agile Product Management certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Find SAFe Lean Portfolio Management Course in Cities Section */}
+      {/* Find SAFe Agile Product Management Course in Cities Section */}
       <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe Lean Portfolio Management® Course in Other Top Cities in USA
+            Find SAFe Agile Product Management® Course in Other Top Cities in USA
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

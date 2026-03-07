@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.agile36.com"),
   title: "Agile36 - Expert Training in Agile, AI, and Product Management",
   description: "Take the next step in your career with a global leader in SAFe, Generative AI, AI Product, and PMI training. Start your learning journey today.",
   verification: {

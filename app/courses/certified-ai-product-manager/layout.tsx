@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping | Agile36",
     description: "Master AI-powered product management! Use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders.",
     type: "website",
-    url: "https://agile36.com/courses/certified-ai-product-manager",
+    url: "https://www.agile36.com/courses/certified-ai-product-manager",
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Master AI-powered product management! Build prototypes and validate ideas with AI tools.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/certified-ai-product-manager",
+    canonical: "https://www.agile36.com/courses/certified-ai-product-manager",
   },
 };
 

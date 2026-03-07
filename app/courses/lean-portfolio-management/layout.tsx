@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training | Agile36",
     description: "Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding. Earn 16 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/lean-portfolio-management",
+    url: "https://www.agile36.com/courses/lean-portfolio-management",
   },
   twitter: {
     card: "summary_large_image",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/lean-portfolio-management",
+    canonical: "https://www.agile36.com/courses/lean-portfolio-management",
   },
 };
 

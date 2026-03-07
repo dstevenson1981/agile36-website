@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 for Teams Certification Training | Agile36",
     description: "Master SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation. Earn 16 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/safe-for-teams",
+    url: "https://www.agile36.com/courses/safe-for-teams",
   },
   twitter: {
     card: "summary_large_image",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Master SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/safe-for-teams",
+    canonical: "https://www.agile36.com/courses/safe-for-teams",
   },
 };
 

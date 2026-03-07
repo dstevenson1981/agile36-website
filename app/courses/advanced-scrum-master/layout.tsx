@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "SAFe® 6.0 Advanced Scrum Master (A-CSM) Certification Training | Agile36",
     description: "Master advanced SAFe Scrum Master skills with SAFe® Advanced Scrum Master Certification Training. Learn program-level coaching, facilitation, and advanced Agile Release Train support. Earn 16 PDUs & SEUs.",
     type: "website",
-    url: "https://agile36.com/courses/advanced-scrum-master",
+    url: "https://www.agile36.com/courses/advanced-scrum-master",
   },
   twitter: {
     card: "summary_large_image",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Master advanced SAFe Scrum Master skills with SAFe® Advanced Scrum Master Certification Training. Learn program-level coaching, facilitation, and advanced Agile Release Train support.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/advanced-scrum-master",
+    canonical: "https://www.agile36.com/courses/advanced-scrum-master",
   },
 };
 

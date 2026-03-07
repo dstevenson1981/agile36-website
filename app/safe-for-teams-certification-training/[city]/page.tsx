@@ -468,43 +468,37 @@ export default function CitySPCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Lean Portfolio Management Certification Training Course?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe for Teams Certification Training Course?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        There are no prerequisites to enroll in the <strong>SAFe Lean Portfolio Management Certification course.</strong> However, it is recommended for professionals to have:
+                        There are <strong>no prerequisites</strong> to enroll in the <strong>SAFe for Teams Certification course.</strong> This course is open to all team members.
                       </p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Basic understanding of Agile principles and practices</p>
+                          <p className="text-base text-gray-700">Open to all—no prior Agile or SAFe experience required</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Experience working in software development or IT projects</p>
+                          <p className="text-base text-gray-700">Ideal for team members new to SAFe or joining an Agile Release Train</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Interest in leading organizational change and transformation</p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                          <p className="text-base text-gray-700">Willingness to learn and apply SAFe principles in your work environment</p>
+                          <p className="text-base text-gray-700">Perfect for developers, testers, analysts, and cross-functional team members</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Career Advancement */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® Agile Certification Advance Your Career?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® for Teams Certification Advance Your Career?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        Earning your SAFe Lean Portfolio Management certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to lead Agile transformations and manage complex enterprise-level initiatives.
+                        Earning your SAFe for Teams (SAFe Practitioner) certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to work effectively as a team member on Agile Release Trains.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
@@ -950,14 +944,14 @@ export default function CitySPCoursePage() {
                 courses: [
                   { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for more details." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Course Advisor' button on this page, or call our support team. We're available to answer any questions about the training program, schedules, and enrollment." },
-                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Lean Portfolio Management training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
+                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe for Teams training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, we offer private/corporate training sessions that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "You can view all upcoming schedules by clicking the 'View Schedules' button on this page, or visit our course schedule page. Schedules are updated regularly and show both live virtual and in-person options." },
                   { q: "After enrollment, can I change the date of my training class?", a: "Yes, you can reschedule your training class as long as it's within 24 hours of the start time at no additional charge. Please contact our support team to make changes to your enrollment." },
-                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Lean Portfolio Management course and passing the certification exam, you'll receive the official SAFe 6.0 Agilist (SA) certificate from Scaled Agile, Inc." }
+                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe for Teams course and passing the certification exam, you'll receive the official SAFe Practitioner (SP) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Lean Portfolio Management exam?", a: "The SAFe Lean Portfolio Management exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
+                  { q: "What is the format of the SAFe Practitioner exam?", a: "The SAFe Practitioner exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
                   { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
@@ -971,10 +965,10 @@ export default function CitySPCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Lean Portfolio Management certification?", a: "SAFe Lean Portfolio Management is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
+                  { q: "What is SAFe for Teams (SAFe Practitioner) certification?", a: "SAFe for Teams (SAFe Practitioner) is a comprehensive course that provides the knowledge and skills needed to work effectively as a team member on an Agile Release Train. It prepares you for the SAFe Practitioner (SP) certification exam." },
                   { q: "Who should take this course?", a: "This course is ideal for executives, leaders, Agile coaches, program managers, product managers, and anyone interested in leading enterprise Agile transformations." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in software development or IT projects is recommended." },
-                  { q: "How long is the course?", a: "The SAFe Lean Portfolio Management course is a 2-day intensive training program, totaling 16 hours of instruction." },
+                  { q: "How long is the course?", a: "The SAFe for Teams course is a 2-day intensive training program, totaling 16 hours of instruction." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
                   { q: "How do I maintain my certification?", a: "The SAFe Lean Portfolio Management certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }

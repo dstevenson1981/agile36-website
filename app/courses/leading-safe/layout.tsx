@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Leading SAFe® 6.0 Certification Training | SAFe Agilist (SA) | Agile36",
     description: "Master Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation and value streams.",
     type: "website",
-    url: "https://agile36.com/courses/leading-safe",
+    url: "https://www.agile36.com/courses/leading-safe",
   },
   twitter: {
     card: "summary_large_image",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: "Master Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation.",
   },
   alternates: {
-    canonical: "https://agile36.com/courses/leading-safe",
+    canonical: "https://www.agile36.com/courses/leading-safe",
   },
 };
 
