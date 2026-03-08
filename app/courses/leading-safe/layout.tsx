@@ -196,7 +196,7 @@ export default function LeadingSafeLayout({
     "@type": "EducationalOrganization",
     "name": "Agile36",
     "url": "https://www.agile36.com",
-    "logo": "https://www.agile36.com/logo.png",
+    "logo": "https://www.agile36.com/Agile36%20logo%20design%20on%20white%20background-Photoroom.png",
     "description": "Agile36 provides enterprise Agile and AI training including SAFe, Scrum, and Generative AI certifications. Scaled Agile Silver Partner offering expert-led courses for organizational transformation.",
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",

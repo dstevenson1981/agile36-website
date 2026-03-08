@@ -580,7 +580,7 @@ export default function Header() {
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <Link href="/" className="h-28 sm:h-32 w-auto">
                 <Image
-                  src="/Agile36Logo.png"
+                  src="/Agile36%20logo%20design%20on%20white%20background-Photoroom.png"
                   alt="Agile36 Logo"
                   width={360}
                   height={128}

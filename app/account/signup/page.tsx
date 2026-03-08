@@ -19,7 +19,7 @@ export default function SignupPage() {
     setLoading(true);
     setMessage(null);
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -29,14 +29,24 @@ export default function SignupPage() {
     });
 
     if (error) {
-      setMessage({ type: 'error', text: error.message });
+      if (error.message.toLowerCase().includes('already registered') || error.message.toLowerCase().includes('already exists')) {
+        setMessage({
+          type: 'error',
+          text: 'An account with this email already exists. Sign in below, or reset your password if you don\'t remember it.',
+        });
+      } else {
+        setMessage({ type: 'error', text: error.message });
+      }
       setLoading(false);
       return;
     }
 
+    const needsConfirmation = data?.user && !data?.session;
     setMessage({
       type: 'success',
-      text: 'Account created. You can sign in now.',
+      text: needsConfirmation
+        ? 'Check your email to confirm your account. Click the link in the email, then sign in.'
+        : 'Account created. You can sign in now.',
     });
     setLoading(false);
   };
@@ -99,6 +109,16 @@ export default function SignupPage() {
                 }`}
               >
                 {message.text}
+                {message.type === 'error' && message.text.includes('already exists') && (
+                  <div className="mt-2 flex gap-3">
+                    <Link href="/account/login" className="text-[#fa4a23] font-medium hover:underline">
+                      Sign in
+                    </Link>
+                    <Link href="/account/forgot-password" className="text-[#fa4a23] font-medium hover:underline">
+                      Reset password
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
 

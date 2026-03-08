@@ -109,9 +109,17 @@ function LoginForm() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+                  Password
+                </label>
+                <Link
+                  href="/account/forgot-password"
+                  className="text-sm text-[#fa4a23] hover:underline"
+                >
+                  Forgot password?
+                </Link>
+              </div>
               <input
                 id="password"
                 type="password"
@@ -142,7 +150,13 @@ function LoginForm() {
           </form>
 
           <div className="mt-6 pt-6 border-t border-slate-200">
-            <p className="text-sm text-slate-500 mb-2">No password? Get a magic link:</p>
+            <p className="text-sm text-slate-500 mb-2">
+              No password yet?{' '}
+              <Link href="/account/forgot-password" className="text-[#fa4a23] font-medium hover:underline">
+                Reset it
+              </Link>
+              {' or get a login link:'}
+            </p>
             <button
               type="button"
               onClick={handleMagicLink}
