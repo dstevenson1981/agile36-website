@@ -574,28 +574,16 @@ export default function Header() {
       
       {/* Navigation Header */}
       <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
-        <style>{`
-          #agile36-header-logo {
-            height: 140px !important;
-            min-width: 400px !important;
-            width: auto !important;
-            max-height: none !important;
-            object-fit: contain !important;
-            object-position: left !important;
-          }
-        `}</style>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <div className="flex items-center justify-between gap-2 sm:gap-4" style={{ minHeight: 160 }}>
+          <div className="flex items-center justify-between gap-2 sm:gap-4" style={{ minHeight: '100px' }}>
             {/* Logo and All Courses */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-              <Link href="/" className="flex items-center shrink-0">
+              <Link href="/" className="flex-shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  id="agile36-header-logo"
-                  src="/Agile36%20logo%20design%20on%20white%20background-Photoroom.png"
+                  src="/logo.png"
                   alt="Agile36 Logo"
-                  width={420}
-                  height={140}
+                  style={{ height: '80px', width: 'auto', display: 'block' }}
                 />
               </Link>
               
