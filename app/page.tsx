@@ -590,7 +590,7 @@ export default function Home() {
                 <img
                   src="/Agile36_logo_design_on_white_background-Photoroom.png"
                   alt="Agile36 Logo"
-                  style={{ height: '90px', width: 'auto', display: 'block' }}
+                  style={{ height: '120px', width: 'auto', display: 'block', minWidth: '240px' }}
                 />
               </Link>
               
