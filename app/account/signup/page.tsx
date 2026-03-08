@@ -24,7 +24,7 @@ export default function SignupPage() {
       password,
       options: {
         data: { name, full_name: name },
-        emailRedirectTo: `${window.location.origin}/account`,
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agile36.com'}/account/login`,
       },
     });
 
