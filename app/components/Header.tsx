@@ -575,17 +575,15 @@ export default function Header() {
       {/* Navigation Header */}
       <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <div className="flex items-center justify-between h-24 sm:h-28 gap-2 sm:gap-4">
+          <div className="flex items-center justify-between h-32 sm:h-36 gap-2 sm:gap-4">
             {/* Logo and All Courses */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-              <Link href="/" className="h-20 sm:h-24 min-w-[220px] sm:min-w-[320px] flex items-center">
-                <Image
+              <Link href="/" className="flex items-center shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/Agile36%20logo%20design%20on%20white%20background-Photoroom.png"
                   alt="Agile36 Logo"
-                  width={360}
-                  height={128}
-                  className="h-full w-auto min-h-[56px] object-contain object-left"
-                  priority
+                  className="h-28 sm:h-32 w-auto min-w-[260px] sm:min-w-[360px] object-contain object-left"
                 />
               </Link>
               
