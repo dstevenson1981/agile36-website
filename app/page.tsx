@@ -588,7 +588,7 @@ export default function Home() {
               <Link href="/" className="flex-shrink-0 flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Agile36_logo_design_on_white_background-Photoroom.png"
+                  src="/agile36-logo-cropped.png"
                   alt="Agile36 Logo"
                   style={{ height: '120px', width: 'auto', display: 'block', minWidth: '240px' }}
                 />
