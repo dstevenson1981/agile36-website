@@ -194,7 +194,6 @@ export async function POST(request: NextRequest) {
       description: receiptDescription, // This appears on the Stripe receipt as "Payment to Agile36" details
       automatic_payment_methods: {
         enabled: true,
-        allow_redirects: 'never',
       },
       metadata: {
         scheduleId,
