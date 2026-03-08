@@ -582,7 +582,7 @@ export default function Home() {
       {/* Navigation Header with Mega Menu - Only on Home Page */}
       <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <div className="flex items-center justify-between h-16 gap-2 sm:gap-4">
+          <div className="flex items-center justify-between gap-2 sm:gap-4" style={{ minHeight: '120px' }}>
             {/* Logo and All Courses */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <div className="h-28 sm:h-32 w-auto">
