@@ -585,16 +585,14 @@ export default function Home() {
           <div className="flex items-center justify-between gap-2 sm:gap-4" style={{ minHeight: '120px' }}>
             {/* Logo and All Courses */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-              <div className="h-28 sm:h-32 w-auto">
-                <Image
-                  src="/Agile36%20logo%20design%20on%20white%20background-Photoroom.png"
+              <Link href="/" className="flex-shrink-0 flex items-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Agile36_logo_design_on_white_background-Photoroom.png"
                   alt="Agile36 Logo"
-                  width={360}
-                  height={128}
-                  className="h-28 sm:h-32 w-auto object-contain"
-                  priority
+                  style={{ height: '90px', width: 'auto', display: 'block' }}
                 />
-              </div>
+              </Link>
               
               {/* All Courses Dropdown */}
               <div 
