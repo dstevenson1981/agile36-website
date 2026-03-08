@@ -573,7 +573,7 @@ export default function Header() {
       <div className="w-full bg-[#fa4a23] h-1"></div>
       
       {/* Navigation Header */}
-      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50 overflow-x-hidden">
+      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50 overflow-visible">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-2 sm:gap-3 py-3 min-w-0">
             {/* Logo and All Courses */}
