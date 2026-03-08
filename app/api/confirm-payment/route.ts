@@ -146,20 +146,6 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
-    // Practice exam upgrade: grant pro access immediately (backup to webhook)
-    const upgradeType = paymentIntent.metadata?.upgradeType;
-    const userId = paymentIntent.metadata?.userId;
-    const courseSlug = paymentIntent.metadata?.courseSlug;
-    if (upgradeType === 'practice_exam_only' && userId && courseSlug) {
-      try {
-        await supabase.functions.invoke('grant-pro-access', {
-          body: { user_id: userId, course_id: courseSlug },
-        });
-      } catch (err) {
-        console.error('Error granting pro access (webhook will retry):', err);
-      }
-    }
-
     // Mark matching enrollment_leads as completed (same email + schedule)
     if (order?.id && orderData.customer_email && orderData.schedule_id) {
       const customerEmail = String(orderData.customer_email).trim().toLowerCase();

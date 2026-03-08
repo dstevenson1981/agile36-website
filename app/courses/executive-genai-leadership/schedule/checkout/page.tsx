@@ -548,7 +548,6 @@ function CheckoutContent() {
                         schedule: scheduleId || '',
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
-                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/executive-genai-leadership/schedule/checkout/success?${params.toString()}`);
                     }}

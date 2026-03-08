@@ -549,7 +549,6 @@ function CheckoutContent() {
                         schedule: scheduleId || '',
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
-                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/ai-agent-builder/schedule/checkout/success?${params.toString()}`);
                     }}

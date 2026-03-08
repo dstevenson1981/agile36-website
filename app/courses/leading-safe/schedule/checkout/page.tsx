@@ -796,7 +796,6 @@ function CheckoutContent() {
                         course: courseSlug,
                         plan: selectedPlan,
                         amount: totalPrice.toFixed(2),
-                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/leading-safe/schedule/checkout/success?${params.toString()}`);
                     }}

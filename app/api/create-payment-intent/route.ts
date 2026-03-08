@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { createClient } from '@/app/lib/supabase/server';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -157,16 +156,6 @@ export async function POST(request: NextRequest) {
       throw new Error('Customer missing required email field');
     }
 
-    // Get current user if logged in (for practice exam access grant)
-    let userId: string | null = null;
-    try {
-      const supabase = await createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      userId = user?.id ?? null;
-    } catch {
-      // Ignore - user may not be logged in
-    }
-
     // Get schedule details for better description
     const scheduleDate = enrollmentData?.scheduleDate || '';
     const scheduleTime = enrollmentData?.scheduleTime || '';
@@ -212,7 +201,6 @@ export async function POST(request: NextRequest) {
         courseSlug,
         courseName,
         selectedPlan: selectedPlan || 'basic',
-        ...(userId && { userId }),
         planName,
         quantity: quantity.toString(),
         customerEmail,
