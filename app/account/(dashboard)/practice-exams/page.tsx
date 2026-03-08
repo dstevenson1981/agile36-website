@@ -1,90 +1,110 @@
 import Link from 'next/link';
-import { hasPopmProAccess, hasLpmProAccess } from '@/app/lib/practice-exams';
+import { hasPopmProAccess, hasLpmProAccess, getRegisteredCourseSlugs } from '@/app/lib/practice-exams';
+import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
   robots: 'noindex, nofollow',
 };
 
-export default async function PracticeExamsPage() {
-  const hasPopmPro = await hasPopmProAccess();
-  const hasLpmPro = await hasLpmProAccess();
+export default async function PracticeExamsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ upgraded?: string }>;
+}) {
+  const { upgraded } = await searchParams;
+  const [hasPopmPro, hasLpmPro, registeredCourses] = await Promise.all([
+    hasPopmProAccess(),
+    hasLpmProAccess(),
+    getRegisteredCourseSlugs(),
+  ]);
+
+  const hasPopm = registeredCourses.includes('product-owner-manager');
+  const hasLpm = registeredCourses.includes('lean-portfolio-management');
+  const hasAnyExam = hasPopm || hasLpm;
 
   return (
     <div>
+      {upgraded && <UpgradeSuccessBanner courseSlug={upgraded} />}
       <h1 className="text-2xl font-bold text-slate-900 mb-2">Practice Exams</h1>
       <p className="text-slate-600 mb-8">
-        Prepare for your certification with practice tests. Available when you purchase the Pro plan.
+        Practice tests for your courses. Pro plan includes full access. Basic plan? Upgrade for $50 to unlock.
       </p>
 
       <div className="space-y-4">
-        {/* POPM Practice Test */}
-        <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
-              <span className="text-xl">📝</span>
+        {/* POPM - show if registered for course */}
+        {hasPopm && (
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl">📝</span>
+              </div>
+              <div>
+                <h2 className="font-semibold text-slate-900">SAFe Product Owner/Product Manager (POPM)</h2>
+                <p className="text-slate-600 text-sm mt-1">
+                  45 questions covering key SAFe POPM concepts
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-semibold text-slate-900">SAFe Product Owner/Product Manager (POPM)</h2>
-              <p className="text-slate-600 text-sm mt-1">
-                45 questions covering key SAFe POPM concepts
-              </p>
-            </div>
-          </div>
-          {hasPopmPro ? (
-            <Link
-              href="/account/practice-exams/popm"
-              className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-            >
-              Start Test
-            </Link>
-          ) : (
-            <div className="flex-shrink-0 text-right">
-              <p className="text-sm text-amber-600 font-medium">Pro plan required</p>
+            {hasPopmPro ? (
               <Link
-                href="/courses/product-owner-manager/schedule"
-                className="text-sm text-[#fa4a23] hover:underline"
+                href="/account/practice-exams/popm"
+                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
               >
-                Upgrade to access
+                Start Test
               </Link>
-            </div>
-          )}
-        </div>
-
-        {/* LPM Practice Test - whitelisted/Pro users see it in account */}
-        <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
-              <span className="text-xl">📋</span>
-            </div>
-            <div>
-              <h2 className="font-semibold text-slate-900">SAFe Lean Portfolio Management (LPM)</h2>
-              <p className="text-slate-600 text-sm mt-1">
-                51 questions covering key SAFe LPM concepts
-              </p>
-            </div>
+            ) : (
+              <div className="flex-shrink-0 text-right">
+                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
+                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
+                <Link
+                  href="/account/practice-exams/upgrade/product-owner-manager"
+                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
+                >
+                  Upgrade to access →
+                </Link>
+              </div>
+            )}
           </div>
-          {hasLpmPro ? (
-            <Link
-              href="/account/practice-exams/lpm"
-              className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-            >
-              Start Test
-            </Link>
-          ) : (
-            <div className="flex-shrink-0 text-right">
-              <p className="text-sm text-amber-600 font-medium">Pro plan required</p>
-              <Link
-                href="/courses/lean-portfolio-management/schedule"
-                className="text-sm text-[#fa4a23] hover:underline"
-              >
-                Upgrade to access
-              </Link>
-            </div>
-          )}
-        </div>
+        )}
 
-        {/* Placeholder for future practice exams */}
+        {/* LPM - show if registered for course */}
+        {hasLpm && (
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl">📋</span>
+              </div>
+              <div>
+                <h2 className="font-semibold text-slate-900">SAFe Lean Portfolio Management (LPM)</h2>
+                <p className="text-slate-600 text-sm mt-1">
+                  51 questions covering key SAFe LPM concepts
+                </p>
+              </div>
+            </div>
+            {hasLpmPro ? (
+              <Link
+                href="/account/practice-exams/lpm"
+                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
+              >
+                Start Test
+              </Link>
+            ) : (
+              <div className="flex-shrink-0 text-right">
+                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
+                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
+                <Link
+                  href="/account/practice-exams/upgrade/lean-portfolio-management"
+                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
+                >
+                  Upgrade to access →
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Placeholder */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-75">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -93,9 +113,13 @@ export default async function PracticeExamsPage() {
               </svg>
             </div>
             <div>
-              <h2 className="font-semibold text-slate-700">More practice exams coming soon</h2>
+              <h2 className="font-semibold text-slate-700">
+                {hasAnyExam ? 'More practice exams coming soon' : 'Enroll in a course to see practice exams'}
+              </h2>
               <p className="text-slate-500 text-sm mt-1">
-                Additional SAFe certification practice tests will be added for Pro plan purchasers.
+                {hasAnyExam
+                  ? 'Additional SAFe certification practice tests will be added for Pro plan purchasers.'
+                  : 'Practice exams appear here when you enroll in a course. Upgrade to Pro for $50 to unlock.'}
               </p>
             </div>
           </div>

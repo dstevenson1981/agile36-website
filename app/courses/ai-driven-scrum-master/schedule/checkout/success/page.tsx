@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import GrantAccessOnSuccess from "@/app/components/GrantAccessOnSuccess";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -14,6 +15,7 @@ function SuccessContent() {
   const courseSlug = searchParams.get('course');
   const plan = searchParams.get('plan');
   const amount = searchParams.get('amount');
+  const paymentIntent = searchParams.get('payment_intent');
 
   useEffect(() => {
     // Simulate loading
@@ -31,6 +33,7 @@ function SuccessContent() {
 
   return (
     <main className="min-h-screen bg-gray-50">
+      <GrantAccessOnSuccess paymentIntentId={paymentIntent} plan={plan} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
           {/* Success Icon */}

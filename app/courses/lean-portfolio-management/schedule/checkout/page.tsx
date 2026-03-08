@@ -790,6 +790,7 @@ function CheckoutContent() {
                         course: courseSlug,
                         plan: selectedPlan,
                         amount: totalPrice.toFixed(2),
+                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/lean-portfolio-management/schedule/checkout/success?${params.toString()}`);
                     }}

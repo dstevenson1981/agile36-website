@@ -550,6 +550,7 @@ function CheckoutContent() {
                         schedule: scheduleId || '',
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
+                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/certified-ai-product-manager/schedule/checkout/success?${params.toString()}`);
                     }}

@@ -2,6 +2,57 @@ import { createClient } from '@/app/lib/supabase/server';
 import { createClient as createServiceClient } from '@supabase/supabase-js';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
 
+/** Get course slugs the user has registered for (any order, basic or pro) */
+export async function getRegisteredCourseSlugs(): Promise<string[]> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return [];
+
+  const email = user.email;
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+  const lookupEmail = profile?.email ?? email;
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('course_slug')
+    .eq('customer_email', lookupEmail);
+
+  if (!orders?.length) return [];
+  return [...new Set(orders.map((o) => o.course_slug).filter(Boolean))];
+}
+
+/** Check if user has Basic (not Pro) for a course - eligible for $50 upgrade */
+export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean> {
+  const hasPro = await checkProAccess(courseSlug);
+  if (hasPro) return false;
+
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const email = user.email;
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+  const lookupEmail = profile?.email ?? email;
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id')
+    .eq('customer_email', lookupEmail)
+    .eq('course_slug', courseSlug)
+    .eq('plan', 'basic')
+    .limit(1);
+
+  return (orders?.length ?? 0) > 0;
+}
+
 /** Check if the logged-in user has Pro plan for POPM (product-owner-manager) */
 export async function hasPopmProAccess(): Promise<boolean> {
   // Prefer user_access table (grants from Stripe webhook)

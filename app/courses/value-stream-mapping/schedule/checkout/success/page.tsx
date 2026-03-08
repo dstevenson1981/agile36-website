@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import GrantAccessOnSuccess from "@/app/components/GrantAccessOnSuccess";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -30,6 +31,7 @@ function SuccessContent() {
 
   return (
     <main className="min-h-screen bg-gray-50">
+      <GrantAccessOnSuccess paymentIntentId={paymentIntent} plan={plan} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
           <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">

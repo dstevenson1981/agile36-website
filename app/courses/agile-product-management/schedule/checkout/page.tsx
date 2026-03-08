@@ -789,6 +789,7 @@ function CheckoutContent() {
                         course: courseSlug,
                         plan: selectedPlan,
                         amount: totalPrice.toFixed(2),
+                        ...(paymentIntentId && { payment_intent: paymentIntentId }),
                       });
                       router.push(`/courses/agile-product-management/schedule/checkout/success?${params.toString()}`);
                     }}
