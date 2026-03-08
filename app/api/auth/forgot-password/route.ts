@@ -14,9 +14,10 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || request.headers.get('origin') || 'https://www.agile36.com';
     const redirectTo =
       body.redirectTo ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || request.headers.get('origin') || 'https://www.agile36.com'}/account/reset-password`;
+      `${baseUrl}/auth/confirm?next=/account/reset-password`;
 
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
       redirectTo,

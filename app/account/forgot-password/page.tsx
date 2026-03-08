@@ -20,7 +20,7 @@ export default function ForgotPasswordPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email.trim(),
-          redirectTo: `${window.location.origin}/account/reset-password`,
+          redirectTo: `${window.location.origin}/auth/confirm?next=/account/reset-password`,
         }),
       });
 

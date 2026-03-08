@@ -17,34 +17,38 @@ function ResetPasswordForm() {
   const supabase = createClient();
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) {
+    async function init() {
+      // Flow 1: Hash fragment (legacy) - access_token & refresh_token in URL hash
+      const hash = window.location.hash;
+      if (hash) {
+        const params = new URLSearchParams(hash.slice(1));
+        const accessToken = params.get('access_token');
+        const refreshToken = params.get('refresh_token');
+        const type = params.get('type');
+        if (type === 'recovery' && accessToken && refreshToken) {
+          const { error: sessionError } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+          if (!sessionError) {
+            window.history.replaceState(null, '', '/account/reset-password');
+            setReady(true);
+            return;
+          }
+        }
+      }
+
+      // Flow 2: Session from /auth/confirm (PKCE) - user already has session after verifyOtp
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        setReady(true);
+        return;
+      }
+
       setError('Invalid or expired reset link. Please request a new one.');
       setReady(true);
-      return;
     }
-
-    const params = new URLSearchParams(hash.slice(1));
-    const accessToken = params.get('access_token');
-    const refreshToken = params.get('refresh_token');
-    const type = params.get('type');
-
-    if (type !== 'recovery' || !accessToken || !refreshToken) {
-      setError('Invalid or expired reset link. Please request a new one.');
-      setReady(true);
-      return;
-    }
-
-    supabase.auth
-      .setSession({ access_token: accessToken, refresh_token: refreshToken })
-      .then(() => {
-        setReady(true);
-        window.history.replaceState(null, '', '/account/reset-password');
-      })
-      .catch(() => {
-        setError('Invalid or expired reset link. Please request a new one.');
-        setReady(true);
-      });
+    init();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
