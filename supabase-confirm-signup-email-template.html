@@ -6,188 +6,105 @@
   <title>Confirm your Agile36 account</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: #f4f4f4;
-      font-family: 'Open Sans', Arial, sans-serif;
-      color: #222222;
-    }
-
-    .email-wrapper {
-      max-width: 620px;
-      margin: 40px auto;
-      background: #ffffff;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .header {
-      padding: 24px 40px 16px;
-      text-align: center;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 700;
-      color: #222222;
-      display: inline-block;
-    }
-
-    .logo span { color: #E84510; }
-
-    .safe-badge {
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 12px;
-    }
-
-    .safe-badge img {
-      height: 36px;
-      object-fit: contain;
-      vertical-align: middle;
-    }
-
+    body { background-color: #f4f4f4; font-family: "Open Sans", Arial, sans-serif; color: #222; }
+    .email-wrapper { max-width: 620px; margin: 40px auto; background: #fff; border-radius: 4px; overflow: hidden; }
+    .header { padding: 20px 40px 16px; text-align: center; border-bottom: 1px solid #eee; }
+    .header-logos { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .header img.logo-img { height: 32px; width: auto; max-width: 140px; display: inline-block; }
+    .safe-badge img { height: 24px; width: auto; max-width: 100px; object-fit: contain; vertical-align: middle; }
     .body { padding: 32px 40px; }
-
-    .greeting {
-      font-size: 18px;
-      font-weight: 700;
-      color: #222222;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #444444;
-      margin-bottom: 16px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 14px 28px;
-      background-color: #E84510;
-      color: #ffffff !important;
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      border-radius: 4px;
-      margin: 16px 0 24px;
-    }
-
-    .cta-button:hover { background-color: #d13d0e; }
-
-    hr {
-      border: none;
-      border-top: 1px solid #eeeeee;
-      margin: 24px 0;
-    }
-
-    .trusted-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #888888;
-      margin-bottom: 18px;
-    }
-
-    .logos-row-1,
-    .logos-row-2 {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 24px 32px;
-      margin-bottom: 14px;
-    }
-
-    .logos-row-1 img,
-    .logos-row-2 img {
-      height: 22px;
-      object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.7;
-    }
-
-    .trusted-sub {
-      font-size: 13px;
-      color: #888888;
-      margin-top: 4px;
-    }
-
-    .group-note {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #444444;
-    }
-
-    .footer {
-      background: #f9f9f9;
-      border-top: 1px solid #eeeeee;
-      padding: 20px 40px;
-      text-align: center;
-    }
-
-    .footer-links { font-size: 12px; color: #999999; }
-    .footer-links a { color: #999999; text-decoration: none; margin: 0 8px; }
-    .footer-copy { font-size: 11px; color: #bbbbbb; margin-top: 6px; }
+    .greeting { font-size: 18px; font-weight: 700; color: #222; margin-bottom: 12px; }
+    p { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 16px; }
+    hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+    .login-btn { display: inline-block; background: #E84510; color: #fff !important; font-size: 14px; font-weight: 700; padding: 13px 32px; border-radius: 4px; text-decoration: none; margin: 8px 0 24px; }
+    .trusted-label { font-size: 13px; font-weight: 600; color: #888; margin-bottom: 16px; }
+    .logos-row { display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: 16px 20px; margin-bottom: 8px; }
+    .logos-row img { height: 14px; max-height: 14px; max-width: 60px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.6; }
+    .trusted-sub { font-size: 13px; color: #888; }
+    .value-heading { font-size: 15px; font-weight: 700; color: #E84510; margin-bottom: 16px; }
+    .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-bottom: 24px; }
+    .value-item { font-size: 14px; color: #444; display: flex; align-items: center; gap: 8px; }
+    .value-item::before { content: ">"; color: #E84510; font-weight: 700; }
+    .contact { font-size: 14px; color: #444; line-height: 2; }
+    .contact strong { color: #222; }
+    .footer { background: #f9f9f9; border-top: 1px solid #eee; padding: 20px 40px; text-align: center; }
+    .footer-links { font-size: 12px; color: #999; }
+    .footer-links a { color: #999; text-decoration: none; margin: 0 8px; }
+    .footer-copy { font-size: 11px; color: #bbb; margin-top: 6px; }
   </style>
 </head>
 <body>
   <div class="email-wrapper">
 
     <div class="header">
-      <div class="logo">agile<span>36</span></div>
-      <span class="safe-badge">
-        <img src="https://www.agile36.com/Silver.png" alt="SAFe Silver Partner">
-      </span>
+      <div class="header-logos">
+        <img src="https://www.agile36.com/agile36-logo-final.png" alt="Agile36" class="logo-img" style="height:32px;max-width:140px;width:auto;">
+        <span class="safe-badge">
+          <img src="https://www.agile36.com/Silver.png" alt="SAFe Silver Partner" style="height:24px;max-width:100px;width:auto;">
+        </span>
+      </div>
     </div>
 
     <div class="body">
 
       <p class="greeting">Welcome{{ if .Data.full_name }}, {{ .Data.full_name }}{{ end }}!</p>
 
-      <p>Thank you for registering with Agile36. Please confirm your email address by clicking the button below:</p>
+      <p>Thank you for creating your Agile36 account. Please confirm your email address by clicking the button below to access your courses, track your progress, and manage your certifications.</p>
 
-      <p><a href="{{ .ConfirmationURL }}" class="cta-button">Confirm your email</a></p>
+      <a href="{{ .ConfirmationURL }}" class="login-btn">Confirm your email</a>
 
-      <p style="font-size: 13px; color: #888888;">If you didn't create an account, you can safely ignore this email.</p>
+      <p style="font-size: 13px; color: #888;">If you didn't create an account, you can safely ignore this email.</p>
+
+      <p>Agile36 is a registered education provider with over 20 years of enterprise consulting experience. We have trained thousands of professionals across Fortune 100 companies in Agile, AI, and Product Management.</p>
 
       <hr>
 
-      <p>Agile36 is a registered education provider helping thousands of professionals get certified every year in Agile, AI, and Product Management. We offer 100+ courses and certifications — trusted by leading organizations around the world.</p>
+      <p class="trusted-label">Trained professionals at</p>
 
-      <p class="trusted-label">Trusted by</p>
-
-      <div class="logos-row-1">
-        <img src="https://www.agile36.com/logo-amazon.svg" alt="Amazon">
-        <img src="https://www.agile36.com/apple-11.svg" alt="Apple">
-        <img src="https://www.agile36.com/accenture-6.svg" alt="Accenture">
-        <img src="https://www.agile36.com/tesla-9.svg" alt="Tesla">
-        <img src="https://www.agile36.com/netflix-3.svg" alt="Netflix">
-      </div>
-
-      <div class="logos-row-2">
-        <img src="https://www.agile36.com/disney-2.svg" alt="Disney">
+      <div class="logos-row">
+        <img src="https://www.agile36.com/logo-amazon.svg" alt="Amazon" style="height:14px;max-height:14px;max-width:60px;width:auto;">
+        <img src="https://www.agile36.com/apple-11.svg" alt="Apple" style="height:14px;max-height:14px;max-width:60px;width:auto;">
+        <img src="https://www.agile36.com/accenture-6.svg" alt="Accenture" style="height:14px;max-height:14px;max-width:60px;width:auto;">
+        <img src="https://www.agile36.com/tesla-9.svg" alt="Tesla" style="height:14px;max-height:14px;max-width:60px;width:auto;">
+        <img src="https://www.agile36.com/netflix-3.svg" alt="Netflix" style="height:14px;max-height:14px;max-width:60px;width:auto;">
+        <img src="https://www.agile36.com/disney-2.svg" alt="Disney" style="height:14px;max-height:14px;max-width:60px;width:auto;">
       </div>
 
       <p class="trusted-sub">and 6,000+ companies across the globe</p>
 
       <hr>
 
-      <p class="group-note">If you are registering in groups you can receive higher discounts and benefits. We also reward referrals — when colleagues join through you, everyone benefits. Reach out to learn more about our group and enterprise pricing.</p>
+      <p class="value-heading">Why professionals choose Agile36</p>
+
+      <div class="value-grid">
+        <div class="value-item">Competitive pricing</div>
+        <div class="value-item">Dedicated support</div>
+        <div class="value-item">High exam pass rates</div>
+        <div class="value-item">Enterprise-grade curriculum</div>
+      </div>
+
+      <hr>
+
+      <p>Registering as a group? We offer discounted rates for teams and organizations. We also have a referral program — when someone joins through you, both of you benefit.</p>
+
+      <p>If you have any questions, reach us at <a href="mailto:support@agile36.com" style="color:#E84510;">support@agile36.com</a> or give us a call:</p>
+
+      <div class="contact">
+        <strong>USA:</strong> +1 310-620-7966<br><br>
+        Team Agile36<br>
+        <strong>A Global Educational Provider</strong>
+      </div>
 
     </div>
 
     <div class="footer">
       <div class="footer-links">
         <a href="https://agile36.com">agile36.com</a> &bull;
-        <a href="#">Support</a> &bull;
+        <a href="https://www.agile36.com/account/login">My Account</a> &bull;
         <a href="#">Unsubscribe</a>
       </div>
-      <div class="footer-copy">© 2026 Agile36. All rights reserved.</div>
+      <div class="footer-copy">&copy; 2026 Agile36. All rights reserved.</div>
     </div>
 
   </div>
