@@ -3,8 +3,6 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
-import GrantAccessOnSuccess from "@/app/components/GrantAccessOnSuccess";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
