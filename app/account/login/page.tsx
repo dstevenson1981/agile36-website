@@ -13,12 +13,38 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [needsConfirmation, setNeedsConfirmation] = useState(false);
+  const [resending, setResending] = useState(false);
   const router = useRouter();
+
+  const handleResendConfirmation = async () => {
+    if (!email.trim()) return;
+    setResending(true);
+    setMessage(null);
+    try {
+      const res = await fetch('/api/auth/resend-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setMessage({ type: 'success', text: data.message || 'Confirmation email sent. Check your inbox and spam folder.' });
+        setNeedsConfirmation(false);
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Failed to resend' });
+      }
+    } catch {
+      setMessage({ type: 'error', text: 'Failed to resend. Try again.' });
+    }
+    setResending(false);
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
+    setNeedsConfirmation(false);
 
     try {
       // Use server-side API to bypass corporate firewalls that block direct Supabase connections
@@ -32,6 +58,7 @@ function LoginForm() {
 
       if (!res.ok) {
         setMessage({ type: 'error', text: data.error || 'Login failed' });
+        setNeedsConfirmation(!!data.needsConfirmation);
         setLoading(false);
         return;
       }
@@ -104,6 +131,16 @@ function LoginForm() {
                 }`}
               >
                 {message.text}
+                {message.type === 'error' && needsConfirmation && email.trim() && (
+                  <button
+                    type="button"
+                    onClick={handleResendConfirmation}
+                    disabled={resending}
+                    className="mt-2 block w-full text-left text-[#fa4a23] font-medium hover:underline disabled:opacity-50"
+                  >
+                    {resending ? 'Sending...' : 'Resend confirmation email'}
+                  </button>
+                )}
               </div>
             )}
 

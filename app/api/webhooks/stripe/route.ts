@@ -70,21 +70,65 @@ export async function POST(request: NextRequest) {
 
   // Handle the event
   switch (event.type) {
-    case 'payment_intent.succeeded':
+    case 'checkout.session.completed': {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const userId = session.metadata?.user_id;
+      const courseId = session.metadata?.course_id;
+      if (userId && courseId) {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        if (supabaseUrl && supabaseKey) {
+          try {
+            const { error: fnError } = await supabase.functions.invoke('grant-pro-access', {
+              body: { user_id: userId, course_id: courseId },
+            });
+            if (fnError) console.error('Failed to grant pro access:', fnError);
+          } catch (err) {
+            console.error('Error calling grant-pro-access:', err);
+          }
+        }
+      }
+      break;
+    }
+    case 'payment_intent.succeeded': {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log('Payment succeeded:', paymentIntent.id);
-      
+
       // Update order status in Supabase if needed
       if (paymentIntent.id) {
         await supabase
           .from('orders')
-          .update({ 
+          .update({
             payment_status: 'succeeded',
             updated_at: new Date().toISOString(),
           })
           .eq('payment_intent_id', paymentIntent.id);
       }
+
+      // Grant pro access for practice exams when user_id in metadata and plan is pro
+      const userId = paymentIntent.metadata?.userId;
+      const courseSlug = paymentIntent.metadata?.courseSlug;
+      const selectedPlan = paymentIntent.metadata?.selectedPlan;
+      if (userId && courseSlug && selectedPlan === 'pro') {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        if (supabaseUrl && supabaseKey) {
+          try {
+            const { error: fnError } = await supabase.functions.invoke('grant-pro-access', {
+              body: { user_id: userId, course_id: courseSlug },
+            });
+            if (fnError) {
+              console.error('Failed to grant pro access:', fnError);
+            } else {
+              console.log('Granted pro access:', userId, courseSlug);
+            }
+          } catch (err) {
+            console.error('Error calling grant-pro-access:', err);
+          }
+        }
+      }
       break;
+    }
 
     case 'payment_intent.payment_failed':
       const failedPayment = event.data.object as Stripe.PaymentIntent;

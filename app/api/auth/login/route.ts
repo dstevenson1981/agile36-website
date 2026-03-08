@@ -13,10 +13,21 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 401 });
+      // Supabase returns "Invalid login credentials" for unconfirmed emails (security).
+      // Provide a helpful message so users know to check their inbox.
+      const isInvalidCreds = error.message === 'Invalid login credentials' || error.code === 'invalid_credentials';
+      const isEmailNotConfirmed = error.message === 'Email not confirmed' || error.code === 'email_not_confirmed';
+      const helpfulMessage =
+        isInvalidCreds || isEmailNotConfirmed
+          ? 'Invalid login credentials. If you just signed up, check your email (and spam folder) for the confirmation link. Click it to verify your account, then try again.'
+          : error.message;
+      return NextResponse.json(
+        { error: helpfulMessage, needsConfirmation: isInvalidCreds || isEmailNotConfirmed },
+        { status: 401 }
+      );
     }
 
     return NextResponse.json({ success: true });

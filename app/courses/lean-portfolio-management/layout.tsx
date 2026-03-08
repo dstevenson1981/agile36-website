@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
 
 export const metadata: Metadata = {
   title: "SAFe Lean Portfolio Management (LPM) Certification Training | Agile36",
@@ -165,6 +166,7 @@ export default function LeanPortfolioManagementLayout({
 
   return (
     <>
+      <PracticeExamUpsellBanner courseSlug="lean-portfolio-management" schedulePath="/courses/lean-portfolio-management/schedule" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

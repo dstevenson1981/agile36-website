@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
 
 export const metadata: Metadata = {
   title: "SAFe POPM Certification Training | Product Owner Product Manager | Agile36",
@@ -166,6 +167,7 @@ export default function ProductOwnerManagerLayout({
 
   return (
     <>
+      <PracticeExamUpsellBanner courseSlug="product-owner-manager" schedulePath="/courses/product-owner-manager/schedule" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

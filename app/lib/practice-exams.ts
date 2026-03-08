@@ -1,8 +1,13 @@
 import { createClient } from '@/app/lib/supabase/server';
 import { createClient as createServiceClient } from '@supabase/supabase-js';
+import { checkProAccess } from '@/app/lib/checkCourseAccess';
 
 /** Check if the logged-in user has Pro plan for POPM (product-owner-manager) */
 export async function hasPopmProAccess(): Promise<boolean> {
+  // Prefer user_access table (grants from Stripe webhook)
+  const fromUserAccess = await checkProAccess('product-owner-manager');
+  if (fromUserAccess) return true;
+
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user?.email) return false;
@@ -28,6 +33,10 @@ export async function hasPopmProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for LPM (lean-portfolio-management) */
 export async function hasLpmProAccess(): Promise<boolean> {
+  // Prefer user_access table (grants from Stripe webhook)
+  const fromUserAccess = await checkProAccess('lean-portfolio-management');
+  if (fromUserAccess) return true;
+
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user?.email) return false;
