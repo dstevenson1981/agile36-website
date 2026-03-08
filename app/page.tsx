@@ -40,6 +40,7 @@ export default function Home() {
   });
   const [showCouponModal, setShowCouponModal] = useState(false);
   const [showCouponDisplay, setShowCouponDisplay] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -500,7 +501,7 @@ export default function Home() {
     <main className="bg-[#f0f9ff]">
       {/* Flash Sale Banner - compact, with pulse animation */}
       <div 
-        className="w-full bg-[#fa4a23] py-2 sm:py-2.5 md:py-3 px-2 sm:px-3 cursor-pointer hover:opacity-98 transition-opacity relative overflow-hidden animate-banner-flash"
+        className="w-full bg-[#fa4a23] py-1.5 sm:py-2 md:py-2.5 px-2 sm:px-3 cursor-pointer hover:opacity-98 transition-opacity relative overflow-hidden animate-banner-flash"
         onClick={() => setShowCouponModal(true)}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -580,17 +581,17 @@ export default function Home() {
       <div className="w-full bg-[#fa4a23] h-1"></div>
       
       {/* Navigation Header with Mega Menu - Only on Home Page */}
-      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <div className="flex items-center justify-between gap-2 sm:gap-4" style={{ minHeight: '120px' }}>
+      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50 overflow-x-hidden">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 py-3 min-w-0">
             {/* Logo and All Courses */}
-            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0 min-w-0">
               <Link href="/" className="flex-shrink-0 flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/agile36-logo-final.png"
                   alt="Agile36 Logo"
-                  style={{ height: '50px', width: 'auto', display: 'block' }}
+                  className="h-10 sm:h-[50px] w-auto block object-contain"
                 />
               </Link>
               
@@ -616,12 +617,12 @@ export default function Home() {
                 {/* Mega Menu */}
                 {showMegaMenu && (
                   <div 
-                    className="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-2xl border border-gray-200 z-50"
+                    className="absolute top-full left-0 mt-2 w-[min(900px,calc(100vw-2rem))] max-w-[900px] bg-white rounded-lg shadow-2xl border border-gray-200 z-50 overflow-hidden"
                     onMouseEnter={() => setShowMegaMenu(true)}
                   >
-                    <div className="flex">
+                    <div className="flex flex-col sm:flex-row">
                       {/* Left Sidebar - Categories */}
-                      <div className="w-48 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">
+                      <div className="w-full sm:w-48 bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-200 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg p-4">
                         <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Categories</h3>
                         <ul className="space-y-1">
                           {["SAFe", "Generative AI", "AI Product", "PMI"].map((category) => (
@@ -652,7 +653,7 @@ export default function Home() {
                       </div>
                       
                       {/* Right Content - Courses */}
-                      <div className="flex-1 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500" style={{ maxHeight: '800px' }}>
+                      <div className="flex-1 p-4 sm:p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500" style={{ maxHeight: 'min(70vh, 800px)' }}>
                         <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2 z-10">
                           <h3 className="font-bold text-gray-900 text-lg">
                             {selectedMegaMenuCategory} ({allCourses.filter(course => course.category === selectedMegaMenuCategory).length} Courses)
@@ -724,7 +725,7 @@ export default function Home() {
             </div>
             
             {/* Search Bar */}
-            <div className="flex-1 max-w-md mx-2 sm:mx-4">
+            <div className="flex-1 min-w-0 max-w-md mx-2 sm:mx-3">
               <div className="relative" ref={searchRef}>
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -733,7 +734,7 @@ export default function Home() {
                 </div>
                 <input
                   type="text"
-                  placeholder="Search courses..."
+                  placeholder="Search..."
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className="w-full pl-9 sm:pl-10 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01203d] focus:border-transparent"
@@ -804,7 +805,7 @@ export default function Home() {
             </div>
             
             {/* Navigation Links */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4">
               <a href="#blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Blogs
               </a>
@@ -824,6 +825,20 @@ export default function Home() {
             
             {/* Utility Icons */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
               <Link 
                 href="/contact" 
                 className="p-2 text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
@@ -841,6 +856,63 @@ export default function Home() {
             </div>
           </div>
         </nav>
+
+        {/* Mobile Menu Panel */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div className="px-4 py-4 space-y-1">
+              <Link 
+                href="/courses" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                All Courses
+              </Link>
+              <Link 
+                href="#blog" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Blogs
+              </Link>
+              <Link 
+                href="/test" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Practice Tests
+              </Link>
+              <Link 
+                href="/testimonials" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Testimonials
+              </Link>
+              <Link 
+                href="/corporate" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Corporate
+              </Link>
+              <Link 
+                href="/account" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                My Account
+              </Link>
+              <Link 
+                href="/contact" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
