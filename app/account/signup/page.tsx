@@ -41,6 +41,17 @@ export default function SignupPage() {
       return;
     }
 
+    // Supabase returns success with empty identities when email already exists (no error for security)
+    const identities = data?.user?.identities ?? [];
+    if (data?.user && identities.length === 0) {
+      setMessage({
+        type: 'error',
+        text: 'An account with this email already exists. Sign in below, or reset your password if you don\'t remember it.',
+      });
+      setLoading(false);
+      return;
+    }
+
     const needsConfirmation = data?.user && !data?.session;
     setMessage({
       type: 'success',
