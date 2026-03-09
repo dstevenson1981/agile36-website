@@ -32,12 +32,12 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Build query
+    // Build query - only active, future schedules. Deleted rows or status=cancelled won't appear.
     let query = supabase
       .from('course_schedules')
       .select('*')
       .eq('status', status)
-      .gte('start_date', new Date().toISOString()) // Only future courses
+      .gte('start_date', new Date().toISOString()) // Only today and future
       .order('start_date', { ascending: true });
 
     // Filter by course if provided

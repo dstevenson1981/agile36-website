@@ -26,11 +26,30 @@ export async function POST(request: NextRequest) {
       promoCode,
       promoDiscount,
       originalAmount,
+      isCombo,
     } = body;
 
-    if (!amount || !scheduleId || !customerEmail) {
+    // Combo checkouts cannot use promo codes - ignore any passed
+    const effectivePromoCode = isCombo ? '' : (promoCode || '');
+    const effectivePromoDiscount = isCombo ? 0 : (promoDiscount ?? 0);
+
+    const scheduleIdsRaw = body.scheduleIds;
+    const scheduleIdsArr = scheduleIdsRaw
+      ? (Array.isArray(scheduleIdsRaw) ? scheduleIdsRaw : String(scheduleIdsRaw).split(',').filter(Boolean))
+      : [];
+    const effectiveScheduleId = isCombo && scheduleIdsArr.length
+      ? scheduleIdsArr[0]
+      : scheduleId;
+
+    if (!amount || !customerEmail) {
       return NextResponse.json(
         { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+    if (!effectiveScheduleId) {
+      return NextResponse.json(
+        { error: 'Schedule ID is required' },
         { status: 400 }
       );
     }
@@ -196,8 +215,10 @@ export async function POST(request: NextRequest) {
         enabled: true,
       },
       metadata: {
-        scheduleId,
-        courseSlug,
+        scheduleId: effectiveScheduleId,
+        scheduleIds: (isCombo && scheduleIdsArr.length) ? scheduleIdsArr.join(',') : '',
+        comboId: isCombo ? (body.comboId || '') : '',
+        courseSlug: courseSlug || '',
         courseName,
         selectedPlan: selectedPlan || 'basic',
         planName,
@@ -212,8 +233,8 @@ export async function POST(request: NextRequest) {
         scheduleTime: scheduleTime || '',
         duration: duration || '',
         timezone: enrollmentData?.timezone || '',
-        promoCode: promoCode || '',
-        promoDiscount: promoDiscount ? promoDiscount.toString() : '0',
+        promoCode: effectivePromoCode || '',
+        promoDiscount: effectivePromoDiscount ? effectivePromoDiscount.toString() : '0',
         originalAmount: originalAmount ? originalAmount.toString() : amount.toString(),
         finalAmount: amount.toString(),
       },

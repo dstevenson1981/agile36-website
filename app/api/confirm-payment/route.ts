@@ -111,12 +111,13 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Store order in Supabase
+    // Store order in Supabase (combo orders use comboId for course_slug)
+    const comboId = paymentIntent.metadata?.comboId;
     const orderData = {
       payment_intent_id: paymentIntent.id,
       stripe_customer_id: (paymentIntent.customer as string) || paymentIntent.metadata?.customerId || null,
       schedule_id: paymentIntent.metadata?.scheduleId || '',
-      course_slug: paymentIntent.metadata?.courseSlug || '',
+      course_slug: comboId ? `combo-${comboId}` : (paymentIntent.metadata?.courseSlug || ''),
       course_name: paymentIntent.metadata?.courseName || '',
       plan: paymentIntent.metadata?.selectedPlan || 'basic',
       quantity: parseInt(paymentIntent.metadata?.quantity || '1'),
