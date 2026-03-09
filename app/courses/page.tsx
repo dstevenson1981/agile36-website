@@ -434,16 +434,24 @@ function CoursesContent() {
 
           {/* Main Content */}
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {selectedCategory} ({courseCount} Courses)
               </h1>
-              <Link 
-                href="/"
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-              >
-                View all Courses
-              </Link>
+              <div className="flex items-center gap-4">
+                <Link 
+                  href="/combo-courses"
+                  className="text-sm text-[#fa4a23] hover:text-[#e03d1a] font-medium"
+                >
+                  Combo Courses
+                </Link>
+                <Link 
+                  href="/"
+                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  View all Courses
+                </Link>
+              </div>
             </div>
 
             {/* Course List */}

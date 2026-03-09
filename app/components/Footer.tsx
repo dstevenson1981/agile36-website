@@ -49,6 +49,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
+                  href="/combo-courses" 
+                  className="text-base text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Combo Courses
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/corporate" 
                   className="text-base text-gray-400 hover:text-white transition-colors duration-200"
                 >

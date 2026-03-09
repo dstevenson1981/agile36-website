@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/corporate`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/contact`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/safe-certifications`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/combo-courses`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // All course pages under /courses/: weekly, priority 0.8
