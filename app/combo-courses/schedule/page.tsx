@@ -156,21 +156,10 @@ function ComboScheduleContent() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-600 mb-1">Choose Time*</label>
-                          <select
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white"
-                            value={selectedId || ""}
-                            onChange={(e) =>
-                              setSelectedSchedules((prev) => ({ ...prev, [course.slug]: e.target.value }))
-                            }
-                          >
-                            <option value="">Select time</option>
-                            {schedules.map((s) => (
-                              <option key={s.id} value={s.id}>
-                                {s.displayTime}
-                              </option>
-                            ))}
-                          </select>
+                          <label className="block text-sm font-medium text-gray-600 mb-1">Time</label>
+                          <div className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm bg-gray-50 text-gray-700">
+                            9am – 5pm EST
+                          </div>
                         </div>
                       </div>
                     </div>
