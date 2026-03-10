@@ -390,7 +390,7 @@ function CourseScheduleContent() {
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl font-bold">$100 OFF</span>
                   </div>
-                  <p className="text-sm mb-3 opacity-90">Ends March 15th</p>
+                  <p className="text-sm mb-3 opacity-90">Expires today</p>
                   <div className="bg-white/20 rounded-md p-3 mb-3">
                     <div className="flex items-center justify-between">
                       <span className="font-semibold">Coupon code '100OFF'</span>
