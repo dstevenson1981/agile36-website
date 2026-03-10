@@ -52,21 +52,33 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: true, data: schedule ? [schedule] : [] });
     }
 
-    // Build query - only active, future schedules. Exclude hidden (not shown on website).
+    // Build query - only active, future schedules.
+    // Try with hidden filter first (excludes hidden schedules when column exists).
     let query = supabase
       .from('course_schedules')
       .select('*')
       .eq('status', status)
       .or('hidden.is.null,hidden.eq.false')
-      .gte('start_date', new Date().toISOString()) // Only today and future
+      .gte('start_date', new Date().toISOString())
       .order('start_date', { ascending: true });
 
-    // Filter by course if provided
-    if (courseSlug) {
-      query = query.eq('course_slug', courseSlug);
-    }
+    if (courseSlug) query = query.eq('course_slug', courseSlug);
 
-    const { data, error } = await query;
+    let { data, error } = await query;
+
+    // If hidden column doesn't exist (PostgreSQL 42703), retry without the filter
+    if (error && (error.code === '42703' || String(error.message).includes('column "hidden" does not exist'))) {
+      query = supabase
+        .from('course_schedules')
+        .select('*')
+        .eq('status', status)
+        .gte('start_date', new Date().toISOString())
+        .order('start_date', { ascending: true });
+      if (courseSlug) query = query.eq('course_slug', courseSlug);
+      const retry = await query;
+      data = retry.data;
+      error = retry.error;
+    }
 
     if (error) {
       console.error('Supabase error:', error);
