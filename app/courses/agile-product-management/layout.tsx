@@ -75,7 +75,7 @@ export default function AgileProductManagementLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "950",
+      "price": "1299",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/agile-product-management/schedule"

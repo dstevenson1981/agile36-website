@@ -43,8 +43,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-ssm",
     name: "Leading SAFe Certification Training & SSM Certification Training",
     courses: [
-      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 555 },
-      { id: "2", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
+      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "2", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
     ],
     comboPrice: 799,
     originalPrice: 2220,
@@ -57,8 +57,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-popm",
     name: "Leading SAFe Certification Training & SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 555 },
-      { id: "2", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
+      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "2", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
     ],
     comboPrice: 799,
     originalPrice: 2220,
@@ -71,8 +71,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-popm",
     name: "SSM Certification Training & SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
-      { id: "2", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
+      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "2", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
     ],
     comboPrice: 799,
     originalPrice: 2220,
@@ -85,8 +85,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-teams",
     name: "Leading SAFe Certification Training & SAFe for Teams Certification Training",
     courses: [
-      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 555 },
-      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
+      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 515 },
     ],
     comboPrice: 799,
     originalPrice: 2308,
@@ -99,8 +99,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-teams",
     name: "SSM Certification Training & SAFe for Teams Certification Training",
     courses: [
-      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
-      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
+      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 515 },
     ],
     comboPrice: 850,
     originalPrice: 2308,
@@ -113,8 +113,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "popm-teams",
     name: "SAFe POPM Certification Training & SAFe for Teams Certification Training",
     courses: [
-      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
-      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
+      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
+      { id: "2", name: "SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 515 },
     ],
     comboPrice: 799,
     originalPrice: 2308,
@@ -127,9 +127,9 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-ssm-popm",
     name: "Leading SAFe Certification Training & SSM Certification Training & SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 555 },
-      { id: "2", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
-      { id: "3", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
+      { id: "1", name: "Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "2", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "3", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
     ],
     comboPrice: 1190,
     originalPrice: 3330,
@@ -142,7 +142,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-advanced",
     name: "SSM Certification Training & ASM Certification Path",
     courses: [
-      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
+      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
       { id: "2", name: "SAFe Advanced Scrum Master (ASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 950 },
     ],
     comboPrice: 1177,
@@ -157,7 +157,7 @@ export const COMBO_COURSES: Combo[] = [
     name: "SAFe LPM Certification Training & SAFe APM Certification Training",
     courses: [
       { id: "1", name: "SAFe Lean Portfolio Management", slug: "lean-portfolio-management", badge: BADGES["lean-portfolio-management"], price: 950 },
-      { id: "2", name: "SAFe Agile Product Management", slug: "agile-product-management", badge: BADGES["agile-product-management"], price: 950 },
+      { id: "2", name: "SAFe Agile Product Management", slug: "agile-product-management", badge: BADGES["agile-product-management"], price: 1299 },
     ],
     comboPrice: 1700,
     originalPrice: 3800,
@@ -170,7 +170,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-pmp",
     name: "SAFe Scrum Master & PMP Certification",
     courses: [
-      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
+      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
       { id: "2", name: "PMP® Certification Training", slug: "pmp-certification", badge: BADGES["pmp-certification"], price: 1150 },
     ],
     comboPrice: 1275,
@@ -184,7 +184,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "popm-pmp",
     name: "SAFe POPM & PMP Certification",
     courses: [
-      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
+      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
       { id: "2", name: "PMP® Certification Training", slug: "pmp-certification", badge: BADGES["pmp-certification"], price: 1150 },
     ],
     comboPrice: 1275,
@@ -239,7 +239,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-ai-scrum",
     name: "SAFe Scrum Master & AI-Driven Scrum Master",
     courses: [
-      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 555 },
+      { id: "1", name: "SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
       { id: "2", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 299 },
     ],
     comboPrice: 699,
@@ -253,7 +253,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "popm-ai-product",
     name: "SAFe POPM & Certified AI Product Manager",
     courses: [
-      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 555 },
+      { id: "1", name: "SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
       { id: "2", name: "Certified AI Product Manager", slug: "certified-ai-product-manager", badge: BADGES["certified-ai-product-manager"], price: 400 },
     ],
     comboPrice: 799,
