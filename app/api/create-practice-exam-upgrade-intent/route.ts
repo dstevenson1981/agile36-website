@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
       receipt_email: email,
       statement_descriptor: 'Agile36 Practice Exam',
       description: `${courseName} - Practice Exam Upgrade`,
-      payment_method_types: ['card', 'google_pay', 'apple_pay'],
+      payment_method_types: ['card'],
       metadata: {
         userId: user.id,
         courseSlug,

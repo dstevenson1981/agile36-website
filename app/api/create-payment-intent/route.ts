@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
       receipt_email: trimmedEmail, // Send receipt email automatically
       statement_descriptor: 'Agile36 Course', // Shows on card statement (max 22 chars)
       description: receiptDescription, // This appears on the Stripe receipt as "Payment to Agile36" details
-      payment_method_types: ['card', 'google_pay', 'apple_pay'],
+      payment_method_types: ['card'],
       metadata: {
         scheduleId: effectiveScheduleId,
         scheduleIds: (isCombo && scheduleIdsArr.length) ? scheduleIdsArr.join(',') : '',
