@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const courseSlug = searchParams.get('course_slug') || searchParams.get('course');
     const status = searchParams.get('status') || 'active';
+    const scheduleId = searchParams.get('schedule_id') || searchParams.get('schedule');
 
     // Check if Supabase is configured
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -32,11 +33,31 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Build query - only active, future schedules. Deleted rows or status=cancelled won't appear.
+    // When fetching a specific schedule by ID (e.g. for direct checkout), include hidden schedules
+    if (scheduleId) {
+      const { data: schedule, error } = await supabase
+        .from('course_schedules')
+        .select('*')
+        .eq('id', scheduleId)
+        .eq('status', status)
+        .single();
+
+      if (error) {
+        console.error('Supabase error:', error);
+        return NextResponse.json(
+          { error: `Failed to fetch schedule: ${error.message}` },
+          { status: 500 }
+        );
+      }
+      return NextResponse.json({ success: true, data: schedule ? [schedule] : [] });
+    }
+
+    // Build query - only active, future schedules. Exclude hidden (not shown on website).
     let query = supabase
       .from('course_schedules')
       .select('*')
       .eq('status', status)
+      .or('hidden.is.null,hidden.eq.false')
       .gte('start_date', new Date().toISOString()) // Only today and future
       .order('start_date', { ascending: true });
 

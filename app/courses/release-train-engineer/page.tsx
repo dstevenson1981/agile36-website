@@ -140,11 +140,17 @@ export default function ReleaseTrainEngineerCoursePage() {
                   </svg>
                   Download Brochure
                 </a>
-                <button 
-                  onClick={() => setShowConsultationModal(true)}
+                <Link
+                  href="/courses/release-train-engineer/schedule"
                   className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
                 >
-                  Contact Us to Register
+                  View Schedules & Enroll
+                </Link>
+                <button 
+                  onClick={() => setShowConsultationModal(true)}
+                  className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-md hover:bg-gray-50 transition-colors inline-block text-center"
+                >
+                  Contact Us
                 </button>
               </div>
             </div>

@@ -202,8 +202,7 @@ export async function POST(request: NextRequest) {
     
     console.log('Creating payment intent with customer:', customer.id, customer.email, customer.name);
     
-    // Create payment intent with automatic payment methods
-    // This will show card, Apple Pay, and other available methods
+    // Create payment intent with explicit payment methods (excludes Afterpay)
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100), // Convert to cents
       currency,
@@ -211,9 +210,7 @@ export async function POST(request: NextRequest) {
       receipt_email: trimmedEmail, // Send receipt email automatically
       statement_descriptor: 'Agile36 Course', // Shows on card statement (max 22 chars)
       description: receiptDescription, // This appears on the Stripe receipt as "Payment to Agile36" details
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      payment_method_types: ['card', 'link', 'cashapp', 'google_pay', 'apple_pay'],
       metadata: {
         scheduleId: effectiveScheduleId,
         scheduleIds: (isCombo && scheduleIdsArr.length) ? scheduleIdsArr.join(',') : '',

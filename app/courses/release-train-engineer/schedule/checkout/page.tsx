@@ -69,11 +69,12 @@ function CheckoutContent() {
 
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/course-schedules?course_slug=${courseSlug}&status=active`);
+        // Use schedule_id param to fetch hidden schedules (direct checkout URLs)
+        const response = await fetch(`/api/course-schedules?schedule_id=${scheduleId}&status=active`);
         const result = await response.json();
         if (result.success) {
           const data = result.data || [];
-          const schedule = data.find((s: any) => s.id === scheduleId);
+          const schedule = data.find((s: any) => s.id === scheduleId) || data[0];
           if (schedule) {
             setSelectedSchedule(schedule);
             setEnrollmentQuantity(1);
