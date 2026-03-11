@@ -45,7 +45,7 @@ export default function CouponDisplayModal({
               Your Coupon Code
             </h2>
             <p className="text-gray-600 text-sm">
-              Use this code at checkout to get $100 OFF (expires in 30 mins)
+              Use this code at checkout to get $50 OFF (expires in 30 mins)
             </p>
           </div>
 

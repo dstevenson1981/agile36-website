@@ -390,7 +390,7 @@ function CourseScheduleContent() {
                 {/* Discount Banner */}
                 <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg p-6 text-white">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl font-bold">$100 OFF</span>
+                    <span className="text-2xl font-bold">$50 OFF</span>
                   </div>
                   <p className="text-sm mb-3 opacity-90">Expires today</p>
                   <div className="bg-white/20 rounded-md p-3 mb-3">
