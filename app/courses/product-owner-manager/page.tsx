@@ -81,14 +81,15 @@ export default function ProductOwnerManagerCoursePage() {
             <div className="space-y-6">
               {/* POPM Badge, Rating and Enrolled */}
               <div className="flex items-center gap-6 flex-wrap">
-                {/* POPM Badge */}
-                <div className="w-16 h-16 flex-shrink-0">
+                {/* POPM Badge - flex-shrink-0 ensures it stays visible on mobile */}
+                <div className="w-16 h-16 flex-shrink-0 min-w-[64px]">
                   <Image
                     src="/POPM.jpg"
                     alt="SAFe POPM Badge"
                     width={64}
                     height={64}
                     className="w-full h-full object-contain"
+                    sizes="64px"
                   />
                 </div>
                 <div className="flex items-center gap-2">
@@ -137,10 +138,10 @@ export default function ProductOwnerManagerCoursePage() {
               </div>
 
               {/* Accredited By */}
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center gap-4 pt-4 flex-wrap">
                 <span className="text-base font-semibold text-gray-900">Accredited by</span>
-                <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
+                <div className="flex items-center gap-4 flex-shrink-0">
+                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden flex-shrink-0">
                     <Image
                       src="/Silver.png"
                       alt="Scaled Agile Silver Partner"
@@ -149,7 +150,7 @@ export default function ProductOwnerManagerCoursePage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
+                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden flex-shrink-0">
                     <Image
                       src="/POPM.jpg"
                       alt="SAFe Product Owner/Product Manager Certification Badge"
@@ -190,13 +191,16 @@ export default function ProductOwnerManagerCoursePage() {
               </div>
             </div>
 
-            {/* Right Side - Image Card */}
-            <div className="lg:flex lg:justify-end">
+            {/* Right Side - Image Card (visible on all screen sizes) */}
+            <div className="flex justify-center lg:justify-end order-2 lg:order-none">
               <div className="max-w-md w-full mt-8 lg:mt-12">
-                <img 
-                  src="/POPM_Header.jpg" 
-                  alt="SAFe Product Owner/Product Manager" 
+                <Image
+                  src="/POPM_Header.jpg"
+                  alt="SAFe Product Owner/Product Manager"
+                  width={448}
+                  height={336}
                   className="w-full h-auto rounded-lg"
+                  sizes="(max-width: 1024px) 100vw, 448px"
                 />
               </div>
             </div>
@@ -877,10 +881,13 @@ export default function ProductOwnerManagerCoursePage() {
 
           {/* Certificate Display */}
           <div className="bg-white border border-blue-200 rounded-lg overflow-hidden">
-            <img
+            <Image
               src="/POPM Certificate.jpeg"
               alt="SAFe Product Owner/Product Manager Certificate"
+              width={800}
+              height={600}
               className="w-full h-auto"
+              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </div>

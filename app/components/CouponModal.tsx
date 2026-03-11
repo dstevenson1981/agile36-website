@@ -109,13 +109,13 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
         </div>
 
         {/* Right Side - Form */}
-        <div className="flex-1 p-6 md:p-8 overflow-y-auto">
+        <div className="relative flex-1 p-6 md:p-8 overflow-y-auto">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+            className="absolute top-4 right-4 p-1.5 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 hover:text-gray-900 transition-colors"
             aria-label="Close"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
