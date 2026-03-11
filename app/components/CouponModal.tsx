@@ -102,16 +102,6 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
             </p>
           </div>
 
-          {/* New Year 2026 Sale Graphic */}
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="bg-yellow-400 px-4 py-1 rounded-t-lg">
-              <span className="text-black font-bold text-sm">NEW YEAR</span>
-            </div>
-            <div className="bg-gray-900 px-6 py-3 rounded-b-lg shadow-lg">
-              <div className="text-yellow-400 font-bold text-4xl">2026</div>
-            </div>
-          </div>
-
           {/* Percentage icon */}
           <div className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-xl">%</span>

@@ -38,9 +38,6 @@ export default function CouponDisplayModal({
 
         <div className="text-center">
           <div className="mb-6">
-            <div className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-lg mb-4">
-              <span className="text-sm font-medium">New Year Sale 2026</span>
-            </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
               Your Coupon Code
             </h2>
