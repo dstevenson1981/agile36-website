@@ -229,7 +229,7 @@ function CourseScheduleContent() {
   };
 
   const copyCouponCode = () => {
-    navigator.clipboard.writeText('100OFF');
+    navigator.clipboard.writeText('50OFF');
     alert('Coupon code copied!');
   };
 
@@ -404,7 +404,7 @@ function CourseScheduleContent() {
                   <p className="text-sm mb-3 opacity-90">Expires today</p>
                   <div className="bg-white/20 rounded-md p-3 mb-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold">Coupon code '100OFF'</span>
+                      <span className="font-semibold">Coupon code '50OFF'</span>
                       <button
                         onClick={copyCouponCode}
                         className="bg-white text-orange-600 px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100 transition-colors"

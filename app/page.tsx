@@ -574,7 +574,7 @@ export default function Home() {
       <CouponDisplayModal
         isOpen={showCouponDisplay}
         onClose={() => setShowCouponDisplay(false)}
-        couponCode="100OFF"
+        couponCode="50OFF"
       />
       
       {/* Top Banner */}
