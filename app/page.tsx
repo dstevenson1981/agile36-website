@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import CouponModal from "./components/CouponModal";
 import CouponDisplayModal from "./components/CouponDisplayModal";
+import BannerCountdown from "./components/BannerCountdown";
 
 interface Course {
   id: string;
@@ -540,7 +541,7 @@ export default function Home() {
             <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">March Flash Sale</span>
             <span className="text-amber-100/90 font-bold hidden sm:inline text-sm">|</span>
             <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">
-              <span className="underline underline-offset-1 decoration-2 decoration-amber-200">$50 off</span> on all courses — Expires March 10
+              <span className="underline underline-offset-1 decoration-2 decoration-amber-200">$100 off</span> on all courses — <BannerCountdown />
             </span>
           </div>
 
@@ -574,7 +575,7 @@ export default function Home() {
       <CouponDisplayModal
         isOpen={showCouponDisplay}
         onClose={() => setShowCouponDisplay(false)}
-        couponCode="50OFF"
+        couponCode="100OFF"
       />
       
       {/* Top Banner */}
