@@ -4,6 +4,7 @@ import { hasBasicPlanForCourse } from '@/app/lib/practice-exams';
 import UpgradeCheckout from './UpgradeCheckout';
 
 const COURSE_NAMES: Record<string, string> = {
+  'leading-safe': 'Leading SAFe / SAFe Agilist',
   'product-owner-manager': 'SAFe Product Owner/Product Manager (POPM)',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management (LPM)',
 };
@@ -19,7 +20,7 @@ export default async function PracticeExamUpgradePage({
   params: Promise<{ courseSlug: string }>;
 }) {
   const { courseSlug } = await params;
-  if (!['product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
+  if (!['leading-safe', 'product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
     redirect('/account/practice-exams');
   }
 

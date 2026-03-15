@@ -55,6 +55,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Skip insert if email is in abandoned cart suppressions (no email will be sent)
+    const trimmedEmail = email.trim().toLowerCase();
+    const { data: suppressed } = await supabase
+      .from('abandoned_cart_suppressions')
+      .select('id')
+      .ilike('email', trimmedEmail)
+      .limit(1);
+    if (suppressed?.length) {
+      return NextResponse.json({
+        success: true,
+        message: 'Enrollment lead not stored (suppressed)',
+        suppressed: true,
+      });
+    }
+
     // Store enrollment lead in Supabase
     const leadData = {
       schedule_id: scheduleId,
@@ -63,7 +78,7 @@ export async function POST(request: NextRequest) {
       enrolling_for: enrollingFor || 'myself',
       first_name: firstName.trim(),
       last_name: lastName.trim(),
-      email: email.trim().toLowerCase(),
+      email: trimmedEmail,
       phone: phone.trim(),
       alternative_contact: alternativeContact?.trim() || null,
       referral_code: referralCode?.trim() || null,

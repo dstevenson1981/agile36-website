@@ -12,6 +12,7 @@ const getStripe = () => {
 };
 
 const COURSE_NAMES: Record<string, string> = {
+  'leading-safe': 'Leading SAFe / SAFe Agilist',
   'product-owner-manager': 'SAFe Product Owner/Product Manager',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management',
 };
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const courseSlug = body?.courseSlug;
-    if (!courseSlug || !['product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
+    if (!courseSlug || !['leading-safe', 'product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
       return NextResponse.json({ error: 'Invalid course' }, { status: 400 });
     }
 

@@ -16,10 +16,11 @@ export async function getRegisteredCourseSlugs(): Promise<string[]> {
     .single();
   const lookupEmail = profile?.email ?? email;
 
+  // Use ilike for case-insensitive email match (orders may have different casing)
   const { data: orders } = await supabase
     .from('orders')
     .select('course_slug')
-    .eq('customer_email', lookupEmail);
+    .ilike('customer_email', lookupEmail);
 
   if (!orders?.length) return [];
   return [...new Set(orders.map((o) => o.course_slug).filter(Boolean))];
@@ -80,6 +81,52 @@ export async function hasPopmProAccess(): Promise<boolean> {
     .limit(1);
 
   return (orders?.length ?? 0) > 0;
+}
+
+/** Check if the logged-in user has Pro plan for Leading SAFe (leading-safe) */
+export async function hasLeadingSafeProAccess(): Promise<boolean> {
+  const fromUserAccess = await checkProAccess('leading-safe');
+  if (fromUserAccess) return true;
+
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const email = user.email;
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+  const lookupEmail = profile?.email ?? email;
+
+  // Check orders - use ilike for case-insensitive email match
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id, course_slug')
+    .ilike('customer_email', lookupEmail)
+    .eq('plan', 'pro')
+    .limit(10);
+
+  const hasLeadingSafeOrder = orders?.some(
+    (o) => o.course_slug === 'leading-safe' || o.course_slug?.startsWith('combo-leading-safe')
+  );
+  if (hasLeadingSafeOrder) return true;
+
+  // Check whitelist (grants access without Pro order) - use service role to bypass RLS
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!serviceKey || !serviceUrl) return false;
+
+  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+  const { data: whitelist, error } = await serviceSupabase
+    .from('leading_safe_pro_access_whitelist')
+    .select('id')
+    .ilike('email', lookupEmail)
+    .limit(1);
+
+  if (error) return false;
+  return (whitelist?.length ?? 0) > 0;
 }
 
 /** Check if the logged-in user has Pro plan for LPM (lean-portfolio-management) */
