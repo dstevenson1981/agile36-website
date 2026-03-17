@@ -88,15 +88,19 @@ function CourseScheduleContent() {
       });
     }
 
+    // Apply weekday/weekend filters - derive from start_date (more reliable than DB is_weekend)
     if (activeFilters.weekdays) {
       filtered = filtered.filter(schedule => {
-        const isWeekend = schedule.is_weekend;
-        return isWeekend === false || isWeekend === null || isWeekend === undefined || !isWeekend;
+        const day = new Date(schedule.start_date).getDay(); // 0=Sun, 6=Sat
+        return day >= 1 && day <= 5; // Mon-Fri
       });
     }
 
     if (activeFilters.weekend) {
-      filtered = filtered.filter(schedule => schedule.is_weekend === true);
+      filtered = filtered.filter(schedule => {
+        const day = new Date(schedule.start_date).getDay();
+        return day === 0 || day === 6; // Sat-Sun
+      });
     }
 
     setFilteredSchedules(filtered);
