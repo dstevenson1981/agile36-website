@@ -29,16 +29,10 @@ export default function CouponTicket() {
         aria-hidden
       />
       <div className="relative flex items-center justify-between gap-4 rounded-xl border-2 border-[#01203d]/20 bg-[#fef7f5] px-5 py-4">
-        <div className="flex-1 min-w-0 flex items-center gap-3">
-          {/* % badge */}
-          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#fa4a23] flex items-center justify-center">
-            <span className="text-white font-bold text-lg">%</span>
-          </div>
-          <div className="flex flex-col gap-0.5">
-            <span className="text-[#01203d] font-bold text-lg">15% OFF</span>
-            <span className="text-[#01203d] text-sm">Coupon Code &quot;{code}&quot;</span>
-            <span className="text-[#01203d]/80 text-xs">Coupon Expires 23/03 · Ends soon</span>
-          </div>
+        <div className="flex-1 min-w-0 flex flex-col gap-0.5">
+          <span className="text-[#01203d] font-bold text-lg">15% OFF</span>
+          <span className="text-[#01203d] text-sm">Coupon Code &quot;{code}&quot;</span>
+          <span className="text-[#01203d]/80 text-xs">Coupon Expires 3/23 · Ends soon</span>
         </div>
         <button
           onClick={handleCopy}

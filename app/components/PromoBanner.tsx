@@ -11,7 +11,7 @@ export default function PromoBanner() {
         {/* Left: FutureYou SALE + Only Until */}
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex items-center gap-2">
-            <div className="bg-[#E31E24] px-2 py-1 sm:px-3 sm:py-1.5 -rotate-[-4deg]">
+            <div className="bg-[#fa4a23] px-2 py-1 sm:px-3 sm:py-1.5 -rotate-[-4deg]">
               <span className="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">
                 FutureYou
               </span>
@@ -22,16 +22,15 @@ export default function PromoBanner() {
             </div>
           </div>
           <div className="hidden sm:block w-px h-6 bg-white/40" />
-          <span className="hidden sm:inline text-white font-bold text-sm">Only Until 23 Mar</span>
+          <span className="hidden sm:inline text-white font-bold text-sm">Only Until Mar 23</span>
         </div>
 
-        {/* Center: Upskill Today. Thank Yourself Tomorrow */}
+        {/* Center: Level up today. Win tomorrow. */}
         <div className="flex-1 min-w-0 text-center order-last sm:order-none w-full sm:w-auto">
-          <span className="text-white font-bold italic text-sm sm:text-base md:text-lg">
-            Upskill Today.{" "}
-            <span className="text-[#E31E24]">Thank Yourself Tomorrow</span>
+          <span className="text-[#fa4a23] font-bold italic text-sm sm:text-base md:text-lg">
+            Level up today. Win tomorrow.
           </span>
-          <span className="inline-block ml-1 text-[#E31E24] align-middle">
+          <span className="inline-block ml-1 text-[#fa4a23] align-middle">
             <svg className="w-4 h-4 inline" fill="currentColor" viewBox="0 0 24 24">
               <path d="M7 14l5-5 5 5H7z" />
             </svg>
@@ -40,9 +39,9 @@ export default function PromoBanner() {
 
         {/* Right: 15OFF code box + Ends Soon */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <div className="border-2 border-[#E31E24] bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded">
+          <div className="border-2 border-[#fa4a23] bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded">
             <div className="font-bold text-black text-sm sm:text-base">Use 15OFF</div>
-            <div className="text-[#E31E24] font-semibold text-xs sm:text-sm">flat Extra 15% Off</div>
+            <div className="text-[#fa4a23] font-semibold text-xs sm:text-sm">flat Extra 15% Off</div>
           </div>
           <div className="hidden sm:block w-px h-6 bg-white/40" />
           <span className="text-white font-bold text-sm sm:text-base">Ends Soon!</span>
