@@ -1,4 +1,4 @@
--- Set Leading SAFe, Scrum Master to $515; DevOps, SAFe for Teams to $599
+-- Set Leading SAFe, Scrum Master to $515; POPM to $545; DevOps, SAFe for Teams to $599
 -- Run in Supabase SQL Editor
 
 -- Leading SAFe: $515 (original $1,030)
@@ -10,6 +10,11 @@ WHERE course_slug = 'leading-safe';
 UPDATE course_schedules
 SET price = 515.00, original_price = 1030.00, updated_at = NOW()
 WHERE course_slug = 'scrum-master';
+
+-- SAFe Product Owner/Product Manager: $545 (original $1,090)
+UPDATE course_schedules
+SET price = 545.00, original_price = 1090.00, updated_at = NOW()
+WHERE course_slug = 'product-owner-manager';
 
 -- SAFe DevOps: $599
 UPDATE course_schedules
@@ -24,6 +29,6 @@ WHERE course_slug = 'safe-for-teams';
 -- Verify
 SELECT course_slug, course_name, price, original_price
 FROM course_schedules
-WHERE course_slug IN ('leading-safe', 'scrum-master', 'devops', 'safe-for-teams')
+WHERE course_slug IN ('leading-safe', 'scrum-master', 'product-owner-manager', 'devops', 'safe-for-teams')
 ORDER BY course_slug, start_date
 LIMIT 30;
