@@ -320,13 +320,16 @@ function CheckoutContent() {
     return null;
   }
 
-  // Flat rate of $400 for Generative AI for Project Managers
-  const basePrice = 400;
-  const originalPrice = 800;
-  
-  // Calculate base totals
+  const basePrice = parseFloat(selectedSchedule.price);
+  const originalPrice = selectedSchedule.original_price
+    ? parseFloat(selectedSchedule.original_price)
+    : null;
+
   const baseTotal = basePrice * enrollmentQuantity;
-  const totalOriginalPrice = originalPrice * enrollmentQuantity;
+  const totalOriginalPrice =
+    originalPrice != null && !Number.isNaN(originalPrice)
+      ? originalPrice * enrollmentQuantity
+      : null;
   
   // Apply promo code discount
   let calculatedPromoDiscount = 0;
@@ -340,7 +343,12 @@ function CheckoutContent() {
   }
   
   const totalPrice = Math.max(0, baseTotal - calculatedPromoDiscount);
-  const discount = calculateDiscount(originalPrice, basePrice);
+  const discount =
+    originalPrice != null &&
+    !Number.isNaN(originalPrice) &&
+    originalPrice > basePrice
+      ? calculateDiscount(originalPrice, basePrice)
+      : 0;
 
   return (
     <main className="min-h-screen bg-gray-50">
