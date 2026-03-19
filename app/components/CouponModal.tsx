@@ -93,12 +93,11 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           <div className="absolute top-8 left-4 w-12 h-12 bg-yellow-400 rounded-full opacity-10 blur-lg"></div>
           
           <div className="relative z-10">
-            <p className="text-gray-800 text-sm font-medium mb-2">Grow Smarter, Not Costlier</p>
             <h2 className="text-gray-900 text-2xl font-bold mb-4">
-              Get Flat <span className="underline">$100 OFF</span> on Course Fee
+              Get 15% off your course fee.
             </h2>
             <p className="text-gray-800 text-sm mb-6">
-              Gain Free Self-learning courses and sharpen your skills for the future
+              Gain high-value skills that drive real results.
             </p>
           </div>
 

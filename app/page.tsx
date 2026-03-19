@@ -3,9 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import CouponModal from "./components/CouponModal";
-import CouponDisplayModal from "./components/CouponDisplayModal";
-import BannerCountdown from "./components/BannerCountdown";
+import PromoBanner from "./components/PromoBanner";
 
 interface Course {
   id: string;
@@ -39,17 +37,9 @@ export default function Home() {
     phone: "",
     message: ""
   });
-  const [showCouponModal, setShowCouponModal] = useState(false);
-  const [showCouponDisplay, setShowCouponDisplay] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
-
-  const handleClaimCoupon = (email: string, course: string) => {
-    // Close the form modal and show the coupon code
-    setShowCouponModal(false);
-    setShowCouponDisplay(true);
-  };
 
   // Mapping for mega menu thumbnail images
   const megaMenuThumbnails: { [key: string]: string } = {
@@ -500,83 +490,8 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Flash Sale Banner - compact, with pulse animation */}
-      <div 
-        className="w-full bg-[#fa4a23] py-1.5 sm:py-2 md:py-2.5 px-2 sm:px-3 cursor-pointer hover:opacity-98 transition-opacity relative overflow-hidden animate-banner-flash"
-        onClick={() => setShowCouponModal(true)}
-      >
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <span className="absolute top-0.5 left-[8%] text-amber-200/90 text-sm rotate-[-15deg]">✦</span>
-          <span className="absolute top-2 left-[12%] text-white/70 text-xs">◆</span>
-          <span className="absolute top-1 right-[22%] text-amber-200/80 text-sm rotate-12">✦</span>
-          <span className="absolute bottom-1 left-[15%] text-white/60 text-xs rotate-6">•</span>
-          <span className="absolute bottom-2 right-[18%] text-amber-200/90 text-sm rotate-[-10deg]">✦</span>
-          <span className="absolute top-1.5 right-[8%] text-white/50 text-xs">◆</span>
-        </div>
-
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 flex-wrap relative">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="flex flex-col items-start gap-0">
-              <div className="bg-black px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded transform -rotate-[-5deg] shadow">
-                <span className="text-white font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">Limited time</span>
-              </div>
-              <div className="bg-[#01203d] px-2 py-0.5 sm:px-3 sm:py-1 rounded-b transform -rotate-[-2deg] shadow -mt-0.5">
-                <span className="text-white font-bold text-[10px] sm:text-xs uppercase tracking-wide">March Flash Sale</span>
-              </div>
-            </div>
-            <div className="hidden md:flex flex-col items-center relative">
-              <div className="flex flex-col gap-0.5">
-                <div className="w-5 h-1.5 rounded-sm bg-[#5b21b6] shadow" />
-                <div className="w-6 h-2 rounded-sm bg-amber-700/90 shadow" />
-                <div className="w-5 h-1.5 rounded-sm bg-white/95 shadow" />
-              </div>
-              <div className="absolute -top-1.5 left-1/2 -translate-x-1/2">
-                <svg className="w-5 h-5 text-[#01203d]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
-              </div>
-              <span className="absolute -top-0.5 -right-0.5 text-amber-200/80 text-[10px]">✦</span>
-            </div>
-          </div>
-
-          <div className="flex-1 text-center min-w-0 flex items-center justify-center gap-1.5 sm:gap-2">
-            <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">March Flash Sale</span>
-            <span className="text-amber-100/90 font-bold hidden sm:inline text-sm">|</span>
-            <span className="text-amber-50 font-bold text-xs sm:text-sm md:text-base drop-shadow">
-              <span className="underline underline-offset-1 decoration-2 decoration-amber-200">$100 off</span> on all courses — <BannerCountdown />
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5 sm:gap-3">
-            <div className="hidden sm:flex items-center text-amber-200/90">
-              <span className="text-lg font-bold drop-shadow">$</span>
-            </div>
-            <div className="hidden md:block relative w-6 h-6">
-              <div className="absolute inset-0 bg-[#01203d] rounded shadow rotate-6" />
-              <div className="absolute inset-1 border-2 border-amber-200/90 rounded-sm" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-1.5 bg-amber-200/90 rounded-t" />
-              <div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-2 bg-amber-200/80 rounded-full" />
-            </div>
-            <button className="bg-white text-[#fa4a23] font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-md hover:bg-[#01203d] hover:text-white transition-colors shadow flex items-center gap-1.5 text-xs sm:text-sm whitespace-nowrap">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span className="hidden sm:inline">Claim coupon</span>
-              <span className="sm:hidden">Claim</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Coupon Modals */}
-      <CouponModal 
-        isOpen={showCouponModal}
-        onClose={() => setShowCouponModal(false)}
-        onClaimCoupon={handleClaimCoupon}
-      />
-      <CouponDisplayModal
-        isOpen={showCouponDisplay}
-        onClose={() => setShowCouponDisplay(false)}
-        couponCode="100OFF"
-      />
+      {/* Promo Banner - 15OFF, no click/form */}
+      <PromoBanner />
       
       {/* Top Banner */}
       <div className="w-full bg-[#fa4a23] h-1"></div>

@@ -9,6 +9,7 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
+import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -229,9 +230,8 @@ function CheckoutContent() {
   };
 
 
-  const handleApplyPromoCode = async () => {
-    // Prevent applying multiple codes
-    const code = promoCodeInput.trim();
+  const handleApplyPromoCode = async (codeOverride?: string) => {
+    const code = (codeOverride ?? promoCodeInput.trim()).trim();
     
     if (!code) {
       setPromoError('Please enter a promo code');
@@ -868,6 +868,11 @@ function CheckoutContent() {
                   </svg>
                   <h4 className="font-semibold text-gray-900">Promo Codes</h4>
                 </div>
+                <AvailablePromoCodes
+                  appliedPromoCode={appliedPromoCode}
+                  onSelectCode={(code) => handleApplyPromoCode(code)}
+                  isValidatingPromo={isValidatingPromo}
+                />
                 <div className="flex gap-2 mb-3">
                   <input
                     type="text"
@@ -879,7 +884,7 @@ function CheckoutContent() {
                     className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#fa4a23] disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
                   <button 
-                    onClick={handleApplyPromoCode}
+                    onClick={() => handleApplyPromoCode()}
                     disabled={isValidatingPromo || !promoCodeInput.trim()}
                     className="bg-gray-800 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
