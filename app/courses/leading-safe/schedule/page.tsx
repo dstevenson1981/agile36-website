@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
+import CouponTicket from "@/app/components/CouponTicket";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
