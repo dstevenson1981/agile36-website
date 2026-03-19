@@ -27,7 +27,7 @@ export default function PromoBanner() {
 
         {/* Center: Level up today. Win tomorrow. */}
         <div className="flex-1 min-w-0 text-center order-last sm:order-none w-full sm:w-auto">
-          <span className="text-[#fa4a23] font-bold italic text-sm sm:text-base md:text-lg">
+          <span className="text-[#fa4a23] font-bold italic text-base sm:text-lg md:text-xl">
             Level up today. Win tomorrow.
           </span>
           <span className="inline-block ml-1 text-[#fa4a23] align-middle">
