@@ -64,7 +64,7 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           body: JSON.stringify({
             email,
             course: selectedCourse,
-            couponCode: '100OFF'
+            couponCode: '15OFF'
           }),
         });
 

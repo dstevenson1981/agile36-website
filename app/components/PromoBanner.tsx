@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Static promo banner - black background, red accents.
+ * Static promo banner - black background, orange accents (#fa4a23).
  * Shows 15OFF code directly with no click/form. FutureYou SALE + Ends Soon.
  */
 export default function PromoBanner() {
