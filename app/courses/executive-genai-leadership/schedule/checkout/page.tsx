@@ -319,13 +319,15 @@ function CheckoutContent() {
     return null;
   }
 
-  // Flat rate of $400 for Executive GenAI Leadership
-  const basePrice = 400;
-  const originalPrice = 800;
-  
-  // Calculate base totals
+  const basePrice = parseFloat(selectedSchedule.price);
+  const listPrice =
+    selectedSchedule.original_price != null && selectedSchedule.original_price !== ''
+      ? parseFloat(selectedSchedule.original_price)
+      : null;
+
   const baseTotal = basePrice * enrollmentQuantity;
-  const totalOriginalPrice = originalPrice * enrollmentQuantity;
+  const totalOriginalPrice =
+    listPrice != null ? listPrice * enrollmentQuantity : null;
   
   // Apply promo code discount
   let calculatedPromoDiscount = 0;
@@ -339,7 +341,10 @@ function CheckoutContent() {
   }
   
   const totalPrice = Math.max(0, baseTotal - calculatedPromoDiscount);
-  const discount = calculateDiscount(originalPrice, basePrice);
+  const discount =
+    listPrice != null && listPrice > basePrice
+      ? calculateDiscount(listPrice, basePrice)
+      : 0;
 
   return (
     <main className="min-h-screen bg-gray-50">
