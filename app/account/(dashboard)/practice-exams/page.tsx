@@ -21,7 +21,10 @@ export default async function PracticeExamsPage({
   ]);
 
   const hasPopm = registeredCourses.includes('product-owner-manager') || registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('popm'));
-  const hasLpm = registeredCourses.includes('lean-portfolio-management') || registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('lpm'));
+  const hasLpm =
+    registeredCourses.includes('lean-portfolio-management') ||
+    registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('lpm')) ||
+    hasLpmPro;
   const hasLeadingSafe = registeredCourses.includes('leading-safe') || registeredCourses.some((s) => s?.startsWith('combo-leading-safe')) || hasLeadingSafePro;
   const hasAnyExam = hasPopm || hasLpm || hasLeadingSafe;
 
