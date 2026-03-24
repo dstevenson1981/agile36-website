@@ -30,5 +30,6 @@ INSERT INTO lpm_pro_access_whitelist (email) VALUES
   ('d.stevenson@agile36.com'),
   ('d.stevenson@agile.com'),
   ('scott.poholsky@rtx.com'),
-  ('fhardenbrook@intoxalock.com')
+  ('fhardenbrook@intoxalock.com'),
+  ('fred.hardenbrook@gmail.com')
 ON CONFLICT (email) DO NOTHING;
