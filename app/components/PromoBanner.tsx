@@ -22,7 +22,7 @@ export default function PromoBanner() {
             </div>
           </div>
           <div className="hidden sm:block w-px h-6 bg-white/40" />
-          <span className="hidden sm:inline text-white font-bold text-sm">Only Until Mar 23</span>
+          <span className="hidden sm:inline text-white font-bold text-sm">Only Until Mar 30</span>
         </div>
 
         {/* Center: Level up today. Win tomorrow. */}
