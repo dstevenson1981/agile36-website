@@ -22,6 +22,17 @@ function distinctEmailsForWhitelist(
   return [...new Set([p, a].filter((e) => e.length > 0))];
 }
 
+function isRpcMissingError(error: { code?: string; message?: string } | null): boolean {
+  if (!error) return false;
+  const msg = String(error.message ?? '');
+  const code = String(error.code ?? '');
+  return (
+    code === 'PGRST202' ||
+    code === '42883' ||
+    /match_lpm_whitelist|function.*does not exist/i.test(msg)
+  );
+}
+
 async function whitelistHasEmail(
   serviceSupabase: SupabaseClient,
   table: 'lpm_pro_access_whitelist' | 'leading_safe_pro_access_whitelist',
@@ -36,6 +47,33 @@ async function whitelistHasEmail(
       .limit(1);
     if (error) return false;
     if ((data?.length ?? 0) > 0) return true;
+  }
+  return false;
+}
+
+/** LPM whitelist: prefers RPC with Gmail dot–equivalence; falls back to ilike if RPC not installed. */
+async function lpmWhitelistMatch(
+  serviceSupabase: SupabaseClient,
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): Promise<boolean> {
+  const candidates = distinctEmailsForWhitelist(authEmail, profileEmail);
+  let fallbackToLegacy = false;
+
+  for (const em of candidates) {
+    const { data, error } = await serviceSupabase.rpc('match_lpm_whitelist', { check_email: em });
+    if (error) {
+      if (isRpcMissingError(error)) {
+        fallbackToLegacy = true;
+        break;
+      }
+      return false;
+    }
+    if (data === true) return true;
+  }
+
+  if (fallbackToLegacy) {
+    return whitelistHasEmail(serviceSupabase, 'lpm_pro_access_whitelist', authEmail, profileEmail);
   }
   return false;
 }
@@ -195,10 +233,5 @@ export async function hasLpmProAccess(): Promise<boolean> {
   if (!serviceKey || !serviceUrl) return false;
 
   const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
-  return whitelistHasEmail(
-    serviceSupabase,
-    'lpm_pro_access_whitelist',
-    user.email,
-    profile?.email
-  );
+  return lpmWhitelistMatch(serviceSupabase, user.email, profile?.email);
 }
