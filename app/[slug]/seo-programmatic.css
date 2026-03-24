@@ -1,0 +1,300 @@
+/* Scoped to programmatic SEO pages only — no global reset */
+
+:root {
+  --seo-primary-blue: #0066cc;
+  --seo-primary-blue-dark: #0052a3;
+  --seo-accent-orange: #ff6b35;
+  --seo-text-dark: #1a202c;
+  --seo-text-medium: #4a5568;
+  --seo-text-light: #718096;
+  --seo-border-color: #e2e8f0;
+  --seo-bg-white: #ffffff;
+  --seo-bg-light: #f7fafc;
+}
+
+.seo-programmatic-page {
+  --primary-blue: var(--seo-primary-blue);
+  --primary-blue-dark: var(--seo-primary-blue-dark);
+  --accent-orange: var(--seo-accent-orange);
+  --text-dark: var(--seo-text-dark);
+  --text-medium: var(--seo-text-medium);
+  --text-light: var(--seo-text-light);
+  --border-color: var(--seo-border-color);
+  --bg-white: var(--seo-bg-white);
+  --bg-light: var(--seo-bg-light);
+}
+
+.seo-programmatic-page article h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--seo-text-dark);
+}
+
+.seo-programmatic-page article h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--seo-text-dark);
+}
+
+.seo-programmatic-page article h4 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--seo-text-dark);
+}
+
+.seo-programmatic-page article p {
+  margin-bottom: 1.5rem;
+  color: var(--seo-text-medium);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.seo-programmatic-page article ul,
+.seo-programmatic-page article ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.seo-programmatic-page article li {
+  margin-bottom: 0.75rem;
+  color: var(--seo-text-medium);
+  line-height: 1.7;
+}
+
+.seo-programmatic-page article strong {
+  font-weight: 600;
+  color: var(--seo-text-dark);
+}
+
+.seo-programmatic-page article code {
+  background-color: var(--seo-bg-light);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: Monaco, Menlo, "Ubuntu Mono", monospace;
+}
+
+.seo-programmatic-page article blockquote {
+  border-left: 4px solid var(--seo-primary-blue);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--seo-text-light);
+  font-style: italic;
+}
+
+/* Tag/Badge Styles */
+.seo-programmatic-page .article-tag {
+  display: inline-block;
+  background-color: var(--accent-orange);
+  color: var(--bg-white);
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.seo-programmatic-page .article-meta {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.seo-programmatic-page .comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+}
+
+.seo-programmatic-page .comparison-table thead {
+  background-color: var(--bg-light);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.seo-programmatic-page .comparison-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.seo-programmatic-page .comparison-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-medium);
+}
+
+.seo-programmatic-page .comparison-table tbody tr:nth-child(even) {
+  background-color: var(--bg-light);
+}
+
+.seo-programmatic-page .comparison-table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.seo-programmatic-page .comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.seo-programmatic-page .faq-section {
+  margin: 3rem 0;
+}
+
+.seo-programmatic-page .faq-title {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.seo-programmatic-page .faq-item {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.seo-programmatic-page .faq-item:hover {
+  border-color: var(--primary-blue);
+}
+
+.seo-programmatic-page .faq-question {
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  background-color: var(--bg-white);
+  transition: background-color 0.2s ease;
+}
+
+.seo-programmatic-page .faq-question:hover {
+  background-color: var(--bg-light);
+}
+
+.seo-programmatic-page .faq-question::after {
+  content: "+";
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.seo-programmatic-page .faq-item.active .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.seo-programmatic-page .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+}
+
+.seo-programmatic-page .faq-item.active .faq-answer {
+  max-height: 1000px;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.seo-programmatic-page .cta-section {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  padding: 2.5rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.seo-programmatic-page .cta-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.seo-programmatic-page .cta-description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-medium);
+}
+
+.seo-programmatic-page .cta-button {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: var(--bg-white);
+  padding: 0.875rem 2rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.seo-programmatic-page .cta-button:hover {
+  background-color: var(--primary-blue-dark);
+  text-decoration: none;
+  color: var(--bg-white);
+}
+
+@media (max-width: 768px) {
+  .seo-programmatic-page h1 {
+    font-size: 2rem;
+  }
+
+  .seo-programmatic-page article h2 {
+    font-size: 1.5rem;
+  }
+
+  .seo-programmatic-page .comparison-table {
+    font-size: 0.875rem;
+  }
+
+  .seo-programmatic-page .comparison-table th,
+  .seo-programmatic-page .comparison-table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .seo-programmatic-page .cta-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .seo-programmatic-page .cta-title {
+    font-size: 1.25rem;
+  }
+
+  .seo-programmatic-page .faq-question {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-programmatic-page .comparison-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

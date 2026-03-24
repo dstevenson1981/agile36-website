@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // learn.agile36.com → main site (same paths)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "learn.agile36.com" }],
+        destination: "https://www.agile36.com/:path*",
+        permanent: true,
+      },
       // SAFe Courses - Old URL structure to new structure
       {
         source: '/safe-agilist-leading-safe',

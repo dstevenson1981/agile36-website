@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { seoPages } from '@/data/seoPages';
 
 const BASE_URL = 'https://www.agile36.com';
 
@@ -101,5 +102,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...mainPages, ...coursePages, ...geoPages];
+  const programmaticSeoPages: MetadataRoute.Sitemap = seoPages.map(
+    (p: { slug: string }) => ({
+      url: `${BASE_URL}/${p.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    })
+  );
+
+  return [...mainPages, ...coursePages, ...geoPages, ...programmaticSeoPages];
 }
