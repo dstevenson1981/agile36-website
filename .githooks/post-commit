@@ -1,0 +1,15 @@
+#!/bin/sh
+# Pushes after each commit so origin (e.g. Vercel) stays in sync.
+# Enable: git config core.hooksPath .githooks
+# Disable pushes: git config agile36.skip-post-commit-push true
+
+case "$(git config --get agile36.skip-post-commit-push 2>/dev/null)" in
+  true|1|yes) exit 0 ;;
+esac
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+[ "$branch" = "HEAD" ] && exit 0
+
+if ! git push origin "$branch"; then
+  echo "post-commit: git push failed. When ready run: git push origin $branch" >&2
+fi

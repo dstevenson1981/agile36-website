@@ -1,0 +1,17 @@
+---
+description: After any git commit, push to origin so Vercel/deploys see changes
+alwaysApply: true
+---
+
+# Git: commit and push together
+
+Vercel and GitHub only update when commits exist on **origin**. A local `git commit` alone does not deploy.
+
+- When the user asks to commit, or when you commit as part of finishing work: run **`git push origin <current-branch>`** (usually `main`) **immediately after** a successful commit, unless they explicitly say not to push.
+- If `git push` fails (auth, network, non-fast-forward), show the error and give the exact follow-up command; do not claim the change is live until push succeeds.
+
+Optional for commits made **outside** Cursor (terminal, other tools): enable the repo’s shared hook once:
+
+`git config core.hooksPath .githooks`
+
+Then every `git commit` in this repo runs `.githooks/post-commit`, which pushes to `origin`. To disable: `git config agile36.skip-post-commit-push true`.
