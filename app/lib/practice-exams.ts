@@ -227,7 +227,15 @@ export async function hasLpmProAccess(): Promise<boolean> {
 
   if ((orders?.length ?? 0) > 0) return true;
 
-  // Check whitelist (grants access without Pro order) - use service role to bypass RLS
+  // Whitelist: RLS policy only returns rows where whitelist.email matches auth.users email
+  // (case-insensitive). Works without SUPABASE_SERVICE_ROLE_KEY — required for whitelist-only users
+  // on Vercel when the service key is missing.
+  const { data: whitelistSelf, error: whitelistSelfErr } = await supabase
+    .from('lpm_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!whitelistSelfErr && (whitelistSelf?.length ?? 0) > 0) return true;
+
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!serviceKey || !serviceUrl) return false;
