@@ -15,7 +15,18 @@ ALTER TABLE lpm_pro_access_whitelist ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Users can check own whitelist status" ON lpm_pro_access_whitelist;
 CREATE POLICY "Users can check own whitelist status" ON lpm_pro_access_whitelist
   FOR SELECT
-  USING (LOWER(email) = LOWER((SELECT email FROM auth.users WHERE id = auth.uid())));
+  USING (
+    auth.jwt() ->> 'email' IS NOT NULL
+    AND (
+      LOWER(TRIM(email)) = LOWER(TRIM(auth.jwt() ->> 'email'))
+      OR (
+        LOWER(TRIM(SPLIT_PART(email, '@', 2))) IN ('gmail.com', 'googlemail.com')
+        AND LOWER(TRIM(SPLIT_PART(auth.jwt() ->> 'email', '@', 2))) IN ('gmail.com', 'googlemail.com')
+        AND REGEXP_REPLACE(LOWER(TRIM(SPLIT_PART(email, '@', 1))), '\.', '', 'g')
+          = REGEXP_REPLACE(LOWER(TRIM(SPLIT_PART(auth.jwt() ->> 'email', '@', 1))), '\.', '', 'g')
+      )
+    )
+  );
 
 -- Service role can manage
 DROP POLICY IF EXISTS "Service role can manage whitelist" ON lpm_pro_access_whitelist;
