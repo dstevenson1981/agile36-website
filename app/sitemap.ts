@@ -117,6 +117,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'lean-portfolio-management',
     'leading-safe-certification-cost-2026',
     'is-safe-certification-worth-it-2026',
+    'safe-lpm-vs-popm',
   ];
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

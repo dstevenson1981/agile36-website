@@ -1663,6 +1663,49 @@ export default function Home() {
                 <span className="text-sm text-gray-900 underline">Read More</span>
               </div>
             </Link>
+
+            {/* SAFe LPM vs POPM */}
+            <Link href="/blog/safe-lpm-vs-popm" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+                <div className="absolute top-2 left-2 flex flex-col gap-1">
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute bottom-2 right-2 flex flex-col gap-1">
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white text-center px-4 relative z-10">
+                  SAFe LPM vs POPM: Which First?
+                </h3>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="text-sm text-[#718aa5]">Guide</span>
+                </div>
+                <p className="text-sm text-gray-700 mb-4">
+                  Team vs portfolio level, who each certification is for, and how to pick the right next step on your path.
+                </p>
+                <span className="text-sm text-gray-900 underline">Read More</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
