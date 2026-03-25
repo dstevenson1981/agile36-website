@@ -111,5 +111,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  return [...mainPages, ...coursePages, ...geoPages, ...programmaticSeoPages];
+  const blogSlugs = [
+    'ai-transformation',
+    'ai-tools-product-managers',
+    'lean-portfolio-management',
+    'leading-safe-certification-cost-2026',
+  ];
+
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${BASE_URL}/blog/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }));
+
+  return [
+    ...mainPages,
+    ...coursePages,
+    ...geoPages,
+    ...programmaticSeoPages,
+    ...blogPages,
+  ];
 }
