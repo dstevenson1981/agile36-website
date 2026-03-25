@@ -490,7 +490,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Promo Banner - 15OFF, no click/form */}
+      {/* Promo Banner — 100OFF via email modal */}
       <PromoBanner />
       
       {/* Top Banner */}

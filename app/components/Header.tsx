@@ -485,7 +485,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Promo Banner - 15OFF, no click/form */}
+      {/* Promo Banner — 100OFF via email modal */}
       <PromoBanner />
       
       {/* Top Banner */}

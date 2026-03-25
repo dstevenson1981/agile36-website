@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
         {
           email,
           course: course || null,
-          coupon_code: couponCode || '15OFF',
+          coupon_code: couponCode || '100OFF',
           created_at: new Date().toISOString()
         }
       ])

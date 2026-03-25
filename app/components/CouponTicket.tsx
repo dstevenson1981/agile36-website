@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 /**
- * Ticket-style coupon card with 15% off, 15OFF code, and copy button.
+ * Ticket-style coupon card with $100 off, 100OFF code, and copy button.
  * Uses Agile36 brand colors (#fa4a23, #01203d).
  * Semi-circular notches on left/right for ticket aesthetic.
  */
 export default function CouponTicket() {
   const [copied, setCopied] = useState(false);
-  const code = "15OFF";
+  const code = "100OFF";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
@@ -30,9 +30,9 @@ export default function CouponTicket() {
       />
       <div className="relative flex items-center justify-between gap-4 rounded-xl border-2 border-[#01203d]/20 bg-[#fef7f5] px-5 py-4">
         <div className="flex-1 min-w-0 flex flex-col gap-0.5">
-          <span className="text-[#01203d] font-bold text-lg">15% OFF</span>
+          <span className="text-[#01203d] font-bold text-lg">$100 OFF</span>
           <span className="text-[#01203d] text-sm">Coupon Code &quot;{code}&quot;</span>
-          <span className="text-[#01203d]/80 text-xs">Coupon Expires 3/30 · Ends soon</span>
+          <span className="text-[#01203d]/80 text-xs">Limited time · Ends soon</span>
         </div>
         <button
           onClick={handleCopy}

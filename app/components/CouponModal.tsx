@@ -6,6 +6,8 @@ interface CouponModalProps {
   isOpen: boolean;
   onClose: () => void;
   onClaimCoupon: (email: string, course: string) => void;
+  /** Stored with the lead and shown in the success modal (default 100OFF) */
+  couponCode?: string;
 }
 
 const courses = [
@@ -28,7 +30,12 @@ const courses = [
   "PMP Certification",
 ];
 
-export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponModalProps) {
+export default function CouponModal({
+  isOpen,
+  onClose,
+  onClaimCoupon,
+  couponCode = "100OFF",
+}: CouponModalProps) {
   const [email, setEmail] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [errors, setErrors] = useState({ email: "", course: "" });
@@ -64,7 +71,7 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           body: JSON.stringify({
             email,
             course: selectedCourse,
-            couponCode: '15OFF'
+            couponCode,
           }),
         });
 
@@ -94,16 +101,16 @@ export default function CouponModal({ isOpen, onClose, onClaimCoupon }: CouponMo
           
           <div className="relative z-10">
             <h2 className="text-gray-900 text-2xl font-bold mb-4">
-              Get 15% off your course fee.
+              Get $100 off your course.
             </h2>
             <p className="text-gray-800 text-sm mb-6">
               Gain high-value skills that drive real results.
             </p>
           </div>
 
-          {/* Percentage icon */}
+          {/* $100 hint */}
           <div className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">%</span>
+            <span className="text-white font-bold text-lg">$</span>
           </div>
         </div>
 
