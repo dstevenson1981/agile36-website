@@ -1439,7 +1439,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900">Our Latest Blogs</h2>
           </div>
           
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* AI Transformation Blog Post */}
             <Link href="/blog/ai-transformation" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
@@ -1620,12 +1620,55 @@ export default function Home() {
                 <span className="text-sm text-gray-900 underline">Read More</span>
               </div>
             </Link>
+
+            {/* Is SAFe certification worth it 2026 */}
+            <Link href="/blog/is-safe-certification-worth-it-2026" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+                <div className="absolute top-2 left-2 flex flex-col gap-1">
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute bottom-2 right-2 flex flex-col gap-1">
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    ))}
+                  </div>
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white text-center px-4 relative z-10">
+                  Is SAFe Certification Worth It in 2026?
+                </h3>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="text-sm text-[#718aa5]">2026</span>
+                </div>
+                <p className="text-sm text-gray-700 mb-4">
+                  ROI, real salary data, and who benefits most — a straight answer backed by data, not hype.
+                </p>
+                <span className="text-sm text-gray-900 underline">Read More</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Consultation Modal */}
-            {showConsultationModal && (
+      {showConsultationModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto relative">
             {/* Close Button */}
