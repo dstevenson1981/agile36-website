@@ -660,7 +660,7 @@ function CourseScheduleContent() {
                       🎯 Special Group Offer
                     </p>
                     <p className="text-base font-bold text-gray-900">
-                      15% Off for Groups of 5+
+                      20% Off for Groups of 5+
                     </p>
                   </div>
                   <ul className="space-y-2 text-sm text-gray-700">

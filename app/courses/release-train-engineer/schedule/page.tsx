@@ -470,7 +470,7 @@ function CourseScheduleContent() {
                 <h2 className="text-2xl font-bold text-gray-900 mb-3">Group Training Discount Available</h2>
                 <p className="text-base text-gray-700 mb-4">Get special pricing when enrolling 5 or more participants.</p>
                 <div className="bg-white rounded-lg p-4 mb-4 border-2 border-[#fa4a23]">
-                  <p className="text-base font-bold text-gray-900">15% Off for Groups of 5+</p>
+                  <p className="text-base font-bold text-gray-900">20% Off for Groups of 5+</p>
                 </div>
               </div>
 
