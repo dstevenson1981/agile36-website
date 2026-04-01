@@ -43,6 +43,7 @@ function CoursesContent() {
     "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
     "SAFe for Teams": "/SAFe for Teams.png",
     "SAFe DevOps": "/Devops.png",
+    "AI-Empowered SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
     "AI-Empowered SAFe Product Owner/Product Manager": "/POPM.jpg",
@@ -162,7 +163,7 @@ function CoursesContent() {
     },
     {
       id: "16",
-      title: "SAFe Advanced Scrum Master",
+      title: "AI-Empowered SAFe Advanced Scrum Master",
       category: "SAFe",
       image: "/headway-5QgIuuBxKwM-unsplash.jpg",
       price: 599,

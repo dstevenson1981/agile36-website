@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "AI-Empowered SAFe Advanced Scrum Master (SASM) training: flow, high-performing teams, multi-team collaboration, and conflict skills on the ART—with AI-empowered facilitation. Expert-led course; exam included.",
   keywords: [
-    "SAFe Advanced Scrum Master",
+    "AI-Empowered SAFe Advanced Scrum Master",
     "SASM certification",
     "AI-Empowered SAFe",
     "AI-Empowered SASM",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "SAFe CoPilot",
     "Advanced Scrum Master exam",
     "SASM course online",
-    "SAFe Advanced Scrum Master certification"
+    "AI-Empowered SAFe Advanced Scrum Master certification"
   ],
   openGraph: {
     title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification | Agile36",
@@ -91,10 +91,10 @@ export default function AdvancedScrumMasterLayout({
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is SAFe Advanced Scrum Master (SASM)?",
+        "name": "What is AI-Empowered SAFe Advanced Scrum Master (SASM)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe Advanced Scrum Master (SASM) is a 2-day advanced certification for experienced Scrum Masters working in SAFe environments. You learn program-level coaching, facilitating PI Planning for entire ARTs, coaching multiple teams simultaneously, driving enterprise Agile transformation, and advanced servant leadership practices for organizational scale."
+          "text": "AI-Empowered SAFe Advanced Scrum Master (SASM) is a 2-day advanced certification for experienced Scrum Masters working in SAFe environments. You learn program-level coaching, facilitating PI Planning for entire ARTs, coaching multiple teams simultaneously, driving enterprise Agile transformation, and advanced servant leadership practices for organizational scale."
         }
       },
       {
@@ -159,7 +159,7 @@ export default function AdvancedScrumMasterLayout({
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "SAFe Advanced Scrum Master",
+        "name": "AI-Empowered SAFe Advanced Scrum Master",
         "item": "https://www.agile36.com/courses/advanced-scrum-master"
       }
     ]

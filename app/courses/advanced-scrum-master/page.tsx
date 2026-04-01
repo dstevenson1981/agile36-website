@@ -37,7 +37,7 @@ export default function AdvancedScrumMasterCoursePage() {
                 <div className="w-16 h-16 flex-shrink-0">
                   <Image
                     src="/Advanced_Logo.png"
-                    alt="SAFe Advanced Scrum Master Badge"
+                    alt="AI-Empowered SAFe Advanced Scrum Master Badge"
                     width={64}
                     height={64}
                     className="w-full h-full object-contain"
@@ -119,7 +119,7 @@ export default function AdvancedScrumMasterCoursePage() {
                   <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
                     <Image
                     src="/Advanced_Logo.png"
-                    alt="SAFe Advanced Scrum Master Certification Badge"
+                    alt="AI-Empowered SAFe Advanced Scrum Master Certification Badge"
                       width={80}
                       height={80}
                       className="w-full h-full object-contain"
@@ -156,7 +156,7 @@ export default function AdvancedScrumMasterCoursePage() {
               <div className="max-w-md w-full mt-8 lg:mt-20">
                 <img 
                   src="/Advanced_Header.jpg" 
-                  alt="SAFe Advanced Scrum Master" 
+                  alt="AI-Empowered SAFe Advanced Scrum Master" 
                   className="w-full h-auto rounded-lg"
                 />
               </div>
@@ -353,7 +353,7 @@ export default function AdvancedScrumMasterCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">SAFe Advanced Scrum Master (SASM)</p>
+                            <p className="font-semibold text-gray-900">AI-Empowered SAFe Advanced Scrum Master (SASM)</p>
                             <p className="text-sm text-gray-600">AI-Empowered certification path (Scaled Agile)</p>
                           </div>
                         </div>
@@ -469,9 +469,9 @@ export default function AdvancedScrumMasterCoursePage() {
 
                     {/* Career & Salary */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for SAFe Advanced Scrum Masters</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for AI-Empowered SAFe Advanced Scrum Masters</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        Earning your SAFe Advanced Scrum Master certification opens up numerous senior career opportunities and demonstrates your commitment to advanced professional growth. The certification validates your ability to effectively lead program-level coaching and organizational transformation in a SAFe environment.
+                        Earning your AI-Empowered SAFe Advanced Scrum Master certification opens up numerous senior career opportunities and demonstrates your commitment to advanced professional growth. The certification validates your ability to effectively lead program-level coaching and organizational transformation in a SAFe environment.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
@@ -570,7 +570,7 @@ export default function AdvancedScrumMasterCoursePage() {
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Credential:</p>
-                            <p className="text-base text-gray-700">SAFe Advanced Scrum Master (SASM)—AI-Empowered SAFe</p>
+                            <p className="text-base text-gray-700">AI-Empowered SAFe Advanced Scrum Master (SASM)—AI-Empowered SAFe</p>
                           </div>
                         </div>
                         <div className="pt-4 border-t border-gray-200">
@@ -859,7 +859,7 @@ export default function AdvancedScrumMasterCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">SAFe Advanced Scrum Master Certification</span>
+                    <span className="text-sm text-gray-700">AI-Empowered SAFe Advanced Scrum Master Certification</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -892,9 +892,9 @@ export default function AdvancedScrumMasterCoursePage() {
       <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Earn the SAFe Advanced Scrum Master (SASM) credential</p>
+            <p className="text-sm text-[#01203d] mb-1">Earn the AI-Empowered SAFe Advanced Scrum Master (SASM) credential</p>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">SAFe Advanced Scrum Master Certificate</h2>
+              <h2 className="text-2xl font-bold text-gray-900">AI-Empowered SAFe Advanced Scrum Master Certificate</h2>
               <div className="flex gap-1">
                 <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -910,7 +910,7 @@ export default function AdvancedScrumMasterCoursePage() {
           <div className="bg-white border border-blue-200 rounded-lg overflow-hidden">
             <img
               src="/Advanced_Cert.jpg"
-              alt="SAFe Advanced Scrum Master Certificate"
+              alt="AI-Empowered SAFe Advanced Scrum Master Certificate"
               className="w-full h-auto"
             />
           </div>
@@ -922,7 +922,7 @@ export default function AdvancedScrumMasterCoursePage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-sm text-gray-600 mb-2">AI-Empowered SASM course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Advanced Scrum Master (SASM)</h2>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on AI-Empowered SAFe Advanced Scrum Master (SASM)</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -957,14 +957,14 @@ export default function AdvancedScrumMasterCoursePage() {
                 courses: [
                   { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. For questions, please email d.stevenson@agile36.com." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Course Advisor' button on this page, or call our support team. We're available to answer any questions about the training program, schedules, and enrollment." },
-                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Advanced Scrum Master training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
+                  { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our AI-Empowered SAFe Advanced Scrum Master training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, we offer private/corporate training sessions that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "You can view all upcoming schedules by clicking the 'View Schedules' button on this page, or visit our course schedule page. Schedules are updated regularly and show both live virtual and in-person options." },
                   { q: "After enrollment, can I change the date of my training class?", a: "Yes, participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time. All rescheduling requests must be submitted via email to d.stevenson@agile36.com so they can be processed promptly." },
-                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Advanced Scrum Master course and passing the certification exam, you'll receive the official SAFe Advanced Scrum Master (SASM) certificate from Scaled Agile, Inc." }
+                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the AI-Empowered SAFe Advanced Scrum Master course and passing the certification exam, you'll receive the official SAFe Advanced Scrum Master (SASM) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Advanced Scrum Master (SASM) exam?", a: "The SASM exam is a timed, multiple-choice exam administered by Scaled Agile. Their public certification overview specifies a 120-minute exam and a 73% passing score. Use the practice test in Studio to gauge readiness." },
+                  { q: "What is the format of the AI-Empowered SAFe Advanced Scrum Master (SASM) exam?", a: "The SASM exam is a timed, multiple-choice exam administered by Scaled Agile. Their public certification overview specifies a 120-minute exam and a 73% passing score. Use the practice test in Studio to gauge readiness." },
                   { q: "How long do I have to take the exam after completing the course?", a: "You typically have a limited window after course completion to attempt the exam (confirm your exact deadline in your Scaled Agile learning account and course communication)." },
                   { q: "Is the exam included in the course fee?", a: "Your Agile36 enrollment includes training aligned to SASM; exam fees are generally bundled per Scaled Agile partner offerings—confirm with your enrollment confirmation for your specific registration." },
                   { q: "Can I take the exam online?", a: "Yes, the exam is taken online through Scaled Agile’s exam platform. You’ll receive access instructions after you complete the course." },
@@ -979,7 +979,7 @@ export default function AdvancedScrumMasterCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Advanced Scrum Master (SASM) certification?", a: "SAFe Advanced Scrum Master is an advanced certification for experienced Scrum Masters who want to lead program-level coaching, optimize Agile Release Train performance, and drive organizational transformation. It builds on your SAFe Scrum Master (SSM) certification." },
+                  { q: "What is AI-Empowered SAFe Advanced Scrum Master (SASM) certification?", a: "AI-Empowered SAFe Advanced Scrum Master is an advanced certification for experienced Scrum Masters who want to lead program-level coaching, optimize Agile Release Train performance, and drive organizational transformation. It builds on your SAFe Scrum Master (SSM) certification." },
                   { q: "Who should take this course?", a: "This course is ideal for certified SAFe Scrum Masters (SSM), experienced Scrum Masters, Agile Coaches, program-level facilitators, and Agile transformation leaders who want to advance their coaching and facilitation skills at scale." },
                   { q: "What are the prerequisites for this course?", a: "SAFe Scrum Master (SSM) certification is required. Experience as a Scrum Master or Agile Coach is also recommended to get the most from the advanced content." },
                   { q: "How long is the course?", a: "The AI-Empowered SASM class is typically two days of live instruction (about 10 hours total; many sessions run 9 AM–2 PM Eastern). Confirm exact times on your enrollment." },
@@ -1048,17 +1048,17 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe Advanced Scrum Master Certification in the USA
+              AI-Empowered SAFe Advanced Scrum Master Certification in the USA
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              There has been a significant increase in demand for the SAFe Advanced Scrum Master certification across the United States, as more organizations embrace Agile-at-scale methodologies and seek experienced professionals to lead program-level coaching and organizational transformation. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe Advanced Scrum Masters and Program-level Agile Coaches who can lead organizational change, scale Agile practices across multiple teams, mentor other Scrum Masters, and drive Agile Release Train transformations. These certified experts are highly valued for their expertise in program-level coaching, organizational transformation, advanced facilitation, and scaling Agile practices. The SAFe Advanced Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys and seek senior Agile leadership.
+              There has been a significant increase in demand for the AI-Empowered SAFe Advanced Scrum Master certification across the United States, as more organizations embrace Agile-at-scale methodologies and seek experienced professionals to lead program-level coaching and organizational transformation. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting AI-Empowered SAFe Advanced Scrum Masters and Program-level Agile Coaches who can lead organizational change, scale Agile practices across multiple teams, mentor other Scrum Masters, and drive Agile Release Train transformations. These certified experts are highly valued for their expertise in program-level coaching, organizational transformation, advanced facilitation, and scaling Agile practices. The AI-Empowered SAFe Advanced Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys and seek senior Agile leadership.
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe Advanced Scrum Master Certification Training in the USA?
+              What Certifications Are Required for AI-Empowered SAFe Advanced Scrum Master Certification Training in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Experience as a Scrum Master or Agile Coach is recommended for SASM in the United States. The AI-Empowered SASM course builds skills to collaborate across the Agile Release Train: flow, high-performing teams, multi-team conflict, and ART performance—including responsible AI practices aligned with Scaled Agile’s published curriculum and exam blueprint.
@@ -1068,7 +1068,7 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Advanced Scrum Master Professionals in the USA?
+              What Are Job Opportunities for AI-Empowered SAFe Advanced Scrum Master Professionals in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Advanced Scrum Master professionals in the United States have excellent senior career prospects across various industries. Job opportunities include Senior Scrum Master, Agile Coach, Agile Transformation Leader, Enterprise Agile Coach, and Agile Release Train Coach roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with Advanced Scrum Master certification who can facilitate Agile teams effectively, resolve conflicts, optimize team flow, and drive organizational success with advanced Agile methodologies. The certification opens doors to senior leadership positions in Agile transformation and team facilitation roles.
@@ -1078,7 +1078,7 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe Advanced Scrum Master Certification in the USA?
+              What is the Fee for AI-Empowered SAFe Advanced Scrum Master Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Agile36 currently offers this AI-Empowered SASM course at <strong>$599</strong> for live virtual training (pricing may vary by promotion or private cohort). Your investment covers expert-led instruction aligned to the official exam blueprint; Scaled Agile separately provides workbook, Studio, practice test, and exam per their certification process. Always confirm the latest list price on the schedule page before you register.
@@ -1092,7 +1092,7 @@ export default function AdvancedScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe Advanced Scrum Master Course in Other Top Cities in USA
+            Find AI-Empowered SAFe Advanced Scrum Master Course in Other Top Cities in USA
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

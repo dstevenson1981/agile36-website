@@ -75,7 +75,7 @@ function CheckoutContent() {
     'agile-product-management': 'SAFe Agile Product Management',
     'responsible-ai': 'Achieving Responsible AI with SAFe',
     'safe-for-teams': 'AI-Empowered SAFe for Teams',
-    'advanced-scrum-master': 'Advanced SAFe Scrum Master',
+    'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
     'value-stream-mapping': 'SAFe Value Stream Mapping',
   };
 

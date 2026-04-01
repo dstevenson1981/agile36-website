@@ -68,7 +68,7 @@ function CheckoutContent() {
   const certificationNames: { [key: string]: string } = {
     'leading-safe': 'AI-Empowered Leading SAFe',
     'scrum-master': 'AI-Empowered SAFe Scrum Master',
-    'advanced-scrum-master': 'Advanced SAFe Scrum Master',
+    'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
     'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'SAFe Lean Portfolio Management',
     'devops': 'SAFe DevOps',

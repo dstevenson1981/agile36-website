@@ -408,7 +408,7 @@ export default function LeadingSafeCoursePage() {
               <p className="text-gray-700 text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
             </Link>
             <Link href="/courses/advanced-scrum-master" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Advanced Scrum Master (ASM)</h3>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
               <p className="text-gray-700 text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
             </Link>
             <Link href="/courses/value-stream-mapping" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
