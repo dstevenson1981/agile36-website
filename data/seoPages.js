@@ -1,8 +1,8 @@
 export const seoPages = [
   {
     slug: 'leading-safe-6',
-    title: 'Leading SAFe® 6.0 Certification | Agile36',
-    h1: 'Leading SAFe 6.0 Training and Certification',
+    title: 'AI-Empowered Leading SAFe® 6.0 Certification | Agile36',
+    h1: 'AI-Empowered Leading SAFe 6.0 Training and Certification',
     description: 'Learn SAFe foundations, Lean-Agile mindset, and how to lead agile transformations.',
     body: `
       Become a SAFe Agilist with Agile36.
@@ -13,8 +13,8 @@ export const seoPages = [
   },
   {
     slug: 'safe-scrum-master',
-    title: 'SAFe® Scrum Master (SSM) Certification | Agile36',
-    h1: 'SAFe Scrum Master (SSM) Training',
+    title: 'AI-Empowered SAFe® Scrum Master (SSM) Certification | Agile36',
+    h1: 'AI-Empowered SAFe Scrum Master (SSM) Training',
     description: 'Hands-on SAFe Scrum Master course focused on team agility and ART facilitation.',
     body: `
       Learn team-level servant leadership skills.
@@ -55,8 +55,8 @@ export const seoPages = [
   },
   {
     slug: 'safe-popm',
-    title: 'SAFe® Product Owner/Product Manager (POPM) Certification | Agile36',
-    h1: 'SAFe® Product Owner/Product Manager Training',
+    title: 'AI-Empowered SAFe® Product Owner/Product Manager (POPM) Certification | Agile36',
+    h1: 'AI-Empowered SAFe® Product Owner/Product Manager Training',
     description: 'Master backlog management, PI planning, and value delivery. 2-day live remote POPM certification class.',
     body: `Learn to prioritize backlogs, write features, facilitate PI planning, and deliver continuous value across Agile Release Trains. Popular SAFe certification for product leaders.`,
     category: 'safe-certification',
@@ -73,8 +73,8 @@ export const seoPages = [
   },
   {
     slug: 'safe-for-teams',
-    title: 'SAFe® for Teams | Agile36',
-    h1: 'SAFe® for Teams Training',
+    title: 'AI-Empowered SAFe® for Teams | Agile36',
+    h1: 'AI-Empowered SAFe® for Teams Training',
     description: 'Team-level SAFe training covering collaboration, iteration execution, and ART participation. 2-day class.',
     body: `Learn team dynamics, iteration planning, demo preparation, and how to contribute effectively to your Agile Release Train.`,
     category: 'safe-certification',

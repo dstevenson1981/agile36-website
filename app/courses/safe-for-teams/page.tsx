@@ -73,7 +73,7 @@ export default function SafeForTeamsCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe for Teams Certification Training</span>
+            <span className="text-[#01203d]">AI-Empowered SAFe for Teams Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -126,7 +126,7 @@ export default function SafeForTeamsCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® 6.0 for Teams Certification Training
+                  AI-Empowered SAFe® 6.0 for Teams Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
                   Master SAFe Team Member Skills to Excel in Agile Release Trains

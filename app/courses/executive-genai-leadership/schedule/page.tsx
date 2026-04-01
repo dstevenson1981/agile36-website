@@ -49,12 +49,12 @@ function CourseScheduleContent() {
 
   // Map course slugs to display names
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
+    'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
+    'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'Lean Portfolio Management',
     'agile-product-management': 'SAFe Agile Product Management',
-    'safe-for-teams': 'SAFe for Teams',
+    'safe-for-teams': 'AI-Empowered SAFe for Teams',
     'ai-driven-scrum-master': 'AI-Driven Scrum Master™',
     'executive-genai-leadership': 'Executive GenAI Leadership™',
   };

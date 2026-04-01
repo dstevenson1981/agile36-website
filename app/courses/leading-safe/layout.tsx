@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Leading SAFe® 6.0 Certification Training | SAFe Agilist (SA) | Agile36",
-  description: "Get Leading SAFe certified with Agile36, a SAFe Silver Partner. 2-day live training, exam included. Learn to lead enterprise Agile transformation. Expert SPCs. Enroll now.",
+  title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA) | Agile36",
+  description: "Get AI-Empowered Leading SAFe certified with Agile36, a SAFe Silver Partner. 2-day live training, exam included. Learn to lead enterprise Agile transformation with AI-empowered practices. Expert SPCs. Enroll now.",
   keywords: [
     "Leading SAFe",
     "SAFe Agilist",
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "Leading SAFe® 6.0 Certification Training | SAFe Agilist (SA) | Agile36",
-    description: "Master Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation and value streams.",
+    title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA) | Agile36",
+    description: "Master AI-Empowered Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation and value streams.",
     type: "website",
     url: "https://www.agile36.com/courses/leading-safe",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Leading SAFe® 6.0 Certification Training | SAFe Agilist (SA)",
-    description: "Master Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation.",
+    title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA)",
+    description: "Master AI-Empowered Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/leading-safe",
@@ -43,7 +43,7 @@ export default function LeadingSafeLayout({
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": "Leading SAFe® 6.0 Certification Training",
+    "name": "AI-Empowered Leading SAFe® 6.0 Certification Training",
     "description": "Leading SAFe 6.0 certification training teaches enterprise Agile transformation. Learn to implement SAFe framework, lead Agile Release Trains, facilitate PI Planning, and manage value streams at scale.",
     "provider": {
       "@type": "EducationalOrganization",

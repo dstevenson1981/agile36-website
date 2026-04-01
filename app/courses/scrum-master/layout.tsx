@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
-  description: "Earn your SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
+  title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
+  description: "Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
   keywords: [
     "SAFe Scrum Master",
     "SAFe SSM certification",
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
-    description: "Earn your SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
+    title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
+    description: "Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
     type: "website",
     url: "https://www.agile36.com/courses/scrum-master",
   },

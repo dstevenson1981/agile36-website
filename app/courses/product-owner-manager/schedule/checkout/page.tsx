@@ -26,7 +26,7 @@ function CheckoutContent() {
   const [selectedPlan, setSelectedPlan] = useState<'basic' | 'pro'>('basic');
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("Leading SAFe® 6.0 Training");
+  const [courseName, setCourseName] = useState("AI-Empowered SAFe Product Owner/Product Manager");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -58,23 +58,23 @@ function CheckoutContent() {
   });
 
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
+    'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
+    'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
   };
 
   const certificationNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
+    'leading-safe': 'AI-Empowered Leading SAFe',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
+    'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'SAFe Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
     'responsible-ai': 'Achieving Responsible AI with SAFe',
-    'safe-for-teams': 'SAFe for Teams',
+    'safe-for-teams': 'AI-Empowered SAFe for Teams',
     'advanced-scrum-master': 'Advanced SAFe Scrum Master',
     'value-stream-mapping': 'SAFe Value Stream Mapping',
   };

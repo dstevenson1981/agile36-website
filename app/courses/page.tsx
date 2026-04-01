@@ -35,15 +35,19 @@ function CoursesContent() {
 
   // Mapping for course thumbnail images
   const courseThumbnails: { [key: string]: string } = {
+    "AI-Empowered Leading SAFe® / SAFe Agilist": "/Leading SAFe.png",
     "Leading SAFe/ SAFe Agilist": "/Leading SAFe.png",
     "Leading SAFe® 6.0 Certification Training": "/Leading SAFe.png",
     "SAFe Lean Portfolio Management": "/Lean Portfolio.png",
     "SAFe Agile Product Management": "/AgileProductManagment.png",
+    "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
     "SAFe for Teams": "/SAFe for Teams.png",
     "SAFe DevOps": "/Devops.png",
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
+    "AI-Empowered SAFe Product Owner/Product Manager": "/POPM.jpg",
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
+    "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
@@ -65,7 +69,7 @@ function CoursesContent() {
     // SAFe courses
     {
       id: "8",
-      title: "Leading SAFe/ SAFe Agilist",
+      title: "AI-Empowered Leading SAFe® / SAFe Agilist",
       category: "SAFe",
       image: "/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg",
       price: 515,
@@ -73,12 +77,12 @@ function CoursesContent() {
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "3K+ Enrolled",
-      skills: "SAFe Principles, Lean-Agile Practices",
+      skills: "SAFe Principles, Lean-Agile Practices, AI-empowered collaboration",
       popular: true,
     },
     {
       id: "9",
-      title: "SAFe Product Owner/Product Manager",
+      title: "AI-Empowered SAFe Product Owner/Product Manager",
       category: "SAFe",
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 545,
@@ -86,7 +90,7 @@ function CoursesContent() {
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "Product Ownership, SAFe PO/PM Practices",
+      skills: "Product Ownership, SAFe PO/PM Practices, AI-assisted delivery",
       popular: true,
     },
     {
@@ -119,7 +123,7 @@ function CoursesContent() {
     },
     {
       id: "12",
-      title: "SAFe Scrum Master",
+      title: "AI-Empowered SAFe Scrum Master",
       category: "SAFe",
       image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
       price: 515,
@@ -127,12 +131,12 @@ function CoursesContent() {
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "3.5K+ Enrolled",
-      skills: "SAFe Scrum, Team Facilitation, Coaching",
+      skills: "SAFe Scrum, Team Facilitation, Coaching, AI-empowered ceremonies",
       popular: true,
     },
     {
       id: "13",
-      title: "SAFe for Teams",
+      title: "AI-Empowered SAFe for Teams",
       category: "SAFe",
       image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
       price: 599,
@@ -140,7 +144,7 @@ function CoursesContent() {
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "4K+ Enrolled",
-      skills: "SAFe Team Practices, Iteration Execution",
+      skills: "SAFe Team Practices, Iteration Execution, AI-empowered teamwork",
       popular: true,
     },
     {
@@ -339,6 +343,10 @@ function CoursesContent() {
     
     if (course.title.includes("SAFe Agile Product Management") || course.title.includes("Agile Product Management")) {
       return "/courses/agile-product-management";
+    }
+
+    if (course.title.includes("AI-Driven Scrum Master") || course.title.includes("AI Scrum Master")) {
+      return "/courses/ai-driven-scrum-master";
     }
 
     // Special case for SAFe Advanced Scrum Master (must come before regular Scrum Master)

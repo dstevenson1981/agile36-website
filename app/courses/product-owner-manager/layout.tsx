@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
 
 export const metadata: Metadata = {
-  title: "SAFe POPM Certification Training | Product Owner Product Manager | Agile36",
-  description: "Get SAFe POPM certified with Agile36. 2-day live training covering backlog management, PI Planning, and Lean-Agile product delivery. SAFe Silver Partner. Exam included.",
+  title: "AI-Empowered SAFe POPM Certification Training | Product Owner Product Manager | Agile36",
+  description: "Get AI-Empowered SAFe POPM certified with Agile36. 2-day live training covering backlog management, PI Planning, and Lean-Agile product delivery. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Product Owner",
     "SAFe Product Manager",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
     "continuous exploration"
   ],
   openGraph: {
-    title: "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training | Agile36",
-    description: "Master SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management. Earn 16 PDUs & SEUs.",
+    title: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training | Agile36",
+    description: "Master AI-Empowered SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/product-owner-manager",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
-    description: "Master SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management.",
+    title: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
+    description: "Master AI-Empowered SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/product-owner-manager",

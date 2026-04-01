@@ -15,7 +15,7 @@ function CourseScheduleContent() {
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10); // Show 10 initially
-  const [courseName, setCourseName] = useState("Leading SAFe® 6.0 Training");
+  const [courseName, setCourseName] = useState("SAFe Agile Product Management");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
   
   // Group inquiry modal state
@@ -39,8 +39,8 @@ function CourseScheduleContent() {
 
   // Map course slugs to display names
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
+    'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
     'agile-product-management': 'SAFe Agile Product Management',
     'devops': 'SAFe DevOps',
   };

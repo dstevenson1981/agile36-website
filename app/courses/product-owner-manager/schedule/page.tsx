@@ -15,7 +15,7 @@ function CourseScheduleContent() {
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10); // Show 10 initially
-  const [courseName, setCourseName] = useState("Leading SAFe® 6.0 Training");
+  const [courseName, setCourseName] = useState("AI-Empowered SAFe Product Owner/Product Manager");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
   
   // Group inquiry modal state
@@ -39,9 +39,9 @@ function CourseScheduleContent() {
 
   // Map course slugs to display names
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
+    'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
+    'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'Lean Portfolio Management',
     'devops': 'SAFe DevOps',
     'agile-product-management': 'SAFe Agile Product Management',
@@ -282,7 +282,7 @@ function CourseScheduleContent() {
           <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
             <Link href="/" className="hover:text-[#01203d]">Home</Link>
             <span>/</span>
-            <Link href="/courses/product-owner-manager" className="hover:text-[#01203d]">SAFe Product Owner/Product Manager Certification Training</Link>
+            <Link href="/courses/product-owner-manager" className="hover:text-[#01203d]">AI-Empowered SAFe Product Owner/Product Manager Certification Training</Link>
             <span>/</span>
             <span className="text-[#01203d]">Schedule</span>
           </div>

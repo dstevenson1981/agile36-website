@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "SAFe® Certification Training Courses | All SAFe Certifications | Agile36",
   description:
-    "Browse all SAFe certification training courses from Agile36. Leading SAFe, LPM, POPM, Scrum Master, APM, DevOps and more. SAFe Silver Partner. Expert SPCs. Exam included.",
+    "Browse all SAFe certification training courses from Agile36. AI-Empowered Leading SAFe, LPM, POPM, Scrum Master, APM, DevOps and more. SAFe Silver Partner. Expert SPCs. Exam included.",
   alternates: {
     canonical: "https://www.agile36.com/safe-certifications",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const COURSES = [
   {
-    name: "Leading SAFe (SA)",
+    name: "AI-Empowered Leading SAFe (SA)",
     url: "/courses/leading-safe",
     level: "Foundation",
     description: "The foundational SAFe certification for leaders driving Lean-Agile transformation",
@@ -29,7 +29,7 @@ const COURSES = [
     badge: "/Leading SAFe.png",
   },
   {
-    name: "SAFe Scrum Master (SSM)",
+    name: "AI-Empowered SAFe Scrum Master (SSM)",
     url: "/courses/scrum-master",
     level: "Team Level",
     description: "Facilitate Agile teams and support Agile Release Train ceremonies",
@@ -38,7 +38,7 @@ const COURSES = [
     badge: "/SSM.jpeg",
   },
   {
-    name: "SAFe POPM",
+    name: "AI-Empowered SAFe POPM",
     url: "/courses/product-owner-manager",
     level: "Team/Program",
     description: "Manage backlogs and define product vision at team and program level",
@@ -83,7 +83,7 @@ const COURSES = [
     badge: "/Devops.png",
   },
   {
-    name: "SAFe for Teams (SP)",
+    name: "AI-Empowered SAFe for Teams (SP)",
     url: "/courses/safe-for-teams",
     level: "Team Level",
     description: "Foundation certification for all Agile team members on an ART",
@@ -112,14 +112,14 @@ const COURSES = [
 ];
 
 const COMPARISON_TABLE = [
-  { cert: "Leading SAFe", bestFor: "Managers, Directors, Executives", level: "Foundation", duration: "2 days", salary: "$105K–$158K" },
-  { cert: "SAFe Scrum Master", bestFor: "Scrum Masters, Team Leads", level: "Team", duration: "2 days", salary: "$95K–$130K" },
-  { cert: "SAFe POPM", bestFor: "Product Owners, Product Managers", level: "Team/Program", duration: "2 days", salary: "$100K–$141K" },
+  { cert: "AI-Empowered Leading SAFe", bestFor: "Managers, Directors, Executives", level: "Foundation", duration: "2 days", salary: "$105K–$158K" },
+  { cert: "AI-Empowered SAFe Scrum Master", bestFor: "Scrum Masters, Team Leads", level: "Team", duration: "2 days", salary: "$95K–$130K" },
+  { cert: "AI-Empowered SAFe POPM", bestFor: "Product Owners, Product Managers", level: "Team/Program", duration: "2 days", salary: "$100K–$141K" },
   { cert: "SAFe LPM", bestFor: "PMO Directors, Portfolio Managers, Executives", level: "Portfolio", duration: "2 days", salary: "$120K–$160K" },
   { cert: "SAFe APM", bestFor: "Senior Product Managers, Heads of Product", level: "Advanced", duration: "3 days", salary: "$115K–$150K" },
   { cert: "SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days", salary: "$110K–$145K" },
   { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days", salary: "$110K–$148K" },
-  { cert: "SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days", salary: "—" },
+  { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days", salary: "—" },
   { cert: "RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2 days", salary: "$130K–$170K" },
 ];
 
@@ -130,7 +130,7 @@ const FAQS = [
   },
   {
     q: "Which SAFe certification should I get first?",
-    a: "Leading SAFe (SAFe Agilist) is the most common starting point — it provides a broad foundation across all of SAFe. If you're in a specific role, start with the role-based cert: POPM for product professionals, SSM for Scrum Masters, LPM for portfolio/PMO leaders. Contact Agile36 if you're unsure which path fits your goals.",
+    a: "AI-Empowered Leading SAFe (SAFe Agilist) is the most common starting point — it provides a broad foundation across all of SAFe. If you're in a specific role, start with the role-based cert: AI-Empowered POPM for product professionals, AI-Empowered SSM for Scrum Masters, LPM for portfolio/PMO leaders. Contact Agile36 if you're unsure which path fits your goals.",
   },
   {
     q: "How long does SAFe certification last?",
@@ -170,14 +170,14 @@ const itemListSchema = {
   url: "https://www.agile36.com/safe-certifications",
   numberOfItems: 10,
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Leading SAFe (SA)", url: "https://www.agile36.com/courses/leading-safe" },
-    { "@type": "ListItem", position: 2, name: "SAFe Scrum Master (SSM)", url: "https://www.agile36.com/courses/scrum-master" },
-    { "@type": "ListItem", position: 3, name: "SAFe POPM", url: "https://www.agile36.com/courses/product-owner-manager" },
+    { "@type": "ListItem", position: 1, name: "AI-Empowered Leading SAFe (SA)", url: "https://www.agile36.com/courses/leading-safe" },
+    { "@type": "ListItem", position: 2, name: "AI-Empowered SAFe Scrum Master (SSM)", url: "https://www.agile36.com/courses/scrum-master" },
+    { "@type": "ListItem", position: 3, name: "AI-Empowered SAFe POPM", url: "https://www.agile36.com/courses/product-owner-manager" },
     { "@type": "ListItem", position: 4, name: "SAFe LPM", url: "https://www.agile36.com/courses/lean-portfolio-management" },
     { "@type": "ListItem", position: 5, name: "SAFe APM", url: "https://www.agile36.com/courses/agile-product-management" },
     { "@type": "ListItem", position: 6, name: "SAFe Advanced Scrum Master (SASM)", url: "https://www.agile36.com/courses/advanced-scrum-master" },
     { "@type": "ListItem", position: 7, name: "SAFe DevOps (SDP)", url: "https://www.agile36.com/courses/devops" },
-    { "@type": "ListItem", position: 8, name: "SAFe for Teams (SP)", url: "https://www.agile36.com/courses/safe-for-teams" },
+    { "@type": "ListItem", position: 8, name: "AI-Empowered SAFe for Teams (SP)", url: "https://www.agile36.com/courses/safe-for-teams" },
     { "@type": "ListItem", position: 9, name: "Release Train Engineer (RTE)", url: "https://www.agile36.com/courses/release-train-engineer" },
     { "@type": "ListItem", position: 10, name: "Value Stream Mapping", url: "https://www.agile36.com/courses/value-stream-mapping" },
   ],

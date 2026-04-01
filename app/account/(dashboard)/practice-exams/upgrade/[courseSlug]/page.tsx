@@ -4,8 +4,8 @@ import { hasBasicPlanForCourse } from '@/app/lib/practice-exams';
 import UpgradeCheckout from './UpgradeCheckout';
 
 const COURSE_NAMES: Record<string, string> = {
-  'leading-safe': 'Leading SAFe / SAFe Agilist',
-  'product-owner-manager': 'SAFe Product Owner/Product Manager (POPM)',
+  'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+  'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager (POPM)',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management (LPM)',
 };
 

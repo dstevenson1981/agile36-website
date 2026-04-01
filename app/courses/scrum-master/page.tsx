@@ -72,7 +72,7 @@ export default function ScrumMasterCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe Scrum Master Certification Training</span>
+            <span className="text-[#01203d]">AI-Empowered SAFe Scrum Master Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -125,10 +125,10 @@ export default function ScrumMasterCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe® Scrum Master (SSM) Certification Training
+                  AI-Empowered SAFe® Scrum Master (SSM) Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Become a certified SAFe Scrum Master in 2 days. Live, expert-led training from a SAFe Silver Partner with Fortune 100 experience.
+                  Become a certified AI-Empowered SAFe Scrum Master in 2 days. Live, expert-led training from a SAFe Silver Partner with Fortune 100 experience.
                 </p>
 
                 {/* Key Stats Bar */}

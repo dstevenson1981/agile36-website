@@ -12,8 +12,8 @@ const getStripe = () => {
 };
 
 const COURSE_NAMES: Record<string, string> = {
-  'leading-safe': 'Leading SAFe / SAFe Agilist',
-  'product-owner-manager': 'SAFe Product Owner/Product Manager',
+  'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+  'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management',
 };
 

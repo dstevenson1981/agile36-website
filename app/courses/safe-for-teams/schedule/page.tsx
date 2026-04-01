@@ -15,7 +15,7 @@ function CourseScheduleContent() {
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10); // Show 10 initially
-  const [courseName, setCourseName] = useState("SAFe for Teams");
+  const [courseName, setCourseName] = useState("AI-Empowered SAFe for Teams");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
   
   // Group inquiry modal state
@@ -39,12 +39,12 @@ function CourseScheduleContent() {
 
   // Map course slugs to display names
   const courseNames: { [key: string]: string } = {
-    'leading-safe': 'Leading SAFe® 6.0 Training',
-    'scrum-master': 'SAFe Scrum Master',
-    'product-owner-manager': 'SAFe Product Owner/Product Manager',
+    'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
+    'scrum-master': 'AI-Empowered SAFe Scrum Master',
+    'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
     'lean-portfolio-management': 'Lean Portfolio Management',
     'agile-product-management': 'SAFe Agile Product Management',
-    'safe-for-teams': 'SAFe for Teams',
+    'safe-for-teams': 'AI-Empowered SAFe for Teams',
   };
 
   useEffect(() => {

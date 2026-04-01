@@ -16,13 +16,13 @@ const trainers = ["Deadra Stevenson", "Marcus Ball"];
 
 // Pure SAFe courses (no AI mentions)
 const safeCourses = [
-  "Leading SAFe",
+  "AI-Empowered Leading SAFe",
   "SAFe DevOps",
   "SAFe Lean Portfolio Management",
   "SAFe Agile Product Management",
-  "SAFe for Teams",
-  "SAFe Scrum Master",
-  "SAFe Product Owner/Product Manager"
+  "AI-Empowered SAFe for Teams",
+  "AI-Empowered SAFe Scrum Master",
+  "AI-Empowered SAFe Product Owner/Product Manager"
 ];
 
 // Generative AI courses (includes SAFe+AI hybrid)

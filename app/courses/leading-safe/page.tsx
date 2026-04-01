@@ -73,7 +73,7 @@ export default function LeadingSafeCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">Leading SAFe® 6.0 Certification Training</span>
+            <span className="text-[#01203d]">AI-Empowered Leading SAFe® / SAFe Agilist</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -82,7 +82,7 @@ export default function LeadingSafeCoursePage() {
               {/* Category Badge */}
               <div className="flex items-center gap-2">
                 <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
-                <span className="text-sm text-gray-500">Leading SAFe Certification Training</span>
+                <span className="text-sm text-gray-500">AI-Empowered Leading SAFe Certification Training</span>
               </div>
 
               {/* Rating and Enrolled */}
@@ -115,7 +115,7 @@ export default function LeadingSafeCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  Leading SAFe® 6.0 Training with<br />
+                  AI-Empowered Leading SAFe® Training with<br />
                   SAFe Agilist Certification
                 </h1>
                 <p className="text-lg text-gray-700 font-semibold">
