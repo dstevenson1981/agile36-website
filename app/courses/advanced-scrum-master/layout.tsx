@@ -1,35 +1,37 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe Advanced Scrum Master (SASM) Certification Training | Agile36",
-  description: "Advance your Scrum Master career with SAFe SASM certification. Expert-led 2-day training covering program-level coaching, ART facilitation, and organizational agility. Exam included.",
+  title: "AI-Empowered SAFe Advanced Scrum Master (SASM) Certification | Agile36",
+  description:
+    "AI-Empowered SAFe Advanced Scrum Master (SASM) training: flow, high-performing teams, multi-team collaboration, and conflict skills on the ART—with AI-empowered facilitation. Expert-led course; exam included.",
   keywords: [
     "SAFe Advanced Scrum Master",
-    "SAFe A-CSM certification",
+    "SASM certification",
+    "AI-Empowered SAFe",
+    "AI-Empowered SASM",
     "Advanced Scrum Master training",
-    "SAFe 6.0 A-CSM",
-    "program-level coaching",
-    "advanced facilitation",
+    "Scaled Agile SASM",
     "Agile Release Train",
-    "servant leadership",
-    "advanced Agile coaching",
-    "Advanced Scrum Master certification",
-    "SAFe A-CSM certification USA",
-    "Advanced Scrum Master course",
-    "SAFe Advanced Scrum Master certification",
-    "A-CSM training online",
-    "SAFe advanced certification training"
+    "SAFe Scrum Master prerequisite SSM",
+    "flow optimization SAFe",
+    "SAFe Studio",
+    "SAFe CoPilot",
+    "Advanced Scrum Master exam",
+    "SASM course online",
+    "SAFe Advanced Scrum Master certification"
   ],
   openGraph: {
-    title: "SAFe® 6.0 Advanced Scrum Master (A-CSM) Certification Training | Agile36",
-    description: "Master advanced SAFe Scrum Master skills with SAFe® Advanced Scrum Master Certification Training. Learn program-level coaching, facilitation, and advanced Agile Release Train support. Earn 16 PDUs & SEUs.",
+    title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification | Agile36",
+    description:
+      "Become an AI-Empowered SAFe Advanced Scrum Master: improve flow, build high-performing teams, manage cross-team conflict, and strengthen ART performance—with responsible AI practices. Exam included.",
     type: "website",
     url: "https://www.agile36.com/courses/advanced-scrum-master",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 Advanced Scrum Master (A-CSM) Certification Training",
-    description: "Master advanced SAFe Scrum Master skills with SAFe® Advanced Scrum Master Certification Training. Learn program-level coaching, facilitation, and advanced Agile Release Train support.",
+    title: "AI-Empowered SAFe® Advanced Scrum Master (SASM)",
+    description:
+      "Flow, high-performing teams, conflict skills, and ART performance—plus AI fundamentals and SAFe CoPilot-style guidance for the SASM role.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/advanced-scrum-master",
@@ -44,8 +46,8 @@ export default function AdvancedScrumMasterLayout({
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": "SAFe® 6.0 Advanced Scrum Master (SASM) Certification Training",
-    "description": "SAFe Advanced Scrum Master (SASM) certification teaches experienced Scrum Masters advanced facilitation, program-level coaching, and enterprise Agile leadership. Learn to facilitate PI Planning, coach multiple teams, drive organizational change, and support Agile Release Trains at scale.",
+    "name": "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training",
+    "description": "The AI-Empowered SAFe Advanced Scrum Master (SASM) course elevates experienced Scrum Masters to improve flow, build high-performing teams, manage multi-team conflict, and strengthen ART performance—using AI fundamentals, prompting, and SAFe Studio resources responsibly, per Scaled Agile.",
     "provider": {
       "@type": "EducationalOrganization",
       "name": "Agile36",
@@ -59,18 +61,17 @@ export default function AdvancedScrumMasterLayout({
     "courseDuration": "16 hours",
     "coursePrerequisites": "SAFe Scrum Master (SSM) certification and Scrum Master experience required",
     "teaches": [
-      "Advanced Program-Level Coaching",
-      "PI Planning Facilitation",
-      "Coaching Multiple Agile Teams",
-      "Advanced Servant Leadership",
-      "Enterprise Agile Transformation",
-      "Advanced Facilitation Techniques",
-      "Organizational Change Management",
-      "Scaling Agile Practices"
+      "Cross-team collaboration on the ART",
+      "Optimizing team flow (XP, Kanban, built-in quality)",
+      "High-performing teams and powerful questions",
+      "Conflict analysis, interest-based problem solving, reframing",
+      "ART performance: IP iteration, I&A, problem-solving workshop",
+      "AI fundamentals and prompting for the SASM role",
+      "SAFe CoPilot and responsible, human-in-the-loop AI use"
     ],
     "offers": {
       "@type": "Offer",
-      "price": "950",
+      "price": "599",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/advanced-scrum-master/schedule"

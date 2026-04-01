@@ -60,7 +60,7 @@ function CheckoutContent() {
   const courseNames: { [key: string]: string } = {
     'leading-safe': 'Leading SAFe® 6.0 Training',
     'scrum-master': 'SAFe Scrum Master',
-    'advanced-scrum-master': 'Advanced Scrum Master Certification Path',
+    'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
     'agile-product-management': 'SAFe Agile Product Management',
     'devops': 'SAFe DevOps',
   };

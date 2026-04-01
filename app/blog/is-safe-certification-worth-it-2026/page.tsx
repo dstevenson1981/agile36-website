@@ -266,7 +266,7 @@ export default function IsSafeCertificationWorthIt2026BlogPost() {
             it as a 2-day checkbox. It doesn&apos;t apply to training delivered
             by experienced practitioners who have led real SAFe
             transformations. The difference shows up immediately when you try to
-            apply what you learned. At Agile36, all three instructors have led
+            apply what you learned. At Agile36, our instructors have led
             SAFe implementations at Fortune 100 organizations — not just studied
             the material.
           </p>

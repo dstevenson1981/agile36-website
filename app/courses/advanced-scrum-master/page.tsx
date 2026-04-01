@@ -25,7 +25,7 @@ export default function AdvancedScrumMasterCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">Advanced Scrum Master Certification Path</span>
+            <span className="text-[#01203d]">AI-Empowered SAFe Advanced Scrum Master (SASM)</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -78,20 +78,20 @@ export default function AdvancedScrumMasterCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  Advanced Scrum Master Certification Path
+                  AI-Empowered SAFe® Advanced Scrum Master (SASM)
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Upskill your career with the Advanced Scrum Master Certification path
+                  Elevate your Scrum Master impact on the ART—flow, high-performing teams, and conflict skills—with responsible AI for facilitation
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Enhance your ability to facilitate Agile teams effectively",
-                    "Master conflict resolution & boost team collaboration",
-                    "Optimize team flow and Agile Release Train (ART) performance",
-                    "Drive organizational success with advanced Agile methodologies",
-                    "Access to Advanced Facilitator Training in Conflict and Collaboration"
+                    "Improve flow and help teams collaborate across the Agile Release Train",
+                    "Build high-performing teams and stronger cross-team facilitation",
+                    "Grow conflict-management skills for healthy multi-team engagement",
+                    "Strengthen ART performance through outcomes, I&A, and problem-solving",
+                    "Apply AI fundamentals, prompting, and SAFe Studio resources for the SASM role—with human-in-the-loop judgment"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,6 +162,31 @@ export default function AdvancedScrumMasterCoursePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* AI amplification — aligned with Scaled Agile SASM positioning */}
+      <section className="w-full bg-slate-50 py-10 px-4 sm:px-6 lg:px-20 border-y border-slate-200">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-6 text-center">
+            Leverage AI to amplify results
+          </h2>
+          <p className="text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+            The AI-Empowered SASM course shows how to use AI alongside Lean-Agile principles—so you spend less time on admin and more on high-impact facilitation.
+          </p>
+          <ul className="grid md:grid-cols-2 gap-5 text-gray-800">
+            {[
+              "AI fundamentals and prompting tailored to the SASM role—for templates, acceptance criteria, and splitting complex stories",
+              "Use SAFe CoPilot-style guidance to reference Framework practices and support data-backed flow recommendations",
+              "Apply AI to high-impact work: retrospective themes across teams, ART-level bottlenecks, PI Planning prompts",
+              "Evaluate AI outputs with human-in-the-loop oversight for ethical, quality outcomes aligned with Lean-Agile thinking",
+            ].map((item, i) => (
+              <li key={i} className="flex gap-3 bg-white rounded-lg border border-slate-200 p-4 shadow-sm">
+                <span className="text-[#fa4a23] font-bold shrink-0">{i + 1}.</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -272,29 +297,29 @@ export default function AdvancedScrumMasterCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        Make your Scrum Career more progressive with the Advanced Scrum Master Certification Path. This job role of Scrum Master extends beyond providing support for Agile practices. They are responsible for guiding teams to achieve high performance and efficiently delivering value. This course is intended to enhance your knowledge, providing an understanding of Agile frameworks & advanced facilitation methods. It helps you manage dependency issues, manage organizational problems and ensure the continuous improvement of agile teams.
+                        The <strong>AI-Empowered SAFe Advanced Scrum Master (SASM)</strong> course—for experienced Scrum Masters, typically with SAFe Scrum Master (SSM) certification—builds the skills to foster high-performing teams that collaborate on the <strong>Agile Release Train (ART)</strong>. You will improve <strong>flow</strong>, strengthen <strong>cross-team collaboration</strong>, and apply practical <strong>conflict management</strong> so the train stays aligned and delivery stays healthy.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        This course mostly focuses on methodologies for SAFe; the certification provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. It will provide you with insights into the resolution of conflicts & team dynamics and the Agile metrics that will ensure your team remains flexible and efficient. This course will also include Advanced Facilitator Training in Conflict and Collaboration that is self-paced (2 hours) and facilitated interactive training (4 hours) for you to improve your facilitation and leadership skills.
+                        Scaled Agile positions this offering as <strong>foundational-level</strong> training that adds <strong>AI-empowered facilitation</strong>: using AI fundamentals and prompting for role-specific templates and analysis, Studio and CoPilot-style tooling for Framework guidance, and <strong>human-in-the-loop</strong> judgment so recommendations stay aligned with Lean-Agile principles. Exam: <strong>120 minutes</strong>, <strong>73%</strong> to pass; credential maintenance includes continuing education per Scaled Agile (e.g. <strong>24 CEUs within a two-year cycle</strong>, <strong>12 CEUs per year</strong> on average).
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        Agile36 has a comprehensive course of instruction to ensure you are successful in this exam. By combining expert-led training with hands-on activities, and actual scenarios, our training will help you gain hands-on knowledge. Sign up with Agile36 and take the next step in your Scrum Master career to the highest level.
+                        Agile36 delivers this as expert-led, live virtual training with hands-on practice, exam preparation, and the materials you need to succeed—consistent with Scaled Agile&apos;s certification process (workbook, Studio access, practice test with feedback, timed exam with coaching report).
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You&apos;ll Learn: Advance team value flow</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The Advanced Scrum Master Certification Path offers advanced learning opportunities that can benefit experienced Scrum Masters involved in facilitating Agile teams, resolving conflicts, optimizing team flow, and driving organizational success with advanced Agile methodologies.
+                        The course deepens team-level facilitation for multi-team environments: coordinating success on the ART, optimizing flow with XP and Kanban practices, facilitating collaboration, and improving ART performance through Inspect &amp; Adapt and related events.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
-                          "Advanced facilitation and coaching techniques",
-                          "SAFe's Eight Flow Accelerators",
-                          "Fostering high-performing Agile teams",
-                          "Real-world application and case studies",
-                          "Conflict resolution and team collaboration",
-                          "Agile Release Train (ART) performance optimization"
+                          "Facilitate cross-team collaboration and synchronized delivery on the ART",
+                          "Optimize flow: method selection, visualization, measurement, acceleration, built-in quality",
+                          "Manage multi-team engagement: conflict behaviors, sources, interest-based problem solving, reframing",
+                          "Drive high-performing teams: characteristics, powerful questions, collaboration, performance assessment",
+                          "Improve ART performance: outcome-based team events, IP iteration, I&A, problem-solving workshop",
+                          "Apply AI responsibly for the SASM role—templates, insights, and preparation with human oversight",
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -308,12 +333,15 @@ export default function AdvancedScrumMasterCoursePage() {
 
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
+                      <p className="text-base text-gray-700 mb-3">
+                        Scaled Agile recommends this for professionals with a firm grasp of the Scrum Master role, SAFe principles, and team facilitation—especially <strong>experienced Scrum Masters</strong> and those who already hold <strong>SAFe Scrum Master (SSM)</strong>.
+                      </p>
                       <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                        <li>Certified SAFe Scrum Masters (SSM) seeking advancement</li>
-                        <li>Experienced Scrum Masters and Agile Coaches</li>
-                        <li>Program-level facilitators and coaches</li>
-                        <li>Agile transformation leaders</li>
-                        <li>Anyone leading organizational Agile change in SAFe</li>
+                        <li><strong>Scrum Master</strong> — scale to flow, outcomes, and system improvement at team level</li>
+                        <li><strong>Agile Coach</strong> — add advanced SASM disciplines for measurable collaboration across the ART</li>
+                        <li><strong>Engineering Manager</strong> — deeper flow measurement and scalable engineering practices</li>
+                        <li><strong>Aspiring Release Train Engineer</strong> — multi-team facilitation and conflict resolution as a foundation for train-level roles</li>
+                        <li>Program-level facilitators and Agile transformation leaders in SAFe</li>
                       </ul>
                     </div>
 
@@ -325,8 +353,8 @@ export default function AdvancedScrumMasterCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">Advanced Scrum Master Certification Path</p>
-                            <p className="text-sm text-gray-600">Comprehensive certification program</p>
+                            <p className="font-semibold text-gray-900">SAFe Advanced Scrum Master (SASM)</p>
+                            <p className="text-sm text-gray-600">AI-Empowered certification path (Scaled Agile)</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -334,8 +362,8 @@ export default function AdvancedScrumMasterCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">16 PDUs & SEUs</p>
-                            <p className="text-sm text-gray-600">Earn professional development units</p>
+                            <p className="font-semibold text-gray-900">PMI PDUs &amp; Scrum CEUs</p>
+                            <p className="text-sm text-gray-600">Eligible professional credits per Scaled Agile guidance</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -343,64 +371,55 @@ export default function AdvancedScrumMasterCoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">Digital Certificate</p>
-                            <p className="text-sm text-gray-600">Downloadable upon completion</p>
+                            <p className="font-semibold text-gray-900">Digital badge &amp; certificate</p>
+                            <p className="text-sm text-gray-600">Shareable credential after you pass the exam</p>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* What is Leading SAFe Training */}
+                    {/* What is SASM */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What is the Advanced Scrum Master Certification Path?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">What is the AI-Empowered SAFe Advanced Scrum Master (SASM)?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The Advanced Scrum Master Certification Path is an advanced certification program designed to help experienced Scrum Masters enhance their ability to facilitate Agile teams effectively, master conflict resolution, boost team collaboration, optimize team flow and Agile Release Train (ART) performance, and drive organizational success with advanced Agile methodologies.
+                        SASM is the Scaled Agile certification for Scrum Masters who are ready to go deeper on <strong>flow</strong>, <strong>multi-team collaboration</strong>, <strong>conflict</strong>, and <strong>ART outcomes</strong>. The AI-Empowered update adds practical use of AI and Studio tooling so you can focus on facilitation and coaching while still applying Lean-Agile guardrails.
                       </p>
                       <p className="text-base text-gray-700">
-                        This course mostly focuses on methodologies for SAFe; the certification provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. It will provide you with insights into the resolution of conflicts & team dynamics and the Agile metrics that will ensure your team remains flexible and efficient. This course will also include Advanced Facilitator Training in Conflict and Collaboration that is self-paced (2 hours) and facilitated interactive training (4 hours) for you to improve your facilitation and leadership skills.
+                        Exam coverage includes evolving the Advanced Scrum Master role (including empowering teams with AI), improving flow, building high-performing teams, addressing conflict, and improving ART performance—aligned with Scaled Agile&apos;s published exam blueprint.
                       </p>
                     </div>
 
-                    {/* Why Leading SAFe */}
+                    {/* Why SASM */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why Choose the Advanced Scrum Master Certification Path?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why earn SASM now?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The SAFe Advanced Scrum Master Certification empowers experienced Scrum Masters to effectively lead program-level coaching, organizational transformation, and scaling Agile practices in a SAFe environment. It provides advanced understanding of how to coach at scale, facilitate organizational change, mentor other Scrum Masters, and lead Agile Release Train transformations.
-                      </p>
-                      <p className="text-base text-gray-700 mb-4">
-                        By earning this certification, you gain the expertise to lead organizational change, scale Agile practices across multiple teams, and develop other Scrum Masters. The certification is recognized globally and opens doors to senior Scrum Master, Program-level Agile Coach, and Agile Transformation Leader roles in enterprise Agile organizations.
+                        Employers continue to invest in SAFe at scale; SASM signals you can support teams <em>and</em> the train without losing sight of flow, psychological safety, and measurable improvement. The AI-Empowered curriculum matches how organizations actually work today—using assistants and automation where they help, with clear human accountability.
                       </p>
                       <div className="bg-blue-50 border-l-4 border-[#006f] p-6 my-6">
-                        <p className="text-base text-gray-700 font-semibold mb-2">Key Benefits:</p>
+                        <p className="text-base text-gray-700 font-semibold mb-2">Outcomes aligned with Scaled Agile:</p>
                         <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                          <li>Master advanced SAFe Scrum Master principles and program-level coaching</li>
-                          <li>Improve organizational transformation and change leadership skills</li>
-                          <li>Accelerate enterprise agility through program-level facilitation</li>
-                          <li>Increase organizational impact through scaling Agile practices</li>
-                          <li>Enhance career prospects with globally recognized advanced certification</li>
+                          <li>Stronger facilitation when multiple teams share dependencies and a single PI cadence</li>
+                          <li>Practical conflict skills—not just theory—for lasting alignment</li>
+                          <li>Flow thinking that connects team-level work to ART health</li>
+                          <li>Responsible AI habits: prompts, verification, and value-stream alignment</li>
+                          <li>Preparation for the official SASM exam (120 minutes, 73% passing score)</li>
                         </ul>
                       </div>
                     </div>
 
-                    {/* What Will You Learn */}
+                    {/* Exam domains summary */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in the Advanced Scrum Master Certification Path?</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        Complete the Advanced Scrum Master Certification Path to gain the advanced practical tools and knowledge needed to effectively facilitate Agile teams, resolve conflicts, optimize team flow, and drive organizational success. This comprehensive certification path covers advanced facilitation techniques, SAFe's Eight Flow Accelerators, fostering high-performing teams, and real-world applications.
-                      </p>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Exam emphasis (Scaled Agile domains)</h3>
                       <p className="text-base text-gray-700 mb-6">
-                        Through the Advanced Scrum Master Certification Path, you will learn:
+                        The certification exam weights roughly: Evolving the Advanced Scrum Master role (11–13%); Improving Flow (22–24%); Building high-performing teams (26–28%); Addressing conflict (18–20%); Improving ART performance (17–19%). Agile36 training maps activities and study time to these areas.
                       </p>
                       <div className="space-y-4">
                         {[
-                          "Advanced facilitation and coaching techniques",
-                          "SAFe's Eight Flow Accelerators",
-                          "Fostering high-performing Agile teams",
-                          "Real-world application and case studies",
-                          "Conflict resolution and team collaboration strategies",
-                          "Agile Release Train (ART) performance optimization",
-                          "Agile metrics for team flexibility and efficiency",
-                          "Advanced Facilitator Training in Conflict and Collaboration"
+                          "Role evolution: understanding the Advanced Scrum Master and empowering teams with AI",
+                          "Flow: team method, visualization, measurement and acceleration, built-in quality",
+                          "Teams: high-performing traits, powerful questions, cross-team collaboration, performance assessment",
+                          "Conflict: behaviors, sources, interest-based problem solving, reframing, analysis & strategy design",
+                          "ART: outcome-based events, coaching IP iteration, I&A, problem-solving workshop",
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">
@@ -416,9 +435,9 @@ export default function AdvancedScrumMasterCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for the Advanced Scrum Master Certification Path?</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SASM</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        To enroll in the <strong>Advanced Scrum Master Certification Path,</strong> you must have:
+                        To enroll in the <strong>AI-Empowered SAFe Advanced Scrum Master</strong> course, you should have:
                       </p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
@@ -518,45 +537,45 @@ export default function AdvancedScrumMasterCoursePage() {
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Advanced Scrum Master Certification Path Information</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Certification exam &amp; course logistics</h3>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Course Format:</p>
+                            <p className="font-semibold text-gray-900 mb-2">Course format:</p>
                             <p className="text-base text-gray-700">Live virtual training with hands-on activities</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">2 days (10 hours) + Advanced Facilitator Training</p>
+                            <p className="text-base text-gray-700">2 days (10 hours live instruction, typical schedules 9 AM – 2 PM ET)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Class Time:</p>
-                            <p className="text-base text-gray-700">9 AM - 2 PM EST</p>
+                            <p className="font-semibold text-gray-900 mb-2">Class time:</p>
+                            <p className="text-base text-gray-700">See your session (commonly 9 AM – 2 PM Eastern)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Advanced Facilitator Training:</p>
-                            <p className="text-base text-gray-700">Self-paced (2 hours) + Interactive (4 hours)</p>
+                            <p className="font-semibold text-gray-900 mb-2">Included with Scaled Agile certification process:</p>
+                            <p className="text-base text-gray-700">Course workbook, Studio™ access, unlimited practice test with feedback, timed exam with coaching report</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, 45 questions, open book</p>
+                            <p className="font-semibold text-gray-900 mb-2">Exam format:</p>
+                            <p className="text-base text-gray-700">Timed, multiple-choice (Scaled Agile)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Duration:</p>
-                            <p className="text-base text-gray-700">90 minutes</p>
+                            <p className="font-semibold text-gray-900 mb-2">Exam duration:</p>
+                            <p className="text-base text-gray-700">120 minutes</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">73% (33 out of 45)</p>
+                            <p className="font-semibold text-gray-900 mb-2">Passing score:</p>
+                            <p className="text-base text-gray-700">73%</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Certification:</p>
-                            <p className="text-base text-gray-700">Advanced Scrum Master Certification Path</p>
+                            <p className="font-semibold text-gray-900 mb-2">Credential:</p>
+                            <p className="text-base text-gray-700">SAFe Advanced Scrum Master (SASM)—AI-Empowered SAFe</p>
                           </div>
                         </div>
                         <div className="pt-4 border-t border-gray-200">
                           <p className="text-base text-gray-700 mb-2">
-                            <strong>Note:</strong> This comprehensive certification path combines expert-led training with hands-on activities and actual scenarios to help you gain practical knowledge. The course includes Advanced Facilitator Training in Conflict and Collaboration to improve your facilitation and leadership skills.
+                            <strong>Note:</strong> Maintaining your credential requires continuing education per Scaled Agile—currently communicated as <strong>24 CEUs within a two-year cycle</strong> (about <strong>12 CEUs per year</strong>). Verify current renewal rules on the official SASM certification page when you register.
                           </p>
                         </div>
                       </div>
@@ -569,7 +588,7 @@ export default function AdvancedScrumMasterCoursePage() {
                     <div className="flex items-center justify-between mb-6">
                       <div>
                         <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">Advanced Scrum Master Certification Path Curriculum</h2>
+                        <h2 className="text-3xl font-bold text-gray-900">AI-Empowered SASM curriculum map</h2>
                       </div>
                       <a 
                         href="/AdvancedSM_Brochure.pdf" 
@@ -588,18 +607,18 @@ export default function AdvancedScrumMasterCoursePage() {
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Learning Objectives</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        By the end of this certification path, you will be able to:
+                        By the end of this course, you will be better able to:
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
                         {[
-                          "Enhance your ability to facilitate Agile teams effectively",
-                          "Master conflict resolution and boost team collaboration",
-                          "Optimize team flow and Agile Release Train (ART) performance",
-                          "Drive organizational success with advanced Agile methodologies",
-                          "Apply SAFe's Eight Flow Accelerators",
-                          "Foster high-performing Agile teams",
-                          "Resolve conflicts and understand team dynamics",
-                          "Apply Agile metrics to ensure team flexibility and efficiency"
+                          "Facilitate collaboration across teams on the ART",
+                          "Visualize, measure, and improve team flow using appropriate team methods",
+                          "Coach high-performing teams and use powerful questions effectively",
+                          "Apply interest-based problem solving and reframing in conflict situations",
+                          "Support Inspect & Adapt, the problem-solving workshop, and ART-level improvement",
+                          "Use AI and Studio resources responsibly with Lean-Agile guardrails",
+                          "Prepare for the official SASM exam structure and timing (120 minutes, 73% to pass)",
+                          "Connect day-to-day Scrum Master work to train-level outcomes"
                         ].map((objective, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -614,49 +633,48 @@ export default function AdvancedScrumMasterCoursePage() {
                     <div className="space-y-4">
                       {[
                         { 
-                          module: "Module 1: Advanced Facilitation and Coaching Techniques",
+                          module: "Module 1: Evolving the Advanced Scrum Master role",
                           content: [
-                            "Advanced facilitation techniques for complex team dynamics",
-                            "Coaching models and frameworks for Agile teams",
-                            "Conflict resolution strategies and mediation skills",
-                            "Building psychological safety in teams",
-                            "Advanced questioning and active listening techniques"
+                            "Advanced Scrum Master responsibilities on and across the ART",
+                            "Empowering teams with AI: prompts, templates, and verification",
+                            "Human-in-the-loop use of SAFe Studio / CoPilot-style guidance",
+                            "Ethical, quality-focused use of AI with Lean-Agile principles"
                           ]
                         },
                         { 
-                          module: "Module 2: SAFe's Eight Flow Accelerators",
+                          module: "Module 2: Improving flow",
                           content: [
-                            "Understanding flow and its impact on delivery",
-                            "Visualizing and limiting work in progress (WIP)",
-                            "Reducing batch sizes and managing queue lengths",
-                            "Reducing delays and managing dependencies",
-                            "Applying cadence and synchronization",
-                            "Unlocking intrinsic motivation",
-                            "Decentralizing decision-making",
-                            "Measuring flow metrics and KPIs"
+                            "Selecting the team method (Scrum, Kanban, XP hooks)",
+                            "Visualizing and managing flow; bottlenecks and WIP",
+                            "Measuring and accelerating flow at team level",
+                            "Built-in quality practices that protect throughput"
                           ]
                         },
                         { 
-                          module: "Module 3: Fostering High-Performing Agile Teams",
+                          module: "Module 3: High-performing teams & cross-team collaboration",
                           content: [
                             "Characteristics of high-performing teams",
-                            "Team formation and storming phases",
-                            "Building trust and collaboration",
-                            "Creating effective team agreements",
-                            "Performance coaching and feedback techniques",
-                            "Removing impediments and blockers",
-                            "Celebrating wins and continuous improvement"
+                            "Employing powerful questions in facilitation",
+                            "Promoting cross-team collaboration on shared objectives",
+                            "Assessing team performance and improvement backlog items"
                           ]
                         },
                         { 
-                          module: "Module 4: Real-World Application and Case Studies",
+                          module: "Module 4: Addressing conflict",
                           content: [
-                            "Case studies from enterprise transformations",
-                            "Handling difficult team situations",
-                            "Scaling facilitation across multiple teams",
-                            "Measuring team performance improvements",
-                            "Creating your personal action plan",
-                            "Advanced Scrum Master certification exam preparation"
+                            "Behaviors that improve (or erode) conflict outcomes",
+                            "Sources of conflict in multi-team settings",
+                            "Interest-based problem solving",
+                            "Framing and reframing; conflict analysis and strategy design"
+                          ]
+                        },
+                        { 
+                          module: "Module 5: Improving ART performance",
+                          content: [
+                            "Outcome-based team events and facilitating toward ART goals",
+                            "Coaching the Innovation & Planning (IP) iteration",
+                            "Inspect & Adapt and the problem-solving workshop",
+                            "Exam preparation and review—timed 120-minute, 73% passing context"
                           ]
                         }
                       ].map((module, index) => {
@@ -726,49 +744,49 @@ export default function AdvancedScrumMasterCoursePage() {
                         { 
                           name: "Brian Mitchell", 
                           role: "Scrum Master", 
-                          review: "The SAFe Scrum Master course transformed how I facilitate teams. The PI planning and iteration execution modules were game-changers. I passed the SSM exam on my first attempt!",
+                          review: "SASM pushed my facilitation past single-team basics. Flow, cross-team collaboration, and I&A prep finally clicked—I passed the SASM exam on my first try.",
                           rating: 5
                         },
                         { 
                           name: "Catherine Wong", 
                           role: "Agile Coach", 
-                          review: "Outstanding training! The focus on team facilitation and coaching gave me practical tools I use daily. The instructors' real-world examples made complex SAFe concepts clear.",
+                          review: "The conflict and collaboration depth is what I needed for multi-team settings. Real examples from the trainers made SAFe at scale much easier to coach.",
                           rating: 5
                         },
                         { 
                           name: "Derek Thompson", 
                           role: "Team Lead", 
-                          review: "As a Team Lead transitioning to Scrum Master, this course provided exactly what I needed. The facilitation techniques and impediment removal lessons were particularly valuable. Highly recommend!",
+                          review: "After SSM, this was the right next step. Built-in quality, flow metrics, and ART-level events are now part of how I support teams.",
                           rating: 5
                         },
                         { 
                           name: "Elena Rodriguez", 
                           role: "Senior Scrum Master", 
-                          review: "The SAFe SSM certification has elevated my facilitation skills significantly. The Agile Release Train support module helped me better serve my teams. Worth every penny!",
+                          review: "Worth it for the ART focus alone. I’m more deliberate about dependencies, PI readiness, and healthy team dynamics across the train.",
                           rating: 5
                         },
                         { 
                           name: "Franklin Lee", 
                           role: "Agile Facilitator", 
-                          review: "Excellent course structure! The two-day format was intensive but well-paced. I've already applied the team coaching and facilitation frameworks in my organization with great results.",
+                          review: "Two intense days, well paced. I’ve used the powerful-questions and problem-solving workshop patterns in live PIs already.",
                           rating: 5
                         },
                         { 
                           name: "Gabriela Silva", 
                           role: "Scrum Master", 
-                          review: "The SAFe SSM training exceeded expectations. The case studies on PI planning and team ceremonies were incredibly practical. The exam preparation was thorough and effective.",
+                          review: "Exam prep matched the blueprint. Practice scenarios for flow and conflict were the most valuable part of the class.",
                           rating: 5
                         },
                         { 
                           name: "Henry Chen", 
                           role: "Agile Team Coach", 
-                          review: "This course helped me bridge the gap between Scrum and SAFe. The servant leadership and team facilitation principles are now core to my coaching approach.",
+                          review: "Connects team-level Scrum Master habits to train outcomes. Exactly what I needed before coaching more teams on the same ART.",
                           rating: 5
                         },
                         { 
                           name: "Isabella Martinez", 
                           role: "Lead Scrum Master", 
-                          review: "Outstanding investment in professional development! The SAFe Scrum Master framework concepts are clearly explained with relevant examples. I feel confident facilitating Agile Release Trains now.",
+                          review: "Clear, practical, and focused on measurable improvement. I left with a concrete plan for I&A and team health.",
                           rating: 5
                         }
                       ].map((review, index) => (
@@ -800,10 +818,10 @@ export default function AdvancedScrumMasterCoursePage() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                        { q: "What is the SAFe Scrum Master (SSM) certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of Scrum Master responsibilities in the Scaled Agile Framework and your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment." },
-                        { q: "How long is the certification valid?", a: "The SAFe Scrum Master (SSM) certification is valid for one year from the date of issue. You can renew it by earning continuing education credits or taking advanced SAFe courses." },
-                        { q: "What is included in the course?", a: "The course includes 10 hours of live training over 2 days (9 AM - 2 PM EST), Advanced Facilitator Training in Conflict and Collaboration (self-paced 2 hours + interactive 4 hours), comprehensive course materials, practice exam, and certification." },
-                        { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners. Basic understanding of Scrum or Agile practices is recommended." }
+                        { q: "What is the AI-Empowered SAFe Advanced Scrum Master (SASM)?", a: "SASM is Scaled Agile’s certification for experienced Scrum Masters who strengthen flow, high-performing teams, multi-team conflict skills, and ART performance. The AI-Empowered course adds responsible use of AI, prompting, and Studio / CoPilot-style support for the SASM role." },
+                        { q: "What is the exam like?", a: "Scaled Agile publishes a timed, multiple-choice SASM exam. As of the AI-Empowered program overview, you have 120 minutes and need 73% to pass. You also get practice tests and a coaching report through the official certification process." },
+                        { q: "What is included with the course?", a: "Agile36 provides live expert-led training plus exam preparation. Scaled Agile’s certification process includes perpetual workbook access, Studio for study, an unlimited practice test with feedback, customer support, and the timed exam with coaching report—per their public SASM certification page." },
+                        { q: "Do I need Agile experience?", a: "You should already understand the Scrum Master role and SAFe team facilitation. SAFe Scrum Master (SSM) certification is required, and real-world Scrum Master experience is strongly recommended so you can apply advanced topics on the job." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-6">
                           <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
@@ -820,9 +838,8 @@ export default function AdvancedScrumMasterCoursePage() {
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$950</div>
-                  <div className="text-base text-gray-500 line-through">$1,699</div>
-                  <div className="text-sm text-green-600 font-semibold mt-2">44% OFF</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$599</div>
+                  <p className="text-sm text-gray-600">Live virtual SASM—AI-Empowered SAFe®. Taxes if applicable.</p>
                 </div>
 
                 <div className="space-y-4 mb-6">
@@ -848,7 +865,7 @@ export default function AdvancedScrumMasterCoursePage() {
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">16 PDUs & SEUs</span>
+                    <span className="text-sm text-gray-700">PMI PDUs &amp; Scrum CEUs (as eligible)</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -875,7 +892,7 @@ export default function AdvancedScrumMasterCoursePage() {
       <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Scrum Master Certification</p>
+            <p className="text-sm text-[#01203d] mb-1">Earn the SAFe Advanced Scrum Master (SASM) credential</p>
             <div className="flex items-center justify-center gap-2 mb-4">
               <h2 className="text-2xl font-bold text-gray-900">SAFe Advanced Scrum Master Certificate</h2>
               <div className="flex gap-1">
@@ -904,8 +921,8 @@ export default function AdvancedScrumMasterCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">SAFe Scrum Master Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Scrum Master Certification Course</h2>
+            <p className="text-sm text-gray-600 mb-2">AI-Empowered SASM course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Advanced Scrum Master (SASM)</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -947,12 +964,12 @@ export default function AdvancedScrumMasterCoursePage() {
                   { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Advanced Scrum Master course and passing the certification exam, you'll receive the official SAFe Advanced Scrum Master (SASM) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe Advanced Scrum Master (SASM) exam?", a: "The SAFe Advanced Scrum Master exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 73% (33 out of 45) to pass. The exam is open book." },
-                  { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
-                  { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
-                  { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
-                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." },
-                  { q: "How do I renew my SASM certification?", a: "The SAFe Advanced Scrum Master (SASM) certification is valid for one year. Annual renewal is $195 paid to Scaled Agile. You can renew by earning continuing education credits or taking advanced SAFe courses." }
+                  { q: "What is the format of the SAFe Advanced Scrum Master (SASM) exam?", a: "The SASM exam is a timed, multiple-choice exam administered by Scaled Agile. Their public certification overview specifies a 120-minute exam and a 73% passing score. Use the practice test in Studio to gauge readiness." },
+                  { q: "How long do I have to take the exam after completing the course?", a: "You typically have a limited window after course completion to attempt the exam (confirm your exact deadline in your Scaled Agile learning account and course communication)." },
+                  { q: "Is the exam included in the course fee?", a: "Your Agile36 enrollment includes training aligned to SASM; exam fees are generally bundled per Scaled Agile partner offerings—confirm with your enrollment confirmation for your specific registration." },
+                  { q: "Can I take the exam online?", a: "Yes, the exam is taken online through Scaled Agile’s exam platform. You’ll receive access instructions after you complete the course." },
+                  { q: "What happens if I fail the exam?", a: "You may purchase a retake through Scaled Agile. Retake pricing and policies are set by Scaled Agile and can change—check their site for the current fee and rules." },
+                  { q: "How do I maintain my SASM certification?", a: "Scaled Agile communicates credential maintenance including continuing education—for example, 24 CEUs within a two-year certification cycle (about 12 CEUs per year). Certification is also described as renewed yearly on their SASM page; verify current renewal fees and CEU rules on scaledagile.com when you certify." }
                 ],
                 payment: [
                   { q: "What payment methods do you accept?", a: "We accept all major credit cards and debit cards. For corporate training, we also accept purchase orders and wire transfers." },
@@ -965,10 +982,10 @@ export default function AdvancedScrumMasterCoursePage() {
                   { q: "What is SAFe Advanced Scrum Master (SASM) certification?", a: "SAFe Advanced Scrum Master is an advanced certification for experienced Scrum Masters who want to lead program-level coaching, optimize Agile Release Train performance, and drive organizational transformation. It builds on your SAFe Scrum Master (SSM) certification." },
                   { q: "Who should take this course?", a: "This course is ideal for certified SAFe Scrum Masters (SSM), experienced Scrum Masters, Agile Coaches, program-level facilitators, and Agile transformation leaders who want to advance their coaching and facilitation skills at scale." },
                   { q: "What are the prerequisites for this course?", a: "SAFe Scrum Master (SSM) certification is required. Experience as a Scrum Master or Agile Coach is also recommended to get the most from the advanced content." },
-                  { q: "How long is the course?", a: "The Advanced Scrum Master Certification Path is a 2-day intensive training program, totaling 10 hours of instruction (9 AM - 2 PM EST each day), plus Advanced Facilitator Training in Conflict and Collaboration." },
+                  { q: "How long is the course?", a: "The AI-Empowered SASM class is typically two days of live instruction (about 10 hours total; many sessions run 9 AM–2 PM Eastern). Confirm exact times on your enrollment." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the SASM certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
-                  { q: "How do I maintain my certification?", a: "The SAFe Advanced Scrum Master (SASM) certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
+                  { q: "How do I maintain my certification?", a: "Per Scaled Agile’s public SASM materials, plan for continuing education such as 24 CEUs within a two-year cycle (about 12 CEUs per year), and confirm the latest renewal steps and any annual membership or renewal fees on the official certification page." }
                 ]
               };
 
@@ -1044,7 +1061,7 @@ export default function AdvancedScrumMasterCoursePage() {
               What Certifications Are Required for SAFe Advanced Scrum Master Certification Training in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              Experience as a Scrum Master or Agile Coach is recommended to enroll in the Advanced Scrum Master Certification Path in the United States. The Advanced Scrum Master Certification Path in the USA provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. The course covers advanced facilitation techniques, conflict resolution, team dynamics, Agile metrics, and includes Advanced Facilitator Training in Conflict and Collaboration. The certification path is designed for experienced Scrum Masters seeking to advance their careers.
+              Experience as a Scrum Master or Agile Coach is recommended for SASM in the United States. The AI-Empowered SASM course builds skills to collaborate across the Agile Release Train: flow, high-performing teams, multi-team conflict, and ART performance—including responsible AI practices aligned with Scaled Agile’s published curriculum and exam blueprint.
             </p>
           </div>
 
@@ -1064,7 +1081,7 @@ export default function AdvancedScrumMasterCoursePage() {
               What is the Fee for SAFe Advanced Scrum Master Certification in the USA?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the Advanced Scrum Master Certification Path in the United States typically ranges from <strong>$950 to $1,699</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training (9 AM - 2 PM EST), comprehensive digital study materials, Advanced Facilitator Training in Conflict and Collaboration, and certification. The pricing for Advanced Scrum Master Certification Path training in the USA reflects the value of advanced expert instruction, official materials, and ongoing community access that supports your professional development.
+              Agile36 currently offers this AI-Empowered SASM course at <strong>$599</strong> for live virtual training (pricing may vary by promotion or private cohort). Your investment covers expert-led instruction aligned to the official exam blueprint; Scaled Agile separately provides workbook, Studio, practice test, and exam per their certification process. Always confirm the latest list price on the schedule page before you register.
             </p>
           </div>
         </div>

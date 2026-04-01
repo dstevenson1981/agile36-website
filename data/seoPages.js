@@ -93,10 +93,11 @@ export const seoPages = [
   },
   {
     slug: 'safe-advanced-scrum-master',
-    title: 'SAFe® Advanced Scrum Master | Agile36',
-    h1: 'SAFe® Advanced Scrum Master Training',
-    description: 'Advanced Scrum Master training for experienced practitioners. Learn coaching, facilitation, and program-level leadership. 2-day class.',
-    body: `Take your Scrum Master skills to the next level with advanced facilitation, coaching techniques, and ART-level leadership.`,
+    title: 'AI-Empowered SAFe® Advanced Scrum Master (SASM) | Agile36',
+    h1: 'AI-Empowered SAFe® Advanced Scrum Master Training',
+    description:
+      'AI-Empowered SASM: improve flow, build high-performing teams, resolve multi-team conflict, and strengthen ART performance—with AI-empowered facilitation. 2-day class; 120-minute exam, 73% to pass.',
+    body: `The AI-Empowered SAFe Advanced Scrum Master certification helps experienced Scrum Masters foster teams that collaborate on the Agile Release Train, optimize flow with XP and Kanban, facilitate across teams, and apply responsible AI practices aligned with Lean-Agile principles.`,
     category: 'safe-certification',
     duration: '02 days'
   },

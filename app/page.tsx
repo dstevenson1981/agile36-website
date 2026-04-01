@@ -216,12 +216,12 @@ export default function Home() {
       title: "SAFe Advanced Scrum Master",
       category: "SAFe",
       image: "/headway-5QgIuuBxKwM-unsplash.jpg",
-      price: 950,
-      originalPrice: 1900,
+      price: 599,
+      originalPrice: 1198,
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "2K+ Enrolled",
-      skills: "Advanced Scrum Mastery, Program Level Coaching",
+      skills: "Flow, facilitation with AI, ART performance",
       popular: true,
       advanced: true,
     },
@@ -1199,7 +1199,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900">Meet the Team That's Invested in Your Success</h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {[
               {
                 name: "Deadra Stevenson",
@@ -1209,15 +1209,6 @@ export default function Home() {
                 experience: "20+ Years",
                 linkedin: "https://www.linkedin.com/in/deadra-stevenson-a20a6a1a2/",
                 description: "Welcome to Agile36. Deadra Stevenson, CEO and Founder, is proud to lead one of the most trusted training and transformation firms in the Lean-Agile space. With more than 15 years of experience guiding organizations through large-scale change, she has built a strong reputation for delivering impactful, results-driven Agile and AI transformation experiences.\n\nAbout Her\n\nBased in Miami, Florida, Deadra has led more than 30 major Lean-Agile transformations across a wide range of organizations, including global brands such as Coca-Cola and Netflix. Her background spans enterprise coaching, portfolio transformation, executive alignment, and helping leaders adopt the Scaled Agile Framework to improve performance and strategic execution.\n\nWhile her expertise is grounded in Lean and Agile, she also leads AI-focused transformation initiatives. She helps organizations understand how AI can enhance decision-making, elevate delivery flow, and modernize ways of working. Her dual expertise ensures clients receive guidance that is both proven and forward-thinking.\n\nWhy Train With Her\n\nOrganizations choose Agile36 because Deadra brings a rare combination of deep SAFe expertise, practical leadership insight, and a modern understanding of how AI is influencing the future of work. She makes complex concepts simple, relatable, and actionable for teams and executives.\n\nShe holds advanced certifications including SAFe® Program Consultant (SPC 6), PMP, CSM, CSP, CSPO, and LSSGB. These credentials reflect her commitment to excellence and her dedication to staying at the forefront of Agile and AI transformation practices.\n\nAt Agile36, her training is hands-on, grounded in real enterprise challenges, and designed to create measurable outcomes. She blends strong SAFe foundations with modern transformation techniques, helping organizations strengthen delivery, improve alignment, and prepare their teams for the future.\n\nEvery organization is unique. When clients train with Agile36, they gain a partner who understands their goals and provides tailored guidance to support long-term success in both Agile and AI-enabled environments."
-              },
-              {
-                name: "Joe Puoci",
-                title: "Enterprise Agile Coach",
-                subtitle: "SAFe® Practice Consultant (SPC®), Enterprise Agile Coach",
-                image: "/Joe.jpeg",
-                experience: "15+ Years",
-                linkedin: "https://www.linkedin.com/in/joseph-puoci-0874693/",
-                description: "Welcome to my profile. I'm Joe Puoci, an Enterprise Agile Coach with Agile36, specializing in Scaled Agile Framework (SAFe) certification training and enterprise Agile coaching. I am committed to helping organizations strengthen delivery performance, improve collaboration, and successfully adopt Lean-Agile ways of working.\n\nAbout Me\n\nI believe deeply in the impact Agile can have on how organizations operate, innovate, and deliver value. Throughout my career, I have partnered with companies across a wide range of industries, from emerging startups to Fortune 500 enterprises, supporting their journey toward more adaptive, efficient, and customer-focused ways of working.\n\nMy Expertise\n\nAs a certified SAFe Program Consultant (SPC) and experienced Agile Coach, I bring practical insight and hands-on leadership to every engagement. I focus on delivering high-quality SAFe certification training and equipping individuals, teams, and leaders with the skills and confidence needed to excel in complex environments. My guidance is grounded in real-world experience, enabling organizations to apply SAFe effectively and sustainably.\n\nWhy Train With Me\n\nI bring extensive experience across diverse organizational landscapes, offering a broad and adaptable perspective to every transformation effort. My approach is centered on driving measurable results and ensuring that Agile adoption leads to meaningful improvements in flow, alignment, and customer value. Above all, I am passionate about empowering people and helping them unlock their full potential as Lean-Agile practitioners."
               },
               {
                 name: "Marcus Ball",
@@ -1256,8 +1247,8 @@ export default function Home() {
                   </div>
                 </div>
                   
-                  {/* Stats Section - For Deadra, Joe, and Marcus */}
-                  {(member.name === "Deadra Stevenson" || member.name === "Joe Puoci" || member.name === "Marcus Ball") && (
+                  {/* Stats Section - For Deadra and Marcus */}
+                  {(member.name === "Deadra Stevenson" || member.name === "Marcus Ball") && (
                     <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-200 flex-wrap">
                       {/* Rating */}
                       <div className="flex items-center gap-1">
@@ -1276,7 +1267,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                         <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
-                          {member.name === "Deadra Stevenson" ? "25K+" : member.name === "Joe Puoci" ? "15K+" : "13K+"} Professional Trained
+                          {member.name === "Deadra Stevenson" ? "25K+" : "13K+"} Professional Trained
                         </span>
                       </div>
                       
@@ -1291,7 +1282,7 @@ export default function Home() {
                           className="h-6"
                         />
                         <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
-                          {member.name === "Deadra Stevenson" ? "25K+" : "15K+"} Enrolled
+                          {member.name === "Deadra Stevenson" ? "25K+" : "13K+"} Enrolled
                         </span>
                       </div>
                     </div>

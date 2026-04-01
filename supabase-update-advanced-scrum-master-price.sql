@@ -1,10 +1,10 @@
--- Update Advanced Scrum Master course schedule prices to $950 (sale) / $1900 (original)
--- This updates any existing schedule entries in the course_schedules table
+-- Update Advanced Scrum Master course schedule prices to $599 (sale) / $1198 (original)
+-- Run in Supabase SQL Editor so schedule and checkout match site pricing.
 
 UPDATE course_schedules
 SET 
-  price = 950.00,
-  original_price = 1900.00
+  price = 599.00,
+  original_price = 1198.00
 WHERE 
   course_slug = 'advanced-scrum-master' 
   OR course_name LIKE '%Advanced Scrum Master%';

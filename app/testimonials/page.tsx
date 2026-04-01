@@ -12,7 +12,7 @@ interface Testimonial {
   postedOn: string;
 }
 
-const trainers = ["Joe Puoci", "Deadra Stevenson", "Marcus Ball"];
+const trainers = ["Deadra Stevenson", "Marcus Ball"];
 
 // Pure SAFe courses (no AI mentions)
 const safeCourses = [

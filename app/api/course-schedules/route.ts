@@ -4,6 +4,11 @@ import { createClient } from '@supabase/supabase-js';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+/** Strip instructor identity from API responses (DB may still store values for admin use). */
+function redactScheduleRow(row: Record<string, unknown>): Record<string, unknown> {
+  return { ...row, instructor_name: null, instructor_image: null };
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -49,7 +54,8 @@ export async function GET(request: NextRequest) {
           { status: 500 }
         );
       }
-      return NextResponse.json({ success: true, data: schedule ? [schedule] : [] });
+      const payload = schedule ? [redactScheduleRow(schedule as Record<string, unknown>)] : [];
+      return NextResponse.json({ success: true, data: payload });
     }
 
     // Build query - only active, future schedules.
@@ -88,7 +94,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true, data: data || [] });
+    const safe = (data || []).map((row) => redactScheduleRow(row as Record<string, unknown>));
+    return NextResponse.json({ success: true, data: safe });
   } catch (error: any) {
     console.error('Error fetching course schedules:', error);
     return NextResponse.json(
