@@ -71,7 +71,7 @@ export default function AdvancedScrumMasterLayout({
     ],
     "offers": {
       "@type": "Offer",
-      "price": "599",
+      "price": "950",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "url": "https://www.agile36.com/courses/advanced-scrum-master/schedule"
