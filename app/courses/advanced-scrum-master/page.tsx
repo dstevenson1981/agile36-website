@@ -1042,13 +1042,13 @@ export default function AdvancedScrumMasterCoursePage() {
 
       <WhyAgile36Section />
 
-      {/* SAFe Agilist Certification in the USA Section */}
+      {/* SAFe Agilist Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              AI-Empowered SAFe Advanced Scrum Master Certification in the USA
+              AI-Empowered SAFe Advanced Scrum Master Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               There has been a significant increase in demand for the AI-Empowered SAFe Advanced Scrum Master certification across the United States, as more organizations embrace Agile-at-scale methodologies and seek experienced professionals to lead program-level coaching and organizational transformation. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting AI-Empowered SAFe Advanced Scrum Masters and Program-level Agile Coaches who can lead organizational change, scale Agile practices across multiple teams, mentor other Scrum Masters, and drive Agile Release Train transformations. These certified experts are highly valued for their expertise in program-level coaching, organizational transformation, advanced facilitation, and scaling Agile practices. The AI-Empowered SAFe Advanced Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys and seek senior Agile leadership.
@@ -1058,7 +1058,7 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for AI-Empowered SAFe Advanced Scrum Master Certification Training in the USA?
+              What Certifications Are Required for AI-Empowered SAFe Advanced Scrum Master Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Experience as a Scrum Master or Agile Coach is recommended for SASM in the United States. The AI-Empowered SASM course builds skills to collaborate across the Agile Release Train: flow, high-performing teams, multi-team conflict, and ART performance—including responsible AI practices aligned with Scaled Agile’s published curriculum and exam blueprint.
@@ -1068,7 +1068,7 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for AI-Empowered SAFe Advanced Scrum Master Professionals in the USA?
+              What Are Job Opportunities for AI-Empowered SAFe Advanced Scrum Master Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Advanced Scrum Master professionals in the United States have excellent senior career prospects across various industries. Job opportunities include Senior Scrum Master, Agile Coach, Agile Transformation Leader, Enterprise Agile Coach, and Agile Release Train Coach roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with Advanced Scrum Master certification who can facilitate Agile teams effectively, resolve conflicts, optimize team flow, and drive organizational success with advanced Agile methodologies. The certification opens doors to senior leadership positions in Agile transformation and team facilitation roles.
@@ -1078,7 +1078,7 @@ export default function AdvancedScrumMasterCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for AI-Empowered SAFe Advanced Scrum Master Certification in the USA?
+              What is the Fee for AI-Empowered SAFe Advanced Scrum Master Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Agile36 currently offers this AI-Empowered SASM course at <strong>$950</strong> for live virtual training (pricing may vary by promotion or private cohort). Your investment covers expert-led instruction aligned to the official exam blueprint; Scaled Agile separately provides workbook, Studio, practice test, and exam per their certification process. Always confirm the latest list price on the schedule page before you register.
@@ -1092,7 +1092,7 @@ export default function AdvancedScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find AI-Empowered SAFe Advanced Scrum Master Course in Other Top Cities in USA
+            Find AI-Empowered SAFe Advanced Scrum Master Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

@@ -1112,13 +1112,13 @@ export default function DevOpsCoursePage() {
 
       <WhyAgile36Section />
 
-      {/* SAFe Agilist Certification in the USA Section */}
+      {/* SAFe Agilist Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe DevOps Certification in the USA
+              SAFe DevOps Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               There has been a significant increase in demand for the SAFe DevOps certification across the United States, as more organizations embrace DevOps practices and continuous delivery pipelines to enhance software development velocity and quality. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified DevOps engineers and practitioners who can implement continuous integration, continuous delivery, and DevOps practices within SAFe environments. These certified experts are highly valued for their expertise in building deployment pipelines, implementing infrastructure as code, automating testing and deployment, and fostering a culture of continuous improvement. The SAFe DevOps certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
@@ -1128,17 +1128,17 @@ export default function DevOpsCoursePage() {
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe DevOps Certification Training in the USA?
+              What Certifications Are Required for SAFe DevOps Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe DevOps Certification Training in the United States. However, having foundational knowledge of Agile principles, DevOps practices, continuous integration/continuous delivery (CI/CD), or software development experience can be beneficial for participants. The SAFe DevOps course in the USA prepares candidates for the SAFe DevOps (SDP) certification exam from Scaled Agile, Inc., covering continuous delivery pipeline, DevOps practices, automation, testing strategies, and deployment practices. The course is accessible to professionals at various stages of their DevOps journey.
+              No prior certification is required to enroll in SAFe DevOps Certification Training. However, having foundational knowledge of Agile principles, DevOps practices, continuous integration/continuous delivery (CI/CD), or software development experience can be beneficial for participants. The SAFe DevOps course prepares candidates for the SAFe DevOps (SDP) certification exam from Scaled Agile, Inc., covering continuous delivery pipeline, DevOps practices, automation, testing strategies, and deployment practices. The course is accessible to professionals at various stages of their DevOps journey.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe DevOps Professionals in the USA?
+              What Are Job Opportunities for SAFe DevOps Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               SAFe DevOps professionals in the United States have excellent career prospects across various industries. Job opportunities include DevOps Engineer, Senior DevOps Engineer, Site Reliability Engineer (SRE), CI/CD Pipeline Engineer, and DevOps Architect roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe DevOps certification who can implement continuous delivery pipelines, automate deployment processes, improve software quality, and foster a culture of continuous improvement. The certification opens doors to leadership positions in DevOps transformation and engineering excellence roles.
@@ -1148,10 +1148,10 @@ export default function DevOpsCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe DevOps Certification in the USA?
+              What is the Fee for SAFe DevOps Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe DevOps certification course in the United States typically ranges from <strong>$599 to $1,398</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe DevOps certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe DevOps certification course typically ranges from <strong>$599 to $1,398</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe DevOps certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
@@ -1162,7 +1162,7 @@ export default function DevOpsCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe DevOps Course in Other Top Cities in USA
+            Find SAFe DevOps Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

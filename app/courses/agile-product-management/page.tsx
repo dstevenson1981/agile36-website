@@ -1060,13 +1060,13 @@ export default function AgileProductManagementCoursePage() {
 
       <WhyAgile36Section />
 
-      {/* SAFe Agilist Certification in the USA Section */}
+      {/* SAFe Agilist Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe Agile Product Management Certification in the USA
+              SAFe Agile Product Management Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               There has been a significant increase in demand for the SAFe Agile Product Management certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified Product Managers and Product Directors who can apply design thinking, drive continuous exploration of markets and users, implement empathy-driven design, create product vision and strategy, develop roadmaps, and drive innovation in value streams. These certified experts are highly valued for their expertise in customer-centric product development, Lean UX principles, market segmentation strategies, and continuous exploration. The SAFe Agile Product Management certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
@@ -1076,17 +1076,17 @@ export default function AgileProductManagementCoursePage() {
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe Agile Product Management Certification Training in the USA?
+              What Certifications Are Required for SAFe Agile Product Management Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe Agile Product Management Certification Training in the United States. However, having foundational knowledge of Agile principles, Scrum methodologies, design thinking, or product management experience can be beneficial for participants. The SAFe Agile Product Management course in the USA prepares candidates for the SAFe Agile Product Management (APM) certification exam from Scaled Agile, Inc., covering continuous exploration, empathy-driven design, product strategy, roadmap creation, and innovation in value streams. The course is accessible to professionals at various stages of their Agile and product management journey.
+              No prior certification is required to enroll in SAFe Agile Product Management Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, design thinking, or product management experience can be beneficial for participants. The SAFe Agile Product Management course prepares candidates for the SAFe Agile Product Management (APM) certification exam from Scaled Agile, Inc., covering continuous exploration, empathy-driven design, product strategy, roadmap creation, and innovation in value streams. The course is accessible to professionals at various stages of their Agile and product management journey.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Agile Product Management Professionals in the USA?
+              What Are Job Opportunities for SAFe Agile Product Management Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               SAFe Agile Product Management professionals in the United States have excellent career prospects across various industries. Job opportunities include Product Manager, Senior Product Manager, Product Director, Product Strategy Lead, and Agile Product Owner roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe APM certification who can apply design thinking, drive continuous exploration, implement market segmentation strategies, and create customer-centric solutions using Lean UX principles. The certification opens doors to leadership positions in product management and innovation roles.
@@ -1096,10 +1096,10 @@ export default function AgileProductManagementCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe Agile Product Management Certification in the USA?
+              What is the Fee for SAFe Agile Product Management Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Agile Product Management certification course in the United States typically ranges from <strong>$1,150 to $2,300</strong>, depending on the specific course offerings and training provider. This investment includes three days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agile Product Management certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Agile Product Management certification course typically ranges from <strong>$1,150 to $2,300</strong>, depending on the specific course offerings and training provider. This investment includes three days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agile Product Management certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
@@ -1110,7 +1110,7 @@ export default function AgileProductManagementCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe Agile Product Management Course in Other Top Cities in USA
+            Find SAFe Agile Product Management Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

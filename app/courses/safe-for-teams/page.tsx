@@ -1099,13 +1099,13 @@ export default function SafeForTeamsCoursePage() {
 
       <WhyAgile36Section />
 
-      {/* SAFe Agilist Certification in the USA Section */}
+      {/* SAFe Agilist Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe Practitioner Certification in the USA
+              SAFe Practitioner Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               There has been a significant increase in demand for the SAFe Practitioner certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified team members who can collaborate effectively with other teams, plan and execute iterations, participate in Program Increment (PI) planning, and deliver value in Lean-Agile environments. These certified professionals are highly valued for their expertise in team collaboration, iteration execution, Agile Release Train participation, and continuous improvement. The SAFe Practitioner certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
@@ -1115,17 +1115,17 @@ export default function SafeForTeamsCoursePage() {
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe for Teams Certification Training in the USA?
+              What Certifications Are Required for SAFe for Teams Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe for Teams Certification Training in the United States. However, having foundational knowledge of Agile principles, experience in software development or Agile teams can be beneficial for participants. The SAFe for Teams course in the USA prepares candidates for the SAFe Practitioner (SP) certification exam from Scaled Agile, Inc., covering team collaboration, iteration planning and execution, PI planning participation, and value delivery in Lean-Agile environments. The course is accessible to professionals at various stages of their Agile journey.
+              No prior certification is required to enroll in SAFe for Teams Certification Training. However, having foundational knowledge of Agile principles, experience in software development or Agile teams can be beneficial for participants. The SAFe for Teams course prepares candidates for the SAFe Practitioner (SP) certification exam from Scaled Agile, Inc., covering team collaboration, iteration planning and execution, PI planning participation, and value delivery in Lean-Agile environments. The course is accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Practitioner Professionals in the USA?
+              What Are Job Opportunities for SAFe Practitioner Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               SAFe Practitioner professionals in the United States have excellent career prospects across various industries. Job opportunities include Agile Team Member, Developer, Tester, Business Analyst, Product Owner, and roles within Agile Release Trains. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe SP certification who can collaborate effectively with other teams, plan and execute iterations, participate in PI planning, and deliver value in Lean-Agile environments. The certification opens doors to roles in Agile teams and Agile Release Trains.
@@ -1135,10 +1135,10 @@ export default function SafeForTeamsCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe Practitioner Certification in the USA?
+              What is the Fee for SAFe Practitioner Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Practitioner certification course in the United States typically ranges from <strong>$599 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Practitioner certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Practitioner certification course typically ranges from <strong>$599 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Practitioner certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
@@ -1149,7 +1149,7 @@ export default function SafeForTeamsCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe for Teams Course in Other Top Cities in USA
+            Find SAFe for Teams Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

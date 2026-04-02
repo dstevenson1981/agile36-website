@@ -294,7 +294,7 @@ function CourseScheduleContent() {
           <div className="mb-4">
             <p className="text-sm text-gray-600 mb-1">COURSE SCHEDULES</p>
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Schedules for {courseName} in USA
+              Schedules for {courseName}
             </h1>
           </div>
 

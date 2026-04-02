@@ -1180,13 +1180,13 @@ export default function ScrumMasterCoursePage() {
         </div>
       </section>
 
-      {/* SAFe Agilist Certification in the USA Section */}
+      {/* SAFe Agilist Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              SAFe Scrum Master Certification in the USA
+              SAFe Scrum Master Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               There has been a significant increase in demand for the SAFe Scrum Master certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified Scrum Masters and Agile Coaches who can facilitate Agile teams, support Program Increment (PI) planning, remove impediments, and foster team collaboration. These certified experts are highly valued for their expertise in team facilitation, servant leadership, Agile Release Train support, and continuous improvement. The SAFe Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
@@ -1196,17 +1196,17 @@ export default function ScrumMasterCoursePage() {
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe Scrum Master Certification Training in the USA?
+              What Certifications Are Required for SAFe Scrum Master Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe Scrum Master Certification Training in the United States. However, having foundational knowledge of Agile principles, Scrum methodologies, or team facilitation experience can be beneficial for participants. The SAFe Scrum Master course in the USA prepares candidates for the SAFe Scrum Master (SSM) certification exam from Scaled Agile, Inc., covering team facilitation, PI planning support, impediment removal, and Agile Release Train support. The course is accessible to professionals at various stages of their Agile journey.
+              No prior certification is required to enroll in SAFe Scrum Master Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or team facilitation experience can be beneficial for participants. The SAFe Scrum Master course prepares candidates for the SAFe Scrum Master (SSM) certification exam from Scaled Agile, Inc., covering team facilitation, PI planning support, impediment removal, and Agile Release Train support. The course is accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Scrum Master Professionals in the USA?
+              What Are Job Opportunities for SAFe Scrum Master Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
               SAFe Scrum Master professionals in the United States have excellent career prospects across various industries. Job opportunities include Scrum Master, Senior Scrum Master, Agile Coach, Team Facilitator, and Agile Release Train Engineer roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe SSM certification who can facilitate Agile teams, support PI planning, remove impediments, and foster team collaboration. The certification opens doors to leadership positions in Agile team facilitation and coaching roles.
@@ -1216,10 +1216,10 @@ export default function ScrumMasterCoursePage() {
           {/* Section 4 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What is the Fee for SAFe Scrum Master Certification in the USA?
+              What is the Fee for SAFe Scrum Master Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Scrum Master certification course in the United States typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training in the USA reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Scrum Master certification course typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
@@ -1230,7 +1230,7 @@ export default function ScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe Scrum Master Course in Other Top Cities in USA
+            Find SAFe Scrum Master Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
