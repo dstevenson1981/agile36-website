@@ -7,10 +7,8 @@ export type AvailablePromo = {
   label: string;
 };
 
-const DEFAULT_PROMOS: AvailablePromo[] = [
-  { code: "100OFF", label: "$100 Off" },
-  { code: "loyal", label: "$115 Off" },
-];
+/** Public list codes only — subscribe via site banner for 50OFF; enter that code manually at checkout. */
+const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "loyal", label: "$115 Off" }];
 
 type Props = {
   availablePromos?: AvailablePromo[];

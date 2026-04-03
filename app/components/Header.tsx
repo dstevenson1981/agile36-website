@@ -490,7 +490,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Promo Banner — 100OFF via email modal */}
+      {/* Promo Banner — 50OFF via email modal */}
       <PromoBanner />
       
       {/* Top Banner */}

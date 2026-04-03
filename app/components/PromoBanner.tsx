@@ -4,10 +4,10 @@ import { useState } from "react";
 import CouponModal from "@/app/components/CouponModal";
 import CouponDisplayModal from "@/app/components/CouponDisplayModal";
 
-const BANNER_COUPON_CODE = "100OFF";
+const BANNER_COUPON_CODE = "50OFF";
 
 /**
- * Promo banner — click to open email + course form; reveals 100OFF after submit.
+ * Promo banner — click to open email + course form; reveals 50OFF after submit.
  */
 export default function PromoBanner() {
   const [showCouponModal, setShowCouponModal] = useState(false);
@@ -57,7 +57,7 @@ export default function PromoBanner() {
               onClick={() => setShowCouponModal(true)}
               className="border-2 border-[#fa4a23] bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded text-left hover:bg-orange-50 transition-colors"
             >
-              <div className="font-bold text-black text-sm sm:text-base">Get $100 OFF</div>
+              <div className="font-bold text-black text-sm sm:text-base">Get $50 OFF</div>
               <div className="text-[#fa4a23] font-semibold text-xs sm:text-sm">Enter email for code</div>
             </button>
             <div className="hidden sm:block w-px h-6 bg-white/40" />

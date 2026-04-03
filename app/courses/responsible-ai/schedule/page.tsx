@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
-import CouponTicket from "@/app/components/CouponTicket";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -392,11 +391,7 @@ function CourseScheduleContent() {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Left Sidebar */}
             <aside className="w-full lg:w-80 flex-shrink-0">
-              <div className="space-y-6">
-                {/* Coupon Ticket */}
-                <CouponTicket />
-
-                {/* Reviews Card */}
+              <div className="space-y-6">{/* Reviews Card */}
                 <div className="bg-white rounded-lg border border-gray-200 p-6">
                   <div className="flex gap-4 mb-4">
                     <div className="flex-1">
