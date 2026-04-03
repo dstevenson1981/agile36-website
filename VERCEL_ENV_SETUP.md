@@ -70,16 +70,6 @@ After adding environment variables:
    - ✅ `unsubscribe`
 5. Click **"Save"**
 
-## LPM Pro practice test (no login)
-
-Share the full Pro LPM practice test via a secret URL (questions are not indexed; keep the key private).
-
-1. Add **`LPM_PRO_PRACTICE_ACCESS_KEY`** in Vercel → Environment Variables (Production). Use a long random string (e.g. `openssl rand -hex 32`).
-2. Redeploy.
-3. Link format: `https://www.agile36.com/lpm-pro-practice?key=<same value as the env var>`
-
-If the key is missing or wrong, the route returns **404**.
-
 ## Troubleshooting
 
 ### Variables not working?

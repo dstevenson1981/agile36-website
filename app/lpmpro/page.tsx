@@ -5,7 +5,7 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-/** /lpmpro URL disabled - redirect to protected practice exam (requires login + Pro/whitelist) */
+/** Short link → full LPM practice test (public, same question bank as Pro in account). */
 export default function LpmProPage() {
-  redirect('/account/practice-exams/lpm');
+  redirect('/test/lean-portfolio-management');
 }
