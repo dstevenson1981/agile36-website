@@ -44,5 +44,6 @@ INSERT INTO lpm_pro_access_whitelist (email) VALUES
   ('fhardenbrook@intoxalock.com'),
   ('fred.hardenbrook@gmail.com'),
   ('fredhardenbrook@gmail.com'),
-  ('mindyswyatt@gmail.com')
+  ('mindyswyatt@gmail.com'),
+  ('ian.murray.au@gmail.com')
 ON CONFLICT (email) DO NOTHING;
