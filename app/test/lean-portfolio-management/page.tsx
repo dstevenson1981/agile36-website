@@ -1,36 +1,66 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPracticeTest';
 import { LPM_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/lpm/questions';
-import LpmPublicPreviewExam from './LpmPublicPreviewExam';
 
 export const metadata = {
-  title: 'SAFe LPM Sample Practice Test | Agile36',
+  title: 'SAFe LPM Practice Test (Full 51 Questions) | Agile36',
   description:
-    'Free sample LPM practice questions. Enroll with Pro for the full practice exam in your account.',
+    'Full SAFe LPM practice exam — same 51 questions as Pro in your Agile36 account. No login required.',
   robots: 'noindex, nofollow',
 };
 
 export const dynamic = 'force-dynamic';
 
-const PREVIEW_COUNT = 45;
-const PRO_COUNT = LPM_QUESTIONS.length;
+const n = LPM_QUESTIONS.length;
 
-export default function LeanPortfolioManagementSamplePracticePage() {
+/**
+ * Full Pro question bank, public URL — for learners who bought Pro but Practice Exams
+ * in the account doesn’t show yet, or anyone who needs a direct link.
+ */
+export default function LeanPortfolioManagementFullPracticePage() {
   return (
-    <>
-      <div className="bg-amber-50 border-b border-amber-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-4">
-          <p className="text-sm text-amber-950">
-            <strong>Sample practice</strong> ({PREVIEW_COUNT} questions) — try the format and difficulty.{' '}
-            <strong>Pro plan</strong> (at checkout) unlocks the full <strong>{PRO_COUNT}-question</strong>{' '}
-            exam in your{' '}
-            <Link href="/account/practice-exams/lpm" className="text-[#fa4a23] font-semibold underline">
-              Agile36 account → Practice Exams → LPM
+    <main className="min-h-screen bg-[#f0f9ff]">
+      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="flex items-center">
+              <div className="h-28 sm:h-32 w-auto">
+                <Image
+                  src="/Agile36Logo.png"
+                  alt="Agile36 Logo"
+                  width={360}
+                  height={128}
+                  className="h-28 sm:h-32 w-auto object-contain"
+                  priority
+                />
+              </div>
             </Link>
-            . Those full questions are not the same as this public sample.
+            <div className="text-sm font-semibold text-gray-700">
+              LPM — full practice ({n}&nbsp;questions)
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div className="bg-blue-50 border-b border-blue-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-3">
+          <p className="text-sm text-slate-800">
+            This is the <strong>full {n}-question</strong> practice exam (same question bank as{' '}
+            <strong>Pro → Practice Exams → LPM</strong> when signed in). Use this page if your account
+            doesn’t show it yet — bookmark and share this URL.
           </p>
         </div>
       </div>
-      <LpmPublicPreviewExam />
-    </>
+
+      <section className="w-full py-8 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-4xl mx-auto">
+          <LpmPracticeTest
+            backHref="/courses/lean-portfolio-management"
+            backLabel="SAFe LPM course"
+          />
+        </div>
+      </section>
+    </main>
   );
 }
