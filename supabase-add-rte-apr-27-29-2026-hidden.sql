@@ -2,9 +2,16 @@
 -- 1) April 27–29, 2026 — Mon–Wed, 3 days, EDT
 -- 2) May 9–10, 2026 — Sat–Sun, 2 days, EDT
 -- NOT shown on /courses/release-train-engineer/schedule (hidden = true).
--- Requires column course_schedules.hidden — run supabase-add-hidden-column.sql first if needed.
 -- After insert, use the returned id for direct checkout:
 --   /courses/release-train-engineer/schedule/checkout?schedule={UUID}&course=release-train-engineer
+
+-- Safe if already applied: adds column used by /api/course-schedules to hide rows from listings.
+ALTER TABLE course_schedules
+ADD COLUMN IF NOT EXISTS hidden BOOLEAN DEFAULT false;
+
+CREATE INDEX IF NOT EXISTS idx_course_schedules_hidden ON course_schedules(hidden);
+
+COMMENT ON COLUMN course_schedules.hidden IS 'When true, schedule is not shown on website schedule pages but can be accessed via direct checkout URL';
 
 INSERT INTO course_schedules (
   course_name,
