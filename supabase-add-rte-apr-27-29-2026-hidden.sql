@@ -1,8 +1,13 @@
+-- =============================================================================
+-- RUN THIS ENTIRE FILE ONCE in Supabase → SQL Editor → paste → Run.
+-- You get: (1) hidden column if missing (2) RTE Apr 27–29 2026 (3) RTE May 9–10 2026
+-- Neither class shows on the public schedule; checkout still works with schedule UUID.
+-- =============================================================================
+
 -- Hidden SAFe Release Train Engineer cohorts (not on public schedule pages).
 -- 1) April 27–29, 2026 — Mon–Wed, 3 days, EDT
 -- 2) May 9–10, 2026 — Sat–Sun, 2 days, EDT
--- NOT shown on /courses/release-train-engineer/schedule (hidden = true).
--- After insert, use the returned id for direct checkout:
+-- After insert, Supabase shows rows with id — use for checkout:
 --   /courses/release-train-engineer/schedule/checkout?schedule={UUID}&course=release-train-engineer
 
 -- Safe if already applied: adds column used by /api/course-schedules to hide rows from listings.
