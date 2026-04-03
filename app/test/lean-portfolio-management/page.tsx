@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPracticeTest';
+import { LPM_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/lpm/questions';
 
 export const metadata = {
   title: 'SAFe LPM Practice Test | Agile36',
   robots: 'noindex, nofollow',
 };
 
-/** Full LPM practice bank (same as Pro in account). Public — no login. */
+export const dynamic = 'force-dynamic';
+
+/** Same question bank as Pro in /account/practice-exams/lpm (LPM_QUESTIONS). Public — no login. */
 export default function LeanPortfolioManagementPracticeTestPage() {
+  const n = LPM_QUESTIONS.length;
   return (
     <main className="min-h-screen bg-[#f0f9ff]">
       <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
@@ -36,8 +40,8 @@ export default function LeanPortfolioManagementPracticeTestPage() {
       <section className="w-full py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <p className="text-slate-600 mb-6">
-            51 questions to help you prepare for the SAFe Lean Portfolio Management certification exam.
-            Answer all questions, then submit to see your score and review.
+            <strong>{n} questions</strong> (Pro practice bank — same set as when you enroll with Pro). Work through
+            each, then submit to see your score and review.
           </p>
           <LpmPracticeTest
             backHref="/courses/lean-portfolio-management"
