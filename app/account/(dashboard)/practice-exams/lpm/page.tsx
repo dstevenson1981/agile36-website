@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { hasLpmProAccess } from '@/app/lib/practice-exams';
 import LpmPracticeTest from './LpmPracticeTest';
+import { LPM_QUESTIONS } from './questions';
 
 export const metadata = {
   title: 'SAFe LPM Practice Test | Agile36',
@@ -40,7 +41,11 @@ export default async function LpmPracticeTestPage() {
     <div>
       <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Lean Portfolio Management Practice Test</h1>
       <p className="text-slate-600 mb-8">
-        51 questions to help you prepare for the SAFe Lean Portfolio Management certification exam. Answer all questions, then submit to see your score and review.
+        Full <strong>Pro</strong> question bank ({LPM_QUESTIONS.length} questions) — different from the shorter free sample on{' '}
+        <Link href="/test/lean-portfolio-management" className="text-[#fa4a23] underline">
+          /test/lean-portfolio-management
+        </Link>
+        . Answer all, then submit for your score and review.
       </p>
       <LpmPracticeTest />
     </div>
