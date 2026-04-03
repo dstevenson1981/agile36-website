@@ -4,7 +4,7 @@
 -- Neither class shows on the public schedule; checkout still works with schedule UUID.
 -- =============================================================================
 
--- Hidden SAFe Release Train Engineer cohorts (not on public schedule pages).
+-- Hidden SAFe AI-Empowered Release Train Engineer cohorts (not on public schedule pages).
 -- 1) April 27–29, 2026 — Mon–Wed, 3 days, EDT
 -- 2) May 9–10, 2026 — Sat–Sun, 2 days, EDT
 -- After insert, Supabase shows rows with id — use for checkout:
@@ -44,7 +44,7 @@ INSERT INTO course_schedules (
   hidden
 )
 SELECT
-  'SAFe Release Train Engineer',
+  'SAFe AI-Empowered Release Train Engineer',
   'release-train-engineer',
   'SAFe',
   '2026-04-27 09:00:00-04:00'::timestamptz,
@@ -102,7 +102,7 @@ INSERT INTO course_schedules (
   hidden
 )
 SELECT
-  'SAFe Release Train Engineer',
+  'SAFe AI-Empowered Release Train Engineer',
   'release-train-engineer',
   'SAFe',
   '2026-05-09 09:00:00-04:00'::timestamptz,

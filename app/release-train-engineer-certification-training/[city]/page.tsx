@@ -36,7 +36,7 @@ export default function CityRTECoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe Release Train Engineer Certification Training</span>
+            <span className="text-[#01203d]">SAFe AI-Empowered Release Train Engineer Certification Training</span>
             {cityDisplayName && (
               <>
                 <span>/</span>
@@ -51,7 +51,7 @@ export default function CityRTECoursePage() {
               {/* Category Badge */}
               <div className="flex items-center gap-2">
                 <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
-                <span className="text-sm text-gray-500">SAFe Release Train Engineer Certification Training</span>
+                <span className="text-sm text-gray-500">SAFe AI-Empowered Release Train Engineer Certification Training</span>
               </div>
 
               {/* Rating and Enrolled */}
@@ -77,7 +77,7 @@ export default function CityRTECoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe Release Train Engineer® 6.0 Training with<br />
+                  SAFe AI-Empowered Release Train Engineer® 6.0 Training with<br />
                   SAFe Release Train Engineer Certification
                   {cityDisplayName && (
                     <span className="block text-3xl md:text-4xl mt-2">in {cityDisplayName}</span>
@@ -91,11 +91,11 @@ export default function CityRTECoursePage() {
               {/* Features List */}
               <div className="space-y-3">
                 {[
-                  "Join SAFe Release Train Engineer Training with Agile36, a Scaled Agile Silver Partner",
-                  "Master PI Planning & Portfolio Flow with SAFe Release Train Engineer Certification",
+                  "Join SAFe AI-Empowered Release Train Engineer Training with Agile36, a Scaled Agile Silver Partner",
+                  "Master PI Planning & flow—with responsible AI practices for RTE readiness",
                   "Learn from SPCs & access exclusive SAFe® resources for success",
                   "Earn 16 PDUs & SEUs and join the global SAFe® Agile leader network",
-                  "Get SAFe Release Train Engineer certified with live sessions & SAFe exam guidance"
+                  "Get SAFe RTE certified with live sessions & SAFe exam guidance"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-6 h-6 flex-shrink-0 mt-0.5">

@@ -46,6 +46,7 @@ function CoursesContent() {
     "AI-Empowered SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Advanced Scrum Master": "/AdvancedSM.png",
     "SAFe Release Train Engineer": "/RTE.png",
+    "AI-Empowered SAFe Release Train Engineer": "/RTE.png",
     "AI-Empowered SAFe Product Owner/Product Manager": "/POPM.jpg",
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
@@ -175,7 +176,7 @@ function CoursesContent() {
     },
     {
       id: "17",
-      title: "SAFe Release Train Engineer",
+      title: "AI-Empowered SAFe Release Train Engineer",
       category: "SAFe",
       image: "/marvin-meyer-SYTO3xs06fU-unsplash.jpg",
       price: 0,
@@ -183,7 +184,7 @@ function CoursesContent() {
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "1.8K+ Enrolled",
-      skills: "RTE Practices, Agile Release Train Facilitation",
+      skills: "RTE Practices, PI planning, AI-assisted facilitation",
       popular: true,
       advanced: true,
       privateClass: true,
@@ -373,6 +374,10 @@ function CoursesContent() {
     
     if (course.title.includes("Value Stream Mapping") || course.title.includes("Value Stream")) {
       return "/courses/value-stream-mapping";
+    }
+
+    if (course.title.includes("Release Train Engineer")) {
+      return "/courses/release-train-engineer";
     }
     
     if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {

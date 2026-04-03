@@ -400,7 +400,7 @@ export default function LeadingSafeCoursePage() {
               <p className="text-gray-700 text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
             </Link>
             <Link href="/release-train-engineer-certification-training" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Release Train Engineer (RTE)</h3>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
               <p className="text-gray-700 text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
             </Link>
             <Link href="/courses/lean-portfolio-management" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">

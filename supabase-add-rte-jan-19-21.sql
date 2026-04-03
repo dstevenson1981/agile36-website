@@ -28,7 +28,7 @@
     is_weekend
     )
     VALUES (
-    'SAFe Release Train Engineer',
+    'SAFe AI-Empowered Release Train Engineer',
     'release-train-engineer',
     'SAFe',
     '2026-01-19 09:00:00-05:00',

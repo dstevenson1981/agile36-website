@@ -25,7 +25,7 @@ function CheckoutContent() {
   const [selectedSchedule, setSelectedSchedule] = useState<any>(null);
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("SAFe Release Train Engineer");
+  const [courseName, setCourseName] = useState("SAFe AI-Empowered Release Train Engineer");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -57,7 +57,7 @@ function CheckoutContent() {
   });
 
   const courseNames: { [key: string]: string } = {
-    'release-train-engineer': 'SAFe Release Train Engineer',
+    'release-train-engineer': 'SAFe AI-Empowered Release Train Engineer',
   };
 
   useEffect(() => {
@@ -88,7 +88,7 @@ function CheckoutContent() {
       }
     };
 
-    const displayName = courseNames[courseSlug] || 'SAFe Release Train Engineer';
+    const displayName = courseNames[courseSlug] || 'SAFe AI-Empowered Release Train Engineer';
     setCourseName(displayName);
     fetchSchedule();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -8,7 +8,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-03-16 09:00:00-05:00'::timestamptz, '2026-03-18 14:00:00-05:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '03 days', 'Deadra Stevenson', '/Deadra.jpeg', 1299.00, 1999.00, 'USD', 25, 25,
@@ -25,7 +25,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-03-21 09:00:00-05:00'::timestamptz, '2026-03-22 14:00:00-05:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '2 Days', 'Joe Puoci', '/Joe.jpeg', 1299.00, 1999.00, 'USD', 25, 25,
@@ -42,7 +42,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-04-13 09:00:00-04:00'::timestamptz, '2026-04-15 14:00:00-04:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '03 days', 'Marcus Ball', '/marcus.jpeg', 1299.00, 1999.00, 'USD', 25, 25,
@@ -59,7 +59,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-04-25 09:00:00-04:00'::timestamptz, '2026-04-26 14:00:00-04:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '2 Days', 'Deadra Stevenson', '/Deadra.jpeg', 1299.00, 1999.00, 'USD', 25, 25,
@@ -76,7 +76,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-05-11 09:00:00-04:00'::timestamptz, '2026-05-13 14:00:00-04:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '03 days', 'Joe Puoci', '/Joe.jpeg', 1299.00, 1999.00, 'USD', 25, 25,
@@ -93,7 +93,7 @@ INSERT INTO course_schedules (
   price, original_price, currency, seats_available, total_seats, language,
   exam_included, status, is_weekend
 )
-SELECT 'SAFe Release Train Engineer', 'release-train-engineer', 'SAFe',
+SELECT 'SAFe AI-Empowered Release Train Engineer', 'release-train-engineer', 'SAFe',
   '2026-05-18 09:00:00-04:00'::timestamptz, '2026-05-20 14:00:00-04:00'::timestamptz,
   '09:00:00'::time, '14:00:00'::time, 'America/New_York', 'morning', 'live-virtual',
   '03 days', 'Marcus Ball', '/marcus.jpeg', 1299.00, 1999.00, 'USD', 25, 25,

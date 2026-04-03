@@ -13,7 +13,7 @@ function CourseScheduleContent() {
   const [filteredSchedules, setFilteredSchedules] = useState<any[]>([]);
   const [isLoadingSchedules, setIsLoadingSchedules] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(10);
-  const [courseName, setCourseName] = useState("SAFe Release Train Engineer");
+  const [courseName, setCourseName] = useState("SAFe AI-Empowered Release Train Engineer");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>({});
 
   const [showGroupInquiryModal, setShowGroupInquiryModal] = useState(false);
@@ -33,7 +33,7 @@ function CourseScheduleContent() {
   });
 
   const courseNames: { [key: string]: string } = {
-    'release-train-engineer': 'SAFe Release Train Engineer',
+    'release-train-engineer': 'SAFe AI-Empowered Release Train Engineer',
   };
 
   useEffect(() => {
@@ -61,7 +61,7 @@ function CourseScheduleContent() {
       }
     };
 
-    const displayName = courseNames[courseSlug] || 'SAFe Release Train Engineer';
+    const displayName = courseNames[courseSlug] || 'SAFe AI-Empowered Release Train Engineer';
     setCourseName(displayName);
     fetchSchedules();
   }, [courseSlug]);
@@ -239,7 +239,7 @@ function CourseScheduleContent() {
           <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
             <Link href="/" className="hover:text-[#01203d]">Home</Link>
             <span>/</span>
-            <Link href="/courses/release-train-engineer" className="hover:text-[#01203d]">SAFe Release Train Engineer</Link>
+            <Link href="/courses/release-train-engineer" className="hover:text-[#01203d]">SAFe AI-Empowered Release Train Engineer</Link>
             <span>/</span>
             <span className="text-[#01203d]">Schedule</span>
           </div>

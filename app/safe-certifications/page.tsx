@@ -92,10 +92,10 @@ const COURSES = [
     badge: "/SAFe for Teams.png",
   },
   {
-    name: "Release Train Engineer (RTE)",
+    name: "AI-Empowered Release Train Engineer (RTE)",
     url: "/courses/release-train-engineer",
     level: "Advanced",
-    description: "Facilitate and coach the Agile Release Train at program level",
+    description: "Facilitate and coach the ART at program level—with responsible AI practices for PI readiness and alignment",
     duration: "2 days",
     pdus: "16",
     badge: "/RTE.png",
@@ -120,7 +120,7 @@ const COMPARISON_TABLE = [
   { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days", salary: "$110K–$145K" },
   { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days", salary: "$110K–$148K" },
   { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days", salary: "—" },
-  { cert: "RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2 days", salary: "$130K–$170K" },
+  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2–3 days", salary: "$130K–$170K" },
 ];
 
 const FAQS = [
@@ -178,7 +178,7 @@ const itemListSchema = {
     { "@type": "ListItem", position: 6, name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", url: "https://www.agile36.com/courses/advanced-scrum-master" },
     { "@type": "ListItem", position: 7, name: "SAFe DevOps (SDP)", url: "https://www.agile36.com/courses/devops" },
     { "@type": "ListItem", position: 8, name: "AI-Empowered SAFe for Teams (SP)", url: "https://www.agile36.com/courses/safe-for-teams" },
-    { "@type": "ListItem", position: 9, name: "Release Train Engineer (RTE)", url: "https://www.agile36.com/courses/release-train-engineer" },
+    { "@type": "ListItem", position: 9, name: "AI-Empowered Release Train Engineer (RTE)", url: "https://www.agile36.com/courses/release-train-engineer" },
     { "@type": "ListItem", position: 10, name: "Value Stream Mapping", url: "https://www.agile36.com/courses/value-stream-mapping" },
   ],
 };

@@ -23,7 +23,7 @@ export default function ReleaseTrainEngineerCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe Release Train Engineer Certification Training</span>
+            <span className="text-[#01203d]">SAFe AI-Empowered Release Train Engineer Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -83,16 +83,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  SAFe Release Train Engineer Certification Training
+                  SAFe AI-Empowered Release Train Engineer Certification Training
                 </h1>
                 <p className="text-xl text-gray-900 font-bold mb-4">
-                  Master the art of facilitating Agile Release Trains and driving program-level success
+                  Master ART facilitation and PI planning—with responsible AI practices to sharpen readiness, dependencies, and stakeholder communication
                 </p>
                 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
                     "Learn to facilitate and optimize Agile Release Trains (ARTs)",
+                    "Apply generative AI to PI prep, dependency sense-making, and communications—with guardrails and human judgment",
                     "Master program-level planning, execution, and delivery",
                     "Develop skills in coaching teams and stakeholders",
                     "Drive continuous improvement and value delivery",
@@ -280,26 +281,27 @@ export default function ReleaseTrainEngineerCoursePage() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        The SAFe Release Train Engineer (RTE) certification training is designed for professionals who want to master the art of facilitating Agile Release Trains (ARTs) and driving program-level success. As an RTE, you'll be responsible for facilitating and optimizing the flow of value through the ART, coaching teams and stakeholders, and ensuring continuous improvement across multiple Agile teams.
+                        The <strong>SAFe AI-Empowered Release Train Engineer (RTE)</strong> certification training is designed for professionals who want to master facilitating Agile Release Trains (ARTs) and driving program-level success—while building fluency with <strong>responsible, practical use of AI</strong> in an RTE’s day-to-day work. As an RTE, you facilitate flow through the ART, coach teams and stakeholders, and steward continuous improvement across multiple Agile teams.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        This comprehensive course focuses on SAFe methodologies and provides participants with the necessary skills to effectively facilitate Agile Release Trains, coordinate program-level planning and execution, manage dependencies across teams, and drive continuous improvement. You'll learn how to coach teams and stakeholders, facilitate Program Increment (PI) Planning events, and optimize the flow of value delivery.
+                        This course follows official SAFe RTE learning outcomes and exam objectives. In addition, you will practice <strong>AI-empowered workflows</strong> suited to Release Trains: clarifying objectives before PI Planning, drafting and refining dependency hypotheses, summarizing risks and impediments for leadership, and accelerating communications—always with verification, privacy, and human accountability. These additions complement (they do not replace) classic RTE facilitation and coaching skills.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        Our comprehensive course of instruction ensures you are successful in the RTE certification exam. By combining expert-led training with hands-on activities and real-world scenarios, our training will help you gain practical knowledge and skills needed to excel as a Release Train Engineer. Sign up and take the next step in your Agile career to become a certified SAFe Release Train Engineer.
+                        Our instruction combines expert-led training with exercises and scenarios so you can succeed on the RTE certification exam and apply both SAFe and AI-assisted techniques on the job. Take the next step toward becoming a certified SAFe Release Train Engineer with a modern, AI-aware toolkit.
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The SAFe Release Train Engineer certification training offers comprehensive learning opportunities that benefit professionals involved in facilitating Agile Release Trains, coordinating program-level planning and execution, managing dependencies across teams, and driving continuous improvement in enterprise Agile organizations.
+                        The AI-Empowered RTE track offers the same core outcomes as premier Release Train Engineer programs, plus applied patterns for using AI safely to support PI readiness, cross-team alignment, and stakeholder engagement.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
                           "Facilitating Agile Release Trains (ARTs)",
                           "Program Increment (PI) Planning facilitation",
                           "Coaching teams and stakeholders",
+                          "Responsible AI workflows for RTEs (prompting, review, governance)",
                           "Managing dependencies and risks",
                           "Optimizing flow and value delivery",
                           "Continuous improvement practices"
@@ -573,7 +575,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                     <div className="flex items-center justify-between mb-6">
                       <div>
                         <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">SAFe Release Train Engineer Certification Training Curriculum</h2>
+                        <h2 className="text-3xl font-bold text-gray-900">SAFe AI-Empowered Release Train Engineer Certification Training Curriculum</h2>
                       </div>
                       <a 
                         href="/RTE_Brochure.pdf" 

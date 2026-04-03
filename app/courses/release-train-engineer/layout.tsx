@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® Release Train Engineer (RTE) Certification Training | Agile36",
-  description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, program-level coaching, and value delivery optimization. Earn 21 PDUs. Expert-led 3-day course. Enroll now!",
+  title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification | Agile36",
+  description:
+    "SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 21 PDUs. Expert-led course.",
   keywords: [
+    "AI-Empowered SAFe RTE",
     "SAFe Release Train Engineer",
     "SAFe RTE certification",
+    "AI for PI planning",
     "Release Train Engineer training",
     "SAFe 6.0 RTE",
     "ART facilitation",
     "PI planning",
     "Agile Release Train",
     "program-level coaching",
+    "generative AI for RTE",
     "stakeholder management",
     "Agile program management",
     "RTE certification",
@@ -22,15 +26,17 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® Release Train Engineer (RTE) Certification Training | Agile36",
-    description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching. Earn 21 PDUs.",
+    title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification | Agile36",
+    description:
+      "RTE certification training with an AI-empowered curriculum: strengthen PI planning, dependency management, and facilitation using responsible AI practices alongside official SAFe outcomes.",
     type: "website",
     url: "https://www.agile36.com/courses/release-train-engineer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® Release Train Engineer (RTE) Certification Training",
-    description: "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, and program-level coaching.",
+    title: "SAFe® AI-Empowered Release Train Engineer (RTE)",
+    description:
+      "AI-empowered RTE training: ART facilitation, PI planning, and practical AI-assisted workflows with exam-aligned SAFe outcomes.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/release-train-engineer",
@@ -45,8 +51,9 @@ export default function ReleaseTrainEngineerLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": "SAFe® Release Train Engineer (RTE) Certification Training",
-    "description": "Master SAFe Release Train Engineer skills with SAFe® RTE Certification Training. Learn ART facilitation, PI planning, program-level coaching, and value delivery optimization.",
+    "name": "SAFe® AI-Empowered Release Train Engineer (RTE) Certification Training",
+    "description":
+      "SAFe® RTE certification training with an AI-empowered lens: ART facilitation, PI planning, program coaching, and responsible use of generative AI for planning support, communication, and flow insights.",
     "provider": {
       "@type": "Organization",
       "name": "Agile36",
@@ -60,6 +67,8 @@ export default function ReleaseTrainEngineerLayout({
       "Agile Release Train (ART) Facilitation",
       "Program Increment (PI) Planning",
       "Program-Level Coaching",
+      "Responsible AI Use for RTE Workflows",
+      "AI-Assisted PI Readiness and Dependency Sense-Making",
       "Stakeholder Management",
       "Dependency Management",
       "Flow Optimization",
