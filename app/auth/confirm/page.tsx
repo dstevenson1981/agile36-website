@@ -11,7 +11,8 @@ function AuthConfirmContent() {
 
   useEffect(() => {
     const supabase = createClient();
-    const next = searchParams.get('next') ?? '/account/reset-password';
+    // Password-reset emails pass next=/account/reset-password; signup should pass next=/account.
+    const next = searchParams.get('next') ?? '/account';
 
     async function handleAuth() {
       // Flow 1: Hash fragment (legacy) - access_token & refresh_token

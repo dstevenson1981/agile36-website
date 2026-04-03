@@ -13,14 +13,18 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agile36.com';
-    const redirectTo = `${baseUrl}/account/login`;
+    const baseUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      request.headers.get('origin') ||
+      'https://www.agile36.com';
+    // Must match signup: confirm via /auth/confirm (verifyOtp), then go to account.
+    const emailRedirectTo = `${baseUrl}/auth/confirm?next=/account`;
 
     const { error } = await supabase.auth.resend({
       type: 'signup',
       email: email.trim(),
       options: {
-        emailRedirectTo: redirectTo,
+        emailRedirectTo,
       },
     });
 

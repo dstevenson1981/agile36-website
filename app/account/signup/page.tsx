@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { createClient } from '@/app/lib/supabase/client';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function SignupPage() {
@@ -10,55 +8,73 @@ export default function SignupPage() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [needsConfirmation, setNeedsConfirmation] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-  const router = useRouter();
-  const supabase = createClient();
+
+  const handleResendConfirmation = async () => {
+    if (!email.trim()) return;
+    setResending(true);
+    setMessage(null);
+    try {
+      const res = await fetch('/api/auth/resend-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setMessage({
+          type: 'success',
+          text: data.message || 'Confirmation email sent again. Check inbox and spam.',
+        });
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Could not resend. Try again in a few minutes.' });
+      }
+    } catch {
+      setMessage({ type: 'error', text: 'Could not resend. Try again.' });
+    }
+    setResending(false);
+  };
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
+    setNeedsConfirmation(false);
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { name, full_name: name },
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agile36.com'}/account/login`,
-      },
-    });
-
-    if (error) {
-      if (error.message.toLowerCase().includes('already registered') || error.message.toLowerCase().includes('already exists')) {
-        setMessage({
-          type: 'error',
-          text: 'An account with this email already exists. Sign in below, or reset your password if you don\'t remember it.',
-        });
-      } else {
-        setMessage({ type: 'error', text: error.message });
-      }
-      setLoading(false);
-      return;
-    }
-
-    // Supabase returns success with empty identities when email already exists (no error for security)
-    const identities = data?.user?.identities ?? [];
-    if (data?.user && identities.length === 0) {
-      setMessage({
-        type: 'error',
-        text: 'An account with this email already exists. Sign in below, or reset your password if you don\'t remember it.',
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), password, name: name.trim() }),
       });
-      setLoading(false);
-      return;
-    }
+      const data = await res.json().catch(() => ({}));
 
-    const needsConfirmation = data?.user && !data?.session;
-    setMessage({
-      type: 'success',
-      text: needsConfirmation
-        ? 'Check your email to confirm your account. Click the link in the email, then sign in.'
-        : 'Account created. You can sign in now.',
-    });
+      if (!res.ok) {
+        if (data?.alreadyExists) {
+          setMessage({
+            type: 'error',
+            text: 'An account with this email already exists. Sign in below, or reset your password if you don\'t remember it.',
+          });
+        } else {
+          setMessage({ type: 'error', text: data.error || 'Sign up failed' });
+        }
+        setLoading(false);
+        return;
+      }
+
+      const confirm = !!data?.needsConfirmation;
+      setNeedsConfirmation(confirm);
+      setMessage({
+        type: 'success',
+        text: confirm
+          ? 'Check your email to confirm your account. Click the link, then sign in. If nothing arrives in a few minutes, check spam or promotions — work inboxes (e.g. strict filters) may delay or block automated mail.'
+          : 'Account created. You can sign in now.',
+      });
+    } catch {
+      setMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
+    }
     setLoading(false);
   };
 
@@ -120,6 +136,18 @@ export default function SignupPage() {
                 }`}
               >
                 {message.text}
+                {message.type === 'success' && needsConfirmation && email.trim() && (
+                  <div className="mt-3">
+                    <button
+                      type="button"
+                      onClick={handleResendConfirmation}
+                      disabled={resending}
+                      className="text-[#fa4a23] font-medium hover:underline disabled:opacity-50"
+                    >
+                      {resending ? 'Sending…' : 'Resend confirmation email'}
+                    </button>
+                  </div>
+                )}
                 {message.type === 'error' && message.text.includes('already exists') && (
                   <div className="mt-2 flex gap-3">
                     <Link href="/account/login" className="text-[#fa4a23] font-medium hover:underline">
