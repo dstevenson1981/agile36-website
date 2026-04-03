@@ -18,8 +18,7 @@ function PracticeExamUpsellBannerInner({
     <div className="bg-amber-50 border-b border-amber-200 px-4 py-3">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         <p className="text-amber-900 text-sm">
-          <strong>Account practice link</strong> needs the right plan. The <strong>same full LPM exam</strong> is always
-          here: <strong>agile36.com/test/lean-portfolio-management</strong>
+          <strong>Pro plan required.</strong> Purchase the Pro plan when enrolling to unlock practice exams.
         </p>
         <Link
           href={schedulePath}

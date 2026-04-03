@@ -851,12 +851,12 @@ export default function LeanPortfolioManagementCoursePage() {
           <div className="text-center mb-8">
             <p className="text-sm text-gray-600 mb-2">Unsure about your prep?</p>
             <p className="text-base text-gray-600 max-w-2xl mx-auto mb-4">
-              Full <strong>{LPM_QUESTIONS.length}-question</strong> practice (same for everyone and the same as Pro
-              in your account). Direct link:{' '}
+              <strong>Pro LPM</strong> includes the <strong>{LPM_QUESTIONS.length}-question</strong> practice exam in your
+              account. If you enrolled with Pro and it does not show under Practice Exams, use this direct link:{' '}
               <Link href="/test/lean-portfolio-management" className="text-[#fa4a23] font-semibold underline">
                 agile36.com/test/lean-portfolio-management
-              </Link>{' '}
-              — use it if <strong>Practice Exams</strong> does not appear after you sign in.
+              </Link>
+              .
             </p>
             <div className="flex items-center justify-center gap-3 mb-6">
               <h2 className="text-4xl font-bold text-gray-900">SAFe LPM Practice Test</h2>

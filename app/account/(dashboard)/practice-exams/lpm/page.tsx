@@ -41,11 +41,11 @@ export default async function LpmPracticeTestPage() {
     <div>
       <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Lean Portfolio Management Practice Test</h1>
       <p className="text-slate-600 mb-8">
-        {LPM_QUESTIONS.length} questions — same exam as the{' '}
+        {LPM_QUESTIONS.length} questions — same Pro exam as{' '}
         <Link href="/test/lean-portfolio-management" className="text-[#fa4a23] underline">
-          public direct link
-        </Link>
-        . Answer all, then submit for your score and review.
+          this direct link
+        </Link>{' '}
+        if you need it outside the dashboard. Answer all, then submit for your score and review.
       </p>
       <LpmPracticeTest />
     </div>

@@ -4,9 +4,9 @@ import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPra
 import { LPM_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/lpm/questions';
 
 export const metadata = {
-  title: 'SAFe LPM Practice Test (Full 51 Questions) | Agile36',
+  title: 'SAFe LPM Pro Practice Exam (51 Questions) | Agile36',
   description:
-    'Full SAFe LPM practice exam — same 51 questions as Pro in your Agile36 account. No login required.',
+    'Pro LPM practice exam — 51 questions. Same exam as Practice Exams in your Agile36 account for Pro enrollments.',
   robots: 'noindex, nofollow',
 };
 
@@ -14,10 +14,7 @@ export const dynamic = 'force-dynamic';
 
 const n = LPM_QUESTIONS.length;
 
-/**
- * Full Pro question bank, public URL — for learners who bought Pro but Practice Exams
- * in the account doesn’t show yet, or anyone who needs a direct link.
- */
+/** Direct URL for the Pro LPM 51-question exam when Practice Exams does not show in the customer account. */
 export default function LeanPortfolioManagementFullPracticePage() {
   return (
     <main className="min-h-screen bg-[#f0f9ff]">
@@ -37,7 +34,7 @@ export default function LeanPortfolioManagementFullPracticePage() {
               </div>
             </Link>
             <div className="text-sm font-semibold text-gray-700">
-              LPM — full practice ({n}&nbsp;questions)
+              Pro LPM practice exam ({n}&nbsp;questions)
             </div>
           </div>
         </nav>
@@ -46,9 +43,9 @@ export default function LeanPortfolioManagementFullPracticePage() {
       <div className="bg-blue-50 border-b border-blue-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-3">
           <p className="text-sm text-slate-800">
-            This is the <strong>full {n}-question</strong> practice exam (same question bank as{' '}
-            <strong>Pro → Practice Exams → LPM</strong> when signed in). Use this page if your account
-            doesn’t show it yet — bookmark and share this URL.
+            <strong>Pro LPM</strong> practice exam — <strong>{n} questions</strong>, same as{' '}
+            <strong>Account → Practice Exams → LPM</strong>. Use this link if you paid for Pro and the exam does not
+            appear in your account yet.
           </p>
         </div>
       </div>
