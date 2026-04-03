@@ -9,6 +9,7 @@ export type AvailablePromo = {
 
 const DEFAULT_PROMOS: AvailablePromo[] = [
   { code: "100OFF", label: "$100 Off" },
+  { code: "loyal", label: "$115 Off" },
 ];
 
 type Props = {
