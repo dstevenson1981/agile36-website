@@ -15,6 +15,7 @@ const COURSE_NAMES: Record<string, string> = {
   'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
   'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management',
+  'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
 };
 
 export async function POST(request: NextRequest) {
@@ -27,7 +28,15 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const courseSlug = body?.courseSlug;
-    if (!courseSlug || !['leading-safe', 'product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
+    if (
+      !courseSlug ||
+      ![
+        'leading-safe',
+        'product-owner-manager',
+        'lean-portfolio-management',
+        'advanced-scrum-master',
+      ].includes(courseSlug)
+    ) {
       return NextResponse.json({ error: 'Invalid course' }, { status: 400 });
     }
 

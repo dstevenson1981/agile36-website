@@ -7,6 +7,7 @@ const COURSE_NAMES: Record<string, string> = {
   'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
   'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager (POPM)',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management (LPM)',
+  'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
 };
 
 export const metadata = {
@@ -20,7 +21,11 @@ export default async function PracticeExamUpgradePage({
   params: Promise<{ courseSlug: string }>;
 }) {
   const { courseSlug } = await params;
-  if (!['leading-safe', 'product-owner-manager', 'lean-portfolio-management'].includes(courseSlug)) {
+  if (
+    !['leading-safe', 'product-owner-manager', 'lean-portfolio-management', 'advanced-scrum-master'].includes(
+      courseSlug
+    )
+  ) {
     redirect('/account/practice-exams');
   }
 

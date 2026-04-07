@@ -35,7 +35,10 @@ function isRpcMissingError(error: { code?: string; message?: string } | null): b
 
 async function whitelistHasEmail(
   serviceSupabase: SupabaseClient,
-  table: 'lpm_pro_access_whitelist' | 'leading_safe_pro_access_whitelist',
+  table:
+    | 'lpm_pro_access_whitelist'
+    | 'leading_safe_pro_access_whitelist'
+    | 'advanced_scrum_master_pro_access_whitelist',
   authEmail: string | undefined,
   profileEmail: string | null | undefined
 ): Promise<boolean> {
@@ -103,8 +106,11 @@ export async function getRegisteredCourseSlugs(): Promise<string[]> {
 
 /** Check if user has Basic (not Pro) for a course - eligible for $50 upgrade */
 export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean> {
-  const hasPro = await checkProAccess(courseSlug);
-  if (hasPro) return false;
+  if (courseSlug === 'advanced-scrum-master') {
+    if (await hasAdvancedScrumMasterProAccess()) return false;
+  } else if (await checkProAccess(courseSlug)) {
+    return false;
+  }
 
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -116,6 +122,17 @@ export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean
     .eq('user_id', user.id)
     .single();
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
+
+  if (courseSlug === 'advanced-scrum-master') {
+    const { data: orders } = await supabase
+      .from('orders')
+      .select('id')
+      .ilike('customer_email', lookupEmail)
+      .eq('plan', 'basic')
+      .or('course_slug.eq.advanced-scrum-master,course_slug.eq.combo-ssm-advanced')
+      .limit(1);
+    return (orders?.length ?? 0) > 0;
+  }
 
   const { data: orders } = await supabase
     .from('orders')
@@ -242,4 +259,54 @@ export async function hasLpmProAccess(): Promise<boolean> {
 
   const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
   return lpmWhitelistMatch(serviceSupabase, user.email, profile?.email);
+}
+
+/** Pro practice exam + Studio-style access for SASM (advanced-scrum-master), including SSM+SASM combo. */
+export async function hasAdvancedScrumMasterProAccess(): Promise<boolean> {
+  const fromUserAccess = await checkProAccess('advanced-scrum-master');
+  if (fromUserAccess) return true;
+
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id, course_slug')
+    .ilike('customer_email', lookupEmail)
+    .eq('plan', 'pro')
+    .limit(15);
+
+  const hasAsmOrder = !!orders?.some(
+    (o) =>
+      o.course_slug === 'advanced-scrum-master' ||
+      o.course_slug === 'combo-ssm-advanced'
+  );
+  if (hasAsmOrder) return true;
+
+  // Whitelist (same pattern as LPM): RLS returns a row when auth or profile email matches — no service role needed.
+  const { data: asmWhitelistRows, error: asmWlErr } = await supabase
+    .from('advanced_scrum_master_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!asmWlErr && (asmWhitelistRows?.length ?? 0) > 0) return true;
+
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!serviceKey || !serviceUrl) return false;
+
+  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+  return whitelistHasEmail(
+    serviceSupabase,
+    'advanced_scrum_master_pro_access_whitelist',
+    user.email,
+    profile?.email
+  );
 }

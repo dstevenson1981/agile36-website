@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { hasPopmProAccess, hasLpmProAccess, hasLeadingSafeProAccess, getRegisteredCourseSlugs } from '@/app/lib/practice-exams';
+import {
+  hasPopmProAccess,
+  hasLpmProAccess,
+  hasLeadingSafeProAccess,
+  hasAdvancedScrumMasterProAccess,
+  getRegisteredCourseSlugs,
+} from '@/app/lib/practice-exams';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 
 export const metadata = {
@@ -13,10 +19,11 @@ export default async function PracticeExamsPage({
   searchParams: Promise<{ upgraded?: string }>;
 }) {
   const { upgraded } = await searchParams;
-  const [hasPopmPro, hasLpmPro, hasLeadingSafePro, registeredCourses] = await Promise.all([
+  const [hasPopmPro, hasLpmPro, hasLeadingSafePro, hasAsmPro, registeredCourses] = await Promise.all([
     hasPopmProAccess(),
     hasLpmProAccess(),
     hasLeadingSafeProAccess(),
+    hasAdvancedScrumMasterProAccess(),
     getRegisteredCourseSlugs(),
   ]);
 
@@ -26,7 +33,11 @@ export default async function PracticeExamsPage({
     registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('lpm')) ||
     hasLpmPro;
   const hasLeadingSafe = registeredCourses.includes('leading-safe') || registeredCourses.some((s) => s?.startsWith('combo-leading-safe')) || hasLeadingSafePro;
-  const hasAnyExam = hasPopm || hasLpm || hasLeadingSafe;
+  const hasAsm =
+    registeredCourses.includes('advanced-scrum-master') ||
+    registeredCourses.includes('combo-ssm-advanced') ||
+    hasAsmPro;
+  const hasAnyExam = hasPopm || hasLpm || hasLeadingSafe || hasAsm;
 
   return (
     <div>
@@ -100,6 +111,42 @@ export default async function PracticeExamsPage({
                 <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
                 <Link
                   href="/account/practice-exams/upgrade/product-owner-manager"
+                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
+                >
+                  Upgrade to access →
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* SASM - show if registered for course or SSM+SASM combo */}
+        {hasAsm && (
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl">🏆</span>
+              </div>
+              <div>
+                <h2 className="font-semibold text-slate-900">SAFe Advanced Scrum Master (SASM)</h2>
+                <p className="text-slate-600 text-sm mt-1">
+                  55 questions aligned to the AI-Empowered SASM practice set
+                </p>
+              </div>
+            </div>
+            {hasAsmPro ? (
+              <Link
+                href="/account/practice-exams/advanced-scrum-master"
+                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
+              >
+                Start Test
+              </Link>
+            ) : (
+              <div className="flex-shrink-0 text-right">
+                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
+                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
+                <Link
+                  href="/account/practice-exams/upgrade/advanced-scrum-master"
                   className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
                 >
                   Upgrade to access →

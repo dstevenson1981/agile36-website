@@ -3,13 +3,17 @@
 import Link from 'next/link';
 
 const COURSE_NAMES: Record<string, string> = {
+  'leading-safe': 'Leading SAFe',
   'product-owner-manager': 'POPM',
   'lean-portfolio-management': 'LPM',
+  'advanced-scrum-master': 'SASM',
 };
 
 const EXAM_PATHS: Record<string, string> = {
+  'leading-safe': '/account/practice-exams/leading-safe',
   'product-owner-manager': '/account/practice-exams/popm',
   'lean-portfolio-management': '/account/practice-exams/lpm',
+  'advanced-scrum-master': '/account/practice-exams/advanced-scrum-master',
 };
 
 export default function UpgradeSuccessBanner({ courseSlug }: { courseSlug: string }) {

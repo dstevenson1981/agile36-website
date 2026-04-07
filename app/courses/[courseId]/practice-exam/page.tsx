@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
 import PopmPracticeTest from '@/app/account/(dashboard)/practice-exams/popm/PopmPracticeTest';
 import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPracticeTest';
+import AdvancedScrumMasterPracticeTest from '@/app/account/(dashboard)/practice-exams/advanced-scrum-master/AdvancedScrumMasterPracticeTest';
 
 const COURSE_PRACTICE_EXAMS: Record<string, { title: string; component: React.ComponentType }> = {
   'product-owner-manager': {
@@ -12,6 +13,10 @@ const COURSE_PRACTICE_EXAMS: Record<string, { title: string; component: React.Co
   'lean-portfolio-management': {
     title: 'SAFe LPM Practice Test',
     component: LpmPracticeTest,
+  },
+  'advanced-scrum-master': {
+    title: 'SAFe SASM Practice Test',
+    component: AdvancedScrumMasterPracticeTest,
   },
 };
 
