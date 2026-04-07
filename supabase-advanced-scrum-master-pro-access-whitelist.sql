@@ -33,5 +33,6 @@ CREATE POLICY "Service role can manage whitelist" ON advanced_scrum_master_pro_a
 INSERT INTO advanced_scrum_master_pro_access_whitelist (email) VALUES
   ('Michelle.mizer@gmail.com'),
   ('ufs777@gmail.com'),
-  ('d.stevenson@agile36.com')
+  ('d.stevenson@agile36.com'),
+  ('monique.hart@carefirst.com')
 ON CONFLICT (email) DO NOTHING;
