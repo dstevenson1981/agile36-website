@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { hasAdvancedScrumMasterProAccess } from '@/app/lib/practice-exams';
+import { hasAdvancedScrumMasterProAccess, isSasmSharedAccessKey } from '@/app/lib/practice-exams';
 import AdvancedScrumMasterPracticeTest from './AdvancedScrumMasterPracticeTest';
 import { ADVANCED_SCRUM_MASTER_QUESTIONS } from './questions';
 
@@ -8,8 +8,13 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-export default async function AdvancedScrumMasterPracticeTestPage() {
-  const hasAccess = await hasAdvancedScrumMasterProAccess();
+export default async function AdvancedScrumMasterPracticeTestPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ key?: string }>;
+}) {
+  const { key } = await searchParams;
+  const hasAccess = isSasmSharedAccessKey(key) || (await hasAdvancedScrumMasterProAccess());
 
   if (!hasAccess) {
     return (

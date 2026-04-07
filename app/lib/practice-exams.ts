@@ -1,6 +1,22 @@
+import { timingSafeEqual } from 'node:crypto';
 import { createClient } from '@/app/lib/supabase/server';
 import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
+
+/**
+ * Shared SASM practice link: /account/practice-exams/advanced-scrum-master?key=...
+ * When SASM_PRACTICE_EXAM_SHARE_KEY is set and matches, access does not require Pro or whitelist.
+ */
+export function isSasmSharedAccessKey(provided: string | undefined | null): boolean {
+  const expected = process.env.SASM_PRACTICE_EXAM_SHARE_KEY;
+  if (!expected || typeof provided !== 'string') return false;
+  if (provided.length !== expected.length) return false;
+  try {
+    return timingSafeEqual(Buffer.from(provided, 'utf8'), Buffer.from(expected, 'utf8'));
+  } catch {
+    return false;
+  }
+}
 
 /** Profile email when non-empty; otherwise auth email. (Empty string profile must not win over auth.) */
 function primaryLookupEmail(

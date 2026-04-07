@@ -5,7 +5,10 @@ import { NextResponse, type NextRequest } from 'next/server';
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({ request });
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-agile36-path', request.nextUrl.pathname + request.nextUrl.search);
+
+  let response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
   if (PUBLIC_PATHS.some((p) => p === pathname || (p !== '/' && pathname.startsWith(p)))) {
