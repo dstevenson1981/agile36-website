@@ -19,11 +19,12 @@ CREATE POLICY "Service role can manage suppressions" ON abandoned_cart_suppressi
   FOR ALL
   USING (auth.role() = 'service_role');
 
--- Add Amanda - do not send abandoned cart emails
+-- Suppressed addresses (no enrollment_leads insert → no abandoned-cart / discount email via N8N)
 INSERT INTO abandoned_cart_suppressions (email, reason) VALUES
-  ('amandar@woodforest.com', 'Do not send abandoned cart - requested by user')
+  ('amandar@woodforest.com', 'Do not send abandoned cart - requested by user'),
+  ('enriquesan@iadb.org', 'Leading SAFe payment failed; do not send abandoned cart discount')
 ON CONFLICT (email) DO NOTHING;
 
--- NOTE: If Amanda's lead was already inserted before you ran this, the N8N webhook may have
--- already fired. Add a filter in your N8N workflow to skip emails in this table, or
--- manually cancel that execution. Future abandonments will be blocked (no insert = no webhook).
+-- NOTE: If a lead was already inserted before suppression, the N8N webhook may have fired once.
+-- Optional: remove existing row so no downstream job uses it (review before running):
+-- DELETE FROM enrollment_leads WHERE LOWER(TRIM(email)) = 'enriquesan@iadb.org';

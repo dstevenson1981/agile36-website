@@ -57,6 +57,14 @@ export async function POST(request: NextRequest) {
 
     // Skip insert if email is in abandoned cart suppressions (no email will be sent)
     const trimmedEmail = email.trim().toLowerCase();
+    const hardSuppressed = new Set(['enriquesan@iadb.org']);
+    if (hardSuppressed.has(trimmedEmail)) {
+      return NextResponse.json({
+        success: true,
+        message: 'Enrollment lead not stored (suppressed)',
+        suppressed: true,
+      });
+    }
     const { data: suppressed } = await supabase
       .from('abandoned_cart_suppressions')
       .select('id')
