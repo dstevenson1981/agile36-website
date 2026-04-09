@@ -1,5 +1,6 @@
--- Legacy filename: same migration as supabase-email-templates-force-100-off.sql (abandoned_cart + assessment block).
--- Ensures promo_codes has 100OFF for checkout.
+-- Abandoned cart + assessment emails → $100 off, code 100OFF (replaces 150OFF, $150, 200OFF, etc. in copy).
+-- Prefer running supabase-email-templates-force-100-off.sql once (also updates no_convert).
+-- Safe to re-run.
 
 UPDATE email_templates
 SET
@@ -23,6 +24,7 @@ SET
   updated_at = NOW()
 WHERE template_type IN ('abandoned_cart', 'assessment');
 
-INSERT INTO promo_codes (code, discount_type, discount_value, description, active, expires_at, usage_limit, usage_count, created_at, updated_at)
-SELECT '100OFF', 'fixed', 100, 'Enrollment / abandoned cart - $100 off', true, '2026-12-31 23:59:59+00'::timestamptz, NULL, 0, NOW(), NOW()
-WHERE NOT EXISTS (SELECT 1 FROM promo_codes WHERE UPPER(TRIM(code)) = '100OFF');
+SELECT course_slug, discount_code, discount_amount, LEFT(subject, 70) AS subject_preview
+FROM email_templates
+WHERE template_type = 'abandoned_cart'
+ORDER BY course_slug;
