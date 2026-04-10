@@ -38,7 +38,8 @@ async function whitelistHasEmail(
   table:
     | 'lpm_pro_access_whitelist'
     | 'leading_safe_pro_access_whitelist'
-    | 'advanced_scrum_master_pro_access_whitelist',
+    | 'advanced_scrum_master_pro_access_whitelist'
+    | 'scrum_master_pro_access_whitelist',
   authEmail: string | undefined,
   profileEmail: string | null | undefined
 ): Promise<boolean> {
@@ -251,8 +252,27 @@ export async function hasScrumMasterProAccess(): Promise<boolean> {
     .eq('plan', 'pro')
     .limit(15);
 
-  return !!orders?.some(
+  const hasOrder = !!orders?.some(
     (o) => o.course_slug === 'scrum-master' || o.course_slug === 'combo-ssm-advanced'
+  );
+  if (hasOrder) return true;
+
+  const { data: ssmWhitelistRows, error: ssmWlErr } = await supabase
+    .from('scrum_master_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!ssmWlErr && (ssmWhitelistRows?.length ?? 0) > 0) return true;
+
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!serviceKey || !serviceUrl) return false;
+
+  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+  return whitelistHasEmail(
+    serviceSupabase,
+    'scrum_master_pro_access_whitelist',
+    user.email,
+    profile?.email
   );
 }
 
