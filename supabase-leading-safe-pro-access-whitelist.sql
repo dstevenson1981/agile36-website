@@ -15,7 +15,16 @@ ALTER TABLE leading_safe_pro_access_whitelist ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Users can check own whitelist status" ON leading_safe_pro_access_whitelist;
 CREATE POLICY "Users can check own whitelist status" ON leading_safe_pro_access_whitelist
   FOR SELECT
-  USING (LOWER(email) = LOWER((SELECT email FROM auth.users WHERE id = auth.uid())));
+  USING (
+    LOWER(TRIM(leading_safe_pro_access_whitelist.email)) = LOWER(TRIM((SELECT u.email FROM auth.users u WHERE u.id = auth.uid())))
+    OR EXISTS (
+      SELECT 1 FROM public.profiles p
+      WHERE p.user_id = auth.uid()
+        AND p.email IS NOT NULL
+        AND TRIM(p.email) <> ''
+        AND LOWER(TRIM(leading_safe_pro_access_whitelist.email)) = LOWER(TRIM(p.email))
+    )
+  );
 
 -- Service role can manage
 DROP POLICY IF EXISTS "Service role can manage whitelist" ON leading_safe_pro_access_whitelist;
@@ -26,5 +35,6 @@ CREATE POLICY "Service role can manage whitelist" ON leading_safe_pro_access_whi
 -- Insert whitelisted emails (Pro users granted access)
 INSERT INTO leading_safe_pro_access_whitelist (email) VALUES
   ('Kennethleerogersjr@gmail.com'),
-  ('Kenny.rogers@alliedsolutions.net')
+  ('Kenny.rogers@alliedsolutions.net'),
+  ('haw_glazes_6x@icloud.com')
 ON CONFLICT (email) DO NOTHING;

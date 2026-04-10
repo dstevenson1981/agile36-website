@@ -24,12 +24,23 @@ function distinctEmailsForWhitelist(
 
 const EMERGENCY_SSM_ACCESS_EMAILS = new Set(['cchivers444@gmail.com']);
 
+const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
+
 function hasEmergencySsmAccess(
   authEmail: string | undefined,
   profileEmail: string | null | undefined
 ): boolean {
   return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
     EMERGENCY_SSM_ACCESS_EMAILS.has(email.toLowerCase())
+  );
+}
+
+function hasEmergencyLeadingSafeProAccess(
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): boolean {
+  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
+    EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS.has(email.toLowerCase())
   );
 }
 
@@ -211,6 +222,9 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
     .select('email')
     .eq('user_id', user.id)
     .single();
+
+  if (hasEmergencyLeadingSafeProAccess(user.email, profile?.email)) return true;
+
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
   // Check orders - use ilike for case-insensitive email match
@@ -226,7 +240,13 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
   );
   if (hasLeadingSafeOrder) return true;
 
-  // Check whitelist (grants access without Pro order) - use service role to bypass RLS
+  // Whitelist: RLS returns a row when auth or profile email matches — works without service role.
+  const { data: lsWhitelistRows, error: lsWlErr } = await supabase
+    .from('leading_safe_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!lsWlErr && (lsWhitelistRows?.length ?? 0) > 0) return true;
+
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!serviceKey || !serviceUrl) return false;
