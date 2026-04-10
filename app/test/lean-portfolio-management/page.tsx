@@ -5,8 +5,7 @@ import { LPM_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/lpm/ques
 
 export const metadata = {
   title: 'SAFe LPM Pro Practice Exam (51 Questions) | Agile36',
-  description:
-    'Pro LPM practice exam — 51 questions. Same exam as Practice Exams in your Agile36 account for Pro enrollments.',
+  description: 'Full-length SAFe Lean Portfolio Management practice exam for Pro course enrollments.',
   robots: 'noindex, nofollow',
 };
 
@@ -14,7 +13,6 @@ export const dynamic = 'force-dynamic';
 
 const n = LPM_QUESTIONS.length;
 
-/** Direct URL for the Pro LPM 51-question exam when Practice Exams does not show in the customer account. */
 export default function LeanPortfolioManagementFullPracticePage() {
   return (
     <main className="min-h-screen bg-[#f0f9ff]">
@@ -43,9 +41,8 @@ export default function LeanPortfolioManagementFullPracticePage() {
       <div className="bg-blue-50 border-b border-blue-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-3">
           <p className="text-sm text-slate-800">
-            <strong>Pro LPM</strong> practice exam — <strong>{n} questions</strong>, same as{' '}
-            <strong>Account → Practice Exams → LPM</strong>. Use this link if you paid for Pro and the exam does not
-            appear in your account yet.
+            SAFe Lean Portfolio Management practice exam — <strong>{n} questions</strong>. Also available in your account
+            under Practice Exams when you enroll with Pro.
           </p>
         </div>
       </div>
