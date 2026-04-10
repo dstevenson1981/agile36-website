@@ -1,5 +1,5 @@
 /* SAFe Scrum Master (SSM) Pro practice test whitelist. Run in Supabase SQL Editor.
-   Users in this table get the SSM practice exam without a Pro order. */
+   Users in this table get the SSM practice exam in Practice Exams without a Pro order. */
 
 CREATE TABLE IF NOT EXISTS scrum_master_pro_access_whitelist (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -32,5 +32,6 @@ CREATE POLICY "Service role can manage whitelist" ON scrum_master_pro_access_whi
 
 INSERT INTO scrum_master_pro_access_whitelist (email) VALUES
   ('brandonaad@gmail.com'),
-  ('d.stevenson@agile36.com')
+  ('d.stevenson@agile36.com'),
+  ('cchivers444@gmail.com')
 ON CONFLICT (email) DO NOTHING;
