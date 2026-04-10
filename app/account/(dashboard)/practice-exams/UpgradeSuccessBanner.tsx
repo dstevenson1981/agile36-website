@@ -6,6 +6,7 @@ const COURSE_NAMES: Record<string, string> = {
   'leading-safe': 'Leading SAFe',
   'product-owner-manager': 'POPM',
   'lean-portfolio-management': 'LPM',
+  'scrum-master': 'SSM',
   'advanced-scrum-master': 'SASM',
 };
 
@@ -13,6 +14,7 @@ const EXAM_PATHS: Record<string, string> = {
   'leading-safe': '/account/practice-exams/leading-safe',
   'product-owner-manager': '/account/practice-exams/popm',
   'lean-portfolio-management': '/account/practice-exams/lpm',
+  'scrum-master': '/account/practice-exams/scrum-master',
   'advanced-scrum-master': '/account/practice-exams/advanced-scrum-master',
 };
 

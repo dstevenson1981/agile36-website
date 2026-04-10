@@ -134,6 +134,18 @@ export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean
     return (orders?.length ?? 0) > 0;
   }
 
+  if (courseSlug === 'scrum-master') {
+    if (await hasScrumMasterProAccess()) return false;
+    const { data: orders } = await supabase
+      .from('orders')
+      .select('id')
+      .ilike('customer_email', lookupEmail)
+      .eq('plan', 'basic')
+      .or('course_slug.eq.scrum-master,course_slug.eq.combo-ssm-advanced')
+      .limit(1);
+    return (orders?.length ?? 0) > 0;
+  }
+
   const { data: orders } = await supabase
     .from('orders')
     .select('id')
@@ -213,6 +225,34 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
     'leading_safe_pro_access_whitelist',
     user.email,
     profile?.email
+  );
+}
+
+/** Check if the logged-in user has Pro plan for SAFe Scrum Master (scrum-master). */
+export async function hasScrumMasterProAccess(): Promise<boolean> {
+  const fromUserAccess = await checkProAccess('scrum-master');
+  if (fromUserAccess) return true;
+
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id, course_slug')
+    .ilike('customer_email', lookupEmail)
+    .eq('plan', 'pro')
+    .limit(15);
+
+  return !!orders?.some(
+    (o) => o.course_slug === 'scrum-master' || o.course_slug === 'combo-ssm-advanced'
   );
 }
 
