@@ -45,9 +45,8 @@ export default async function ScrumMasterPracticeTestPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Scrum Master (SSM) Practice Test</h1>
-      <p className="text-slate-600 mb-2">
-        {n} questions transcribed from the SAFe Scrum Master exam item set (official exam has 45 items; item 3 was not in
-        the provided photos). Answer all questions, then submit to see your score and review.
+      <p className="text-slate-600 mb-8">
+        {n} questions to help you prepare for the SAFe Scrum Master certification exam. Answer all questions, then submit to see your score and review.
       </p>
       <ScrumMasterPracticeTest />
     </div>

@@ -5,11 +5,7 @@ export type ScrumMasterQuestion = {
   correctIndex: number;
 };
 
-/**
- * Verbatim from SAFe Scrum Master Exam (2025.10.28) screen captures in public/Scrum Master Exam (*.jpg converted from HEIC).
- * Correct = option with green / marked checkmark in the source photo (where conflicts existed, green-check image won).
- * Official exam item 3/45 had no usable photo in that folder — ids jump from 2 to 4 (44 questions total).
- */
+/** SAFe Scrum Master practice questions (in-house item bank). */
 export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   {
     id: 1,

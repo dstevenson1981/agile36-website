@@ -136,7 +136,7 @@ export default async function PracticeExamsPage({
               <div>
                 <h2 className="font-semibold text-slate-900">SAFe Scrum Master (SSM)</h2>
                 <p className="text-slate-600 text-sm mt-1">
-                  44 questions from the SAFe Scrum Master exam set (items 1–45; item 3 not in source photos)
+                  Practice questions aligned to the SAFe Scrum Master certification exam
                 </p>
               </div>
             </div>
