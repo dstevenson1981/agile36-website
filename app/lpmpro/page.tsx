@@ -5,7 +5,7 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-/** Short link → Pro LPM 51-question exam (/test/lean-portfolio-management). */
+/** Short link → gated LPM practice exam (account / Pro access required). */
 export default function LpmProPage() {
-  redirect('/test/lean-portfolio-management');
+  redirect('/account/practice-exams/lpm');
 }

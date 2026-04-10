@@ -869,7 +869,7 @@ export default function CityAPMCoursePage() {
                   <span className="text-base text-gray-700 font-medium">English</span>
                 </div>
                 <Link
-                  href="/test/lean-portfolio-management"
+                  href="/test/agile-product-management"
                   className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold px-8 py-3 rounded-lg transition-colors"
                 >
                   Start Test

@@ -563,7 +563,7 @@ export default function TestPage() {
                     if (selectedTest.includes("Leading SAFe")) {
                       router.push("/test/leading-safe");
                     } else if (selectedTest.includes("Lean Portfolio Management")) {
-                      router.push("/test/lean-portfolio-management");
+                      router.push("/account/practice-exams/lpm");
                     } else if (selectedTest.includes("Scrum Master")) {
                       router.push("/test/scrum-master");
                     } else if (selectedTest.includes("Product Owner") || selectedTest.includes("Product Manager")) {

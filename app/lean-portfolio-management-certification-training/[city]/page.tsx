@@ -58,8 +58,7 @@ export default function CityLPMCoursePage() {
       });
 
       if (response.ok) {
-        // Redirect to practice test
-        window.location.href = '/test/lean-portfolio-management';
+        window.location.href = '/account/practice-exams/lpm';
       } else {
         const errorData = await response.json().catch(() => ({}));
         console.error('API Error:', errorData);
@@ -869,7 +868,7 @@ export default function CityLPMCoursePage() {
                   <span className="text-base text-gray-700 font-medium">English</span>
                 </div>
                 <Link
-                  href="/test/lean-portfolio-management"
+                  href="/account/practice-exams/lpm"
                   className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold px-8 py-3 rounded-lg transition-colors"
                 >
                   Start Test

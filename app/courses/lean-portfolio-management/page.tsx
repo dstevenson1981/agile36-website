@@ -48,8 +48,7 @@ export default function LeanPortfolioManagementCoursePage() {
       });
 
       if (response.ok) {
-        // Redirect to practice test
-        window.location.href = '/test/lean-portfolio-management';
+        window.location.href = '/account/practice-exams/lpm';
       } else {
         const errorData = await response.json().catch(() => ({}));
         console.error('API Error:', errorData);
