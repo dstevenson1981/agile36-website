@@ -22,6 +22,17 @@ function distinctEmailsForWhitelist(
   return [...new Set([p, a].filter((e) => e.length > 0))];
 }
 
+const EMERGENCY_SSM_ACCESS_EMAILS = new Set(['cchivers444@gmail.com']);
+
+function hasEmergencySsmAccess(
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): boolean {
+  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
+    EMERGENCY_SSM_ACCESS_EMAILS.has(email.toLowerCase())
+  );
+}
+
 function isRpcMissingError(error: { code?: string; message?: string } | null): boolean {
   if (!error) return false;
   const msg = String(error.message ?? '');
@@ -243,6 +254,10 @@ export async function hasScrumMasterProAccess(): Promise<boolean> {
     .select('email')
     .eq('user_id', user.id)
     .single();
+
+  // Safety fallback so whitelist-only users are not blocked if DB whitelist migration has not been run yet.
+  if (hasEmergencySsmAccess(user.email, profile?.email)) return true;
+
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
   const { data: orders } = await supabase
