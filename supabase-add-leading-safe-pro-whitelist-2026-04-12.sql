@@ -1,11 +1,13 @@
 /* Grant Leading SAFe Pro practice exam access (account → Practice Exams → Start Test).
-   Run in Supabase SQL Editor on Production. Requires table from supabase-leading-safe-pro-access-whitelist.sql */
+   Run in Supabase SQL Editor on Production. Requires table from supabase-leading-safe-pro-access-whitelist.sql
+   barber_ann@hotmail.com: same learner as ann.w.barber@hii-nns.com (work inbox blocked auth). */
 
 -- Verify (optional): already whitelisted
 SELECT email, created_at
 FROM leading_safe_pro_access_whitelist
 WHERE LOWER(TRIM(email)) IN (
   'ann.w.barber@hii-nns.com',
+  'barber_ann@hotmail.com',
   'enriquesan@iadb.org',
   'garyyyuen@gmail.com',
   'd.stevenson@agile36.com'
@@ -14,6 +16,7 @@ ORDER BY email;
 
 INSERT INTO leading_safe_pro_access_whitelist (email) VALUES
   (lower(trim('ann.w.barber@hii-nns.com'))),
+  (lower(trim('barber_ann@hotmail.com'))),
   (lower(trim('enriquesan@iadb.org'))),
   (lower(trim('garyyyuen@gmail.com'))),
   (lower(trim('d.stevenson@agile36.com')))
@@ -24,6 +27,7 @@ SELECT email, created_at
 FROM leading_safe_pro_access_whitelist
 WHERE LOWER(TRIM(email)) IN (
   'ann.w.barber@hii-nns.com',
+  'barber_ann@hotmail.com',
   'enriquesan@iadb.org',
   'garyyyuen@gmail.com',
   'd.stevenson@agile36.com'
