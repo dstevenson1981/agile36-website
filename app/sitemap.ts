@@ -118,6 +118,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'leading-safe-certification-cost-2026',
     'is-safe-certification-worth-it-2026',
     'safe-lpm-vs-popm',
+    'ssm-vs-csm',
+    'safe-scrum-master-exam-questions',
+    'pi-planning-explained',
   ];
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

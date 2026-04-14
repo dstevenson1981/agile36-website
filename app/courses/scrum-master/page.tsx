@@ -218,6 +218,18 @@ export default function ScrumMasterCoursePage() {
                   Free SSM Assessment
                 </button>
               </div>
+
+              <div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <p className="text-sm font-semibold text-gray-900 mb-2">Related reading</p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-2 text-sm">
+                  <Link href="/blog/ssm-vs-csm" className="text-[#01203d] underline hover:text-[#134263] font-medium">
+                    SSM vs CSM comparison →
+                  </Link>
+                  <Link href="/blog/safe-scrum-master-exam-questions" className="text-[#01203d] underline hover:text-[#134263] font-medium">
+                    SAFe Scrum Master exam questions →
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Right Side - Image Card */}

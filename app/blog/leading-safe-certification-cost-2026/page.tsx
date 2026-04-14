@@ -125,6 +125,15 @@ export default function LeadingSafeCertificationCost2026BlogPost() {
             It&apos;s the recommended first step for leaders, managers, Agile
             coaches, and transformation leads working inside organizations that
             use SAFe — which includes more than 70% of Fortune 100 companies.
+            If you want a practical breakdown of one of SAFe&apos;s most important
+            ceremonies, read{" "}
+            <Link
+              href="/blog/pi-planning-explained"
+              className="font-semibold text-[#01203d] underline hover:text-[#134263]"
+            >
+              PI Planning explained
+            </Link>
+            .
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">

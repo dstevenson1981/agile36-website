@@ -332,6 +332,11 @@ export default function IsSafeCertificationWorthIt2026BlogPost() {
             Leading SAFe (SAFe Agilist) is the recommended starting point for most
             professionals. It covers the full framework and qualifies you for
             the role-based certifications that follow (SSM, POPM, LPM, RTE).
+            If you are comparing Scrum paths, read{" "}
+            <Link href="/blog/ssm-vs-csm" className="font-semibold text-[#01203d] underline hover:text-[#134263]">
+              SSM vs CSM
+            </Link>{" "}
+            for a side-by-side decision guide.
           </p>
 
           <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">

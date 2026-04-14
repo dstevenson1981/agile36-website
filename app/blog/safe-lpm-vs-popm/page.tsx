@@ -452,6 +452,17 @@ export default function SafeLpmVsPopmBlogPost() {
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
             Get Certified with Agile36
           </h2>
+          <p className="text-lg text-gray-700 mb-4">
+            Related reading: if you are choosing a Scrum-track certification before
+            moving into portfolio or product roles, start with{" "}
+            <Link
+              href="/blog/ssm-vs-csm"
+              className="font-semibold text-[#01203d] underline hover:text-[#134263]"
+            >
+              SSM vs CSM
+            </Link>
+            .
+          </p>
           <p className="text-lg text-gray-700 mb-6">
             Agile36 offers both POPM and LPM certification training — live,
             instructor-led, with Fortune 100-experienced SPCs and exam fees
