@@ -7,8 +7,8 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Public list codes only — subscribe via site banner for 50OFF; enter that code manually at checkout. */
-const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "loyal", label: "$115 Off" }];
+/** Public list codes only — clip and apply the checkout coupon directly. */
+const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
 
 type Props = {
   availablePromos?: AvailablePromo[];
@@ -25,7 +25,7 @@ export default function AvailablePromoCodes({
 }: Props) {
   return (
     <div className="mb-3">
-      <p className="text-sm font-medium text-gray-900 mb-2">Available Promo Code</p>
+      <p className="text-sm font-medium text-gray-900 mb-2">Clip Coupon Code</p>
       <div className="space-y-2">
         {availablePromos.map((promo) => {
           const isSelected = appliedPromoCode?.toUpperCase() === promo.code.toUpperCase();

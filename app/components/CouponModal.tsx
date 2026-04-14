@@ -6,7 +6,7 @@ interface CouponModalProps {
   isOpen: boolean;
   onClose: () => void;
   onClaimCoupon: (email: string, course: string) => void;
-  /** Stored with the lead and shown in the success modal (default 50OFF) */
+  /** Stored with the lead and shown in the success modal (default 100OFF) */
   couponCode?: string;
 }
 
@@ -34,7 +34,7 @@ export default function CouponModal({
   isOpen,
   onClose,
   onClaimCoupon,
-  couponCode = "50OFF",
+  couponCode = "100OFF",
 }: CouponModalProps) {
   const [email, setEmail] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -101,7 +101,7 @@ export default function CouponModal({
           
           <div className="relative z-10">
             <h2 className="text-gray-900 text-2xl font-bold mb-4">
-              Get $50 off your course.
+              Get $100 off your course.
             </h2>
             <p className="text-gray-800 text-sm mb-6">
               Gain high-value skills that drive real results.
