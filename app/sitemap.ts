@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { seoPages } from '@/data/seoPages';
+import { getGeneratedBlogSlugs } from '@/app/lib/generated-blog';
 
 const BASE_URL = 'https://www.agile36.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
 
   // Main pages: priority 1.0 for homepage, 0.6 for everything else; monthly
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/about`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/corporate`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/contact`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/blog`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE_URL}/safe-certifications`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/combo-courses`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
   ];
@@ -111,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  const blogSlugs = [
+  const editorialBlogSlugs = [
     'ai-transformation',
     'ai-tools-product-managers',
     'lean-portfolio-management',
@@ -122,6 +124,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'safe-scrum-master-exam-questions',
     'pi-planning-explained',
   ];
+
+  const generatedBlogSlugs = await getGeneratedBlogSlugs();
+  const blogSlugs = Array.from(new Set([...editorialBlogSlugs, ...generatedBlogSlugs]));
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,

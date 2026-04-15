@@ -65,6 +65,35 @@ export async function getGeneratedBlogPost(slug: string): Promise<{
   }
 }
 
+export async function getGeneratedBlogSummaries(): Promise<
+  Array<{
+    slug: string;
+    title: string;
+    date?: string;
+    description?: string;
+  }>
+> {
+  const slugs = await getGeneratedBlogSlugs();
+  const summaries = await Promise.all(
+    slugs.map(async (slug) => {
+      const post = await getGeneratedBlogPost(slug);
+      const fallbackTitle = slug
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+
+      return {
+        slug,
+        title: post?.frontmatter.title ?? fallbackTitle,
+        date: post?.frontmatter.date,
+        description: post?.frontmatter.description,
+      };
+    })
+  );
+
+  return summaries;
+}
+
 export function getGeneratedBlogAssetPath(slug: string, asset: string): string {
   return path.join(BLOG_CONTENT_ROOT, slug, asset);
 }

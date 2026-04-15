@@ -3,6 +3,8 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import { getGeneratedBlogAssetPath } from "@/app/lib/generated-blog";
 
+export const runtime = "nodejs";
+
 const CONTENT_TYPES: Record<string, string> = {
   ".svg": "image/svg+xml",
   ".png": "image/png",
@@ -33,7 +35,7 @@ export async function GET(_: Request, { params }: RouteProps) {
 
   try {
     const file = await readFile(filePath);
-    return new NextResponse(new Uint8Array(file), {
+    return new NextResponse(file, {
       status: 200,
       headers: {
         "Content-Type": contentType,
