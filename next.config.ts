@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    "/*": ["./content/blog/**/*"],
+  },
   async redirects() {
     return [
       // learn.agile36.com → main site (same paths)
