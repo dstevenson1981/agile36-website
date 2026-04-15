@@ -2,6 +2,8 @@ import type { Dirent } from "node:fs";
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
+import type { BlogCategoryId } from "./blog-categories";
+import { mapVerticalToCategoryId } from "./blog-categories";
 
 export type GeneratedBlogFrontmatter = {
   title?: string;
@@ -71,6 +73,8 @@ export async function getGeneratedBlogSummaries(): Promise<
     title: string;
     date?: string;
     description?: string;
+    vertical?: string;
+    categoryId: Exclude<BlogCategoryId, "all">;
   }>
 > {
   const slugs = await getGeneratedBlogSlugs();
@@ -81,12 +85,15 @@ export async function getGeneratedBlogSummaries(): Promise<
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
+      const vertical = post?.frontmatter.vertical;
 
       return {
         slug,
         title: post?.frontmatter.title ?? fallbackTitle,
         date: post?.frontmatter.date,
         description: post?.frontmatter.description,
+        vertical,
+        categoryId: mapVerticalToCategoryId(vertical),
       };
     })
   );

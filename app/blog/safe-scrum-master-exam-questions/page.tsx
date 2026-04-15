@@ -363,7 +363,7 @@ export default function SafeScrumMasterExamQuestionsBlogPost() {
         <div className="flex items-center gap-2 mb-8 text-sm text-gray-600">
           <Link href="/" className="hover:text-[#01203d]">Home</Link>
           <span>/</span>
-          <Link href="/#blog" className="hover:text-[#01203d]">Blog</Link>
+          <Link href="/blog" className="hover:text-[#01203d]">Blog</Link>
           <span>/</span>
           <span>SSM exam questions</span>
         </div>

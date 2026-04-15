@@ -44,7 +44,7 @@ export default function AIToolsProductManagersBlogPost() {
         <div className="flex items-center gap-2 mb-8 text-sm text-gray-600">
           <Link href="/" className="hover:text-[#01203d]">Home</Link>
           <span>/</span>
-          <Link href="/#blog" className="hover:text-[#01203d]">Blog</Link>
+          <Link href="/blog" className="hover:text-[#01203d]">Blog</Link>
           <span>/</span>
           <span>AI Tools for Product Managers</span>
         </div>
@@ -408,7 +408,7 @@ export default function AIToolsProductManagersBlogPost() {
 
           {/* Back to Blog Link */}
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <Link href="/#blog" className="inline-flex items-center gap-2 text-[#fa4a23] font-semibold hover:underline">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-[#fa4a23] font-semibold hover:underline">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>

@@ -743,9 +743,9 @@ export default function Home() {
               <Link href="/courses" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Courses
               </Link>
-              <a href="#blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Blogs
-              </a>
+              </Link>
               <Link href="/test" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Practice Tests
               </Link>
@@ -816,7 +816,7 @@ export default function Home() {
                 All Courses
               </Link>
               <Link 
-                href="#blog" 
+                href="/blog" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
               >
@@ -1440,6 +1440,15 @@ export default function Home() {
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-[#4f6882] uppercase mb-2">LEARNER REVIEWS FROM THE WORLD OVER</p>
             <h2 className="text-3xl font-bold text-gray-900">Our Latest Blogs</h2>
+            <p className="mt-2 text-gray-600 text-sm sm:text-base max-w-xl mx-auto">
+              A preview of featured posts. Explore the full library with categories on the blog hub.
+            </p>
+            <Link
+              href="/blog"
+              className="mt-4 inline-flex items-center gap-1 text-[#fa4a23] font-semibold hover:underline"
+            >
+              Browse all articles by category →
+            </Link>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

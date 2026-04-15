@@ -734,7 +734,7 @@ export default function Header() {
               <Link href="/courses" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Courses
               </Link>
-              <Link href="/#blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
                 Blogs
               </Link>
               <Link href="/test" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
@@ -807,7 +807,7 @@ export default function Header() {
                 All Courses
               </Link>
               <Link 
-                href="/#blog" 
+                href="/blog" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md font-medium"
               >

@@ -75,7 +75,7 @@ export default function LeadingSafeCertificationCost2026BlogPost() {
             Home
           </Link>
           <span>/</span>
-          <Link href="/#blog" className="hover:text-[#01203d]">
+          <Link href="/blog" className="hover:text-[#01203d]">
             Blog
           </Link>
           <span>/</span>
