@@ -1,0 +1,70 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Sprint Retrospective Process</text>
+  
+  <!-- Sprint Timeline -->
+  <rect x="50" y="80" width="700" height="60" fill="#e2e8f0" rx="30"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#475569">Sprint Duration (1-4 weeks)</text>
+  
+  <!-- Sprint End marker -->
+  <line x1="700" y1="80" x2="700" y2="140" stroke="#ef4444" stroke-width="3"/>
+  <text x="700" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#ef4444">Sprint End</text>
+  
+  <!-- Retrospective Box -->
+  <rect x="200" y="200" width="400" height="300" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" rx="10"/>
+  <text x="400" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">Sprint Retrospective</text>
+  <text x="400" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1e40af">45 min per week of sprint</text>
+  
+  <!-- Three columns inside retrospective -->
+  <g>
+    <!-- What went well -->
+    <rect x="220" y="270" width="110" height="80" fill="#dcfce7" stroke="#16a34a" stroke-width="1" rx="5"/>
+    <text x="275" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#15803d">What Went</text>
+    <text x="275" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#15803d">Well?</text>
+    <text x="275" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803d">• Good practices</text>
+    <text x="275" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803d">• Success factors</text>
+    
+    <!-- What didn't work -->
+    <rect x="345" y="270" width="110" height="80" fill="#fef2f2" stroke="#dc2626" stroke-width="1" rx="5"/>
+    <text x="400" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">What Didn't</text>
+    <text x="400" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">Work?</text>
+    <text x="400" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">• Process issues</text>
+    <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">• Obstacles</text>
+    
+    <!-- Actions -->
+    <rect x="470" y="270" width="110" height="80" fill="#fef3c7" stroke="#d97706" stroke-width="1" rx="5"/>
+    <text x="525" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Action Items</text>
+    <text x="525" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">• Specific changes</text>
+    <text x="525" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">• Experiments</text>
+    <text x="525" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">• Commitments</text>
+  </g>
+  
+  <!-- Outcomes section -->
+  <rect x="220" y="370" width="360" height="60" fill="#f1f5f9" stroke="#64748b" stroke-width="1" rx="5"/>
+  <text x="400" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#334155">Retrospective Outcomes</text>
+  <text x="400" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#475569">1-3 actionable improvements for next sprint</text>
+  <text x="400" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#475569">Team commitment to process changes</text>
+  
+  <!-- Arrow to next sprint -->
+  <path d="M 400 520 L 400 550 L 420 530 M 400 550 L 380 530" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <text x="400" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3b82f6">Next Sprint Implementation</text>
+  
+  <!-- Participants -->
+  <circle cx="100" y="350" r="25" fill="#8b5cf6"/>
+  <text x="100" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">SM</text>
+  <text x="100" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6b21a8">Scrum Master</text>
+  
+  <circle cx="100" y="420" r="25" fill="#06b6d4"/>
+  <text x="100" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">DEV</text>
+  <text x="100" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0891b2">Dev Team</text>
+  
+  <!-- Key principles -->
+  <text x="650" y="280" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#374151">Key Principles:</text>
+  <text x="650" y="300" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">• Safe environment</text>
+  <text x="650" y="315" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">• Focus on process</text>
+  <text x="650" y="330" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">• No blame</text>
+  <text x="650" y="345" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">• Actionable outcomes</text>
+  <text x="650" y="360" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">• Continuous improvement</text>

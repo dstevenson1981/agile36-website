@@ -1,0 +1,81 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b">AI Fine Tuning Process</text>
+  
+  <!-- Pre-trained Model Box -->
+  <rect x="50" y="80" width="150" height="100" rx="8" fill="#3b82f6" stroke="#2563eb" stroke-width="2"/>
+  <text x="125" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Pre-trained</text>
+  <text x="125" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Model</text>
+  <text x="125" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Billions of</text>
+  <text x="125" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">parameters</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M210 130 L260 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Domain Data Box -->
+  <rect x="270" y="80" width="150" height="100" rx="8" fill="#10b981" stroke="#059669" stroke-width="2"/>
+  <text x="345" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Domain-Specific</text>
+  <text x="345" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Data</text>
+  <text x="345" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Thousands of</text>
+  <text x="345" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">examples</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M430 130 L480 130" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Fine Tuning Process -->
+  <rect x="490" y="80" width="150" height="100" rx="8" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="565" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Fine Tuning</text>
+  <text x="565" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Process</text>
+  <text x="565" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Selective layer</text>
+  <text x="565" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">training</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M565 190 L565 240" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Fine-tuned Model -->
+  <rect x="490" y="250" width="150" height="100" rx="8" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="565" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Fine-tuned</text>
+  <text x="565" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Model</text>
+  <text x="565" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Task-specific</text>
+  <text x="565" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">expertise</text>
+  
+  <!-- Key Benefits Box -->
+  <rect x="50" y="250" width="350" height="200" rx="8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="225" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Key Benefits</text>
+  
+  <!-- Benefit 1 -->
+  <circle cx="70" cy="300" r="4" fill="#10b981"/>
+  <text x="85" y="305" font-family="Arial, sans-serif" font-size="12" fill="#374151">10-100x lower computational cost</text>
+  
+  <!-- Benefit 2 -->
+  <circle cx="70" cy="325" r="4" fill="#10b981"/>
+  <text x="85" y="330" font-family="Arial, sans-serif" font-size="12" fill="#374151">Faster deployment (days vs months)</text>
+  
+  <!-- Benefit 3 -->
+  <circle cx="70" cy="350" r="4" fill="#10b981"/>
+  <text x="85" y="355" font-family="Arial, sans-serif" font-size="12" fill="#374151">Requires less training data</text>
+  
+  <!-- Benefit 4 -->
+  <circle cx="70" cy="375" r="4" fill="#10b981"/>
+  <text x="85" y="380" font-family="Arial, sans-serif" font-size="12" fill="#374151">Higher accuracy on specific tasks</text>
+  
+  <!-- Benefit 5 -->
+  <circle cx="70" cy="400" r="4" fill="#10b981"/>
+  <text x="85" y="405" font-family="Arial, sans-serif" font-size="12" fill="#374151">Preserves general knowledge</text>
+  
+  <!-- Benefit 6 -->
+  <circle cx="70" cy="425" r="4" fill="#10b981"/>
+  <text x="85" y="430" font-family="Arial, sans-serif" font-size="12" fill="#374151">Cost-effective for enterprises</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <!-- Time comparison -->
+  <text x="400" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e293b">Training from scratch: Months • Fine tuning: Days</text>

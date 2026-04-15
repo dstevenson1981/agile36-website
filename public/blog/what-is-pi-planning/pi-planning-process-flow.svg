@@ -1,0 +1,100 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 16px; font-weight: 600; fill: #34495e; }
+      .text { font-family: 'Arial', sans-serif; font-size: 14px; fill: #34495e; }
+      .small-text { font-family: 'Arial', sans-serif; font-size: 12px; fill: #7f8c8d; }
+      .day-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .activity-box { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 1; }
+      .output-box { fill: #27ae60; stroke: #229954; stroke-width: 2; }
+      .arrow { stroke: #2c3e50; stroke-width: 2; fill: #2c3e50; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">PI Planning Two-Day Process Flow</text>
+  
+  <!-- Day 1 -->
+  <rect x="50" y="70" width="300" height="40" rx="5" class="day-box"/>
+  <text x="200" y="95" text-anchor="middle" class="subtitle" fill="white">Day 1: Draft Planning</text>
+  
+  <!-- Day 1 Activities -->
+  <rect x="50" y="130" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="60" y="150" class="text">Business Context & Vision Presentation</text>
+  
+  <rect x="50" y="170" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="60" y="190" class="text">Architecture Vision & Development Practices</text>
+  
+  <rect x="50" y="210" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="60" y="230" class="text">Team Breakouts - Draft Planning</text>
+  
+  <rect x="50" y="250" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="60" y="270" class="text">Draft Plan Review</text>
+  
+  <!-- Arrow Day 1 to Day 2 -->
+  <path d="M 350 195 L 430 195" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- Day 2 -->
+  <rect x="450" y="70" width="300" height="40" rx="5" class="day-box"/>
+  <text x="600" y="95" text-anchor="middle" class="subtitle" fill="white">Day 2: Final Planning</text>
+  
+  <!-- Day 2 Activities -->
+  <rect x="470" y="130" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="480" y="150" class="text">Planning Adjustments</text>
+  
+  <rect x="470" y="170" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="480" y="190" class="text">Management Review & Problem Solving</text>
+  
+  <rect x="470" y="210" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="480" y="230" class="text">Final Team Presentations</text>
+  
+  <rect x="470" y="250" width="280" height="30" rx="3" class="activity-box"/>
+  <text x="480" y="270" class="text">Plan Rework (if needed)</text>
+  
+  <!-- Key Outputs -->
+  <text x="400" y="330" text-anchor="middle" class="subtitle">Key Outputs</text>
+  
+  <rect x="100" y="350" width="180" height="60" rx="5" class="output-box"/>
+  <text x="190" y="375" text-anchor="middle" class="text" fill="white">PI Objectives</text>
+  <text x="190" y="395" text-anchor="middle" class="small-text" fill="white">with Business Value</text>
+  
+  <rect x="310" y="350" width="180" height="60" rx="5" class="output-box"/>
+  <text x="400" y="375" text-anchor="middle" class="text" fill="white">Program Board</text>
+  <text x="400" y="395" text-anchor="middle" class="small-text" fill="white">with Dependencies</text>
+  
+  <rect x="520" y="350" width="180" height="60" rx="5" class="output-box"/>
+  <text x="610" y="375" text-anchor="middle" class="text" fill="white">Confidence Vote</text>
+  <text x="610" y="395" text-anchor="middle" class="small-text" fill="white">3+ out of 5</text>
+  
+  <!-- Success Factors -->
+  <text x="400" y="460" text-anchor="middle" class="subtitle">Critical Success Factors</text>
+  
+  <circle cx="150" cy="490" r="5" fill="#e74c3c"/>
+  <text x="165" y="495" class="small-text">All ART members present</text>
+  
+  <circle cx="350" cy="490" r="5" fill="#e74c3c"/>
+  <text x="365" y="495" class="small-text">Prepared backlogs</text>
+  
+  <circle cx="550" cy="490" r="5" fill="#e74c3c"/>
+  <text x="565" y="495" class="small-text">Clear business context</text>
+  
+  <circle cx="150" cy="520" r="5" fill="#e74c3c"/>
+  <text x="165" y="525" class="small-text">Strong facilitation</text>
+  
+  <circle cx="350" cy="520" r="5" fill="#e74c3c"/>
+  <text x="365" y="525" class="small-text">Risk identification</text>
+  
+  <circle cx="550" cy="520" r="5" fill="#e74c3c"/>
+  <text x="565" y="525" class="small-text">Dependency management</text>
+  
+  <!-- Timing -->
+  <rect x="300" y="550" width="200" height="30" rx="15" fill="#f39c12" stroke="#e67e22" stroke-width="1"/>
+  <text x="400" y="570" text-anchor="middle" class="text" fill="white">Every 8-12 Weeks</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>

@@ -1,0 +1,72 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">Story Points: Relative Estimation Scale</text>
+  
+  <!-- Fibonacci Scale -->
+  <text x="50" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#475569">Fibonacci Sequence:</text>
+  
+  <!-- Story Point Circles -->
+  <g id="fibonacci-scale">
+    <!-- 1 Point -->
+    <circle cx="120" cy="140" r="25" fill="#3b82f6" opacity="0.8"/>
+    <text x="120" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">1</text>
+    <text x="120" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Simple</text>
+    
+    <!-- 2 Points -->
+    <circle cx="200" cy="140" r="30" fill="#3b82f6" opacity="0.8"/>
+    <text x="200" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">2</text>
+    <text x="200" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Easy</text>
+    
+    <!-- 3 Points -->
+    <circle cx="300" cy="140" r="35" fill="#3b82f6" opacity="0.8"/>
+    <text x="300" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">3</text>
+    <text x="300" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Moderate</text>
+    
+    <!-- 5 Points -->
+    <circle cx="420" cy="140" r="42" fill="#3b82f6" opacity="0.8"/>
+    <text x="420" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">5</text>
+    <text x="420" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Complex</text>
+    
+    <!-- 8 Points -->
+    <circle cx="560" cy="140" r="50" fill="#3b82f6" opacity="0.8"/>
+    <text x="560" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">8</text>
+    <text x="560" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Very Complex</text>
+    
+    <!-- 13 Points -->
+    <circle cx="720" cy="140" r="60" fill="#dc2626" opacity="0.8"/>
+    <text x="720" y="147" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">13</text>
+    <text x="720" y="195" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Too Big - Split!</text>
+  </g>
+  
+  <!-- Comparison Examples -->
+  <rect x="50" y="240" width="700" height="220" fill="white" stroke="#e2e8f0" stroke-width="2" rx="8"/>
+  <text x="70" y="270" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b">Example Stories (Relative to "Change Password" = 2 points)</text>
+  
+  <!-- Example 1 -->
+  <rect x="70" y="290" width="200" height="60" fill="#eff6ff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="80" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e40af">Update Profile Picture</text>
+  <text x="80" y="325" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Similar complexity</text>
+  <circle cx="250" cy="320" r="15" fill="#3b82f6"/>
+  <text x="250" y="326" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">2</text>
+  
+  <!-- Example 2 -->
+  <rect x="290" y="290" width="200" height="60" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" rx="4"/>
+  <text x="300" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#92400e">Add Payment Method</text>
+  <text x="300" y="325" font-family="Arial, sans-serif" font-size="12" fill="#64748b">API + validation</text>
+  <circle cx="470" cy="320" r="20" fill="#f59e0b"/>
+  <text x="470" y="326" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">5</text>
+  
+  <!-- Example 3 -->
+  <rect x="510" y="290" width="200" height="60" fill="#fecaca" stroke="#dc2626" stroke-width="1" rx="4"/>
+  <text x="520" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#991b1b">Order Management</text>
+  <text x="520" y="325" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Multiple systems</text>
+  <circle cx="690" cy="320" r="25" fill="#dc2626"/>
+  <text x="690" y="326" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">8</text>
+  
+  <!-- Key Insight -->
+  <rect x="70" y="380" width="660" height="60" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2" rx="6"/>
+  <text x="400" y="405" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#0c4a6e">Key Insight</text>
+  <text x="400" y="425" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0369a1">Story points compare stories to each other, not to time</text>

@@ -1,0 +1,78 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" flood-color="#000000" flood-opacity="0.1" stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="80" fill="url(#headerGradient)"/>
+  <text x="400" y="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">Definition of Done Framework</text>
+  
+  <!-- Main DoD Container -->
+  <rect x="50" y="120" width="700" height="420" fill="white" stroke="#e2e8f0" stroke-width="2" rx="12" filter="url(#shadow)"/>
+  
+  <!-- DoD Header -->
+  <rect x="50" y="120" width="700" height="60" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" rx="12 12 0 0"/>
+  <text x="400" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b">Team Definition of Done</text>
+  
+  <!-- Quality Gates -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">Code Quality</text>
+    <circle cx="20" cy="25" r="6" fill="#10b981"/>
+    <text x="35" y="30" font-family="Arial, sans-serif" font-size="14" fill="#374151">Code peer reviewed</text>
+    <circle cx="20" cy="45" r="6" fill="#10b981"/>
+    <text x="35" y="50" font-family="Arial, sans-serif" font-size="14" fill="#374151">Unit tests >80% coverage</text>
+    <circle cx="20" cy="65" r="6" fill="#10b981"/>
+    <text x="35" y="70" font-family="Arial, sans-serif" font-size="14" fill="#374151">Static analysis passes</text>
+  </g>
+  
+  <g transform="translate(380, 200)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">Testing</text>
+    <circle cx="20" cy="25" r="6" fill="#10b981"/>
+    <text x="35" y="30" font-family="Arial, sans-serif" font-size="14" fill="#374151">Integration tests pass</text>
+    <circle cx="20" cy="45" r="6" fill="#10b981"/>
+    <text x="35" y="50" font-family="Arial, sans-serif" font-size="14" fill="#374151">User acceptance testing</text>
+    <circle cx="20" cy="65" r="6" fill="#10b981"/>
+    <text x="35" y="70" font-family="Arial, sans-serif" font-size="14" fill="#374151">Security scan clean</text>
+  </g>
+  
+  <g transform="translate(80, 320)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">Documentation</text>
+    <circle cx="20" cy="25" r="6" fill="#10b981"/>
+    <text x="35" y="30" font-family="Arial, sans-serif" font-size="14" fill="#374151">Code documented</text>
+    <circle cx="20" cy="45" r="6" fill="#10b981"/>
+    <text x="35" y="50" font-family="Arial, sans-serif" font-size="14" fill="#374151">User docs updated</text>
+    <circle cx="20" cy="65" r="6" fill="#10b981"/>
+    <text x="35" y="70" font-family="Arial, sans-serif" font-size="14" fill="#374151">Release notes ready</text>
+  </g>
+  
+  <g transform="translate(380, 320)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151">Deployment</text>
+    <circle cx="20" cy="25" r="6" fill="#10b981"/>
+    <text x="35" y="30" font-family="Arial, sans-serif" font-size="14" fill="#374151">Deployed to staging</text>
+    <circle cx="20" cy="45" r="6" fill="#10b981"/>
+    <text x="35" y="50" font-family="Arial, sans-serif" font-size="14" fill="#374151">Performance validated</text>
+    <circle cx="20" cy="65" r="6" fill="#10b981"/>
+    <text x="35" y="70" font-family="Arial, sans-serif" font-size="14" fill="#374151">Rollback plan tested</text>
+  </g>
+  
+  <!-- Flow Arrow -->
+  <path d="M 400 450 L 400 480 L 390 470 M 400 480 L 410 470" stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Ready for Production -->
+  <rect x="250" y="490" width="300" height="40" fill="#10b981" rx="20"/>
+  <text x="400" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Ready for Production</text>
+  
+  <!-- Legend -->
+  <g transform="translate(60, 560)">
+    <circle cx="10" cy="10" r="6" fill="#10b981"/>
+    <text x="25" y="15" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Completed Criteria</text>
+  </g>

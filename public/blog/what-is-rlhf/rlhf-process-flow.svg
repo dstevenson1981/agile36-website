@@ -1,0 +1,77 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">RLHF Training Process</text>
+  
+  <!-- Stage 1: Base Model -->
+  <rect x="50" y="80" width="180" height="100" rx="10" fill="#3b82f6" opacity="0.1" stroke="#3b82f6" stroke-width="2"/>
+  <text x="140" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Stage 1</text>
+  <text x="140" y="125" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Base Model</text>
+  <text x="140" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Training</text>
+  <text x="140" y="165" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Supervised Learning</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M250 130 L290 130" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Stage 2: Human Feedback -->
+  <rect x="310" y="80" width="180" height="100" rx="10" fill="#10b981" opacity="0.1" stroke="#10b981" stroke-width="2"/>
+  <text x="400" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Stage 2</text>
+  <text x="400" y="125" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Human Feedback</text>
+  <text x="400" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Collection</text>
+  <text x="400" y="165" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Preference Ranking</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M510 130 L550 130" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Stage 3: RL Training -->
+  <rect x="570" y="80" width="180" height="100" rx="10" fill="#f59e0b" opacity="0.1" stroke="#f59e0b" stroke-width="2"/>
+  <text x="660" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Stage 3</text>
+  <text x="660" y="125" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Reinforcement</text>
+  <text x="660" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Learning</text>
+  <text x="660" y="165" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Reward Optimization</text>
+  
+  <!-- Human Evaluator Icons -->
+  <g transform="translate(350,220)">
+    <circle cx="0" cy="0" r="25" fill="#3b82f6" opacity="0.2"/>
+    <circle cx="0" cy="-8" r="8" fill="#3b82f6"/>
+    <path d="M-10 5 Q0 0 10 5 L8 15 L-8 15 Z" fill="#3b82f6"/>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e293b">Human</text>
+    <text x="0" y="58" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e293b">Evaluator</text>
+  </g>
+  
+  <g transform="translate(450,220)">
+    <circle cx="0" cy="0" r="25" fill="#3b82f6" opacity="0.2"/>
+    <circle cx="0" cy="-8" r="8" fill="#3b82f6"/>
+    <path d="M-10 5 Q0 0 10 5 L8 15 L-8 15 Z" fill="#3b82f6"/>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e293b">Human</text>
+    <text x="0" y="58" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e293b">Evaluator</text>
+  </g>
+  
+  <!-- Feedback arrows -->
+  <path d="M400 210 L400 190" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Process Flow Labels -->
+  <text x="140" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Large Dataset</text>
+  <text x="140" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Text Corpus</text>
+  
+  <text x="660" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Aligned AI</text>
+  <text x="660" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">System</text>
+  
+  <!-- Improvement Loop -->
+  <path d="M400 280 Q200 320 400 360 Q600 320 400 280" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="400" y="325" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#8b5cf6">Continuous Improvement Loop</text>
+  
+  <!-- Key Benefits Box -->
+  <rect x="50" y="380" width="700" height="80" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="70" y="405" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Key Benefits:</text>
+  <text x="70" y="425" font-family="Arial, sans-serif" font-size="14" fill="#475569">• Better alignment with human values and preferences</text>
+  <text x="70" y="445" font-family="Arial, sans-serif" font-size="14" fill="#475569">• Reduced harmful or inappropriate outputs • More helpful and contextually appropriate responses</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>

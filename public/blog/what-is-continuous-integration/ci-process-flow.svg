@@ -1,0 +1,137 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4A90E2"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#FAFBFC"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50">
+    Continuous Integration Process Flow
+  </text>
+  
+  <!-- Developer -->
+  <rect x="50" y="80" width="120" height="60" rx="8" fill="#E8F4FD" stroke="#4A90E2" stroke-width="2"/>
+  <text x="110" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    Developer
+  </text>
+  <text x="110" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2C3E50">
+    Commits Code
+  </text>
+  
+  <!-- Version Control -->
+  <rect x="220" y="80" width="120" height="60" rx="8" fill="#FFF2E8" stroke="#F39C12" stroke-width="2"/>
+  <text x="280" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    Version Control
+  </text>
+  <text x="280" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2C3E50">
+    (Git Repository)
+  </text>
+  
+  <!-- CI Server -->
+  <rect x="390" y="80" width="120" height="60" rx="8" fill="#E8F5E8" stroke="#27AE60" stroke-width="2"/>
+  <text x="450" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    CI Server
+  </text>
+  <text x="450" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2C3E50">
+    Detects Change
+  </text>
+  
+  <!-- Build Process -->
+  <rect x="100" y="200" width="100" height="50" rx="6" fill="#F8F9FA" stroke="#6C757D" stroke-width="2"/>
+  <text x="150" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">
+    Build
+  </text>
+  <text x="150" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Compile Code
+  </text>
+  
+  <!-- Automated Tests -->
+  <rect x="230" y="200" width="100" height="50" rx="6" fill="#F8F9FA" stroke="#6C757D" stroke-width="2"/>
+  <text x="280" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">
+    Test
+  </text>
+  <text x="280" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Run Tests
+  </text>
+  
+  <!-- Quality Checks -->
+  <rect x="360" y="200" width="100" height="50" rx="6" fill="#F8F9FA" stroke="#6C757D" stroke-width="2"/>
+  <text x="410" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">
+    Quality
+  </text>
+  <text x="410" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Code Analysis
+  </text>
+  
+  <!-- Package -->
+  <rect x="490" y="200" width="100" height="50" rx="6" fill="#F8F9FA" stroke="#6C757D" stroke-width="2"/>
+  <text x="540" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">
+    Package
+  </text>
+  <text x="540" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Create Artifacts
+  </text>
+  
+  <!-- Success Path -->
+  <rect x="200" y="320" width="140" height="50" rx="6" fill="#D5F4E6" stroke="#27AE60" stroke-width="2"/>
+  <text x="270" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27AE60">
+    ✓ Success
+  </text>
+  <text x="270" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Ready for Deployment
+  </text>
+  
+  <!-- Failure Path -->
+  <rect x="400" y="320" width="140" height="50" rx="6" fill="#FADBD8" stroke="#E74C3C" stroke-width="2"/>
+  <text x="470" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E74C3C">
+    ✗ Failure
+  </text>
+  <text x="470" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Notify Developer
+  </text>
+  
+  <!-- Feedback -->
+  <rect x="300" y="420" width="120" height="50" rx="6" fill="#FEF9E7" stroke="#F39C12" stroke-width="2"/>
+  <text x="360" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">
+    Feedback
+  </text>
+  <text x="360" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2C3E50">
+    Instant Notification
+  </text>
+  
+  <!-- Arrows -->
+  <line x1="170" y1="110" x2="220" y2="110" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="340" y1="110" x2="390" y2="110" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- CI Server to Build Steps -->
+  <line x1="450" y1="140" x2="450" y2="170" stroke="#4A90E2" stroke-width="2"/>
+  <line x1="450" y1="170" x2="150" y2="170" stroke="#4A90E2" stroke-width="2"/>
+  <line x1="150" y1="170" x2="150" y2="200" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Build Process Flow -->
+  <line x1="200" y1="225" x2="230" y2="225" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="330" y1="225" x2="360" y2="225" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="460" y1="225" x2="490" y2="225" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- To Results -->
+  <line x1="320" y1="250" x2="270" y2="320" stroke="#27AE60" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="420" y1="250" x2="470" y2="320" stroke="#E74C3C" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Feedback arrows -->
+  <line x1="270" y1="370" x2="360" y2="420" stroke="#F39C12" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="470" y1="370" x2="360" y2="420" stroke="#F39C12" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Time indicators -->
+  <text x="650" y="110" font-family="Arial, sans-serif" font-size="12" fill="#7F8C8D">
+    ~ Seconds
+  </text>
+  <text x="650" y="225" font-family="Arial, sans-serif" font-size="12" fill="#7F8C8D">
+    ~ Minutes
+  </text>
+  <text x="650" y="345" font-family="Arial, sans-serif" font-size="12" fill="#7F8C8D">
+    ~ Immediate
+  </text>

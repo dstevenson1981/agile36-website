@@ -1,0 +1,84 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Chain of Thought Prompting Process</text>
+  
+  <!-- Standard Prompting Section -->
+  <rect x="50" y="80" width="320" height="220" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="210" y="110" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Standard Prompting</text>
+  
+  <!-- Standard Input -->
+  <rect x="70" y="130" width="280" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="210" y="150" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="12">Input: "Calculate ROI for SAFe implementation"</text>
+  <text x="210" y="165" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Direct question without reasoning request</text>
+  
+  <!-- Arrow down -->
+  <path d="M210 190 L210 210" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Standard Output -->
+  <rect x="70" y="220" width="280" height="60" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+  <text x="210" y="240" text-anchor="middle" fill="#991b1b" font-family="Arial, sans-serif" font-size="12">Output: "ROI is approximately 300%"</text>
+  <text x="210" y="255" text-anchor="middle" fill="#b91c1c" font-family="Arial, sans-serif" font-size="10">No reasoning shown</text>
+  <text x="210" y="270" text-anchor="middle" fill="#b91c1c" font-family="Arial, sans-serif" font-size="10">Difficult to validate</text>
+  
+  <!-- CoT Prompting Section -->
+  <rect x="430" y="80" width="320" height="420" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="590" y="110" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Chain of Thought Prompting</text>
+  
+  <!-- CoT Input -->
+  <rect x="450" y="130" width="280" height="70" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="590" y="150" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="12">Input: "Calculate ROI for SAFe implementation.</text>
+  <text x="590" y="165" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="12">Walk me through your reasoning step by step,</text>
+  <text x="590" y="180" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="12">including assumptions and calculations."</text>
+  <text x="590" y="195" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Explicit request for step-by-step reasoning</text>
+  
+  <!-- Arrow down -->
+  <path d="M590 210 L590 230" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- CoT Steps -->
+  <rect x="450" y="240" width="280" height="40" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="590" y="255" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Step 1: Define assumptions</text>
+  <text x="590" y="270" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="10">500 employees, $2K training cost per person</text>
+  
+  <path d="M590 290 L590 300" stroke="#64748b" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <rect x="450" y="310" width="280" height="40" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="590" y="325" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Step 2: Calculate implementation costs</text>
+  <text x="590" y="340" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="10">Training: $1M, Coaching: $500K, Tools: $200K</text>
+  
+  <path d="M590 360 L590 370" stroke="#64748b" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <rect x="450" y="380" width="280" height="40" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="590" y="395" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Step 3: Estimate productivity gains</text>
+  <text x="590" y="410" text-anchor="middle" fill="#0369a1" font-family="Arial, sans-serif" font-size="10">20% efficiency increase = $5M annual value</text>
+  
+  <path d="M590 430 L590 440" stroke="#64748b" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <!-- CoT Final Output -->
+  <rect x="450" y="450" width="280" height="40" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="590" y="465" text-anchor="middle" fill="#166534" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Result: ROI = 294% over 2 years</text>
+  <text x="590" y="480" text-anchor="middle" fill="#166534" font-family="Arial, sans-serif" font-size="10">Transparent, verifiable calculation</text>
+  
+  <!-- Benefits callout -->
+  <rect x="50" y="350" width="320" height="120" rx="12" fill="#fffbeb" stroke="#fbbf24" stroke-width="2"/>
+  <text x="210" y="380" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">CoT Benefits</text>
+  <text x="70" y="405" fill="#92400e" font-family="Arial, sans-serif" font-size="12">• Transparent reasoning</text>
+  <text x="70" y="425" fill="#92400e" font-family="Arial, sans-serif" font-size="12">• Improved accuracy</text>
+  <text x="70" y="445" fill="#92400e" font-family="Arial, sans-serif" font-size="12">• Stakeholder validation</text>
+  <text x="70" y="465" fill="#92400e" font-family="Arial, sans-serif" font-size="12">• Error detection</text>
+  
+  <!-- Comparison arrow -->
+  <path d="M380 300 L420 300" stroke="#ef4444" stroke-width="3" marker-end="url(#redarrowhead)"/>
+  <text x="400" y="320" text-anchor="middle" fill="#ef4444" font-family="Arial, sans-serif" font-size="12" font-weight="bold">vs</text>
+  
+  <!-- Arrow marker definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="redarrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+  </defs>

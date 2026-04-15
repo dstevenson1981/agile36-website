@@ -1,0 +1,72 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Agile Sprint Cycle</text>
+  
+  <!-- Central Sprint Circle -->
+  <circle cx="400" cy="300" r="80" fill="#3b82f6" stroke="#1e40af" stroke-width="3"/>
+  <text x="400" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">SPRINT</text>
+  <text x="400" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">1-4 Weeks</text>
+  
+  <!-- Sprint Planning -->
+  <rect x="80" y="120" width="140" height="80" rx="8" fill="#ef4444" stroke="#dc2626" stroke-width="2"/>
+  <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Sprint</text>
+  <text x="150" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Planning</text>
+  <text x="150" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Team commits to work</text>
+  
+  <!-- Daily Standups -->
+  <rect x="580" y="120" width="140" height="80" rx="8" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="650" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Daily</text>
+  <text x="650" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Standups</text>
+  <text x="650" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Coordination & sync</text>
+  
+  <!-- Sprint Review -->
+  <rect x="580" y="400" width="140" height="80" rx="8" fill="#10b981" stroke="#059669" stroke-width="2"/>
+  <text x="650" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Sprint</text>
+  <text x="650" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Review</text>
+  <text x="650" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Demo completed work</text>
+  
+  <!-- Sprint Retrospective -->
+  <rect x="80" y="400" width="140" height="80" rx="8" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="150" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Sprint</text>
+  <text x="150" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Retrospective</text>
+  <text x="150" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Process improvement</text>
+  
+  <!-- Arrows connecting the cycle -->
+  <!-- Planning to Sprint -->
+  <path d="M 220 160 Q 290 160 320 240" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Sprint to Daily Standups -->
+  <path d="M 460 240 Q 530 160 580 160" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Daily Standups to Sprint Review -->
+  <path d="M 650 200 Q 650 300 650 400" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Sprint Review to Sprint -->
+  <path d="M 580 440 Q 510 440 480 360" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Sprint to Retrospective -->
+  <path d="M 340 360 Q 310 440 220 440" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Retrospective to Planning (completing cycle) -->
+  <path d="M 150 400 Q 150 300 150 200" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Product Increment -->
+  <rect x="320" y="520" width="160" height="50" rx="8" fill="#06b6d4" stroke="#0891b2" stroke-width="2"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Product Increment</text>
+  <text x="400" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">Potentially Shippable</text>
+  
+  <!-- Arrow from Sprint to Product Increment -->
+  <path d="M 400 380 L 400 520" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <!-- Time indicators -->
+  <text x="60" y="580" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Time-boxed cycle ensures predictable delivery rhythm</text>
