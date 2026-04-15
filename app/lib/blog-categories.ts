@@ -51,3 +51,17 @@ export function categoryLabelForId(id: Exclude<BlogCategoryId, "all">): string {
   const row = BLOG_CATEGORY_TABS.find((t) => t.id === id);
   return row?.label ?? "Guides & comparisons";
 }
+
+/** Short label for article tag pills on post pages. */
+export function categoryShortBadgeForId(id: Exclude<BlogCategoryId, "all">): string {
+  const map: Record<Exclude<BlogCategoryId, "all">, string> = {
+    safe: "SAFe & Scrum",
+    glossary: "Glossary",
+    ai: "AI",
+    careers: "Careers",
+    industry: "Industry",
+    practices: "Practices",
+    guides: "Guides",
+  };
+  return map[id] ?? "Blog";
+}
