@@ -1,0 +1,174 @@
+---
+title: "What Are DORA Metrics? The Complete Guide to DevOps Performance Measurement"
+description: "DORA metrics measure DevOps performance through four key indicators: deployment frequency, lead time, mean time to recovery, and change failure rate. Learn how to implement them."
+keywords: ["DORA metrics", "DevOps performance", "deployment frequency", "lead time", "MTTR", "change failure rate", "DevOps measurement", "software delivery performance"]
+date: "2024-01-15"
+author: "Deadra Stevenson"
+template_type: "glossary"
+vertical: "glossary"
+---
+
+# What Are DORA Metrics?
+
+**DORA metrics are four key performance indicators that measure software delivery and operational performance: deployment frequency, lead time for changes, mean time to recovery, and change failure rate.**
+
+These metrics emerged from the State of DevOps Report research conducted by DORA (DevOps Research and Assessment), now part of Google Cloud. After analyzing thousands of organizations over eight years, DORA identified these four metrics as the most predictive indicators of software delivery performance and organizational success.
+
+In my experience training enterprise teams, organizations that consistently track and improve DORA metrics see 46 times more frequent deployments, 440 times faster lead times, and 170 times faster recovery from incidents compared to low-performing teams. The beauty of DORA metrics lies in their simplicity—four numbers that tell the complete story of your delivery capability.
+
+## Understanding Each DORA Metric
+
+### 1. Deployment Frequency (DF)
+
+Deployment frequency measures how often your team successfully releases code to production. High-performing teams deploy multiple times per day, while low performers deploy between once per week and once per month.
+
+This metric reveals your team's ability to deliver value continuously. When I work with transformation teams, I often see organizations stuck deploying quarterly because they've built complex, fragile processes. Moving from quarterly to weekly deployments typically requires addressing technical debt, automating testing, and breaking down large features into smaller, deployable increments.
+
+### 2. Lead Time for Changes (LT)
+
+Lead time measures the duration from code commit to code successfully running in production. Elite performers achieve lead times of less than one hour, while low performers take between one week and one month.
+
+This metric exposes bottlenecks in your delivery pipeline. Common culprits include manual testing phases, approval processes requiring multiple sign-offs, and integration challenges. The fastest improvements come from automating manual steps and reducing batch sizes.
+
+### 3. Mean Time to Recovery (MTTR)
+
+MTTR measures how quickly your team can recover from production failures. Elite teams recover in less than one hour, while low performers take between one week and one month.
+
+Fast recovery requires robust monitoring, automated rollback capabilities, and clear incident response procedures. Teams that practice chaos engineering and run regular fire drills consistently achieve better MTTR scores.
+
+### 4. Change Failure Rate (CFR)
+
+Change failure rate measures the percentage of deployments causing production failures requiring immediate remediation. Elite performers maintain failure rates of 0-15%, while low performers see 46-60% of changes cause problems.
+
+This metric balances speed with stability. Teams can't simply deploy faster if every deployment breaks something. Achieving low change failure rates requires comprehensive automated testing, feature flags, and progressive deployment techniques like canary releases.
+
+## Key Implementation Points
+
+• **Start measuring immediately** — Even imperfect data provides valuable baseline insights for improvement discussions
+• **Focus on trends, not absolute numbers** — Month-over-month improvement matters more than comparing to industry benchmarks
+• **Automate data collection** — Manual tracking introduces errors and creates overhead that teams will eventually abandon
+• **Make metrics visible** — Display current performance on dashboards where teams can see daily progress
+• **Connect metrics to business outcomes** — Link deployment frequency to feature delivery speed and revenue impact
+• **Address systemic constraints** — Individual team improvements plateau without organizational support for automation and tooling
+• **Avoid metric gaming** — Design measurement systems that reward genuine improvement over artificial number manipulation
+
+## Related Concepts
+
+| Concept | Relationship to DORA Metrics |
+|---------|------------------------------|
+| **Continuous Integration** | Enables higher deployment frequency and shorter lead times |
+| **Feature Flags** | Reduces change failure rate by allowing safer deployments |
+| **Site Reliability Engineering** | Focuses on improving MTTR and maintaining low change failure rates |
+| **Value Stream Mapping** | Identifies bottlenecks that impact lead time for changes |
+| **Chaos Engineering** | Improves MTTR by testing recovery procedures proactively |
+
+## Frequently Asked Questions
+
+### What's considered a good DORA metrics score?
+
+DORA research identifies four performance categories: Elite (multiple deployments per day, <1 hour lead time, <1 hour MTTR, 0-15% CFR), High (weekly to daily deployments, <1 day lead time, <1 day MTTR, 0-15% CFR), Medium (monthly deployments, 1 week-1 month lead time, 1 day-1 week MTTR, 16-30% CFR), and Low (fewer than monthly deployments, 1-6 months lead time, 1 week-1 month MTTR, 16-30% CFR).
+
+### How do you measure DORA metrics for legacy systems?
+
+Start with manual tracking if automated tools aren't available. Track deployment dates in spreadsheets, measure lead times from ticket creation to production, and document incidents with resolution times. Many legacy systems can implement basic automation around deployment logging and incident tracking without major architecture changes.
+
+### Should all teams use the same DORA metrics targets?
+
+No, different teams have different constraints. A team maintaining a critical financial system might prioritize low change failure rates over deployment frequency. However, all teams should track all four metrics and focus on continuous improvement rather than hitting specific numbers.
+
+### How long does it take to see DORA metrics improvements?
+
+Most teams see initial improvements in 3-6 months when focusing on automation and process changes. Significant improvements (moving performance categories) typically take 12-18 months because they require cultural changes, tooling investments, and technical debt reduction.
+
+### Can you improve all DORA metrics simultaneously?
+
+Yes, but it requires systematic approach. Implementing continuous integration improves deployment frequency and lead time. Adding comprehensive testing and feature flags reduces change failure rate. Building monitoring and automated recovery improves MTTR. The key is addressing underlying technical and process constraints rather than optimizing metrics individually.
+
+Ready to build high-performing teams that excel at these core DevOps practices? [Explore all our certification courses →](https://agile36.com/safe-certifications)
+
+![DORA Metrics Overview](/blog/what-are-dora-metrics/dora-metrics-overview.svg)
+
+<SVG filename="dora-metrics-overview.svg">
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="80" fill="url(#headerGradient)"/>
+  <text x="400" y="45" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">DORA Metrics: Four Key Performance Indicators</text>
+  
+  <!-- Four metric boxes -->
+  <!-- Deployment Frequency -->
+  <rect x="50" y="120" width="150" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="125" cy="160" r="20" fill="#10b981"/>
+  <text x="125" y="167" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">DF</text>
+  <text x="125" y="190" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Deployment</text>
+  <text x="125" y="205" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Frequency</text>
+  <text x="125" y="230" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">How often code</text>
+  <text x="125" y="245" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">goes to production</text>
+  <text x="125" y="270" text-anchor="middle" fill="#059669" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Elite: Multiple/day</text>
+  <text x="125" y="285" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="10">Low: Monthly or less</text>
+  
+  <!-- Lead Time -->
+  <rect x="225" y="120" width="150" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="300" cy="160" r="20" fill="#3b82f6"/>
+  <text x="300" y="167" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">LT</text>
+  <text x="300" y="190" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Lead Time</text>
+  <text x="300" y="205" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">for Changes</text>
+  <text x="300" y="230" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">Time from commit</text>
+  <text x="300" y="245" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">to production</text>
+  <text x="300" y="270" text-anchor="middle" fill="#059669" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Elite: &lt;1 hour</text>
+  <text x="300" y="285" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="10">Low: 1-6 months</text>
+  
+  <!-- Mean Time to Recovery -->
+  <rect x="400" y="120" width="150" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="475" cy="160" r="20" fill="#f59e0b"/>
+  <text x="475" y="164" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">MTTR</text>
+  <text x="475" y="190" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Mean Time</text>
+  <text x="475" y="205" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">to Recovery</text>
+  <text x="475" y="230" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">Time to recover</text>
+  <text x="475" y="245" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">from failures</text>
+  <text x="475" y="270" text-anchor="middle" fill="#059669" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Elite: &lt;1 hour</text>
+  <text x="475" y="285" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="10">Low: 1 week-1 month</text>
+  
+  <!-- Change Failure Rate -->
+  <rect x="575" y="120" width="150" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="650" cy="160" r="20" fill="#ef4444"/>
+  <text x="650" y="164" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">CFR</text>
+  <text x="650" y="190" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Change Failure</text>
+  <text x="650" y="205" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Rate</text>
+  <text x="650" y="230" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">% of deployments</text>
+  <text x="650" y="245" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">causing failures</text>
+  <text x="650" y="270" text-anchor="middle" fill="#059669" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Elite: 0-15%</text>
+  <text x="650" y="285" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="10">Low: 46-60%</text>
+  
+  <!-- Connecting arrows -->
+  <path d="M 200 210 L 225 210" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 375 210 L 400 210" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 550 210 L 575 210" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <!-- Performance levels legend -->
+  <rect x="50" y="350" width="700" height="220" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="375" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Performance Categories</text>
+  
+  <!-- Elite -->
+  <rect x="80" y="390" width="150" height="70" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="155" y="410" text-anchor="middle" fill="#15803d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ELITE</text>
+  <text x="155" y="425" text-anchor="middle" fill="#166534"

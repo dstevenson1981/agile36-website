@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="80" fill="#1e40af"/>
+  <text x="400" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">SAFe Scrum Master Exam Cost 2026</text>
+  <text x="400" y="55" text-anchor="middle" fill="#bfdbfe" font-family="Arial, sans-serif" font-size="16">Complete Investment Breakdown</text>
+  
+  <!-- Main Cost Box -->
+  <rect x="50" y="120" width="300" height="200" fill="white" stroke="#e5e7eb" stroke-width="2" rx="10"/>
+  <rect x="50" y="120" width="300" height="50" fill="#3b82f6" rx="10"/>
+  <rect x="50" y="170" width="300" height="150" fill="white" rx="10"/>
+  
+  <text x="200" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Exam Fee</text>
+  <text x="200" y="220" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="48" font-weight="bold">$395</text>
+  <text x="200" y="250" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Base exam cost</text>
+  <text x="200" y="270" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">45 questions • 90 minutes</text>
+  <text x="200" y="290" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">73% pass rate required</text>
+  
+  <!-- Training Cost Box -->
+  <rect x="400" y="120" width="300" height="200" fill="white" stroke="#e5e7eb" stroke-width="2" rx="10"/>
+  <rect x="400" y="120" width="300" height="50" fill="#059669" rx="10"/>
+  <rect x="400" y="170" width="300" height="150" fill="white" rx="10"/>
+  
+  <text x="550" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Training Course</text>
+  <text x="550" y="210" text-anchor="middle" fill="#059669" font-family="Arial, sans-serif" font-size="32" font-weight="bold">$1,295-1,795</text>
+  <text x="550" y="240" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">2-day intensive training</text>
+  <text x="550" y="260" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">All materials included</text>
+  <text x="550" y="280" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Exam preparation</text>
+  
+  <!-- Pro Plan Add-on -->
+  <rect x="50" y="360" width="200" height="150" fill="white" stroke="#e5e7eb" stroke-width="2" rx="10"/>
+  <rect x="50" y="360" width="200" height="40" fill="#7c3aed" rx="10"/>
+  <rect x="50" y="400" width="200" height="110" fill="white" rx="10"/>
+  
+  <text x="150" y="380" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Pro Plan</text>
+  <text x="150" y="430" text-anchor="middle" fill="#7c3aed" font-family="Arial, sans-serif" font-size="32" font-weight="bold">+$77</text>
+  <text x="150" y="455" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Free retake ($395 value)</text>
+  <text x="150" y="475" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Practice exams</text>
+  <text x="150" y="495" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Career resources</text>
+  
+  <!-- Total Investment -->
+  <rect x="300" y="360" width="400" height="150" fill="white" stroke="#e5e7eb" stroke-width="2" rx="10"/>
+  <rect x="300" y="360" width="400" height="50" fill="#dc2626" rx="10"/>
+  <rect x="300" y="410" width="400" height="100" fill="white" rx="10"/>
+  
+  <text x="500" y="385" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="20" font-weight="bold">Total Investment Range</text>
+  <text x="500" y="450" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="36" font-weight="bold">$1,690 - $2,190</text>
+  <text x="500" y="480" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Training + Exam + Pro Plan (optional)</text>
+  
+  <!-- ROI Note -->
+  <rect x="50" y="540" width="700" height="40" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" rx="5"/>
+  <text x="400" y="565" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Average salary increase: $8,000-25,000 annually</text>

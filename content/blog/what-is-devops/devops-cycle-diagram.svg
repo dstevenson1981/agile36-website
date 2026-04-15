@@ -1,0 +1,88 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .phase-text { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: 600; fill: #2c3e50; }
+      .desc-text { font-family: 'Arial', sans-serif; font-size: 12px; fill: #5a6c7d; }
+      .center-text { font-family: 'Arial', sans-serif; font-size: 16px; font-weight: bold; fill: #2980b9; }
+      .arrow { stroke: #3498db; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" class="title-text">DevOps Continuous Cycle</text>
+  
+  <!-- Center Circle -->
+  <circle cx="400" cy="300" r="80" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+  <text x="400" y="295" text-anchor="middle" class="center-text">DevOps</text>
+  <text x="400" y="315" text-anchor="middle" class="center-text">Culture</text>
+  
+  <!-- Plan Phase -->
+  <circle cx="400" cy="150" r="45" fill="#e74c3c" opacity="0.8"/>
+  <text x="400" y="145" text-anchor="middle" class="phase-text" fill="white">PLAN</text>
+  <text x="400" y="160" text-anchor="middle" class="desc-text" fill="white">Requirements</text>
+  
+  <!-- Code Phase -->
+  <circle cx="550" cy="200" r="45" fill="#f39c12" opacity="0.8"/>
+  <text x="550" y="195" text-anchor="middle" class="phase-text" fill="white">CODE</text>
+  <text x="550" y="210" text-anchor="middle" class="desc-text" fill="white">Development</text>
+  
+  <!-- Build Phase -->
+  <circle cx="650" cy="300" r="45" fill="#f1c40f" opacity="0.8"/>
+  <text x="650" y="295" text-anchor="middle" class="phase-text" fill="white">BUILD</text>
+  <text x="650" y="310" text-anchor="middle" class="desc-text" fill="white">Integration</text>
+  
+  <!-- Test Phase -->
+  <circle cx="550" cy="400" r="45" fill="#2ecc71" opacity="0.8"/>
+  <text x="550" y="395" text-anchor="middle" class="phase-text" fill="white">TEST</text>
+  <text x="550" y="410" text-anchor="middle" class="desc-text" fill="white">Validation</text>
+  
+  <!-- Deploy Phase -->
+  <circle cx="400" cy="450" r="45" fill="#3498db" opacity="0.8"/>
+  <text x="400" y="445" text-anchor="middle" class="phase-text" fill="white">DEPLOY</text>
+  <text x="400" y="460" text-anchor="middle" class="desc-text" fill="white">Release</text>
+  
+  <!-- Monitor Phase -->
+  <circle cx="250" cy="400" r="45" fill="#9b59b6" opacity="0.8"/>
+  <text x="250" y="395" text-anchor="middle" class="phase-text" fill="white">MONITOR</text>
+  <text x="250" y="410" text-anchor="middle" class="desc-text" fill="white">Observability</text>
+  
+  <!-- Operate Phase -->
+  <circle cx="150" cy="300" r="45" fill="#1abc9c" opacity="0.8"/>
+  <text x="150" y="295" text-anchor="middle" class="phase-text" fill="white">OPERATE</text>
+  <text x="150" y="310" text-anchor="middle" class="desc-text" fill="white">Production</text>
+  
+  <!-- Feedback Phase -->
+  <circle cx="250" cy="200" r="45" fill="#e67e22" opacity="0.8"/>
+  <text x="250" y="195" text-anchor="middle" class="phase-text" fill="white">FEEDBACK</text>
+  <text x="250" y="210" text-anchor="middle" class="desc-text" fill="white">Insights</text>
+  
+  <!-- Arrows connecting phases -->
+  <path d="M 430 170 Q 480 180 520 185" class="arrow"/>
+  <path d="M 580 220 Q 620 250 625 275"/>
+  <path d="M 630 325 Q 600 360 575 380" class="arrow"/>
+  <path d="M 525 420 Q 480 440 430 445" class="arrow"/>
+  <path d="M 370 440 Q 320 430 275 415" class="arrow"/>
+  <path d="M 225 380 Q 190 350 170 325" class="arrow"/>
+  <path d="M 170 275 Q 190 250 225 220" class="arrow"/>
+  <path d="M 275 185 Q 320 170 370 160" class="arrow"/>
+  
+  <!-- Key Benefits -->
+  <rect x="50" y="500" width="200" height="80" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+  <text x="60" y="520" class="phase-text">Key Benefits:</text>
+  <text x="60" y="540" class="desc-text">• Faster delivery cycles</text>
+  <text x="60" y="555" class="desc-text">• Higher quality software</text>
+  <text x="60" y="570" class="desc-text">• Improved collaboration</text>
+  
+  <!-- Tools Examples -->
+  <rect x="550" y="500" width="200" height="80" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+  <text x="560" y="520" class="phase-text">Common Tools:</text>
+  <text x="560" y="540" class="desc-text">• Git, Jenkins, Docker</text>
+  <text x="560" y="555" class="desc-text">• Kubernetes, Terraform</text>
+  <text x="560" y="570" class="desc-text">• Prometheus, Grafana</text>

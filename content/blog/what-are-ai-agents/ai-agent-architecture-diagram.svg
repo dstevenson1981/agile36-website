@@ -1,0 +1,80 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e40af">AI Agent Architecture</text>
+  
+  <!-- Environment Box -->
+  <rect x="50" y="80" width="700" height="480" fill="none" stroke="#64748b" stroke-width="2" rx="10"/>
+  <text x="400" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#64748b">ENVIRONMENT</text>
+  
+  <!-- Central Agent Circle -->
+  <circle cx="400" cy="320" r="80" fill="#3b82f6" opacity="0.1"/>
+  <circle cx="400" cy="320" r="80" fill="none" stroke="#3b82f6" stroke-width="3"/>
+  <text x="400" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e40af">AI</text>
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e40af">AGENT</text>
+  
+  <!-- Sensors/Perception (Top Left) -->
+  <rect x="120" y="140" width="140" height="80" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2" rx="8"/>
+  <text x="190" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e">SENSORS &amp;</text>
+  <text x="190" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e">PERCEPTION</text>
+  <text x="190" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0c4a6e">• Data Collection</text>
+  <text x="190" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0c4a6e">• Environment Monitoring</text>
+  
+  <!-- Knowledge Base (Top Right) -->
+  <rect x="540" y="140" width="140" height="80" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="8"/>
+  <text x="610" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">KNOWLEDGE</text>
+  <text x="610" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">BASE</text>
+  <text x="610" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">• Learning Models</text>
+  <text x="610" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">• Historical Data</text>
+  
+  <!-- Decision Engine (Bottom Left) -->
+  <rect x="120" y="380" width="140" height="80" fill="#f3e8ff" stroke="#8b5cf6" stroke-width="2" rx="8"/>
+  <text x="190" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#581c87">DECISION</text>
+  <text x="190" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#581c87">ENGINE</text>
+  <text x="190" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#581c87">• Goal Assessment</text>
+  <text x="190" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#581c87">• Strategy Selection</text>
+  
+  <!-- Action Mechanisms (Bottom Right) -->
+  <rect x="540" y="380" width="140" height="80" fill="#ecfdf5" stroke="#10b981" stroke-width="2" rx="8"/>
+  <text x="610" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#065f46">ACTION</text>
+  <text x="610" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#065f46">MECHANISMS</text>
+  <text x="610" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#065f46">• Task Execution</text>
+  <text x="610" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#065f46">• System Integration</text>
+  
+  <!-- Arrows showing data flow -->
+  <!-- Sensors to Agent -->
+  <line x1="260" y1="200" x2="340" y2="280" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="290" y="235" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Input</text>
+  
+  <!-- Agent to Knowledge Base -->
+  <line x1="460" y1="280" x2="540" y2="200" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="510" y="235" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Learn</text>
+  
+  <!-- Knowledge Base to Agent -->
+  <line x1="540" y1="220" x2="460" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="485" y="255" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Inform</text>
+  
+  <!-- Agent to Decision Engine -->
+  <line x1="340" y1="360" x2="260" y2="400" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="290" y="385" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Analyze</text>
+  
+  <!-- Decision Engine to Agent -->
+  <line x1="260" y1="420" x2="340" y2="380" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="285" y="405" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Decide</text>
+  
+  <!-- Agent to Action -->
+  <line x1="460" y1="360" x2="540" y2="420" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="510" y="395" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Execute</text>
+  
+  <!-- Action to Environment (Feedback Loop) -->
+  <path d="M 610 460 Q 610 520 400 520 Q 190 520 190 460" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <text x="400" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Feedback Loop</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>

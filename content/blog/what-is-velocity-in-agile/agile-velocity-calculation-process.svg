@@ -1,0 +1,65 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Agile Velocity Calculation Process</text>
+  
+  <!-- Sprint boxes -->
+  <g id="sprint1">
+    <rect x="50" y="100" width="200" height="120" fill="#3b82f6" rx="8"/>
+    <text x="150" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Sprint 1</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Stories Completed:</text>
+    <text x="150" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story A: 5 points</text>
+    <text x="150" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story B: 8 points</text>
+    <text x="150" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fbbf24">Total: 13 points</text>
+  </g>
+  
+  <g id="sprint2">
+    <rect x="300" y="100" width="200" height="120" fill="#3b82f6" rx="8"/>
+    <text x="400" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Sprint 2</text>
+    <text x="400" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Stories Completed:</text>
+    <text x="400" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story C: 3 points</text>
+    <text x="400" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story D: 13 points</text>
+    <text x="400" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fbbf24">Total: 16 points</text>
+  </g>
+  
+  <g id="sprint3">
+    <rect x="550" y="100" width="200" height="120" fill="#3b82f6" rx="8"/>
+    <text x="650" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Sprint 3</text>
+    <text x="650" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Stories Completed:</text>
+    <text x="650" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story E: 8 points</text>
+    <text x="650" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Story F: 5 points</text>
+    <text x="650" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fbbf24">Total: 13 points</text>
+  </g>
+  
+  <!-- Arrows pointing down -->
+  <path d="M150 240 L150 270" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <path d="M400 240 L400 270" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <path d="M650 240 L650 270" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Calculation box -->
+  <rect x="200" y="300" width="400" height="150" fill="#e2e8f0" stroke="#64748b" stroke-width="2" rx="12"/>
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b">Velocity Calculation</text>
+  
+  <text x="400" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#475569">Total Points Completed: 13 + 16 + 13 = 42 points</text>
+  <text x="400" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#475569">Number of Sprints: 3</text>
+  
+  <line x1="250" y1="400" x2="550" y2="400" stroke="#64748b" stroke-width="1"/>
+  
+  <text x="400" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#059669">Average Velocity: 42 ÷ 3 = 14 points per sprint</text>
+  
+  <!-- Arrow pointing to forecast -->
+  <path d="M400 470 L400 500" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Forecast box -->
+  <rect x="150" y="520" width="500" height="60" fill="#059669" rx="8"/>
+  <text x="400" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Forecasting Future Sprints</text>
+  <text x="400" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">With 14 points/sprint, we can deliver ~42 points in the next 3 sprints</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>

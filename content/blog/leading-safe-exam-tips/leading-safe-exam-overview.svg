@@ -1,0 +1,62 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc"/>
+  
+  <!-- Main card background -->
+  <rect x="50" y="50" width="700" height="400" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Header -->
+  <rect x="50" y="50" width="700" height="80" rx="12" fill="#1e40af" stroke="#1e40af"/>
+  <text x="400" y="85" text-anchor="middle" fill="white" font-family="system-ui" font-size="24" font-weight="600">
+    Leading SAFe (SA) Certification Exam
+  </text>
+  <text x="400" y="110" text-anchor="middle" fill="#bfdbfe" font-family="system-ui" font-size="16">
+    Your Gateway to Enterprise Agile Leadership
+  </text>
+  
+  <!-- Key metrics grid -->
+  <g transform="translate(100, 180)">
+    <!-- Duration -->
+    <rect x="0" y="0" width="140" height="90" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="70" y="25" text-anchor="middle" fill="#334155" font-family="system-ui" font-size="14" font-weight="600">Duration</text>
+    <text x="70" y="50" text-anchor="middle" fill="#1e40af" font-family="system-ui" font-size="28" font-weight="700">90</text>
+    <text x="70" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="12">minutes</text>
+    
+    <!-- Questions -->
+    <rect x="160" y="0" width="140" height="90" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="230" y="25" text-anchor="middle" fill="#334155" font-family="system-ui" font-size="14" font-weight="600">Questions</text>
+    <text x="230" y="50" text-anchor="middle" fill="#1e40af" font-family="system-ui" font-size="28" font-weight="700">45</text>
+    <text x="230" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="12">multiple choice</text>
+    
+    <!-- Passing Score -->
+    <rect x="320" y="0" width="140" height="90" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="390" y="25" text-anchor="middle" fill="#334155" font-family="system-ui" font-size="14" font-weight="600">Passing Score</text>
+    <text x="390" y="50" text-anchor="middle" fill="#059669" font-family="system-ui" font-size="28" font-weight="700">77%</text>
+    <text x="390" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="12">35 correct</text>
+    
+    <!-- Cost -->
+    <rect x="480" y="0" width="140" height="90" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="550" y="25" text-anchor="middle" fill="#334155" font-family="system-ui" font-size="14" font-weight="600">Exam Cost</text>
+    <text x="550" y="50" text-anchor="middle" fill="#1e40af" font-family="system-ui" font-size="28" font-weight="700">$795</text>
+    <text x="550" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="12">2 attempts</text>
+  </g>
+  
+  <!-- Key success factors -->
+  <text x="100" y="320" fill="#334155" font-family="system-ui" font-size="16" font-weight="600">Success Factors:</text>
+  
+  <g transform="translate(100, 340)">
+    <circle cx="6" cy="6" r="3" fill="#1e40af"/>
+    <text x="20" y="10" fill="#475569" font-family="system-ui" font-size="14">Apply SAFe principles to real scenarios</text>
+    
+    <circle cx="6" cy="26" r="3" fill="#1e40af"/>
+    <text x="20" y="30" fill="#475569" font-family="system-ui" font-size="14">Understand enterprise context and challenges</text>
+    
+    <circle cx="6" cy="46" r="3" fill="#1e40af"/>
+    <text x="20" y="50" fill="#475569" font-family="system-ui" font-size="14">Focus on leadership behaviors and transformation</text>
+    
+    <circle cx="6" cy="66" r="3" fill="#1e40af"/>
+    <text x="20" y="70" fill="#475569" font-family="system-ui" font-size="14">Practice time management (2 minutes per question)</text>
+  </g>
+  
+  <!-- Agile36 branding -->
+  <text x="700" y="435" text-anchor="end" fill="#94a3b8" font-family="system-ui" font-size="12">agile36.com</text>
