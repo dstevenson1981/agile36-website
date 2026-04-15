@@ -74,7 +74,7 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
                 const imageSrc = typeof src === "string" ? src : "";
 
                 // SVG/image references from generated content use /blog/<slug>/<asset>.
-                // They are served by app/blog/[slug]/[asset]/route.ts.
+                // Assets are copied into public/blog/<slug>/<asset>.
                 return (
                   <Image
                     src={imageSrc}
