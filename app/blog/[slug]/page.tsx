@@ -98,14 +98,9 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
   const badge = categoryShortBadgeForId(categoryId);
   const title = post.frontmatter.title ?? slug.replace(/-/g, " ");
   const body = stripLeadingDuplicateH1(post.content, post.frontmatter.title);
-  const byline =
-    post.frontmatter.author && post.frontmatter.date
-      ? `By ${post.frontmatter.author} · Updated ${post.frontmatter.date}`
-      : post.frontmatter.author
-        ? `By ${post.frontmatter.author}`
-        : post.frontmatter.date
-          ? `Updated ${post.frontmatter.date}`
-          : "Agile36 · SAFe Silver Partner";
+  const byline = post.frontmatter.date
+    ? `Written by Agile36 · Updated ${post.frontmatter.date}`
+    : "Written by Agile36 · SAFe Silver Partner";
 
   return (
     <main className="min-h-screen bg-white">
