@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 
 const SITE = "https://www.agile36.com";
 
-function cityDisplayFromSlug(city: string): string {
+export function cityDisplayFromSlug(city: string): string {
   return city
     .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
 
-type LocationSegment =
+export type LocationSegment =
   | "leading-safe-certification-training"
   | "scrum-master-certification-training"
   | "release-train-engineer-certification-training"
@@ -51,6 +51,10 @@ const META: Record<
     descriptionLead: "Live virtual SAFe Agile Product Management training",
   },
 };
+
+export function getLocationCourseTitle(segment: LocationSegment): string {
+  return META[segment].titleCourse;
+}
 
 export function buildLocationTrainingMetadata(
   segment: LocationSegment,
