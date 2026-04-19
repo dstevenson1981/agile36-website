@@ -139,61 +139,19 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
-            SAFe Certification Salary Data in 2026
+            Compensation and SAFe certification (only what we can cite)
           </h2>
           <p className="text-lg text-gray-700 mb-4">
-            Certified SAFe professionals earn meaningfully more than their
-            non-certified peers across equivalent roles. Across the major Agile
-            job market platforms:
+            We removed unsourced salary tables from this article. Pay for SAFe
+            adjacent titles (Scrum Master, RTE, product manager, coach) varies
+            too much by metro, industry, and seniority for a single number to
+            be trustworthy without a linked study or government survey.
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 mb-6 space-y-3 text-gray-700">
             <li>
-              <strong>SAFe Agilists</strong> average{" "}
-              <strong>$115,000–$130,000 annually</strong> in the US
-            </li>
-            <li>
-              <strong>Release Train Engineers (RTEs)</strong> — the advanced
-              SAFe role — average <strong>$140,000–$165,000</strong>
-            </li>
-            <li>
-              <strong>SAFe Program Consultants (SPCs)</strong> and enterprise
-              Agile coaches average <strong>$150,000–$180,000+</strong>
-            </li>
-            <li>
-              Certified professionals typically earn{" "}
-              <strong>15–25% more</strong> than non-certified counterparts in
-              comparable roles
-            </li>
-          </ul>
-          <p className="text-lg text-gray-700 mb-8">
-            The premium is most pronounced in industries with heavy SAFe
-            adoption: financial services, healthcare, defense, and large-scale
-            tech. In those sectors, the certification isn&apos;t just a resume
-            line — it&apos;s often a hiring requirement.
-          </p>
-
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
-            How to read these numbers (and where to verify SAFe itself)
-          </h2>
-          <p className="text-lg text-gray-700 mb-4">
-            Salary bands here summarize what we see across US enterprise Agile
-            roles in hiring workflows and public job descriptions — not a
-            single third-party study. Treat them as directional, check your
-            metro and employer, and anchor program facts to Scaled Agile&apos;s
-            official materials.
-          </p>
-          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-700">
-            <li>
-              <a
-                href="https://scaledagile.com/what-is-safe/"
-                className="font-semibold text-[#01203d] underline hover:no-underline"
-                rel="noopener noreferrer"
-              >
-                What is SAFe?
-              </a>{" "}
-              — framework overview from Scaled Agile, Inc.
-            </li>
-            <li>
+              <strong>Scaled Agile (certification vendor)</strong> publishes
+              marketing summaries on how certification relates to hiring and
+              compensation — see their{" "}
               <a
                 href="https://scaledagile.com/certification/"
                 className="font-semibold text-[#01203d] underline hover:no-underline"
@@ -201,9 +159,55 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               >
                 SAFe certification
               </a>{" "}
-              — official course catalog, exams, and renewal from Scaled Agile.
+              page for their current claims and methodology.
+            </li>
+            <li>
+              <strong>U.S. Bureau of Labor Statistics</strong> publishes
+              verified occupational employment and wage estimates (national and
+              metro). Use{" "}
+              <a
+                href="https://www.bls.gov/oes/"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+                rel="noopener noreferrer"
+              >
+                Occupational Employment and Wage Statistics (OEWS)
+              </a>{" "}
+              and search titles such as{" "}
+              <a
+                href="https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+                rel="noopener noreferrer"
+              >
+                Project management specialists
+              </a>{" "}
+              or{" "}
+              <a
+                href="https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+                rel="noopener noreferrer"
+              >
+                Software developers
+              </a>{" "}
+              as proxies, then adjust for your specialty.
+            </li>
+            <li>
+              <strong>Employer reality:</strong> in financial services,
+              healthcare, defense, and large-scale tech, SAFe credentials are
+              often listed as preferred or required — scan postings on your
+              target employers to confirm demand in your geography.
             </li>
           </ul>
+          <p className="text-lg text-gray-700 mb-4">
+            For framework facts (not pay), start with Scaled Agile&apos;s{" "}
+            <a
+              href="https://scaledagile.com/what-is-safe/"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              What is SAFe?
+            </a>
+            .
+          </p>
           <p className="text-lg text-gray-700 mb-8">
             If you already hold CSM and need a practical class order, read{" "}
             <Link
@@ -211,6 +215,13 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               className="font-semibold text-[#01203d] underline hover:no-underline"
             >
               CSM to SAFe upgrade path
+            </Link>{" "}
+            — and for POPM vs delivery facilitation roles, see{" "}
+            <Link
+              href="/blog/popm-vs-scrum-master"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+            >
+              POPM vs Scrum Master
             </Link>
             .
           </p>
@@ -298,10 +309,17 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
             <li>90-minute exam</li>
           </ul>
           <p className="text-lg text-gray-700 mb-8">
-            Total time to certification: approximately 20 hours. For a
-            credential that can move your salary band by{" "}
-            <strong>$15,000–$30,000</strong>, that&apos;s one of the better
-            time-to-ROI ratios in professional development.
+            Total time to certification: approximately 20 hours. Whether that
+            pays back in cash depends on your role and market — use the{" "}
+            <a
+              href="https://www.bls.gov/oes/"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              BLS OEWS tool
+            </a>{" "}
+            and live job postings to estimate upside for your title and city,
+            not a blog table.
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">

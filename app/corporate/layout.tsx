@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Enterprise Agile & AI Training Solutions | Agile36 Corporate Services",
   description: "Transform your organization with world-class enterprise agile training, private group training, and AI transformation services. Trusted by Fortune 100 companies.",
+  alternates: {
+    canonical: "https://www.agile36.com/corporate",
+  },
   keywords: [
     "enterprise agile training",
     "corporate training",

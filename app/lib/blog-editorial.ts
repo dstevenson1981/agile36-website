@@ -59,6 +59,14 @@ export const BLOG_EDITORIAL: BlogEditorialEntry[] = [
     date: "2026-04-19",
   },
   {
+    slug: "popm-vs-scrum-master",
+    title: "POPM vs Scrum Master: SAFe certifications and career fit",
+    categoryId: "safe",
+    description:
+      "Compare SAFe POPM with the Scrum Master (SSM) track: backlog vs facilitation, which cert matches your job, and what to take first.",
+    date: "2026-04-19",
+  },
+  {
     slug: "safe-lpm-vs-popm",
     title: "SAFe LPM vs POPM",
     categoryId: "safe",

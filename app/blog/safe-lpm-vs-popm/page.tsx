@@ -449,7 +449,15 @@ export default async function SafeLpmVsPopmBlogPost() {
             appears more frequently in product-focused roles; LPM appears more
             frequently in transformation, portfolio, and PMO roles. In terms of
             raw job posting volume, POPM tends to have higher demand — but LPM
-            roles typically offer higher compensation.
+            postings often sit at more senior banding (verify pay with{" "}
+            <a
+              href="https://www.bls.gov/oes/"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              BLS OEWS
+            </a>{" "}
+            and live listings for your metro).
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
@@ -463,6 +471,13 @@ export default async function SafeLpmVsPopmBlogPost() {
               className="font-semibold text-[#01203d] underline hover:text-[#134263]"
             >
               SSM vs CSM
+            </Link>
+            . If you are weighing POPM against a Scrum Master track, see{" "}
+            <Link
+              href="/blog/popm-vs-scrum-master"
+              className="font-semibold text-[#01203d] underline hover:text-[#134263]"
+            >
+              POPM vs Scrum Master
             </Link>
             .
           </p>

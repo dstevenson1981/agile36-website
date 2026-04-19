@@ -298,11 +298,26 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
             What Is the ROI on Leading SAFe Certification?
           </h2>
           <p className="text-lg text-gray-700 mb-4">
-            <strong>Salary impact:</strong> Certified SAFe professionals
-            consistently earn more than their non-certified peers. SAFe Agilists
-            average $115,000–$130,000 annually in the US, with certified
-            practitioners typically earning 15–25% more than non-certified
-            counterparts in comparable roles.
+            <strong>Salary impact:</strong> We do not publish uncited pay ranges
+            by credential. For vendor-reported certification and compensation
+            themes, see Scaled Agile&apos;s{" "}
+            <a
+              href="https://scaledagile.com/certification/"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              SAFe certification
+            </a>{" "}
+            materials. For government-verified occupational medians, use the{" "}
+            <a
+              href="https://www.bls.gov/oes/"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              U.S. BLS OEWS
+            </a>{" "}
+            search for titles such as project management specialist or
+            software developer, then compare postings that list SAFe.
           </p>
           <p className="text-lg text-gray-700 mb-4">
             <strong>Career positioning:</strong> Leading SAFe is specifically

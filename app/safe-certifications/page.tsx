@@ -112,15 +112,15 @@ const COURSES = [
 ];
 
 const COMPARISON_TABLE = [
-  { cert: "AI-Empowered Leading SAFe", bestFor: "Managers, Directors, Executives", level: "Foundation", duration: "2 days", salary: "$105K–$158K" },
-  { cert: "AI-Empowered SAFe Scrum Master", bestFor: "Scrum Masters, Team Leads", level: "Team", duration: "2 days", salary: "$95K–$130K" },
-  { cert: "AI-Empowered SAFe POPM", bestFor: "Product Owners, Product Managers", level: "Team/Program", duration: "2 days", salary: "$100K–$141K" },
-  { cert: "SAFe LPM", bestFor: "PMO Directors, Portfolio Managers, Executives", level: "Portfolio", duration: "2 days", salary: "$120K–$160K" },
-  { cert: "SAFe APM", bestFor: "Senior Product Managers, Heads of Product", level: "Advanced", duration: "3 days", salary: "$115K–$150K" },
-  { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days", salary: "$110K–$145K" },
-  { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days", salary: "$110K–$148K" },
-  { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days", salary: "—" },
-  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2–3 days", salary: "$130K–$170K" },
+  { cert: "AI-Empowered Leading SAFe", bestFor: "Managers, Directors, Executives", level: "Foundation", duration: "2 days" },
+  { cert: "AI-Empowered SAFe Scrum Master", bestFor: "Scrum Masters, Team Leads", level: "Team", duration: "2 days" },
+  { cert: "AI-Empowered SAFe POPM", bestFor: "Product Owners, Product Managers", level: "Team/Program", duration: "2 days" },
+  { cert: "SAFe LPM", bestFor: "PMO Directors, Portfolio Managers, Executives", level: "Portfolio", duration: "2 days" },
+  { cert: "SAFe APM", bestFor: "Senior Product Managers, Heads of Product", level: "Advanced", duration: "3 days" },
+  { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days" },
+  { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days" },
+  { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days" },
+  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2–3 days" },
 ];
 
 const FAQS = [
@@ -241,7 +241,15 @@ export default function SafeCertificationsPage() {
       <section className="w-full py-12 px-4 sm:px-6 lg:px-20 bg-white">
         <div className="max-w-4xl mx-auto">
           <p className="text-gray-700 leading-relaxed mb-4">
-            The Scaled Agile Framework® (SAFe) is the world&apos;s leading framework for enterprise Agile at scale, used by over 70% of Fortune 100 companies. SAFe certifications validate your ability to apply Lean-Agile principles across teams, programs, and portfolios — and they&apos;re among the most in-demand credentials in the Agile job market.
+            The Scaled Agile Framework® (SAFe) is a leading approach for enterprise Agile at scale. Scaled Agile states that thousands of enterprises worldwide use SAFe — see their{" "}
+            <a
+              href="https://scaledagile.com/what-is-safe/"
+              className="text-[#01203d] font-semibold underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              framework overview
+            </a>{" "}
+            for current adoption messaging. SAFe certifications validate your ability to apply Lean-Agile principles across teams, programs, and portfolios where that model is in use.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Agile36 is a SAFe Silver Partner offering instructor-led SAFe certification training across all major role-based certifications. Every course includes your first exam attempt, live training with certified SPCs, and post-training support.
@@ -298,14 +306,13 @@ export default function SafeCertificationsPage() {
             Which SAFe Certification Is Right for You?
           </h2>
           <div className="overflow-x-auto -mx-4 sm:mx-0">
-            <table className="w-full min-w-[640px] border-collapse border border-gray-200 rounded-lg overflow-hidden">
+            <table className="w-full min-w-[520px] border-collapse border border-gray-200 rounded-lg overflow-hidden">
               <thead>
                 <tr className="bg-[#01203d] text-white">
                   <th className="text-left px-4 py-3 font-semibold">Certification</th>
                   <th className="text-left px-4 py-3 font-semibold">Best For</th>
                   <th className="text-left px-4 py-3 font-semibold">Level</th>
                   <th className="text-left px-4 py-3 font-semibold">Duration</th>
-                  <th className="text-left px-4 py-3 font-semibold">Salary Range</th>
                 </tr>
               </thead>
               <tbody>
@@ -318,12 +325,31 @@ export default function SafeCertificationsPage() {
                     <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.bestFor}</td>
                     <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.level}</td>
                     <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.duration}</td>
-                    <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.salary}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p className="text-sm text-gray-600 mt-6 max-w-3xl leading-relaxed">
+            <strong>Pay research:</strong> Agile36 does not list uncited salary
+            ranges by certification. Compare compensation using{" "}
+            <a
+              href="https://www.bls.gov/oes/"
+              className="text-[#01203d] font-semibold underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              BLS OEWS
+            </a>
+            , your target employers&apos; postings, and Scaled Agile&apos;s{" "}
+            <a
+              href="https://scaledagile.com/certification/"
+              className="text-[#01203d] font-semibold underline hover:no-underline"
+              rel="noopener noreferrer"
+            >
+              certification
+            </a>{" "}
+            pages for vendor-published outcomes.
+          </p>
         </div>
       </section>
 

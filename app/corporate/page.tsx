@@ -29,7 +29,10 @@ export default function CorporatePage() {
                 Transform Your Organization with World-Class Agile & AI Training
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Partner with industry experts who have led 30+ transformations across Fortune 100 companies. From enterprise agile training to AI transformation, we deliver measurable results.
+                Partner with SAFe Silver Partner instructors for private cohorts,
+                multi-course roadmaps, and AI upskilling — live virtual delivery,
+                procurement-friendly documentation, and curriculum aligned to how
+                large programs actually run.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
@@ -57,8 +60,8 @@ export default function CorporatePage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-white font-bold">100,000+</p>
-                      <p className="text-gray-300 text-sm">Professionals Trained</p>
+                      <p className="text-white font-bold">Live cohorts</p>
+                      <p className="text-gray-300 text-sm">Scheduled on your calendar — same instructor team for series classes</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-lg p-4">
@@ -68,8 +71,8 @@ export default function CorporatePage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-white font-bold">500+</p>
-                      <p className="text-gray-300 text-sm">Enterprise Clients</p>
+                      <p className="text-white font-bold">Volume pricing</p>
+                      <p className="text-gray-300 text-sm">Teams of 3+ — aligned to SAFe, AI, and leadership roadmaps</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-lg p-4">
@@ -79,14 +82,55 @@ export default function CorporatePage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-white font-bold">30+</p>
-                      <p className="text-gray-300 text-sm">Transformations Led</p>
+                      <p className="text-white font-bold">SPC-led delivery</p>
+                      <p className="text-gray-300 text-sm">SAFe Silver Partner — exam-included public catalog + private options</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* L&D / procurement */}
+      <section className="w-full bg-[#f8fafc] py-14 px-4 sm:px-6 lg:px-20 border-b border-gray-200">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4 text-center">
+            For L&amp;D, procurement, and transformation offices
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+            One partner for SAFe certification paths, AI upskilling, and cohort
+            logistics — with clear commercial terms and attendance reporting your
+            stakeholders expect.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-4 mb-10 text-gray-800">
+            <li className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+              <span className="font-bold text-[#01203d] block mb-1">Private cohorts</span>
+              Same class dates for distributed teams; optional multi-course bundles
+              (Leading SAFe → SSM / POPM / RTE tracks).
+            </li>
+            <li className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+              <span className="font-bold text-[#01203d] block mb-1">Catalog alignment</span>
+              Browse public{" "}
+              <Link href="/safe-certifications" className="text-[#fa4a23] font-semibold underline hover:no-underline">
+                SAFe certifications
+              </Link>{" "}
+              or request a scoped proposal for mixed roles.
+            </li>
+            <li className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+              <span className="font-bold text-[#01203d] block mb-1">Compliance-ready delivery</span>
+              Live virtual classrooms, named instructors (SPCs), and materials
+              suitable for enterprise vendor review.
+            </li>
+            <li className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+              <span className="font-bold text-[#01203d] block mb-1">Single point of contact</span>
+              <Link href="/contact" className="text-[#fa4a23] font-semibold underline hover:no-underline">
+                Contact Agile36
+              </Link>{" "}
+              for SOWs, volume pricing, and scheduling — or use Request Consultation above.
+            </li>
+          </ul>
         </div>
       </section>
 

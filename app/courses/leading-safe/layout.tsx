@@ -184,7 +184,7 @@ export default function LeadingSafeLayout({
         name: "Is Leading SAFe certification worth it?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. SAFe Agilists earn an average salary of $115,000 to $145,000 annually. The certification is recognized by Fortune 500 companies and is required for many enterprise Agile roles. It validates your ability to scale Agile practices across large organizations and lead organizational transformation.",
+          text: "For many enterprise organizations, Leading SAFe is worth it when the role touches scaled delivery: ARTs, PI Planning, and portfolio alignment. Compensation varies by title and location; compare verified sources such as the U.S. Bureau of Labor Statistics Occupational Employment and Wage Statistics (OEWS) and Scaled Agile's published certification information. The credential is widely recognized where SAFe is in use and validates foundational knowledge of the Scaled Agile Framework.",
         },
       },
       {

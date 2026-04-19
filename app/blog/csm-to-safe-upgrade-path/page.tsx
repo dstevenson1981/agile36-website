@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "From Certified ScrumMaster to SAFe: which courses to take first, how Leading SAFe, SSM, and POPM fit together, prerequisites, and a step-by-step path for 2026.",
   keywords: [
     "CSM to SAFe",
+    "CSM vs SAFe",
     "CSM to SAFe upgrade path",
     "from CSM to SAFe certification",
     "Scrum Master SAFe path",
@@ -165,6 +166,61 @@ export default function CsmToSafeUpgradePathPage() {
             </p>
 
             <AtAGlance />
+
+            <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+              CSM vs SAFe: what you are comparing
+            </h2>
+            <p className="text-lg text-gray-700 mb-6">
+              <strong>CSM</strong> (Certified ScrumMaster, Scrum Alliance) proves
+              you studied single-team Scrum. <strong>SAFe certifications</strong>{" "}
+              (Scaled Agile) prove you completed accredited SAFe courses and
+              passed role exams for enterprise-scale delivery. They answer
+              different interview questions — use the table when stakeholders ask
+              whether CSM &quot;counts&quot; as SAFe.
+            </p>
+            <div className="overflow-x-auto mb-10 not-prose">
+              <table className="min-w-full text-left text-base border border-gray-200">
+                <thead className="bg-[#01203d] text-white">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold">Topic</th>
+                    <th className="px-4 py-3 font-semibold">CSM</th>
+                    <th className="px-4 py-3 font-semibold">SAFe path</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-800">
+                  <tr className="border-t border-gray-200 align-top">
+                    <td className="px-4 py-3 font-medium">Scope</td>
+                    <td className="px-4 py-3">One Scrum team, Scrum Guide fundamentals</td>
+                    <td className="px-4 py-3">ARTs, PIs, portfolio alignment, SAFe events and roles</td>
+                  </tr>
+                  <tr className="border-t border-gray-200 align-top">
+                    <td className="px-4 py-3 font-medium">Issuing body</td>
+                    <td className="px-4 py-3">Scrum Alliance</td>
+                    <td className="px-4 py-3">Scaled Agile, Inc.</td>
+                  </tr>
+                  <tr className="border-t border-gray-200 align-top">
+                    <td className="px-4 py-3 font-medium">Typical hiring signal</td>
+                    <td className="px-4 py-3">Single-team Scrum shops, startups, some enterprises</td>
+                    <td className="px-4 py-3">Employers that name SAFe, PI Planning, RTE, or ARTs</td>
+                  </tr>
+                  <tr className="border-t border-gray-200 align-top">
+                    <td className="px-4 py-3 font-medium">Upgrade takeaway</td>
+                    <td className="px-4 py-3">Strong foundation — keep it</td>
+                    <td className="px-4 py-3">Add Leading SAFe + role cert (SSM, POPM, etc.) — see paths below</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-lg text-gray-700 mb-8">
+              For product vs facilitation tracks after Leading SAFe, read{" "}
+              <Link
+                href="/blog/popm-vs-scrum-master"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+              >
+                POPM vs Scrum Master
+              </Link>
+              .
+            </p>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
               Why &quot;CSM first&quot; does not replace a SAFe path

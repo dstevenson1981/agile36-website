@@ -631,6 +631,13 @@ export default async function SsmVsCsmBlogPost() {
             </Link>
             {" · "}
             <Link
+              href="/blog/popm-vs-scrum-master"
+              className="text-[#01203d] underline hover:no-underline"
+            >
+              POPM vs Scrum Master
+            </Link>
+            {" · "}
+            <Link
               href="/courses/advanced-scrum-master"
               className="text-[#01203d] underline hover:no-underline"
             >
