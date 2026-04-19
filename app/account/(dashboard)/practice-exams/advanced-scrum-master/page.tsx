@@ -5,6 +5,8 @@ import { ADVANCED_SCRUM_MASTER_QUESTIONS } from './questions';
 
 export const metadata = {
   title: 'SASM Practice Test | Agile36',
+  description:
+    'SAFe Advanced Scrum Master (SASM) practice exam for Agile36 Pro students — ART-level coaching and facilitation scenarios.',
   robots: 'noindex, nofollow',
 };
 

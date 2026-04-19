@@ -4,6 +4,8 @@ import PopmPracticeTest from './PopmPracticeTest';
 
 export const metadata = {
   title: 'SAFe POPM Practice Test | Agile36',
+  description:
+    'SAFe Product Owner/Product Manager (POPM) practice exam for Agile36 Pro students — scenario-based prep.',
   robots: 'noindex, nofollow',
 };
 

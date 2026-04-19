@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Enterprise Agile & AI Training Solutions | Agile36 Corporate Services",
-  description: "Transform your organization with world-class enterprise agile training, private group training, and AI transformation services. Trusted by Fortune 100 companies.",
+  title: "Enterprise Agile & AI Training (2026) | Agile36 Corporate",
+  description:
+    "2026 corporate programs: private SAFe cohorts, AI upskilling, and transformation-ready training from a SAFe Silver Partner — volume pricing and L&D-friendly delivery.",
   alternates: {
     canonical: "https://www.agile36.com/corporate",
   },
@@ -19,8 +20,9 @@ export const metadata: Metadata = {
     "Fortune 100 training"
   ],
   openGraph: {
-    title: "Enterprise Agile & AI Training Solutions | Agile36",
-    description: "Transform your organization with world-class enterprise agile training, private group training, and AI transformation services.",
+    title: "Enterprise Agile & AI Training (2026) | Agile36",
+    description:
+      "Private 2026 cohorts for SAFe, Agile, and AI — tailored roadmaps for enterprise teams.",
     type: "website",
     url: "https://www.agile36.com/corporate",
     images: [

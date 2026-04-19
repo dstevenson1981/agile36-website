@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Generative AI for Project Managers Certification Training | AI Project Management Course | Agile36",
-  description: "Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, apply AI-assisted risk analysis, and integrate GenAI across Agile, hybrid, and traditional methodologies. Expert-led training.",
+  title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
+  description: "2026 live cohorts: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, apply AI-assisted risk analysis, and integrate GenAI across Agile, hybrid, and traditional methodologies. Expert-led training.",
   keywords: [
     "Generative AI for Project Managers",
     "AI Project Management",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "AI Project Certification"
   ],
   openGraph: {
-    title: "Generative AI for Project Managers Certification Training | AI Project Management Course | Agile36",
-    description: "Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
+    title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
+    description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
     type: "website",
     url: "https://www.agile36.com/courses/generative-ai-project-managers",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Generative AI for Project Managers Certification Training",
-    description: "Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
+    title: "Generative AI for Project Managers Certification Training (2026)",
+    description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/generative-ai-project-managers",

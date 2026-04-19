@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Certified GenAI Practitioner™ Certification Training | GenAI Training | Agile36",
-  description: "Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications in this comprehensive 4-hour course. Expert-led training.",
+  title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
+  description: "2026 live cohorts: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications in this comprehensive 4-hour course. Expert-led training.",
   keywords: [
     "GenAI Practitioner",
     "Generative AI",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "GenAI course"
   ],
   openGraph: {
-    title: "Certified GenAI Practitioner™ Certification Training | GenAI Training | Agile36",
-    description: "Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
+    title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
+    description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-genai-practitioner",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Certified GenAI Practitioner™ Certification Training",
-    description: "Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
+    title: "Certified GenAI Practitioner™ Certification Training (2026)",
+    description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/certified-genai-practitioner",

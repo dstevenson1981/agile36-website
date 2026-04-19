@@ -13,6 +13,8 @@ const COURSE_NAMES: Record<string, string> = {
 
 export const metadata = {
   title: 'Upgrade to Pro - Practice Exam | Agile36',
+  description:
+    'Upgrade to Agile36 Pro for SAFe-aligned practice exams, retake support, and extended prep for your certification path.',
   robots: 'noindex, nofollow',
 };
 

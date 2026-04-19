@@ -11,6 +11,8 @@ import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
+  description:
+    'SAFe practice exams for Agile36 Pro enrollees — Leading SAFe, POPM, LPM, SSM, and Advanced Scrum Master. Sign-in required.',
   robots: 'noindex, nofollow',
 };
 

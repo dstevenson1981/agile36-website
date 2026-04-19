@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Combo Courses | Save on SAFe, PMP & AI Certifications | Agile36",
+  title: "Combo Courses (2026) | Save on SAFe, PMP & AI | Agile36",
   description:
-    "Earn multiple certifications faster and affordably. Agile36 combo courses bundle SAFe, PMP, and AI certifications with discounted pricing. Leading SAFe + SSM, PMP + SAFe, AI combos and more.",
+    "2026 combo bundles: earn multiple certifications faster with Agile36 — SAFe + PMP + AI paths, discounted pricing, and coordinated live schedules.",
   alternates: {
     canonical: "https://www.agile36.com/combo-courses",
   },
   openGraph: {
-    title: "Combo Courses | Save on SAFe, PMP & AI Certifications | Agile36",
+    title: "Combo Courses (2026) | Agile36",
     description:
-      "Earn multiple certifications faster and affordably. Bundled SAFe, PMP, and AI combo courses with discounted pricing.",
+      "2026 bundled SAFe, PMP, and AI certification combos — save with coordinated live training.",
     url: "https://www.agile36.com/combo-courses",
     type: "website",
   },

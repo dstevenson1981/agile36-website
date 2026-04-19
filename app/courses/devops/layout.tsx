@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe DevOps Practitioner (SDP) Certification Training | Agile36",
-  description: "Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included.",
+  title: "SAFe DevOps Practitioner (SDP) Certification Training (2026) | Agile36",
+  description: "2026 live cohorts: Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included.",
   keywords: [
     "SAFe DevOps",
     "SAFe SDP certification",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® 6.0 DevOps (SDP) Certification Training | Agile36",
-    description: "Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe. Earn 16 PDUs & SEUs.",
+    title: "SAFe® 6.0 DevOps (SDP) Certification Training (2026) | Agile36",
+    description: "2026: Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/devops",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 DevOps (SDP) Certification Training",
-    description: "Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe.",
+    title: "SAFe® 6.0 DevOps (SDP) Certification Training (2026)",
+    description: "2026: Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/devops",

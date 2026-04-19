@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PMP® Certification Training | Project Management Professional Exam Prep | Agile36",
-  description: "Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide, project management processes, Agile practices, and exam strategies. 5-day intensive course prepares you to pass the PMP exam. Enroll now!",
+  title: "PMP® Certification Training | Project Management Professional Exam Prep (2026) | Agile36",
+  description: "2026 live cohorts: Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide, project management processes, Agile practices, and exam strategies. 5-day intensive course prepares you to pass the PMP exam. Enroll now!",
   keywords: [
     "PMP Certification",
     "PMP Training",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "PMP Exam Preparation"
   ],
   openGraph: {
-    title: "PMP® Certification Training | Project Management Professional Exam Prep | Agile36",
-    description: "Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide, project management processes, and exam strategies. 5-day intensive course.",
+    title: "PMP® Certification Training | Project Management Professional Exam Prep (2026) | Agile36",
+    description: "2026: Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide, project management processes, and exam strategies. 5-day intensive course.",
     type: "website",
     url: "https://www.agile36.com/courses/pmp-certification",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PMP® Certification Training | Project Management Professional",
-    description: "Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide and project management processes.",
+    title: "PMP® Certification Training | Project Management Professional (2026)",
+    description: "2026: Master PMP certification with comprehensive exam prep training. Learn PMBOK Guide and project management processes.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/pmp-certification",

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
 
 export const metadata: Metadata = {
-  title: "SAFe Lean Portfolio Management (LPM) Certification Training | Agile36",
-  description: "Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
+  title: "SAFe Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
+  description: "2026 live cohorts: Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
   keywords: [
     "SAFe Lean Portfolio Management",
     "SAFe LPM certification",
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training | Agile36",
-    description: "Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding. Earn 16 PDUs & SEUs.",
+    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
+    description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/lean-portfolio-management",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
-    description: "Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding.",
+    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026)",
+    description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/lean-portfolio-management",

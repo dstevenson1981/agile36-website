@@ -88,9 +88,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const authorName = resolveLeadBlogAuthorName(post.frontmatter.author);
 
+  const description =
+    post.frontmatter.description?.trim() ||
+    (post.frontmatter.title
+      ? `${post.frontmatter.title} — expert perspective from Agile36 (2026).`
+      : "Expert SAFe, Agile, and AI articles from Agile36 — updated for 2026.");
+
   return {
     title: post.frontmatter.title ? `${post.frontmatter.title} | Agile36` : "Agile36 Blog",
-    description: post.frontmatter.description,
+    description,
     keywords: post.frontmatter.keywords,
     authors: [
       authorName === BLOG_LEAD_AUTHOR_NAME
@@ -105,7 +111,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: canonical,
       siteName: "Agile36",
       title: post.frontmatter.title ?? "Agile36 Blog",
-      description: post.frontmatter.description,
+      description,
     },
   };
 }

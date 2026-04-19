@@ -65,8 +65,8 @@ export function buildLocationTrainingMetadata(
   const canonical = `${SITE}/${segment}/${citySlug}`;
 
   return {
-    title: `${titleCourse} in ${cityDisplay} | Agile36`,
-    description: `${descriptionLead} for ${cityDisplay}-area professionals. Attend from anywhere — no travel. Certification-focused cohorts with expert SPC instructors.`,
+    title: `${titleCourse} (2026) in ${cityDisplay} | Agile36`,
+    description: `2026 schedule: ${descriptionLead} for ${cityDisplay}-area professionals. Live virtual cohorts — no travel. SAFe Silver Partner instructors; certification-focused delivery.`,
     alternates: {
       canonical,
     },

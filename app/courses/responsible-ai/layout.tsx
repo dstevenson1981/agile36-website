@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training | Agile36",
-  description: "Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing. Expert-led training.",
+  title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training (2026) | Agile36",
+  description: "2026 live cohorts: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing. Expert-led training.",
   keywords: [
     "Responsible AI",
     "AI with SAFe",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "SAFe AI integration"
   ],
   openGraph: {
-    title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training | Agile36",
-    description: "Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
+    title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training (2026) | Agile36",
+    description: "2026: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
     type: "website",
     url: "https://www.agile36.com/courses/responsible-ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Achieving Responsible AI with SAFe Micro-credential Course",
-    description: "Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
+    title: "Achieving Responsible AI with SAFe Micro-credential Course (2026)",
+    description: "2026: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/responsible-ai",

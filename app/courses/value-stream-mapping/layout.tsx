@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe Value Stream Mapping Certification Training | Agile36",
-  description: "Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now.",
+  title: "SAFe Value Stream Mapping Certification Training (2026) | Agile36",
+  description: "2026 live cohorts: Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now.",
   keywords: [
     "Value Stream Mapping",
     "VSM",
@@ -20,15 +20,15 @@ export const metadata: Metadata = {
     "Cycle Time Optimization"
   ],
   openGraph: {
-    title: "SAFe® Value Stream Mapping Course | SAFe VSM Training | Agile36",
-    description: "Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
+    title: "SAFe® Value Stream Mapping Course | SAFe VSM Training (2026) | Agile36",
+    description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
     type: "website",
     url: "https://www.agile36.com/courses/value-stream-mapping",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® Value Stream Mapping Course",
-    description: "Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
+    title: "SAFe® Value Stream Mapping Course (2026)",
+    description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/value-stream-mapping",

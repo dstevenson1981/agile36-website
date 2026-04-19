@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers | Agile36",
-  description: "Master no-code AI agents and automation without programming! Learn to build intelligent workflows, automate tasks, and optimize productivity. 25+ hands-on projects. Perfect for non-technical professionals. 2-day intensive course.",
+  title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers (2026) | Agile36",
+  description: "2026 live cohorts: Master no-code AI agents and automation without programming! Learn to build intelligent workflows, automate tasks, and optimize productivity. 25+ hands-on projects. Perfect for non-technical professionals. 2-day intensive course.",
   keywords: [
     "No-code AI",
     "AI automation",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "Automation training"
   ],
   openGraph: {
-    title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers | Agile36",
-    description: "Master no-code AI agents and automation without programming! Build intelligent workflows, automate tasks, and supercharge productivity with 25+ hands-on projects.",
+    title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers (2026) | Agile36",
+    description: "2026: Master no-code AI agents and automation without programming! Build intelligent workflows, automate tasks, and supercharge productivity with 25+ hands-on projects.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-agent-builder",
   },
   twitter: {
     card: "summary_large_image",
-    title: "No-Code AI Agents & Automation™ Training",
-    description: "Master no-code AI agents and automation without programming! Build intelligent workflows with 25+ hands-on projects.",
+    title: "No-Code AI Agents & Automation™ Training (2026)",
+    description: "2026: Master no-code AI agents and automation without programming! Build intelligent workflows with 25+ hands-on projects.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-agent-builder",

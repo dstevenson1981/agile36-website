@@ -27,6 +27,8 @@ const COURSE_PRACTICE_EXAMS: Record<string, { title: string; component: React.Co
 
 export const metadata = {
   title: 'Practice Exam | Agile36',
+  description:
+    'Gated SAFe practice exam for Agile36 Pro students (POPM, LPM, SSM, SASM). Requires eligible enrollment.',
   robots: 'noindex, nofollow',
 };
 

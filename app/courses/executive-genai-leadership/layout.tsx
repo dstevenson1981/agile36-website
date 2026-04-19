@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course | Agile36",
-  description: "Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, ethical AI implementation, and organizational transformation. Expert-led training.",
+  title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course (2026) | Agile36",
+  description: "2026 live cohorts: Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, ethical AI implementation, and organizational transformation. Expert-led training.",
   keywords: [
     "Executive GenAI Leadership",
     "GenAI Leadership",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "Executive AI Certification"
   ],
   openGraph: {
-    title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course | Agile36",
-    description: "Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
+    title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course (2026) | Agile36",
+    description: "2026: Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
     type: "website",
     url: "https://www.agile36.com/courses/executive-genai-leadership",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Executive GenAI Leadership™ Certification Training",
-    description: "Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
+    title: "Executive GenAI Leadership™ Certification Training (2026)",
+    description: "2026: Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, and ethical AI implementation.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/executive-genai-leadership",

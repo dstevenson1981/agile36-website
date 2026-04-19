@@ -5,6 +5,8 @@ import { LPM_QUESTIONS } from './questions';
 
 export const metadata = {
   title: 'SAFe LPM Practice Test | Agile36',
+  description:
+    'SAFe Lean Portfolio Management (LPM) practice exam for Agile36 Pro students — portfolio-level question practice.',
   robots: 'noindex, nofollow',
 };
 

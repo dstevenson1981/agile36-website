@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe Agile Product Management (APM) Certification Training | Agile36",
-  description: "Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included.",
+  title: "SAFe Agile Product Management (APM) Certification Training (2026) | Agile36",
+  description: "2026 live cohorts: Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Agile Product Management",
     "SAFe APM certification",
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training | Agile36",
-    description: "Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy. Earn 24 PDUs & SEUs.",
+    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026) | Agile36",
+    description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy. Earn 24 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/agile-product-management",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training",
-    description: "Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy.",
+    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026)",
+    description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/agile-product-management",

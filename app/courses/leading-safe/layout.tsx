@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { SCHEMA_ORGANIZATION_ID } from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
-  title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA) | Agile36",
+  title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
   description:
-    "Get AI-Empowered Leading SAFe certified with Agile36, a SAFe Silver Partner. 2-day live training, exam included. Learn to lead enterprise Agile transformation with AI-empowered practices. Expert SPCs. Enroll now.",
+    "2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. 2-day virtual training, exam included, SPC instructors. Lead enterprise Agile transformation with current SAFe practices.",
   keywords: [
     "Leading SAFe",
     "SAFe Agilist",
@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     "SAFe certification training",
   ],
   openGraph: {
-    title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA) | Agile36",
+    title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
     description:
-      "Master AI-Empowered Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation and value streams.",
+      "2026 Leading SAFe training: become a SAFe Agilist (SA) with live expert instruction, exam included, and enterprise transformation focus.",
     type: "website",
     url: "https://www.agile36.com/courses/leading-safe",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA)",
+    title: "AI-Empowered Leading SAFe® 6.0 (2026) | SAFe Agilist (SA)",
     description:
-      "Master AI-Empowered Leading SAFe® 6.0 Certification Training. Become a SAFe Agilist (SA). Learn enterprise Agile transformation.",
+      "2026 SAFe Agilist path: AI-Empowered Leading SAFe live training and certification exam with Agile36.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/leading-safe",

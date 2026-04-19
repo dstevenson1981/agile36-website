@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe for Teams (SP) Certification Training | SAFe Practitioner | Agile36",
-  description: "Earn your SAFe Practitioner (SP) certification with Agile36. AI-Empowered SAFe for Teams: 2-day training for Agile team members working on an ART. Learn Scrum, Kanban, XP in SAFe. Exam included.",
+  title: "AI-Empowered SAFe for Teams (SP) Certification Training | SAFe Practitioner (2026) | Agile36",
+  description: "2026 live cohorts: Earn your SAFe Practitioner (SP) certification with Agile36. AI-Empowered SAFe for Teams: 2-day training for Agile team members working on an ART. Learn Scrum, Kanban, XP in SAFe. Exam included.",
   keywords: [
     "SAFe for Teams",
     "SAFe Practitioner certification",
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training | Agile36",
-    description: "Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation. Earn 16 PDUs & SEUs.",
+    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training (2026) | Agile36",
+    description: "2026: Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/safe-for-teams",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training",
-    description: "Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation.",
+    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training (2026)",
+    description: "2026: Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/safe-for-teams",

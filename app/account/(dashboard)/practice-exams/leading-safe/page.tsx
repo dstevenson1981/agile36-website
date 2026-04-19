@@ -4,6 +4,8 @@ import LeadingSafePracticeTest from './LeadingSafePracticeTest';
 
 export const metadata = {
   title: 'SAFe Agilist Practice Test | Agile36',
+  description:
+    'Leading SAFe (SAFe Agilist) practice exam for Agile36 Pro students — timed questions aligned to the current SAFe exam style.',
   robots: 'noindex, nofollow',
 };
 

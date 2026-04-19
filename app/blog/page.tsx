@@ -4,13 +4,16 @@ import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { getGeneratedBlogSummaries } from "@/app/lib/generated-blog";
 
 export const metadata: Metadata = {
-  title: "Blog | Agile36 — SAFe, Agile, AI & Career Guides",
+  title: "Blog (2026) | Agile36 — SAFe, Agile, AI & Career Guides",
   description:
-    "Browse articles by category: SAFe certifications, agile glossary, AI tools, careers, industry insights, and frameworks.",
+    "2026 guides and comparisons: SAFe certifications, agile practice, AI tools, careers, and frameworks — expert-led articles from Agile36.",
   alternates: {
     canonical: "https://www.agile36.com/blog",
   },
   openGraph: {
+    title: "Agile36 Blog (2026) — SAFe, Agile & AI",
+    description:
+      "Browse 2026 articles: SAFe paths, certification comparisons, AI adoption, and career playbooks.",
     url: "https://www.agile36.com/blog",
     siteName: "Agile36",
     type: "website",

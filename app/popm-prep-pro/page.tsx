@@ -1,8 +1,9 @@
 import PopmPracticeTest from './PopmPracticeTest';
 
 export const metadata = {
-  title: 'POPM Prep Pro | SAFe Practice Test | Agile36',
-  description: 'SAFe Product Owner/Product Manager practice test. 45 questions to prepare for your POPM certification exam.',
+  title: 'POPM Prep Pro (2026) | SAFe POPM Practice | Agile36',
+  description:
+    '2026 SAFe POPM practice set: 45 questions to sharpen exam readiness (gated / Pro context; robots noindex).',
   robots: 'noindex, nofollow',
 };
 

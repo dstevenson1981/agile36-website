@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification | Agile36",
+  title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification (2026) | Agile36",
   description:
-    "SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 21 PDUs. Expert-led course.",
+    "2026 live cohorts: SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 21 PDUs. Expert-led course.",
   keywords: [
     "AI-Empowered SAFe RTE",
     "SAFe Release Train Engineer",
@@ -26,15 +26,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification | Agile36",
+    title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification (2026) | Agile36",
     description:
-      "RTE certification training with an AI-empowered curriculum: strengthen PI planning, dependency management, and facilitation using responsible AI practices alongside official SAFe outcomes.",
+    "2026: RTE certification training with an AI-empowered curriculum: strengthen PI planning, dependency management, and facilitation using responsible AI practices alongside official SAFe outcomes.",
     type: "website",
     url: "https://www.agile36.com/courses/release-train-engineer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® AI-Empowered Release Train Engineer (RTE)",
+    title: "SAFe® AI-Empowered Release Train Engineer (RTE) (2026)",
     description:
       "AI-empowered RTE training: ART facilitation, PI planning, and practical AI-assisted workflows with exam-aligned SAFe outcomes.",
   },

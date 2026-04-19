@@ -2,8 +2,18 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "About Agile36 | SAFe Silver Partner",
-  description: "Learn about Agile36, a SAFe Silver Partner offering world-class Agile, SAFe, and AI Product Management training and consulting services.",
+  title: "About Agile36 (2026) | SAFe Silver Partner & Enterprise Training",
+  description:
+    "2026: Meet Agile36 — a SAFe Silver Partner delivering live virtual SAFe, Agile, and AI product training with SPC-led instructors and enterprise-scale experience.",
+  alternates: { canonical: "https://www.agile36.com/about" },
+  openGraph: {
+    title: "About Agile36 (2026) | Agile36",
+    description:
+      "Who we are: SAFe Silver Partner training firm focused on certification quality and real program delivery.",
+    url: "https://www.agile36.com/about",
+    siteName: "Agile36",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {

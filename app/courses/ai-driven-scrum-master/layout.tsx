@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course | Agile36",
-  description: "Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching. Expert-led training.",
+  title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
+  description: "2026 live cohorts: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching. Expert-led training.",
   keywords: [
     "AI-Driven Scrum Master",
     "AI Scrum Master",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "AI Scrum practices"
   ],
   openGraph: {
-    title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course | Agile36",
-    description: "Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
+    title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
+    description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-driven-scrum-master",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI-Driven Scrum Master™ Certification Training",
-    description: "Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
+    title: "AI-Driven Scrum Master™ Certification Training (2026)",
+    description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-driven-scrum-master",

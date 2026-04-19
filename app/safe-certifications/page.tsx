@@ -3,16 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "SAFe® Certification Training Courses | All SAFe Certifications | Agile36",
+  title: "SAFe® Certification Training (2026) | All SAFe Courses | Agile36",
   description:
-    "Browse all SAFe certification training courses from Agile36. AI-Empowered Leading SAFe, LPM, POPM, Scrum Master, APM, DevOps and more. SAFe Silver Partner. Expert SPCs. Exam included.",
+    "2026 SAFe certification catalog from Agile36: AI-Empowered Leading SAFe, LPM, POPM, Scrum Master, APM, DevOps, RTE, and more. SAFe Silver Partner, SPC instructors, exam included.",
   alternates: {
     canonical: "https://www.agile36.com/safe-certifications",
   },
   openGraph: {
-    title: "SAFe® Certification Training Courses | Agile36",
+    title: "SAFe® Certification Training (2026) | Agile36",
     description:
-      "Browse all SAFe certification courses. Expert-led live training. Exam included. SAFe Silver Partner.",
+      "2026 SAFe certification courses — expert-led live training, exam included, SAFe Silver Partner.",
     url: "https://www.agile36.com/safe-certifications",
     type: "website",
   },

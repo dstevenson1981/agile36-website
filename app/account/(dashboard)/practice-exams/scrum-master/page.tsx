@@ -5,6 +5,8 @@ import { SCRUM_MASTER_QUESTIONS } from './questions';
 
 export const metadata = {
   title: 'SAFe Scrum Master Practice Test | Agile36',
+  description:
+    'SAFe Scrum Master (SSM) practice exam for Agile36 Pro students — closed-book style prep and coaching feedback.',
   robots: 'noindex, nofollow',
 };
 

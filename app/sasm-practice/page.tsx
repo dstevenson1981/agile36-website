@@ -5,6 +5,8 @@ import { ADVANCED_SCRUM_MASTER_QUESTIONS } from '@/app/account/(dashboard)/pract
 
 export const metadata = {
   title: 'SASM Practice Test | Agile36',
+  description:
+    'Public sample SAFe Advanced Scrum Master (SASM) practice questions for self-assessment — not a substitute for official course completion.',
   robots: 'noindex, nofollow',
 };
 

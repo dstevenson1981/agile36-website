@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
-  description: "Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
+  title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training (2026) | Agile36 | SAFe Silver Partner",
+  description: "2026 live cohorts: Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
   keywords: [
     "SAFe Scrum Master",
     "SAFe SSM certification",
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training | Agile36 | SAFe Silver Partner",
-    description: "Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
+    title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training (2026) | Agile36 | SAFe Silver Partner",
+    description: "2026: Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
     type: "website",
     url: "https://www.agile36.com/courses/scrum-master",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
-    description: "Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
+    title: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training (2026)",
+    description: "2026: Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/scrum-master",

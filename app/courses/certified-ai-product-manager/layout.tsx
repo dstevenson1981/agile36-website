@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping | Agile36",
-  description: "Master AI-powered product management! Learn to use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders. Earn your Certified AI Product Manager™ certification. 2-day intensive course.",
+  title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
+  description: "2026 live cohorts: Master AI-powered product management! Learn to use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders. Earn your Certified AI Product Manager™ certification. 2-day intensive course.",
   keywords: [
     "AI Product Manager",
     "AI Product Management",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "Product analytics AI"
   ],
   openGraph: {
-    title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping | Agile36",
-    description: "Master AI-powered product management! Use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders.",
+    title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
+    description: "2026: Master AI-powered product management! Use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-ai-product-manager",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Certified AI Product Manager™ Training",
-    description: "Master AI-powered product management! Build prototypes and validate ideas with AI tools.",
+    title: "Certified AI Product Manager™ Training (2026)",
+    description: "2026: Master AI-powered product management! Build prototypes and validate ideas with AI tools.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/certified-ai-product-manager",

@@ -7,8 +7,9 @@ import {
 } from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Agile36 - Your Agile & AI Training Partner",
-  description: "Get in touch with Agile36 for enterprise agile training, AI transformation services, and certification programs. Call (310) 620-7966 or email d.stevenson@agile36.com",
+  title: "Contact Agile36 (2026) | SAFe & AI Training Partner",
+  description:
+    "2026: Contact Agile36 for enterprise SAFe training, AI upskilling, and certification paths. Call (310) 620-7966 or email d.stevenson@agile36.com.",
   keywords: [
     "contact agile36",
     "agile training support",
@@ -19,8 +20,9 @@ export const metadata: Metadata = {
     "certification support"
   ],
   openGraph: {
-    title: "Contact Us | Agile36",
-    description: "Get in touch with Agile36 for enterprise agile training, AI transformation services, and certification programs.",
+    title: "Contact Agile36 (2026)",
+    description:
+      "Reach Agile36 for 2026 SAFe cohorts, private training, and AI transformation inquiries.",
     type: "website",
     url: "https://www.agile36.com/contact",
     images: [
