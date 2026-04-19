@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import {
+  SCHEMA_ORGANIZATION_ID,
+  SCHEMA_ORGANIZATION_LOGO_URL,
+} from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
   title: "Contact Us | Agile36 - Your Agile & AI Training Partner",
@@ -43,25 +47,36 @@ export default function ContactLayout({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.agile36.com/contact#localbusiness",
     "name": "Agile36",
     "description": "Enterprise Agile and AI training provider offering SAFe, Scrum, Generative AI, and project management certifications worldwide.",
     "url": "https://www.agile36.com",
+    "image": {
+      "@type": "ImageObject",
+      "url": SCHEMA_ORGANIZATION_LOGO_URL,
+      "width": 512,
+      "height": 512,
+    },
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "US"
+      "addressCountry": "US",
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": "34.0522",
-      "longitude": "-118.2437"
+      "longitude": "-118.2437",
     },
-    "areaServed": "Worldwide",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide",
+      "description":
+        "Live virtual instructor-led training; English-language delivery; US-based team.",
+    },
     "openingHours": "Mo-Fr 09:00-18:00",
-    "sameAs": [
-      "https://www.linkedin.com/company/agile36"
-    ]
+    "sameAs": ["https://www.linkedin.com/company/agile36"],
+    "parentOrganization": { "@id": SCHEMA_ORGANIZATION_ID },
   };
 
   // FAQ Schema for Contact Page

@@ -1,5 +1,11 @@
+import {
+  SCHEMA_ORGANIZATION_ID,
+  SCHEMA_ORGANIZATION_LOGO_URL,
+} from "@/app/lib/schema-site";
+
 const SITE = "https://www.agile36.com";
-const DEFAULT_IMAGE = `${SITE}/Agile36%20logo%20design%20on%20white%20background-Photoroom.png`;
+/** Default article image; dimensions match intrinsic logo asset (see schema-site). */
+const DEFAULT_IMAGE = SCHEMA_ORGANIZATION_LOGO_URL;
 const DEADRA_LINKEDIN = "https://www.linkedin.com/in/deadra-stevenson-a20a6a1a2/";
 
 function toIsoDateAtNoon(value?: string): string {
@@ -81,18 +87,8 @@ export function buildBlogPostingGraph(input: {
     datePublished: pub,
     dateModified: mod,
     author,
-    publisher: {
-      "@type": "Organization",
-      "@id": `${SITE}/#organization`,
-      name: "Agile36",
-      url: SITE,
-      logo: {
-        "@type": "ImageObject",
-        url: DEFAULT_IMAGE,
-        width: 512,
-        height: 512,
-      },
-    },
+    /** Single graph node on site root — avoids duplicate Organization vs EducationalOrganization @id clash. */
+    publisher: { "@id": SCHEMA_ORGANIZATION_ID },
     articleSection: input.articleSection,
     inLanguage: "en-US",
   };
@@ -140,8 +136,8 @@ export function buildGeneratedBlogPostingGraph(opts: {
     dateModified: opts.updated ?? opts.date,
     authorName,
     imageUrl: DEFAULT_IMAGE,
-    imageWidth: 1200,
-    imageHeight: 630,
+    imageWidth: 512,
+    imageHeight: 512,
     articleSection: opts.articleSection,
     keywords: opts.keywords ?? [],
     wordCount: countWords(opts.content),
@@ -166,8 +162,8 @@ export function buildEditorialBlogPostingGraph(opts: {
     dateModified: opts.date,
     authorName,
     imageUrl: DEFAULT_IMAGE,
-    imageWidth: 1200,
-    imageHeight: 630,
+    imageWidth: 512,
+    imageHeight: 512,
     articleSection: opts.articleSection,
     keywords: [],
     wordCount: opts.wordCount,

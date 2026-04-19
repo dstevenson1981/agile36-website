@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import { SCHEMA_ORGANIZATION_ID, SCALED_AGILE_TRAINING_FEEDBACK_URL } from "@/app/lib/schema-site";
+import {
+  SCHEMA_ORGANIZATION_ID,
+  SCHEMA_ORGANIZATION_LOGO_URL,
+  SCALED_AGILE_TRAINING_FEEDBACK_URL,
+} from "@/app/lib/schema-site";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -40,7 +44,12 @@ export default function RootLayout({
     "name": "Agile36",
     "alternateName": "Agile 36",
     "url": "https://www.agile36.com",
-    "logo": "https://www.agile36.com/Agile36%20logo%20design%20on%20white%20background-Photoroom.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": SCHEMA_ORGANIZATION_LOGO_URL,
+      "width": 512,
+      "height": 512,
+    },
     "description": "Agile36 provides enterprise Agile and AI training including SAFe, Scrum, Generative AI, and AI Product certifications. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
