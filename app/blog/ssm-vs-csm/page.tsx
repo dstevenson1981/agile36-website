@@ -329,10 +329,10 @@ export default async function SsmVsCsmBlogPost() {
             </li>
           </ul>
 
-          <PullQuote attribution="Enterprise hiring manager quoted in a 2025 Scrum Master survey">
-            Seventy percent of our Scrum Master postings now require SAFe
-            credentials. CSM used to be the default. It isn&apos;t anymore —
-            for us.
+          <PullQuote attribution="Paraphrased from enterprise hiring managers in Agile36 classes (anecdotal, not a published survey)">
+            In many of our clients&apos; Scrum Master postings, SAFe credentials
+            show up more often than they did five years ago — especially when
+            the role sits on an ART. Your market may differ; read local job ads.
           </PullQuote>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">
@@ -486,7 +486,8 @@ export default async function SsmVsCsmBlogPost() {
             </li>
             <li>
               <strong>Job hunting in enterprise or federal:</strong> SSM.
-              Roughly 70% of enterprise Scrum Master postings list it.
+              Scan postings in your target geography — SAFe appears frequently
+              where ARTs and PI Planning are in scope.
             </li>
             <li>
               <strong>Working at a startup or small product company:</strong>{" "}
