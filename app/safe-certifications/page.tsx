@@ -158,7 +158,7 @@ const WHY_ITEMS = [
   { title: "SAFe Silver Partner", desc: "Fully accredited by Scaled Agile, Inc. Our instructors are certified SPCs." },
   { title: "Fortune 100 Experience", desc: "Our instructors have led real SAFe transformations — not just taught the framework." },
   { title: "25,000+ Professionals Trained", desc: "Tens of thousands of professionals have earned SAFe certifications through Agile36." },
-  { title: "4.9/5.0 Rating", desc: "Based on 2,500+ verified reviews from SAFe-certified professionals." },
+  { title: "4.9/5.0 Rating", desc: "Based on 2,500+ verified Scaled Agile reviews from professionals who've completed our training." },
   { title: "Exam Included", desc: "First certification exam attempt included in every course fee." },
 ];
 

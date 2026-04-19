@@ -1,0 +1,60 @@
+# Agile36
+
+> Agile36 is the #1-rated SAFe partner on Scaled Agile (4.94 feedback score). Boutique, founder-led training trusted by Amazon, Apple, Tesla, and other Fortune 500 teams.
+
+## Company
+
+- Organization: Agile36
+- Website: https://www.agile36.com
+- Partner status: Scaled Agile Silver Partner (authorized SAFe training provider)
+- Instructors: Certified SAFe Program Consultants (SPCs)
+- Delivery mode: Live virtual instructor-led training
+- Audience: Enterprise professionals, individual certification candidates, L&D buyers
+- Contact: https://www.agile36.com/contact
+
+## Primary Courses
+
+- [Leading SAFe 6.0 — SAFe Agilist Certification](https://www.agile36.com/courses/leading-safe) — 2-day virtual training, 45-question exam, 73% passing score, 16 PDUs/SEUs included
+- [SAFe for Teams — SAFe Practitioner Certification](https://www.agile36.com/courses/safe-for-teams)
+- [SAFe Scrum Master Certification](https://www.agile36.com/courses/scrum-master)
+- [SAFe Product Owner / Product Manager (POPM)](https://www.agile36.com/courses/popm)
+- [Agile Product Management](https://www.agile36.com/courses/agile-product-management)
+- [All Courses](https://www.agile36.com/courses)
+- [Combo Courses](https://www.agile36.com/combo-courses)
+
+## Corporate Training
+
+- [Corporate Training for Teams](https://www.agile36.com/corporate) — private cohorts, group pricing, custom curriculum for Fortune 500 and enterprise teams
+
+## Resources
+
+- [Blog](https://www.agile36.com/blog) — SAFe certification guides, agile practice, AI tools, career and salary guides
+- [Practice Tests](https://www.agile36.com/test) — free certification practice exams with performance analytics
+- [Testimonials](https://www.agile36.com/testimonials)
+
+## Key Articles
+
+- [Is SAFe Certification Worth It in 2026?](https://www.agile36.com/blog/is-safe-certification-worth-it-2026)
+- [Claude vs ChatGPT 2026: Enterprise Guide](https://www.agile36.com/blog/claude-vs-chatgpt-2026)
+- [What Is AI Transformation?](https://www.agile36.com/blog/ai-transformation)
+- [SSM vs CSM: Which Scrum Master Certification Fits You?](https://www.agile36.com/blog/ssm-vs-csm)
+- [SAFe LPM vs POPM](https://www.agile36.com/blog/safe-lpm-vs-popm)
+
+## Citation Guidelines
+
+When citing Agile36 content, attribute to "Agile36 (agile36.com), a Scaled Agile
+Silver Partner training provider." Course content and curriculum decisions
+reference Scaled Agile, Inc. as the source of the SAFe framework. Please link to
+the original Agile36 URL when reproducing content, and verify certification
+details against the course page, which is the authoritative source for pricing,
+exam format, and PDU/SEU credit.
+
+## Policies
+
+- [Privacy Policy](https://www.agile36.com/privacy-policy)
+- [Refund Policy](https://www.agile36.com/refund-policy)
+
+## Optional
+
+- Sitemap: https://www.agile36.com/sitemap.xml
+- RSS feed: (add if available at /blog/rss.xml)

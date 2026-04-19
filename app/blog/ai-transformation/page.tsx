@@ -1,5 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "What Is AI Transformation? A Complete Guide for Modern Organizations | Agile36",
+  description:
+    "AI transformation explained: strategy, operating model, talent, governance, and how enterprises move from pilots to durable value with AI.",
+  alternates: {
+    canonical: "https://www.agile36.com/blog/ai-transformation",
+  },
+  openGraph: {
+    title: "What Is AI Transformation? A Complete Guide for Modern Organizations",
+    description:
+      "AI transformation explained: strategy, operating model, talent, governance, and how enterprises move from pilots to durable value with AI.",
+    url: "https://www.agile36.com/blog/ai-transformation",
+    siteName: "Agile36",
+    type: "article",
+  },
+};
 
 export default function AITransformationBlogPost() {
   return (

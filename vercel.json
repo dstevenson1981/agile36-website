@@ -1,0 +1,38 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "agile36.com" }],
+      "destination": "https://www.agile36.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/safe-training-:city",
+      "destination": "/courses/leading-safe",
+      "permanent": true
+    },
+    {
+      "source": "/safe-certification-:city",
+      "destination": "/courses/leading-safe",
+      "permanent": true
+    }
+  ]
+}

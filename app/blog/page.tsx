@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "Blog | Agile36 — SAFe, Agile, AI & Career Guides",
   description:
     "Browse articles by category: SAFe certifications, agile glossary, AI tools, careers, industry insights, and frameworks.",
+  alternates: {
+    canonical: "https://www.agile36.com/blog",
+  },
+  openGraph: {
+    url: "https://www.agile36.com/blog",
+    siteName: "Agile36",
+    type: "website",
+  },
 };
 
 export default async function BlogIndexPage() {

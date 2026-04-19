@@ -1,0 +1,59 @@
+# robots.txt for agile36.com
+# Drop into: public/robots.txt (Next.js serves /public/* at the root)
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /account/
+Disallow: /*?*utm_
+Disallow: /*?*gclid=
+Disallow: /*?*fbclid=
+
+# AI crawlers — explicitly allowed.
+# If you ever want to opt OUT of any of these, change "Allow: /" to "Disallow: /"
+# under the matching User-agent block. These are the current major AI crawler UAs.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# Sitemap declaration
+Sitemap: https://www.agile36.com/sitemap.xml

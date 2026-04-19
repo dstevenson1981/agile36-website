@@ -1,5 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Top AI Tools Every Product Manager Should Know in 2025 | Agile36",
+  description:
+    "A practical tour of AI tools product managers use for research, roadmapping, writing, analytics, and delivery — with adoption tips for enterprise teams.",
+  alternates: {
+    canonical: "https://www.agile36.com/blog/ai-tools-product-managers",
+  },
+  openGraph: {
+    title: "Top AI Tools Every Product Manager Should Know in 2025",
+    description:
+      "A practical tour of AI tools product managers use for research, roadmapping, writing, analytics, and delivery — with adoption tips for enterprise teams.",
+    url: "https://www.agile36.com/blog/ai-tools-product-managers",
+    siteName: "Agile36",
+    type: "article",
+  },
+};
 
 export default function AIToolsProductManagersBlogPost() {
   return (

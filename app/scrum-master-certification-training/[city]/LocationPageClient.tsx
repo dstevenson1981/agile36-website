@@ -3,8 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useParams } from "next/navigation";
 
-export default function ScrumMasterCoursePage() {
+export default function CitySSMCoursePage() {
+  const params = useParams();
+  const city = params?.city as string;
+  
+  // Convert slug to display name (e.g., "new-york" -> "New York")
+  const cityDisplayName = city
+    ? city
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    : '';
+
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [showAssessmentModal, setShowAssessmentModal] = useState(false);
   const [assessmentFormData, setAssessmentFormData] = useState({
@@ -40,7 +52,7 @@ export default function ScrumMasterCoursePage() {
         body: JSON.stringify({
           name: assessmentFormData.name,
           email: assessmentFormData.email,
-          source: 'SA Free Assessment',
+          source: 'Free SSM Assessment',
           exam_name: examName
         }),
       });
@@ -72,24 +84,26 @@ export default function ScrumMasterCoursePage() {
             <span>/</span>
             <span className="text-[#01203d]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">AI-Empowered SAFe Scrum Master Certification Training</span>
+            <span className="text-[#01203d]">SAFe Scrum Master Certification Training</span>
+            {cityDisplayName && (
+              <>
+                <span>/</span>
+                <span className="text-[#01203d]">{cityDisplayName}</span>
+              </>
+            )}
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Content */}
             <div className="space-y-6">
-              {/* SSM Badge, Rating and Enrolled */}
-              <div className="flex items-center gap-6 flex-wrap">
-                {/* SSM Badge */}
-                <div className="w-16 h-16 flex-shrink-0">
-                  <Image
-                    src="/SSM.jpeg"
-                    alt="SAFe Scrum Master Badge"
-                    width={64}
-                    height={64}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+              {/* Category Badge */}
+              <div className="flex items-center gap-2">
+                <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                <span className="text-sm text-gray-500">SAFe Scrum Master Certification Training</span>
+              </div>
+
+              {/* Rating and Enrolled */}
+              <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
@@ -101,90 +115,65 @@ export default function ScrumMasterCoursePage() {
                   <span className="text-lg font-semibold text-gray-900">5.0</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
-                  <span className="text-lg font-semibold text-gray-900">25,000+ enrolled</span>
-                </div>
-                {/* English Language Indicator */}
-                <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                  <span className="text-sm font-semibold text-blue-700">English</span>
-                </div>
-                {/* Certification Exam Included Badge */}
-                <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg border-2 border-green-500">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
+                  <span className="text-lg font-semibold text-gray-900">9K+ Enrolled</span>
                 </div>
               </div>
 
               {/* Title */}
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                  AI-Empowered SAFe® Scrum Master (SSM) Certification Training
+                  SAFe® 6.0 Scrum Master (SSM) Certification Training
+                  {cityDisplayName && (
+                    <span className="block text-3xl md:text-4xl mt-2">in {cityDisplayName}</span>
+                  )}
                 </h1>
-                <p className="text-xl text-gray-900 font-bold mb-4">
-                  Become a certified AI-Empowered SAFe Scrum Master in 2 days. Live, expert-led training from a SAFe Silver Partner with Fortune 100 experience.
+                <p className="text-lg text-gray-700 font-semibold">
+                  Master Scrum Master with SAFe® SSM Training That Delivers Real Value
                 </p>
+              </div>
 
-                {/* Key Stats Bar */}
-                <div className="flex flex-wrap gap-4 mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#01203d]">2-Day Live Training</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#01203d]">Exam Fee Included</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#01203d]">16 PDUs & SEUs</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#01203d]">SAFe Silver Partner</span>
-                  </div>
-                </div>
-                
-                {/* Key Benefits with Checkmarks */}
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Join 16 Hrs of Live Online Training by Certified SAFe® SSM Trainers",
-                    "Learn Real-World Case Studies & Hands-On Scrum Master Exercises",
-                    "Exam Fee Included in Training | Get Support for SAFe® SSM Exam",
-                    "Earn 16 PDUs & SEUs with SAFe® 6 SSM Certification Course",
-                    "Access to SAFe® Community & Career Resources"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Features List */}
+              <div className="space-y-3">
+                {[
+                  "Join 16 Hrs of Live Online Training by Certified SAFe® SSM Trainers",
+                  "Learn Real-World Case Studies & Hands-On Portfolio Exercises",
+                  "Exam Fee Included in Training | Get Support for SAFe® SSM Exam",
+                  "Earn 16 PDUs & SEUs with SAFe® 6 SSM Certification Course",
+                  "Access to SAFe® Community & Career Resources"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex-shrink-0 mt-0.5">
+                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-gray-700">{item}</span>
                     </div>
-                  ))}
-                </div>
+                    <p className="text-base text-gray-700">{feature}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Accredited By */}
               <div className="flex items-center gap-4 pt-4">
                 <span className="text-base font-semibold text-gray-900">Accredited by</span>
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
+                  <div className="w-16 h-16 rounded flex items-center justify-center overflow-hidden">
                     <Image
                       src="/Silver.png"
                       alt="Scaled Agile Silver Partner"
-                      width={80}
-                      height={80}
+                      width={64}
+                      height={64}
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
+                  <div className="w-16 h-16 rounded flex items-center justify-center overflow-hidden">
                     <Image
-                    src="/SSM.jpeg"
-                    alt="SAFe Scrum Master Certification Badge"
-                      width={80}
-                      height={80}
+                      src="/SSM.jpeg"
+                      alt="SAFe Scrum Master"
+                      width={64}
+                      height={64}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -218,23 +207,11 @@ export default function ScrumMasterCoursePage() {
                   Free SSM Assessment
                 </button>
               </div>
-
-              <div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <p className="text-sm font-semibold text-gray-900 mb-2">Related reading</p>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-2 text-sm">
-                  <Link href="/blog/ssm-vs-csm" className="text-[#01203d] underline hover:text-[#134263] font-medium">
-                    SSM vs CSM comparison →
-                  </Link>
-                  <Link href="/blog/safe-scrum-master-exam-questions" className="text-[#01203d] underline hover:text-[#134263] font-medium">
-                    SAFe Scrum Master exam questions →
-                  </Link>
-                </div>
-              </div>
             </div>
 
             {/* Right Side - Image Card */}
             <div className="lg:flex lg:justify-end">
-              <div className="max-w-md w-full mt-8 lg:mt-20">
+              <div className="max-w-md w-full">
                 <img 
                   src="/SSM_Header.jpg" 
                   alt="SAFe Scrum Master" 
@@ -321,7 +298,7 @@ export default function ScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main content area - 2 columns */}
-            <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-12">
               {/* Tabs Navigation */}
               <div className="border-b border-gray-200">
                 <nav className="flex space-x-8">
@@ -351,28 +328,25 @@ export default function ScrumMasterCoursePage() {
                 {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
+                      <h2 className="text-3xl font-bold text-gray-900 mb-4">Course Overview</h2>
                       <p className="text-base text-gray-700 mb-4">
-                        SAFe Scrum Master is a comprehensive 2-day course that provides the knowledge and skills needed to effectively facilitate team success, coach Agile teams, and support Program Increment (PI) planning in a SAFe environment. This course prepares you to take the SAFe® Scrum Master (SSM) certification exam.
+                        SAFe Scrum Master® 6.0 is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). This course prepares you to take the SAFe® Scrum Master (SSM) certification exam.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        During this two-day course, you'll learn how to facilitate team events, coach Agile teams, support Program Increment (PI) planning, and remove impediments. You'll master Scrum Master responsibilities, facilitate team ceremonies, and support Agile Release Trains. The course emphasizes servant leadership and team facilitation.
+                        During this two-day course, you'll learn how to lead an enterprise Agile transformation by leveraging the Scaled Agile Framework. You'll understand how to establish team and technical agility, organize around value, and lead the transformation.
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        SAFe® Scrum Master (SSM) certification training offers a variety of learning opportunities that can benefit professionals involved in Agile team facilitation, Scrum practices, and Agile Release Train support.
-                      </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
-                          "Facilitate team events and ceremonies",
-                          "Coach Agile teams and support continuous improvement",
-                          "Support Program Increment (PI) planning",
-                          "Remove impediments and foster team collaboration",
-                          "Apply SAFe principles in team context",
-                          "Support Agile Release Trains effectively"
+                          "Understanding SAFe principles and values",
+                          "Leading Lean-Agile transformations",
+                          "Establishing team and technical agility",
+                          "Organizing around value streams",
+                          "Implementing Lean Portfolio Management",
+                          "Building a culture of continuous improvement"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -387,11 +361,11 @@ export default function ScrumMasterCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
                       <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                        <li>Scrum Masters and Agile Coaches</li>
-                        <li>Team Leads and Facilitators</li>
-                        <li>Agile Practitioners</li>
-                        <li>Project Managers transitioning to Agile</li>
-                        <li>Anyone interested in facilitating Agile teams in SAFe</li>
+                        <li>Executives and leaders driving Agile transformations</li>
+                        <li>Agile coaches and consultants</li>
+                        <li>Program and portfolio managers</li>
+                        <li>Product and solution managers</li>
+                        <li>Anyone interested in leading enterprise Agile transformations</li>
                       </ul>
                     </div>
 
@@ -428,33 +402,33 @@ export default function ScrumMasterCoursePage() {
                       </div>
                     </div>
 
-                    {/* What is Leading SAFe Training */}
+                    {/* What is SAFe Scrum Master Training */}
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">What is SAFe Scrum Master training?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        SAFe Scrum Master Training is a certification program designed to help professionals understand and effectively facilitate Agile teams within the Scaled Agile Framework (SAFe). This comprehensive 2-day course covers Scrum Master responsibilities, facilitating team events, coaching Agile teams, supporting PI planning, and removing impediments. You'll learn to apply SAFe principles and support Agile Release Trains.
+                        SAFe Scrum Master Training is a certification program designed to help professionals understand and effectively manage products within the Scaled Agile Framework (SAFe). This comprehensive course covers the principles, practices, and tools needed to drive continuous exploration, optimize product value, and deliver business outcomes in a SAFe environment.
                       </p>
                       <p className="text-base text-gray-700">
-                        The training prepares participants for the SAFe Scrum Master (SSM) certificate exam, providing them with the knowledge and skills to work effectively as Scrum Masters in a SAFe environment, facilitating team success and supporting Agile Release Trains.
+                        The training prepares participants for the SAFe Scrum Master certificate exam, providing them with the knowledge and skills to scale Agile practices across large organizations and deliver value more effectively.
                       </p>
                     </div>
 
-                    {/* Why Leading SAFe */}
+                    {/* Why SAFe Scrum Master */}
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">Why SAFe Scrum Master?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        The SAFe Scrum Master Certification empowers professionals to effectively facilitate Agile teams in a SAFe environment. It provides a comprehensive understanding of how to coach teams, facilitate ceremonies, support PI planning, and remove impediments to team success.
+                        The SAFe Scrum Master® Certification empowers professionals to lead Agile transformations at an enterprise scale. It provides a comprehensive understanding of how to apply Lean-Agile principles across multiple teams and departments, ensuring alignment and continuous delivery of value.
                       </p>
                       <p className="text-base text-gray-700 mb-4">
-                        By earning this certification, you gain the expertise to support Agile Release Trains, facilitate team events, and foster continuous improvement. The certification is recognized globally and opens doors to Scrum Master, Agile Coach, and Team Facilitator roles in Agile organizations.
+                        By earning this certification, you gain the expertise to coordinate multiple teams, enhance collaboration, and deliver continuous value to customers. The certification is recognized globally and opens doors to leadership roles in Agile organizations.
                       </p>
                       <div className="bg-blue-50 border-l-4 border-[#006f] p-6 my-6">
                         <p className="text-base text-gray-700 font-semibold mb-2">Key Benefits:</p>
                         <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
-                          <li>Master SAFe Scrum Master principles and practices</li>
-                          <li>Improve team facilitation and coaching skills</li>
-                          <li>Accelerate team performance through effective facilitation</li>
-                          <li>Increase organizational agility through team support</li>
+                          <li>Lead enterprise-wide Agile transformations</li>
+                          <li>Improve team collaboration and alignment</li>
+                          <li>Accelerate time-to-market for products and services</li>
+                          <li>Increase customer satisfaction through continuous delivery</li>
                           <li>Enhance career prospects with globally recognized certification</li>
                         </ul>
                       </div>
@@ -464,21 +438,21 @@ export default function ScrumMasterCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in SAFe Scrum Master Certification Training?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        Complete your SAFe Scrum Master certification course to gain the practical tools and knowledge needed to effectively facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment. This comprehensive training covers all aspects of Scrum Master responsibilities in SAFe.
+                        Complete your SAFe Agile certification course to gain the practical tools and leadership mindset needed to scale agility across your organization. This comprehensive training covers all aspects of the Scaled Agile Framework.
                       </p>
                       <p className="text-base text-gray-700 mb-6">
-                        Through SAFe Scrum Master Certification, you will learn:
+                        Through SAFe Scrum Master Agilist Certification, you will learn:
                       </p>
                       <div className="space-y-4">
                         {[
-                          "Facilitate team events and ceremonies effectively",
-                          "Coach Agile teams and support continuous improvement",
-                          "Support Program Increment (PI) planning",
-                          "Remove impediments and foster team collaboration",
-                          "Apply SAFe principles in team context",
-                          "Support Agile Release Trains effectively",
-                          "Facilitate team retrospectives and improvements",
-                          "Build high-performing Agile teams"
+                          "How to apply SAFe principles and values in your organization",
+                          "Techniques for establishing team and technical agility",
+                          "Methods for organizing around value streams",
+                          "Strategies for implementing Lean Portfolio Management",
+                          "Approaches to building a culture of continuous improvement",
+                          "Best practices for leading Agile Release Trains (ARTs)",
+                          "How to facilitate PI Planning events",
+                          "Techniques for managing dependencies and risks"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">
@@ -494,59 +468,67 @@ export default function ScrumMasterCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Who Should Attend SAFe Scrum Master Training</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for SAFe Scrum Master Certification Training Course?</h3>
                       <p className="text-base text-gray-700 mb-4">
-                        This course is ideal for:
+                        There are no prerequisites to enroll in the <strong>SAFe Scrum Master Certification course.</strong> However, it is recommended for professionals to have:
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700 mb-4">
-                        <li>Current Scrum Masters looking to operate in a SAFe enterprise</li>
-                        <li>Team leads transitioning to an Agile role</li>
-                        <li>Project managers moving into Agile facilitation</li>
-                        <li>Anyone on an Agile Release Train (ART)</li>
-                      </ul>
-                      <p className="text-base text-gray-700 font-semibold mb-2">Recommended (not required):</p>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Basic understanding of Scrum or Agile principles</p>
+                          <p className="text-base text-gray-700">Basic understanding of Agile principles and practices</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Familiarity with iteration-based delivery</p>
+                          <p className="text-base text-gray-700">Experience working in software development or IT projects</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                          <p className="text-base text-gray-700">Interest in leading organizational change and transformation</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                          <p className="text-base text-gray-700">Willingness to learn and apply SAFe principles in your work environment</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Career & Salary */}
+                    {/* Career Advancement */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for SAFe Scrum Masters</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® Agile Certification Advance Your Career?</h3>
+                      <p className="text-base text-gray-700 mb-4">
+                        Earning your SAFe Scrum Master certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to lead Agile transformations and manage complex enterprise-level initiatives.
+                      </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Average Salary</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Career Growth</h4>
                           <p className="text-base text-gray-700">
-                            $95,000–$130,000 (US)
+                            SAFe certification positions you for leadership roles in Agile organizations, including Agile Coach, Release Train Engineer, and Enterprise Agile Coach positions.
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Common Roles</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Salary Increase</h4>
                           <p className="text-base text-gray-700">
-                            SAFe Scrum Master, Agile Coach, Release Train Engineer
+                            Certified SAFe professionals typically earn 20-30% more than their non-certified peers, with salaries ranging from $100,000 to $150,000+ depending on experience and location.
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Top Hiring Industries</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Industry Recognition</h4>
                           <p className="text-base text-gray-700">
-                            Financial services, healthcare, federal government, technology
+                            The SAFe certification is recognized by top organizations worldwide, including Fortune 500 companies, making you a valuable asset in the job market.
                           </p>
                         </div>
                         <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Demand</h4>
+                          <h4 className="font-bold text-gray-900 mb-3">Network Expansion</h4>
                           <p className="text-base text-gray-700">
-                            70% of Fortune 100 companies use SAFe — certified professionals are in high demand
+                            Join a global community of 1+ million SAFe professionals, access exclusive resources, and connect with industry leaders through the SAFe Community Platform.
                           </p>
                         </div>
                       </div>
@@ -588,41 +570,30 @@ export default function ScrumMasterCoursePage() {
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Scrum Master (SSM) Exam Details</h3>
+                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Scrum Master Exam Information</h3>
                       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, single select</p>
+                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
+                            <p className="text-base text-gray-700">Multiple choice, 45 questions</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Questions:</p>
-                            <p className="text-base text-gray-700">45</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Time Limit:</p>
+                            <p className="font-semibold text-gray-900 mb-2">Duration:</p>
                             <p className="text-base text-gray-700">90 minutes</p>
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">73% (33 out of 45 correct)</p>
+                            <p className="text-base text-gray-700">35 out of 45 (77%)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Delivery:</p>
-                            <p className="text-base text-gray-700">Online, open book</p>
+                            <p className="font-semibold text-gray-900 mb-2">Exam Fee:</p>
+                            <p className="text-base text-gray-700">Included with course enrollment</p>
                           </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Window:</p>
-                            <p className="text-base text-gray-700">Must be taken within 30 days of course completion</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Retake Cost:</p>
-                            <p className="text-base text-gray-700">$50 per attempt (paid to Scaled Agile)</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Certification Valid:</p>
-                            <p className="text-base text-gray-700">1 year (renewal fee: $195/year)</p>
-                          </div>
+                        </div>
+                        <div className="pt-4 border-t border-gray-200">
+                          <p className="text-base text-gray-700 mb-2">
+                            <strong>Note:</strong> The exam can be taken online from anywhere, and you have 30 days after course completion to take the exam. If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -631,86 +602,24 @@ export default function ScrumMasterCoursePage() {
 
                 {activeTab === "curriculum" && (
                   <div className="space-y-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <div>
-                        <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">SAFe® Scrum Master Certification Course Curriculum</h2>
-                      </div>
-                      <a 
-                        href="/SSM_Agile36_Brochure.pdf" 
-                        download
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Download Curriculum
-                      </a>
-                    </div>
-                    {/* Learning Objectives Section */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Learning Objectives</h3>
-                      <p className="text-base text-gray-700 mb-4">
-                        By the end of this course, you will be able to:
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-3">
-                        {[
-                          "Facilitate team events and ceremonies effectively",
-                          "Coach Agile teams and support continuous improvement",
-                          "Support Program Increment (PI) planning",
-                          "Remove impediments and foster team collaboration",
-                          "Apply SAFe principles in team context",
-                          "Support Agile Release Trains effectively",
-                          "Facilitate team retrospectives and improvements",
-                          "Build high-performing Agile teams"
-                        ].map((objective, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-base text-gray-700">{objective}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Course Curriculum</h2>
                     <div className="space-y-4">
                       {[
-                        { 
-                          module: "Module 1: Introducing Scrum in SAFe®",
-                          expanded: false
-                        },
-                        { 
-                          module: "Module 2: Defining the Scrum Master / Team Coach role",
-                          expanded: false
-                        },
-                        { 
-                          module: "Module 3: Supporting Team Events",
-                          expanded: false
-                        },
-                        { 
-                          module: "Module 4: Supporting ART Events",
-                          expanded: false
-                        },
-                        { 
-                          module: "Module 5: AI and the Future of the Scrum Master Role",
-                          expanded: false
-                        }
-                      ].map((module, index) => (
-                        <div key={index} className="border border-blue-200 rounded-lg bg-white">
-                          <button
-                            className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
-                            onClick={() => {
-                              // Toggle expansion logic can be added here if needed
-                            }}
-                          >
-                            <span className="text-lg font-semibold text-gray-900">{module.module}</span>
-                            <svg className="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </button>
+                        { day: "Day 1", topics: ["Introduction to SAFe", "Becoming a Lean-Agile Leader", "Establishing Team and Technical Agility", "Building Solutions with Agile Product Delivery"] },
+                        { day: "Day 2", topics: ["Exploring Lean Portfolio Management", "Leading the Transformation", "Exam Preparation", "Practice Exam"] }
+                      ].map((day, index) => (
+                        <div key={index} className="border border-gray-200 rounded-lg p-6">
+                          <h3 className="text-xl font-bold text-gray-900 mb-4">{day.day}</h3>
+                          <ul className="space-y-2">
+                            {day.topics.map((topic, topicIndex) => (
+                              <li key={topicIndex} className="flex items-start gap-3">
+                                <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span className="text-base text-gray-700">{topic}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       ))}
                     </div>
@@ -735,51 +644,51 @@ export default function ScrumMasterCoursePage() {
                     <div className="space-y-6">
                       {[
                         { 
-                          name: "Brian Mitchell", 
+                          name: "Sarah Chen", 
+                          role: "Senior Product Manager", 
+                          review: "Excellent course! The instructors were knowledgeable and the material was comprehensive. I passed the exam on my first try. Highly recommend for anyone looking to scale Agile practices.",
+                          rating: 5
+                        },
+                        { 
+                          name: "Michael Rodriguez", 
+                          role: "Agile Transformation Lead", 
+                          review: "The SAFe Scrum Master training exceeded my expectations. The real-world examples and case studies made the concepts easy to understand. The practice exam was particularly helpful.",
+                          rating: 5
+                        },
+                        { 
+                          name: "Emily Thompson", 
+                          role: "Program Manager", 
+                          review: "As someone new to SAFe, this course provided a solid foundation. The instructors were patient and answered all my questions. The certification process was straightforward.",
+                          rating: 5
+                        },
+                        { 
+                          name: "David Kim", 
+                          role: "Enterprise Agile Coach", 
+                          review: "Outstanding training program! The content is well-structured and the instructors bring years of practical experience. I've already applied many concepts in my organization.",
+                          rating: 5
+                        },
+                        { 
+                          name: "Jennifer Martinez", 
+                          role: "Release Train Engineer", 
+                          review: "This course helped me understand the bigger picture of SAFe implementation. The interactive sessions and group discussions were valuable. Worth every penny!",
+                          rating: 5
+                        },
+                        { 
+                          name: "Robert Anderson", 
                           role: "Scrum Master", 
-                          review: "The SAFe Scrum Master course transformed how I facilitate teams. The PI planning and iteration execution modules were game-changers. I passed the SSM exam on my first attempt!",
+                          review: "The SAFe Scrum Master certification has opened new career opportunities for me. The training materials are comprehensive and the exam preparation was thorough.",
                           rating: 5
                         },
                         { 
-                          name: "Catherine Wong", 
-                          role: "Agile Coach", 
-                          review: "Outstanding training! The focus on team facilitation and coaching gave me practical tools I use daily. The instructors' real-world examples made complex SAFe concepts clear.",
+                          name: "Lisa Wang", 
+                          role: "Portfolio Manager", 
+                          review: "I appreciated the focus on practical application. The instructors shared real-world challenges and solutions. The course exceeded my expectations in every way.",
                           rating: 5
                         },
                         { 
-                          name: "Derek Thompson", 
-                          role: "Team Lead", 
-                          review: "As a Team Lead transitioning to Scrum Master, this course provided exactly what I needed. The facilitation techniques and impediment removal lessons were particularly valuable. Highly recommend!",
-                          rating: 5
-                        },
-                        { 
-                          name: "Elena Rodriguez", 
-                          role: "Senior Scrum Master", 
-                          review: "The SAFe SSM certification has elevated my facilitation skills significantly. The Agile Release Train support module helped me better serve my teams. Worth every penny!",
-                          rating: 5
-                        },
-                        { 
-                          name: "Franklin Lee", 
-                          role: "Agile Facilitator", 
-                          review: "Excellent course structure! The two-day format was intensive but well-paced. I've already applied the team coaching and facilitation frameworks in my organization with great results.",
-                          rating: 5
-                        },
-                        { 
-                          name: "Gabriela Silva", 
-                          role: "Scrum Master", 
-                          review: "The SAFe SSM training exceeded expectations. The case studies on PI planning and team ceremonies were incredibly practical. The exam preparation was thorough and effective.",
-                          rating: 5
-                        },
-                        { 
-                          name: "Henry Chen", 
-                          role: "Agile Team Coach", 
-                          review: "This course helped me bridge the gap between Scrum and SAFe. The servant leadership and team facilitation principles are now core to my coaching approach.",
-                          rating: 5
-                        },
-                        { 
-                          name: "Isabella Martinez", 
-                          role: "Lead Scrum Master", 
-                          review: "Outstanding investment in professional development! The SAFe Scrum Master framework concepts are clearly explained with relevant examples. I feel confident facilitating Agile Release Trains now.",
+                          name: "James Wilson", 
+                          role: "IT Director", 
+                          review: "Excellent investment in professional development. The SAFe framework concepts are clearly explained with relevant examples. I feel confident leading Agile transformations now.",
                           rating: 5
                         }
                       ].map((review, index) => (
@@ -811,10 +720,10 @@ export default function ScrumMasterCoursePage() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                        { q: "What is the SAFe Scrum Master (SSM) certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of Scrum Master responsibilities in the Scaled Agile Framework and your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment." },
-                        { q: "How long is the certification valid?", a: "The SAFe Scrum Master (SSM) certification is valid for one year from the date of issue. You can renew it by earning continuing education credits or taking advanced SAFe courses." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live training over 2 days, comprehensive course materials, practice exam, and one year of access to the SAFe Community Platform." },
-                        { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners. Basic understanding of Scrum or Agile practices is recommended." }
+                        { q: "What is the SAFe Scrum Master certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
+                        { q: "How long is the certification valid?", a: "The SAFe Scrum Master certification is valid for one year from the date of issue. You can renew it by earning continuing education credits." },
+                        { q: "What is included in the course?", a: "The course includes 16 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
+                        { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-6">
                           <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
@@ -828,7 +737,7 @@ export default function ScrumMasterCoursePage() {
             </div>
 
             {/* Pricing Card - Sticky */}
-            <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
+            <div className="lg:sticky lg:top-24 h-fit">
               <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
                 <div className="text-center mb-6">
                   <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
@@ -887,7 +796,7 @@ export default function ScrumMasterCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-bold text-gray-900">SAFe Scrum Master Practice Test</h2>
+              <h2 className="text-4xl font-bold text-gray-900">SAFe Scrum Master® Practice Test</h2>
               <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
@@ -925,7 +834,7 @@ export default function ScrumMasterCoursePage() {
               {/* Title and Users */}
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-bold text-gray-900">
-                  SAFe Scrum Master Practice Test
+                  SAFe Scrum Master Practice Test | SAFe Scrum Master Mock Test
                 </h3>
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -947,7 +856,7 @@ export default function ScrumMasterCoursePage() {
                   <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-gray-700 font-medium">2 hours</span>
+                  <span className="text-base text-gray-700 font-medium">1 hours and 30 minutes</span>
                 </div>
               </div>
 
@@ -959,12 +868,12 @@ export default function ScrumMasterCoursePage() {
                   </svg>
                   <span className="text-base text-gray-700 font-medium">English</span>
                 </div>
-                <button
-                  onClick={() => setShowAssessmentModal(true)}
+                <Link
+                  href="/test/scrum-master"
                   className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold px-8 py-3 rounded-lg transition-colors"
                 >
                   Start Test
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -975,9 +884,9 @@ export default function ScrumMasterCoursePage() {
       <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Scrum Master Certification</p>
+            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Scrum Master® Certification</p>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">SAFe Scrum Master Certificate</h2>
+              <h2 className="text-2xl font-bold text-gray-900">SAFe 6.0 Agilist Certificate</h2>
               <div className="flex gap-1">
                 <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -992,8 +901,8 @@ export default function ScrumMasterCoursePage() {
           {/* Certificate Display */}
           <div className="bg-white border border-blue-200 rounded-lg overflow-hidden">
             <img
-              src="/SSM_Certification.jpeg"
-              alt="SAFe Scrum Master Certificate"
+              src="/SA Certificate.jpeg"
+              alt="SAFe 6.0 Agilist Certificate"
               className="w-full h-auto"
             />
           </div>
@@ -1004,8 +913,8 @@ export default function ScrumMasterCoursePage() {
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">SAFe Scrum Master Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Scrum Master Certification Course</h2>
+            <p className="text-sm text-gray-600 mb-2">SAFe Scrum Master® Course FAQs</p>
+            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Scrum Master® 6.0 Certification Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -1038,37 +947,36 @@ export default function ScrumMasterCoursePage() {
             {(() => {
               const faqs = {
                 courses: [
-                  { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. For questions, please email d.stevenson@agile36.com." },
+                  { q: "What if I miss a class? Are there any money back options?", a: "If you miss a class, you can attend the next available session at no additional cost. Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for more details." },
                   { q: "If I want to know more about Training, whom should I connect with?", a: "You can reach out to our course advisors through the 'Contact Course Advisor' button on this page, or call our support team. We're available to answer any questions about the training program, schedules, and enrollment." },
                   { q: "Is there any option to complete the Training in the native language if a participant chooses to?", a: "Currently, our SAFe Scrum Master training is conducted in English. However, we do offer course materials in multiple languages. Please contact us to discuss your specific language requirements." },
                   { q: "Can I receive personalized Training at my convenience?", a: "Yes, we offer private/corporate training sessions that can be scheduled at your convenience. Contact us to discuss your specific training needs and we'll work with you to create a customized schedule." },
                   { q: "Where do I find the upcoming schedules of my course?", a: "You can view all upcoming schedules by clicking the 'View Schedules' button on this page, or visit our course schedule page. Schedules are updated regularly and show both live virtual and in-person options." },
-                  { q: "After enrollment, can I change the date of my training class?", a: "Yes, participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time. All rescheduling requests must be submitted via email to d.stevenson@agile36.com so they can be processed promptly." },
-                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Scrum Master course and passing the certification exam, you'll receive the official SAFe Scrum Master (SSM) certificate from Scaled Agile, Inc." }
+                  { q: "After enrollment, can I change the date of my training class?", a: "Yes, you can reschedule your training class as long as it's within 24 hours of the start time at no additional charge. Please contact our support team to make changes to your enrollment." },
+                  { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe Scrum Master course and passing the certification exam, you'll receive the official SAFe 6.0 Agilist (SA) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "How is the SAFe Scrum Master different from a regular Scrum Master?", a: "The SAFe Scrum Master operates at enterprise scale — supporting not just one team but an entire Agile Release Train (ART). You'll learn PI Planning, program-level ceremonies, and how to coordinate across multiple teams, which goes well beyond traditional Scrum." },
-                  { q: "Is the SAFe SSM exam included in the course price?", a: "Yes. Your first exam attempt is included in your Agile36 course fee. The exam must be taken within 30 days of completing the course." },
-                  { q: "How long does SAFe Scrum Master certification last?", a: "One year. Renewal requires earning 24 Continuing Education Units (CEUs) and paying the $195 annual renewal fee to Scaled Agile." },
-                  { q: "Can I take the SAFe SSM exam online?", a: "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 30 days of course completion." },
-                  { q: "What is the passing score for the SAFe Scrum Master exam?", a: "You need to answer at least 33 out of 45 questions correctly (73%) to pass." },
-                  { q: "Does Agile36 offer corporate/team training for SAFe Scrum Master?", a: "Yes. Agile36 specializes in enterprise and Fortune 100 training. Contact us for private group pricing and custom scheduling." }
+                  { q: "What is the format of the SAFe Scrum Master exam?", a: "The SAFe Scrum Master exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 35 out of 45 (77%) to pass." },
+                  { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
+                  { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
+                  { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
+                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." }
                 ],
                 payment: [
                   { q: "What payment methods do you accept?", a: "We accept all major credit cards and debit cards. For corporate training, we also accept purchase orders and wire transfers." },
                   { q: "Are there any installment payment options?", a: "Yes, we offer flexible monthly payment plans. Contact our course advisors to discuss payment plan options that work for you." },
-                  { q: "Is there a refund policy?", a: "Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date. Cancellations received within thirty (30) days of the class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. Participants who arrive more than fifteen (15) minutes late to a scheduled class session will be locked out of the classroom and marked as a no-call, no-show. For questions, please email d.stevenson@agile36.com." },
+                  { q: "Is there a refund policy?", a: "Refunds are only available if the class is more than 30 days out from the start date. Please contact our support team for refund requests." },
                   { q: "Do you offer discounts for group enrollments?", a: "Yes, we offer significant discounts for group enrollments. Contact us for corporate training rates and group discounts." },
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials, the certification exam, and one year of access to the SAFe Community Platform. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is SAFe Scrum Master certification?", a: "SAFe Scrum Master (SSM) is a 2-day certification teaching Scrum Masters to facilitate Agile teams within the Scaled Agile Framework. You learn to support teams on Agile Release Trains, participate in PI Planning, remove impediments at scale, and coach teams in SAFe practices." },
-                  { q: "Who should take this course?", a: "This course is ideal for current Scrum Masters looking to operate in a SAFe enterprise, team leads transitioning to Agile, project managers moving into Agile facilitation, and anyone on an Agile Release Train (ART)." },
-                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. Basic understanding of Scrum or Agile principles and familiarity with iteration-based delivery are recommended but not required." },
+                  { q: "What is SAFe Scrum Master certification?", a: "SAFe Scrum Master is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
+                  { q: "Who should take this course?", a: "This course is ideal for executives, leaders, Agile coaches, program managers, product managers, and anyone interested in leading enterprise Agile transformations." },
+                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in software development or IT projects is recommended." },
                   { q: "How long is the course?", a: "The SAFe Scrum Master course is a 2-day intensive training program, totaling 16 hours of instruction." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
-                  { q: "How do I maintain my certification?", a: "The SAFe Scrum Master certification is valid for one year. Renewal requires earning 24 CEUs and paying the $195 annual renewal fee to Scaled Agile." }
+                  { q: "How do I maintain my certification?", a: "The SAFe Scrum Master certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
                 ]
               };
 
@@ -1123,75 +1031,178 @@ export default function ScrumMasterCoursePage() {
         </div>
       </section>
 
-      {/* Why Agile36 Section */}
+      {/* Why Choose Section */}
       <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
-              Why Choose Agile36 for SAFe Certification Training
+              Why Choose the SAFe Scrum Master Certification Course with Agile36?
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+            {/* Left Column */}
+            <div className="space-y-6">
+              {/* Benefit 1 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Globally Recognized SAFe® Certification
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Agile36 offers SAFe Scrum Master training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">SAFe Silver Partner</h3>
-                <p className="text-base text-gray-700">Fully accredited by Scaled Agile, Inc. Our instructors are certified SAFe Program Consultants (SPCs) who meet Scaled Agile&apos;s rigorous standards.</p>
+
+              {/* Benefit 2 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Hands-On Learning Experience
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 3 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Comprehensive Exam Preparation
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Get guided exam readiness support, including practice tests, learning resources, and expert mentoring to ensure success in the SAFe® Agilist Certification exam.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 4 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Earn PDUs and SEUs for Career Advancement
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+
+            {/* Right Column */}
+            <div className="space-y-6">
+              {/* Benefit 5 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Expert-Led Training by Certified SPCs
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Fortune 100 Experience</h3>
-                <p className="text-base text-gray-700">Our instructors have led real SAFe transformations at Fortune 100 companies. You&apos;re learning from practitioners who&apos;ve done it at scale.</p>
+
+              {/* Benefit 6 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Flexible Learning Options
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+
+              {/* Benefit 7 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Networking with Global SAFe® Professionals
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">20+ Years of Enterprise Training</h3>
-                <p className="text-base text-gray-700">Agile36 has trained tens of thousands of professionals across the US and globally, with a proven track record of high first-attempt pass rates.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">4.9/5.0 Rating</h3>
-                <p className="text-base text-gray-700">Based on 2,500+ verified Scaled Agile reviews from professionals who&apos;ve completed our training.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Exam Fee Included</h3>
-                <p className="text-base text-gray-700">No surprises. Your first certification exam attempt is included in your course fee.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Post-Training Support</h3>
-                <p className="text-base text-gray-700">Access to practice exams, study materials, and instructor support before your exam date.</p>
+
+              {/* Benefit 8 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Post-Certification Career Support
+                  </h3>
+                  <p className="text-base text-gray-700">
+                    Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SAFe Agilist Certification Section */}
+      {/* SAFe Scrum Master Certification Section */}
       <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
@@ -1200,27 +1211,27 @@ export default function ScrumMasterCoursePage() {
               SAFe Scrum Master Certification
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              There has been a significant increase in demand for the SAFe Scrum Master certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified Scrum Masters and Agile Coaches who can facilitate Agile teams, support Program Increment (PI) planning, remove impediments, and foster team collaboration. These certified experts are highly valued for their expertise in team facilitation, servant leadership, Agile Release Train support, and continuous improvement. The SAFe Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
+              There has been a significant increase in demand for the SAFe Scrum Master 6.0 Agilist certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified professionals to spearhead enterprise-wide Agile transformations. These certified experts are highly valued for their expertise in connecting strategy with execution through Lean-Agile leadership principles. The SAFe Scrum Master certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Certifications Are Required for SAFe Scrum Master Certification Training?
+              What Are Job Opportunities for SAFe Scrum Master Professionals?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              No prior certification is required to enroll in SAFe Scrum Master Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or team facilitation experience can be beneficial for participants. The SAFe Scrum Master course prepares candidates for the SAFe Scrum Master (SSM) certification exam from Scaled Agile, Inc., covering team facilitation, PI planning support, impediment removal, and Agile Release Train support. The course is accessible to professionals at various stages of their Agile journey.
+              SAFe Scrum Master 6.0 certified professionals in the United States have access to a wide range of career opportunities. Popular roles include Agile Coach, Release Train Engineer, Product Owner, Program Manager, and Scrum Master. These positions are in high demand across various industries throughout the USA, including IT, finance, healthcare, and manufacturing sectors. As more enterprises in the United States adopt the Scaled Agile Framework to improve their outcomes and accelerate delivery, the need for certified SAFe professionals continues to grow across the country.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-2xl font-bold text-[#01203d] mb-4">
-              What Are Job Opportunities for SAFe Scrum Master Professionals?
+              What Certifications Are Required for SAFe Agile Certification Training?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              SAFe Scrum Master professionals in the United States have excellent career prospects across various industries. Job opportunities include Scrum Master, Senior Scrum Master, Agile Coach, Team Facilitator, and Agile Release Train Engineer roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe SSM certification who can facilitate Agile teams, support PI planning, remove impediments, and foster team collaboration. The certification opens doors to leadership positions in Agile team facilitation and coaching roles.
+              No prior certification is required to enroll in SAFe Agile Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or project management (such as CSM or PMP certifications) can be beneficial for participants. The SAFe Scrum Master 6.0 course prepares candidates for the SAFe Scrum Master (SSM) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 
@@ -1230,18 +1241,18 @@ export default function ScrumMasterCoursePage() {
               What is the Fee for SAFe Scrum Master Certification?
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              The cost of the SAFe Scrum Master certification course typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Scrum Master certification course typically ranges from <strong>$545 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Find Leading SAFe Course in Cities Section */}
+      {/* Find SAFe Scrum Master Course in Cities Section */}
       <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
-            Find SAFe Scrum Master Course in Other Top Cities
+            Find SAFe Scrum Master® Course in Other Top Cities
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -1276,15 +1287,15 @@ export default function ScrumMasterCoursePage() {
               "Orlando",
               "Raleigh",
               "Baltimore"
-            ].map((city) => {
-              const citySlug = city.toLowerCase().replace(/\s+/g, '-');
+            ].map((cityName) => {
+              const citySlug = cityName.toLowerCase().replace(/\s+/g, '-');
               return (
                 <Link
-                  key={city}
+                  key={cityName}
                   href={`/scrum-master-certification-training/${citySlug}`}
                   className="bg-white border border-gray-200 rounded-lg px-4 py-3 text-center hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
                 >
-                  <span className="text-base text-gray-900 font-medium">{city}</span>
+                  <span className="text-base text-gray-900 font-medium">{cityName}</span>
                 </Link>
               );
             })}
@@ -1292,7 +1303,7 @@ export default function ScrumMasterCoursePage() {
         </div>
       </section>
 
-      {/* Free APM Assessment Modal */}
+      {/* Free LPM Assessment Modal */}
       {showAssessmentModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
@@ -1314,7 +1325,7 @@ export default function ScrumMasterCoursePage() {
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
                     Ready to Master This Certification?
                   </h2>
-                  <p className="text-base text-gray-700 mb-4">
+                  <p className="text-gray-700 mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
                   <div className="bg-white rounded-lg p-4 mb-4 border-2 border-[#fa4a23]">
@@ -1499,3 +1510,4 @@ export default function ScrumMasterCoursePage() {
     </main>
   );
 }
+

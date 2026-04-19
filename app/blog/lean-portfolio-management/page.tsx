@@ -1,5 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Lean Portfolio Management: A Complete Guide for Enterprise Leaders | Agile36",
+  description:
+    "Lean Portfolio Management (LPM) in SAFe: strategy, funding flow, guardrails, and how portfolio leaders connect strategy to agile execution.",
+  alternates: {
+    canonical: "https://www.agile36.com/blog/lean-portfolio-management",
+  },
+  openGraph: {
+    title: "Lean Portfolio Management: A Complete Guide for Enterprise Leaders",
+    description:
+      "Lean Portfolio Management (LPM) in SAFe: strategy, funding flow, guardrails, and how portfolio leaders connect strategy to agile execution.",
+    url: "https://www.agile36.com/blog/lean-portfolio-management",
+    siteName: "Agile36",
+    type: "article",
+  },
+};
 
 export default function LeanPortfolioManagementBlogPost() {
   return (

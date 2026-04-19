@@ -75,10 +75,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const canonical = `https://www.agile36.com/blog/${slug}`;
+
   return {
     title: post.frontmatter.title ? `${post.frontmatter.title} | Agile36` : "Agile36 Blog",
     description: post.frontmatter.description,
     keywords: post.frontmatter.keywords,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      type: "article",
+      url: canonical,
+      siteName: "Agile36",
+      title: post.frontmatter.title ?? "Agile36 Blog",
+      description: post.frontmatter.description,
+    },
   };
 }
 

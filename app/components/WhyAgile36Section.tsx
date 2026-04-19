@@ -14,7 +14,7 @@ export default function WhyAgile36Section() {
     },
     {
       title: "4.9/5.0 Rating",
-      description: "Based on 2,500+ verified Google reviews from professionals who've completed our training.",
+      description: "Based on 2,500+ verified Scaled Agile reviews from professionals who've completed our training.",
     },
     {
       title: "Exam Fee Included",
