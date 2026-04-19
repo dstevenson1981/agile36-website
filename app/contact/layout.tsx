@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import {
   SCHEMA_ORGANIZATION_ID,
+  SCHEMA_ORGANIZATION_LOGO_HEIGHT,
   SCHEMA_ORGANIZATION_LOGO_URL,
+  SCHEMA_ORGANIZATION_LOGO_WIDTH,
 } from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
@@ -54,8 +56,8 @@ export default function ContactLayout({
     "image": {
       "@type": "ImageObject",
       "url": SCHEMA_ORGANIZATION_LOGO_URL,
-      "width": 512,
-      "height": 512,
+      "width": SCHEMA_ORGANIZATION_LOGO_WIDTH,
+      "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",

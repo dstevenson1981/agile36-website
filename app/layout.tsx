@@ -3,8 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import {
+  SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
+  SCHEMA_DEFAULT_OG_IMAGE_URL,
+  SCHEMA_DEFAULT_OG_IMAGE_WIDTH,
   SCHEMA_ORGANIZATION_ID,
+  SCHEMA_ORGANIZATION_LOGO_HEIGHT,
   SCHEMA_ORGANIZATION_LOGO_URL,
+  SCHEMA_ORGANIZATION_LOGO_WIDTH,
+  SCHEMA_WEBSITE_ID,
   SCALED_AGILE_TRAINING_FEEDBACK_URL,
 } from "@/app/lib/schema-site";
 import "./globals.css";
@@ -26,6 +32,18 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.agile36.com"),
   title: "Agile36 - Expert Training in Agile, AI, and Product Management",
   description: "Take the next step in your career with a global leader in SAFe, Generative AI, AI Product, and PMI training. Start your learning journey today.",
+  openGraph: {
+    siteName: "Agile36",
+    type: "website",
+    images: [
+      {
+        url: SCHEMA_DEFAULT_OG_IMAGE_URL,
+        width: SCHEMA_DEFAULT_OG_IMAGE_WIDTH,
+        height: SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
+        alt: "Agile36 — SAFe, Agile, and AI training",
+      },
+    ],
+  },
   verification: {
     google: "uvoTYHwVpjLfOgpwChNX0GLOqog9pAb9iKyJW1jiTP8",
   },
@@ -36,9 +54,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Global Organization Schema for AI SEO
-  const organizationSchema = {
-    "@context": "https://schema.org",
+  // Global Organization + WebSite graph (logo on org + site; articles use /og default in blog JSON-LD)
+  const organizationNode = {
     "@type": "EducationalOrganization",
     "@id": SCHEMA_ORGANIZATION_ID,
     "name": "Agile36",
@@ -47,8 +64,8 @@ export default function RootLayout({
     "logo": {
       "@type": "ImageObject",
       "url": SCHEMA_ORGANIZATION_LOGO_URL,
-      "width": 512,
-      "height": 512,
+      "width": SCHEMA_ORGANIZATION_LOGO_WIDTH,
+      "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
     "description": "Agile36 provides enterprise Agile and AI training including SAFe, Scrum, Generative AI, and AI Product certifications. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
     "telephone": "310-620-7966",
@@ -75,8 +92,28 @@ export default function RootLayout({
       "DevOps and Continuous Delivery",
       "Lean Portfolio Management",
       "Project Management Professional (PMP)",
-      "AI-Driven Scrum and Product Management"
-    ]
+      "AI-Driven Scrum and Product Management",
+    ],
+  };
+
+  const webSiteNode = {
+    "@type": "WebSite",
+    "@id": SCHEMA_WEBSITE_ID,
+    url: "https://www.agile36.com",
+    name: "Agile36",
+    inLanguage: "en-US",
+    publisher: { "@id": SCHEMA_ORGANIZATION_ID },
+    image: {
+      "@type": "ImageObject",
+      url: SCHEMA_ORGANIZATION_LOGO_URL,
+      width: SCHEMA_ORGANIZATION_LOGO_WIDTH,
+      height: SCHEMA_ORGANIZATION_LOGO_HEIGHT,
+    },
+  };
+
+  const rootSchemaGraph = {
+    "@context": "https://schema.org",
+    "@graph": [organizationNode, webSiteNode],
   };
 
   return (
@@ -84,7 +121,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootSchemaGraph) }}
         />
       </head>
       <body
