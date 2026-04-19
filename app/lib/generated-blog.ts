@@ -10,6 +10,8 @@ export type GeneratedBlogFrontmatter = {
   description?: string;
   keywords?: string[];
   date?: string;
+  /** ISO or YYYY-MM-DD; when absent, datePublished falls back to date */
+  updated?: string;
   author?: string;
   template_type?: string;
   vertical?: string;

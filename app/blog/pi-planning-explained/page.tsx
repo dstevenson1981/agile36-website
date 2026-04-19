@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
   title: "PI Planning Explained: How SAFe's 2-Day Event Actually Works | Agile36",
@@ -277,9 +278,11 @@ function FailureCard({
   );
 }
 
-export default function PiPlanningExplainedBlogPost() {
+export default async function PiPlanningExplainedBlogPost() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <EditorialBlogSchemaBlock slug="pi-planning-explained" />
+      <main className="min-h-screen bg-white">
       <div className="w-full h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
         <BlogHeroDots />
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-8 relative z-10">
@@ -798,6 +801,7 @@ export default function PiPlanningExplainedBlogPost() {
         </div>
       </article>
     </main>
+    </>
   );
 }
 

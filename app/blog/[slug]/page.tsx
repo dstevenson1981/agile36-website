@@ -4,10 +4,13 @@ import { notFound } from "next/navigation";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import BlogPostingStructuredData from "@/app/components/blog/BlogPostingStructuredData";
 import {
   categoryShortBadgeForId,
   mapVerticalToCategoryId,
 } from "@/app/lib/blog-categories";
+import { buildGeneratedBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
+import { getBlogPostingSchemaSlugSet } from "@/app/lib/blog-top-schema-slugs";
 import { getGeneratedBlogPost, getGeneratedBlogSlugs } from "@/app/lib/generated-blog";
 
 type PageProps = {
@@ -114,8 +117,25 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
     ? `Written by Agile36 · Updated ${post.frontmatter.date}`
     : "Written by Agile36 · SAFe Silver Partner";
 
+  const topSchema = await getBlogPostingSchemaSlugSet();
+  const schemaGraph = topSchema.has(slug)
+    ? buildGeneratedBlogPostingGraph({
+        slug,
+        title,
+        description: post.frontmatter.description,
+        date: post.frontmatter.date,
+        updated: post.frontmatter.updated,
+        author: post.frontmatter.author,
+        keywords: post.frontmatter.keywords ?? [],
+        content: post.content,
+        articleSection: badge,
+      })
+    : null;
+
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      {schemaGraph ? <BlogPostingStructuredData data={schemaGraph} /> : null}
+      <main className="min-h-screen bg-white">
       <div className="w-full min-h-[12rem] sm:h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden px-4 py-10 sm:py-0">
         <BlogHeroDots />
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center relative z-10 max-w-4xl">
@@ -189,5 +209,6 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
         </div>
       </article>
     </main>
+    </>
   );
 }

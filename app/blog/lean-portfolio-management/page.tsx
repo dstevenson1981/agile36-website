@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
   title:
@@ -20,9 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LeanPortfolioManagementBlogPost() {
+export default async function LeanPortfolioManagementBlogPost() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <EditorialBlogSchemaBlock slug="lean-portfolio-management" />
+      <main className="min-h-screen bg-white">
       {/* Header Image */}
       <div className="w-full h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
         {/* Decorative golden dots - top left */}
@@ -558,6 +561,7 @@ export default function LeanPortfolioManagementBlogPost() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
 

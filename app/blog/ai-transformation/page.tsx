@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
   title:
@@ -20,9 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AITransformationBlogPost() {
+export default async function AITransformationBlogPost() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <EditorialBlogSchemaBlock slug="ai-transformation" />
+      <main className="min-h-screen bg-white">
       {/* Header Image */}
       <div className="w-full h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
         {/* Decorative golden dots - top left */}
@@ -439,6 +442,7 @@ export default function AITransformationBlogPost() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
 

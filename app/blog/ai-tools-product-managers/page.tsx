@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
   title: "Top AI Tools Every Product Manager Should Know in 2025 | Agile36",
@@ -19,9 +20,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AIToolsProductManagersBlogPost() {
+export default async function AIToolsProductManagersBlogPost() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <EditorialBlogSchemaBlock slug="ai-tools-product-managers" />
+      <main className="min-h-screen bg-white">
       {/* Header Image */}
       <div className="w-full h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
         {/* Decorative golden dots - top left */}
@@ -493,5 +496,6 @@ export default function AIToolsProductManagersBlogPost() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
