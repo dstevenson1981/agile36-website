@@ -42,7 +42,7 @@ export default function ContactLayout({
   // LocalBusiness Schema for AI SEO
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
+    "@type": "LocalBusiness",
     "name": "Agile36",
     "description": "Enterprise Agile and AI training provider offering SAFe, Scrum, Generative AI, and project management certifications worldwide.",
     "url": "https://www.agile36.com",

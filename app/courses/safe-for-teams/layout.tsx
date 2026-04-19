@@ -47,11 +47,7 @@ export default function SafeForTeamsLayout({
     "name": "SAFe® 6.0 for Teams Certification Training",
     "description": "SAFe for Teams (SAFe Practitioner) certification teaches Agile team members to work effectively in SAFe. Learn iteration planning, PI Planning participation, team collaboration, defining stories, estimating work, and delivering value as part of an Agile Release Train.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "SP",
     "educationalCredentialAwarded": "SAFe Practitioner (SP) Certification",

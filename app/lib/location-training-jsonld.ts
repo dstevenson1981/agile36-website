@@ -2,9 +2,10 @@ import {
   type LocationSegment,
   cityDisplayFromSlug,
 } from "@/app/lib/location-training-metadata";
+import { SCHEMA_ORGANIZATION_ID } from "@/app/lib/schema-site";
 
 const SITE = "https://www.agile36.com";
-const ORG_ID = `${SITE}/#educationalorganization`;
+const ORG_ID = SCHEMA_ORGANIZATION_ID;
 
 type HubConfig = {
   coursePath: string;
@@ -206,13 +207,6 @@ export function buildLocationTrainingJsonLd(
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "EducationalOrganization",
-        "@id": ORG_ID,
-        name: "Agile36",
-        url: SITE,
-        sameAs: ["https://www.linkedin.com/company/agile36"],
-      },
       {
         "@type": "BreadcrumbList",
         itemListElement: [

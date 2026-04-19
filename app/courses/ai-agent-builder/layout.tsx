@@ -44,11 +44,7 @@ export default function AIAgentBuilderLayout({
     "name": "No-Code AI Agents & Automation™ Certification Training",
     "description": "No-Code AI Agents & Automation teaches professionals to build AI-powered automation without programming. Learn to create intelligent agents, automate workflows using n8n and Make.com, integrate ChatGPT APIs, and build 25+ practical automations for business productivity.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "AI-Agents",
     "educationalCredentialAwarded": "No-Code AI Agents & Automation™ Certification",

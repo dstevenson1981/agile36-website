@@ -47,11 +47,7 @@ export default function LeanPortfolioManagementLayout({
     "name": "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
     "description": "SAFe Lean Portfolio Management (LPM) certification teaches portfolio-level strategy and investment management in SAFe. Learn to align strategy and execution, manage portfolio Kanban, establish lean budgets, govern value streams, and optimize portfolio flow for maximum business value.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "LPM",
     "educationalCredentialAwarded": "SAFe Lean Portfolio Management (LPM) Certification",

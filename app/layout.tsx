@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import { SCHEMA_ORGANIZATION_ID, SCALED_AGILE_TRAINING_FEEDBACK_URL } from "@/app/lib/schema-site";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -35,6 +36,7 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
+    "@id": SCHEMA_ORGANIZATION_ID,
     "name": "Agile36",
     "alternateName": "Agile 36",
     "url": "https://www.agile36.com",
@@ -47,7 +49,8 @@ export default function RootLayout({
       "addressCountry": "US"
     },
     "sameAs": [
-      "https://www.linkedin.com/company/agile36"
+      "https://www.linkedin.com/company/agile36",
+      SCALED_AGILE_TRAINING_FEEDBACK_URL,
     ],
     "areaServed": "Worldwide",
     "knowsAbout": [

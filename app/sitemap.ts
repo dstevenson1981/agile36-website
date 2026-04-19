@@ -1,95 +1,103 @@
-import { MetadataRoute } from 'next';
-import { seoPages } from '@/data/seoPages';
-import { getGeneratedBlogSlugs } from '@/app/lib/generated-blog';
+import type { MetadataRoute } from "next";
+import { seoPages } from "@/data/seoPages";
+import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
+import {
+  getGeneratedBlogSlugs,
+  getGeneratedBlogSummaries,
+} from "@/app/lib/generated-blog";
 
-const BASE_URL = 'https://www.agile36.com';
+const BASE_URL = "https://www.agile36.com";
+
+function lastModifiedFromYyyyMmDd(value?: string): Date | undefined {
+  const raw = value?.trim();
+  if (!raw) return undefined;
+  const iso = raw.includes("T") ? raw : `${raw.split("T")[0]}T12:00:00.000Z`;
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? undefined : d;
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const currentDate = new Date();
-
-  // Main pages: priority 1.0 for homepage, 0.6 for everything else; monthly
+  // Do not set lastModified unless tied to real content dates — identical timestamps
+  // across hundreds of URLs are treated as unreliable by Google.
   const mainPages: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: currentDate, changeFrequency: 'monthly', priority: 1.0 },
-    { url: `${BASE_URL}/about`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/corporate`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/contact`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/blog`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE_URL}/safe-certifications`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/combo-courses`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: BASE_URL, changeFrequency: "monthly", priority: 1.0 },
+    { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/corporate`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/contact`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/safe-certifications`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/combo-courses`, changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  // All course pages under /courses/: weekly, priority 0.8
   const courseSlugs = [
-    'leading-safe',
-    'product-owner-manager',
-    'lean-portfolio-management',
-    'agile-product-management',
-    'scrum-master',
-    'safe-for-teams',
-    'devops',
-    'advanced-scrum-master',
-    'release-train-engineer',
-    'value-stream-mapping',
-    'responsible-ai',
-    'safe-devops',
-    'certified-ai-product-manager',
-    'ai-agent-builder',
-    'ai-driven-scrum-master',
-    'executive-genai-leadership',
-    'generative-ai-project-managers',
-    'certified-genai-practitioner',
-    'pmp-certification',
+    "leading-safe",
+    "product-owner-manager",
+    "lean-portfolio-management",
+    "agile-product-management",
+    "scrum-master",
+    "safe-for-teams",
+    "devops",
+    "advanced-scrum-master",
+    "release-train-engineer",
+    "value-stream-mapping",
+    "responsible-ai",
+    "safe-devops",
+    "certified-ai-product-manager",
+    "ai-agent-builder",
+    "ai-driven-scrum-master",
+    "executive-genai-leadership",
+    "generative-ai-project-managers",
+    "certified-genai-practitioner",
+    "pmp-certification",
   ];
 
   const coursePages: MetadataRoute.Sitemap = courseSlugs.map((slug) => ({
     url: `${BASE_URL}/courses/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
+    changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  // Geo pages (city-specific certification training): monthly, priority 0.6
   const cities = [
-    'new-york',
-    'los-angeles',
-    'chicago',
-    'houston',
-    'phoenix',
-    'philadelphia',
-    'san-antonio',
-    'san-diego',
-    'dallas',
-    'san-jose',
-    'austin',
-    'jacksonville',
-    'fort-worth',
-    'columbus',
-    'charlotte',
-    'san-francisco',
-    'indianapolis',
-    'seattle',
-    'denver',
-    'washington',
-    'boston',
-    'nashville',
-    'oklahoma-city',
-    'las-vegas',
-    'portland',
-    'miami',
-    'tampa',
-    'orlando',
-    'raleigh',
-    'baltimore',
+    "new-york",
+    "los-angeles",
+    "chicago",
+    "houston",
+    "phoenix",
+    "philadelphia",
+    "san-antonio",
+    "san-diego",
+    "dallas",
+    "san-jose",
+    "austin",
+    "jacksonville",
+    "fort-worth",
+    "columbus",
+    "charlotte",
+    "san-francisco",
+    "indianapolis",
+    "seattle",
+    "denver",
+    "washington",
+    "boston",
+    "nashville",
+    "oklahoma-city",
+    "las-vegas",
+    "portland",
+    "miami",
+    "tampa",
+    "orlando",
+    "raleigh",
+    "baltimore",
   ];
 
   const geoRoutes = [
-    'leading-safe-certification-training',
-    'safe-for-teams-certification-training',
-    'scrum-master-certification-training',
-    'agile-product-management-certification-training',
-    'safe-product-owner-product-manager-certification-training',
-    'lean-portfolio-management-certification-training',
-    'release-train-engineer-certification-training',
+    "leading-safe-certification-training",
+    "safe-for-teams-certification-training",
+    "scrum-master-certification-training",
+    "agile-product-management-certification-training",
+    "safe-product-owner-product-manager-certification-training",
+    "lean-portfolio-management-certification-training",
+    "release-train-engineer-certification-training",
   ];
 
   const geoPages: MetadataRoute.Sitemap = [];
@@ -97,43 +105,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const city of cities) {
       geoPages.push({
         url: `${BASE_URL}/${route}/${city}`,
-        lastModified: currentDate,
-        changeFrequency: 'monthly',
+        changeFrequency: "monthly",
         priority: 0.6,
       });
     }
   }
 
-  const programmaticSeoPages: MetadataRoute.Sitemap = seoPages.map(
-    (p: { slug: string }) => ({
-      url: `${BASE_URL}/${p.slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    })
-  );
+  const programmaticSeoPages: MetadataRoute.Sitemap = seoPages.map((p: { slug: string }) => ({
+    url: `${BASE_URL}/${p.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
 
   const editorialBlogSlugs = [
-    'ai-transformation',
-    'ai-tools-product-managers',
-    'lean-portfolio-management',
-    'leading-safe-certification-cost-2026',
-    'is-safe-certification-worth-it-2026',
-    'safe-lpm-vs-popm',
-    'ssm-vs-csm',
-    'safe-scrum-master-exam-questions',
-    'pi-planning-explained',
+    "ai-transformation",
+    "ai-tools-product-managers",
+    "lean-portfolio-management",
+    "leading-safe-certification-cost-2026",
+    "is-safe-certification-worth-it-2026",
+    "safe-lpm-vs-popm",
+    "ssm-vs-csm",
+    "safe-scrum-master-exam-questions",
+    "pi-planning-explained",
   ];
 
   const generatedBlogSlugs = await getGeneratedBlogSlugs();
   const blogSlugs = Array.from(new Set([...editorialBlogSlugs, ...generatedBlogSlugs]));
 
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${BASE_URL}/blog/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
+  const editorialDateBySlug = new Map(
+    BLOG_EDITORIAL.map((e) => [e.slug, e.date] as const)
+  );
+  const summaries = await getGeneratedBlogSummaries();
+  const generatedDateBySlug = new Map(summaries.map((s) => [s.slug, s.date] as const));
+
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => {
+    const dateStr = editorialDateBySlug.get(slug) ?? generatedDateBySlug.get(slug);
+    const lastModified = lastModifiedFromYyyyMmDd(dateStr);
+    const row: MetadataRoute.Sitemap[number] = {
+      url: `${BASE_URL}/blog/${slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    };
+    if (lastModified) row.lastModified = lastModified;
+    return row;
+  });
 
   return [
     ...mainPages,

@@ -44,11 +44,7 @@ export default function ResponsibleAILayout({
     "name": "Achieving Responsible AI with SAFe™ Micro-credential Course",
     "description": "Responsible AI with SAFe micro-credential teaches ethical AI implementation within Scaled Agile Framework. Learn to identify RAI stakeholders, evaluate AI policies, write epic hypotheses for AI initiatives, communicate AI risks, and integrate responsible AI practices into Agile Release Trains.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "RAI",
     "educationalCredentialAwarded": "Achieving Responsible AI with SAFe™ Micro-credential",

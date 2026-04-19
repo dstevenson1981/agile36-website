@@ -44,11 +44,7 @@ export default function PMPCertificationLayout({
     "name": "PMP® Certification Training - Project Management Professional Exam Prep",
     "description": "PMP Certification Training prepares you to pass the Project Management Professional exam. Learn PMBOK Guide 7th edition, project management processes, Agile and hybrid approaches, exam strategies, and best practices for leading projects successfully.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "PMP",
     "educationalCredentialAwarded": "PMP® Exam Preparation Certificate",

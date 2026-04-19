@@ -44,11 +44,7 @@ export default function CertifiedGenAIPractitionerLayout({
     "name": "Certified GenAI Practitioner™ Certification Training",
     "description": "Certified GenAI Practitioner teaches professionals to use generative AI tools effectively. Learn prompt engineering, AI ethics, ChatGPT and Claude usage, business applications, and responsible AI implementation in a hands-on 4-hour course.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "GenAI-P",
     "educationalCredentialAwarded": "Certified GenAI Practitioner™",

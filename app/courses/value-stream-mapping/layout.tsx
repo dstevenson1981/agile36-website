@@ -46,11 +46,7 @@ export default function ValueStreamMappingLayout({
     "name": "SAFe® Value Stream Mapping Micro-credential Course",
     "description": "SAFe Value Stream Mapping micro-credential teaches how to visualize and optimize value streams. Learn current state mapping, identify bottlenecks and waste, design future states, measure flow metrics, and accelerate delivery through value stream optimization in SAFe.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "VSM",
     "educationalCredentialAwarded": "SAFe Value Stream Mapping Micro-credential",

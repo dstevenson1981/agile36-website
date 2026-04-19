@@ -48,11 +48,7 @@ export default function ScrumMasterLayout({
     "name": "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
     "description": "SAFe Scrum Master (SSM) certification teaches Scrum Masters to facilitate Agile teams within SAFe. Learn team ceremonies, PI Planning participation, impediment removal, servant leadership, ART support, and how to coach teams in large-scale Agile environments.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "SSM",
     "educationalCredentialAwarded": "SAFe Scrum Master (SSM) Certification",

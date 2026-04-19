@@ -55,9 +55,7 @@ export default function ReleaseTrainEngineerLayout({
     "description":
       "SAFe® RTE certification training with an AI-empowered lens: ART facilitation, PI planning, program coaching, and responsible use of generative AI for planning support, communication, and flow insights.",
     "provider": {
-      "@type": "Organization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "SAFe RTE",
     "educationalCredentialAwarded": "SAFe Release Train Engineer (RTE) Certification",

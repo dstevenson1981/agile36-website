@@ -48,11 +48,7 @@ export default function DevOpsLayout({
     "name": "SAFe® 6.0 DevOps (SDP) Certification Training",
     "description": "SAFe DevOps Practitioner (SDP) certification teaches DevOps practices within SAFe. Learn to build continuous delivery pipelines, automate deployments, implement CI/CD, practice infrastructure as code, enable release on demand, and integrate DevOps into Agile Release Trains.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "SDP",
     "educationalCredentialAwarded": "SAFe DevOps Practitioner (SDP) Certification",

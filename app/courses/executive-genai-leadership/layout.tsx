@@ -44,11 +44,7 @@ export default function ExecutiveGenAILeadershipLayout({
     "name": "Executive GenAI Leadership™ Certification Training",
     "description": "Executive GenAI Leadership teaches C-suite and senior leaders to drive AI transformation. Learn to develop AI strategy, build governance frameworks, assess AI risks, measure ROI, and lead organizational change for generative AI adoption.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "EGL",
     "educationalCredentialAwarded": "Executive GenAI Leadership™ Certification",

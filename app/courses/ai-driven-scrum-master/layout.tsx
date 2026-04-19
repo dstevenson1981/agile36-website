@@ -44,11 +44,7 @@ export default function AIDrivenScrumMasterLayout({
     "name": "AI-Driven Scrum Master™ Certification Training",
     "description": "AI-Driven Scrum Master certification teaches Scrum Masters to use generative AI for sprint planning, retrospectives, backlog management, and team coaching. Learn prompt engineering, AI-assisted facilitation, and automated workflow optimization.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "AI-SM",
     "educationalCredentialAwarded": "AI-Driven Scrum Master™ Certification",

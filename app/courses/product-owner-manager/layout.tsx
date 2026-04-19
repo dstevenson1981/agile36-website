@@ -48,11 +48,7 @@ export default function ProductOwnerManagerLayout({
     "name": "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
     "description": "SAFe Product Owner/Product Manager (POPM) certification teaches product ownership at scale. Learn to define and prioritize program backlogs, manage epics and features, execute PI Planning, collaborate with stakeholders, and deliver customer value through Agile Release Trains.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "POPM",
     "educationalCredentialAwarded": "SAFe Product Owner/Product Manager (POPM) Certification",

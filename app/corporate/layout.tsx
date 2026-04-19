@@ -49,11 +49,7 @@ export default function CorporateLayout({
     "name": "Enterprise Agile and AI Training Services",
     "description": "Agile36 provides enterprise Agile training, private group training, Agile transformation consulting, and AI transformation services. We deliver customized training solutions for Fortune 100 companies implementing SAFe, Scrum, DevOps, and Generative AI at organizational scale.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "areaServed": "Worldwide",
     "serviceType": [

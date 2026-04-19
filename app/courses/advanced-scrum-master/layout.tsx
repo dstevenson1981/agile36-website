@@ -49,11 +49,7 @@ export default function AdvancedScrumMasterLayout({
     "name": "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training",
     "description": "The AI-Empowered SAFe Advanced Scrum Master (SASM) course elevates experienced Scrum Masters to improve flow, build high-performing teams, manage multi-team conflict, and strengthen ART performance—using AI fundamentals, prompting, and SAFe Studio resources responsibly, per Scaled Agile.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "SASM",
     "educationalCredentialAwarded": "SAFe Advanced Scrum Master (SASM) Certification",

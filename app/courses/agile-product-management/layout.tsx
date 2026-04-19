@@ -51,11 +51,7 @@ export default function AgileProductManagementLayout({
     "name": "SAFe® 6.0 Agile Product Management (APM) Certification Training",
     "description": "SAFe Agile Product Management (APM) certification teaches strategic product management at scale. Learn design thinking, continuous exploration, product vision and strategy, roadmap creation, market segmentation, Lean UX, and customer-centric product development across multiple Agile Release Trains.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "APM",
     "educationalCredentialAwarded": "SAFe Agile Product Management (APM) Certification",

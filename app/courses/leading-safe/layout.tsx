@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SCHEMA_ORGANIZATION_ID } from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
   title: "AI-Empowered Leading SAFe® 6.0 Certification | SAFe Agilist (SA) | Agile36",
@@ -36,9 +37,6 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/courses/leading-safe",
   },
 };
-
-const SCALED_AGILE_CLASS_FINDER =
-  "https://training.scaledagile.com/?sort=feedbackScore&page=1&limit=25";
 
 export default function LeadingSafeLayout({
   children,
@@ -80,14 +78,7 @@ export default function LeadingSafeLayout({
           "2-day live virtual Leading SAFe 6.0 training leading to the SAFe Agilist (SA) certification. Includes 16 PDUs/SEUs, certification exam, and lifetime material access.",
         image: "https://www.agile36.com/LeadingSAFeHome.jpg",
         provider: {
-          "@type": "EducationalOrganization",
-          "@id": "https://www.agile36.com/#educationalorganization",
-          name: "Agile36",
-          url: "https://www.agile36.com",
-          sameAs: [
-            "https://www.linkedin.com/company/agile36",
-            SCALED_AGILE_CLASS_FINDER,
-          ],
+          "@id": SCHEMA_ORGANIZATION_ID,
         },
         educationalCredentialAwarded: {
           "@type": "EducationalOccupationalCredential",

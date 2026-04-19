@@ -44,11 +44,7 @@ export default function GenerativeAIProjectManagersLayout({
     "name": "Generative AI for Project Managers Certification Training",
     "description": "Generative AI for Project Managers teaches project managers to use AI for planning, scheduling, risk analysis, and artifact creation. Learn prompt engineering, AI-assisted decision-making, and how to integrate generative AI into Agile, Waterfall, and hybrid methodologies.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "GAI-PM",
     "educationalCredentialAwarded": "Generative AI for Project Managers Certification",

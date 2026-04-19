@@ -44,11 +44,7 @@ export default function CertifiedAIProductManagerLayout({
     "name": "Certified AI Product Manager™ Certification Training",
     "description": "Certified AI Product Manager teaches product managers to use AI throughout the product development lifecycle. Learn AI-powered user research, rapid prototyping, stakeholder validation, product analytics, and how to build working prototypes to demonstrate concepts.",
     "provider": {
-      "@type": "EducationalOrganization",
-      "name": "Agile36",
-      "url": "https://www.agile36.com",
-      "telephone": "310-620-7966",
-      "email": "d.stevenson@agile36.com"
+      "@id": "https://www.agile36.com/#organization"
     },
     "courseCode": "AI-PM",
     "educationalCredentialAwarded": "Certified AI Product Manager™",
