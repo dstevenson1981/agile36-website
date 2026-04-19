@@ -75,6 +75,8 @@ export type LocalLocationContent = {
   heading: string;
   paragraphs: string[];
   bullets: string[];
+  /** Parent course marketing page (authority hub). */
+  courseHubCta: { href: string; label: string };
   scheduleCta: { href: string; label: string };
 };
 
@@ -90,6 +92,21 @@ const SCHEDULE_PATH: Record<LocationSegment, string> = {
     "/courses/product-owner-manager/schedule",
   "agile-product-management-certification-training":
     "/courses/agile-product-management/schedule",
+};
+
+/** Canonical course marketing hub — consolidates internal link equity upward from city pages. */
+const COURSE_HUB_PATH: Record<LocationSegment, string> = {
+  "leading-safe-certification-training": "/courses/leading-safe",
+  "scrum-master-certification-training": "/courses/scrum-master",
+  "release-train-engineer-certification-training":
+    "/courses/release-train-engineer",
+  "safe-for-teams-certification-training": "/courses/safe-for-teams",
+  "lean-portfolio-management-certification-training":
+    "/courses/lean-portfolio-management",
+  "safe-product-owner-product-manager-certification-training":
+    "/courses/product-owner-manager",
+  "agile-product-management-certification-training":
+    "/courses/agile-product-management",
 };
 
 export function buildLocalLocationContent(
@@ -120,6 +137,10 @@ export function buildLocalLocationContent(
       `Instructor-led cohorts: real-time Q&A, breakout exercises, and exam guidance from certified SPCs.`,
       `Outcome focus: connect classroom mechanics to PI Planning, delivery metrics, and stakeholder communication patterns you already use.`,
     ],
+    courseHubCta: {
+      href: COURSE_HUB_PATH[segment],
+      label: "Main course page — curriculum, PDUs & exam (all locations)",
+    },
     scheduleCta: {
       href: SCHEDULE_PATH[segment],
       label: "View published cohort dates & enroll",

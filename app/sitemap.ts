@@ -111,11 +111,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  const programmaticSeoPages: MetadataRoute.Sitemap = seoPages.map((p: { slug: string }) => ({
-    url: `${BASE_URL}/${p.slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
+  /** Legacy city URL shapes; canonical geo lives under /{segment}/{city}. Vercel 301s these to /courses/* — omit from sitemap to avoid competing URLs. */
+  const legacyCitySlug = /^(safe-training|safe-certification)-/;
+  const programmaticSeoPages: MetadataRoute.Sitemap = seoPages
+    .filter((p: { slug: string }) => !legacyCitySlug.test(p.slug))
+    .map((p: { slug: string }) => ({
+      url: `${BASE_URL}/${p.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    }));
 
   const editorialBlogSlugs = [
     "ai-transformation",

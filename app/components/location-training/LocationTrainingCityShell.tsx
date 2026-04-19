@@ -34,7 +34,13 @@ export function LocationTrainingCityShell({
               <li key={i}>{b}</li>
             ))}
           </ul>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+            <Link
+              href={local.courseHubCta.href}
+              className="inline-flex w-fit items-center rounded-lg bg-[#01203d] px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-[#134263]"
+            >
+              {local.courseHubCta.label}
+            </Link>
             <Link
               href={local.scheduleCta.href}
               className="inline-flex items-center font-semibold text-[#0e78c2] hover:text-[#01203d] underline-offset-2 hover:underline"
