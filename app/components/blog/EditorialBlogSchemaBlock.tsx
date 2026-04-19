@@ -1,4 +1,5 @@
 import BlogPostingStructuredData from "@/app/components/blog/BlogPostingStructuredData";
+import { BLOG_LEAD_AUTHOR_NAME } from "@/app/lib/blog-author";
 import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { categoryShortBadgeForId } from "@/app/lib/blog-categories";
 import { buildEditorialBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
@@ -18,6 +19,7 @@ export default async function EditorialBlogSchemaBlock({ slug }: Props) {
     description: entry.description,
     date: entry.date,
     articleSection,
+    authorName: BLOG_LEAD_AUTHOR_NAME,
   });
   return <BlogPostingStructuredData data={data} />;
 }

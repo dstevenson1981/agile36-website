@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
@@ -265,9 +266,7 @@ export default async function SsmVsCsmBlogPost() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
           SSM vs CSM: Which Scrum Master Certification Is Right for You?
         </h1>
-        <p className="text-base text-gray-500 mb-10">
-          By Agile36 · SAFe Silver Partner · Updated April 2026
-        </p>
+        <BlogAuthorByline verb="By" updated="April 2026" />
 
         <div className="prose prose-lg max-w-none">
           <p className="text-lg text-gray-700 mb-6 leading-relaxed">

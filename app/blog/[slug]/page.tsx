@@ -4,11 +4,17 @@ import { notFound } from "next/navigation";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import BlogPostingStructuredData from "@/app/components/blog/BlogPostingStructuredData";
 import {
   categoryShortBadgeForId,
   mapVerticalToCategoryId,
 } from "@/app/lib/blog-categories";
+import {
+  BLOG_LEAD_AUTHOR_LINKEDIN,
+  BLOG_LEAD_AUTHOR_NAME,
+  resolveLeadBlogAuthorName,
+} from "@/app/lib/blog-author";
 import { buildGeneratedBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
 import { getBlogPostingSchemaSlugSet } from "@/app/lib/blog-top-schema-slugs";
 import { getGeneratedBlogPost, getGeneratedBlogSlugs } from "@/app/lib/generated-blog";
@@ -80,10 +86,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonical = `https://www.agile36.com/blog/${slug}`;
 
+  const authorName = resolveLeadBlogAuthorName(post.frontmatter.author);
+
   return {
     title: post.frontmatter.title ? `${post.frontmatter.title} | Agile36` : "Agile36 Blog",
     description: post.frontmatter.description,
     keywords: post.frontmatter.keywords,
+    authors: [
+      authorName === BLOG_LEAD_AUTHOR_NAME
+        ? { name: authorName, url: BLOG_LEAD_AUTHOR_LINKEDIN }
+        : { name: authorName },
+    ],
     alternates: {
       canonical,
     },
@@ -113,10 +126,6 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
   const badge = categoryShortBadgeForId(categoryId);
   const title = post.frontmatter.title ?? slug.replace(/-/g, " ");
   const body = stripLeadingDuplicateH1(post.content, post.frontmatter.title);
-  const byline = post.frontmatter.date
-    ? `Written by Agile36 · Updated ${post.frontmatter.date}`
-    : "Written by Agile36 · SAFe Silver Partner";
-
   const topSchema = await getBlogPostingSchemaSlugSet();
   const schemaGraph = topSchema.has(slug)
     ? buildGeneratedBlogPostingGraph({
@@ -162,7 +171,7 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
           </span>
         </div>
 
-        <p className="text-base text-gray-500 mb-10">{byline}</p>
+        <BlogAuthorByline updated={post.frontmatter.date} />
 
         <div className="blog-prose">
           <ReactMarkdown

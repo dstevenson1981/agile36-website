@@ -1,12 +1,18 @@
 import {
+  BLOG_LEAD_AUTHOR_LINKEDIN,
+  BLOG_LEAD_AUTHOR_NAME,
+  resolveLeadBlogAuthorName,
+} from "@/app/lib/blog-author";
+import {
+  SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
+  SCHEMA_DEFAULT_OG_IMAGE_URL,
+  SCHEMA_DEFAULT_OG_IMAGE_WIDTH,
   SCHEMA_ORGANIZATION_ID,
-  SCHEMA_ORGANIZATION_LOGO_URL,
 } from "@/app/lib/schema-site";
 
 const SITE = "https://www.agile36.com";
-/** Default article image; dimensions match intrinsic logo asset (see schema-site). */
-const DEFAULT_IMAGE = SCHEMA_ORGANIZATION_LOGO_URL;
-const DEADRA_LINKEDIN = "https://www.linkedin.com/in/deadra-stevenson-a20a6a1a2/";
+/** Default BlogPosting image (1200×630 OG asset; org logo stays on WebSite / EducationalOrganization). */
+const DEFAULT_ARTICLE_IMAGE = SCHEMA_DEFAULT_OG_IMAGE_URL;
 
 function toIsoDateAtNoon(value?: string): string {
   const raw = value?.trim();
@@ -24,13 +30,11 @@ function authorExtras(name: string): {
   sameAs?: string[];
 } {
   const n = name.trim();
-  if (!n || n === "Agile36") {
-    return { jobTitle: "Editorial team", url: SITE };
-  }
-  if (n.toLowerCase().includes("deadra")) {
+  if (n.toLowerCase().includes("deadra") || n === BLOG_LEAD_AUTHOR_NAME) {
     return {
       jobTitle: "SAFe Program Consultant (SPC)",
-      sameAs: [DEADRA_LINKEDIN],
+      url: BLOG_LEAD_AUTHOR_LINKEDIN,
+      sameAs: [BLOG_LEAD_AUTHOR_LINKEDIN],
     };
   }
   return {
@@ -127,7 +131,7 @@ export function buildGeneratedBlogPostingGraph(opts: {
   content: string;
   articleSection: string;
 }): Record<string, unknown> {
-  const authorName = opts.author?.trim() || "Agile36";
+  const authorName = resolveLeadBlogAuthorName(opts.author);
   return buildBlogPostingGraph({
     slug: opts.slug,
     headline: opts.title,
@@ -135,9 +139,9 @@ export function buildGeneratedBlogPostingGraph(opts: {
     datePublished: opts.date,
     dateModified: opts.updated ?? opts.date,
     authorName,
-    imageUrl: DEFAULT_IMAGE,
-    imageWidth: 512,
-    imageHeight: 512,
+    imageUrl: DEFAULT_ARTICLE_IMAGE,
+    imageWidth: SCHEMA_DEFAULT_OG_IMAGE_WIDTH,
+    imageHeight: SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
     articleSection: opts.articleSection,
     keywords: opts.keywords ?? [],
     wordCount: countWords(opts.content),
@@ -153,7 +157,7 @@ export function buildEditorialBlogPostingGraph(opts: {
   authorName?: string;
   wordCount?: number;
 }): Record<string, unknown> {
-  const authorName = opts.authorName?.trim() || "Agile36";
+  const authorName = resolveLeadBlogAuthorName(opts.authorName);
   return buildBlogPostingGraph({
     slug: opts.slug,
     headline: opts.title,
@@ -161,9 +165,9 @@ export function buildEditorialBlogPostingGraph(opts: {
     datePublished: opts.date,
     dateModified: opts.date,
     authorName,
-    imageUrl: DEFAULT_IMAGE,
-    imageWidth: 512,
-    imageHeight: 512,
+    imageUrl: DEFAULT_ARTICLE_IMAGE,
+    imageWidth: SCHEMA_DEFAULT_OG_IMAGE_WIDTH,
+    imageHeight: SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
     articleSection: opts.articleSection,
     keywords: [],
     wordCount: opts.wordCount,
