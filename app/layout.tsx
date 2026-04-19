@@ -52,7 +52,12 @@ export default function RootLayout({
       "https://www.linkedin.com/company/agile36",
       SCALED_AGILE_TRAINING_FEEDBACK_URL,
     ],
-    "areaServed": "Worldwide",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide",
+      "description":
+        "Live virtual instructor-led training open to learners globally; instruction and materials are in English (US-based provider).",
+    },
     "knowsAbout": [
       "SAFe (Scaled Agile Framework)",
       "Scrum and Agile Methodologies",

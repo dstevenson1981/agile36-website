@@ -1,8 +1,29 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
+import { AGILE36_CONTENT_SECURITY_POLICY } from '@/app/lib/csp-header';
 
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
+
+const STATIC_FILE = /\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|woff2?|ttf|eot|map)$/i;
+
+function applyCspAndHreflang(request: NextRequest, response: NextResponse) {
+  const pathname = request.nextUrl.pathname;
+  if (pathname.startsWith('/api/') || pathname.startsWith('/_next/')) return;
+
+  const lastSegment = pathname.split('/').pop() ?? '';
+  if (STATIC_FILE.test(lastSegment)) return;
+
+  response.headers.set('Content-Security-Policy', AGILE36_CONTENT_SECURITY_POLICY);
+
+  const canonical = `${request.nextUrl.origin}${pathname}${request.nextUrl.search}`;
+  const hreflang =
+    `<${canonical}>; rel="alternate"; hreflang="x-default", ` +
+    `<${canonical}>; rel="alternate"; hreflang="en", ` +
+    `<${canonical}>; rel="alternate"; hreflang="en-US"`;
+  const existing = response.headers.get('Link');
+  response.headers.set('Link', existing ? `${existing}, ${hreflang}` : hreflang);
+}
 
 export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
@@ -12,6 +33,7 @@ export async function middleware(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
   if (PUBLIC_PATHS.some((p) => p === pathname || (p !== '/' && pathname.startsWith(p)))) {
+    applyCspAndHreflang(request, response);
     return response;
   }
 
@@ -19,6 +41,7 @@ export async function middleware(request: NextRequest) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (!supabaseUrl || !supabaseKey) {
+      applyCspAndHreflang(request, response);
       return response;
     }
 
@@ -40,6 +63,7 @@ export async function middleware(request: NextRequest) {
     // Don't block requests if Supabase auth fails
   }
 
+  applyCspAndHreflang(request, response);
   return response;
 }
 
