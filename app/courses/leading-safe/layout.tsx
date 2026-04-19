@@ -156,13 +156,6 @@ export default function LeadingSafeLayout({
             eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
           },
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.94",
-          reviewCount: 748,
-          bestRating: "5",
-          worstRating: "1",
-        },
       },
     ],
   };
