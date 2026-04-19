@@ -51,6 +51,14 @@ export const BLOG_EDITORIAL: BlogEditorialEntry[] = [
     date: "2026-01-10",
   },
   {
+    slug: "csm-to-safe-upgrade-path",
+    title: "CSM to SAFe Upgrade Path: Practical Certification Order (2026)",
+    categoryId: "safe",
+    description:
+      "From Certified ScrumMaster to SAFe: recommended class order, role-based paths, and a realistic 90-day timeline.",
+    date: "2026-04-19",
+  },
+  {
     slug: "safe-lpm-vs-popm",
     title: "SAFe LPM vs POPM",
     categoryId: "safe",

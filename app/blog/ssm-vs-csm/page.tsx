@@ -295,6 +295,18 @@ export default async function SsmVsCsmBlogPost() {
 
           <ExecutiveSummary />
 
+          <p className="text-lg text-gray-700 mb-8 border-l-4 border-yellow-400 pl-4 leading-relaxed">
+            Already CSM-certified and trying to sequence SAFe classes for an
+            enterprise move? See our step-by-step guide:{" "}
+            <Link
+              href="/blog/csm-to-safe-upgrade-path"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+            >
+              CSM to SAFe upgrade path
+            </Link>
+            .
+          </p>
+
           <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">
             The 30-Second Answer
           </h2>

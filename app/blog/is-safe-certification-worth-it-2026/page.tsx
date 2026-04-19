@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
@@ -8,9 +9,11 @@ export const metadata: Metadata = {
     "Is SAFe certification worth the investment in 2026? We break down the real salary data, career impact, and who benefits most — so you can decide.",
   keywords: [
     "is SAFe certification worth it",
+    "is SAFe certification worth it 2026",
     "SAFe certification ROI",
     "SAFe agilist salary",
     "SAFe certification value 2026",
+    "SAFe certification worth it salary",
   ],
   openGraph: {
     title:
@@ -91,10 +94,11 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
           <span className="text-sm text-[#718aa5]">2026</span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Is SAFe Certification Worth It in 2026? ROI, Salary Data, and the
           Honest Answer
         </h1>
+        <BlogAuthorByline verb="By" updated="January 2026" />
 
         <div className="prose prose-lg max-w-none">
           <p className="text-lg text-gray-700 mb-8">
@@ -166,6 +170,49 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
             adoption: financial services, healthcare, defense, and large-scale
             tech. In those sectors, the certification isn&apos;t just a resume
             line — it&apos;s often a hiring requirement.
+          </p>
+
+          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+            How to read these numbers (and where to verify SAFe itself)
+          </h2>
+          <p className="text-lg text-gray-700 mb-4">
+            Salary bands here summarize what we see across US enterprise Agile
+            roles in hiring workflows and public job descriptions — not a
+            single third-party study. Treat them as directional, check your
+            metro and employer, and anchor program facts to Scaled Agile&apos;s
+            official materials.
+          </p>
+          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-700">
+            <li>
+              <a
+                href="https://scaledagile.com/what-is-safe/"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+                rel="noopener noreferrer"
+              >
+                What is SAFe?
+              </a>{" "}
+              — framework overview from Scaled Agile, Inc.
+            </li>
+            <li>
+              <a
+                href="https://scaledagile.com/certification/"
+                className="font-semibold text-[#01203d] underline hover:no-underline"
+                rel="noopener noreferrer"
+              >
+                SAFe certification
+              </a>{" "}
+              — official course catalog, exams, and renewal from Scaled Agile.
+            </li>
+          </ul>
+          <p className="text-lg text-gray-700 mb-8">
+            If you already hold CSM and need a practical class order, read{" "}
+            <Link
+              href="/blog/csm-to-safe-upgrade-path"
+              className="font-semibold text-[#01203d] underline hover:no-underline"
+            >
+              CSM to SAFe upgrade path
+            </Link>
+            .
           </p>
 
           <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
