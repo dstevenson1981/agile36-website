@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI-Empowered SAFe Scrum Master (SSM) Certification Training (2026) | Agile36 | SAFe Silver Partner",
@@ -37,25 +41,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ScrumMasterLayout({
+export default async function ScrumMasterLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
-    "description": "SAFe Scrum Master (SSM) certification teaches Scrum Masters to facilitate Agile teams within SAFe. Learn team ceremonies, PI Planning participation, impediment removal, servant leadership, ART support, and how to coach teams in large-scale Agile environments.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
-    },
-    "courseCode": "SSM",
-    "educationalCredentialAwarded": "SAFe Scrum Master (SSM) Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "Scrum Master experience or Agile team facilitation recommended",
-    "teaches": [
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "scrum-master-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd("scrum-master-certification-training", {
+    courseDisplayName: "SAFe® 6.0 AI-Empowered Scrum Master (SSM) Certification Training",
+    description:
+      "SAFe Scrum Master (SSM) certification teaches Scrum Masters to facilitate Agile teams within SAFe. Learn team ceremonies, PI Planning participation, impediment removal, servant leadership, ART support, and how to coach teams in large-scale Agile environments.",
+    courseCode: "SSM",
+    coursePrerequisites: "Scrum Master experience or Agile team facilitation recommended",
+    teaches: [
       "Team Facilitation in SAFe",
       "Program Increment (PI) Planning Support",
       "Impediment Removal and Escalation",
@@ -63,23 +63,18 @@ export default function ScrumMasterLayout({
       "Servant Leadership Practices",
       "Agile Team Coaching",
       "Scrum Ceremonies at Scale",
-      "Continuous Improvement and Inspect & Adapt"
+      "Continuous Improvement and Inspect & Adapt",
     ],
-    "offers": {
-      "@type": "Offer",
-      "price": "555",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/scrum-master/schedule"
+    breadcrumbLeafName: "SAFe Scrum Master",
+    coursesCrumbLabel: "SAFe Courses",
+    aggregateRating: {
+      ratingValue: 4.9,
+      reviewCount: 2500,
+      bestRating: 5,
+      worstRating: 1,
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+  },
+  scheduleResult);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -136,36 +131,10 @@ export default function ScrumMasterLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "SAFe Scrum Master",
-        "item": "https://www.agile36.com/courses/scrum-master"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

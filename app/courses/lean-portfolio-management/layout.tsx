@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "SAFe Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
@@ -36,49 +40,44 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LeanPortfolioManagementLayout({
+export default async function LeanPortfolioManagementLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
-    "description": "SAFe Lean Portfolio Management (LPM) certification teaches portfolio-level strategy and investment management in SAFe. Learn to align strategy and execution, manage portfolio Kanban, establish lean budgets, govern value streams, and optimize portfolio flow for maximum business value.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "lean-portfolio-management-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd(
+    "lean-portfolio-management-certification-training",
+    {
+      courseDisplayName: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
+      description:
+        "SAFe Lean Portfolio Management (LPM) certification teaches portfolio-level strategy and investment management in SAFe. Learn to align strategy and execution, manage portfolio Kanban, establish lean budgets, govern value streams, and optimize portfolio flow for maximum business value.",
+      courseCode: "LPM",
+      coursePrerequisites:
+        "Executive, portfolio manager, or program manager role. Leading SAFe certification recommended.",
+      teaches: [
+        "Portfolio Strategy and Investment Funding",
+        "Lean Governance and Compliance",
+        "Portfolio Kanban Management",
+        "Epic Prioritization and Management",
+        "Value Stream Coordination",
+        "Lean Budget Guardrails",
+        "Portfolio Flow Optimization",
+        "Strategic Themes and OKRs",
+      ],
+      breadcrumbLeafName: "Lean Portfolio Management",
+      coursesCrumbLabel: "SAFe Courses",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "LPM",
-    "educationalCredentialAwarded": "SAFe Lean Portfolio Management (LPM) Certification",
-    "timeRequired": "P3D",
-    "courseDuration": "24 hours",
-    "coursePrerequisites": "Executive, portfolio manager, or program manager role. Leading SAFe certification recommended.",
-    "teaches": [
-      "Portfolio Strategy and Investment Funding",
-      "Lean Governance and Compliance",
-      "Portfolio Kanban Management",
-      "Epic Prioritization and Management",
-      "Value Stream Coordination",
-      "Lean Budget Guardrails",
-      "Portfolio Flow Optimization",
-      "Strategic Themes and OKRs"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "950",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/lean-portfolio-management/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -135,37 +134,11 @@ export default function LeanPortfolioManagementLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Lean Portfolio Management",
-        "item": "https://www.agile36.com/courses/lean-portfolio-management"
-      }
-    ]
-  };
-
   return (
     <>
       <PracticeExamUpsellBanner courseSlug="lean-portfolio-management" schedulePath="/courses/lean-portfolio-management/schedule" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

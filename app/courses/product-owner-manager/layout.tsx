@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI-Empowered SAFe POPM Certification Training | Product Owner Product Manager (2026) | Agile36",
@@ -37,49 +41,44 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProductOwnerManagerLayout({
+export default async function ProductOwnerManagerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
-    "description": "SAFe Product Owner/Product Manager (POPM) certification teaches product ownership at scale. Learn to define and prioritize program backlogs, manage epics and features, execute PI Planning, collaborate with stakeholders, and deliver customer value through Agile Release Trains.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "safe-product-owner-product-manager-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd(
+    "safe-product-owner-product-manager-certification-training",
+    {
+      courseDisplayName: "SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
+      description:
+        "SAFe Product Owner/Product Manager (POPM) certification teaches product ownership at scale. Learn to define and prioritize program backlogs, manage epics and features, execute PI Planning, collaborate with stakeholders, and deliver customer value through Agile Release Trains.",
+      courseCode: "POPM",
+      coursePrerequisites:
+        "Product Owner, Product Manager, or Business Analyst experience recommended",
+      teaches: [
+        "Product Ownership in SAFe",
+        "Program Backlog Management",
+        "Epic and Feature Management",
+        "Product Strategy and Vision",
+        "Continuous Exploration",
+        "PI Planning Execution",
+        "Stakeholder Collaboration",
+        "Value Stream Delivery",
+      ],
+      breadcrumbLeafName: "SAFe Product Owner/Product Manager",
+      coursesCrumbLabel: "SAFe Courses",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "POPM",
-    "educationalCredentialAwarded": "SAFe Product Owner/Product Manager (POPM) Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "Product Owner, Product Manager, or Business Analyst experience recommended",
-    "teaches": [
-      "Product Ownership in SAFe",
-      "Program Backlog Management",
-      "Epic and Feature Management",
-      "Product Strategy and Vision",
-      "Continuous Exploration",
-      "PI Planning Execution",
-      "Stakeholder Collaboration",
-      "Value Stream Delivery"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "555",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/product-owner-manager/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -136,37 +135,11 @@ export default function ProductOwnerManagerLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "SAFe Product Owner/Product Manager",
-        "item": "https://www.agile36.com/courses/product-owner-manager"
-      }
-    ]
-  };
-
   return (
     <>
       <PracticeExamUpsellBanner courseSlug="product-owner-manager" schedulePath="/courses/product-owner-manager/schedule" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

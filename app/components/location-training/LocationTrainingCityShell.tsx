@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { LocationSegment } from "@/app/lib/location-training-metadata";
 import { buildLocationTrainingJsonLd } from "@/app/lib/location-training-jsonld";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
 import { buildLocalLocationContent } from "@/app/lib/location-training-local-content";
 
-export function LocationTrainingCityShell({
+export async function LocationTrainingCityShell({
   segment,
   citySlug,
   children,
@@ -12,7 +13,8 @@ export function LocationTrainingCityShell({
   citySlug: string;
   children: React.ReactNode;
 }) {
-  const graph = buildLocationTrainingJsonLd(segment, citySlug);
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(segment);
+  const graph = buildLocationTrainingJsonLd(segment, citySlug, scheduleResult);
   const local = buildLocalLocationContent(segment, citySlug);
 
   return (

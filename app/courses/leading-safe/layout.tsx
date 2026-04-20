@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { SCHEMA_ORGANIZATION_ID } from "@/app/lib/schema-site";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
@@ -38,118 +41,42 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LeadingSafeLayout({
+export default async function LeadingSafeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseGraphLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://www.agile36.com",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Courses",
-            item: "https://www.agile36.com/courses",
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Leading SAFe Agilist",
-            item: "https://www.agile36.com/courses/leading-safe",
-          },
-        ],
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "leading-safe-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd(
+    "leading-safe-certification-training",
+    {
+      courseDisplayName:
+        "AI-Empowered Leading SAFe® 6.0 Certification (SAFe Agilist)",
+      description:
+        "2-day live virtual Leading SAFe 6.0 training leading to the SAFe Agilist (SA) certification. Includes 16 PDUs/SEUs, certification exam, and lifetime material access.",
+      imageUrl: "https://www.agile36.com/LeadingSAFeHome.jpg",
+      eventImageUrl: "https://www.agile36.com/LeadingSAFeHome.jpg",
+      coursePrerequisites:
+        "Basic knowledge of Agile or Scrum recommended; 5+ years experience in software development, testing, business analysis, product, or project management beneficial.",
+      teaches: [
+        "Scaled Agile Framework fundamentals",
+        "Lean-Agile mindset and principles",
+        "Leading SAFe transformations",
+        "Agile Release Train execution",
+        "Portfolio-level value delivery",
+      ],
+      breadcrumbLeafName: "Leading SAFe Agilist",
+      offerExtras: {
+        validFrom: "2026-04-19",
+        priceValidUntil: "2027-04-19",
+        courseOfferUrl: "https://www.agile36.com/courses/leading-safe",
+        category: "Training / Certification",
       },
-      {
-        "@type": "Course",
-        "@id": "https://www.agile36.com/courses/leading-safe#course",
-        name: "AI-Empowered Leading SAFe® 6.0 Certification (SAFe Agilist)",
-        url: "https://www.agile36.com/courses/leading-safe",
-        description:
-          "2-day live virtual Leading SAFe 6.0 training leading to the SAFe Agilist (SA) certification. Includes 16 PDUs/SEUs, certification exam, and lifetime material access.",
-        image: "https://www.agile36.com/LeadingSAFeHome.jpg",
-        provider: {
-          "@id": SCHEMA_ORGANIZATION_ID,
-        },
-        educationalCredentialAwarded: {
-          "@type": "EducationalOccupationalCredential",
-          name: "SAFe Agilist (SA) Certification",
-          credentialCategory: "certification",
-          recognizedBy: {
-            "@type": "Organization",
-            name: "Scaled Agile, Inc.",
-            url: "https://scaledagile.com",
-          },
-        },
-        coursePrerequisites:
-          "Basic knowledge of Agile or Scrum recommended; 5+ years experience in software development, testing, business analysis, product, or project management beneficial.",
-        teaches: [
-          "Scaled Agile Framework fundamentals",
-          "Lean-Agile mindset and principles",
-          "Leading SAFe transformations",
-          "Agile Release Train execution",
-          "Portfolio-level value delivery",
-        ],
-        timeRequired: "PT16H",
-        inLanguage: "en-US",
-        offers: {
-          "@type": "Offer",
-          price: 515,
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          validFrom: "2026-04-19",
-          priceValidUntil: "2027-04-19",
-          url: "https://www.agile36.com/courses/leading-safe",
-          category: "Training / Certification",
-        },
-        hasCourseInstance: [
-          {
-            "@type": "CourseInstance",
-            courseMode: "online",
-            courseWorkload: "PT16H",
-            startDate: "2026-04-20",
-            endDate: "2026-04-21",
-            location: {
-              "@type": "VirtualLocation",
-              url: "https://www.agile36.com/courses/leading-safe",
-            },
-            instructor: {
-              "@type": "Person",
-              name: "Joe Puoci",
-              jobTitle: "SAFe Program Consultant (SPC)",
-            },
-            eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-          },
-          {
-            "@type": "CourseInstance",
-            courseMode: "online",
-            courseWorkload: "PT16H",
-            startDate: "2026-04-23",
-            endDate: "2026-04-24",
-            location: {
-              "@type": "VirtualLocation",
-              url: "https://www.agile36.com/courses/leading-safe",
-            },
-            instructor: {
-              "@type": "Person",
-              name: "Marcus Ball",
-              jobTitle: "SAFe Program Consultant (SPC)",
-            },
-            eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-          },
-        ],
-      },
-    ],
-  };
+    },
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",

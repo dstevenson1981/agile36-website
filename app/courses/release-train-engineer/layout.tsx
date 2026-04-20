@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification (2026) | Agile36",
@@ -43,54 +47,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ReleaseTrainEngineerLayout({
+export default async function ReleaseTrainEngineerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® AI-Empowered Release Train Engineer (RTE) Certification Training",
-    "description":
-      "SAFe® RTE certification training with an AI-empowered lens: ART facilitation, PI planning, program coaching, and responsible use of generative AI for planning support, communication, and flow insights.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "release-train-engineer-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd(
+    "release-train-engineer-certification-training",
+    {
+      courseDisplayName:
+        "SAFe® AI-Empowered Release Train Engineer (RTE) Certification Training",
+      description:
+        "SAFe® RTE certification training with an AI-empowered lens: ART facilitation, PI planning, program coaching, and responsible use of generative AI for planning support, communication, and flow insights.",
+      courseCode: "SAFe RTE",
+      coursePrerequisites:
+        "Experience with Agile practices and understanding of SAFe framework recommended",
+      teaches: [
+        "Agile Release Train (ART) Facilitation",
+        "Program Increment (PI) Planning",
+        "Program-Level Coaching",
+        "Responsible AI Use for RTE Workflows",
+        "AI-Assisted PI Readiness and Dependency Sense-Making",
+        "Stakeholder Management",
+        "Dependency Management",
+        "Flow Optimization",
+        "Value Delivery",
+        "Continuous Improvement",
+      ],
+      breadcrumbLeafName: "Release Train Engineer",
+      coursesCrumbLabel: "SAFe Courses",
+      aggregateRating: { ratingValue: 4.9, reviewCount: 180, bestRating: 5, worstRating: 1 },
     },
-    "courseCode": "SAFe RTE",
-    "educationalCredentialAwarded": "SAFe Release Train Engineer (RTE) Certification",
-    "timeRequired": "P2D",
-    "coursePrerequisites": "Experience with Agile practices and understanding of SAFe framework recommended",
-    "teaches": [
-      "Agile Release Train (ART) Facilitation",
-      "Program Increment (PI) Planning",
-      "Program-Level Coaching",
-      "Responsible AI Use for RTE Workflows",
-      "AI-Assisted PI Readiness and Dependency Sense-Making",
-      "Stakeholder Management",
-      "Dependency Management",
-      "Flow Optimization",
-      "Value Delivery",
-      "Continuous Improvement"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "1299",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "180"
-    }
-  };
+    scheduleResult
+  );
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }}
       />
       {children}
     </>

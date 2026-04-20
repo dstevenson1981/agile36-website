@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
+import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "SAFe Agile Product Management (APM) Certification Training (2026) | Agile36",
@@ -40,50 +44,45 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AgileProductManagementLayout({
+export default async function AgileProductManagementLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® 6.0 Agile Product Management (APM) Certification Training",
-    "description": "SAFe Agile Product Management (APM) certification teaches strategic product management at scale. Learn design thinking, continuous exploration, product vision and strategy, roadmap creation, market segmentation, Lean UX, and customer-centric product development across multiple Agile Release Trains.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohortsForSegment(
+    "agile-product-management-certification-training"
+  );
+  const courseGraphLd = buildSafCourseHubGraphLd(
+    "agile-product-management-certification-training",
+    {
+      courseDisplayName: "SAFe® 6.0 Agile Product Management (APM) Certification Training",
+      description:
+        "SAFe Agile Product Management (APM) certification teaches strategic product management at scale. Learn design thinking, continuous exploration, product vision and strategy, roadmap creation, market segmentation, Lean UX, and customer-centric product development across multiple Agile Release Trains.",
+      courseCode: "APM",
+      coursePrerequisites:
+        "Product management or Product Owner experience recommended. Leading SAFe helpful.",
+      teaches: [
+        "Design Thinking and Customer Empathy",
+        "Continuous Exploration of Markets and Users",
+        "Product Vision and Strategy Definition",
+        "Strategic Roadmap Creation",
+        "Market Segmentation and Personas",
+        "Innovation and Product Evolution",
+        "Lean UX and Hypothesis-Driven Development",
+        "Product Lifecycle Management",
+        "Value Stream Coordination",
+      ],
+      breadcrumbLeafName: "Agile Product Management",
+      coursesCrumbLabel: "SAFe Courses",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "APM",
-    "educationalCredentialAwarded": "SAFe Agile Product Management (APM) Certification",
-    "timeRequired": "P3D",
-    "courseDuration": "24 hours",
-    "coursePrerequisites": "Product management or Product Owner experience recommended. Leading SAFe helpful.",
-    "teaches": [
-      "Design Thinking and Customer Empathy",
-      "Continuous Exploration of Markets and Users",
-      "Product Vision and Strategy Definition",
-      "Strategic Roadmap Creation",
-      "Market Segmentation and Personas",
-      "Innovation and Product Evolution",
-      "Lean UX and Hypothesis-Driven Development",
-      "Product Lifecycle Management",
-      "Value Stream Coordination"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "1299",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/agile-product-management/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -140,36 +139,10 @@ export default function AgileProductManagementLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Agile Product Management",
-        "item": "https://www.agile36.com/courses/agile-product-management"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );
