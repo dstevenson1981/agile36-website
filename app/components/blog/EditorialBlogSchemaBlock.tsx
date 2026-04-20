@@ -3,13 +3,10 @@ import { BLOG_LEAD_AUTHOR_NAME } from "@/app/lib/blog-author";
 import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { categoryShortBadgeForId } from "@/app/lib/blog-categories";
 import { buildEditorialBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
-import { getBlogPostingSchemaSlugSet } from "@/app/lib/blog-top-schema-slugs";
 
 type Props = { slug: string };
 
-export default async function EditorialBlogSchemaBlock({ slug }: Props) {
-  const top = await getBlogPostingSchemaSlugSet();
-  if (!top.has(slug)) return null;
+export default function EditorialBlogSchemaBlock({ slug }: Props) {
   const entry = BLOG_EDITORIAL.find((e) => e.slug === slug);
   if (!entry) return null;
   const articleSection = categoryShortBadgeForId(entry.categoryId);

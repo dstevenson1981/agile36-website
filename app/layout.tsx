@@ -72,6 +72,10 @@ export default function RootLayout({
     "email": "d.stevenson@agile36.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "1000 Brickell Ave, Suite 715",
+      "addressLocality": "Miami",
+      "addressRegion": "Florida",
+      "postalCode": "3313",
       "addressCountry": "US"
     },
     "sameAs": [

@@ -16,7 +16,6 @@ import {
   resolveLeadBlogAuthorName,
 } from "@/app/lib/blog-author";
 import { buildGeneratedBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
-import { getBlogPostingSchemaSlugSet } from "@/app/lib/blog-top-schema-slugs";
 import { getGeneratedBlogPost, getGeneratedBlogSlugs } from "@/app/lib/generated-blog";
 
 type PageProps = {
@@ -132,24 +131,21 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
   const badge = categoryShortBadgeForId(categoryId);
   const title = post.frontmatter.title ?? slug.replace(/-/g, " ");
   const body = stripLeadingDuplicateH1(post.content, post.frontmatter.title);
-  const topSchema = await getBlogPostingSchemaSlugSet();
-  const schemaGraph = topSchema.has(slug)
-    ? buildGeneratedBlogPostingGraph({
-        slug,
-        title,
-        description: post.frontmatter.description,
-        date: post.frontmatter.date,
-        updated: post.frontmatter.updated,
-        author: post.frontmatter.author,
-        keywords: post.frontmatter.keywords ?? [],
-        content: post.content,
-        articleSection: badge,
-      })
-    : null;
+  const schemaGraph = buildGeneratedBlogPostingGraph({
+    slug,
+    title,
+    description: post.frontmatter.description,
+    date: post.frontmatter.date,
+    updated: post.frontmatter.updated,
+    author: post.frontmatter.author,
+    keywords: post.frontmatter.keywords ?? [],
+    content: post.content,
+    articleSection: badge,
+  });
 
   return (
     <>
-      {schemaGraph ? <BlogPostingStructuredData data={schemaGraph} /> : null}
+      <BlogPostingStructuredData data={schemaGraph} />
       <main className="min-h-screen bg-white">
       <div className="w-full min-h-[12rem] sm:h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden px-4 py-10 sm:py-0">
         <BlogHeroDots />
