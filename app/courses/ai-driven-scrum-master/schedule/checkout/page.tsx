@@ -129,6 +129,22 @@ function CheckoutContent() {
     return Math.round(discount);
   };
 
+  const hasValidAttendeeList = (value: string) => {
+    const emailRegex = /\b[^\s@]+@[^\s@]+\.[^\s@]+\b/;
+    return value
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .some((line) => emailRegex.test(line));
+  };
+
+  const handleEnrollingForChange = (value: 'myself' | 'someoneElse') => {
+    setEnrollmentFormData({ ...enrollmentFormData, enrollingFor: value });
+    if (value === 'someoneElse') {
+      setShowAlternativeContact(true);
+    }
+  };
+
   const handleApplyPromoCode = async (codeOverride?: string) => {
     const code = (codeOverride ?? promoCodeInput.trim()).trim();
     
@@ -184,6 +200,15 @@ function CheckoutContent() {
       // Validate Basic Details
       if (!enrollmentFormData.firstName || !enrollmentFormData.lastName || !enrollmentFormData.email || !enrollmentFormData.phone) {
         alert('Please fill in all required fields');
+        return;
+      }
+
+      if (
+        enrollmentFormData.enrollingFor === 'someoneElse' &&
+        !hasValidAttendeeList(enrollmentFormData.alternativeContact)
+      ) {
+        setShowAlternativeContact(true);
+        alert('Please add at least one attendee name and email (one per line).');
         return;
       }
       
@@ -389,7 +414,7 @@ function CheckoutContent() {
                           name="enrollingFor"
                           value="myself"
                           checked={enrollmentFormData.enrollingFor === 'myself'}
-                          onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, enrollingFor: e.target.value })}
+                          onChange={() => handleEnrollingForChange('myself')}
                           className="w-4 h-4 text-[#fa4a23] focus:ring-[#fa4a23]"
                         />
                         <span className="text-sm text-gray-700">Myself</span>
@@ -400,7 +425,7 @@ function CheckoutContent() {
                           name="enrollingFor"
                           value="someoneElse"
                           checked={enrollmentFormData.enrollingFor === 'someoneElse'}
-                          onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, enrollingFor: e.target.value })}
+                          onChange={() => handleEnrollingForChange('someoneElse')}
                           className="w-4 h-4 text-[#fa4a23] focus:ring-[#fa4a23]"
                         />
                         <span className="text-sm text-gray-700">Someone else</span>
@@ -478,29 +503,40 @@ function CheckoutContent() {
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                           </svg>
-                          Hide Alternative Contact
+                          Hide {enrollmentFormData.enrollingFor === 'someoneElse' ? 'Attendees' : 'Alternative Contact'}
                         </>
                       ) : (
                         <>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                           </svg>
-                          + Alternative contact
+                          + {enrollmentFormData.enrollingFor === 'someoneElse' ? 'Add attendees' : 'Alternative contact'}
                         </>
                       )}
                     </button>
                     {showAlternativeContact && (
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Alternative Email
+                          {enrollmentFormData.enrollingFor === 'someoneElse'
+                            ? 'Attendee names and emails'
+                            : 'Alternative Email'}
                         </label>
-                        <input
-                          type="email"
+                        <textarea
                           value={enrollmentFormData.alternativeContact}
                           onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, alternativeContact: e.target.value })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
-                          placeholder="alternative.email@example.com"
+                          rows={enrollmentFormData.enrollingFor === 'someoneElse' ? 4 : 2}
+                          placeholder={
+                            enrollmentFormData.enrollingFor === 'someoneElse'
+                              ? "Enter one attendee per line:\nJane Doe - jane@example.com\nJohn Smith - john@example.com"
+                              : "alternative.email@example.com"
+                          }
                         />
+                        {enrollmentFormData.enrollingFor === 'someoneElse' && (
+                          <p className="mt-2 text-xs text-gray-500">
+                            Add all attendee names and emails here. We will use this list for enrollment follow-up.
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>

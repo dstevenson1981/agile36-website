@@ -9,7 +9,10 @@ WHERE LOWER(TRIM(email)) IN (
   'k_davis@acs.org',
   '123karendavis@gmail.com',
   'jjboll4@gmail.com',
-  'garyyyuen@gmail.com'
+  'garyyyuen@gmail.com',
+  'pereira-suellen@hotmail.com',
+  'alexander@middleton-consulting.com',
+  'enriquesan@iadb.org'
 )
 ORDER BY email;
 
@@ -18,7 +21,10 @@ INSERT INTO lpm_pro_access_whitelist (email) VALUES
   (lower(trim('k_davis@acs.org'))),
   (lower(trim('123karendavis@gmail.com'))),
   (lower(trim('jjboll4@gmail.com'))),
-  (lower(trim('garyyyuen@gmail.com')))
+  (lower(trim('garyyyuen@gmail.com'))),
+  (lower(trim('pereira-suellen@hotmail.com'))),
+  (lower(trim('alexander@middleton-consulting.com'))),
+  (lower(trim('ENRIQUESAN@IADB.ORG')))
 ON CONFLICT (email) DO NOTHING;
 
 -- Confirm
@@ -29,6 +35,9 @@ WHERE LOWER(TRIM(email)) IN (
   'k_davis@acs.org',
   '123karendavis@gmail.com',
   'jjboll4@gmail.com',
-  'garyyyuen@gmail.com'
+  'garyyyuen@gmail.com',
+  'pereira-suellen@hotmail.com',
+  'alexander@middleton-consulting.com',
+  'enriquesan@iadb.org'
 )
 ORDER BY email;
