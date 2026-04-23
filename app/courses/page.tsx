@@ -403,6 +403,11 @@ function CoursesContent() {
     if (course.title.includes("Agentic Product Leader")) {
       return "/courses/certified-ai-product-manager";
     }
+
+    // PMP — must match Header / home page; slug fallback would be /courses/pmp-certification-training (404)
+    if (course.title.includes("PMP") || course.title.includes("PMP®")) {
+      return "/courses/pmp-certification";
+    }
     
     const titleSlug = course.title
       .toLowerCase()
