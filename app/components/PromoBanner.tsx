@@ -37,7 +37,7 @@ export default function PromoBanner() {
               </div>
             </div>
             <div className="hidden sm:block w-px h-6 bg-white/40" />
-            <span className="hidden sm:inline text-white font-bold text-sm">Only Until Apr 20</span>
+            <span className="hidden sm:inline text-white font-bold text-sm">Only Until Apr 27</span>
           </div>
 
           <div className="flex-1 min-w-0 text-center order-last sm:order-none w-full sm:w-auto">
@@ -61,7 +61,7 @@ export default function PromoBanner() {
               <div className="text-[#fa4a23] font-semibold text-xs sm:text-sm">Clip coupon code</div>
             </button>
             <div className="hidden sm:block w-px h-6 bg-white/40" />
-            <span className="text-white font-bold text-sm sm:text-base">Ends Apr 20</span>
+            <span className="text-white font-bold text-sm sm:text-base">Ends Apr 27</span>
           </div>
         </div>
       </div>
