@@ -12,17 +12,21 @@ function AuthConfirmContent() {
   useEffect(() => {
     const supabase = createClient();
     // Password-reset emails pass next=/account/reset-password; signup should pass next=/account.
-    const next = searchParams.get('next') ?? '/account';
+    const rawNext = searchParams.get('next');
+    const next =
+      rawNext && rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : '/account';
 
     async function handleAuth() {
+      let flowType: string | null = searchParams.get('type');
+
       // Flow 1: Hash fragment (legacy) - access_token & refresh_token
       const hash = window.location.hash;
       if (hash) {
         const params = new URLSearchParams(hash.slice(1));
         const accessToken = params.get('access_token');
         const refreshToken = params.get('refresh_token');
-        const type = params.get('type');
-        if (type === 'recovery' && accessToken && refreshToken) {
+        flowType = flowType ?? params.get('type');
+        if (accessToken && refreshToken) {
           const { error } = await supabase.auth.setSession({
             access_token: accessToken,
             refresh_token: refreshToken,
@@ -49,8 +53,32 @@ function AuthConfirmContent() {
         }
       }
 
+      // Flow 3: Query param code (PKCE auth code exchange)
+      const code = searchParams.get('code');
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        if (!error) {
+          router.replace(next);
+          return;
+        }
+      }
+
+      // Some links can fail verifyOtp after session has already been established.
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        router.replace(next);
+        return;
+      }
+
+      const isRecoveryFlow = flowType === 'recovery';
       setStatus('error');
-      router.replace(`/account/forgot-password?error=invalid_link`);
+      if (isRecoveryFlow) {
+        router.replace('/account/forgot-password?error=invalid_link');
+      } else {
+        router.replace('/account/login?error=invalid_or_expired_link');
+      }
     }
 
     handleAuth();
