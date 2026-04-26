@@ -25,6 +25,7 @@ function distinctEmailsForWhitelist(
 const EMERGENCY_SSM_ACCESS_EMAILS = new Set(['cchivers444@gmail.com']);
 
 const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
+const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set(['beranguelly@hotmail.com']);
 
 function hasEmergencySsmAccess(
   authEmail: string | undefined,
@@ -41,6 +42,15 @@ function hasEmergencyLeadingSafeProAccess(
 ): boolean {
   return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
     EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS.has(email.toLowerCase())
+  );
+}
+
+function hasEmergencyPopmProAccess(
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): boolean {
+  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
+    EMERGENCY_POPM_PRO_ACCESS_EMAILS.has(email.toLowerCase())
   );
 }
 
@@ -195,6 +205,10 @@ export async function hasPopmProAccess(): Promise<boolean> {
     .select('email')
     .eq('user_id', user.id)
     .single();
+
+  // Safety fallback so whitelist-only users are not blocked when DB grants are delayed.
+  if (hasEmergencyPopmProAccess(user.email, profile?.email)) return true;
+
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
   const { data: orders } = await supabase
