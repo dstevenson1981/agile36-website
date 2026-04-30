@@ -53,12 +53,29 @@ function ComboScheduleContent() {
   }, [combo]);
 
   const handleProceed = () => {
-    const scheduleIds = Object.values(selectedSchedules).filter(Boolean);
-    if (scheduleIds.length === 0 || !combo) {
+    if (!combo) {
       router.push(`/contact?combo=${comboId}`);
       return;
     }
-    router.push(`/combo-courses/checkout?combo=${comboId}&schedules=${scheduleIds.join(",")}`);
+
+    const selectedByCourse: Record<string, { scheduleId: string; displayDate: string; courseName: string }> = {};
+    for (const course of combo.courses) {
+      const scheduleId = selectedSchedules[course.slug];
+      if (!scheduleId) {
+        return;
+      }
+      const schedule = (schedulesByCourse[course.slug] || []).find((s) => s.id === scheduleId);
+      selectedByCourse[course.slug] = {
+        scheduleId,
+        displayDate: schedule?.displayDate || "",
+        courseName: course.name,
+      };
+    }
+
+    const scheduleIds = Object.values(selectedByCourse).map((item) => item.scheduleId);
+    router.push(
+      `/combo-courses/checkout?combo=${comboId}&schedules=${scheduleIds.join(",")}&selections=${encodeURIComponent(JSON.stringify(selectedByCourse))}`
+    );
   };
 
   if (!comboId || !combo) {
@@ -170,6 +187,7 @@ function ComboScheduleContent() {
 
             <button
               onClick={handleProceed}
+              disabled={!combo?.courses.every((course) => Boolean(selectedSchedules[course.slug]))}
               className="w-full mt-8 bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-6 rounded-md transition-colors"
             >
               Proceed

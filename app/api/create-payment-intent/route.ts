@@ -179,6 +179,15 @@ export async function POST(request: NextRequest) {
     const scheduleDate = enrollmentData?.scheduleDate || '';
     const scheduleTime = enrollmentData?.scheduleTime || '';
     const duration = enrollmentData?.duration || '';
+    const comboScheduleMap = enrollmentData?.comboScheduleMap && typeof enrollmentData.comboScheduleMap === 'object'
+      ? JSON.stringify(enrollmentData.comboScheduleMap)
+      : '';
+    const comboScheduleDates = enrollmentData?.comboScheduleDates && typeof enrollmentData.comboScheduleDates === 'object'
+      ? JSON.stringify(enrollmentData.comboScheduleDates)
+      : '';
+    const comboCourseNames = enrollmentData?.comboCourseNames && typeof enrollmentData.comboCourseNames === 'object'
+      ? JSON.stringify(enrollmentData.comboCourseNames)
+      : '';
     const planName = selectedPlan === 'pro' ? 'Pro Plan' : 'Basic Plan';
     
     // Create detailed description for receipt
@@ -230,6 +239,9 @@ export async function POST(request: NextRequest) {
         scheduleTime: scheduleTime || '',
         duration: duration || '',
         timezone: enrollmentData?.timezone || '',
+        comboScheduleMap,
+        comboScheduleDates,
+        comboCourseNames,
         promoCode: effectivePromoCode || '',
         promoDiscount: effectivePromoDiscount ? effectivePromoDiscount.toString() : '0',
         originalAmount: originalAmount ? originalAmount.toString() : amount.toString(),

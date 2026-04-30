@@ -16,6 +16,7 @@ function ComboCheckoutContent() {
   const router = useRouter();
   const comboId = searchParams.get("combo");
   const schedulesParam = searchParams.get("schedules") || "";
+  const selectionsParam = searchParams.get("selections") || "";
 
   const [combo, setCombo] = useState<Combo | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
@@ -34,6 +35,15 @@ function ComboCheckoutContent() {
   });
 
   const scheduleIds = schedulesParam ? schedulesParam.split(",").filter(Boolean) : [];
+  const parsedSelections: Record<string, { scheduleId: string; displayDate?: string; courseName?: string }> = (() => {
+    if (!selectionsParam) return {};
+    try {
+      const parsed = JSON.parse(decodeURIComponent(selectionsParam));
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch {
+      return {};
+    }
+  })();
 
   useEffect(() => {
     const found = COMBO_COURSES.find((c) => c.id === comboId);
@@ -70,6 +80,15 @@ function ComboCheckoutContent() {
             enrollmentData: {
               ...formData,
               scheduleIds: scheduleIds.join(","),
+              comboScheduleMap: Object.fromEntries(
+                Object.entries(parsedSelections).map(([slug, value]) => [slug, value?.scheduleId || ""])
+              ),
+              comboScheduleDates: Object.fromEntries(
+                Object.entries(parsedSelections).map(([slug, value]) => [slug, value?.displayDate || ""])
+              ),
+              comboCourseNames: Object.fromEntries(
+                Object.entries(parsedSelections).map(([slug, value]) => [slug, value?.courseName || ""])
+              ),
             },
           }),
         });
