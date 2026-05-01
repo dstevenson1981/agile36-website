@@ -14,6 +14,7 @@ const getStripe = () => {
 const COURSE_NAMES: Record<string, string> = {
   'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
   'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
+  'agile-product-management': 'Agile Product Management (APM)',
   'lean-portfolio-management': 'SAFe Lean Portfolio Management',
   'scrum-master': 'AI-Empowered SAFe Scrum Master (SSM)',
   'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
@@ -34,6 +35,7 @@ export async function POST(request: NextRequest) {
       ![
         'leading-safe',
         'product-owner-manager',
+        'agile-product-management',
         'lean-portfolio-management',
         'scrum-master',
         'advanced-scrum-master',

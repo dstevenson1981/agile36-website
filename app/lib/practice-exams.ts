@@ -26,6 +26,10 @@ const EMERGENCY_SSM_ACCESS_EMAILS = new Set(['cchivers444@gmail.com']);
 
 const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
 const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set(['beranguelly@hotmail.com']);
+const EMERGENCY_APM_PRO_ACCESS_EMAILS = new Set([
+  'harry@harrychand.com',
+  'brian.hickey@hrsdc-rhdcc.gc.ca',
+]);
 
 function hasEmergencySsmAccess(
   authEmail: string | undefined,
@@ -54,6 +58,15 @@ function hasEmergencyPopmProAccess(
   );
 }
 
+function hasEmergencyApmProAccess(
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): boolean {
+  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
+    EMERGENCY_APM_PRO_ACCESS_EMAILS.has(email.toLowerCase())
+  );
+}
+
 function isRpcMissingError(error: { code?: string; message?: string } | null): boolean {
   if (!error) return false;
   const msg = String(error.message ?? '');
@@ -71,7 +84,8 @@ async function whitelistHasEmail(
     | 'lpm_pro_access_whitelist'
     | 'leading_safe_pro_access_whitelist'
     | 'advanced_scrum_master_pro_access_whitelist'
-    | 'scrum_master_pro_access_whitelist',
+    | 'scrum_master_pro_access_whitelist'
+    | 'agile_product_management_pro_access_whitelist',
   authEmail: string | undefined,
   profileEmail: string | null | undefined
 ): Promise<boolean> {
@@ -220,6 +234,56 @@ export async function hasPopmProAccess(): Promise<boolean> {
     .limit(1);
 
   return (orders?.length ?? 0) > 0;
+}
+
+/** Check if the logged-in user has Pro plan for Agile Product Management (agile-product-management) */
+export async function hasApmProAccess(): Promise<boolean> {
+  const fromUserAccess = await checkProAccess('agile-product-management');
+  if (fromUserAccess) return true;
+
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+
+  // Safety fallback so manually granted users are not blocked while DB grants are pending.
+  if (hasEmergencyApmProAccess(user.email, profile?.email)) return true;
+
+  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id')
+    .ilike('customer_email', lookupEmail)
+    .eq('course_slug', 'agile-product-management')
+    .eq('plan', 'pro')
+    .limit(1);
+
+  if ((orders?.length ?? 0) > 0) return true;
+
+  // Whitelist: RLS returns a row when auth or profile email matches.
+  const { data: apmWhitelistRows, error: apmWlErr } = await supabase
+    .from('agile_product_management_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!apmWlErr && (apmWhitelistRows?.length ?? 0) > 0) return true;
+
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!serviceKey || !serviceUrl) return false;
+
+  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+  return whitelistHasEmail(
+    serviceSupabase,
+    'agile_product_management_pro_access_whitelist',
+    user.email,
+    profile?.email
+  );
 }
 
 /** Check if the logged-in user has Pro plan for Leading SAFe (leading-safe) */

@@ -1,0 +1,36 @@
+/* Agile Product Management (APM) Pro practice test access whitelist. Run in Supabase SQL Editor.
+   Users in this table get APM practice test access without needing a Pro order. */
+
+CREATE TABLE IF NOT EXISTS agile_product_management_pro_access_whitelist (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_apm_whitelist_email ON agile_product_management_pro_access_whitelist (LOWER(email));
+
+ALTER TABLE agile_product_management_pro_access_whitelist ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Users can check own whitelist status" ON agile_product_management_pro_access_whitelist;
+CREATE POLICY "Users can check own whitelist status" ON agile_product_management_pro_access_whitelist
+  FOR SELECT
+  USING (
+    LOWER(TRIM(agile_product_management_pro_access_whitelist.email)) = LOWER(TRIM((SELECT u.email FROM auth.users u WHERE u.id = auth.uid())))
+    OR EXISTS (
+      SELECT 1 FROM public.profiles p
+      WHERE p.user_id = auth.uid()
+        AND p.email IS NOT NULL
+        AND TRIM(p.email) <> ''
+        AND LOWER(TRIM(agile_product_management_pro_access_whitelist.email)) = LOWER(TRIM(p.email))
+    )
+  );
+
+DROP POLICY IF EXISTS "Service role can manage whitelist" ON agile_product_management_pro_access_whitelist;
+CREATE POLICY "Service role can manage whitelist" ON agile_product_management_pro_access_whitelist
+  FOR ALL
+  USING (auth.role() = 'service_role');
+
+INSERT INTO agile_product_management_pro_access_whitelist (email) VALUES
+  ('harry@harrychand.com'),
+  ('brian.hickey@hrsdc-rhdcc.gc.ca')
+ON CONFLICT (email) DO NOTHING;

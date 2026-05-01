@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {
   hasPopmProAccess,
+  hasApmProAccess,
   hasLpmProAccess,
   hasLeadingSafeProAccess,
   hasScrumMasterProAccess,
@@ -12,7 +13,7 @@ import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 export const metadata = {
   title: 'Practice Exams | Agile36',
   description:
-    'SAFe practice exams for Agile36 Pro enrollees — Leading SAFe, POPM, LPM, SSM, and Advanced Scrum Master. Sign-in required.',
+    'Practice exams for Agile36 Pro enrollees — Leading SAFe, POPM, Agile Product Management, LPM, SSM, and Advanced Scrum Master. Sign-in required.',
   robots: 'noindex, nofollow',
 };
 
@@ -22,8 +23,9 @@ export default async function PracticeExamsPage({
   searchParams: Promise<{ upgraded?: string }>;
 }) {
   const { upgraded } = await searchParams;
-  const [hasPopmPro, hasLpmPro, hasLeadingSafePro, hasSsmPro, hasAsmPro, registeredCourses] = await Promise.all([
+  const [hasPopmPro, hasApmPro, hasLpmPro, hasLeadingSafePro, hasSsmPro, hasAsmPro, registeredCourses] = await Promise.all([
     hasPopmProAccess(),
+    hasApmProAccess(),
     hasLpmProAccess(),
     hasLeadingSafeProAccess(),
     hasScrumMasterProAccess(),
@@ -35,6 +37,7 @@ export default async function PracticeExamsPage({
     registeredCourses.includes('product-owner-manager') ||
     registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('popm')) ||
     hasPopmPro;
+  const hasApm = registeredCourses.includes('agile-product-management') || hasApmPro;
   const hasLpm =
     registeredCourses.includes('lean-portfolio-management') ||
     registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('lpm')) ||
@@ -48,7 +51,7 @@ export default async function PracticeExamsPage({
     registeredCourses.includes('advanced-scrum-master') ||
     registeredCourses.includes('combo-ssm-advanced') ||
     hasAsmPro;
-  const hasAnyExam = hasPopm || hasLpm || hasLeadingSafe || hasScrumMaster || hasAsm;
+  const hasAnyExam = hasPopm || hasApm || hasLpm || hasLeadingSafe || hasScrumMaster || hasAsm;
 
   return (
     <div>
@@ -122,6 +125,42 @@ export default async function PracticeExamsPage({
                 <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
                 <Link
                   href="/account/practice-exams/upgrade/product-owner-manager"
+                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
+                >
+                  Upgrade to access →
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Agile Product Management (APM) */}
+        {hasApm && (
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl">🚀</span>
+              </div>
+              <div>
+                <h2 className="font-semibold text-slate-900">Agile Product Management (APM)</h2>
+                <p className="text-slate-600 text-sm mt-1">
+                  51 questions derived from your APM preparation pack
+                </p>
+              </div>
+            </div>
+            {hasApmPro ? (
+              <Link
+                href="/account/practice-exams/agile-product-management"
+                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
+              >
+                Start Test
+              </Link>
+            ) : (
+              <div className="flex-shrink-0 text-right">
+                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
+                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
+                <Link
+                  href="/account/practice-exams/upgrade/agile-product-management"
                   className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
                 >
                   Upgrade to access →

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
 import PopmPracticeTest from '@/app/account/(dashboard)/practice-exams/popm/PopmPracticeTest';
+import AgileProductManagementPracticeTest from '@/app/account/(dashboard)/practice-exams/agile-product-management/AgileProductManagementPracticeTest';
 import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPracticeTest';
 import ScrumMasterPracticeTest from '@/app/account/(dashboard)/practice-exams/scrum-master/ScrumMasterPracticeTest';
 import AdvancedScrumMasterPracticeTest from '@/app/account/(dashboard)/practice-exams/advanced-scrum-master/AdvancedScrumMasterPracticeTest';
@@ -10,6 +11,10 @@ const COURSE_PRACTICE_EXAMS: Record<string, { title: string; component: React.Co
   'product-owner-manager': {
     title: 'SAFe POPM Practice Test',
     component: PopmPracticeTest,
+  },
+  'agile-product-management': {
+    title: 'Agile Product Management (APM) Practice Test',
+    component: AgileProductManagementPracticeTest,
   },
   'lean-portfolio-management': {
     title: 'SAFe LPM Practice Test',
