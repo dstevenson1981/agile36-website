@@ -25,6 +25,7 @@ function distinctEmailsForWhitelist(
 const EMERGENCY_SSM_ACCESS_EMAILS = new Set([
   'cchivers444@gmail.com',
   'softwaredevelopmentinstructor@gmail.com',
+  'danesh.selvarajan@gmail.com',
 ]);
 
 const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
