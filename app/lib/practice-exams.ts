@@ -22,7 +22,10 @@ function distinctEmailsForWhitelist(
   return [...new Set([p, a].filter((e) => e.length > 0))];
 }
 
-const EMERGENCY_SSM_ACCESS_EMAILS = new Set(['cchivers444@gmail.com']);
+const EMERGENCY_SSM_ACCESS_EMAILS = new Set([
+  'cchivers444@gmail.com',
+  'softwaredevelopmentinstructor@gmail.com',
+]);
 
 const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
 const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set(['beranguelly@hotmail.com']);
