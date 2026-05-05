@@ -12,7 +12,9 @@ WHERE LOWER(TRIM(email)) IN (
   'garyyyuen@gmail.com',
   'pereira-suellen@hotmail.com',
   'alexander@middleton-consulting.com',
-  'enriquesan@iadb.org'
+  'enriquesan@iadb.org',
+  'aguerrero@habitat.org',
+  'dquintard@gmail.com'
 )
 ORDER BY email;
 
@@ -24,7 +26,9 @@ INSERT INTO lpm_pro_access_whitelist (email) VALUES
   (lower(trim('garyyyuen@gmail.com'))),
   (lower(trim('pereira-suellen@hotmail.com'))),
   (lower(trim('alexander@middleton-consulting.com'))),
-  (lower(trim('ENRIQUESAN@IADB.ORG')))
+  (lower(trim('ENRIQUESAN@IADB.ORG'))),
+  (lower(trim('aguerrero@habitat.org'))),
+  (lower(trim('dquintard@gmail.com')))
 ON CONFLICT (email) DO NOTHING;
 
 -- Confirm
@@ -38,6 +42,8 @@ WHERE LOWER(TRIM(email)) IN (
   'garyyyuen@gmail.com',
   'pereira-suellen@hotmail.com',
   'alexander@middleton-consulting.com',
-  'enriquesan@iadb.org'
+  'enriquesan@iadb.org',
+  'aguerrero@habitat.org',
+  'dquintard@gmail.com'
 )
 ORDER BY email;

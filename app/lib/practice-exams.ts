@@ -30,6 +30,10 @@ const EMERGENCY_APM_PRO_ACCESS_EMAILS = new Set([
   'harry@harrychand.com',
   'brian.hickey@hrsdc-rhdcc.gc.ca',
 ]);
+const EMERGENCY_LPM_PRO_ACCESS_EMAILS = new Set([
+  'aguerrero@habitat.org',
+  'dquintard@gmail.com',
+]);
 
 function hasEmergencySsmAccess(
   authEmail: string | undefined,
@@ -64,6 +68,15 @@ function hasEmergencyApmProAccess(
 ): boolean {
   return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
     EMERGENCY_APM_PRO_ACCESS_EMAILS.has(email.toLowerCase())
+  );
+}
+
+function hasEmergencyLpmProAccess(
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined
+): boolean {
+  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
+    EMERGENCY_LPM_PRO_ACCESS_EMAILS.has(email.toLowerCase())
   );
 }
 
@@ -404,6 +417,10 @@ export async function hasLpmProAccess(): Promise<boolean> {
     .select('email')
     .eq('user_id', user.id)
     .single();
+
+  // Safety fallback so manually granted users are not blocked while DB grants are pending.
+  if (hasEmergencyLpmProAccess(user.email, profile?.email)) return true;
+
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
   // Check for Pro order (ilike: order row casing may differ from profile)
