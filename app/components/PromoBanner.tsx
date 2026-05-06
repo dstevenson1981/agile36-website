@@ -64,7 +64,7 @@ export default function PromoBanner() {
             <span className="text-[#fa4a23] font-semibold text-xs leading-tight">Clip code</span>
           </button>
           <p className="text-center text-white text-xs font-semibold text-balance opacity-95">
-            Offer ends Apr 27
+            Discount code expires on May 10th
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function PromoBanner() {
               </div>
             </div>
             <div className="w-px h-6 bg-white/40" />
-            <span className="text-white font-bold text-sm">Only Until Apr 27</span>
+            <span className="text-white font-bold text-sm">Discount code expires on May 10th</span>
           </div>
 
           <div className="flex-1 min-w-0 text-center w-full sm:w-auto">
@@ -114,7 +114,7 @@ export default function PromoBanner() {
               <div className="text-[#fa4a23] font-semibold text-xs sm:text-sm">Clip coupon code</div>
             </button>
             <div className="w-px h-6 bg-white/40" />
-            <span className="text-white font-bold text-sm sm:text-base">Ends Apr 27</span>
+            <span className="text-white font-bold text-sm sm:text-base">Discount code expires on May 10th</span>
           </div>
         </div>
       </div>
