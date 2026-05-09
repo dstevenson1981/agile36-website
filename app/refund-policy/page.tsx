@@ -24,13 +24,16 @@ export default function RefundPolicyPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Refunds</h2>
             <div className="space-y-4 text-gray-700">
               <p>
-                Full refunds are available for cancellations submitted thirty (30) or more days before the scheduled class start date.
+                Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date.
               </p>
               <p>
-                Cancellations received within thirty (30) days of the class start date are not eligible for a refund.
+                Cancellations received within thirty (30) days of your original scheduled class start date are not eligible for a refund.
               </p>
               <p>
                 Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times.
+              </p>
+              <p>
+                Classes rescheduled due to customer conflicts are not eligible for refunds.
               </p>
             </div>
           </section>
