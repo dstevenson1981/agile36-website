@@ -18,8 +18,9 @@ function getExpiresAt(): Date | null {
 }
 
 export const metadata = {
-  title: 'Temporary Leading SAFe Pro Access | Agile36',
-  description: 'Temporary direct access route for Leading SAFe Pro practice exam.',
+  title: 'Leading SAFe Pro Practice Exam | Agile36',
+  description:
+    'Leading SAFe (SAFe Agilist) Pro practice exam — same full exam as Agile36 Pro students.',
   robots: 'noindex, nofollow',
 };
 
@@ -36,8 +37,10 @@ export default async function LeadingSafeProTemp2Page({
   if (!isAuthorized) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Agilist (Leading SAFe) Practice Test</h1>
-        <p className="text-slate-600 mb-6">This temporary link is invalid or has expired.</p>
+        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+          SAFe Agilist (Leading SAFe) Pro Practice Exam
+        </h1>
+        <p className="text-slate-600 mb-6">This link is invalid or has expired.</p>
         <Link href="/" className="text-[#fa4a23] font-medium hover:underline">
           Back to Agile36
         </Link>
@@ -47,9 +50,12 @@ export default async function LeadingSafeProTemp2Page({
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Agilist (Leading SAFe) Practice Test</h1>
+      <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        SAFe Agilist (Leading SAFe) Pro Practice Exam
+      </h1>
       <p className="text-slate-600 mb-8">
-        Temporary direct access. Invalidate by changing the key, setting an expiry (env or code), or removing this route.
+        45 questions to help you prepare for the SAFe Agilist certification exam. Answer all questions, then
+        submit to see your score and review.
       </p>
       <LeadingSafePracticeTest />
     </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ScrumMasterPracticeTest from '@/app/account/(dashboard)/practice-exams/scrum-master/ScrumMasterPracticeTest';
+import { SCRUM_MASTER_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/scrum-master/questions';
 
 /** Shared secret in the URL (?key=...). Rotate this value to invalidate old links without deleting the route. */
 const TEMP_SSM_ACCESS_KEY = 'a36-ssm-pro-2026-hk9Qm7xRt3Nw';
@@ -18,8 +19,9 @@ function getExpiresAt(): Date | null {
 }
 
 export const metadata = {
-  title: 'Temporary Scrum Master Pro Access (2) | Agile36',
-  description: 'Temporary direct access route for Scrum Master Pro practice exam.',
+  title: 'SAFe Scrum Master Pro Practice Exam | Agile36',
+  description:
+    'SAFe Scrum Master (SSM) Pro practice exam — same full exam as Agile36 Pro students.',
   robots: 'noindex, nofollow',
 };
 
@@ -36,10 +38,10 @@ export default async function ScrumMasterProTemp2Page({
   if (!isAuthorized) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Scrum Master Practice Test</h1>
-        <p className="text-slate-600 mb-6">
-          This temporary link is invalid or has expired.
-        </p>
+        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+          SAFe Scrum Master (SSM) Pro Practice Exam
+        </h1>
+        <p className="text-slate-600 mb-6">This link is invalid or has expired.</p>
         <Link href="/" className="text-[#fa4a23] font-medium hover:underline">
           Back to Agile36
         </Link>
@@ -47,11 +49,14 @@ export default async function ScrumMasterProTemp2Page({
     );
   }
 
+  const n = SCRUM_MASTER_QUESTIONS.length;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Scrum Master (SSM) Practice Test</h1>
+      <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Scrum Master (SSM) Pro Practice Exam</h1>
       <p className="text-slate-600 mb-8">
-        Temporary direct access. Invalidate by changing the key, setting an expiry (env or code), or removing this route.
+        {n} questions to help you prepare for the SAFe Scrum Master certification exam. Answer all questions, then
+        submit to see your score and review.
       </p>
       <ScrumMasterPracticeTest />
     </div>
