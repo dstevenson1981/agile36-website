@@ -6,12 +6,19 @@ import CouponDisplayModal from "@/app/components/CouponDisplayModal";
 
 const BANNER_COUPON_CODE = "100OFF";
 
+/** Hide after end of May 18, 2026 UTC (same instant on server and client). */
+const PROMO_BANNER_EXPIRED = () => Date.now() > Date.UTC(2026, 4, 18, 23, 59, 59, 999);
+
 /**
  * Promo banner — click to open email + course form; reveals promo code after submit.
  */
 export default function PromoBanner() {
   const [showCouponModal, setShowCouponModal] = useState(false);
   const [showCouponDisplay, setShowCouponDisplay] = useState(false);
+
+  if (PROMO_BANNER_EXPIRED()) {
+    return null;
+  }
 
   const handleClaimCoupon = (_email: string, _course: string) => {
     setShowCouponModal(false);
@@ -35,9 +42,6 @@ export default function PromoBanner() {
             </div>
             <div className="flex items-center justify-center gap-1 min-w-0">
               <span className="text-white font-bold text-sm leading-tight">SALE!</span>
-              <span className="text-white/90 text-sm leading-none" aria-hidden>
-                🚀
-              </span>
             </div>
           </div>
           <p className="text-center text-balance text-[#fa4a23] font-bold italic text-sm leading-snug max-w-prose mx-auto min-w-0">
@@ -64,7 +68,7 @@ export default function PromoBanner() {
             <span className="text-[#fa4a23] font-semibold text-xs leading-tight">Clip code</span>
           </button>
           <p className="text-center text-white text-xs font-semibold text-balance opacity-95">
-            Discount code expires on May 10th
+            Discount code expires on May 18th
           </p>
         </div>
 
@@ -84,13 +88,10 @@ export default function PromoBanner() {
               </div>
               <div className="flex items-center gap-1">
                 <span className="text-white font-bold text-sm sm:text-base">SALE!</span>
-                <span className="text-white/90 text-sm" aria-hidden>
-                  🚀
-                </span>
               </div>
             </div>
             <div className="w-px h-6 bg-white/40" />
-            <span className="text-white font-bold text-sm">Discount code expires on May 10th</span>
+            <span className="text-white font-bold text-sm">Discount code expires on May 18th</span>
           </div>
 
           <div className="flex-1 min-w-0 text-center w-full sm:w-auto">
@@ -114,7 +115,7 @@ export default function PromoBanner() {
               <div className="text-[#fa4a23] font-semibold text-xs sm:text-sm">Clip coupon code</div>
             </button>
             <div className="w-px h-6 bg-white/40" />
-            <span className="text-white font-bold text-sm sm:text-base">Discount code expires on May 10th</span>
+            <span className="text-white font-bold text-sm sm:text-base">Discount code expires on May 18th</span>
           </div>
         </div>
       </div>
