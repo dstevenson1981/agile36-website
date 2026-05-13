@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "PMP® Certification Training | Project Management Professional Exam Prep (2026) | Agile36",
@@ -33,51 +39,51 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PMPCertificationLayout({
+export default async function PMPCertificationLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "PMP® Certification Training - Project Management Professional Exam Prep",
-    "description": "PMP Certification Training prepares you to pass the Project Management Professional exam. Learn PMBOK Guide 7th edition, project management processes, Agile and hybrid approaches, exam strategies, and best practices for leading projects successfully.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("pmp-certification");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "pmp-certification",
+      canonical: "https://www.agile36.com/courses/pmp-certification",
+      schedulePath: "/courses/pmp-certification/schedule",
+      courseDisplayName:
+        "PMP® Certification Training - Project Management Professional Exam Prep",
+      description:
+        "PMP Certification Training prepares you to pass the Project Management Professional exam. Learn PMBOK Guide 7th edition, project management processes, Agile and hybrid approaches, exam strategies, and best practices for leading projects successfully.",
+      teaches: [
+        "PMBOK Guide 7th Edition",
+        "Project Management Processes and Knowledge Areas",
+        "Agile and Hybrid Project Management",
+        "PMP Exam Strategies and Techniques",
+        "Predictive, Adaptive, and Hybrid Approaches",
+        "Project Integration Management",
+        "Stakeholder Engagement",
+        "Risk Management",
+        "Schedule and Cost Management",
+        "Quality and Resource Management",
+      ],
+      breadcrumbLeafName: "PMP Certification Training",
+      coursesCrumbLabel: "Project Management Courses",
+      defaultPrice: 1100,
+      defaultCurrency: "USD",
+      timeRequired: "P5D",
+      courseCode: "PMP",
+      coursePrerequisites:
+        "3 years of project management experience and 35 contact hours of project management education (provided by this course) required to sit for PMP exam.",
+      educationalCredentialAwarded: "PMP® Exam Preparation Certificate",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 187,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "PMP",
-    "educationalCredentialAwarded": "PMP® Exam Preparation Certificate",
-    "timeRequired": "P5D",
-    "courseDuration": "40 hours",
-    "coursePrerequisites": "3 years of project management experience and 35 contact hours of project management education (provided by this course) required to sit for PMP exam.",
-    "teaches": [
-      "PMBOK Guide 7th Edition",
-      "Project Management Processes and Knowledge Areas",
-      "Agile and Hybrid Project Management",
-      "PMP Exam Strategies and Techniques",
-      "Predictive, Adaptive, and Hybrid Approaches",
-      "Project Integration Management",
-      "Stakeholder Engagement",
-      "Risk Management",
-      "Schedule and Cost Management",
-      "Quality and Resource Management"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "1100",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/pmp-certification/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "187",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -142,36 +148,10 @@ export default function PMPCertificationLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Project Management Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "PMP Certification Training",
-        "item": "https://www.agile36.com/courses/pmp-certification"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "SAFe Value Stream Mapping Certification Training (2026) | Agile36",
@@ -35,49 +41,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ValueStreamMappingLayout({
+export default async function ValueStreamMappingLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® Value Stream Mapping Micro-credential Course",
-    "description": "SAFe Value Stream Mapping micro-credential teaches how to visualize and optimize value streams. Learn current state mapping, identify bottlenecks and waste, design future states, measure flow metrics, and accelerate delivery through value stream optimization in SAFe.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("value-stream-mapping");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "value-stream-mapping",
+      canonical: "https://www.agile36.com/courses/value-stream-mapping",
+      schedulePath: "/courses/value-stream-mapping/schedule",
+      courseDisplayName: "SAFe® Value Stream Mapping Micro-credential Course",
+      description:
+        "SAFe Value Stream Mapping micro-credential teaches how to visualize and optimize value streams. Learn current state mapping, identify bottlenecks and waste, design future states, measure flow metrics, and accelerate delivery through value stream optimization in SAFe.",
+      teaches: [
+        "Value Stream Mapping Fundamentals",
+        "Current State Mapping Techniques",
+        "Future State Design",
+        "Bottleneck and Constraint Identification",
+        "Waste Elimination (8 Types of Waste)",
+        "Flow Metrics and Measurement",
+        "Lead Time and Cycle Time Reduction",
+        "Continuous Process Improvement",
+      ],
+      breadcrumbLeafName: "Value Stream Mapping",
+      coursesCrumbLabel: "SAFe Courses",
+      defaultPrice: 350,
+      defaultCurrency: "USD",
+      timeRequired: "P1D",
+      courseCode: "VSM",
+      coursePrerequisites:
+        "Basic SAFe knowledge helpful. Open to product managers, architects, and leaders.",
+      educationalCredentialAwarded: "SAFe Value Stream Mapping Micro-credential",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "VSM",
-    "educationalCredentialAwarded": "SAFe Value Stream Mapping Micro-credential",
-    "timeRequired": "P1D",
-    "courseDuration": "8 hours",
-    "coursePrerequisites": "Basic SAFe knowledge helpful. Open to product managers, architects, and leaders.",
-    "teaches": [
-      "Value Stream Mapping Fundamentals",
-      "Current State Mapping Techniques",
-      "Future State Design",
-      "Bottleneck and Constraint Identification",
-      "Waste Elimination (8 Types of Waste)",
-      "Flow Metrics and Measurement",
-      "Lead Time and Cycle Time Reduction",
-      "Continuous Process Improvement"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "350",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/value-stream-mapping/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -126,36 +131,10 @@ export default function ValueStreamMappingLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Value Stream Mapping",
-        "item": "https://www.agile36.com/courses/value-stream-mapping"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

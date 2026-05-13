@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Executive GenAI Leadership™ Certification Training | GenAI Leadership Course (2026) | Agile36",
@@ -33,49 +39,49 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ExecutiveGenAILeadershipLayout({
+export default async function ExecutiveGenAILeadershipLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Executive GenAI Leadership™ Certification Training",
-    "description": "Executive GenAI Leadership teaches C-suite and senior leaders to drive AI transformation. Learn to develop AI strategy, build governance frameworks, assess AI risks, measure ROI, and lead organizational change for generative AI adoption.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts(
+    "executive-genai-leadership"
+  );
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "executive-genai-leadership",
+      canonical: "https://www.agile36.com/courses/executive-genai-leadership",
+      schedulePath: "/courses/executive-genai-leadership/schedule",
+      courseDisplayName: "Executive GenAI Leadership™ Certification Training",
+      description:
+        "Executive GenAI Leadership teaches C-suite and senior leaders to drive AI transformation. Learn to develop AI strategy, build governance frameworks, assess AI risks, measure ROI, and lead organizational change for generative AI adoption.",
+      teaches: [
+        "GenAI Strategy Development and Planning",
+        "Executive AI Decision-Making Frameworks",
+        "AI Transformation Leadership",
+        "Ethical AI Implementation and Governance",
+        "AI Risk Management and Mitigation",
+        "Measuring AI ROI and Business Value",
+        "Building Organizational AI Capabilities",
+        "Change Management for AI Adoption",
+      ],
+      breadcrumbLeafName: "Executive GenAI Leadership",
+      coursesCrumbLabel: "Generative AI Courses",
+      defaultPrice: 400,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "EGL",
+      coursePrerequisites: "Executive, VP, or senior leadership role recommended",
+      educationalCredentialAwarded: "Executive GenAI Leadership™ Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 156,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "EGL",
-    "educationalCredentialAwarded": "Executive GenAI Leadership™ Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "10 hours",
-    "coursePrerequisites": "Executive, VP, or senior leadership role recommended",
-    "teaches": [
-      "GenAI Strategy Development and Planning",
-      "Executive AI Decision-Making Frameworks",
-      "AI Transformation Leadership",
-      "Ethical AI Implementation and Governance",
-      "AI Risk Management and Mitigation",
-      "Measuring AI ROI and Business Value",
-      "Building Organizational AI Capabilities",
-      "Change Management for AI Adoption"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "400",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/executive-genai-leadership/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "156",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,36 +138,10 @@ export default function ExecutiveGenAILeadershipLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Generative AI Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Executive GenAI Leadership",
-        "item": "https://www.agile36.com/courses/executive-genai-leadership"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

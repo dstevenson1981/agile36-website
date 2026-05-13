@@ -4,6 +4,7 @@ import { LocationTrainingCityShell } from "@/app/components/location-training/Lo
 import { buildLocationTrainingMetadata } from "@/app/lib/location-training-metadata";
 
 export const revalidate = 3600;
+export const dynamic = "force-static";
 
 type Props = { params: Promise<{ city: string }> };
 

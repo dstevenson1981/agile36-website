@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI-Empowered SAFe Advanced Scrum Master (SASM) Certification (2026) | Agile36",
@@ -38,48 +44,49 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AdvancedScrumMasterLayout({
+export default async function AdvancedScrumMasterLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training",
-    "description": "The AI-Empowered SAFe Advanced Scrum Master (SASM) course elevates experienced Scrum Masters to improve flow, build high-performing teams, manage multi-team conflict, and strengthen ART performance—using AI fundamentals, prompting, and SAFe Studio resources responsibly, per Scaled Agile.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("advanced-scrum-master");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "advanced-scrum-master",
+      canonical: "https://www.agile36.com/courses/advanced-scrum-master",
+      schedulePath: "/courses/advanced-scrum-master/schedule",
+      courseDisplayName:
+        "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training",
+      description:
+        "The AI-Empowered SAFe Advanced Scrum Master (SASM) course elevates experienced Scrum Masters to improve flow, build high-performing teams, manage multi-team conflict, and strengthen ART performance—using AI fundamentals, prompting, and SAFe Studio resources responsibly, per Scaled Agile.",
+      teaches: [
+        "Cross-team collaboration on the ART",
+        "Optimizing team flow (XP, Kanban, built-in quality)",
+        "High-performing teams and powerful questions",
+        "Conflict analysis, interest-based problem solving, reframing",
+        "ART performance: IP iteration, I&A, problem-solving workshop",
+        "AI fundamentals and prompting for the SASM role",
+        "SAFe CoPilot and responsible, human-in-the-loop AI use",
+      ],
+      breadcrumbLeafName: "AI-Empowered SAFe Advanced Scrum Master",
+      coursesCrumbLabel: "SAFe Courses",
+      defaultPrice: 950,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "SASM",
+      coursePrerequisites:
+        "SAFe Scrum Master (SSM) certification and Scrum Master experience required",
+      educationalCredentialAwarded:
+        "SAFe Advanced Scrum Master (SASM) Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "SASM",
-    "educationalCredentialAwarded": "SAFe Advanced Scrum Master (SASM) Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "SAFe Scrum Master (SSM) certification and Scrum Master experience required",
-    "teaches": [
-      "Cross-team collaboration on the ART",
-      "Optimizing team flow (XP, Kanban, built-in quality)",
-      "High-performing teams and powerful questions",
-      "Conflict analysis, interest-based problem solving, reframing",
-      "ART performance: IP iteration, I&A, problem-solving workshop",
-      "AI fundamentals and prompting for the SASM role",
-      "SAFe CoPilot and responsible, human-in-the-loop AI use"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "950",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/advanced-scrum-master/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -136,36 +143,10 @@ export default function AdvancedScrumMasterLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "AI-Empowered SAFe Advanced Scrum Master",
-        "item": "https://www.agile36.com/courses/advanced-scrum-master"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

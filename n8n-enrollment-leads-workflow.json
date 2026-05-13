@@ -143,7 +143,7 @@
           "parameters": [
             {
               "name": "personalizations",
-              "value": "=[{\"to\":[{\"email\":\"{{ $json.email }}\",\"name\":\"{{ $json.first_name || 'there' }}\"}],\"subject\":\"Complete your order – $50 OFF inside\"}]"
+              "value": "=[{\"to\":[{\"email\":\"{{ $json.email }}\",\"name\":\"{{ $json.first_name || 'there' }}\"}],\"subject\":\"Complete your order - $150 OFF (code 150OFF)\"}]"
             },
             {
               "name": "from",
@@ -151,7 +151,7 @@
             },
             {
               "name": "content",
-              "value": "=[{\"type\":\"text/plain\",\"value\":\"Hi {{ $json.first_name || 'there' }},\\n\\nYou started checking out but didn't complete your order. Complete your purchase now with $50 OFF using code 50OFF.\\n\\nVisit: https://agile36.com\\n\\nThank you,\\nAgile36 Team\"}]"
+              "value": "=[{\"type\":\"text/plain\",\"value\":\"Hi {{ $json.first_name || 'there' }},\\n\\nYou started checking out but didn't complete your order. Complete your purchase now with $150 OFF using code 150OFF.\\n\\nVisit: https://agile36.com\\n\\nThank you,\\nAgile36 Team\"}]"
             }
           ]
         },

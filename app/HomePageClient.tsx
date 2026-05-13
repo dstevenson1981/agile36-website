@@ -1193,7 +1193,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900">Meet the Team That's Invested in Your Success</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               {
                 name: "Deadra Stevenson",
@@ -1211,7 +1211,16 @@ export default function Home() {
                 image: "/marcus.jpeg",
                 experience: "15+ Years",
                 description: "Welcome to my profile. I'm Marcus Ball, an Enterprise Agile Coach with Agile36, specializing in Scaled Agile Framework (SAFe) certification training and enterprise transformation coaching. I am committed to helping organizations build stronger delivery teams, improve alignment, and navigate today's fast-paced business landscape with agility and confidence.\n\nAbout Me\n\nMy work as an Agile Coach is rooted in the belief that organizations unlock extraordinary potential when they embrace Lean-Agile principles. Over the course of my career, I have guided teams and leaders through the process of adopting Agile practices, strengthening collaboration, and building a culture that supports continuous improvement.\n\nMy Expertise\n\nWith Agile36, I deliver high-quality SAFe certification training designed to equip teams, leaders, and organizations with the skills needed to improve flow, increase value delivery, and operate more effectively. I focus on practical application, clear guidance, and developing the capabilities required for long-term success with Agile and SAFe.\n\nWhy Train With Me\n\nI bring extensive hands-on experience supporting organizations at various stages of their Agile journey, helping them achieve meaningful and lasting transformation. As a certified SAFe Program Consultant (SPC) and seasoned Agile professional, I offer a depth of knowledge and a practical approach that teams can apply immediately. My goal is to empower individuals and organizations to reach higher levels of performance and deliver exceptional value."
-              }
+              },
+              {
+                name: "Joe Puoci",
+                title: "Enterprise Agile Coach",
+                subtitle: "SAFe® Practice Consultant (SPC®), Enterprise Agile Coach",
+                image: "/Joe.jpeg",
+                experience: "15+ Years",
+                description:
+                  "Joe Puoci is a SAFe Program Consultant (SPC) and enterprise trainer with Agile36, delivering live virtual SAFe certification courses across the portfolio. He focuses on practical application of the Scaled Agile Framework so teams and leaders can improve flow, alignment, and delivery outcomes.\n\nAbout Joe\n\nJoe brings hands-on experience guiding organizations through SAFe adoption, team-level execution, and program-level planning. His training emphasizes real-world scenarios, clear facilitation, and skills learners can apply immediately after class.\n\nWhy Train With Joe\n\nLearners work with an SPC who combines deep framework knowledge with a straightforward, outcome-oriented teaching style—helping you prepare for certification and for the day-to-day work of operating in a SAFe environment.",
+              },
             ].map((member, i) => {
               const isExpanded = expandedMember === i;
               const descriptionLength = member.description.length;
@@ -1241,8 +1250,10 @@ export default function Home() {
                   </div>
                 </div>
                   
-                  {/* Stats Section - For Deadra and Marcus */}
-                  {(member.name === "Deadra Stevenson" || member.name === "Marcus Ball") && (
+                  {/* Stats Section - featured instructors */}
+                  {(member.name === "Deadra Stevenson" ||
+                    member.name === "Marcus Ball" ||
+                    member.name === "Joe Puoci") && (
                     <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-200 flex-wrap">
                       {/* Rating */}
                       <div className="flex items-center gap-1">

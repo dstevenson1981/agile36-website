@@ -1,13 +1,26 @@
 -- Update abandoned cart email templates to $150 OFF (code: 150OFF)
--- Run in Supabase SQL Editor
+-- Also remove emoji characters from subject/body copy for a more professional tone.
+-- Run in Supabase SQL Editor.
 
 UPDATE email_templates
 SET
   discount_code = '150OFF',
   discount_amount = 150.00,
-  subject = REPLACE(REPLACE(REPLACE(subject, '100OFF', '150OFF'), '$100', '$150'), 'discount', '150OFF'),
-  body_text = REPLACE(REPLACE(REPLACE(body_text, '100OFF', '150OFF'), '$100', '$150'), 'discount', '150OFF'),
-  body_html = REPLACE(REPLACE(REPLACE(COALESCE(body_html, ''), '100OFF', '150OFF'), '$100', '$150'), 'discount', '150OFF'),
+  subject = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+    REPLACE(REPLACE(COALESCE(subject, ''),
+    '200OFF', '150OFF'), '100OFF', '150OFF'), '75OFF', '150OFF'),
+    '$200', '$150'), '$100', '$150'), '$75', '$150'),
+    '🎁', ''), '⏰', ''), '🤖', ''), '👔', ''), '📊', ''), '⚡', ''),
+  body_text = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+    REPLACE(REPLACE(COALESCE(body_text, ''),
+    '200OFF', '150OFF'), '100OFF', '150OFF'), '75OFF', '150OFF'),
+    '$200', '$150'), '$100', '$150'), '$75', '$150'),
+    '🎁', ''), '⏰', ''), '🤖', ''), '👔', ''), '📊', ''), '⚡', ''),
+  body_html = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+    REPLACE(REPLACE(COALESCE(body_html, ''),
+    '200OFF', '150OFF'), '100OFF', '150OFF'), '75OFF', '150OFF'),
+    '$200', '$150'), '$100', '$150'), '$75', '$150'),
+    '🎁', ''), '⏰', ''), '🤖', ''), '👔', ''), '📊', ''), '⚡', ''),
   updated_at = NOW()
 WHERE template_type = 'abandoned_cart';
 

@@ -10,7 +10,8 @@ WHERE LOWER(TRIM(email)) IN (
   'barber_ann@hotmail.com',
   'enriquesan@iadb.org',
   'garyyyuen@gmail.com',
-  'd.stevenson@agile36.com'
+  'd.stevenson@agile36.com',
+  'qpollard27@gmail.com'
 )
 ORDER BY email;
 
@@ -19,7 +20,8 @@ INSERT INTO leading_safe_pro_access_whitelist (email) VALUES
   (lower(trim('barber_ann@hotmail.com'))),
   (lower(trim('enriquesan@iadb.org'))),
   (lower(trim('garyyyuen@gmail.com'))),
-  (lower(trim('d.stevenson@agile36.com')))
+  (lower(trim('d.stevenson@agile36.com'))),
+  (lower(trim('qpollard27@gmail.com')))
 ON CONFLICT (email) DO NOTHING;
 
 -- Confirm
@@ -30,6 +32,7 @@ WHERE LOWER(TRIM(email)) IN (
   'barber_ann@hotmail.com',
   'enriquesan@iadb.org',
   'garyyyuen@gmail.com',
-  'd.stevenson@agile36.com'
+  'd.stevenson@agile36.com',
+  'qpollard27@gmail.com'
 )
 ORDER BY email;

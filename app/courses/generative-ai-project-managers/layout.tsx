@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
@@ -33,49 +39,51 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GenerativeAIProjectManagersLayout({
+export default async function GenerativeAIProjectManagersLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Generative AI for Project Managers Certification Training",
-    "description": "Generative AI for Project Managers teaches project managers to use AI for planning, scheduling, risk analysis, and artifact creation. Learn prompt engineering, AI-assisted decision-making, and how to integrate generative AI into Agile, Waterfall, and hybrid methodologies.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts(
+    "generative-ai-project-managers"
+  );
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "generative-ai-project-managers",
+      canonical: "https://www.agile36.com/courses/generative-ai-project-managers",
+      schedulePath: "/courses/generative-ai-project-managers/schedule",
+      courseDisplayName:
+        "Generative AI for Project Managers Certification Training",
+      description:
+        "Generative AI for Project Managers teaches project managers to use AI for planning, scheduling, risk analysis, and artifact creation. Learn prompt engineering, AI-assisted decision-making, and how to integrate generative AI into Agile, Waterfall, and hybrid methodologies.",
+      teaches: [
+        "Generative AI Fundamentals for Project Management",
+        "AI-Assisted Planning and Scheduling",
+        "AI for Risk Analysis and Mitigation",
+        "Creating Project Artifacts with AI (charters, plans, status reports)",
+        "Prompt Engineering for Project Managers",
+        "AI in Agile, Scrum, and Waterfall",
+        "Integrating AI into PM Tools (Jira, MS Project, Asana)",
+        "Ethical AI Implementation and Governance",
+      ],
+      breadcrumbLeafName: "Generative AI for Project Managers",
+      coursesCrumbLabel: "Generative AI Courses",
+      defaultPrice: 400,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "GAI-PM",
+      coursePrerequisites: "Project management or PMP experience recommended",
+      educationalCredentialAwarded:
+        "Generative AI for Project Managers Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 187,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "GAI-PM",
-    "educationalCredentialAwarded": "Generative AI for Project Managers Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "Project management or PMP experience recommended",
-    "teaches": [
-      "Generative AI Fundamentals for Project Management",
-      "AI-Assisted Planning and Scheduling",
-      "AI for Risk Analysis and Mitigation",
-      "Creating Project Artifacts with AI (charters, plans, status reports)",
-      "Prompt Engineering for Project Managers",
-      "AI in Agile, Scrum, and Waterfall",
-      "Integrating AI into PM Tools (Jira, MS Project, Asana)",
-      "Ethical AI Implementation and Governance"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "400",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/generative-ai-project-managers/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "187",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,36 +140,10 @@ export default function GenerativeAIProjectManagersLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Generative AI Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Generative AI for Project Managers",
-        "item": "https://www.agile36.com/courses/generative-ai-project-managers"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

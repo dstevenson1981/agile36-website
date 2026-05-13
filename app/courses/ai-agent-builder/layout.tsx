@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers (2026) | Agile36",
@@ -33,49 +39,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AIAgentBuilderLayout({
+export default async function AIAgentBuilderLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "No-Code AI Agents & Automation™ Certification Training",
-    "description": "No-Code AI Agents & Automation teaches professionals to build AI-powered automation without programming. Learn to create intelligent agents, automate workflows using n8n and Make.com, integrate ChatGPT APIs, and build 25+ practical automations for business productivity.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("ai-agent-builder");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "ai-agent-builder",
+      canonical: "https://www.agile36.com/courses/ai-agent-builder",
+      schedulePath: "/courses/ai-agent-builder/schedule",
+      courseDisplayName: "No-Code AI Agents & Automation™ Certification Training",
+      description:
+        "No-Code AI Agents & Automation teaches professionals to build AI-powered automation without programming. Learn to create intelligent agents, automate workflows using n8n and Make.com, integrate ChatGPT APIs, and build 25+ practical automations for business productivity.",
+      teaches: [
+        "Building No-Code AI Agents",
+        "Multi-Step Workflow Automation",
+        "ChatGPT and Claude API Integration",
+        "n8n, Make.com, and Langflow Platforms",
+        "Business Process Automation",
+        "Lead Qualification and Outreach Automation",
+        "Content Generation Pipelines",
+        "AI-Enhanced Coding (Low-Code)",
+      ],
+      breadcrumbLeafName: "No-Code AI Agents & Automation",
+      coursesCrumbLabel: "AI Product Courses",
+      defaultPrice: 400,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "AI-Agents",
+      coursePrerequisites:
+        "No prerequisites. Designed for non-technical professionals. No coding required.",
+      educationalCredentialAwarded: "No-Code AI Agents & Automation™ Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 156,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "AI-Agents",
-    "educationalCredentialAwarded": "No-Code AI Agents & Automation™ Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "10 hours",
-    "coursePrerequisites": "No prerequisites. Designed for non-technical professionals. No coding required.",
-    "teaches": [
-      "Building No-Code AI Agents",
-      "Multi-Step Workflow Automation",
-      "ChatGPT and Claude API Integration",
-      "n8n, Make.com, and Langflow Platforms",
-      "Business Process Automation",
-      "Lead Qualification and Outreach Automation",
-      "Content Generation Pipelines",
-      "AI-Enhanced Coding (Low-Code)"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "400",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/ai-agent-builder/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "156",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,36 +137,10 @@ export default function AIAgentBuilderLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "AI Product Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "No-Code AI Agents & Automation",
-        "item": "https://www.agile36.com/courses/ai-agent-builder"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

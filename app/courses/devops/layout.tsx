@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "SAFe DevOps Practitioner (SDP) Certification Training (2026) | Agile36",
@@ -37,49 +43,49 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DevOpsLayout({
+export default async function DevOpsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "SAFe® 6.0 DevOps (SDP) Certification Training",
-    "description": "SAFe DevOps Practitioner (SDP) certification teaches DevOps practices within SAFe. Learn to build continuous delivery pipelines, automate deployments, implement CI/CD, practice infrastructure as code, enable release on demand, and integrate DevOps into Agile Release Trains.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("devops");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "devops",
+      canonical: "https://www.agile36.com/courses/devops",
+      schedulePath: "/courses/devops/schedule",
+      courseDisplayName: "SAFe® 6.0 DevOps (SDP) Certification Training",
+      description:
+        "SAFe DevOps Practitioner (SDP) certification teaches DevOps practices within SAFe. Learn to build continuous delivery pipelines, automate deployments, implement CI/CD, practice infrastructure as code, enable release on demand, and integrate DevOps into Agile Release Trains.",
+      teaches: [
+        "Continuous Delivery Pipeline Design",
+        "CI/CD Implementation and Automation",
+        "Infrastructure as Code (IaC)",
+        "Testing Automation Strategies",
+        "Release on Demand",
+        "DevSecOps and Security Integration",
+        "Value Stream Optimization",
+        "DevOps Culture and Collaboration",
+      ],
+      breadcrumbLeafName: "SAFe DevOps",
+      coursesCrumbLabel: "SAFe Courses",
+      defaultPrice: 599,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "SDP",
+      coursePrerequisites:
+        "Software development, operations, or DevOps experience recommended",
+      educationalCredentialAwarded:
+        "SAFe DevOps Practitioner (SDP) Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "SDP",
-    "educationalCredentialAwarded": "SAFe DevOps Practitioner (SDP) Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "Software development, operations, or DevOps experience recommended",
-    "teaches": [
-      "Continuous Delivery Pipeline Design",
-      "CI/CD Implementation and Automation",
-      "Infrastructure as Code (IaC)",
-      "Testing Automation Strategies",
-      "Release on Demand",
-      "DevSecOps and Security Integration",
-      "Value Stream Optimization",
-      "DevOps Culture and Collaboration"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "599",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/devops/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2500",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -136,36 +142,10 @@ export default function DevOpsLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "SAFe DevOps",
-        "item": "https://www.agile36.com/courses/devops"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

@@ -23,17 +23,17 @@ CREATE INDEX IF NOT EXISTS idx_email_templates_course_slug
 
 -- Insert abandoned cart templates for all 16 courses
 
--- SAFe Courses ($150 OFF, code: 150OFF)
+-- SAFe Courses ($100 OFF, code: 100OFF)
 INSERT INTO email_templates (template_type, course_name, course_slug, subject, body_text, body_html, discount_code, discount_amount, discount_type) VALUES
 
 -- 1. Leading SAFe
 ('abandoned_cart', 'Leading SAFe', 'leading-safe', 
- 'Complete Your SAFe® Certification - $150 OFF Inside! 🎯',
+ 'Complete Your SAFe® Certification - $100 OFF Inside! 🎯',
  'Hi {first_name},
 
 You started enrolling in Leading SAFe® but didn''t complete your purchase. Don''t miss out on this opportunity to become a certified SAFe® Agilist!
 
-🎁 SPECIAL OFFER: Use code 150OFF to save $150 on your enrollment!
+🎁 SPECIAL OFFER: Use code 100OFF to save $100 on your enrollment!
 
 Why complete your Leading SAFe® certification now:
 • Master the Scaled Agile Framework and lead enterprise transformations
@@ -51,11 +51,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Complete Your SAFe® Certification - $150 OFF Inside! 🎯</h2>
+  <h2 style="color: #fa4a23;">Complete Your SAFe® Certification - $100 OFF Inside! 🎯</h2>
   <p>Hi {first_name},</p>
   <p>You started enrolling in <strong>Leading SAFe®</strong> but didn''t complete your purchase. Don''t miss out on this opportunity to become a certified SAFe® Agilist!</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL OFFER: Use code <span style="color: #fa4a23; font-size: 20px;">150OFF</span> to save $150 on your enrollment!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL OFFER: Use code <span style="color: #fa4a23; font-size: 20px;">100OFF</span> to save $100 on your enrollment!</p>
   </div>
   <h3 style="color: #01203d;">Why complete your Leading SAFe® certification now:</h3>
   <ul>
@@ -69,16 +69,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 2. SAFe POPM
 ('abandoned_cart', 'SAFe POPM', 'product-owner-manager',
- 'Don''t Miss Out: Complete Your SAFe® POPM Enrollment - $150 OFF! 🚀',
+ 'Don''t Miss Out: Complete Your SAFe® POPM Enrollment - $100 OFF! 🚀',
  'Hi {first_name},
 
-You were so close to enrolling in SAFe® Product Owner/Product Manager (POPM) certification! Complete your purchase now and save $150.
+You were so close to enrolling in SAFe® Product Owner/Product Manager (POPM) certification! Complete your purchase now and save $100.
 
-🎁 USE CODE: 150OFF to save $150 instantly!
+🎁 USE CODE: 100OFF to save $100 instantly!
 
 Why SAFe® POPM certification matters:
 • Become the strategic product leader your organization needs
@@ -96,11 +96,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Don''t Miss Out: Complete Your SAFe® POPM Enrollment - $150 OFF! 🚀</h2>
+  <h2 style="color: #fa4a23;">Don''t Miss Out: Complete Your SAFe® POPM Enrollment - $100 OFF! 🚀</h2>
   <p>Hi {first_name},</p>
-  <p>You were so close to enrolling in <strong>SAFe® Product Owner/Product Manager (POPM)</strong> certification! Complete your purchase now and save $150.</p>
+  <p>You were so close to enrolling in <strong>SAFe® Product Owner/Product Manager (POPM)</strong> certification! Complete your purchase now and save $100.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE: <span style="color: #fa4a23; font-size: 20px;">150OFF</span> to save $150 instantly!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE: <span style="color: #fa4a23; font-size: 20px;">100OFF</span> to save $100 instantly!</p>
   </div>
   <h3 style="color: #01203d;">Why SAFe® POPM certification matters:</h3>
   <ul>
@@ -114,16 +114,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 3. SAFe Lean Portfolio Management
 ('abandoned_cart', 'SAFe Lean Portfolio Management', 'lean-portfolio-management',
- 'Finish Your SAFe® LPM Enrollment - $150 OFF Your Certification! 💼',
+ 'Finish Your SAFe® LPM Enrollment - $100 OFF Your Certification! 💼',
  'Hi {first_name},
 
 You started the enrollment process for SAFe® Lean Portfolio Management but didn''t complete it. Don''t miss this chance to transform how your organization manages portfolios!
 
-🎁 SAVE $150 with code: 150OFF
+🎁 SAVE $100 with code: 100OFF
 
 Why complete your SAFe® LPM certification:
 • Lead strategic portfolio planning and execution at the enterprise level
@@ -141,11 +141,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Finish Your SAFe® LPM Enrollment - $150 OFF Your Certification! 💼</h2>
+  <h2 style="color: #fa4a23;">Finish Your SAFe® LPM Enrollment - $100 OFF Your Certification! 💼</h2>
   <p>Hi {first_name},</p>
   <p>You started the enrollment process for <strong>SAFe® Lean Portfolio Management</strong> but didn''t complete it. Don''t miss this chance to transform how your organization manages portfolios!</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SAVE $150 with code: <span style="color: #fa4a23; font-size: 20px;">150OFF</span></p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SAVE $100 with code: <span style="color: #fa4a23; font-size: 20px;">100OFF</span></p>
   </div>
   <h3 style="color: #01203d;">Why complete your SAFe® LPM certification:</h3>
   <ul>
@@ -159,16 +159,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 4. SAFe Agile Product Management
 ('abandoned_cart', 'SAFe Agile Product Management', 'agile-product-management',
- 'Complete Your SAFe® APM Enrollment - $150 OFF! 🎯',
+ 'Complete Your SAFe® APM Enrollment - $100 OFF! 🎯',
  'Hi {first_name},
 
-You were about to enroll in SAFe® Agile Product Management! Complete your purchase now and save $150 on this essential certification.
+You were about to enroll in SAFe® Agile Product Management! Complete your purchase now and save $100 on this essential certification.
 
-🎁 SPECIAL CODE: 150OFF saves you $150!
+🎁 SPECIAL CODE: 100OFF saves you $100!
 
 Why SAFe® APM is essential for product managers:
 • Master customer-centric product management at scale
@@ -186,11 +186,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Complete Your SAFe® APM Enrollment - $150 OFF! 🎯</h2>
+  <h2 style="color: #fa4a23;">Complete Your SAFe® APM Enrollment - $100 OFF! 🎯</h2>
   <p>Hi {first_name},</p>
-  <p>You were about to enroll in <strong>SAFe® Agile Product Management</strong>! Complete your purchase now and save $150 on this essential certification.</p>
+  <p>You were about to enroll in <strong>SAFe® Agile Product Management</strong>! Complete your purchase now and save $100 on this essential certification.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL CODE: <span style="color: #fa4a23; font-size: 20px;">150OFF</span> saves you $150!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL CODE: <span style="color: #fa4a23; font-size: 20px;">100OFF</span> saves you $100!</p>
   </div>
   <h3 style="color: #01203d;">Why SAFe® APM is essential for product managers:</h3>
   <ul>
@@ -204,16 +204,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 5. SAFe Scrum Master
 ('abandoned_cart', 'SAFe Scrum Master', 'scrum-master',
- 'Finish Your SAFe® Scrum Master Certification - $150 OFF! 🏆',
+ 'Finish Your SAFe® Scrum Master Certification - $100 OFF! 🏆',
  'Hi {first_name},
 
-You started enrolling in SAFe® Scrum Master certification! Don''t let this opportunity pass - complete your enrollment now and save $150.
+You started enrolling in SAFe® Scrum Master certification! Don''t let this opportunity pass - complete your enrollment now and save $100.
 
-🎁 USE CODE 150OFF to save $150!
+🎁 USE CODE 100OFF to save $100!
 
 Why become a SAFe® Scrum Master:
 • Lead Agile teams effectively in a SAFe® environment
@@ -231,11 +231,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Finish Your SAFe® Scrum Master Certification - $150 OFF! 🏆</h2>
+  <h2 style="color: #fa4a23;">Finish Your SAFe® Scrum Master Certification - $100 OFF! 🏆</h2>
   <p>Hi {first_name},</p>
-  <p>You started enrolling in <strong>SAFe® Scrum Master</strong> certification! Don''t let this opportunity pass - complete your enrollment now and save $150.</p>
+  <p>You started enrolling in <strong>SAFe® Scrum Master</strong> certification! Don''t let this opportunity pass - complete your enrollment now and save $100.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE <span style="color: #fa4a23; font-size: 20px;">150OFF</span> to save $150!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE <span style="color: #fa4a23; font-size: 20px;">100OFF</span> to save $100!</p>
   </div>
   <h3 style="color: #01203d;">Why become a SAFe® Scrum Master:</h3>
   <ul>
@@ -249,16 +249,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 6. SAFe for Teams
 ('abandoned_cart', 'SAFe for Teams', 'safe-for-teams',
- 'Complete Your SAFe® for Teams Enrollment - $150 OFF! 👥',
+ 'Complete Your SAFe® for Teams Enrollment - $100 OFF! 👥',
  'Hi {first_name},
 
-You were so close to enrolling in SAFe® for Teams! Finish your purchase now and save $150 on this foundational SAFe® certification.
+You were so close to enrolling in SAFe® for Teams! Finish your purchase now and save $100 on this foundational SAFe® certification.
 
-🎁 SAVE $150 with code: 150OFF
+🎁 SAVE $100 with code: 100OFF
 
 Why SAFe® for Teams is perfect for you:
 • Learn how Agile teams work within the SAFe® framework
@@ -276,11 +276,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Complete Your SAFe® for Teams Enrollment - $150 OFF! 👥</h2>
+  <h2 style="color: #fa4a23;">Complete Your SAFe® for Teams Enrollment - $100 OFF! 👥</h2>
   <p>Hi {first_name},</p>
-  <p>You were so close to enrolling in <strong>SAFe® for Teams</strong>! Finish your purchase now and save $150 on this foundational SAFe® certification.</p>
+  <p>You were so close to enrolling in <strong>SAFe® for Teams</strong>! Finish your purchase now and save $100 on this foundational SAFe® certification.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SAVE $150 with code: <span style="color: #fa4a23; font-size: 20px;">150OFF</span></p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SAVE $100 with code: <span style="color: #fa4a23; font-size: 20px;">100OFF</span></p>
   </div>
   <h3 style="color: #01203d;">Why SAFe® for Teams is perfect for you:</h3>
   <ul>
@@ -294,16 +294,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 7. SAFe DevOps
 ('abandoned_cart', 'SAFe DevOps', 'devops',
- 'Don''t Miss Out: Complete Your SAFe® DevOps Enrollment - $150 OFF! ⚡',
+ 'Don''t Miss Out: Complete Your SAFe® DevOps Enrollment - $100 OFF! ⚡',
  'Hi {first_name},
 
-You started enrolling in SAFe® DevOps but didn''t finish! Complete your purchase now and save $150 on this critical certification.
+You started enrolling in SAFe® DevOps but didn''t finish! Complete your purchase now and save $100 on this critical certification.
 
-🎁 SPECIAL OFFER: Code 150OFF saves you $150!
+🎁 SPECIAL OFFER: Code 100OFF saves you $100!
 
 Why SAFe® DevOps certification is essential:
 • Master continuous delivery and DevOps practices at scale
@@ -321,11 +321,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Don''t Miss Out: Complete Your SAFe® DevOps Enrollment - $150 OFF! ⚡</h2>
+  <h2 style="color: #fa4a23;">Don''t Miss Out: Complete Your SAFe® DevOps Enrollment - $100 OFF! ⚡</h2>
   <p>Hi {first_name},</p>
-  <p>You started enrolling in <strong>SAFe® DevOps</strong> but didn''t finish! Complete your purchase now and save $150 on this critical certification.</p>
+  <p>You started enrolling in <strong>SAFe® DevOps</strong> but didn''t finish! Complete your purchase now and save $100 on this critical certification.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL OFFER: Code <span style="color: #fa4a23; font-size: 20px;">150OFF</span> saves you $150!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 SPECIAL OFFER: Code <span style="color: #fa4a23; font-size: 20px;">100OFF</span> saves you $100!</p>
   </div>
   <h3 style="color: #01203d;">Why SAFe® DevOps certification is essential:</h3>
   <ul>
@@ -339,16 +339,16 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- 8. SAFe Advanced Scrum Master
 ('abandoned_cart', 'SAFe Advanced Scrum Master', 'advanced-scrum-master',
- 'Complete Your SAFe® Advanced Scrum Master Enrollment - $150 OFF! 🎓',
+ 'Complete Your SAFe® Advanced Scrum Master Enrollment - $100 OFF! 🎓',
  'Hi {first_name},
 
-You were about to enroll in SAFe® Advanced Scrum Master! Don''t miss this opportunity to advance your Scrum Master career - save $150 now.
+You were about to enroll in SAFe® Advanced Scrum Master! Don''t miss this opportunity to advance your Scrum Master career - save $100 now.
 
-🎁 USE CODE: 150OFF to save $150 instantly!
+🎁 USE CODE: 100OFF to save $100 instantly!
 
 Why SAFe® Advanced Scrum Master certification:
 • Take your Scrum Master skills to the next level with advanced techniques
@@ -366,11 +366,11 @@ The Agile36 Team',
 <html>
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h2 style="color: #fa4a23;">Complete Your SAFe® Advanced Scrum Master Enrollment - $150 OFF! 🎓</h2>
+  <h2 style="color: #fa4a23;">Complete Your SAFe® Advanced Scrum Master Enrollment - $100 OFF! 🎓</h2>
   <p>Hi {first_name},</p>
-  <p>You were about to enroll in <strong>SAFe® Advanced Scrum Master</strong>! Don''t miss this opportunity to advance your Scrum Master career - save $150 now.</p>
+  <p>You were about to enroll in <strong>SAFe® Advanced Scrum Master</strong>! Don''t miss this opportunity to advance your Scrum Master career - save $100 now.</p>
   <div style="background: #fff3e0; border-left: 4px solid #fa4a23; padding: 15px; margin: 20px 0;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE: <span style="color: #fa4a23; font-size: 20px;">150OFF</span> to save $150 instantly!</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">🎁 USE CODE: <span style="color: #fa4a23; font-size: 20px;">100OFF</span> to save $100 instantly!</p>
   </div>
   <h3 style="color: #01203d;">Why SAFe® Advanced Scrum Master certification:</h3>
   <ul>
@@ -384,7 +384,7 @@ The Agile36 Team',
   <p>Best regards,<br>The Agile36 Team</p>
 </body>
 </html>',
- '150OFF', 150.00, 'fixed'),
+ '100OFF', 100.00, 'fixed'),
 
 -- Micro-credentials ($75 OFF, code: 75OFF)
 -- 9. SAFe Value Stream Mapping
@@ -757,9 +757,5 @@ SELECT
   is_active
 FROM email_templates
 ORDER BY 
-  CASE 
-    WHEN discount_code = '150OFF' THEN 1
-    WHEN discount_code = '75OFF' THEN 2
-    WHEN discount_code = '100OFF' THEN 3
-  END,
+  CASE WHEN discount_code = '75OFF' THEN 1 ELSE 2 END,
   course_name;

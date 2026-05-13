@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
@@ -33,48 +39,49 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CertifiedGenAIPractitionerLayout({
+export default async function CertifiedGenAIPractitionerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Certified GenAI Practitioner™ Certification Training",
-    "description": "Certified GenAI Practitioner teaches professionals to use generative AI tools effectively. Learn prompt engineering, AI ethics, ChatGPT and Claude usage, business applications, and responsible AI implementation in a hands-on 4-hour course.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts(
+    "certified-genai-practitioner"
+  );
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "certified-genai-practitioner",
+      canonical: "https://www.agile36.com/courses/certified-genai-practitioner",
+      schedulePath: "/courses/certified-genai-practitioner/schedule",
+      courseDisplayName: "Certified GenAI Practitioner™ Certification Training",
+      description:
+        "Certified GenAI Practitioner teaches professionals to use generative AI tools effectively. Learn prompt engineering, AI ethics, ChatGPT and Claude usage, business applications, and responsible AI implementation in a hands-on 4-hour course.",
+      teaches: [
+        "Generative AI Fundamentals and Concepts",
+        "Prompt Engineering Techniques",
+        "AI Ethics and Responsible AI Practices",
+        "ChatGPT and Claude for Business",
+        "Practical GenAI Applications",
+        "AI Tools and Integration",
+        "Business Productivity with AI",
+      ],
+      breadcrumbLeafName: "Certified GenAI Practitioner",
+      coursesCrumbLabel: "Generative AI Courses",
+      defaultPrice: 299,
+      defaultCurrency: "USD",
+      timeRequired: "PT4H",
+      courseCode: "GenAI-P",
+      coursePrerequisites:
+        "No prerequisites required. Basic computer literacy recommended.",
+      educationalCredentialAwarded: "Certified GenAI Practitioner™",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 156,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "GenAI-P",
-    "educationalCredentialAwarded": "Certified GenAI Practitioner™",
-    "timeRequired": "PT4H",
-    "courseDuration": "4 hours",
-    "coursePrerequisites": "No prerequisites required. Basic computer literacy recommended.",
-    "teaches": [
-      "Generative AI Fundamentals and Concepts",
-      "Prompt Engineering Techniques",
-      "AI Ethics and Responsible AI Practices",
-      "ChatGPT and Claude for Business",
-      "Practical GenAI Applications",
-      "AI Tools and Integration",
-      "Business Productivity with AI"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "299",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/certified-genai-practitioner/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "156",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -131,36 +138,10 @@ export default function CertifiedGenAIPractitionerLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Generative AI Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Certified GenAI Practitioner",
-        "item": "https://www.agile36.com/courses/certified-genai-practitioner"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

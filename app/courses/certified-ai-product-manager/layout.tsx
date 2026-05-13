@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
@@ -33,49 +39,50 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CertifiedAIProductManagerLayout({
+export default async function CertifiedAIProductManagerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Certified AI Product Manager™ Certification Training",
-    "description": "Certified AI Product Manager teaches product managers to use AI throughout the product development lifecycle. Learn AI-powered user research, rapid prototyping, stakeholder validation, product analytics, and how to build working prototypes to demonstrate concepts.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts(
+    "certified-ai-product-manager"
+  );
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "certified-ai-product-manager",
+      canonical: "https://www.agile36.com/courses/certified-ai-product-manager",
+      schedulePath: "/courses/certified-ai-product-manager/schedule",
+      courseDisplayName: "Certified AI Product Manager™ Certification Training",
+      description:
+        "Certified AI Product Manager teaches product managers to use AI throughout the product development lifecycle. Learn AI-powered user research, rapid prototyping, stakeholder validation, product analytics, and how to build working prototypes to demonstrate concepts.",
+      teaches: [
+        "AI Product Strategy and Roadmapping",
+        "Rapid Prototyping with No-Code AI Tools",
+        "AI-Powered User Research and Validation",
+        "Product Lifecycle AI Integration",
+        "Stakeholder Demos and Validation",
+        "AI Product Analytics and Metrics",
+        "Competitive Analysis with AI",
+        "Product Documentation with AI",
+      ],
+      breadcrumbLeafName: "Certified AI Product Manager",
+      coursesCrumbLabel: "AI Product Courses",
+      defaultPrice: 400,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "AI-PM",
+      coursePrerequisites:
+        "Product management or product owner experience recommended. No coding required.",
+      educationalCredentialAwarded: "Certified AI Product Manager™",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 156,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "AI-PM",
-    "educationalCredentialAwarded": "Certified AI Product Manager™",
-    "timeRequired": "P2D",
-    "courseDuration": "10 hours",
-    "coursePrerequisites": "Product management or product owner experience recommended. No coding required.",
-    "teaches": [
-      "AI Product Strategy and Roadmapping",
-      "Rapid Prototyping with No-Code AI Tools",
-      "AI-Powered User Research and Validation",
-      "Product Lifecycle AI Integration",
-      "Stakeholder Demos and Validation",
-      "AI Product Analytics and Metrics",
-      "Competitive Analysis with AI",
-      "Product Documentation with AI"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "400",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/certified-ai-product-manager/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "156",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,36 +139,10 @@ export default function CertifiedAIProductManagerLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "AI Product Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Certified AI Product Manager",
-        "item": "https://www.agile36.com/courses/certified-ai-product-manager"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

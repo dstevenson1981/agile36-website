@@ -107,6 +107,14 @@ export default function RootLayout({
     name: "Agile36",
     inLanguage: "en-US",
     publisher: { "@id": SCHEMA_ORGANIZATION_ID },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://www.agile36.com/blog?search={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
     image: {
       "@type": "ImageObject",
       url: SCHEMA_ORGANIZATION_LOGO_URL,

@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training (2026) | Agile36",
@@ -33,47 +39,47 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ResponsibleAILayout({
+export default async function ResponsibleAILayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Achieving Responsible AI with SAFe™ Micro-credential Course",
-    "description": "Responsible AI with SAFe micro-credential teaches ethical AI implementation within Scaled Agile Framework. Learn to identify RAI stakeholders, evaluate AI policies, write epic hypotheses for AI initiatives, communicate AI risks, and integrate responsible AI practices into Agile Release Trains.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("responsible-ai");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "responsible-ai",
+      canonical: "https://www.agile36.com/courses/responsible-ai",
+      schedulePath: "/courses/responsible-ai/schedule",
+      courseDisplayName: "Achieving Responsible AI with SAFe™ Micro-credential Course",
+      description:
+        "Responsible AI with SAFe micro-credential teaches ethical AI implementation within Scaled Agile Framework. Learn to identify RAI stakeholders, evaluate AI policies, write epic hypotheses for AI initiatives, communicate AI risks, and integrate responsible AI practices into Agile Release Trains.",
+      teaches: [
+        "Responsible AI Stakeholder Identification",
+        "RAI Policy Evaluation and Compliance",
+        "Communicating AI Risks and Ethics",
+        "Writing RAI Epic Hypothesis Statements",
+        "AI Transformation with SAFe Framework",
+        "Responsible AI Governance and Oversight",
+      ],
+      breadcrumbLeafName: "Responsible AI with SAFe",
+      coursesCrumbLabel: "SAFe Courses",
+      defaultPrice: 350,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "RAI",
+      coursePrerequisites:
+        "SAFe knowledge helpful. Open to product managers, architects, leaders involved in AI initiatives.",
+      educationalCredentialAwarded:
+        "Achieving Responsible AI with SAFe™ Micro-credential",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 156,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "RAI",
-    "educationalCredentialAwarded": "Achieving Responsible AI with SAFe™ Micro-credential",
-    "timeRequired": "P2D",
-    "courseDuration": "10 hours",
-    "coursePrerequisites": "SAFe knowledge helpful. Open to product managers, architects, leaders involved in AI initiatives.",
-    "teaches": [
-      "Responsible AI Stakeholder Identification",
-      "RAI Policy Evaluation and Compliance",
-      "Communicating AI Risks and Ethics",
-      "Writing RAI Epic Hypothesis Statements",
-      "AI Transformation with SAFe Framework",
-      "Responsible AI Governance and Oversight"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "350",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/responsible-ai/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "156",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -122,36 +128,10 @@ export default function ResponsibleAILayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "SAFe Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Responsible AI with SAFe",
-        "item": "https://www.agile36.com/courses/responsible-ai"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

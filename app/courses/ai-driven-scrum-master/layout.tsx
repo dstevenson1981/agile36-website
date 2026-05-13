@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  buildLiveScheduleCourseGraphLd,
+  fetchScheduleJsonLdCohorts,
+} from "@/app/lib/live-schedule-course-jsonld";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
@@ -33,49 +39,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AIDrivenScrumMasterLayout({
+export default async function AIDrivenScrumMasterLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "AI-Driven Scrum Master™ Certification Training",
-    "description": "AI-Driven Scrum Master certification teaches Scrum Masters to use generative AI for sprint planning, retrospectives, backlog management, and team coaching. Learn prompt engineering, AI-assisted facilitation, and automated workflow optimization.",
-    "provider": {
-      "@id": "https://www.agile36.com/#organization"
+  const scheduleResult = await fetchScheduleJsonLdCohorts("ai-driven-scrum-master");
+  const courseGraphLd = buildLiveScheduleCourseGraphLd(
+    {
+      courseSlug: "ai-driven-scrum-master",
+      canonical: "https://www.agile36.com/courses/ai-driven-scrum-master",
+      schedulePath: "/courses/ai-driven-scrum-master/schedule",
+      courseDisplayName: "AI-Driven Scrum Master™ Certification Training",
+      description:
+        "AI-Driven Scrum Master certification teaches Scrum Masters to use generative AI for sprint planning, retrospectives, backlog management, and team coaching. Learn prompt engineering, AI-assisted facilitation, and automated workflow optimization.",
+      teaches: [
+        "AI-Enhanced Scrum Practices",
+        "AI for Backlog Refinement",
+        "AI-Driven Sprint Planning",
+        "AI-Powered Retrospectives",
+        "AI for Daily Scrum and Flow Metrics",
+        "Coaching and Facilitation with AI",
+        "Prompt Engineering for Agile Coaches",
+        "Ethics and Responsible AI in Agile Teams",
+      ],
+      breadcrumbLeafName: "AI-Driven Scrum Master",
+      coursesCrumbLabel: "Generative AI Courses",
+      defaultPrice: 555,
+      defaultCurrency: "USD",
+      timeRequired: "P2D",
+      courseCode: "AI-SM",
+      coursePrerequisites:
+        "Scrum Master experience or Agile facilitation background recommended",
+      educationalCredentialAwarded: "AI-Driven Scrum Master™ Certification",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 234,
+        bestRating: 5,
+        worstRating: 1,
+      },
     },
-    "courseCode": "AI-SM",
-    "educationalCredentialAwarded": "AI-Driven Scrum Master™ Certification",
-    "timeRequired": "P2D",
-    "courseDuration": "16 hours",
-    "coursePrerequisites": "Scrum Master experience or Agile facilitation background recommended",
-    "teaches": [
-      "AI-Enhanced Scrum Practices",
-      "AI for Backlog Refinement",
-      "AI-Driven Sprint Planning",
-      "AI-Powered Retrospectives",
-      "AI for Daily Scrum and Flow Metrics",
-      "Coaching and Facilitation with AI",
-      "Prompt Engineering for Agile Coaches",
-      "Ethics and Responsible AI in Agile Teams"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "555",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.agile36.com/courses/ai-driven-scrum-master/schedule"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "234",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  };
+    scheduleResult
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,36 +137,10 @@ export default function AIDrivenScrumMasterLayout({
     ]
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.agile36.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Generative AI Courses",
-        "item": "https://www.agile36.com/courses"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "AI-Driven Scrum Master",
-        "item": "https://www.agile36.com/courses/ai-driven-scrum-master"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {children}
     </>
   );

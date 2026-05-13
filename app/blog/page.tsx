@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BlogHub, { type BlogHubPost } from "@/app/components/BlogHub";
 import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { getGeneratedBlogSummaries } from "@/app/lib/generated-blog";
+import { SCHEMA_ORGANIZATION_ID, SCHEMA_WEBSITE_ID } from "@/app/lib/schema-site";
 
 export const metadata: Metadata = {
   title: "Blog (2026) | Agile36 — SAFe, Agile, AI & Career Guides",
@@ -45,9 +46,57 @@ export default async function BlogIndexPage() {
   }));
 
   const posts: BlogHubPost[] = [...editorialOnly, ...generatedHub];
+  const canonical = "https://www.agile36.com/blog";
+  const blogIndexGraphLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://www.agile36.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: canonical,
+          },
+        ],
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        name: "Agile36 Blog",
+        isPartOf: { "@id": SCHEMA_WEBSITE_ID },
+        about: { "@id": SCHEMA_ORGANIZATION_ID },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${canonical}#itemlist`,
+        name: "Agile36 Blog Articles",
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        numberOfItems: posts.length,
+        itemListElement: posts.slice(0, 50).map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `https://www.agile36.com/blog/${post.slug}`,
+          name: post.title,
+        })),
+      },
+    ],
+  };
 
   return (
     <main className="min-h-screen bg-[#f8fafc]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexGraphLd) }}
+      />
       <BlogHub posts={posts} />
     </main>
   );
