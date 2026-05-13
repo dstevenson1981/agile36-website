@@ -179,7 +179,12 @@ function CheckoutContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code, courseSlug }),
+        body: JSON.stringify({
+          code,
+          courseSlug,
+          scheduleBasicPrice: selectedSchedule ? parseFloat(selectedSchedule.price) : undefined,
+          selectedPlan,
+        }),
       });
 
       const data = await response.json();
@@ -211,6 +216,52 @@ function CheckoutContent() {
     setPromoError(null);
     resetPaymentIntentIfNeeded();
   };
+
+  useEffect(() => {
+    if (!appliedPromoCode || appliedPromoCode.toUpperCase() !== 'POPM' || !selectedSchedule?.price) {
+      return;
+    }
+    let cancelled = false;
+    const run = async () => {
+      setIsValidatingPromo(true);
+      setPromoError(null);
+      try {
+        const response = await fetch('/api/validate-promo-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            code: 'POPM',
+            courseSlug,
+            scheduleBasicPrice: parseFloat(selectedSchedule.price),
+            selectedPlan,
+          }),
+        });
+        const data = await response.json();
+        if (cancelled) return;
+        if (data.valid) {
+          setPromoDiscountType(data.discountType);
+          setPromoDiscount(data.discountValue);
+          resetPaymentIntentIfNeeded();
+        } else {
+          setAppliedPromoCode(null);
+          setPromoDiscount(0);
+          setPromoError(data.error || 'Promo no longer applies');
+        }
+      } catch {
+        if (!cancelled) {
+          setAppliedPromoCode(null);
+          setPromoDiscount(0);
+          setPromoError('Failed to refresh promo');
+        }
+      } finally {
+        if (!cancelled) setIsValidatingPromo(false);
+      }
+    };
+    void run();
+    return () => {
+      cancelled = true;
+    };
+  }, [appliedPromoCode, selectedPlan, selectedSchedule?.price, selectedSchedule?.id, courseSlug]);
 
   const handleContinue = async () => {
     if (currentStep === 1) {

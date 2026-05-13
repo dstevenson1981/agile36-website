@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { createClient } from '@supabase/supabase-js';
+
+const POPM_PROMO_CODE = 'POPM';
+const POPM_COURSE_SLUG = 'product-owner-manager';
+const POPM_PRICE_PER_SEAT = 399;
+
+function roundMoney(n: number): number {
+  return Math.round(n * 100) / 100;
+}
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -175,6 +184,70 @@ export async function POST(request: NextRequest) {
       throw new Error('Customer missing required email field');
     }
 
+    let chargeAmountDollars = typeof amount === 'number' ? amount : parseFloat(String(amount));
+    if (!Number.isFinite(chargeAmountDollars) || chargeAmountDollars < 0) {
+      return NextResponse.json({ error: 'Invalid payment amount' }, { status: 400 });
+    }
+    let promoDiscountDollars =
+      typeof effectivePromoDiscount === 'number'
+        ? effectivePromoDiscount
+        : parseFloat(String(effectivePromoDiscount ?? 0));
+    if (!Number.isFinite(promoDiscountDollars)) promoDiscountDollars = 0;
+
+    let stripeOriginalForMeta =
+      typeof originalAmount === 'number'
+        ? originalAmount
+        : parseFloat(String(originalAmount ?? ''));
+    if (!Number.isFinite(stripeOriginalForMeta)) {
+      stripeOriginalForMeta = chargeAmountDollars;
+    }
+
+    const promoNorm = String(effectivePromoCode || '').trim().toUpperCase();
+    if (
+      !isCombo &&
+      promoNorm === POPM_PROMO_CODE &&
+      courseSlug === POPM_COURSE_SLUG
+    ) {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!supabaseUrl || !supabaseKey) {
+        return NextResponse.json(
+          { error: 'Server configuration error. Please contact support.' },
+          { status: 500 }
+        );
+      }
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data: row, error: schedErr } = await supabase
+        .from('course_schedules')
+        .select('price, course_slug')
+        .eq('id', effectiveScheduleId)
+        .maybeSingle();
+      if (schedErr || !row || row.course_slug !== POPM_COURSE_SLUG) {
+        return NextResponse.json(
+          { error: 'Invalid schedule for this promo code.' },
+          { status: 400 }
+        );
+      }
+      const basic = parseFloat(String(row.price));
+      if (!Number.isFinite(basic) || basic <= 0) {
+        return NextResponse.json({ error: 'Invalid class price.' }, { status: 400 });
+      }
+      const plan = selectedPlan === 'pro' ? 'pro' : 'basic';
+      const linePerSeat = plan === 'pro' ? roundMoney(basic * 1.15) : roundMoney(basic);
+      const qty = Math.max(1, Math.min(100, parseInt(String(quantity ?? 1), 10) || 1));
+      if (linePerSeat <= POPM_PRICE_PER_SEAT) {
+        return NextResponse.json(
+          { error: 'This promo code does not apply to this class price.' },
+          { status: 400 }
+        );
+      }
+      const discountPerSeat = roundMoney(linePerSeat - POPM_PRICE_PER_SEAT);
+      promoDiscountDollars = roundMoney(discountPerSeat * qty);
+      const baseTotal = roundMoney(linePerSeat * qty);
+      chargeAmountDollars = roundMoney(baseTotal - promoDiscountDollars);
+      stripeOriginalForMeta = baseTotal;
+    }
+
     // Get schedule details for better description
     const scheduleDate = enrollmentData?.scheduleDate || '';
     const scheduleTime = enrollmentData?.scheduleTime || '';
@@ -213,7 +286,7 @@ export async function POST(request: NextRequest) {
     
     // Create payment intent - card only to avoid Stripe rejecting unconfigured methods (google_pay, etc.)
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), // Convert to cents
+      amount: Math.round(chargeAmountDollars * 100), // Convert to cents
       currency,
       customer: customer.id, // Always use customer ID, not optional
       receipt_email: trimmedEmail, // Send receipt email automatically
@@ -243,9 +316,9 @@ export async function POST(request: NextRequest) {
         comboScheduleDates,
         comboCourseNames,
         promoCode: effectivePromoCode || '',
-        promoDiscount: effectivePromoDiscount ? effectivePromoDiscount.toString() : '0',
-        originalAmount: originalAmount ? originalAmount.toString() : amount.toString(),
-        finalAmount: amount.toString(),
+        promoDiscount: promoDiscountDollars ? promoDiscountDollars.toString() : '0',
+        originalAmount: stripeOriginalForMeta.toString(),
+        finalAmount: chargeAmountDollars.toString(),
       },
     });
 

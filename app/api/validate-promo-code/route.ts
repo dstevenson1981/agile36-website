@@ -19,9 +19,72 @@ type PromoCodeRow = {
   course_slug?: string | null;
 };
 
+const POPM_PROMO_CODE = 'POPM';
+const POPM_COURSE_SLUG = 'product-owner-manager';
+const POPM_PRICE_PER_SEAT = 399;
+
+function roundMoney(n: number): number {
+  return Math.round(n * 100) / 100;
+}
+
+/** POPM: cap checkout to $399 per seat (basic list price × Pro 1.15 when Pro). */
+function tryValidatePopm399(body: {
+  courseSlug?: string;
+  scheduleBasicPrice?: unknown;
+  selectedPlan?: unknown;
+}): NextResponse {
+  const { courseSlug, scheduleBasicPrice, selectedPlan } = body;
+  if (!courseSlug || typeof courseSlug !== 'string' || courseSlug.trim() !== POPM_COURSE_SLUG) {
+    return NextResponse.json(
+      {
+        valid: false,
+        error: `This promo code is only valid for the ${POPM_COURSE_SLUG} course`,
+      },
+      { status: 200 }
+    );
+  }
+  const raw =
+    typeof scheduleBasicPrice === 'number'
+      ? scheduleBasicPrice
+      : parseFloat(String(scheduleBasicPrice ?? ''));
+  if (!Number.isFinite(raw) || raw <= 0) {
+    return NextResponse.json(
+      {
+        valid: false,
+        error: 'Unable to apply this code for this class. Refresh the page and try again.',
+      },
+      { status: 200 }
+    );
+  }
+  const basic = roundMoney(raw);
+  const plan = selectedPlan === 'pro' ? 'pro' : 'basic';
+  const linePerSeat = plan === 'pro' ? roundMoney(basic * 1.15) : basic;
+  if (linePerSeat <= POPM_PRICE_PER_SEAT) {
+    return NextResponse.json(
+      {
+        valid: false,
+        error: 'This promo code does not apply to this class price.',
+      },
+      { status: 200 }
+    );
+  }
+  const discountPerSeat = roundMoney(linePerSeat - POPM_PRICE_PER_SEAT);
+  return NextResponse.json(
+    {
+      valid: true,
+      code: POPM_PROMO_CODE,
+      discountType: 'fixed' as const,
+      discountValue: discountPerSeat,
+      description: 'POPM — $399 per seat',
+    },
+    { status: 200 }
+  );
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { code, courseSlug } = await request.json();
+    const body = await request.json();
+    const { code, courseSlug, scheduleBasicPrice, selectedPlan } = body;
 
     if (!code || typeof code !== 'string') {
       return NextResponse.json(
@@ -30,7 +93,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate environment variables
+    // Validate environment variables (needed for database-backed promo codes)
     if (!supabaseUrl || !supabaseServiceKey) {
       console.error('Missing Supabase environment variables');
       return NextResponse.json(
@@ -42,9 +105,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create Supabase client with service role key for backend operations
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
     const trimmedCode = code.trim();
     if (!trimmedCode) {
       return NextResponse.json(
@@ -52,6 +112,13 @@ export async function POST(request: NextRequest) {
         { status: 200 }
       );
     }
+
+    if (trimmedCode.toUpperCase() === POPM_PROMO_CODE) {
+      return tryValidatePopm399({ courseSlug, scheduleBasicPrice, selectedPlan });
+    }
+
+    // Create Supabase client with service role key for backend operations
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Prefer RPC for normalized lookup (trim + case-insensitive); fallback to ilike
     let promoCode: PromoCodeRow | null = null;
