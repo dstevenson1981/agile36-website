@@ -1,5 +1,10 @@
 import Link from 'next/link';
+import { cookies } from 'next/headers';
 import { hasScrumMasterProAccess } from '@/app/lib/practice-exams';
+import {
+  SSM_PRO_OPEN_COOKIE,
+  SSM_PRO_OPEN_COOKIE_VALUE,
+} from '@/app/lib/ssm-pro-open-gate';
 import ScrumMasterPracticeTest from './ScrumMasterPracticeTest';
 import { SCRUM_MASTER_QUESTIONS } from './questions';
 
@@ -11,7 +16,10 @@ export const metadata = {
 };
 
 export default async function ScrumMasterPracticeTestPage() {
-  const hasAccess = await hasScrumMasterProAccess();
+  const cookieStore = await cookies();
+  const proOpenGate =
+    cookieStore.get(SSM_PRO_OPEN_COOKIE)?.value === SSM_PRO_OPEN_COOKIE_VALUE;
+  const hasAccess = proOpenGate || (await hasScrumMasterProAccess());
 
   if (!hasAccess) {
     return (
