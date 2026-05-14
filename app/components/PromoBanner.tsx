@@ -73,7 +73,7 @@ function GiftRight({ className }: { className?: string }) {
 }
 
 /**
- * Promo strip — rich orange gradient, white type, code badge; code is shown in-bar (no Claim CTA).
+ * Promo strip — rich orange gradient, black type (readable + on-brand with reference), code badge in-bar.
  */
 export default function PromoBanner() {
   if (!isPromoBannerVisible()) {
@@ -98,26 +98,26 @@ export default function PromoBanner() {
         <SparkStar className="relative h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" />
 
         <p
-          className="relative max-w-[min(100%,52rem)] text-center text-[12px] font-semibold leading-snug tracking-tight text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)] sm:text-sm sm:leading-tight"
+          className="relative max-w-[min(100%,52rem)] text-center text-sm font-semibold leading-snug tracking-tight text-neutral-950 sm:text-base sm:leading-tight md:text-[1.0625rem]"
         >
           <span className="inline sm:whitespace-nowrap">
             <span aria-hidden className="mr-0.5 sm:mr-1">
               🎉
             </span>
-            <span className="font-semibold text-white/95">Limited time:</span>{" "}
-            <strong className="font-extrabold text-white underline decoration-white/50 decoration-2 underline-offset-2">
+            <span className="font-semibold text-neutral-950">Limited time:</span>{" "}
+            <strong className="font-extrabold text-neutral-950 underline decoration-neutral-950 decoration-2 underline-offset-[3px]">
               $100 off
             </strong>{" "}
-            <span className="font-semibold text-white/95">with code</span>{" "}
+            <span className="font-semibold text-neutral-950">with code</span>{" "}
             <span
-              className="inline-block rounded-md border border-white/50 bg-white px-1.5 py-0.5 align-middle font-mono text-[11px] font-extrabold tracking-wide text-[#0f172a] shadow-[0_1px_3px_rgba(0,0,0,.2)] sm:text-xs"
+              className="inline-block rounded-md border border-neutral-900/25 bg-white px-1.5 py-0.5 align-middle font-mono text-[11px] font-extrabold tracking-wide text-neutral-950 shadow-[0_1px_2px_rgba(0,0,0,.12)] sm:text-xs"
               translate="no"
             >
               {BANNER_COUPON_CODE}
             </span>{" "}
-            <span className="text-white/85">—</span>{" "}
-            <span className="font-semibold text-white/95">expires</span>{" "}
-            <time className="font-bold text-white" dateTime="2026-05-18">
+            <span className="text-neutral-900/80">—</span>{" "}
+            <span className="font-semibold text-neutral-950">expires</span>{" "}
+            <time className="font-bold text-neutral-950" dateTime="2026-05-18">
               May 18
             </time>
           </span>

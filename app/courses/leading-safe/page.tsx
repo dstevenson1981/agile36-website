@@ -185,12 +185,7 @@ export default function LeadingSafeCoursePage() {
 
             {/* Combo deals + pricing */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
-                <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6 sticky top-24">
-                  <div className="mb-5 text-center">
-                    <div className="text-sm font-semibold text-green-600">50% OFF</div>
-                  </div>
-
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -222,7 +217,6 @@ export default function LeadingSafeCoursePage() {
                       <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
                     </div>
                   </div>
-                </div>
             </CourseHeroRightColumn>
           </div>
         </div>

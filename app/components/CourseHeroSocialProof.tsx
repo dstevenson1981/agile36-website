@@ -3,8 +3,13 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SCALED_AGILE_FEEDBACK_SORT_URL } from "@/app/components/HeroTrustStrip";
 
-/** Small learner avatars from `public/Avatars` (overlapping stack). */
-const ENROLLED_AVATAR_FILENAMES = ["image 1.png", "image 10.png", "image 11.png", "image 12.png"] as const;
+/** Adult headshots from `public/Images` (overlapping stack); avoid Avatars stock that included minors. */
+const ENROLLED_AVATAR_FILENAMES = [
+  "image 120.png",
+  "image 137.png",
+  "image 247.png",
+  "image 476.png",
+] as const;
 
 type Props = {
   /** e.g. "9K+ Enrolled", "25,000+ enrolled" — match each course page copy */
@@ -25,7 +30,7 @@ export default function CourseHeroSocialProof({ enrolledLabel, trailing, classNa
           {ENROLLED_AVATAR_FILENAMES.map((name) => (
             <Image
               key={name}
-              src={`/Avatars/${encodeURIComponent(name)}`}
+              src={`/Images/${encodeURIComponent(name)}`}
               alt=""
               width={36}
               height={36}
