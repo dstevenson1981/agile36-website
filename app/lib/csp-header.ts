@@ -9,6 +9,9 @@
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
  * Apollo, Stripe (checkout), Vercel Analytics; FingerprintJS may fetch agent code
  * from fpcdn/openfpcdn depending on version/build.
+ *
+ * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
+ * websocket relay, frames (game widget), and media — see Crisp CSP docs.
  */
 export const AGILE36_CONTENT_SECURITY_POLICY =
   "default-src 'self'; " +
@@ -23,11 +26,27 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://openfpcdn.io " +
   "https://fpcdn.io " +
   "https://*.fpjs.io; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-  "font-src 'self' data: https://fonts.gstatic.com; " +
-  "img-src 'self' data: https: blob:; " +
-  "connect-src 'self' https: wss:; " +
-  "frame-src 'self' https:; " +
+  "style-src 'self' 'unsafe-inline' " +
+  "https://fonts.googleapis.com " +
+  "https://client.crisp.chat " +
+  "https://*.crisp.chat; " +
+  "font-src 'self' data: " +
+  "https://fonts.gstatic.com " +
+  "https://client.crisp.chat " +
+  "https://*.crisp.chat; " +
+  "img-src 'self' data: https: blob: " +
+  "https://image.crisp.chat " +
+  "https://client.crisp.chat; " +
+  "connect-src 'self' https: wss: " +
+  "https://client.crisp.chat " +
+  "https://*.crisp.chat " +
+  "wss://client.relay.crisp.chat " +
+  "wss://*.relay.crisp.chat; " +
+  "frame-src 'self' https: " +
+  "https://game.crisp.chat; " +
+  "media-src 'self' blob: " +
+  "https://client.crisp.chat " +
+  "https://*.crisp.chat; " +
   "worker-src 'self' blob:; " +
   "object-src 'none'; " +
   "base-uri 'self'; " +
