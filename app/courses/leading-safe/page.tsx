@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
-import HeroTrustStrip from "@/app/components/HeroTrustStrip";
+import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
+import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 
 export default function LeadingSafeCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -86,33 +87,26 @@ export default function LeadingSafeCoursePage() {
                 <span className="text-sm text-gray-500">AI-Empowered Leading SAFe Certification Training</span>
               </div>
 
-              {/* Rating and Enrolled */}
-              <div className="flex items-center gap-6 flex-wrap">
-                <HeroTrustStrip className="flex items-center" />
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                  <span className="text-lg font-semibold text-gray-900">9K+ Enrolled</span>
-                </div>
-                {/* Certification Exam Included Badge */}
-                <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg border-2 border-green-500">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
-                </div>
-              </div>
-
-              {/* Title */}
+              {/* Title + trust under H1 (before deeper content & CTAs) */}
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 className="mb-3 text-4xl font-bold leading-[1.08] text-gray-900 sm:text-5xl md:text-6xl lg:text-[3.35rem] md:mb-4">
                   AI-Empowered Leading SAFe® Training with<br />
                   SAFe Agilist Certification
                 </h1>
-                <p className="text-lg text-gray-700 font-semibold">
+                <p className="mb-4 text-lg font-semibold text-gray-700 md:mb-5 md:text-xl">
                   Lead Agile transformations with expert-led SAFe® 6.0 Agile training and simulations.
                 </p>
+                <CourseHeroSocialProof
+                  enrolledLabel="9K+ Enrolled"
+                  trailing={
+                    <div className="flex items-center gap-2 rounded-lg border-2 border-green-500 bg-green-50 px-3 py-2 sm:px-4">
+                      <svg className="h-5 w-5 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
+                    </div>
+                  }
+                />
               </div>
 
               {/* Features List */}
@@ -189,9 +183,8 @@ export default function LeadingSafeCoursePage() {
               </div>
             </div>
 
-            {/* Right Side - Pricing Card (Prominent) */}
-            <div className="lg:flex lg:justify-end">
-              <div className="max-w-md w-full">
+            {/* Combo deals + pricing */}
+            <CourseHeroRightColumn courseSlug={courseSlug}>
                 <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6 sticky top-24">
                   <div className="text-center mb-6">
                     <div className="text-4xl font-bold text-gray-900 mb-2">$515</div>
@@ -239,8 +232,7 @@ export default function LeadingSafeCoursePage() {
                     View Schedule
                   </Link>
                 </div>
-              </div>
-            </div>
+            </CourseHeroRightColumn>
           </div>
         </div>
       </section>

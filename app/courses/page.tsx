@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
+import CourseComboDealsPanel from "@/app/components/CourseComboDealsPanel";
 import { useSearchParams } from "next/navigation";
 
 interface Course {
@@ -472,6 +473,10 @@ function CoursesContent() {
                 </Link>
               </div>
             </div>
+
+            <section className="mb-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <CourseComboDealsPanel />
+            </section>
 
             {/* Course List */}
             <div className="space-y-3">
