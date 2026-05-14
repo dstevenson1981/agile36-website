@@ -1,6 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SCALED_AGILE_FEEDBACK_SORT_URL } from "@/app/components/HeroTrustStrip";
+
+/** Small learner avatars from `public/Avatars` (overlapping stack). */
+const ENROLLED_AVATAR_FILENAMES = ["image 1.png", "image 10.png", "image 11.png", "image 12.png"] as const;
 
 type Props = {
   /** e.g. "9K+ Enrolled", "25,000+ enrolled" — match each course page copy */
@@ -18,13 +22,16 @@ export default function CourseHeroSocialProof({ enrolledLabel, trailing, classNa
     >
       <div className="flex flex-wrap items-center gap-3 sm:gap-4">
         <div className="flex -space-x-2.5" aria-hidden>
-          {["bg-amber-200", "bg-sky-200", "bg-rose-200", "bg-emerald-200"].map((bg, i) => (
-            <span
-              key={i}
-              className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-white text-[10px] font-bold text-slate-700 shadow-sm ${bg}`}
-            >
-              {String.fromCharCode(65 + i)}
-            </span>
+          {ENROLLED_AVATAR_FILENAMES.map((name) => (
+            <Image
+              key={name}
+              src={`/Avatars/${encodeURIComponent(name)}`}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 shrink-0 rounded-full border-2 border-white object-cover shadow-sm"
+              sizes="36px"
+            />
           ))}
         </div>
         <span className="text-base font-bold tracking-tight text-slate-900 sm:text-lg">{enrolledLabel}</span>
