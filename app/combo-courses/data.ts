@@ -278,3 +278,24 @@ export const COMBO_COURSES: Combo[] = [
     trending: true,
   },
 ];
+
+/** Same category buckets as `/combo-courses` tabs (Scaled Agile / PMI / AI). */
+export function combosForCategory(category: ComboCategory): Combo[] {
+  return COMBO_COURSES.filter((c) => c.category === category);
+}
+
+const AI_COURSE_SLUGS = new Set<string>([
+  "ai-driven-scrum-master",
+  "certified-genai-practitioner",
+  "certified-ai-product-manager",
+  "generative-ai-project-managers",
+  "executive-genai-leadership",
+  "ai-agent-builder",
+]);
+
+/** Maps a `/courses/[slug]` hero to the combo tab that matches `/combo-courses`. */
+export function comboCategoryForCourseSlug(slug: string): ComboCategory {
+  if (slug === "pmp-certification") return "pmi";
+  if (AI_COURSE_SLUGS.has(slug)) return "ai";
+  return "safe";
+}

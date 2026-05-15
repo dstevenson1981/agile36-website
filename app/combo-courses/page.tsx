@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { COMBO_COURSES, BADGES, type ComboCategory } from "./data";
+import { combosForCategory, type ComboCategory } from "./data";
 
 const CATEGORY_TABS: { id: ComboCategory; label: string }[] = [
   { id: "safe", label: "Scaled Agile Combo" },
@@ -67,7 +67,7 @@ const FAQS = [
 export default function ComboCoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState<ComboCategory>("safe");
 
-  const filteredCombos = COMBO_COURSES.filter((c) => c.category === selectedCategory);
+  const filteredCombos = combosForCategory(selectedCategory);
 
   return (
     <main className="min-h-screen bg-gray-50">
