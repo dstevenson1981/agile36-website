@@ -177,7 +177,12 @@ function CheckoutContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code, courseSlug }),
+        body: JSON.stringify({
+          code,
+          courseSlug,
+          scheduleBasicPrice: selectedSchedule ? parseFloat(selectedSchedule.price) : undefined,
+          selectedPlan,
+        }),
       });
 
       const data = await response.json();
@@ -201,6 +206,53 @@ function CheckoutContent() {
       setIsValidatingPromo(false);
     }
   };
+
+  useEffect(() => {
+    if (!appliedPromoCode || appliedPromoCode.toUpperCase() !== 'SASM465' || !selectedSchedule?.price) {
+      return;
+    }
+    let cancelled = false;
+    const run = async () => {
+      setIsValidatingPromo(true);
+      setPromoError(null);
+      try {
+        const response = await fetch('/api/validate-promo-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            code: 'SASM465',
+            courseSlug,
+            scheduleBasicPrice: parseFloat(selectedSchedule.price),
+            selectedPlan,
+          }),
+        });
+        const data = await response.json();
+        if (cancelled) return;
+        if (data.valid) {
+          setPromoDiscountType(data.discountType);
+          setPromoDiscount(data.discountValue);
+          resetPaymentIntentIfNeeded();
+        } else {
+          setAppliedPromoCode(null);
+          setPromoDiscount(0);
+          setPromoError(data.error || 'Promo no longer applies');
+        }
+      } catch {
+        if (!cancelled) {
+          setAppliedPromoCode(null);
+          setPromoDiscount(0);
+          setPromoError('Failed to refresh promo');
+        }
+      } finally {
+        if (!cancelled) setIsValidatingPromo(false);
+      }
+    };
+    run();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPlan, selectedSchedule?.price, appliedPromoCode, courseSlug]);
 
   const handleRemovePromoCode = () => {
     setAppliedPromoCode(null);
