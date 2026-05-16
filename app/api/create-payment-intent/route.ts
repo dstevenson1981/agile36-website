@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-
-const POPM_PROMO_CODE = 'POPM';
-const POPM_COURSE_SLUG = 'product-owner-manager';
-const POPM_PRICE_PER_SEAT = 399;
-
-function roundMoney(n: number): number {
-  return Math.round(n * 100) / 100;
-}
+import {
+  discountPerSeatForCap,
+  getCoursePromoCapByCode,
+  linePricePerSeat,
+  roundMoney,
+} from '@/app/lib/course-promo-caps';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -202,18 +200,14 @@ export async function POST(request: NextRequest) {
       stripeOriginalForMeta = chargeAmountDollars;
     }
 
-    const promoNorm = String(effectivePromoCode || '').trim().toUpperCase();
-    if (
-      !isCombo &&
-      promoNorm === POPM_PROMO_CODE &&
-      courseSlug === POPM_COURSE_SLUG
-    ) {
+    const courseCap = !isCombo ? getCoursePromoCapByCode(String(effectivePromoCode || '')) : null;
+    if (courseCap && courseSlug === courseCap.courseSlug) {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
       if (!supabaseUrl || !supabaseKey) {
         return NextResponse.json(
           { error: 'Server configuration error. Please contact support.' },
-          { status: 500 }
+          { status: 500 },
         );
       }
       const supabase = createClient(supabaseUrl, supabaseKey);
@@ -222,27 +216,26 @@ export async function POST(request: NextRequest) {
         .select('price, course_slug')
         .eq('id', effectiveScheduleId)
         .maybeSingle();
-      if (schedErr || !row || row.course_slug !== POPM_COURSE_SLUG) {
+      if (schedErr || !row || row.course_slug !== courseCap.courseSlug) {
         return NextResponse.json(
           { error: 'Invalid schedule for this promo code.' },
-          { status: 400 }
+          { status: 400 },
         );
       }
       const basic = parseFloat(String(row.price));
       if (!Number.isFinite(basic) || basic <= 0) {
         return NextResponse.json({ error: 'Invalid class price.' }, { status: 400 });
       }
-      const plan = selectedPlan === 'pro' ? 'pro' : 'basic';
-      const linePerSeat = plan === 'pro' ? roundMoney(basic * 1.15) : roundMoney(basic);
+      const linePerSeat = linePricePerSeat(basic, selectedPlan);
       const qty = Math.max(1, Math.min(100, parseInt(String(quantity ?? 1), 10) || 1));
-      if (linePerSeat <= POPM_PRICE_PER_SEAT) {
+      const capResult = discountPerSeatForCap(linePerSeat, courseCap);
+      if (!capResult.ok) {
         return NextResponse.json(
           { error: 'This promo code does not apply to this class price.' },
-          { status: 400 }
+          { status: 400 },
         );
       }
-      const discountPerSeat = roundMoney(linePerSeat - POPM_PRICE_PER_SEAT);
-      promoDiscountDollars = roundMoney(discountPerSeat * qty);
+      promoDiscountDollars = roundMoney(capResult.discountPerSeat * qty);
       const baseTotal = roundMoney(linePerSeat * qty);
       chargeAmountDollars = roundMoney(baseTotal - promoDiscountDollars);
       stripeOriginalForMeta = baseTotal;

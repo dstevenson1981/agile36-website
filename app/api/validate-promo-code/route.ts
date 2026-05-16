@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  discountPerSeatForCap,
+  getCoursePromoCapByCode,
+  linePricePerSeat,
+  roundMoney,
+} from '@/app/lib/course-promo-caps';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -19,28 +25,26 @@ type PromoCodeRow = {
   course_slug?: string | null;
 };
 
-const POPM_PROMO_CODE = 'POPM';
-const POPM_COURSE_SLUG = 'product-owner-manager';
-const POPM_PRICE_PER_SEAT = 399;
-
-function roundMoney(n: number): number {
-  return Math.round(n * 100) / 100;
-}
-
-/** POPM: cap checkout to $399 per seat (basic list price × Pro 1.15 when Pro). */
-function tryValidatePopm399(body: {
-  courseSlug?: string;
-  scheduleBasicPrice?: unknown;
-  selectedPlan?: unknown;
-}): NextResponse {
+/** Per-seat price caps (POPM $399, SASM465 $465, etc.) — see course-promo-caps.ts */
+function tryValidateCoursePriceCap(
+  cap: ReturnType<typeof getCoursePromoCapByCode>,
+  body: {
+    courseSlug?: string;
+    scheduleBasicPrice?: unknown;
+    selectedPlan?: unknown;
+  },
+): NextResponse {
+  if (!cap) {
+    return NextResponse.json({ valid: false, error: 'Invalid promo code' }, { status: 200 });
+  }
   const { courseSlug, scheduleBasicPrice, selectedPlan } = body;
-  if (!courseSlug || typeof courseSlug !== 'string' || courseSlug.trim() !== POPM_COURSE_SLUG) {
+  if (!courseSlug || typeof courseSlug !== 'string' || courseSlug.trim() !== cap.courseSlug) {
     return NextResponse.json(
       {
         valid: false,
-        error: `This promo code is only valid for the ${POPM_COURSE_SLUG} course`,
+        error: `This promo code is only valid for the ${cap.courseSlug} course`,
       },
-      { status: 200 }
+      { status: 200 },
     );
   }
   const raw =
@@ -53,31 +57,29 @@ function tryValidatePopm399(body: {
         valid: false,
         error: 'Unable to apply this code for this class. Refresh the page and try again.',
       },
-      { status: 200 }
+      { status: 200 },
     );
   }
-  const basic = roundMoney(raw);
-  const plan = selectedPlan === 'pro' ? 'pro' : 'basic';
-  const linePerSeat = plan === 'pro' ? roundMoney(basic * 1.15) : basic;
-  if (linePerSeat <= POPM_PRICE_PER_SEAT) {
+  const linePerSeat = linePricePerSeat(roundMoney(raw), selectedPlan);
+  const result = discountPerSeatForCap(linePerSeat, cap);
+  if (!result.ok) {
     return NextResponse.json(
       {
         valid: false,
         error: 'This promo code does not apply to this class price.',
       },
-      { status: 200 }
+      { status: 200 },
     );
   }
-  const discountPerSeat = roundMoney(linePerSeat - POPM_PRICE_PER_SEAT);
   return NextResponse.json(
     {
       valid: true,
-      code: POPM_PROMO_CODE,
+      code: cap.code,
       discountType: 'fixed' as const,
-      discountValue: discountPerSeat,
-      description: 'POPM — $399 per seat',
+      discountValue: result.discountPerSeat,
+      description: cap.description,
     },
-    { status: 200 }
+    { status: 200 },
   );
 }
 
@@ -113,8 +115,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (trimmedCode.toUpperCase() === POPM_PROMO_CODE) {
-      return tryValidatePopm399({ courseSlug, scheduleBasicPrice, selectedPlan });
+    const courseCap = getCoursePromoCapByCode(trimmedCode);
+    if (courseCap) {
+      return tryValidateCoursePriceCap(courseCap, { courseSlug, scheduleBasicPrice, selectedPlan });
     }
 
     // Create Supabase client with service role key for backend operations
