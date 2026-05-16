@@ -18,16 +18,16 @@ const homepageInstructorPersonGraph = {
 };
 
 export const metadata: Metadata = {
-  title: "Agile36 (2026) — Expert SAFe, Agile, AI & Product Management Training",
+  title: "Agile36 — Expert SAFe, Agile, AI & Product Management Training",
   description:
-    "2026 live virtual cohorts: SAFe, Agile, AI, and product management certification training. Scaled Agile Silver Partner. Instructor-led by certified SAFe Program Consultants (SPCs).",
+    "Expert training in Agile, AI, and product management. Live virtual SAFe, Agile, and certification cohorts from a Scaled Agile Silver Partner — instructor-led by certified SAFe Program Consultants (SPCs).",
   alternates: {
     canonical: "https://www.agile36.com/",
   },
   openGraph: {
-    title: "Agile36 (2026) — SAFe, Agile, AI & Product Training",
+    title: "Agile36 — Expert SAFe, Agile, AI & Product Management Training",
     description:
-      "2026 live virtual cohorts: SAFe, Agile, AI, and product management certification training. Scaled Agile Silver Partner.",
+      "Expert training in Agile, AI, and product management. Live virtual SAFe and certification training from a Scaled Agile Silver Partner.",
     url: "https://www.agile36.com/",
     siteName: "Agile36",
     type: "website",

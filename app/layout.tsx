@@ -32,6 +32,15 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.agile36.com"),
   title: "Agile36 - Expert Training in Agile, AI, and Product Management",
   description: "Take the next step in your career with a global leader in SAFe, Generative AI, AI Product, and PMI training. Start your learning journey today.",
+  icons: {
+    icon: [
+      { url: "/Favicon/favicon.ico", sizes: "any" },
+      { url: "/Favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/Favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/Favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     siteName: "Agile36",
     type: "website",
