@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
-import CourseComboDealsPanel from "@/app/components/CourseComboDealsPanel";
 import { useSearchParams } from "next/navigation";
 
 interface Course {
@@ -458,25 +457,13 @@ function CoursesContent() {
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {selectedCategory} ({courseCount} Courses)
               </h1>
-              <div className="flex items-center gap-4">
-                <Link 
-                  href="/combo-courses"
-                  className="text-sm text-[#fa4a23] hover:text-[#e03d1a] font-medium"
-                >
-                  Combo Courses
-                </Link>
-                <Link 
-                  href="/"
-                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  View all Courses
-                </Link>
-              </div>
+              <Link 
+                href="/"
+                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+              >
+                View all Courses
+              </Link>
             </div>
-
-            <section className="mb-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <CourseComboDealsPanel />
-            </section>
 
             {/* Course List */}
             <div className="space-y-3">
