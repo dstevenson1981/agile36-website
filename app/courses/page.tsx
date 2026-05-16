@@ -25,12 +25,18 @@ interface Course {
 function CoursesContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
-  const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam || 'SAFe');
+  const categories = ["SAFe", "Generative AI", "AI Product"];
+  const normalizeCategory = (cat: string | null) => {
+    if (!cat || cat === "PMI" || !categories.includes(cat)) return "SAFe";
+    return cat;
+  };
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    normalizeCategory(categoryParam),
+  );
 
   // Update selected category when URL param changes
   useEffect(() => {
-    const cat = searchParams.get('category') || 'SAFe';
-    setSelectedCategory(cat);
+    setSelectedCategory(normalizeCategory(searchParams.get("category")));
   }, [searchParams]);
 
   // Mapping for course thumbnail images
@@ -280,20 +286,6 @@ function CoursesContent() {
       skills: "Agentic Product Leadership, Autonomous Product Systems, Strategic AI Product Vision",
       popular: true,
     },
-    // PMI courses
-    {
-      id: "4",
-      title: "PMP® Certification Training",
-      category: "PMI",
-      image: "/annie-spratt-sggw4-qDD54-unsplash.jpg",
-      price: 1150,
-      originalPrice: 2300,
-      hours: "35 PDUs",
-      days: "06 weeks",
-      enrolled: "30K+ Enrolled",
-      skills: "A PROVEN 60 DAY STUDY BLUEPRINT Get Your PMP in 60 Days is a focused, results-driven program designed for professionals who are serious about earning their PMP certification",
-      popular: true,
-    },
     // Microcredentials moved to SAFe
     {
       id: "27",
@@ -323,8 +315,6 @@ function CoursesContent() {
     },
   ];
 
-  const categories = ["SAFe", "Generative AI", "AI Product", "PMI"];
-  
   const filteredCourses = allCourses.filter(course => course.category === selectedCategory);
   const courseCount = filteredCourses.length;
 
@@ -404,10 +394,6 @@ function CoursesContent() {
       return "/courses/certified-ai-product-manager";
     }
 
-    // PMP — must match Header / home page; slug fallback would be /courses/pmp-certification-training (404)
-    if (course.title.includes("PMP") || course.title.includes("PMP®")) {
-      return "/courses/pmp-certification";
-    }
     
     const titleSlug = course.title
       .toLowerCase()

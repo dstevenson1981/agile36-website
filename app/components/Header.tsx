@@ -472,20 +472,6 @@ export default function Header() {
       skills: "AI Product Development, Prototype Building, Stakeholder Validation",
       popular: true,
     },
-    // PMI courses
-    {
-      id: "4",
-      title: "PMP® Certification Training",
-      category: "PMI",
-      image: "/annie-spratt-sggw4-qDD54-unsplash.jpg",
-      price: 1100,
-      originalPrice: 2200,
-      hours: "35 PDUs",
-      days: "05 days",
-      enrolled: "30K+ Enrolled",
-      skills: "Project Management, PMP Exam Prep, PMBOK Guide, Agile Project Management",
-      popular: true,
-    },
   ];
 
   const promoBannerActive = isPromoBannerVisible();
@@ -545,7 +531,7 @@ export default function Header() {
                       <div className="w-full sm:w-48 bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-200 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg p-4">
                         <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Categories</h3>
                         <ul className="space-y-1">
-                          {["SAFe", "Generative AI", "AI Product", "PMI"].map((category) => (
+                          {["SAFe", "Generative AI", "AI Product"].map((category) => (
                             <li key={category}>
                               <button
                                 onMouseEnter={() => setSelectedMegaMenuCategory(category)}

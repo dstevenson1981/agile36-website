@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { SCALED_AGILE_FEEDBACK_SORT_URL } from "@/app/components/HeroTrustStrip";
 
 /** Adult headshots from `public/Images` (overlapping stack); avoid Avatars stock that included minors. */
 const ENROLLED_AVATAR_FILENAMES = [
@@ -41,20 +39,12 @@ export default function CourseHeroSocialProof({ enrolledLabel, trailing, classNa
         </div>
         <span className="text-base font-bold tracking-tight text-slate-900 sm:text-lg">{enrolledLabel}</span>
         <span className="hidden h-8 w-px bg-slate-300 sm:block" aria-hidden />
-        <Link
-          href={SCALED_AGILE_FEEDBACK_SORT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-base font-bold text-[#01203d] underline decoration-2 underline-offset-4 transition hover:text-[#fa4a23] sm:text-lg"
-        >
-          <span className="text-amber-500" aria-hidden>
+        <span className="inline-flex items-center gap-2 text-base font-bold text-[#01203d] sm:text-lg">
+          <span className="animate-trust-star-glow text-amber-500" aria-hidden>
             ★
           </span>
-          <span>4.94 · #1-rated on Scaled Agile</span>
-          <span className="text-sm font-semibold opacity-80" aria-hidden>
-            →
-          </span>
-        </Link>
+          <span className="animate-trust-rating-blink">4.94 · #1-rated on Scaled Agile</span>
+        </span>
       </div>
       {trailing ? <div className="flex flex-wrap items-center gap-2 sm:ml-auto">{trailing}</div> : null}
     </div>

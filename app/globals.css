@@ -42,6 +42,45 @@ body {
   animation: banner-flash 2s ease-in-out infinite;
 }
 
+/* Course hero trust bar — subtle attention on Scaled Agile rating */
+@keyframes trust-rating-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes trust-star-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.85));
+  }
+}
+
+.animate-trust-rating-blink {
+  animation: trust-rating-blink 1.6s ease-in-out infinite;
+}
+
+.animate-trust-star-glow {
+  display: inline-block;
+  animation: trust-star-glow 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-trust-rating-blink,
+  .animate-trust-star-glow {
+    animation: none;
+  }
+}
+
 /**
  * Shared markdown / MDX article body — use on generated blog posts and anywhere
  * CMS-like HTML needs the same typography as agile36.com (Open Sans, navy accents).

@@ -299,3 +299,8 @@ export function comboCategoryForCourseSlug(slug: string): ComboCategory {
   if (AI_COURSE_SLUGS.has(slug)) return "ai";
   return "safe";
 }
+
+/** Combo carousel in course heroes — SAFe courses only. */
+export function shouldShowCourseHeroCombos(courseSlug: string): boolean {
+  return comboCategoryForCourseSlug(courseSlug) === "safe";
+}
