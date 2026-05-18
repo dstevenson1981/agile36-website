@@ -30,10 +30,7 @@ function ForgotPasswordForm() {
       const res = await fetch('/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email.trim(),
-          redirectTo: `${window.location.origin}/auth/confirm?next=/account/reset-password`,
-        }),
+        body: JSON.stringify({ email: email.trim() }),
       });
 
       const data = await res.json().catch(() => ({}));

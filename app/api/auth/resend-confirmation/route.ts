@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/app/lib/supabase/server';
+import { getAuthSiteUrl, signupConfirmRedirectUrl } from '@/app/lib/auth-site-url';
 
 /**
  * Resend signup confirmation email.
@@ -13,12 +14,7 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      request.headers.get('origin') ||
-      'https://www.agile36.com';
-    // Must match signup: confirm via /auth/confirm (verifyOtp), then go to account.
-    const emailRedirectTo = `${baseUrl}/auth/confirm?next=/account`;
+    const emailRedirectTo = signupConfirmRedirectUrl(getAuthSiteUrl(request));
 
     const { error } = await supabase.auth.resend({
       type: 'signup',
