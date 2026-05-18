@@ -2,6 +2,10 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import { AGILE36_CONTENT_SECURITY_POLICY } from '@/app/lib/csp-header';
 import {
+  areProPracticeExamsEnabled,
+  isProPracticeExamPath,
+} from '@/app/lib/pro-practice-exams-enabled';
+import {
   getScrumMasterProShareKey,
   SSM_PRO_OPEN_COOKIE,
   SSM_PRO_OPEN_COOKIE_VALUE,
@@ -37,6 +41,13 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
+
+  if (!areProPracticeExamsEnabled() && isProPracticeExamPath(pathname)) {
+    const notFound = new NextResponse(null, { status: 404, statusText: 'Not Found' });
+    applyCspAndHreflang(request, notFound);
+    return notFound;
+  }
+
   if (PUBLIC_PATHS.some((p) => p === pathname || (p !== '/' && pathname.startsWith(p)))) {
     applyCspAndHreflang(request, response);
     return response;
