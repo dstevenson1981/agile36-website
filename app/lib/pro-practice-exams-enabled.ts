@@ -9,7 +9,7 @@
 const DEFAULT_PRO_PRACTICE_EXAMS_ENABLED = false;
 
 /** Public short links + course practice-exam pages that stay live when global disable is on. */
-const ALLOWED_PUBLIC_PREFIXES = ['/leading-safe-pro-temp-2', '/lpmpro'] as const;
+const ALLOWED_PUBLIC_PREFIXES = ['/leading-safe-pro-temp-2', '/lpmpro', '/lpm-pro-temp'] as const;
 
 const ALLOWED_COURSE_PRACTICE_EXAM =
   /^\/courses\/(leading-safe|lean-portfolio-management)\/practice-exam\/?$/;
