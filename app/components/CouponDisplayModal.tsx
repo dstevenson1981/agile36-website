@@ -24,8 +24,12 @@ export default function CouponDisplayModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-      <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
+      <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#1a237e] via-[#3949ab] to-[#b71c1c]"
+          aria-hidden
+        />
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
@@ -36,23 +40,22 @@ export default function CouponDisplayModal({
           </svg>
         </button>
 
-        <div className="text-center">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Your Coupon Code
-            </h2>
-            <p className="text-gray-600 text-sm">
-              Use this code at checkout to get $100 OFF (expires Apr 27)
-            </p>
-          </div>
+        <div className="text-center pt-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1a237e] mb-2">
+            Memorial Day Sale
+          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Your $100 off code</h2>
+          <p className="text-gray-600 text-sm mb-6">
+            Apply this code at checkout on any eligible course.
+          </p>
 
-          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-6 mb-4">
-            <div className="text-4xl font-bold text-red-600 mb-2 tracking-wider">
+          <div className="bg-gradient-to-br from-[#e8eaf6] to-[#ffebee] border-2 border-dashed border-[#1a237e]/30 rounded-lg p-6 mb-4">
+            <div className="text-4xl font-bold text-[#b71c1c] mb-2 tracking-wider" translate="no">
               {couponCode}
             </div>
             <button
               onClick={handleCopy}
-              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-red-600 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a237e] transition-colors"
             >
               {copied ? (
                 <>
@@ -72,19 +75,21 @@ export default function CouponDisplayModal({
             </button>
           </div>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
               <span className="font-semibold">Expires:</span>{" "}
-              <span className="text-red-600 font-bold text-lg">Apr 27 at midnight</span>
+              <time className="text-[#1a237e] font-bold" dateTime="2026-12-31">
+                December 31, 2026
+              </time>
             </p>
             <p className="text-xs text-gray-600">
-              Limited-time offer — use it soon!
+              Memorial Day Sale — $100 off one eligible enrollment. Enter the code in the promo field at checkout.
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-red-700 transition-all shadow-lg"
+            className="w-full bg-gradient-to-r from-[#1a237e] to-[#b71c1c] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#283593] hover:to-[#c62828] transition-all shadow-lg"
           >
             Continue Shopping
           </button>
@@ -93,4 +98,3 @@ export default function CouponDisplayModal({
     </div>
   );
 }
-

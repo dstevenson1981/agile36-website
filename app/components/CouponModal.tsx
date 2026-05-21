@@ -10,6 +10,8 @@ interface CouponModalProps {
   couponCode?: string;
 }
 
+const MEMORIAL_DAY_BANNER_IMAGE = "/promo/memorial-day-sale-banner.png";
+
 const courses = [
   "SAFe® 6.0 Scrum Master (SSM) Certification",
   "Leading SAFe® 6.0 Training",
@@ -46,14 +48,12 @@ export default function CouponModal({
     e.preventDefault();
     const newErrors = { email: "", course: "" };
 
-    // Validate email
     if (!email) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Please enter a valid email address";
     }
 
-    // Validate course
     if (!selectedCourse) {
       newErrors.course = "Please select a course";
     }
@@ -61,12 +61,11 @@ export default function CouponModal({
     setErrors(newErrors);
 
     if (!newErrors.email && !newErrors.course) {
-      // Store email in Supabase
       try {
-        const response = await fetch('/api/store-coupon-lead', {
-          method: 'POST',
+        const response = await fetch("/api/store-coupon-lead", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             email,
@@ -77,44 +76,39 @@ export default function CouponModal({
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          console.error('Failed to store email:', errorData);
-          // Continue anyway - don't block user from getting coupon
+          console.error("Failed to store email:", errorData);
         }
       } catch (error) {
-        console.error('Error storing email:', error);
-        // Continue anyway - don't block user from getting coupon
+        console.error("Error storing email:", error);
       }
 
-      // Show coupon code
       onClaimCoupon(email, selectedCourse);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex">
-        {/* Left Side - Promotional Banner */}
-        <div className="hidden md:flex flex-col justify-between bg-gradient-to-br from-red-600 to-red-700 p-8 w-1/2 relative overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute top-4 right-4 w-16 h-16 bg-blue-500 rounded-full opacity-20 blur-xl"></div>
-          <div className="absolute top-8 left-4 w-12 h-12 bg-yellow-400 rounded-full opacity-10 blur-lg"></div>
-          
-          <div className="relative z-10">
-            <h2 className="text-gray-900 text-2xl font-bold mb-4">
-              Get $100 off your course.
-            </h2>
-            <p className="text-gray-800 text-sm mb-6">
-              Gain high-value skills that drive real results.
+        <div className="hidden md:flex flex-col justify-end w-1/2 relative overflow-hidden min-h-[420px]">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${MEMORIAL_DAY_BANNER_IMAGE})` }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a237e]/90 via-[#1a237e]/40 to-transparent" aria-hidden />
+          <div className="relative z-10 p-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2">
+              Memorial Day Sale
             </p>
-          </div>
-
-          {/* $50 hint */}
-          <div className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-lg">$</span>
+            <h2 className="text-white text-2xl font-bold mb-3 leading-tight">
+              $100 off your next course
+            </h2>
+            <p className="text-white/90 text-sm">
+              Subscribe below to unlock your exclusive promo code — valid through Dec 31, 2026.
+            </p>
           </div>
         </div>
 
-        {/* Right Side - Form */}
         <div className="relative flex-1 p-6 md:p-8 overflow-y-auto">
           <button
             onClick={onClose}
@@ -126,25 +120,31 @@ export default function CouponModal({
             </svg>
           </button>
 
-          <h3 className="text-gray-800 text-xl font-semibold mb-6">Fill the Required Details</h3>
+          <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#1a237e] mb-1">
+            Memorial Day Sale
+          </p>
+          <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your $100 off code</h3>
+          <p className="text-gray-600 text-sm mb-6">
+            Enter your email and course interest — we&apos;ll reveal your code instantly.
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="coupon-email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
-                id="email"
+                id="coupon-email"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                   setErrors({ ...errors, email: "" });
                 }}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1a237e] focus:border-transparent ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
-                placeholder="Email*"
+                placeholder="you@company.com"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -152,17 +152,17 @@ export default function CouponModal({
             </div>
 
             <div>
-              <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="coupon-course" className="block text-sm font-medium text-gray-700 mb-1">
                 Select Course <span className="text-red-500">*</span>
               </label>
               <select
-                id="course"
+                id="coupon-course"
                 value={selectedCourse}
                 onChange={(e) => {
                   setSelectedCourse(e.target.value);
                   setErrors({ ...errors, course: "" });
                 }}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1a237e] focus:border-transparent ${
                   errors.course ? "border-red-500" : "border-gray-300"
                 }`}
               >
@@ -180,20 +180,20 @@ export default function CouponModal({
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-red-700 transition-all shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-[#1a237e] to-[#b71c1c] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#283593] hover:to-[#c62828] transition-all shadow-lg hover:shadow-xl"
             >
-              Claim Coupon Code
+              Reveal my $100 off code
             </button>
 
             <p className="text-xs text-gray-600 flex items-start gap-2">
-              <span className="text-green-500 mt-0.5">✓</span>
+              <span className="text-green-600 mt-0.5">✓</span>
               <span>
                 By providing your contact details you agreed to our{" "}
-                <a href="/privacy-policy" className="text-red-600 hover:underline">
+                <a href="/privacy-policy" className="text-[#1a237e] hover:underline">
                   Privacy Policy
                 </a>{" "}
                 &{" "}
-                <a href="/privacy-policy" className="text-red-600 hover:underline">
+                <a href="/privacy-policy" className="text-[#1a237e] hover:underline">
                   Terms and Conditions
                 </a>
                 .
@@ -205,4 +205,3 @@ export default function CouponModal({
     </div>
   );
 }
-

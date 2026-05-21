@@ -7,8 +7,8 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Public list codes only — clip and apply the checkout coupon directly. */
-const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
+/** Clip coupons at checkout — 100OFF is email-gated via Memorial Day banner only. */
+const DEFAULT_PROMOS: AvailablePromo[] = [];
 
 type Props = {
   availablePromos?: AvailablePromo[];
@@ -17,12 +17,26 @@ type Props = {
   isValidatingPromo: boolean;
 };
 
+export function MemorialDayPromoHint() {
+  return (
+    <p className="text-xs text-gray-600 mb-3 rounded-lg border border-blue-100 bg-blue-50/80 px-3 py-2">
+      <span className="font-semibold text-[#1a237e]">Memorial Day Sale — $100 off:</span>{" "}
+      Click the banner at the top of the site, subscribe with your email, and we&apos;ll reveal your promo code.
+      Enter it below at checkout.
+    </p>
+  );
+}
+
 export default function AvailablePromoCodes({
   availablePromos = DEFAULT_PROMOS,
   appliedPromoCode,
   onSelectCode,
   isValidatingPromo,
 }: Props) {
+  if (availablePromos.length === 0) {
+    return <MemorialDayPromoHint />;
+  }
+
   return (
     <div className="mb-3">
       <p className="text-sm font-medium text-gray-900 mb-2">Clip Coupon Code</p>
