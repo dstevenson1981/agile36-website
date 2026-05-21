@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import MemorialDayBannerArt from "./MemorialDayBannerArt";
+import { MEMORIAL_DAY_PROMO_EXPIRES_LABEL } from "@/app/lib/memorial-day-promo";
 
 interface CouponModalProps {
   isOpen: boolean;
@@ -9,8 +11,6 @@ interface CouponModalProps {
   /** Stored with the lead and shown in the success modal (default 100OFF) */
   couponCode?: string;
 }
-
-const MEMORIAL_DAY_BANNER_IMAGE = "/promo/memorial-day-sale-banner.png";
 
 const courses = [
   "SAFe® 6.0 Scrum Master (SSM) Certification",
@@ -90,13 +90,9 @@ export default function CouponModal({
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex">
         <div className="hidden md:flex flex-col justify-end w-1/2 relative overflow-hidden min-h-[420px]">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${MEMORIAL_DAY_BANNER_IMAGE})` }}
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1a237e]/90 via-[#1a237e]/40 to-transparent" aria-hidden />
-          <div className="relative z-10 p-8">
+          <MemorialDayBannerArt variant="panel" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1e3a8a]/95 via-[#1e3a8a]/50 to-transparent" aria-hidden />
+          <div className="relative z-10 p-8 mt-auto">
             <p className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2">
               Memorial Day Sale
             </p>
@@ -104,7 +100,7 @@ export default function CouponModal({
               $100 off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to unlock your exclusive promo code — valid through Dec 31, 2026.
+              Subscribe below to unlock your exclusive promo code — valid through {MEMORIAL_DAY_PROMO_EXPIRES_LABEL}.
             </p>
           </div>
         </div>

@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import {
+  MEMORIAL_DAY_PROMO_EXPIRES_ISO,
+  MEMORIAL_DAY_PROMO_EXPIRES_LABEL,
+} from "@/app/lib/memorial-day-promo";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -78,8 +82,8 @@ export default function CouponDisplayModal({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
               <span className="font-semibold">Expires:</span>{" "}
-              <time className="text-[#1a237e] font-bold" dateTime="2026-12-31">
-                December 31, 2026
+              <time className="text-[#1a237e] font-bold" dateTime={MEMORIAL_DAY_PROMO_EXPIRES_ISO}>
+                {MEMORIAL_DAY_PROMO_EXPIRES_LABEL}
               </time>
             </p>
             <p className="text-xs text-gray-600">
@@ -91,7 +95,7 @@ export default function CouponDisplayModal({
             onClick={onClose}
             className="w-full bg-gradient-to-r from-[#1a237e] to-[#b71c1c] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#283593] hover:to-[#c62828] transition-all shadow-lg"
           >
-            Continue Shopping
+            Enroll Now
           </button>
         </div>
       </div>
