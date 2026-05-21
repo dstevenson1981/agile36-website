@@ -5,9 +5,9 @@ export const BANNER_COUPON_CODE = "100OFF";
 /** Bar height (50px) + brand accent under the strip (used to offset sticky nav). */
 export const PROMO_BANNER_STICKY_OFFSET_PX = 54;
 
-/** Hide after end of May 18, 2026 UTC (same instant on server and client). */
+/** Hide after promo end (aligns with 100OFF in promo_codes — Dec 31, 2026 UTC). */
 export function isPromoBannerVisible(): boolean {
-  return Date.now() <= Date.UTC(2026, 4, 18, 23, 59, 59, 999);
+  return Date.now() <= Date.UTC(2026, 11, 31, 23, 59, 59, 999);
 }
 
 function ConfettiLeft({ className }: { className?: string }) {
@@ -117,8 +117,8 @@ export default function PromoBanner() {
             </span>{" "}
             <span className="text-neutral-900/80">—</span>{" "}
             <span className="font-semibold text-neutral-950">expires</span>{" "}
-            <time className="font-bold text-neutral-950" dateTime="2026-05-18">
-              May 18
+            <time className="font-bold text-neutral-950" dateTime="2026-12-31">
+              Dec 31
             </time>
           </span>
         </p>
