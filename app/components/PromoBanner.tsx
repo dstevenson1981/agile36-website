@@ -4,7 +4,10 @@ import { useState } from "react";
 import CouponModal from "./CouponModal";
 import CouponDisplayModal from "./CouponDisplayModal";
 import MemorialDayBannerArt from "./MemorialDayBannerArt";
-import { isMemorialDayPromoActive } from "@/app/lib/memorial-day-promo";
+import {
+  isMemorialDayPromoActive,
+  MEMORIAL_DAY_PROMO_ENDS_SHORT,
+} from "@/app/lib/memorial-day-promo";
 
 export const BANNER_COUPON_CODE = "100OFF";
 
@@ -68,7 +71,8 @@ export default function PromoBanner() {
           </span>
 
           <span className="sr-only">
-            Memorial Day Sale — $100 off. Subscribe with your email to unlock your promo code.
+            Memorial Day Sale — $100 off, ends {MEMORIAL_DAY_PROMO_ENDS_SHORT}. Subscribe with
+            your email to unlock your promo code.
           </span>
         </button>
         <div className="h-1 w-full shrink-0 bg-[#b71c1c]" aria-hidden />

@@ -1,3 +1,5 @@
+import { MEMORIAL_DAY_PROMO_ENDS_SHORT } from "@/app/lib/memorial-day-promo";
+
 type MemorialDayBannerArtProps = {
   /** Horizontal sticky strip (72px) or modal left panel */
   variant?: "strip" | "panel";
@@ -62,8 +64,10 @@ function MemorialDayTagline({ className = "" }: { className?: string }) {
     <p
       className={`min-w-0 font-semibold tracking-wide text-white ${className}`}
     >
-      <span className="sm:hidden">Memorial Day Sale</span>
-      <span className="hidden sm:inline">Memorial Day Sale — Enjoy Before It Ends</span>
+      <span className="sm:hidden">Ends {MEMORIAL_DAY_PROMO_ENDS_SHORT}</span>
+      <span className="hidden sm:inline">
+        Memorial Day Sale — Ends {MEMORIAL_DAY_PROMO_ENDS_SHORT}
+      </span>
     </p>
   );
 }

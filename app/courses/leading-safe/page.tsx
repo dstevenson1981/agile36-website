@@ -183,7 +183,7 @@ export default function LeadingSafeCoursePage() {
               </div>
             </div>
 
-            {/* Combo deals + pricing */}
+            {/* Pricing + schedule */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">

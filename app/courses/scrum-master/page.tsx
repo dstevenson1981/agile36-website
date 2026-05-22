@@ -219,7 +219,7 @@ export default function ScrumMasterCoursePage() {
               </div>
             </div>
 
-            {/* Right Side - combo deals + hero image */}
+            {/* Right Side - pricing + hero details */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
               <div className="mt-8 lg:mt-20">
                 <img
