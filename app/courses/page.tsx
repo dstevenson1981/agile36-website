@@ -1,508 +1,155 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-
-interface Course {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  price: number;
-  originalPrice: number;
-  hours: string;
-  days: string;
-  enrolled: string;
-  skills: string;
-  popular?: boolean;
-  trending?: boolean;
-  advanced?: boolean;
-  privateClass?: boolean;
-}
+import CoursesCatalogHero from "@/app/components/courses/CoursesCatalogHero";
+import CourseCatalogCard from "@/app/components/courses/CourseCatalogCard";
+import {
+  CATALOG_COURSES,
+  COURSE_CATEGORIES,
+  getCatalogCourseSlug,
+  normalizeCourseCategory,
+  type CourseCategory,
+} from "@/app/lib/course-catalog";
 
 function CoursesContent() {
   const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const categories = ["SAFe", "Generative AI", "AI Product"];
-  const normalizeCategory = (cat: string | null) => {
-    if (!cat || cat === "PMI" || !categories.includes(cat)) return "SAFe";
-    return cat;
-  };
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    normalizeCategory(categoryParam),
+  const categoryParam = searchParams.get("category");
+  const [selectedCategory, setSelectedCategory] = useState<CourseCategory>(
+    normalizeCourseCategory(categoryParam),
+  );
+  const [nextDatesBySlug, setNextDatesBySlug] = useState<Record<string, string>>(
+    {},
   );
 
-  // Update selected category when URL param changes
   useEffect(() => {
-    setSelectedCategory(normalizeCategory(searchParams.get("category")));
+    setSelectedCategory(normalizeCourseCategory(searchParams.get("category")));
   }, [searchParams]);
 
-  // Mapping for course thumbnail images
-  const courseThumbnails: { [key: string]: string } = {
-    "AI-Empowered Leading SAFe® / SAFe Agilist": "/Leading SAFe.png",
-    "Leading SAFe/ SAFe Agilist": "/Leading SAFe.png",
-    "Leading SAFe® 6.0 Certification Training": "/Leading SAFe.png",
-    "SAFe Lean Portfolio Management": "/Lean Portfolio.png",
-    "SAFe Agile Product Management": "/AgileProductManagment.png",
-    "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
-    "SAFe for Teams": "/SAFe for Teams.png",
-    "SAFe DevOps": "/Devops.png",
-    "AI-Empowered SAFe Advanced Scrum Master": "/AdvancedSM.png",
-    "SAFe Advanced Scrum Master": "/AdvancedSM.png",
-    "SAFe Release Train Engineer": "/RTE.png",
-    "AI-Empowered SAFe Release Train Engineer": "/RTE.png",
-    "AI-Empowered SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
-    "SAFe Scrum Master": "/SSM.jpeg",
-    "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "Certified AI Product Manager": "/PMAI.jpeg",
-    "Agentic Product Leader Certification": "/Agentic.jpeg",
-    "PMP® Certification Training": "/PMP.png",
-    "Responsible AI": "/MicroCredential.jpeg",
-    "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
-  };
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(
+          "/api/course-schedules?status=active&_t=" + Date.now(),
+        );
+        const json = await res.json();
+        if (!res.ok || cancelled || !json?.data) return;
+        const map: Record<string, string> = {};
+        for (const row of json.data as { course_slug?: string; start_date?: string }[]) {
+          const slug = row.course_slug;
+          const start = row.start_date;
+          if (slug && start && !map[slug]) {
+            map[slug] = start;
+          }
+        }
+        if (!cancelled) setNextDatesBySlug(map);
+      } catch {
+        /* schedules optional for catalog display */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const getCourseImage = (course: Course) => {
-    // Use GenAI_2.png for all Generative AI and AI Product courses
-    if (course.category === "Generative AI" || course.category === "AI Product") {
-      return "/GenAI_2.png";
-    }
-    return courseThumbnails[course.title] || course.image;
-  };
+  const filteredCourses = useMemo(
+    () => CATALOG_COURSES.filter((c) => c.category === selectedCategory),
+    [selectedCategory],
+  );
 
-  const allCourses: Course[] = [
-    // SAFe courses
-    {
-      id: "8",
-      title: "AI-Empowered Leading SAFe® / SAFe Agilist",
-      category: "SAFe",
-      image: "/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg",
-      price: 515,
-      originalPrice: 1030,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "3K+ Enrolled",
-      skills: "SAFe Principles, Lean-Agile Practices, AI-empowered collaboration",
-      popular: true,
-    },
-    {
-      id: "9",
-      title: "AI-Empowered SAFe Product Owner/Product Manager",
-      category: "SAFe",
-      image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
-      price: 545,
-      originalPrice: 1090,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2.5K+ Enrolled",
-      skills: "Product Ownership, SAFe PO/PM Practices, AI-assisted delivery",
-      popular: true,
-    },
-    {
-      id: "10",
-      title: "SAFe Lean Portfolio Management",
-      category: "SAFe",
-      image: "/brooke-cagle--uHVRvDr7pg-unsplash.jpg",
-      price: 950,
-      originalPrice: 1900,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "1.8K+ Enrolled",
-      skills: "Portfolio Strategy, Investment Funding, Value Stream Management",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "11",
-      title: "SAFe Agile Product Management",
-      category: "SAFe",
-      image: "/campaign-creators-gMsnXqILjp4-unsplash.jpg",
-      price: 1299,
-      originalPrice: 2598,
-      hours: "24 Hrs",
-      days: "03 days",
-      enrolled: "2K+ Enrolled",
-      skills: "Agile Product Management, Continuous Exploration",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "12",
-      title: "AI-Empowered SAFe Scrum Master",
-      category: "SAFe",
-      image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
-      price: 515,
-      originalPrice: 1030,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "3.5K+ Enrolled",
-      skills: "SAFe Scrum, Team Facilitation, Coaching, AI-empowered ceremonies",
-      popular: true,
-    },
-    {
-      id: "13",
-      title: "AI-Empowered SAFe for Teams",
-      category: "SAFe",
-      image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
-      price: 555,
-      originalPrice: 1030,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "4K+ Enrolled",
-      skills: "SAFe Team Practices, Iteration Execution, AI-empowered teamwork",
-      popular: true,
-    },
-    {
-      id: "15",
-      title: "SAFe DevOps",
-      category: "SAFe",
-      image: "/ewan-buck-xc9B3i-1QiI-unsplash.jpg",
-      price: 599,
-      originalPrice: 1198,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2.2K+ Enrolled",
-      skills: "DevOps Practices, Continuous Delivery, SAFe Pipeline",
-      popular: true,
-    },
-    {
-      id: "16",
-      title: "AI-Empowered SAFe Advanced Scrum Master",
-      category: "SAFe",
-      image: "/headway-5QgIuuBxKwM-unsplash.jpg",
-      price: 950,
-      originalPrice: 1900,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2K+ Enrolled",
-      skills: "Flow, facilitation with AI, ART performance",
-    },
-    {
-      id: "17",
-      title: "AI-Empowered SAFe Release Train Engineer",
-      category: "SAFe",
-      image: "/marvin-meyer-SYTO3xs06fU-unsplash.jpg",
-      price: 0,
-      originalPrice: 0,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "1.8K+ Enrolled",
-      skills: "RTE Practices, PI planning, AI-assisted facilitation",
-      popular: true,
-      advanced: true,
-      privateClass: true,
-    },
-    // Generative AI courses
-    {
-      id: "19",
-      title: "AI-Driven Scrum Master™",
-      category: "Generative AI",
-      image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
-      price: 299,
-      originalPrice: 598,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: "2.5K+ Enrolled",
-      skills: "AI-Enhanced Scrum Practices, Agile AI Tools, Team Facilitation",
-      popular: true,
-    },
-    {
-      id: "20",
-      title: "Executive GenAI Leadership™",
-      category: "Generative AI",
-      image: "/redd-francisco-PTRzqc_h1r4-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: "1.8K+ Enrolled",
-      skills: "GenAI Strategy, Executive AI Decision Making, Leadership in AI Era",
-    },
-    {
-      id: "21",
-      title: "AI-Driven Project Manager™",
-      category: "Generative AI",
-      image: "/vitaly-gariev--X4Qx4_4iMU-unsplash.jpg",
-      price: 299,
-      originalPrice: 598,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: "2.2K+ Enrolled",
-      skills: "AI Project Management, Automated Planning, AI Risk Management",
-    },
-    {
-      id: "22",
-      title: "Certified GenAI Practitioner™",
-      category: "Generative AI",
-      image: "/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg",
-      price: 200,
-      originalPrice: 400,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: "3K+ Enrolled",
-      skills: "GenAI Fundamentals, AI Ethics, Prompt Engineering, AI Applications",
-      popular: true,
-    },
-    {
-      id: "23",
-      title: "No-Code AI Agents & Automation™",
-      category: "AI Product",
-      image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "10 Hrs",
-      days: "02 days",
-      enrolled: "2.8K+ Enrolled",
-      skills: "No-Code Automation, AI Agents, Workflow Optimization",
-      popular: true,
-    },
-    // AI Product courses
-    {
-      id: "24",
-      title: "Certified AI Product Manager",
-      category: "AI Product",
-      image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2.5K+ Enrolled",
-      skills: "AI Product Strategy, Product Management with AI, AI Integration",
-      popular: true,
-    },
-    {
-      id: "25",
-      title: "Agentic Product Leader Certification",
-      category: "AI Product",
-      image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "1.8K+ Enrolled",
-      skills: "Agentic Product Leadership, Autonomous Product Systems, Strategic AI Product Vision",
-      popular: true,
-    },
-    // Microcredentials moved to SAFe
-    {
-      id: "27",
-      title: "Responsible AI",
-      category: "SAFe",
-      image: "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
-      price: 350,
-      originalPrice: 700,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: "1.2K+ Enrolled",
-      skills: "Responsible AI, Ethical AI Practices, AI Governance",
-      popular: true,
-    },
-    {
-      id: "18",
-      title: "SAFe Value Stream Mapping",
-      category: "SAFe",
-      image: "/ninthgrid-ti8cT-DKwes-unsplash.jpg",
-      price: 350,
-      originalPrice: 700,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: "1.5K+ Enrolled",
-      skills: "Value Stream Mapping, Process Optimization",
-      trending: true,
-    },
-  ];
-
-  const filteredCourses = allCourses.filter(course => course.category === selectedCategory);
-  const courseCount = filteredCourses.length;
-
-  // Helper function to generate course URL
-  const getCourseUrl = (course: Course): string => {
-    // Special cases
-    if (course.title.includes("Leading SAFe") || course.title.includes("SAFe Agilist")) {
-      return "/courses/leading-safe";
+  const categoryCounts = useMemo(() => {
+    const counts: Record<CourseCategory, number> = {
+      SAFe: 0,
+      "Generative AI": 0,
+      "AI Product": 0,
+    };
+    for (const c of CATALOG_COURSES) {
+      counts[c.category] += 1;
     }
-    
-    if (course.title.includes("SAFe Product Owner/Product Manager") || course.title.includes("Product Owner/Product Manager")) {
-      return "/courses/product-owner-manager";
-    }
-    
-    if (course.title.includes("SAFe Lean Portfolio Management") || course.title.includes("Lean Portfolio Management")) {
-      return "/courses/lean-portfolio-management";
-    }
-    
-    if (course.title.includes("SAFe Agile Product Management") || course.title.includes("Agile Product Management")) {
-      return "/courses/agile-product-management";
-    }
-
-    if (course.title.includes("AI-Driven Scrum Master") || course.title.includes("AI Scrum Master")) {
-      return "/courses/ai-driven-scrum-master";
-    }
-
-    // Special case for SAFe Advanced Scrum Master (must come before regular Scrum Master)
-    if (course.title.includes("Advanced Scrum Master") || course.title.includes("Advanced Scrum")) {
-      return "/courses/advanced-scrum-master";
-    }
-    
-    if (course.title.includes("SAFe Scrum Master") || course.title.includes("Scrum Master")) {
-      return "/courses/scrum-master";
-    }
-    
-    if (course.title.includes("SAFe for Teams") || course.title.includes("for Teams")) {
-      return "/courses/safe-for-teams";
-    }
-
-    if (course.title.includes("Responsible AI") || course.title.includes("AI with SAFe")) {
-      return "/courses/responsible-ai";
-    }
-
-    if (course.title.includes("SAFe DevOps") || course.title.includes("DevOps")) {
-      return "/courses/devops";
-    }
-    
-    if (course.title.includes("Value Stream Mapping") || course.title.includes("Value Stream")) {
-      return "/courses/value-stream-mapping";
-    }
-
-    if (course.title.includes("Release Train Engineer")) {
-      return "/courses/release-train-engineer";
-    }
-    
-    if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
-      return "/courses/ai-agent-builder";
-    }
-    
-    if (course.title.includes("Certified AI Product Manager")) {
-      return "/courses/certified-ai-product-manager";
-    }
-    
-    if (course.title.includes("Executive GenAI Leadership")) {
-      return "/courses/executive-genai-leadership";
-    }
-    
-    if (course.title.includes("Certified GenAI Practitioner")) {
-      return "/courses/certified-genai-practitioner";
-    }
-    
-    if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI-Driven Project Manager")) {
-      return "/courses/generative-ai-project-managers";
-    }
-    
-    if (course.title.includes("Agentic Product Leader")) {
-      return "/courses/certified-ai-product-manager";
-    }
-
-    
-    const titleSlug = course.title
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '')
-      .replace(/\//g, '-');
-    
-    return `/courses/${titleSlug}`;
-  };
-
+    return counts;
+  }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8">
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left Sidebar - Categories */}
-          <aside className="w-full lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg border border-gray-200 p-6 lg:sticky lg:top-24">
-              <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">CATEGORIES</h3>
+    <main className="min-h-screen bg-[#f4f7fb]">
+      <CoursesCatalogHero />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-10">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <aside className="w-full lg:w-72 flex-shrink-0">
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 lg:sticky lg:top-24">
+              <h2 className="font-bold text-gray-900 mb-1 text-sm uppercase tracking-wide">
+                Categories
+              </h2>
+              <p className="text-xs text-gray-500 mb-4">Choose your career path</p>
               <ul className="space-y-1">
-                {categories.map((category) => (
-                  <li key={category}>
-                    <Link
-                      href={`/courses?category=${category}`}
-                      className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center justify-between block ${
-                        selectedCategory === category
-                          ? "bg-gray-200 text-gray-900"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      <span>{category}</span>
-                      {selectedCategory === category && (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
-                    </Link>
-                  </li>
-                ))}
+                {COURSE_CATEGORIES.map((category) => {
+                  const active = selectedCategory === category;
+                  const count = categoryCounts[category];
+                  return (
+                    <li key={category}>
+                      <Link
+                        href={`/courses?category=${encodeURIComponent(category)}`}
+                        className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-between ${
+                          active
+                            ? "bg-[#01203d] text-white"
+                            : "text-gray-700 hover:bg-gray-100"
+                        }`}
+                      >
+                        <span>{category}</span>
+                        <span
+                          className={`text-xs tabular-nums ${
+                            active ? "text-blue-200" : "text-gray-400"
+                          }`}
+                        >
+                          {count}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
+              <div className="mt-6 pt-6 border-t border-gray-100">
+                <Link
+                  href="/combo-courses"
+                  className="text-sm font-semibold text-[#fa4a23] hover:text-[#e03d1a]"
+                >
+                  View combo courses →
+                </Link>
+              </div>
             </div>
           </aside>
 
-          {/* Main Content */}
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-                {selectedCategory} ({courseCount} Courses)
-              </h1>
-              <Link 
-                href="/"
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-              >
-                View all Courses
-              </Link>
+          <div className="flex-1 min-w-0">
+            <div className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+                Choose {selectedCategory} courses
+                <span className="text-gray-500 font-semibold ml-2">
+                  ({filteredCourses.length})
+                </span>
+              </h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Expert-led live remote training — browse details or jump straight to
+                upcoming schedules.
+              </p>
             </div>
 
-            {/* Course List */}
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
               {filteredCourses.map((course) => (
-                <Link href={getCourseUrl(course)} key={course.id}>
-                  <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-lg transition-shadow flex items-center gap-4 group">
-                    {/* Course Image/Icon */}
-                    <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                      <Image
-                        src={getCourseImage(course)}
-                        alt={course.title}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    
-                    {/* Course Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-sm font-medium text-gray-900 group-hover:text-[#fa4a23] transition-colors">
-                          {course.title}
-                        </h3>
-                        {course.popular && (
-                          <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Popular
-                          </span>
-                        )}
-                        {course.trending && (
-                          <span className="bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Trending
-                          </span>
-                        )}
-                        {course.advanced && (
-                          <span className="bg-purple-100 text-purple-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                            Advanced
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-600">
-                        {course.days} | Live Remote Class
-                      </p>
-                    </div>
-                  </div>
-                </Link>
+                <CourseCatalogCard
+                  key={course.id}
+                  course={course}
+                  nextStartDate={nextDatesBySlug[getCatalogCourseSlug(course)]}
+                />
               ))}
             </div>
 
-            {filteredCourses.length === 0 && (
-              <div className="text-center py-12 bg-white rounded-lg">
+            {filteredCourses.length === 0 ? (
+              <div className="text-center py-16 bg-white rounded-xl border border-gray-200">
                 <p className="text-gray-600">No courses found in this category.</p>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -512,13 +159,14 @@ function CoursesContent() {
 
 export default function CoursesPage() {
   return (
-    <Suspense fallback={
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fa4a23]"></div>
-      </main>
-    }>
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-[#f4f7fb] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fa4a23]" />
+        </main>
+      }
+    >
       <CoursesContent />
     </Suspense>
   );
 }
-
