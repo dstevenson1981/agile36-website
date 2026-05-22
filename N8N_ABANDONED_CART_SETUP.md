@@ -28,7 +28,7 @@ DROP TRIGGER IF EXISTS enrollment_leads_process_trigger ON public.enrollment_lea
 **Steps:**
 
 1. **Webhook node** – receives the Supabase webhook.
-2. **Send email to the lead** – e.g. “Complete your order – use code 50OFF for $50 off” (SendGrid, Gmail, or your email node).
+2. **Send email to the lead** – e.g. “Complete your order – $150 off with code **150off**” (SendGrid, Gmail, or your email node). Keep copy professional (no emojis).
 3. **If corporate email** – e.g. if domain is not gmail.com / yahoo.com / outlook.com etc.:  
    - Call Apollo (or your enrichment API) to find **10 people at same company with same role**.  
    - Save or send those contacts (e.g. to a sheet, CRM, or Supabase table).
