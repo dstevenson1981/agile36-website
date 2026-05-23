@@ -22,7 +22,8 @@ CREATE POLICY "Service role can manage suppressions" ON abandoned_cart_suppressi
 -- Suppressed addresses (no enrollment_leads insert → no abandoned-cart / discount email via N8N)
 INSERT INTO abandoned_cart_suppressions (email, reason) VALUES
   ('amandar@woodforest.com', 'Do not send abandoned cart - requested by user'),
-  ('enriquesan@iadb.org', 'Leading SAFe payment failed; do not send abandoned cart discount')
+  ('enriquesan@iadb.org', 'Leading SAFe payment failed; do not send abandoned cart discount'),
+  ('mpulm@yahoo.com', 'Combo checkout started - do not send abandoned cart discount (requested)')
 ON CONFLICT (email) DO NOTHING;
 
 -- NOTE: If a lead was already inserted before suppression, the N8N webhook may have fired once.

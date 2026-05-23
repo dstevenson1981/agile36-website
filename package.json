@@ -12,7 +12,6 @@
     "enrich-apollo": "tsx enrich-apollo.ts"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs": "^5.0.1",
     "@sendgrid/mail": "^8.1.6",
     "@stripe/react-stripe-js": "^5.4.0",
     "@stripe/stripe-js": "^8.5.2",

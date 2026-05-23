@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS visitor_logs (
   timestamp TIMESTAMP WITH TIME ZONE,
   url TEXT,
   path TEXT,
+  referrer TEXT,
   user_agent TEXT,
   language TEXT,
   platform TEXT,

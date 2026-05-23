@@ -7,7 +7,7 @@
  * a host added (prefer narrow origins over `https:` in script-src).
  *
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
- * Apollo, Stripe (checkout), Vercel Analytics; FingerprintJS may fetch agent code
+ * Apollo, Stripe (checkout), Vercel Analytics
  * from fpcdn/openfpcdn depending on version/build.
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
