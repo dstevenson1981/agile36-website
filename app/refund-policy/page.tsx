@@ -51,6 +51,21 @@ export default function RefundPolicyPage() {
             </div>
           </section>
 
+          {/* Provider-Initiated Rescheduling */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Provider-Initiated Rescheduling
+            </h2>
+            <div className="space-y-4 text-gray-700">
+              <p>
+                If Agile36 must reschedule a class, participants will be transferred to the new session date or may request a one-time transfer or credit toward a future available session.
+              </p>
+              <p>
+                Registrations purchased using promotional codes, coupon codes, discounted pricing, special offers, or promotional rates remain non-refundable, including in the event of a provider-initiated reschedule.
+              </p>
+            </div>
+          </section>
+
           {/* No Show Policy */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">No-Show Policy</h2>
