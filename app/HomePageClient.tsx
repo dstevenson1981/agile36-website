@@ -197,7 +197,7 @@ export default function Home() {
       title: "AI-Empowered SAFe for Teams",
       category: "SAFe",
       image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
-      price: 555,
+      price: 599,
       originalPrice: 1030,
       hours: "16 Hrs",
       days: "02 days",

@@ -39,7 +39,7 @@ SELECT
   '2 Days',
   'Deadra Stevenson',
   '/Deadra.jpeg',
-  555.00,
+  599.00,
   1030.00,
   'USD',
   15,
