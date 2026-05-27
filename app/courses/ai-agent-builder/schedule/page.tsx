@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
+import { AI_AGENT_BUILDER_BROCHURE_HREF } from "@/app/lib/ai-agent-builder-brochure";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -25,16 +26,6 @@ function CourseScheduleContent() {
   });
   const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
-  
-  // Consultation modal state for brochure
-  const [showConsultationModal, setShowConsultationModal] = useState(false);
-  const [consultationFormData, setConsultationFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-  
   
   // Filter states
   const [activeFilters, setActiveFilters] = useState({
@@ -531,15 +522,17 @@ function CourseScheduleContent() {
 
                             {/* Curriculum and Quantity */}
                             <div className="flex items-center gap-6">
-                              <button
-                                onClick={() => setShowConsultationModal(true)}
+                              <a
+                                href={AI_AGENT_BUILDER_BROCHURE_HREF}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-sm text-[#fa4a23] hover:underline"
                               >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 Download Brochure
-                              </button>
+                              </a>
                               <div className="flex items-center gap-2">
                                 <button
                                   onClick={() => updateQuantity(schedule.id, -1)}
@@ -759,80 +752,6 @@ function CourseScheduleContent() {
         </div>
       )}
 
-      {/* Consultation Modal for Brochure */}
-      {showConsultationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={() => {
-                setShowConsultationModal(false);
-                setConsultationFormData({ name: "", email: "", phone: "", message: "" });
-              }}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Request Course Brochure</h2>
-              <p className="text-sm text-gray-600 mb-6">
-                Fill out the form below and we'll send you the Certified GenAI Practitioner™ course brochure.
-              </p>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={consultationFormData.name}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input
-                    type="email"
-                    required
-                    value={consultationFormData.email}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input
-                    type="tel"
-                    value={consultationFormData.phone}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, phone: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    value={consultationFormData.message}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, message: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Tell us about your requirements"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#fa4a23] text-white font-bold py-3 rounded-md hover:bg-[#e03d1a] transition-colors"
-                >
-                  Submit Request
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
