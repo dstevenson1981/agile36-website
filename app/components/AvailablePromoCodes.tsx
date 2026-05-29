@@ -7,8 +7,8 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Clip coupons at checkout — 100OFF is email-gated via Memorial Day banner only. */
-const DEFAULT_PROMOS: AvailablePromo[] = [];
+/** Clip coupons at checkout — Level Up Sale $100 off. */
+const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
 
 type Props = {
   availablePromos?: AvailablePromo[];

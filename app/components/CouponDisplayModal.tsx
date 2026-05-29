@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import {
-  MEMORIAL_DAY_PROMO_EXPIRES_ISO,
-  MEMORIAL_DAY_PROMO_EXPIRES_LABEL,
-} from "@/app/lib/memorial-day-promo";
+  LEVEL_UP_SALE_EXPIRES_ISO,
+  LEVEL_UP_SALE_EXPIRES_LABEL,
+} from "@/app/lib/level-up-sale-promo";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -31,7 +31,7 @@ export default function CouponDisplayModal({
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative overflow-hidden">
         <div
-          className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#1a237e] via-[#3949ab] to-[#b71c1c]"
+          className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#e3f2fd] via-[#e53935] to-[#e3f2fd]"
           aria-hidden
         />
         <button
@@ -45,21 +45,21 @@ export default function CouponDisplayModal({
         </button>
 
         <div className="text-center pt-2">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#1a237e] mb-2">
-            Memorial Day Sale
+          <p className="text-xs font-bold uppercase tracking-widest text-[#e53935] mb-2">
+            Level Up Sale
           </p>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Your $100 off code</h2>
           <p className="text-gray-600 text-sm mb-6">
             Apply this code at checkout on any eligible course.
           </p>
 
-          <div className="bg-gradient-to-br from-[#e8eaf6] to-[#ffebee] border-2 border-dashed border-[#1a237e]/30 rounded-lg p-6 mb-4">
-            <div className="text-4xl font-bold text-[#b71c1c] mb-2 tracking-wider" translate="no">
+          <div className="bg-gradient-to-br from-[#e3f2fd] to-[#fff5f5] border-2 border-dashed border-[#e53935]/40 rounded-lg p-6 mb-4">
+            <div className="text-4xl font-bold text-[#e53935] mb-2 tracking-wider" translate="no">
               {couponCode}
             </div>
             <button
               onClick={handleCopy}
-              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a237e] transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-[#e53935] transition-colors"
             >
               {copied ? (
                 <>
@@ -82,18 +82,18 @@ export default function CouponDisplayModal({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
               <span className="font-semibold">Expires:</span>{" "}
-              <time className="text-[#1a237e] font-bold" dateTime={MEMORIAL_DAY_PROMO_EXPIRES_ISO}>
-                {MEMORIAL_DAY_PROMO_EXPIRES_LABEL}
+              <time className="text-[#e53935] font-bold" dateTime={LEVEL_UP_SALE_EXPIRES_ISO}>
+                {LEVEL_UP_SALE_EXPIRES_LABEL}
               </time>
             </p>
             <p className="text-xs text-gray-600">
-              Memorial Day Sale — $100 off one eligible enrollment. Enter the code in the promo field at checkout.
+              Level Up Sale — $100 off one eligible enrollment. Enter the code in the promo field at checkout.
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="w-full bg-gradient-to-r from-[#1a237e] to-[#b71c1c] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#283593] hover:to-[#c62828] transition-all shadow-lg"
+            className="w-full bg-[#e53935] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#c62828] transition-all shadow-lg"
           >
             Enroll Now
           </button>

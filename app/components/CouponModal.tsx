@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import MemorialDayBannerArt from "./MemorialDayBannerArt";
-import { MEMORIAL_DAY_PROMO_EXPIRES_LABEL } from "@/app/lib/memorial-day-promo";
+import LevelUpSaleBannerArt from "./LevelUpSaleBannerArt";
+import { LEVEL_UP_SALE_EXPIRES_LABEL } from "@/app/lib/level-up-sale-promo";
 
 interface CouponModalProps {
   isOpen: boolean;
@@ -90,17 +90,17 @@ export default function CouponModal({
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex">
         <div className="hidden md:flex flex-col justify-end w-1/2 relative overflow-hidden min-h-[420px]">
-          <MemorialDayBannerArt variant="panel" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1e3a8a]/95 via-[#1e3a8a]/50 to-transparent" aria-hidden />
+          <LevelUpSaleBannerArt variant="panel" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111]/80 via-[#111]/30 to-transparent" aria-hidden />
           <div className="relative z-10 p-8 mt-auto">
             <p className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2">
-              Memorial Day Sale
+              Level Up Sale
             </p>
             <h2 className="text-white text-2xl font-bold mb-3 leading-tight">
               $100 off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to unlock your exclusive promo code — valid through {MEMORIAL_DAY_PROMO_EXPIRES_LABEL}.
+              Subscribe below to save your code — valid through {LEVEL_UP_SALE_EXPIRES_LABEL}.
             </p>
           </div>
         </div>
@@ -116,8 +116,8 @@ export default function CouponModal({
             </svg>
           </button>
 
-          <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#1a237e] mb-1">
-            Memorial Day Sale
+          <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#e53935] mb-1">
+            Level Up Sale
           </p>
           <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your $100 off code</h3>
           <p className="text-gray-600 text-sm mb-6">
@@ -137,7 +137,7 @@ export default function CouponModal({
                   setEmail(e.target.value);
                   setErrors({ ...errors, email: "" });
                 }}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1a237e] focus:border-transparent ${
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#e53935] focus:border-transparent ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="you@company.com"
@@ -158,7 +158,7 @@ export default function CouponModal({
                   setSelectedCourse(e.target.value);
                   setErrors({ ...errors, course: "" });
                 }}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#1a237e] focus:border-transparent ${
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#e53935] focus:border-transparent ${
                   errors.course ? "border-red-500" : "border-gray-300"
                 }`}
               >
@@ -176,7 +176,7 @@ export default function CouponModal({
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#1a237e] to-[#b71c1c] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#283593] hover:to-[#c62828] transition-all shadow-lg hover:shadow-xl"
+              className="w-full bg-[#e53935] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#c62828] transition-all shadow-lg hover:shadow-xl"
             >
               Reveal my $100 off code
             </button>
@@ -185,11 +185,11 @@ export default function CouponModal({
               <span className="text-green-600 mt-0.5">✓</span>
               <span>
                 By providing your contact details you agreed to our{" "}
-                <a href="/privacy-policy" className="text-[#1a237e] hover:underline">
+                <a href="/privacy-policy" className="text-[#e53935] hover:underline">
                   Privacy Policy
                 </a>{" "}
                 &{" "}
-                <a href="/privacy-policy" className="text-[#1a237e] hover:underline">
+                <a href="/privacy-policy" className="text-[#e53935] hover:underline">
                   Terms and Conditions
                 </a>
                 .
