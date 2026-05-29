@@ -1224,7 +1224,7 @@ export default function DevOpsCoursePage() {
                       🎯 Special Offer
                     </p>
                     <p className="text-base font-bold text-gray-900">
-                      $50 Off Full Course Enrollment
+                      $100 Off Full Course Enrollment
                     </p>
                   </div>
                   <ul className="space-y-2 text-sm text-gray-700">
