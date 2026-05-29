@@ -1019,51 +1019,51 @@ export default function Home() {
 
 
       {/* Practice Tests Section */}
-      <section className="w-full bg-[#dee2e6] py-12 px-4 sm:px-6 lg:px-20 my-12 rounded-lg mx-4 sm:mx-6 lg:mx-20">
+      <section className="w-full bg-[#f0f9ff] py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="grid gap-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:p-10">
             <div>
-              <h2 className="text-2xl font-bold text-[#1e2d3e] mb-6">
-                Access Free Practice Tests to Master Your Certifications with Confidence
+              <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#fa4a23]">
+                Free practice tests
+              </p>
+              <h2 className="mb-6 text-2xl font-bold leading-tight text-[#01203d] sm:text-3xl">
+                Master your certification exams with free practice tests
               </h2>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gray-300 rounded"></div>
-                  <span className="text-sm font-semibold text-gray-900">Unlimited Attempts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gray-300 rounded"></div>
-                  <span className="text-sm font-semibold text-gray-900">Previous Exams</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gray-300 rounded"></div>
-                  <span className="text-sm font-semibold text-gray-900">Immediate Results</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-gray-300 rounded"></div>
-                  <span className="text-sm font-semibold text-gray-900">Performance Analytics</span>
-                </div>
-              </div>
-              <Link 
+              <ul className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                {[
+                  "Unlimited attempts",
+                  "Previous exam questions",
+                  "Immediate results",
+                  "Performance analytics",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0dae6b]/15 text-[#0dae6b]">
+                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span className="text-sm font-semibold text-gray-900">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
                 href="/test"
-                className="bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 px-6 rounded-md transition-colors flex items-center gap-2"
+                className="inline-flex items-center gap-2 rounded-md bg-[#01203d] px-6 py-3 font-bold text-white transition-colors hover:bg-[#023a6b]"
               >
-                START TEST
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                Start test
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
-            <div className="hidden lg:block">
-              <div className="w-full h-56 rounded-lg overflow-hidden">
-                <Image
-                  src="/Test.png"
-                  alt="Practice Tests"
-                  width={600}
-                  height={224}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <div className="flex justify-center lg:justify-end">
+              <Image
+                src="/Exampic.png"
+                alt="SAFe and Agile certification practice tests on laptop and mobile"
+                width={600}
+                height={624}
+                className="h-auto w-full max-w-md rounded-lg object-contain"
+              />
             </div>
           </div>
         </div>
