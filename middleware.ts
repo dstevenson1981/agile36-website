@@ -81,7 +81,7 @@ export async function middleware(request: NextRequest) {
 
   // Temporary: SSM Pro practice exam open link (?ssm_pro=KEY → httpOnly cookie, strip query). Retire with ssm-pro-open-gate.
   const ssmPracticePath = '/account/practice-exams/scrum-master';
-  if (pathname === ssmPracticePath) {
+  if (areProPracticeExamsEnabled() && pathname === ssmPracticePath) {
     const token = request.nextUrl.searchParams.get('ssm_pro');
     if (token && token === getScrumMasterProShareKey()) {
       const dest = new URL(ssmPracticePath, request.url);

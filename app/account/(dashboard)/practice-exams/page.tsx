@@ -9,6 +9,7 @@ import {
   getRegisteredCourseSlugs,
 } from '@/app/lib/practice-exams';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
+import { areProPracticeExamsEnabled } from '@/app/lib/pro-practice-exams-enabled';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -23,6 +24,24 @@ export default async function PracticeExamsPage({
   searchParams: Promise<{ upgraded?: string }>;
 }) {
   const { upgraded } = await searchParams;
+  const proExamsEnabled = areProPracticeExamsEnabled();
+
+  if (!proExamsEnabled) {
+    return (
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900 mb-2">Practice Exams</h1>
+        <p className="text-slate-600 max-w-xl">
+          Pro practice exams are no longer available. If you have questions about your enrollment or
+          certification exam, contact{' '}
+          <a href="mailto:d.stevenson@agile36.com" className="text-[#fa4a23] font-medium hover:underline">
+            d.stevenson@agile36.com
+          </a>
+          .
+        </p>
+      </div>
+    );
+  }
+
   const [hasPopmPro, hasApmPro, hasLpmPro, hasLeadingSafePro, hasSsmPro, hasAsmPro, registeredCourses] = await Promise.all([
     hasPopmProAccess(),
     hasApmProAccess(),
