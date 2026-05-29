@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import LpmPracticeTest from '@/app/account/(dashboard)/practice-exams/lpm/LpmPracticeTest';
 import { LPM_QUESTIONS } from '@/app/account/(dashboard)/practice-exams/lpm/questions';
+import { LPM_PRO_TEMP_ACCESS_KEY } from '@/app/lib/lpm-pro-temp-access';
 
-/** Shared secret in the URL (?key=...). Rotate to invalidate old links without deleting the route. */
-const TEMP_LPM_ACCESS_KEY = 'a36-lpm-pro-2026-kN9mQ4vRx7Lw';
+/** Shared secret in the URL (?key=...). Rotate in lpm-pro-temp-access.ts to invalidate old links. */
 
 /**
  * Optional automatic cutoff (UTC). After this instant the page shows “invalid” even with the correct key.
@@ -35,7 +35,7 @@ export default async function LpmProTempPage({
   const expiresAt = getExpiresAt();
   const isExpired =
     expiresAt !== null && !Number.isNaN(expiresAt.getTime()) && Date.now() > expiresAt.getTime();
-  const isAuthorized = key === TEMP_LPM_ACCESS_KEY && !isExpired;
+  const isAuthorized = key === LPM_PRO_TEMP_ACCESS_KEY && !isExpired;
 
   if (!isAuthorized) {
     return (

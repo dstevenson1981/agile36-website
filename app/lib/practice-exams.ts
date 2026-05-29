@@ -1,7 +1,7 @@
 import { createClient } from '@/app/lib/supabase/server';
 import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
-import { areAllProPracticeExamsExpired } from '@/app/lib/pro-practice-exams-enabled';
+import { isProPracticeExamExpiredForCourse } from '@/app/lib/pro-practice-exams-enabled';
 
 /** Profile email when non-empty; otherwise auth email. (Empty string profile must not win over auth.) */
 function primaryLookupEmail(
@@ -224,7 +224,7 @@ export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean
 
 /** Check if the logged-in user has Pro plan for POPM (product-owner-manager) */
 export async function hasPopmProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('product-owner-manager')) return false;
   // Prefer user_access table (grants from Stripe webhook)
   const fromUserAccess = await checkProAccess('product-owner-manager');
   if (fromUserAccess) return true;
@@ -257,7 +257,7 @@ export async function hasPopmProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for Agile Product Management (agile-product-management) */
 export async function hasApmProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('agile-product-management')) return false;
   const fromUserAccess = await checkProAccess('agile-product-management');
   if (fromUserAccess) return true;
 
@@ -308,7 +308,7 @@ export async function hasApmProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for Leading SAFe (leading-safe) */
 export async function hasLeadingSafeProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('leading-safe')) return false;
   const fromUserAccess = await checkProAccess('leading-safe');
   if (fromUserAccess) return true;
 
@@ -361,7 +361,7 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for SAFe Scrum Master (scrum-master). */
 export async function hasScrumMasterProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('scrum-master')) return false;
   const fromUserAccess = await checkProAccess('scrum-master');
   if (fromUserAccess) return true;
 
@@ -413,7 +413,7 @@ export async function hasScrumMasterProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for LPM (lean-portfolio-management) */
 export async function hasLpmProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('lean-portfolio-management')) return false;
   // Prefer user_access table (grants from Stripe webhook)
   const fromUserAccess = await checkProAccess('lean-portfolio-management');
   if (fromUserAccess) return true;
@@ -463,7 +463,7 @@ export async function hasLpmProAccess(): Promise<boolean> {
 
 /** Pro practice exam + Studio-style access for SASM (advanced-scrum-master), including SSM+SASM combo. */
 export async function hasAdvancedScrumMasterProAccess(): Promise<boolean> {
-  if (areAllProPracticeExamsExpired()) return false;
+  if (isProPracticeExamExpiredForCourse('advanced-scrum-master')) return false;
   const fromUserAccess = await checkProAccess('advanced-scrum-master');
   if (fromUserAccess) return true;
 

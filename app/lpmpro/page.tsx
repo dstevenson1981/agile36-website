@@ -1,13 +1,14 @@
 import { redirect } from 'next/navigation';
+import { LPM_PRO_TEMP_PUBLIC_PATH } from '@/app/lib/lpm-pro-temp-access';
 
 export const metadata = {
   title: 'Pro LPM Practice Exam | Agile36',
   description:
-    'Short link to the gated SAFe LPM practice exam (Agile36 Pro / account access).',
+    'Short link to the SAFe LPM Pro practice exam (public share link with key).',
   robots: 'noindex, nofollow',
 };
 
-/** Short link → gated LPM practice exam (account / Pro access required). */
+/** Short public link → full LPM Pro practice exam (no login). */
 export default function LpmProPage() {
-  redirect('/account/practice-exams/lpm');
+  redirect(LPM_PRO_TEMP_PUBLIC_PATH);
 }

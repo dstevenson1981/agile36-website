@@ -9,7 +9,10 @@ import {
   getRegisteredCourseSlugs,
 } from '@/app/lib/practice-exams';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
-import { areProPracticeExamsEnabled } from '@/app/lib/pro-practice-exams-enabled';
+import {
+  isPracticeExamsHubEnabled,
+  isProPracticeExamExpiredForCourse,
+} from '@/app/lib/pro-practice-exams-enabled';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -24,9 +27,7 @@ export default async function PracticeExamsPage({
   searchParams: Promise<{ upgraded?: string }>;
 }) {
   const { upgraded } = await searchParams;
-  const proExamsEnabled = areProPracticeExamsEnabled();
-
-  if (!proExamsEnabled) {
+  if (!isPracticeExamsHubEnabled()) {
     return (
       <div>
         <h1 className="text-2xl font-bold text-slate-900 mb-2">Practice Exams</h1>
@@ -82,7 +83,7 @@ export default async function PracticeExamsPage({
 
       <div className="space-y-4">
         {/* Leading SAFe - show if registered for course */}
-        {hasLeadingSafe && (
+        {hasLeadingSafe && !isProPracticeExamExpiredForCourse('leading-safe') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -118,7 +119,7 @@ export default async function PracticeExamsPage({
         )}
 
         {/* POPM - show if registered for course */}
-        {hasPopm && (
+        {hasPopm && !isProPracticeExamExpiredForCourse('product-owner-manager') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -154,7 +155,7 @@ export default async function PracticeExamsPage({
         )}
 
         {/* Agile Product Management (APM) */}
-        {hasApm && (
+        {hasApm && !isProPracticeExamExpiredForCourse('agile-product-management') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -190,7 +191,7 @@ export default async function PracticeExamsPage({
         )}
 
         {/* SAFe Scrum Master (SSM) */}
-        {hasScrumMaster && (
+        {hasScrumMaster && !isProPracticeExamExpiredForCourse('scrum-master') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
@@ -226,7 +227,7 @@ export default async function PracticeExamsPage({
         )}
 
         {/* SASM - show if registered for course or SSM+SASM combo */}
-        {hasAsm && (
+        {hasAsm && !isProPracticeExamExpiredForCourse('advanced-scrum-master') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">

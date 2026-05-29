@@ -1,23 +1,26 @@
 /**
- * Pro practice exam kill switch (public direct links + account take-test routes).
+ * Pro practice exam availability (public direct links + account take-test routes).
  *
- * Disabled by default. To re-enable:
- *   - Set PRO_PRACTICE_EXAMS_ENABLED=true in Vercel env, or
- *   - Change DEFAULT_PRO_PRACTICE_EXAMS_ENABLED to true and deploy.
+ * Global: set PRO_PRACTICE_EXAMS_ENABLED=true to enable all Pro practice exams.
+ * When global is off, only courses in ALWAYS_ENABLED_COURSE_IDS stay live (LPM by default).
  */
 const DEFAULT_PRO_PRACTICE_EXAMS_ENABLED = false;
 
-const PUBLIC_PRO_PRACTICE_PREFIXES = [
+/** Pro practice exams that stay available when global disable is on. */
+const ALWAYS_ENABLED_COURSE_IDS = new Set(['lean-portfolio-management']);
+
+const LPM_PUBLIC_PREFIXES = ['/lpmpro', '/lpm-pro-temp'] as const;
+
+const NON_LPM_PUBLIC_PREFIXES = [
   '/popm-prep-pro',
   '/popm-practice-temp',
   '/sasm-practice',
   '/scrum-master-pro-temp-2',
   '/leading-safe-pro-temp-2',
-  '/lpmpro',
-  '/lpm-pro-temp',
 ] as const;
 
-const BLOCKED_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
+const LPM_COURSE_PRACTICE_EXAM = /^\/courses\/lean-portfolio-management\/practice-exam\/?$/;
+const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
 
 function normalizePath(pathname: string): string {
   return pathname.replace(/\/$/, '') || '/';
@@ -30,9 +33,24 @@ export function areProPracticeExamsEnabled(): boolean {
   return DEFAULT_PRO_PRACTICE_EXAMS_ENABLED;
 }
 
-/** When true, has*ProAccess() returns false and take-test URLs 404. */
+export function isProPracticeExamExpiredForCourse(courseId: string): boolean {
+  if (areProPracticeExamsEnabled()) return false;
+  return !ALWAYS_ENABLED_COURSE_IDS.has(courseId);
+}
+
+/** @deprecated Use isProPracticeExamExpiredForCourse per course. True when global off and no per-course exceptions. */
 export function areAllProPracticeExamsExpired(): boolean {
-  return !areProPracticeExamsEnabled();
+  return areProPracticeExamsEnabled() === false && ALWAYS_ENABLED_COURSE_IDS.size === 0;
+}
+
+export function isPracticeExamsHubEnabled(): boolean {
+  return areProPracticeExamsEnabled() || ALWAYS_ENABLED_COURSE_IDS.size > 0;
+}
+
+function isLpmPublicOrAccountPath(path: string): boolean {
+  if (path === '/account/practice-exams/lpm') return true;
+  if (LPM_COURSE_PRACTICE_EXAM.test(path)) return true;
+  return LPM_PUBLIC_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 }
 
 function isAccountProPracticeTakePath(path: string): boolean {
@@ -40,23 +58,27 @@ function isAccountProPracticeTakePath(path: string): boolean {
   return path.startsWith('/account/practice-exams/');
 }
 
-/** Paths that return 404 while Pro practice exams are expired/disabled. */
+/** Paths that return 404 while their Pro practice exam is unavailable. */
 export function isProPracticeExamPath(pathname: string): boolean {
+  const path = normalizePath(pathname);
+
   if (areProPracticeExamsEnabled()) {
     return false;
   }
 
-  const path = normalizePath(pathname);
+  if (isLpmPublicOrAccountPath(path)) {
+    return false;
+  }
 
   if (isAccountProPracticeTakePath(path)) {
     return true;
   }
 
-  if (BLOCKED_COURSE_PRACTICE_EXAM.test(path)) {
+  if (ANY_COURSE_PRACTICE_EXAM.test(path)) {
     return true;
   }
 
-  return PUBLIC_PRO_PRACTICE_PREFIXES.some(
+  return NON_LPM_PUBLIC_PREFIXES.some(
     (prefix) => path === prefix || path.startsWith(`${prefix}/`),
   );
 }
