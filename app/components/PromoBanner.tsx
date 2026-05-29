@@ -89,13 +89,40 @@ export default function PromoBanner() {
     return null;
   }
 
-  const handleClipCode = async () => {
+  const copyToClipboard = async (text: string): Promise<boolean> => {
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        /* fall through to legacy copy */
+      }
+    }
+
     try {
-      await navigator.clipboard.writeText(BANNER_COUPON_CODE);
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return ok;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleClipCode = async (event: React.MouseEvent | React.PointerEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const ok = await copyToClipboard(BANNER_COUPON_CODE);
+    if (ok) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2200);
-    } catch {
-      /* ignore — badge still shows the code */
     }
   };
 
@@ -116,33 +143,35 @@ export default function PromoBanner() {
         <ConfettiLeft className="relative hidden h-8 w-10 shrink-0 opacity-[0.92] sm:block" />
         <SparkStar className="relative h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" />
 
-        <p className="relative max-w-[min(100%,52rem)] text-center text-sm font-semibold leading-snug tracking-tight text-neutral-950 sm:text-base sm:leading-tight md:text-[1.0625rem]">
+        <div className="relative max-w-[min(100%,52rem)] text-center text-sm font-semibold leading-snug tracking-tight text-neutral-950 sm:text-base sm:leading-tight md:text-[1.0625rem]">
           <span className="inline sm:whitespace-nowrap">
             <span aria-hidden className="mr-0.5 sm:mr-1">
               🎉
             </span>
             <span className="font-semibold text-neutral-950">Save</span>{" "}
-            <strong className="font-extrabold text-neutral-950 underline decoration-neutral-950 decoration-2 underline-offset-[3px]">
-              $100
-            </strong>{" "}
+            <strong className="font-extrabold text-neutral-950">$100</strong>{" "}
             <span className="hidden sm:inline font-semibold text-neutral-950">on any course —</span>
-            <span className="font-semibold text-neutral-950"> code</span>{" "}
+            <span className="font-semibold text-neutral-950"> use code</span>{" "}
             <button
               type="button"
               onClick={handleClipCode}
-              className="inline-block cursor-pointer rounded-md border-2 border-dashed border-neutral-900/35 bg-white px-2 py-0.5 align-middle font-mono text-[11px] font-extrabold tracking-wide text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,.15)] transition hover:bg-neutral-50 hover:shadow-[0_2px_6px_rgba(0,0,0,.18)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-1 sm:text-xs"
+              onPointerDown={(event) => event.stopPropagation()}
+              className="relative z-10 ml-0.5 inline-flex cursor-pointer items-center gap-1 rounded-md border-2 border-dashed border-neutral-900/35 bg-white px-2 py-1 align-middle font-mono text-[11px] font-extrabold tracking-wide text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,.15)] transition hover:bg-neutral-50 hover:shadow-[0_2px_6px_rgba(0,0,0,.18)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-1 sm:text-xs"
               aria-label={copied ? "Promo code copied" : `Copy promo code ${BANNER_COUPON_CODE}`}
               translate="no"
             >
               {copied ? "Copied!" : BANNER_COUPON_CODE}
             </button>{" "}
+            <span className="hidden text-[11px] font-medium text-neutral-900/75 sm:inline">
+              (tap to copy)
+            </span>{" "}
             <span className="text-neutral-900/80">·</span>{" "}
             <span className="font-semibold text-neutral-950">ends</span>{" "}
             <time className="font-bold text-neutral-950" dateTime={PROMO_EXPIRES_ISO}>
               {PROMO_ENDS_SHORT}
             </time>
           </span>
-        </p>
+        </div>
 
         <GiftRight className="relative hidden h-8 w-8 shrink-0 opacity-95 sm:block" />
       </div>
