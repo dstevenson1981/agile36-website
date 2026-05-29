@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import LevelUpSaleBannerArt from "./LevelUpSaleBannerArt";
-import { LEVEL_UP_SALE_EXPIRES_LABEL } from "@/app/lib/level-up-sale-promo";
+import {
+  PROMO_EXPIRES_LABEL,
+} from "@/app/lib/site-promo";
 
 interface CouponModalProps {
   isOpen: boolean;
@@ -90,17 +91,23 @@ export default function CouponModal({
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex">
         <div className="hidden md:flex flex-col justify-end w-1/2 relative overflow-hidden min-h-[420px]">
-          <LevelUpSaleBannerArt variant="panel" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111]/80 via-[#111]/30 to-transparent" aria-hidden />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(105deg, #ff9f5c 0%, #ff7a2e 38%, #fa5a1e 72%, #ea3d12 100%)",
+            }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#7c2d12]/90 via-[#7c2d12]/40 to-transparent" aria-hidden />
           <div className="relative z-10 p-8 mt-auto">
             <p className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2">
-              Level Up Sale
+              Limited-time offer
             </p>
             <h2 className="text-white text-2xl font-bold mb-3 leading-tight">
               $100 off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to save your code — valid through {LEVEL_UP_SALE_EXPIRES_LABEL}.
+              Subscribe below to save your code — valid through {PROMO_EXPIRES_LABEL}.
             </p>
           </div>
         </div>
@@ -116,8 +123,8 @@ export default function CouponModal({
             </svg>
           </button>
 
-          <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#e53935] mb-1">
-            Level Up Sale
+          <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#ea3d12] mb-1">
+            Limited-time offer
           </p>
           <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your $100 off code</h3>
           <p className="text-gray-600 text-sm mb-6">

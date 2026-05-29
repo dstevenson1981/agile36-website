@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import {
-  LEVEL_UP_SALE_EXPIRES_ISO,
-  LEVEL_UP_SALE_EXPIRES_LABEL,
-} from "@/app/lib/level-up-sale-promo";
+  PROMO_EXPIRES_ISO,
+  PROMO_EXPIRES_LABEL,
+} from "@/app/lib/site-promo";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -45,8 +45,8 @@ export default function CouponDisplayModal({
         </button>
 
         <div className="text-center pt-2">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#e53935] mb-2">
-            Level Up Sale
+          <p className="text-xs font-bold uppercase tracking-widest text-[#ea3d12] mb-2">
+            Limited-time offer
           </p>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Your $100 off code</h2>
           <p className="text-gray-600 text-sm mb-6">
@@ -82,12 +82,12 @@ export default function CouponDisplayModal({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
               <span className="font-semibold">Expires:</span>{" "}
-              <time className="text-[#e53935] font-bold" dateTime={LEVEL_UP_SALE_EXPIRES_ISO}>
-                {LEVEL_UP_SALE_EXPIRES_LABEL}
+              <time className="text-[#ea3d12] font-bold" dateTime={PROMO_EXPIRES_ISO}>
+                {PROMO_EXPIRES_LABEL}
               </time>
             </p>
             <p className="text-xs text-gray-600">
-              Level Up Sale — $100 off one eligible enrollment. Enter the code in the promo field at checkout.
+              $100 off one eligible enrollment. Enter the code in the promo field at checkout.
             </p>
           </div>
 

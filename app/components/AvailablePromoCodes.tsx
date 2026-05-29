@@ -7,7 +7,7 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Clip coupons at checkout — Level Up Sale $100 off. */
+/** Clip coupons at checkout — $100 off certification sale. */
 const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
 
 type Props = {
