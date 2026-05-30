@@ -5,20 +5,13 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import { GENERATIVE_AI_PM_BROCHURE_HREF } from "@/app/lib/generative-ai-pm-brochure";
 
 export default function GenerativeAIProjectManagersCoursePage() {
-  const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
   const [expandedCurriculum, setExpandedCurriculum] = useState<number[]>([0]);
-  const [consultationFormData, setConsultationFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-  const [isSubmittingConsultation, setIsSubmittingConsultation] = useState(false);
 
   const courseSlug = "generative-ai-project-managers";
 
@@ -28,49 +21,6 @@ export default function GenerativeAIProjectManagersCoursePage() {
         ? prev.filter(i => i !== index)
         : [...prev, index]
     );
-  };
-
-  const handleConsultationSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!consultationFormData.email || !consultationFormData.email.includes('@')) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    if (!consultationFormData.name || consultationFormData.name.trim() === '') {
-      alert('Please enter your full name');
-      return;
-    }
-
-    setIsSubmittingConsultation(true);
-    try {
-      const response = await fetch('/api/store-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: consultationFormData.name,
-          email: consultationFormData.email,
-          source: 'Brochure Request - Generative AI for Project Managers',
-          exam_name: 'Generative AI for Project Managers Certification Training'
-        }),
-      });
-
-      if (response.ok) {
-        alert('Thank you for your interest! We will contact you shortly with the course brochure.');
-        setShowConsultationModal(false);
-        setConsultationFormData({ name: "", email: "", phone: "", message: "" });
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('API Error:', errorData);
-        alert(errorData.error || 'Failed to submit request. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    } finally {
-      setIsSubmittingConsultation(false);
-    }
   };
 
   return (
@@ -140,15 +90,17 @@ export default function GenerativeAIProjectManagersCoursePage() {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
-                <button
-                  onClick={() => setShowConsultationModal(true)}
+                <a
+                  href={GENERATIVE_AI_PM_BROCHURE_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Brochure
-                </button>
+                </a>
                 <Link 
                   href={`/courses/generative-ai-project-managers/schedule?course=${courseSlug}`}
                   className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
@@ -650,15 +602,17 @@ export default function GenerativeAIProjectManagersCoursePage() {
                         <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
                         <h2 className="text-3xl font-bold text-gray-900">Generative AI for Project Managers Course Curriculum</h2>
                       </div>
-                      <button
-                        onClick={() => setShowConsultationModal(true)}
+                      <a
+                        href={GENERATIVE_AI_PM_BROCHURE_HREF}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         Download Curriculum
-                      </button>
+                      </a>
                     </div>
 
                     <div className="space-y-4">
@@ -1051,81 +1005,6 @@ export default function GenerativeAIProjectManagersCoursePage() {
         </div>
       </section>
 
-      {/* Consultation Modal */}
-      {showConsultationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={() => {
-                setShowConsultationModal(false);
-                setConsultationFormData({ name: "", email: "", phone: "", message: "" });
-              }}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Request Course Brochure</h2>
-              <p className="text-sm text-gray-600 mb-6">
-                Fill out the form below and we'll send you the Generative AI for Project Managers course brochure.
-              </p>
-              <form onSubmit={handleConsultationSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={consultationFormData.name}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input
-                    type="email"
-                    required
-                    value={consultationFormData.email}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input
-                    type="tel"
-                    value={consultationFormData.phone}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, phone: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    value={consultationFormData.message}
-                    onChange={(e) => setConsultationFormData({ ...consultationFormData, message: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
-                    placeholder="Tell us about your requirements"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmittingConsultation}
-                  className="w-full bg-[#fa4a23] text-white font-bold py-3 rounded-md hover:bg-[#e03d1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmittingConsultation ? 'Submitting...' : 'Submit Request'}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
