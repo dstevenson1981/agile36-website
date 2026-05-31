@@ -31,6 +31,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
       .upsert(
         {
           user_id: userId,
+          email: initialData.email,
           name: name || null,
           phone: phone || null,
           company: company || null,
