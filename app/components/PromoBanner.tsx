@@ -80,7 +80,7 @@ function GiftRight({ className }: { className?: string }) {
 }
 
 /**
- * Orange promo strip — Agile36 style with tap-to-copy 100OFF badge.
+ * Competitor-style white promo strip with tap-to-copy 100OFF badge.
  */
 export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
@@ -127,55 +127,43 @@ export default function PromoBanner() {
   };
 
   return (
-    <div className="sticky top-0 z-[60] shadow-[0_2px_12px_rgba(185,60,0,.28)]">
+    <div className="sticky top-0 z-[60] bg-[#f8f7f3] px-2 py-2 sm:px-3">
       <div
-        className="relative box-border flex h-[50px] min-h-[50px] max-h-[50px] w-full max-w-[100vw] items-center justify-center gap-2 overflow-x-auto overflow-y-hidden border-b border-white/15 px-2 sm:gap-3 sm:px-5"
-        style={{
-          background: "linear-gradient(105deg, #ff9f5c 0%, #ff7a2e 38%, #fa5a1e 72%, #ea3d12 100%)",
-        }}
+        className="relative mx-auto box-border flex min-h-[58px] w-full max-w-[1260px] items-center justify-between gap-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white px-3 py-2 shadow-[0_1px_0_rgba(0,0,0,.03)] sm:gap-4 sm:px-6"
       >
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_160%_at_12%_0%,rgba(255,255,255,.38),transparent_45%),radial-gradient(80%_100%_at_90%_100%,rgba(0,0,0,.12),transparent_40%)]"
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/25" aria-hidden />
+        <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+          <ConfettiLeft className="hidden h-7 w-8 shrink-0 opacity-75 sm:block" />
+          <SparkStar className="h-4 w-4 shrink-0 text-[#fa4a23]" />
+          <div className="min-w-0">
+            <p className="truncate text-sm font-bold leading-tight text-neutral-900 sm:text-base">
+              Build Skills. Build Your Future.
+            </p>
+            <p className="truncate text-xs font-medium text-neutral-600 sm:text-sm">
+              Ends soon • Save <span className="font-bold text-[#fa4a23]">$100 off</span> with code
+            </p>
+          </div>
+        </div>
 
-        <ConfettiLeft className="relative hidden h-8 w-10 shrink-0 opacity-[0.92] sm:block" />
-        <SparkStar className="relative h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" />
-
-        <div className="relative max-w-[min(100%,52rem)] text-center text-sm font-semibold leading-snug tracking-tight text-neutral-950 sm:text-base sm:leading-tight md:text-[1.0625rem]">
-          <span className="inline sm:whitespace-nowrap">
-            <span aria-hidden className="mr-0.5 sm:mr-1">
-              🎉
-            </span>
-            <span className="font-semibold text-neutral-950">Save</span>{" "}
-            <strong className="font-extrabold text-neutral-950">$100</strong>{" "}
-            <span className="hidden sm:inline font-semibold text-neutral-950">on any course —</span>
-            <span className="font-semibold text-neutral-950"> use code</span>{" "}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="hidden text-sm font-semibold text-neutral-700 sm:block">
+            Ends <time dateTime={PROMO_EXPIRES_ISO}>{PROMO_ENDS_SHORT}</time>
+          </div>
+          <div className="h-7 w-px bg-neutral-200" aria-hidden />
+          <div className="text-right">
             <button
               type="button"
               onClick={handleClipCode}
               onPointerDown={(event) => event.stopPropagation()}
-              className="relative z-10 ml-0.5 inline-flex cursor-pointer items-center gap-1 rounded-md border-2 border-dashed border-neutral-900/35 bg-white px-2 py-1 align-middle font-mono text-[11px] font-extrabold tracking-wide text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,.15)] transition hover:bg-neutral-50 hover:shadow-[0_2px_6px_rgba(0,0,0,.18)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-1 sm:text-xs"
+              className="inline-flex cursor-pointer items-center rounded-full border border-[#fa4a23]/70 bg-white px-3 py-1.5 font-mono text-xs font-extrabold tracking-wide text-[#e8431f] transition hover:bg-[#fff7f4] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fa4a23] focus-visible:ring-offset-1 sm:px-4 sm:text-sm"
               aria-label={copied ? "Promo code copied" : `Copy promo code ${BANNER_COUPON_CODE}`}
               translate="no"
             >
-              {copied ? "Copied!" : BANNER_COUPON_CODE}
-            </button>{" "}
-            <span className="hidden text-[11px] font-medium text-neutral-900/75 sm:inline">
-              (tap to copy)
-            </span>{" "}
-            <span className="text-neutral-900/80">·</span>{" "}
-            <span className="font-semibold text-neutral-950">ends</span>{" "}
-            <time className="font-bold text-neutral-950" dateTime={PROMO_EXPIRES_ISO}>
-              {PROMO_ENDS_SHORT}
-            </time>
-          </span>
+              {copied ? "Copied!" : `${BANNER_COUPON_CODE} · $100 off`}
+            </button>
+            <p className="mt-0.5 text-[11px] font-medium text-neutral-500">tap to copy</p>
+          </div>
         </div>
-
-        <GiftRight className="relative hidden h-8 w-8 shrink-0 opacity-95 sm:block" />
       </div>
-      <div className="h-1 w-full shrink-0 bg-[#fa4a23]" aria-hidden />
     </div>
   );
 }
