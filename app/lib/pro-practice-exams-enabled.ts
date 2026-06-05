@@ -19,6 +19,9 @@ const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
   '/popmpro',
   '/popm-prep-pro',
   '/popm-practice-temp',
+  '/leading-safepro',
+  '/leading-safe-pro-temp',
+  '/leading-safe-pro-temp-2',
 ] as const;
 
 const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
@@ -33,7 +36,6 @@ const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
 const BLOCKED_PUBLIC_PREFIXES = [
   '/sasm-practice',
   '/scrum-master-pro-temp-2',
-  '/leading-safe-pro-temp-2',
 ] as const;
 
 const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
