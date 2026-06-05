@@ -11,6 +11,7 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
   'leading-safe',
+  'scrum-master',
 ]);
 
 const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
@@ -22,20 +23,23 @@ const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
   '/leading-safepro',
   '/leading-safe-pro-temp',
   '/leading-safe-pro-temp-2',
+  '/ssmpro',
+  '/scrum-master-pro-temp',
+  '/scrum-master-pro-temp-2',
 ] as const;
 
 const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
   '/account/practice-exams/popm',
   '/account/practice-exams/leading-safe',
+  '/account/practice-exams/scrum-master',
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master)\/practice-exam\/?$/;
 
 const BLOCKED_PUBLIC_PREFIXES = [
   '/sasm-practice',
-  '/scrum-master-pro-temp-2',
 ] as const;
 
 const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
