@@ -29,7 +29,12 @@ const EMERGENCY_SSM_ACCESS_EMAILS = new Set([
   'danesh.selvarajan@gmail.com',
 ]);
 
-const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set(['haw_glazes_6x@icloud.com']);
+const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set([
+  'haw_glazes_6x@icloud.com',
+  'kevinjmcg@yahoo.com',
+  'carl.fisher@trimont.com',
+  'carl.j.fisher@gmail.com',
+]);
 const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set(['beranguelly@hotmail.com']);
 const EMERGENCY_APM_PRO_ACCESS_EMAILS = new Set([
   'harry@harrychand.com',
@@ -119,6 +124,36 @@ async function whitelistHasEmail(
   return false;
 }
 
+/** Service-role order lookup — avoids RLS gaps between auth email and profile email. */
+async function hasProOrderForCourseSlugs(
+  serviceSupabase: SupabaseClient,
+  authEmail: string | undefined,
+  profileEmail: string | null | undefined,
+  courseSlugs: string[],
+): Promise<boolean> {
+  const slugSet = new Set(courseSlugs);
+  for (const em of distinctEmailsForWhitelist(authEmail, profileEmail)) {
+    const { data, error } = await serviceSupabase
+      .from('orders')
+      .select('course_slug')
+      .ilike('customer_email', em)
+      .eq('plan', 'pro')
+      .limit(20);
+    if (error) continue;
+    if (
+      data?.some(
+        (o) =>
+          o.course_slug &&
+          (slugSet.has(o.course_slug) ||
+            [...slugSet].some((slug) => o.course_slug?.startsWith(`combo-${slug}`))),
+      )
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /** LPM whitelist: prefers RPC with Gmail dot–equivalence; falls back to ilike if RPC not installed. */
 async function lpmWhitelistMatch(
   serviceSupabase: SupabaseClient,
@@ -157,16 +192,34 @@ export async function getRegisteredCourseSlugs(): Promise<string[]> {
     .select('email')
     .eq('user_id', user.id)
     .single();
+
+  const slugs = new Set<string>();
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
-  // Use ilike for case-insensitive email match (orders may have different casing)
   const { data: orders } = await supabase
     .from('orders')
     .select('course_slug')
     .ilike('customer_email', lookupEmail);
+  for (const o of orders ?? []) {
+    if (o.course_slug) slugs.add(o.course_slug);
+  }
 
-  if (!orders?.length) return [];
-  return [...new Set(orders.map((o) => o.course_slug).filter(Boolean))];
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (serviceKey && serviceUrl) {
+    const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+    for (const em of distinctEmailsForWhitelist(user.email, profile?.email)) {
+      const { data: serviceOrders } = await serviceSupabase
+        .from('orders')
+        .select('course_slug')
+        .ilike('customer_email', em);
+      for (const o of serviceOrders ?? []) {
+        if (o.course_slug) slugs.add(o.course_slug);
+      }
+    }
+  }
+
+  return [...slugs];
 }
 
 /** Check if user has Basic (not Pro) for a course - eligible for $50 upgrade */
@@ -308,10 +361,6 @@ export async function hasApmProAccess(): Promise<boolean> {
 
 /** Check if the logged-in user has Pro plan for Leading SAFe (leading-safe) */
 export async function hasLeadingSafeProAccess(): Promise<boolean> {
-  if (isProPracticeExamExpiredForCourse('leading-safe')) return false;
-  const fromUserAccess = await checkProAccess('leading-safe');
-  if (fromUserAccess) return true;
-
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user?.email) return false;
@@ -323,23 +372,9 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
     .single();
 
   if (hasEmergencyLeadingSafeProAccess(user.email, profile?.email)) return true;
+  if (await checkProAccess('leading-safe')) return true;
 
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  // Check orders - use ilike for case-insensitive email match
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id, course_slug')
-    .ilike('customer_email', lookupEmail)
-    .eq('plan', 'pro')
-    .limit(10);
-
-  const hasLeadingSafeOrder = orders?.some(
-    (o) => o.course_slug === 'leading-safe' || o.course_slug?.startsWith('combo-leading-safe')
-  );
-  if (hasLeadingSafeOrder) return true;
-
-  // Whitelist: RLS returns a row when auth or profile email matches — works without service role.
+  // Whitelist via session RLS (auth or profile email).
   const { data: lsWhitelistRows, error: lsWlErr } = await supabase
     .from('leading_safe_pro_access_whitelist')
     .select('id')
@@ -348,14 +383,39 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
 
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!serviceKey || !serviceUrl) return false;
+  if (serviceKey && serviceUrl) {
+    const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+    if (
+      await whitelistHasEmail(
+        serviceSupabase,
+        'leading_safe_pro_access_whitelist',
+        user.email,
+        profile?.email,
+      )
+    ) {
+      return true;
+    }
+    if (
+      await hasProOrderForCourseSlugs(serviceSupabase, user.email, profile?.email, [
+        'leading-safe',
+      ])
+    ) {
+      return true;
+    }
+  }
 
-  const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
-  return whitelistHasEmail(
-    serviceSupabase,
-    'leading_safe_pro_access_whitelist',
-    user.email,
-    profile?.email
+  if (isProPracticeExamExpiredForCourse('leading-safe')) return false;
+
+  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
+  const { data: orders } = await supabase
+    .from('orders')
+    .select('id, course_slug')
+    .ilike('customer_email', lookupEmail)
+    .eq('plan', 'pro')
+    .limit(10);
+
+  return !!orders?.some(
+    (o) => o.course_slug === 'leading-safe' || o.course_slug?.startsWith('combo-leading-safe'),
   );
 }
 

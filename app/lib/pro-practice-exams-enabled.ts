@@ -10,6 +10,7 @@ const DEFAULT_PRO_PRACTICE_EXAMS_ENABLED = false;
 const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
+  'leading-safe',
 ]);
 
 const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
@@ -23,10 +24,11 @@ const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
 const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
   '/account/practice-exams/popm',
+  '/account/practice-exams/leading-safe',
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe)\/practice-exam\/?$/;
 
 const BLOCKED_PUBLIC_PREFIXES = [
   '/sasm-practice',
