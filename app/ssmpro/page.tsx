@@ -7,7 +7,7 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-/** Short public link → full SSM Pro practice exam (no login). */
+/** Short public link → full SSM Pro practice exam (no login required). */
 export default function SsmProPage() {
   redirect('/scrum-master-pro-temp');
 }
