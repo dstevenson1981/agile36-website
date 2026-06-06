@@ -70,10 +70,10 @@ export default function ContactPage() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Phone</h3>
               <a 
-                href="tel:310-620-7966" 
+                href="tel:786-321-5200" 
                 className="text-lg text-[#01203d] hover:text-[#fa4a23] transition-colors font-semibold"
               >
-                (310) 620-7966
+                (786) 321-5200
               </a>
               <p className="text-sm text-gray-600 mt-3">Mon-Fri, 9AM-5PM PST</p>
             </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01203d] focus:border-transparent transition-all bg-white"
-                    placeholder="(310) 620-7966"
+                    placeholder="(786) 321-5200"
                   />
                 </div>
               </div>
