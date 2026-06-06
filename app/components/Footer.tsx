@@ -112,12 +112,20 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-6 text-gray-300">
               Contact
             </h4>
-            <a 
-              href="mailto:d.stevenson@agile36.com" 
-              className="text-base text-gray-400 hover:text-white transition-colors duration-200 inline-block"
-            >
-              d.stevenson@agile36.com
-            </a>
+            <div className="space-y-3">
+              <a
+                href="tel:786-321-5200"
+                className="text-base text-gray-400 hover:text-white transition-colors duration-200 inline-block"
+              >
+                (786) 321-5200
+              </a>
+              <a
+                href="mailto:d.stevenson@agile36.com"
+                className="text-base text-gray-400 hover:text-white transition-colors duration-200 block"
+              >
+                d.stevenson@agile36.com
+              </a>
+            </div>
           </div>
         </div>
         
