@@ -119,6 +119,7 @@ export default function Footer() {
               >
                 (786) 321-5200
               </a>
+              <p className="text-sm text-gray-500">Mon–Fri, 9AM–5PM EST</p>
               <a
                 href="mailto:d.stevenson@agile36.com"
                 className="text-base text-gray-400 hover:text-white transition-colors duration-200 block"

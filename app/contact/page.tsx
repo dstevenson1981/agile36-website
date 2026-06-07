@@ -75,7 +75,7 @@ export default function ContactPage() {
               >
                 (786) 321-5200
               </a>
-              <p className="text-sm text-gray-600 mt-3">Mon-Fri, 9AM-5PM PST</p>
+              <p className="text-sm text-gray-600 mt-3">Mon-Fri, 9AM-5PM EST</p>
             </div>
 
             {/* Email Card */}
@@ -401,7 +401,7 @@ export default function ContactPage() {
                 </svg>
               </summary>
               <p className="text-gray-600 mt-4 leading-relaxed">
-                We typically respond to email inquiries within 24 hours during business days. Phone calls are answered during business hours (Monday-Friday, 9AM-5PM PST), and our live chat support has an average response time of less than 2 minutes.
+                We typically respond to email inquiries within 24 hours during business days. Phone calls are answered during business hours (Monday-Friday, 9AM-5PM EST), and our live chat support has an average response time of less than 2 minutes.
               </p>
             </details>
 
