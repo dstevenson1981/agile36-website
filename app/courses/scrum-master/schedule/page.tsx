@@ -453,7 +453,7 @@ function CourseScheduleContent() {
                         quantity={qty}
                         onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
                         onGroupInquiry={() => handleGroupInquiryClick(schedule)}
-                        brochureHref="/APM_Brochure_Agile36.pdf"
+                        brochureHref="/SSM_Agile36_Brochure.pdf"
                         showSafeBadges
                       />
                     );
