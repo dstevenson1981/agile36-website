@@ -7,7 +7,7 @@
  * a host added (prefer narrow origins over `https:` in script-src).
  *
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
- * Apollo, Stripe (checkout), Vercel Analytics
+ * Apollo, Warmly, Stripe (checkout), Vercel Analytics
  * from fpcdn/openfpcdn depending on version/build.
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
@@ -21,6 +21,8 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://client.crisp.chat " +
   "https://*.crisp.chat " +
   "https://assets.apollo.io " +
+  "https://opps-widget.getwarmly.com " +
+  "https://*.getwarmly.com " +
   "https://va.vercel-scripts.com " +
   "https://vercel.live " +
   "https://openfpcdn.io " +
@@ -43,7 +45,8 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "wss://client.relay.crisp.chat " +
   "wss://*.relay.crisp.chat; " +
   "frame-src 'self' https: " +
-  "https://game.crisp.chat; " +
+  "https://game.crisp.chat " +
+  "https://*.getwarmly.com; " +
   "media-src 'self' blob: " +
   "https://client.crisp.chat " +
   "https://*.crisp.chat; " +

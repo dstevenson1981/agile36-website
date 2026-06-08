@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import {
+  formatAttendeesSummary,
+  formatEnrollingForLabel,
+  isEnrollingForSomeoneElse,
+  parseAttendees,
+} from '@/app/lib/registration-display';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -154,7 +160,18 @@ export async function GET(request: NextRequest) {
       if (ordersError) {
         console.error('Error querying orders:', ordersError);
       } else if (orders) {
-        results.orders = orders;
+        results.orders = orders.map((order) => ({
+          ...order,
+          enrollment_type: formatEnrollingForLabel(order.enrolling_for),
+          enrolling_for_someone_else: isEnrollingForSomeoneElse(order.enrolling_for),
+          paid_by: {
+            name: order.customer_name || null,
+            email: order.customer_email || null,
+            phone: order.customer_phone || null,
+          },
+          attendees: parseAttendees(order.alternative_contact),
+          attendees_summary: formatAttendeesSummary(order.alternative_contact),
+        }));
       }
     } catch (error: any) {
       console.error('Error retrieving orders:', error);

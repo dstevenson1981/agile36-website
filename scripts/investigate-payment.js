@@ -116,7 +116,12 @@ async function investigatePayment(customerId) {
         console.log(`   Amount: $${order.amount?.toFixed(2) || 'N/A'}`);
         console.log(`   Plan: ${order.plan || 'N/A'}`);
         console.log(`   Quantity: ${order.quantity || '1'}`);
-        console.log(`   Customer Email: ${order.customer_email || 'N/A'}`);
+        console.log(`   Paid By: ${order.customer_name || 'N/A'} <${order.customer_email || 'N/A'}>`);
+        console.log(`   Phone: ${order.customer_phone || 'N/A'}`);
+        console.log(`   Enrollment Type: ${order.enrolling_for === 'someoneElse' ? 'Registered for someone else' : 'Self enrollment'}`);
+        if (order.enrolling_for === 'someoneElse') {
+          console.log(`   Attendee Details: ${(order.alternative_contact || 'N/A').replace(/\n/g, ' | ')}`);
+        }
         console.log(`   Created: ${order.created_at || 'N/A'}`);
       }
     }
