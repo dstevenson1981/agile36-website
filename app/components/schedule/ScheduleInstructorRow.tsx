@@ -9,6 +9,7 @@ type Props = {
   examIncluded?: boolean | null;
   /** Override exam line when schedule rows use a fixed label (e.g. devops). */
   examLabel?: string;
+  variant?: "default" | "prominent";
 };
 
 function examLineText(examIncluded: boolean | null | undefined, examLabel?: string): string {
@@ -23,10 +24,13 @@ export default function ScheduleInstructorRow({
   language,
   examIncluded,
   examLabel,
+  variant = "default",
 }: Props) {
   const name = instructorName?.trim() || "TBA";
   const image = instructorImage?.trim() || "";
   const examText = examLineText(examIncluded, examLabel);
+  const avatarSize = variant === "prominent" ? 48 : 40;
+  const avatarClass = variant === "prominent" ? "h-12 w-12 ring-2 ring-white shadow-sm" : "h-10 w-10";
 
   return (
     <div className="flex items-center gap-3">
@@ -34,15 +38,15 @@ export default function ScheduleInstructorRow({
         <Image
           src={image}
           alt={name}
-          width={40}
-          height={40}
-          className="h-10 w-10 shrink-0 rounded-full object-cover"
+          width={avatarSize}
+          height={avatarSize}
+          className={`${avatarClass} shrink-0 rounded-full object-cover`}
           onError={(e) => {
             e.currentTarget.style.display = "none";
           }}
         />
       ) : (
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-200">
+        <div className={`flex ${avatarClass} shrink-0 items-center justify-center rounded-full bg-gray-200`}>
           <svg className="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path
               strokeLinecap="round"
@@ -54,8 +58,8 @@ export default function ScheduleInstructorRow({
         </div>
       )}
       <div>
-        <div className="font-semibold text-gray-900">{name}</div>
-        <div className="mt-0.5 flex items-center gap-2 text-sm text-gray-600">
+        <div className={`font-semibold text-gray-900 ${variant === "prominent" ? "text-base" : ""}`}>{name}</div>
+        <div className={`mt-0.5 flex items-center gap-2 text-gray-600 ${variant === "prominent" ? "text-sm" : "text-sm"}`}>
           <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path
               strokeLinecap="round"

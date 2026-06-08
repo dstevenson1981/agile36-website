@@ -1,11 +1,10 @@
 "use client";
 
+import ScheduleCard from "@/app/components/schedule/ScheduleCard";
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
-import ScheduleInstructorRow from "@/app/components/schedule/ScheduleInstructorRow";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -454,143 +453,20 @@ function CourseScheduleContent() {
               ) : (
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
-                    const startDate = new Date(schedule.start_date);
-                    const endDate = new Date(schedule.end_date);
-                    const now = new Date();
-                    now.setHours(0, 0, 0, 0);
-                    const sevenDaysFromNow = new Date(now);
-                    sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
-                    const fourteenDaysFromNow = new Date(now);
-                    fourteenDaysFromNow.setDate(fourteenDaysFromNow.getDate() + 14);
-                    const startDateOnly = new Date(startDate);
-                    startDateOnly.setHours(0, 0, 0, 0);
-                    const isWithinNext7Days = startDateOnly >= now && startDateOnly <= sevenDaysFromNow;
-                    const isWithin8to14Days = startDateOnly > sevenDaysFromNow && startDateOnly <= fourteenDaysFromNow;
-                    const isLowSeats = !isWithinNext7Days && !isWithin8to14Days && schedule.seats_available !== null && schedule.seats_available > 0 && schedule.seats_available <= 5;
-                    const showUrgencyBadge = isWithinNext7Days || isWithin8to14Days || isLowSeats;
                     const qty = quantity[schedule.id] || 1;
-                    const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
-                    const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
 
                     return (
-                      <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                        <div className="flex flex-col lg:flex-row gap-6">
-                          {/* Left Content */}
-                          <div className="flex-1 space-y-4">
-                            {/* Time Slot Badge and Dates */}
-                            <div className="flex items-start gap-3">
-                              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getTimeSlotColor(schedule.time_slot)}`}>
-                                {getTimeSlotLabel(schedule.time_slot)}
-                              </span>
-                              <div>
-                                <div className="font-bold text-lg text-gray-900">
-                                  {formatDateRange(schedule.start_date, schedule.end_date)}
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
-                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                  <span>
-                                    {formatTime(schedule.start_time, schedule.timezone)} - {formatTime(schedule.end_time, schedule.timezone)} • ({schedule.duration})
-                                  </span>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
-                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                  </svg>
-                                  <span>Online • {schedule.is_weekend === true ? 'Weekend' : 'Weekday'} Batch</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <ScheduleInstructorRow
-                              instructorName={schedule.instructor_name}
-                              instructorImage={schedule.instructor_image}
-                              language={schedule.language}
-                              examLabel="No Exam"
-                            />
-
-                            {/* SAFe Badges */}
-                            <div className="flex items-center gap-2">
-                              <div className="px-3 py-1 bg-blue-50 border border-blue-200 rounded text-xs font-semibold text-blue-700">
-                                SAFe
-                              </div>
-                              <div className="px-3 py-1 bg-gray-100 border border-gray-300 rounded text-xs font-semibold text-gray-700">
-                                SAFe SILVER PARTNER
-                              </div>
-                            </div>
-
-                            {/* Curriculum and Quantity */}
-                            <div className="flex items-center gap-6">
-                              <a 
-                                href="/VS_Mapping_Agile36.pdf" 
-                                download
-                                target="_blank"
-                                className="flex items-center gap-2 text-sm text-[#fa4a23] hover:underline"
-                              >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                Download Brochure
-                              </a>
-                              <div className="flex items-center gap-2">
-                                <button
-                                  onClick={() => updateQuantity(schedule.id, -1)}
-                                  className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50"
-                                >
-                                  <span className="text-gray-600">-</span>
-                                </button>
-                                <span className="w-12 text-center font-semibold">{qty}</span>
-                                <button
-                                  onClick={() => updateQuantity(schedule.id, 1)}
-                                  className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50"
-                                >
-                                  <span className="text-gray-600">+</span>
-                                </button>
-                              </div>
-                            </div>
-
-                            {/* Group Inquiry */}
-                            <div>
-                              <button 
-                                onClick={() => handleGroupInquiryClick(schedule)}
-                                className="text-sm text-[#fa4a23] hover:underline"
-                              >
-                                More than 5 Participants? Enquire Now &gt;&gt;
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Right Pricing Section */}
-                          <div className="w-full lg:w-80 flex-shrink-0 border-t lg:border-t-0 lg:border-l border-gray-200 pt-6 lg:pt-0 lg:pl-6 space-y-4">
-                            {schedule.is_best_deal && (
-                              <div className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold text-center">
-                                BEST DEAL
-                              </div>
-                            )}
-                            {schedule.original_price && (
-                              <div className="text-center">
-                                <div className="text-sm text-gray-400 line-through">USD {schedule.original_price}</div>
-                                <div className="text-sm font-semibold text-green-600">{discount}% OFF</div>
-                              </div>
-                            )}
-                            <div className="text-center">
-                              <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
-                            </div>
-                            <EnrollNowLink
-                              courseSlug="value-stream-mapping"
-                              scheduleId={schedule.id}
-                              quantity={qty}
-                              className="block w-full bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg text-center transition-colors mt-4"
-                            />
-                            {showUrgencyBadge && (
-                              <div className="text-[#fa4a23] text-center py-2 text-sm font-bold uppercase tracking-wide">
-                                {isWithinNext7Days ? '3 REMAINING!' : isWithin8to14Days ? 'SALES ENDING SOON!' : `${schedule.seats_available} REMAINING!`}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+                      <ScheduleCard
+                        key={schedule.id}
+                        schedule={schedule}
+                        courseSlug="value-stream-mapping"
+                        quantity={qty}
+                        onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
+                        onGroupInquiry={() => handleGroupInquiryClick(schedule)}
+                        brochureHref="/VS_Mapping_Agile36.pdf"
+                        examLabel={"No Exam"}
+                        showSafeBadges
+                      />
                     );
                   })}
                   

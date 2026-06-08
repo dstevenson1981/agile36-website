@@ -1,11 +1,10 @@
 "use client";
 
+import ScheduleCard from "@/app/components/schedule/ScheduleCard";
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
-import ScheduleInstructorRow from "@/app/components/schedule/ScheduleInstructorRow";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -331,89 +330,17 @@ function CourseScheduleContent() {
                 <div className="space-y-4">
                   {filteredSchedules.slice(0, displayedCount).map((schedule) => {
                     const qty = quantity[schedule.id] || 1;
-                    const totalPrice = (parseFloat(schedule.price) * qty).toFixed(2);
-                    const discount = schedule.original_price ? calculateDiscount(parseFloat(schedule.original_price), parseFloat(schedule.price)) : 0;
 
                     return (
-                      <div key={schedule.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                        <div className="flex flex-col lg:flex-row gap-6">
-                          <div className="flex-1 space-y-4">
-                            <div className="flex items-start gap-3">
-                              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getTimeSlotColor(schedule.time_slot)}`}>
-                                {getTimeSlotLabel(schedule.time_slot)}
-                              </span>
-                              <div>
-                                <div className="font-bold text-lg text-gray-900">
-                                  {formatDateRange(schedule.start_date, schedule.end_date)}
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
-                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                  <span>
-                                    {formatTime(schedule.start_time, schedule.timezone)} - {formatTime(schedule.end_time, schedule.timezone)} • ({schedule.duration})
-                                  </span>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
-                                  <span>Online • {schedule.is_weekend === true ? 'Weekend' : 'Weekday'} Batch</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <ScheduleInstructorRow
-                              instructorName={schedule.instructor_name}
-                              instructorImage={schedule.instructor_image}
-                              language={schedule.language}
-                              examIncluded={schedule.exam_included}
-                            />
-
-                            <div className="flex items-center gap-6">
-                              <a
-                                href="/RTE_Brochure.pdf"
-                                download
-                                target="_blank"
-                                className="flex items-center gap-2 text-sm text-[#fa4a23] hover:underline"
-                              >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                Download Brochure
-                              </a>
-                              <div className="flex items-center gap-2">
-                                <button onClick={() => updateQuantity(schedule.id, -1)} className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">
-                                  <span className="text-gray-600">-</span>
-                                </button>
-                                <span className="w-12 text-center font-semibold">{qty}</span>
-                                <button onClick={() => updateQuantity(schedule.id, 1)} className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">
-                                  <span className="text-gray-600">+</span>
-                                </button>
-                              </div>
-                            </div>
-
-                            <button onClick={() => handleGroupInquiryClick(schedule)} className="text-sm text-[#fa4a23] hover:underline">
-                              More than 5 Participants? Enquire Now &gt;&gt;
-                            </button>
-                          </div>
-
-                          <div className="w-full lg:w-80 flex-shrink-0 border-t lg:border-t-0 lg:border-l border-gray-200 pt-6 lg:pt-0 lg:pl-6 space-y-4">
-                            {schedule.original_price && (
-                              <div className="text-center">
-                                <div className="text-sm text-gray-400 line-through">USD {schedule.original_price}</div>
-                                <div className="text-sm font-semibold text-green-600">{discount}% OFF</div>
-                              </div>
-                            )}
-                            <div className="text-center">
-                              <div className="text-3xl font-bold text-gray-900">USD {totalPrice}</div>
-                            </div>
-                            <EnrollNowLink
-                              courseSlug="release-train-engineer"
-                              scheduleId={schedule.id}
-                              quantity={qty}
-                              className="w-full bg-[#01203d] hover:bg-[#023a5e] text-white font-bold py-3 px-6 rounded-lg transition-colors text-center block"
-                            />
-                          </div>
-                        </div>
-                      </div>
+                      <ScheduleCard
+                        key={schedule.id}
+                        schedule={schedule}
+                        courseSlug="release-train-engineer"
+                        quantity={qty}
+                        onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
+                        onGroupInquiry={() => handleGroupInquiryClick(schedule)}
+                        brochureHref="/RTE_Brochure.pdf"
+                      />
                     );
                   })}
 
