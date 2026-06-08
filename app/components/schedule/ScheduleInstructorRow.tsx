@@ -26,8 +26,8 @@ export default function ScheduleInstructorRow({
   examLabel,
   variant = "default",
 }: Props) {
-  const name = instructorName?.trim() || "TBA";
-  const image = instructorImage?.trim() || "";
+  const name = instructorName?.trim() || "Martina Svoboda";
+  const image = instructorImage?.trim() || "/martina.jpg";
   const examText = examLineText(examIncluded, examLabel);
   const avatarSize = variant === "prominent" ? 48 : 40;
   const avatarClass = variant === "prominent" ? "h-12 w-12 ring-2 ring-white shadow-sm" : "h-10 w-10";
