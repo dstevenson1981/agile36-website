@@ -126,7 +126,6 @@ export default function ScheduleCard({
   const urgency = getScheduleUrgency(schedule);
   const totalPrice = (parseFloat(schedule.price) * quantity).toFixed(2);
   const unitPrice = parseFloat(schedule.price);
-  const monthlyEstimate = Math.ceil(parseFloat(totalPrice) / 12);
   const discount = schedule.original_price
     ? calculateDiscount(parseFloat(schedule.original_price), unitPrice)
     : 0;
@@ -150,8 +149,11 @@ export default function ScheduleCard({
     }
   };
 
+  const columnDivider =
+    "relative lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-5 lg:before:bottom-5 lg:before:w-0 lg:before:border-l lg:before:border-dotted lg:before:border-gray-300";
+
   return (
-    <article className="overflow-hidden rounded-xl border border-gray-200/90 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <article className="overflow-hidden rounded-[10px] border border-[#e0e0e0] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.07)] transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* Left — schedule & instructor */}
         <div className="flex flex-col gap-4 p-5 lg:p-6">
@@ -186,7 +188,7 @@ export default function ScheduleCard({
             </p>
           </div>
 
-          <div className="border-t border-dashed border-gray-200 pt-4">
+          <div className="border-t border-dotted border-gray-300 pt-4">
             <ScheduleInstructorRow
               instructorName={schedule.instructor_name}
               instructorImage={schedule.instructor_image}
@@ -210,14 +212,16 @@ export default function ScheduleCard({
         </div>
 
         {/* Middle — curriculum, qty, urgency */}
-        <div className="flex flex-col items-center justify-between gap-5 border-t border-dashed border-gray-200 p-5 lg:border-l lg:border-t-0 lg:p-6">
+        <div
+          className={`flex flex-col items-center justify-between gap-5 border-t border-dotted border-gray-300 p-5 mx-5 lg:mx-0 lg:border-t-0 lg:p-6 ${columnDivider}`}
+        >
           {hasBrochure && (
             <div className="w-full">
               <BrochureLink href={brochureHref} onClick={onBrochureClick} label={brochureLabel} />
             </div>
           )}
 
-          <div className="flex items-center rounded-lg border border-gray-200 bg-gray-50/80 px-1 py-1 shadow-inner">
+          <div className="flex items-center rounded-lg border border-gray-200 bg-white px-1 py-1 shadow-[inset_0_1px_4px_rgba(0,0,0,0.06)]">
             <button
               type="button"
               onClick={() => onQuantityChange(-1)}
@@ -256,7 +260,9 @@ export default function ScheduleCard({
         </div>
 
         {/* Right — pricing & CTA */}
-        <div className="flex flex-col gap-4 border-t border-dashed border-gray-200 p-5 lg:border-l lg:border-t-0 lg:p-6">
+        <div
+          className={`flex flex-col gap-4 border-t border-dotted border-gray-300 p-5 mx-5 lg:mx-0 lg:border-t-0 lg:p-6 ${columnDivider}`}
+        >
           <div className="flex flex-wrap items-start justify-end gap-2">
             {schedule.is_best_deal && (
               <span className="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-900 ring-1 ring-amber-300">
@@ -288,15 +294,6 @@ export default function ScheduleCard({
               </div>
             )}
             <p className="mt-1 text-3xl font-bold tracking-tight text-[#01203d]">USD {totalPrice}</p>
-            <p className="mt-1 flex items-center justify-end gap-1 text-xs text-[#1a56db]">
-              As low as USD {monthlyEstimate}/month
-              <span
-                className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1a56db]/30 text-[10px] font-bold"
-                title="Estimated 12-month payment plan"
-              >
-                i
-              </span>
-            </p>
           </div>
 
           <div className="flex items-center gap-2">
