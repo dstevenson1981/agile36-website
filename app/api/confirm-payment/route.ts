@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import { grantProPracticeAccessForOrder } from '@/app/lib/grant-pro-practice-access';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -171,6 +172,20 @@ export async function POST(request: NextRequest) {
     if (orderError) {
       console.error('Error storing order:', orderError);
       // Don't fail the request if order storage fails, payment is already successful
+    }
+
+    if (orderData.plan === 'pro') {
+      try {
+        await grantProPracticeAccessForOrder(supabase, {
+          customerEmail: orderData.customer_email,
+          courseSlug: orderData.course_slug,
+          plan: orderData.plan,
+          userId: paymentIntent.metadata?.userId || null,
+          comboScheduleMap: isComboOrder ? comboScheduleMap : undefined,
+        });
+      } catch (grantError) {
+        console.error('Error granting Pro practice access:', grantError);
+      }
     }
 
     // Mark matching enrollment_leads as completed (same email + schedule)

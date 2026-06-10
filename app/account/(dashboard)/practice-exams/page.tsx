@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { createClient as createServiceClient } from '@supabase/supabase-js';
+import { createClient } from '@/app/lib/supabase/server';
 import {
   hasPopmProAccess,
   hasApmProAccess,
@@ -8,6 +10,7 @@ import {
   hasAdvancedScrumMasterProAccess,
   getRegisteredCourseSlugs,
 } from '@/app/lib/practice-exams';
+import { syncProPracticeAccessForUser } from '@/app/lib/grant-pro-practice-access';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 import {
   isPracticeExamsHubEnabled,
@@ -41,6 +44,31 @@ export default async function PracticeExamsPage({
         </p>
       </div>
     );
+  }
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('email')
+      .eq('user_id', user.id)
+      .maybeSingle();
+
+    const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (serviceUrl && serviceKey) {
+      const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+      await syncProPracticeAccessForUser(
+        serviceSupabase,
+        user.id,
+        user.email,
+        profile?.email,
+      );
+    }
   }
 
   const [hasPopmPro, hasApmPro, hasLpmPro, hasLeadingSafePro, hasSsmPro, hasAsmPro, registeredCourses] = await Promise.all([

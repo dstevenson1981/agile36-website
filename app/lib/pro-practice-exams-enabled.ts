@@ -12,6 +12,8 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'product-owner-manager',
   'leading-safe',
   'scrum-master',
+  'agile-product-management',
+  'advanced-scrum-master',
 ]);
 
 const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
@@ -33,10 +35,12 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/popm',
   '/account/practice-exams/leading-safe',
   '/account/practice-exams/scrum-master',
+  '/account/practice-exams/agile-product-management',
+  '/account/practice-exams/advanced-scrum-master',
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master)\/practice-exam\/?$/;
 
 const BLOCKED_PUBLIC_PREFIXES = [
   '/sasm-practice',
