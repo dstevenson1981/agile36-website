@@ -25,6 +25,9 @@ export function formatDateRange(startDate: string, endDate: string): string {
     const startFormatted = start.toLocaleDateString("en-US", { month: "short", day: "numeric" });
     const endFormatted = end.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
+    if (start.toDateString() === end.toDateString()) {
+      return startFormatted;
+    }
     if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
       return `${startFormatted} - ${end.getDate()}`;
     }
