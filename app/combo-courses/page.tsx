@@ -138,7 +138,7 @@ export default function ComboCoursesPage() {
           <div className="relative">
             <div aria-hidden className="absolute -inset-8 rounded-full bg-[#d97706]/[0.08] blur-3xl" />
             <Image
-              src="/combo-hero.png"
+              src="/combo-hero.jpg"
               alt="Agile36 instructor — SAFe Silver Partner, SPC certified, live online training rated 4.9/5"
               width={1376}
               height={768}

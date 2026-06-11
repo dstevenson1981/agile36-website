@@ -116,11 +116,9 @@ function FadeIn({
   className?: string;
   children: React.ReactNode;
 }) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), delay);
-    return () => clearTimeout(t);
-  }, [delay]);
+  // Owner feedback: no delayed fade-ins — everything visible on load.
+  const [visible] = useState(true);
+  void delay;
   return (
     <div
       className={`transition-opacity ${visible ? "opacity-100" : "opacity-0"} ${className}`}
@@ -351,16 +349,6 @@ export default function HomeExperience() {
           },
         });
 
-        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-          gsap.from(el, {
-            y: 44,
-            autoAlpha: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 86%" },
-          });
-        });
-
         gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
           const target = parseFloat(el.dataset.count || "0");
           const decimals = parseInt(el.dataset.decimals || "0", 10);
@@ -542,7 +530,7 @@ export default function HomeExperience() {
               className="group relative min-h-[340px] overflow-hidden rounded-3xl border border-[#1f2c4a]/10 md:col-span-2 lg:row-span-2 lg:min-h-0"
             >
               <Image
-                src="/coaches-tile.png"
+                src="/coaches-tile.jpg"
                 alt="Agile36 instructor coaching a team"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

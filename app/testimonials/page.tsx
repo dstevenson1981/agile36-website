@@ -468,10 +468,6 @@ export default function TestimonialsPage() {
             {paginatedTestimonials.map((testimonial, index) => (
               <motion.div
                 key={`${currentPage}-${testimonial.id}`}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: (index % 9) * 0.07 }}
                 whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
                 onMouseMove={handleGlowMove}
                 className="glow-card mb-6 break-inside-avoid rounded-2xl bg-white p-7 ring-1 ring-[#1f2c4a]/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-shadow duration-300 hover:shadow-[0_12px_32px_-8px_rgba(31,44,74,0.18)]"
