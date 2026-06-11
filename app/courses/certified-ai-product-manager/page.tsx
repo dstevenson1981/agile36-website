@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function CertifiedAIProductManagerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -24,25 +25,25 @@ export default function CertifiedAIProductManagerCoursePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#01203d]">Home</Link>
+          <div className="flex items-center gap-2 mb-6 text-sm text-[#64748b]">
+            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#01203d]">Courses</span>
+            <span className="text-[#334155]">Courses</span>
             <span>/</span>
-            <span className="text-[#01203d]">Certified AI Product Manager™ Certification Training</span>
+            <span className="text-[#334155]">Certified AI Product Manager™ Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Content */}
             <div className="space-y-6">
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-1.5">
-                  <svg className="h-5 w-5 shrink-0 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] px-3 py-1.5">
+                  <svg className="h-5 w-5 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                   </svg>
                   <span className="text-sm font-semibold text-blue-700">English</span>
@@ -51,20 +52,20 @@ export default function CertifiedAIProductManagerCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-gray-900 sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
                   Certified AI Product Manager™ Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-semibold text-gray-700 md:mb-5 md:text-xl">
+                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
                   Master AI-Powered Product Development and Build Prototypes That Validate Ideas Fast
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="2,500+ enrolled"
                   trailing={
-                    <div className="flex items-center gap-2 rounded-lg border-2 border-green-500 bg-green-50 px-3 py-2 sm:px-4">
-                      <svg className="h-5 w-5 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 sm:px-4">
+                      <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
+                      <span className="text-sm font-bold text-emerald-700">Certification Exam Included</span>
                     </div>
                   }
                 />
@@ -79,10 +80,10 @@ export default function CertifiedAIProductManagerCoursePage() {
                     "Earn Certified AI Product Manager™ certification"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-gray-700">{item}</span>
+                      <span className="text-base text-[#475569]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -92,7 +93,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <button
                   onClick={() => setShowConsultationModal(true)}
-                  className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2"
+                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -101,7 +102,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                 </button>
                 <Link 
                   href={`/courses/certified-ai-product-manager/schedule?course=${courseSlug}`}
-                  className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
+                  className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors inline-block text-center"
                 >
                   View Schedules
                 </Link>
@@ -121,87 +122,90 @@ export default function CertifiedAIProductManagerCoursePage() {
         </div>
       </section>
 
+      {/* Trusted by industry leaders */}
+      <TrustedByStrip />
+
       {/* Market Demand & Salary Section */}
-      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               Why AI Product Managers Are Essential
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-[#64748b] max-w-3xl mx-auto">
               Product managers who leverage AI across the development lifecycle deliver better products faster. Companies need PMs who can build prototypes and validate ideas rapidly.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
             {/* Stat 1 - Higher Compensation */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Higher Compensation</div>
-              <p className="text-sm text-gray-600 mb-4">AI Product Managers command premium salaries compared to traditional PMs.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-2xl md:text-3xl font-bold text-[#fa4a23]">$140K–$200K</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">typical salary range</div>
+            <div className="liquid-glass rounded-2xl p-6 md:p-8 transition-colors hover:bg-[#1f2c4a]/[0.1]">
+              <div className="text-lg md:text-xl font-semibold text-[#1f2c4a] mb-3">Higher Compensation</div>
+              <p className="text-sm text-[#64748b] mb-4">AI Product Managers command premium salaries compared to traditional PMs.</p>
+              <div className="pt-4 border-t border-[#1f2c4a]/15">
+                <div className="text-2xl md:text-3xl font-bold text-[#d97706]">$140K–$200K</div>
+                <div className="text-xs md:text-sm text-[#64748b] mt-1">typical salary range</div>
               </div>
             </div>
 
             {/* Stat 2 - Faster Time-to-Market */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">Faster Time-to-Market</div>
-              <p className="text-sm text-gray-600 mb-4">AI tools accelerate product development cycles significantly.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-xl md:text-2xl font-bold text-blue-600">Rapid Prototyping</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">validate ideas in days</div>
+            <div className="liquid-glass rounded-2xl p-6 md:p-8 transition-colors hover:bg-[#1f2c4a]/[0.1]">
+              <div className="text-lg md:text-xl font-semibold text-[#1f2c4a] mb-3">Faster Time-to-Market</div>
+              <p className="text-sm text-[#64748b] mb-4">AI tools accelerate product development cycles significantly.</p>
+              <div className="pt-4 border-t border-[#1f2c4a]/15">
+                <div className="text-xl md:text-2xl font-bold text-[#d97706]">Rapid Prototyping</div>
+                <div className="text-xs md:text-sm text-[#64748b] mt-1">validate ideas in days</div>
               </div>
             </div>
 
             {/* Stat 3 - Market Demand */}
-            <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-lg md:text-xl font-semibold text-gray-900 mb-3">High Demand</div>
-              <p className="text-sm text-gray-600 mb-4">Organizations actively seeking AI Product Managers for their teams.</p>
-              <div className="pt-4 border-t border-gray-200">
-                <div className="text-xl md:text-2xl font-bold text-[#fa4a23]">Growing Need</div>
-                <div className="text-xs md:text-sm text-gray-500 mt-1">across all industries</div>
+            <div className="liquid-glass rounded-2xl p-6 md:p-8 transition-colors hover:bg-[#1f2c4a]/[0.1]">
+              <div className="text-lg md:text-xl font-semibold text-[#1f2c4a] mb-3">High Demand</div>
+              <p className="text-sm text-[#64748b] mb-4">Organizations actively seeking AI Product Managers for their teams.</p>
+              <div className="pt-4 border-t border-[#1f2c4a]/15">
+                <div className="text-xl md:text-2xl font-bold text-[#d97706]">Growing Need</div>
+                <div className="text-xs md:text-sm text-[#64748b] mt-1">across all industries</div>
               </div>
             </div>
           </div>
 
           {/* Skills Section */}
-          <div className="bg-white rounded-lg p-6 md:p-8 shadow-md border border-gray-200">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Key Skills You'll Master</h3>
+          <div className="liquid-glass rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl md:text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6 text-center">Key Skills You'll Master</h3>
             <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">AI-Powered Product Strategy</div>
-                  <div className="text-sm text-gray-600">Essential Competency</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Powered Product Strategy</div>
+                  <div className="text-sm text-[#64748b]">Essential Competency</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#fa4a23] rounded-full mt-2 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-[#d97706] rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">Rapid Prototyping with AI Tools</div>
-                  <div className="text-sm text-gray-600">High Demand</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">AI-Driven User Research & Insights</div>
-                  <div className="text-sm text-gray-600">Critical Skill</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#fa4a23] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">Stakeholder Validation & Demos</div>
-                  <div className="text-sm text-gray-600">Essential for Success</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Rapid Prototyping with AI Tools</div>
+                  <div className="text-sm text-[#64748b]">High Demand</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm md:text-base mb-1">AI-Powered Product Analytics</div>
-                  <div className="text-sm text-gray-600">Data-Driven Decisions</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Driven User Research & Insights</div>
+                  <div className="text-sm text-[#64748b]">Critical Skill</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#d97706] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Stakeholder Validation & Demos</div>
+                  <div className="text-sm text-[#64748b]">Essential for Success</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Powered Product Analytics</div>
+                  <div className="text-sm text-[#64748b]">Data-Driven Decisions</div>
                 </div>
               </div>
             </div>
@@ -210,9 +214,9 @@ export default function CertifiedAIProductManagerCoursePage() {
       </section>
 
       {/* Key to Success Section */}
-      <section className="w-full bg-gradient-to-b from-[#d3edff52] to-transparent py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-12 text-center">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-12 text-center">
             Our Key to Career Success
           </h2>
           
@@ -220,7 +224,7 @@ export default function CertifiedAIProductManagerCoursePage() {
             {[
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ), 
@@ -228,7 +232,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 ), 
@@ -236,7 +240,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ), 
@@ -244,7 +248,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
                 ), 
@@ -252,7 +256,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ), 
@@ -260,7 +264,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -269,10 +273,10 @@ export default function CertifiedAIProductManagerCoursePage() {
               }
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#d3edff99] to-transparent flex items-center justify-center mb-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
+                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
               </div>
             ))}
           </div>
@@ -280,13 +284,13 @@ export default function CertifiedAIProductManagerCoursePage() {
       </section>
 
       {/* Main Content with Pricing Card */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main content area - 2 columns */}
             <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
               {/* Tabs Navigation */}
-              <div className="border-b border-gray-200">
+              <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
                   {[
                     { id: "overview", label: "Overview" },
@@ -299,8 +303,8 @@ export default function CertifiedAIProductManagerCoursePage() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                         activeTab === tab.id
-                          ? "border-[#fa4a23] text-[#fa4a23]"
-                          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                          ? "border-[#d97706] text-[#d97706]"
+                          : "border-transparent text-[#64748b] hover:text-[#1f2c4a] hover:border-[#1f2c4a]/40"
                       }`}
                     >
                       {tab.label}
@@ -314,20 +318,20 @@ export default function CertifiedAIProductManagerCoursePage() {
                 {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
+                      <p className="text-base text-[#475569] mb-4">
                         The Certified AI Product Manager™ Certification Training is an intensive 2-day program (10 hours total) designed to teach product managers how to leverage AI throughout the entire product development lifecycle. This hands-on course focuses on practical AI applications from discovery through launch and iteration.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         Learn to use AI for market research, user insights, competitive analysis, feature prioritization, and roadmap planning. The highlight of this course is building a functional prototype that you'll demo to validate product ideas with stakeholders—all powered by AI tools that dramatically accelerate development timelines.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         You'll master AI-powered product strategy, rapid prototyping techniques, and stakeholder validation methods. By the end of this course, you'll have built a working prototype and earned your Certified AI Product Manager™ certification, positioning you at the forefront of modern product management.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
                           "Use AI across the entire product lifecycle",
@@ -338,18 +342,18 @@ export default function CertifiedAIProductManagerCoursePage() {
                           "Create data-driven product roadmaps with AI"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-gray-700">{item}</span>
+                            <span className="text-base text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                         <li>Product Managers and Product Owners</li>
                         <li>Product Leaders and Directors</li>
                         <li>Product Marketing Managers</li>
@@ -357,8 +361,8 @@ export default function CertifiedAIProductManagerCoursePage() {
                         <li>Anyone building AI-powered products</li>
                       </ul>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">Certification</h3>
-                      <p className="text-base text-gray-700">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4 mt-6">Certification</h3>
+                      <p className="text-base text-[#475569]">
                         You'll earn the <strong>Certified AI Product Manager™ Certification</strong>, issued through <strong>Accredible</strong>, the global credentialing platform used by top universities and training providers.
                       </p>
                     </div>
@@ -369,12 +373,12 @@ export default function CertifiedAIProductManagerCoursePage() {
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">Certified AI Product Manager™ Course Curriculum</h2>
+                        <p className="text-sm text-[#64748b] mb-2">Course Curriculum</p>
+                        <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Certified AI Product Manager™ Course Curriculum</h2>
                       </div>
                       <button
                         onClick={() => setShowConsultationModal(true)}
-                        className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
+                        className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -477,11 +481,11 @@ export default function CertifiedAIProductManagerCoursePage() {
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
                           <button
                             onClick={() => toggleCurriculum(index)}
-                            className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
+                            className="w-full flex items-center justify-between p-4 text-left hover:bg-[#1f2c4a]/[0.1] transition-colors"
                           >
-                            <h3 className="text-lg font-semibold text-gray-900">{part.title}</h3>
+                            <h3 className="text-lg font-semibold text-[#1f2c4a]">{part.title}</h3>
                             <svg 
-                              className={`w-5 h-5 text-blue-600 flex-shrink-0 transition-transform ${expandedCurriculum.includes(index) ? 'rotate-180' : ''}`}
+                              className={`w-5 h-5 text-[#d97706] flex-shrink-0 transition-transform ${expandedCurriculum.includes(index) ? 'rotate-180' : ''}`}
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
@@ -493,8 +497,8 @@ export default function CertifiedAIProductManagerCoursePage() {
                             <div className="p-4 pt-0 border-t border-blue-100">
                               {part.topics.length > 0 && (
                                 <div className="mb-4">
-                                  <p className="font-semibold text-gray-900 mb-2">Topics:</p>
-                                  <ul className="list-disc list-inside space-y-1 text-gray-700">
+                                  <p className="font-semibold text-[#1f2c4a] mb-2">Topics:</p>
+                                  <ul className="list-disc list-inside space-y-1 text-[#475569]">
                                     {part.topics.map((topic, topicIndex) => (
                                       <li key={topicIndex}>{topic}</li>
                                     ))}
@@ -503,8 +507,8 @@ export default function CertifiedAIProductManagerCoursePage() {
                               )}
                               {part.learningObjective && (
                                 <div>
-                                  <p className="font-semibold text-gray-900 mb-2">Learning Objective:</p>
-                                  <p className="text-gray-700">{part.learningObjective}</p>
+                                  <p className="font-semibold text-[#1f2c4a] mb-2">Learning Objective:</p>
+                                  <p className="text-[#475569]">{part.learningObjective}</p>
                                 </div>
                               )}
                             </div>
@@ -518,16 +522,16 @@ export default function CertifiedAIProductManagerCoursePage() {
                 {activeTab === "reviews" && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-3xl font-bold text-gray-900">Student Reviews</h2>
+                      <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Student Reviews</h2>
                       <div className="flex items-center gap-2">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
-                        <span className="text-base font-semibold text-gray-900">4.9 (156 reviews)</span>
+                        <span className="text-base font-semibold text-[#1f2c4a]">4.9 (156 reviews)</span>
                       </div>
                     </div>
                     <div className="space-y-6">
@@ -551,21 +555,21 @@ export default function CertifiedAIProductManagerCoursePage() {
                           rating: 5
                         }
                       ].map((review, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div>
-                              <h4 className="font-bold text-gray-900">{review.name}</h4>
-                              <p className="text-sm text-gray-600">{review.role}</p>
+                              <h4 className="font-bold text-[#1f2c4a]">{review.name}</h4>
+                              <p className="text-sm text-[#64748b]">{review.role}</p>
                             </div>
                             <div className="flex items-center">
                               {[...Array(review.rating)].map((_, i) => (
-                                <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg key={i} className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-gray-700">
+                          <p className="text-base text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -576,7 +580,7 @@ export default function CertifiedAIProductManagerCoursePage() {
 
                 {activeTab === "faq" && (
                   <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                    <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
                   { q: "What is the Certified AI Product Manager™ Certification Training?", a: "This is a comprehensive 2-day intensive program (10 hours total) designed to teach product managers how to leverage AI throughout the entire product development lifecycle. You'll build a functional prototype in class and learn AI-powered techniques for research, strategy, and validation." },
@@ -584,9 +588,9 @@ export default function CertifiedAIProductManagerCoursePage() {
                         { q: "What is included in the course?", a: "The course includes 10 hours of live training, hands-on prototype building, AI product management tools and templates, comprehensive course materials, and certification upon completion." },
                         { q: "What tools will I learn to use?", a: "You'll learn to use AI tools for product research (ChatGPT, Claude), prototyping (Figma, V0, Bolt), analytics, user research, competitive analysis, and product roadmapping. All tools are accessible and product-manager friendly." }
                       ].map((faq, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
-                          <p className="text-base text-gray-700">{faq.a}</p>
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
+                          <p className="text-base text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -597,49 +601,49 @@ export default function CertifiedAIProductManagerCoursePage() {
 
             {/* Pricing Card - Sticky */}
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
-              <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
+              <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$400</div>
-                  <div className="text-base text-gray-500 line-through">$800</div>
-                  <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$400</div>
+                  <div className="text-base text-[#64748b] line-through">$800</div>
+                  <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Live Virtual Training</span>
+                    <span className="text-sm text-[#475569]">Live Virtual Training</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Comprehensive Course Materials</span>
+                    <span className="text-sm text-[#475569]">Comprehensive Course Materials</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Hands-On Exercises</span>
+                    <span className="text-sm text-[#475569]">Hands-On Exercises</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Expert-Led Sessions</span>
+                    <span className="text-sm text-[#475569]">Expert-Led Sessions</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
+                    <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
                   </div>
                 </div>
 
                 <Link 
                   href={`/courses/certified-ai-product-manager/schedule?course=${courseSlug}`}
-                  className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center"
+                  className="w-full liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors mb-4 inline-block text-center"
                 >
                   View Schedule
                 </Link>
@@ -650,11 +654,11 @@ export default function CertifiedAIProductManagerCoursePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">Certified AI Product Manager™ Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on Certified AI Product Manager™ Certification Training</h2>
+            <p className="text-sm text-[#64748b] mb-2">Certified AI Product Manager™ Course FAQs</p>
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">FAQs on Certified AI Product Manager™ Certification Training</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -672,8 +676,8 @@ export default function CertifiedAIProductManagerCoursePage() {
                 }}
                 className={`px-6 py-2 rounded-md font-semibold transition-colors ${
                   activeFaqCategory === category.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-[#1f2c4a] text-white"
+                    : "bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20"
                 }`}
               >
                 {category.label}
@@ -712,7 +716,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               return currentFaqs.map((faq, index) => {
                 const isExpanded = expandedFaqs.includes(index);
                 return (
-                  <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div key={index} className="border border-[#1f2c4a]/15 rounded-lg overflow-hidden">
                     <button
                       onClick={() => {
                         setExpandedFaqs(prev =>
@@ -721,11 +725,11 @@ export default function CertifiedAIProductManagerCoursePage() {
                             : [...prev, index]
                         );
                       }}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-[#1f2c4a]/[0.06] transition-colors"
                     >
-                      <h3 className="font-bold text-gray-900 pr-4">{faq.q}</h3>
+                      <h3 className="font-bold text-[#1f2c4a] pr-4">{faq.q}</h3>
                       <svg
-                        className={`w-5 h-5 text-gray-600 flex-shrink-0 transition-transform ${
+                        className={`w-5 h-5 text-[#64748b] flex-shrink-0 transition-transform ${
                           isExpanded ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -742,7 +746,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-6 pb-6 pt-0">
-                        <p className="text-base text-gray-700">{faq.a}</p>
+                        <p className="text-base text-[#475569]">{faq.a}</p>
                       </div>
                     )}
                   </div>
@@ -755,54 +759,54 @@ export default function CertifiedAIProductManagerCoursePage() {
 
       {/* Consultation Modal */}
       {showConsultationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#ffffff] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setShowConsultationModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-[#64748b] hover:text-[#1f2c4a]"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get Course Information</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Get Course Information</h2>
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your full name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your email"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Phone</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your phone number"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Message</label>
                   <textarea
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Tell us about your interest in this course"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#fa4a23] text-white font-bold py-3 rounded-md hover:bg-[#e03d1a] transition-colors"
+                  className="w-full bg-[#1f2c4a] text-white font-medium py-3 rounded-lg hover:bg-[#16243f] transition-colors"
                 >
                   Submit
                 </button>

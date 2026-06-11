@@ -14,11 +14,11 @@ type Props = {
 
 export default function BlogAuthorByline({ updated, className, verb = "Written by" }: Props) {
   return (
-    <p className={className ?? "text-base text-gray-500 mb-10"}>
+    <p className={className ?? "text-base text-[#94a3b8] mb-10"}>
       {verb}{" "}
       <Link
         href={BLOG_LEAD_AUTHOR_LINKEDIN}
-        className="font-semibold text-[#01203d] hover:underline"
+        className="font-semibold text-[#1f2c4a] hover:text-[#d97706] hover:underline"
         target="_blank"
         rel="noopener noreferrer"
       >

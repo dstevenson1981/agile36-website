@@ -23,14 +23,14 @@ export default function UpgradeSuccessBanner({ courseSlug }: { courseSlug: strin
   const examPath = EXAM_PATHS[courseSlug];
 
   return (
-    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6">
-      <p className="text-emerald-800 font-medium">
+    <div className="bg-green-400/15 border border-green-400/30 rounded-2xl p-4 mb-6">
+      <p className="text-green-300 font-medium">
         Upgrade complete. You now have access to the {courseName} practice exam.
       </p>
       {examPath && (
         <Link
           href={examPath}
-          className="inline-block mt-2 text-[#fa4a23] font-medium hover:underline"
+          className="inline-block mt-2 text-[#fbbf24] font-medium hover:underline"
         >
           Start practice exam →
         </Link>

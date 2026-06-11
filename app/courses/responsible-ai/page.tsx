@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function ResponsibleAICoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -24,25 +25,25 @@ export default function ResponsibleAICoursePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#01203d]">Home</Link>
+          <div className="flex items-center gap-2 mb-6 text-sm text-[#64748b]">
+            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#01203d]">Courses</span>
+            <span className="text-[#334155]">Courses</span>
             <span>/</span>
-            <span className="text-[#01203d]">Achieving Responsible AI with SAFe Micro-credential Course</span>
+            <span className="text-[#334155]">Achieving Responsible AI with SAFe Micro-credential Course</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Content */}
             <div className="space-y-6">
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-1.5">
-                  <svg className="h-5 w-5 shrink-0 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] px-3 py-1.5">
+                  <svg className="h-5 w-5 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                   </svg>
                   <span className="text-sm font-semibold text-blue-700">English</span>
@@ -51,10 +52,10 @@ export default function ResponsibleAICoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-gray-900 sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
                   Achieving Responsible AI with SAFe Micro-credential Course
                 </h1>
-                <p className="mb-4 text-lg font-semibold text-gray-700 md:mb-5 md:text-xl">
+                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
                   Master Responsible AI Practices in SAFe Environments
                 </p>
                 <CourseHeroSocialProof enrolledLabel="15,000+ enrolled" />
@@ -69,10 +70,10 @@ export default function ResponsibleAICoursePage() {
                     "Apply SAFe principles to AI transformation initiatives"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-gray-700">{item}</span>
+                      <span className="text-base text-[#475569]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -80,7 +81,7 @@ export default function ResponsibleAICoursePage() {
 
               {/* Accredited By */}
               <div className="flex items-center gap-4 pt-4">
-                <span className="text-base font-semibold text-gray-900">Accredited by</span>
+                <span className="text-base font-semibold text-[#1f2c4a]">Accredited by</span>
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
                     <Image
@@ -110,7 +111,7 @@ export default function ResponsibleAICoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2"
+                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -119,7 +120,7 @@ export default function ResponsibleAICoursePage() {
                 </a>
                 <Link 
                   href={`/courses/responsible-ai/schedule?course=${courseSlug}`}
-                  className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
+                  className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors inline-block text-center"
                 >
                   View Schedules
                 </Link>
@@ -139,10 +140,13 @@ export default function ResponsibleAICoursePage() {
         </div>
       </section>
 
+      {/* Trusted by industry leaders */}
+      <TrustedByStrip />
+
       {/* Key to Success Section */}
-      <section className="w-full bg-gradient-to-b from-[#d3edff52] to-transparent py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-12 text-center">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-12 text-center">
             Our Key to Career Success
           </h2>
           
@@ -150,7 +154,7 @@ export default function ResponsibleAICoursePage() {
             {[
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ), 
@@ -158,7 +162,7 @@ export default function ResponsibleAICoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 ), 
@@ -166,7 +170,7 @@ export default function ResponsibleAICoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ), 
@@ -174,7 +178,7 @@ export default function ResponsibleAICoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
                 ), 
@@ -182,7 +186,7 @@ export default function ResponsibleAICoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ), 
@@ -190,7 +194,7 @@ export default function ResponsibleAICoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -199,10 +203,10 @@ export default function ResponsibleAICoursePage() {
               }
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#d3edff99] to-transparent flex items-center justify-center mb-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
+                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
               </div>
             ))}
           </div>
@@ -210,13 +214,13 @@ export default function ResponsibleAICoursePage() {
       </section>
 
       {/* Main Content with Pricing Card */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main content area - 2 columns */}
             <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
               {/* Tabs Navigation */}
-              <div className="border-b border-gray-200">
+              <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
                   {[
                     { id: "overview", label: "Overview" },
@@ -229,8 +233,8 @@ export default function ResponsibleAICoursePage() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                         activeTab === tab.id
-                          ? "border-[#fa4a23] text-[#fa4a23]"
-                          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                          ? "border-[#d97706] text-[#d97706]"
+                          : "border-transparent text-[#64748b] hover:text-[#1f2c4a] hover:border-[#1f2c4a]/40"
                       }`}
                     >
                       {tab.label}
@@ -244,17 +248,17 @@ export default function ResponsibleAICoursePage() {
                 {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
+                      <p className="text-base text-[#475569] mb-4">
                         The AI with SAFe Micro-credential Course is designed to help professionals understand and implement Responsible AI (RAI) practices within the Scaled Agile Framework (SAFe). This comprehensive course covers stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         Learn how to integrate AI transformation initiatives with SAFe principles, ensuring ethical, responsible, and effective AI implementation across your organization.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
                           "Identify and map key stakeholders in AI initiatives",
@@ -265,18 +269,18 @@ export default function ResponsibleAICoursePage() {
                           "Write effective RAI Epic Hypothesis Statements"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-gray-700">{item}</span>
+                            <span className="text-base text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                         <li>Product Managers and Product Owners working with AI initiatives</li>
                         <li>Agile Coaches and Scrum Masters</li>
                         <li>Enterprise Architects and Solution Architects</li>
@@ -291,15 +295,15 @@ export default function ResponsibleAICoursePage() {
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">Achieving Responsible AI with SAFe Micro-credential Course Curriculum</h2>
+                        <p className="text-sm text-[#64748b] mb-2">Course Curriculum</p>
+                        <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Achieving Responsible AI with SAFe Micro-credential Course Curriculum</h2>
                       </div>
                       <a 
                         href="/Responsible_AI-Brochure_Agile36.pdf" 
                         download
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
+                        className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -338,11 +342,11 @@ export default function ResponsibleAICoursePage() {
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
                           <button
                             onClick={() => toggleCurriculum(index)}
-                            className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
+                            className="w-full flex items-center justify-between p-4 text-left hover:bg-[#1f2c4a]/[0.1] transition-colors"
                           >
-                            <h3 className="text-lg font-semibold text-gray-900">{part.title}</h3>
+                            <h3 className="text-lg font-semibold text-[#1f2c4a]">{part.title}</h3>
                             <svg 
-                              className={`w-5 h-5 text-blue-600 flex-shrink-0 transition-transform ${expandedCurriculum.includes(index) ? 'rotate-180' : ''}`}
+                              className={`w-5 h-5 text-[#d97706] flex-shrink-0 transition-transform ${expandedCurriculum.includes(index) ? 'rotate-180' : ''}`}
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
@@ -354,8 +358,8 @@ export default function ResponsibleAICoursePage() {
                             <div className="p-4 pt-0 border-t border-blue-100">
                               {part.topics.length > 0 && (
                                 <div className="mb-4">
-                                  <p className="font-semibold text-gray-900 mb-2">Topics:</p>
-                                  <ul className="list-disc list-inside space-y-1 text-gray-700">
+                                  <p className="font-semibold text-[#1f2c4a] mb-2">Topics:</p>
+                                  <ul className="list-disc list-inside space-y-1 text-[#475569]">
                                     {part.topics.map((topic, topicIndex) => (
                                       <li key={topicIndex}>{topic}</li>
                                     ))}
@@ -364,8 +368,8 @@ export default function ResponsibleAICoursePage() {
                               )}
                               {part.learningObjective && (
                                 <div>
-                                  <p className="font-semibold text-gray-900 mb-2">Learning Objective:</p>
-                                  <p className="text-gray-700">{part.learningObjective}</p>
+                                  <p className="font-semibold text-[#1f2c4a] mb-2">Learning Objective:</p>
+                                  <p className="text-[#475569]">{part.learningObjective}</p>
                                 </div>
                               )}
                             </div>
@@ -379,16 +383,16 @@ export default function ResponsibleAICoursePage() {
                 {activeTab === "reviews" && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-3xl font-bold text-gray-900">Student Reviews</h2>
+                      <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Student Reviews</h2>
                       <div className="flex items-center gap-2">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
-                        <span className="text-base font-semibold text-gray-900">4.9 (156 reviews)</span>
+                        <span className="text-base font-semibold text-[#1f2c4a]">4.9 (156 reviews)</span>
                       </div>
                     </div>
                     <div className="space-y-6">
@@ -412,21 +416,21 @@ export default function ResponsibleAICoursePage() {
                           rating: 5
                         }
                       ].map((review, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div>
-                              <h4 className="font-bold text-gray-900">{review.name}</h4>
-                              <p className="text-sm text-gray-600">{review.role}</p>
+                              <h4 className="font-bold text-[#1f2c4a]">{review.name}</h4>
+                              <p className="text-sm text-[#64748b]">{review.role}</p>
                             </div>
                             <div className="flex items-center">
                               {[...Array(review.rating)].map((_, i) => (
-                                <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg key={i} className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-gray-700">
+                          <p className="text-base text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -437,7 +441,7 @@ export default function ResponsibleAICoursePage() {
 
                 {activeTab === "faq" && (
                   <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                    <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
                         { q: "What is the Achieving Responsible AI with SAFe Micro-credential Course?", a: "The Achieving Responsible AI with SAFe Micro-credential Course is designed to help professionals understand and implement Responsible AI (RAI) practices within the Scaled Agile Framework (SAFe). It covers stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing." },
@@ -445,9 +449,9 @@ export default function ResponsibleAICoursePage() {
                         { q: "What is included in the course?", a: "The course includes live training sessions, comprehensive course materials, hands-on exercises, and access to learning resources." },
                         { q: "Do I need prior SAFe experience?", a: "While prior SAFe experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners who want to integrate AI transformation with SAFe principles." }
                       ].map((faq, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
-                          <p className="text-base text-gray-700">{faq.a}</p>
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
+                          <p className="text-base text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -458,49 +462,49 @@ export default function ResponsibleAICoursePage() {
 
             {/* Pricing Card - Sticky */}
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
-              <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
+              <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$325</div>
-                  <div className="text-base text-gray-500 line-through">$650</div>
-                  <div className="text-sm text-green-600 font-semibold mt-2">50% OFF</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$325</div>
+                  <div className="text-base text-[#64748b] line-through">$650</div>
+                  <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Live Virtual Training</span>
+                    <span className="text-sm text-[#475569]">Live Virtual Training</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Comprehensive Course Materials</span>
+                    <span className="text-sm text-[#475569]">Comprehensive Course Materials</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Hands-On Exercises</span>
+                    <span className="text-sm text-[#475569]">Hands-On Exercises</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Expert-Led Sessions</span>
+                    <span className="text-sm text-[#475569]">Expert-Led Sessions</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
+                    <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
                   </div>
                 </div>
 
                 <Link 
                   href={`/courses/responsible-ai/schedule?course=${courseSlug}`}
-                  className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center"
+                  className="w-full liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors mb-4 inline-block text-center"
                 >
                   View Schedule
                 </Link>
@@ -511,11 +515,11 @@ export default function ResponsibleAICoursePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">Achieving Responsible AI with SAFe Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on Achieving Responsible AI with SAFe Micro-credential Course</h2>
+            <p className="text-sm text-[#64748b] mb-2">Achieving Responsible AI with SAFe Course FAQs</p>
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">FAQs on Achieving Responsible AI with SAFe Micro-credential Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -533,8 +537,8 @@ export default function ResponsibleAICoursePage() {
                 }}
                 className={`px-6 py-2 rounded-md font-semibold transition-colors ${
                   activeFaqCategory === category.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-[#1f2c4a] text-white"
+                    : "bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20"
                 }`}
               >
                 {category.label}
@@ -573,7 +577,7 @@ export default function ResponsibleAICoursePage() {
               return currentFaqs.map((faq, index) => {
                 const isExpanded = expandedFaqs.includes(index);
                 return (
-                  <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div key={index} className="border border-[#1f2c4a]/15 rounded-lg overflow-hidden">
                     <button
                       onClick={() => {
                         setExpandedFaqs(prev =>
@@ -582,11 +586,11 @@ export default function ResponsibleAICoursePage() {
                             : [...prev, index]
                         );
                       }}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-[#1f2c4a]/[0.06] transition-colors"
                     >
-                      <h3 className="font-bold text-gray-900 pr-4">{faq.q}</h3>
+                      <h3 className="font-bold text-[#1f2c4a] pr-4">{faq.q}</h3>
                       <svg
-                        className={`w-5 h-5 text-gray-600 flex-shrink-0 transition-transform ${
+                        className={`w-5 h-5 text-[#64748b] flex-shrink-0 transition-transform ${
                           isExpanded ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -603,7 +607,7 @@ export default function ResponsibleAICoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-6 pb-6 pt-0">
-                        <p className="text-base text-gray-700">{faq.a}</p>
+                        <p className="text-base text-[#475569]">{faq.a}</p>
                       </div>
                     )}
                   </div>

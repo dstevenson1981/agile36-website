@@ -57,7 +57,7 @@ export default async function PracticeExamPage({
         <p className="text-slate-600 mb-6">
           No practice exam available for this course yet.
         </p>
-        <Link href={`/courses/${courseId}`} className="text-[#fa4a23] font-medium hover:underline">
+        <Link href={`/courses/${courseId}`} className="text-[#d97706] font-medium hover:underline">
           ← Back to course
         </Link>
       </div>

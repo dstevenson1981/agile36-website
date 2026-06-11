@@ -16,8 +16,8 @@ export default async function ProfilePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-slate-900 mb-2">My Profile</h1>
-      <p className="text-slate-600 mb-8">Update your account information.</p>
+      <h1 className="text-2xl font-normal text-white mb-2" style={{ letterSpacing: '-0.03em' }}>My Profile</h1>
+      <p className="text-gray-300 mb-8">Update your account information.</p>
 
       <ProfileForm
         userId={user.id}

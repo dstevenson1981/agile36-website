@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function ReleaseTrainEngineerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -15,17 +16,17 @@ export default function ReleaseTrainEngineerCoursePage() {
   const courseSlug = "release-train-engineer";
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#01203d]">Home</Link>
+          <div className="flex items-center gap-2 mb-6 text-sm text-[#64748b]">
+            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe</span>
+            <span className="text-[#334155]">SAFe</span>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe AI-Empowered Release Train Engineer Certification Training</span>
+            <span className="text-[#334155]">SAFe AI-Empowered Release Train Engineer Certification Training</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -41,8 +42,8 @@ export default function ReleaseTrainEngineerCoursePage() {
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-1.5">
-                  <svg className="h-5 w-5 shrink-0 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] px-3 py-1.5">
+                  <svg className="h-5 w-5 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                   </svg>
                   <span className="text-sm font-semibold text-blue-700">English</span>
@@ -57,20 +58,20 @@ export default function ReleaseTrainEngineerCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-gray-900 sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
                   SAFe AI-Empowered Release Train Engineer Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-semibold text-gray-700 md:mb-5 md:text-xl">
+                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
                   Master ART facilitation and PI planning—with responsible AI practices to sharpen readiness, dependencies, and stakeholder communication
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="1,800+ enrolled"
                   trailing={
-                    <div className="flex items-center gap-2 rounded-lg border-2 border-green-500 bg-green-50 px-3 py-2 sm:px-4">
-                      <svg className="h-5 w-5 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 sm:px-4">
+                      <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
+                      <span className="text-sm font-bold text-emerald-700">Certification Exam Included</span>
                     </div>
                   }
                 />
@@ -86,10 +87,10 @@ export default function ReleaseTrainEngineerCoursePage() {
                     "Become a certified SAFe Release Train Engineer (RTE)"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-gray-700">{item}</span>
+                      <span className="text-base text-[#475569]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -97,7 +98,7 @@ export default function ReleaseTrainEngineerCoursePage() {
 
               {/* Accredited By */}
               <div className="flex items-center gap-4 pt-4">
-                <span className="text-base font-semibold text-gray-900">Accredited by</span>
+                <span className="text-base font-semibold text-[#1f2c4a]">Accredited by</span>
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
                     <Image
@@ -127,7 +128,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2"
+                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -136,7 +137,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                 </a>
                 <button 
                   onClick={() => setShowConsultationModal(true)}
-                  className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
+                  className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors inline-block text-center"
                 >
                   Contact Us to Register
                 </button>
@@ -159,10 +160,13 @@ export default function ReleaseTrainEngineerCoursePage() {
         </div>
       </section>
 
+      {/* Trusted by industry leaders */}
+      <TrustedByStrip />
+
       {/* Key to Success Section */}
-      <section className="w-full bg-gradient-to-b from-[#d3edff52] to-transparent py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-12 text-center">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-12 text-center">
             Our Key to Exam and Career Success
           </h2>
           
@@ -170,15 +174,15 @@ export default function ReleaseTrainEngineerCoursePage() {
             {[
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ), 
-                title: "Guaranteed to Pass" 
+                title: "High Pass Rate" 
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 ), 
@@ -186,7 +190,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ), 
@@ -194,7 +198,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
                 ), 
@@ -202,7 +206,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ), 
@@ -210,7 +214,7 @@ export default function ReleaseTrainEngineerCoursePage() {
               },
               { 
                 icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -219,10 +223,10 @@ export default function ReleaseTrainEngineerCoursePage() {
               }
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#d3edff99] to-transparent flex items-center justify-center mb-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
+                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
               </div>
             ))}
           </div>
@@ -230,13 +234,13 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* Main Content with Pricing Card */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main content area - 2 columns */}
             <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
               {/* Tabs Navigation */}
-              <div className="border-b border-gray-200">
+              <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
                   {[
                     { id: "overview", label: "Overview" },
@@ -249,8 +253,8 @@ export default function ReleaseTrainEngineerCoursePage() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                         activeTab === tab.id
-                          ? "border-[#fa4a23] text-[#fa4a23]"
-                          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                          ? "border-[#d97706] text-[#d97706]"
+                          : "border-transparent text-[#64748b] hover:text-[#1f2c4a] hover:border-[#1f2c4a]/40"
                       }`}
                     >
                       {tab.label}
@@ -264,21 +268,21 @@ export default function ReleaseTrainEngineerCoursePage() {
                 {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
+                      <p className="text-base text-[#475569] mb-4">
                         The <strong>SAFe AI-Empowered Release Train Engineer (RTE)</strong> certification training is designed for professionals who want to master facilitating Agile Release Trains (ARTs) and driving program-level success—while building fluency with <strong>responsible, practical use of AI</strong> in an RTE’s day-to-day work. As an RTE, you facilitate flow through the ART, coach teams and stakeholders, and steward continuous improvement across multiple Agile teams.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         This course follows official SAFe RTE learning outcomes and exam objectives. In addition, you will practice <strong>AI-empowered workflows</strong> suited to Release Trains: clarifying objectives before PI Planning, drafting and refining dependency hypotheses, summarizing risks and impediments for leadership, and accelerating communications—always with verification, privacy, and human accountability. These additions complement (they do not replace) classic RTE facilitation and coaching skills.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         Our instruction combines expert-led training with exercises and scenarios so you can succeed on the RTE certification exam and apply both SAFe and AI-assisted techniques on the job. Take the next step toward becoming a certified SAFe Release Train Engineer with a modern, AI-aware toolkit.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         The AI-Empowered RTE track offers the same core outcomes as premier Release Train Engineer programs, plus applied patterns for using AI safely to support PI readiness, cross-team alignment, and stakeholder engagement.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -292,18 +296,18 @@ export default function ReleaseTrainEngineerCoursePage() {
                           "Continuous improvement practices"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-gray-700">{item}</span>
+                            <span className="text-base text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                         <li>Certified SAFe Scrum Masters (SSM) seeking advancement</li>
                         <li>Experienced Scrum Masters and Agile Coaches</li>
                         <li>Program-level facilitators and coaches</li>
@@ -313,33 +317,33 @@ export default function ReleaseTrainEngineerCoursePage() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Certification Details</h3>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Certification Details</h3>
+                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-4">
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">SAFe Release Train Engineer Certification Path</p>
-                            <p className="text-sm text-gray-600">Comprehensive certification program</p>
+                            <p className="font-semibold text-[#1f2c4a]">SAFe Release Train Engineer Certification Path</p>
+                            <p className="text-sm text-[#64748b]">Comprehensive certification program</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">21 PDUs</p>
-                            <p className="text-sm text-gray-600">Earn professional development units</p>
+                            <p className="font-semibold text-[#1f2c4a]">21 PDUs</p>
+                            <p className="text-sm text-[#64748b]">Earn professional development units</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">Digital Certificate</p>
-                            <p className="text-sm text-gray-600">Downloadable upon completion</p>
+                            <p className="font-semibold text-[#1f2c4a]">Digital Certificate</p>
+                            <p className="text-sm text-[#64748b]">Downloadable upon completion</p>
                           </div>
                         </div>
                       </div>
@@ -347,27 +351,27 @@ export default function ReleaseTrainEngineerCoursePage() {
 
                     {/* What is Leading SAFe Training */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What is the SAFe Release Train Engineer Certification Path?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What is the SAFe Release Train Engineer Certification Path?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         The SAFe Release Train Engineer Certification Path is an advanced certification program designed to help experienced Scrum Masters enhance their ability to facilitate Agile teams effectively, master conflict resolution, boost team collaboration, optimize team flow and Agile Release Train (ART) performance, and drive organizational success with advanced Agile methodologies.
                       </p>
-                      <p className="text-base text-gray-700">
+                      <p className="text-base text-[#475569]">
                         This course mostly focuses on methodologies for SAFe; the certification provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. It will provide you with insights into the resolution of conflicts & team dynamics and the Agile metrics that will ensure your team remains flexible and efficient. This course will also include Advanced Facilitator Training in Conflict and Collaboration that is self-paced (2 hours) and facilitated interactive training (4 hours) for you to improve your facilitation and leadership skills.
                       </p>
                     </div>
 
                     {/* Why Leading SAFe */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why Choose the SAFe Release Train Engineer Certification Path?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Why Choose the SAFe Release Train Engineer Certification Path?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         The SAFe SAFe Release Train Engineer Certification empowers experienced Scrum Masters to effectively lead program-level coaching, organizational transformation, and scaling Agile practices in a SAFe environment. It provides advanced understanding of how to coach at scale, facilitate organizational change, mentor other Scrum Masters, and lead Agile Release Train transformations.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         By earning this certification, you gain the expertise to lead organizational change, scale Agile practices across multiple teams, and develop other Scrum Masters. The certification is recognized globally and opens doors to senior Scrum Master, Program-level Agile Coach, and Agile Transformation Leader roles in enterprise Agile organizations.
                       </p>
-                      <div className="bg-blue-50 border-l-4 border-[#006f] p-6 my-6">
-                        <p className="text-base text-gray-700 font-semibold mb-2">Key Benefits:</p>
-                        <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <div className="bg-[#1f2c4a]/[0.06] border-l-2 border-[#d97706] p-6 my-6">
+                        <p className="text-base text-[#475569] font-semibold mb-2">Key Benefits:</p>
+                        <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                           <li>Master advanced SAFe Scrum Master principles and program-level coaching</li>
                           <li>Improve organizational transformation and change leadership skills</li>
                           <li>Accelerate enterprise agility through program-level facilitation</li>
@@ -379,11 +383,11 @@ export default function ReleaseTrainEngineerCoursePage() {
 
                     {/* What Will You Learn */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in the SAFe Release Train Engineer Certification Path?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What Will You Learn in the SAFe Release Train Engineer Certification Path?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         Complete the SAFe Release Train Engineer Certification Path to gain the advanced practical tools and knowledge needed to effectively facilitate Agile teams, resolve conflicts, optimize team flow, and drive organizational success. This comprehensive certification path covers advanced facilitation techniques, SAFe's Eight Flow Accelerators, fostering high-performing teams, and real-world applications.
                       </p>
-                      <p className="text-base text-gray-700 mb-6">
+                      <p className="text-base text-[#475569] mb-6">
                         Through the SAFe Release Train Engineer Certification Path, you will learn:
                       </p>
                       <div className="space-y-4">
@@ -399,11 +403,11 @@ export default function ReleaseTrainEngineerCoursePage() {
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">
-                              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-gray-700">{item}</p>
+                            <p className="text-base text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -411,66 +415,66 @@ export default function ReleaseTrainEngineerCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for the SAFe Release Train Engineer Certification Path?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Prerequisites for the SAFe Release Train Engineer Certification Path?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         To enroll in the <strong>SAFe Release Train Engineer Certification Path,</strong> you must have:
                       </p>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-3">
+                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700"><strong>SAFe Scrum Master (SSM) certification is required</strong></p>
+                          <p className="text-base text-[#475569]"><strong>SAFe Scrum Master (SSM) certification is required</strong></p>
                         </div>
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Experience as a Scrum Master or Agile Coach (recommended)</p>
+                          <p className="text-base text-[#475569]">Experience as a Scrum Master or Agile Coach (recommended)</p>
                         </div>
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Interest in program-level coaching and organizational transformation</p>
+                          <p className="text-base text-[#475569]">Interest in program-level coaching and organizational transformation</p>
                         </div>
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Willingness to lead and mentor other Scrum Masters</p>
+                          <p className="text-base text-[#475569]">Willingness to lead and mentor other Scrum Masters</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Career Advancement */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">How Does SAFe® SAFe Release Train Engineer Certification Advance Your Career?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">How Does SAFe® SAFe Release Train Engineer Certification Advance Your Career?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         Earning your SAFe SAFe Release Train Engineer certification opens up numerous senior career opportunities and demonstrates your commitment to advanced professional growth. The certification validates your ability to effectively lead program-level coaching and organizational transformation in a SAFe environment.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Career Growth</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Career Growth</h4>
+                          <p className="text-base text-[#475569]">
                             The SAFe Release Train Engineer Certification Path positions you for senior Scrum Master, Agile Coach, and Agile Transformation Leader roles in enterprise Agile organizations.
                           </p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Salary Increase</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Salary Increase</h4>
+                          <p className="text-base text-[#475569]">
                             Certified SAFe SAFe Release Train Engineer professionals typically earn 30-40% more than their non-certified peers, with salaries ranging from $100,000 to $150,000 depending on experience and location.
                           </p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Industry Recognition</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Industry Recognition</h4>
+                          <p className="text-base text-[#475569]">
                             The SAFe SSM certification is recognized by top organizations worldwide, including Fortune 500 companies, making you a valuable asset in the job market.
                           </p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Network Expansion</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Network Expansion</h4>
+                          <p className="text-base text-[#475569]">
                             Join a global community of 1+ million SAFe professionals, access exclusive resources, and connect with industry leaders through the SAFe Community Platform.
                           </p>
                         </div>
@@ -479,74 +483,74 @@ export default function ReleaseTrainEngineerCoursePage() {
 
                     {/* Course Format */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Course Format & Delivery</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Course Format & Delivery</h3>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Live Virtual Training</h4>
-                          <p className="text-sm text-gray-700">Interactive online sessions with expert instructors</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Live Virtual Training</h4>
+                          <p className="text-sm text-[#475569]">Interactive online sessions with expert instructors</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Course Materials</h4>
-                          <p className="text-sm text-gray-700">Comprehensive study guides and practice exams</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Course Materials</h4>
+                          <p className="text-sm text-[#475569]">Comprehensive study guides and practice exams</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Community Access</h4>
-                          <p className="text-sm text-gray-700">1 year access to SAFe Community Platform</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Community Access</h4>
+                          <p className="text-sm text-[#475569]">1 year access to SAFe Community Platform</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Release Train Engineer Certification Path Information</h3>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">SAFe Release Train Engineer Certification Path Information</h3>
+                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-4">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Course Format:</p>
-                            <p className="text-base text-gray-700">Live virtual training with hands-on activities</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Course Format:</p>
+                            <p className="text-base text-[#475569]">Live virtual training with hands-on activities</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">3 days</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Duration:</p>
+                            <p className="text-base text-[#475569]">3 days</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Class Time:</p>
-                            <p className="text-base text-gray-700">9 AM - 2 PM EST</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Class Time:</p>
+                            <p className="text-base text-[#475569]">9 AM - 2 PM EST</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Advanced Facilitator Training:</p>
-                            <p className="text-base text-gray-700">Self-paced (2 hours) + Interactive (4 hours)</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Advanced Facilitator Training:</p>
+                            <p className="text-base text-[#475569]">Self-paced (2 hours) + Interactive (4 hours)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, 20 questions</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Exam Format:</p>
+                            <p className="text-base text-[#475569]">Multiple choice, 20 questions</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">16 out of 20 (80%)</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Passing Score:</p>
+                            <p className="text-base text-[#475569]">16 out of 20 (80%)</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 mb-2">Certification:</p>
-                            <p className="text-base text-gray-700">SAFe Release Train Engineer Certification Path</p>
+                            <p className="font-semibold text-[#1f2c4a] mb-2">Certification:</p>
+                            <p className="text-base text-[#475569]">SAFe Release Train Engineer Certification Path</p>
                           </div>
                         </div>
-                        <div className="pt-4 border-t border-gray-200">
-                          <p className="text-base text-gray-700 mb-2">
+                        <div className="pt-4 border-t border-[#1f2c4a]/15">
+                          <p className="text-base text-[#475569] mb-2">
                             <strong>Note:</strong> This comprehensive certification path combines expert-led training with hands-on activities and actual scenarios to help you gain practical knowledge. The course includes Advanced Facilitator Training in Conflict and Collaboration to improve your facilitation and leadership skills.
                           </p>
                         </div>
@@ -559,15 +563,15 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-2">Course Curriculum</p>
-                        <h2 className="text-3xl font-bold text-gray-900">SAFe AI-Empowered Release Train Engineer Certification Training Curriculum</h2>
+                        <p className="text-sm text-[#64748b] mb-2">Course Curriculum</p>
+                        <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe AI-Empowered Release Train Engineer Certification Training Curriculum</h2>
                       </div>
                       <a 
                         href="/RTE_Brochure.pdf" 
                         download
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
+                        className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -576,9 +580,9 @@ export default function ReleaseTrainEngineerCoursePage() {
                       </a>
                     </div>
                     {/* Learning Objectives Section */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Learning Objectives</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                    <div className="bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/15 rounded-lg p-6 mb-6">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Learning Objectives</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         By the end of this certification path, you will be able to:
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
@@ -593,10 +597,10 @@ export default function ReleaseTrainEngineerCoursePage() {
                           "Apply SAFe metrics and reporting practices"
                         ].map((objective, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-gray-700">{objective}</span>
+                            <span className="text-base text-[#475569]">{objective}</span>
                           </div>
                         ))}
                       </div>
@@ -631,13 +635,13 @@ export default function ReleaseTrainEngineerCoursePage() {
                       ].map((module, index) => (
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
                           <button
-                            className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-50 transition-colors"
+                            className="w-full flex items-center justify-between p-4 text-left hover:bg-[#1f2c4a]/[0.1] transition-colors"
                             onClick={() => {
                               // Toggle expansion logic can be added here if needed
                             }}
                           >
-                            <span className="text-lg font-semibold text-gray-900">{module.module}</span>
-                            <svg className="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span className="text-lg font-semibold text-[#1f2c4a]">{module.module}</span>
+                            <svg className="w-5 h-5 text-[#64748b] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                             </svg>
                           </button>
@@ -650,16 +654,16 @@ export default function ReleaseTrainEngineerCoursePage() {
                 {activeTab === "reviews" && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-3xl font-bold text-gray-900">Student Reviews</h2>
+                      <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Student Reviews</h2>
                       <div className="flex items-center gap-2">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
-                        <span className="text-base font-semibold text-gray-900">4.9 (234 reviews)</span>
+                        <span className="text-base font-semibold text-[#1f2c4a]">4.9 (234 reviews)</span>
                       </div>
                     </div>
                     <div className="space-y-6">
@@ -713,21 +717,21 @@ export default function ReleaseTrainEngineerCoursePage() {
                           rating: 5
                         }
                       ].map((review, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div>
-                              <h4 className="font-bold text-gray-900">{review.name}</h4>
-                              <p className="text-sm text-gray-600">{review.role}</p>
+                              <h4 className="font-bold text-[#1f2c4a]">{review.name}</h4>
+                              <p className="text-sm text-[#64748b]">{review.role}</p>
                             </div>
                             <div className="flex items-center">
                               {[...Array(review.rating)].map((_, i) => (
-                                <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg key={i} className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-gray-700">
+                          <p className="text-base text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -738,7 +742,7 @@ export default function ReleaseTrainEngineerCoursePage() {
 
                 {activeTab === "faq" && (
                   <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                    <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
                         { q: "What is the SAFe Scrum Master (SSM) certification?", a: "The SAFe Scrum Master (SSM) certification validates your knowledge of Scrum Master responsibilities in the Scaled Agile Framework and your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning in a SAFe environment." },
@@ -746,9 +750,9 @@ export default function ReleaseTrainEngineerCoursePage() {
                         { q: "What is included in the course?", a: "The course includes 3 days of live training, comprehensive course materials, practice exam, and certification." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners. Basic understanding of Scrum or Agile practices is recommended." }
                       ].map((faq, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
-                          <p className="text-base text-gray-700">{faq.a}</p>
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
+                          <p className="text-base text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -759,49 +763,49 @@ export default function ReleaseTrainEngineerCoursePage() {
 
             {/* Pricing Card - Sticky */}
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
-              <div className="bg-white border-2 border-gray-200 rounded-lg shadow-lg p-6">
+              <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$1,299</div>
-                  <div className="text-base text-gray-500 line-through">$1,699</div>
-                  <div className="text-sm text-green-600 font-semibold mt-2">24% OFF</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$1,299</div>
+                  <div className="text-base text-[#64748b] line-through">$1,699</div>
+                  <div className="text-sm text-emerald-600 font-semibold mt-2">24% OFF</div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">3 Days Training</span>
+                    <span className="text-sm text-[#475569]">3 Days Training</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">3 Days Duration</span>
+                    <span className="text-sm text-[#475569]">3 Days Duration</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">SAFe SAFe Release Train Engineer Certification</span>
+                    <span className="text-sm text-[#475569]">SAFe SAFe Release Train Engineer Certification</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">21 PDUs</span>
+                    <span className="text-sm text-[#475569]">21 PDUs</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
+                    <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
                   </div>
                 </div>
 
                 <button 
                   onClick={() => setShowConsultationModal(true)}
-                  className="w-full border-2 border-[#fa4a23] text-[#fa4a23] font-semibold py-3 rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors mb-4 inline-block text-center cursor-pointer"
+                  className="w-full liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors mb-4 inline-block text-center cursor-pointer"
                 >
                   Contact Us to Register
                 </button>
@@ -813,17 +817,17 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* Certificate Section */}
-      <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Get the SAFe Scrum Master Certification</p>
+            <p className="text-sm text-[#d97706] mb-1">Get the SAFe Scrum Master Certification</p>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">SAFe SAFe Release Train Engineer Certificate</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe SAFe Release Train Engineer Certificate</h2>
               <div className="flex gap-1">
-                <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
@@ -831,7 +835,7 @@ export default function ReleaseTrainEngineerCoursePage() {
           </div>
 
           {/* Certificate Display */}
-          <div className="bg-white border border-blue-200 rounded-lg overflow-hidden">
+          <div className="rounded-2xl border border-[#1f2c4a]/15 overflow-hidden">
             <img
               src="/RTE_Cert.jpg"
               alt="SAFe SAFe Release Train Engineer Certificate"
@@ -842,11 +846,11 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">SAFe Release Train Engineer Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on SAFe Release Train Engineer (RTE) Certification Course</h2>
+            <p className="text-sm text-[#64748b] mb-2">SAFe Release Train Engineer Course FAQs</p>
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">FAQs on SAFe Release Train Engineer (RTE) Certification Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -865,8 +869,8 @@ export default function ReleaseTrainEngineerCoursePage() {
                 }}
                 className={`px-6 py-2 rounded-md font-semibold transition-colors ${
                   activeFaqCategory === category.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50"
+                    ? "bg-[#1f2c4a] text-white"
+                    : "liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a] hover:text-white"
                 }`}
               >
                 {category.label}
@@ -917,7 +921,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                 return (
                   <div
                     key={index}
-                    className="border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                    className="border border-[#1f2c4a]/15 rounded-lg bg-[#1f2c4a]/[0.06] hover:bg-[#1f2c4a]/[0.1] transition-colors"
                   >
                     <button
                       onClick={() => {
@@ -929,11 +933,11 @@ export default function ReleaseTrainEngineerCoursePage() {
                       }}
                       className="w-full flex items-center justify-between p-4 text-left"
                     >
-                      <span className="font-semibold text-gray-900 pr-4">
+                      <span className="font-semibold text-[#1f2c4a] pr-4">
                         {index + 1}. {faq.q}
                       </span>
                       <svg
-                        className={`w-5 h-5 text-blue-600 flex-shrink-0 transition-transform ${
+                        className={`w-5 h-5 text-[#d97706] flex-shrink-0 transition-transform ${
                           isExpanded ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -950,8 +954,8 @@ export default function ReleaseTrainEngineerCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-4 pb-4 pt-0">
-                        <div className="pt-4 border-t border-gray-300">
-                          <p className="text-base text-gray-700 leading-relaxed">{faq.a}</p>
+                        <div className="pt-4 border-t border-[#1f2c4a]/20">
+                          <p className="text-base text-[#475569] leading-relaxed">{faq.a}</p>
                         </div>
                       </div>
                     )}
@@ -964,10 +968,10 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#334155] mb-4">
               Why Choose the SAFe Release Train Engineer Certification Path with Agile36?
             </h2>
           </div>
@@ -978,17 +982,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 1 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Globally Recognized SAFe® Certification
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Agile36 offers SAFe Scrum Master training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
                   </p>
                 </div>
@@ -997,17 +1001,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 2 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Hands-On Learning Experience
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
                   </p>
                 </div>
@@ -1016,17 +1020,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 3 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Comprehensive Exam Preparation
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Get guided exam readiness support, including learning resources, and expert mentoring to ensure success in the SAFe Release Train Engineer Certification Path.
                   </p>
                 </div>
@@ -1035,17 +1039,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 4 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Earn PDUs and SEUs for Career Advancement
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Participants earn 21 PDUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
                   </p>
                 </div>
@@ -1057,17 +1061,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 5 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Expert-Led Training by Certified SPCs
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
                   </p>
                 </div>
@@ -1076,17 +1080,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 6 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Flexible Learning Options
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
                   </p>
                 </div>
@@ -1095,17 +1099,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 7 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Networking with Global SAFe® Professionals
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
                   </p>
                 </div>
@@ -1114,17 +1118,17 @@ export default function ReleaseTrainEngineerCoursePage() {
               {/* Benefit 8 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Post-Certification Career Support
                   </h3>
-                  <p className="text-base text-gray-700">
+                  <p className="text-base text-[#475569]">
                     Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
                   </p>
                 </div>
@@ -1135,44 +1139,44 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* SAFe Agilist Certification Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               SAFe SAFe Release Train Engineer Certification
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               There has been a significant increase in demand for the SAFe SAFe Release Train Engineer certification across the United States, as more organizations embrace Agile-at-scale methodologies and seek experienced professionals to lead program-level coaching and organizational transformation. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe SAFe Release Train Engineers and Program-level Agile Coaches who can lead organizational change, scale Agile practices across multiple teams, mentor other Scrum Masters, and drive Agile Release Train transformations. These certified experts are highly valued for their expertise in program-level coaching, organizational transformation, advanced facilitation, and scaling Agile practices. The SAFe SAFe Release Train Engineer certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys and seek senior Agile leadership.
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What Certifications Are Required for SAFe SAFe Release Train Engineer Certification Training?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               Experience as a Scrum Master or Agile Coach is recommended to enroll in the SAFe Release Train Engineer Certification Path in the United States. The SAFe Release Train Engineer Certification Path provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. The course covers advanced facilitation techniques, conflict resolution, team dynamics, Agile metrics, and includes Advanced Facilitator Training in Conflict and Collaboration. The certification path is designed for experienced Scrum Masters seeking to advance their careers.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What Are Job Opportunities for SAFe SAFe Release Train Engineer Professionals?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               SAFe Release Train Engineer professionals in the United States have excellent senior career prospects across various industries. Job opportunities include Senior Scrum Master, Agile Coach, Agile Transformation Leader, Enterprise Agile Coach, and Agile Release Train Coach roles. Companies in technology, finance, healthcare, and manufacturing sectors actively seek professionals with SAFe Release Train Engineer certification who can facilitate Agile teams effectively, resolve conflicts, optimize team flow, and drive organizational success with advanced Agile methodologies. The certification opens doors to senior leadership positions in Agile transformation and team facilitation roles.
             </p>
           </div>
 
           {/* Section 4 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What is the Fee for SAFe SAFe Release Train Engineer Certification?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               The cost of the SAFe Release Train Engineer certification training is <strong>$1,299</strong>. This is a private course, so please contact us to discuss your training needs and schedule. This investment includes three days of instructor-led training, comprehensive digital study materials, practice exam, and certification. The pricing for SAFe Release Train Engineer certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
@@ -1180,10 +1184,10 @@ export default function ReleaseTrainEngineerCoursePage() {
       </section>
 
       {/* Find Leading SAFe Course in Cities Section */}
-      <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
+          <p className="text-sm text-[#64748b] mb-2 text-center">Courses based on location</p>
+          <h2 className="text-2xl md:text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8 text-center">
             Find SAFe SAFe Release Train Engineer Course in Other Top Cities
           </h2>
           
@@ -1225,9 +1229,9 @@ export default function ReleaseTrainEngineerCoursePage() {
                 <Link
                   key={city}
                   href={`/release-train-engineer-certification-training/${citySlug}`}
-                  className="bg-white border border-gray-200 rounded-lg px-4 py-3 text-center hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
+                  className="liquid-glass rounded-lg px-4 py-3 text-center hover:bg-[#1f2c4a]/[0.1] transition-all cursor-pointer"
                 >
-                  <span className="text-base text-gray-900 font-medium">{city}</span>
+                  <span className="text-base text-[#1f2c4a] font-medium">{city}</span>
                 </Link>
               );
             })}
@@ -1237,54 +1241,54 @@ export default function ReleaseTrainEngineerCoursePage() {
 
       {/* Consultation Modal */}
       {showConsultationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#ffffff] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setShowConsultationModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-[#64748b] hover:text-[#1f2c4a]"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get Course Information</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Get Course Information</h2>
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your full name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your email"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Phone</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your phone number"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Message</label>
                   <textarea
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Tell us about your requirements"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#fa4a23] text-white font-bold py-3 rounded-md hover:bg-[#e03d1a] transition-colors"
+                  className="w-full bg-[#1f2c4a] text-white font-medium py-3 rounded-lg hover:bg-[#16243f] transition-colors"
                 >
                   Submit
                 </button>

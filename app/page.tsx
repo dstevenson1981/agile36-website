@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HomePageClient from "./HomePageClient";
+import HomeExperience from "./components/home/HomeExperience";
 import {
   SCHEMA_INSTRUCTOR_DEADRA_STEVENSON_ID,
   SCHEMA_INSTRUCTOR_JOE_PUOCI_ID,
@@ -43,7 +43,7 @@ export default function Page() {
           __html: JSON.stringify(homepageInstructorPersonGraph),
         }}
       />
-      <HomePageClient />
+      <HomeExperience />
     </>
   );
 }

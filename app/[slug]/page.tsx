@@ -125,11 +125,57 @@ export default async function SeoProgrammaticPage({
 
   return (
     <div
+      className="bg-black text-[#1f2c4a]"
       style={{
         minHeight: '60vh',
-        backgroundColor: '#ffffff',
       }}
     >
+      {/* Dark-theme overrides for the scoped seo-programmatic.css (graphite glass theme) */}
+      <style>{`
+        .seo-programmatic-page {
+          --seo-primary-blue: #d97706;
+          --seo-primary-blue-dark: #f59e0b;
+          --seo-accent-orange: #d97706;
+          --seo-text-dark: #ffffff;
+          --seo-text-medium: #d1d5db;
+          --seo-text-light: #9ca3af;
+          --seo-border-color: rgba(255, 255, 255, 0.15);
+          --seo-bg-white: rgba(255, 255, 255, 0.06);
+          --seo-bg-light: rgba(255, 255, 255, 0.04);
+          background-color: transparent;
+        }
+        .seo-programmatic-page article h2,
+        .seo-programmatic-page article h3,
+        .seo-programmatic-page article h4,
+        .seo-programmatic-page .faq-title,
+        .seo-programmatic-page .cta-title {
+          font-weight: 400;
+          letter-spacing: -0.03em;
+        }
+        .seo-programmatic-page .article-tag {
+          background-color: rgba(251, 191, 36, 0.12);
+          color: #d97706;
+        }
+        .seo-programmatic-page .comparison-table tbody tr:hover {
+          background-color: rgba(255, 255, 255, 0.08);
+        }
+        .seo-programmatic-page .faq-item {
+          border-radius: 1rem;
+        }
+        .seo-programmatic-page .cta-section {
+          border-radius: 1rem;
+        }
+        .seo-programmatic-page .cta-button {
+          background-color: #ffffff;
+          color: #000000;
+          border-radius: 0.5rem;
+          font-weight: 500;
+        }
+        .seo-programmatic-page .cta-button:hover {
+          background-color: #f3f4f6;
+          color: #000000;
+        }
+      `}</style>
       <main
         style={{
           maxWidth: '800px',
@@ -155,8 +201,9 @@ export default async function SeoProgrammaticPage({
           <h1
             style={{
               fontSize: '2.5rem',
-              fontWeight: '700',
-              color: '#1a202c',
+              fontWeight: '400',
+              letterSpacing: '-0.03em',
+              color: '#ffffff',
               marginBottom: '1.5rem',
               lineHeight: '1.2',
               maxWidth: '90%',
@@ -169,7 +216,7 @@ export default async function SeoProgrammaticPage({
         <article
           style={{
             lineHeight: '1.7',
-            color: '#4a5568',
+            color: '#d1d5db',
           }}
         >
           {formatBodyContent(page.body)}
@@ -181,7 +228,9 @@ export default async function SeoProgrammaticPage({
               style={{
                 fontSize: '1.75rem',
                 marginBottom: '1.5rem',
-                fontWeight: '700',
+                fontWeight: '400',
+                letterSpacing: '-0.03em',
+                color: '#ffffff',
               }}
             >
               Comparison Table

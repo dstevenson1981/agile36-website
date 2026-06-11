@@ -15,11 +15,11 @@ type Order = {
 export default function OrdersList({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
-        <p className="text-slate-600 mb-4">You haven&apos;t placed any orders yet.</p>
+      <div className="liquid-glass rounded-2xl p-12 text-center">
+        <p className="text-gray-300 mb-4">You haven&apos;t placed any orders yet.</p>
         <a
           href="/"
-          className="inline-flex items-center px-6 py-3 bg-[#fa4a23] text-white font-semibold rounded-lg hover:bg-[#e03d1a] transition"
+          className="inline-flex items-center px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition"
         >
           Browse courses
         </a>
@@ -32,16 +32,16 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
       {orders.map((order) => (
         <div
           key={order.id}
-          className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
+          className="liquid-glass rounded-2xl p-6 hover:bg-white/[0.1] transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h3 className="font-semibold text-slate-900">{order.course_name}</h3>
-              <p className="text-sm text-slate-500 mt-1">
+              <h3 className="font-medium text-white">{order.course_name}</h3>
+              <p className="text-sm text-gray-400 mt-1">
                 {order.schedule_date && `Class: ${order.schedule_date}`}
                 {!order.schedule_date && new Date(order.created_at).toLocaleDateString('en-US', { dateStyle: 'medium' })}
               </p>
-              <p className="text-sm text-slate-600 mt-1">
+              <p className="text-sm text-gray-300 mt-1">
                 ${order.amount.toFixed(2)} {order.currency.toUpperCase()}
               </p>
             </div>
@@ -49,8 +49,8 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
               <span
                 className={`px-3 py-1 rounded-full text-xs font-medium ${
                   order.payment_status === 'succeeded'
-                    ? 'bg-emerald-100 text-emerald-800'
-                    : 'bg-amber-100 text-amber-800'
+                    ? 'bg-green-400/15 text-green-300'
+                    : 'bg-[#fbbf24]/15 text-[#fbbf24]'
                 }`}
               >
                 {order.payment_status}
@@ -59,7 +59,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                 href={`/api/receipt?pi=${order.payment_intent_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-[#fa4a23] hover:underline"
+                className="text-sm font-medium text-[#fbbf24] hover:underline"
               >
                 Receipt →
               </a>

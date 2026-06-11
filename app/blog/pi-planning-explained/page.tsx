@@ -34,24 +34,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
           ))}
         </div>
       </div>
@@ -65,14 +65,14 @@ function ExecutiveSummary() {
   return (
     <section
       aria-label="At a glance"
-      className="bg-gray-50 border-l-4 border-[#01203d] p-6 md:p-8 my-10 rounded-r-lg"
+      className="rounded-2xl border border-white/15 bg-white/[0.06] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#01203d] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-amber-400 font-bold mb-4">
         At a glance
       </p>
-      <ul className="space-y-3 text-gray-800 text-[17px] leading-relaxed">
+      <ul className="space-y-3 text-gray-300 text-[17px] leading-relaxed">
         <li className="flex gap-3">
-          <span className="text-yellow-500 font-bold">01</span>
+          <span className="text-amber-400 font-bold">01</span>
           <span>
             <strong>PI Planning</strong> is a cadence-based, two-day event where
             every team on an Agile Release Train plans the next 8–12 week
@@ -80,14 +80,14 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-yellow-500 font-bold">02</span>
+          <span className="text-amber-400 font-bold">02</span>
           <span>
             Typical scale: <strong>5–12 teams, 50–125 people</strong>, all in
             the same virtual or physical room at the same time.
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-yellow-500 font-bold">03</span>
+          <span className="text-amber-400 font-bold">03</span>
           <span>
             Four outputs matter:{" "}
             <strong>PI objectives, program board, ROAMed risks,</strong> and a
@@ -95,7 +95,7 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-yellow-500 font-bold">04</span>
+          <span className="text-amber-400 font-bold">04</span>
           <span>
             Great PI Planning isn&apos;t about having a perfect plan — it&apos;s
             about having a plan an entire ART believes in and will course-correct
@@ -117,28 +117,28 @@ function AgendaTimeline() {
         role="img"
         aria-label="PI Planning 2-day agenda from business context through final plan review"
         viewBox="0 0 960 460"
-        className="w-full h-auto rounded-xl border border-gray-200"
+        className="w-full h-auto rounded-xl border border-white/10"
       >
-        <rect width="960" height="460" fill="#f8fafc" />
-        <text x="480" y="40" textAnchor="middle" fill="#01203d" fontSize="22" fontWeight="700" fontFamily="system-ui,sans-serif">PI Planning: 2-Day Agenda</text>
+        <rect width="960" height="460" fill="rgba(255,255,255,0.03)" />
+        <text x="480" y="40" textAnchor="middle" fill="#ffffff" fontSize="22" fontWeight="700" fontFamily="system-ui,sans-serif">PI Planning: 2-Day Agenda</text>
 
-        <rect x="48" y="76" width="864" height="166" rx="12" fill="#01203d" />
-        <text x="74" y="108" fill="#facc15" fontSize="18" fontWeight="700" fontFamily="system-ui,sans-serif">Day 1 — Context &amp; Draft Plans</text>
+        <rect x="48" y="76" width="864" height="166" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" />
+        <text x="74" y="108" fill="#fbbf24" fontSize="18" fontWeight="700" fontFamily="system-ui,sans-serif">Day 1 — Context &amp; Draft Plans</text>
         <text x="74" y="138" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Business context (executive)</text>
         <text x="74" y="162" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Product / solution vision</text>
         <text x="74" y="186" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Architecture vision &amp; development practices</text>
         <text x="74" y="210" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Team breakouts — draft plans, dependencies, risks</text>
-        <text x="500" y="138" fill="#facc15" fontSize="13" fontWeight="600" fontFamily="system-ui,sans-serif">Afternoon focus:</text>
+        <text x="500" y="138" fill="#fbbf24" fontSize="13" fontWeight="600" fontFamily="system-ui,sans-serif">Afternoon focus:</text>
         <text x="500" y="162" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Draft plan review</text>
         <text x="500" y="186" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Management review &amp; problem solving</text>
 
-        <rect x="48" y="262" width="864" height="166" rx="12" fill="#134263" />
-        <text x="74" y="294" fill="#facc15" fontSize="18" fontWeight="700" fontFamily="system-ui,sans-serif">Day 2 — Finalize &amp; Commit</text>
+        <rect x="48" y="262" width="864" height="166" rx="12" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.15)" />
+        <text x="74" y="294" fill="#fbbf24" fontSize="18" fontWeight="700" fontFamily="system-ui,sans-serif">Day 2 — Finalize &amp; Commit</text>
         <text x="74" y="324" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Planning adjustments from Day 1</text>
         <text x="74" y="348" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Team breakouts — finalize PI objectives</text>
         <text x="74" y="372" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Final plan review (team by team)</text>
         <text x="74" y="396" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Program risks ROAMed</text>
-        <text x="500" y="324" fill="#facc15" fontSize="13" fontWeight="600" fontFamily="system-ui,sans-serif">End-of-day decision:</text>
+        <text x="500" y="324" fill="#fbbf24" fontSize="13" fontWeight="600" fontFamily="system-ui,sans-serif">End-of-day decision:</text>
         <text x="500" y="348" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Confidence vote (1–5)</text>
         <text x="500" y="372" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Rework if average is too low</text>
         <text x="500" y="396" fill="#ffffff" fontSize="14" fontFamily="system-ui,sans-serif">• Retrospective + moving forward</text>
@@ -157,31 +157,31 @@ function OutputsGrid() {
         role="img"
         aria-label="Four primary outputs of PI Planning: PI objectives, program board, risks, and confidence vote"
         viewBox="0 0 960 330"
-        className="w-full h-auto rounded-xl border border-gray-200"
+        className="w-full h-auto rounded-xl border border-white/10"
       >
-        <rect width="960" height="330" fill="#ffffff" />
-        <text x="480" y="40" textAnchor="middle" fill="#01203d" fontSize="22" fontWeight="700" fontFamily="system-ui,sans-serif">The 4 Outputs That Matter</text>
+        <rect width="960" height="330" fill="rgba(255,255,255,0.03)" />
+        <text x="480" y="40" textAnchor="middle" fill="#ffffff" fontSize="22" fontWeight="700" fontFamily="system-ui,sans-serif">The 4 Outputs That Matter</text>
 
-        <rect x="24" y="72" width="220" height="230" rx="14" fill="#01203d" />
-        <text x="134" y="118" textAnchor="middle" fill="#facc15" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">PI Objectives</text>
+        <rect x="24" y="72" width="220" height="230" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" />
+        <text x="134" y="118" textAnchor="middle" fill="#fbbf24" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">PI Objectives</text>
         <text x="134" y="154" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Team + program objectives</text>
         <text x="134" y="174" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Business value scored 1-10</text>
         <text x="134" y="194" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Stretch objectives flagged</text>
 
-        <rect x="256" y="72" width="220" height="230" rx="14" fill="#134263" />
-        <text x="366" y="118" textAnchor="middle" fill="#facc15" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">Program Board</text>
+        <rect x="256" y="72" width="220" height="230" rx="14" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.15)" />
+        <text x="366" y="118" textAnchor="middle" fill="#fbbf24" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">Program Board</text>
         <text x="366" y="154" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Features by iteration</text>
         <text x="366" y="174" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Dependencies made visible</text>
         <text x="366" y="194" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Shared single source of truth</text>
 
-        <rect x="488" y="72" width="220" height="230" rx="14" fill="#01203d" />
-        <text x="598" y="118" textAnchor="middle" fill="#facc15" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">ROAMed Risks</text>
+        <rect x="488" y="72" width="220" height="230" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" />
+        <text x="598" y="118" textAnchor="middle" fill="#fbbf24" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">ROAMed Risks</text>
         <text x="598" y="154" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Resolved / Owned</text>
         <text x="598" y="174" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Accepted / Mitigated</text>
         <text x="598" y="194" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Owners named before commit</text>
 
-        <rect x="720" y="72" width="216" height="230" rx="14" fill="#134263" />
-        <text x="828" y="118" textAnchor="middle" fill="#facc15" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">Confidence Vote</text>
+        <rect x="720" y="72" width="216" height="230" rx="14" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.15)" />
+        <text x="828" y="118" textAnchor="middle" fill="#fbbf24" fontSize="26" fontWeight="700" fontFamily="system-ui,sans-serif">Confidence Vote</text>
         <text x="828" y="154" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">1-5 fingers per person</text>
         <text x="828" y="174" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Average target: 3+</text>
         <text x="828" y="194" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="system-ui,sans-serif">Low vote triggers rework</text>
@@ -203,12 +203,12 @@ function ScaleStats() {
         {stats.map((s, i) => (
           <div
             key={i}
-            className="bg-white border border-gray-200 rounded-xl p-5 text-center"
+            className="bg-white/[0.06] border border-white/15 rounded-2xl p-5 text-center"
           >
-            <p className="text-3xl md:text-4xl font-bold text-[#01203d] leading-none">
+            <p className="text-3xl md:text-4xl font-bold text-amber-400 leading-none">
               {s.num}
             </p>
-            <p className="text-xs uppercase tracking-wider text-gray-600 font-semibold mt-3">
+            <p className="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-3">
               {s.label}
             </p>
           </div>
@@ -220,8 +220,8 @@ function ScaleStats() {
 
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
-    <blockquote className="my-10 border-l-4 border-yellow-400 pl-6 md:pl-8 py-2">
-      <p className="text-xl md:text-2xl font-semibold text-[#01203d] leading-snug italic">
+    <blockquote className="my-10 border-l-4 border-white/20 pl-6 md:pl-8 py-2">
+      <p className="text-xl md:text-2xl font-semibold text-gray-100 leading-snug italic">
         &ldquo;{children}&rdquo;
       </p>
     </blockquote>
@@ -239,15 +239,15 @@ function KeyTakeaways() {
   return (
     <section
       aria-label="Key takeaways"
-      className="bg-[#01203d] text-white rounded-xl p-6 md:p-8 my-10"
+      className="rounded-2xl border border-white/15 bg-white/[0.06] text-white p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-yellow-400 font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-amber-400 font-bold mb-4">
         Key takeaways
       </p>
       <ul className="space-y-3">
         {pts.map((p, i) => (
           <li key={i} className="flex gap-3 text-[17px] leading-relaxed">
-            <span className="text-yellow-400 font-bold">
+            <span className="text-amber-400 font-bold">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span dangerouslySetInnerHTML={{ __html: p }} />
@@ -268,12 +268,12 @@ function FailureCard({
   body: React.ReactNode;
 }) {
   return (
-    <div className="border border-gray-200 rounded-xl p-5 bg-white">
-      <p className="text-yellow-500 font-bold text-xs tracking-[0.18em] uppercase mb-2">
+    <div className="border border-white/15 rounded-2xl p-5 bg-white/[0.06]">
+      <p className="text-amber-400 font-bold text-xs tracking-[0.18em] uppercase mb-2">
         Failure {num}
       </p>
-      <p className="text-[#01203d] font-bold text-lg mb-2">{title}</p>
-      <p className="text-gray-700 text-[15px] leading-relaxed">{body}</p>
+      <p className="text-amber-400 font-bold text-lg mb-2">{title}</p>
+      <p className="text-gray-300 text-[15px] leading-relaxed">{body}</p>
     </div>
   );
 }
@@ -282,21 +282,21 @@ export default async function PiPlanningExplainedBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="pi-planning-explained" />
-      <main className="min-h-screen bg-white">
-      <div className="w-full h-64 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-white">
+      <div className="w-full h-64 bg-white/[0.04] border-b border-white/10 relative flex items-center justify-center overflow-hidden">
         <BlogHeroDots />
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-8 relative z-10">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-white text-center px-8 relative z-10">
           PI Planning Explained: The 2-Day Event That Makes SAFe Work
         </h1>
       </div>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center gap-2 mb-8 text-sm text-gray-600">
-          <Link href="/" className="hover:text-[#01203d]">
+        <div className="flex items-center gap-2 mb-8 text-sm text-gray-400">
+          <Link href="/" className="hover:text-white">
             Home
           </Link>
           <span>/</span>
-          <Link href="/blog" className="hover:text-[#01203d]">
+          <Link href="/blog" className="hover:text-white">
             Blog
           </Link>
           <span>/</span>
@@ -304,18 +304,18 @@ export default async function PiPlanningExplainedBlogPost() {
         </div>
 
         <div className="flex items-center justify-between mb-6">
-          <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">
+          <span className="border border-white/15 bg-white/[0.06] text-amber-400 text-sm font-semibold px-4 py-1 rounded-full">
             SAFe
           </span>
-          <span className="text-sm text-[#718aa5]">Guide · 12 min read</span>
+          <span className="text-sm text-gray-400">Guide · 12 min read</span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-white mb-8 leading-tight">
           PI Planning Explained: The 2-Day Event That Makes SAFe Work
         </h1>
 
-        <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+        <div className="prose prose-lg prose-invert max-w-none">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             If SAFe has a heartbeat, <strong>PI Planning</strong> is it. Every
             8–12 weeks, an entire Agile Release Train — typically 50 to 125
             people across 5–12 teams — gathers for two days to plan the next
@@ -325,7 +325,7 @@ export default async function PiPlanningExplainedBlogPost() {
             depth in the{" "}
             <Link
               href="/courses/leading-safe"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-amber-400 font-semibold underline hover:no-underline"
             >
               Leading SAFe course
             </Link>{" "}
@@ -334,7 +334,7 @@ export default async function PiPlanningExplainedBlogPost() {
 
           <ExecutiveSummary />
 
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             This guide is <em>PI Planning explained</em> from the perspective
             of someone who has facilitated it for dozens of ARTs — the agenda,
             who does what, the four outputs that actually matter, how remote
@@ -343,10 +343,10 @@ export default async function PiPlanningExplainedBlogPost() {
             motions.
           </p>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             What is PI Planning?
           </h2>
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             PI Planning is a cadence-based, face-to-face (or face-to-screen)
             event where every team on an Agile Release Train plans the next
             Program Increment together. A Program Increment (PI) is a fixed
@@ -356,7 +356,7 @@ export default async function PiPlanningExplainedBlogPost() {
 
           <ScaleStats />
 
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             The core idea: teams plan their own work, but they plan it together
             in the same room. That&apos;s what separates it from command-and-
             control planning where someone hands down a plan from above.
@@ -367,10 +367,10 @@ export default async function PiPlanningExplainedBlogPost() {
             the fact that 100 people built it in the same room.
           </PullQuote>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Why it matters
           </h2>
-          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-300">
             <li>
               <strong>Alignment without control.</strong> Business context and
               architecture vision are communicated to everyone at the same
@@ -397,20 +397,20 @@ export default async function PiPlanningExplainedBlogPost() {
 
           <SafeScrumMasterLink />
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             The 2-day agenda
           </h2>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Every well-run PI Planning follows the same basic structure. The
             timing varies by time zone and ART size, but the flow is the flow.
           </p>
 
           <AgendaTimeline />
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Day 1 morning: Set the context
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-300">
             <li>
               <strong>Business context</strong> — a senior executive opens with
               the current state of the business and what success looks like
@@ -429,10 +429,10 @@ export default async function PiPlanningExplainedBlogPost() {
             </li>
           </ul>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Day 1 afternoon: First team breakouts
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Teams split off and build a draft plan — features pulled from the
             program backlog, broken into stories, sized, and placed in
             iterations. Scrum Masters facilitate, Product Owners prioritize,
@@ -440,29 +440,29 @@ export default async function PiPlanningExplainedBlogPost() {
             meets at least once to surface cross-team issues.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Day 1 end: Draft plan review + management review
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Each team presents their draft plan, including risks and
             dependencies. After teams leave, leadership meets to make
             adjustments — scope changes, capacity shifts, descoped objectives
             — so teams come back Day 2 with the tradeoffs already made.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Day 2 morning: Planning adjustments + second breakouts
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             The RTE announces any changes. Teams incorporate them, finalize
             their PI objectives, and refine the program board. This is where
             rough plans become committed plans.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Day 2 afternoon: Final plan review + confidence vote
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Each team presents its finalized PI objectives, business value
             scores from Business Owners, and program-level risks. Program
             risks are ROAMed live. Then every individual votes 1–5 fingers on
@@ -470,16 +470,16 @@ export default async function PiPlanningExplainedBlogPost() {
             or above — plan is committed.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-8 leading-relaxed">
+          <p className="text-lg font-semibold text-white mb-8 leading-relaxed">
             The event closes with a short planning retrospective and a
             &quot;moving forward&quot; section — who&apos;s doing what starting
             Monday.
           </p>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Who&apos;s in the room
           </h2>
-          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 mb-8 space-y-2 text-gray-300">
             <li>
               <strong>Release Train Engineer (RTE)</strong> — the senior
               facilitator, owns the event
@@ -514,17 +514,17 @@ export default async function PiPlanningExplainedBlogPost() {
             </li>
           </ul>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             The 4 outputs that matter
           </h2>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Many teams leave PI Planning with a thick document that no one
             ever reads. The four things that actually matter:
           </p>
 
           <OutputsGrid />
 
-          <ol className="list-decimal pl-6 mb-8 space-y-3 text-gray-700">
+          <ol className="list-decimal pl-6 mb-8 space-y-3 text-gray-300">
             <li>
               <strong>PI Objectives</strong> — a concise list per team, plus
               program-level objectives. Each has a business value score from
@@ -548,14 +548,14 @@ export default async function PiPlanningExplainedBlogPost() {
             </li>
           </ol>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Remote and hybrid PI Planning
           </h2>
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             Since 2020, most ARTs run PI Planning fully remote or hybrid.
             It works when three things are true:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-300">
             <li>
               A single digital program board (Miro, Mural, or similar) that
               every team uses — one source of truth for dependencies
@@ -569,14 +569,14 @@ export default async function PiPlanningExplainedBlogPost() {
               hour four
             </li>
           </ul>
-          <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
             Hybrid events (some rooms in person, some teams remote) are the
             hardest to run well. If you can&apos;t commit to either fully
             remote or fully in-person, consider scheduling the event over
             three half-days rather than two full days.
           </p>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Common failure modes
           </h2>
           <div className="grid md:grid-cols-2 gap-4 my-6">
@@ -652,72 +652,72 @@ export default async function PiPlanningExplainedBlogPost() {
 
           <KeyTakeaways />
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Common questions
           </h2>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             How often does PI Planning happen?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Once per Program Increment — usually every 8–12 weeks, matching the
             PI cadence.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             How long is PI Planning?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Two days. Some remote events split it into three half-days, but
             the total facilitated time is still roughly 16 hours.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Who facilitates PI Planning?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             The Release Train Engineer owns the event. Scrum Masters facilitate
             team breakouts. The RTE role is covered in depth in the{" "}
             <Link
               href="/courses/release-train-engineer"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-amber-400 font-semibold underline hover:no-underline"
             >
               SAFe Release Train Engineer course
             </Link>
             .
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             What&apos;s the difference between PI Planning and Sprint Planning?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Sprint Planning is for one team, one sprint (1–2 weeks). PI
             Planning is for an entire ART (5–12 teams), one PI (8–12 weeks).
             Teams still do Sprint Planning at the start of each iteration —
             PI Planning sets the broader context for all of them.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Can you do PI Planning without SAFe?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             You can run a similar event — many orgs do — but calling it PI
             Planning implies the SAFe structure (ART, PI cadence, program
             backlog, Business Owners). Without those pieces, you&apos;re doing
             something else. Before you decide on a framework, compare the{" "}
             <Link
               href="/blog/ssm-vs-csm"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-amber-400 font-semibold underline hover:no-underline"
             >
               SSM vs CSM certification paths
             </Link>{" "}
             to see which fits your organization.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             What does a successful PI Planning look like?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Finalized PI objectives that every team believes in, a program
             board with dependencies visibly mapped, risks ROAMed with owners, a
             confidence vote averaging 3 or higher, and a planning retrospective
@@ -725,10 +725,10 @@ export default async function PiPlanningExplainedBlogPost() {
             missing, the event didn&apos;t land.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             How do remote PI Planning events differ?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             The agenda is identical. The logistics are harder: one shared
             digital program board, stricter time discipline, video on in
             breakouts, anonymous polling for confidence votes. Well-run remote
@@ -736,14 +736,14 @@ export default async function PiPlanningExplainedBlogPost() {
             preparation, not less.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 mb-2">
+          <p className="text-lg font-semibold text-white mb-2">
             Is PI Planning covered in SSM training?
           </p>
-          <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             Yes. A meaningful portion of{" "}
             <Link
               href="/blog/safe-scrum-master-exam-questions"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-amber-400 font-semibold underline hover:no-underline"
             >
               SAFe Scrum Master exam questions
             </Link>{" "}
@@ -751,16 +751,16 @@ export default async function PiPlanningExplainedBlogPost() {
             certifications cover it in more depth.
           </p>
 
-          <h2 className="text-3xl font-bold text-gray-900 mt-10 mb-4">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">
             Where to go from here
           </h2>
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-6 leading-relaxed">
             If you&apos;re planning to facilitate PI Planning, the Release
             Train Engineer certification is the right path. If you&apos;re
             planning to lead your organization toward adopting SAFe, start with
             Leading SAFe.
           </p>
-          <div className="bg-[#01203d] text-white rounded-xl p-8 text-center mb-8">
+          <div className="rounded-2xl border border-white/15 bg-white/[0.06] text-white p-8 text-center mb-8">
             <p className="text-xl font-bold mb-3">Learn SAFe from a real SPC</p>
             <p className="mb-5">
               Agile36 runs Leading SAFe, SSM, and RTE classes taught by
@@ -770,30 +770,30 @@ export default async function PiPlanningExplainedBlogPost() {
             <div className="flex gap-3 justify-center flex-wrap">
               <Link
                 href="/courses/leading-safe"
-                className="inline-block bg-yellow-400 text-[#01203d] font-bold px-6 py-3 rounded-full hover:bg-yellow-300"
+                className="inline-block bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-gray-100"
               >
                 Leading SAFe
               </Link>
               <Link
                 href="/courses/release-train-engineer"
-                className="inline-block bg-white text-[#01203d] font-bold px-6 py-3 rounded-full hover:bg-gray-100"
+                className="inline-block bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-gray-100"
               >
                 RTE Certification
               </Link>
             </div>
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Related reading:{" "}
             <Link
               href="/blog/safe-lpm-vs-popm"
-              className="text-[#01203d] underline hover:no-underline"
+              className="text-amber-400 underline hover:no-underline"
             >
               SAFe LPM vs POPM
             </Link>
             {" · "}
             <Link
               href="/blog/is-safe-certification-worth-it-2026"
-              className="text-[#01203d] underline hover:no-underline"
+              className="text-amber-400 underline hover:no-underline"
             >
               Is SAFe certification worth it
             </Link>
@@ -807,12 +807,12 @@ export default async function PiPlanningExplainedBlogPost() {
 
 function SafeScrumMasterLink() {
   return (
-    <p className="text-lg text-gray-700 mb-4 italic border-l-4 border-[#01203d] pl-4">
+    <p className="text-lg text-gray-300 mb-4 italic border-l-4 border-white/20 pl-4">
       Scrum Masters play a critical facilitation role during PI Planning. Full
       role coverage is in the{" "}
       <Link
         href="/courses/scrum-master"
-        className="text-[#01203d] font-semibold underline hover:no-underline"
+        className="text-amber-400 font-semibold underline hover:no-underline"
       >
         SAFe Scrum Master course
       </Link>

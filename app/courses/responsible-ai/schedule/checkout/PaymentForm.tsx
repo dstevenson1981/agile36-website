@@ -93,7 +93,7 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
         />
         
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          <div className="bg-red-500/10 border border-red-500/30 text-red-600 px-4 py-3 rounded-lg">
             {error}
           </div>
         )}
@@ -102,7 +102,7 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
+            className="flex-1 px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/10 transition-colors"
             disabled={isProcessing}
           >
             Cancel
@@ -110,7 +110,7 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
           <button
             type="submit"
             disabled={!stripe || isProcessing}
-            className="flex-1 bg-[#fa4a23] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#e03d1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#16243f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isProcessing ? (
               <>
@@ -128,14 +128,14 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
       </form>
 
       {/* Security & Trust Indicators */}
-      <div className="border-t border-gray-200 pt-6 space-y-4">
+      <div className="border-t border-[#1f2c4a]/15 pt-6 space-y-4">
         {/* Security Message */}
-        <div className="text-sm text-gray-600 text-center">
+        <div className="text-sm text-[#64748b] text-center">
           <p className="mb-2">
             Transactions on this site are safe, secure & PCI-DSS compliant as indicated by the secure lock in your address bar.
           </p>
-          <p className="font-semibold text-gray-900">
-            Over <span className="text-[#fa4a23]">500,000+</span> users like you have enrolled for courses
+          <p className="font-semibold text-[#1f2c4a]">
+            Over <span className="text-[#d97706]">500,000+</span> users like you have enrolled for courses
           </p>
         </div>
 

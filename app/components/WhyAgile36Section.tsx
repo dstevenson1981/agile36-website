@@ -27,25 +27,26 @@ export default function WhyAgile36Section() {
   ];
 
   return (
-    <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
+    <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-3">Why Agile36</p>
+          <h2 className="text-2xl md:text-3xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
             Why Choose Agile36 for SAFe Certification Training
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((item, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div key={i} className="flex gap-4 liquid-glass rounded-2xl p-6 transition-colors hover:bg-[#1f2c4a]/[0.1]">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#1f2c4a]/10 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-base text-gray-700">{item.description}</p>
+                <h3 className="text-lg font-medium text-[#1f2c4a] mb-2">{item.title}</h3>
+                <p className="text-base text-[#475569]">{item.description}</p>
               </div>
             </div>
           ))}

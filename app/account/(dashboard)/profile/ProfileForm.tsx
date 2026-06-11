@@ -53,53 +53,53 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm max-w-xl">
+    <form onSubmit={handleSubmit} className="liquid-glass rounded-2xl p-6 max-w-xl">
       <div className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
           <input
             id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:border-white/50 outline-none transition-colors"
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
           <input
             id="email"
             type="email"
             value={initialData.email}
             disabled
-            className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 text-slate-500"
+            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-gray-400"
           />
-          <p className="text-xs text-slate-500 mt-1">Email cannot be changed.</p>
+          <p className="text-xs text-gray-400 mt-1">Email cannot be changed.</p>
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">Phone</label>
           <input
             id="phone"
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:border-white/50 outline-none transition-colors"
           />
         </div>
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-1">Company</label>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">Company</label>
           <input
             id="company"
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:border-white/50 outline-none transition-colors"
           />
         </div>
       </div>
 
       {message && (
-        <div className={`mt-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-800'}`}>
+        <div className={`mt-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-400/15 text-green-300' : 'bg-red-500/15 text-red-300'}`}>
           {message.text}
         </div>
       )}
@@ -107,7 +107,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
       <button
         type="submit"
         disabled={saving}
-        className="mt-6 px-6 py-3 bg-[#fa4a23] text-white font-semibold rounded-lg hover:bg-[#e03d1a] disabled:opacity-50 transition"
+        className="mt-6 px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 disabled:opacity-50 transition"
       >
         {saving ? 'Saving...' : 'Save changes'}
       </button>

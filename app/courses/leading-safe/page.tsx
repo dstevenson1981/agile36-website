@@ -6,6 +6,10 @@ import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import CourseHeroStats from "@/app/components/CourseHeroStats";
+import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
+import { BadgeCheck, BookOpen, Users, CreditCard, BarChart3, Wrench } from "lucide-react";
+import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function LeadingSafeCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -16,7 +20,7 @@ export default function LeadingSafeCoursePage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
-  const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
+  const [activeFaqCategory, setActiveFaqCategory] = useState("courses");
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
 
   const examName = "Leading SAFe Practice Test | SAFe Agilist Mock";
@@ -65,52 +69,61 @@ export default function LeadingSafeCoursePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative w-full overflow-hidden bg-black px-4 pb-16 pt-10 sm:px-6 lg:px-20 lg:pb-20">
+        {/* Soft ambient glows behind the hero */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 -top-40 h-[55vh] w-[55vh] rounded-full bg-[#d97706]/[0.07] blur-[130px]" />
+          <div className="absolute -right-40 top-10 h-[60vh] w-[60vh] rounded-full bg-blue-500/[0.08] blur-[150px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#01203d]">Home</Link>
+          <div className="mb-8 flex items-center gap-2 text-sm text-[#64748b]">
+            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#01203d]">SAFe</span>
+            <Link href="/courses" className="hover:text-[#1f2c4a]">SAFe</Link>
             <span>/</span>
-            <span className="text-[#01203d]">AI-Empowered Leading SAFe® / SAFe Agilist</span>
+            <span className="text-[#334155]">Leading SAFe®</span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
             {/* Left Content */}
-            <div className="space-y-6">
+            <div className="space-y-7">
               {/* Category Badge */}
-              <div className="flex items-center gap-2">
-                <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
-                <span className="text-sm text-gray-500">AI-Empowered Leading SAFe Certification Training</span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                  Certification Exam Included
+                </span>
               </div>
 
-              {/* Title + trust under H1 (before deeper content & CTAs) */}
+              {/* Title */}
               <div>
-                <h1 className="mb-3 text-4xl font-bold leading-[1.08] text-gray-900 sm:text-5xl md:text-6xl lg:text-[3.35rem] md:mb-4">
-                  AI-Empowered Leading SAFe® Training with<br />
-                  SAFe Agilist Certification
+                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                  AI-Empowered Leading SAFe® Training with SAFe Agilist Certification
                 </h1>
-                <p className="mb-4 text-lg font-semibold text-gray-700 md:mb-5 md:text-xl">
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
                   Lead Agile transformations with expert-led SAFe® 6.0 Agile training and simulations.
                 </p>
-                <CourseHeroSocialProof
-                  enrolledLabel="9K+ Enrolled"
-                  trailing={
-                    <div className="flex items-center gap-2 rounded-lg border-2 border-green-500 bg-green-50 px-3 py-2 sm:px-4">
-                      <svg className="h-5 w-5 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span className="text-sm font-bold text-green-700">Certification Exam Included</span>
-                    </div>
-                  }
-                />
               </div>
 
+              {/* Social proof */}
+              <CourseHeroSocialProof enrolledLabel="9K+ Enrolled" />
+
+              {/* Infographic stats */}
+              <CourseHeroStats
+                stats={[
+                  { value: "9K+", label: "Enrolled", icon: "users" },
+                  { value: "4.94", label: "Avg. rating", icon: "star" },
+                  { value: "16", label: "Hours live", icon: "clock" },
+                  { value: "2", label: "Days", icon: "calendar" },
+                ]}
+              />
+
               {/* Features List */}
-              <div className="space-y-3">
+              <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
                 {[
                   "Join Leading SAFe Training with Agile36, a Scaled Agile Silver Partner",
                   "Master PI Planning & Portfolio Flow with Leading SAFe Certification",
@@ -119,102 +132,98 @@ export default function LeadingSafeCoursePage() {
                   "Get SAFe Agilist certified with live sessions & SAFe exam guidance"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 flex-shrink-0 mt-0.5">
-                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-600">
+                      <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                    </div>
-                    <p className="text-base text-gray-700">{feature}</p>
+                    </span>
+                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
 
               {/* Accredited By */}
-              <div className="flex items-center gap-4 pt-4">
-                <span className="text-base font-semibold text-gray-900">Accredited by</span>
+              <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+                <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Accredited by</span>
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/Silver.png"
-                      alt="Scaled Agile Silver Partner"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="w-16 h-16 rounded flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/Leading SAFe.png"
-                      alt="Leading SAFe"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+                  <Image
+                    src="/Silver.png"
+                    alt="Scaled Agile Silver Partner"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
+                  <Image
+                    src="/Leading SAFe.png"
+                    alt="Leading SAFe"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                <a 
-                  href="/Leading-SAFe_6.0_Partner.pdf" 
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/courses/leading-safe/schedule?course=${courseSlug}`}
+                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                >
+                  View Schedules
+                </Link>
+                <a
+                  href="/Leading-SAFe_6.0_Partner.pdf"
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 border-2 border-[#fa4a23] text-[#fa4a23] font-semibold rounded-md hover:bg-[#fa4a23] hover:text-white transition-colors flex items-center gap-2"
+                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Brochure
                 </a>
-                <Link 
-                  href={`/courses/leading-safe/schedule?course=${courseSlug}`}
-                  className="px-6 py-3 bg-[#fa4a23] text-white font-bold rounded-md hover:bg-[#e03d1a] transition-colors inline-block text-center"
-                >
-                  View Schedules
-                </Link>
-                <button 
+                <button
                   onClick={() => setShowAssessmentModal(true)}
-                  className="px-6 py-3 border-2 border-[#0e78c2] text-[#0e78c2] font-bold rounded-md hover:bg-[#0e78c2] hover:text-white transition-colors"
+                  className="liquid-glass rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   SA Free Assessment
                 </button>
               </div>
             </div>
 
-            {/* Pricing + schedule */}
+            {/* Sticky pricing card */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">16 Hours Training</span>
+                      <span className="text-sm text-[#475569]">16 Hours Training</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">2 Days Duration</span>
+                      <span className="text-sm text-[#475569]">2 Days Duration</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">SAFe Agilist Certification</span>
+                      <span className="text-sm text-[#475569]">SAFe Agilist Certification</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">16 PDUs & SEUs</span>
+                      <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">Lifetime Access to Materials</span>
+                      <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
                     </div>
                   </div>
             </CourseHeroRightColumn>
@@ -222,15 +231,18 @@ export default function LeadingSafeCoursePage() {
         </div>
       </section>
 
+      {/* Trusted by industry leaders */}
+      <TrustedByStrip />
+
       {/* AI-SEO: Page Summary - What is Leading SAFe? */}
-      <section className="w-full bg-blue-50 border-t-4 border-blue-600 py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] border-t border-[#1f2c4a]/10 py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">What is Leading SAFe Certification?</h2>
-            <p className="text-lg text-gray-800 leading-relaxed mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">What is Leading SAFe Certification?</h2>
+            <p className="text-lg text-[#334155] leading-relaxed mb-4">
               Leading SAFe (SAFe Agilist or SA) certification validates your knowledge of the Scaled Agile Framework and qualifies you to lead enterprise Agile transformations. The certification teaches you to implement SAFe principles, coordinate Agile Release Trains (ARTs), facilitate Program Increment (PI) Planning events, and manage value streams across large organizations with 50-125+ team members.
             </p>
-            <p className="text-lg text-gray-800 leading-relaxed">
+            <p className="text-lg text-[#334155] leading-relaxed">
               The certification is earned by completing a 2-day (16-hour) course taught by a SAFe Program Consultant (SPC) and passing the online SAFe Agilist exam. Upon certification, you receive one year of access to the SAFe Community Platform, 16 PDUs/SEUs, and the credentials to lead organizational-scale Agile initiatives.
             </p>
           </div>
@@ -238,59 +250,59 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* AI-SEO: Quick Facts */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Leading SAFe Quick Facts</h2>
+          <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Leading SAFe Quick Facts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
-              <h3 className="font-bold text-sm text-gray-600 mb-2">Certification</h3>
-              <p className="text-xl font-semibold text-gray-900">SAFe Agilist (SA)</p>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Certification</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">SAFe Agilist (SA)</p>
             </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
-              <h3 className="font-bold text-sm text-gray-600 mb-2">Duration</h3>
-              <p className="text-xl font-semibold text-gray-900">2 Days (16 Hours)</p>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Duration</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">2 Days (16 Hours)</p>
             </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
-              <h3 className="font-bold text-sm text-gray-600 mb-2">PDUs/SEUs</h3>
-              <p className="text-xl font-semibold text-gray-900">16 PDUs & 16 SEUs</p>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">PDUs/SEUs</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">16 PDUs & 16 SEUs</p>
             </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-lg">
-              <h3 className="font-bold text-sm text-gray-600 mb-2">Exam Attempts</h3>
-              <p className="text-xl font-semibold text-gray-900">1 Free + 1 Retake</p>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Exam Attempts</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">1 Free + 1 Retake</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* AI-SEO: Key Definitions */}
-      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Key Definitions</h2>
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Key Definitions</h2>
           <div className="space-y-6 max-w-4xl">
-            <div className="border-l-4 border-orange-500 pl-6 py-2">
-              <h3 className="font-bold text-xl text-gray-900 mb-2">What is SAFe (Scaled Agile Framework)?</h3>
-              <p className="text-gray-700 leading-relaxed">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is SAFe (Scaled Agile Framework)?</h3>
+              <p className="text-[#475569] leading-relaxed">
                 SAFe (Scaled Agile Framework) is a set of organization and workflow patterns for implementing Agile practices at enterprise scale. It provides a knowledge base of proven, integrated principles, practices, and competencies for Lean, Agile, and DevOps. SAFe synchronizes alignment, collaboration, and delivery for multiple Agile teams working toward common business objectives.
               </p>
             </div>
 
-            <div className="border-l-4 border-orange-500 pl-6 py-2">
-              <h3 className="font-bold text-xl text-gray-900 mb-2">What is an Agile Release Train (ART)?</h3>
-              <p className="text-gray-700 leading-relaxed">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is an Agile Release Train (ART)?</h3>
+              <p className="text-[#475569] leading-relaxed">
                 An Agile Release Train (ART) is a long-lived team of Agile teams (typically 50-125 people) that plans, commits, and executes together. The ART operates on a fixed schedule called a Program Increment (PI), usually 8-12 weeks long. All teams on the ART align to a common mission and vision through PI Planning events and deliver value incrementally.
               </p>
             </div>
 
-            <div className="border-l-4 border-orange-500 pl-6 py-2">
-              <h3 className="font-bold text-xl text-gray-900 mb-2">What is Program Increment (PI) Planning?</h3>
-              <p className="text-gray-700 leading-relaxed">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is Program Increment (PI) Planning?</h3>
+              <p className="text-[#475569] leading-relaxed">
                 PI Planning is a cadence-based, face-to-face (or virtual) event that serves as the heartbeat of the Agile Release Train. It occurs every 8-12 weeks where all ART members gather for two days to align on objectives, dependencies, and risks. Teams create iteration plans, establish features and stories, and commit to PI Objectives that support business goals.
               </p>
             </div>
 
-            <div className="border-l-4 border-orange-500 pl-6 py-2">
-              <h3 className="font-bold text-xl text-gray-900 mb-2">What is a Value Stream?</h3>
-              <p className="text-gray-700 leading-relaxed">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is a Value Stream?</h3>
+              <p className="text-[#475569] leading-relaxed">
                 A value stream is the series of steps an organization uses to deliver a product or service to a customer. In SAFe, value streams are either operational (delivering goods/services to customers) or development (building systems and capabilities). Mapping value streams helps identify delays, inefficiencies, and opportunities for improvement in the flow of value.
               </p>
             </div>
@@ -299,53 +311,53 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* AI-SEO: Who Should Take This Course */}
-      <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Who Should Take Leading SAFe Certification?</h2>
-          <p className="text-lg text-gray-700 mb-6 max-w-4xl">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Who Should Take Leading SAFe Certification?</h2>
+          <p className="text-lg text-[#475569] mb-6 max-w-4xl">
             Leading SAFe certification is designed for leaders, managers, and change agents responsible for implementing Agile at organizational scale:
           </p>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Executives and Senior Leaders</h3>
-                <p className="text-gray-700">CEOs, VPs, Directors, and C-suite executives driving organizational Agile transformation and portfolio strategy.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Executives and Senior Leaders</h3>
+                <p className="text-[#475569]">CEOs, VPs, Directors, and C-suite executives driving organizational Agile transformation and portfolio strategy.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Program and Project Managers</h3>
-                <p className="text-gray-700">Leaders managing Agile Release Trains, coordinating multiple teams, and overseeing large-scale initiatives.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Program and Project Managers</h3>
+                <p className="text-[#475569]">Leaders managing Agile Release Trains, coordinating multiple teams, and overseeing large-scale initiatives.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Agile Coaches and Consultants</h3>
-                <p className="text-gray-700">Professionals coaching organizations through Agile adoption and SAFe implementation at enterprise scale.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Agile Coaches and Consultants</h3>
+                <p className="text-[#475569]">Professionals coaching organizations through Agile adoption and SAFe implementation at enterprise scale.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Product and Portfolio Managers</h3>
-                <p className="text-gray-700">Leaders responsible for product vision, portfolio management, and value stream optimization.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Product and Portfolio Managers</h3>
+                <p className="text-[#475569]">Leaders responsible for product vision, portfolio management, and value stream optimization.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Development Managers</h3>
-                <p className="text-gray-700">Engineering leaders managing technical teams and implementing DevOps practices within SAFe.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Development Managers</h3>
+                <p className="text-[#475569]">Engineering leaders managing technical teams and implementing DevOps practices within SAFe.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-bold text-xl">•</span>
+              <span className="text-[#d97706] font-bold text-xl">•</span>
               <div>
-                <h3 className="font-bold text-lg text-gray-900">Business Analysts and Architects</h3>
-                <p className="text-gray-700">Professionals defining solutions, managing requirements, and ensuring architectural alignment across teams.</p>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Business Analysts and Architects</h3>
+                <p className="text-[#475569]">Professionals defining solutions, managing requirements, and ensuring architectural alignment across teams.</p>
               </div>
             </div>
           </div>
@@ -353,105 +365,93 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* AI-SEO: Related SAFe Certifications - Entity Linking */}
-      <section className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Related SAFe Certifications</h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-4xl">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Related SAFe Certifications</h2>
+          <p className="text-lg text-[#475569] mb-8 max-w-4xl">
             After earning your Leading SAFe certification, consider these advanced SAFe certifications to deepen your expertise:
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/courses/product-owner-manager" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
-              <p className="text-gray-700 text-sm">Learn to define and prioritize Program Backlogs, manage stakeholder expectations, and deliver customer value through Agile Release Trains.</p>
+            <Link href="/courses/product-owner-manager" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
+              <p className="text-[#475569] text-sm">Learn to define and prioritize Program Backlogs, manage stakeholder expectations, and deliver customer value through Agile Release Trains.</p>
             </Link>
-            <Link href="/courses/scrum-master" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Scrum Master (SSM)</h3>
-              <p className="text-gray-700 text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
+            <Link href="/courses/scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Scrum Master (SSM)</h3>
+              <p className="text-[#475569] text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
             </Link>
-            <Link href="/release-train-engineer-certification-training" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
-              <p className="text-gray-700 text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
+              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
             </Link>
-            <Link href="/courses/lean-portfolio-management" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ Lean Portfolio Management (LPM)</h3>
-              <p className="text-gray-700 text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
+            <Link href="/courses/lean-portfolio-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Lean Portfolio Management (LPM)</h3>
+              <p className="text-[#475569] text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
             </Link>
-            <Link href="/courses/advanced-scrum-master" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
-              <p className="text-gray-700 text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
+            <Link href="/courses/advanced-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
+              <p className="text-[#475569] text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
             </Link>
-            <Link href="/courses/value-stream-mapping" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-lg transition-all">
-              <h3 className="font-bold text-lg text-gray-900 mb-2">→ SAFe Value Stream Mapping</h3>
-              <p className="text-gray-700 text-sm">Identify and eliminate waste, optimize flow, and accelerate value delivery through value stream analysis.</p>
+            <Link href="/courses/value-stream-mapping" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Value Stream Mapping</h3>
+              <p className="text-[#475569] text-sm">Identify and eliminate waste, optimize flow, and accelerate value delivery through value stream analysis.</p>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Key to Success Section */}
-      <section className="w-full bg-gradient-to-b from-[#d3edff52] to-transparent py-8 px-4 sm:px-6 lg:px-20">
+      {/* Key to Success Section — glassmorphism feature cards */}
+      <section className="w-full bg-[#e9eef6] py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-12 text-center">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3 text-center">
             Our Key to Exam and Career Success
           </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <p className="mb-12 text-center text-[#64748b]">
+            Everything in your enrollment is built to get you certified — and hired.
+          </p>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ), 
-                title: "Guaranteed to Pass" 
+              {
+                Icon: BadgeCheck,
+                title: "High Pass Rate",
+                desc: "Exam fee and a free retake are included with enrollment.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                ), 
-                title: "Expert-Led Study Sessions" 
+              {
+                Icon: BookOpen,
+                title: "Expert-Led Study Sessions",
+                desc: "Live exam prep with certified SPC instructors.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                ), 
-                title: "Networking Opportunities" 
+              {
+                Icon: Users,
+                title: "Networking Opportunities",
+                desc: "Join a global community of certified SAFe leaders.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                ), 
-                title: "Flexible Monthly Payment Plans" 
+              {
+                Icon: CreditCard,
+                title: "Flexible Monthly Payment Plans",
+                desc: "Split your tuition into easy monthly payments.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                ), 
-                title: "Real-World Case Studies" 
+              {
+                Icon: BarChart3,
+                title: "Real-World Case Studies",
+                desc: "Learn through real enterprise transformation scenarios.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                ), 
-                title: "Hands-On Project Experience" 
-              }
-            ].map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#d3edff99] to-transparent flex items-center justify-center mb-4">
-                  {item.icon}
-                </div>
-                <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
+              {
+                Icon: Wrench,
+                title: "Hands-On Project Experience",
+                desc: "Practice PI Planning in live, instructor-run simulations.",
+              },
+            ].map(({ Icon, title, desc }) => (
+              <div
+                key={title}
+                className="group rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/20 hover:shadow-[0_16px_40px_-12px_rgba(13,148,136,0.35),inset_0_1px_1px_rgba(255,255,255,0.8)]"
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal-600/10 text-teal-600 transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
+                </span>
+                <h3 className="mt-4 text-base font-bold text-[#1f2c4a]">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#64748b]">{desc}</p>
               </div>
             ))}
           </div>
@@ -459,13 +459,13 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* Main Content with Pricing Card */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-12">
             {/* Main content area - full width */}
             <div className="space-y-12">
               {/* Tabs Navigation */}
-              <div className="border-b border-gray-200">
+              <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
                   {[
                     { id: "overview", label: "Overview" },
@@ -478,8 +478,8 @@ export default function LeadingSafeCoursePage() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                         activeTab === tab.id
-                          ? "border-[#fa4a23] text-[#fa4a23]"
-                          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                          ? "border-[#d97706] text-[#d97706]"
+                          : "border-transparent text-[#64748b] hover:text-[#1f2c4a] hover:border-[#1f2c4a]/40"
                       }`}
                     >
                       {tab.label}
@@ -493,17 +493,17 @@ export default function LeadingSafeCoursePage() {
                 {activeTab === "overview" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
+                      <p className="text-base text-[#475569] mb-4">
                         Leading SAFe® 6.0 is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). This course prepares you to take the SAFe® 6 Agilist (SA) certification exam.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         During this two-day course, you'll learn how to lead an enterprise Agile transformation by leveraging the Scaled Agile Framework. You'll understand how to establish team and technical agility, organize around value, and lead the transformation.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
                           "Understanding SAFe principles and values",
@@ -514,18 +514,18 @@ export default function LeadingSafeCoursePage() {
                           "Building a culture of continuous improvement"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-gray-700">{item}</span>
+                            <span className="text-base text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Who Should Attend</h3>
-                      <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                         <li>Executives and leaders driving Agile transformations</li>
                         <li>Agile coaches and consultants</li>
                         <li>Program and portfolio managers</li>
@@ -535,33 +535,33 @@ export default function LeadingSafeCoursePage() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Certification Details</h3>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Certification Details</h3>
+                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-4">
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">SAFe® 6 Agilist (SA) Certification</p>
-                            <p className="text-sm text-gray-600">Valid for 1 year, renewable</p>
+                            <p className="font-semibold text-[#1f2c4a]">SAFe® 6 Agilist (SA) Certification</p>
+                            <p className="text-sm text-[#64748b]">Valid for 1 year, renewable</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">16 PDUs & SEUs</p>
-                            <p className="text-sm text-gray-600">Earn professional development units</p>
+                            <p className="font-semibold text-[#1f2c4a]">16 PDUs & SEUs</p>
+                            <p className="text-sm text-[#64748b]">Earn professional development units</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <svg className="w-6 h-6 text-[#fa4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-gray-900">Digital Certificate</p>
-                            <p className="text-sm text-gray-600">Downloadable upon completion</p>
+                            <p className="font-semibold text-[#1f2c4a]">Digital Certificate</p>
+                            <p className="text-sm text-[#64748b]">Downloadable upon completion</p>
                           </div>
                         </div>
                       </div>
@@ -569,27 +569,27 @@ export default function LeadingSafeCoursePage() {
 
                     {/* What is Leading SAFe Training */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What is Leading SAFe training?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What is Leading SAFe training?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         Leading SAFe Training is a certification program designed to help professionals understand and implement the Scaled Agile Framework (SAFe) in their organizations. This comprehensive course covers the principles, practices, and tools needed to lead enterprise Agile transformations successfully.
                       </p>
-                      <p className="text-base text-gray-700">
+                      <p className="text-base text-[#475569]">
                         The training prepares participants for the SAFe Agilist certificate exam, providing them with the knowledge and skills to scale Agile practices across large organizations and deliver value more effectively.
                       </p>
                     </div>
 
                     {/* Why Leading SAFe */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Why Leading SAFe?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Why Leading SAFe?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         The Leading SAFe® Certification empowers professionals to lead Agile transformations at an enterprise scale. It provides a comprehensive understanding of how to apply Lean-Agile principles across multiple teams and departments, ensuring alignment and continuous delivery of value.
                       </p>
-                      <p className="text-base text-gray-700 mb-4">
+                      <p className="text-base text-[#475569] mb-4">
                         By earning this certification, you gain the expertise to coordinate multiple teams, enhance collaboration, and deliver continuous value to customers. The certification is recognized globally and opens doors to leadership roles in Agile organizations.
                       </p>
-                      <div className="bg-blue-50 border-l-4 border-[#006f] p-6 my-6">
-                        <p className="text-base text-gray-700 font-semibold mb-2">Key Benefits:</p>
-                        <ul className="list-disc list-inside space-y-2 text-base text-gray-700">
+                      <div className="bg-[#1f2c4a]/[0.06] border-l-2 border-[#d97706] p-6 my-6">
+                        <p className="text-base text-[#475569] font-semibold mb-2">Key Benefits:</p>
+                        <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
                           <li>Lead enterprise-wide Agile transformations</li>
                           <li>Improve team collaboration and alignment</li>
                           <li>Accelerate time-to-market for products and services</li>
@@ -601,11 +601,11 @@ export default function LeadingSafeCoursePage() {
 
                     {/* What Will You Learn */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">What Will You Learn in Leading SAFe Certification Training?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What Will You Learn in Leading SAFe Certification Training?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         Complete your SAFe Agile certification course to gain the practical tools and leadership mindset needed to scale agility across your organization. This comprehensive training covers all aspects of the Scaled Agile Framework.
                       </p>
-                      <p className="text-base text-gray-700 mb-6">
+                      <p className="text-base text-[#475569] mb-6">
                         Through Leading SAFe Agilist Certification, you will learn:
                       </p>
                       <div className="space-y-4">
@@ -621,11 +621,11 @@ export default function LeadingSafeCoursePage() {
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <div className="w-6 h-6 flex-shrink-0 mt-0.5">
-                              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-gray-700">{item}</p>
+                            <p className="text-base text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -633,124 +633,137 @@ export default function LeadingSafeCoursePage() {
 
                     {/* Prerequisites */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Prerequisites for Leading SAFe Certification Training Course?</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Prerequisites for Leading SAFe Certification Training Course?</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         There are no formal prerequisites to enroll in the <strong>Leading SAFe Certification course.</strong> A basic understanding of Agile and Scrum is recommended to get the most from the training.
                       </p>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-3">
+                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Basic understanding of Agile and Scrum recommended</p>
+                          <p className="text-base text-[#475569]">Basic understanding of Agile and Scrum recommended</p>
                         </div>
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Experience in software development, IT, or project delivery helpful</p>
+                          <p className="text-base text-[#475569]">Experience in software development, IT, or project delivery helpful</p>
                         </div>
                         <div className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-gray-700">Interest in leading enterprise Agile transformation</p>
+                          <p className="text-base text-[#475569]">Interest in leading enterprise Agile transformation</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Career & Salary */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Career Outcomes for SAFe Agilists</h3>
-                      <p className="text-base text-gray-700 mb-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Career Outcomes for SAFe Agilists</h3>
+                      <p className="text-base text-[#475569] mb-4">
                         Earning your SAFe Agilist certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to lead Agile transformations and manage complex enterprise-level initiatives.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Average Salary</h4>
-                          <p className="text-base text-gray-700">
-                            $100,000–$150,000+ (US)
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Average Salary (US)</h4>
+                          <RangeBar
+                            title="$100K – $150K+"
+                            minLabel="$100,000"
+                            midLabel="$125,000"
+                            maxLabel="$150,000+"
+                            caption="Typical US salary band for certified SAFe Agilists"
+                          />
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Common Roles</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
+                          <p className="text-base text-[#475569]">
                             Agile Coach, Release Train Engineer, Enterprise Agile Coach, Agile Transformation Lead
                           </p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Top Hiring Industries</h4>
-                          <p className="text-base text-gray-700">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-3">Top Hiring Industries</h4>
+                          <p className="text-base text-[#475569]">
                             Financial services, healthcare, federal government, technology
                           </p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6">
-                          <h4 className="font-bold text-gray-900 mb-3">Demand</h4>
-                          <p className="text-base text-gray-700">
-                            70% of Fortune 100 companies use SAFe — certified leaders are in high demand
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
+                          <DemandMeter caption="70% of Fortune 100 companies run SAFe — certified leaders are in high demand." />
                         </div>
                       </div>
                     </div>
 
                     {/* Course Format */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">Course Format & Delivery</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Course Format & Delivery</h3>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Live Virtual Training</h4>
-                          <p className="text-sm text-gray-700">Interactive online sessions with expert instructors</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Live Virtual Training</h4>
+                          <p className="text-sm text-[#475569]">Interactive online sessions with expert instructors</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Course Materials</h4>
-                          <p className="text-sm text-gray-700">Comprehensive study guides and practice exams</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Course Materials</h4>
+                          <p className="text-sm text-[#475569]">Comprehensive study guides and practice exams</p>
                         </div>
-                        <div className="border border-gray-200 rounded-lg p-6 text-center">
-                          <div className="w-16 h-16 bg-[#fa4a23] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-center">
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                           </div>
-                          <h4 className="font-bold text-gray-900 mb-2">Community Access</h4>
-                          <p className="text-sm text-gray-700">1 year access to SAFe Community Platform</p>
+                          <h4 className="font-bold text-[#1f2c4a] mb-2">Community Access</h4>
+                          <p className="text-sm text-[#475569]">1 year access to SAFe Community Platform</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Exam Information */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#006f] mb-4">SAFe Agilist Exam Information</h3>
-                      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Format:</p>
-                            <p className="text-base text-gray-700">Multiple choice, 45 questions</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Duration:</p>
-                            <p className="text-base text-gray-700">90 minutes</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Passing Score:</p>
-                            <p className="text-base text-gray-700">73% (33 out of 45)</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 mb-2">Exam Fee:</p>
-                            <p className="text-base text-gray-700">Included with course enrollment</p>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">SAFe Agilist Exam Information</h3>
+                      <div className="bg-[#1f2c4a]/[0.04] rounded-2xl border border-[#1f2c4a]/10 p-6 space-y-6">
+                        <div className="grid items-center gap-6 md:grid-cols-[200px_1fr]">
+                          <RadialGauge
+                            percent={73}
+                            sublabel="to pass"
+                            label="Passing score — 33 of 45 questions"
+                          />
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <FactChip
+                              value="45 questions"
+                              label="Multiple choice, open book"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>}
+                            />
+                            <FactChip
+                              value="90 minutes"
+                              label="Online, from anywhere"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 7v5l3 2" /></svg>}
+                            />
+                            <FactChip
+                              value="Exam fee included"
+                              label="With course enrollment"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                            />
+                            <FactChip
+                              value="1 free retake"
+                              label="If you don't pass first try"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0114-3m2 9a8 8 0 01-14 3" /></svg>}
+                            />
                           </div>
                         </div>
-                        <div className="pt-4 border-t border-gray-200">
-                          <p className="text-base text-gray-700 mb-2">
+                        <div className="pt-4 border-t border-[#1f2c4a]/15">
+                          <p className="text-base text-[#475569] mb-2">
                             <strong>Note:</strong> The exam can be taken online from anywhere, and you have 30 days after course completion to take the exam. One free retake is included if you don't pass on the first attempt.
                           </p>
                         </div>
@@ -761,21 +774,21 @@ export default function LeadingSafeCoursePage() {
 
                 {activeTab === "curriculum" && (
                   <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Course Curriculum</h2>
+                    <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Course Curriculum</h2>
                     <div className="space-y-4">
                       {[
                         { day: "Day 1", topics: ["Introduction to SAFe", "Becoming a Lean-Agile Leader", "Establishing Team and Technical Agility", "Building Solutions with Agile Product Delivery"] },
                         { day: "Day 2", topics: ["Exploring Lean Portfolio Management", "Leading the Transformation", "Exam Preparation", "Practice Exam"] }
                       ].map((day, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h3 className="text-xl font-bold text-gray-900 mb-4">{day.day}</h3>
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">{day.day}</h3>
                           <ul className="space-y-2">
                             {day.topics.map((topic, topicIndex) => (
                               <li key={topicIndex} className="flex items-start gap-3">
-                                <svg className="w-5 h-5 text-[#fa4a23] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span className="text-base text-gray-700">{topic}</span>
+                                <span className="text-base text-[#475569]">{topic}</span>
                               </li>
                             ))}
                           </ul>
@@ -788,16 +801,16 @@ export default function LeadingSafeCoursePage() {
                 {activeTab === "reviews" && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-3xl font-bold text-gray-900">Student Reviews</h2>
+                      <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Student Reviews</h2>
                       <div className="flex items-center gap-2">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
-                        <span className="text-base font-semibold text-gray-900">4.9 (234 reviews)</span>
+                        <span className="text-base font-semibold text-[#1f2c4a]">4.9 (234 reviews)</span>
                       </div>
                     </div>
                     <div className="space-y-6">
@@ -851,21 +864,21 @@ export default function LeadingSafeCoursePage() {
                           rating: 5
                         }
                       ].map((review, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div>
-                              <h4 className="font-bold text-gray-900">{review.name}</h4>
-                              <p className="text-sm text-gray-600">{review.role}</p>
+                              <h4 className="font-bold text-[#1f2c4a]">{review.name}</h4>
+                              <p className="text-sm text-[#64748b]">{review.role}</p>
                             </div>
                             <div className="flex items-center">
                               {[...Array(review.rating)].map((_, i) => (
-                                <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg key={i} className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-gray-700">
+                          <p className="text-base text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -876,7 +889,7 @@ export default function LeadingSafeCoursePage() {
 
                 {activeTab === "faq" && (
                   <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                    <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
                         { q: "What is the SAFe Agilist certification?", a: "The SAFe Agilist (SA) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
@@ -884,9 +897,9 @@ export default function LeadingSafeCoursePage() {
                         { q: "What is included in the course?", a: "The course includes 16 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners." }
                       ].map((faq, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-6">
-                          <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
-                          <p className="text-base text-gray-700">{faq.a}</p>
+                        <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+                          <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
+                          <p className="text-base text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -900,12 +913,12 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* Practice Test Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-bold text-gray-900">Leading SAFe® Practice Test</h2>
-              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h2 className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Leading SAFe® Practice Test</h2>
+              <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             </div>
@@ -920,10 +933,10 @@ export default function LeadingSafeCoursePage() {
                 "Previous Exams"
               ].map((feature, index) => (
                 <div key={index} className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-base text-gray-700 font-medium">{feature}</span>
+                  <span className="text-base text-[#475569] font-medium">{feature}</span>
                 </div>
               ))}
             </div>
@@ -931,54 +944,54 @@ export default function LeadingSafeCoursePage() {
 
           {/* Practice Test Card */}
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white border-2 border-blue-200 rounded-xl p-8 shadow-lg">
+            <div className="liquid-glass rounded-2xl p-8">
               {/* Badge */}
               <div className="mb-4">
-                <span className="bg-green-600 text-white text-sm font-semibold px-4 py-1.5 rounded-md">
+                <span className="bg-emerald-500/15 border border-emerald-400/40 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-md">
                   1 Practice Test
                 </span>
               </div>
 
               {/* Title and Users */}
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-xl font-bold text-[#1f2c4a]">
                   Leading SAFe Practice Test | SAFe Agilist Mock Test
                 </h3>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  <span className="text-base text-gray-700 font-semibold">9K+ Users</span>
+                  <span className="text-base text-[#475569] font-semibold">9K+ Users</span>
                 </div>
               </div>
 
               {/* Test Details */}
-              <div className="flex items-center gap-8 mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-center gap-8 mb-6 pb-6 border-b border-[#1f2c4a]/15">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-gray-700 font-medium">45 Questions</span>
+                  <span className="text-base text-[#475569] font-medium">45 Questions</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-gray-700 font-medium">1 hours and 30 minutes</span>
+                  <span className="text-base text-[#475569] font-medium">1 hours and 30 minutes</span>
                 </div>
               </div>
 
               {/* Footer */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
-                  <span className="text-base text-gray-700 font-medium">English</span>
+                  <span className="text-base text-[#475569] font-medium">English</span>
                 </div>
                 <Link
                   href="/test/leading-safe"
-                  className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold px-8 py-3 rounded-lg transition-colors"
+                  className="bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium px-8 py-3 rounded-lg transition-colors"
                 >
                   Start Test
                 </Link>
@@ -989,17 +1002,17 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* Certificate Section */}
-      <section className="w-full bg-white py-6 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#01203d] mb-1">Get the Leading SAFe® Certification</p>
+            <p className="text-sm text-[#d97706] mb-1">Get the Leading SAFe® Certification</p>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">SAFe 6.0 Agilist Certificate</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe 6.0 Agilist Certificate</h2>
               <div className="flex gap-1">
-                <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
@@ -1007,7 +1020,7 @@ export default function LeadingSafeCoursePage() {
           </div>
 
           {/* Certificate Display */}
-          <div className="bg-white border border-blue-200 rounded-lg overflow-hidden">
+          <div className="rounded-2xl border border-[#1f2c4a]/15 overflow-hidden">
             <img
               src="/SA Certificate.jpeg"
               alt="SAFe 6.0 Agilist Certificate"
@@ -1018,11 +1031,11 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-sm text-gray-600 mb-2">Leading SAFe® Course FAQs</p>
-            <h2 className="text-3xl font-bold text-gray-900">FAQs on Leading SAFe® 6.0 Certification Course</h2>
+            <p className="text-sm text-[#64748b] mb-2">Leading SAFe® Course FAQs</p>
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">FAQs on Leading SAFe® 6.0 Certification Course</h2>
           </div>
 
           {/* FAQ Category Tabs */}
@@ -1041,8 +1054,8 @@ export default function LeadingSafeCoursePage() {
                 }}
                 className={`px-6 py-2 rounded-md font-semibold transition-colors ${
                   activeFaqCategory === category.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50"
+                    ? "bg-[#1f2c4a] text-white"
+                    : "liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a] hover:text-white"
                 }`}
               >
                 {category.label}
@@ -1094,7 +1107,7 @@ export default function LeadingSafeCoursePage() {
                 return (
                   <div
                     key={index}
-                    className="border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                    className="border border-[#1f2c4a]/15 rounded-lg bg-[#1f2c4a]/[0.06] hover:bg-[#1f2c4a]/[0.1] transition-colors"
                   >
                     <button
                       onClick={() => {
@@ -1106,11 +1119,11 @@ export default function LeadingSafeCoursePage() {
                       }}
                       className="w-full flex items-center justify-between p-4 text-left"
                     >
-                      <span className="font-semibold text-gray-900 pr-4">
+                      <span className="font-semibold text-[#1f2c4a] pr-4">
                         {index + 1}. {faq.q}
                       </span>
                       <svg
-                        className={`w-5 h-5 text-blue-600 flex-shrink-0 transition-transform ${
+                        className={`w-5 h-5 text-[#d97706] flex-shrink-0 transition-transform ${
                           isExpanded ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -1127,8 +1140,8 @@ export default function LeadingSafeCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-4 pb-4 pt-0">
-                        <div className="pt-4 border-t border-gray-300">
-                          <p className="text-base text-gray-700 leading-relaxed">{faq.a}</p>
+                        <div className="pt-4 border-t border-[#1f2c4a]/20">
+                          <p className="text-base text-[#475569] leading-relaxed">{faq.a}</p>
                         </div>
                       </div>
                     )}
@@ -1143,44 +1156,44 @@ export default function LeadingSafeCoursePage() {
       <WhyAgile36Section />
 
       {/* SAFe Agilist Certification Section */}
-      <section className="w-full bg-white py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Section 1 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               SAFe Agilist Certification
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               There has been a significant increase in demand for the Leading SAFe 6.0 Agilist certification across the United States, as more organizations embrace Agile-at-scale methodologies to enhance productivity and drive business agility. Companies throughout the USA in sectors including technology, finance, healthcare, and manufacturing are actively recruiting SAFe certified professionals to spearhead enterprise-wide Agile transformations. These certified experts are highly valued for their expertise in connecting strategy with execution through Lean-Agile leadership principles. The SAFe Agilist certification serves as a powerful differentiator in the competitive US job market, especially as organizations continue their digital transformation journeys.
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What Are Job Opportunities for Leading SAFe Professionals?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               Leading SAFe 6.0 certified professionals in the United States have access to a wide range of career opportunities. Popular roles include Agile Coach, Release Train Engineer, Product Owner, Program Manager, and Scrum Master. These positions are in high demand across various industries throughout the USA, including IT, finance, healthcare, and manufacturing sectors. As more enterprises in the United States adopt the Scaled Agile Framework to improve their outcomes and accelerate delivery, the need for certified SAFe professionals continues to grow across the country.
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What Certifications Are Required for SAFe Agile Certification Training?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               No prior certification is required to enroll in SAFe Agile Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or project management (such as CSM or PMP certifications) can be beneficial for participants. The Leading SAFe 6.0 course prepares candidates for the SAFe Agilist (SA) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 
           {/* Section 4 */}
           <div>
-            <h2 className="text-2xl font-bold text-[#01203d] mb-4">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
               What is the Fee for SAFe Agilist Certification?
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
+            <p className="text-base text-[#475569] leading-relaxed">
               The cost of the Leading SAFe certification course typically ranges from <strong>$515 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agilist certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
@@ -1188,10 +1201,10 @@ export default function LeadingSafeCoursePage() {
       </section>
 
       {/* Find Leading SAFe Course in Cities Section */}
-      <section className="w-full bg-gray-50 py-8 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <p className="text-sm text-gray-600 mb-2 text-center">Courses based on location</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#01203d] mb-8 text-center">
+          <p className="text-sm text-[#64748b] mb-2 text-center">Courses based on location</p>
+          <h2 className="text-2xl md:text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8 text-center">
             Find Leading SAFe® Course in Other Top Cities
           </h2>
           
@@ -1233,9 +1246,9 @@ export default function LeadingSafeCoursePage() {
                 <Link
                   key={city}
                   href={`/leading-safe-certification-training/${citySlug}`}
-                  className="bg-white border border-gray-200 rounded-lg px-4 py-3 text-center hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
+                  className="liquid-glass rounded-lg px-4 py-3 text-center hover:bg-[#1f2c4a]/[0.1] transition-all cursor-pointer"
                 >
-                  <span className="text-base text-gray-900 font-medium">{city}</span>
+                  <span className="text-base text-[#1f2c4a] font-medium">{city}</span>
                 </Link>
               );
             })}
@@ -1245,48 +1258,48 @@ export default function LeadingSafeCoursePage() {
 
       {/* SA Free Assessment Modal */}
       {showAssessmentModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#ffffff] rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
             {/* Close Button */}
             <button
               onClick={() => {
                 setShowAssessmentModal(false);
                 setAssessmentFormData({ name: "", email: "" });
               }}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center z-10"
             >
-              <span className="text-gray-600 text-xl">×</span>
+              <span className="text-[#334155] text-xl">×</span>
             </button>
 
             <div className="flex flex-col md:flex-row">
               {/* Left Section - Course Promotion */}
-              <div className="bg-gradient-to-br from-[#fffef2] to-[#ffe5d9] p-8 md:w-2/5 flex flex-col justify-center">
+              <div className="bg-gradient-to-br from-[#1f2c4a]/10 to-transparent p-8 md:w-2/5 flex flex-col justify-center">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3">
                     Ready to Master This Certification?
                   </h2>
-                  <p className="text-base text-gray-700 mb-4">
+                  <p className="text-base text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="bg-white rounded-lg p-4 mb-4 border-2 border-[#fa4a23]">
-                    <p className="text-sm font-semibold text-[#fa4a23] mb-1">
+                  <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/50">
+                    <p className="text-sm font-semibold text-[#d97706] mb-1">
                       🎯 Special Offer
                     </p>
-                    <p className="text-base font-bold text-gray-900">
+                    <p className="text-base font-bold text-[#1f2c4a]">
                       $100 Off Full Course Enrollment
                     </p>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-emerald-600">✓</span>
                       Live instructor-led sessions
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-emerald-600">✓</span>
                       Official certification exam voucher
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-emerald-600">✓</span>
                       Lifetime access to course materials
                     </li>
                   </ul>
@@ -1295,17 +1308,17 @@ export default function LeadingSafeCoursePage() {
 
               {/* Right Section - Practice Test Form */}
               <div className="p-8 md:w-3/5">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                   Start Your Practice Test
                 </h3>
-                <p className="text-gray-600 mb-6 text-sm">
+                <p className="text-[#64748b] mb-6 text-sm">
                   Enter your details below to access the {examName}
                 </p>
                 <form onSubmit={handleAssessmentSubmit} className="space-y-4">
                   <div>
                     <label
                       htmlFor="assessment-name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-[#475569] mb-2"
                     >
                       Full Name *
                     </label>
@@ -1317,7 +1330,7 @@ export default function LeadingSafeCoursePage() {
                       onChange={(e) =>
                         setAssessmentFormData({ ...assessmentFormData, name: e.target.value })
                       }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -1325,7 +1338,7 @@ export default function LeadingSafeCoursePage() {
                   <div>
                     <label
                       htmlFor="assessment-email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-[#475569] mb-2"
                     >
                       Email Address *
                     </label>
@@ -1337,10 +1350,10 @@ export default function LeadingSafeCoursePage() {
                       onChange={(e) =>
                         setAssessmentFormData({ ...assessmentFormData, email: e.target.value })
                       }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                       placeholder="Enter your email address"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-[#64748b] mt-1">
                       We'll send you the practice test link and course information
                     </p>
                   </div>
@@ -1348,7 +1361,7 @@ export default function LeadingSafeCoursePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#fa4a23] to-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-[#16243f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <svg
                       className="w-5 h-5"
@@ -1366,13 +1379,13 @@ export default function LeadingSafeCoursePage() {
                     {isSubmitting ? 'Submitting...' : 'Start Practice Test'}
                   </button>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
-                    <p className="text-xs text-blue-800 text-center">
+                  <div className="bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/15 rounded-lg p-3 mt-4">
+                    <p className="text-xs text-[#334155] text-center">
                       💡 <strong>Interested in the full course?</strong> We'll send you exclusive enrollment details and special pricing after you complete the practice test.
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600 text-center">
+                  <p className="text-xs text-[#64748b] text-center">
                     ✔ By providing your contact details you agreed to our{" "}
                     <Link href="#" className="font-bold hover:underline">
                       Privacy Policy
@@ -1391,54 +1404,54 @@ export default function LeadingSafeCoursePage() {
 
       {/* Consultation Modal */}
       {showConsultationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#ffffff] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setShowConsultationModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-[#64748b] hover:text-[#1f2c4a]"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get Course Information</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Get Course Information</h2>
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your full name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your email"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Phone</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Enter your phone number"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-[#475569] mb-2">Message</label>
                   <textarea
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#fa4a23]"
+                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
                     placeholder="Tell us about your requirements"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#fa4a23] text-white font-bold py-3 rounded-md hover:bg-[#e03d1a] transition-colors"
+                  className="w-full bg-[#1f2c4a] text-white font-medium py-3 rounded-lg hover:bg-[#16243f] transition-colors"
                 >
                   Submit
                 </button>

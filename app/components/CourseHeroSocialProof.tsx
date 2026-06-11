@@ -21,31 +21,41 @@ type Props = {
 export default function CourseHeroSocialProof({ enrolledLabel, trailing, className = "" }: Props) {
   return (
     <div
-      className={`flex flex-col gap-3 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-slate-50 to-slate-100/80 px-4 py-3 shadow-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2 sm:px-5 sm:py-3.5 ${className}`}
+      className={`liquid-glass flex flex-col gap-4 rounded-2xl px-5 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 ${className}`}
     >
-      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+      {/* Enrollment */}
+      <div className="flex items-center gap-3.5">
         <div className="flex -space-x-2.5" aria-hidden>
           {ENROLLED_AVATAR_FILENAMES.map((name) => (
             <Image
               key={name}
               src={`/Images/${encodeURIComponent(name)}`}
               alt=""
-              width={36}
-              height={36}
-              className="h-9 w-9 shrink-0 rounded-full border-2 border-white object-cover shadow-sm"
-              sizes="36px"
+              width={40}
+              height={40}
+              className="h-10 w-10 shrink-0 rounded-full border-2 border-white object-cover shadow-sm"
+              sizes="40px"
             />
           ))}
         </div>
-        <span className="text-base font-bold tracking-tight text-slate-900 sm:text-lg">{enrolledLabel}</span>
-        <span className="hidden h-8 w-px bg-slate-300 sm:block" aria-hidden />
-        <span className="inline-flex items-center gap-2 text-base font-bold text-[#01203d] sm:text-lg">
-          <span className="animate-trust-star-glow text-amber-500" aria-hidden>
-            ★
-          </span>
-          <span className="animate-trust-rating-blink">4.94 · #1-rated on Scaled Agile</span>
-        </span>
+        <div className="leading-tight">
+          <p className="text-base font-bold tracking-tight text-[#1f2c4a] sm:text-lg">{enrolledLabel}</p>
+          <p className="text-xs text-[#64748b]">in live cohorts</p>
+        </div>
       </div>
+
+      <span className="hidden h-9 w-px bg-[#1f2c4a]/15 sm:block" aria-hidden />
+
+      {/* Rating */}
+      <div className="leading-tight">
+        <p className="text-sm tracking-[0.15em] text-[#d97706]" aria-hidden>
+          ★★★★★
+        </p>
+        <p className="text-sm font-semibold text-[#1f2c4a]">
+          4.94 · <span className="font-medium text-[#475569]">#1-rated on Scaled Agile</span>
+        </p>
+      </div>
+
       {trailing ? <div className="flex flex-wrap items-center gap-2 sm:ml-auto">{trailing}</div> : null}
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -95,32 +96,32 @@ export default function TestPage() {
   ];
 
   return (
-    <main className="flex flex-col min-h-screen bg-white">
+    <main className="flex flex-col min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-b from-white to-[#fffef2] py-16 px-4 sm:px-6 lg:px-20">
+      <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Left Content */}
             <div className="flex-1">
               {/* Breadcrumb */}
-              <div className="flex items-center gap-2 mb-6 text-sm text-gray-600">
-                <Link href="/" className="hover:text-[#01203d]">Home</Link>
+              <div className="flex items-center gap-2 mb-6 text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">
+                <Link href="/" className="transition-colors hover:text-[#1f2c4a]">Home</Link>
                 <span>/</span>
                 <span>Practice Test</span>
               </div>
 
               {/* Main Heading */}
               <div className="mb-6">
-                <h1 className="text-5xl lg:text-6xl font-bold mb-4 text-gray-900">
+                <h1 className="text-5xl lg:text-6xl font-normal mb-4 text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
                   Practice Tests That Get You Certified
                 </h1>
-                <h2 className="text-xl lg:text-2xl font-semibold text-gray-700 mt-4">
+                <h2 className="text-xl lg:text-2xl font-normal text-[#475569] mt-4" style={{ letterSpacing: "-0.02em" }}>
                   Real exam-style questions with detailed explanations to boost your confidence
                 </h2>
               </div>
 
               {/* Description */}
-              <p className="text-lg text-gray-700 mb-8">
+              <p className="text-lg text-[#475569] mb-8">
                 Get hands-on experience with our curated practice tests that mirror actual certification exams. Track your progress, understand key concepts, and walk into your exam with confidence.
               </p>
 
@@ -149,7 +150,7 @@ export default function TestPage() {
                   },
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 flex-shrink-0">
+                    <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-1">
                       <Image
                         src={feature.icon}
                         alt=""
@@ -158,7 +159,7 @@ export default function TestPage() {
                         className="w-full h-full"
                       />
                     </div>
-                    <span className="text-gray-900 font-semibold">
+                    <span className="text-[#475569] font-medium">
                       {feature.text}
                     </span>
                   </div>
@@ -174,9 +175,9 @@ export default function TestPage() {
                     width={92}
                     height={44}
                   />
-                  <span className="font-semibold">4.8/5</span>
+                  <span className="font-medium text-[#d97706]">4.8/5</span>
                 </div>
-                <div className="w-px h-10 bg-black"></div>
+                <div className="w-px h-10 bg-[#1f2c4a]/20"></div>
                 <div className="flex items-center gap-2">
                   <Image
                     src="/test-assets/edb1c5aa-a39e-4eee-877e-296e1fd1f366.png"
@@ -184,16 +185,16 @@ export default function TestPage() {
                     width={87}
                     height={43}
                   />
-                  <span className="font-semibold">4.9/5</span>
+                  <span className="font-medium text-[#d97706]">4.9/5</span>
                 </div>
               </div>
 
               {/* CTA Button */}
-              <button 
+              <button
                 onClick={() => {
                   document.getElementById('practice-tests')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold uppercase px-8 py-3 rounded flex items-center gap-2 transition-colors"
+                className="bg-[#1f2c4a] text-white font-medium px-8 py-3 rounded-lg flex items-center gap-2 transition-colors hover:bg-[#16243f]"
               >
                 Get started
                 <Image
@@ -207,25 +208,27 @@ export default function TestPage() {
 
             {/* Right Image */}
             <div className="flex-1 flex justify-center lg:justify-end">
-              <Image
-                src="/Exampic.png"
-                alt="Practice Tests"
-                width={600}
-                height={624}
-                className="w-full max-w-xl"
-              />
+              <div className="overflow-hidden rounded-2xl liquid-glass">
+                <Image
+                  src="/Exampic.png"
+                  alt="Practice Tests"
+                  width={600}
+                  height={624}
+                  className="w-full max-w-xl"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Focused Learning Journey */}
-      <section className="w-full py-12 px-4 sm:px-6 lg:px-20 bg-white">
+      <section className="w-full py-12 px-4 sm:px-6 lg:px-20 bg-black">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-8" style={{ letterSpacing: "-0.03em" }}>
             Your Path to Certification Success
           </h2>
-          <div className="bg-[#fffef2] rounded-lg p-6">
+          <div className="rounded-2xl liquid-glass p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
@@ -246,7 +249,7 @@ export default function TestPage() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 border-r border-gray-200 last:border-r-0 pr-6 last:pr-0"
+                  className="flex items-start gap-4 border-r border-[#1f2c4a]/10 last:border-r-0 pr-6 last:pr-0"
                 >
                   <Image
                     src={item.icon}
@@ -256,10 +259,10 @@ export default function TestPage() {
                     className="flex-shrink-0"
                   />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
+                    <h3 className="font-medium text-[#1f2c4a] mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-700">{item.description}</p>
+                    <p className="text-sm text-[#64748b]">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -269,117 +272,97 @@ export default function TestPage() {
       </section>
 
       {/* Practice Test Series */}
-      <section id="practice-tests" className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-white">
+      <section id="practice-tests" className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-black">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-12" style={{ letterSpacing: "-0.03em" }}>
             Popular Practice Test Collections
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {practiceTests.map((test) => (
-              <div
+            {practiceTests.map((test, index) => (
+              <motion.div
                 key={test.id}
-                className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.1 }}
+                whileHover="hover"
+                variants={{
+                  hover: {
+                    y: -6,
+                    boxShadow: "0 18px 40px -12px rgba(31, 44, 74, 0.28)",
+                    transition: { duration: 0.25, ease: "easeOut" },
+                  },
+                }}
+                style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
+                className="rounded-2xl liquid-glass overflow-hidden flex flex-col h-full"
               >
-                <div className="p-6">
-                  {/* Icon Section */}
-                  <div className="relative h-28 mb-4 flex items-center justify-center">
-                    <Image
-                      src={test.badge}
-                      alt=""
-                      width={71}
-                      height={85}
-                      className="absolute top-0 left-0 z-10"
-                    />
-                    <Image
-                      src={test.icon}
-                      alt={test.name}
-                      width={70}
-                      height={70}
-                      className="relative z-20 mt-6"
-                    />
+                <div className="p-8 flex flex-col flex-1">
+                  {/* Certification badge */}
+                  <div className="flex items-center justify-center pt-4 mb-7">
+                    <motion.div
+                      variants={{
+                        hover: { scale: [1, 1.08, 1], transition: { duration: 0.5, ease: "easeOut" } },
+                      }}
+                    >
+                      <Image
+                        src={test.icon}
+                        alt={test.name}
+                        width={98}
+                        height={98}
+                        className="rounded-xl"
+                      />
+                    </motion.div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-center font-bold text-gray-900 mb-4 text-sm">
+                  <h3
+                    title={test.name}
+                    className="text-center font-medium text-[#1f2c4a] mb-5 text-base truncate"
+                  >
                     {test.name}
                   </h3>
 
-                  {/* Badge and Users */}
-                  <div className="flex items-center justify-center gap-4 mb-4">
-                    <div className="bg-gradient-to-r from-[#6ecd2b] to-[#25cd71] text-white text-xs font-semibold px-3 py-1 rounded">
+                  {/* Meta: free test, rating, users */}
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
+                    <span className="rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-[#d97706]">
                       {test.freeTests}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Image
-                        src="/test-assets/1aafa2fd-6344-4c8c-9322-ed09455b423f.png"
-                        alt=""
-                        width={25}
-                        height={13}
-                      />
-                      <span className="text-xs font-semibold text-gray-900">
-                        {test.users}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Rating, Enrolled, Language */}
-                  <div className="flex items-center justify-center gap-4 text-xs mb-4">
-                    <div className="flex items-center gap-1">
-                      <Image
-                        src="/test-assets/6174ddd7-c8a1-435e-8519-09e53ed77b39.png"
-                        alt=""
-                        width={14}
-                        height={14}
-                      />
-                      <span className="font-semibold text-gray-900">
-                        {test.rating}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[#ff5a47]">●</span>
-                      <span className="font-semibold text-gray-900">
-                        {test.enrolled}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Image
-                        src="/test-assets/764d0e70-d685-4135-b38a-7ff358f5357f.png"
-                        alt=""
-                        width={17}
-                        height={10}
-                      />
-                      <span className="font-semibold text-blue-600">
-                        {test.language}
-                      </span>
-                    </div>
+                    </span>
+                    <span className="flex items-center gap-1.5 rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium text-[#475569]">
+                      <svg className="h-3.5 w-3.5 text-[#fbbf24]" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      {test.rating}
+                    </span>
+                    <span className="rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium text-[#475569]">
+                      {test.users}
+                    </span>
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-gray-200 pt-4">
+                  <div className="border-t border-[#1f2c4a]/10 pt-5 mt-auto">
                     <button
                       onClick={() => {
                         setSelectedTest(test.name);
                         setShowModal(true);
                       }}
-                      className="w-full bg-gradient-to-r from-[#fa4a23] to-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+                      className="w-full bg-[#fbbf24] text-[#1f2c4a] font-semibold py-3.5 px-6 rounded-xl transition-colors duration-300 ease-out hover:bg-[#d97706]"
                     >
                       Start Test
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Learners Reviews Section */}
-      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-white">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-black">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-12" style={{ letterSpacing: "-0.03em" }}>
             Learners Reviews
           </h2>
-          
+
           <div className="relative">
             {/* Reviews Carousel - Updated 2024 */}
             <div className="overflow-hidden">
@@ -414,24 +397,24 @@ export default function TestPage() {
                   }
                 ].map((review, index) => (
                   <div key={review.id} className="w-full md:w-1/3 flex-shrink-0 px-4">
-                    <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 h-full relative">
+                    <div className="rounded-2xl liquid-glass transition-all duration-300 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] p-6 h-full relative">
                       {/* LinkedIn Icon */}
-                      <a 
+                      <a
                         href={review.linkedin}
                         className="absolute top-4 right-4"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-[#64748b] transition-colors hover:text-[#1f2c4a]" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                       </a>
-                      
+
                       {/* Profile Picture */}
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <Image 
-                            src={review.image} 
+                        <div className="w-16 h-16 rounded-full bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <Image
+                            src={review.image}
                             alt={review.name}
                             width={64}
                             height={64}
@@ -439,25 +422,25 @@ export default function TestPage() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-bold text-gray-900">{review.name}</h3>
-                          <p className="text-sm text-gray-600">{review.title}</p>
+                          <h3 className="font-medium text-[#1f2c4a]">{review.name}</h3>
+                          <p className="text-sm text-[#64748b]">{review.title}</p>
                         </div>
                       </div>
-                      
+
                       {/* Review Text */}
-                      <p className="text-gray-700 mb-4 line-clamp-4">
+                      <p className="text-[#475569] mb-4 line-clamp-4">
                         {review.review}
                       </p>
-                      
+
                       {/* Read More Link */}
-                      <button className="text-[#fa4a23] text-sm font-semibold underline mb-4 hover:text-[#e03d1a] transition-colors">
+                      <button className="text-[#d97706] text-sm font-medium underline mb-4 hover:text-[#1f2c4a] transition-colors">
                         Read More
                       </button>
-                      
+
                       {/* Rating */}
                       <div className="flex items-center gap-1">
                         {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
@@ -467,55 +450,55 @@ export default function TestPage() {
                 ))}
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
       {/* Practice Test Access Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#ffffff] border border-[#1f2c4a]/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative text-[#1f2c4a]">
             {/* Close Button */}
             <button
               onClick={() => {
                 setShowModal(false);
                 setFormData({ name: "", email: "" });
               }}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-[#1f2c4a]/15 bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center z-10 transition-colors"
             >
-              <span className="text-gray-600 text-xl">×</span>
+              <span className="text-[#475569] text-xl">×</span>
             </button>
 
             <div className="flex flex-col md:flex-row">
               {/* Left Section - Course Promotion */}
-              <div className="bg-gradient-to-br from-[#fffef2] to-[#ffe5d9] p-8 md:w-2/5 flex flex-col justify-center">
+              <div className="bg-[#1f2c4a]/[0.03] border-b md:border-b-0 md:border-r border-[#1f2c4a]/10 p-8 md:w-2/5 flex flex-col justify-center rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-2xl font-normal text-[#1f2c4a] mb-3" style={{ letterSpacing: "-0.03em" }}>
                     Ready to Master This Certification?
                   </h2>
-                  <p className="text-gray-700 mb-4">
+                  <p className="text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="bg-white rounded-lg p-4 mb-4 border-2 border-[#fa4a23]">
-                    <p className="text-sm font-semibold text-[#fa4a23] mb-1">
+                  <div className="rounded-2xl border border-[#d97706]/40 bg-[#1f2c4a]/[0.03] p-4 mb-4">
+                    <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-1">
                       🎯 Special Offer
                     </p>
-                    <p className="text-lg font-bold text-gray-900">
+                    <p className="text-lg font-medium text-[#1f2c4a]">
                       $100 Off Full Course Enrollment
                     </p>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-[#d97706]">✓</span>
                       Live instructor-led sessions
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-[#d97706]">✓</span>
                       Official certification exam voucher
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-green-600">✓</span>
+                      <span className="text-[#d97706]">✓</span>
                       Lifetime access to course materials
                     </li>
                   </ul>
@@ -524,16 +507,16 @@ export default function TestPage() {
 
               {/* Right Section - Practice Test Form */}
               <div className="p-8 md:w-3/5">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: "-0.03em" }}>
                   Start Your Practice Test
                 </h3>
-                <p className="text-gray-600 mb-6 text-sm">
+                <p className="text-[#64748b] mb-6 text-sm">
                   Enter your details below to access the {selectedTest}
                 </p>
                 <form
                   onSubmit={async (e) => {
                     e.preventDefault();
-                    
+
                     // Store email in Supabase
                     try {
                       const response = await fetch('/api/store-email', {
@@ -558,7 +541,7 @@ export default function TestPage() {
                       console.error('Error storing email:', error);
                       // Continue anyway - don't block user from taking test
                     }
-                    
+
                     // Redirect to practice exam based on selected test
                     if (selectedTest.includes("Leading SAFe")) {
                       router.push("/test/leading-safe");
@@ -585,7 +568,7 @@ export default function TestPage() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-[#475569] mb-2"
                     >
                       Full Name *
                     </label>
@@ -597,7 +580,7 @@ export default function TestPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                      className="w-full px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40 focus:border-transparent"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -605,7 +588,7 @@ export default function TestPage() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-[#475569] mb-2"
                     >
                       Email Address *
                     </label>
@@ -617,17 +600,17 @@ export default function TestPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23] focus:border-transparent"
+                      className="w-full px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40 focus:border-transparent"
                       placeholder="Enter your email address"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-[#94a3b8] mt-1">
                       We'll send you the practice test link and course information
                     </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#fa4a23] to-[#e03d1a] text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                    className="w-full bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-[#16243f]"
                   >
                     <svg
                       className="w-5 h-5"
@@ -645,19 +628,19 @@ export default function TestPage() {
                     Start Practice Test
                   </button>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
-                    <p className="text-xs text-blue-800 text-center">
-                      💡 <strong>Interested in the full course?</strong> We'll send you exclusive enrollment details and special pricing after you complete the practice test.
+                  <div className="rounded-lg liquid-glass p-3 mt-4">
+                    <p className="text-xs text-[#64748b] text-center">
+                      💡 <strong className="text-[#475569]">Interested in the full course?</strong> We'll send you exclusive enrollment details and special pricing after you complete the practice test.
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600 text-center">
+                  <p className="text-xs text-[#94a3b8] text-center">
                     ✔ By providing your contact details you agreed to our{" "}
-                    <Link href="#" className="font-bold hover:underline">
+                    <Link href="#" className="font-medium text-[#475569] hover:underline">
                       Privacy Policy
                     </Link>{" "}
                     &{" "}
-                    <Link href="#" className="font-bold hover:underline">
+                    <Link href="#" className="font-medium text-[#475569] hover:underline">
                       Terms and Conditions.
                     </Link>
                   </p>
@@ -669,12 +652,12 @@ export default function TestPage() {
       )}
 
       {/* Footer */}
-      <footer className="w-full bg-[#01203d] text-white py-16 px-4 sm:px-6 lg:px-20 mt-auto">
+      <footer className="w-full bg-black border-t border-[#1f2c4a]/10 text-[#1f2c4a] py-16 px-4 sm:px-6 lg:px-20 mt-auto">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-[#64748b]">
                 <li>About us</li>
                 <li>Accreditation</li>
                 <li>Careers</li>
@@ -682,8 +665,8 @@ export default function TestPage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Offerings</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Offerings</h4>
+              <ul className="space-y-2 text-sm text-[#64748b]">
                 <li>Live virtual (Online)</li>
                 <li>Classroom (In-Person)</li>
                 <li>Corporate training</li>
@@ -691,35 +674,35 @@ export default function TestPage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Resources</h4>
+              <ul className="space-y-2 text-sm text-[#64748b]">
                 <li>Practice Tests</li>
                 <li>Webinars</li>
                 <li>Blogs</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Get Our Weekly Newsletter</h4>
+              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Get Our Weekly Newsletter</h4>
               <div className="flex gap-2 mb-4">
-                <input 
-                  type="email" 
-                  placeholder="Email*" 
-                  className="flex-1 px-4 py-2 rounded-md text-gray-900"
+                <input
+                  type="email"
+                  placeholder="Email*"
+                  className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40"
                 />
-                <button className="bg-[#34595f] hover:bg-[#2a474c] text-white font-bold px-6 py-2 rounded-md">
+                <button className="liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium px-6 py-2 rounded-lg transition-colors hover:bg-[#1f2c4a] hover:text-white">
                   Subscribe
                 </button>
               </div>
               <div className="flex gap-4 mt-6">
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                <div className="w-8 h-8 bg-gray-600 rounded"></div>
+                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
+                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
+                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
+                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
               </div>
             </div>
           </div>
-          
-          <div className="border-t border-gray-600 pt-8 text-center text-sm text-gray-300">
+
+          <div className="border-t border-[#1f2c4a]/10 pt-8 text-center text-sm text-[#64748b]">
             <p>© 2024 Agile36. All Rights Reserved</p>
           </div>
         </div>

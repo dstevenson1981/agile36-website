@@ -23,9 +23,9 @@ export default function AccountNav({ userEmail }: { userEmail?: string }) {
   };
 
   return (
-    <nav className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm sticky top-8">
+    <nav className="liquid-glass rounded-2xl p-4 sticky top-8">
       {userEmail && (
-        <p className="text-sm text-slate-500 mb-4 truncate" title={userEmail}>
+        <p className="text-sm text-gray-400 mb-4 truncate" title={userEmail}>
           {userEmail}
         </p>
       )}
@@ -38,8 +38,8 @@ export default function AccountNav({ userEmail }: { userEmail?: string }) {
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#fa4a23] text-white'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'bg-white text-black'
+                    : 'text-gray-300 hover:bg-white/10'
                 }`}
               >
                 <span>{item.icon}</span>
@@ -49,16 +49,16 @@ export default function AccountNav({ userEmail }: { userEmail?: string }) {
           );
         })}
       </ul>
-      <div className="mt-6 pt-4 border-t border-slate-200 space-y-1">
+      <div className="mt-6 pt-4 border-t border-white/10 space-y-1">
         <Link
           href="/"
-          className="flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:text-slate-900"
+          className="flex items-center gap-3 px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors"
         >
           ← Back to Courses
         </Link>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:text-red-600 w-full text-left"
+          className="flex items-center gap-3 px-4 py-2 text-sm text-gray-400 hover:text-red-300 w-full text-left transition-colors"
         >
           Log out
         </button>

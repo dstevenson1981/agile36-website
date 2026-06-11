@@ -1,6 +1,11 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { COMBO_COURSES } from '@/app/combo-courses/data';
 
+/**
+ * Manual Pro practice exam unlocks only — not called on checkout.
+ * Grant access on the last day of class when instructed (upserts user_access).
+ */
+
 /** Courses that include a Pro practice exam in the account hub. */
 export const PRACTICE_EXAM_COURSE_IDS = new Set([
   'leading-safe',
@@ -76,7 +81,7 @@ async function upsertProAccess(
   }
 }
 
-/** Grant Pro practice exam rows after a successful Pro purchase. */
+/** Manually grant Pro practice exam access for a user (last day of class, etc.). */
 export async function grantProPracticeAccessForOrder(
   supabase: SupabaseClient,
   options: {
@@ -101,37 +106,15 @@ export async function grantProPracticeAccessForOrder(
   await upsertProAccess(supabase, userId, courseIds);
 }
 
-/** Backfill user_access from all Pro orders for the signed-in user's emails. */
-export async function syncProPracticeAccessForUser(
+/** Grant one course's practice exam to a user by email (manual unlock). */
+export async function grantProPracticeAccessForEmail(
   supabase: SupabaseClient,
-  userId: string,
-  authEmail?: string | null,
-  profileEmail?: string | null,
-): Promise<void> {
-  const emails = [...new Set([authEmail, profileEmail].map((e) => e?.trim()).filter(Boolean) as string[])];
-  if (emails.length === 0) return;
-
-  const courseIds = new Set<string>();
-
-  for (const email of emails) {
-    const { data: orders, error } = await supabase
-      .from('orders')
-      .select('course_slug')
-      .ilike('customer_email', email)
-      .eq('plan', 'pro');
-
-    if (error) {
-      console.error('syncProPracticeAccessForUser orders lookup failed:', error);
-      continue;
-    }
-
-    for (const order of orders ?? []) {
-      for (const courseId of resolvePracticeExamCourseIds(order.course_slug || '')) {
-        courseIds.add(courseId);
-      }
-    }
-  }
-
-  if (courseIds.size === 0) return;
-  await upsertProAccess(supabase, userId, [...courseIds]);
+  email: string,
+  courseId: string,
+): Promise<boolean> {
+  if (!PRACTICE_EXAM_COURSE_IDS.has(courseId)) return false;
+  const userId = await resolveUserId(supabase, email);
+  if (!userId) return false;
+  await upsertProAccess(supabase, userId, [courseId]);
+  return true;
 }

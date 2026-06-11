@@ -195,7 +195,7 @@ const faqSchema = {
 
 export default function SafeCertificationsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
@@ -206,68 +206,69 @@ export default function SafeCertificationsPage() {
       />
 
       {/* Hero Section */}
-      <section className="w-full bg-[#f0f9ff] py-16 px-4 sm:px-6 lg:px-20">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 border-b border-[#1f2c4a]/10">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#d97706] mb-4">Certification Catalog</p>
+          <h1 className="text-4xl md:text-5xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
             SAFe® Certification Training
           </h1>
-          <p className="text-xl text-[#4f6882] max-w-3xl mb-10">
+          <p className="text-xl text-[#475569] max-w-3xl mb-10">
             All SAFe certifications in one place. Expert-led live training, exam included, delivered by a SAFe Silver Partner with Fortune 100 experience.
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
-              <p className="text-2xl md:text-3xl font-bold text-[#01203d]">25,000+</p>
-              <p className="text-sm text-gray-600">Professionals Trained</p>
+            <div className="liquid-glass rounded-2xl p-4 md:p-6">
+              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>25,000+</p>
+              <p className="text-sm text-[#64748b]">Professionals Trained</p>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
-              <p className="text-2xl md:text-3xl font-bold text-[#01203d]">SAFe Silver Partner</p>
-              <p className="text-sm text-gray-600">Accredited</p>
+            <div className="liquid-glass rounded-2xl p-4 md:p-6">
+              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>SAFe Silver Partner</p>
+              <p className="text-sm text-[#64748b]">Accredited</p>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
-              <p className="text-2xl md:text-3xl font-bold text-[#01203d]">4.9/5.0</p>
-              <p className="text-sm text-gray-600">Rating (2,500+ Reviews)</p>
+            <div className="liquid-glass rounded-2xl p-4 md:p-6">
+              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>4.9/5.0</p>
+              <p className="text-sm text-[#64748b]">Rating (2,500+ Reviews)</p>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
-              <p className="text-2xl md:text-3xl font-bold text-[#01203d]">Exam Included</p>
-              <p className="text-sm text-gray-600">First attempt included</p>
+            <div className="liquid-glass rounded-2xl p-4 md:p-6">
+              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>Exam Included</p>
+              <p className="text-sm text-[#64748b]">First attempt included</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Intro Paragraph */}
-      <section className="w-full py-12 px-4 sm:px-6 lg:px-20 bg-white">
+      <section className="w-full py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-4xl mx-auto">
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <p className="text-[#475569] leading-relaxed mb-4">
             The Scaled Agile Framework® (SAFe) is a leading approach for enterprise Agile at scale. Scaled Agile states that thousands of enterprises worldwide use SAFe — see their{" "}
             <a
               href="https://scaledagile.com/what-is-safe/"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-[#d97706] font-medium underline hover:no-underline"
               rel="noopener noreferrer"
             >
               framework overview
             </a>{" "}
             for current adoption messaging. SAFe certifications validate your ability to apply Lean-Agile principles across teams, programs, and portfolios where that model is in use.
           </p>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-[#475569] leading-relaxed">
             Agile36 is a SAFe Silver Partner offering instructor-led SAFe certification training across all major role-based certifications. Every course includes your first exam attempt, live training with certified SPCs, and post-training support.
           </p>
         </div>
       </section>
 
       {/* Course Grid */}
-      <section className="w-full bg-[#f0f9ff] py-16 px-4 sm:px-6 lg:px-20">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-10">All SAFe Certifications</h2>
+          <h2 className="text-3xl font-normal text-[#1f2c4a] mb-10" style={{ letterSpacing: "-0.03em" }}>All SAFe Certifications</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {COURSES.map((course) => (
               <div
                 key={course.url}
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow flex flex-col"
+                className="liquid-glass rounded-2xl p-6 transition-colors hover:bg-[#1f2c4a]/[0.08] flex flex-col"
               >
-                <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 mb-4 flex-shrink-0">
+                <div className="w-14 h-14 rounded-lg overflow-hidden bg-[#1f2c4a]/10 mb-4 flex-shrink-0">
                   <Image
                     src={course.badge}
                     alt={course.name}
@@ -276,17 +277,17 @@ export default function SafeCertificationsPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <span className="text-xs font-semibold text-[#134263] bg-[#edf5f0] px-2 py-1 rounded-full inline-block mb-2 w-fit">
+                <span className="text-xs font-medium text-[#d97706] bg-[#d97706]/10 px-2 py-1 rounded-full inline-block mb-2 w-fit">
                   {course.level}
                 </span>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{course.name}</h3>
-                <p className="text-sm text-gray-600 mb-4 flex-1">{course.description}</p>
-                <p className="text-xs text-gray-500 mb-4">
+                <h3 className="text-lg font-medium text-[#1f2c4a] mb-2">{course.name}</h3>
+                <p className="text-sm text-[#475569] mb-4 flex-1">{course.description}</p>
+                <p className="text-xs text-[#64748b] mb-4">
                   {course.duration} | {course.pdus} PDUs | Exam Included
                 </p>
                 <Link
                   href={course.url}
-                  className="inline-flex items-center gap-2 text-[#fa4a23] font-semibold hover:underline"
+                  className="inline-flex items-center gap-2 text-[#d97706] font-medium hover:underline"
                 >
                   View Course
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -300,15 +301,15 @@ export default function SafeCertificationsPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-white">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-10">
+          <h2 className="text-3xl font-normal text-[#1f2c4a] mb-10" style={{ letterSpacing: "-0.03em" }}>
             Which SAFe Certification Is Right for You?
           </h2>
           <div className="overflow-x-auto -mx-4 sm:mx-0">
-            <table className="w-full min-w-[520px] border-collapse border border-gray-200 rounded-lg overflow-hidden">
+            <table className="w-full min-w-[520px] border-collapse border border-[#1f2c4a]/15 rounded-lg overflow-hidden">
               <thead>
-                <tr className="bg-[#01203d] text-white">
+                <tr className="bg-[#1f2c4a]/10 text-[#1f2c4a]">
                   <th className="text-left px-4 py-3 font-semibold">Certification</th>
                   <th className="text-left px-4 py-3 font-semibold">Best For</th>
                   <th className="text-left px-4 py-3 font-semibold">Level</th>
@@ -319,23 +320,23 @@ export default function SafeCertificationsPage() {
                 {COMPARISON_TABLE.map((row, i) => (
                   <tr
                     key={row.cert}
-                    className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                    className={i % 2 === 0 ? "bg-[#1f2c4a]/[0.04]" : "bg-transparent"}
                   >
-                    <td className="px-4 py-3 border-b border-gray-200 font-medium">{row.cert}</td>
-                    <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.bestFor}</td>
-                    <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.level}</td>
-                    <td className="px-4 py-3 border-b border-gray-200 text-gray-700">{row.duration}</td>
+                    <td className="px-4 py-3 border-b border-[#1f2c4a]/10 font-medium text-[#1f2c4a]">{row.cert}</td>
+                    <td className="px-4 py-3 border-b border-[#1f2c4a]/10 text-[#475569]">{row.bestFor}</td>
+                    <td className="px-4 py-3 border-b border-[#1f2c4a]/10 text-[#475569]">{row.level}</td>
+                    <td className="px-4 py-3 border-b border-[#1f2c4a]/10 text-[#475569]">{row.duration}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-sm text-gray-600 mt-6 max-w-3xl leading-relaxed">
-            <strong>Pay research:</strong> Agile36 does not list uncited salary
+          <p className="text-sm text-[#64748b] mt-6 max-w-3xl leading-relaxed">
+            <strong className="text-[#475569]">Pay research:</strong> Agile36 does not list uncited salary
             ranges by certification. Compare compensation using{" "}
             <a
               href="https://www.bls.gov/oes/"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-[#d97706] font-medium underline hover:no-underline"
               rel="noopener noreferrer"
             >
               BLS OEWS
@@ -343,7 +344,7 @@ export default function SafeCertificationsPage() {
             , your target employers&apos; postings, and Scaled Agile&apos;s{" "}
             <a
               href="https://scaledagile.com/certification/"
-              className="text-[#01203d] font-semibold underline hover:no-underline"
+              className="text-[#d97706] font-medium underline hover:no-underline"
               rel="noopener noreferrer"
             >
               certification
@@ -354,19 +355,19 @@ export default function SafeCertificationsPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-20">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-10">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-normal text-[#1f2c4a] mb-10" style={{ letterSpacing: "-0.03em" }}>Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQS.map((faq, i) => (
               <details
                 key={i}
-                className="group bg-white rounded-lg border border-gray-200 overflow-hidden"
+                className="group liquid-glass rounded-2xl overflow-hidden"
               >
-                <summary className="px-4 py-4 cursor-pointer font-semibold text-gray-900 list-none flex items-center justify-between">
+                <summary className="px-4 py-4 cursor-pointer font-medium text-[#1f2c4a] list-none flex items-center justify-between">
                   {faq.q}
                   <svg
-                    className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0 ml-2"
+                    className="w-5 h-5 text-[#64748b] group-open:rotate-180 transition-transform flex-shrink-0 ml-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -374,7 +375,7 @@ export default function SafeCertificationsPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-4 pb-4 text-gray-700 text-sm leading-relaxed">{faq.a}</div>
+                <div className="px-4 pb-4 text-[#475569] text-sm leading-relaxed">{faq.a}</div>
               </details>
             ))}
           </div>
@@ -382,20 +383,20 @@ export default function SafeCertificationsPage() {
       </section>
 
       {/* Why Agile36 */}
-      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-white">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#01203d] mb-10 text-center">Why Agile36</h2>
+          <h2 className="text-3xl font-normal text-[#1f2c4a] mb-10 text-center" style={{ letterSpacing: "-0.03em" }}>Why Agile36</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {WHY_ITEMS.map((item, i) => (
               <div key={i} className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-10 h-10 bg-[#d97706]/10 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-700">{item.desc}</p>
+                  <h3 className="text-lg font-medium text-[#1f2c4a] mb-2">{item.title}</h3>
+                  <p className="text-[#475569]">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -404,18 +405,18 @@ export default function SafeCertificationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-[#01203d] py-16 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-3xl mx-auto liquid-glass rounded-2xl p-10 md:p-14 text-center">
+          <h2 className="text-3xl md:text-4xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
             Ready to Get SAFe Certified?
           </h2>
-          <p className="text-lg text-gray-300 mb-8">
+          <p className="text-lg text-[#475569] mb-8">
             Browse upcoming course dates and enroll today. Group pricing available for teams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/courses"
-              className="bg-[#fa4a23] hover:bg-[#e03d1a] text-white font-bold py-3 px-8 rounded-md transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-[#1f2c4a] text-white hover:bg-[#16243f] font-medium py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center gap-2"
             >
               View All Courses
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -424,7 +425,7 @@ export default function SafeCertificationsPage() {
             </Link>
             <Link
               href="/corporate"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#01203d] font-bold py-3 px-8 rounded-md transition-colors inline-flex items-center justify-center"
+              className="border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a]/10 font-medium py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center"
             >
               Contact Us for Corporate Training
             </Link>

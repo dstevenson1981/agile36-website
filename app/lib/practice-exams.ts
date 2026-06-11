@@ -2,6 +2,7 @@ import { createClient } from '@/app/lib/supabase/server';
 import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js';
 import { checkProAccess } from '@/app/lib/checkCourseAccess';
 import { isProPracticeExamExpiredForCourse } from '@/app/lib/pro-practice-exams-enabled';
+import { resolvePracticeExamCourseIds } from '@/app/lib/grant-pro-practice-access';
 
 /** Profile email when non-empty; otherwise auth email. (Empty string profile must not win over auth.) */
 function primaryLookupEmail(
@@ -124,33 +125,35 @@ async function whitelistHasEmail(
   return false;
 }
 
-/** Service-role order lookup — avoids RLS gaps between auth email and profile email. */
-async function hasProOrderForCourseSlugs(
-  serviceSupabase: SupabaseClient,
-  authEmail: string | undefined,
-  profileEmail: string | null | undefined,
-  courseSlugs: string[],
-): Promise<boolean> {
-  const slugSet = new Set(courseSlugs);
-  for (const em of distinctEmailsForWhitelist(authEmail, profileEmail)) {
-    const { data, error } = await serviceSupabase
+/** True when the user purchased Pro for this course (exam may still be locked until manual unlock). */
+export async function hasProPlanEnrollmentForCourse(courseSlug: string): Promise<boolean> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return false;
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('email')
+    .eq('user_id', user.id)
+    .single();
+
+  for (const em of distinctEmailsForWhitelist(user.email, profile?.email)) {
+    const { data: orders } = await supabase
       .from('orders')
       .select('course_slug')
       .ilike('customer_email', em)
       .eq('plan', 'pro')
-      .limit(20);
-    if (error) continue;
+      .limit(25);
+
     if (
-      data?.some(
-        (o) =>
-          o.course_slug &&
-          (slugSet.has(o.course_slug) ||
-            [...slugSet].some((slug) => o.course_slug?.startsWith(`combo-${slug}`))),
+      orders?.some((o) =>
+        resolvePracticeExamCourseIds(o.course_slug || '').includes(courseSlug),
       )
     ) {
       return true;
     }
   }
+
   return false;
 }
 
@@ -295,17 +298,7 @@ export async function hasPopmProAccess(): Promise<boolean> {
   // Safety fallback so whitelist-only users are not blocked when DB grants are delayed.
   if (hasEmergencyPopmProAccess(user.email, profile?.email)) return true;
 
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id')
-    .ilike('customer_email', lookupEmail)
-    .eq('course_slug', 'product-owner-manager')
-    .eq('plan', 'pro')
-    .limit(1);
-
-  return (orders?.length ?? 0) > 0;
+  return false;
 }
 
 /** Check if the logged-in user has Pro plan for Agile Product Management (agile-product-management) */
@@ -326,18 +319,6 @@ export async function hasApmProAccess(): Promise<boolean> {
 
   // Safety fallback so manually granted users are not blocked while DB grants are pending.
   if (hasEmergencyApmProAccess(user.email, profile?.email)) return true;
-
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id')
-    .ilike('customer_email', lookupEmail)
-    .eq('course_slug', 'agile-product-management')
-    .eq('plan', 'pro')
-    .limit(1);
-
-  if ((orders?.length ?? 0) > 0) return true;
 
   // Whitelist: RLS returns a row when auth or profile email matches.
   const { data: apmWhitelistRows, error: apmWlErr } = await supabase
@@ -395,28 +376,11 @@ export async function hasLeadingSafeProAccess(): Promise<boolean> {
     ) {
       return true;
     }
-    if (
-      await hasProOrderForCourseSlugs(serviceSupabase, user.email, profile?.email, [
-        'leading-safe',
-      ])
-    ) {
-      return true;
-    }
   }
 
   if (isProPracticeExamExpiredForCourse('leading-safe')) return false;
 
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id, course_slug')
-    .ilike('customer_email', lookupEmail)
-    .eq('plan', 'pro')
-    .limit(10);
-
-  return !!orders?.some(
-    (o) => o.course_slug === 'leading-safe' || o.course_slug?.startsWith('combo-leading-safe'),
-  );
+  return false;
 }
 
 /** Check if the logged-in user has Pro plan for SAFe Scrum Master (scrum-master). */
@@ -437,20 +401,6 @@ export async function hasScrumMasterProAccess(): Promise<boolean> {
 
   // Safety fallback so whitelist-only users are not blocked if DB whitelist migration has not been run yet.
   if (hasEmergencySsmAccess(user.email, profile?.email)) return true;
-
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id, course_slug')
-    .ilike('customer_email', lookupEmail)
-    .eq('plan', 'pro')
-    .limit(15);
-
-  const hasOrder = !!orders?.some(
-    (o) => o.course_slug === 'scrum-master' || o.course_slug === 'combo-ssm-advanced'
-  );
-  if (hasOrder) return true;
 
   const { data: ssmWhitelistRows, error: ssmWlErr } = await supabase
     .from('scrum_master_pro_access_whitelist')
@@ -491,19 +441,6 @@ export async function hasLpmProAccess(): Promise<boolean> {
   // Safety fallback so manually granted users are not blocked while DB grants are pending.
   if (hasEmergencyLpmProAccess(user.email, profile?.email)) return true;
 
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  // Check for Pro order (ilike: order row casing may differ from profile)
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id')
-    .ilike('customer_email', lookupEmail)
-    .eq('course_slug', 'lean-portfolio-management')
-    .eq('plan', 'pro')
-    .limit(1);
-
-  if ((orders?.length ?? 0) > 0) return true;
-
   // Whitelist: RLS policy only returns rows where whitelist.email matches auth.users email
   // (case-insensitive). Works without SUPABASE_SERVICE_ROLE_KEY — required for whitelist-only users
   // on Vercel when the service key is missing.
@@ -536,22 +473,6 @@ export async function hasAdvancedScrumMasterProAccess(): Promise<boolean> {
     .select('email')
     .eq('user_id', user.id)
     .single();
-  const lookupEmail = primaryLookupEmail(user.email, profile?.email);
-
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('id, course_slug')
-    .ilike('customer_email', lookupEmail)
-    .eq('plan', 'pro')
-    .limit(15);
-
-  const hasAsmOrder = !!orders?.some(
-    (o) =>
-      o.course_slug === 'advanced-scrum-master' ||
-      o.course_slug === 'combo-ssm-advanced'
-  );
-  if (hasAsmOrder) return true;
-
   // Whitelist (same pattern as LPM): RLS returns a row when auth or profile email matches — no service role needed.
   const { data: asmWhitelistRows, error: asmWlErr } = await supabase
     .from('advanced_scrum_master_pro_access_whitelist')

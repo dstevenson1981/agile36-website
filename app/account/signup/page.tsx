@@ -79,43 +79,43 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
+    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-8">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Create your account</h1>
-          <p className="text-slate-600 mb-6">
+        <div className="liquid-glass rounded-2xl p-8">
+          <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Create your account</h1>
+          <p className="text-[#475569] mb-6">
             Sign up to access your orders, receipts, and learning resources.
           </p>
-          <p className="text-sm text-slate-500 mb-6 -mt-4">
+          <p className="text-sm text-[#64748b] mb-6 -mt-4">
             Use the same email you used when enrolling in a course to see your orders and receipts.
           </p>
 
           <form onSubmit={handleSignup} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-[#475569] mb-1">Name</label>
               <input
                 id="name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-[#475569] mb-1">Email</label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
                 placeholder="you@company.com"
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium text-[#475569] mb-1">Password</label>
               <input
                 id="password"
                 type="password"
@@ -123,16 +123,16 @@ export default function SignupPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#fa4a23] focus:border-[#fa4a23] outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
                 placeholder="••••••••"
               />
-              <p className="text-xs text-slate-500 mt-1">At least 6 characters</p>
+              <p className="text-xs text-[#64748b] mt-1">At least 6 characters</p>
             </div>
 
             {message && (
               <div
                 className={`p-3 rounded-lg text-sm ${
-                  message.type === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-800'
+                  message.type === 'success' ? 'bg-green-500/10 text-green-700' : 'bg-red-500/10 text-red-600'
                 }`}
               >
                 {message.text}
@@ -142,7 +142,7 @@ export default function SignupPage() {
                       type="button"
                       onClick={handleResendConfirmation}
                       disabled={resending}
-                      className="text-[#fa4a23] font-medium hover:underline disabled:opacity-50"
+                      className="text-[#d97706] font-medium hover:underline disabled:opacity-50"
                     >
                       {resending ? 'Sending…' : 'Resend confirmation email'}
                     </button>
@@ -150,10 +150,10 @@ export default function SignupPage() {
                 )}
                 {message.type === 'error' && message.text.includes('already exists') && (
                   <div className="mt-2 flex gap-3">
-                    <Link href="/account/login" className="text-[#fa4a23] font-medium hover:underline">
+                    <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
                       Sign in
                     </Link>
-                    <Link href="/account/forgot-password" className="text-[#fa4a23] font-medium hover:underline">
+                    <Link href="/account/forgot-password" className="text-[#d97706] font-medium hover:underline">
                       Reset password
                     </Link>
                   </div>
@@ -164,15 +164,15 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-[#fa4a23] text-white font-semibold rounded-lg hover:bg-[#e03d1a] disabled:opacity-50 transition"
+              className="w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
             >
               {loading ? 'Creating account...' : 'Create account'}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-slate-500">
+          <p className="mt-6 text-center text-sm text-[#64748b]">
             Already have an account?{' '}
-            <Link href="/account/login" className="text-[#fa4a23] font-medium hover:underline">
+            <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
               Sign in
             </Link>
           </p>

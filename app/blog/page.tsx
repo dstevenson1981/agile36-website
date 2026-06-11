@@ -92,7 +92,7 @@ export default async function BlogIndexPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8fafc]">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexGraphLd) }}

@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-import { grantProPracticeAccessForOrder } from '@/app/lib/grant-pro-practice-access';
-
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
@@ -82,32 +80,6 @@ export async function POST(request: NextRequest) {
             updated_at: new Date().toISOString(),
           })
           .eq('payment_intent_id', paymentIntent.id);
-
-        if (paymentIntent.metadata?.selectedPlan === 'pro') {
-          let comboScheduleMap: Record<string, string> | undefined;
-          if (paymentIntent.metadata?.comboScheduleMap) {
-            try {
-              comboScheduleMap = JSON.parse(paymentIntent.metadata.comboScheduleMap);
-            } catch {
-              comboScheduleMap = undefined;
-            }
-          }
-
-          try {
-            await grantProPracticeAccessForOrder(supabase, {
-              customerEmail:
-                paymentIntent.metadata?.customerEmail || paymentIntent.receipt_email || '',
-              courseSlug: paymentIntent.metadata?.comboId
-                ? `combo-${paymentIntent.metadata.comboId}`
-                : paymentIntent.metadata?.courseSlug || '',
-              plan: 'pro',
-              userId: paymentIntent.metadata?.userId || null,
-              comboScheduleMap,
-            });
-          } catch (grantError) {
-            console.error('Webhook Pro practice access grant failed:', grantError);
-          }
-        }
       }
       break;
     }

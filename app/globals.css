@@ -1,6 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Open+Sans:wght@400;600;700;800&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  /* Light theme: "black" resolves to a pale blue-white so every themed page
+     background (bg-black), gradient fade (from-black), and overlay flips to
+     the light look in one place. Headings/body use literal navy (#1f2c4a)
+     and slate utilities instead of text-black. */
+  --color-black: #f6f9fd;
+}
 
 :root {
   --background: #f0f9ff;
@@ -10,7 +19,97 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Liquid glass surfaces (cards, panels, buttons across the dark theme) */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.72);
+  /* No manual -webkit- prefix: LightningCSS merges the pair and emits only the
+     prefixed form, which drops the standard property. Let it autoprefix. */
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(31, 44, 74, 0.08);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 12px 32px -16px rgba(31, 44, 74, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Homepage hero logo marquee + keyword ticker */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 36s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Cinematic texture: subtle animated film grain (homepage) */
+.film-grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 40;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, 2%); }
+  100% { transform: translate(2%, -1%); }
+}
+
+/* Cinematic slow push-in for still photography */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+.ken-burns {
+  animation: ken-burns 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain,
+  .ken-burns {
+    animation: none;
+  }
 }
 
 /* Custom scrollbar for mega menu */
@@ -83,35 +182,70 @@ body {
 
 /**
  * Shared markdown / MDX article body — use on generated blog posts and anywhere
- * CMS-like HTML needs the same typography as agile36.com (Open Sans, navy accents).
+ * CMS-like HTML needs the same typography as agile36.com (dark cinematic glass, amber accents).
  */
 @layer components {
   .blog-prose {
-    @apply prose prose-lg max-w-none text-[#212529];
-    @apply prose-headings:font-bold prose-headings:text-gray-900 prose-headings:scroll-mt-24;
+    @apply prose prose-lg max-w-none text-slate-700;
+    @apply prose-headings:font-normal prose-headings:tracking-tight prose-headings:text-[#1f2c4a] prose-headings:scroll-mt-24;
     /* Article hero is the only h1; markdown # → h2, ## → h3 (see app/blog/[slug]/page.tsx). */
     @apply prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-10 prose-h2:mb-4 first:prose-h2:mt-0;
-    @apply prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:pb-2 prose-h3:border-b prose-h3:border-gray-100;
+    @apply prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:pb-2 prose-h3:border-b prose-h3:border-slate-200;
     @apply prose-h4:text-xl md:prose-h4:text-2xl prose-h4:mt-8 prose-h4:mb-3;
-    @apply prose-h5:text-lg prose-h5:font-bold prose-h5:mt-6 prose-h5:mb-2;
-    @apply prose-h6:text-base prose-h6:font-bold prose-h6:mt-5 prose-h6:mb-2;
-    @apply prose-p:text-lg prose-p:leading-relaxed prose-p:text-gray-700 prose-p:mb-6;
-    @apply prose-strong:font-bold prose-strong:text-gray-900;
-    @apply prose-em:italic prose-em:text-gray-800;
-    @apply prose-a:text-[#01203d] prose-a:font-semibold prose-a:underline hover:prose-a:no-underline;
-    @apply prose-ul:my-6 prose-ul:text-lg prose-ul:text-gray-700;
-    @apply prose-ol:my-6 prose-ol:text-lg prose-ol:text-gray-700;
+    @apply prose-h5:text-lg prose-h5:font-medium prose-h5:mt-6 prose-h5:mb-2;
+    @apply prose-h6:text-base prose-h6:font-medium prose-h6:mt-5 prose-h6:mb-2;
+    @apply prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-700 prose-p:mb-6;
+    @apply prose-strong:font-semibold prose-strong:text-[#1f2c4a];
+    @apply prose-em:italic prose-em:text-slate-600;
+    @apply prose-a:text-[#d97706] prose-a:font-medium prose-a:underline hover:prose-a:no-underline;
+    @apply prose-ul:my-6 prose-ul:text-lg prose-ul:text-slate-700;
+    @apply prose-ol:my-6 prose-ol:text-lg prose-ol:text-slate-700;
     @apply prose-li:my-1 prose-li:leading-relaxed;
-    @apply prose-blockquote:border-l-4 prose-blockquote:border-[#01203d] prose-blockquote:pl-4 prose-blockquote:my-8 prose-blockquote:text-gray-600 prose-blockquote:italic;
-    @apply prose-hr:my-10 prose-hr:border-gray-200;
-    @apply prose-code:bg-gray-100 prose-code:text-gray-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.9em] prose-code:font-mono;
-    @apply prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:rounded-lg prose-pre:p-4 prose-pre:my-6;
-    @apply prose-table:border-collapse prose-table:border prose-table:border-gray-200 prose-table:text-sm;
-    @apply prose-th:border prose-th:border-gray-200 prose-th:bg-gray-100 prose-th:px-4 prose-th:py-3 prose-th:font-semibold prose-th:text-gray-900;
-    @apply prose-td:border prose-td:border-gray-200 prose-td:px-4 prose-td:py-3 prose-td:align-top;
+    @apply prose-blockquote:border-l-4 prose-blockquote:border-slate-300 prose-blockquote:pl-4 prose-blockquote:my-8 prose-blockquote:text-slate-500 prose-blockquote:italic;
+    @apply prose-hr:my-10 prose-hr:border-slate-200;
+    @apply prose-code:bg-slate-100 prose-code:text-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.9em] prose-code:font-mono;
+    @apply prose-pre:bg-slate-50 prose-pre:border prose-pre:border-slate-200 prose-pre:text-slate-800 prose-pre:rounded-lg prose-pre:p-4 prose-pre:my-6;
+    @apply prose-table:border-collapse prose-table:border prose-table:border-slate-200 prose-table:text-sm;
+    @apply prose-th:border prose-th:border-slate-200 prose-th:bg-slate-100 prose-th:px-4 prose-th:py-3 prose-th:font-semibold prose-th:text-[#1f2c4a];
+    @apply prose-td:border prose-td:border-slate-200 prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-slate-700;
   }
 
   .blog-prose :where(tbody tr:nth-child(even)) {
-    @apply bg-gray-50;
+    @apply bg-slate-50;
+  }
+}
+
+/* Cursor-reactive glow for premium cards (testimonials) */
+.glow-card {
+  position: relative;
+}
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(480px circle at var(--gx, 50%) var(--gy, 50%), rgba(217, 119, 6, 0.12), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.glow-card:hover::after {
+  opacity: 1;
+}
+
+/* Infinite testimonial marquee rows (reuses marquee-scroll keyframes) */
+.marquee-row {
+  animation: marquee-scroll var(--marquee-duration, 48s) linear infinite;
+}
+.marquee-row.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-paused:hover .marquee-row {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row {
+    animation: none;
   }
 }

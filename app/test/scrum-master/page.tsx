@@ -589,19 +589,19 @@ export default function ScrumMasterPracticeExam() {
     const wrongAnswers = getWrongAnswers();
 
     return (
-      <main className="min-h-screen bg-[#f0f9ff]">
+      <main className="min-h-screen bg-black text-[#1f2c4a]">
         {/* Header */}
-        <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
+        <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10 sticky top-0 z-50">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
             <div className="flex items-center justify-between h-16">
               <Link href="/" className="flex items-center">
-                <div className="h-28 sm:h-32 w-auto">
+                <div className="h-10 sm:h-12 w-auto">
                   <Image
-                    src="/Agile36Logo.png"
+                    src="/agile36-logo-header.png"
                     alt="Agile36 Logo"
-                    width={360}
-                    height={128}
-                    className="h-28 sm:h-32 w-auto object-contain"
+                    width={487}
+                    height={152}
+                    className="h-10 sm:h-12 w-auto object-contain"
                     priority
                   />
                 </div>
@@ -613,22 +613,22 @@ export default function ScrumMasterPracticeExam() {
         {/* Results Section */}
         <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
-              <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-8 mb-6">
+              <h1 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6 text-center">
                 Practice Exam Results
               </h1>
 
               {/* Score Display */}
               <div className="text-center mb-8">
-                <div className="inline-block bg-gradient-to-br from-blue-500 to-blue-700 rounded-full p-8 mb-4">
-                  <div className="text-white">
-                    <div className="text-5xl font-bold">{score.percentage}%</div>
-                    <div className="text-lg mt-2">
+                <div className="inline-block rounded-full border border-[#d97706]/40 bg-[#1f2c4a]/[0.06] p-8 mb-4">
+                  <div className="text-[#1f2c4a]">
+                    <div className="text-5xl font-normal tracking-[-0.03em]">{score.percentage}%</div>
+                    <div className="text-lg mt-2 text-[#475569]">
                       {score.correct} / {score.total} Correct
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 text-lg">
+                <p className="text-[#475569] text-lg">
                   {score.percentage >= 80 
                     ? "🎉 Excellent! You're well prepared for the exam!"
                     : score.percentage >= 60
@@ -640,7 +640,7 @@ export default function ScrumMasterPracticeExam() {
               {/* Wrong Answers Section */}
               {wrongAnswers.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
                     Questions You Got Wrong ({wrongAnswers.length})
                   </h2>
                   <div className="space-y-6">
@@ -649,15 +649,15 @@ export default function ScrumMasterPracticeExam() {
                       return (
                         <div
                           key={question.id}
-                          className="border-2 border-red-200 rounded-lg p-6 bg-red-50"
+                          className="rounded-2xl border border-red-400/40 bg-red-500/10 p-6"
                         >
                           <div className="mb-4">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded">
+                              <span className="bg-red-500/15 text-red-300 border border-red-400/40 text-sm font-semibold px-3 py-1 rounded-lg">
                                 Question {question.id}
                               </span>
                             </div>
-                            <p className="text-lg font-semibold text-gray-900">
+                            <p className="text-lg font-medium text-[#1f2c4a]">
                               {question.question}
                             </p>
                           </div>
@@ -666,29 +666,29 @@ export default function ScrumMasterPracticeExam() {
                             {Object.entries(question.options).map(([key, value]) => {
                               const isCorrect = key === question.correct;
                               const isUserAnswer = key === userAnswer;
-                              let bgColor = "bg-white";
-                              let borderColor = "border-gray-300";
+                              let bgColor = "bg-[#1f2c4a]/[0.06]";
+                              let borderColor = "border-[#1f2c4a]/15";
 
                               if (isCorrect) {
-                                bgColor = "bg-green-100";
-                                borderColor = "border-green-500";
+                                bgColor = "bg-green-500/15";
+                                borderColor = "border-green-400/40";
                               } else if (isUserAnswer) {
-                                bgColor = "bg-red-100";
-                                borderColor = "border-red-500";
+                                bgColor = "bg-red-500/15";
+                                borderColor = "border-red-400/40";
                               }
 
                               return (
                                 <div
                                   key={key}
-                                  className={`${bgColor} ${borderColor} border-2 rounded-lg p-3 flex items-start gap-3`}
+                                  className={`${bgColor} ${borderColor} border rounded-lg p-3 flex items-start gap-3`}
                                 >
                                   <span
                                     className={`font-bold ${
                                       isCorrect
-                                        ? "text-green-700"
+                                        ? "text-green-300"
                                         : isUserAnswer
-                                        ? "text-red-700"
-                                        : "text-gray-700"
+                                        ? "text-red-300"
+                                        : "text-[#475569]"
                                     }`}
                                   >
                                     {key}.
@@ -696,20 +696,20 @@ export default function ScrumMasterPracticeExam() {
                                   <span
                                     className={`flex-1 ${
                                       isCorrect
-                                        ? "text-green-900 font-semibold"
+                                        ? "text-green-300 font-semibold"
                                         : isUserAnswer
-                                        ? "text-red-900"
-                                        : "text-gray-700"
+                                        ? "text-red-300"
+                                        : "text-[#475569]"
                                     }`}
                                   >
                                     {value}
                                     {isCorrect && (
-                                      <span className="ml-2 text-green-700 font-bold">
+                                      <span className="ml-2 text-green-300 font-bold">
                                         ✓ Correct Answer
                                       </span>
                                     )}
                                     {isUserAnswer && !isCorrect && (
-                                      <span className="ml-2 text-red-700 font-bold">
+                                      <span className="ml-2 text-red-300 font-bold">
                                         ✗ Your Answer
                                       </span>
                                     )}
@@ -729,13 +729,13 @@ export default function ScrumMasterPracticeExam() {
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <button
                   onClick={() => setShowRetakeModal(true)}
-                  className="flex-1 bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 px-6 rounded-md transition-colors text-center"
+                  className="flex-1 bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium py-3 px-6 rounded-lg transition-colors text-center"
                 >
                   Retake Exam
                 </button>
                 <Link
                   href="/test"
-                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-3 px-6 rounded-md transition-colors text-center"
+                  className="flex-1 border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a]/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
                 >
                   Back to Practice Tests
                 </Link>
@@ -743,18 +743,18 @@ export default function ScrumMasterPracticeExam() {
 
               {/* Retake Exam Modal */}
               {showRetakeModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-                  <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
+                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                  <div className="rounded-2xl border border-[#1f2c4a]/15 bg-black shadow-2xl max-w-md w-full p-6 relative">
                     <button
                       onClick={() => setShowRetakeModal(false)}
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center"
                     >
-                      <span className="text-gray-600 text-xl">×</span>
+                      <span className="text-[#475569] text-xl">×</span>
                     </button>
                     <div className="text-center">
                       <div className="mb-4">
                         <svg
-                          className="mx-auto h-12 w-12 text-[#fa4a23]"
+                          className="mx-auto h-12 w-12 text-[#d97706]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -767,15 +767,15 @@ export default function ScrumMasterPracticeExam() {
                           />
                         </svg>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">
                         One Practice Test Limit
                       </h3>
-                      <p className="text-gray-700 mb-6">
+                      <p className="text-[#475569] mb-6">
                         You can only take one practice test. Please contact us if you need additional attempts.
                       </p>
                       <button
                         onClick={() => setShowRetakeModal(false)}
-                        className="w-full bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 px-6 rounded-md transition-colors"
+                        className="w-full bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium py-3 px-6 rounded-lg transition-colors"
                       >
                         Understood
                       </button>
@@ -791,24 +791,24 @@ export default function ScrumMasterPracticeExam() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f0f9ff]">
+    <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Header */}
-      <header className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky top-0 z-50">
+      <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
-              <div className="h-28 sm:h-32 w-auto">
+              <div className="h-10 sm:h-12 w-auto">
                 <Image
-                  src="/Agile36Logo.png"
+                  src="/agile36-logo-header.png"
                   alt="Agile36 Logo"
-                  width={360}
-                  height={128}
-                  className="h-28 sm:h-32 w-auto object-contain"
+                  width={487}
+                  height={152}
+                  className="h-10 sm:h-12 w-auto object-contain"
                   priority
                 />
               </div>
             </Link>
-            <div className="text-sm font-semibold text-gray-700">
+            <div className="text-sm font-medium text-[#475569]">
               SAFe Scrum Master Practice Exam
             </div>
           </div>
@@ -819,18 +819,18 @@ export default function ScrumMasterPracticeExam() {
       <section className="w-full py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-5xl mx-auto">
           {/* Progress Bar */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 mb-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="text-sm font-medium text-[#475569]">
                 Question {currentQuestionIndex + 1} of {totalQuestions}
               </span>
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="text-sm font-medium text-[#475569]">
                 {answeredQuestions} / {totalQuestions} Answered
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className="w-full bg-[#1f2c4a]/10 rounded-full h-3">
               <div
-                className="bg-[#fa4a23] h-3 rounded-full transition-all duration-300"
+                className="bg-[#d97706] h-3 rounded-full transition-all duration-300"
                 style={{
                   width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`
                 }}
@@ -839,9 +839,9 @@ export default function ScrumMasterPracticeExam() {
           </div>
 
           {/* Question Card */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-6">
+          <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-8 mb-6">
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <h2 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
                 {currentQuestion.question}
               </h2>
 
@@ -852,30 +852,30 @@ export default function ScrumMasterPracticeExam() {
                     <button
                       key={key}
                       onClick={() => handleAnswerSelect(key)}
-                      className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
+                      className={`w-full text-left p-4 rounded-2xl border transition-all ${
                         isSelected
-                          ? "border-[#fa4a23] bg-[#fff5f3]"
-                          : "border-gray-300 hover:border-gray-400 bg-white"
+                          ? "border-white bg-white"
+                          : "border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] hover:bg-[#1f2c4a]/[0.1]"
                       }`}
                     >
                       <div className="flex items-start gap-3">
                         <span
                           className={`font-bold ${
-                            isSelected ? "text-[#fa4a23]" : "text-gray-700"
+                            isSelected ? "text-[#1f2c4a]" : "text-[#475569]"
                           }`}
                         >
                           {key}.
                         </span>
                         <span
                           className={`flex-1 ${
-                            isSelected ? "text-gray-900 font-medium" : "text-gray-700"
+                            isSelected ? "text-[#1f2c4a] font-medium" : "text-[#475569]"
                           }`}
                         >
                           {value}
                         </span>
                         {isSelected && (
                           <svg
-                            className="w-5 h-5 text-[#fa4a23]"
+                            className="w-5 h-5 text-[#1f2c4a]"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -895,34 +895,34 @@ export default function ScrumMasterPracticeExam() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between bg-white rounded-lg shadow-md p-6">
+          <div className="flex items-center justify-between rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
             <button
               onClick={handlePrevious}
               disabled={currentQuestionIndex === 0}
-              className={`px-6 py-2 rounded-md font-semibold transition-colors ${
+              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 currentQuestionIndex === 0
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 hover:bg-gray-300 text-gray-900"
+                  ? "bg-[#1f2c4a]/5 text-[#1f2c4a]/30 cursor-not-allowed"
+                  : "border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a]/10"
               }`}
             >
               ← Previous
             </button>
 
-            <div className="text-lg font-semibold text-gray-700">
+            <div className="text-lg font-medium text-[#1f2c4a]">
               {currentQuestionIndex + 1} / {totalQuestions}
             </div>
 
             {currentQuestionIndex < totalQuestions - 1 ? (
               <button
                 onClick={handleNext}
-                className="px-6 py-2 bg-[#01203d] hover:bg-[#023a6b] text-white rounded-md font-semibold transition-colors"
+                className="px-6 py-2 bg-white hover:bg-[#16243f] text-[#1f2c4a] rounded-lg font-medium transition-colors"
               >
                 Next →
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="px-6 py-2 bg-[#fa4a23] hover:bg-[#e03d1a] text-white rounded-md font-semibold transition-colors"
+                className="px-6 py-2 bg-[#d97706] hover:bg-[#f59e0b] text-[#1f2c4a] rounded-lg font-medium transition-colors"
               >
                 Submit Exam
               </button>

@@ -89,10 +89,10 @@ function AuthConfirmContent() {
   }
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
+    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4">
       <div className="text-center">
-        <p className="text-slate-600">Verifying your link...</p>
-        <div className="mt-4 animate-spin rounded-full h-8 w-8 border-b-2 border-[#fa4a23] mx-auto" />
+        <p className="text-[#475569]">Verifying your link...</p>
+        <div className="mt-4 animate-spin rounded-full h-8 w-8 border-b-2 border-[#d97706] mx-auto" />
       </div>
     </div>
   );
@@ -107,8 +107,8 @@ function AuthConfirmContent() {
 export default function AuthConfirmPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <p className="text-slate-600">Loading...</p>
+      <div className="min-h-[60vh] bg-black flex items-center justify-center">
+        <p className="text-[#475569]">Loading...</p>
       </div>
     }>
       <AuthConfirmContent />

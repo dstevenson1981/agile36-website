@@ -108,10 +108,10 @@ function ComboCheckoutContent() {
 
   if (!comboId || !combo) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <main className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">Combo not found.</p>
-          <Link href="/combo-courses" className="text-[#fa4a23] font-medium hover:underline">
+          <p className="text-gray-400 mb-4">Combo not found.</p>
+          <Link href="/combo-courses" className="text-[#fbbf24] font-medium hover:underline">
             Back to Combo Courses
           </Link>
         </div>
@@ -121,10 +121,10 @@ function ComboCheckoutContent() {
 
   if (scheduleIds.length === 0) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <main className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">Please select schedules first.</p>
-          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#fa4a23] font-medium hover:underline">
+          <p className="text-gray-400 mb-4">Please select schedules first.</p>
+          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#fbbf24] font-medium hover:underline">
             Choose schedules
           </Link>
         </div>
@@ -133,82 +133,82 @@ function ComboCheckoutContent() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-black text-white">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-6">
-              <div className={`flex items-center gap-2 ${currentStep >= 1 ? "text-[#fa4a23]" : "text-gray-400"}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${currentStep >= 1 ? "bg-[#fa4a23] text-white" : "bg-gray-200 text-gray-600"}`}>1</div>
+              <div className={`flex items-center gap-2 ${currentStep >= 1 ? "text-[#fbbf24]" : "text-gray-400"}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${currentStep >= 1 ? "bg-[#fbbf24] text-black" : "bg-white/10 text-gray-400"}`}>1</div>
                 <span className="font-medium">Details</span>
               </div>
-              <div className="w-12 h-0.5 bg-gray-300" />
-              <div className={`flex items-center gap-2 ${currentStep >= 2 ? "text-[#fa4a23]" : "text-gray-400"}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${currentStep >= 2 ? "bg-[#fa4a23] text-white" : "bg-gray-200 text-gray-600"}`}>2</div>
+              <div className="w-12 h-0.5 bg-white/20" />
+              <div className={`flex items-center gap-2 ${currentStep >= 2 ? "text-[#fbbf24]" : "text-gray-400"}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${currentStep >= 2 ? "bg-[#fbbf24] text-black" : "bg-white/10 text-gray-400"}`}>2</div>
                 <span className="font-medium">Payment</span>
               </div>
             </div>
 
             {currentStep === 1 && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Your Details</h2>
+              <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-6">
+                <h2 className="text-xl font-bold text-white mb-6">Your Details</h2>
                 <div className="space-y-4">
                   <div className="flex gap-4">
                     <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" checked={formData.enrollingFor === "myself"} onChange={() => setFormData({ ...formData, enrollingFor: "myself" })} className="w-4 h-4 text-[#fa4a23]" />
+                      <input type="radio" checked={formData.enrollingFor === "myself"} onChange={() => setFormData({ ...formData, enrollingFor: "myself" })} className="w-4 h-4 text-[#fbbf24]" />
                       <span>Myself</span>
                     </label>
                     <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" checked={formData.enrollingFor === "someoneElse"} onChange={() => setFormData({ ...formData, enrollingFor: "someoneElse" })} className="w-4 h-4 text-[#fa4a23]" />
+                      <input type="radio" checked={formData.enrollingFor === "someoneElse"} onChange={() => setFormData({ ...formData, enrollingFor: "someoneElse" })} className="w-4 h-4 text-[#fbbf24]" />
                       <span>Someone else</span>
                     </label>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                      <input type="text" required value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23]" placeholder="First name" />
+                      <label className="block text-sm font-medium text-gray-300 mb-2">First Name *</label>
+                      <input type="text" required value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50" placeholder="First name" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                      <input type="text" required value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23]" placeholder="Last name" />
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Last Name *</label>
+                      <input type="text" required value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50" placeholder="Last name" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Phone *</label>
                     <InternationalPhoneInput value={formData.phone} onChange={(v) => setFormData({ ...formData, phone: v })} required placeholder="Phone number" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                    <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fa4a23]" placeholder="your@email.com" />
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
+                    <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50" placeholder="your@email.com" />
                   </div>
                 </div>
-                <button onClick={handleContinue} className="w-full mt-6 bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-900">
+                <button onClick={handleContinue} className="w-full mt-6 bg-white text-black font-medium py-3 px-6 rounded-lg hover:bg-gray-100">
                   Continue to Payment
                 </button>
               </div>
             )}
 
             {currentStep === 2 && !clientSecret && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Review & Pay</h2>
-                {paymentError && <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">{paymentError}</div>}
-                <p className="text-gray-600 mb-6">Click below to proceed to secure payment. Combo courses cannot use promo codes.</p>
-                <button onClick={handleContinue} disabled={isProcessingPayment} className="w-full bg-[#fa4a23] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#e03d1a] disabled:opacity-50">
+              <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-6">
+                <h2 className="text-xl font-bold text-white mb-6">Review & Pay</h2>
+                {paymentError && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 text-red-300 rounded-lg">{paymentError}</div>}
+                <p className="text-gray-400 mb-6">Click below to proceed to secure payment. Combo courses cannot use promo codes.</p>
+                <button onClick={handleContinue} disabled={isProcessingPayment} className="w-full bg-white text-black font-medium py-3 px-6 rounded-lg hover:bg-gray-100 disabled:opacity-50">
                   {isProcessingPayment ? "Processing..." : `Pay $${combo.comboPrice.toFixed(2)}`}
                 </button>
               </div>
             )}
 
             {currentStep === 3 && clientSecret && paymentIntentId && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Secure Payment</h2>
+              <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-6">
+                <h2 className="text-xl font-bold text-white mb-6">Secure Payment</h2>
                 <Elements
                   stripe={stripePromise}
                   options={{
                     clientSecret,
                     appearance: {
-                      theme: "stripe",
-                      variables: { colorPrimary: "#fa4a23", colorBackground: "#ffffff", colorText: "#1f2937", colorDanger: "#ef4444", borderRadius: "8px" },
+                      theme: "night",
+                      variables: { colorPrimary: "#fbbf24", colorBackground: "#404e70", colorText: "#ffffff", colorDanger: "#ef4444", borderRadius: "8px" },
                     },
                   }}
                 >
@@ -229,19 +229,19 @@ function ComboCheckoutContent() {
           </div>
 
           <div className="lg:w-96 flex-shrink-0">
-            <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-4">
-              <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
-              <p className="text-gray-700 mb-2">{combo.name}</p>
+            <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-6 sticky top-4">
+              <h3 className="font-bold text-white mb-4">Order Summary</h3>
+              <p className="text-gray-300 mb-2">{combo.name}</p>
               <div className="space-y-2 mb-4">
                 {combo.courses.map((c) => (
-                  <p key={c.id} className="text-sm text-gray-600">• {c.name}</p>
+                  <p key={c.id} className="text-sm text-gray-400">• {c.name}</p>
                 ))}
               </div>
-              <div className="border-t pt-4 flex justify-between items-center">
-                <span className="font-semibold text-gray-900">Total</span>
-                <span className="text-xl font-bold text-[#fa4a23]">USD {combo.comboPrice.toLocaleString()}</span>
+              <div className="border-t border-white/15 pt-4 flex justify-between items-center">
+                <span className="font-semibold text-white">Total</span>
+                <span className="text-xl font-bold text-[#fbbf24]">USD {combo.comboPrice.toLocaleString()}</span>
               </div>
-              <p className="text-xs text-gray-500 mt-4">Promo codes are not applicable to combo courses.</p>
+              <p className="text-xs text-gray-400 mt-4">Promo codes are not applicable to combo courses.</p>
             </div>
           </div>
         </div>
@@ -252,7 +252,7 @@ function ComboCheckoutContent() {
 
 export default function ComboCheckoutPage() {
   return (
-    <Suspense fallback={<main className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fa4a23]" /></main>}>
+    <Suspense fallback={<main className="min-h-screen bg-black flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fbbf24]" /></main>}>
       <ComboCheckoutContent />
     </Suspense>
   );

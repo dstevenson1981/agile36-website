@@ -8,21 +8,24 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-[#01203d] to-[#0a4a6e] text-white py-16">
+      <div className="border-b border-[#1f2c4a]/10 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Refund and Cancellation Policy</h1>
+          <p className="text-xs uppercase tracking-[0.3em] text-[#64748b] mb-4">Legal</p>
+          <h1 className="text-4xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
+            Refund and Cancellation Policy
+          </h1>
         </div>
       </div>
 
       {/* Content Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="prose prose-lg max-w-none">
+        <div className="max-w-none">
           {/* Refunds */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Refunds</h2>
-            <div className="space-y-4 text-gray-700">
+            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Refunds</h2>
+            <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date.
               </p>
@@ -40,8 +43,8 @@ export default function RefundPolicyPage() {
 
           {/* Rescheduling */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Rescheduling</h2>
-            <div className="space-y-4 text-gray-700">
+            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Rescheduling</h2>
+            <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time.
               </p>
@@ -53,10 +56,10 @@ export default function RefundPolicyPage() {
 
           {/* Provider-Initiated Rescheduling */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
               Provider-Initiated Rescheduling
             </h2>
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 If Agile36 must reschedule a class, participants will be transferred to the new session date or may request a one-time transfer or credit toward a future available session.
               </p>
@@ -68,8 +71,8 @@ export default function RefundPolicyPage() {
 
           {/* No Show Policy */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">No-Show Policy</h2>
-            <div className="space-y-4 text-gray-700">
+            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>No-Show Policy</h2>
+            <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid.
               </p>
@@ -80,18 +83,18 @@ export default function RefundPolicyPage() {
           </section>
 
           {/* Contact Us */}
-          <section className="mb-12 bg-gradient-to-br from-blue-50 to-orange-50 p-8 rounded-2xl">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-700 mb-4">
+          <section className="mb-12 liquid-glass rounded-2xl p-8">
+            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Contact Us</h2>
+            <p className="text-[#475569] leading-relaxed mb-4">
               For questions regarding cancellations or rescheduling, please email:
             </p>
-            <a 
+            <a
               href="mailto:d.stevenson@agile36.com"
-              className="text-[#fa4a23] hover:text-[#d43e1c] font-medium text-lg"
+              className="text-[#d97706] font-medium text-lg underline hover:no-underline"
             >
               d.stevenson@agile36.com
             </a>
-            <p className="text-gray-700 mt-4">
+            <p className="text-[#475569] leading-relaxed mt-4">
               We are here to support you and ensure a smooth registration experience.
             </p>
           </section>

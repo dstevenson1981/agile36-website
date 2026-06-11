@@ -45,9 +45,14 @@ export default function BlogHub({ posts }: Props) {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="text-center mb-10 sm:mb-14">
-        <p className="text-sm font-semibold text-[#4f6882] uppercase tracking-wide mb-2">Resources</p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Discover blogs by category</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-base">
+        <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-3">Resources</p>
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#1f2c4a] mb-4"
+          style={{ letterSpacing: "-0.03em" }}
+        >
+          Discover blogs by category
+        </h1>
+        <p className="text-[#64748b] max-w-2xl mx-auto text-base">
           Articles on SAFe certifications, agile practice, AI tools, careers, and more—filter by topic below.
         </p>
       </div>
@@ -68,8 +73,8 @@ export default function BlogHub({ posts }: Props) {
               onClick={() => setActive(tab.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
                 isActive
-                  ? "bg-[#01203d] text-white border-[#01203d]"
-                  : "bg-white text-gray-700 border-gray-200 hover:border-[#01203d]/40 hover:bg-slate-50"
+                  ? "bg-[#1f2c4a] text-white border-white"
+                  : "bg-[#1f2c4a]/[0.03] text-[#64748b] border-[#1f2c4a]/15 hover:border-[#1f2c4a]/30 hover:text-[#1f2c4a]"
               }`}
             >
               {tab.label}
@@ -79,12 +84,12 @@ export default function BlogHub({ posts }: Props) {
       </div>
 
       <div className="mb-6 flex items-baseline justify-between gap-4">
-        <h2 className="text-xl font-bold text-gray-900">
+        <h2 className="text-xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
           {active === "all"
             ? "Latest articles"
             : categoryLabelForId(active as Exclude<BlogCategoryId, "all">)}
         </h2>
-        <p className="text-sm text-gray-500">
+        <p className="text-xs text-[#94a3b8]">
           {sorted.length} article{sorted.length === 1 ? "" : "s"}
         </p>
       </div>
@@ -94,27 +99,26 @@ export default function BlogHub({ posts }: Props) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:border-gray-300 transition-all flex flex-col"
+            className="group rounded-2xl liquid-glass overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] flex flex-col"
           >
-            <div className="h-32 bg-gradient-to-br from-[#01203d] to-[#0a3a5c] flex items-center justify-center px-4 py-3" />
             <div className="p-5 flex flex-col flex-1">
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-[#fa4a23]/10 text-[#c53a1a] border border-[#fa4a23]/25">
+                <span className="inline-flex items-center text-[11px] font-medium uppercase tracking-wider text-[#d97706]">
                   {categoryLabelForId(post.categoryId)}
                 </span>
                 {post.date ? (
-                  <time dateTime={post.date} className="text-xs text-gray-500 shrink-0">
+                  <time dateTime={post.date} className="text-xs text-[#94a3b8] shrink-0">
                     {post.date}
                   </time>
                 ) : null}
               </div>
-              <h3 className="font-semibold text-gray-900 group-hover:text-[#01203d] transition-colors line-clamp-3 mb-2">
+              <h3 className="font-medium text-[#1f2c4a] transition-colors line-clamp-3 mb-2">
                 {post.title}
               </h3>
               {post.description ? (
-                <p className="text-sm text-gray-600 line-clamp-3 flex-1">{post.description}</p>
+                <p className="text-sm text-[#64748b] line-clamp-3 flex-1">{post.description}</p>
               ) : (
-                <span className="text-sm text-[#fa4a23] font-medium mt-auto">Read article →</span>
+                <span className="text-sm text-[#d97706] font-medium mt-auto">Read article →</span>
               )}
             </div>
           </Link>
@@ -122,7 +126,7 @@ export default function BlogHub({ posts }: Props) {
       </div>
 
       {sorted.length === 0 ? (
-        <p className="text-center text-gray-600 py-12">No articles in this category yet.</p>
+        <p className="text-center text-[#64748b] py-12">No articles in this category yet.</p>
       ) : null}
     </div>
   );

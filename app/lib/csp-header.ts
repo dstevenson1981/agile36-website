@@ -23,6 +23,8 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://assets.apollo.io " +
   "https://opps-widget.getwarmly.com " +
   "https://*.getwarmly.com " +
+  "https://app.upvert.io " +
+  "https://*.warmly.ai " +
   "https://va.vercel-scripts.com " +
   "https://vercel.live " +
   "https://openfpcdn.io " +

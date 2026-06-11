@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-import { grantProPracticeAccessForOrder } from '@/app/lib/grant-pro-practice-access';
+import { grantProPracticeAccessForEmail } from '@/app/lib/grant-pro-practice-access';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -174,17 +174,20 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
-    if (orderData.plan === 'pro') {
+    // $50 practice-exam-only upgrades unlock immediately; full Pro enrollments stay locked until manual unlock.
+    if (
+      paymentIntent.metadata?.upgradeType === 'practice_exam_only' &&
+      paymentIntent.metadata?.courseSlug &&
+      orderData.customer_email
+    ) {
       try {
-        await grantProPracticeAccessForOrder(supabase, {
-          customerEmail: orderData.customer_email,
-          courseSlug: orderData.course_slug,
-          plan: orderData.plan,
-          userId: paymentIntent.metadata?.userId || null,
-          comboScheduleMap: isComboOrder ? comboScheduleMap : undefined,
-        });
+        await grantProPracticeAccessForEmail(
+          supabase,
+          orderData.customer_email,
+          paymentIntent.metadata.courseSlug,
+        );
       } catch (grantError) {
-        console.error('Error granting Pro practice access:', grantError);
+        console.error('Error granting practice exam upgrade access:', grantError);
       }
     }
 

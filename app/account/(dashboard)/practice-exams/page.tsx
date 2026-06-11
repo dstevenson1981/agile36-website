@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { createClient as createServiceClient } from '@supabase/supabase-js';
-import { createClient } from '@/app/lib/supabase/server';
 import {
   hasPopmProAccess,
   hasApmProAccess,
@@ -8,9 +5,10 @@ import {
   hasLeadingSafeProAccess,
   hasScrumMasterProAccess,
   hasAdvancedScrumMasterProAccess,
+  hasProPlanEnrollmentForCourse,
   getRegisteredCourseSlugs,
 } from '@/app/lib/practice-exams';
-import { syncProPracticeAccessForUser } from '@/app/lib/grant-pro-practice-access';
+import PracticeExamAccessCta from '@/app/components/practice-exams/PracticeExamAccessCta';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 import {
   isPracticeExamsHubEnabled,
@@ -46,32 +44,21 @@ export default async function PracticeExamsPage({
     );
   }
 
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('email')
-      .eq('user_id', user.id)
-      .maybeSingle();
-
-    const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (serviceUrl && serviceKey) {
-      const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
-      await syncProPracticeAccessForUser(
-        serviceSupabase,
-        user.id,
-        user.email,
-        profile?.email,
-      );
-    }
-  }
-
-  const [hasPopmPro, hasApmPro, hasLpmPro, hasLeadingSafePro, hasSsmPro, hasAsmPro, registeredCourses] = await Promise.all([
+  const [
+    hasPopmPro,
+    hasApmPro,
+    hasLpmPro,
+    hasLeadingSafePro,
+    hasSsmPro,
+    hasAsmPro,
+    registeredCourses,
+    hasPopmProPlan,
+    hasApmProPlan,
+    hasLpmProPlan,
+    hasLeadingSafeProPlan,
+    hasSsmProPlan,
+    hasAsmProPlan,
+  ] = await Promise.all([
     hasPopmProAccess(),
     hasApmProAccess(),
     hasLpmProAccess(),
@@ -79,6 +66,12 @@ export default async function PracticeExamsPage({
     hasScrumMasterProAccess(),
     hasAdvancedScrumMasterProAccess(),
     getRegisteredCourseSlugs(),
+    hasProPlanEnrollmentForCourse('product-owner-manager'),
+    hasProPlanEnrollmentForCourse('agile-product-management'),
+    hasProPlanEnrollmentForCourse('lean-portfolio-management'),
+    hasProPlanEnrollmentForCourse('leading-safe'),
+    hasProPlanEnrollmentForCourse('scrum-master'),
+    hasProPlanEnrollmentForCourse('advanced-scrum-master'),
   ]);
 
   const hasPopm =
@@ -106,7 +99,8 @@ export default async function PracticeExamsPage({
       {upgraded && <UpgradeSuccessBanner courseSlug={upgraded} />}
       <h1 className="text-2xl font-bold text-slate-900 mb-2">Practice Exams</h1>
       <p className="text-slate-600 mb-8">
-        Practice tests for your courses. Pro plan includes full access. Basic plan? Upgrade for $50 to unlock.
+        Practice tests for your courses. Pro plan exams unlock on the last day of class. Basic plan? Upgrade for $50
+        to unlock.
       </p>
 
       <div className="space-y-4">
@@ -114,7 +108,7 @@ export default async function PracticeExamsPage({
         {hasLeadingSafe && !isProPracticeExamExpiredForCourse('leading-safe') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">📘</span>
               </div>
               <div>
@@ -124,25 +118,12 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasLeadingSafePro ? (
-              <Link
-                href="/account/practice-exams/leading-safe"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/leading-safe"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasLeadingSafePro}
+              hasProPlan={hasLeadingSafeProPlan}
+              testHref="/account/practice-exams/leading-safe"
+              upgradeSlug="leading-safe"
+            />
           </div>
         )}
 
@@ -150,7 +131,7 @@ export default async function PracticeExamsPage({
         {hasPopm && !isProPracticeExamExpiredForCourse('product-owner-manager') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">📝</span>
               </div>
               <div>
@@ -160,25 +141,12 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasPopmPro ? (
-              <Link
-                href="/account/practice-exams/popm"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/product-owner-manager"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasPopmPro}
+              hasProPlan={hasPopmProPlan}
+              testHref="/account/practice-exams/popm"
+              upgradeSlug="product-owner-manager"
+            />
           </div>
         )}
 
@@ -186,7 +154,7 @@ export default async function PracticeExamsPage({
         {hasApm && !isProPracticeExamExpiredForCourse('agile-product-management') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">🚀</span>
               </div>
               <div>
@@ -196,25 +164,12 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasApmPro ? (
-              <Link
-                href="/account/practice-exams/agile-product-management"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/agile-product-management"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasApmPro}
+              hasProPlan={hasApmProPlan}
+              testHref="/account/practice-exams/agile-product-management"
+              upgradeSlug="agile-product-management"
+            />
           </div>
         )}
 
@@ -222,7 +177,7 @@ export default async function PracticeExamsPage({
         {hasScrumMaster && !isProPracticeExamExpiredForCourse('scrum-master') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">🎯</span>
               </div>
               <div>
@@ -232,25 +187,12 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasSsmPro ? (
-              <Link
-                href="/account/practice-exams/scrum-master"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/scrum-master"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasSsmPro}
+              hasProPlan={hasSsmProPlan}
+              testHref="/account/practice-exams/scrum-master"
+              upgradeSlug="scrum-master"
+            />
           </div>
         )}
 
@@ -258,7 +200,7 @@ export default async function PracticeExamsPage({
         {hasAsm && !isProPracticeExamExpiredForCourse('advanced-scrum-master') && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">🏆</span>
               </div>
               <div>
@@ -268,25 +210,12 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasAsmPro ? (
-              <Link
-                href="/account/practice-exams/advanced-scrum-master"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/advanced-scrum-master"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasAsmPro}
+              hasProPlan={hasAsmProPlan}
+              testHref="/account/practice-exams/advanced-scrum-master"
+              upgradeSlug="advanced-scrum-master"
+            />
           </div>
         )}
 
@@ -294,7 +223,7 @@ export default async function PracticeExamsPage({
         {hasLpm && (
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-xl">📋</span>
               </div>
               <div>
@@ -304,32 +233,19 @@ export default async function PracticeExamsPage({
                 </p>
               </div>
             </div>
-            {hasLpmPro ? (
-              <Link
-                href="/account/practice-exams/lpm"
-                className="px-4 py-2 bg-[#fa4a23] text-white rounded-lg font-medium hover:bg-[#e8431f] transition-colors flex-shrink-0"
-              >
-                Start Test
-              </Link>
-            ) : (
-              <div className="flex-shrink-0 text-right">
-                <p className="text-sm text-amber-600 font-medium">Upgrade to Pro for $50</p>
-                <p className="text-xs text-slate-500 mt-0.5">Practice exam included</p>
-                <Link
-                  href="/account/practice-exams/upgrade/lean-portfolio-management"
-                  className="text-sm text-[#fa4a23] font-medium hover:underline mt-1 inline-block"
-                >
-                  Upgrade to access →
-                </Link>
-              </div>
-            )}
+            <PracticeExamAccessCta
+              unlocked={hasLpmPro}
+              hasProPlan={hasLpmProPlan}
+              testHref="/account/practice-exams/lpm"
+              upgradeSlug="lean-portfolio-management"
+            />
           </div>
         )}
 
         {/* Placeholder */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-75">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
               <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
