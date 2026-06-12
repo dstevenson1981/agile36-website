@@ -1,11 +1,12 @@
+// Legacy homepage preserved for instant revert — not routed (filename is not page.tsx).
 import type { Metadata } from "next";
-import CinematicHome from "./components/home-cinematic/CinematicHome";
+import HomeExperience from "@/app/components/home/HomeExperience";
 import {
   SCHEMA_INSTRUCTOR_DEADRA_STEVENSON_ID,
   SCHEMA_INSTRUCTOR_JOE_PUOCI_ID,
   SCHEMA_INSTRUCTOR_MARCUS_BALL_ID,
   SCHEMA_INSTRUCTOR_PERSON_NODES,
-} from "./lib/schema-site";
+} from "@/app/lib/schema-site";
 
 /** Sitewide Person @id anchors so course JSON-LD instructor references resolve beyond a single page graph. */
 const homepageInstructorPersonGraph = {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default function LegacyHomePage() {
   return (
     <>
       <script
@@ -43,7 +44,7 @@ export default function Page() {
           __html: JSON.stringify(homepageInstructorPersonGraph),
         }}
       />
-      <CinematicHome />
+      <HomeExperience />
     </>
   );
 }

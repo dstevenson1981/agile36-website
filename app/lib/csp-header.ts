@@ -32,10 +32,12 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://*.fpjs.io; " +
   "style-src 'self' 'unsafe-inline' " +
   "https://fonts.googleapis.com " +
+  "https://api.fontshare.com " +
   "https://client.crisp.chat " +
   "https://*.crisp.chat; " +
   "font-src 'self' data: " +
   "https://fonts.gstatic.com " +
+  "https://cdn.fontshare.com " +
   "https://client.crisp.chat " +
   "https://*.crisp.chat; " +
   "img-src 'self' data: https: blob: " +
