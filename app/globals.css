@@ -318,6 +318,17 @@ body {
   justify-content: center;
   background: #ffffff;
 }
+@media (max-width: 640px) {
+  .cine-hero {
+    min-height: auto;
+    padding-top: 6.5rem;
+    padding-bottom: 2.5rem;
+    justify-content: flex-start;
+  }
+  .cine-title { margin: 0 0 1.5rem; }
+  .cine-hero-bottom { gap: 1.5rem; }
+  .cine-hero-ctas { width: 100%; }
+}
 .cine-hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .cine-hero-canvas canvas { display: block; width: 100%; height: 100%; }
 .cine-hero-static {
@@ -326,8 +337,9 @@ body {
 }
 .cine-hero > .cine-wrap { position: relative; z-index: 1; width: 100%; }
 .cine-title {
-  font-size: clamp(3.5rem, 6.5vw, 8.5rem); line-height: 1.02; font-weight: 600;
+  font-size: clamp(2.75rem, 6.5vw, 8.5rem); line-height: 1.04; font-weight: 600;
   letter-spacing: -0.03em; text-transform: none; margin: 0 0 2rem;
+  overflow-wrap: break-word;
 }
 .cine-title-accent {
   background-image: var(--cine-grad-ember);
