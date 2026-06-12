@@ -70,9 +70,11 @@ function splitLines(el: HTMLElement) {
   const words = text.split(/\s+/).filter(Boolean);
   const spans = words.map((w) => {
     const s = document.createElement("span");
-    s.textContent = w + " ";
+    s.textContent = w;
     s.style.display = "inline-block";
     el.appendChild(s);
+    // real text-node space between inline-blocks so words keep their gaps
+    el.appendChild(document.createTextNode(" "));
     return s;
   });
   const lines: HTMLElement[][] = [];
@@ -90,7 +92,10 @@ function splitLines(el: HTMLElement) {
     line.className = "split-line";
     const inner = document.createElement("span");
     inner.className = "split-line__inner";
-    lineWords.forEach((w) => inner.appendChild(w));
+    lineWords.forEach((w) => {
+      inner.appendChild(w);
+      inner.appendChild(document.createTextNode(" "));
+    });
     line.appendChild(inner);
     el.appendChild(line);
     return inner;
@@ -260,7 +265,7 @@ export default function CinematicHome() {
                 </span>
               </span>
               <span className="cine-mask cine-title-indent">
-                <span className="cine-line">
+                <span className="cine-line cine-line--sub">
                   Agile·AI·Product
                 </span>
               </span>
