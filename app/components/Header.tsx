@@ -28,6 +28,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolledPastHero, setScrolledPastHero] = useState<boolean>(false);
+  const [cinematicHero, setCinematicHero] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState<boolean>(false);
   const [selectedMegaMenuCategory, setSelectedMegaMenuCategory] = useState<string>("SAFe");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -83,10 +84,14 @@ export default function Header() {
     };
   }, [showMegaMenu, showSearchResults]);
 
-  // On the homepage the header floats as translucent glass over the hero video,
+  // On the homepage the header floats as translucent glass over the hero,
   // then fades to its normal solid background once the hero is scrolled past.
   useEffect(() => {
-    if (!isHome) return;
+    if (!isHome) {
+      setCinematicHero(false);
+      return;
+    }
+    setCinematicHero(document.documentElement.dataset.homeHero === "cinematic");
     const onScroll = () => {
       setScrolledPastHero(window.scrollY > window.innerHeight * 0.7);
     };
@@ -498,15 +503,17 @@ export default function Header() {
       <header
         style={{ top: promoBannerActive ? PROMO_BANNER_STICKY_OFFSET_PX : 0 }}
         className={`w-full sticky z-50 overflow-visible transition-colors duration-300 ${
-          isHome && !scrolledPastHero
-            ? "bg-black/25 backdrop-blur-xl border-b border-[#1f2c4a]/10"
-            : isHome
-              ? "bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10"
-              : "bg-black border-b border-[#1f2c4a]/10"
+          isHome && cinematicHero && !scrolledPastHero
+            ? "bg-white/82 backdrop-blur-xl border-b border-[#1f2c4a]/12 shadow-sm shadow-[#1f2c4a]/5"
+            : isHome && !scrolledPastHero
+              ? "bg-black/25 backdrop-blur-xl border-b border-[#1f2c4a]/10"
+              : isHome
+                ? "bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10"
+                : "bg-black border-b border-[#1f2c4a]/10"
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-2 sm:gap-3 py-3 min-w-0">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 py-3.5 lg:py-4 min-w-0">
             {/* Logo and All Courses */}
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0 min-w-0">
               <Link href="/" className="flex-shrink-0 flex items-center">
@@ -514,7 +521,7 @@ export default function Header() {
                 <img
                   src="/agile36-logo-header.png"
                   alt="Agile36 Logo"
-                  className="h-8 sm:h-10 w-auto block object-contain"
+                  className="h-9 sm:h-11 w-auto block object-contain"
                 />
               </Link>
               
@@ -531,7 +538,7 @@ export default function Header() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <span className="font-medium text-sm sm:text-base">All Courses</span>
+                  <span className="font-medium text-base">All Courses</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -544,7 +551,7 @@ export default function Header() {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="bg-white/65 backdrop-blur-2xl backdrop-saturate-150 rounded-xl shadow-2xl shadow-[#1f2c4a]/20 overflow-hidden">
+                    <div className="bg-white border border-[#1f2c4a]/10 rounded-xl shadow-2xl shadow-[#1f2c4a]/15 overflow-hidden">
                     <div className="flex flex-col sm:flex-row">
                       {/* Left Sidebar - Categories */}
                       <div className="w-full sm:w-48 bg-[#1f2c4a]/[0.03] border-b sm:border-b-0 sm:border-r border-[#1f2c4a]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4">
@@ -579,7 +586,7 @@ export default function Header() {
                       
                       {/* Right Content - Courses */}
                       <div className="flex-1 p-4 sm:p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500" style={{ maxHeight: 'min(70vh, 800px)' }}>
-                        <div className="flex items-center justify-between mb-4 sticky top-0 bg-transparent backdrop-blur-lg pb-2 z-10">
+                        <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2 z-10">
                           <h3 className="font-medium text-[#1f2c4a] text-lg">
                             {selectedMegaMenuCategory} ({allCourses.filter(course => course.category === selectedMegaMenuCategory).length} Courses)
                           </h3>
@@ -651,7 +658,7 @@ export default function Header() {
             </div>
             
             {/* Search Bar */}
-            <div className="flex-1 min-w-0 max-w-md mx-2 sm:mx-3">
+            <div className="flex-1 min-w-[110px] max-w-md lg:max-w-[220px] xl:max-w-xs mx-2 sm:mx-3">
               <div className="relative" ref={searchRef}>
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -678,7 +685,7 @@ export default function Header() {
 
                 {/* Search Results Dropdown */}
                 {showSearchResults && searchResults.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white/65 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 rounded-xl shadow-xl shadow-[#1f2c4a]/20 max-h-[70vh] overflow-y-auto z-50 w-full sm:w-auto">
+                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-[#1f2c4a]/10 rounded-xl shadow-xl shadow-[#1f2c4a]/15 max-h-[70vh] overflow-y-auto z-50 w-full sm:w-auto">
                     <div className="p-2">
                       <div className="text-xs text-[#94a3b8] px-3 py-2 font-semibold">
                         {searchResults.length} {searchResults.length === 1 ? 'Course' : 'Courses'} Found
@@ -717,7 +724,7 @@ export default function Header() {
 
                 {/* No Results */}
                 {showSearchResults && searchQuery && searchResults.length === 0 && (
-                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white/65 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 rounded-xl shadow-xl shadow-[#1f2c4a]/20 z-50 w-full sm:w-auto">
+                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-[#1f2c4a]/10 rounded-xl shadow-xl shadow-[#1f2c4a]/15 z-50 w-full sm:w-auto">
                     <div className="p-4 sm:p-6 text-center">
                       <svg className="w-10 h-10 sm:w-12 sm:h-12 text-gray-600 mx-auto mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -731,29 +738,29 @@ export default function Header() {
             </div>
             
             {/* Navigation Links - Desktop */}
-            <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-              <Link href="/combo-courses" className="flex items-center gap-1.5 text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm group">
+            <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+              <Link href="/combo-courses" className="flex items-center gap-1.5 whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px] group">
                 Combo Courses
                 <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30 group-hover:bg-[#d97706]/20 transition-colors">
                   New
                 </span>
               </Link>
-              <Link href="/courses" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/courses" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Courses
               </Link>
-              <Link href="/blog" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/blog" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Blogs
               </Link>
-              <Link href="/test" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/test" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Practice Tests
               </Link>
-              <Link href="/testimonials" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/testimonials" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Testimonials
               </Link>
-              <Link href="/corporate" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/corporate" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Corporate
               </Link>
-              <Link href="/account" className="text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm">
+              <Link href="/account" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 My Account
               </Link>
             </div>

@@ -265,7 +265,12 @@ function SectionHeading({
   );
 }
 
-export default function HomeExperience() {
+export function HomeExperienceBody({
+  externalScroll = false,
+}: {
+  /** When true, Lenis is provided by a parent (e.g. cinematic SmoothScroll). */
+  externalScroll?: boolean;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"All" | CourseCategory>("All");
@@ -317,38 +322,18 @@ export default function HomeExperience() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // Inertia scrolling — the single biggest "filmed, not browsed" cue.
-      const lenis = new Lenis({ lerp: 0.1 });
-      lenis.on("scroll", ScrollTrigger.update);
-      const raf = (time: number) => lenis.raf(time * 1000);
-      gsap.ticker.add(raf);
-      gsap.ticker.lagSmoothing(0);
+      let raf: ((time: number) => void) | null = null;
+      let lenis: Lenis | null = null;
+
+      if (!externalScroll) {
+        lenis = new Lenis({ lerp: 0.1 });
+        lenis.on("scroll", ScrollTrigger.update);
+        raf = (time: number) => lenis!.raf(time * 1000);
+        gsap.ticker.add(raf);
+        gsap.ticker.lagSmoothing(0);
+      }
 
       const ctx = gsap.context(() => {
-        // Cinematic hero: the video slowly pushes in while the copy drifts up
-        // and dissolves as you scroll away.
-        gsap.to(".hero-video", {
-          scale: 1.18,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-        gsap.to(".hero-content", {
-          yPercent: -25,
-          autoAlpha: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top top",
-            end: "75% top",
-            scrub: true,
-          },
-        });
-
         gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
           const target = parseFloat(el.dataset.count || "0");
           const decimals = parseInt(el.dataset.decimals || "0", 10);
@@ -380,13 +365,13 @@ export default function HomeExperience() {
 
       return () => {
         ctx.revert();
-        gsap.ticker.remove(raf);
-        lenis.destroy();
+        if (raf) gsap.ticker.remove(raf);
+        lenis?.destroy();
       };
     });
 
     return () => mm.revert();
-  }, []);
+  }, [externalScroll]);
 
   // Re-stagger course cards when the filter changes (skip initial load — the
   // scroll reveal owns that moment).
@@ -415,73 +400,6 @@ export default function HomeExperience() {
 
       {/* Film grain over the whole page — barely there, but it reads "shot on film" */}
       <div className="film-grain" aria-hidden="true" />
-
-      {/* ============================== HERO ============================== */}
-      {/* Negative margin slides the hero up behind the translucent sticky header
-          so the video runs edge-to-edge behind the glass. */}
-      {/* The hero keeps its dark, white-on-video look — only the page below is light */}
-      <section className="hero-section relative -mt-[75px] flex h-svh min-h-[640px] flex-col overflow-hidden text-white">
-        {/* Raw video background — no overlay, no dimming. Playback is managed
-            by the IntersectionObserver effect above. */}
-        <video
-          src={HERO_VIDEO_SRC}
-          autoPlay
-          loop
-          muted
-          playsInline
-          onCanPlay={(e) => {
-            const el = e.currentTarget;
-            if (el.paused) el.play().catch(() => {});
-          }}
-          className="bg-video hero-video absolute inset-0 h-full w-full object-cover"
-        />
-        {/* Cinematic dissolve into the black page below */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-36 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-        {/* Hero content pinned to the bottom (site nav comes from the global Header) */}
-        <div className="hero-content relative z-10 flex flex-1 flex-col justify-end px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">
-          <div className="lg:grid lg:grid-cols-2 lg:items-end">
-            <div>
-              <AnimatedHeading
-                text={"Shaping tomorrow\nwith Agile and AI."}
-                className="mb-4 text-4xl font-normal md:text-5xl lg:text-6xl xl:text-7xl"
-              />
-              <FadeIn delay={800} duration={1000}>
-                <p className="mb-5 text-base text-white/90 md:text-lg">
-                  Live SAFe® and AI certification training from the coaches who
-                  define what comes next.
-                </p>
-              </FadeIn>
-              <FadeIn delay={1200} duration={1000}>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/contact"
-                    onClick={openChat}
-                    className="rounded-lg bg-white px-8 py-3 font-medium text-[#1f2c4a] transition-colors hover:bg-white/90"
-                  >
-                    Start a Chat
-                  </Link>
-                  <a
-                    href="#programs"
-                    className="rounded-lg border border-white/30 bg-[#10131c]/40 px-8 py-3 font-medium text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#1f2c4a]"
-                  >
-                    Explore Now
-                  </a>
-                </div>
-              </FadeIn>
-            </div>
-            <div className="mt-10 flex items-end justify-start lg:mt-0 lg:justify-end">
-              <FadeIn delay={1400} duration={1000}>
-                <div className="rounded-xl border border-white/25 bg-[#10131c]/40 px-6 py-3 backdrop-blur-md">
-                  <span className="text-lg font-light text-white md:text-xl lg:text-2xl">
-                    Training. Certification. Transformation.
-                  </span>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ========================== TRUSTED BY ============================ */}
       <section className="border-b border-[#1f2c4a]/10 px-6 py-16 md:px-12 md:py-20 lg:px-16">
@@ -929,5 +847,129 @@ export default function HomeExperience() {
         </div>
       </section>
     </div>
+  );
+}
+
+function HomeVideoHero() {
+  useEffect(() => {
+    const video = document.querySelector<HTMLVideoElement>(".hero-section .hero-video");
+    if (!video) return;
+    const tryPlay = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+    };
+    tryPlay();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && video.paused) tryPlay();
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const ctx = gsap.context(() => {
+        gsap.to(".hero-video", {
+          scale: 1.18,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        gsap.to(".hero-content", {
+          yPercent: -25,
+          autoAlpha: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "75% top",
+            scrub: true,
+          },
+        });
+      });
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  return (
+    <section className="hero-section relative -mt-[75px] flex h-svh min-h-[640px] flex-col overflow-hidden text-white">
+      <video
+        src={HERO_VIDEO_SRC}
+        autoPlay
+        loop
+        muted
+        playsInline
+        onCanPlay={(e) => {
+          const el = e.currentTarget;
+          if (el.paused) el.play().catch(() => {});
+        }}
+        className="bg-video hero-video absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-36 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+      <div className="hero-content relative z-10 flex flex-1 flex-col justify-end px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">
+        <div className="lg:grid lg:grid-cols-2 lg:items-end">
+          <div>
+            <AnimatedHeading
+              text={"Shaping tomorrow\nwith Agile and AI."}
+              className="mb-4 text-4xl font-normal md:text-5xl lg:text-6xl xl:text-7xl"
+            />
+            <FadeIn delay={800} duration={1000}>
+              <p className="mb-5 text-base text-white/90 md:text-lg">
+                Live SAFe® and AI certification training from the coaches who
+                define what comes next.
+              </p>
+            </FadeIn>
+            <FadeIn delay={1200} duration={1000}>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  onClick={openChat}
+                  className="rounded-lg bg-white px-8 py-3 font-medium text-[#1f2c4a] transition-colors hover:bg-white/90"
+                >
+                  Start a Chat
+                </Link>
+                <a
+                  href="#programs"
+                  className="rounded-lg border border-white/30 bg-[#10131c]/40 px-8 py-3 font-medium text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#1f2c4a]"
+                >
+                  Explore Now
+                </a>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="mt-10 flex items-end justify-start lg:mt-0 lg:justify-end">
+            <FadeIn delay={1400} duration={1000}>
+              <div className="rounded-xl border border-white/25 bg-[#10131c]/40 px-6 py-3 backdrop-blur-md">
+                <span className="text-lg font-light text-white md:text-xl lg:text-2xl">
+                  Training. Certification. Transformation.
+                </span>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function HomeExperience() {
+  return (
+    <>
+      <HomeVideoHero />
+      <HomeExperienceBody />
+    </>
   );
 }
