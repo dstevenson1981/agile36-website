@@ -40,6 +40,8 @@ const INSTRUCTORS = [
     image: "/Deadra.jpeg",
     experience: "20+ years",
     linkedin: "https://www.linkedin.com/in/deadra-stevenson-a20a6a1a2/",
+    description:
+      "Welcome to Agile36. Deadra Stevenson, CEO and Founder, is proud to lead one of the most trusted training and transformation firms in the Lean-Agile space. With more than 15 years of experience guiding organizations through large-scale change, she has built a strong reputation for delivering impactful, results-driven Agile and AI transformation experiences.\n\nAbout Her\n\nBased in Miami, Florida, Deadra has led more than 30 major Lean-Agile transformations across a wide range of organizations, including global brands such as Coca-Cola and Netflix. Her background spans enterprise coaching, portfolio transformation, executive alignment, and helping leaders adopt the Scaled Agile Framework to improve performance and strategic execution.\n\nWhile her expertise is grounded in Lean and Agile, she also leads AI-focused transformation initiatives. She helps organizations understand how AI can enhance decision-making, elevate delivery flow, and modernize ways of working. Her dual expertise ensures clients receive guidance that is both proven and forward-thinking.\n\nWhy Train With Her\n\nOrganizations choose Agile36 because Deadra brings a rare combination of deep SAFe expertise, practical leadership insight, and a modern understanding of how AI is influencing the future of work. She makes complex concepts simple, relatable, and actionable for teams and executives.\n\nShe holds advanced certifications including SAFe® Program Consultant (SPC 6), PMP, CSM, CSP, CSPO, and LSSGB. These credentials reflect her commitment to excellence and her dedication to staying at the forefront of Agile and AI transformation practices.\n\nAt Agile36, her training is hands-on, grounded in real enterprise challenges, and designed to create measurable outcomes. She blends strong SAFe foundations with modern transformation techniques, helping organizations strengthen delivery, improve alignment, and prepare their teams for the future.\n\nEvery organization is unique. When clients train with Agile36, they gain a partner who understands their goals and provides tailored guidance to support long-term success in both Agile and AI-enabled environments.",
   },
   {
     name: "Marcus Ball",
@@ -47,6 +49,8 @@ const INSTRUCTORS = [
     subtitle: "SAFe® Practice Consultant (SPC®) · Enterprise Agile Coach",
     image: "/marcus.jpeg",
     experience: "15+ years",
+    description:
+      "Welcome to my profile. I'm Marcus Ball, an Enterprise Agile Coach with Agile36, specializing in Scaled Agile Framework (SAFe) certification training and enterprise transformation coaching. I am committed to helping organizations build stronger delivery teams, improve alignment, and navigate today's fast-paced business landscape with agility and confidence.\n\nAbout Me\n\nMy work as an Agile Coach is rooted in the belief that organizations unlock extraordinary potential when they embrace Lean-Agile principles. Over the course of my career, I have guided teams and leaders through the process of adopting Agile practices, strengthening collaboration, and building a culture that supports continuous improvement.\n\nMy Expertise\n\nWith Agile36, I deliver high-quality SAFe certification training designed to equip teams, leaders, and organizations with the skills needed to improve flow, increase value delivery, and operate more effectively. I focus on practical application, clear guidance, and developing the capabilities required for long-term success with Agile and SAFe.\n\nWhy Train With Me\n\nI bring extensive hands-on experience supporting organizations at various stages of their Agile journey, helping them achieve meaningful and lasting transformation. As a certified SAFe Program Consultant (SPC) and seasoned Agile professional, I offer a depth of knowledge and a practical approach that teams can apply immediately. My goal is to empower individuals and organizations to reach higher levels of performance and deliver exceptional value.",
   },
   {
     name: "Joe Puoci",
@@ -54,6 +58,8 @@ const INSTRUCTORS = [
     subtitle: "SAFe® Practice Consultant (SPC®) · Enterprise Agile Coach",
     image: "/Joe.jpeg",
     experience: "15+ years",
+    description:
+      "Joe Puoci is a SAFe Program Consultant (SPC) and enterprise trainer with Agile36, delivering live virtual SAFe certification courses across the portfolio. He focuses on practical application of the Scaled Agile Framework so teams and leaders can improve flow, alignment, and delivery outcomes.\n\nAbout Joe\n\nJoe brings hands-on experience guiding organizations through SAFe adoption, team-level execution, and program-level planning. His training emphasizes real-world scenarios, clear facilitation, and skills learners can apply immediately after class.\n\nWhy Train With Joe\n\nLearners work with an SPC who combines deep framework knowledge with a straightforward, outcome-oriented teaching style—helping you prepare for certification and for the day-to-day work of operating in a SAFe environment.",
   },
 ];
 
@@ -275,6 +281,7 @@ export function HomeExperienceBody({
   const gridRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"All" | CourseCategory>("All");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [expandedInstructor, setExpandedInstructor] = useState<number | null>(null);
   const firstRender = useRef(true);
 
   const visibleCourses =
@@ -402,28 +409,28 @@ export function HomeExperienceBody({
       <div className="film-grain" aria-hidden="true" />
 
       {/* ========================== TRUSTED BY ============================ */}
-      <section className="border-b border-[#1f2c4a]/10 px-6 py-16 md:px-12 md:py-20 lg:px-16">
+      <section className="-mt-6 border-b border-[#1f2c4a]/10 px-6 pb-16 pt-2 md:-mt-10 md:px-12 md:pb-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d97706]">
               Trusted by professionals from
             </p>
             <h2
-              className="mx-auto mt-4 max-w-2xl text-2xl font-normal text-[#1f2c4a] md:text-3xl"
+              className="mx-auto mt-4 max-w-3xl text-2xl font-medium text-[#1f2c4a] md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
             >
               25,000+ certified at the world&apos;s most demanding companies
             </h2>
           </div>
-          <div data-reveal className="marquee-mask mt-12 overflow-hidden">
-            <div className="marquee-track flex w-max items-center gap-20 pr-20 md:gap-28 md:pr-28">
+          <div data-reveal className="marquee-mask mt-10 overflow-hidden">
+            <div className="marquee-track flex w-max items-center gap-16 pr-16 md:gap-24 md:pr-24">
               {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   key={`${logo.alt}-${i}`}
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-8 w-auto opacity-50 grayscale transition-opacity duration-300 hover:opacity-100 md:h-10"
+                  className="h-10 w-auto opacity-80 transition-opacity duration-300 hover:opacity-100 md:h-14"
                   loading="lazy"
                 />
               ))}
@@ -707,11 +714,13 @@ export function HomeExperienceBody({
             copy="The same consultants who lead Fortune 500 transformations teach every Agile36 cohort."
           />
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {INSTRUCTORS.map((person) => (
+            {INSTRUCTORS.map((person, i) => {
+              const isExpanded = expandedInstructor === i;
+              return (
               <div
                 key={person.name}
                 data-reveal
-                className="group rounded-2xl liquid-glass p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
+                className="group flex flex-col rounded-2xl liquid-glass p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
               >
                 <div className="flex items-center gap-4">
                   <Image
@@ -727,7 +736,24 @@ export function HomeExperienceBody({
                   </div>
                 </div>
                 <p className="mt-4 text-xs leading-relaxed text-[#64748b]">{person.subtitle}</p>
-                <div className="mt-5 flex items-center justify-between border-t border-[#1f2c4a]/10 pt-4">
+                <div className="mt-4">
+                  <p
+                    className={`whitespace-pre-line text-sm leading-relaxed text-[#475569] ${
+                      isExpanded ? "" : "line-clamp-3"
+                    }`}
+                  >
+                    {person.description}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setExpandedInstructor(isExpanded ? null : i)}
+                    aria-expanded={isExpanded}
+                    className="mt-2 text-sm font-semibold text-[#d97706] transition-colors hover:text-[#b45309]"
+                  >
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </button>
+                </div>
+                <div className="mt-auto flex items-center justify-between border-t border-[#1f2c4a]/10 pt-4">
                   <span className="text-xs font-medium text-[#64748b]">
                     {person.experience} experience
                   </span>
@@ -746,7 +772,8 @@ export function HomeExperienceBody({
                   )}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

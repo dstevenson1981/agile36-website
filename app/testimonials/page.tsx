@@ -11,6 +11,7 @@ interface Testimonial {
   rating: number;
   review: string;
   category: "SAFe" | "Generative AI" | "Product AI";
+  title: string;
   postedOn: string;
 }
 
@@ -42,6 +43,25 @@ const productAICourses = [
   "No-Code AI Agents & Automation",
   "AI Agent Builder",
   "AI Product Management"
+];
+
+// Job titles shown under each testimonial (replaces the generic "graduate" label)
+const safeTitles = [
+  "Scrum Master", "Senior Scrum Master", "Product Owner", "Release Train Engineer",
+  "Agile Coach", "Program Manager", "Portfolio Manager", "Enterprise Agile Coach",
+  "IT Director", "VP of Engineering", "Project Manager", "Delivery Lead"
+];
+
+const generativeAITitles = [
+  "Software Engineer", "Senior Software Engineer", "Engineering Manager", "AI Engineer",
+  "Data Scientist", "Technical Lead", "Scrum Master", "Agile Coach",
+  "Director of Engineering", "VP of Technology", "Solutions Architect", "Innovation Director"
+];
+
+const productAITitles = [
+  "Product Manager", "Senior Product Manager", "Product Owner", "Head of Product",
+  "Director of Product", "VP of Product", "Product Lead", "Growth Product Manager",
+  "Product Marketing Manager", "Principal Product Manager", "Group Product Manager", "Chief Product Officer"
 ];
 
 const generateTestimonials = (): Testimonial[] => {
@@ -150,6 +170,7 @@ const generateTestimonials = (): Testimonial[] => {
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
       category: "SAFe",
+      title: safeTitles[i % safeTitles.length],
       postedOn: "Google"
     });
   }
@@ -188,6 +209,7 @@ const generateTestimonials = (): Testimonial[] => {
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
       category: "Generative AI",
+      title: generativeAITitles[i % generativeAITitles.length],
       postedOn: "Google"
     });
   }
@@ -219,6 +241,7 @@ const generateTestimonials = (): Testimonial[] => {
       rating: 5,
       review: reviewTemplates[i % reviewTemplates.length],
       category: "Product AI",
+      title: productAITitles[i % productAITitles.length],
       postedOn: "Google"
     });
   }
@@ -365,7 +388,7 @@ export default function TestimonialsPage() {
                       />
                       <div className="leading-tight">
                         <p className="text-sm font-semibold text-[#1f2c4a]">{t.name}</p>
-                        <p className="text-xs text-[#94a3b8]">{t.category} graduate</p>
+                        <p className="text-xs text-[#94a3b8]">{t.title}</p>
                       </div>
                     </div>
                   </div>
