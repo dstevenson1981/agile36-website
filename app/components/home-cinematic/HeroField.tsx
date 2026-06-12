@@ -34,8 +34,10 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    const compact = window.innerWidth < 768;
+    const maxDpr = compact ? 1.5 : 2;
     const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
 
@@ -49,8 +51,10 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
     camera.position.set(0, 2.2, 7.5);
     camera.lookAt(0, 0, 0);
 
-    const COLS = 180;
-    const ROWS = 90;
+    // Lighter point grid on small screens to keep phones at a smooth frame rate.
+    const isCompact = window.innerWidth < 768;
+    const COLS = isCompact ? 110 : 180;
+    const ROWS = isCompact ? 60 : 90;
     const W = 26;
     const D = 13;
     const count = COLS * ROWS;
@@ -74,7 +78,7 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
       uTime: { value: 0 },
       uScroll: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+      uPixelRatio: { value: Math.min(window.devicePixelRatio, maxDpr) },
       uInk: { value: new THREE.Color("#141414") },
       uGoldA: { value: new THREE.Color("#F5B942") },
       uGoldB: { value: new THREE.Color("#FF8A3D") },

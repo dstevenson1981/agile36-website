@@ -34,18 +34,13 @@ export default function CinematicHome() {
     };
   }, []);
 
-  // Shader only on desktop without reduced motion; re-evaluate on changes
+  // Particle field runs on all screen sizes; only reduced-motion turns it off.
   useEffect(() => {
-    const wide = window.matchMedia("(min-width: 1024px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setShowField(wide.matches && !reduced.matches);
+    const update = () => setShowField(!reduced.matches);
     update();
-    wide.addEventListener("change", update);
     reduced.addEventListener("change", update);
-    return () => {
-      wide.removeEventListener("change", update);
-      reduced.removeEventListener("change", update);
-    };
+    return () => reduced.removeEventListener("change", update);
   }, []);
 
   useGSAP(
