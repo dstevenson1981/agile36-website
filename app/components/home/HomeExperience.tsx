@@ -424,18 +424,21 @@ export function HomeExperienceBody({
           </div>
           <div
             data-reveal
-            className="mx-auto mt-9 flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-x-8"
+            className="marquee-mask marquee-paused -mx-6 mt-9 w-[calc(100%+3rem)] overflow-hidden sm:mx-auto sm:w-full sm:max-w-6xl"
           >
-            {COMPANY_LOGOS.map((logo) => (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-6 w-auto opacity-60 grayscale transition-opacity duration-300 hover:opacity-90 md:h-8"
-                loading="lazy"
-              />
-            ))}
+            <div className="marquee-track flex w-max items-center gap-8 pr-8 md:gap-10 md:pr-10">
+              {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  key={`${logo.alt}-${i}`}
+                  src={logo.src}
+                  alt={logo.alt}
+                  aria-hidden={i >= COMPANY_LOGOS.length}
+                  className="h-6 w-auto shrink-0 opacity-60 grayscale transition-opacity duration-300 hover:opacity-90 md:h-8"
+                  loading="lazy"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

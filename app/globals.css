@@ -62,11 +62,30 @@ body {
 
 .marquee-track {
   animation: marquee-scroll 36s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .marquee-mask {
   mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.marquee-paused:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 30s;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -237,6 +256,10 @@ body {
 /* Infinite testimonial marquee rows (reuses marquee-scroll keyframes) */
 .marquee-row {
   animation: marquee-scroll var(--marquee-duration, 48s) linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .marquee-row.marquee-reverse {
   animation-direction: reverse;
