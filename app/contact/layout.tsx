@@ -9,7 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact Agile36 (2026) | SAFe & AI Training Partner",
   description:
-    "2026: Contact Agile36 for enterprise SAFe training, AI upskilling, and certification paths. Call (786) 321-5200 or email d.stevenson@agile36.com.",
+    "2026: Contact Agile36 for enterprise SAFe training, AI upskilling, and certification paths. Call (310) 620-7966 or email d.stevenson@agile36.com.",
   keywords: [
     "contact agile36",
     "agile training support",
@@ -61,7 +61,7 @@ export default function ContactLayout({
       "width": SCHEMA_ORGANIZATION_LOGO_WIDTH,
       "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
-    "telephone": "786-321-5200",
+    "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
     "address": {
       "@type": "PostalAddress",
@@ -93,7 +93,7 @@ export default function ContactLayout({
         "name": "How do I contact Agile36?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Contact Agile36 by phone at 786-321-5200, email d.stevenson@agile36.com, or through the contact form on the website. For corporate training inquiries, use the consultation form. For immediate assistance, use the live chat widget available on all pages."
+          "text": "Contact Agile36 by phone at 310-620-7966, email d.stevenson@agile36.com, or through the contact form on the website. For corporate training inquiries, use the consultation form. For immediate assistance, use the live chat widget available on all pages."
         }
       },
       {
@@ -117,7 +117,7 @@ export default function ContactLayout({
         "name": "How quickly will I get a response?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We respond to inquiries within 1-2 business hours during business hours (Monday-Friday, 9 AM - 6 PM EST). For immediate assistance, use the live chat widget. For urgent matters, call 786-321-5200 directly."
+          "text": "We respond to inquiries within 1-2 business hours during business hours (Monday-Friday, 9 AM - 6 PM EST). For immediate assistance, use the live chat widget. For urgent matters, call 310-620-7966 directly."
         }
       }
     ]

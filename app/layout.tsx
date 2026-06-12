@@ -76,7 +76,7 @@ export default function RootLayout({
       "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
     "description": "Agile36 provides enterprise Agile and AI training including SAFe, Scrum, Generative AI, and AI Product certifications. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
-    "telephone": "786-321-5200",
+    "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
     "address": {
       "@type": "PostalAddress",

@@ -53,10 +53,10 @@ export default function Footer() {
             </p>
             <div className="mt-6 space-y-1.5">
               <a
-                href="tel:786-321-5200"
+                href="tel:+13106207966"
                 className="block text-sm text-[#475569] transition-colors hover:text-[#1f2c4a]"
               >
-                (786) 321-5200
+                (310) 620-7966
               </a>
               <p className="text-xs text-[#94a3b8]">Mon–Fri, 9AM–5PM EST</p>
               <a
