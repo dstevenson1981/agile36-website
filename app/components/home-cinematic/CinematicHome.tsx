@@ -103,9 +103,6 @@ export default function CinematicHome() {
                     Explore courses
                   </span>
                 </Link>
-                <Link href="/test" className="cine-link-quiet">
-                  Free practice tests →
-                </Link>
               </div>
             </div>
           </div>
