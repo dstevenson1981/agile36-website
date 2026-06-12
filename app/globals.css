@@ -301,7 +301,7 @@ body {
 }
 
 /* masked line reveals */
-.cine-mask { overflow: hidden; display: block; }
+.cine-mask { overflow: hidden; display: block; padding-bottom: 0.16em; margin-bottom: -0.16em; }
 .cine-mask .cine-line { display: block; will-change: transform; }
 .split-line { display: block; overflow: hidden; }
 .split-line__inner { display: block; will-change: transform; }

@@ -15,6 +15,14 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
+
+    // Touch devices keep native momentum scrolling — Lenis fights it and feels
+    // sluggish/jerky on phones. Only run smooth scroll for pointer/mouse setups.
+    const isTouch =
+      window.matchMedia("(hover: none), (pointer: coarse)").matches ||
+      "ontouchstart" in window;
+    if (isTouch) return;
+
     const lenis = new Lenis({ lerp: 0.1 });
     lenis.on("scroll", ScrollTrigger.update);
     const raf = (time: number) => lenis.raf(time * 1000);
