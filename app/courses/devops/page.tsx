@@ -6,6 +6,8 @@ import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import CourseHeroStats from "@/app/components/CourseHeroStats";
+import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function DevOpsCoursePage() {
@@ -69,134 +71,160 @@ export default function DevOpsCoursePage() {
   return (
     <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative w-full overflow-hidden bg-black px-4 pb-16 pt-10 sm:px-6 lg:px-20 lg:pb-20">
+        {/* Soft ambient glows behind the hero */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 -top-40 h-[55vh] w-[55vh] rounded-full bg-[#d97706]/[0.07] blur-[130px]" />
+          <div className="absolute -right-40 top-10 h-[60vh] w-[60vh] rounded-full bg-blue-500/[0.08] blur-[150px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-[#64748b]">
+          <div className="mb-8 flex items-center gap-2 text-sm text-[#64748b]">
             <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#334155]">SAFe</span>
+            <Link href="/courses" className="hover:text-[#1f2c4a]">SAFe</Link>
             <span>/</span>
-            <span className="text-[#334155]">SAFe DevOps Certification Training</span>
+            <span className="text-[#334155]">SAFe SDP</span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
             {/* Left Content */}
-            <div className="space-y-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="h-16 w-16 shrink-0">
-                  <Image
-                    src="/Devops.png"
-                    alt="SAFe DevOps Badge"
-                    width={64}
-                    height={64}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <div className="flex items-center gap-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] px-3 py-1.5">
-                  <svg className="h-5 w-5 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                  <span className="text-sm font-semibold text-blue-700">English</span>
-                </div>
+            <div className="space-y-7">
+              {/* Category Badge */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe DevOps Practitioner (SDP)</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                  Certification Exam Included
+                </span>
               </div>
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
-                  SAFe® 6.0 DevOps (SDP) Certification Training
+                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                  AI-Empowered SAFe® DevOps (SDP) Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
-                  Master DevOps Practices and Continuous Delivery in SAFe Environments
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                  Master DevOps practices and continuous delivery pipelines with expert-led SAFe® 6.0 training and hands-on automation labs.
                 </p>
-                <CourseHeroSocialProof
-                  enrolledLabel="2.2K+ enrolled"
-                  trailing={
-                    <div className="flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 sm:px-4">
-                      <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </div>
+
+              {/* Social proof */}
+              <CourseHeroSocialProof enrolledLabel="9K+ Enrolled" />
+
+              {/* Infographic stats */}
+              <CourseHeroStats
+                stats={[
+                  { value: "9K+", label: "Enrolled", icon: "users" },
+                  { value: "4.9", label: "Avg. rating", icon: "star" },
+                  { value: "16", label: "Hours live", icon: "clock" },
+                  { value: "2", label: "Days", icon: "calendar" },
+                ]}
+              />
+
+              {/* Features List */}
+              <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                {[
+                  "Join SAFe SDP Training with Agile36, a Scaled Agile Silver Partner",
+                  "Design continuous delivery pipelines & automate deployment in SAFe",
+                  "Learn from SPCs & access exclusive SAFe® resources for success",
+                  "Earn 16 PDUs & SEUs and join the global SAFe® Agile leader network",
+                  "Get SAFe DevOps Practitioner certified with live sessions & exam guidance"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-600">
+                      <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm font-bold text-emerald-700">Certification Exam Included</span>
-                    </div>
-                  }
-                />
-                
-                {/* Key Benefits with Checkmarks */}
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Join 16 Hrs of Live Online Training by Certified SAFe® DevOps Trainers",
-                    "Learn Real-World Case Studies & Hands-On DevOps Pipeline Exercises",
-                    "Exam Fee Included in Training | Get Support for SAFe® DevOps Exam",
-                    "Earn 16 PDUs & SEUs with SAFe® 6 DevOps Certification Course",
-                    "Access to SAFe® Community & Career Resources"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-base text-[#475569]">{item}</span>
-                    </div>
-                  ))}
-                </div>
+                    </span>
+                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Accredited By */}
-              <div className="flex items-center gap-4 pt-4">
-                <span className="text-base font-semibold text-[#1f2c4a]">Accredited by</span>
+              <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+                <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Accredited by</span>
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/Silver.png"
-                      alt="Scaled Agile Silver Partner"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
-                    <Image
+                  <Image
+                    src="/Silver.png"
+                    alt="Scaled Agile Silver Partner"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
+                  <Image
                     src="/Devops.png"
-                    alt="SAFe DevOps Certification Badge"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+                    alt="SAFe DevOps Practitioner Certification Badge"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                <a 
-                  href="/SDP_6.0_Partner.pdf" 
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/courses/devops/schedule?course=${courseSlug}`}
+                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                >
+                  View Schedules
+                </Link>
+                <a
+                  href="/SDP_6.0_Partner.pdf"
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
+                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Brochure
                 </a>
-                <Link 
-                  href={`/courses/devops/schedule?course=${courseSlug}`}
-                  className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors inline-block text-center"
-                >
-                  View Schedules
-                </Link>
-                <button 
+                <button
                   onClick={() => setShowAssessmentModal(true)}
-                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors"
+                  className="liquid-glass rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   Free DevOps Assessment
                 </button>
               </div>
             </div>
 
+            {/* Sticky pricing card */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
-              <div className="mt-8 lg:mt-20">
-                <img src="/Devops_Header.jpg" alt="SAFe DevOps" className="w-full h-auto rounded-lg" />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">16 Hours Training</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">2 Days Duration</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">SAFe DevOps Practitioner (SDP)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
+                </div>
               </div>
             </CourseHeroRightColumn>
           </div>
@@ -206,14 +234,180 @@ export default function DevOpsCoursePage() {
       {/* Trusted by industry leaders */}
       <TrustedByStrip />
 
-      {/* Key to Success Section */}
+      {/* AI-SEO: Page Summary - What is SAFe SDP? */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] border-t border-[#1f2c4a]/10 py-8 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">What is SAFe SDP Certification?</h2>
+            <p className="text-lg text-[#334155] leading-relaxed mb-4">
+              SAFe DevOps Practitioner (SDP) certification validates your ability to implement DevOps practices, build continuous delivery pipelines, and accelerate value delivery within the Scaled Agile Framework. The certification teaches you to map value streams, automate testing and deployment, apply infrastructure as code, and foster a culture of continuous improvement across Agile Release Trains.
+            </p>
+            <p className="text-lg text-[#334155] leading-relaxed">
+              The certification is earned by completing a 2-day (16-hour) course taught by a SAFe Program Consultant (SPC) and passing the online SAFe DevOps Practitioner exam. Upon certification, you receive one year of access to the SAFe Community Platform, 16 PDUs/SEUs, and the credentials to lead DevOps transformations at enterprise scale.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Quick Facts */}
       <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-12 text-center">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">SAFe SDP Quick Facts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Certification</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">SAFe DevOps Practitioner (SDP)</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Duration</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">2 Days (16 Hours)</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">PDUs/SEUs</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">16 PDUs & 16 SEUs</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Exam Fee</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">Included</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Key Definitions */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Key Definitions</h2>
+          <div className="space-y-6 max-w-4xl">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is DevOps in SAFe?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                DevOps in SAFe combines development and operations practices to shorten the lead time from concept to deployment. It emphasizes collaboration, automation, continuous integration, continuous delivery, and a culture of shared responsibility for quality and flow across the Agile Release Train.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is a Continuous Delivery Pipeline?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                A continuous delivery pipeline is the automated workflow that moves code from commit to production. In SAFe, the pipeline spans continuous exploration, integration, deployment, and release on demand — enabling teams to deliver value frequently with minimal manual intervention.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is Continuous Integration (CI)?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                Continuous Integration is the practice of merging code changes into a shared repository frequently, with automated builds and tests running on each integration. CI reduces integration risk, surfaces defects early, and keeps the codebase in a continuously releasable state.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is Release on Demand?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                Release on Demand is the ability to release value to customers whenever the business chooses, independent of deployment. SAFe decouples deployment from release using techniques like feature toggles, canary releases, and dark launches to minimize risk while maximizing flow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Who Should Take This Course */}
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Who Should Take SAFe SDP Certification?</h2>
+          <p className="text-lg text-[#475569] mb-6 max-w-4xl">
+            SAFe SDP certification is designed for professionals who build, automate, and optimize software delivery pipelines within Lean-Agile enterprises:
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">DevOps Engineers</h3>
+                <p className="text-[#475569]">Practitioners responsible for CI/CD pipelines, deployment automation, and infrastructure as code.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Software Developers & Engineers</h3>
+                <p className="text-[#475569]">Developers who want to integrate DevOps practices into their daily workflow within SAFe teams.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Release Train Engineers & System Architects</h3>
+                <p className="text-[#475569]">ART leaders who coordinate delivery flow, tooling, and architectural enablers across teams.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">IT Operations & Infrastructure Teams</h3>
+                <p className="text-[#475569]">Operations professionals transitioning to DevOps culture and automation-first delivery models.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Site Reliability Engineers (SREs)</h3>
+                <p className="text-[#475569]">Engineers focused on reliability, observability, and automated remediation in production systems.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Agile Coaches & Transformation Leaders</h3>
+                <p className="text-[#475569]">Change agents guiding organizations through DevOps adoption within SAFe transformations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Related SAFe Certifications - Entity Linking */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Related SAFe Certifications</h2>
+          <p className="text-lg text-[#475569] mb-8 max-w-4xl">
+            Build on your SAFe SDP certification with these complementary SAFe certifications to deepen your expertise:
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/courses/leading-safe" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Leading SAFe (SAFe Agilist)</h3>
+              <p className="text-[#475569] text-sm">Lead Lean-Agile transformations, coordinate Agile Release Trains, and organize around value at enterprise scale.</p>
+            </Link>
+            <Link href="/courses/product-owner-manager" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
+              <p className="text-[#475569] text-sm">Manage Program and Team Backlogs, prioritize Features, and drive customer-centric delivery across ARTs.</p>
+            </Link>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
+              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
+            </Link>
+            <Link href="/courses/scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Scrum Master (SSM)</h3>
+              <p className="text-[#475569] text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
+            </Link>
+            <Link href="/courses/lean-portfolio-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Lean Portfolio Management (LPM)</h3>
+              <p className="text-[#475569] text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
+            </Link>
+            <Link href="/courses/advanced-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
+              <p className="text-[#475569] text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Key to Success Section — glassmorphism feature cards */}
+      <section className="w-full bg-[#e9eef6] py-16 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3 text-center">
             Our Key to Exam and Career Success
           </h2>
+          <p className="mb-12 text-center text-[#64748b]">
+            Everything in your enrollment is built to get you certified — and hired.
+          </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { 
                 icon: (
@@ -221,7 +415,8 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ), 
-                title: "High Pass Rate" 
+                title: "High Pass Rate",
+                desc: "Exam fee is included with your course enrollment.",
               },
               { 
                 icon: (
@@ -229,7 +424,8 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 ), 
-                title: "Expert-Led Study Sessions" 
+                title: "Expert-Led Study Sessions",
+                desc: "Live exam prep with certified SPC instructors.",
               },
               { 
                 icon: (
@@ -237,7 +433,8 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ), 
-                title: "Networking Opportunities" 
+                title: "Networking Opportunities",
+                desc: "Join a global community of certified SAFe leaders.",
               },
               { 
                 icon: (
@@ -245,7 +442,8 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
                 ), 
-                title: "Flexible Monthly Payment Plans" 
+                title: "Flexible Monthly Payment Plans",
+                desc: "Split your tuition into easy monthly payments.",
               },
               { 
                 icon: (
@@ -253,7 +451,8 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ), 
-                title: "Real-World Case Studies" 
+                title: "Real-World Case Studies",
+                desc: "Learn through real enterprise transformation scenarios.",
               },
               { 
                 icon: (
@@ -262,26 +461,31 @@ export default function DevOpsCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 ), 
-                title: "Hands-On Project Experience" 
+                title: "Hands-On Project Experience",
+                desc: "Build continuous delivery pipelines in live, instructor-run labs.",
               }
             ].map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mb-4">
+              <div
+                key={index}
+                className="group rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/20 hover:shadow-[0_16px_40px_-12px_rgba(13,148,136,0.35),inset_0_1px_1px_rgba(255,255,255,0.8)]"
+              >
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#d97706]/10 transition-transform duration-300 group-hover:scale-110">
                   {item.icon}
-                </div>
-                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
+                </span>
+                <h3 className="mt-4 text-base font-bold text-[#1f2c4a]">{item.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#64748b]">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content with Pricing Card */}
+      {/* Main Content */}
       <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main content area - 2 columns */}
-            <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
+          <div className="space-y-12">
+            {/* Main content area - full width */}
+            <div className="space-y-12">
               {/* Tabs Navigation */}
               <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
@@ -487,29 +691,27 @@ export default function DevOpsCoursePage() {
                         Earning your SAFe DevOps certification opens up numerous career opportunities and demonstrates your commitment to professional growth. The certification validates your ability to effectively implement DevOps practices and continuous delivery pipelines in a SAFe environment.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Average Salary</h4>
-                          <p className="text-base text-[#475569]">
-                            $100,000–$150,000 (US)
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Average Salary (US)</h4>
+                          <RangeBar
+                            title="$100K – $150K"
+                            minLabel="$100,000"
+                            midLabel="$125,000"
+                            maxLabel="$150,000+"
+                            caption="Typical US salary band for SAFe DevOps professionals"
+                          />
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">
-                            DevOps Engineer, Site Reliability Engineer, DevOps Architect, Release Manager
-                          </p>
+                          <p className="text-base text-[#475569]">DevOps Engineer, Site Reliability Engineer, DevOps Architect, Release Manager</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Top Hiring Industries</h4>
-                          <p className="text-base text-[#475569]">
-                            Financial services, healthcare, federal government, technology
-                          </p>
+                          <p className="text-base text-[#475569]">Financial services, healthcare, federal government, technology</p>
                         </div>
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Demand</h4>
-                          <p className="text-base text-[#475569]">
-                            70% of Fortune 100 companies use SAFe — certified DevOps professionals are in high demand
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
+                          <DemandMeter caption="SAFe DevOps professionals are in high demand as enterprises accelerate digital delivery." />
                         </div>
                       </div>
                     </div>
@@ -551,28 +753,39 @@ export default function DevOpsCoursePage() {
                     {/* Exam Information */}
                     <div>
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">SAFe DevOps Exam Information</h3>
-                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-4">
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Exam Format:</p>
-                            <p className="text-base text-[#475569]">Multiple choice, 45 questions</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Duration:</p>
-                            <p className="text-base text-[#475569]">90 minutes</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Passing Score:</p>
-                            <p className="text-base text-[#475569]">71% (32 out of 45)</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Exam Fee:</p>
-                            <p className="text-base text-[#475569]">Included with course enrollment</p>
+                      <div className="bg-[#1f2c4a]/[0.04] rounded-2xl border border-[#1f2c4a]/10 p-6 space-y-6">
+                        <div className="grid items-center gap-6 md:grid-cols-[200px_1fr]">
+                          <RadialGauge
+                            percent={71}
+                            sublabel="to pass"
+                            label="Passing score — 32 of 45 questions"
+                          />
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <FactChip
+                              value="45 questions"
+                              label="Multiple choice, open book"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>}
+                            />
+                            <FactChip
+                              value="90 minutes"
+                              label="Online, from anywhere"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 7v5l3 2" /></svg>}
+                            />
+                            <FactChip
+                              value="Exam fee included"
+                              label="With course enrollment"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                            />
+                            <FactChip
+                              value="30-day window"
+                              label="To complete your exam online"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
+                            />
                           </div>
                         </div>
                         <div className="pt-4 border-t border-[#1f2c4a]/15">
                           <p className="text-base text-[#475569] mb-2">
-                            <strong>Note:</strong> The exam can be taken online from anywhere, and you have 30 days after course completion to take the exam. If you don't pass on the first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile.
+                            <strong>Note:</strong> The exam can be taken online from anywhere within 30 days of course completion. Your exam attempt is included with course enrollment.
                           </p>
                         </div>
                       </div>
@@ -798,58 +1011,6 @@ export default function DevOpsCoursePage() {
                 )}
               </div>
             </div>
-
-            {/* Pricing Card - Sticky */}
-            <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
-              <div className="liquid-glass rounded-2xl p-6">
-                <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$599</div>
-                  <div className="text-base text-[#64748b] line-through">$1,398</div>
-                  <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">16 Hours Training</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">2 Days Duration</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">SAFe DevOps Certification</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
-                  </div>
-                </div>
-
-                <Link 
-                  href={`/courses/devops/schedule?course=${courseSlug}`}
-                  className="w-full liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors mb-4 inline-block text-center"
-                >
-                  View Schedule
-                </Link>
-
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -903,7 +1064,7 @@ export default function DevOpsCoursePage() {
                   <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  <span className="text-base text-[#475569] font-semibold">2.2K+ Users</span>
+                  <span className="text-base text-[#475569] font-semibold">9K+ Users</span>
                 </div>
               </div>
 
@@ -1019,11 +1180,11 @@ export default function DevOpsCoursePage() {
                   { q: "Do I get any certificate upon completion of the course?", a: "Yes, upon successful completion of the SAFe DevOps course and passing the certification exam, you'll receive the official SAFe DevOps (SDP) certificate from Scaled Agile, Inc." }
                 ],
                 exam: [
-                  { q: "What is the format of the SAFe DevOps exam?", a: "The SAFe DevOps exam is a multiple-choice exam with 45 questions. You have 90 minutes to complete it, and you need to score 71% (32 out of 45) to pass. The exam is open book." },
-                  { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
+                  { q: "What is the format of the SAFe DevOps exam?", a: "The SAFe DevOps exam is a multiple-choice, open-book exam with 45 questions. You have 90 minutes to complete it, and you need to score 71% (32 out of 45) to pass." },
+                  { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam online from anywhere." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
-                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." },
+                  { q: "What is the passing score for the SAFe DevOps exam?", a: "You need 71% or higher — answering at least 32 out of 45 questions correctly within the 30-day exam window." },
                   { q: "How do I renew my SAFe DevOps certification?", a: "The SAFe DevOps (SDP) certification is valid for one year. Annual renewal is $195 paid to Scaled Agile. You can renew by earning continuing education credits or taking advanced SAFe courses." }
                 ],
                 payment: [

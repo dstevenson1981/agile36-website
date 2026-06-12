@@ -267,8 +267,8 @@ export default function LeadingSafeCoursePage() {
               <p className="text-xl font-semibold text-[#1f2c4a]">16 PDUs & 16 SEUs</p>
             </div>
             <div className="liquid-glass p-6 rounded-2xl">
-              <h3 className="font-bold text-sm text-[#64748b] mb-2">Exam Attempts</h3>
-              <p className="text-xl font-semibold text-[#1f2c4a]">1 Free + 1 Retake</p>
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Exam Fee</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">Included</p>
             </div>
           </div>
         </div>
@@ -415,7 +415,7 @@ export default function LeadingSafeCoursePage() {
               {
                 Icon: BadgeCheck,
                 title: "High Pass Rate",
-                desc: "Exam fee and a free retake are included with enrollment.",
+                desc: "Your certification exam attempt is included with enrollment.",
               },
               {
                 Icon: BookOpen,
@@ -756,15 +756,15 @@ export default function LeadingSafeCoursePage() {
                               icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
                             />
                             <FactChip
-                              value="1 free retake"
-                              label="If you don't pass first try"
-                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0114-3m2 9a8 8 0 01-14 3" /></svg>}
+                              value="30-day window"
+                              label="To complete your exam online"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
                             />
                           </div>
                         </div>
                         <div className="pt-4 border-t border-[#1f2c4a]/15">
                           <p className="text-base text-[#475569] mb-2">
-                            <strong>Note:</strong> The exam can be taken online from anywhere, and you have 30 days after course completion to take the exam. One free retake is included if you don't pass on the first attempt.
+                            <strong>Note:</strong> The exam can be taken online from anywhere within 30 days of course completion. Your exam attempt is included with course enrollment.
                           </p>
                         </div>
                       </div>
@@ -1081,7 +1081,7 @@ export default function LeadingSafeCoursePage() {
                   { q: "How long do I have to take the exam after completing the course?", a: "You have 30 days after course completion to take the exam." },
                   { q: "Is the exam included in the course fee?", a: "Yes, the exam fee is included with your course enrollment. There are no additional charges for taking the certification exam." },
                   { q: "Can I take the exam online?", a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course." },
-                  { q: "What happens if I fail the exam?", a: "If you don't pass on your first attempt, you can retake the exam for a $50 fee paid directly to Scaled Agile. You can purchase retakes through Scaled Agile's website." },
+                  { q: "What happens if I fail the exam?", a: "Contact Agile36 for exam prep support and guidance on next steps. Your exam attempt is included with course enrollment and must be completed within 30 days of the course." },
                   { q: "How do I renew my SAFe Agilist certification?", a: "The SAFe Agilist certification is valid for one year. Annual renewal is $195 paid to Scaled Agile. You can renew by earning continuing education credits or taking advanced SAFe courses." }
                 ],
                 payment: [

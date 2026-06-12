@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
+import CourseHeroStats from "@/app/components/CourseHeroStats";
+import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 
 export default function ScrumMasterCoursePage() {
@@ -67,167 +69,160 @@ export default function ScrumMasterCoursePage() {
   return (
     <main className="min-h-screen bg-black text-[#1f2c4a]">
       {/* Hero Section */}
-      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative w-full overflow-hidden bg-black px-4 pb-16 pt-10 sm:px-6 lg:px-20 lg:pb-20">
+        {/* Soft ambient glows behind the hero */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 -top-40 h-[55vh] w-[55vh] rounded-full bg-[#d97706]/[0.07] blur-[130px]" />
+          <div className="absolute -right-40 top-10 h-[60vh] w-[60vh] rounded-full bg-blue-500/[0.08] blur-[150px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-6 text-sm text-[#64748b]">
+          <div className="mb-8 flex items-center gap-2 text-sm text-[#64748b]">
             <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
             <span>/</span>
-            <span className="text-[#334155]">SAFe</span>
+            <Link href="/courses" className="hover:text-[#1f2c4a]">SAFe</Link>
             <span>/</span>
-            <span className="text-[#334155]">AI-Empowered SAFe Scrum Master Certification Training</span>
+            <span className="text-[#334155]">SAFe SSM</span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
             {/* Left Content */}
-            <div className="space-y-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="h-16 w-16 shrink-0">
-                  <Image
-                    src="/SSM.jpeg"
-                    alt="SAFe Scrum Master Badge"
-                    width={64}
-                    height={64}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <div className="flex items-center gap-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] px-3 py-1.5">
-                  <svg className="h-5 w-5 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                  <span className="text-sm font-semibold text-blue-700">English</span>
-                </div>
+            <div className="space-y-7">
+              {/* Category Badge */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                  Certification Exam Included
+                </span>
               </div>
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
                   AI-Empowered SAFe® Scrum Master (SSM) Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
-                  Become a certified AI-Empowered SAFe Scrum Master in 2 days. Live, expert-led training from a SAFe Silver Partner with Fortune 100 experience.
+                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                  Become a certified AI-Empowered SAFe Scrum Master in 2 days with live, expert-led training from a SAFe Silver Partner.
                 </p>
-                <CourseHeroSocialProof
-                  enrolledLabel="25,000+ enrolled"
-                  trailing={
-                    <div className="flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 sm:px-4">
-                      <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span className="text-sm font-bold text-emerald-700">Certification Exam Included</span>
-                    </div>
-                  }
-                />
+              </div>
 
-                {/* Key Stats Bar */}
-                <div className="flex flex-wrap gap-4 mb-6 p-4 bg-[#1f2c4a]/[0.06] rounded-lg border border-[#1f2c4a]/15">
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#334155]">2-Day Live Training</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#334155]">Exam Fee Included</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#334155]">16 PDUs & SEUs</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#334155]">SAFe Silver Partner</span>
-                  </div>
-                </div>
-                
-                {/* Key Benefits with Checkmarks */}
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Join 16 Hrs of Live Online Training by Certified SAFe® SSM Trainers",
-                    "Learn Real-World Case Studies & Hands-On Scrum Master Exercises",
-                    "Exam Fee Included in Training | Get Support for SAFe® SSM Exam",
-                    "Earn 16 PDUs & SEUs with SAFe® 6 SSM Certification Course",
-                    "Access to SAFe® Community & Career Resources"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              {/* Social proof */}
+              <CourseHeroSocialProof enrolledLabel="9K+ Enrolled" />
+
+              {/* Infographic stats */}
+              <CourseHeroStats
+                stats={[
+                  { value: "9K+", label: "Enrolled", icon: "users" },
+                  { value: "4.9", label: "Avg. rating", icon: "star" },
+                  { value: "16", label: "Hours live", icon: "clock" },
+                  { value: "2", label: "Days", icon: "calendar" },
+                ]}
+              />
+
+              {/* Features List */}
+              <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                {[
+                  "Join SAFe SSM Training with Agile36, a Scaled Agile Silver Partner",
+                  "Master team facilitation, PI Planning support & impediment removal",
+                  "Learn from SPCs & access exclusive SAFe® resources for success",
+                  "Earn 16 PDUs & SEUs and join the global SAFe® Agile leader network",
+                  "Get SAFe SSM certified with live sessions & SAFe exam guidance"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-600">
+                      <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-[#475569]">{item}</span>
-                    </div>
-                  ))}
-                </div>
+                    </span>
+                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Accredited By */}
-              <div className="flex items-center gap-4 pt-4">
-                <span className="text-base font-semibold text-[#1f2c4a]">Accredited by</span>
+              <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+                <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Accredited by</span>
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/Silver.png"
-                      alt="Scaled Agile Silver Partner"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="w-20 h-20 rounded flex items-center justify-center overflow-hidden">
-                    <Image
+                  <Image
+                    src="/Silver.png"
+                    alt="Scaled Agile Silver Partner"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
+                  <Image
                     src="/SSM.jpeg"
                     alt="SAFe Scrum Master Certification Badge"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                <a 
-                  href="/SSM_Agile36_Brochure.pdf" 
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/courses/scrum-master/schedule?course=${courseSlug}`}
+                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                >
+                  View Schedules
+                </Link>
+                <a
+                  href="/SSM_Agile36_Brochure.pdf"
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
+                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Brochure
                 </a>
-                <Link 
-                  href={`/courses/scrum-master/schedule?course=${courseSlug}`}
-                  className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors inline-block text-center"
-                >
-                  View Schedules
-                </Link>
-                <button 
+                <button
                   onClick={() => setShowAssessmentModal(true)}
-                  className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors"
+                  className="liquid-glass rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   Free SSM Assessment
                 </button>
               </div>
-
-              <div className="mt-6 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-4">
-                <p className="text-sm font-semibold text-[#1f2c4a] mb-2">Related reading</p>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-2 text-sm">
-                  <Link href="/blog/ssm-vs-csm" className="text-[#334155] underline hover:text-[#134263] font-medium">
-                    SSM vs CSM comparison →
-                  </Link>
-                  <Link href="/blog/safe-scrum-master-exam-questions" className="text-[#334155] underline hover:text-[#134263] font-medium">
-                    SAFe Scrum Master exam questions →
-                  </Link>
-                </div>
-              </div>
             </div>
 
-            {/* Right Side - pricing + hero details */}
+            {/* Sticky pricing card */}
             <CourseHeroRightColumn courseSlug={courseSlug}>
-              <div className="mt-8 lg:mt-20">
-                <img
-                  src="/SSM_Header.jpg"
-                  alt="SAFe Scrum Master"
-                  className="w-full h-auto rounded-lg"
-                />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">16 Hours Training</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">2 Days Duration</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">SAFe Scrum Master Certification</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
+                </div>
               </div>
             </CourseHeroRightColumn>
           </div>
@@ -237,14 +232,180 @@ export default function ScrumMasterCoursePage() {
       {/* Trusted by industry leaders */}
       <TrustedByStrip />
 
-      {/* Key to Success Section */}
+      {/* AI-SEO: Page Summary - What is SAFe SSM? */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] border-t border-[#1f2c4a]/10 py-8 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl">
+            <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">What is SAFe SSM Certification?</h2>
+            <p className="text-lg text-[#334155] leading-relaxed mb-4">
+              SAFe Scrum Master (SSM) certification validates your ability to facilitate Agile teams, coach team members, and support Program Increment (PI) planning within the Scaled Agile Framework. The certification teaches you to apply Scrum Master responsibilities at enterprise scale — supporting not just one team but an entire Agile Release Train (ART).
+            </p>
+            <p className="text-lg text-[#334155] leading-relaxed">
+              The certification is earned by completing a 2-day (16-hour) course taught by a SAFe Program Consultant (SPC) and passing the online SAFe SSM exam. Upon certification, you receive one year of access to the SAFe Community Platform, 16 PDUs/SEUs, and the credentials to facilitate high-performing Agile teams in a SAFe environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Quick Facts */}
       <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-12 text-center">
+          <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">SAFe SSM Quick Facts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Certification</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">SAFe SSM</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Duration</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">2 Days (16 Hours)</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">PDUs/SEUs</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">16 PDUs & SEUs</p>
+            </div>
+            <div className="liquid-glass p-6 rounded-2xl">
+              <h3 className="font-bold text-sm text-[#64748b] mb-2">Exam Fee</h3>
+              <p className="text-xl font-semibold text-[#1f2c4a]">Included</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Key Definitions */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Key Definitions</h2>
+          <div className="space-y-6 max-w-4xl">
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is a SAFe Scrum Master?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                A SAFe Scrum Master is a servant leader who facilitates Agile team events, coaches team members, removes impediments, and supports Program Increment (PI) planning within a SAFe enterprise. Unlike a traditional Scrum Master, the SAFe Scrum Master also supports ART-level ceremonies and coordinates across multiple teams on an Agile Release Train.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is an Agile Release Train (ART)?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                An Agile Release Train (ART) is a long-lived team of Agile teams (typically 50-125 people) that plans, commits, and executes together. The ART operates on a fixed schedule called a Program Increment (PI), usually 8-12 weeks long. Scrum Masters on an ART facilitate team success while supporting program-level coordination and alignment.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is Program Increment (PI) Planning?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                PI Planning is a cadence-based event that serves as the heartbeat of the Agile Release Train. Every 8-12 weeks all ART members gather to align on objectives, dependencies, and risks. Scrum Masters play a critical role by preparing teams, facilitating breakout sessions, and helping teams commit to PI Objectives.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#d97706] pl-6 py-2">
+              <h3 className="font-bold text-xl text-[#1f2c4a] mb-2">What is Servant Leadership?</h3>
+              <p className="text-[#475569] leading-relaxed">
+                Servant leadership is a leadership philosophy where the Scrum Master prioritizes the needs of the team, removes impediments, and creates an environment where teams can self-organize and deliver value. In SAFe, servant leaders coach teams, facilitate collaboration, and foster a culture of continuous improvement at both team and program levels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Who Should Take This Course */}
+      <section className="w-full bg-black py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">Who Should Take SAFe SSM Certification?</h2>
+          <p className="text-lg text-[#475569] mb-6 max-w-4xl">
+            SAFe SSM certification is designed for professionals who facilitate, coach, and support Agile teams within a Lean-Agile enterprise:
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Scrum Masters</h3>
+                <p className="text-[#475569]">Current Scrum Masters looking to operate effectively in a SAFe enterprise and support Agile Release Trains.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Team Leads & Facilitators</h3>
+                <p className="text-[#475569]">Leaders transitioning to Agile facilitation roles who guide teams through iterations and PI planning.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Agile Coaches</h3>
+                <p className="text-[#475569]">Coaches who support team-level Agile practices and want to deepen their SAFe facilitation skills.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Project Managers</h3>
+                <p className="text-[#475569]">Project managers moving into Agile facilitation and servant leadership within SAFe organizations.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Agile Team Members</h3>
+                <p className="text-[#475569]">Developers, testers, and analysts on an Agile Release Train who want to understand Scrum Master responsibilities.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-[#d97706] font-bold text-xl">•</span>
+              <div>
+                <h3 className="font-bold text-lg text-[#1f2c4a]">Anyone on an ART</h3>
+                <p className="text-[#475569]">Professionals working within or alongside an Agile Release Train who need to understand team facilitation at scale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-SEO: Related SAFe Certifications - Entity Linking */}
+      <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Related SAFe Certifications</h2>
+          <p className="text-lg text-[#475569] mb-8 max-w-4xl">
+            Build on your SAFe SSM certification with these complementary SAFe certifications to deepen your expertise:
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/courses/leading-safe" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Leading SAFe (SAFe Agilist)</h3>
+              <p className="text-[#475569] text-sm">Lead Lean-Agile transformations, coordinate Agile Release Trains, and organize around value at enterprise scale.</p>
+            </Link>
+            <Link href="/courses/product-owner-manager" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
+              <p className="text-[#475569] text-sm">Master Program Backlogs, PI Planning, and customer-centric delivery across an Agile Release Train.</p>
+            </Link>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
+              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
+            </Link>
+            <Link href="/courses/lean-portfolio-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Lean Portfolio Management (LPM)</h3>
+              <p className="text-[#475569] text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>
+            </Link>
+            <Link href="/courses/agile-product-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Agile Product Management (APM)</h3>
+              <p className="text-[#475569] text-sm">Apply design thinking and continuous exploration to build products customers love at enterprise scale.</p>
+            </Link>
+            <Link href="/courses/advanced-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
+              <p className="text-[#475569] text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Key to Success Section — glassmorphism feature cards */}
+      <section className="w-full bg-[#e9eef6] py-16 px-4 sm:px-6 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3 text-center">
             Our Key to Exam and Career Success
           </h2>
+          <p className="mb-12 text-center text-[#64748b]">
+            Everything in your enrollment is built to get you certified — and hired.
+          </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { 
                 icon: (
@@ -252,7 +413,8 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ), 
-                title: "High Pass Rate" 
+                title: "High Pass Rate",
+                desc: "Exam fee is included with enrollment.",
               },
               { 
                 icon: (
@@ -260,7 +422,8 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 ), 
-                title: "Expert-Led Study Sessions" 
+                title: "Expert-Led Study Sessions",
+                desc: "Live exam prep with certified SPC instructors.",
               },
               { 
                 icon: (
@@ -268,7 +431,8 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ), 
-                title: "Networking Opportunities" 
+                title: "Networking Opportunities",
+                desc: "Join a global community of certified SAFe leaders.",
               },
               { 
                 icon: (
@@ -276,7 +440,8 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                   </svg>
                 ), 
-                title: "Flexible Monthly Payment Plans" 
+                title: "Flexible Monthly Payment Plans",
+                desc: "Split your tuition into easy monthly payments.",
               },
               { 
                 icon: (
@@ -284,7 +449,8 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ), 
-                title: "Real-World Case Studies" 
+                title: "Real-World Case Studies",
+                desc: "Learn through real enterprise transformation scenarios.",
               },
               { 
                 icon: (
@@ -293,26 +459,31 @@ export default function ScrumMasterCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 ), 
-                title: "Hands-On Project Experience" 
+                title: "Hands-On Project Experience",
+                desc: "Practice PI Planning in live, instructor-run simulations.",
               }
             ].map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center mb-4">
+              <div
+                key={index}
+                className="group rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/20 hover:shadow-[0_16px_40px_-12px_rgba(13,148,136,0.35),inset_0_1px_1px_rgba(255,255,255,0.8)]"
+              >
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#d97706]/10 transition-transform duration-300 group-hover:scale-110">
                   {item.icon}
-                </div>
-                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
+                </span>
+                <h3 className="mt-4 text-base font-bold text-[#1f2c4a]">{item.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#64748b]">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content with Pricing Card */}
+      {/* Main Content */}
       <section className="w-full bg-black py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main content area - 2 columns */}
-            <div className="order-2 lg:order-1 lg:col-span-2 space-y-12">
+          <div className="space-y-12">
+            {/* Main content area - full width */}
+            <div className="space-y-12">
               {/* Tabs Navigation */}
               <div className="border-b border-[#1f2c4a]/15">
                 <nav className="flex space-x-8">
@@ -515,30 +686,31 @@ export default function ScrumMasterCoursePage() {
                     {/* Career & Salary */}
                     <div>
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Career Outcomes for SAFe Scrum Masters</h3>
+                      <p className="text-base text-[#475569] mb-4">
+                        Earning your SAFe SSM certification opens up facilitation and coaching opportunities and demonstrates your ability to support Agile teams at enterprise scale.
+                      </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Average Salary</h4>
-                          <p className="text-base text-[#475569]">
-                            $95,000–$130,000 (US)
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Average Salary (US)</h4>
+                          <RangeBar
+                            title="$95K – $130K"
+                            minLabel="$95,000"
+                            midLabel="$112,500"
+                            maxLabel="$130,000+"
+                            caption="Typical US salary band for SAFe Scrum Masters"
+                          />
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">
-                            SAFe Scrum Master, Agile Coach, Release Train Engineer
-                          </p>
+                          <p className="text-base text-[#475569]">SAFe Scrum Master, Agile Coach, Release Train Engineer</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Top Hiring Industries</h4>
-                          <p className="text-base text-[#475569]">
-                            Financial services, healthcare, federal government, technology
-                          </p>
+                          <p className="text-base text-[#475569]">Financial services, healthcare, federal government, technology</p>
                         </div>
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Demand</h4>
-                          <p className="text-base text-[#475569]">
-                            70% of Fortune 100 companies use SAFe — certified professionals are in high demand
-                          </p>
+                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
+                          <DemandMeter caption="70% of Fortune 100 companies use SAFe — certified Scrum Masters are in high demand." />
                         </div>
                       </div>
                     </div>
@@ -580,40 +752,40 @@ export default function ScrumMasterCoursePage() {
                     {/* Exam Information */}
                     <div>
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">SAFe Scrum Master (SSM) Exam Details</h3>
-                      <div className="bg-[#1f2c4a]/[0.06] rounded-lg p-6 space-y-4">
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Format:</p>
-                            <p className="text-base text-[#475569]">Multiple choice, single select</p>
+                      <div className="bg-[#1f2c4a]/[0.04] rounded-2xl border border-[#1f2c4a]/10 p-6 space-y-6">
+                        <div className="grid items-center gap-6 md:grid-cols-[200px_1fr]">
+                          <RadialGauge
+                            percent={75}
+                            sublabel="to pass"
+                            label="Passing score — 34 of 45 questions"
+                          />
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <FactChip
+                              value="45 questions"
+                              label="Multiple choice, single select"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>}
+                            />
+                            <FactChip
+                              value="90 minutes"
+                              label="Online, open book"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 7v5l3 2" /></svg>}
+                            />
+                            <FactChip
+                              value="Exam fee included"
+                              label="With course enrollment"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                            />
+                            <FactChip
+                              value="60-day window"
+                              label="To complete your exam online"
+                              icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
+                            />
                           </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Questions:</p>
-                            <p className="text-base text-[#475569]">45</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Time Limit:</p>
-                            <p className="text-base text-[#475569]">90 minutes</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Passing Score:</p>
-                            <p className="text-base text-[#475569]">73% (33 out of 45 correct)</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Delivery:</p>
-                            <p className="text-base text-[#475569]">Online, open book</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Exam Window:</p>
-                            <p className="text-base text-[#475569]">Must be taken within 30 days of course completion</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Retake Cost:</p>
-                            <p className="text-base text-[#475569]">$50 per attempt (paid to Scaled Agile)</p>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-[#1f2c4a] mb-2">Certification Valid:</p>
-                            <p className="text-base text-[#475569]">1 year (renewal fee: $195/year)</p>
-                          </div>
+                        </div>
+                        <div className="pt-4 border-t border-[#1f2c4a]/15">
+                          <p className="text-base text-[#475569] mb-2">
+                            <strong>Note:</strong> The exam can be taken online from anywhere within 60 days of course completion. Your exam attempt is included with course enrollment.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -817,58 +989,6 @@ export default function ScrumMasterCoursePage() {
                 )}
               </div>
             </div>
-
-            {/* Pricing Card - Sticky */}
-            <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
-              <div className="liquid-glass rounded-2xl p-6">
-                <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$515</div>
-                  <div className="text-base text-[#64748b] line-through">$1,030</div>
-                  <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">16 Hours Training</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">2 Days Duration</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">SAFe Scrum Master Certification</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#475569]">Lifetime Access to Materials</span>
-                  </div>
-                </div>
-
-                <Link 
-                  href={`/courses/scrum-master/schedule?course=${courseSlug}`}
-                  className="w-full liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors mb-4 inline-block text-center"
-                >
-                  View Schedule
-                </Link>
-
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1039,10 +1159,10 @@ export default function ScrumMasterCoursePage() {
                 ],
                 exam: [
                   { q: "How is the SAFe Scrum Master different from a regular Scrum Master?", a: "The SAFe Scrum Master operates at enterprise scale — supporting not just one team but an entire Agile Release Train (ART). You'll learn PI Planning, program-level ceremonies, and how to coordinate across multiple teams, which goes well beyond traditional Scrum." },
-                  { q: "Is the SAFe SSM exam included in the course price?", a: "Yes. Your first exam attempt is included in your Agile36 course fee. The exam must be taken within 30 days of completing the course." },
+                  { q: "Is the SAFe SSM exam included in the course price?", a: "Yes. Your first exam attempt is included in your Agile36 course fee. The exam must be taken within 60 days of completing the course." },
                   { q: "How long does SAFe Scrum Master certification last?", a: "One year. Renewal requires earning 24 Continuing Education Units (CEUs) and paying the $195 annual renewal fee to Scaled Agile." },
-                  { q: "Can I take the SAFe SSM exam online?", a: "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 30 days of course completion." },
-                  { q: "What is the passing score for the SAFe Scrum Master exam?", a: "You need to answer at least 33 out of 45 questions correctly (73%) to pass." },
+                  { q: "Can I take the SAFe SSM exam online?", a: "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 60 days of course completion." },
+                  { q: "What is the passing score for the SAFe Scrum Master exam?", a: "You need to answer at least 34 out of 45 questions correctly (75%) to pass." },
                   { q: "Does Agile36 offer corporate/team training for SAFe Scrum Master?", a: "Yes. Agile36 specializes in enterprise and Fortune 100 training. Contact us for private group pricing and custom scheduling." }
                 ],
                 payment: [
