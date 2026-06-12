@@ -422,19 +422,20 @@ export function HomeExperienceBody({
               25,000+ certified at the world&apos;s most demanding companies
             </h2>
           </div>
-          <div data-reveal className="marquee-mask mt-10 overflow-hidden">
-            <div className="marquee-track flex w-max items-center gap-16 pr-16 md:gap-24 md:pr-24">
-              {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  key={`${logo.alt}-${i}`}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-10 w-auto opacity-80 transition-opacity duration-300 hover:opacity-100 md:h-14"
-                  loading="lazy"
-                />
-              ))}
-            </div>
+          <div
+            data-reveal
+            className="mx-auto mt-9 flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-x-8"
+          >
+            {COMPANY_LOGOS.map((logo) => (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                key={logo.alt}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-6 w-auto opacity-60 grayscale transition-opacity duration-300 hover:opacity-90 md:h-8"
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
       </section>
