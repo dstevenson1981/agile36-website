@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  */
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
+    if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     gsap.registerPlugin(ScrollTrigger);

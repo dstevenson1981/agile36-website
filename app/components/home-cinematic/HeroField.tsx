@@ -5,6 +5,18 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+type HeroFieldUniforms = {
+  uTime: THREE.IUniform<number>;
+  uScroll: THREE.IUniform<number>;
+  uMouse: THREE.IUniform<THREE.Vector2>;
+  uPixelRatio: THREE.IUniform<number>;
+  uInk: THREE.IUniform<THREE.Color>;
+  uGoldA: THREE.IUniform<THREE.Color>;
+  uGoldB: THREE.IUniform<THREE.Color>;
+  uBronzeA: THREE.IUniform<THREE.Color>;
+  uBronzeB: THREE.IUniform<THREE.Color>;
+};
+
 /**
  * Hero particle wave field. All motion lives in the vertex shader so per-frame
  * CPU cost is ~zero. Pauses when offscreen; flattens as the hero scrolls away;
@@ -17,6 +29,8 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +70,7 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute("aSeed", new THREE.BufferAttribute(seeds, 1));
 
-    const uniforms = {
+    const uniforms: HeroFieldUniforms = {
       uTime: { value: 0 },
       uScroll: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
@@ -167,7 +181,7 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
     // pause rendering offscreen
     let active = true;
     const io = new IntersectionObserver(([entry]) => {
-      active = entry.isIntersecting;
+      if (entry) active = entry.isIntersecting;
     });
     io.observe(mount);
 
@@ -194,7 +208,9 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
       geometry.dispose();
       material.dispose();
       renderer.dispose();
-      mount.removeChild(renderer.domElement);
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement);
+      }
     };
   }, [heroSelector]);
 

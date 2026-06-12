@@ -16,7 +16,12 @@ import {
 
 const HeroField = dynamic(() => import("./HeroField"), { ssr: false });
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+/** Register GSAP plugins only in the browser — never during SSR module evaluation. */
+function ensureGsapPlugins() {
+  if (typeof window === "undefined") return false;
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+  return true;
+}
 
 const TRUST_LOGOS = [
   { src: "/logo-amazon.svg", alt: "Amazon" },
@@ -105,7 +110,12 @@ function splitLines(el: HTMLElement) {
 export default function CinematicHome() {
   const rootRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const gsapPluginsReady = useRef(false);
   const [showField, setShowField] = useState(false);
+
+  if (!gsapPluginsReady.current) {
+    gsapPluginsReady.current = ensureGsapPlugins();
+  }
 
   // Shader only on desktop without reduced motion; re-evaluate on changes
   useEffect(() => {
@@ -123,6 +133,8 @@ export default function CinematicHome() {
 
   useGSAP(
     () => {
+      ensureGsapPlugins();
+
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(".cine-line, .anim-fade", { clearProps: "all" });
         return;
