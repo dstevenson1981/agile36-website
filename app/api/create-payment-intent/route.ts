@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       ? scheduleIdsArr[0]
       : scheduleId;
 
-    if (!amount || !customerEmail) {
+    if (amount == null || amount === '' || !customerEmail) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }

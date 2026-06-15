@@ -249,7 +249,7 @@ function CheckoutContent() {
       let calculatedPromoDiscount = 0;
       if (appliedPromoCode && promoDiscount > 0) {
         if (promoDiscountType === 'fixed') {
-          calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+          calculatedPromoDiscount = Math.min(promoDiscount, baseTotal);
         } else {
           // percentage
           calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
@@ -338,7 +338,7 @@ function CheckoutContent() {
   let calculatedPromoDiscount = 0;
   if (appliedPromoCode && promoDiscount > 0) {
     if (promoDiscountType === 'fixed') {
-      calculatedPromoDiscount = promoDiscount * enrollmentQuantity;
+      calculatedPromoDiscount = Math.min(promoDiscount, baseTotal);
     } else {
       // percentage
       calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;

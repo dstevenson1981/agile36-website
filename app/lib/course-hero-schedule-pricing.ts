@@ -19,5 +19,5 @@ export const COURSE_HERO_SCHEDULE_LIST_USD: Record<string, { current: number; or
   "executive-genai-leadership": { current: 400, original: 800 },
   "generative-ai-project-managers": { current: 400, original: 800 },
   "ai-driven-scrum-master": { current: 555, original: 1110 },
-  "advanced-scrum-master": { current: 950, original: 1900 },
+  "advanced-scrum-master": { current: 599, original: 1198 },
 };

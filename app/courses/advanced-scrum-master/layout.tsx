@@ -70,7 +70,7 @@ export default async function AdvancedScrumMasterLayout({
       ],
       breadcrumbLeafName: "AI-Empowered SAFe Advanced Scrum Master",
       coursesCrumbLabel: "SAFe Courses",
-      defaultPrice: 950,
+      defaultPrice: 599,
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "SASM",

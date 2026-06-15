@@ -8,9 +8,3 @@ SET
 WHERE 
   course_slug = 'advanced-scrum-master' 
   OR course_name LIKE '%Advanced Scrum Master%';
-
--- If you want to see what will be updated first, run this query:
--- SELECT course_name, course_slug, price, original_price 
--- FROM course_schedules 
--- WHERE course_slug = 'advanced-scrum-master' 
---    OR course_name LIKE '%Advanced Scrum Master%';

@@ -157,10 +157,10 @@ export const COMBO_COURSES: Combo[] = [
     name: "AI-Empowered SSM & AI-Empowered SASM Certification Path",
     courses: [
       { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 950 },
+      { id: "2", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 599 },
     ],
     comboPrice: 1177,
-    originalPrice: 2930,
+    originalPrice: 2228,
     discount: 1753,
     category: "safe",
     enrolled: "9k",

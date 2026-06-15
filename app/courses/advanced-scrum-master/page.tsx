@@ -1201,7 +1201,7 @@ export default function AdvancedScrumMasterCoursePage() {
               What is the Fee for AI-Empowered SAFe Advanced Scrum Master Certification?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              Agile36 currently offers this AI-Empowered SASM course at <strong>$950</strong> for live virtual training (pricing may vary by promotion or private cohort). Your investment covers expert-led instruction aligned to the official exam blueprint; Scaled Agile separately provides workbook, Studio, practice test, and exam per their certification process. Always confirm the latest list price on the schedule page before you register.
+              Agile36 currently offers this AI-Empowered SASM course at <strong>$599</strong> for live virtual training (pricing may vary by promotion or private cohort). Your investment covers expert-led instruction aligned to the official exam blueprint; Scaled Agile separately provides workbook, Studio, practice test, and exam per their certification process. Always confirm the latest list price on the schedule page before you register.
             </p>
           </div>
         </div>
