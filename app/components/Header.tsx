@@ -23,6 +23,27 @@ interface Course {
   privateClass?: boolean;
 }
 
+const MEGA_MENU_SAFE_ORDER: Record<string, number> = {
+  "16": 0, // Advanced Scrum Master
+  "8": 1,
+  "9": 2,
+  "18": 3,
+  "10": 4,
+  "11": 5,
+  "12": 6,
+  "13": 7,
+  "27": 8,
+  "17": 9,
+  "15": 10, // DevOps
+};
+
+function sortMegaMenuCourses(courses: Course[], category: string): Course[] {
+  if (category !== "SAFe") return courses;
+  return [...courses].sort(
+    (a, b) => (MEGA_MENU_SAFE_ORDER[a.id] ?? 99) - (MEGA_MENU_SAFE_ORDER[b.id] ?? 99)
+  );
+}
+
 export default function Header() {
   // Call ALL hooks first to maintain consistent hook order
   const pathname = usePathname();
@@ -552,7 +573,7 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <div className="bg-white border border-[#1f2c4a]/10 rounded-xl shadow-2xl shadow-[#1f2c4a]/15 overflow-hidden">
-                    <div className="flex flex-col sm:flex-row">
+                    <div className="flex flex-col sm:flex-row max-h-[min(70vh,800px)] min-h-0">
                       {/* Left Sidebar - Categories */}
                       <div className="w-full sm:w-48 bg-[#1f2c4a]/[0.03] border-b sm:border-b-0 sm:border-r border-[#1f2c4a]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4">
                         <h3 className="font-medium text-[#94a3b8] mb-4 text-xs uppercase tracking-[0.2em]">Categories</h3>
@@ -585,10 +606,10 @@ export default function Header() {
                       </div>
                       
                       {/* Right Content - Courses */}
-                      <div className="flex-1 p-4 sm:p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500" style={{ maxHeight: 'min(70vh, 800px)' }}>
-                        <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2 z-10">
+                      <div className="flex-1 min-h-0 flex flex-col overflow-hidden p-4 sm:p-6">
+                        <div className="flex items-center justify-between mb-4 flex-shrink-0">
                           <h3 className="font-medium text-[#1f2c4a] text-lg">
-                            {selectedMegaMenuCategory} ({allCourses.filter(course => course.category === selectedMegaMenuCategory).length} Courses)
+                            {selectedMegaMenuCategory} ({sortMegaMenuCourses(allCourses.filter(course => course.category === selectedMegaMenuCategory), selectedMegaMenuCategory).length} Courses)
                           </h3>
                           <Link
                             href={`/courses?category=${selectedMegaMenuCategory}`}
@@ -598,10 +619,11 @@ export default function Header() {
                             View all Courses
                           </Link>
                         </div>
-                        <ul className="space-y-3 pr-2">
-                          {allCourses
-                            .filter(course => course.category === selectedMegaMenuCategory)
-                            .map(course => (
+                        <ul className="space-y-3 pr-2 flex-1 min-h-0 overflow-y-auto overscroll-y-contain scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500">
+                          {sortMegaMenuCourses(
+                            allCourses.filter(course => course.category === selectedMegaMenuCategory),
+                            selectedMegaMenuCategory
+                          ).map(course => (
                               <li key={course.id}>
                                 <Link
                                   href={getCourseUrl(course)}
