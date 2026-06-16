@@ -36,7 +36,12 @@ const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set([
   'carl.fisher@trimont.com',
   'carl.j.fisher@gmail.com',
 ]);
-const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set(['beranguelly@hotmail.com']);
+const EMERGENCY_POPM_PRO_ACCESS_EMAILS = new Set([
+  'beranguelly@hotmail.com',
+  'rebecca.clark@lmcu.org',
+  'hughes.lauren12@gmail.com',
+  'eahoppstetter@gmail.com',
+]);
 const EMERGENCY_APM_PRO_ACCESS_EMAILS = new Set([
   'harry@harrychand.com',
   'brian.hickey@hrsdc-rhdcc.gc.ca',
@@ -106,6 +111,7 @@ async function whitelistHasEmail(
   serviceSupabase: SupabaseClient,
   table:
     | 'lpm_pro_access_whitelist'
+    | 'popm_pro_access_whitelist'
     | 'leading_safe_pro_access_whitelist'
     | 'advanced_scrum_master_pro_access_whitelist'
     | 'scrum_master_pro_access_whitelist'
@@ -297,6 +303,28 @@ export async function hasPopmProAccess(): Promise<boolean> {
 
   // Safety fallback so whitelist-only users are not blocked when DB grants are delayed.
   if (hasEmergencyPopmProAccess(user.email, profile?.email)) return true;
+
+  const { data: popmWhitelistRows, error: popmWlErr } = await supabase
+    .from('popm_pro_access_whitelist')
+    .select('id')
+    .limit(1);
+  if (!popmWlErr && (popmWhitelistRows?.length ?? 0) > 0) return true;
+
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (serviceKey && serviceUrl) {
+    const serviceSupabase = createServiceClient(serviceUrl, serviceKey);
+    if (
+      await whitelistHasEmail(
+        serviceSupabase,
+        'popm_pro_access_whitelist',
+        user.email,
+        profile?.email,
+      )
+    ) {
+      return true;
+    }
+  }
 
   return false;
 }
