@@ -44,6 +44,27 @@ function sortMegaMenuCourses(courses: Course[], category: string): Course[] {
   );
 }
 
+const MEGA_MENU_CATEGORIES = [
+  {
+    id: "SAFe",
+    label: "SAFe",
+    description: "Scaled Agile Framework certifications for enterprise agility and AI-empowered delivery.",
+    gridCols: "grid-cols-2",
+  },
+  {
+    id: "Generative AI",
+    label: "Generative AI",
+    description: "Practical GenAI skills for leaders, scrum masters, and project managers.",
+    gridCols: "grid-cols-2",
+  },
+  {
+    id: "AI Product",
+    label: "AI Product",
+    description: "Build and ship AI-powered products with hands-on product management training.",
+    gridCols: "grid-cols-1 sm:grid-cols-2",
+  },
+] as const;
+
 export default function Header() {
   // Call ALL hooks first to maintain consistent hook order
   const pathname = usePathname();
@@ -515,6 +536,14 @@ export default function Header() {
 
   const promoBannerActive = isPromoBannerVisible();
 
+  const selectedCategoryMeta =
+    MEGA_MENU_CATEGORIES.find((c) => c.id === selectedMegaMenuCategory) ?? MEGA_MENU_CATEGORIES[0];
+
+  const megaMenuCourses = sortMegaMenuCourses(
+    allCourses.filter((course) => course.category === selectedMegaMenuCategory),
+    selectedMegaMenuCategory
+  );
+
   return (
     <>
       {/* Promo Banner — 100OFF coupon via email modal */}
@@ -568,33 +597,31 @@ export default function Header() {
                 {/* Mega Menu */}
                 {showMegaMenu && (
                   <div 
-                    className="absolute top-full left-0 pt-2 w-[min(900px,calc(100vw-2rem))] max-w-[900px] bg-transparent z-50"
+                    className="absolute top-full left-0 pt-2 w-[min(960px,calc(100vw-2rem))] max-w-[960px] bg-transparent z-50"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
                     <div className="bg-white border border-[#1f2c4a]/10 rounded-xl shadow-2xl shadow-[#1f2c4a]/15 overflow-hidden">
-                    <div className="flex flex-col sm:flex-row max-h-[min(70vh,800px)] min-h-0">
+                    <div className="flex flex-col sm:flex-row">
                       {/* Left Sidebar - Categories */}
-                      <div className="w-full sm:w-48 bg-[#1f2c4a]/[0.03] border-b sm:border-b-0 sm:border-r border-[#1f2c4a]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4">
-                        <h3 className="font-medium text-[#94a3b8] mb-4 text-xs uppercase tracking-[0.2em]">Categories</h3>
-                        <ul className="space-y-1">
-                          {["SAFe", "Generative AI", "AI Product"].map((category) => (
-                            <li key={category}>
+                      <div className="w-full sm:w-52 shrink-0 bg-[#1f2c4a]/[0.03] border-b sm:border-b-0 sm:border-r border-[#1f2c4a]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4 flex flex-col">
+                        <h3 className="font-medium text-[#94a3b8] mb-3 text-xs uppercase tracking-[0.2em]">Categories</h3>
+                        <ul className="space-y-0.5 flex-1">
+                          {MEGA_MENU_CATEGORIES.map((category) => (
+                            <li key={category.id}>
                               <button
-                                onMouseEnter={() => setSelectedMegaMenuCategory(category)}
-                                onClick={() => {
-                                  setShowMegaMenu(false);
-                                }}
-                                className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                                  selectedMegaMenuCategory === category
+                                onMouseEnter={() => setSelectedMegaMenuCategory(category.id)}
+                                onClick={() => setShowMegaMenu(false)}
+                                className={`w-full text-left px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                                  selectedMegaMenuCategory === category.id
                                     ? "bg-[#1f2c4a] text-white"
                                     : "text-[#475569] hover:bg-[#1f2c4a]/10"
                                 }`}
                               >
-                                <div className="flex items-center justify-between">
-                                  <span>{category}</span>
-                                  {selectedMegaMenuCategory === category && (
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="flex items-center justify-between gap-2">
+                                  <span>{category.label}</span>
+                                  {selectedMegaMenuCategory === category.id && (
+                                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                   )}
@@ -603,73 +630,83 @@ export default function Header() {
                             </li>
                           ))}
                         </ul>
+                        <Link
+                          href="/courses"
+                          onClick={() => setShowMegaMenu(false)}
+                          className="mt-4 pt-3 border-t border-[#1f2c4a]/10 text-sm font-medium text-[#d97706] hover:text-[#b45309] flex items-center gap-1.5"
+                        >
+                          Browse All Courses
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </Link>
                       </div>
                       
                       {/* Right Content - Courses */}
-                      <div className="flex-1 min-h-0 flex flex-col overflow-hidden p-4 sm:p-6">
-                        <div className="flex items-center justify-between mb-4 flex-shrink-0">
-                          <h3 className="font-medium text-[#1f2c4a] text-lg">
-                            {selectedMegaMenuCategory} ({sortMegaMenuCourses(allCourses.filter(course => course.category === selectedMegaMenuCategory), selectedMegaMenuCategory).length} Courses)
-                          </h3>
+                      <div className="flex-1 p-5 sm:p-6 min-w-0">
+                        <div className="flex items-start justify-between gap-4 mb-4">
+                          <div className="min-w-0">
+                            <h3 className="font-semibold text-[#1f2c4a] text-lg leading-tight">
+                              {selectedCategoryMeta.label}
+                            </h3>
+                            <p className="text-sm text-[#64748b] mt-1 leading-snug max-w-xl">
+                              {selectedCategoryMeta.description}
+                            </p>
+                          </div>
                           <Link
                             href={`/courses?category=${selectedMegaMenuCategory}`}
                             onClick={() => setShowMegaMenu(false)}
-                            className="text-sm text-[#d97706] hover:text-[#b45309] font-medium"
+                            className="text-sm text-[#d97706] hover:text-[#b45309] font-medium whitespace-nowrap shrink-0"
                           >
-                            View all Courses
+                            View all {selectedCategoryMeta.label} Courses
                           </Link>
                         </div>
-                        <ul className="space-y-3 pr-2 flex-1 min-h-0 overflow-y-auto overscroll-y-contain scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500">
-                          {sortMegaMenuCourses(
-                            allCourses.filter(course => course.category === selectedMegaMenuCategory),
-                            selectedMegaMenuCategory
-                          ).map(course => (
-                              <li key={course.id}>
-                                <Link
-                                  href={getCourseUrl(course)}
-                                  onClick={() => {
-                                    setShowMegaMenu(false);
-                                  }}
-                                  className="w-full text-left flex items-center gap-3 p-2 rounded-md hover:bg-[#1f2c4a]/10 transition-colors group"
-                                >
-                                  <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-[#1f2c4a]/10">
-                                    <Image
-                                      src={getMegaMenuImage(course)}
-                                      alt={course.title}
-                                      width={48}
-                                      height={48}
-                                      className="w-full h-full object-cover"
-                                      unoptimized
-                                    />
+                        <ul className={`grid ${selectedCategoryMeta.gridCols} gap-x-6 gap-y-1`}>
+                          {megaMenuCourses.map((course) => (
+                            <li key={course.id}>
+                              <Link
+                                href={getCourseUrl(course)}
+                                onClick={() => setShowMegaMenu(false)}
+                                className="flex items-start gap-2.5 py-2 px-1.5 -mx-1.5 rounded-md hover:bg-[#1f2c4a]/[0.06] transition-colors group"
+                              >
+                                <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-[#1f2c4a]/10 ring-1 ring-[#1f2c4a]/10">
+                                  <Image
+                                    src={getMegaMenuImage(course)}
+                                    alt=""
+                                    width={36}
+                                    height={36}
+                                    className="w-full h-full object-cover"
+                                    unoptimized
+                                  />
+                                </div>
+                                <div className="flex-1 min-w-0 pt-0.5">
+                                  <div className="flex items-start gap-1.5 flex-wrap">
+                                    <h4 className="text-[13px] font-medium text-[#1f2c4a] group-hover:text-[#d97706] transition-colors leading-snug">
+                                      {course.title}
+                                    </h4>
+                                    {course.popular && (
+                                      <span className="bg-[#d97706]/15 text-[#d97706] text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                                        Popular
+                                      </span>
+                                    )}
+                                    {course.trending && (
+                                      <span className="bg-emerald-400/15 text-emerald-700 text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                                        Trending
+                                      </span>
+                                    )}
+                                    {course.advanced && (
+                                      <span className="bg-purple-400/15 text-purple-700 text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                                        Advanced
+                                      </span>
+                                    )}
                                   </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                      <h4 className="text-sm font-medium text-[#1f2c4a] group-hover:text-[#d97706] transition-colors">
-                                        {course.title}
-                                      </h4>
-                                      {course.popular && (
-                                        <span className="bg-[#d97706]/15 text-[#d97706] text-xs font-semibold px-2 py-0.5 rounded-full">
-                                          Popular
-                                        </span>
-                                      )}
-                                      {course.trending && (
-                                        <span className="bg-emerald-400/15 text-emerald-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                                          Trending
-                                        </span>
-                                      )}
-                                      {course.advanced && (
-                                        <span className="bg-purple-400/15 text-purple-300 text-xs font-semibold px-2 py-0.5 rounded-full">
-                                          Advanced
-                                        </span>
-                                      )}
-                                    </div>
-                                    <p className="text-xs text-[#64748b]">
-                                      {course.days} | Live Remote Class
-                                    </p>
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
+                                  <p className="text-[11px] text-[#64748b] mt-0.5">
+                                    {course.days} · Live Remote Class
+                                  </p>
+                                </div>
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>
