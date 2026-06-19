@@ -49,6 +49,8 @@ const EMERGENCY_APM_PRO_ACCESS_EMAILS = new Set([
 const EMERGENCY_LPM_PRO_ACCESS_EMAILS = new Set([
   'aguerrero@habitat.org',
   'dquintard@gmail.com',
+  'allibasili@gmail.com',
+  'paulc37@comcast.net',
 ]);
 
 function hasEmergencySsmAccess(
