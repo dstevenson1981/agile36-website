@@ -28,6 +28,7 @@ const EMERGENCY_SSM_ACCESS_EMAILS = new Set([
   'cchivers444@gmail.com',
   'softwaredevelopmentinstructor@gmail.com',
   'danesh.selvarajan@gmail.com',
+  'abhishek.yelgalwar@gmail.com',
 ]);
 
 const EMERGENCY_LEADING_SAFE_PRO_ACCESS_EMAILS = new Set([

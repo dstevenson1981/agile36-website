@@ -36,5 +36,6 @@ INSERT INTO scrum_master_pro_access_whitelist (email) VALUES
   ('cchivers444@gmail.com'),
   ('nwelsh@luf.co'),
   ('preetgillmaan@gmail.com'),
-  ('shaneegipson513@gmail.com')
+  ('shaneegipson513@gmail.com'),
+  ('abhishek.yelgalwar@gmail.com')
 ON CONFLICT (email) DO NOTHING;
