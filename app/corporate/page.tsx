@@ -46,6 +46,12 @@ export default function CorporatePage() {
                   Request Consultation
                 </button>
                 <Link
+                  href="/corporate/onboard"
+                  className="liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-4 px-8 rounded-lg transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                >
+                  Set up corporate billing
+                </Link>
+                <Link
                   href="#services"
                   className="liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium py-4 px-8 rounded-lg transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >

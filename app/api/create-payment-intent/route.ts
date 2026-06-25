@@ -7,6 +7,8 @@ import {
   linePricePerSeat,
   roundMoney,
 } from '@/app/lib/course-promo-caps';
+import { chargeCorporateAccount } from '@/app/lib/corporate-charge';
+import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corporate';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -268,6 +270,57 @@ export async function POST(request: NextRequest) {
       receiptDescription += ` - ${quantity} enrollments`;
     } else {
       receiptDescription += ` - 1 enrollment`;
+    }
+
+    const corporateCodeRaw =
+      body.corporateCode ||
+      enrollmentData?.corporateCode ||
+      enrollmentData?.corporateBillingCode ||
+      enrollmentData?.referralCode;
+    const corporateCode = normalizeCorporateCode(
+      typeof corporateCodeRaw === 'string' ? corporateCodeRaw : '',
+    );
+    if (corporateCode && isCorporateCodeFormat(corporateCode) && !isCombo) {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!supabaseUrl || !supabaseKey) {
+        return NextResponse.json(
+          { error: 'Server configuration error. Please contact support.' },
+          { status: 500 },
+        );
+      }
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      try {
+        const { paymentIntent, companyName } = await chargeCorporateAccount(stripe, supabase, {
+          corporateCode,
+          amountDollars: chargeAmountDollars,
+          currency,
+          description: receiptDescription,
+          employeeEmail: trimmedEmail,
+          employeeName: trimmedName || trimmedEmail,
+          metadata: {
+            scheduleId: effectiveScheduleId,
+            scheduleIds: isCombo && scheduleIdsArr.length ? scheduleIdsArr.join(',') : '',
+            courseSlug: courseSlug || '',
+            courseName: courseName || '',
+            selectedPlan: selectedPlan || 'basic',
+            quantity: String(quantity ?? 1),
+            promoCode: effectivePromoCode || '',
+            promoDiscount: promoDiscountDollars ? promoDiscountDollars.toString() : '0',
+          },
+        });
+        return NextResponse.json({
+          corporateCharge: true,
+          paymentIntentId: paymentIntent.id,
+          status: paymentIntent.status,
+          companyName,
+          amount: chargeAmountDollars,
+        });
+      } catch (corpError: unknown) {
+        const message =
+          corpError instanceof Error ? corpError.message : 'Corporate billing failed';
+        return NextResponse.json({ error: message }, { status: 400 });
+      }
     }
 
     // Ensure customer is set before creating payment intent

@@ -9,6 +9,8 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
+import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillingCodeField';
+import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
 
 // Initialize Stripe
@@ -54,6 +56,7 @@ function CheckoutContent() {
     email: '',
     alternativeContact: '',
     referralCode: '',
+    corporateBillingCode: '',
   });
 
   const courseNames: { [key: string]: string } = {
@@ -222,6 +225,7 @@ function CheckoutContent() {
           promoCode: appliedPromoCode || null,
           promoDiscount: calculatedPromoDiscount || 0,
           originalAmount: baseTotal,
+          corporateCode: enrollmentFormData.corporateBillingCode?.trim() || null,
           enrollmentData: {
             ...enrollmentFormData,
             scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),
@@ -238,13 +242,25 @@ function CheckoutContent() {
         throw new Error(data.error || 'Failed to create payment intent');
       }
 
-      if (!data.clientSecret) {
-        throw new Error('No client secret returned from server');
+      const handled = await handleCreatePaymentIntentResult(data, {
+        enrollmentData: {
+          ...enrollmentFormData,
+          scheduleDate: selectedSchedule ? formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date) : '',
+          scheduleTime: selectedSchedule ? `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}` : '',
+          duration: selectedSchedule?.duration,
+          timezone: selectedSchedule?.timezone,
+        },
+        successUrl: (paymentIntentId) => `/courses/value-stream-mapping/schedule/checkout/success?payment_intent=${paymentIntentId}`,
+        onCardReady: (secret, piId) => {
+          setClientSecret(secret);
+          setPaymentIntentId(piId);
+          setCurrentStep(3);
+        },
+      });
+      if (!handled.handled) {
+        throw new Error(handled.error || 'Failed to initialize payment');
       }
-
-      setClientSecret(data.clientSecret);
-      setPaymentIntentId(data.paymentIntentId);
-      setCurrentStep(3);
+      if (data.corporateCharge) return;
     } catch (error: any) {
       console.error('Error creating payment intent:', error);
       setPaymentError(error.message || 'Failed to initialize payment');
@@ -476,6 +492,12 @@ function CheckoutContent() {
                       placeholder="your.email@example.com"
                     />
                   </div>
+
+                  <CorporateBillingCodeField
+                    value={enrollmentFormData.corporateBillingCode}
+                    onChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, corporateBillingCode: value })}
+                  />
+
 
                   {/* Alternative Contact */}
                   <div>
