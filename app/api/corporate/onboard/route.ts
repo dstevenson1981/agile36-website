@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { generateCorporateCode } from '@/app/lib/corporate';
+import {
+  generateCorporateCode,
+  parseAuthorizedEmailDomains,
+  extractEmailDomain,
+} from '@/app/lib/corporate';
+import { CORPORATE_TERMS_VERSION } from '@/app/lib/corporate-terms';
 import { getSiteUrl, getStripe } from '@/app/lib/stripe-server';
 
 function getSupabase() {
@@ -17,12 +22,22 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const companyName = String(body.companyName ?? '').trim();
     const contactName = String(body.contactName ?? '').trim();
+    const contactTitle = String(body.contactTitle ?? '').trim();
     const contactEmail = String(body.contactEmail ?? '').trim().toLowerCase();
     const contactPhone = String(body.contactPhone ?? '').trim();
+    const authorizedEmailDomainsRaw = String(body.authorizedEmailDomains ?? '').trim();
+    const termsAccepted = body.termsAccepted === true;
 
-    if (!companyName || !contactName || !contactEmail) {
+    if (!companyName || !contactName || !contactEmail || !contactTitle) {
       return NextResponse.json(
-        { error: 'Company name, contact name, and work email are required.' },
+        { error: 'Company name, billing contact name, title, and work email are required.' },
+        { status: 400 },
+      );
+    }
+
+    if (!termsAccepted) {
+      return NextResponse.json(
+        { error: 'You must accept the Corporate Billing Terms & Conditions to continue.' },
         { status: 400 },
       );
     }
@@ -32,9 +47,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     }
 
+    let authorizedEmailDomains = parseAuthorizedEmailDomains(authorizedEmailDomainsRaw);
+    if (authorizedEmailDomains.length === 0) {
+      const billingDomain = extractEmailDomain(contactEmail);
+      if (billingDomain) authorizedEmailDomains = [billingDomain];
+    }
+    if (authorizedEmailDomains.length === 0) {
+      return NextResponse.json(
+        { error: 'Enter at least one authorized company email domain (e.g. company.com).' },
+        { status: 400 },
+      );
+    }
+
+    const billingDomain = extractEmailDomain(contactEmail);
+    if (billingDomain && !authorizedEmailDomains.includes(billingDomain)) {
+      return NextResponse.json(
+        {
+          error: `Your work email must use an authorized domain (${authorizedEmailDomains.map((d) => `@${d}`).join(', ')}).`,
+        },
+        { status: 400 },
+      );
+    }
+
     const stripe = getStripe();
     const supabase = getSupabase();
     const siteUrl = getSiteUrl(request);
+    const termsAcceptedAt = new Date().toISOString();
 
     let corpCode = generateCorporateCode();
     for (let attempt = 0; attempt < 5; attempt += 1) {
@@ -64,11 +102,18 @@ export async function POST(request: NextRequest) {
       .insert({
         company_name: companyName,
         contact_name: contactName,
+        contact_title: contactTitle,
         contact_email: contactEmail,
         contact_phone: contactPhone || null,
         corp_code: corpCode,
         stripe_customer_id: customer.id,
         status: 'pending',
+        authorized_email_domains: authorizedEmailDomains,
+        terms_version: CORPORATE_TERMS_VERSION,
+        terms_accepted_at: termsAcceptedAt,
+        terms_accepted_by_name: contactName,
+        terms_accepted_by_title: contactTitle,
+        terms_accepted_by_email: contactEmail,
       })
       .select('id, corp_code')
       .single();

@@ -63,7 +63,8 @@ function SuccessContent() {
             {companyName && <p className="mt-2 text-[#64748b]">{companyName}</p>}
 
             <p className="mt-6 text-sm text-[#64748b]">
-              Share this code with your team at checkout. Enrollments bill to your saved card.
+              Share this code with your team at checkout. Enrollments bill to your saved card. A confirmation
+              email has also been sent to your billing contact.
             </p>
 
             <button

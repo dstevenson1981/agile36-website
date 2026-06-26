@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type Stripe from 'stripe';
 import {
+  assertEmployeeEmailAllowedForCorporateAccount,
   getActiveCorporateAccountByCode,
   normalizeCorporateCode,
   resolveCorporatePaymentMethod,
@@ -30,6 +31,8 @@ export async function chargeCorporateAccount(
   if (!account) {
     throw new Error('Invalid or inactive corporate billing code');
   }
+
+  assertEmployeeEmailAllowedForCorporateAccount(account, input.employeeEmail.trim().toLowerCase());
 
   const paymentMethodId = await resolveCorporatePaymentMethod(stripe, account);
   if (!paymentMethodId) {

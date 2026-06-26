@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { activateCorporateAccountFromSetupSession } from '@/app/lib/corporate';
-import { getStripe } from '@/app/lib/stripe-server';
+import { finalizeCorporateActivation } from '@/app/lib/corporate-activation';
+import { getSiteUrl, getStripe } from '@/app/lib/stripe-server';
 
 function getSupabase() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -22,13 +22,14 @@ export async function GET(request: NextRequest) {
 
     const stripe = getStripe();
     const supabase = getSupabase();
+    const siteUrl = getSiteUrl(request);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.mode !== 'setup' || session.status !== 'complete') {
       return NextResponse.json({ error: 'Checkout session is not complete' }, { status: 400 });
     }
 
-    const account = await activateCorporateAccountFromSetupSession(stripe, supabase, session);
+    const account = await finalizeCorporateActivation(stripe, supabase, session, siteUrl);
     if (!account) {
       return NextResponse.json({ error: 'Unable to activate corporate account' }, { status: 404 });
     }
@@ -37,6 +38,7 @@ export async function GET(request: NextRequest) {
       companyName: account.company_name,
       corpCode: account.corp_code,
       contactEmail: account.contact_email,
+      authorizedEmailDomains: account.authorized_email_domains ?? [],
       status: account.status,
     });
   } catch (error: unknown) {

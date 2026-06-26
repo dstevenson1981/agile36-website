@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-import { activateCorporateAccountFromSetupSession } from '@/app/lib/corporate';
+import { finalizeCorporateActivation } from '@/app/lib/corporate-activation';
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
@@ -104,7 +104,8 @@ export async function POST(request: NextRequest) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
       if (session.mode === 'setup' && session.metadata?.corporate_account_id) {
-        await activateCorporateAccountFromSetupSession(stripe, supabase, session);
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.agile36.com';
+        await finalizeCorporateActivation(stripe, supabase, session, siteUrl);
       }
       break;
     }

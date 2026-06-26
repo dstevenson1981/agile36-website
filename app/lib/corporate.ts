@@ -7,14 +7,63 @@ export type CorporateAccountRow = {
   contact_name: string;
   contact_email: string;
   contact_phone: string | null;
+  contact_title: string | null;
   corp_code: string;
   stripe_customer_id: string;
   stripe_payment_method_id: string | null;
   status: 'pending' | 'active' | 'inactive';
   setup_session_id: string | null;
+  authorized_email_domains: string[];
+  terms_version: string | null;
+  terms_accepted_at: string | null;
+  terms_accepted_by_name: string | null;
+  terms_accepted_by_title: string | null;
+  terms_accepted_by_email: string | null;
+  welcome_email_sent_at: string | null;
+  created_at?: string;
+  updated_at?: string;
 };
 
 const CORP_CODE_PREFIX = 'AGILE-';
+
+/** Parse comma/newline-separated domains (e.g. "acme.com, @acme.com"). */
+export function parseAuthorizedEmailDomains(raw: string): string[] {
+  const parts = raw
+    .split(/[,;\s]+/)
+    .map((p) => p.trim().toLowerCase().replace(/^@+/, ''))
+    .filter(Boolean);
+  return [...new Set(parts)];
+}
+
+export function extractEmailDomain(email: string): string | null {
+  const normalized = email.trim().toLowerCase();
+  const at = normalized.lastIndexOf('@');
+  if (at < 1 || at === normalized.length - 1) return null;
+  return normalized.slice(at + 1);
+}
+
+export function employeeEmailAllowedForCorporateAccount(
+  account: CorporateAccountRow,
+  employeeEmail: string,
+): boolean {
+  const domains = account.authorized_email_domains ?? [];
+  if (domains.length === 0) return true;
+  const domain = extractEmailDomain(employeeEmail);
+  if (!domain) return false;
+  return domains.includes(domain);
+}
+
+export function assertEmployeeEmailAllowedForCorporateAccount(
+  account: CorporateAccountRow,
+  employeeEmail: string,
+): void {
+  if (!employeeEmailAllowedForCorporateAccount(account, employeeEmail)) {
+    const allowed = (account.authorized_email_domains ?? []).map((d) => `@${d}`).join(', ');
+    throw new Error(
+      `This corporate billing code requires a company email (${allowed}). Use your work email or contact your billing admin.`,
+    );
+  }
+}
 
 export function normalizeCorporateCode(raw: string | null | undefined): string | null {
   const code = raw?.trim().toUpperCase() ?? '';

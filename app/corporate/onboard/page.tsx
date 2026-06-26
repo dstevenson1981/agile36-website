@@ -6,20 +6,37 @@ import { FormEvent, useState } from 'react';
 export default function CorporateOnboardPage() {
   const [companyName, setCompanyName] = useState('');
   const [contactName, setContactName] = useState('');
+  const [contactTitle, setContactTitle] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
+  const [authorizedEmailDomains, setAuthorizedEmailDomains] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    if (!termsAccepted) {
+      setError('You must accept the Corporate Billing Terms & Conditions to continue.');
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch('/api/corporate/onboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ companyName, contactName, contactEmail, contactPhone }),
+        body: JSON.stringify({
+          companyName,
+          contactName,
+          contactTitle,
+          contactEmail,
+          contactPhone,
+          authorizedEmailDomains,
+          termsAccepted: true,
+        }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
@@ -139,6 +156,20 @@ export default function CorporateOnboardPage() {
             </div>
 
             <div>
+              <label htmlFor="contactTitle" className="mb-2 block text-sm font-medium text-[#475569]">
+                Title / role *
+              </label>
+              <input
+                id="contactTitle"
+                required
+                value={contactTitle}
+                onChange={(e) => setContactTitle(e.target.value)}
+                placeholder="e.g. Procurement Manager"
+                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+              />
+            </div>
+
+            <div>
               <label htmlFor="contactEmail" className="mb-2 block text-sm font-medium text-[#475569]">
                 Work email *
               </label>
@@ -165,6 +196,47 @@ export default function CorporateOnboardPage() {
               />
             </div>
 
+            <div>
+              <label htmlFor="authorizedEmailDomains" className="mb-2 block text-sm font-medium text-[#475569]">
+                Authorized employee email domains *
+              </label>
+              <input
+                id="authorizedEmailDomains"
+                required
+                value={authorizedEmailDomains}
+                onChange={(e) => setAuthorizedEmailDomains(e.target.value)}
+                placeholder="company.com"
+                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+              />
+              <p className="mt-1 text-xs text-[#94a3b8]">
+                Employees must register with a work email on this domain. Separate multiple domains with commas
+                (e.g. <span className="font-mono">acme.com, acme.co.uk</span>).
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] p-4">
+              <label className="flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-[#1f2c4a]/30"
+                />
+                <span className="text-sm text-[#475569] leading-relaxed">
+                  I certify that I am authorized to bind my organization and authorize Agile36 to charge the
+                  payment method on file for eligible employee registrations in accordance with the{' '}
+                  <Link href="/corporate/terms" className="font-medium text-[#d97706] underline hover:no-underline" target="_blank">
+                    Corporate Billing Terms &amp; Conditions
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="/refund-policy" className="font-medium text-[#d97706] underline hover:no-underline" target="_blank">
+                    Refund and Cancellation Policy
+                  </Link>
+                  . *
+                </span>
+              </label>
+            </div>
+
             {error && (
               <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
                 {error}
@@ -173,7 +245,7 @@ export default function CorporateOnboardPage() {
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !termsAccepted}
               className="w-full rounded-lg bg-[#1f2c4a] py-4 font-medium text-white transition-colors hover:bg-[#16243f] disabled:opacity-60"
             >
               {loading ? 'Redirecting to Stripe…' : 'Continue to secure card setup'}

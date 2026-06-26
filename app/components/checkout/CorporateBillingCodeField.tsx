@@ -22,7 +22,8 @@ export default function CorporateBillingCodeField({ value, onChange }: Props) {
         autoComplete="off"
       />
       <p className="mt-1 text-xs text-[#94a3b8]">
-        If your company set up corporate billing, enter the code here to charge your organization&apos;s card.
+        If your company set up corporate billing, enter the code here. You must register with your authorized
+        company work email — personal emails (Gmail, Yahoo, etc.) will not work with a corporate code.
       </p>
     </div>
   );
