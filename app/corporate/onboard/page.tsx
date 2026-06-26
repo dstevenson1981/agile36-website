@@ -209,8 +209,9 @@ export default function CorporateOnboardPage() {
                 className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
               />
               <p className="mt-1 text-xs text-[#94a3b8]">
-                Employees must register with a work email on this domain. Separate multiple domains with commas
-                (e.g. <span className="font-mono">acme.com, acme.co.uk</span>).
+                Enter the <strong className="font-medium text-[#64748b]">domain only</strong> — e.g.{' '}
+                <span className="font-mono">amazon.com</span>, not a full email. Employees must register with a
+                work email on this domain. Separate multiple domains with commas.
               </p>
             </div>
 

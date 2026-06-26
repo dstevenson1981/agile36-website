@@ -26,12 +26,22 @@ export type CorporateAccountRow = {
 
 const CORP_CODE_PREFIX = 'AGILE-';
 
-/** Parse comma/newline-separated domains (e.g. "acme.com, @acme.com"). */
+/** Normalize one token: "amazon.com", "@amazon.com", or "user@amazon.com" → "amazon.com" */
+export function normalizeAuthorizedEmailDomainToken(token: string): string | null {
+  const cleaned = token.trim().toLowerCase().replace(/^@+/, '');
+  if (!cleaned) return null;
+  if (cleaned.includes('@')) {
+    return extractEmailDomain(cleaned);
+  }
+  return cleaned;
+}
+
+/** Parse comma/newline-separated domains (e.g. "acme.com, @acme.com, user@acme.com"). */
 export function parseAuthorizedEmailDomains(raw: string): string[] {
   const parts = raw
     .split(/[,;\s]+/)
-    .map((p) => p.trim().toLowerCase().replace(/^@+/, ''))
-    .filter(Boolean);
+    .map((p) => normalizeAuthorizedEmailDomainToken(p))
+    .filter((p): p is string => Boolean(p));
   return [...new Set(parts)];
 }
 
