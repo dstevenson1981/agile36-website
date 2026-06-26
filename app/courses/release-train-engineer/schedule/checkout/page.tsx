@@ -483,6 +483,11 @@ function CheckoutContent() {
                     />
                   </div>
 
+                  <CorporateBillingCodeField
+                    value={enrollmentFormData.corporateBillingCode}
+                    onChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, corporateBillingCode: value })}
+                  />
+
                   {/* Alternative Contact */}
                   <div>
                     <button
