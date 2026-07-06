@@ -148,6 +148,11 @@ export default function RootLayout({
           src="https://opps-widget.getwarmly.com/warmly.js?clientId=b634a2e0b6271616010729756a0e54c6"
           defer
         />
+        <script
+          src="https://YOUR-HYPER-HOST/agent.js"
+          data-rb2b="GNLKQH7LPW6Q"
+          async
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
