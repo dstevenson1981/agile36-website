@@ -144,11 +144,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootSchemaGraph) }}
         />
         <script
-          id="warmly-script-loader"
-          src="https://opps-widget.getwarmly.com/warmly.js?clientId=b634a2e0b6271616010729756a0e54c6"
-          defer
-        />
-        <script
           src="/hyper-agent.js"
           data-rb2b="GNLKQH7LPW6Q"
           async
