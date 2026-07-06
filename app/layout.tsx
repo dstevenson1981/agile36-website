@@ -149,7 +149,7 @@ export default function RootLayout({
           defer
         />
         <script
-          src="https://YOUR-HYPER-HOST/agent.js"
+          src="/hyper-agent.js"
           data-rb2b="GNLKQH7LPW6Q"
           async
         />

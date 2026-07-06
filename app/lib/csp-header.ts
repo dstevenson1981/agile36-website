@@ -23,6 +23,8 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://assets.apollo.io " +
   "https://opps-widget.getwarmly.com " +
   "https://*.getwarmly.com " +
+  "https://ddwl4m2hdecbv.cloudfront.net " + // RB2B person-identification pixel (loaded by /hyper-agent.js)
+  "https://*.reb2b.com " +
   "https://app.upvert.io " +
   "https://*.warmly.ai " +
   "https://va.vercel-scripts.com " +
