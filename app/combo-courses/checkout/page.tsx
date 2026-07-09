@@ -8,6 +8,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { COMBO_COURSES, type Combo } from "../data";
 import ComboPaymentForm from "./ComboPaymentForm";
 import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
+import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -24,6 +25,9 @@ function ComboCheckoutContent() {
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+
+  useCheckoutStepScroll(currentStep, clientSecret);
+
 
   const [formData, setFormData] = useState({
     enrollingFor: "myself" as "myself" | "someoneElse",

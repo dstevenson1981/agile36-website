@@ -12,6 +12,7 @@ import PaymentForm from "./PaymentForm";
 import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillingCodeField';
 import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
+import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -39,6 +40,9 @@ function CheckoutContent() {
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+
+  useCheckoutStepScroll(currentStep, clientSecret);
+
 
   const resetPaymentIntentIfNeeded = () => {
     if (clientSecret && currentStep === 3) {
