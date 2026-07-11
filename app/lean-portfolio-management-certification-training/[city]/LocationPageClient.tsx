@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useParams } from "next/navigation";
+import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 
 export default function CityLPMCoursePage() {
@@ -114,7 +115,7 @@ export default function CityLPMCoursePage() {
                   Lead Agile Portfolios with SAFe® LPM Training That Delivers Real Value
                 </p>
                 <CourseHeroSocialProof
-                  enrolledLabel="25,000+ enrolled"
+                  enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL}
                   trailing={
                     <div className="flex items-center gap-2 rounded-lg border border-green-500/40 bg-green-500/10 px-3 py-2 sm:px-4">
                       <svg className="h-5 w-5 shrink-0 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -836,7 +837,7 @@ export default function CityLPMCoursePage() {
                   <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  <span className="text-base text-[#475569] font-semibold">9K+ Users</span>
+                  <span className="text-base text-[#475569] font-semibold">52,000+ Participants</span>
                 </div>
               </div>
 

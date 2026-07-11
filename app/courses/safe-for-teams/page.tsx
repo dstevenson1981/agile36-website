@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
+import { SAFE_COURSE_PARTICIPANTS_LABEL, SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
@@ -106,11 +107,11 @@ export default function SafeForTeamsCoursePage() {
                 </p>
               </div>
 
-              <CourseHeroSocialProof enrolledLabel="9K+ Enrolled" />
+              <CourseHeroSocialProof enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL} />
 
               <CourseHeroStats
                 stats={[
-                  { value: "9K+", label: "Enrolled", icon: "users" },
+                  { value: SAFE_COURSE_PARTICIPANTS_VALUE, label: "Participants", icon: "users" },
                   { value: "4.9", label: "Avg. rating", icon: "star" },
                   { value: "16", label: "Hours live", icon: "clock" },
                   { value: "2", label: "Days", icon: "calendar" },
@@ -1046,7 +1047,7 @@ export default function SafeForTeamsCoursePage() {
                   <svg className="w-5 h-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  <span className="text-base text-[#475569] font-semibold">9K+ Users</span>
+                  <span className="text-base text-[#475569] font-semibold">52,000+ Participants</span>
                 </div>
               </div>
 

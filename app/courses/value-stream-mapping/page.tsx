@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
+import { SAFE_COURSE_PARTICIPANTS_LABEL, SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
@@ -61,11 +62,11 @@ export default function ValueStreamMappingCoursePage() {
                 </p>
               </div>
 
-              <CourseHeroSocialProof enrolledLabel="15K+ Enrolled" />
+              <CourseHeroSocialProof enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL} />
 
               <CourseHeroStats
                 stats={[
-                  { value: "15K+", label: "Enrolled", icon: "users" },
+                  { value: SAFE_COURSE_PARTICIPANTS_VALUE, label: "Participants", icon: "users" },
                   { value: "4.9", label: "Avg. rating", icon: "star" },
                   { value: "4", label: "Hours live", icon: "clock" },
                   { value: "Half", label: "Day", icon: "calendar" },

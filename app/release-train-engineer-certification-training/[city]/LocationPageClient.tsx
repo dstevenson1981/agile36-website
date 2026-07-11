@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useParams } from "next/navigation";
+import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 
 export default function CityRTECoursePage() {
@@ -68,7 +69,7 @@ export default function CityRTECoursePage() {
                   Lead Agile transformations with expert-led SAFe® 6.0 Agile training and simulations.
                 </p>
                 <CourseHeroSocialProof
-                  enrolledLabel="1,800+ enrolled"
+                  enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL}
                   trailing={
                     <div className="flex items-center gap-2 rounded-lg border border-green-500/40 bg-green-500/10 px-3 py-2 sm:px-4">
                       <svg className="h-5 w-5 shrink-0 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

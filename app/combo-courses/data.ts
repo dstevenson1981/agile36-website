@@ -50,7 +50,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2220,
     discount: 1421,
     category: "safe",
-    enrolled: "17k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -64,7 +64,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2220,
     discount: 1421,
     category: "safe",
-    enrolled: "17k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -78,7 +78,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2220,
     discount: 1421,
     category: "safe",
-    enrolled: "16k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -92,7 +92,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2308,
     discount: 1509,
     category: "safe",
-    enrolled: "11k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -106,7 +106,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 1505,
     discount: 155,
     category: "safe",
-    enrolled: "5k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -120,7 +120,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2308,
     discount: 1458,
     category: "safe",
-    enrolled: "10k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -134,7 +134,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2308,
     discount: 1509,
     category: "safe",
-    enrolled: "10k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -149,7 +149,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 3330,
     discount: 2140,
     category: "safe",
-    enrolled: "25k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -163,7 +163,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 2228,
     discount: 1753,
     category: "safe",
-    enrolled: "9k",
+    enrolled: "52k",
     trending: true,
   },
   {
@@ -177,7 +177,7 @@ export const COMBO_COURSES: Combo[] = [
     originalPrice: 3800,
     discount: 2100,
     category: "safe",
-    enrolled: "4k",
+    enrolled: "52k",
     trending: false,
   },
   {

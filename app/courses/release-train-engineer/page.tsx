@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
+import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
@@ -57,7 +58,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                 </p>
               </div>
 
-              <CourseHeroSocialProof enrolledLabel="1,800+ Enrolled" />
+              <CourseHeroSocialProof enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL} />
 
               <CourseHeroStats
                 stats={[
