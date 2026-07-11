@@ -52,3 +52,6 @@ next-env.d.ts
 # Environment variables
 .env.local
 .env*.local
+
+# Local MCP drafts and staged operator actions
+mcp/outbox/

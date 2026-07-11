@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
-    "/*": ["./content/blog/**/*"],
+    "/*": ["./content/blog/**/*", "./data/**/*", "./app/**/*.ts", "./app/**/*.tsx", "./mcp/**/*"],
   },
   async redirects() {
     return [

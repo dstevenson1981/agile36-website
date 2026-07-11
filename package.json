@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "mcp:agile36": "tsx mcp/agile36-server.ts",
+    "mcp:agile36:self-test": "tsx mcp/agile36-server.ts --self-test",
     "clean-suppressions": "node clean-suppressions.js",
     "sync-stripe-names": "tsx sync-stripe-names.ts",
     "enrich-apollo": "tsx enrich-apollo.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "@sendgrid/mail": "^8.1.6",
     "@stripe/react-stripe-js": "^5.4.0",
     "@stripe/stripe-js": "^8.5.2",
@@ -33,7 +36,8 @@
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "stripe": "^20.0.0",
-    "three": "^0.184.0"
+    "three": "^0.184.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
