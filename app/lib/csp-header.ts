@@ -39,6 +39,7 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://*.crisp.chat; " +
   "font-src 'self' data: " +
   "https://fonts.gstatic.com " +
+  "https://fonts.googleapis.com " +
   "https://cdn.fontshare.com " +
   "https://client.crisp.chat " +
   "https://*.crisp.chat; " +

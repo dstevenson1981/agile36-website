@@ -2,8 +2,8 @@
  * List-price hero amounts (USD) for the schedule CTA — keep aligned with each course page’s pricing card copy.
  */
 export const COURSE_HERO_SCHEDULE_LIST_USD: Record<string, { current: number; original: number }> = {
-  "leading-safe": { current: 515, original: 1030 },
-  "scrum-master": { current: 515, original: 1030 },
+  "leading-safe": { current: 545, original: 1030 },
+  "scrum-master": { current: 545, original: 1030 },
   "product-owner-manager": { current: 545, original: 1030 },
   "agile-product-management": { current: 1299, original: 2598 },
   "lean-portfolio-management": { current: 950, original: 1900 },

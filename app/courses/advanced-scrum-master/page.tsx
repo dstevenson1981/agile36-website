@@ -10,6 +10,7 @@ import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import SasmOutcomesDashboard from "@/app/components/SasmOutcomesDashboard";
 
 export default function AdvancedScrumMasterCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -52,7 +53,7 @@ export default function AdvancedScrumMasterCoursePage() {
                   AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training
                 </h1>
                 <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
-                  Elevate your Scrum Master impact on the ART—flow, high-performing teams, and conflict skills—with responsible AI for facilitation.
+                  Move from team ceremonies to ART-level results: faster flow, cleaner multi-team conflict, and a SASM credential that signals you can coach the train — not just one team.
                 </p>
               </div>
 
@@ -69,11 +70,11 @@ export default function AdvancedScrumMasterCoursePage() {
 
               <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
                 {[
-                  "Improve flow and help teams collaborate across the Agile Release Train",
-                  "Build high-performing teams and stronger cross-team facilitation",
-                  "Grow conflict-management skills for healthy multi-team engagement",
-                  "Strengthen ART performance through outcomes, I&A, and problem-solving",
-                  "Apply AI fundamentals and prompting for the SASM role—with human-in-the-loop judgment"
+                  "Unblock flow across teams sharing one PI cadence",
+                  "Facilitate hard cross-team conversations without losing trust",
+                  "Turn Inspect & Adapt into system fixes, not unused parking lots",
+                  "Pass the official SASM exam — attempt included with enrollment",
+                  "Use AI for prep and templates without handing over judgment",
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-600">
@@ -169,16 +170,18 @@ export default function AdvancedScrumMasterCoursePage() {
       {/* Trusted by industry leaders */}
       <TrustedByStrip />
 
-      {/* AI-SEO: Page Summary */}
+      <SasmOutcomesDashboard />
+
+      {/* Page Summary */}
       <section className="w-full bg-[#1f2c4a]/[0.03] border-t border-[#1f2c4a]/10 py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl">
             <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">What is SAFe Advanced Scrum Master (SASM) Certification?</h2>
             <p className="text-lg text-[#334155] leading-relaxed mb-4">
-              SAFe Advanced Scrum Master (SASM) certification validates your ability to foster high-performing teams, improve flow, manage multi-team conflict, and drive Agile Release Train performance. The AI-Empowered course adds responsible use of AI, prompting, and Studio tooling for advanced facilitation at scale.
+              SAFe Advanced Scrum Master (SASM) certification proves you can improve flow, build high-performing teams, resolve multi-team conflict, and drive Agile Release Train performance. The AI-Empowered course adds practical AI for facilitation — with human judgment still in charge.
             </p>
             <p className="text-lg text-[#334155] leading-relaxed">
-              The certification is earned by completing a 2-day (16-hour) course taught by a SAFe Program Consultant (SPC) and passing the online SASM exam within 30 days of course completion. SSM certification is required as a prerequisite.
+              You earn it by completing a 2-day (16-hour) live course with a SAFe Program Consultant (SPC) and passing the online SASM exam within 30 days. SAFe Scrum Master (SSM) certification is required first.
             </p>
           </div>
         </div>
@@ -332,108 +335,56 @@ export default function AdvancedScrumMasterCoursePage() {
         </div>
       </section>
 
-      {/* AI amplification — aligned with Scaled Agile SASM positioning */}
-      <section className="w-full bg-slate-50 py-10 px-4 sm:px-6 lg:px-20 border-y border-slate-200">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#334155] mb-6 text-center">
-            Leverage AI to amplify results
-          </h2>
-          <p className="text-center text-[#475569] mb-8 max-w-3xl mx-auto">
-            The AI-Empowered SASM course shows how to use AI alongside Lean-Agile principles—so you spend less time on admin and more on high-impact facilitation.
-          </p>
-          <ul className="grid md:grid-cols-2 gap-5 text-[#334155]">
-            {[
-              "AI fundamentals and prompting tailored to the SASM role—for templates, acceptance criteria, and splitting complex stories",
-              "Use SAFe CoPilot-style guidance to reference Framework practices and support data-backed flow recommendations",
-              "Apply AI to high-impact work: retrospective themes across teams, ART-level bottlenecks, PI Planning prompts",
-              "Evaluate AI outputs with human-in-the-loop oversight for ethical, quality outcomes aligned with Lean-Agile thinking",
-            ].map((item, i) => (
-              <li key={i} className="flex gap-3 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-4">
-                <span className="text-[#d97706] font-bold shrink-0">{i + 1}.</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {/* What you walk away with */}
+      <section className="w-full border-y border-slate-200 bg-white px-4 py-14 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-end gap-6 lg:grid-cols-[1.2fr_1fr]">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+                After two days
+              </p>
+              <h2 className="mt-2 text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">
+                You leave ready to run the hard conversations
+              </h2>
+              <p className="mt-3 max-w-2xl text-lg text-slate-600">
+                SASM is for experienced Scrum Masters who are done babysitting one team&apos;s board and ready to unblock the train.
+              </p>
+            </div>
+            <p className="text-sm leading-relaxed text-slate-500 lg:text-right">
+              Live virtual · SPC-led · Exam included · SSM prerequisite required
+            </p>
+          </div>
 
-      {/* Key to Success Section — glassmorphism feature cards */}
-      <section className="w-full bg-[#e9eef6] py-16 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3 text-center">
-            Our Key to Exam and Career Success
-          </h2>
-          <p className="mb-12 text-center text-[#64748b]">
-            Everything in your enrollment is built to get you certified — and hired.
-          </p>
-          
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ), 
-                title: "High Pass Rate",
-                desc: "Exam fee is included with enrollment.",
+              {
+                title: "Pass the official exam",
+                desc: "120-minute SASM exam, 73% to pass. Attempt is included — plus prep mapped to each exam domain.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                ), 
-                title: "Expert-Led Study Sessions",
-                desc: "Live exam prep with certified SPC instructors.",
+              {
+                title: "Improve flow across teams",
+                desc: "Visualize WIP, measure bottlenecks, and coach methods that actually accelerate delivery — not vanity velocity.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                ), 
-                title: "Networking Opportunities",
-                desc: "Join a global community of certified SAFe leaders.",
+              {
+                title: "Handle multi-team conflict",
+                desc: "Interest-based problem solving and reframing you can use in PI Planning, syncs, and dependency wars.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                ), 
-                title: "Flexible Monthly Payment Plans",
-                desc: "Split your tuition into easy monthly payments.",
+              {
+                title: "Run Inspect & Adapt for real",
+                desc: "Facilitate the problem-solving workshop so I&A produces system fixes, not a parking lot of unused ideas.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                ), 
-                title: "Real-World Case Studies",
-                desc: "Learn through real enterprise ART facilitation scenarios.",
+              {
+                title: "Use AI without losing judgment",
+                desc: "Prompts, templates, and Studio guidance with human-in-the-loop checks — less admin, more facilitation time.",
               },
-              { 
-                icon: (
-                  <svg className="w-10 h-10 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                ), 
-                title: "Hands-On Project Experience",
-                desc: "Practice I&A and conflict resolution in live simulations.",
-              }
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:bg-white/20 hover:shadow-[0_16px_40px_-12px_rgba(13,148,136,0.35),inset_0_1px_1px_rgba(255,255,255,0.8)]"
-              >
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#d97706]/10 transition-transform duration-300 group-hover:scale-110">
-                  {item.icon}
-                </span>
-                <h3 className="mt-4 text-base font-bold text-[#1f2c4a]">{item.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-[#64748b]">{item.desc}</p>
+              {
+                title: "Open the next role door",
+                desc: "Credential signal for Senior Scrum Master, Agile Coach, and RTE-track opportunities at SAFe enterprises.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-6 transition-colors hover:bg-slate-50">
+                <h3 className="text-base font-semibold text-[#1f2c4a]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -572,16 +523,16 @@ export default function AdvancedScrumMasterCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Why earn SASM now?</h3>
                       <p className="text-base text-[#475569] mb-4">
-                        Employers continue to invest in SAFe at scale; SASM signals you can support teams <em>and</em> the train without losing sight of flow, psychological safety, and measurable improvement. The AI-Empowered curriculum matches how organizations actually work today—using assistants and automation where they help, with clear human accountability.
+                        Companies keep scaling SAFe. SASM is how you prove you can support teams <em>and</em> the train — flow, psychological safety, and measurable improvement. The AI-Empowered track matches how work actually gets done: assistants where they help, humans accountable for decisions.
                       </p>
                       <div className="bg-[#1f2c4a]/[0.06] border-l-2 border-[#d97706] p-6 my-6">
-                        <p className="text-base text-[#475569] font-semibold mb-2">Outcomes aligned with Scaled Agile:</p>
+                        <p className="text-base text-[#475569] font-semibold mb-2">What changes after you certify:</p>
                         <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
-                          <li>Stronger facilitation when multiple teams share dependencies and a single PI cadence</li>
-                          <li>Practical conflict skills—not just theory—for lasting alignment</li>
-                          <li>Flow thinking that connects team-level work to ART health</li>
-                          <li>Responsible AI habits: prompts, verification, and value-stream alignment</li>
-                          <li>Preparation for the official SASM exam (120 minutes, 73% passing score)</li>
+                          <li>You can facilitate when multiple teams share dependencies and one PI cadence</li>
+                          <li>You have conflict tools that work in the room — not just on a slide</li>
+                          <li>You connect team boards to ART health with real flow measures</li>
+                          <li>You use AI for speed, then verify before anything hits the ART</li>
+                          <li>You are prepared for the official exam (120 minutes, 73% to pass)</li>
                         </ul>
                       </div>
                     </div>
@@ -646,15 +597,15 @@ export default function AdvancedScrumMasterCoursePage() {
                       </div>
                     </div>
 
-                    {/* Career & Salary */}
+                    {/* Career & Salary — dashboard above sells the story; keep a compact proof strip here */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Career Outcomes for AI-Empowered SAFe Advanced Scrum Masters</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Career outcomes after SASM</h3>
                       <p className="text-base text-[#475569] mb-4">
-                        Earning your AI-Empowered SAFe Advanced Scrum Master certification opens up numerous senior career opportunities and demonstrates your commitment to advanced professional growth. The certification validates your ability to effectively lead program-level coaching and organizational transformation in a SAFe environment.
+                        SASM is the signal that you can coach beyond a single team — flow, conflict, and ART performance. Typical next titles include Senior Scrum Master, Agile Coach, and RTE-track roles.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-4">Average Salary (US)</h4>
+                          <h4 className="font-bold text-[#1f2c4a] mb-4">Average salary (US)</h4>
                           <RangeBar
                             title="$100K – $150K"
                             minLabel="$100,000"
@@ -663,17 +614,9 @@ export default function AdvancedScrumMasterCoursePage() {
                             caption="Typical US salary band for SAFe SASM professionals"
                           />
                         </div>
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">Senior Scrum Master, Agile Coach, Agile Transformation Leader, Program-level Agile Coach</p>
-                        </div>
-                        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                          <h4 className="font-bold text-[#1f2c4a] mb-3">Advanced Paths</h4>
-                          <p className="text-base text-[#475569]">Release Train Engineer, Enterprise Agile Coach, Agile Transformation Lead</p>
-                        </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
-                          <DemandMeter caption="SAFe SASM professionals are in high demand at enterprises scaling Agile across ARTs." />
+                          <DemandMeter caption="Enterprises running SAFe hire SASM-level coaches to stabilize ARTs and raise delivery predictability." />
                         </div>
                       </div>
                     </div>

@@ -1195,7 +1195,7 @@ export default function LeadingSafeCoursePage() {
               What is the Fee for SAFe Agilist Certification?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              The cost of the Leading SAFe certification course typically ranges from <strong>$515 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agilist certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the Leading SAFe certification course typically ranges from <strong>$545 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agilist certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
@@ -1282,14 +1282,6 @@ export default function LeadingSafeCoursePage() {
                   <p className="text-base text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/50">
-                    <p className="text-sm font-semibold text-[#d97706] mb-1">
-                      🎯 Special Offer
-                    </p>
-                    <p className="text-base font-bold text-[#1f2c4a]">
-                      $100 Off Full Course Enrollment
-                    </p>
-                  </div>
                   <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>

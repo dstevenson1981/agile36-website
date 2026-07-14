@@ -43,8 +43,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-ssm",
     name: "AI-Empowered Leading SAFe & AI-Empowered SSM Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 545 },
+      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
     ],
     comboPrice: 799,
     originalPrice: 2220,
@@ -57,7 +57,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-popm",
     name: "AI-Empowered Leading SAFe & AI-Empowered SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 545 },
       { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 545 },
     ],
     comboPrice: 799,
@@ -71,7 +71,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-popm",
     name: "AI-Empowered SSM & AI-Empowered SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
       { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 545 },
     ],
     comboPrice: 799,
@@ -85,7 +85,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-teams",
     name: "AI-Empowered Leading SAFe & AI-Empowered SAFe for Teams Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 545 },
       { id: "2", name: "AI-Empowered SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
     ],
     comboPrice: 799,
@@ -99,7 +99,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-lpm",
     name: "AI-Empowered Leading SAFe & SAFe Lean Portfolio Management Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
+      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 545 },
       { id: "2", name: "SAFe Lean Portfolio Management", slug: "lean-portfolio-management", badge: BADGES["lean-portfolio-management"], price: 950 },
     ],
     comboPrice: 1350,
@@ -113,7 +113,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-teams",
     name: "AI-Empowered SSM & AI-Empowered SAFe for Teams Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
       { id: "2", name: "AI-Empowered SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
     ],
     comboPrice: 850,
@@ -141,8 +141,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "leading-safe-ssm-popm",
     name: "AI-Empowered Leading SAFe, SSM & SAFe POPM Certification Training",
     courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 545 },
+      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
       { id: "3", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 545 },
     ],
     comboPrice: 1190,
@@ -156,7 +156,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-advanced",
     name: "AI-Empowered SSM & AI-Empowered SASM Certification Path",
     courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
       { id: "2", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 599 },
     ],
     comboPrice: 1177,
@@ -184,7 +184,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-pmp",
     name: "AI-Empowered SAFe Scrum Master & PMP Certification",
     courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
+      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
       { id: "2", name: "PMP® Certification Training", slug: "pmp-certification", badge: BADGES["pmp-certification"], price: 1150 },
     ],
     comboPrice: 1275,
@@ -212,7 +212,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ai-scrum-genai",
     name: "AI-Driven Scrum Master & Certified GenAI Practitioner",
     courses: [
-      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 299 },
+      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
       { id: "2", name: "Certified GenAI Practitioner™", slug: "certified-genai-practitioner", badge: BADGES["certified-genai-practitioner"], price: 200 },
     ],
     comboPrice: 399,
@@ -226,7 +226,7 @@ export const COMBO_COURSES: Combo[] = [
     id: "ai-scrum-ai-product",
     name: "AI-Driven Scrum Master & Certified AI Product Manager",
     courses: [
-      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 299 },
+      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
       { id: "2", name: "Certified AI Product Manager", slug: "certified-ai-product-manager", badge: BADGES["certified-ai-product-manager"], price: 400 },
     ],
     comboPrice: 549,
@@ -253,8 +253,8 @@ export const COMBO_COURSES: Combo[] = [
     id: "ssm-ai-scrum",
     name: "AI-Empowered SAFe Scrum Master & AI-Driven Scrum Master",
     courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 299 },
+      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 545 },
+      { id: "2", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
     ],
     comboPrice: 699,
     originalPrice: 1708,

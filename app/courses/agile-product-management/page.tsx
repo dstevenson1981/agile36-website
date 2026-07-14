@@ -1321,14 +1321,6 @@ export default function AgileProductManagementCoursePage() {
                   <p className="text-base text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/50">
-                    <p className="text-sm font-semibold text-[#d97706] mb-1">
-                      🎯 Special Offer
-                    </p>
-                    <p className="text-base font-bold text-[#1f2c4a]">
-                      $100 Off Full Course Enrollment
-                    </p>
-                  </div>
                   <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>

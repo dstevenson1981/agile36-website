@@ -739,7 +739,7 @@ export default function CityLeadingSafeCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$515</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$545</div>
                   <div className="text-base text-[#64748b] line-through">$1,030</div>
                   <div className="text-sm text-green-700 font-semibold mt-2">50% OFF</div>
                 </div>
@@ -1327,14 +1327,6 @@ export default function CityLeadingSafeCoursePage() {
                   <p className="text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/60">
-                    <p className="text-sm font-semibold text-[#d97706] mb-1">
-                      🎯 Special Offer
-                    </p>
-                    <p className="text-base font-bold text-[#1f2c4a]">
-                      $100 Off Full Course Enrollment
-                    </p>
-                  </div>
                   <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
                       <span className="text-green-700">✓</span>

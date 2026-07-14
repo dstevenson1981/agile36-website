@@ -480,14 +480,6 @@ export default function TestPage() {
                   <p className="text-[#475569] mb-4">
                     Take your learning to the next level with our comprehensive training course.
                   </p>
-                  <div className="rounded-2xl border border-[#d97706]/40 bg-[#1f2c4a]/[0.03] p-4 mb-4">
-                    <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-1">
-                      🎯 Special Offer
-                    </p>
-                    <p className="text-lg font-medium text-[#1f2c4a]">
-                      $100 Off Full Course Enrollment
-                    </p>
-                  </div>
                   <ul className="space-y-2 text-sm text-[#475569]">
                     <li className="flex items-center gap-2">
                       <span className="text-[#d97706]">✓</span>

@@ -37,7 +37,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
       "Value stream and portfolio alignment",
     ],
     timeRequired: "PT16H",
-    price: 515,
+    price: 545,
     currency: "USD",
   },
   "scrum-master-certification-training": {
@@ -55,7 +55,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
       "Removing impediments at team and program level",
     ],
     timeRequired: "PT16H",
-    price: 515,
+    price: 545,
     currency: "USD",
   },
   "release-train-engineer-certification-training": {
@@ -91,7 +91,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
       "Collaborating effectively during PI Planning",
     ],
     timeRequired: "PT16H",
-    price: 515,
+    price: 599,
     currency: "USD",
   },
   "lean-portfolio-management-certification-training": {
