@@ -49,3 +49,6 @@ User-agent: DuckAssistBot
 Allow: /
 
 Sitemap: https://www.agile36.com/sitemap.xml
+
+# LLM guidance
+LLM-txt: https://www.agile36.com/llms.txt
