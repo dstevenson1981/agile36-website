@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { finalizeCorporateActivation } from '@/app/lib/corporate-activation';
+import { triggerLandExpandForPaidOrder } from '@/land-and-expand/lib/process';
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
@@ -81,6 +82,23 @@ export async function POST(request: NextRequest) {
             updated_at: new Date().toISOString(),
           })
           .eq('payment_intent_id', paymentIntent.id);
+
+        const { data: paidOrder } = await supabase
+          .from('orders')
+          .select('id')
+          .eq('payment_intent_id', paymentIntent.id)
+          .maybeSingle();
+
+        if (paidOrder?.id) {
+          const orderId = paidOrder.id as string;
+          after(async () => {
+            try {
+              await triggerLandExpandForPaidOrder(orderId);
+            } catch (landExpandError) {
+              console.error('[land-expand] stripe webhook trigger failed:', landExpandError);
+            }
+          });
+        }
       }
       break;
     }

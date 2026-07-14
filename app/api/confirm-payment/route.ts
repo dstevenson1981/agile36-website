@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { grantProPracticeAccessForEmail } from '@/app/lib/grant-pro-practice-access';
+import { triggerLandExpandForPaidOrder } from '@/land-and-expand/lib/process';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -265,6 +266,18 @@ export async function POST(request: NextRequest) {
           console.error('Error inserting combo enrollment lead:', insertComboLeadError);
         }
       }
+    }
+
+    // Corporate-email land-and-expand: runs after the response so checkout is not delayed.
+    if (order?.id && orderData.payment_status === 'succeeded') {
+      const orderId = order.id as string;
+      after(async () => {
+        try {
+          await triggerLandExpandForPaidOrder(orderId);
+        } catch (landExpandError) {
+          console.error('[land-expand] confirm-payment trigger failed:', landExpandError);
+        }
+      });
     }
 
     return NextResponse.json({
