@@ -11,10 +11,12 @@
     "mcp:agile36:self-test": "tsx mcp/agile36-server.ts --self-test",
     "clean-suppressions": "node clean-suppressions.js",
     "sync-stripe-names": "tsx sync-stripe-names.ts",
-    "enrich-apollo": "tsx enrich-apollo.ts"
+    "enrich-apollo": "tsx enrich-apollo.ts",
+    "land-expand": "tsx land-and-expand/run.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@microsoft/clarity": "^1.0.2",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@sendgrid/mail": "^8.1.6",
     "@stripe/react-stripe-js": "^5.4.0",

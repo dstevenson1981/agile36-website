@@ -7,8 +7,8 @@
  * a host added (prefer narrow origins over `https:` in script-src).
  *
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
- * Apollo, RB2B (via /hyper-agent.js), Stripe (checkout), Vercel Analytics
- * from fpcdn/openfpcdn depending on version/build.
+ * Apollo, RB2B (via /hyper-agent.js), Stripe (checkout), Microsoft Clarity,
+ * Vercel Analytics from fpcdn/openfpcdn depending on version/build.
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
  * websocket relay, frames (game widget), and media — see Crisp CSP docs.
@@ -26,6 +26,9 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://app.upvert.io " +
   "https://va.vercel-scripts.com " +
   "https://vercel.live " +
+  "https://www.clarity.ms " +
+  "https://scripts.clarity.ms " +
+  "https://*.clarity.ms " +
   "https://openfpcdn.io " +
   "https://fpcdn.io " +
   "https://*.fpjs.io; " +
@@ -46,7 +49,10 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://client.crisp.chat " +
   "https://*.crisp.chat " +
   "wss://client.relay.crisp.chat " +
-  "wss://*.relay.crisp.chat; " +
+  "wss://*.relay.crisp.chat " +
+  "https://www.clarity.ms " +
+  "https://*.clarity.ms " +
+  "https://c.bing.com; " +
   "frame-src 'self' https: " +
   "https://game.crisp.chat; " +
   "media-src 'self' blob: " +
