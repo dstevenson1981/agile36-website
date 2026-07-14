@@ -68,6 +68,10 @@ export default async function LeadingSafeLayout({
         "Portfolio-level value delivery",
       ],
       breadcrumbLeafName: "Leading SAFe Agilist",
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 2500,
+      },
       offerExtras: {
         validFrom: "2026-04-19",
         priceValidUntil: "2027-04-19",
