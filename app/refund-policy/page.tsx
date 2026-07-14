@@ -61,10 +61,13 @@ export default function RefundPolicyPage() {
             </h2>
             <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
-                If Agile36 must reschedule a class, participants will be transferred to the new session date or may request a one-time transfer or credit toward a future available session.
+                If Agile36 reschedules a class, participants may attend the new date, transfer to another available session, or receive a course credit valid for 12 months.
               </p>
               <p>
-                Registrations purchased using promotional codes, coupon codes, discounted pricing, special offers, or promotional rates remain non-refundable, including in the event of a provider-initiated reschedule.
+                Participants who paid the full registration price may request a refund if they cannot attend the rescheduled date.
+              </p>
+              <p>
+                Registrations purchased using a promotional code, coupon code, discounted price, special offer, or promotional rate remain non-refundable but may be transferred to another available session or converted into a course credit valid for 12 months.
               </p>
             </div>
           </section>
