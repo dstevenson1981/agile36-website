@@ -87,22 +87,22 @@ export default function SafeForTeamsCoursePage() {
             <span className="text-[#334155]">SAFe SP</span>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
             {/* Left Content */}
-            <div className="space-y-7">
+            <div className="space-y-5">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe Practitioner (SP)</span>
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                <span className="liquid-glass rounded-full px-3 py-1 text-xs font-medium text-[#1f2c4a]">SAFe Practitioner (SP)</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-700">
                   Certification Exam Included
                 </span>
               </div>
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   AI-Empowered SAFe® 6.0 for Teams Certification Training
                 </h1>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master SAFe team member skills to excel in Agile Release Trains with expert-led SAFe® 6.0 training and hands-on iteration simulations.
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function SafeForTeamsCoursePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                    <p className="text-[14.5px] leading-relaxed text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -160,7 +160,7 @@ export default function SafeForTeamsCoursePage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href={`/courses/safe-for-teams/schedule?course=${courseSlug}`}
-                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                  className="inline-block rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
                 >
                   View Schedules
                 </Link>
@@ -169,7 +169,7 @@ export default function SafeForTeamsCoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -178,7 +178,7 @@ export default function SafeForTeamsCoursePage() {
                 </a>
                 <button
                   onClick={() => setShowAssessmentModal(true)}
-                  className="liquid-glass rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   Free SP Assessment
                 </button>
@@ -533,7 +533,7 @@ export default function SafeForTeamsCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -589,7 +589,7 @@ export default function SafeForTeamsCoursePage() {
                       <p className="text-base text-[#475569] mb-4">
                         SAFe for Teams Training is a certification program designed to help Agile team members understand and effectively work within Agile Release Trains (ARTs) in the Scaled Agile Framework (SAFe). This comprehensive 2-day course covers team member responsibilities, collaborating with other teams, planning and executing iterations, participating in PI planning, and delivering value in a Lean-Agile environment.
                       </p>
-                      <p className="text-base text-[#475569]">
+                      <p className="text-[14.5px] text-[#475569]">
                         The training prepares participants for the SAFe Practitioner (SP) certificate exam, providing them with the knowledge and skills to work effectively as team members in a SAFe environment, collaborating with other teams and contributing to Agile Release Train success.
                       </p>
                     </div>
@@ -641,7 +641,7 @@ export default function SafeForTeamsCoursePage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-[#475569]">{item}</p>
+                            <p className="text-[14.5px] text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -658,19 +658,19 @@ export default function SafeForTeamsCoursePage() {
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Open to all—no prior Agile or SAFe experience required</p>
+                          <p className="text-[14.5px] text-[#475569]">Open to all—no prior Agile or SAFe experience required</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Ideal for team members new to SAFe or joining an Agile Release Train</p>
+                          <p className="text-[14.5px] text-[#475569]">Ideal for team members new to SAFe or joining an Agile Release Train</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Perfect for developers, testers, analysts, and cross-functional team members</p>
+                          <p className="text-[14.5px] text-[#475569]">Perfect for developers, testers, analysts, and cross-functional team members</p>
                         </div>
                       </div>
                     </div>
@@ -694,13 +694,13 @@ export default function SafeForTeamsCoursePage() {
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             Agile Team Member, Developer, Tester, Business Analyst, Scrum Master
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Top Hiring Industries</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             Financial services, healthcare, federal government, technology
                           </p>
                         </div>
@@ -829,7 +829,7 @@ export default function SafeForTeamsCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{objective}</span>
+                            <span className="text-[14.5px] text-[#475569]">{objective}</span>
                           </div>
                         ))}
                       </div>
@@ -965,7 +965,7 @@ export default function SafeForTeamsCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -986,7 +986,7 @@ export default function SafeForTeamsCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -1003,7 +1003,7 @@ export default function SafeForTeamsCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe for Teams Practice Test</h2>
+              <h2 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">SAFe for Teams Practice Test</h2>
               <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>

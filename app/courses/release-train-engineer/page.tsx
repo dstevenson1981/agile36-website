@@ -37,11 +37,11 @@ export default function ReleaseTrainEngineerCoursePage() {
             <span className="text-[#334155]">SAFe RTE</span>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
-            <div className="space-y-7">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
+            <div className="space-y-5">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe</span>
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                <span className="liquid-glass rounded-full px-3 py-1 text-xs font-medium text-[#1f2c4a]">SAFe</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-700">
                   Certification Exam Included
                 </span>
                 <span className="rounded-full border border-slate-400/40 bg-slate-100 px-4 py-1.5 text-sm font-bold text-slate-700">
@@ -50,10 +50,10 @@ export default function ReleaseTrainEngineerCoursePage() {
               </div>
 
               <div>
-                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   AI-Empowered SAFe® Release Train Engineer (RTE) Certification Training
                 </h1>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master ART facilitation and PI planning — with responsible AI practices to sharpen readiness, dependencies, and stakeholder communication.
                 </p>
               </div>
@@ -84,7 +84,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                    <p className="text-[14.5px] leading-relaxed text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -115,7 +115,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -124,7 +124,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                 </a>
                 <button
                   onClick={() => setShowConsultationModal(true)}
-                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                  className="inline-block rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
                 >
                   Contact Us to Register
                 </button>
@@ -397,7 +397,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -453,7 +453,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                       <p className="text-base text-[#475569] mb-4">
                         The SAFe Release Train Engineer Certification Path is an advanced certification program designed to help experienced Scrum Masters enhance their ability to facilitate Agile teams effectively, master conflict resolution, boost team collaboration, optimize team flow and Agile Release Train (ART) performance, and drive organizational success with advanced Agile methodologies.
                       </p>
-                      <p className="text-base text-[#475569]">
+                      <p className="text-[14.5px] text-[#475569]">
                         This course mostly focuses on methodologies for SAFe; the certification provides participants with the necessary skills to assist Agile Release Trains (ART) to improve collaboration among teams and increase the efficiency of workflow. It will provide you with insights into the resolution of conflicts & team dynamics and the Agile metrics that will ensure your team remains flexible and efficient. This course will also include Advanced Facilitator Training in Conflict and Collaboration that is self-paced (2 hours) and facilitated interactive training (4 hours) for you to improve your facilitation and leadership skills.
                       </p>
                     </div>
@@ -505,7 +505,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-[#475569]">{item}</p>
+                            <p className="text-[14.5px] text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -522,25 +522,25 @@ export default function ReleaseTrainEngineerCoursePage() {
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]"><strong>SAFe Scrum Master (SSM) certification is required</strong></p>
+                          <p className="text-[14.5px] text-[#475569]"><strong>SAFe Scrum Master (SSM) certification is required</strong></p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Experience as a Scrum Master or Agile Coach (recommended)</p>
+                          <p className="text-[14.5px] text-[#475569]">Experience as a Scrum Master or Agile Coach (recommended)</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Interest in program-level coaching and organizational transformation</p>
+                          <p className="text-[14.5px] text-[#475569]">Interest in program-level coaching and organizational transformation</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Willingness to lead and mentor other Scrum Masters</p>
+                          <p className="text-[14.5px] text-[#475569]">Willingness to lead and mentor other Scrum Masters</p>
                         </div>
                       </div>
                     </div>
@@ -564,11 +564,11 @@ export default function ReleaseTrainEngineerCoursePage() {
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">Release Train Engineer, Agile Coach, Program Manager, Enterprise Agile Coach</p>
+                          <p className="text-[14.5px] text-[#475569]">Release Train Engineer, Agile Coach, Program Manager, Enterprise Agile Coach</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Advanced Paths</h4>
-                          <p className="text-base text-[#475569]">SAFe Program Consultant, Portfolio Manager, Chief Transformation Officer</p>
+                          <p className="text-[14.5px] text-[#475569]">SAFe Program Consultant, Portfolio Manager, Chief Transformation Officer</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
@@ -645,7 +645,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                           </div>
                         </div>
                         <div className="pt-4 border-t border-[#1f2c4a]/15">
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             <strong>Note:</strong> The exam can be taken online from anywhere within 30 days of course completion. Your exam attempt is included with course enrollment.
                           </p>
                         </div>
@@ -695,7 +695,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{objective}</span>
+                            <span className="text-[14.5px] text-[#475569]">{objective}</span>
                           </div>
                         ))}
                       </div>
@@ -826,7 +826,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -847,7 +847,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -1039,7 +1039,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Globally Recognized SAFe® Certification
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 offers SAFe Scrum Master training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
                   </p>
                 </div>
@@ -1058,7 +1058,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Hands-On Learning Experience
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
                   </p>
                 </div>
@@ -1077,7 +1077,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Comprehensive Exam Preparation
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Get guided exam readiness support, including learning resources, and expert mentoring to ensure success in the SAFe Release Train Engineer Certification Path.
                   </p>
                 </div>
@@ -1096,7 +1096,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Earn PDUs and SEUs for Career Advancement
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
                   </p>
                 </div>
@@ -1118,7 +1118,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Expert-Led Training by Certified SPCs
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
                   </p>
                 </div>
@@ -1137,7 +1137,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Flexible Learning Options
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
                   </p>
                 </div>
@@ -1156,7 +1156,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Networking with Global SAFe® Professionals
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
                   </p>
                 </div>
@@ -1175,7 +1175,7 @@ export default function ReleaseTrainEngineerCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Post-Certification Career Support
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
                   </p>
                 </div>

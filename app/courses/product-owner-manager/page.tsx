@@ -88,23 +88,23 @@ export default function ProductOwnerManagerCoursePage() {
             <span className="text-[#334155]">SAFe POPM</span>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
             {/* Left Content */}
-            <div className="space-y-7">
+            <div className="space-y-5">
               {/* Category Badge */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe</span>
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm font-bold text-emerald-700">
+                <span className="liquid-glass rounded-full px-3 py-1 text-xs font-medium text-[#1f2c4a]">SAFe</span>
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-700">
                   Certification Exam Included
                 </span>
               </div>
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   AI-Empowered SAFe® Product Owner/Product Manager (POPM) Certification Training
                 </h1>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master product ownership at enterprise scale with expert-led SAFe® 6.0 training, backlog management, and PI Planning simulations.
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default function ProductOwnerManagerCoursePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                    <p className="text-[14.5px] leading-relaxed text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -167,7 +167,7 @@ export default function ProductOwnerManagerCoursePage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href={`/courses/product-owner-manager/schedule?course=${courseSlug}`}
-                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                  className="inline-block rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
                 >
                   View Schedules
                 </Link>
@@ -176,7 +176,7 @@ export default function ProductOwnerManagerCoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -185,7 +185,7 @@ export default function ProductOwnerManagerCoursePage() {
                 </a>
                 <button
                   onClick={() => setShowAssessmentModal(true)}
-                  className="liquid-glass rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   Free POPM Assessment
                 </button>
@@ -539,7 +539,7 @@ export default function ProductOwnerManagerCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -595,7 +595,7 @@ export default function ProductOwnerManagerCoursePage() {
                       <p className="text-base text-[#475569] mb-4">
                         SAFe Product Owner/Product Manager Training is a certification program designed to help professionals understand and effectively fulfill the Product Owner and Product Manager roles within the Scaled Agile Framework (SAFe). This comprehensive course covers the principles, practices, and tools needed to manage backlogs, prioritize work, and deliver value in a SAFe environment.
                       </p>
-                      <p className="text-base text-[#475569]">
+                      <p className="text-[14.5px] text-[#475569]">
                         The training prepares participants for the SAFe Product Owner/Product Manager (POPM) certificate exam, providing them with the knowledge and skills to work effectively with Agile teams, stakeholders, and within an Agile Release Train (ART).
                       </p>
                     </div>
@@ -647,7 +647,7 @@ export default function ProductOwnerManagerCoursePage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-[#475569]">{item}</p>
+                            <p className="text-[14.5px] text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -671,13 +671,13 @@ export default function ProductOwnerManagerCoursePage() {
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Basic understanding of Agile or Scrum</p>
+                          <p className="text-[14.5px] text-[#475569]">Basic understanding of Agile or Scrum</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Experience working with product backlogs or customer requirements</p>
+                          <p className="text-[14.5px] text-[#475569]">Experience working with product backlogs or customer requirements</p>
                         </div>
                       </div>
                     </div>
@@ -701,11 +701,11 @@ export default function ProductOwnerManagerCoursePage() {
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Common Roles</h4>
-                          <p className="text-base text-[#475569]">Product Owner, Product Manager, Solution Manager, Business Owner</p>
+                          <p className="text-[14.5px] text-[#475569]">Product Owner, Product Manager, Solution Manager, Business Owner</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Advanced Paths</h4>
-                          <p className="text-base text-[#475569]">Release Train Engineer, Portfolio Manager, Chief Product Officer</p>
+                          <p className="text-[14.5px] text-[#475569]">Release Train Engineer, Portfolio Manager, Chief Product Officer</p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-4">Demand</h4>
@@ -807,7 +807,7 @@ export default function ProductOwnerManagerCoursePage() {
                                 <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span className="text-base text-[#475569]">{topic}</span>
+                                <span className="text-[14.5px] text-[#475569]">{topic}</span>
                               </li>
                             ))}
                           </ul>
@@ -897,7 +897,7 @@ export default function ProductOwnerManagerCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -918,7 +918,7 @@ export default function ProductOwnerManagerCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -935,7 +935,7 @@ export default function ProductOwnerManagerCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe Product Owner/Product Manager Practice Test</h2>
+              <h2 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">SAFe Product Owner/Product Manager Practice Test</h2>
               <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>

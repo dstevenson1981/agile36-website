@@ -44,20 +44,20 @@ export default function ValueStreamMappingCoursePage() {
             <span className="text-[#334155]">Value Stream Mapping</span>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-14">
-            <div className="space-y-7">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
+            <div className="space-y-5">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="liquid-glass rounded-full px-4 py-1.5 text-sm font-medium text-[#1f2c4a]">SAFe Micro-credential</span>
+                <span className="liquid-glass rounded-full px-3 py-1 text-xs font-medium text-[#1f2c4a]">SAFe Micro-credential</span>
                 <span className="rounded-full border border-blue-400/40 bg-blue-400/10 px-4 py-1.5 text-sm font-bold text-blue-700">
                   English
                 </span>
               </div>
 
               <div>
-                <h1 className="text-4xl font-normal leading-[1.05] tracking-[-0.03em] text-[#1f2c4a] sm:text-5xl lg:text-6xl">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   SAFe® Value Stream Mapping
                 </h1>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#475569] md:text-xl">
+                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master value stream mapping and process optimization in SAFe environments — visualize flow, eliminate waste, and accelerate delivery.
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function ValueStreamMappingCoursePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <p className="text-[15px] leading-relaxed text-[#475569]">{feature}</p>
+                    <p className="text-[14.5px] leading-relaxed text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -115,7 +115,7 @@ export default function ValueStreamMappingCoursePage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href={`/courses/value-stream-mapping/schedule?course=${courseSlug}`}
-                  className="inline-block rounded-xl bg-[#1f2c4a] px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
+                  className="inline-block rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition-colors hover:bg-[#16243f]"
                 >
                   View Schedules
                 </Link>
@@ -124,7 +124,7 @@ export default function ValueStreamMappingCoursePage() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="liquid-glass flex items-center gap-2 rounded-xl px-7 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                  className="liquid-glass flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
                 >
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -316,7 +316,7 @@ export default function ValueStreamMappingCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -500,7 +500,7 @@ export default function ValueStreamMappingCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -521,7 +521,7 @@ export default function ValueStreamMappingCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -628,7 +628,7 @@ export default function ValueStreamMappingCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-6 pb-6 pt-0">
-                        <p className="text-base text-[#475569]">{faq.a}</p>
+                        <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                       </div>
                     )}
                   </div>

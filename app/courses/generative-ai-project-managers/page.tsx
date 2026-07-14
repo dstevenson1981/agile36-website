@@ -52,10 +52,10 @@ export default function GenerativeAIProjectManagersCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   Generative AI for Project Managers Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
+                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
                   Transform Your Project Management with AI-Powered Tools and Practices
                 </p>
                 <CourseHeroSocialProof
@@ -83,7 +83,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                       <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-[#475569]">{item}</span>
+                      <span className="text-[14.5px] text-[#475569]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -449,7 +449,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-[#1f2c4a] mb-1">Enroll:</h3>
-                    <p className="text-base text-[#475569]">Join live, interactive sessions led by expert Scrum instructors.</p>
+                    <p className="text-[14.5px] text-[#475569]">Join live, interactive sessions led by expert Scrum instructors.</p>
                   </div>
                 </div>
 
@@ -460,7 +460,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-[#1f2c4a] mb-1">Learn:</h3>
-                    <p className="text-base text-[#475569]">Master Generative AI fundamentals, AI-powered project management tools, and practical AI integration techniques.</p>
+                    <p className="text-[14.5px] text-[#475569]">Master Generative AI fundamentals, AI-powered project management tools, and practical AI integration techniques.</p>
                   </div>
                 </div>
 
@@ -471,7 +471,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-[#1f2c4a] mb-1">Practice:</h3>
-                    <p className="text-base text-[#475569]">Apply AI tools through hands-on exercises, real project scenarios, and practical workshops. Create AI-enhanced project artifacts and workflows.</p>
+                    <p className="text-[14.5px] text-[#475569]">Apply AI tools through hands-on exercises, real project scenarios, and practical workshops. Create AI-enhanced project artifacts and workflows.</p>
                   </div>
                 </div>
 
@@ -482,7 +482,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-[#1f2c4a] mb-1">Become a Certified Generative AI Project Manager:</h3>
-                    <p className="text-base text-[#475569]">Earn your Generative AI for Project Managers™ Certification, issued through Accredible, the global credentialing platform used by top universities and training providers.</p>
+                    <p className="text-[14.5px] text-[#475569]">Earn your Generative AI for Project Managers™ Certification, issued through Accredible, the global credentialing platform used by top universities and training providers.</p>
                   </div>
                 </div>
               </div>
@@ -553,7 +553,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -821,7 +821,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -842,7 +842,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -855,7 +855,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$400</div>
+                  <div className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">$400</div>
                   <div className="text-base text-[#64748b] line-through">$800</div>
                   <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
                 </div>
@@ -998,7 +998,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-6 pb-6 pt-0">
-                        <p className="text-base text-[#475569]">{faq.a}</p>
+                        <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                       </div>
                     )}
                   </div>

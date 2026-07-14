@@ -41,11 +41,11 @@ export default function PMPCertificationCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   PMP® Certification Training<br />
                   Earn Your PMP in 5 Days
                 </h1>
-                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
+                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
                   Master project management with our intensive 5-day PMP® certification prep course. 35 PDUs included.
                 </p>
                 <CourseHeroSocialProof enrolledLabel="9K+ Enrolled" />
@@ -66,7 +66,7 @@ export default function PMPCertificationCoursePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="text-base text-[#475569]">{feature}</p>
+                    <p className="text-[14.5px] text-[#475569]">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -252,7 +252,7 @@ export default function PMPCertificationCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -308,7 +308,7 @@ export default function PMPCertificationCoursePage() {
                       <p className="text-base text-[#475569] mb-4">
                         PMP® Certification Training is a comprehensive program designed to prepare professionals for the Project Management Professional (PMP)® exam administered by the Project Management Institute (PMI). This intensive course covers the PMBOK® Guide 7th Edition and provides the 35 contact hours required for exam eligibility.
                       </p>
-                      <p className="text-base text-[#475569]">
+                      <p className="text-[14.5px] text-[#475569]">
                         The training prepares participants for the PMP® exam, providing them with the knowledge and skills to manage projects successfully using both predictive and agile approaches, while understanding the business environment context.
                       </p>
                     </div>
@@ -360,7 +360,7 @@ export default function PMPCertificationCoursePage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </div>
-                            <p className="text-base text-[#475569]">{item}</p>
+                            <p className="text-[14.5px] text-[#475569]">{item}</p>
                           </div>
                         ))}
                       </div>
@@ -377,25 +377,25 @@ export default function PMPCertificationCoursePage() {
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">4-year degree + 3 years of project management experience OR High school diploma + 5 years of project management experience</p>
+                          <p className="text-[14.5px] text-[#475569]">4-year degree + 3 years of project management experience OR High school diploma + 5 years of project management experience</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">4,500 hours of leading and directing projects (36 months) for degree holders OR 7,500 hours (60 months) for non-degree holders</p>
+                          <p className="text-[14.5px] text-[#475569]">4,500 hours of leading and directing projects (36 months) for degree holders OR 7,500 hours (60 months) for non-degree holders</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">35 contact hours of project management education (provided by this course)</p>
+                          <p className="text-[14.5px] text-[#475569]">35 contact hours of project management education (provided by this course)</p>
                         </div>
                         <div className="flex items-start gap-3">
                           <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                          <p className="text-base text-[#475569]">Basic understanding of project management concepts and terminology</p>
+                          <p className="text-[14.5px] text-[#475569]">Basic understanding of project management concepts and terminology</p>
                         </div>
                       </div>
                     </div>
@@ -409,25 +409,25 @@ export default function PMPCertificationCoursePage() {
                       <div className="grid md:grid-cols-2 gap-6 my-6">
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Career Growth</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             PMP® certification positions you for senior project management roles, including Program Manager, Portfolio Manager, and PMO Director positions across all industries.
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Salary Increase</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             PMP® certified professionals earn 22% more on average than non-certified peers, with salaries ranging from $95,000 to $140,000+ depending on experience and location.
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Global Recognition</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             The PMP® certification is recognized in over 180 countries by top organizations worldwide, including Fortune 500 companies, making you a valuable asset globally.
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h4 className="font-bold text-[#1f2c4a] mb-3">Network Expansion</h4>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             Join a global community of 1.3+ million PMP® certified professionals, access exclusive PMI resources, and connect with industry leaders worldwide.
                           </p>
                         </div>
@@ -475,19 +475,19 @@ export default function PMPCertificationCoursePage() {
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <p className="font-semibold text-[#1f2c4a] mb-2">Exam Format:</p>
-                            <p className="text-base text-[#475569]">180 multiple choice questions</p>
+                            <p className="text-[14.5px] text-[#475569]">180 multiple choice questions</p>
                           </div>
                           <div>
                             <p className="font-semibold text-[#1f2c4a] mb-2">Duration:</p>
-                            <p className="text-base text-[#475569]">230 minutes (3 hours 50 min)</p>
+                            <p className="text-[14.5px] text-[#475569]">230 minutes (3 hours 50 min)</p>
                           </div>
                           <div>
                             <p className="font-semibold text-[#1f2c4a] mb-2">Exam Domains:</p>
-                            <p className="text-base text-[#475569]">People (42%), Process (50%), Business Environment (8%)</p>
+                            <p className="text-[14.5px] text-[#475569]">People (42%), Process (50%), Business Environment (8%)</p>
                           </div>
                           <div>
                             <p className="font-semibold text-[#1f2c4a] mb-2">Exam Fee:</p>
-                            <p className="text-base text-[#475569]">$555 for PMI members, $405 non-members (not included in course)</p>
+                            <p className="text-[14.5px] text-[#475569]">$555 for PMI members, $405 non-members (not included in course)</p>
                           </div>
                         </div>
                         <div className="pt-4 border-t border-[#1f2c4a]/15">
@@ -519,7 +519,7 @@ export default function PMPCertificationCoursePage() {
                                 <svg className="w-5 h-5 text-[#d97706] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span className="text-base text-[#475569]">{topic}</span>
+                                <span className="text-[14.5px] text-[#475569]">{topic}</span>
                               </li>
                             ))}
                           </ul>
@@ -609,7 +609,7 @@ export default function PMPCertificationCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -630,7 +630,7 @@ export default function PMPCertificationCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -643,7 +643,7 @@ export default function PMPCertificationCoursePage() {
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$1,100</div>
+                  <div className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">$1,100</div>
                   <div className="text-base text-[#64748b] line-through">$2,200</div>
                   <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
                 </div>
@@ -699,7 +699,7 @@ export default function PMPCertificationCoursePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h2 className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a]">PMP® Practice Test</h2>
+              <h2 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">PMP® Practice Test</h2>
               <svg className="w-8 h-8 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
@@ -959,7 +959,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Globally Recognized SAFe® Certification
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 offers Leading SAFe training accredited by Scaled Agile, Inc., ensuring an internationally recognized certification valued across industries and enterprises worldwide.
                   </p>
                 </div>
@@ -978,7 +978,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Hands-On Learning Experience
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 integrates case studies, role-playing, and simulations that mirror real challenges faced by Agile teams in enterprise organizations for practical skill development.
                   </p>
                 </div>
@@ -997,7 +997,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Comprehensive Exam Preparation
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Get guided exam readiness support, including practice tests, learning resources, and expert mentoring to ensure success in the SAFe® Agilist Certification exam.
                   </p>
                 </div>
@@ -1016,7 +1016,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Earn PDUs and SEUs for Career Advancement
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
                   </p>
                 </div>
@@ -1038,7 +1038,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Expert-Led Training by Certified SPCs
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Learn from experienced SAFe® Practice Consultants (SPCs) who bring real-world Agile implementation experience and actionable insights into every session.
                   </p>
                 </div>
@@ -1057,7 +1057,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Flexible Learning Options
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Choose from live online, classroom, or corporate group sessions designed for working professionals across major cities in the United States.
                   </p>
                 </div>
@@ -1076,7 +1076,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Networking with Global SAFe® Professionals
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 training connects participants with a vast network of certified professionals and Agile leaders across the United States and globally.
                   </p>
                 </div>
@@ -1095,7 +1095,7 @@ export default function PMPCertificationCoursePage() {
                   <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
                     Post-Certification Career Support
                   </h3>
-                  <p className="text-base text-[#475569]">
+                  <p className="text-[14.5px] text-[#475569]">
                     Agile36 offers continuous learning support and guidance to help certified SAFe professionals explore new roles and opportunities in the Agile job market.
                   </p>
                 </div>

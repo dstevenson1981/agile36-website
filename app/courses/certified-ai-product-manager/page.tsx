@@ -52,10 +52,10 @@ export default function CertifiedAIProductManagerCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-4xl font-bold leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
+                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
                   Certified AI Product Manager™ Certification Training
                 </h1>
-                <p className="mb-4 text-lg font-medium text-[#475569] md:mb-5 md:text-xl">
+                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
                   Master AI-Powered Product Development and Build Prototypes That Validate Ideas Fast
                 </p>
                 <CourseHeroSocialProof
@@ -83,7 +83,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                       <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-base text-[#475569]">{item}</span>
+                      <span className="text-[14.5px] text-[#475569]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -345,7 +345,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-base text-[#475569]">{item}</span>
+                            <span className="text-[14.5px] text-[#475569]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -362,7 +362,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                       </ul>
 
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4 mt-6">Certification</h3>
-                      <p className="text-base text-[#475569]">
+                      <p className="text-[14.5px] text-[#475569]">
                         You'll earn the <strong>Certified AI Product Manager™ Certification</strong>, issued through <strong>Accredible</strong>, the global credentialing platform used by top universities and training providers.
                       </p>
                     </div>
@@ -569,7 +569,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-base text-[#475569]">
+                          <p className="text-[14.5px] text-[#475569]">
                             {review.review}
                           </p>
                         </div>
@@ -590,7 +590,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
-                          <p className="text-base text-[#475569]">{faq.a}</p>
+                          <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -603,7 +603,7 @@ export default function CertifiedAIProductManagerCoursePage() {
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$400</div>
+                  <div className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">$400</div>
                   <div className="text-base text-[#64748b] line-through">$800</div>
                   <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
                 </div>
@@ -746,7 +746,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                     </button>
                     {isExpanded && (
                       <div className="px-6 pb-6 pt-0">
-                        <p className="text-base text-[#475569]">{faq.a}</p>
+                        <p className="text-[14.5px] text-[#475569]">{faq.a}</p>
                       </div>
                     )}
                   </div>
