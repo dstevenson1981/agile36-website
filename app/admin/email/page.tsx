@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@supabase/supabase-js';
 
 interface Contact {
   id: number;
@@ -33,19 +32,26 @@ interface Campaign {
 
 type Tab = 'contacts' | 'compose' | 'campaigns' | 'analytics';
 
+const CONTACTS_PAGE_SIZE = 50;
+
 export default function EmailAdminPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('contacts');
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [loading, setLoading] = useState(false);
+  const [importing, setImporting] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
   const [tagsLoading, setTagsLoading] = useState(false);
   const [filterSubscribed, setFilterSubscribed] = useState<boolean | null>(null);
+  const [searchInput, setSearchInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [importTag, setImportTag] = useState<string>('');
   const [pendingImportFile, setPendingImportFile] = useState<File | null>(null);
+  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
 
   // Campaign composer state
   const [campaignName, setCampaignName] = useState('');
@@ -70,216 +76,57 @@ export default function EmailAdminPage() {
   const [bulkTagInput, setBulkTagInput] = useState<string>('');
   const [showBulkActions, setShowBulkActions] = useState(false);
 
-  // Real-time subscription ref
-  const subscriptionRef = useRef<any>(null);
+  const fetchRequestId = useRef(0);
 
-  // Fetch all tags once when component mounts or when contacts tab is active
+  // Debounce search so each keystroke does not hit the API
   useEffect(() => {
-    if (activeTab === 'contacts') {
-      // Always fetch tags fresh on page load (no caching, no alert)
-      fetchAllTags(false);
-      
-      // Set up real-time subscription for email_contacts table
-      if (typeof window !== 'undefined') {
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-        
-        if (supabaseUrl && supabaseAnonKey) {
-          try {
-            const supabase = createClient(supabaseUrl, supabaseAnonKey);
-            
-            // Subscribe to changes in email_contacts
-            subscriptionRef.current = supabase
-              .channel('email_contacts_changes')
-              .on(
-                'postgres_changes',
-                {
-                  event: '*', // Listen to all events (INSERT, UPDATE, DELETE)
-                  schema: 'public',
-                  table: 'email_contacts',
-                },
-                (payload: any) => {
-                  console.log('Real-time update detected:', payload);
-                  // Refresh tags when tags column changes (no alert)
-                  if (payload?.new?.tags || payload?.old?.tags) {
-                    console.log('Tags changed, refreshing tag list...');
-                    fetchAllTags(false);
-                  }
-                  // Always refresh contacts
-                  fetchContacts();
-                }
-              )
-              .subscribe();
-            
-            console.log('✅ Real-time subscription active for email_contacts');
-          } catch (error) {
-            console.error('Error setting up real-time subscription:', error);
-          }
-        }
-      }
-      
-      // Also refresh tags every 30 seconds to catch new tags added directly in database (no alert)
-      const interval = setInterval(() => {
-        console.log('Auto-refreshing tags (30s interval)...');
-        fetchAllTags(false);
-      }, 30000); // 30 seconds
-      
-      // Cleanup function
-      return () => {
-        clearInterval(interval);
-        if (subscriptionRef.current) {
-          subscriptionRef.current.unsubscribe();
-          subscriptionRef.current = null;
-          console.log('Real-time subscription cleaned up');
-        }
-      };
-    }
-  }, [activeTab]);
+    const timer = setTimeout(() => {
+      setSearchTerm(searchInput.trim());
+      setPage(1);
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
 
-  // Fetch contacts when tab changes
-  useEffect(() => {
-    if (activeTab === 'contacts') {
-      fetchContacts();
-    } else if (activeTab === 'campaigns') {
-      fetchCampaigns();
-    } else if (activeTab === 'analytics') {
-      fetchAnalytics();
-    }
-  }, [activeTab]);
-
-  // Fetch contacts when filters change (but don't refetch tags)
-  useEffect(() => {
-    if (activeTab === 'contacts') {
-      fetchContacts();
-    }
-  }, [selectedTags, filterSubscribed, searchTerm, showBlockedOnly]);
-
-  const fetchAllTags = async (showLoading = true) => {
+  const fetchAllTags = useCallback(async (showLoading = true, forceRefresh = false) => {
     if (showLoading) {
       setTagsLoading(true);
     }
     try {
-      console.log('🔄 Fetching all tags from API (fresh, no cache)...');
-      // Use the optimized tags endpoint with cache-busting - always fetch fresh
-      const timestamp = new Date().getTime();
-      const response = await fetch(`/api/email/tags?t=${timestamp}`, {
-        cache: 'no-store',
-        method: 'GET',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-        },
-      });
-      
+      const url = forceRefresh ? '/api/email/tags?refresh=1' : '/api/email/tags';
+      const response = await fetch(url, { cache: 'no-store' });
+
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('API Error Response:', errorText);
         throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
       }
-      
+
       const data = await response.json();
-      
-      console.log('Tags API response:', {
-        success: data.success,
-        tagCount: data.tags?.length || 0,
-        totalCount: data.count || 0,
-        sampleTags: data.tags?.slice(0, 10) || [],
-        method: data.method,
-      });
-      
+
       if (data.success && data.tags && Array.isArray(data.tags)) {
-        console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
-        console.log('All tags:', data.tags);
-        if (data.debug) {
-          console.log('Debug info:', data.debug);
-        }
-        // Log tag count (no alerts - tags update silently)
-        console.log(`✅ Loaded ${data.tags.length} unique tags from database`);
-        if (data.tags.includes('Program')) {
-          console.log('✅ "Program" tag is present');
-        } else {
-          console.warn('⚠️ "Program" tag is NOT in the response!');
-          console.warn('Available tags:', data.tags);
-        }
         setAllTags(data.tags);
       } else {
-        console.warn('No tags or invalid response:', data);
-        // Fallback: try fetching from contacts
-        const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
-        const fallbackData = await fallbackResponse.json();
-        
-        if (fallbackData.success && fallbackData.contacts && Array.isArray(fallbackData.contacts)) {
-          const tags = new Set<string>();
-          fallbackData.contacts.forEach((contact: Contact) => {
-            if (contact.tags && Array.isArray(contact.tags)) {
-              contact.tags.forEach(tag => {
-                if (tag && typeof tag === 'string' && tag.trim()) {
-                  tags.add(tag.trim());
-                }
-              });
-            }
-          });
-          const sortedTags = Array.from(tags).sort();
-          setAllTags(sortedTags);
-        } else {
-          setAllTags([]);
-        }
-      }
-    } catch (error: any) {
-      console.error('❌ Error fetching tags:', error);
-      const errorMessage = error?.message || 'Unknown error';
-      // Only show alert on manual refresh
-      if (showLoading) {
-        alert(`Error fetching tags: ${errorMessage}. Check console for details.`);
-      }
-      
-      // Try fallback on error
-      try {
-        console.log('Trying fallback method: fetching contacts...');
-        const fallbackResponse = await fetch('/api/email/contacts?limit=5000');
-        const fallbackData = await fallbackResponse.json();
-        if (fallbackData.success && fallbackData.contacts) {
-          const tags = new Set<string>();
-          fallbackData.contacts.forEach((contact: Contact) => {
-            if (contact.tags && Array.isArray(contact.tags)) {
-              contact.tags.forEach(tag => {
-                if (tag && typeof tag === 'string' && tag.trim()) {
-                  tags.add(tag.trim());
-                }
-              });
-            }
-          });
-          const sortedTags = Array.from(tags).sort();
-          console.log(`✅ Fallback: Loaded ${sortedTags.length} tags from contacts`);
-          console.log('Fallback tags:', sortedTags);
-          if (sortedTags.includes('Program')) {
-            console.log('✅ "Program" tag found via fallback!');
-            alert(`Tags loaded via fallback! Found ${sortedTags.length} tags including "Program".`);
-          } else {
-            console.warn('⚠️ "Program" tag NOT found even in fallback');
-            alert(`Tags loaded via fallback: ${sortedTags.length} tags, but "Program" is missing.`);
-          }
-          setAllTags(sortedTags);
-        } else {
-          throw new Error('Fallback also failed');
-        }
-      } catch (fallbackError: any) {
-        console.error('Fallback also failed:', fallbackError);
-        alert(`Both methods failed. Error: ${fallbackError?.message || 'Unknown error'}`);
         setAllTags([]);
       }
+    } catch (error: any) {
+      console.error('Error fetching tags:', error);
+      if (showLoading) {
+        alert(`Error fetching tags: ${error?.message || 'Unknown error'}`);
+      }
+      setAllTags([]);
     } finally {
       if (showLoading) {
         setTagsLoading(false);
       }
     }
-  };
+  }, []);
 
-  const fetchContacts = async () => {
+  const fetchContacts = useCallback(async () => {
+    const requestId = ++fetchRequestId.current;
     setLoading(true);
     try {
       const params = new URLSearchParams();
+      params.append('page', String(page));
+      params.append('pageSize', String(CONTACTS_PAGE_SIZE));
       if (selectedTags.length > 0) {
         params.append('tags', selectedTags.join(','));
       }
@@ -292,33 +139,55 @@ export default function EmailAdminPage() {
       if (showBlockedOnly) {
         params.append('blocked', 'true');
       }
-      // Request up to 50,000 contacts to handle large tag filters
-      params.append('limit', '50000');
 
       const response = await fetch(`/api/email/contacts?${params.toString()}`);
       const data = await response.json();
-      
-      console.log('Contacts API response:', { 
-        success: data.success, 
-        count: data.contacts?.length || 0,
-        error: data.error 
-      });
-      
+
+      // Ignore stale responses from rapid filter/page changes
+      if (requestId !== fetchRequestId.current) return;
+
       if (data.success) {
         setContacts(data.contacts || []);
+        setTotalCount(typeof data.count === 'number' ? data.count : (data.contacts?.length || 0));
+        setTotalPages(typeof data.totalPages === 'number' ? data.totalPages : 1);
       } else {
         console.error('Failed to fetch contacts:', data.error);
         alert(data.error || 'Failed to fetch contacts');
         setContacts([]);
+        setTotalCount(0);
+        setTotalPages(1);
       }
     } catch (error: any) {
+      if (requestId !== fetchRequestId.current) return;
       console.error('Error fetching contacts:', error);
       alert(`Error fetching contacts: ${error.message || 'Unknown error'}`);
       setContacts([]);
+      setTotalCount(0);
+      setTotalPages(1);
     } finally {
-      setLoading(false);
+      if (requestId === fetchRequestId.current) {
+        setLoading(false);
+      }
     }
-  };
+  }, [page, selectedTags, filterSubscribed, searchTerm, showBlockedOnly]);
+
+  // Load tags for Contacts + Compose (tag pickers)
+  useEffect(() => {
+    if (activeTab === 'contacts' || activeTab === 'compose') {
+      fetchAllTags(false);
+    }
+  }, [activeTab, fetchAllTags]);
+
+  // Fetch contacts for Contacts tab; other tabs as needed
+  useEffect(() => {
+    if (activeTab === 'contacts') {
+      fetchContacts();
+    } else if (activeTab === 'campaigns') {
+      fetchCampaigns();
+    } else if (activeTab === 'analytics') {
+      fetchAnalytics();
+    }
+  }, [activeTab, fetchContacts]);
 
   const fetchCampaigns = async () => {
     setLoading(true);
@@ -377,7 +246,7 @@ export default function EmailAdminPage() {
       });
       const data = await response.json();
       if (data.success) {
-        fetchAllTags(); // Refresh tags list
+        fetchAllTags(false, true);
         fetchContacts();
         (e.target as HTMLFormElement).reset();
       } else {
@@ -485,7 +354,7 @@ export default function EmailAdminPage() {
       if (data.success) {
         setEditingContact(null);
         setEditTags('');
-        fetchAllTags(); // Refresh tags list
+        fetchAllTags(false, true);
         fetchContacts();
       } else {
         alert(data.error || 'Failed to update contact');
@@ -509,7 +378,7 @@ export default function EmailAdminPage() {
       });
       const data = await response.json();
       if (data.success) {
-        fetchAllTags();
+        fetchAllTags(false, true);
         fetchContacts();
       } else {
         alert(data.error || 'Failed to add tag');
@@ -529,7 +398,7 @@ export default function EmailAdminPage() {
       });
       const data = await response.json();
       if (data.success) {
-        fetchAllTags();
+        fetchAllTags(false, true);
         fetchContacts();
       } else {
         alert(data.error || 'Failed to remove tag');
@@ -569,7 +438,7 @@ export default function EmailAdminPage() {
         setBulkTagInput('');
         setSelectedContactIds([]);
         setShowBulkActions(false);
-        fetchAllTags();
+        fetchAllTags(false, true);
         fetchContacts();
       } else {
         alert(data.error || `Failed to ${action} tag`);
@@ -615,7 +484,8 @@ export default function EmailAdminPage() {
       return;
     }
 
-    setLoading(true);
+    // Separate from table loading so the list stays interactive during import
+    setImporting(true);
     const formData = new FormData();
     formData.append('file', pendingImportFile);
     if (importTag.trim()) {
@@ -642,7 +512,8 @@ export default function EmailAdminPage() {
           console.error('Import errors:', data.errorDetails);
         }
         setPendingImportFile(null);
-        fetchAllTags(); // Refresh tags list
+        setPage(1);
+        fetchAllTags(false, true);
         fetchContacts();
       } else {
         alert(data.error || 'Failed to import contacts');
@@ -651,7 +522,7 @@ export default function EmailAdminPage() {
       console.error('Import error:', error);
       alert(`Error importing contacts: ${error.message || 'Unknown error'}`);
     } finally {
-      setLoading(false);
+      setImporting(false);
     }
   };
 
@@ -832,8 +703,8 @@ export default function EmailAdminPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
                 <input
                   type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
                   placeholder="Search by email or name..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
@@ -848,7 +719,11 @@ export default function EmailAdminPage() {
                     {selectedTags.length > 0 && (
                       <button
                         type="button"
-                        onClick={() => setSelectedTags([])}
+                        onClick={() => {
+                          setSelectedTags([]);
+                          setPage(1);
+                          setSelectedContactIds([]);
+                        }}
                         className="text-xs text-blue-600 hover:text-blue-800 underline"
                       >
                         Clear filters
@@ -856,7 +731,7 @@ export default function EmailAdminPage() {
                     )}
                     <button
                       type="button"
-                      onClick={() => fetchAllTags(true)}
+                      onClick={() => fetchAllTags(true, true)}
                       disabled={tagsLoading}
                       className="text-xs text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 px-2 py-1 border border-blue-300 rounded hover:bg-blue-50 transition-colors"
                       title="Refresh tags from database"
@@ -882,6 +757,8 @@ export default function EmailAdminPage() {
                           key={tag}
                           type="button"
                           onClick={() => {
+                            setPage(1);
+                            setSelectedContactIds([]);
                             if (isSelected) {
                               setSelectedTags(prev => prev.filter(t => t !== tag));
                             } else {
@@ -907,7 +784,11 @@ export default function EmailAdminPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Subscription</label>
                 <select
                   value={filterSubscribed === null ? 'all' : filterSubscribed.toString()}
-                  onChange={(e) => setFilterSubscribed(e.target.value === 'all' ? null : e.target.value === 'true')}
+                  onChange={(e) => {
+                    setPage(1);
+                    setSelectedContactIds([]);
+                    setFilterSubscribed(e.target.value === 'all' ? null : e.target.value === 'true');
+                  }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 >
                   <option value="all">All</option>
@@ -919,7 +800,11 @@ export default function EmailAdminPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Blocked Status</label>
                 <select
                   value={showBlockedOnly ? 'blocked' : 'all'}
-                  onChange={(e) => setShowBlockedOnly(e.target.value === 'blocked')}
+                  onChange={(e) => {
+                    setPage(1);
+                    setSelectedContactIds([]);
+                    setShowBlockedOnly(e.target.value === 'blocked');
+                  }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 >
                   <option value="all">All Contacts</option>
@@ -951,10 +836,10 @@ export default function EmailAdminPage() {
                     <button
                       type="button"
                       onClick={handleImportCSV}
-                      disabled={!pendingImportFile || loading}
+                      disabled={!pendingImportFile || importing}
                       className="px-4 py-2 bg-[#fa4a23] text-white font-semibold rounded-md hover:bg-[#e03d1a] disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {loading ? 'Importing…' : 'Import'}
+                      {importing ? 'Importing…' : 'Import'}
                     </button>
                     {pendingImportFile && (
                       <span className="text-sm text-gray-600">
@@ -1128,10 +1013,28 @@ export default function EmailAdminPage() {
             )}
 
             {/* Contacts Table */}
-            {loading ? (
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-sm text-gray-600">
+              <span>
+                {totalCount.toLocaleString()} contact{totalCount !== 1 ? 's' : ''}
+                {searchTerm || selectedTags.length > 0 || filterSubscribed !== null || showBlockedOnly
+                  ? ' matching filters'
+                  : ''}
+                {totalCount > 0 && (
+                  <>
+                    {' '}
+                    · showing {(Math.min((page - 1) * CONTACTS_PAGE_SIZE + 1, totalCount)).toLocaleString()}–
+                    {Math.min(page * CONTACTS_PAGE_SIZE, totalCount).toLocaleString()}
+                  </>
+                )}
+              </span>
+              {importing && (
+                <span className="text-[#fa4a23] font-medium">Import running in background…</span>
+              )}
+            </div>
+            {loading && contacts.length === 0 ? (
               <div className="text-center py-8">Loading...</div>
             ) : (
-              <div className="overflow-x-auto">
+              <div className={`overflow-x-auto ${loading ? 'opacity-60 pointer-events-none' : ''}`}>
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
@@ -1141,6 +1044,7 @@ export default function EmailAdminPage() {
                           checked={selectedContactIds.length === contacts.length && contacts.length > 0}
                           onChange={toggleSelectAll}
                           className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          title="Select all on this page"
                         />
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
@@ -1268,6 +1172,29 @@ export default function EmailAdminPage() {
                 </table>
                 {contacts.length === 0 && (
                   <div className="text-center py-8 text-gray-500">No contacts found</div>
+                )}
+                {totalPages > 1 && (
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-gray-200 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      disabled={page <= 1 || loading}
+                      className="px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Previous
+                    </button>
+                    <span className="text-sm text-gray-600">
+                      Page {page} of {totalPages}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={page >= totalPages || loading}
+                      className="px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Next
+                    </button>
+                  </div>
                 )}
               </div>
             )}

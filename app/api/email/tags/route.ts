@@ -1,9 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Use direct SQL query with unnest to get ALL tags efficiently
+// Short in-memory cache — tags change infrequently relative to page loads
+let tagsCache: { tags: string[]; expiresAt: number } | null = null;
+const CACHE_TTL_MS = 60_000;
+
+function normalizeTags(raw: any[]): string[] {
+  return [
+    ...new Set(
+      raw
+        .map((row: any) => {
+          if (typeof row === 'string') return row;
+          return row?.tag || row;
+        })
+        .filter((tag: any) => tag && typeof tag === 'string')
+        .map((tag: string) => tag.trim())
+        .filter((tag: string) => tag.length > 0)
+    ),
+  ].sort();
+}
+
 export async function GET(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const bypassCache = searchParams.get('refresh') === '1';
+
+    if (!bypassCache && tagsCache && Date.now() < tagsCache.expiresAt) {
+      return NextResponse.json({
+        success: true,
+        tags: tagsCache.tags,
+        count: tagsCache.tags.length,
+        method: 'cache',
+      });
+    }
+
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -21,25 +51,13 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Try RPC function first (most efficient)
-    const { data: rpcData, error: rpcError } = await supabase
-      .rpc('get_unique_tags');
+    // Prefer RPC (unnest + DISTINCT) — O(unique tags), not O(contacts)
+    const { data: rpcData, error: rpcError } = await supabase.rpc('get_unique_tags');
 
     if (!rpcError && rpcData && Array.isArray(rpcData)) {
-      // RPC function exists and returned data
-      const tags = rpcData
-        .map((row: any) => {
-          // Handle both {tag: "value"} and direct string returns
-          return typeof row === 'string' ? row : (row.tag || row);
-        })
-        .filter((tag: any) => tag && typeof tag === 'string')
-        .map((tag: string) => tag.trim())
-        .filter((tag: string) => tag.length > 0);
-      
-      const sortedTags = [...new Set(tags)].sort();
-      
-      console.log(`✅ RPC: Found ${sortedTags.length} unique tags:`, sortedTags);
-      
+      const sortedTags = normalizeTags(rpcData);
+      tagsCache = { tags: sortedTags, expiresAt: Date.now() + CACHE_TTL_MS };
+
       return NextResponse.json({
         success: true,
         tags: sortedTags,
@@ -48,33 +66,29 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // If RPC fails, log and fall through to pagination
     if (rpcError) {
-      console.warn('RPC function not available or error:', rpcError.message);
+      console.warn('RPC get_unique_tags unavailable:', rpcError.message);
     }
 
-    // Final fallback: Fetch ALL contacts with pagination
-    console.log('SQL RPC not available, fetching all contacts with pagination...');
+    // Bounded fallback: sample tags column only (never full-row *), max 5k rows.
+    // Prefer fixing the RPC over relying on this path.
     const tagsSet = new Set<string>();
-    let page = 0;
     const pageSize = 1000;
-    let hasMore = true;
+    const maxPages = 5;
 
-    while (hasMore) {
+    for (let page = 0; page < maxPages; page++) {
       const { data: contacts, error } = await supabase
         .from('email_contacts')
         .select('tags')
+        .not('tags', 'is', null)
         .range(page * pageSize, (page + 1) * pageSize - 1);
 
       if (error) {
-        console.error(`Error fetching contacts page ${page}:`, error);
+        console.error(`Error fetching tags page ${page}:`, error);
         throw error;
       }
 
-      if (!contacts || contacts.length === 0) {
-        hasMore = false;
-        break;
-      }
+      if (!contacts || contacts.length === 0) break;
 
       contacts.forEach((contact: any) => {
         if (contact.tags && Array.isArray(contact.tags)) {
@@ -86,25 +100,19 @@ export async function GET(request: NextRequest) {
         }
       });
 
-      // If we got fewer than pageSize, we're done
-      if (contacts.length < pageSize) {
-        hasMore = false;
-      } else {
-        page++;
-      }
+      if (contacts.length < pageSize) break;
     }
 
     const sortedTags = Array.from(tagsSet).sort();
-    
-    console.log(`✅ Pagination: Found ${sortedTags.length} unique tags after ${page + 1} pages`);
-    console.log('All tags:', sortedTags);
+    tagsCache = { tags: sortedTags, expiresAt: Date.now() + CACHE_TTL_MS };
 
     return NextResponse.json({
       success: true,
       tags: sortedTags,
       count: sortedTags.length,
-      method: 'pagination',
-      pages: page + 1,
+      method: 'bounded-sample',
+      warning:
+        'get_unique_tags RPC unavailable; tags may be incomplete. Run create-get-unique-tags-function.sql.',
     });
   } catch (error: any) {
     console.error('Error in tags API:', error);
