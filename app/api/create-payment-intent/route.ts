@@ -9,6 +9,7 @@ import {
 } from '@/app/lib/course-promo-caps';
 import { chargeCorporateAccount } from '@/app/lib/corporate-charge';
 import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corporate';
+import { COMBO_COURSES } from '@/app/combo-courses/data';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -17,6 +18,25 @@ const getStripe = () => {
   }
   return new Stripe(secretKey);
 };
+
+/** Derive combo checkout from comboId / courseSlug — do not trust client isCombo alone. */
+function resolveComboCheckout(body: {
+  isCombo?: unknown;
+  comboId?: unknown;
+  courseSlug?: unknown;
+}): { isCombo: boolean; comboId: string; catalogPrice: number | null } {
+  const rawComboId = typeof body.comboId === 'string' ? body.comboId.trim() : '';
+  const slug = typeof body.courseSlug === 'string' ? body.courseSlug.trim() : '';
+  const fromSlug = slug.startsWith('combo-') ? slug.slice('combo-'.length) : '';
+  const comboId = rawComboId || fromSlug;
+  const catalog = comboId ? COMBO_COURSES.find((c) => c.id === comboId) : undefined;
+  const isCombo = Boolean(body.isCombo) || Boolean(comboId);
+  return {
+    isCombo,
+    comboId: catalog ? catalog.id : comboId,
+    catalogPrice: catalog ? catalog.comboPrice : null,
+  };
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,10 +55,11 @@ export async function POST(request: NextRequest) {
       promoCode,
       promoDiscount,
       originalAmount,
-      isCombo,
     } = body;
 
-    // Combo checkouts cannot use promo codes - ignore any passed
+    const { isCombo, comboId, catalogPrice } = resolveComboCheckout(body);
+
+    // Combo checkouts cannot use promo codes, site coupons, or corporate billing
     const effectivePromoCode = isCombo ? '' : (promoCode || '');
     const effectivePromoDiscount = isCombo ? 0 : (promoDiscount ?? 0);
 
@@ -188,17 +209,29 @@ export async function POST(request: NextRequest) {
     if (!Number.isFinite(chargeAmountDollars) || chargeAmountDollars < 0) {
       return NextResponse.json({ error: 'Invalid payment amount' }, { status: 400 });
     }
+
+    // Combos: always charge catalog price; ignore any client-supplied discount amount
+    if (isCombo) {
+      if (catalogPrice == null || !Number.isFinite(catalogPrice) || catalogPrice <= 0) {
+        return NextResponse.json(
+          { error: 'Invalid combo course. Please return to combo courses and try again.' },
+          { status: 400 },
+        );
+      }
+      chargeAmountDollars = catalogPrice;
+    }
+
     let promoDiscountDollars =
       typeof effectivePromoDiscount === 'number'
         ? effectivePromoDiscount
         : parseFloat(String(effectivePromoDiscount ?? 0));
-    if (!Number.isFinite(promoDiscountDollars)) promoDiscountDollars = 0;
+    if (!Number.isFinite(promoDiscountDollars) || isCombo) promoDiscountDollars = 0;
 
     let stripeOriginalForMeta =
       typeof originalAmount === 'number'
         ? originalAmount
         : parseFloat(String(originalAmount ?? ''));
-    if (!Number.isFinite(stripeOriginalForMeta)) {
+    if (!Number.isFinite(stripeOriginalForMeta) || isCombo) {
       stripeOriginalForMeta = chargeAmountDollars;
     }
 
@@ -280,6 +313,15 @@ export async function POST(request: NextRequest) {
     const corporateCode = normalizeCorporateCode(
       typeof corporateCodeRaw === 'string' ? corporateCodeRaw : '',
     );
+    if (isCombo && corporateCode && isCorporateCodeFormat(corporateCode)) {
+      return NextResponse.json(
+        {
+          error:
+            'Corporate and group discounts are not applicable to combo courses. Please pay the combo price by card.',
+        },
+        { status: 400 },
+      );
+    }
     if (corporateCode && isCorporateCodeFormat(corporateCode) && !isCombo) {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -342,8 +384,8 @@ export async function POST(request: NextRequest) {
       metadata: {
         scheduleId: effectiveScheduleId,
         scheduleIds: (isCombo && scheduleIdsArr.length) ? scheduleIdsArr.join(',') : '',
-        comboId: isCombo ? (body.comboId || '') : '',
-        courseSlug: courseSlug || '',
+        comboId: isCombo ? comboId : '',
+        courseSlug: isCombo && comboId ? `combo-${comboId}` : (courseSlug || ''),
         courseName,
         selectedPlan: selectedPlan || 'basic',
         planName,
@@ -361,8 +403,9 @@ export async function POST(request: NextRequest) {
         comboScheduleMap,
         comboScheduleDates,
         comboCourseNames,
-        promoCode: effectivePromoCode || '',
-        promoDiscount: promoDiscountDollars ? promoDiscountDollars.toString() : '0',
+        // Combos never store promo / discount metadata
+        promoCode: isCombo ? '' : (effectivePromoCode || ''),
+        promoDiscount: isCombo ? '0' : (promoDiscountDollars ? promoDiscountDollars.toString() : '0'),
         originalAmount: stripeOriginalForMeta.toString(),
         finalAmount: chargeAmountDollars.toString(),
       },

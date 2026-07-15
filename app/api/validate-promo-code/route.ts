@@ -86,12 +86,27 @@ function tryValidateCoursePriceCap(
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { code, courseSlug, scheduleBasicPrice, selectedPlan } = body;
+    const { code, courseSlug, scheduleBasicPrice, selectedPlan, isCombo, comboId } = body;
 
     if (!code || typeof code !== 'string') {
       return NextResponse.json(
         { error: 'Promo code is required' },
         { status: 400 }
+      );
+    }
+
+    const slug = typeof courseSlug === 'string' ? courseSlug.trim() : '';
+    const isComboCheckout =
+      Boolean(isCombo) ||
+      Boolean(typeof comboId === 'string' && comboId.trim()) ||
+      slug.startsWith('combo-');
+    if (isComboCheckout) {
+      return NextResponse.json(
+        {
+          valid: false,
+          error: 'Promo codes are not applicable to combo courses.',
+        },
+        { status: 200 },
       );
     }
 

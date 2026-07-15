@@ -127,7 +127,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Store order in Supabase (combo orders use comboId for course_slug)
-    const comboId = paymentIntent.metadata?.comboId;
+    // Combo checkouts never accept promo / corporate / group discounts — charge amount is already final.
+    const comboId = paymentIntent.metadata?.comboId || '';
+    const metadataCourseSlug = paymentIntent.metadata?.courseSlug || '';
     const metadataScheduleIds = (paymentIntent.metadata?.scheduleIds || '')
       .split(',')
       .map((id) => id.trim())
@@ -135,7 +137,13 @@ export async function POST(request: NextRequest) {
     const comboScheduleMap = parseMetadataJson(paymentIntent.metadata?.comboScheduleMap);
     const comboScheduleDates = parseMetadataJson(paymentIntent.metadata?.comboScheduleDates);
     const comboCourseNames = parseMetadataJson(paymentIntent.metadata?.comboCourseNames);
-    const isComboOrder = Boolean(comboId);
+    const isComboOrder =
+      Boolean(comboId) ||
+      metadataCourseSlug.startsWith('combo-') ||
+      Object.keys(comboScheduleMap).length > 0;
+    const resolvedComboId =
+      comboId ||
+      (metadataCourseSlug.startsWith('combo-') ? metadataCourseSlug.slice('combo-'.length) : '');
     const comboPrimaryScheduleId = paymentIntent.metadata?.scheduleId || '';
     const orderData = {
       payment_intent_id: paymentIntent.id,
@@ -143,10 +151,13 @@ export async function POST(request: NextRequest) {
       schedule_id: isComboOrder
         ? (metadataScheduleIds.length ? metadataScheduleIds.join(',') : comboPrimaryScheduleId)
         : comboPrimaryScheduleId,
-      course_slug: comboId ? `combo-${comboId}` : (paymentIntent.metadata?.courseSlug || ''),
+      course_slug: resolvedComboId
+        ? `combo-${resolvedComboId}`
+        : metadataCourseSlug,
       course_name: paymentIntent.metadata?.courseName || '',
       plan: paymentIntent.metadata?.selectedPlan || 'basic',
       quantity: parseInt(paymentIntent.metadata?.quantity || '1'),
+      // Always use Stripe-charged amount (combo PIs are created at catalog price with promo forced to 0)
       amount: paymentIntent.amount / 100, // Convert from cents
       currency: paymentIntent.currency,
       customer_email: paymentIntent.metadata?.customerEmail || paymentIntent.receipt_email || '',
