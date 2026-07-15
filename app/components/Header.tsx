@@ -799,6 +799,12 @@ export default function Header() {
             
             {/* Navigation Links - Desktop */}
             <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+              <Link href="/combo-courses" className="flex items-center gap-1.5 whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px] group">
+                Combo Courses
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30 group-hover:bg-[#d97706]/20 transition-colors">
+                  New
+                </span>
+              </Link>
               <Link href="/courses" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
                 Courses
               </Link>
@@ -857,6 +863,16 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-[#1f2c4a]/10 shadow-lg">
             <div className="px-4 py-4 space-y-1">
+              <Link 
+                href="/combo-courses" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+              >
+                Combo Courses
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#fa4a23]/15 text-[#fa4a23] border border-[#fa4a23]/30">
+                  New
+                </span>
+              </Link>
               <Link 
                 href="/courses" 
                 onClick={() => setIsMobileMenuOpen(false)}
