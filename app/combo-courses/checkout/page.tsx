@@ -111,6 +111,59 @@ function ComboCheckoutContent() {
     }
   };
 
+  const saveEnrollmentLeads = async () => {
+    // Match single-course checkout: persist enrollment_leads + create Stripe customer
+    // when Basic Details are entered (abandoned-cart / lead tracking). One Stripe
+    // customer for the shopper; one lead row per selected class/date for attribution.
+    const selectionEntries = Object.entries(parsedSelections).filter(
+      ([, value]) => Boolean(value?.scheduleId)
+    );
+
+    const leadTargets =
+      selectionEntries.length > 0
+        ? selectionEntries.map(([slug, value]) => ({
+            scheduleId: value.scheduleId,
+            courseSlug: slug,
+            courseName: value.courseName || slug,
+          }))
+        : scheduleIds.map((scheduleId) => ({
+            scheduleId,
+            courseSlug: `combo-${comboId}`,
+            courseName: combo?.name || `combo-${comboId}`,
+          }));
+
+    for (let i = 0; i < leadTargets.length; i++) {
+      const target = leadTargets[i];
+      try {
+        const response = await fetch("/api/save-enrollment-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            scheduleId: target.scheduleId,
+            courseSlug: target.courseSlug,
+            courseName: target.courseName,
+            enrollingFor: formData.enrollingFor,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            alternativeContact: formData.alternativeContact,
+            comboId,
+            // Only the first call creates the Stripe Customer (same as single-course timing)
+            createStripeCustomer: i === 0,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          console.error("Error saving combo enrollment lead:", data.error);
+        }
+      } catch (error) {
+        console.error("Error saving combo enrollment lead:", error);
+        // Don't block checkout — same pattern as single-course pages
+      }
+    }
+  };
+
   const handleContinue = async () => {
     if (currentStep !== 1) return;
 
@@ -119,6 +172,7 @@ function ComboCheckoutContent() {
       return;
     }
     setFormError(null);
+    await saveEnrollmentLeads();
     await createPaymentIntent();
   };
 

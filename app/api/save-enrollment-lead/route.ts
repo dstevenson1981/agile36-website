@@ -25,6 +25,9 @@ export async function POST(request: NextRequest) {
       phone,
       alternativeContact,
       referralCode,
+      comboId,
+      // When saving multiple combo schedule leads, only the first call should create a Stripe customer
+      createStripeCustomer = true,
     } = body;
 
     // Validate required fields
@@ -118,14 +121,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new Stripe customer when Basic Details are entered (always create new, no lookup)
+    // Create new Stripe customer when Basic Details are entered (always create new, no lookup).
+    // Skipped when createStripeCustomer is false (e.g. subsequent combo schedule lead inserts).
     let stripeCustomerId: string | null = null;
     const stripeKey = process.env.STRIPE_SECRET_KEY;
-    if (stripeKey) {
+    if (createStripeCustomer !== false && stripeKey) {
       try {
         const stripe = new Stripe(stripeKey);
-        const trimmedEmail = email.trim().toLowerCase();
         const customerName = `${firstName.trim()} ${lastName.trim()}`;
+        const isComboLead = Boolean(comboId);
 
         const customer = await stripe.customers.create({
           email: trimmedEmail,
@@ -133,7 +137,8 @@ export async function POST(request: NextRequest) {
           phone: phone.trim() || undefined,
           metadata: {
             courseSlug: courseSlug || '',
-            source: 'course_enrollment_lead',
+            ...(isComboLead ? { comboId: String(comboId) } : {}),
+            source: isComboLead ? 'combo_enrollment_lead' : 'course_enrollment_lead',
           },
         });
         stripeCustomerId = customer.id;

@@ -164,8 +164,9 @@ export async function POST(request: NextRequest) {
         }
         
         customerData.metadata = {
-          courseSlug: courseSlug || '',
-          source: 'course_enrollment',
+          courseSlug: (isCombo && comboId ? `combo-${comboId}` : courseSlug) || '',
+          ...(isCombo && comboId ? { comboId } : {}),
+          source: isCombo ? 'combo_enrollment' : 'course_enrollment',
         };
         
         console.log('Creating new customer with:', customerData);
