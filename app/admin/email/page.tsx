@@ -740,6 +740,11 @@ export default function EmailAdminPage() {
   };
 
   const handleSendCampaign = async (campaignId: number) => {
+    if (!sendToAll && selectedContactTags.length === 0) {
+      alert('Select at least one tag, or check "Send to all subscribed contacts".');
+      return;
+    }
+
     if (!confirm('Are you sure you want to send this campaign? This cannot be undone.')) return;
 
     setSending(true);
@@ -750,6 +755,7 @@ export default function EmailAdminPage() {
         body: JSON.stringify({
           campaignId,
           tagFilters: sendToAll ? [] : selectedContactTags,
+          sendToAll: sendToAll === true,
           sendImmediately: true,
         }),
       });

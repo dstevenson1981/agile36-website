@@ -1,3 +1,7 @@
+-- Persist tag-based audience on campaigns
+ALTER TABLE email_campaigns
+  ADD COLUMN IF NOT EXISTS tag_filters TEXT[] DEFAULT '{}';
+
 -- Create campaign recipients junction table
 CREATE TABLE IF NOT EXISTS email_campaign_recipients (
   id BIGSERIAL PRIMARY KEY,
@@ -12,6 +16,8 @@ CREATE TABLE IF NOT EXISTS email_campaign_recipients (
 
 CREATE INDEX IF NOT EXISTS idx_campaign_recipients_campaign ON email_campaign_recipients(campaign_id);
 CREATE INDEX IF NOT EXISTS idx_campaign_recipients_contact ON email_campaign_recipients(contact_id);
+
+ALTER TABLE email_campaign_recipients ENABLE ROW LEVEL SECURITY;
 
 -- Add recipient count to campaigns view
 CREATE OR REPLACE VIEW campaigns_with_stats AS

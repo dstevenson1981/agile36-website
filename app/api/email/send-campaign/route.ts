@@ -12,6 +12,28 @@ if (process.env.SENDGRID_API_KEY) {
 const RATE_LIMIT_PER_SECOND = 50; // Conservative limit
 const DELAY_BETWEEN_BATCHES = 1000; // 1 second
 
+function normalizeTagFilters(tagFilters: unknown): string[] {
+  if (!Array.isArray(tagFilters)) return [];
+  return Array.from(
+    new Set(
+      tagFilters
+        .map((tag) => (typeof tag === 'string' ? tag.trim() : ''))
+        .filter((tag) => tag.length > 0)
+    )
+  );
+}
+
+function normalizeContactIds(contactIds: unknown): number[] {
+  if (!Array.isArray(contactIds)) return [];
+  return Array.from(
+    new Set(
+      contactIds
+        .map((id) => (typeof id === 'number' ? id : parseInt(String(id), 10)))
+        .filter((id) => Number.isInteger(id) && id > 0)
+    )
+  );
+}
+
 async function fetchContactsPaged(params: {
   // Avoid over-constraining supabase-js generics across versions
   // (we only need the runtime query interface here).
@@ -20,8 +42,9 @@ async function fetchContactsPaged(params: {
   role?: string;
   company?: string;
   dateRange?: string;
+  contactIds?: number[];
 }) {
-  const { supabase, tag, role, company, dateRange } = params;
+  const { supabase, tag, role, company, dateRange, contactIds } = params;
   const pageSize = 1000;
   const contacts: any[] = [];
   let page = 0;
@@ -58,6 +81,7 @@ async function fetchContactsPaged(params: {
     if (company) q = q.eq('company', company);
     if (startDate) q = q.gte('created_at', startDate.toISOString());
     if (tag) q = q.contains('tags', [tag]);
+    if (contactIds && contactIds.length > 0) q = q.in('id', contactIds);
 
     const start = page * pageSize;
     const end = start + pageSize - 1;
@@ -72,6 +96,20 @@ async function fetchContactsPaged(params: {
   }
 
   return contacts;
+}
+
+async function fetchContactsByIdsPaged(supabase: any, contactIds: number[]) {
+  const contacts: any[] = [];
+  const chunkSize = 500;
+
+  for (let i = 0; i < contactIds.length; i += chunkSize) {
+    const chunk = contactIds.slice(i, i + chunkSize);
+    const chunkContacts = await fetchContactsPaged({ supabase, contactIds: chunk });
+    contacts.push(...chunkContacts);
+  }
+
+  // Preserve uniqueness and only subscribed/unblocked contacts
+  return Array.from(new Map(contacts.map((c) => [c.id, c])).values());
 }
 
 // Helper function to generate unsubscribe token
@@ -111,7 +149,19 @@ function addUnsubscribeLinkText(textContent: string, token: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { campaignId, tagFilters, tagsToAdd, dateRange, role, company, sendImmediately = true } = await request.json();
+    const body = await request.json();
+    const {
+      campaignId,
+      tagsToAdd,
+      dateRange,
+      role,
+      company,
+      sendImmediately = true,
+    } = body;
+
+    const requestTagFilters = normalizeTagFilters(body.tagFilters);
+    const requestContactIds = normalizeContactIds(body.contactIds);
+    const sendToAll = body.sendToAll === true;
 
     if (!campaignId) {
       return NextResponse.json(
@@ -167,215 +217,143 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get contacts based on tag filters (simple approach - no junction table needed)
+    if (campaign.status === 'cancelled') {
+      return NextResponse.json(
+        { error: 'Campaign is cancelled and cannot be sent' },
+        { status: 400 }
+      );
+    }
+
+    // Load stored audience
+    const storedTagFilters = normalizeTagFilters(campaign.tag_filters);
+    const { data: storedRecipients, error: storedRecipientsError } = await supabase
+      .from('email_campaign_recipients')
+      .select('contact_id')
+      .eq('campaign_id', campaignId);
+
+    if (storedRecipientsError) {
+      console.error('Error loading stored recipients:', storedRecipientsError);
+      return NextResponse.json(
+        { error: `Failed to load campaign recipients: ${storedRecipientsError.message}` },
+        { status: 500 }
+      );
+    }
+
+    const storedContactIds = normalizeContactIds(
+      (storedRecipients || []).map((row) => row.contact_id)
+    );
+
+    // Resolve audience priority:
+    // 1) Explicit contactIds in request
+    // 2) Stored campaign recipients (junction table)
+    // 3) Explicit tagFilters in request
+    // 4) Stored campaign.tag_filters
+    // 5) Explicit sendToAll=true only
+    // Never silently default to all subscribed contacts.
     let contacts: any[] = [];
-      // Get contacts based on filters
-      // Exclude blocked contacts and only get subscribed contacts
-      let contactsQuery = supabase
-        .from('email_contacts')
-        .select('*')
-        .eq('subscribed', true)
-        .eq('blocked', false); // Exclude blocked contacts
+    let audienceMode: 'contactIds' | 'tagFilters' | 'sendToAll' | null = null;
+    let resolvedTagFilters: string[] = [];
+    let resolvedContactIds: number[] = [];
 
-    // Apply role filter if provided
-    if (role) {
-      contactsQuery = contactsQuery.eq('role', role);
-    }
-
-    // Apply company filter if provided
-    if (company) {
-      contactsQuery = contactsQuery.eq('company', company);
-    }
-
-    // If tag filters are provided, use database-level filtering for better performance
-    if (tagFilters && tagFilters.length > 0) {
-      // IMPORTANT:
-      // Supabase/PostgREST may cap each request at 1000 rows.
-      // We page through results per-tag and merge (OR logic across tags).
-      const allTagContacts = new Map<number, any>();
-      for (const tag of tagFilters) {
-        const tagContacts = await fetchContactsPaged({ supabase, tag, role, company, dateRange });
-        tagContacts.forEach((c: any) => allTagContacts.set(c.id, c));
-      }
-
-      contacts = Array.from(allTagContacts.values());
-      console.log(`Database paging found ${contacts.length} subscribed contacts with tags: ${tagFilters.join(', ')}`);
+    if (requestContactIds.length > 0) {
+      audienceMode = 'contactIds';
+      resolvedContactIds = requestContactIds;
+    } else if (storedContactIds.length > 0) {
+      audienceMode = 'contactIds';
+      resolvedContactIds = storedContactIds;
+    } else if (requestTagFilters.length > 0) {
+      audienceMode = 'tagFilters';
+      resolvedTagFilters = requestTagFilters;
+    } else if (storedTagFilters.length > 0) {
+      audienceMode = 'tagFilters';
+      resolvedTagFilters = storedTagFilters;
+    } else if (sendToAll) {
+      audienceMode = 'sendToAll';
     } else {
-      // Fetch all subscribed contacts if no tag filters (paged)
-      try {
-        contacts = await fetchContactsPaged({ supabase, role, company, dateRange });
-      } catch (err: any) {
-        console.error('Error fetching contacts:', err);
-        return NextResponse.json({ error: 'Failed to fetch contacts' }, { status: 500 });
-      }
+      return NextResponse.json(
+        {
+          error:
+            'No audience selected. Select recipients/tags in the campaign editor, or pass tagFilters/contactIds, or set sendToAll=true to intentionally email all subscribed contacts.',
+        },
+        { status: 400 }
+      );
     }
-    
-    // Additional JavaScript filtering for edge cases (if needed)
-    if (tagFilters && tagFilters.length > 0 && contacts.length === 0) {
-      console.log('Filtering by tags:', tagFilters);
-      console.log(`Total subscribed contacts before filtering: ${contacts.length}`);
-      
-      // Fetch all subscribed contacts for debugging
-      const { data: allContactsForDebug } = await supabase
-        .from('email_contacts')
-        .select('*')
-        .eq('subscribed', true);
-      
-      // Debug: Show sample of contact tags
-      const sampleContacts = allContactsForDebug?.slice(0, 5) || [];
-      console.log('Sample contact tags:', sampleContacts.map((c: any) => ({ email: c.email, tags: c.tags, tagsType: typeof c.tags, isArray: Array.isArray(c.tags) })));
-      console.log('Requested tag filters:', tagFilters);
-      console.log('Tag filters type:', tagFilters.map((t: string) => ({ tag: t, type: typeof t, length: t.length, charCodes: t.split('').map((c: string) => c.charCodeAt(0)) })));
-      
-      contacts = contacts.filter((contact: any) => {
-        if (!contact.tags) {
-          return false; // No tags means doesn't match
-        }
-        
-        // Handle both array and non-array tags
-        let contactTags: string[] = [];
-        if (Array.isArray(contact.tags)) {
-          contactTags = contact.tags;
-        } else if (typeof contact.tags === 'string') {
-          // If tags is a string, try to parse it as JSON array
-          try {
-            contactTags = JSON.parse(contact.tags);
-          } catch {
-            contactTags = [contact.tags];
-          }
-        }
-        
-        if (contactTags.length === 0) {
-          return false;
-        }
-        
-        // Check if contact has at least one of the selected tags (case-insensitive)
-        const hasMatchingTag = tagFilters.some((tag: string) => {
-          const normalizedTag = tag?.toString().trim().toLowerCase();
-          return contactTags.some((contactTag: string) => {
-            const normalizedContactTag = contactTag?.toString().trim().toLowerCase();
-            const matches = normalizedContactTag === normalizedTag;
-            if (matches) {
-              console.log(`Match found: "${contactTag}" matches "${tag}" for contact ${contact.email}`);
-            }
-            return matches;
+
+    try {
+      if (audienceMode === 'contactIds') {
+        contacts = await fetchContactsByIdsPaged(supabase, resolvedContactIds);
+        console.log(
+          `Sending campaign ${campaignId} to ${contacts.length} stored/selected contact IDs`
+        );
+      } else if (audienceMode === 'tagFilters') {
+        const allTagContacts = new Map<number, any>();
+        for (const tag of resolvedTagFilters) {
+          const tagContacts = await fetchContactsPaged({
+            supabase,
+            tag,
+            role,
+            company,
+            dateRange,
           });
-        });
-        
-        return hasMatchingTag;
-      });
-      
-      console.log(`Filtered to ${contacts.length} contacts with tags: ${tagFilters.join(', ')}`);
-      
-      if (contacts.length === 0) {
-        // Additional debug info - check ALL contacts (including unsubscribed) to see if tag exists
-        const { data: allContactsIncludingUnsubscribed } = await supabase
-          .from('email_contacts')
-          .select('*');
-        
-        // Also try a direct database query using PostgreSQL array operators
-        // Try using Supabase's array contains operator
-        let directQueryResults: any[] = [];
-        for (const tag of tagFilters) {
-          const { data: results } = await supabase
-            .from('email_contacts')
-            .select('*')
-            .eq('subscribed', true)
-            .contains('tags', [tag]);
-          if (results) {
-            directQueryResults = [...directQueryResults, ...results];
-          }
+          tagContacts.forEach((c: any) => allTagContacts.set(c.id, c));
         }
-        // Remove duplicates
-        const uniqueDirectResults = Array.from(new Map(directQueryResults.map(c => [c.id, c])).values());
-        
-        console.log('Direct PostgreSQL query results:', uniqueDirectResults.length);
-        
-        const contactsWithTags = allContactsForDebug?.filter((c: any) => {
-          if (!c.tags) return false;
-          const tags = Array.isArray(c.tags) ? c.tags : (typeof c.tags === 'string' ? JSON.parse(c.tags) : []);
-          return tags.length > 0;
-        }) || [];
-        
-        const allContactsWithRequestedTags = allContactsIncludingUnsubscribed?.filter((c: any) => {
-          if (!c.tags) return false;
-          let contactTags: string[] = [];
-          if (Array.isArray(c.tags)) {
-            contactTags = c.tags;
-          } else if (typeof c.tags === 'string') {
-            try {
-              contactTags = JSON.parse(c.tags);
-            } catch {
-              contactTags = [c.tags];
-            }
-          }
-          return tagFilters.some((tag: string) => 
-            contactTags.some((contactTag: string) => 
-              contactTag?.toString().trim().toLowerCase() === tag?.toString().trim().toLowerCase()
-            )
-          );
-        }) || [];
-        
-        const subscribedContactsWithTags = allContactsWithRequestedTags.filter((c: any) => c.subscribed === true);
-        const unsubscribedContactsWithTags = allContactsWithRequestedTags.filter((c: any) => c.subscribed === false);
-        
-        console.log(`Total contacts with any tags: ${contactsWithTags.length}`);
-        console.log(`Total contacts (including unsubscribed) with requested tags: ${allContactsWithRequestedTags.length}`);
-        console.log(`Subscribed contacts with requested tags: ${subscribedContactsWithTags.length}`);
-        console.log(`Unsubscribed contacts with requested tags: ${unsubscribedContactsWithTags.length}`);
-        console.log(`Direct PostgreSQL query found: ${directQueryResults?.length || 0} contacts`);
-        
-        // Show sample of what tags actually look like
-        const sampleTagData = allContactsForDebug?.slice(0, 3).map((c: any) => ({
-          email: c.email,
-          tags: c.tags,
-          tagsType: typeof c.tags,
-          isArray: Array.isArray(c.tags),
-          tagsStringified: JSON.stringify(c.tags)
-        })) || [];
-        console.log('Sample tag data from database:', sampleTagData);
-        
-        const allUniqueTags = new Set<string>();
-        contactsWithTags.forEach((c: any) => {
-          const tags = Array.isArray(c.tags) ? c.tags : (typeof c.tags === 'string' ? JSON.parse(c.tags) : []);
-          tags.forEach((tag: string) => allUniqueTags.add(tag));
-        });
-        console.log(`All unique tags in subscribed contacts:`, Array.from(allUniqueTags));
-        
-        let errorMessage = `No subscribed contacts found with tags: ${tagFilters.join(', ')}`;
-        if (unsubscribedContactsWithTags.length > 0) {
-          errorMessage += `. Found ${unsubscribedContactsWithTags.length} unsubscribed contact(s) with this tag. They need to be subscribed to receive emails.`;
-        } else if (allContactsWithRequestedTags.length === 0) {
-          errorMessage += `. No contacts found with this tag (checked both subscribed and unsubscribed).`;
-        }
-        
-        return NextResponse.json(
-          { 
-            error: errorMessage,
-            debug: {
-              totalSubscribedContacts: allContactsForDebug?.length || 0,
-              subscribedContactsWithTags: contactsWithTags.length,
-              totalContactsWithRequestedTags: allContactsWithRequestedTags.length,
-              subscribedContactsWithRequestedTags: subscribedContactsWithTags.length,
-              unsubscribedContactsWithRequestedTags: unsubscribedContactsWithTags.length,
-              directPostgreSQLQueryResults: directQueryResults?.length || 0,
-              allUniqueTags: Array.from(allUniqueTags),
-              requestedTags: tagFilters,
-              sampleTagData: sampleTagData
-            }
-          },
-          { status: 400 }
+        contacts = Array.from(allTagContacts.values());
+        console.log(
+          `Sending campaign ${campaignId} to ${contacts.length} contacts with tags: ${resolvedTagFilters.join(', ')}`
+        );
+      } else {
+        contacts = await fetchContactsPaged({ supabase, role, company, dateRange });
+        console.log(
+          `Sending campaign ${campaignId} to ALL ${contacts.length} subscribed contacts (sendToAll=true)`
         );
       }
-    } else {
-      console.log(`No tag filters - sending to all ${contacts.length} subscribed contacts`);
+    } catch (err: any) {
+      console.error('Error fetching contacts:', err);
+      return NextResponse.json({ error: 'Failed to fetch contacts' }, { status: 500 });
     }
 
     if (!contacts || contacts.length === 0) {
+      const audienceHint =
+        audienceMode === 'tagFilters'
+          ? ` with tags: ${resolvedTagFilters.join(', ')}`
+          : audienceMode === 'contactIds'
+            ? ' for the selected contact IDs'
+            : '';
       return NextResponse.json(
-        { error: `No contacts found matching criteria${tagFilters && tagFilters.length > 0 ? ` with tags: ${tagFilters.join(', ')}` : ''}` },
+        { error: `No subscribed contacts found matching criteria${audienceHint}` },
         { status: 400 }
       );
+    }
+
+    // Persist resolved audience filters when provided on this send
+    if (requestTagFilters.length > 0 || requestContactIds.length > 0) {
+      if (requestTagFilters.length > 0) {
+        await supabase
+          .from('email_campaigns')
+          .update({ tag_filters: requestTagFilters })
+          .eq('id', campaignId);
+      }
+
+      if (requestContactIds.length > 0) {
+        await supabase
+          .from('email_campaign_recipients')
+          .delete()
+          .eq('campaign_id', campaignId);
+
+        const rows = requestContactIds.map((contactId) => ({
+          campaign_id: campaignId,
+          contact_id: contactId,
+        }));
+        const chunkSize = 500;
+        for (let i = 0; i < rows.length; i += chunkSize) {
+          const { error: insertError } = await supabase
+            .from('email_campaign_recipients')
+            .insert(rows.slice(i, i + chunkSize));
+          if (insertError) {
+            console.error('Error persisting request contact IDs:', insertError);
+          }
+        }
+      }
     }
 
     // Update campaign status
@@ -387,21 +365,42 @@ export async function POST(request: NextRequest) {
       })
       .eq('id', campaignId);
 
+    if (!sendImmediately) {
+      return NextResponse.json({
+        success: true,
+        scheduled: true,
+        total: contacts.length,
+        audienceMode,
+        tagFilters: resolvedTagFilters,
+      });
+    }
+
     // Send emails with rate limiting
     let sentCount = 0;
     let errorCount = 0;
+    let cancelledMidSend = false;
     const errors: string[] = [];
 
     // Process in batches to respect rate limits
     for (let i = 0; i < contacts.length; i += RATE_LIMIT_PER_SECOND) {
+      // Re-check campaign status so a mid-send cancel can stop the loop
+      const { data: liveCampaign } = await supabase
+        .from('email_campaigns')
+        .select('status')
+        .eq('id', campaignId)
+        .single();
+
+      if (liveCampaign?.status === 'cancelled') {
+        cancelledMidSend = true;
+        console.log(`Campaign ${campaignId} cancelled mid-send after ${sentCount} emails`);
+        break;
+      }
+
       const batch = contacts.slice(i, i + RATE_LIMIT_PER_SECOND);
       const promises = batch.map(async (contact) => {
         try {
           // Generate unsubscribe token
           const token = generateUnsubscribeToken(contact.email, campaignId);
-
-          // Note: We don't store the token in unsubscribes table here
-          // It will only be added when someone actually unsubscribes
 
           // Add unsubscribe link to email
           const htmlWithUnsubscribe = addUnsubscribeLink(campaign.html_content, token);
@@ -439,7 +438,12 @@ export async function POST(request: NextRequest) {
               sendgrid_message_id: response.headers['x-message-id'] || null,
             });
 
-          // Note: We don't update email_campaign_recipients table - using simple tag-based approach
+          // Mark recipient as sent in junction table when present
+          await supabase
+            .from('email_campaign_recipients')
+            .update({ sent_at: sentAt })
+            .eq('campaign_id', campaignId)
+            .eq('contact_id', contact.id);
 
           // Add tags to recipient if specified
           if (tagsToAdd && Array.isArray(tagsToAdd) && tagsToAdd.length > 0) {
@@ -497,15 +501,11 @@ export async function POST(request: NextRequest) {
     await supabase
       .from('email_campaigns')
       .update({
-        status: 'sent',
+        status: cancelledMidSend ? 'cancelled' : 'sent',
         sent_count: sentCount,
         sent_at: new Date().toISOString(),
       })
       .eq('id', campaignId);
-
-    // Note: We don't update subscription status here
-    // Subscription status is only updated when someone actually clicks unsubscribe
-    // via the /api/email/unsubscribe endpoint or SendGrid webhook
 
     return NextResponse.json({
       success: true,
@@ -513,6 +513,9 @@ export async function POST(request: NextRequest) {
       errors: errorCount,
       errorDetails: errors,
       total: contacts.length,
+      cancelled: cancelledMidSend,
+      audienceMode,
+      tagFilters: resolvedTagFilters,
     });
   } catch (error: any) {
     console.error('Error sending campaign:', error);
@@ -522,4 +525,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

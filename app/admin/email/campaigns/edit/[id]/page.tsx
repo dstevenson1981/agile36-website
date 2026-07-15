@@ -94,6 +94,7 @@ export default function CampaignEditorPage() {
       const data = await response.json();
       if (data.success) {
         setSelectedContactIds(data.contactIds || []);
+        setSelectedTags(data.tagFilters || []);
       }
     } catch (error) {
       console.error('Error fetching recipients:', error);
@@ -162,24 +163,40 @@ export default function CampaignEditorPage() {
     }
   };
 
+  const saveAudience = async () => {
+    if (!campaignId) {
+      throw new Error('Missing campaign ID');
+    }
+
+    const recipientsResponse = await fetch(`/api/email/campaigns/${campaignId}/recipients`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contactIds: selectedContactIds,
+        tagFilters: selectedTags,
+      }),
+    });
+
+    const recipientsData = await recipientsResponse.json();
+    if (!recipientsData.success) {
+      throw new Error(recipientsData.error || 'Failed to save recipients');
+    }
+
+    return recipientsData;
+  };
+
   const handleSaveRecipients = async () => {
     if (!campaignId) return;
 
     setSaving(true);
     try {
-      const response = await fetch(`/api/email/campaigns/${campaignId}/recipients`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contactIds: selectedContactIds }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        alert(`Recipients saved: ${selectedContactIds.length} contacts selected`);
-      } else {
-        alert(data.error || 'Failed to save recipients');
-      }
-    } catch (error) {
-      alert('Error saving recipients');
+      await saveAudience();
+      alert(
+        `Audience saved: ${selectedContactIds.length} contact(s)` +
+          (selectedTags.length > 0 ? ` with tags [${selectedTags.join(', ')}]` : '')
+      );
+    } catch (error: any) {
+      alert(error.message || 'Error saving recipients');
     } finally {
       setSaving(false);
     }
@@ -190,6 +207,11 @@ export default function CampaignEditorPage() {
 
     if (!campaignName || !campaignSubject || !campaignHtml) {
       alert('Please fill in all required fields');
+      return;
+    }
+
+    if (!asDraft && selectedContactIds.length === 0 && selectedTags.length === 0) {
+      alert('Please select at least one recipient or tag before sending');
       return;
     }
 
@@ -213,25 +235,19 @@ export default function CampaignEditorPage() {
         throw new Error(campaignData.error || 'Failed to save campaign');
       }
 
-      // Save recipients
-      const recipientsResponse = await fetch(`/api/email/campaigns/${campaignId}/recipients`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contactIds: selectedContactIds }),
-      });
-
-      const recipientsData = await recipientsResponse.json();
-      if (!recipientsData.success) {
-        throw new Error(recipientsData.error || 'Failed to save recipients');
-      }
+      // Persist selected contacts + tag filters with the campaign
+      await saveAudience();
 
       if (!asDraft) {
-        // Send campaign
+        // Send only to the persisted/selected audience — never omit filters
         const sendResponse = await fetch('/api/email/send-campaign', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             campaignId,
+            contactIds: selectedContactIds,
+            tagFilters: selectedTags,
+            sendToAll: false,
             sendImmediately: true,
           }),
         });
@@ -255,12 +271,17 @@ export default function CampaignEditorPage() {
   };
 
   const handleSendNow = async () => {
-    if (selectedContactIds.length === 0) {
-      alert('Please select at least one recipient');
+    if (selectedContactIds.length === 0 && selectedTags.length === 0) {
+      alert('Please select at least one recipient or tag');
       return;
     }
 
-    if (!confirm(`Send campaign to ${selectedContactIds.length} contact(s)? This cannot be undone.`)) {
+    const audienceLabel =
+      selectedContactIds.length > 0
+        ? `${selectedContactIds.length} contact(s)`
+        : `contacts tagged: ${selectedTags.join(', ')}`;
+
+    if (!confirm(`Send campaign to ${audienceLabel}? This cannot be undone.`)) {
       return;
     }
 
@@ -285,7 +306,7 @@ export default function CampaignEditorPage() {
   const filteredContacts = contacts.filter(c => !c.blocked && c.subscribed);
   const selectedCount = selectedContactIds.length;
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
     if (currentStep === 'details') {
       if (!campaignName || !campaignSubject || !campaignHtml) {
         alert('Please fill in all required fields (Campaign Name, Subject Line, and Email Content)');
@@ -293,8 +314,15 @@ export default function CampaignEditorPage() {
       }
       setCurrentStep('recipients');
     } else if (currentStep === 'recipients') {
-      if (selectedCount === 0) {
-        alert('Please select at least one recipient');
+      if (selectedCount === 0 && selectedTags.length === 0) {
+        alert('Please select at least one recipient or tag');
+        return;
+      }
+      // Persist audience when leaving the recipients step so draft/send always has it
+      try {
+        await saveAudience();
+      } catch (error: any) {
+        alert(error.message || 'Failed to save recipients');
         return;
       }
       setCurrentStep('review');
@@ -604,7 +632,16 @@ export default function CampaignEditorPage() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-gray-500">Recipients</label>
-                  <p className="text-base text-gray-900 mt-1">{selectedCount} contact{selectedCount !== 1 ? 's' : ''} selected</p>
+                  <p className="text-base text-gray-900 mt-1">
+                    {selectedCount > 0
+                      ? `${selectedCount} contact${selectedCount !== 1 ? 's' : ''} selected`
+                      : 'No specific contacts selected'}
+                  </p>
+                  {selectedTags.length > 0 && (
+                    <p className="text-sm text-gray-600 mt-1">
+                      Tags: {selectedTags.join(', ')}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -711,10 +748,16 @@ export default function CampaignEditorPage() {
                   </button>
                   <button
                     onClick={handleSendNow}
-                    disabled={sending}
+                    disabled={sending || (selectedCount === 0 && selectedTags.length === 0)}
                     className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-center"
                   >
-                    {sending ? 'Sending...' : `Send to ${selectedCount} Contact${selectedCount !== 1 ? 's' : ''}`}
+                    {sending
+                      ? 'Sending...'
+                      : selectedCount > 0
+                        ? `Send to ${selectedCount} Contact${selectedCount !== 1 ? 's' : ''}`
+                        : selectedTags.length > 0
+                          ? `Send to Tag${selectedTags.length !== 1 ? 's' : ''}: ${selectedTags.join(', ')}`
+                          : 'Select audience to send'}
                   </button>
                 </>
               )}
