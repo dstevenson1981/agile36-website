@@ -86,7 +86,7 @@ export default async function PracticeExamsPage({
   const hasLeadingSafe = registeredCourses.includes('leading-safe') || registeredCourses.some((s) => s?.startsWith('combo-leading-safe')) || hasLeadingSafePro;
   const hasScrumMaster =
     registeredCourses.includes('scrum-master') ||
-    registeredCourses.includes('combo-ssm-advanced') ||
+    registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('ssm')) ||
     hasSsmPro;
   const hasAsm =
     registeredCourses.includes('advanced-scrum-master') ||
