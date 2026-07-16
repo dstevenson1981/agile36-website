@@ -17,16 +17,6 @@ type Props = {
   isValidatingPromo: boolean;
 };
 
-export function SubscribePromoHint() {
-  return (
-    <p className="text-xs text-gray-600 mb-3 rounded-lg border border-orange-100 bg-orange-50/80 px-3 py-2">
-      <span className="font-semibold text-[#e8431f]">$100 off:</span>{" "}
-      Click the banner at the top of the site, subscribe with your email, and we&apos;ll reveal your promo code.
-      Enter it below at checkout.
-    </p>
-  );
-}
-
 export default function AvailablePromoCodes({
   availablePromos = DEFAULT_PROMOS,
   appliedPromoCode,
@@ -34,7 +24,7 @@ export default function AvailablePromoCodes({
   isValidatingPromo,
 }: Props) {
   if (availablePromos.length === 0) {
-    return <SubscribePromoHint />;
+    return null;
   }
 
   return (

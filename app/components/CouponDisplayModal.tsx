@@ -1,10 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  PROMO_EXPIRES_ISO,
-  PROMO_EXPIRES_LABEL,
-} from "@/app/lib/site-promo";
+import { PROMO_CODE_EXPIRES_IN } from "@/app/lib/site-promo";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -81,10 +78,9 @@ export default function CouponDisplayModal({
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
-              <span className="font-semibold">Expires:</span>{" "}
-              <time className="text-[#ea3d12] font-bold" dateTime={PROMO_EXPIRES_ISO}>
-                {PROMO_EXPIRES_LABEL}
-              </time>
+              <span className="font-semibold text-[#ea3d12]">
+                Expires in {PROMO_CODE_EXPIRES_IN}
+              </span>
             </p>
             <p className="text-xs text-gray-600">
               $100 off one eligible enrollment. Enter the code in the promo field at checkout.

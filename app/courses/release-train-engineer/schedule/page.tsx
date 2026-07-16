@@ -282,7 +282,7 @@ function CourseScheduleContent() {
               </button>
             )}
             <div className="ml-auto flex items-center gap-2 text-sm text-[#64748b]">
-              <span>15% off for any group of 5 or more</span>
+              <span>25% off for any group of 5 or more</span>
             </div>
           </div>
 
@@ -380,7 +380,7 @@ function CourseScheduleContent() {
                 <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3">Group Training Discount Available</h2>
                 <p className="text-base text-[#475569] mb-4">Get special pricing when enrolling 5 or more participants.</p>
                 <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/50">
-                  <p className="text-base font-bold text-[#1f2c4a]">20% Off for Groups of 5+</p>
+                  <p className="text-base font-bold text-[#1f2c4a]">25% Off for Groups of 5+</p>
                 </div>
               </div>
 

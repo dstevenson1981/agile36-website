@@ -5,8 +5,6 @@ import CouponModal from "./CouponModal";
 import CouponDisplayModal from "./CouponDisplayModal";
 import {
   isSitePromoActive,
-  PROMO_ENDS_SHORT,
-  PROMO_EXPIRES_ISO,
   BANNER_COUPON_CODE,
 } from "@/app/lib/site-promo";
 
@@ -99,10 +97,6 @@ export default function PromoBanner() {
           </div>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="hidden text-sm font-semibold text-neutral-700 sm:block">
-              Ends <time dateTime={PROMO_EXPIRES_ISO}>{PROMO_ENDS_SHORT}</time>
-            </div>
-            <div className="h-7 w-px bg-neutral-200" aria-hidden />
             <div className="text-right">
               <span className="inline-flex cursor-pointer items-center rounded-full border border-[#fa4a23]/70 bg-[#fa4a23] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white transition group-hover:bg-[#e8431f] sm:px-4 sm:text-sm">
                 Subscribe for $100 off →

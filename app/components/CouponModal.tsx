@@ -1,10 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import {
-  PROMO_EXPIRES_LABEL,
-} from "@/app/lib/site-promo";
-
 interface CouponModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -107,7 +103,7 @@ export default function CouponModal({
               $100 off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to save your code — valid through {PROMO_EXPIRES_LABEL}.
+              Subscribe below to unlock your code.
             </p>
           </div>
         </div>

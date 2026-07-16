@@ -13,7 +13,6 @@ import {
   getTimeSlotLabel,
   type CourseScheduleRow,
 } from "@/app/lib/schedule-display";
-import { BANNER_COUPON_CODE, isSitePromoActive } from "@/app/lib/site-promo";
 
 type ScheduleCardProps = {
   schedule: CourseScheduleRow;
@@ -129,7 +128,6 @@ export default function ScheduleCard({
   const discount = schedule.original_price
     ? calculateDiscount(parseFloat(schedule.original_price), unitPrice)
     : 0;
-  const promoActive = isSitePromoActive();
   const hasBrochure = Boolean(brochureHref || onBrochureClick);
   const tzLabel = formatTimezoneLabel(schedule.timezone);
   const batchType = schedule.is_weekend === true ? "Weekend" : "Weekday";
@@ -263,25 +261,13 @@ export default function ScheduleCard({
         <div
           className={`flex flex-col gap-4 border-t border-dotted border-gray-300 p-5 mx-5 lg:mx-0 lg:border-t-0 lg:p-6 ${columnDivider}`}
         >
-          <div className="flex flex-wrap items-start justify-end gap-2">
-            {schedule.is_best_deal && (
+          {schedule.is_best_deal && (
+            <div className="flex flex-wrap items-start justify-end gap-2">
               <span className="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-900 ring-1 ring-amber-300">
                 Best Deal
               </span>
-            )}
-            {promoActive && (
-              <span className="inline-flex items-center gap-1 rounded-md bg-orange-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-orange-800 ring-1 ring-orange-200">
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                  <path
-                    fillRule="evenodd"
-                    d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414L12.5 9.414l4.293 4.293a1 1 0 001.414-1.414l-5-6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Use {BANNER_COUPON_CODE}
-              </span>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="text-right">
             {schedule.original_price && (
