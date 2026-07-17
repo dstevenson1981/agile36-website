@@ -1,34 +1,13 @@
--- Create email_templates table
-CREATE TABLE IF NOT EXISTS email_templates (
- id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
- template_type TEXT NOT NULL, -- 'abandoned_cart', 'welcome', 'course_completion', etc.
- course_name TEXT NOT NULL,
- course_slug TEXT,
- subject TEXT NOT NULL,
- body_text TEXT NOT NULL,
- body_html TEXT,
- discount_code TEXT,
- discount_amount DECIMAL(10, 2),
- discount_type TEXT, -- 'fixed' or 'percentage'
- created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
- updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
- is_active BOOLEAN DEFAULT true
-);
+-- Rewrite all abandoned_cart email templates to professional HTML layout.
+-- Discount: 100OFF / $100. Offer ends Monday Jul 20, 2026.
+-- Mentions: highest Scaled Agile feedback score + 98% exam pass rate.
+-- No emojis. Logo: https://www.agile36.com/logo.png
+-- Assessment templates intentionally untouched.
 
--- Create index for faster lookups
-CREATE INDEX IF NOT EXISTS idx_email_templates_type_course 
- ON email_templates(template_type, course_name);
-CREATE INDEX IF NOT EXISTS idx_email_templates_course_slug 
- ON email_templates(course_slug);
-
--- Insert abandoned cart templates for all 16 courses
--- Professional layout, 100OFF / $100, offer ends Mon Jul 20 2026
--- Highest Scaled Agile feedback score + 98% exam pass rate; no emojis
-
-INSERT INTO email_templates (template_type, course_name, course_slug, subject, body_text, body_html, discount_code, discount_amount, discount_type) VALUES
-('abandoned_cart', 'Leading SAFe', 'leading-safe',
- 'Complete your Leading SAFe enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_leading_safe_subj$Complete your Leading SAFe enrollment — $100 off with 100OFF$ac_leading_safe_subj$,
+  body_text = $ac_leading_safe_txt$Hi {first_name},
 
 You started enrolling in Leading SAFe but did not finish checkout. A SAFe Agilist certification puts your name on the shortlist for larger programs and leadership roles.
 
@@ -53,8 +32,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_leading_safe_txt$,
+  body_html = $ac_leading_safe_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -66,7 +45,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -194,12 +173,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_leading_safe_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'leading-safe';
 
-('abandoned_cart', 'SAFe POPM', 'product-owner-manager',
- 'Complete your SAFe POPM enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_product_owner_manager_subj$Complete your SAFe POPM enrollment — $100 off with 100OFF$ac_product_owner_manager_subj$,
+  body_text = $ac_product_owner_manager_txt$Hi {first_name},
 
 You started enrolling in SAFe Product Owner / Product Manager (POPM) but did not finish checkout. POPM certification signals you can manage product value delivery across Agile Release Trains.
 
@@ -224,8 +209,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_product_owner_manager_txt$,
+  body_html = $ac_product_owner_manager_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -237,7 +222,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -365,12 +350,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_product_owner_manager_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'product-owner-manager';
 
-('abandoned_cart', 'SAFe Lean Portfolio Management', 'lean-portfolio-management',
- 'Complete your SAFe LPM enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_lean_portfolio_management_subj$Complete your SAFe LPM enrollment — $100 off with 100OFF$ac_lean_portfolio_management_subj$,
+  body_text = $ac_lean_portfolio_management_txt$Hi {first_name},
 
 You started enrolling in SAFe Lean Portfolio Management but did not finish checkout. LPM certification positions you to connect strategy, funding, and delivery across the enterprise.
 
@@ -395,8 +386,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_lean_portfolio_management_txt$,
+  body_html = $ac_lean_portfolio_management_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -408,7 +399,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -536,12 +527,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_lean_portfolio_management_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'lean-portfolio-management';
 
-('abandoned_cart', 'SAFe Agile Product Management', 'agile-product-management',
- 'Complete your SAFe APM enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_agile_product_management_subj$Complete your SAFe APM enrollment — $100 off with 100OFF$ac_agile_product_management_subj$,
+  body_text = $ac_agile_product_management_txt$Hi {first_name},
 
 You started enrolling in SAFe Agile Product Management but did not finish checkout. APM certification shows you can drive product strategy and outcomes in a SAFe enterprise.
 
@@ -566,8 +563,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_agile_product_management_txt$,
+  body_html = $ac_agile_product_management_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -579,7 +576,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -707,12 +704,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_agile_product_management_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'agile-product-management';
 
-('abandoned_cart', 'SAFe Scrum Master', 'scrum-master',
- 'Complete your SAFe Scrum Master enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_scrum_master_subj$Complete your SAFe Scrum Master enrollment — $100 off with 100OFF$ac_scrum_master_subj$,
+  body_text = $ac_scrum_master_txt$Hi {first_name},
 
 You started enrolling in SAFe Scrum Master but did not finish checkout. SSM certification proves you can facilitate delivery and continuous improvement at scale.
 
@@ -737,8 +740,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_scrum_master_txt$,
+  body_html = $ac_scrum_master_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -750,7 +753,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -878,12 +881,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_scrum_master_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'scrum-master';
 
-('abandoned_cart', 'SAFe for Teams', 'safe-for-teams',
- 'Complete your SAFe for Teams enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_safe_for_teams_subj$Complete your SAFe for Teams enrollment — $100 off with 100OFF$ac_safe_for_teams_subj$,
+  body_text = $ac_safe_for_teams_txt$Hi {first_name},
 
 You started enrolling in SAFe for Teams but did not finish checkout. SAFe for Teams gives you the shared language and practices used on Agile Release Trains.
 
@@ -908,8 +917,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_safe_for_teams_txt$,
+  body_html = $ac_safe_for_teams_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -921,7 +930,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1049,12 +1058,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_safe_for_teams_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'safe-for-teams';
 
-('abandoned_cart', 'SAFe DevOps', 'devops',
- 'Complete your SAFe DevOps enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_devops_subj$Complete your SAFe DevOps enrollment — $100 off with 100OFF$ac_devops_subj$,
+  body_text = $ac_devops_txt$Hi {first_name},
 
 You started enrolling in SAFe DevOps but did not finish checkout. SAFe DevOps certification shows you can improve flow from idea to production.
 
@@ -1079,8 +1094,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_devops_txt$,
+  body_html = $ac_devops_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1092,7 +1107,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1220,12 +1235,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_devops_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'devops';
 
-('abandoned_cart', 'SAFe Advanced Scrum Master', 'advanced-scrum-master',
- 'Complete your SAFe Advanced Scrum Master enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_advanced_scrum_master_subj$Complete your SAFe Advanced Scrum Master enrollment — $100 off with 100OFF$ac_advanced_scrum_master_subj$,
+  body_text = $ac_advanced_scrum_master_txt$Hi {first_name},
 
 You started enrolling in SAFe Advanced Scrum Master but did not finish checkout. SASM certification marks you as ready for larger programs and coaching responsibilities.
 
@@ -1250,8 +1271,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_advanced_scrum_master_txt$,
+  body_html = $ac_advanced_scrum_master_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1263,7 +1284,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1391,12 +1412,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_advanced_scrum_master_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'advanced-scrum-master';
 
-('abandoned_cart', 'SAFe Value Stream Mapping', 'value-stream-mapping',
- 'Complete your Value Stream Mapping enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_value_stream_mapping_subj$Complete your Value Stream Mapping enrollment — $100 off with 100OFF$ac_value_stream_mapping_subj$,
+  body_text = $ac_value_stream_mapping_txt$Hi {first_name},
 
 You started enrolling in SAFe Value Stream Mapping but did not finish checkout. Value Stream Mapping gives you a concrete method to improve end-to-end delivery.
 
@@ -1421,8 +1448,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_value_stream_mapping_txt$,
+  body_html = $ac_value_stream_mapping_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1434,7 +1461,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1562,12 +1589,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_value_stream_mapping_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'value-stream-mapping';
 
-('abandoned_cart', 'Responsible AI', 'responsible-ai',
- 'Complete your Responsible AI enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_responsible_ai_subj$Complete your Responsible AI enrollment — $100 off with 100OFF$ac_responsible_ai_subj$,
+  body_text = $ac_responsible_ai_txt$Hi {first_name},
 
 You started enrolling in Achieving Responsible AI with SAFe but did not finish checkout. Responsible AI credentials help you guide AI initiatives with trust and governance.
 
@@ -1592,8 +1625,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_responsible_ai_txt$,
+  body_html = $ac_responsible_ai_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1605,7 +1638,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1733,12 +1766,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_responsible_ai_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'responsible-ai';
 
-('abandoned_cart', 'AI-Driven Scrum Master', 'ai-driven-scrum-master',
- 'Complete your AI-Driven Scrum Master enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_ai_driven_scrum_master_subj$Complete your AI-Driven Scrum Master enrollment — $100 off with 100OFF$ac_ai_driven_scrum_master_subj$,
+  body_text = $ac_ai_driven_scrum_master_txt$Hi {first_name},
 
 You started enrolling in AI-Driven Scrum Master but did not finish checkout. AI-capable Scrum Masters are becoming the default expectation on modern delivery teams.
 
@@ -1763,8 +1802,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_ai_driven_scrum_master_txt$,
+  body_html = $ac_ai_driven_scrum_master_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1776,7 +1815,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -1904,12 +1943,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_ai_driven_scrum_master_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'ai-driven-scrum-master';
 
-('abandoned_cart', 'Executive GenAI Leadership', 'executive-genai-leadership',
- 'Complete your Executive GenAI Leadership enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_executive_genai_leadership_subj$Complete your Executive GenAI Leadership enrollment — $100 off with 100OFF$ac_executive_genai_leadership_subj$,
+  body_text = $ac_executive_genai_leadership_txt$Hi {first_name},
 
 You started enrolling in Executive GenAI Leadership but did not finish checkout. Executives who understand GenAI are better positioned to fund and govern AI initiatives.
 
@@ -1934,8 +1979,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_executive_genai_leadership_txt$,
+  body_html = $ac_executive_genai_leadership_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1947,7 +1992,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -2075,12 +2120,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_executive_genai_leadership_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'executive-genai-leadership';
 
-('abandoned_cart', 'Generative AI for Project Managers', 'generative-ai-project-managers',
- 'Complete your GenAI for Project Managers enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_generative_ai_project_managers_subj$Complete your GenAI for Project Managers enrollment — $100 off with 100OFF$ac_generative_ai_project_managers_subj$,
+  body_text = $ac_generative_ai_project_managers_txt$Hi {first_name},
 
 You started enrolling in Generative AI for Project Managers but did not finish checkout. Project managers who use GenAI well deliver clearer communication and faster execution.
 
@@ -2105,8 +2156,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_generative_ai_project_managers_txt$,
+  body_html = $ac_generative_ai_project_managers_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -2118,7 +2169,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -2246,12 +2297,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_generative_ai_project_managers_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'generative-ai-project-managers';
 
-('abandoned_cart', 'Certified GenAI Practitioner', 'certified-genai-practitioner',
- 'Complete your GenAI Practitioner enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_certified_genai_practitioner_subj$Complete your GenAI Practitioner enrollment — $100 off with 100OFF$ac_certified_genai_practitioner_subj$,
+  body_text = $ac_certified_genai_practitioner_txt$Hi {first_name},
 
 You started enrolling in Certified GenAI Practitioner but did not finish checkout. GenAI practitioner skills are increasingly required across product, delivery, and operations roles.
 
@@ -2276,8 +2333,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_certified_genai_practitioner_txt$,
+  body_html = $ac_certified_genai_practitioner_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -2289,7 +2346,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -2417,12 +2474,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_certified_genai_practitioner_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'certified-genai-practitioner';
 
-('abandoned_cart', 'No-Code AI Agents & Automation', 'ai-agent-builder',
- 'Complete your No-Code AI Agents enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_ai_agent_builder_subj$Complete your No-Code AI Agents enrollment — $100 off with 100OFF$ac_ai_agent_builder_subj$,
+  body_text = $ac_ai_agent_builder_txt$Hi {first_name},
 
 You started enrolling in No-Code AI Agents & Automation but did not finish checkout. No-code AI agent skills help you ship automation faster than waiting on engineering capacity.
 
@@ -2447,8 +2510,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_ai_agent_builder_txt$,
+  body_html = $ac_ai_agent_builder_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -2460,7 +2523,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -2588,12 +2651,18 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed'),
+</html>$ac_ai_agent_builder_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'ai-agent-builder';
 
-('abandoned_cart', 'Certified AI Product Manager', 'certified-ai-product-manager',
- 'Complete your AI Product Manager enrollment — $100 off with 100OFF',
- 'Hi {first_name},
+UPDATE email_templates
+SET
+  subject = $ac_certified_ai_product_manager_subj$Complete your AI Product Manager enrollment — $100 off with 100OFF$ac_certified_ai_product_manager_subj$,
+  body_text = $ac_certified_ai_product_manager_txt$Hi {first_name},
 
 You started enrolling in Certified AI Product Manager but did not finish checkout. AI Product Manager certification shows you can turn AI capability into customer outcomes.
 
@@ -2618,8 +2687,8 @@ Marcus Ball
 Agile36
 m.ball@agile36.com
 
-Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
- '<!DOCTYPE html>
+Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner$ac_certified_ai_product_manager_txt$,
+  body_html = $ac_certified_ai_product_manager_html$<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -2631,7 +2700,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eceff3; padding:32px 12px;">
 <tr>
 <td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:''Segoe UI'', Arial, Helvetica, sans-serif; color:#1f2733;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(16,42,77,0.08); font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:#1f2733;">
 
 <!-- Logo header -->
 <tr>
@@ -2759,5 +2828,23 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 </tr>
 </table>
 </body>
-</html>',
- '100OFF', 100.00, 'fixed');
+</html>$ac_certified_ai_product_manager_html$,
+  discount_code = '100OFF',
+  discount_amount = 100.00,
+  discount_type = 'fixed',
+  updated_at = NOW()
+WHERE template_type = 'abandoned_cart'
+  AND course_slug = 'certified-ai-product-manager';
+
+
+-- Verify
+SELECT course_slug, discount_code, discount_amount, subject,
+  (body_html LIKE '%logo.png%') AS has_logo,
+  (body_html LIKE '%100OFF%') AS has_100off,
+  (body_html LIKE '%98%%') AS has_98,
+  (body_html ILIKE '%Scaled Agile feedback%') AS has_feedback,
+  (body_html LIKE '%Marcus Ball%') AS has_marcus,
+  (body_html LIKE '%data:image%') AS has_base64
+FROM email_templates
+WHERE template_type = 'abandoned_cart'
+ORDER BY course_slug;
