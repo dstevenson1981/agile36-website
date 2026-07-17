@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
-import PromoBanner, { isPromoBannerVisible, PROMO_BANNER_STICKY_OFFSET_PX } from "./PromoBanner";
+import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./PromoBanner";
 
 interface Course {
   id: string;
@@ -535,7 +535,7 @@ export default function Header() {
     },
   ];
 
-  const promoBannerActive = isPromoBannerVisible();
+  const promoBannerActive = usePromoBannerActive();
 
   const selectedCategoryMeta =
     MEGA_MENU_CATEGORIES.find((c) => c.id === selectedMegaMenuCategory) ?? MEGA_MENU_CATEGORIES[0];
@@ -547,7 +547,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Promo Banner — 100OFF coupon via email modal */}
+      {/* Promo Banner — tap to copy 100OFF */}
       <PromoBanner />
 
       {/* Navigation Header — offset when thin promo strip is visible */}

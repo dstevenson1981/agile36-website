@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
-import PromoBanner, { isPromoBannerVisible, PROMO_BANNER_STICKY_OFFSET_PX } from "./components/PromoBanner";
+import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./components/PromoBanner";
 import HeroTrustStrip from "./components/HeroTrustStrip";
 
 interface Course {
@@ -486,11 +486,11 @@ export default function Home() {
     </Link>
   );
 
-  const promoBannerActive = isPromoBannerVisible();
+  const promoBannerActive = usePromoBannerActive();
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Promo Banner — 100OFF coupon via email modal */}
+      {/* Promo Banner — tap to copy 100OFF */}
       <PromoBanner />
 
       {/* Navigation Header with Mega Menu - Only on Home Page */}

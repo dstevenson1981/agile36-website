@@ -1,20 +1,40 @@
 "use client";
 
-import { useState } from "react";
-import CouponModal from "./CouponModal";
-import CouponDisplayModal from "./CouponDisplayModal";
+import { useEffect, useState } from "react";
 import {
   isSitePromoActive,
+  getPromoCountdown,
   BANNER_COUPON_CODE,
+  PROMO_ENDS_SHORT,
+  PROMO_EXPIRES_ISO,
+  type PromoCountdown,
 } from "@/app/lib/site-promo";
 
 export { BANNER_COUPON_CODE };
 
-/** Bar height (50px) + brand accent under the strip (used to offset sticky nav). */
-export const PROMO_BANNER_STICKY_OFFSET_PX = 54;
+/** Bar height + padding under the strip (used to offset sticky nav). */
+export const PROMO_BANNER_STICKY_OFFSET_PX = 72;
 
 export function isPromoBannerVisible(): boolean {
   return isSitePromoActive();
+}
+
+/** Live promo visibility — rechecks every second so sticky nav offset clears when the countdown ends. */
+export function usePromoBannerActive(): boolean {
+  const [active, setActive] = useState(() => isSitePromoActive());
+
+  useEffect(() => {
+    const tick = () => setActive(isSitePromoActive());
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  return active;
+}
+
+function pad2(n: number): string {
+  return String(n).padStart(2, "0");
 }
 
 function ConfettiLeft({ className }: { className?: string }) {
@@ -28,7 +48,7 @@ function ConfettiLeft({ className }: { className?: string }) {
         opacity={0.92}
       />
       <circle cx="32" cy="10" r="3" fill="#fde68a" opacity={0.95} />
-      <circle cx="8" cy="26" r="2.5" fill="#fff" opacity={0.35} />
+      <circle cx="8" cy="26" r="2.5" fill="#fa4a23" opacity={0.45} />
       <defs>
         <linearGradient id="pb-gold" x1="0" y1="0" x2="36" y2="28" gradientUnits="userSpaceOnUse">
           <stop stopColor="#fef9c3" />
@@ -58,66 +78,150 @@ function SparkStar({ className }: { className?: string }) {
   );
 }
 
+function CountdownUnit({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex min-w-[1.75rem] flex-col items-center leading-none sm:min-w-[2rem]">
+      <span className="font-mono text-[11px] font-extrabold tabular-nums text-[#01203d] sm:text-sm">
+        {value}
+      </span>
+      <span className="mt-0.5 text-[8px] font-semibold uppercase tracking-wide text-neutral-500 sm:text-[9px]">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
+  return (
+    <div
+      className="flex shrink-0 items-center gap-0.5 rounded-xl border border-[#fa4a23]/25 bg-white/80 px-1.5 py-1 shadow-[0_1px_0_rgba(250,74,35,.08)] sm:gap-1 sm:px-2.5"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <CountdownUnit value={pad2(countdown.days)} label="days" />
+      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
+        :
+      </span>
+      <CountdownUnit value={pad2(countdown.hours)} label="hrs" />
+      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
+        :
+      </span>
+      <CountdownUnit value={pad2(countdown.minutes)} label="min" />
+      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
+        :
+      </span>
+      <CountdownUnit value={pad2(countdown.seconds)} label="sec" />
+    </div>
+  );
+}
+
 /**
- * Promo strip — subscribe with email to reveal 100OFF (code not shown in-bar).
+ * Promo strip — tap to copy 100OFF (no email gate), with countdown + motion.
  */
 export default function PromoBanner() {
-  const [showCouponModal, setShowCouponModal] = useState(false);
-  const [showCouponDisplay, setShowCouponDisplay] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [countdown, setCountdown] = useState<PromoCountdown | null>(() =>
+    isSitePromoActive() ? getPromoCountdown() : null
+  );
+  const [active, setActive] = useState(() => isSitePromoActive());
 
-  if (!isPromoBannerVisible()) {
+  useEffect(() => {
+    const tick = () => {
+      const nextActive = isSitePromoActive();
+      setActive(nextActive);
+      setCountdown(nextActive ? getPromoCountdown() : null);
+    };
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  if (!active || !countdown) {
     return null;
   }
 
-  const handleClaimCoupon = () => {
-    setShowCouponModal(false);
-    setShowCouponDisplay(true);
+  const copyToClipboard = async (text: string): Promise<boolean> => {
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        /* fall through to legacy copy */
+      }
+    }
+
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return ok;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleClipCode = async () => {
+    const ok = await copyToClipboard(BANNER_COUPON_CODE);
+    if (ok) {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2200);
+    }
   };
 
   return (
-    <>
-      <div className="sticky top-0 z-[60] bg-[#f8f7f3] px-2 py-2 sm:px-3">
-        <button
-          type="button"
-          onClick={() => setShowCouponModal(true)}
-          className="relative mx-auto box-border flex min-h-[58px] w-full max-w-[1260px] items-center justify-between gap-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white px-3 py-2 shadow-[0_1px_0_rgba(0,0,0,.03)] transition hover:border-[#fa4a23]/40 hover:shadow-[0_2px_8px_rgba(250,74,35,.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fa4a23] focus-visible:ring-offset-2 sm:gap-4 sm:px-6"
-          aria-label="Subscribe for $100 off — enter your email to unlock your promo code"
-        >
-          <div className="flex min-w-0 items-center gap-2 sm:gap-4">
-            <ConfettiLeft className="hidden h-7 w-8 shrink-0 opacity-75 sm:block" />
-            <SparkStar className="h-4 w-4 shrink-0 text-[#fa4a23]" />
-            <div className="min-w-0 text-left">
-              <p className="truncate text-sm font-bold leading-tight text-neutral-900 sm:text-base">
-                Build Skills. Build Your Future.
-              </p>
-              <p className="truncate text-xs font-medium text-neutral-600 sm:text-sm">
-                Ends soon • Save <span className="font-bold text-[#fa4a23]">$100 off</span> — subscribe to unlock
-              </p>
-            </div>
-          </div>
+    <div className="sticky top-0 z-[60] bg-[#f8f7f3] px-2 py-2 sm:px-3">
+      <div
+        className="animate-promo-banner-gradient relative mx-auto box-border flex min-h-[64px] w-full max-w-[1260px] items-center justify-between gap-2 overflow-hidden rounded-2xl border border-[#fa4a23]/25 px-3 py-2 shadow-[0_2px_12px_rgba(250,74,35,.12)] sm:gap-4 sm:px-6"
+        style={{
+          backgroundImage:
+            "linear-gradient(105deg, #fff7f4 0%, #ffffff 28%, #fff1eb 55%, #ffe8df 78%, #fff7f4 100%)",
+        }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_140%_at_8%_0%,rgba(250,74,35,.10),transparent_42%),radial-gradient(70%_100%_at_92%_100%,rgba(250,74,35,.08),transparent_45%)]"
+          aria-hidden
+        />
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="text-right">
-              <span className="inline-flex cursor-pointer items-center rounded-full border border-[#fa4a23]/70 bg-[#fa4a23] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white transition group-hover:bg-[#e8431f] sm:px-4 sm:text-sm">
-                Subscribe for $100 off →
-              </span>
-              <p className="mt-0.5 text-[11px] font-medium text-neutral-500">email to unlock code</p>
-            </div>
+        <div className="relative flex min-w-0 items-center gap-2 sm:gap-3">
+          <ConfettiLeft className="animate-promo-confetti hidden h-7 w-8 shrink-0 opacity-90 sm:block" />
+          <SparkStar className="animate-promo-spark h-4 w-4 shrink-0 text-[#fa4a23]" />
+          <div className="min-w-0">
+            <p className="truncate text-sm font-bold leading-tight text-neutral-900 sm:text-base">
+              Build Skills. Build Your Future.
+            </p>
+            <p className="truncate text-xs font-medium text-neutral-600 sm:text-sm">
+              Ends{" "}
+              <time dateTime={PROMO_EXPIRES_ISO} className="font-semibold text-[#fa4a23]">
+                {PROMO_ENDS_SHORT}
+              </time>{" "}
+              • Save <span className="font-bold text-[#fa4a23]">$100 off</span> with code
+            </p>
           </div>
-        </button>
+        </div>
+
+        <div className="relative flex shrink-0 items-center gap-2 sm:gap-3">
+          <PromoCountdownDisplay countdown={countdown} />
+          <div className="hidden h-8 w-px bg-[#fa4a23]/20 sm:block" aria-hidden />
+          <div className="text-right">
+            <button
+              type="button"
+              onClick={handleClipCode}
+              className="animate-promo-cta inline-flex cursor-pointer items-center rounded-full border border-[#fa4a23]/70 px-3 py-1.5 font-mono text-xs font-extrabold tracking-wide text-[#e8431f] transition hover:border-[#fa4a23] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fa4a23] focus-visible:ring-offset-1 sm:px-4 sm:text-sm"
+              aria-label={copied ? "Promo code copied" : `Copy promo code ${BANNER_COUPON_CODE}`}
+              translate="no"
+            >
+              {copied ? "Copied!" : `${BANNER_COUPON_CODE} · $100 off`}
+            </button>
+            <p className="mt-0.5 text-[11px] font-medium text-neutral-500">tap to copy</p>
+          </div>
+        </div>
       </div>
-
-      <CouponModal
-        isOpen={showCouponModal}
-        onClose={() => setShowCouponModal(false)}
-        onClaimCoupon={handleClaimCoupon}
-        couponCode={BANNER_COUPON_CODE}
-      />
-      <CouponDisplayModal
-        isOpen={showCouponDisplay}
-        onClose={() => setShowCouponDisplay(false)}
-        couponCode={BANNER_COUPON_CODE}
-      />
-    </>
+    </div>
   );
 }

@@ -505,3 +505,82 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cine-panel .cover { transition-duration: 0.01ms; }
 }
+
+/* Promo banner — soft orange motion accents (matches animate-promo-* classes) */
+@keyframes promo-banner-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes promo-banner-cta-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(250, 74, 35, 0.35);
+    border-color: rgba(250, 74, 35, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(250, 74, 35, 0);
+    border-color: rgba(250, 74, 35, 0.95);
+  }
+}
+
+@keyframes promo-banner-cta-shimmer {
+  0% { transform: translateX(-120%) skewX(-16deg); }
+  100% { transform: translateX(220%) skewX(-16deg); }
+}
+
+@keyframes promo-banner-spark {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  40% { transform: scale(1.18) rotate(12deg); opacity: 1; }
+  70% { transform: scale(0.92) rotate(-8deg); opacity: 0.9; }
+}
+
+@keyframes promo-banner-confetti {
+  0%, 100% { transform: translateY(0); opacity: 0.75; }
+  50% { transform: translateY(-2px); opacity: 1; }
+}
+
+.animate-promo-banner-gradient {
+  background-size: 220% 220%;
+  animation: promo-banner-gradient 8s ease-in-out infinite;
+}
+
+.animate-promo-cta {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  animation: promo-banner-cta-pulse 2.4s ease-in-out infinite;
+}
+
+.animate-promo-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  animation: promo-banner-cta-shimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.animate-promo-spark {
+  animation: promo-banner-spark 2.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-promo-confetti {
+  animation: promo-banner-confetti 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-promo-banner-gradient,
+  .animate-promo-cta,
+  .animate-promo-cta::after,
+  .animate-promo-spark,
+  .animate-promo-confetti {
+    animation: none;
+  }
+}
