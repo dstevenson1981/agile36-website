@@ -1418,7 +1418,7 @@ export default function CityPOPMCoursePage() {
 
                   <div className="bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/15 rounded-lg p-3 mt-4">
                     <p className="text-xs text-[#475569] text-center">
-                      💡 <strong>Interested in the full course?</strong> We'll send you exclusive enrollment details and special pricing after you complete the practice test.
+                      💡 <strong>Interested in the full course?</strong> Explore upcoming dates on the course schedule when you're ready to enroll.
                     </p>
                   </div>
 

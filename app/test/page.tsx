@@ -61,6 +61,17 @@ export default function TestPage() {
       language: "English",
     },
     {
+      id: 8,
+      name: "SAFe Advanced Scrum Master Practice Test",
+      icon: "/SSM.jpeg",
+      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
+      freeTests: "1 Free Test",
+      users: "2K+ Users",
+      rating: "5.0",
+      enrolled: "2K+ enrolled",
+      language: "English",
+    },
+    {
       id: 5,
       name: "SAFe DevOps Practice Test",
       icon: "/Devops.png",
@@ -539,6 +550,8 @@ export default function TestPage() {
                       router.push("/test/leading-safe");
                     } else if (selectedTest.includes("Lean Portfolio Management")) {
                       router.push("/account/practice-exams/lpm");
+                    } else if (selectedTest.includes("Advanced Scrum Master")) {
+                      router.push("/test/advanced-scrum-master");
                     } else if (selectedTest.includes("Scrum Master")) {
                       router.push("/test/scrum-master");
                     } else if (selectedTest.includes("Product Owner") || selectedTest.includes("Product Manager")) {
@@ -622,7 +635,7 @@ export default function TestPage() {
 
                   <div className="rounded-lg liquid-glass p-3 mt-4">
                     <p className="text-xs text-[#64748b] text-center">
-                      💡 <strong className="text-[#475569]">Interested in the full course?</strong> We'll send you exclusive enrollment details and special pricing after you complete the practice test.
+                      💡 <strong className="text-[#475569]">Interested in the full course?</strong> Explore upcoming dates on the course schedule when you're ready to enroll.
                     </p>
                   </div>
 
