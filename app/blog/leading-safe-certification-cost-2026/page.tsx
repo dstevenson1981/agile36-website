@@ -148,7 +148,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
           </h3>
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
             At Agile36, Leading SAFe certification starts at{" "}
-            <strong>$545</strong> — this includes:
+            <strong>$515</strong> — this includes:
           </p>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-300">
             <li>2-day live, instructor-led training (16 hours)</li>

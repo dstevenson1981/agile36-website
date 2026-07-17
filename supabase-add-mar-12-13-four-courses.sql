@@ -36,8 +36,8 @@ INSERT INTO course_schedules (
   'advanced-scrum-master',
   'SAFe Scrum',
   '2026-03-12 09:00:00-04:00',
-  '2026-03-13 14:00:00-04:00',
-  '09:00:00', '14:00:00',
+  '2026-03-13 17:00:00-04:00',
+  '09:00:00', '17:00:00',
   'America/New_York', 'morning', 'live-virtual', '02 days',
   'Deadra Stevenson', '/Deadra.jpeg',
   950.00, 1900.00, 'USD', 25, 25, 'English', true, 'active', false

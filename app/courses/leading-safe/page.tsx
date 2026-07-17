@@ -1195,7 +1195,7 @@ export default function LeadingSafeCoursePage() {
               What is the Fee for SAFe Agilist Certification?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              The cost of the Leading SAFe certification course typically ranges from <strong>$545 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agilist certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the Leading SAFe certification course typically ranges from <strong>$515 to $910</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Agilist certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>

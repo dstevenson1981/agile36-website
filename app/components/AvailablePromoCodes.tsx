@@ -7,8 +7,8 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** 100OFF is email-gated via the site banner subscribe flow — not clipped at checkout. */
-const DEFAULT_PROMOS: AvailablePromo[] = [];
+/** Clip coupons at checkout — $100 off (banner subscribe-to-reveal can remain as an alternate path). */
+const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
 
 type Props = {
   availablePromos?: AvailablePromo[];

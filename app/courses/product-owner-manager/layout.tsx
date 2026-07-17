@@ -129,7 +129,7 @@ export default async function ProductOwnerManagerLayout({
         "name": "How much does SAFe POPM certification cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe POPM certification through Agile36 costs $545. This includes 2-day live training, course materials, exam fee, one free retake, one-year SAFe Community Platform access, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed."
+          "text": "SAFe POPM certification through Agile36 costs $515. This includes 2-day live training, course materials, exam fee, one free retake, one-year SAFe Community Platform access, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed."
         }
       }
     ]

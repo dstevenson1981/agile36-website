@@ -1342,7 +1342,7 @@ export default function ScrumMasterCoursePage() {
               What is the Fee for SAFe Scrum Master Certification?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              The cost of the SAFe Scrum Master certification course typically ranges from <strong>$545 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Scrum Master certification course typically ranges from <strong>$515 to $1,030</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Scrum Master certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>
