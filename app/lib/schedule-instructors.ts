@@ -75,7 +75,12 @@ const SCHEDULE_INSTRUCTOR_PROFILES: Record<string, ScheduleInstructorProfile> = 
       "His coaching is rooted in the belief that organizations unlock extraordinary potential when they embrace Lean-Agile principles. Over the course of his career, Marcus has guided teams and leaders through adopting Agile practices, strengthening collaboration, and building a culture of continuous improvement.",
       "With Agile36, he delivers high-quality SAFe certification training designed to equip teams, leaders, and organizations with the skills needed to improve flow, increase value delivery, and operate more effectively. As a certified SAFe Program Consultant (SPC), Marcus focuses on practical application and capabilities that support long-term success.",
     ],
-    clients: [],
+    clients: [
+      { name: "Anthem", logo: "/instructors/clients/anthem.svg" },
+      { name: "KPMG", logo: "/instructors/clients/kpmg.svg" },
+      { name: "Cox Communications", logo: "/instructors/clients/cox.svg" },
+      { name: "Macy's", logo: "/instructors/clients/macys.svg" },
+    ],
     testimonials: [
       {
         name: "Daniel Torres",
@@ -107,7 +112,13 @@ const SCHEDULE_INSTRUCTOR_PROFILES: Record<string, ScheduleInstructorProfile> = 
       "Joe brings hands-on experience guiding organizations through SAFe adoption, team-level execution, and program-level planning. His training emphasizes real-world scenarios, clear facilitation, and skills learners can apply immediately after class.",
       "Learners work with an SPC who combines deep framework knowledge with a straightforward, outcome-oriented teaching style—helping you prepare for certification and for the day-to-day work of operating in a SAFe environment.",
     ],
-    clients: [],
+    clients: [
+      { name: "ADP", logo: "/instructors/clients/adp.svg" },
+      { name: "Experian", logo: "/instructors/clients/experian.svg" },
+      { name: "Accenture", logo: "/instructors/clients/accenture.svg" },
+      { name: "CVS Health", logo: "/instructors/clients/cvs-health.svg" },
+      { name: "Amazon", logo: "/instructors/clients/amazon.svg" },
+    ],
     testimonials: [
       {
         name: "Rachel Nguyen",
@@ -139,7 +150,13 @@ const SCHEDULE_INSTRUCTOR_PROFILES: Record<string, ScheduleInstructorProfile> = 
       "With experience spanning Agile transformation, organizational development, and change leadership, Martina focuses on building collaboration, improving flow, and creating environments where teams take ownership of outcomes. Her facilitation style emphasizes clarity, real-world application, and skills you can use immediately after class.",
     ],
     linkedin: "https://www.linkedin.com/in/martinasvoboda",
-    clients: [],
+    clients: [
+      { name: "Honeywell", logo: "/instructors/clients/honeywell.svg" },
+      { name: "Anthem", logo: "/instructors/clients/anthem.svg" },
+      { name: "EY", logo: "/instructors/clients/ey.svg" },
+      { name: "Blue Cross Blue Shield", logo: "/instructors/clients/blue-cross-blue-shield.svg" },
+      { name: "Humana", logo: "/instructors/clients/humana.svg" },
+    ],
     testimonials: [
       {
         name: "Olivia Hart",
