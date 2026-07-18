@@ -2,17 +2,22 @@
 
 import { useState } from "react";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
+import ScheduleInstructorPanel from "@/app/components/schedule/ScheduleInstructorPanel";
 import ScheduleInstructorRow from "@/app/components/schedule/ScheduleInstructorRow";
 import {
   calculateDiscount,
   formatDateRange,
-  formatTimeShort,
-  formatTimezoneLabel,
+  formatDaysOfWeek,
+  formatDurationLabel,
+  formatHoursPerDay,
+  formatTimeRange,
+  formatTimezonePillLabel,
   getScheduleUrgency,
   getTimeSlotColor,
   getTimeSlotLabel,
   type CourseScheduleRow,
 } from "@/app/lib/schedule-display";
+import { getScheduleInstructorProfile } from "@/app/lib/schedule-instructors";
 
 type ScheduleCardProps = {
   schedule: CourseScheduleRow;
@@ -122,6 +127,7 @@ export default function ScheduleCard({
   enrollLabel = "Enroll Now",
 }: ScheduleCardProps) {
   const [shareCopied, setShareCopied] = useState(false);
+  const [instructorExpanded, setInstructorExpanded] = useState(false);
   const urgency = getScheduleUrgency(schedule);
   const totalPrice = (parseFloat(schedule.price) * quantity).toFixed(2);
   const unitPrice = parseFloat(schedule.price);
@@ -129,8 +135,14 @@ export default function ScheduleCard({
     ? calculateDiscount(parseFloat(schedule.original_price), unitPrice)
     : 0;
   const hasBrochure = Boolean(brochureHref || onBrochureClick);
-  const tzLabel = formatTimezoneLabel(schedule.timezone);
+  const timeRange = formatTimeRange(schedule.start_time, schedule.end_time);
+  const tzPill = formatTimezonePillLabel(schedule.timezone);
+  const hoursPerDay = formatHoursPerDay(schedule.start_time, schedule.end_time);
+  const durationLabel = formatDurationLabel(schedule.duration);
+  const daysOfWeek = formatDaysOfWeek(schedule.start_date, schedule.end_date);
   const batchType = schedule.is_weekend === true ? "Weekend" : "Weekday";
+  const instructorProfile = getScheduleInstructorProfile(schedule.instructor_name);
+  const hasMetaIcons = Boolean(hoursPerDay || durationLabel || daysOfWeek);
 
   const handleShare = async () => {
     const url = `${window.location.origin}/courses/${courseSlug}/schedule/checkout?schedule=${schedule.id}&course=${courseSlug}&quantity=${quantity}`;
@@ -168,12 +180,71 @@ export default function ScheduleCard({
             <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
               {formatDateRange(schedule.start_date, schedule.end_date)}
             </h3>
-            <p className="mt-1.5 text-sm text-gray-500">
-              {tzLabel} • {formatTimeShort(schedule.start_time || "")} –{" "}
-              {formatTimeShort(schedule.end_time || "")}
-              {schedule.duration ? ` • ${schedule.duration}` : ""}
-            </p>
-            <p className="mt-1 flex items-center gap-1.5 text-sm text-gray-600">
+
+            {(timeRange || tzPill) && (
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                {timeRange && (
+                  <p className="text-base font-bold tracking-tight text-[#01203d] sm:text-lg">
+                    {timeRange}
+                  </p>
+                )}
+                <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-medium text-gray-500">
+                  {tzPill}
+                </span>
+              </div>
+            )}
+
+            {hasMetaIcons && (
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-gray-500">
+                {hoursPerDay && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <svg className="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.75}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    {hoursPerDay}
+                  </span>
+                )}
+                {durationLabel && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <svg className="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.75}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    {durationLabel}
+                  </span>
+                )}
+                {daysOfWeek && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <svg className="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.75}
+                        d="M12 14l9-5-9-5-9 5 9 5z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.75}
+                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                      />
+                    </svg>
+                    {daysOfWeek}
+                  </span>
+                )}
+              </div>
+            )}
+
+            <p className="mt-2 flex items-center gap-1.5 text-sm text-gray-600">
               <svg className="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path
                   strokeLinecap="round"
@@ -194,6 +265,12 @@ export default function ScheduleCard({
               examIncluded={schedule.exam_included}
               examLabel={examLabel}
               variant="prominent"
+              isExpanded={instructorExpanded}
+              onToggleExpand={
+                instructorProfile
+                  ? () => setInstructorExpanded((open) => !open)
+                  : undefined
+              }
             />
           </div>
 
@@ -315,6 +392,10 @@ export default function ScheduleCard({
           </div>
         </div>
       </div>
+
+      {instructorExpanded && instructorProfile && (
+        <ScheduleInstructorPanel profile={instructorProfile} />
+      )}
     </article>
   );
 }

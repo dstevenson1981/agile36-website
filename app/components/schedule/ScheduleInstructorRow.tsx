@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { getScheduleInstructorProfile } from "@/app/lib/schedule-instructors";
 
 type Props = {
   instructorName?: string | null;
@@ -10,6 +11,9 @@ type Props = {
   /** Override exam line when schedule rows use a fixed label (e.g. devops). */
   examLabel?: string;
   variant?: "default" | "prominent";
+  /** Controlled expand state for rich instructor profiles (e.g. Deadra). */
+  isExpanded?: boolean;
+  onToggleExpand?: () => void;
 };
 
 function examLineText(examIncluded: boolean | null | undefined, examLabel?: string): string {
@@ -25,12 +29,16 @@ export default function ScheduleInstructorRow({
   examIncluded,
   examLabel,
   variant = "default",
+  isExpanded = false,
+  onToggleExpand,
 }: Props) {
   const name = instructorName?.trim() || "Martina Svoboda";
-  const image = instructorImage?.trim() || "/martina.jpg";
+  const profile = getScheduleInstructorProfile(name);
+  const image = (instructorImage?.trim() || profile?.image || "/martina.jpg").trim();
   const examText = examLineText(examIncluded, examLabel);
   const avatarSize = variant === "prominent" ? 48 : 40;
   const avatarClass = variant === "prominent" ? "h-12 w-12 ring-2 ring-white shadow-sm" : "h-10 w-10";
+  const canExpand = Boolean(profile && onToggleExpand);
 
   return (
     <div className="flex items-center gap-3">
@@ -57,9 +65,30 @@ export default function ScheduleInstructorRow({
           </svg>
         </div>
       )}
-      <div>
+      <div className="min-w-0">
         <div className={`font-semibold text-gray-900 ${variant === "prominent" ? "text-base" : ""}`}>{name}</div>
-        <div className={`mt-0.5 flex items-center gap-2 text-gray-600 ${variant === "prominent" ? "text-sm" : "text-sm"}`}>
+        {canExpand && (
+          <button
+            type="button"
+            onClick={onToggleExpand}
+            aria-expanded={isExpanded}
+            className={`mt-1.5 inline-flex items-center gap-1.5 rounded-md border border-[#1a56db] px-2.5 py-1 text-xs font-semibold text-[#1a56db] transition-colors hover:bg-[#eff6ff] ${
+              isExpanded ? "" : "animate-learn-more-bob"
+            }`}
+          >
+            Learn More
+            <svg
+              className={`h-3.5 w-3.5 text-[#e85d4c] transition-transform ${isExpanded ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        )}
+        <div className={`flex items-center gap-2 text-gray-600 ${canExpand ? "mt-1.5" : "mt-0.5"} ${variant === "prominent" ? "text-sm" : "text-sm"}`}>
           <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path
               strokeLinecap="round"

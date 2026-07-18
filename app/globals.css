@@ -200,6 +200,27 @@ body {
   }
 }
 
+/* Schedule card: gentle bob on "Learn More" so the expand control is noticeable */
+@keyframes learn-more-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.animate-learn-more-bob {
+  animation: learn-more-bob 1.35s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-learn-more-bob {
+    animation: none;
+  }
+}
+
 /**
  * Shared markdown / MDX article body — use on generated blog posts and anywhere
  * CMS-like HTML needs the same typography as agile36.com (dark cinematic glass, amber accents).

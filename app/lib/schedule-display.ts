@@ -43,6 +43,23 @@ export function formatTimezoneLabel(timezone?: string): string {
   return timezone;
 }
 
+/** Friendlier timezone label for schedule meta pills (e.g. "Eastern Time"). */
+export function formatTimezonePillLabel(timezone?: string): string {
+  if (!timezone || timezone === "America/New_York" || timezone === "EST" || timezone === "EDT") {
+    return "Eastern Time";
+  }
+  if (timezone === "America/Chicago" || timezone === "CST" || timezone === "CDT") {
+    return "Central Time";
+  }
+  if (timezone === "America/Denver" || timezone === "MST" || timezone === "MDT") {
+    return "Mountain Time";
+  }
+  if (timezone === "America/Los_Angeles" || timezone === "PST" || timezone === "PDT") {
+    return "Pacific Time";
+  }
+  return timezone;
+}
+
 export function formatTimeShort(time: string): string {
   if (!time) return "";
   const [hours, minutes] = time.split(":");
@@ -50,6 +67,77 @@ export function formatTimeShort(time: string): string {
   const ampm = hour >= 12 ? "PM" : "AM";
   const displayHour = hour % 12 || 12;
   return `${displayHour}:${minutes} ${ampm}`;
+}
+
+/** Prominent time range for schedule cards, e.g. "9:00 AM — 5:00 PM". */
+export function formatTimeRange(startTime?: string, endTime?: string): string | null {
+  const start = formatTimeShort(startTime || "");
+  const end = formatTimeShort(endTime || "");
+  if (!start || !end) return null;
+  return `${start} — ${end}`;
+}
+
+/** Hours per day from start/end times, e.g. "8 hrs / day". */
+export function formatHoursPerDay(startTime?: string, endTime?: string): string | null {
+  if (!startTime || !endTime) return null;
+  const [sh, sm = "0"] = startTime.split(":");
+  const [eh, em = "0"] = endTime.split(":");
+  const startMinutes = parseInt(sh, 10) * 60 + parseInt(sm, 10);
+  const endMinutes = parseInt(eh, 10) * 60 + parseInt(em, 10);
+  if (Number.isNaN(startMinutes) || Number.isNaN(endMinutes) || endMinutes <= startMinutes) {
+    return null;
+  }
+  const hours = (endMinutes - startMinutes) / 60;
+  const label = Number.isInteger(hours) ? String(hours) : String(Math.round(hours * 10) / 10);
+  return `${label} hrs / day`;
+}
+
+/** Normalize duration strings like "02 days" → "2 Days". */
+export function formatDurationLabel(duration?: string | null): string | null {
+  if (!duration?.trim()) return null;
+  const match = duration.trim().match(/^0*(\d+)\s*(days?|hrs?|hours?)$/i);
+  if (match) {
+    const count = match[1];
+    const unit = match[2].toLowerCase().startsWith("h") ? (count === "1" ? "Hr" : "Hrs") : count === "1" ? "Day" : "Days";
+    return `${count} ${unit}`;
+  }
+  return duration.trim();
+}
+
+const DAY_ABBR = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+
+/**
+ * Inclusive day-of-week labels between start and end dates, e.g. "Mon, Tue".
+ * Uses calendar dates (UTC date parts when ISO-like) to avoid TZ day shifts.
+ */
+export function formatDaysOfWeek(startDate: string, endDate: string): string | null {
+  try {
+    const start = parseCalendarDate(startDate);
+    const end = parseCalendarDate(endDate);
+    if (!start || !end || end < start) return null;
+
+    const days: string[] = [];
+    const cursor = new Date(start);
+    // Cap at 14 days to avoid runaway loops on bad data
+    for (let i = 0; i < 14 && cursor <= end; i++) {
+      days.push(DAY_ABBR[cursor.getUTCDay()]);
+      cursor.setUTCDate(cursor.getUTCDate() + 1);
+    }
+    return days.length ? days.join(", ") : null;
+  } catch {
+    return null;
+  }
+}
+
+function parseCalendarDate(value: string): Date | null {
+  // Prefer YYYY-MM-DD prefix so "2026-01-05 09:00:00-05:00" stays Jan 5
+  const match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (match) {
+    return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  }
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return new Date(Date.UTC(parsed.getFullYear(), parsed.getMonth(), parsed.getDate()));
 }
 
 export function formatTime(time: string, timezone?: string): string {

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Parent ~/package-lock.json makes Turbopack pick the wrong root and 404 nested routes.
+  turbopack: {
+    root: process.cwd(),
+  },
   outputFileTracingIncludes: {
     "/*": ["./content/blog/**/*", "./data/**/*", "./app/**/*.ts", "./app/**/*.tsx", "./mcp/**/*"],
   },
