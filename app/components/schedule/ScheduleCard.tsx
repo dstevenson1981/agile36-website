@@ -141,7 +141,9 @@ export default function ScheduleCard({
   const durationLabel = formatDurationLabel(schedule.duration);
   const daysOfWeek = formatDaysOfWeek(schedule.start_date, schedule.end_date);
   const batchType = schedule.is_weekend === true ? "Weekend" : "Weekday";
-  const instructorProfile = getScheduleInstructorProfile(schedule.instructor_name);
+  // Match ScheduleInstructorRow fallback so Learn More works when instructor_name is blank.
+  const instructorDisplayName = schedule.instructor_name?.trim() || "Martina Svoboda";
+  const instructorProfile = getScheduleInstructorProfile(instructorDisplayName);
   const hasMetaIcons = Boolean(hoursPerDay || durationLabel || daysOfWeek);
 
   const handleShare = async () => {
