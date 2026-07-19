@@ -28,6 +28,17 @@ export default function TestPage() {
       language: "English",
     },
     {
+      id: 9,
+      name: "Leading SAFe Pro Practice Test | Full Exam",
+      icon: "/Leading SAFe.png",
+      badge: "/test-assets/ffceb9da-1494-452c-91a1-889dd8e99146.png",
+      freeTests: "Full Practice",
+      users: "5K+ Users",
+      rating: "5.0",
+      enrolled: "5K+ enrolled",
+      language: "English",
+    },
+    {
       id: 2,
       name: "Lean Portfolio Management Practice Test",
       icon: "/Lean Portfolio.png",
@@ -546,7 +557,9 @@ export default function TestPage() {
                     }
 
                     // Redirect to practice exam based on selected test
-                    if (selectedTest.includes("Leading SAFe")) {
+                    if (selectedTest.includes("Leading SAFe") && selectedTest.includes("Pro")) {
+                      router.push("/test/leading-safe-pro");
+                    } else if (selectedTest.includes("Leading SAFe")) {
                       router.push("/test/leading-safe");
                     } else if (selectedTest.includes("Lean Portfolio Management")) {
                       router.push("/account/practice-exams/lpm");

@@ -9,5 +9,5 @@ export const metadata = {
 
 /** Short public link → full Leading SAFe Pro practice exam (no login). */
 export default function LeadingSafeProPage() {
-  redirect('/leading-safe-pro-temp');
+  redirect('/test/leading-safe-pro');
 }

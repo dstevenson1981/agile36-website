@@ -7,7 +7,7 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-/** Legacy temp URL → public Leading SAFe Pro practice exam (no key required). */
+/** Legacy temp URL → canonical public Leading SAFe Pro practice exam. */
 export default function LeadingSafeProTemp2Page() {
-  redirect('/leading-safe-pro-temp');
+  redirect('/test/leading-safe-pro');
 }

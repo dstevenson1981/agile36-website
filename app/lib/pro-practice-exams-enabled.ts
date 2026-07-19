@@ -25,6 +25,7 @@ const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
   '/leading-safepro',
   '/leading-safe-pro-temp',
   '/leading-safe-pro-temp-2',
+  '/test/leading-safe-pro',
   '/ssmpro',
   '/scrum-master-pro-temp',
   '/scrum-master-pro-temp-2',

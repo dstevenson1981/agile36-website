@@ -6,7 +6,15 @@ import { LEADING_SAFE_QUESTIONS } from './questions';
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
 
-export default function LeadingSafePracticeTest() {
+type LeadingSafePracticeTestProps = {
+  backHref?: string;
+  backLabel?: string;
+};
+
+export default function LeadingSafePracticeTest({
+  backHref = '/account/practice-exams',
+  backLabel = 'Back to Practice Exams',
+}: LeadingSafePracticeTestProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
@@ -95,10 +103,10 @@ export default function LeadingSafePracticeTest() {
               Retake Test
             </button>
             <Link
-              href="/account/practice-exams"
+              href={backHref}
               className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
             >
-              Back to Practice Exams
+              {backLabel}
             </Link>
           </div>
         </div>
@@ -180,11 +188,8 @@ export default function LeadingSafePracticeTest() {
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
-          href="/account/practice-exams"
-          className="text-sm text-slate-600 hover:text-slate-900"
-        >
-          ← Back to Practice Exams
+        <Link href={backHref} className="text-sm text-slate-600 hover:text-slate-900">
+          ← {backLabel}
         </Link>
         <button
           onClick={handleSubmit}
