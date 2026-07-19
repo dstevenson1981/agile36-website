@@ -1,15 +1,16 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
-import { AGILE36_CONTENT_SECURITY_POLICY } from '@/app/lib/csp-header';
+// Relative imports: some Vercel Edge middleware bundlers fail on `@/` aliases.
+import { AGILE36_CONTENT_SECURITY_POLICY } from './app/lib/csp-header';
 import {
   areProPracticeExamsEnabled,
   isProPracticeExamPath,
-} from '@/app/lib/pro-practice-exams-enabled';
+} from './app/lib/pro-practice-exams-enabled';
 import {
   getScrumMasterProShareKey,
   SSM_PRO_OPEN_COOKIE,
   SSM_PRO_OPEN_COOKIE_VALUE,
-} from '@/app/lib/ssm-pro-open-gate';
+} from './app/lib/ssm-pro-open-gate';
 
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
