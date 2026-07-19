@@ -37,6 +37,62 @@ export function formatDateRange(startDate: string, endDate: string): string {
   }
 }
 
+/** Compact date range for selectors, e.g. "Aug 12–14" or "Aug 28–Sep 1". */
+export function formatDateRangeCompact(startDate: string, endDate: string): string {
+  const start = parseCalendarDate(startDate);
+  const end = parseCalendarDate(endDate || startDate);
+  if (!start) return "Date TBA";
+  if (!end || end.getTime() === start.getTime()) {
+    return start.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  }
+
+  const startMonth = start.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" });
+  const startDay = start.getUTCDate();
+  const endMonth = end.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" });
+  const endDay = end.getUTCDate();
+
+  if (start.getUTCFullYear() === end.getUTCFullYear() && start.getUTCMonth() === end.getUTCMonth()) {
+    return `${startMonth} ${startDay}–${endDay}`;
+  }
+  return `${startMonth} ${startDay}–${endMonth} ${endDay}`;
+}
+
+/** Inclusive calendar-day count between start and end (UTC date parts). */
+export function getInclusiveDayCount(startDate: string, endDate: string): number | null {
+  const start = parseCalendarDate(startDate);
+  const end = parseCalendarDate(endDate || startDate);
+  if (!start || !end || end < start) return null;
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.round((end.getTime() - start.getTime()) / msPerDay) + 1;
+}
+
+/**
+ * Combo schedule dropdown label from schedule fields.
+ * e.g. "Aug 12–14 · 3 days · Weekday" or "Aug 15–16 · 2 days · Weekend"
+ */
+export function formatComboScheduleOptionLabel(schedule: {
+  start_date: string;
+  end_date?: string | null;
+  duration?: string | null;
+  is_weekend?: boolean | null;
+}): string {
+  const endDate = schedule.end_date || schedule.start_date;
+  const datePart = formatDateRangeCompact(schedule.start_date, endDate);
+
+  const fromField = formatDurationLabel(schedule.duration);
+  let durationPart: string | null = null;
+  if (fromField) {
+    durationPart = fromField.replace(/\bDays?\b/g, (m) => m.toLowerCase()).replace(/\bHrs?\b/g, (m) => m.toLowerCase());
+  } else {
+    const days = getInclusiveDayCount(schedule.start_date, endDate);
+    if (days) durationPart = `${days} ${days === 1 ? "day" : "days"}`;
+  }
+
+  const batchPart = schedule.is_weekend === true ? "Weekend" : "Weekday";
+
+  return [datePart, durationPart, batchPart].filter(Boolean).join(" · ");
+}
+
 export function formatTimezoneLabel(timezone?: string): string {
   if (!timezone) return "EST";
   if (timezone === "America/New_York") return "EST";

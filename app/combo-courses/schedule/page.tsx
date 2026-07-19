@@ -4,13 +4,31 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { COMBO_COURSES, type Combo } from "../data";
+import {
+  formatComboScheduleOptionLabel,
+  formatTimeRange,
+  formatTimezoneLabel,
+} from "@/app/lib/schedule-display";
+
+type ComboScheduleOption = {
+  id: string;
+  start_date: string;
+  end_date: string;
+  start_time: string;
+  end_time?: string;
+  timezone?: string;
+  duration?: string | null;
+  is_weekend?: boolean | null;
+  displayDate: string;
+  displayTime: string;
+};
 
 function ComboScheduleContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const comboId = searchParams.get("combo");
   const [combo, setCombo] = useState<Combo | null>(null);
-  const [schedulesByCourse, setSchedulesByCourse] = useState<Record<string, { id: string; start_date: string; start_time: string; displayDate: string; displayTime: string }[]>>({});
+  const [schedulesByCourse, setSchedulesByCourse] = useState<Record<string, ComboScheduleOption[]>>({});
   const [selectedSchedules, setSelectedSchedules] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
 
@@ -28,18 +46,42 @@ function ComboScheduleContent() {
     const fetchAll = async () => {
       // Schedules come from Supabase course_schedules. Course slugs must match Supabase.
       // Deleted or cancelled classes (status != active) will not appear here.
-      const result: Record<string, { id: string; start_date: string; start_time: string; displayDate: string; displayTime: string }[]> = {};
+      const result: Record<string, ComboScheduleOption[]> = {};
       for (const course of combo.courses) {
         try {
           const res = await fetch(`/api/course-schedules?course_slug=${course.slug}&status=active`);
           const data = await res.json();
-          const schedules = (data.data || []).map((s: any) => ({
-            id: s.id,
-            start_date: s.start_date,
-            start_time: s.start_time,
-            displayDate: new Date(s.start_date).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" }),
-            displayTime: s.start_time ? new Date(`1970-01-01T${s.start_time}`).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) : "TBD",
-          }));
+          const schedules = (data.data || []).map((s: {
+            id: string;
+            start_date: string;
+            end_date?: string;
+            start_time?: string;
+            end_time?: string;
+            timezone?: string;
+            duration?: string | null;
+            is_weekend?: boolean | null;
+          }) => {
+            const label = formatComboScheduleOptionLabel({
+              start_date: s.start_date,
+              end_date: s.end_date,
+              duration: s.duration,
+              is_weekend: s.is_weekend,
+            });
+            const timeRange = formatTimeRange(s.start_time, s.end_time);
+            const tz = formatTimezoneLabel(s.timezone);
+            return {
+              id: s.id,
+              start_date: s.start_date,
+              end_date: s.end_date || s.start_date,
+              start_time: s.start_time || "",
+              end_time: s.end_time,
+              timezone: s.timezone,
+              duration: s.duration,
+              is_weekend: s.is_weekend,
+              displayDate: label,
+              displayTime: timeRange ? `${timeRange} ${tz}` : "9am – 5pm EST",
+            };
+          });
           result[course.slug] = schedules;
         } catch {
           result[course.slug] = [];
@@ -148,6 +190,7 @@ function ComboScheduleContent() {
                 {combo.courses.map((course) => {
                   const schedules = schedulesByCourse[course.slug] || [];
                   const selectedId = selectedSchedules[course.slug];
+                  const selectedSchedule = schedules.find((s) => s.id === selectedId);
                   return (
                     <div key={course.id} className="bg-[#1f2c4a]/[0.06] rounded-lg p-4 border border-[#1f2c4a]/15">
                       <h3 className="font-semibold text-[#1f2c4a] mb-3">{course.name}</h3>
@@ -175,7 +218,7 @@ function ComboScheduleContent() {
                         <div>
                           <label className="block text-sm font-medium text-[#64748b] mb-1">Time</label>
                           <div className="w-full px-3 py-2 border border-[#1f2c4a]/15 rounded-md text-sm bg-[#1f2c4a]/[0.06] text-[#475569]">
-                            9am – 5pm EST
+                            {selectedSchedule?.displayTime || "9am – 5pm EST"}
                           </div>
                         </div>
                       </div>
