@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./PromoBanner";
+import SiteSearch from "./SiteSearch";
 
 interface Course {
   id: string;
@@ -74,12 +75,8 @@ export default function Header() {
   const [cinematicHero, setCinematicHero] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState<boolean>(false);
   const [selectedMegaMenuCategory, setSelectedMegaMenuCategory] = useState<string>("SAFe");
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
-  const [searchResults, setSearchResults] = useState<Course[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
-  const searchRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Handle mouse enter with immediate show
@@ -100,7 +97,7 @@ export default function Header() {
     }, 200); // 200ms delay
   };
   
-  // Close mega menu and search when clicking outside
+  // Close mega menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
@@ -110,12 +107,9 @@ export default function Header() {
           closeTimeoutRef.current = null;
         }
       }
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        setShowSearchResults(false);
-      }
     };
 
-    if (showMegaMenu || showSearchResults) {
+    if (showMegaMenu) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
@@ -125,7 +119,7 @@ export default function Header() {
         clearTimeout(closeTimeoutRef.current);
       }
     };
-  }, [showMegaMenu, showSearchResults]);
+  }, [showMegaMenu]);
 
   // On the homepage the header floats as translucent glass over the hero,
   // then fades to its normal solid background once the hero is scrolled past.
@@ -274,33 +268,6 @@ export default function Header() {
       .replace(/\//g, '-');
     
     return `/courses/${titleSlug}`;
-  };
-
-  // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-
-    if (query.trim().length > 0) {
-      // Filter courses based on search query
-      const filtered = allCourses.filter(course => 
-        course.title.toLowerCase().includes(query.toLowerCase()) ||
-        course.category.toLowerCase().includes(query.toLowerCase()) ||
-        course.skills.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filtered.slice(0, 8)); // Show max 8 results
-      setShowSearchResults(true);
-    } else {
-      setSearchResults([]);
-      setShowSearchResults(false);
-    }
-  };
-
-  // Clear search
-  const handleClearSearch = () => {
-    setSearchQuery("");
-    setSearchResults([]);
-    setShowSearchResults(false);
   };
 
   const allCourses: Course[] = [
@@ -717,85 +684,7 @@ export default function Header() {
               </div>
             </div>
             
-            {/* Search Bar */}
-            <div className="flex-1 min-w-[110px] max-w-md lg:max-w-[220px] xl:max-w-xs mx-2 sm:mx-3">
-              <div className="relative" ref={searchRef}>
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="w-full pl-9 sm:pl-10 pr-10 py-2 text-sm bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/30 focus:border-transparent"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={handleClearSearch}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-gray-700"
-                  >
-                    <svg className="w-4 h-4 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                )}
-
-                {/* Search Results Dropdown */}
-                {showSearchResults && searchResults.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-[#1f2c4a]/10 rounded-xl shadow-xl shadow-[#1f2c4a]/15 max-h-[70vh] overflow-y-auto z-50 w-full sm:w-auto">
-                    <div className="p-2">
-                      <div className="text-xs text-[#94a3b8] px-3 py-2 font-semibold">
-                        {searchResults.length} {searchResults.length === 1 ? 'Course' : 'Courses'} Found
-                      </div>
-                      {searchResults.map((course) => (
-                        <Link
-                          key={course.id}
-                          href={getCourseUrl(course)}
-                          onClick={handleClearSearch}
-                          className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 hover:bg-[#1f2c4a]/10 rounded-lg transition-colors group"
-                        >
-                          <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-[#1f2c4a]/10 rounded-lg overflow-hidden">
-                            <img
-                              src={course.image}
-                              alt={course.title}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex-1 min-w-0 overflow-hidden">
-                            <div className="text-xs sm:text-sm font-semibold text-[#1f2c4a] group-hover:text-[#d97706] line-clamp-2">
-                              {course.title}
-                            </div>
-                            <div className="text-xs text-[#64748b] mt-1 truncate">
-                              {course.category} • {course.days}
-                            </div>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span className="text-xs sm:text-sm font-bold text-[#d97706]">${course.price}</span>
-                              <span className="text-xs text-[#94a3b8] line-through">${course.originalPrice}</span>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* No Results */}
-                {showSearchResults && searchQuery && searchResults.length === 0 && (
-                  <div className="absolute top-full left-0 right-0 sm:left-0 sm:right-0 mt-2 bg-white border border-[#1f2c4a]/10 rounded-xl shadow-xl shadow-[#1f2c4a]/15 z-50 w-full sm:w-auto">
-                    <div className="p-4 sm:p-6 text-center">
-                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-gray-600 mx-auto mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <p className="text-xs sm:text-sm text-[#94a3b8] mb-1">No courses found</p>
-                      <p className="text-xs text-[#64748b]">Try different keywords</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            <SiteSearch />
             
             {/* Navigation Links - Desktop */}
             <div className="hidden lg:flex items-center gap-5 xl:gap-7">
