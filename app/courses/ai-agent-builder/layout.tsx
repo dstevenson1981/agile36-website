@@ -7,8 +7,8 @@ import {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers (2026) | Agile36",
-  description: "2026 live cohorts: Master no-code AI agents and automation without programming! Learn to build intelligent workflows, automate tasks, and optimize productivity. 25+ hands-on projects. Perfect for non-technical professionals. 2-day intensive course.",
+  title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days | Agile36",
+  description: "Live 2-day certification: build 25+ real AI automations — marketing, lead gen, content — with n8n, Make.com and ChatGPT. No coding required. Expert-led, hands-on.",
   keywords: [
     "No-code AI",
     "AI automation",
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
     "Automation training"
   ],
   openGraph: {
-    title: "No-Code AI Agents & Automation™ Training | AI Automation for Non-Programmers (2026) | Agile36",
-    description: "2026: Master no-code AI agents and automation without programming! Build intelligent workflows, automate tasks, and supercharge productivity with 25+ hands-on projects.",
+    title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days | Agile36",
+    description: "Live 2-day certification: build 25+ real AI automations — marketing, lead gen, content — with n8n, Make.com and ChatGPT. No coding required.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-agent-builder",
   },
   twitter: {
     card: "summary_large_image",
-    title: "No-Code AI Agents & Automation™ Training (2026)",
-    description: "2026: Master no-code AI agents and automation without programming! Build intelligent workflows with 25+ hands-on projects.",
+    title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days",
+    description: "Live 2-day certification: build 25+ real AI automations with n8n, Make.com and ChatGPT. No coding required.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-agent-builder",
