@@ -259,7 +259,7 @@ export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean
       .select('id')
       .ilike('customer_email', lookupEmail)
       .eq('plan', 'basic')
-      .or('course_slug.eq.advanced-scrum-master,course_slug.eq.combo-ssm-advanced')
+      .or('course_slug.eq.advanced-scrum-master,course_slug.eq.combo-ssm-advanced,course_slug.eq.combo-sasm-popm')
       .limit(1);
     return (orders?.length ?? 0) > 0;
   }

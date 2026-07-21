@@ -91,6 +91,7 @@ export default async function PracticeExamsPage({
   const hasAsm =
     registeredCourses.includes('advanced-scrum-master') ||
     registeredCourses.includes('combo-ssm-advanced') ||
+    registeredCourses.includes('combo-sasm-popm') ||
     hasAsmPro;
   const hasAnyExam = hasPopm || hasApm || hasLpm || hasLeadingSafe || hasScrumMaster || hasAsm;
 

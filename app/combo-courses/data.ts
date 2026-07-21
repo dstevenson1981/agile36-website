@@ -168,6 +168,20 @@ export const COMBO_COURSES: Combo[] = [
     trending: true,
   },
   {
+    id: "sasm-popm",
+    name: "AI-Empowered SASM & AI-Empowered SAFe POPM Certification Training",
+    courses: [
+      { id: "1", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 599 },
+      { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
+    ],
+    comboPrice: 799,
+    originalPrice: 2228,
+    discount: 1429,
+    category: "safe",
+    enrolled: "52k",
+    trending: true,
+  },
+  {
     id: "ssm-rte",
     name: "AI-Empowered SSM & AI-Empowered RTE Certification Training",
     courses: [
