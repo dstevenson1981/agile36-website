@@ -26,7 +26,6 @@ const courses = [
   "AI-Driven Scrum Master",
   "Generative AI for Project Managers",
   "Executive GenAI Leadership",
-  "PMP Certification",
 ];
 
 export default function CouponModal({

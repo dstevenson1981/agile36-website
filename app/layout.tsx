@@ -104,7 +104,6 @@ export default function RootLayout({
       "Enterprise Agile Transformation",
       "DevOps and Continuous Delivery",
       "Lean Portfolio Management",
-      "Project Management Professional (PMP)",
       "AI-Driven Scrum and Product Management",
     ],
   };

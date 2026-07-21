@@ -48,7 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "executive-genai-leadership",
     "generative-ai-project-managers",
     "certified-genai-practitioner",
-    "pmp-certification",
   ];
 
   const coursePages: MetadataRoute.Sitemap = courseSlugs.map((slug) => ({

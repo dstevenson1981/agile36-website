@@ -160,7 +160,6 @@ export default function Header() {
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
-    "PMP® Certification Training": "/PMP.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };
@@ -193,11 +192,6 @@ export default function Header() {
     // Special case for Certified AI Product Manager
     if (course.title.includes("Certified AI Product Manager")) {
       return "/courses/certified-ai-product-manager";
-    }
-
-    // Special case for PMP Certification
-    if (course.title.includes("PMP") || course.title.includes("PMP® Certification")) {
-      return "/courses/pmp-certification";
     }
     
     if (course.title.includes("Executive GenAI Leadership") || course.title.includes("GenAI Leadership")) {

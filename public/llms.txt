@@ -38,9 +38,6 @@
 - [Executive GenAI Leadership](https://www.agile36.com/courses/executive-genai-leadership): GenAI strategy development and executive AI decision-making frameworks.
 - [No-Code AI Agents & Automation](https://www.agile36.com/courses/ai-agent-builder): Building AI agents and automated workflows without programming.
 
-## Project Management Courses
-- [PMP Certification Exam Prep](https://www.agile36.com/courses/pmp-certification): PMBOK Guide, project management processes, Agile practices, and exam strategy.
-
 ## Local Training Pages
 City-specific training pages exist for 30 major U.S. metros (New York, Los Angeles,
 Chicago, Houston, Dallas, Boston, Seattle, Denver, Washington, Miami,

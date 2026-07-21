@@ -127,9 +127,20 @@ const nextConfig: NextConfig = {
         destination: '/courses/agile-product-management',
         permanent: true,
       },
+      // PMP retired — send old URLs to the course catalog
       {
         source: '/pmp-certification',
-        destination: '/courses/pmp-certification',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/pmp-certification',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/pmp-certification/:path*',
+        destination: '/courses',
         permanent: true,
       },
     ];

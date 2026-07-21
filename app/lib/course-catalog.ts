@@ -47,7 +47,6 @@ const COURSE_THUMBNAILS: { [key: string]: string } = {
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
-    "PMP® Certification Training": "/PMP.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };

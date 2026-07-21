@@ -72,7 +72,7 @@ export default async function GenerativeAIProjectManagersLayout({
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "GAI-PM",
-      coursePrerequisites: "Project management or PMP experience recommended",
+      coursePrerequisites: "Project management experience recommended",
       educationalCredentialAwarded:
         "Generative AI for Project Managers Certification",
       aggregateRating: {
@@ -107,10 +107,10 @@ export default async function GenerativeAIProjectManagersLayout({
       },
       {
         "@type": "Question",
-        "name": "Do I need to be a PMP to take this course?",
+        "name": "Do I need prior project management credentials?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, PMP certification is not required. The course is designed for project managers, project coordinators, program managers, and anyone managing projects. Basic project management experience is helpful but not mandatory. The course teaches AI skills that enhance any project management methodology."
+          "text": "No formal project management certification is required. The course is designed for project managers, project coordinators, program managers, and anyone managing projects. Basic project management experience is helpful but not mandatory. The course teaches AI skills that enhance any project management methodology."
         }
       },
       {

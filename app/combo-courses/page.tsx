@@ -101,7 +101,6 @@ function shortCourseLabel(name: string): string {
   const paren = name.match(/\(([^)]+)\)\s*$/);
   if (paren) return paren[1];
   if (name.includes("POPM")) return "POPM";
-  if (name.includes("PMP")) return "PMP";
   if (name.includes("GenAI")) return "GenAI";
   return name.replace(/^AI-Empowered\s+/i, "").replace(/^SAFe\s+/i, "").slice(0, 28);
 }

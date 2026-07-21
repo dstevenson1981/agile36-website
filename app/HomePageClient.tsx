@@ -63,7 +63,6 @@ export default function Home() {
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
-    "PMP® Certification Training": "/PMP.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };
@@ -395,7 +394,6 @@ export default function Home() {
       "Certified AI Product Manager": "/courses/certified-ai-product-manager",
       "AI-Driven Project Manager™": "/courses/generative-ai-project-managers",
       "Agentic Product Leader Certification": "/courses/certified-ai-product-manager",
-      "PMP® Certification Training": "/courses/pmp-certification",
     };
     
     // Check if we have a specific route for this course

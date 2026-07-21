@@ -1229,7 +1229,7 @@ export default function CityAPMCoursePage() {
               What Certifications Are Required for SAFe Agile Certification Training?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              No prior certification is required to enroll in SAFe Agile Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or project management (such as CSM or PMP certifications) can be beneficial for participants. The SAFe Agile Product Management 6.0 course prepares candidates for the SAFe Agile Product Management (APM) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
+              No prior certification is required to enroll in SAFe Agile Certification Training. However, having foundational knowledge of Agile principles, Scrum methodologies, or Scrum (such as CSM) can be beneficial for participants. The SAFe Agile Product Management 6.0 course prepares candidates for the SAFe Agile Product Management (APM) certification exam from Scaled Agile, Inc., making it accessible to professionals at various stages of their Agile journey.
             </p>
           </div>
 

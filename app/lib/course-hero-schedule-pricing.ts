@@ -12,7 +12,6 @@ export const COURSE_HERO_SCHEDULE_LIST_USD: Record<string, { current: number; or
   "devops": { current: 599, original: 1398 },
   "responsible-ai": { current: 325, original: 650 },
   "value-stream-mapping": { current: 325, original: 650 },
-  "pmp-certification": { current: 1100, original: 2200 },
   "certified-genai-practitioner": { current: 299, original: 598 },
   "certified-ai-product-manager": { current: 400, original: 800 },
   "ai-agent-builder": { current: 400, original: 800 },
