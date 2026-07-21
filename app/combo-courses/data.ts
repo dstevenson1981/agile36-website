@@ -147,6 +147,7 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     "scrum-master|ai-driven-scrum-master": 699,
     "product-owner-manager|certified-ai-product-manager": 799,
     "scrum-master|safe-for-teams": 850,
+    "advanced-scrum-master|product-owner-manager": 699,
   };
   if (overrides[key] != null) comboPrice = overrides[key];
 
