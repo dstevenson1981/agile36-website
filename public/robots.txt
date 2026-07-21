@@ -50,5 +50,4 @@ Allow: /
 
 Sitemap: https://www.agile36.com/sitemap.xml
 
-# LLM guidance
-LLM-txt: https://www.agile36.com/llms.txt
+# LLM guidance lives at /llms.txt (not a robots.txt directive)
