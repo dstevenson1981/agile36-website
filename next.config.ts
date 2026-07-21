@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
         destination: "https://www.agile36.com/:path*",
         permanent: true,
       },
+      // Blog consolidation: duplicate LPM explainer merged into the main guide
+      {
+        source: '/blog/what-is-lean-portfolio-management',
+        destination: '/blog/lean-portfolio-management',
+        permanent: true,
+      },
       // SAFe Courses - Old URL structure to new structure
       {
         source: '/safe-agilist-leading-safe',

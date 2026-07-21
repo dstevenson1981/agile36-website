@@ -4,10 +4,9 @@ import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 export const metadata: Metadata = {
-  title:
-    "Lean Portfolio Management: A Complete Guide for Enterprise Leaders | Agile36",
+  title: "Lean Portfolio Management (LPM): The Complete Guide | Agile36",
   description:
-    "Lean Portfolio Management (LPM) in SAFe: strategy, funding flow, guardrails, and how portfolio leaders connect strategy to agile execution.",
+    "What Lean Portfolio Management is, how SAFe LPM works — lean budgeting, portfolio Kanban, WSJF, governance — and how to implement it, from Scaled Agile Silver Partner Agile36.",
   alternates: {
     canonical: "https://www.agile36.com/blog/lean-portfolio-management",
   },
@@ -79,6 +78,10 @@ export default async function LeanPortfolioManagementBlogPost() {
 
         {/* Article Content */}
         <div className="prose prose-lg prose-invert max-w-none">
+          <p className="text-lg text-gray-100 leading-relaxed mb-6">
+            <strong>Lean Portfolio Management (LPM) is the SAFe approach to aligning strategy, funding, and execution by applying Lean and Agile principles to portfolio-level decision making — funding value streams instead of projects, prioritizing with economics instead of politics, and governing with guardrails instead of stage gates.</strong>
+          </p>
+
           <p className="text-lg text-gray-300 leading-relaxed mb-6">
             Enterprise organizations waste billions annually on the wrong initiatives. Projects that don't align with strategy. Investments that deliver minimal value. Resources spread too thin across too many priorities.
           </p>
@@ -99,7 +102,7 @@ export default async function LeanPortfolioManagementBlogPost() {
             Unlike traditional portfolio management—which focuses on managing individual projects—LPM manages investment flows across value streams, makes funding decisions dynamically, and continuously optimizes the portfolio for maximum business value.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed mb-8">
-            The fundamental shift: from managing projects to funding product value streams. From annual budgets to continuous allocation. From plan-driven governance to hypothesis-driven investment.
+            The fundamental shift: from managing projects to funding product <Link href="/blog/what-is-a-value-stream-in-safe" className="text-amber-400 hover:underline">value streams</Link>. From annual budgets to continuous allocation. From plan-driven governance to hypothesis-driven investment. LPM is one of the seven core competencies of the <Link href="/blog/what-is-safe-framework" className="text-amber-400 hover:underline">Scaled Agile Framework (SAFe)</Link>.
           </p>
 
           <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">Why Traditional Portfolio Management Fails</h2>
@@ -170,7 +173,7 @@ export default async function LeanPortfolioManagementBlogPost() {
             Portfolio management itself operates with Agile cadences. Regular portfolio sync meetings review strategy execution, adjust investment allocations, and make go/no-go decisions on initiatives.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
-            These sync meetings happen quarterly, aligning with PI (Program Increment) planning cycles in organizations using SAFe (Scaled Agile Framework). This creates rhythm and predictability while enabling responsiveness.
+            These sync meetings happen quarterly, aligning with <Link href="/blog/what-is-pi-planning" className="text-amber-400 hover:underline">PI (Planning Interval) planning</Link> cycles in organizations using SAFe (Scaled Agile Framework). This creates rhythm and predictability while enabling responsiveness.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed mb-6">
             Between sync meetings, portfolio Kanban systems provide transparency into initiative status, enabling continuous flow and preventing work-in-progress overload.
@@ -452,9 +455,25 @@ export default async function LeanPortfolioManagementBlogPost() {
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
             SAFe provides detailed guidance on LPM implementation including portfolio Kanban states, WSJF calculation methods, budget guardrails, and governance structures. This makes LPM implementation more prescriptive and faster for organizations adopting SAFe.
           </p>
-          <p className="text-lg text-gray-300 leading-relaxed mb-8">
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
             Organizations certified in SAFe through programs like those offered by Scaled Agile Silver Partners bring deep LPM expertise and proven implementation patterns.
           </p>
+          <p className="text-lg text-gray-300 leading-relaxed mb-8">
+            For practitioners, the official credential is the <Link href="/courses/lean-portfolio-management" className="text-amber-400 hover:underline">SAFe® Lean Portfolio Management (LPM) certification</Link> — a 2-day course covering lean budgeting, portfolio Kanban, and lean governance, with the exam included. See <Link href="/blog/safe-lpm-certification-cost-2026" className="text-amber-400 hover:underline">what LPM certification costs in 2026</Link>, browse <Link href="/blog/safe-lpm-exam-questions-2026" className="text-amber-400 hover:underline">practice exam questions</Link>, or compare <Link href="/blog/safe-lpm-vs-popm" className="text-amber-400 hover:underline">LPM vs POPM</Link> if you're choosing between portfolio and product tracks.
+          </p>
+
+          <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.06] p-6 my-8">
+            <h3 className="text-xl font-bold text-white mb-2">Get LPM certified</h3>
+            <p className="text-gray-300 mb-4">
+              Live, instructor-led SAFe® Lean Portfolio Management cohorts taught by certified SPCs — weekday and weekend schedules, exam included.
+            </p>
+            <Link
+              href="/courses/lean-portfolio-management"
+              className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-2.5 font-semibold text-black hover:bg-amber-300"
+            >
+              View the LPM course →
+            </Link>
+          </div>
 
           <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">Getting Started with Lean Portfolio Management</h2>
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
@@ -469,6 +488,28 @@ export default async function LeanPortfolioManagementBlogPost() {
           </ul>
           <p className="text-lg text-gray-300 leading-relaxed mb-8">
             Consider partnering with experienced practitioners—particularly Scaled Agile Silver Partners who specialize in enterprise transformations—to accelerate implementation and avoid common pitfalls.
+          </p>
+
+          <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">Frequently Asked Questions</h2>
+
+          <h3 className="text-2xl font-normal tracking-[-0.03em] text-white mt-8 mb-3">What's the difference between LPM and traditional portfolio management?</h3>
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            Traditional portfolio management approves projects and allocates resources through annual planning cycles. LPM emphasizes continuous value flow, outcome measurement, and dynamic investment allocation based on learning and market feedback — funding stable value streams instead of temporary projects.
+          </p>
+
+          <h3 className="text-2xl font-normal tracking-[-0.03em] text-white mt-8 mb-3">How does portfolio Kanban improve decision making?</h3>
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            Portfolio Kanban provides real-time visibility into epic status, capacity constraints, and investment flow. That transparency enables data-driven prioritization and prevents the overcommitment that leads to context switching and delivery delays.
+          </p>
+
+          <h3 className="text-2xl font-normal tracking-[-0.03em] text-white mt-8 mb-3">What is value stream budgeting and why does it matter?</h3>
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            Value stream budgeting funds operational capabilities rather than temporary projects. It creates stable teams, reduces administrative overhead, and lets organizations respond to market opportunities without waiting on project approval processes.
+          </p>
+
+          <h3 className="text-2xl font-normal tracking-[-0.03em] text-white mt-8 mb-3">Is the SAFe LPM certification worth it?</h3>
+          <p className="text-lg text-gray-300 leading-relaxed mb-8">
+            If you're accountable for portfolio strategy, funding, or governance in a SAFe organization, LPM is the credential built for that role. It's a 2-day course with the exam attempt included — see the <Link href="/blog/safe-lpm-certification-cost-2026" className="text-amber-400 hover:underline">full cost breakdown</Link> and <Link href="/blog/safe-lpm-exam-tips" className="text-amber-400 hover:underline">exam tips</Link>.
           </p>
 
           <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">Conclusion</h2>
