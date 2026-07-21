@@ -5,8 +5,8 @@ import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe for Teams (SP) Certification Training | SAFe Practitioner (2026) | Agile36",
-  description: "2026 live cohorts: Earn your SAFe Practitioner (SP) certification with Agile36. AI-Empowered SAFe for Teams: 2-day training for Agile team members working on an ART. Learn Scrum, Kanban, XP in SAFe. Exam included.",
+  title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training | Agile36",
+  description: "Earn your SAFe Practitioner (SP) certification in a live 2-day SAFe for Teams course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs.",
   keywords: [
     "SAFe for Teams",
     "SAFe Practitioner certification",
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
-    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training (2026) | Agile36",
-    description: "2026: Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation. Earn 16 PDUs & SEUs.",
+    title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training | Agile36",
+    description: "Live 2-day SAFe for Teams (SP) course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/safe-for-teams",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI-Empowered SAFe® 6.0 for Teams Certification Training (2026)",
-    description: "2026: Master AI-Empowered SAFe team member skills with SAFe® for Teams Certification Training. Learn team collaboration, iteration planning and execution, and PI planning participation.",
+    title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training",
+    description: "Live 2-day SAFe for Teams (SP) course taught by certified SPCs. Exam included, weekday and weekend cohorts.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/safe-for-teams",
