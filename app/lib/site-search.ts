@@ -465,7 +465,7 @@ function buildDocuments(): SearchDocument[] {
         return [];
       }),
     ]);
-    const haystack = normalize([combo.name, courseNames, combo.category, "combo", "bundle"].join(" "));
+    const haystack = normalize([combo.name, courseNames, "combo", "bundle"].join(" "));
     docs.push({
       id: `combo-${combo.id}`,
       type: "combo",

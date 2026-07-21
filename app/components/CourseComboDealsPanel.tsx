@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   type Combo,
-  comboCategoryForCourseSlug,
-  combosForCategory,
+  combosForCourseSlug,
+  COMBO_COURSES,
 } from "@/app/combo-courses/data";
 
 function initialComboIndex(combos: Combo[], slug: string | undefined): number {
@@ -18,11 +18,6 @@ function initialComboIndex(combos: Combo[], slug: string | undefined): number {
 function ComboCard({ combo }: { combo: Combo }) {
   return (
     <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm ring-1 ring-black/[0.04]">
-      {combo.trending ? (
-        <div className="pointer-events-none absolute left-0 top-0 bg-[#fa4a23] px-3 py-1 text-[10px] font-bold text-white -translate-x-5 translate-y-2 -rotate-45">
-          TRENDING
-        </div>
-      ) : null}
       <div className="mb-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
         {combo.courses.map((course, idx) => (
           <div key={course.id} className="flex items-center gap-1.5 sm:gap-2">
@@ -91,10 +86,11 @@ const SWIPE_MIN_PX = 48;
 /** Same combo list + ordering as `/combo-courses`; scan with arrows, swipe, or dots. */
 export default function CourseComboDealsPanel({ courseSlug, className = "" }: Props) {
   const slug = courseSlug ?? undefined;
-  const combos = useMemo(
-    () => combosForCategory(slug ? comboCategoryForCourseSlug(slug) : "safe"),
-    [slug],
-  );
+  const combos = useMemo(() => {
+    if (!slug) return COMBO_COURSES;
+    const matching = combosForCourseSlug(slug);
+    return matching.length > 0 ? matching : COMBO_COURSES;
+  }, [slug]);
   const [index, setIndex] = useState(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 

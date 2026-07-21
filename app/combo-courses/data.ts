@@ -1,5 +1,3 @@
-export type ComboCategory = "safe" | "pmi" | "ai";
-
 export interface ComboCourse {
   id: string;
   name: string;
@@ -15,9 +13,7 @@ export interface Combo {
   comboPrice: number;
   originalPrice: number;
   discount: number;
-  category: ComboCategory;
   enrolled?: string;
-  trending?: boolean;
 }
 
 export const BADGES: Record<string, string> = {
@@ -32,305 +28,253 @@ export const BADGES: Record<string, string> = {
   "release-train-engineer": "/RTE.png",
   "value-stream-mapping": "/MicroCredential.jpeg",
   "responsible-ai": "/MicroCredential.jpeg",
-  "pmp-certification": "/PMP.png",
   "ai-driven-scrum-master": "/GenAI_2.png",
   "certified-genai-practitioner": "/GenAI_2.png",
   "certified-ai-product-manager": "/PMAI.jpeg",
   "executive-genai-leadership": "/GenAI_2.png",
+  "generative-ai-project-managers": "/GenAI_2.png",
 };
 
-export const COMBO_COURSES: Combo[] = [
-  {
-    id: "leading-safe-ssm",
-    name: "AI-Empowered Leading SAFe & AI-Empowered SSM Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2220,
-    discount: 1421,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "leading-safe-popm",
-    name: "AI-Empowered Leading SAFe & AI-Empowered SAFe POPM Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2220,
-    discount: 1421,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "ssm-popm",
-    name: "AI-Empowered SSM & AI-Empowered SAFe POPM Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2220,
-    discount: 1421,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "leading-safe-teams",
-    name: "AI-Empowered Leading SAFe & AI-Empowered SAFe for Teams Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2308,
-    discount: 1509,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "leading-safe-lpm",
-    name: "AI-Empowered Leading SAFe & SAFe Lean Portfolio Management Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "SAFe Lean Portfolio Management", slug: "lean-portfolio-management", badge: BADGES["lean-portfolio-management"], price: 950 },
-    ],
-    comboPrice: 1350,
-    originalPrice: 1505,
-    discount: 155,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "ssm-teams",
-    name: "AI-Empowered SSM & AI-Empowered SAFe for Teams Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
-    ],
-    comboPrice: 850,
-    originalPrice: 2308,
-    discount: 1458,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "popm-teams",
-    name: "AI-Empowered SAFe POPM & AI-Empowered SAFe for Teams Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe for Teams (SP)", slug: "safe-for-teams", badge: BADGES["safe-for-teams"], price: 599 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2308,
-    discount: 1509,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "leading-safe-ssm-popm",
-    name: "AI-Empowered Leading SAFe, SSM & SAFe POPM Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered Leading SAFe (SA)", slug: "leading-safe", badge: BADGES["leading-safe"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "3", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-    ],
-    comboPrice: 1190,
-    originalPrice: 3330,
-    discount: 2140,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "ssm-advanced",
-    name: "AI-Empowered SSM & AI-Empowered SASM Certification Path",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 599 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2228,
-    discount: 1429,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "sasm-popm",
-    name: "AI-Empowered SASM & AI-Empowered SAFe POPM Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", slug: "advanced-scrum-master", badge: BADGES["advanced-scrum-master"], price: 599 },
-      { id: "2", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-    ],
-    comboPrice: 799,
-    originalPrice: 2228,
-    discount: 1429,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "ssm-rte",
-    name: "AI-Empowered SSM & AI-Empowered RTE Certification Training",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Empowered SAFe Release Train Engineer (RTE)", slug: "release-train-engineer", badge: BADGES["release-train-engineer"], price: 1299 },
-    ],
-    // Same combo pricing as Leading SAFe + LPM (`leading-safe-lpm`)
-    comboPrice: 1350,
-    originalPrice: 1505,
-    discount: 155,
-    category: "safe",
-    enrolled: "52k",
-    trending: true,
-  },
-  {
-    id: "lpm-apm",
-    name: "SAFe LPM Certification Training & SAFe APM Certification Training",
-    courses: [
-      { id: "1", name: "SAFe Lean Portfolio Management", slug: "lean-portfolio-management", badge: BADGES["lean-portfolio-management"], price: 950 },
-      { id: "2", name: "SAFe Agile Product Management", slug: "agile-product-management", badge: BADGES["agile-product-management"], price: 1299 },
-    ],
-    comboPrice: 1700,
-    originalPrice: 3800,
-    discount: 2100,
-    category: "safe",
-    enrolled: "52k",
-    trending: false,
-  },
-  {
-    id: "ssm-pmp",
-    name: "AI-Empowered SAFe Scrum Master & PMP Certification",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "PMP® Certification Training", slug: "pmp-certification", badge: BADGES["pmp-certification"], price: 1150 },
-    ],
-    comboPrice: 1275,
-    originalPrice: 3410,
-    discount: 2135,
-    category: "pmi",
-    enrolled: "8K+",
-    trending: true,
-  },
-  {
-    id: "popm-pmp",
-    name: "AI-Empowered SAFe POPM & PMP Certification",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-      { id: "2", name: "PMP® Certification Training", slug: "pmp-certification", badge: BADGES["pmp-certification"], price: 1150 },
-    ],
-    comboPrice: 1275,
-    originalPrice: 3410,
-    discount: 2135,
-    category: "pmi",
-    enrolled: "8K+",
-    trending: true,
-  },
-  {
-    id: "ai-scrum-genai",
-    name: "AI-Driven Scrum Master & Certified GenAI Practitioner",
-    courses: [
-      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
-      { id: "2", name: "Certified GenAI Practitioner™", slug: "certified-genai-practitioner", badge: BADGES["certified-genai-practitioner"], price: 200 },
-    ],
-    comboPrice: 399,
-    originalPrice: 998,
-    discount: 599,
-    category: "ai",
-    enrolled: "2.5K+",
-    trending: true,
-  },
-  {
-    id: "ai-scrum-ai-product",
-    name: "AI-Driven Scrum Master & Certified AI Product Manager",
-    courses: [
-      { id: "1", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
-      { id: "2", name: "Certified AI Product Manager", slug: "certified-ai-product-manager", badge: BADGES["certified-ai-product-manager"], price: 400 },
-    ],
-    comboPrice: 549,
-    originalPrice: 1398,
-    discount: 849,
-    category: "ai",
-    enrolled: "2.5K+",
-    trending: true,
-  },
-  {
-    id: "genai-ai-product",
-    name: "Certified GenAI Practitioner & Certified AI Product Manager",
-    courses: [
-      { id: "1", name: "Certified GenAI Practitioner™", slug: "certified-genai-practitioner", badge: BADGES["certified-genai-practitioner"], price: 200 },
-      { id: "2", name: "Certified AI Product Manager", slug: "certified-ai-product-manager", badge: BADGES["certified-ai-product-manager"], price: 400 },
-    ],
-    comboPrice: 499,
-    originalPrice: 1200,
-    discount: 701,
-    category: "ai",
-    enrolled: "2K+",
-  },
-  {
-    id: "ssm-ai-scrum",
-    name: "AI-Empowered SAFe Scrum Master & AI-Driven Scrum Master",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe Scrum Master (SSM)", slug: "scrum-master", badge: BADGES["scrum-master"], price: 515 },
-      { id: "2", name: "AI-Driven Scrum Master™", slug: "ai-driven-scrum-master", badge: BADGES["ai-driven-scrum-master"], price: 555 },
-    ],
-    comboPrice: 699,
-    originalPrice: 1708,
-    discount: 1009,
-    category: "ai",
-    enrolled: "3K+",
-    trending: true,
-  },
-  {
-    id: "popm-ai-product",
-    name: "AI-Empowered SAFe POPM & Certified AI Product Manager",
-    courses: [
-      { id: "1", name: "AI-Empowered SAFe POPM", slug: "product-owner-manager", badge: BADGES["product-owner-manager"], price: 515 },
-      { id: "2", name: "Certified AI Product Manager", slug: "certified-ai-product-manager", badge: BADGES["certified-ai-product-manager"], price: 400 },
-    ],
-    comboPrice: 799,
-    originalPrice: 1910,
-    discount: 1111,
-    category: "ai",
-    enrolled: "2.5K+",
-    trending: true,
-  },
+type CatalogEntry = {
+  slug: string;
+  name: string;
+  shortName: string;
+  price: number;
+  original: number;
+};
+
+/** Courses eligible for two-course combo pairings (SAFe + AI). */
+const CATALOG: CatalogEntry[] = [
+  { slug: "leading-safe", name: "AI-Empowered Leading SAFe (SA)", shortName: "Leading SAFe", price: 515, original: 1030 },
+  { slug: "scrum-master", name: "AI-Empowered SAFe Scrum Master (SSM)", shortName: "SSM", price: 515, original: 1030 },
+  { slug: "product-owner-manager", name: "AI-Empowered SAFe POPM", shortName: "POPM", price: 515, original: 1030 },
+  { slug: "safe-for-teams", name: "AI-Empowered SAFe for Teams (SP)", shortName: "SAFe for Teams", price: 599, original: 1030 },
+  { slug: "advanced-scrum-master", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", shortName: "SASM", price: 599, original: 1198 },
+  { slug: "devops", name: "SAFe DevOps", shortName: "DevOps", price: 599, original: 1398 },
+  { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
+  { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1299, original: 2598 },
+  { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
+  { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
+  { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
+  { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 400, original: 800 },
+  { slug: "executive-genai-leadership", name: "Executive GenAI Leadership", shortName: "Exec GenAI", price: 400, original: 800 },
+  { slug: "generative-ai-project-managers", name: "Generative AI for Project Managers", shortName: "GenAI for PMs", price: 400, original: 800 },
 ];
 
-/** Same category buckets as `/combo-courses` tabs (Scaled Agile / PMI / AI). */
-export function combosForCategory(category: ComboCategory): Combo[] {
-  return COMBO_COURSES.filter((c) => c.category === category);
+const BY_SLUG = Object.fromEntries(CATALOG.map((c) => [c.slug, c])) as Record<string, CatalogEntry>;
+
+/** Keep legacy URL/order IDs for existing combos. */
+const LEGACY_IDS: Record<string, string> = {
+  "leading-safe|scrum-master": "leading-safe-ssm",
+  "leading-safe|product-owner-manager": "leading-safe-popm",
+  "scrum-master|product-owner-manager": "ssm-popm",
+  "leading-safe|safe-for-teams": "leading-safe-teams",
+  "leading-safe|lean-portfolio-management": "leading-safe-lpm",
+  "scrum-master|safe-for-teams": "ssm-teams",
+  "product-owner-manager|safe-for-teams": "popm-teams",
+  "scrum-master|advanced-scrum-master": "ssm-advanced",
+  "advanced-scrum-master|product-owner-manager": "sasm-popm",
+  "scrum-master|release-train-engineer": "ssm-rte",
+  "lean-portfolio-management|agile-product-management": "lpm-apm",
+  "ai-driven-scrum-master|certified-genai-practitioner": "ai-scrum-genai",
+  "ai-driven-scrum-master|certified-ai-product-manager": "ai-scrum-ai-product",
+  "certified-genai-practitioner|certified-ai-product-manager": "genai-ai-product",
+  "scrum-master|ai-driven-scrum-master": "ssm-ai-scrum",
+  "product-owner-manager|certified-ai-product-manager": "popm-ai-product",
+};
+
+function pairKey(a: string, b: string): string {
+  return [a, b].sort().join("|");
 }
 
-const AI_COURSE_SLUGS = new Set<string>([
+function shortId(slug: string): string {
+  const map: Record<string, string> = {
+    "leading-safe": "sa",
+    "scrum-master": "ssm",
+    "product-owner-manager": "popm",
+    "safe-for-teams": "teams",
+    "advanced-scrum-master": "sasm",
+    "devops": "devops",
+    "lean-portfolio-management": "lpm",
+    "agile-product-management": "apm",
+    "release-train-engineer": "rte",
+    "ai-driven-scrum-master": "ai-scrum",
+    "certified-genai-practitioner": "genai",
+    "certified-ai-product-manager": "ai-pm",
+    "executive-genai-leadership": "exec-genai",
+    "generative-ai-project-managers": "genai-pm",
+  };
+  return map[slug] ?? slug;
+}
+
+function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; originalPrice: number; discount: number } {
+  const max = Math.max(a.price, b.price);
+  const min = Math.min(a.price, b.price);
+  const originalPrice = a.original + b.original;
+
+  let comboPrice: number;
+  if (max <= 400) {
+    comboPrice = 499;
+  } else if (max <= 555) {
+    comboPrice = 699;
+  } else if (max <= 599) {
+    comboPrice = 799;
+  } else if (max <= 950 && min <= 599) {
+    // LPM / mid + foundation
+    comboPrice = 1350;
+  } else if (max >= 1299 && min >= 950) {
+    // LPM+APM, LPM+RTE, APM+RTE
+    comboPrice = 1700;
+  } else if (max >= 1299 && min <= 599) {
+    // APM/RTE + foundation
+    comboPrice = 1350;
+  } else if (max >= 950) {
+    comboPrice = 1450;
+  } else {
+    comboPrice = 799;
+  }
+
+  // Known overrides matching historical catalog prices
+  const key = pairKey(a.slug, b.slug);
+  const overrides: Record<string, number> = {
+    "leading-safe|scrum-master": 799,
+    "lean-portfolio-management|agile-product-management": 1700,
+    "leading-safe|lean-portfolio-management": 1350,
+    "scrum-master|release-train-engineer": 1350,
+    "ai-driven-scrum-master|certified-genai-practitioner": 399,
+    "ai-driven-scrum-master|certified-ai-product-manager": 549,
+    "certified-genai-practitioner|certified-ai-product-manager": 499,
+    "scrum-master|ai-driven-scrum-master": 699,
+    "product-owner-manager|certified-ai-product-manager": 799,
+    "scrum-master|safe-for-teams": 850,
+  };
+  if (overrides[key] != null) comboPrice = overrides[key];
+
+  return {
+    comboPrice,
+    originalPrice,
+    discount: originalPrice - comboPrice,
+  };
+}
+
+function buildCombo(aSlug: string, bSlug: string): Combo {
+  const first = BY_SLUG[aSlug];
+  const second = BY_SLUG[bSlug];
+  if (!first || !second) throw new Error(`Unknown combo course: ${aSlug} / ${bSlug}`);
+
+  // Display order follows catalog rank
+  const [a, b] =
+    PAIR_ORDER.indexOf(aSlug) <= PAIR_ORDER.indexOf(bSlug) ? [first, second] : [second, first];
+
+  const key = pairKey(a.slug, b.slug);
+  const id = LEGACY_IDS[key] ?? `${shortId(a.slug)}-${shortId(b.slug)}`;
+  const pricing = priceForPair(a, b);
+
+  return {
+    id,
+    name: `${a.shortName} & ${b.shortName} Certification Training`,
+    courses: [
+      { id: "1", name: a.name, slug: a.slug, badge: BADGES[a.slug], price: a.price },
+      { id: "2", name: b.name, slug: b.slug, badge: BADGES[b.slug], price: b.price },
+    ],
+    ...pricing,
+    enrolled: "52k",
+  };
+}
+
+/** Prefer this display order when listing pairs. */
+const PAIR_ORDER = CATALOG.map((c) => c.slug);
+
+function allTwoCoursePairs(slugs: string[]): [string, string][] {
+  const pairs: [string, string][] = [];
+  for (let i = 0; i < slugs.length; i++) {
+    for (let j = i + 1; j < slugs.length; j++) {
+      pairs.push([slugs[i], slugs[j]]);
+    }
+  }
+  return pairs;
+}
+
+const SAFE_SLUGS = [
+  "leading-safe",
+  "scrum-master",
+  "product-owner-manager",
+  "safe-for-teams",
+  "advanced-scrum-master",
+  "devops",
+  "lean-portfolio-management",
+  "agile-product-management",
+  "release-train-engineer",
+];
+
+const AI_SLUGS = [
   "ai-driven-scrum-master",
   "certified-genai-practitioner",
   "certified-ai-product-manager",
-  "generative-ai-project-managers",
   "executive-genai-leadership",
-  "ai-agent-builder",
-]);
+  "generative-ai-project-managers",
+];
 
-/** Maps a `/courses/[slug]` hero to the combo tab that matches `/combo-courses`. */
-export function comboCategoryForCourseSlug(slug: string): ComboCategory {
-  if (slug === "pmp-certification") return "pmi";
-  if (AI_COURSE_SLUGS.has(slug)) return "ai";
+/** Cross-pair popular SAFe roles with each AI course. */
+const CROSS_SAFE = [
+  "leading-safe",
+  "scrum-master",
+  "product-owner-manager",
+  "advanced-scrum-master",
+  "lean-portfolio-management",
+  "agile-product-management",
+];
+
+function buildAllCombos(): Combo[] {
+  const seen = new Set<string>();
+  const combos: Combo[] = [];
+
+  const add = (a: string, b: string) => {
+    const key = pairKey(a, b);
+    if (seen.has(key)) return;
+    seen.add(key);
+    combos.push(buildCombo(a, b));
+  };
+
+  for (const [a, b] of allTwoCoursePairs(SAFE_SLUGS)) add(a, b);
+  for (const [a, b] of allTwoCoursePairs(AI_SLUGS)) add(a, b);
+  for (const safe of CROSS_SAFE) {
+    for (const ai of AI_SLUGS) add(safe, ai);
+  }
+
+  // Stable-ish order: by first course in PAIR_ORDER, then second
+  const rank = (slug: string) => {
+    const i = PAIR_ORDER.indexOf(slug);
+    return i === -1 ? 999 : i;
+  };
+  combos.sort((x, y) => {
+    const ax = rank(x.courses[0].slug);
+    const ay = rank(y.courses[0].slug);
+    if (ax !== ay) return ax - ay;
+    return rank(x.courses[1].slug) - rank(y.courses[1].slug);
+  });
+
+  return combos;
+}
+
+export const COMBO_COURSES: Combo[] = buildAllCombos();
+
+/** Combos that include a given course slug (for course-hero carousels). */
+export function combosForCourseSlug(courseSlug: string): Combo[] {
+  return COMBO_COURSES.filter((c) => c.courses.some((x) => x.slug === courseSlug));
+}
+
+/** @deprecated Use combosForCourseSlug — categories removed; returns all combos. */
+export function combosForCategory(_category?: string): Combo[] {
+  return COMBO_COURSES;
+}
+
+/** @deprecated Categories removed; kept for call-site compatibility. */
+export function comboCategoryForCourseSlug(_slug: string): string {
   return "safe";
 }
 
-/** Combo carousel in course heroes — SAFe courses only. */
+/** Show combo carousel when this course appears in any combo. */
 export function shouldShowCourseHeroCombos(courseSlug: string): boolean {
-  return comboCategoryForCourseSlug(courseSlug) === "safe";
+  return COMBO_COURSES.some((c) => c.courses.some((x) => x.slug === courseSlug));
 }
