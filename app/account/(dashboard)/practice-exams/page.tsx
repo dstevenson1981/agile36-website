@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   hasPopmProAccess,
   hasApmProAccess,
@@ -7,13 +9,14 @@ import {
   hasAdvancedScrumMasterProAccess,
   hasProPlanEnrollmentForCourse,
   getRegisteredCourseSlugs,
+  practiceExamCoursesFromRegistrations,
 } from '@/app/lib/practice-exams';
-import PracticeExamAccessCta from '@/app/components/practice-exams/PracticeExamAccessCta';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 import {
   isPracticeExamsHubEnabled,
   isProPracticeExamExpiredForCourse,
 } from '@/app/lib/pro-practice-exams-enabled';
+import { BADGES } from '@/app/combo-courses/data';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -21,6 +24,90 @@ export const metadata = {
     'Practice exams for Agile36 Pro enrollees — Leading SAFe, POPM, Agile Product Management, LPM, SSM, and Advanced Scrum Master. Sign-in required.',
   robots: 'noindex, nofollow',
 };
+
+type ExamCard = {
+  courseSlug: string;
+  title: string;
+  shortLabel: string;
+  description: string;
+  questionCount: string;
+  badge: string;
+  testHref: string;
+  unlocked: boolean;
+  hasProPlan: boolean;
+  skipExpiration?: boolean;
+};
+
+function ExamAccessBlock({
+  unlocked,
+  hasProPlan,
+  testHref,
+  upgradeSlug,
+}: {
+  unlocked: boolean;
+  hasProPlan: boolean;
+  testHref: string;
+  upgradeSlug: string;
+}) {
+  if (unlocked) {
+    return (
+      <>
+        <Link
+          href={testHref}
+          className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+        >
+          Start Practice Exam
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3.5 w-3.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+          </svg>
+        </Link>
+        <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">Pro access unlocked · timed practice set</p>
+      </>
+    );
+  }
+
+  if (hasProPlan) {
+    return (
+      <>
+        <div className="mt-3.5 flex w-full items-center justify-center rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] py-2.5 text-center text-[13px] font-semibold text-[#1f2c4a]">
+          Unlocks last day of class
+        </div>
+        <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
+          Your instructor will enable access
+        </p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Link
+        href={`/account/practice-exams/upgrade/${upgradeSlug}`}
+        className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+      >
+        Upgrade to Pro — $50
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3.5 w-3.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+        </svg>
+      </Link>
+      <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
+        Practice exam included with Pro
+      </p>
+    </>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+      <path
+        fillRule="evenodd"
+        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
 
 export default async function PracticeExamsPage({
   searchParams,
@@ -74,195 +161,223 @@ export default async function PracticeExamsPage({
     hasProPlanEnrollmentForCourse('advanced-scrum-master'),
   ]);
 
-  const hasPopm =
-    registeredCourses.includes('product-owner-manager') ||
-    registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('popm')) ||
-    hasPopmPro;
-  const hasApm = registeredCourses.includes('agile-product-management') || hasApmPro;
-  const hasLpm =
-    registeredCourses.includes('lean-portfolio-management') ||
-    registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('lpm')) ||
-    hasLpmPro;
-  const hasLeadingSafe = registeredCourses.includes('leading-safe') || registeredCourses.some((s) => s?.startsWith('combo-leading-safe')) || hasLeadingSafePro;
-  const hasScrumMaster =
-    registeredCourses.includes('scrum-master') ||
-    registeredCourses.some((s) => s?.startsWith('combo-') && s.includes('ssm')) ||
-    hasSsmPro;
-  const hasAsm =
-    registeredCourses.includes('advanced-scrum-master') ||
-    registeredCourses.includes('combo-ssm-advanced') ||
-    registeredCourses.includes('combo-sasm-popm') ||
-    hasAsmPro;
-  const hasAnyExam = hasPopm || hasApm || hasLpm || hasLeadingSafe || hasScrumMaster || hasAsm;
+  const eligible = practiceExamCoursesFromRegistrations(registeredCourses);
+  if (hasLeadingSafePro) eligible.add('leading-safe');
+  if (hasPopmPro) eligible.add('product-owner-manager');
+  if (hasApmPro) eligible.add('agile-product-management');
+  if (hasLpmPro) eligible.add('lean-portfolio-management');
+  if (hasSsmPro) eligible.add('scrum-master');
+  if (hasAsmPro) eligible.add('advanced-scrum-master');
+
+  const exams: ExamCard[] = [
+    {
+      courseSlug: 'leading-safe',
+      title: 'Leading SAFe / SAFe Agilist',
+      shortLabel: 'SA',
+      description: '45 questions covering key SAFe Agilist concepts',
+      questionCount: '45 questions',
+      badge: BADGES['leading-safe'],
+      testHref: '/account/practice-exams/leading-safe',
+      unlocked: hasLeadingSafePro,
+      hasProPlan: hasLeadingSafeProPlan,
+    },
+    {
+      courseSlug: 'product-owner-manager',
+      title: 'SAFe Product Owner/Product Manager (POPM)',
+      shortLabel: 'POPM',
+      description: '45 questions covering key SAFe POPM concepts',
+      questionCount: '45 questions',
+      badge: BADGES['product-owner-manager'],
+      testHref: '/account/practice-exams/popm',
+      unlocked: hasPopmPro,
+      hasProPlan: hasPopmProPlan,
+    },
+    {
+      courseSlug: 'agile-product-management',
+      title: 'Agile Product Management (APM)',
+      shortLabel: 'APM',
+      description: '51 questions derived from your APM preparation pack',
+      questionCount: '51 questions',
+      badge: BADGES['agile-product-management'],
+      testHref: '/account/practice-exams/agile-product-management',
+      unlocked: hasApmPro,
+      hasProPlan: hasApmProPlan,
+    },
+    {
+      courseSlug: 'scrum-master',
+      title: 'SAFe Scrum Master (SSM)',
+      shortLabel: 'SSM',
+      description: 'Practice questions aligned to the SAFe Scrum Master certification exam',
+      questionCount: 'Practice set',
+      badge: BADGES['scrum-master'],
+      testHref: '/account/practice-exams/scrum-master',
+      unlocked: hasSsmPro,
+      hasProPlan: hasSsmProPlan,
+    },
+    {
+      courseSlug: 'advanced-scrum-master',
+      title: 'SAFe Advanced Scrum Master (SASM)',
+      shortLabel: 'SASM',
+      description: '55 questions aligned to the AI-Empowered SASM practice set',
+      questionCount: '55 questions',
+      badge: BADGES['advanced-scrum-master'],
+      testHref: '/account/practice-exams/advanced-scrum-master',
+      unlocked: hasAsmPro,
+      hasProPlan: hasAsmProPlan,
+    },
+    {
+      courseSlug: 'lean-portfolio-management',
+      title: 'SAFe Lean Portfolio Management (LPM)',
+      shortLabel: 'LPM',
+      description: '51 questions covering key SAFe LPM concepts',
+      questionCount: '51 questions',
+      badge: BADGES['lean-portfolio-management'],
+      testHref: '/account/practice-exams/lpm',
+      unlocked: hasLpmPro,
+      hasProPlan: hasLpmProPlan,
+      skipExpiration: true,
+    },
+  ];
+
+  const visibleExams = exams.filter((exam) => {
+    if (!eligible.has(exam.courseSlug)) return false;
+    if (exam.skipExpiration) return true;
+    return !isProPracticeExamExpiredForCourse(exam.courseSlug);
+  });
+  const hasAnyExam = visibleExams.length > 0;
 
   return (
     <div>
       {upgraded && <UpgradeSuccessBanner courseSlug={upgraded} />}
-      <h1 className="text-2xl font-bold text-slate-900 mb-2">Practice Exams</h1>
-      <p className="text-slate-600 mb-8">
-        Practice tests for your courses. Pro plan exams unlock on the last day of class. Basic plan? Upgrade for $50
-        to unlock.
-      </p>
 
-      <div className="space-y-4">
-        {/* Leading SAFe - show if registered for course */}
-        {hasLeadingSafe && !isProPracticeExamExpiredForCourse('leading-safe') && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">📘</span>
+      <div className="mb-8">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Account</p>
+        <h1 className="text-2xl font-bold text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: '-0.03em' }}>
+          Practice Exams
+        </h1>
+        <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
+          Practice tests for your courses and combo bundles. Pro exams unlock on the last day of class. Basic plan?
+          Upgrade for $50.
+        </p>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {visibleExams.map((exam) => (
+          <article
+            key={exam.courseSlug}
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#1f2c4a]/15 bg-white shadow-[0_12px_40px_-18px_rgba(31,44,74,0.35)] transition-shadow duration-300 hover:border-[#1f2c4a]/30 hover:shadow-[0_22px_50px_-16px_rgba(31,44,74,0.4)]"
+          >
+            <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+              {exam.unlocked ? 'Pro practice exam' : exam.hasProPlan ? 'Pro · locked until class end' : 'Basic · upgrade available'}
+            </div>
+
+            <div className="flex flex-1 flex-col p-5">
+              <div className="mb-4 flex justify-center">
+                <div className="h-14 w-14 overflow-hidden rounded-xl border border-[#1f2c4a]/12 bg-[#f8fafc] shadow-sm transition duration-300 group-hover:scale-105">
+                  <Image
+                    src={exam.badge}
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">Leading SAFe / SAFe Agilist</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  45 questions covering key SAFe Agilist concepts
+
+              <h2 className="mb-1 text-center text-[0.95rem] font-semibold leading-snug text-[#1f2c4a]">
+                {exam.title}
+              </h2>
+              <p className="mb-4 text-center text-xs text-[#94a3b8]">{exam.questionCount} · {exam.shortLabel}</p>
+
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">Access</p>
+              <div className="mt-1">
+                {exam.unlocked ? (
+                  <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                    Ready
+                  </span>
+                ) : exam.hasProPlan ? (
+                  <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                    Pending unlock
+                  </span>
+                ) : (
+                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                      $50
+                    </span>
+                    <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
+                      PRO UPGRADE
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <ExamAccessBlock
+                unlocked={exam.unlocked}
+                hasProPlan={exam.hasProPlan}
+                testHref={exam.testHref}
+                upgradeSlug={exam.courseSlug}
+              />
+
+              <div className="mt-4 border-t border-[#1f2c4a]/10 pt-3.5">
+                <p className="mb-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
+                  What&apos;s included
                 </p>
+                <ul className="space-y-2.5">
+                  {[exam.description, 'Scenario-style practice questions', 'Immediate feedback after submit'].map(
+                    (item) => (
+                      <li key={item} className="flex items-start gap-2 text-[13px] text-[#475569]">
+                        <CheckIcon />
+                        <span>{item}</span>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+
+              <div className="mt-auto pt-4">
+                <div className="flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+                  <Image
+                    src="/Silver.png"
+                    alt="Scaled Agile Silver Partner"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 shrink-0 object-contain"
+                  />
+                  <p className="text-[11px] leading-snug text-[#475569]">
+                    Official training under our{' '}
+                    <span className="font-semibold text-[#1f2c4a]">Scaled Agile Silver Partnership</span>
+                  </p>
+                </div>
               </div>
             </div>
-            <PracticeExamAccessCta
-              unlocked={hasLeadingSafePro}
-              hasProPlan={hasLeadingSafeProPlan}
-              testHref="/account/practice-exams/leading-safe"
-              upgradeSlug="leading-safe"
-            />
-          </div>
-        )}
+          </article>
+        ))}
 
-        {/* POPM - show if registered for course */}
-        {hasPopm && !isProPracticeExamExpiredForCourse('product-owner-manager') && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">📝</span>
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">SAFe Product Owner/Product Manager (POPM)</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  45 questions covering key SAFe POPM concepts
-                </p>
-              </div>
-            </div>
-            <PracticeExamAccessCta
-              unlocked={hasPopmPro}
-              hasProPlan={hasPopmProPlan}
-              testHref="/account/practice-exams/popm"
-              upgradeSlug="product-owner-manager"
-            />
+        <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-[#1f2c4a]/20 bg-white/70">
+          <div className="bg-[#1f2c4a]/10 px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">
+            Coming soon
           </div>
-        )}
-
-        {/* Agile Product Management (APM) */}
-        {hasApm && !isProPracticeExamExpiredForCourse('agile-product-management') && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">🚀</span>
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">Agile Product Management (APM)</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  51 questions derived from your APM preparation pack
-                </p>
-              </div>
-            </div>
-            <PracticeExamAccessCta
-              unlocked={hasApmPro}
-              hasProPlan={hasApmProPlan}
-              testHref="/account/practice-exams/agile-product-management"
-              upgradeSlug="agile-product-management"
-            />
-          </div>
-        )}
-
-        {/* SAFe Scrum Master (SSM) */}
-        {hasScrumMaster && !isProPracticeExamExpiredForCourse('scrum-master') && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">🎯</span>
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">SAFe Scrum Master (SSM)</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  Practice questions aligned to the SAFe Scrum Master certification exam
-                </p>
-              </div>
-            </div>
-            <PracticeExamAccessCta
-              unlocked={hasSsmPro}
-              hasProPlan={hasSsmProPlan}
-              testHref="/account/practice-exams/scrum-master"
-              upgradeSlug="scrum-master"
-            />
-          </div>
-        )}
-
-        {/* SASM - show if registered for course or SSM+SASM combo */}
-        {hasAsm && !isProPracticeExamExpiredForCourse('advanced-scrum-master') && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">🏆</span>
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">SAFe Advanced Scrum Master (SASM)</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  55 questions aligned to the AI-Empowered SASM practice set
-                </p>
-              </div>
-            </div>
-            <PracticeExamAccessCta
-              unlocked={hasAsmPro}
-              hasProPlan={hasAsmProPlan}
-              testHref="/account/practice-exams/advanced-scrum-master"
-              upgradeSlug="advanced-scrum-master"
-            />
-          </div>
-        )}
-
-        {/* LPM - show if registered for course */}
-        {hasLpm && (
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-xl">📋</span>
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">SAFe Lean Portfolio Management (LPM)</h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  51 questions covering key SAFe LPM concepts
-                </p>
-              </div>
-            </div>
-            <PracticeExamAccessCta
-              unlocked={hasLpmPro}
-              hasProPlan={hasLpmProPlan}
-              testHref="/account/practice-exams/lpm"
-              upgradeSlug="lean-portfolio-management"
-            />
-          </div>
-        )}
-
-        {/* Placeholder */}
-        <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-75">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc]">
+              <svg className="h-6 w-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
               </svg>
             </div>
-            <div>
-              <h2 className="font-semibold text-slate-700">
-                {hasAnyExam ? 'More practice exams coming soon' : 'Enroll in a course to see practice exams'}
-              </h2>
-              <p className="text-slate-500 text-sm mt-1">
-                {hasAnyExam
-                  ? 'Additional SAFe certification practice tests will be added for Pro plan purchasers.'
-                  : 'Practice exams appear here when you enroll in a course. Upgrade to Pro for $50 to unlock.'}
-              </p>
-            </div>
+            <h2 className="mb-2 text-[0.95rem] font-semibold text-[#1f2c4a]">
+              {hasAnyExam ? 'More practice exams coming soon' : 'Enroll in a course to see practice exams'}
+            </h2>
+            <p className="max-w-xs text-sm leading-relaxed text-[#64748b]">
+              {hasAnyExam
+                ? 'Additional SAFe certification practice tests will be added for Pro plan purchasers.'
+                : 'Practice exams appear here for each course in your enrollment or combo.'}
+            </p>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   );

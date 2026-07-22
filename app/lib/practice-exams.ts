@@ -234,10 +234,26 @@ export async function getRegisteredCourseSlugs(): Promise<string[]> {
   return [...slugs];
 }
 
+/**
+ * Expand order slugs (including combo-*) into practice-exam course ids
+ * using the same COMBO_COURSES catalog as /combo-courses.
+ */
+export function practiceExamCoursesFromRegistrations(registeredSlugs: string[]): Set<string> {
+  const ids = new Set<string>();
+  for (const slug of registeredSlugs) {
+    for (const id of resolvePracticeExamCourseIds(slug)) {
+      ids.add(id);
+    }
+  }
+  return ids;
+}
+
 /** Check if user has Basic (not Pro) for a course - eligible for $50 upgrade */
 export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean> {
   if (courseSlug === 'advanced-scrum-master') {
     if (await hasAdvancedScrumMasterProAccess()) return false;
+  } else if (courseSlug === 'scrum-master') {
+    if (await hasScrumMasterProAccess()) return false;
   } else if (await checkProAccess(courseSlug)) {
     return false;
   }
@@ -253,38 +269,17 @@ export async function hasBasicPlanForCourse(courseSlug: string): Promise<boolean
     .single();
   const lookupEmail = primaryLookupEmail(user.email, profile?.email);
 
-  if (courseSlug === 'advanced-scrum-master') {
-    const { data: orders } = await supabase
-      .from('orders')
-      .select('id')
-      .ilike('customer_email', lookupEmail)
-      .eq('plan', 'basic')
-      .or('course_slug.eq.advanced-scrum-master,course_slug.eq.combo-ssm-advanced,course_slug.eq.combo-sasm-popm')
-      .limit(1);
-    return (orders?.length ?? 0) > 0;
-  }
-
-  if (courseSlug === 'scrum-master') {
-    if (await hasScrumMasterProAccess()) return false;
-    const { data: orders } = await supabase
-      .from('orders')
-      .select('id')
-      .ilike('customer_email', lookupEmail)
-      .eq('plan', 'basic')
-      .or('course_slug.eq.scrum-master,course_slug.eq.combo-ssm-advanced,course_slug.eq.combo-ssm-rte')
-      .limit(1);
-    return (orders?.length ?? 0) > 0;
-  }
-
+  // Resolve single-course and combo-* orders the same way as the combo catalog.
   const { data: orders } = await supabase
     .from('orders')
-    .select('id')
+    .select('course_slug')
     .ilike('customer_email', lookupEmail)
-    .eq('course_slug', courseSlug)
     .eq('plan', 'basic')
-    .limit(1);
+    .limit(50);
 
-  return (orders?.length ?? 0) > 0;
+  return (orders ?? []).some((o) =>
+    resolvePracticeExamCourseIds(o.course_slug || '').includes(courseSlug),
+  );
 }
 
 /** Check if the logged-in user has Pro plan for POPM (product-owner-manager) */
