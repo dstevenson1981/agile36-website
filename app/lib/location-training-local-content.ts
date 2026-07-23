@@ -84,7 +84,7 @@ const SCHEDULE_PATH: Record<LocationSegment, string> = {
   "leading-safe-certification-training": "/courses/leading-safe/schedule",
   "scrum-master-certification-training": "/courses/scrum-master/schedule",
   "release-train-engineer-certification-training":
-    "/courses/release-train-engineer/schedule",
+    "/contact?course=release-train-engineer",
   "safe-for-teams-certification-training": "/courses/safe-for-teams/schedule",
   "lean-portfolio-management-certification-training":
     "/courses/lean-portfolio-management/schedule",

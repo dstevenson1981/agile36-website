@@ -42,7 +42,7 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
       const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${window.location.origin}/courses/release-train-engineer/schedule/checkout/success?payment_intent=${paymentIntentId}`,
+          return_url: `${window.location.origin}/private/rte/checkout/success?payment_intent=${paymentIntentId}`,
         },
         redirect: 'if_required',
       });

@@ -96,7 +96,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "agile-product-management-certification-training",
     "safe-product-owner-product-manager-certification-training",
     "lean-portfolio-management-certification-training",
-    "release-train-engineer-certification-training",
   ];
 
   const geoPages: MetadataRoute.Sitemap = [];

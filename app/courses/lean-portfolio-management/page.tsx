@@ -366,10 +366,6 @@ export default function LeanPortfolioManagementCoursePage() {
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Product Owner/Product Manager (POPM)</h3>
               <p className="text-[#475569] text-sm">Manage Program and Team Backlogs, participate in PI Planning, and drive customer-centric delivery.</p>
             </Link>
-            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
-              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
-              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader, facilitating PI Planning and driving continuous improvement.</p>
-            </Link>
             <Link href="/courses/agile-product-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Agile Product Management (APM)</h3>
               <p className="text-[#475569] text-sm">Apply design thinking and continuous exploration to build products customers love at enterprise scale.</p>

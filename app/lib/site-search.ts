@@ -1,5 +1,5 @@
 import {
-  CATALOG_COURSES,
+  PUBLIC_CATALOG_COURSES,
   getCatalogCourseImage,
   getCatalogCourseUrl,
   type CatalogCourse,
@@ -410,7 +410,7 @@ function courseIntents(course: CatalogCourse): string[] {
 function buildDocuments(): SearchDocument[] {
   const docs: SearchDocument[] = [];
 
-  for (const course of CATALOG_COURSES) {
+  for (const course of PUBLIC_CATALOG_COURSES) {
     const intents = courseIntents(course);
     const acronymBits = intents.flatMap((i) => {
       if (i === "popm") return ["popm"];

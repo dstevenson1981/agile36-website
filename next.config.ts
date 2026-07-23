@@ -79,6 +79,17 @@ const nextConfig: NextConfig = {
         destination: '/courses/release-train-engineer',
         permanent: true,
       },
+      // RTE open schedule retired — private enrollment lives at /private/rte
+      {
+        source: '/courses/release-train-engineer/schedule/checkout',
+        destination: '/private/rte/checkout',
+        permanent: false,
+      },
+      {
+        source: '/courses/release-train-engineer/schedule/checkout/:path*',
+        destination: '/private/rte/checkout/:path*',
+        permanent: false,
+      },
       {
         source: '/safe-value-stream-mapping-microcredential-course',
         destination: '/courses/value-stream-mapping',

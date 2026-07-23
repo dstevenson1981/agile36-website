@@ -8,6 +8,8 @@ type EnrollNowLinkProps = {
   quantity: number;
   className?: string;
   label?: string;
+  /** Override default `/courses/{slug}/schedule/checkout` (e.g. private RTE path). */
+  checkoutBasePath?: string;
 };
 
 export default function EnrollNowLink({
@@ -16,8 +18,10 @@ export default function EnrollNowLink({
   quantity,
   className,
   label = "ENROLL NOW",
+  checkoutBasePath,
 }: EnrollNowLinkProps) {
-  const href = `/courses/${courseSlug}/schedule/checkout?schedule=${scheduleId}&course=${courseSlug}&quantity=${quantity}`;
+  const base = checkoutBasePath ?? `/courses/${courseSlug}/schedule/checkout`;
+  const href = `${base}?schedule=${scheduleId}&course=${courseSlug}&quantity=${quantity}`;
 
   return (
     <Link className={className} href={href}>

@@ -25,6 +25,8 @@ export interface CatalogCourse {
   trending?: boolean;
   advanced?: boolean;
   privateClass?: boolean;
+  /** Keep course URL live for direct sharing; omit from public catalogs/nav/search. */
+  hiddenFromListing?: boolean;
 }
 
 const COURSE_THUMBNAILS: { [key: string]: string } = {
@@ -302,6 +304,10 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     },
   ];
 
+/** Public browsing surfaces (homepage, /courses, nav, search). Direct course URLs still work. */
+export const PUBLIC_CATALOG_COURSES: CatalogCourse[] = CATALOG_COURSES.filter(
+  (c) => !c.hiddenFromListing
+);
 
 export function getCatalogCourseUrl(course: CatalogCourse): string {
     // Special cases
