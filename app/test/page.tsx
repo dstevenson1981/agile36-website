@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BADGES } from "@/app/combo-courses/data";
+import PracticeTestHeroCollage from "./PracticeTestHeroCollage";
 
 type PracticeTest = {
   id: string;
@@ -130,27 +131,30 @@ const INDUSTRY_LOGOS = [
   { src: "/logo-amazon.svg", alt: "Amazon" },
 ];
 
-const LEADERS = [
+const REVIEWS = [
   {
-    name: "Deadra Stevenson",
-    title: "CEO & Founder · SPC",
-    image: "/Deadra.jpeg",
-    trained: "25K+",
-    blurb: "Enterprise Agile & AI transformation leader trusted by global brands.",
+    name: "Angela Davis",
+    role: "Project Manager",
+    image: "/Images/Frame 1.png",
+    quote:
+      "The practice tests were incredibly helpful preparing for SAFe Scrum Master. Clear explanations and realistic scenarios.",
+    certification: "Certified SAFe® 6 Scrum Master",
   },
   {
-    name: "Marcus Ball",
-    title: "Enterprise Agile Coach · SPC",
-    image: "/marcus.jpeg",
-    trained: "13K+",
-    blurb: "Hands-on SAFe coaching that turns framework theory into delivery results.",
+    name: "Amber Jones",
+    role: "Release Train Engineer",
+    image: "/Images/image 120.png",
+    quote:
+      "Comprehensive practice questions and expert guidance made a real difference. I felt ready walking into the exam.",
+    certification: "Certified SAFe® 6 RTE",
   },
   {
-    name: "Joe Puoci",
-    title: "Enterprise Trainer · SPC",
-    image: "/Joe.jpeg",
-    trained: "13K+",
-    blurb: "Practical, outcome-oriented instruction across the SAFe portfolio.",
+    name: "Tiffany Henderson",
+    role: "Agile Coach",
+    image: "/Images/image 137.png",
+    quote:
+      "The mocks helped me spot weak areas fast. Spot-on difficulty and great for building exam confidence.",
+    certification: "SAFe Practice Learner",
   },
 ];
 
@@ -167,7 +171,7 @@ const BENEFITS = [
   },
   {
     title: "Study on your schedule",
-    desc: "Start a free mock anytime, on any device — no login required to try.",
+    desc: "Start a free mock anytime, on any device, at your own pace.",
     image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
   },
 ];
@@ -254,12 +258,9 @@ function PracticeTestCard({
         </p>
 
         <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">Access</p>
-        <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <div className="mt-1">
           <span className="text-[1.75rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
             Free
-          </span>
-          <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
-            NO LOGIN REQUIRED
           </span>
         </div>
 
@@ -364,21 +365,10 @@ export default function TestPage() {
               Free SAFe® practice tests that mirror the real exam
             </motion.h1>
             <motion.p variants={fadeUp} className="mb-7 max-w-xl text-lg leading-relaxed text-[#475569]">
-              Exam-style questions with clear explanations. Built by the same SPC faculty behind Agile36 live
-              certification training.
+              Exam-style questions with clear explanations — built to raise confidence before certification day.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mb-8 flex flex-wrap items-center gap-3">
-              <div className="flex -space-x-2">
-                {["/Deadra.jpeg", "/Joe.jpeg", "/marcus.jpeg"].map((src) => (
-                  <div
-                    key={src}
-                    className="h-9 w-9 overflow-hidden rounded-full border-2 border-white shadow-sm ring-1 ring-[#1f2c4a]/10"
-                  >
-                    <Image src={src} alt="" width={36} height={36} className="h-full w-full object-cover" />
-                  </div>
-                ))}
-              </div>
               <div className="flex gap-0.5" aria-hidden>
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="h-4 w-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
@@ -416,43 +406,7 @@ export default function TestPage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div aria-hidden className="absolute -inset-8 rounded-full bg-[#d97706]/[0.1] blur-3xl" />
-            <div className="relative overflow-hidden rounded-3xl border border-[#1f2c4a]/12 shadow-2xl shadow-[#1f2c4a]/20">
-              <Image
-                src="/LeadingSAFeHome.jpg"
-                alt="Agile36 learners preparing for SAFe certification exams"
-                width={1376}
-                height={768}
-                priority
-                className="relative w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1f2c4a]/50 via-transparent to-transparent" />
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
-              className="absolute -left-3 bottom-10 hidden max-w-[11.5rem] rounded-2xl border border-white/60 bg-white/95 p-3 shadow-xl backdrop-blur sm:block md:-left-6"
-            >
-              <p className="text-xs font-semibold text-[#1f2c4a]">7 free practice mocks</p>
-              <p className="text-[11px] text-[#64748b]">Leading SAFe · LPM · POPM · more</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.55, duration: 0.5 }}
-              className="absolute -right-2 top-8 hidden rounded-2xl border border-white/60 bg-white/95 px-3 py-2.5 shadow-xl backdrop-blur sm:block md:-right-4"
-            >
-              <div className="flex items-center gap-2">
-                <Image src="/Silver.png" alt="" width={28} height={28} className="h-7 w-7 object-contain" />
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wide text-[#1f2c4a]">Silver Partner</p>
-                  <p className="text-[11px] text-[#64748b]">Scaled Agile</p>
-                </div>
-              </div>
-            </motion.div>
+            <PracticeTestHeroCollage />
           </motion.div>
         </div>
       </section>
@@ -562,67 +516,11 @@ export default function TestPage() {
         </div>
       </section>
 
-      {/* Faculty */}
-      <section className="relative w-full overflow-hidden px-4 py-16 sm:px-6 lg:px-20">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(31,44,74,0.06),_transparent_65%)]"
-        />
-        <div className="relative mx-auto max-w-7xl">
-          <div className="mb-10 text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Faculty</p>
-            <h2 className="text-2xl font-normal text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: "-0.03em" }}>
-              Learn from industry leaders
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-[#64748b]">
-              Practice content is curated by the same SAFe® Practice Consultants who lead Agile36 live cohorts.
-            </p>
-          </div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={stagger}
-            className="grid gap-6 md:grid-cols-3"
-          >
-            {LEADERS.map((leader) => (
-              <motion.div
-                key={leader.name}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                className="overflow-hidden rounded-2xl border border-[#1f2c4a]/12 bg-white shadow-[0_12px_32px_-16px_rgba(31,44,74,0.25)]"
-              >
-                <div className="relative h-56 overflow-hidden bg-[#1f2c4a]/5">
-                  <Image
-                    src={leader.image}
-                    alt={leader.name}
-                    fill
-                    className="object-cover object-top transition duration-500 hover:scale-[1.03]"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <h3 className="font-semibold text-[#1f2c4a]">{leader.name}</h3>
-                    <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
-                      {leader.trained} trained
-                    </span>
-                  </div>
-                  <p className="mb-2 text-sm text-[#64748b]">{leader.title}</p>
-                  <p className="text-sm leading-relaxed text-[#475569]">{leader.blurb}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Visual strip */}
       <section className="w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
           {[
-            { src: "/LeadingSAFeHome.jpg", label: "Live virtual classrooms" },
+            { src: "/combo-hero.jpg", label: "Live virtual classrooms" },
             { src: "/brooke-cagle--uHVRvDr7pg-unsplash.jpg", label: "Collaborative learning" },
             { src: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg", label: "Career-ready cohorts" },
           ].map((shot, i) => (
@@ -634,11 +532,64 @@ export default function TestPage() {
               transition={{ delay: i * 0.1 }}
               className="relative h-44 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 sm:h-52"
             >
-              <Image src={shot.src} alt={shot.label} fill className="object-cover" sizes="33vw" />
+              <Image src={shot.src} alt={shot.label} fill className="object-cover" sizes="33vw" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1f2c4a]/70 to-transparent" />
               <p className="absolute bottom-3 left-3 text-sm font-semibold text-white">{shot.label}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="w-full px-4 py-16 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Reviews</p>
+            <h2 className="text-2xl font-normal text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: "-0.03em" }}>
+              What learners say
+            </h2>
+          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={stagger}
+            className="grid gap-6 md:grid-cols-3"
+          >
+            {REVIEWS.map((review) => (
+              <motion.article
+                key={review.name}
+                variants={fadeUp}
+                className="flex h-full flex-col rounded-2xl border border-[#1f2c4a]/12 bg-white p-6 shadow-[0_12px_32px_-16px_rgba(31,44,74,0.25)]"
+              >
+                <div className="mb-4 flex gap-0.5" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="h-4 w-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="mb-5 flex-1 text-sm leading-relaxed text-[#475569]">&ldquo;{review.quote}&rdquo;</p>
+                <div className="flex items-center gap-3 border-t border-[#1f2c4a]/10 pt-4">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[#1f2c4a]/10 bg-[#f8fafc]">
+                    <Image
+                      src={review.image}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-[#1f2c4a]">{review.name}</p>
+                    <p className="text-xs text-[#64748b]">{review.role}</p>
+                    <p className="mt-0.5 text-[11px] text-[#94a3b8]">{review.certification}</p>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
 

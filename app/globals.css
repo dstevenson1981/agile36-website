@@ -605,3 +605,67 @@ body {
     animation: none;
   }
 }
+
+/* /test hero collage — CSS-only (transform/opacity; no JS animation loop) */
+@keyframes pt-collage-bob {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(0, -6px, 0); }
+  75% { transform: translate3d(0, 4px, 0); }
+}
+
+@keyframes pt-collage-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(14px, -10px, 0); }
+}
+
+@keyframes pt-collage-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-12px, 10px, 0); }
+}
+
+@keyframes pt-collage-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(10px, -8px, 0); }
+}
+
+@keyframes pt-collage-drift-d {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-10px, 12px, 0); }
+}
+
+@keyframes pt-collage-glow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes pt-collage-spin {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(16deg); }
+}
+
+.pt-collage-bob-a { animation: pt-collage-bob 5.5s ease-in-out infinite; }
+.pt-collage-bob-b { animation: pt-collage-bob 6.2s ease-in-out infinite 0.3s; }
+.pt-collage-bob-c { animation: pt-collage-bob 7s ease-in-out infinite 0.6s; }
+.pt-collage-bob-d { animation: pt-collage-bob 6.6s ease-in-out infinite 0.15s; }
+.pt-collage-drift-a { animation: pt-collage-drift-a 7.5s ease-in-out infinite; }
+.pt-collage-drift-b { animation: pt-collage-drift-b 8.2s ease-in-out infinite 0.4s; }
+.pt-collage-drift-c { animation: pt-collage-drift-c 6.8s ease-in-out infinite 0.2s; }
+.pt-collage-drift-d { animation: pt-collage-drift-d 7.8s ease-in-out infinite 0.55s; }
+.pt-collage-glow { animation: pt-collage-glow 9s ease-in-out infinite; }
+.pt-collage-spin { animation: pt-collage-spin 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-collage-bob-a,
+  .pt-collage-bob-b,
+  .pt-collage-bob-c,
+  .pt-collage-bob-d,
+  .pt-collage-drift-a,
+  .pt-collage-drift-b,
+  .pt-collage-drift-c,
+  .pt-collage-drift-d,
+  .pt-collage-glow,
+  .pt-collage-spin {
+    animation: none;
+  }
+}
+
