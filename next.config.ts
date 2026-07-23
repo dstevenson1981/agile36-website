@@ -90,6 +90,12 @@ const nextConfig: NextConfig = {
         destination: '/private/rte/checkout/:path*',
         permanent: false,
       },
+      // AI Agents deck lives under /brochures (old root URL 404'd)
+      {
+        source: '/Agile36-AI-Agents-Workshop-Deck.pdf',
+        destination: '/brochures/Agile36-AI-Agents-Workshop-Deck.pdf',
+        permanent: true,
+      },
       {
         source: '/safe-value-stream-mapping-microcredential-course',
         destination: '/courses/value-stream-mapping',
