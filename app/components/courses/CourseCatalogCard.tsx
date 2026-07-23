@@ -5,6 +5,7 @@ import {
   formatCatalogLiveDate,
   getCatalogCourseAcronym,
   getCatalogCourseImage,
+  getCatalogCourseSlug,
   getCatalogCourseUrl,
   getCatalogScheduleUrl,
 } from "@/app/lib/course-catalog";
@@ -32,9 +33,11 @@ export default function CourseCatalogCard({
   const courseUrl = getCatalogCourseUrl(course);
   const scheduleUrl = getCatalogScheduleUrl(course);
   const acronym = getCatalogCourseAcronym(course.title);
-  const liveLabel = nextStartDate
-    ? `Starts ${formatCatalogLiveDate(nextStartDate)}`
-    : "Live remote class — view schedule";
+  const liveLabel = course.privateClass
+    ? "Private class"
+    : nextStartDate
+      ? `Starts ${formatCatalogLiveDate(nextStartDate)}`
+      : "Live remote class — view schedule";
 
   const badge = course.advanced
     ? { label: "Advanced", className: "bg-purple-100 text-purple-800" }
@@ -111,12 +114,21 @@ export default function CourseCatalogCard({
           >
             View course
           </Link>
-          <Link
-            href={scheduleUrl}
-            className="flex-1 inline-flex items-center justify-center rounded-md bg-[#fa4a23] hover:bg-[#e03d1a] text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"
-          >
-            View schedule
-          </Link>
+          {course.privateClass ? (
+            <Link
+              href={`/contact?course=${getCatalogCourseSlug(course)}`}
+              className="flex-1 inline-flex items-center justify-center rounded-md bg-[#fa4a23] hover:bg-[#e03d1a] text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"
+            >
+              Contact us
+            </Link>
+          ) : (
+            <Link
+              href={scheduleUrl}
+              className="flex-1 inline-flex items-center justify-center rounded-md bg-[#fa4a23] hover:bg-[#e03d1a] text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"
+            >
+              View schedule
+            </Link>
+          )}
         </div>
       </div>
     </article>

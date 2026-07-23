@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { COMBO_COURSES, type Combo } from "../data";
+import { findComboById, type Combo } from "../data";
 import ComboPaymentForm from "./ComboPaymentForm";
 import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
@@ -56,7 +56,7 @@ function ComboCheckoutContent() {
     Boolean(formData.email?.trim());
 
   useEffect(() => {
-    const found = COMBO_COURSES.find((c) => c.id === comboId);
+    const found = comboId ? findComboById(comboId) : undefined;
     setCombo(found || null);
   }, [comboId]);
 

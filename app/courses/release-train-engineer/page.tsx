@@ -8,7 +8,6 @@ import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
-import CourseComboDealsPanel from "@/app/components/CourseComboDealsPanel";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 
@@ -172,12 +171,6 @@ export default function ReleaseTrainEngineerCoursePage() {
 
       {/* Trusted by industry leaders */}
       <TrustedByStrip />
-
-      <section className="w-full bg-[#1f2c4a]/[0.03] py-10 px-4 sm:px-6 lg:px-20">
-        <div className="mx-auto max-w-7xl">
-          <CourseComboDealsPanel courseSlug={courseSlug} />
-        </div>
-      </section>
 
       {/* AI-SEO: Page Summary */}
       <section className="w-full bg-[#1f2c4a]/[0.03] border-t border-[#1f2c4a]/10 py-8 px-4 sm:px-6 lg:px-20">

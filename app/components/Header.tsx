@@ -404,14 +404,15 @@ export default function Header() {
       title: "SAFe Release Train Engineer",
       category: "SAFe",
       image: "/RTE.png",
-      price: 1299,
-      originalPrice: 1699,
+      price: 0,
+      originalPrice: 0,
       hours: "16 Hrs",
       days: "03 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "RTE Practices, Agile Release Train Facilitation",
       popular: true,
       advanced: true,
+      privateClass: true,
     },
     // Generative AI courses
     {

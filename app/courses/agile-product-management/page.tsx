@@ -370,10 +370,6 @@ export default function AgileProductManagementCoursePage() {
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Lean Portfolio Management (LPM)</h3>
               <p className="text-[#475569] text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams.</p>
             </Link>
-            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
-              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
-              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader, facilitating PI Planning and continuous improvement.</p>
-            </Link>
             <Link href="/courses/advanced-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
               <p className="text-[#475569] text-sm">Advanced facilitation and coaching skills for experienced Scrum Masters in SAFe environments.</p>
