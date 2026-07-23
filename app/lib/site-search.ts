@@ -173,8 +173,8 @@ const PRACTICE_TESTS: Array<{
   },
   {
     id: "pt-sasm",
-    title: "SAFe Advanced Scrum Master Practice Test",
-    href: "/test/advanced-scrum-master",
+    title: "SAFe Advanced Scrum Master Course",
+    href: "/courses/advanced-scrum-master",
     image: "/AdvancedSM.png",
     intents: ["sasm", "practice"],
     keywords: ["sasm", "advanced scrum master"],

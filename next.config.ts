@@ -143,6 +143,77 @@ const nextConfig: NextConfig = {
         destination: '/courses',
         permanent: true,
       },
+      // Public Pro practice banks → free /test mocks only (Pro exams stay in /account)
+      {
+        source: '/test/leading-safe-pro',
+        destination: '/test/leading-safe',
+        permanent: true,
+      },
+      {
+        source: '/leading-safepro',
+        destination: '/test/leading-safe',
+        permanent: true,
+      },
+      {
+        source: '/leading-safe-pro-temp',
+        destination: '/test/leading-safe',
+        permanent: true,
+      },
+      {
+        source: '/leading-safe-pro-temp-2',
+        destination: '/test/leading-safe',
+        permanent: true,
+      },
+      {
+        source: '/popmpro',
+        destination: '/test/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/popm-prep-pro',
+        destination: '/test/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/popm-practice-temp',
+        destination: '/test/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/ssmpro',
+        destination: '/test/scrum-master',
+        permanent: true,
+      },
+      {
+        source: '/scrum-master-pro-temp',
+        destination: '/test/scrum-master',
+        permanent: true,
+      },
+      {
+        source: '/scrum-master-pro-temp-2',
+        destination: '/test/scrum-master',
+        permanent: true,
+      },
+      {
+        source: '/lpmpro',
+        destination: '/test/lean-portfolio-management',
+        permanent: true,
+      },
+      {
+        source: '/lpm-pro-temp',
+        destination: '/test/lean-portfolio-management',
+        permanent: true,
+      },
+      {
+        source: '/sasm-practice',
+        destination: '/courses/advanced-scrum-master',
+        permanent: true,
+      },
+      {
+        source: '/test/advanced-scrum-master',
+        destination: '/courses/advanced-scrum-master',
+        permanent: true,
+      },
     ];
   },
 };

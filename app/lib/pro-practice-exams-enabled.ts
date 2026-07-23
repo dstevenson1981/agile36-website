@@ -1,12 +1,14 @@
 /**
- * Pro practice exam availability (public direct links + account take-test routes).
+ * Pro practice exam availability (account take-test routes + course practice-exam).
  *
  * Global: set PRO_PRACTICE_EXAMS_ENABLED=true to enable all Pro practice exams.
  * When global is off, only courses in ALWAYS_ENABLED_COURSE_IDS stay live.
+ *
+ * Public site never serves Pro banks — use getPublicProPracticeRedirect().
  */
 const DEFAULT_PRO_PRACTICE_EXAMS_ENABLED = false;
 
-/** Pro practice exams that stay available when global disable is on. */
+/** Pro practice exams that stay available when global disable is on (account only). */
 const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
@@ -15,21 +17,6 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'agile-product-management',
   'advanced-scrum-master',
 ]);
-
-const ALWAYS_ENABLED_PUBLIC_PREFIXES = [
-  '/lpmpro',
-  '/lpm-pro-temp',
-  '/popmpro',
-  '/popm-prep-pro',
-  '/popm-practice-temp',
-  '/leading-safepro',
-  '/leading-safe-pro-temp',
-  '/leading-safe-pro-temp-2',
-  '/test/leading-safe-pro',
-  '/ssmpro',
-  '/scrum-master-pro-temp',
-  '/scrum-master-pro-temp-2',
-] as const;
 
 const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
@@ -43,9 +30,23 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
   /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master)\/practice-exam\/?$/;
 
-const BLOCKED_PUBLIC_PREFIXES = [
-  '/sasm-practice',
-] as const;
+/** Former public Pro shortcuts → free /test mocks or course pages (always). */
+const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
+  '/test/leading-safe-pro': '/test/leading-safe',
+  '/leading-safepro': '/test/leading-safe',
+  '/leading-safe-pro-temp': '/test/leading-safe',
+  '/leading-safe-pro-temp-2': '/test/leading-safe',
+  '/popmpro': '/test/product-owner-manager',
+  '/popm-prep-pro': '/test/product-owner-manager',
+  '/popm-practice-temp': '/test/product-owner-manager',
+  '/ssmpro': '/test/scrum-master',
+  '/scrum-master-pro-temp': '/test/scrum-master',
+  '/scrum-master-pro-temp-2': '/test/scrum-master',
+  '/lpmpro': '/test/lean-portfolio-management',
+  '/lpm-pro-temp': '/test/lean-portfolio-management',
+  '/sasm-practice': '/courses/advanced-scrum-master',
+  '/test/advanced-scrum-master': '/courses/advanced-scrum-master',
+};
 
 const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
 
@@ -74,12 +75,16 @@ export function isPracticeExamsHubEnabled(): boolean {
   return areProPracticeExamsEnabled() || ALWAYS_ENABLED_COURSE_IDS.size > 0;
 }
 
-function isAlwaysEnabledPublicOrAccountPath(path: string): boolean {
+/** Free-site destination for a former public Pro URL, or null. */
+export function getPublicProPracticeRedirect(pathname: string): string | null {
+  const path = normalizePath(pathname);
+  return PUBLIC_PRO_REDIRECTS[path] ?? null;
+}
+
+function isAlwaysEnabledAccountOrCoursePath(path: string): boolean {
   if (ALWAYS_ENABLED_ACCOUNT_PATHS.has(path)) return true;
   if (ALWAYS_ENABLED_COURSE_PRACTICE_EXAM.test(path)) return true;
-  return ALWAYS_ENABLED_PUBLIC_PREFIXES.some(
-    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-  );
+  return false;
 }
 
 function isAccountProPracticeTakePath(path: string): boolean {
@@ -87,15 +92,20 @@ function isAccountProPracticeTakePath(path: string): boolean {
   return path.startsWith('/account/practice-exams/');
 }
 
-/** Paths that return 404 while their Pro practice exam is unavailable. */
+/** Paths that return 404 while their Pro practice exam is unavailable (account/course only). */
 export function isProPracticeExamPath(pathname: string): boolean {
   const path = normalizePath(pathname);
+
+  // Public Pro URLs are redirected separately — never 404 here.
+  if (getPublicProPracticeRedirect(path)) {
+    return false;
+  }
 
   if (areProPracticeExamsEnabled()) {
     return false;
   }
 
-  if (isAlwaysEnabledPublicOrAccountPath(path)) {
+  if (isAlwaysEnabledAccountOrCoursePath(path)) {
     return false;
   }
 
@@ -107,7 +117,5 @@ export function isProPracticeExamPath(pathname: string): boolean {
     return true;
   }
 
-  return BLOCKED_PUBLIC_PREFIXES.some(
-    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-  );
+  return false;
 }

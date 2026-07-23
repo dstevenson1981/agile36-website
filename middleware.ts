@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { AGILE36_CONTENT_SECURITY_POLICY } from './app/lib/csp-header';
 import {
   areProPracticeExamsEnabled,
+  getPublicProPracticeRedirect,
   isProPracticeExamPath,
 } from './app/lib/pro-practice-exams-enabled';
 import {
@@ -42,6 +43,14 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
+
+  // Public site never serves Pro banks — send shortcuts to free /test or course pages.
+  const publicProDest = getPublicProPracticeRedirect(pathname);
+  if (publicProDest) {
+    const redirectRes = NextResponse.redirect(new URL(publicProDest, request.url), 308);
+    applyCspAndHreflang(request, redirectRes);
+    return redirectRes;
+  }
 
   if (!areProPracticeExamsEnabled() && isProPracticeExamPath(pathname)) {
     const notFound = new NextResponse(null, { status: 404, statusText: 'Not Found' });

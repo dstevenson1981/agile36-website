@@ -1,593 +1,754 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { BADGES } from "@/app/combo-courses/data";
+
+type PracticeTest = {
+  id: string;
+  name: string;
+  shortLabel: string;
+  href: string;
+  badge: string;
+  enrolled: string;
+  includes: string[];
+};
+
+const PRACTICE_TESTS: PracticeTest[] = [
+  {
+    id: "leading-safe",
+    name: "Leading SAFe / SAFe Agilist Practice Test",
+    shortLabel: "SA",
+    href: "/test/leading-safe",
+    badge: BADGES["leading-safe"],
+    enrolled: "5K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to SAFe Agilist topics",
+    ],
+  },
+  {
+    id: "lean-portfolio-management",
+    name: "Lean Portfolio Management Practice Test",
+    shortLabel: "LPM",
+    href: "/test/lean-portfolio-management",
+    badge: BADGES["lean-portfolio-management"],
+    enrolled: "3K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to LPM topics",
+    ],
+  },
+  {
+    id: "product-owner-manager",
+    name: "SAFe Product Owner/Product Manager Practice Test",
+    shortLabel: "POPM",
+    href: "/test/product-owner-manager",
+    badge: BADGES["product-owner-manager"],
+    enrolled: "4K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to POPM topics",
+    ],
+  },
+  {
+    id: "scrum-master",
+    name: "SAFe Scrum Master Practice Test",
+    shortLabel: "SSM",
+    href: "/test/scrum-master",
+    badge: BADGES["scrum-master"],
+    enrolled: "6K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to SSM topics",
+    ],
+  },
+  {
+    id: "devops",
+    name: "SAFe DevOps Practice Test",
+    shortLabel: "DevOps",
+    href: "/test/devops",
+    badge: BADGES["devops"],
+    enrolled: "3.5K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to SAFe DevOps topics",
+    ],
+  },
+  {
+    id: "agile-product-management",
+    name: "SAFe Agile Product Management Practice Test",
+    shortLabel: "APM",
+    href: "/test/agile-product-management",
+    badge: BADGES["agile-product-management"],
+    enrolled: "2.5K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to APM topics",
+    ],
+  },
+  {
+    id: "safe-for-teams",
+    name: "SAFe for Teams Practice Test",
+    shortLabel: "S4T",
+    href: "/test/safe-for-teams",
+    badge: BADGES["safe-for-teams"],
+    enrolled: "4K+",
+    includes: [
+      "Free exam-style mock set",
+      "Detailed answer explanations",
+      "Immediate score after submit",
+      "Aligned to SAFe for Teams topics",
+    ],
+  },
+];
+
+const INDUSTRY_LOGOS = [
+  { src: "/accenture-6.svg", alt: "Accenture" },
+  { src: "/deloitte-1 (2).svg", alt: "Deloitte" },
+  { src: "/jpmorgan-2 (1).svg", alt: "JPMorgan" },
+  { src: "/bank-of-america-2 (1).svg", alt: "Bank of America" },
+  { src: "/disney-2.svg", alt: "Disney" },
+  { src: "/netflix-3.svg", alt: "Netflix" },
+  { src: "/tesla-9.svg", alt: "Tesla" },
+  { src: "/apple-11.svg", alt: "Apple" },
+  { src: "/logo-amazon.svg", alt: "Amazon" },
+];
+
+const LEADERS = [
+  {
+    name: "Deadra Stevenson",
+    title: "CEO & Founder · SPC",
+    image: "/Deadra.jpeg",
+    trained: "25K+",
+    blurb: "Enterprise Agile & AI transformation leader trusted by global brands.",
+  },
+  {
+    name: "Marcus Ball",
+    title: "Enterprise Agile Coach · SPC",
+    image: "/marcus.jpeg",
+    trained: "13K+",
+    blurb: "Hands-on SAFe coaching that turns framework theory into delivery results.",
+  },
+  {
+    name: "Joe Puoci",
+    title: "Enterprise Trainer · SPC",
+    image: "/Joe.jpeg",
+    trained: "13K+",
+    blurb: "Practical, outcome-oriented instruction across the SAFe portfolio.",
+  },
+];
+
+const BENEFITS = [
+  {
+    title: "Exam-style questions",
+    desc: "Practice with scenarios that mirror real certification exams — not trivia quizzes.",
+    image: "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
+  },
+  {
+    title: "Learn from every miss",
+    desc: "Detailed explanations help you close knowledge gaps before exam day.",
+    image: "/campaign-creators-gMsnXqILjp4-unsplash.jpg",
+  },
+  {
+    title: "Study on your schedule",
+    desc: "Start a free mock anytime, on any device — no login required to try.",
+    image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
+  },
+];
+
+const FAQS = [
+  {
+    q: "Are these free practice tests?",
+    a: "Yes. Every mock on this page is a free public practice set. Full Pro practice banks for enrolled students live in My Account after class.",
+  },
+  {
+    q: "Do I need an account to start?",
+    a: "No. Enter your name and email to unlock the free mock. Creating an Agile36 account is optional.",
+  },
+  {
+    q: "How do these relate to live certification courses?",
+    a: "These mocks help you gauge readiness. Live instructor-led courses include materials, exam paths, and Pro practice exams for enrolled learners.",
+  },
+  {
+    q: "Are the questions aligned to current SAFe exams?",
+    a: "Yes. Content is curated around current SAFe certification topics and reviewed by our SPC faculty.",
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+function CheckIcon() {
+  return (
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+      <path
+        fillRule="evenodd"
+        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function PracticeTestCard({
+  test,
+  index,
+  onStart,
+}: {
+  test: PracticeTest;
+  index: number;
+  onStart: (test: PracticeTest) => void;
+}) {
+  return (
+    <motion.article
+      variants={fadeUp}
+      custom={index}
+      whileHover={{ y: -8, transition: { duration: 0.25 } }}
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#1f2c4a]/15 bg-white shadow-[0_12px_40px_-18px_rgba(31,44,74,0.35)] transition-shadow duration-300 hover:border-[#1f2c4a]/30 hover:shadow-[0_22px_50px_-16px_rgba(31,44,74,0.4)]"
+    >
+      <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+        Free practice mock
+      </div>
+
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-4 flex justify-center">
+          <div className="h-14 w-14 overflow-hidden rounded-xl border border-[#1f2c4a]/12 bg-[#f8fafc] shadow-sm transition duration-300 group-hover:scale-105">
+            <Image
+              src={test.badge}
+              alt={test.name}
+              width={56}
+              height={56}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        <h3 className="mb-1 text-center text-[0.95rem] font-semibold leading-snug text-[#1f2c4a]">
+          {test.name}
+        </h3>
+        <p className="mb-4 text-center text-xs text-[#94a3b8]">
+          {test.enrolled} learners · {test.shortLabel}
+        </p>
+
+        <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">Access</p>
+        <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <span className="text-[1.75rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+            Free
+          </span>
+          <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
+            NO LOGIN REQUIRED
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => onStart(test)}
+          className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f] group-hover:gap-2.5"
+        >
+          Start Practice Test
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3.5 w-3.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+          </svg>
+        </button>
+        <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
+          Instant access · exam-style questions
+        </p>
+
+        <div className="mt-4 border-t border-[#1f2c4a]/10 pt-3.5">
+          <p className="mb-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
+            What&apos;s included
+          </p>
+          <ul className="space-y-2.5">
+            {test.includes.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[13px] text-[#475569]">
+                <CheckIcon />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-auto pt-4">
+          <div className="flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+            <Image
+              src="/Silver.png"
+              alt="Scaled Agile Silver Partner"
+              width={28}
+              height={28}
+              className="h-7 w-7 shrink-0 object-contain"
+            />
+            <p className="text-[11px] leading-snug text-[#475569]">
+              Official training under our{" "}
+              <span className="font-semibold text-[#1f2c4a]">Scaled Agile Silver Partnership</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
 export default function TestPage() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [selectedTest, setSelectedTest] = useState<string>("");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0); // Carousel state
-  const practiceTests = [
-    {
-      id: 1,
-      name: "Leading SAFe Practice Test | SAFe Agilist Mock",
-      icon: "/Leading SAFe.png",
-      badge: "/test-assets/ffceb9da-1494-452c-91a1-889dd8e99146.png",
-      freeTests: "1 Free Test",
-      users: "5K+ Users",
-      rating: "5.0",
-      enrolled: "5K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 9,
-      name: "Leading SAFe Pro Practice Test | Full Exam",
-      icon: "/Leading SAFe.png",
-      badge: "/test-assets/ffceb9da-1494-452c-91a1-889dd8e99146.png",
-      freeTests: "Full Practice",
-      users: "5K+ Users",
-      rating: "5.0",
-      enrolled: "5K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 2,
-      name: "Lean Portfolio Management Practice Test",
-      icon: "/Lean Portfolio.png",
-      badge: "/test-assets/0e7aa2d2-915a-4fa9-8e7b-b1e5dd9b67ad.png",
-      freeTests: "1 Free Test",
-      users: "3K+ Users",
-      rating: "5.0",
-      enrolled: "3K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 3,
-      name: "SAFe Product Owner/Product Manager Practice Test",
-      icon: "/POPM.jpg",
-      badge: "/test-assets/24e904e5-55b4-4208-b0ff-9eec2d803ae9.png",
-      freeTests: "1 Free Test",
-      users: "4K+ Users",
-      rating: "5.0",
-      enrolled: "4K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 4,
-      name: "SAFe Scrum Master Practice Test",
-      icon: "/SSM.jpeg",
-      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
-      freeTests: "1 Free Test",
-      users: "6K+ Users",
-      rating: "5.0",
-      enrolled: "6K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 8,
-      name: "SAFe Advanced Scrum Master Practice Test",
-      icon: "/SSM.jpeg",
-      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
-      freeTests: "1 Free Test",
-      users: "2K+ Users",
-      rating: "5.0",
-      enrolled: "2K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 5,
-      name: "SAFe DevOps Practice Test",
-      icon: "/Devops.png",
-      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
-      freeTests: "1 Free Test",
-      users: "3.5K+ Users",
-      rating: "5.0",
-      enrolled: "3.5K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 6,
-      name: "SAFe Agile Product Management Practice Test",
-      icon: "/AgileProductManagment.png",
-      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
-      freeTests: "1 Free Test",
-      users: "2.5K+ Users",
-      rating: "5.0",
-      enrolled: "2.5K+ enrolled",
-      language: "English",
-    },
-    {
-      id: 7,
-      name: "SAFe for Teams Practice Test",
-      icon: "/SAFe for Teams.png",
-      badge: "/test-assets/6a7a67ac-3a02-46ef-b183-069a456e10b0.png",
-      freeTests: "1 Free Test",
-      users: "4K+ Users",
-      rating: "5.0",
-      enrolled: "4K+ enrolled",
-      language: "English",
-    },
-  ];
+  const [selectedTest, setSelectedTest] = useState<PracticeTest | null>(null);
+  const [formData, setFormData] = useState({ name: "", email: "" });
+  const logoLoop = [...INDUSTRY_LOGOS, ...INDUSTRY_LOGOS];
+
+  const openStartModal = (test: PracticeTest) => {
+    setSelectedTest(test);
+    setShowModal(true);
+  };
 
   return (
-    <main className="flex flex-col min-h-screen bg-black text-[#1f2c4a]">
-      {/* Hero Section */}
-      <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left Content */}
-            <div className="flex-1">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 mb-6 text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">
-                <Link href="/" className="transition-colors hover:text-[#1f2c4a]">Home</Link>
-                <span>/</span>
-                <span>Practice Test</span>
-              </div>
+    <main className="min-h-screen overflow-x-hidden bg-black text-[#1f2c4a]">
+      {/* Hero */}
+      <section className="relative w-full px-4 pb-16 pt-12 sm:px-6 md:pb-20 md:pt-16 lg:px-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(217,119,6,0.12),_transparent_50%),radial-gradient(ellipse_at_bottom_left,_rgba(31,44,74,0.08),_transparent_45%)]"
+        />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+          <motion.div initial="hidden" animate="show" variants={stagger}>
+            <motion.div variants={fadeUp} className="mb-6 flex items-center gap-2 text-sm text-[#64748b]">
+              <Link href="/" className="hover:text-[#1f2c4a]">
+                Home
+              </Link>
+              <span>/</span>
+              <span className="text-[#334155]">Practice Tests</span>
+            </motion.div>
 
-              {/* Main Heading */}
-              <div className="mb-6">
-                <h1 className="text-5xl lg:text-6xl font-normal mb-4 text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
-                  Practice Tests That Get You Certified
-                </h1>
-                <h2 className="text-xl lg:text-2xl font-normal text-[#475569] mt-4" style={{ letterSpacing: "-0.02em" }}>
-                  Real exam-style questions with detailed explanations to boost your confidence
-                </h2>
-              </div>
+            <motion.div variants={fadeUp} className="mb-3 inline-block">
+              <span className="text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
+                <span className="text-[#d97706]">Practice first.</span>{" "}
+                <span className="text-[#1f2c4a]">Certify with confidence.</span>
+              </span>
+              <svg viewBox="0 0 220 10" className="mt-1 h-2.5 w-56 text-[#d97706]" fill="none" aria-hidden>
+                <path
+                  d="M3 7c40-5 80-5 107-3 32 2 70 2 107-2"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </motion.div>
 
-              {/* Description */}
-              <p className="text-lg text-[#475569] mb-8">
-                Get hands-on experience with our curated practice tests that mirror actual certification exams. Track your progress, understand key concepts, and walk into your exam with confidence.
-              </p>
+            <motion.h1
+              variants={fadeUp}
+              className="mb-5 text-4xl font-normal leading-[1.08] text-[#1f2c4a] md:text-5xl"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Free SAFe® practice tests that mirror the real exam
+            </motion.h1>
+            <motion.p variants={fadeUp} className="mb-7 max-w-xl text-lg leading-relaxed text-[#475569]">
+              Exam-style questions with clear explanations. Built by the same SPC faculty behind Agile36 live
+              certification training.
+            </motion.p>
 
-              {/* Features List */}
-              <div className="space-y-4 mb-8">
-                {[
-                  {
-                    icon: "/test-assets/020d084a-ea08-4ee4-bdeb-362918463401.png",
-                    text: "Practice with Real Exam-Style Questions",
-                  },
-                  {
-                    icon: "/test-assets/dcc0c7f5-5fdd-45af-aed2-f335115c8d1b.png",
-                    text: "Expert-Curated Content Aligned with Latest Exam Formats",
-                  },
-                  {
-                    icon: "/test-assets/04772de8-36d7-4f68-8b61-b182f0bbc427.png",
-                    text: "Detailed Explanations for Every Answer",
-                  },
-                  {
-                    icon: "/test-assets/d4760c33-063e-4065-99e6-b3c267f711d7.png",
-                    text: "Immediate Results and Performance Analytics",
-                  },
-                  {
-                    icon: "/test-assets/f2381108-479d-406c-b880-c8f7fe319f9c.png",
-                    text: "Review Incorrect Answers to Strengthen Weak Areas",
-                  },
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-1">
-                      <Image
-                        src={feature.icon}
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="w-full h-full"
-                      />
-                    </div>
-                    <span className="text-[#475569] font-medium">
-                      {feature.text}
-                    </span>
+            <motion.div variants={fadeUp} className="mb-8 flex flex-wrap items-center gap-3">
+              <div className="flex -space-x-2">
+                {["/Deadra.jpeg", "/Joe.jpeg", "/marcus.jpeg"].map((src) => (
+                  <div
+                    key={src}
+                    className="h-9 w-9 overflow-hidden rounded-full border-2 border-white shadow-sm ring-1 ring-[#1f2c4a]/10"
+                  >
+                    <Image src={src} alt="" width={36} height={36} className="h-full w-full object-cover" />
                   </div>
                 ))}
               </div>
-
-              {/* Ratings */}
-              <div className="flex items-center gap-6 mb-8">
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/test-assets/c9102ecb-2319-4c35-92d1-3b3bde72b3a0.png"
-                    alt="Rating"
-                    width={92}
-                    height={44}
-                  />
-                  <span className="font-medium text-[#d97706]">4.8/5</span>
-                </div>
-                <div className="w-px h-10 bg-[#1f2c4a]/20"></div>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/test-assets/edb1c5aa-a39e-4eee-877e-296e1fd1f366.png"
-                    alt="Rating"
-                    width={87}
-                    height={43}
-                  />
-                  <span className="font-medium text-[#d97706]">4.9/5</span>
-                </div>
+              <div className="flex gap-0.5" aria-hidden>
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
               </div>
+              <span className="text-sm text-[#64748b]">
+                <span className="font-semibold text-[#1f2c4a]">4.9/5</span> · 2,500+ learner reviews
+              </span>
+            </motion.div>
 
-              {/* CTA Button */}
-              <button
-                onClick={() => {
-                  document.getElementById('practice-tests')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-[#1f2c4a] text-white font-medium px-8 py-3 rounded-lg flex items-center gap-2 transition-colors hover:bg-[#16243f]"
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
+              <a
+                href="#practice-catalog"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#1f2c4a]/25 bg-white/70 px-7 py-3.5 font-medium text-[#1f2c4a] shadow-sm backdrop-blur transition hover:bg-[#1f2c4a] hover:text-white"
               >
-                Get started
-                <Image
-                  src="/test-assets/d6df18b9-65da-4815-9cc5-9242a2aa7fcd.png"
-                  alt=""
-                  width={12}
-                  height={11}
-                />
-              </button>
+                Browse Practice Tests
+              </a>
+              <Link
+                href="/courses"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#1f2c4a] px-7 py-3.5 font-medium text-white shadow-lg shadow-[#1f2c4a]/20 transition hover:bg-[#16243f]"
+              >
+                View Live Courses
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            <div aria-hidden className="absolute -inset-8 rounded-full bg-[#d97706]/[0.1] blur-3xl" />
+            <div className="relative overflow-hidden rounded-3xl border border-[#1f2c4a]/12 shadow-2xl shadow-[#1f2c4a]/20">
+              <Image
+                src="/LeadingSAFeHome.jpg"
+                alt="Agile36 learners preparing for SAFe certification exams"
+                width={1376}
+                height={768}
+                priority
+                className="relative w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1f2c4a]/50 via-transparent to-transparent" />
             </div>
 
-            {/* Right Image */}
-            <div className="flex-1 flex justify-center lg:justify-end">
-              <div className="overflow-hidden rounded-2xl liquid-glass">
-                <Image
-                  src="/Exampic.png"
-                  alt="Practice Tests"
-                  width={600}
-                  height={624}
-                  className="w-full max-w-xl"
-                />
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="absolute -left-3 bottom-10 hidden max-w-[11.5rem] rounded-2xl border border-white/60 bg-white/95 p-3 shadow-xl backdrop-blur sm:block md:-left-6"
+            >
+              <p className="text-xs font-semibold text-[#1f2c4a]">7 free practice mocks</p>
+              <p className="text-[11px] text-[#64748b]">Leading SAFe · LPM · POPM · more</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="absolute -right-2 top-8 hidden rounded-2xl border border-white/60 bg-white/95 px-3 py-2.5 shadow-xl backdrop-blur sm:block md:-right-4"
+            >
+              <div className="flex items-center gap-2">
+                <Image src="/Silver.png" alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-[#1f2c4a]">Silver Partner</p>
+                  <p className="text-[11px] text-[#64748b]">Scaled Agile</p>
+                </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Focused Learning Journey */}
-      <section className="w-full py-12 px-4 sm:px-6 lg:px-20 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-8" style={{ letterSpacing: "-0.03em" }}>
-            Your Path to Certification Success
-          </h2>
-          <div className="rounded-2xl liquid-glass p-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: "/test-assets/44c539b2-9e25-4c01-8027-872b21c64c39.png",
-                  title: "Increase Your Exam Readiness",
-                  description: "Regular practice helps minimize test anxiety and builds preparedness.",
-                },
-                {
-                  icon: "/test-assets/a2a8630c-2d0a-4fe9-9154-e96243f9a438.png",
-                  title: "Flexible Study Schedule",
-                  description: "Take practice tests whenever you want, on any device, around the clock.",
-                },
-                {
-                  icon: "/test-assets/13e9a11c-fb43-4e04-b29d-667109e0b71c.png",
-                  title: "Learn at Your Own Pace",
-                  description: "Study when and where it works best for you, at a comfortable speed.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 border-r border-[#1f2c4a]/10 last:border-r-0 pr-6 last:pr-0"
-                >
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={53}
-                    height={55}
-                    className="flex-shrink-0"
-                  />
-                  <div>
-                    <h3 className="font-medium text-[#1f2c4a] mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[#64748b]">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Industry logos */}
+      <section className="border-y border-[#1f2c4a]/8 bg-white/60 py-8">
+        <div className="mx-auto mb-5 max-w-7xl px-4 text-center sm:px-6 lg:px-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#94a3b8]">
+            Trusted by professionals at industry leaders
+          </p>
         </div>
-      </section>
-
-      {/* Practice Test Series */}
-      <section id="practice-tests" className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-12" style={{ letterSpacing: "-0.03em" }}>
-            Popular Practice Test Collections
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {practiceTests.map((test, index) => (
-              <motion.div
-                key={test.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.1 }}
-                whileHover="hover"
-                variants={{
-                  hover: {
-                    y: -6,
-                    boxShadow: "0 18px 40px -12px rgba(31, 44, 74, 0.28)",
-                    transition: { duration: 0.25, ease: "easeOut" },
-                  },
-                }}
-                style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
-                className="rounded-2xl liquid-glass overflow-hidden flex flex-col h-full"
-              >
-                <div className="p-8 flex flex-col flex-1">
-                  {/* Certification badge */}
-                  <div className="flex items-center justify-center pt-4 mb-7">
-                    <motion.div
-                      variants={{
-                        hover: { scale: [1, 1.08, 1], transition: { duration: 0.5, ease: "easeOut" } },
-                      }}
-                    >
-                      <Image
-                        src={test.icon}
-                        alt={test.name}
-                        width={98}
-                        height={98}
-                        className="rounded-xl"
-                      />
-                    </motion.div>
-                  </div>
-
-                  {/* Title */}
-                  <h3
-                    title={test.name}
-                    className="text-center font-medium text-[#1f2c4a] mb-5 text-base truncate"
-                  >
-                    {test.name}
-                  </h3>
-
-                  {/* Meta: free test, rating, users */}
-                  <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
-                    <span className="rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-[#d97706]">
-                      {test.freeTests}
-                    </span>
-                    <span className="flex items-center gap-1.5 rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium text-[#475569]">
-                      <svg className="h-3.5 w-3.5 text-[#fbbf24]" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      {test.rating}
-                    </span>
-                    <span className="rounded-full border border-[#1f2c4a]/15 px-3 py-1 text-[11px] font-medium text-[#475569]">
-                      {test.users}
-                    </span>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="border-t border-[#1f2c4a]/10 pt-5 mt-auto">
-                    <button
-                      onClick={() => {
-                        setSelectedTest(test.name);
-                        setShowModal(true);
-                      }}
-                      className="w-full bg-[#fbbf24] text-[#1f2c4a] font-semibold py-3.5 px-6 rounded-xl transition-colors duration-300 ease-out hover:bg-[#d97706]"
-                    >
-                      Start Test
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
+        <div className="marquee-mask marquee-paused overflow-hidden">
+          <div className="marquee-track flex w-max items-center gap-14 px-8">
+            {logoLoop.map((logo, i) => (
+              <Image
+                key={`${logo.alt}-${i}`}
+                src={logo.src}
+                alt={logo.alt}
+                width={120}
+                height={40}
+                className="h-8 w-auto opacity-50 grayscale transition hover:opacity-90 hover:grayscale-0 sm:h-9"
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Learners Reviews Section */}
-      <section className="w-full py-16 px-4 sm:px-6 lg:px-20 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-normal text-center text-[#1f2c4a] mb-12" style={{ letterSpacing: "-0.03em" }}>
-            Learners Reviews
-          </h2>
+      {/* Benefits */}
+      <section className="w-full px-4 py-16 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="mb-10 text-center"
+          >
+            <motion.p variants={fadeUp} className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">
+              Why practice with us
+            </motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="text-2xl font-normal text-[#1f2c4a] md:text-3xl"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Built to raise exam readiness
+            </motion.h2>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={stagger}
+            className="grid gap-6 md:grid-cols-3"
+          >
+            {BENEFITS.map((benefit) => (
+              <motion.div
+                key={benefit.title}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                className="overflow-hidden rounded-2xl border border-[#1f2c4a]/12 bg-white shadow-[0_12px_32px_-16px_rgba(31,44,74,0.25)]"
+              >
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={benefit.image}
+                    alt=""
+                    fill
+                    className="object-cover transition duration-500 hover:scale-105"
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1f2c4a]/55 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="mb-2 text-lg font-semibold text-[#1f2c4a]">{benefit.title}</h3>
+                  <p className="text-sm leading-relaxed text-[#64748b]">{benefit.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="relative">
-            {/* Reviews Carousel - Updated 2024 */}
-            <div className="overflow-hidden">
-              <div className="flex">
-                {[
-                  {
-                    id: 1,
-                    name: "Angela Davis",
-                    title: "Project Manager",
-                    review: "I'm happy to share that I've obtained a new certification: Certified SAFe® 6 Scrum Master from SAFe by Scaled Agile, Inc.! Thanks a lot to Agile36 for the excellent training and support throughout the journey. The practice tests were incredibly helpful in preparing for the exam.",
-                    certification: "Certified SAFe® 6 Scrum Master",
-                    linkedin: "#",
-                    image: "/Images/Frame 1.png"
-                  },
-                  {
-                    id: 2,
-                    name: "Amber Jones",
-                    title: "Release Train Engineer",
-                    review: "I'm happy to share that I've obtained a new certification: Certified SAFe® 6 Release Train Engineer from SAFe by Scaled Agile, Inc.! The comprehensive practice tests and expert guidance from Agile36 made all the difference. Highly recommend their training programs!",
-                    certification: "Certified SAFe® 6 Release Train Engineer",
-                    linkedin: "#",
-                    image: "/Images/image 120.png"
-                  },
-                  {
-                    id: 3,
-                    name: "Tiffany Henderson",
-                    title: "Agile Coach",
-                    review: "I'm thrilled to announce that I have officially earned the Professional Scrum Master 1 (PSM 1) certification from Scrum.org via Agile36. The practice tests were spot-on and helped me identify my weak areas. Thank you for the amazing learning experience!",
-                    certification: "Professional Scrum Master 1 (PSM 1)",
-                    linkedin: "#",
-                    image: "/Images/image 137.png"
-                  }
-                ].map((review, index) => (
-                  <div key={review.id} className="w-full md:w-1/3 flex-shrink-0 px-4">
-                    <div className="rounded-2xl liquid-glass transition-all duration-300 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] p-6 h-full relative">
-                      {/* LinkedIn Icon */}
-                      <a
-                        href={review.linkedin}
-                        className="absolute top-4 right-4"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <svg className="w-6 h-6 text-[#64748b] transition-colors hover:text-[#1f2c4a]" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                      </a>
+      {/* Catalog */}
+      <section id="practice-catalog" className="w-full scroll-mt-24 px-4 py-16 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Catalog</p>
+            <h2 className="text-2xl font-normal text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: "-0.03em" }}>
+              Free Practice Tests
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
+              Pick a certification path and start a free mock. Pro banks for enrolled students stay in My Account.
+            </p>
+          </div>
 
-                      {/* Profile Picture */}
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 rounded-full bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <Image
-                            src={review.image}
-                            alt={review.name}
-                            width={64}
-                            height={64}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-[#1f2c4a]">{review.name}</h3>
-                          <p className="text-sm text-[#64748b]">{review.title}</p>
-                        </div>
-                      </div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={stagger}
+            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {PRACTICE_TESTS.map((test, index) => (
+              <PracticeTestCard key={test.id} test={test} index={index} onStart={openStartModal} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-                      {/* Review Text */}
-                      <p className="text-[#475569] mb-4 line-clamp-4">
-                        {review.review}
-                      </p>
+      {/* Faculty */}
+      <section className="relative w-full overflow-hidden px-4 py-16 sm:px-6 lg:px-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(31,44,74,0.06),_transparent_65%)]"
+        />
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Faculty</p>
+            <h2 className="text-2xl font-normal text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: "-0.03em" }}>
+              Learn from industry leaders
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-[#64748b]">
+              Practice content is curated by the same SAFe® Practice Consultants who lead Agile36 live cohorts.
+            </p>
+          </div>
 
-                      {/* Read More Link */}
-                      <button className="text-[#d97706] text-sm font-medium underline mb-4 hover:text-[#1f2c4a] transition-colors">
-                        Read More
-                      </button>
-
-                      {/* Rating */}
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={stagger}
+            className="grid gap-6 md:grid-cols-3"
+          >
+            {LEADERS.map((leader) => (
+              <motion.div
+                key={leader.name}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                className="overflow-hidden rounded-2xl border border-[#1f2c4a]/12 bg-white shadow-[0_12px_32px_-16px_rgba(31,44,74,0.25)]"
+              >
+                <div className="relative h-56 overflow-hidden bg-[#1f2c4a]/5">
+                  <Image
+                    src={leader.image}
+                    alt={leader.name}
+                    fill
+                    className="object-cover object-top transition duration-500 hover:scale-[1.03]"
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <h3 className="font-semibold text-[#1f2c4a]">{leader.name}</h3>
+                    <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
+                      {leader.trained} trained
+                    </span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <p className="mb-2 text-sm text-[#64748b]">{leader.title}</p>
+                  <p className="text-sm leading-relaxed text-[#475569]">{leader.blurb}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Visual strip */}
+      <section className="w-full px-4 py-10 sm:px-6 lg:px-20">
+        <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
+          {[
+            { src: "/LeadingSAFeHome.jpg", label: "Live virtual classrooms" },
+            { src: "/brooke-cagle--uHVRvDr7pg-unsplash.jpg", label: "Collaborative learning" },
+            { src: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg", label: "Career-ready cohorts" },
+          ].map((shot, i) => (
+            <motion.div
+              key={shot.src}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="relative h-44 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 sm:h-52"
+            >
+              <Image src={shot.src} alt={shot.label} fill className="object-cover" sizes="33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1f2c4a]/70 to-transparent" />
+              <p className="absolute bottom-3 left-3 text-sm font-semibold text-white">{shot.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="w-full px-4 py-16 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 text-2xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {FAQS.map((faq, i) => (
+              <details
+                key={i}
+                className="group overflow-hidden rounded-2xl border border-[#1f2c4a]/12 bg-white shadow-sm transition hover:border-[#1f2c4a]/25"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-medium text-[#1f2c4a]">
+                  {faq.q}
+                  <svg
+                    className="ml-2 h-5 w-5 shrink-0 text-[#94a3b8] transition-transform group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-4 text-sm leading-relaxed text-[#64748b]">{faq.a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Practice Test Access Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#ffffff] border border-[#1f2c4a]/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative text-[#1f2c4a]">
-            {/* Close Button */}
+      {showModal && selectedTest && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+          <div className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-[#1f2c4a]/10 bg-white text-[#1f2c4a]">
             <button
+              type="button"
               onClick={() => {
                 setShowModal(false);
+                setSelectedTest(null);
                 setFormData({ name: "", email: "" });
               }}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-[#1f2c4a]/15 bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center z-10 transition-colors"
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-[#1f2c4a]/15 bg-[#1f2c4a]/10 transition-colors hover:bg-[#1f2c4a]/20"
             >
-              <span className="text-[#475569] text-xl">×</span>
+              <span className="text-xl text-[#475569]">×</span>
             </button>
 
             <div className="flex flex-col md:flex-row">
-              {/* Left Section - Course Promotion */}
-              <div className="bg-[#1f2c4a]/[0.03] border-b md:border-b-0 md:border-r border-[#1f2c4a]/10 p-8 md:w-2/5 flex flex-col justify-center rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
-                <div>
-                  <h2 className="text-2xl font-normal text-[#1f2c4a] mb-3" style={{ letterSpacing: "-0.03em" }}>
-                    Ready to Master This Certification?
-                  </h2>
-                  <p className="text-[#475569] mb-4">
-                    Take your learning to the next level with our comprehensive training course.
-                  </p>
-                  <ul className="space-y-2 text-sm text-[#475569]">
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#d97706]">✓</span>
-                      Live instructor-led sessions
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#d97706]">✓</span>
-                      Official certification exam voucher
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#d97706]">✓</span>
-                      Lifetime access to course materials
-                    </li>
-                  </ul>
-                </div>
+              <div className="flex flex-col justify-center rounded-t-2xl border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] p-8 md:w-2/5 md:rounded-l-2xl md:rounded-t-none md:border-b-0 md:border-r">
+                <h2 className="mb-3 text-2xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+                  Ready to Master This Certification?
+                </h2>
+                <p className="mb-4 text-[#475569]">
+                  Take your learning further with live instructor-led training after you finish this free mock.
+                </p>
+                <ul className="space-y-2 text-sm text-[#475569]">
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#d97706]">✓</span>
+                    Live instructor-led sessions
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#d97706]">✓</span>
+                    Official certification exam path
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#d97706]">✓</span>
+                    Pro practice exams for enrolled students
+                  </li>
+                </ul>
               </div>
 
-              {/* Right Section - Practice Test Form */}
               <div className="p-8 md:w-3/5">
-                <h3 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: "-0.03em" }}>
+                <h3 className="mb-2 text-2xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
                   Start Your Practice Test
                 </h3>
-                <p className="text-[#64748b] mb-6 text-sm">
-                  Enter your details below to access the {selectedTest}
+                <p className="mb-6 text-sm text-[#64748b]">
+                  Enter your details below to access the {selectedTest.name}
                 </p>
                 <form
                   onSubmit={async (e) => {
                     e.preventDefault();
+                    const dest = selectedTest.href;
 
-                    // Store email in Supabase
                     try {
-                      const response = await fetch('/api/store-email', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
+                      const response = await fetch("/api/store-email", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                           name: formData.name,
                           email: formData.email,
-                          source: 'Practice Test Page',
-                          exam_name: selectedTest
+                          source: "Practice Test Page",
+                          exam_name: selectedTest.name,
                         }),
                       });
-
                       if (!response.ok) {
                         const errorData = await response.json().catch(() => ({}));
-                        console.error('Failed to store email:', errorData);
-                        // Continue anyway - don't block user from taking test
+                        console.error("Failed to store email:", errorData);
                       }
                     } catch (error) {
-                      console.error('Error storing email:', error);
-                      // Continue anyway - don't block user from taking test
+                      console.error("Error storing email:", error);
                     }
 
-                    // Redirect to practice exam based on selected test
-                    if (selectedTest.includes("Leading SAFe") && selectedTest.includes("Pro")) {
-                      router.push("/test/leading-safe-pro");
-                    } else if (selectedTest.includes("Leading SAFe")) {
-                      router.push("/test/leading-safe");
-                    } else if (selectedTest.includes("Lean Portfolio Management")) {
-                      router.push("/account/practice-exams/lpm");
-                    } else if (selectedTest.includes("Advanced Scrum Master")) {
-                      router.push("/test/advanced-scrum-master");
-                    } else if (selectedTest.includes("Scrum Master")) {
-                      router.push("/test/scrum-master");
-                    } else if (selectedTest.includes("Product Owner") || selectedTest.includes("Product Manager")) {
-                      router.push("/test/product-owner-manager");
-                    } else if (selectedTest.includes("DevOps")) {
-                      router.push("/test/devops");
-                    } else if (selectedTest.includes("Agile Product Management")) {
-                      router.push("/test/agile-product-management");
-                    } else if (selectedTest.includes("for Teams")) {
-                      router.push("/test/safe-for-teams");
-                    } else {
-                      // For other tests, just close modal for now
-                      setShowModal(false);
-                      setFormData({ name: "", email: "" });
-                    }
+                    router.push(dest);
                   }}
                   className="space-y-4"
                 >
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-[#475569] mb-2"
-                    >
+                    <label htmlFor="name" className="mb-2 block text-sm font-medium text-[#475569]">
                       Full Name *
                     </label>
                     <input
@@ -595,19 +756,14 @@ export default function TestPage() {
                       id="name"
                       required
                       value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40 focus:border-transparent"
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] px-4 py-2 text-[#1f2c4a] placeholder-gray-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40"
                       placeholder="Enter your full name"
                     />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-[#475569] mb-2"
-                    >
+                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#475569]">
                       Email Address *
                     </label>
                     <input
@@ -615,52 +771,28 @@ export default function TestPage() {
                       id="email"
                       required
                       value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40 focus:border-transparent"
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] px-4 py-2 text-[#1f2c4a] placeholder-gray-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40"
                       placeholder="Enter your email address"
                     />
-                    <p className="text-xs text-[#94a3b8] mt-1">
-                      We'll send you the practice test link and course information
+                    <p className="mt-1 text-xs text-[#94a3b8]">
+                      We&apos;ll send you the practice test link and course information
                     </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-[#16243f]"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#1f2c4a] px-6 py-3 font-medium text-white transition-colors hover:bg-[#16243f]"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
                     Start Practice Test
                   </button>
 
-                  <div className="rounded-lg liquid-glass p-3 mt-4">
-                    <p className="text-xs text-[#64748b] text-center">
-                      💡 <strong className="text-[#475569]">Interested in the full course?</strong> Explore upcoming dates on the course schedule when you're ready to enroll.
-                    </p>
-                  </div>
-
-                  <p className="text-xs text-[#94a3b8] text-center">
-                    ✔ By providing your contact details you agreed to our{" "}
-                    <Link href="#" className="font-medium text-[#475569] hover:underline">
+                  <p className="text-center text-xs text-[#94a3b8]">
+                    By providing your contact details you agree to our{" "}
+                    <Link href="/privacy-policy" className="font-medium text-[#475569] hover:underline">
                       Privacy Policy
-                    </Link>{" "}
-                    &{" "}
-                    <Link href="#" className="font-medium text-[#475569] hover:underline">
-                      Terms and Conditions.
                     </Link>
+                    .
                   </p>
                 </form>
               </div>
@@ -668,63 +800,6 @@ export default function TestPage() {
           </div>
         </div>
       )}
-
-      {/* Footer */}
-      <footer className="w-full bg-black border-t border-[#1f2c4a]/10 text-[#1f2c4a] py-16 px-4 sm:px-6 lg:px-20 mt-auto">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-[#64748b]">
-                <li>About us</li>
-                <li>Accreditation</li>
-                <li>Careers</li>
-                <li>Contact us</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Offerings</h4>
-              <ul className="space-y-2 text-sm text-[#64748b]">
-                <li>Live virtual (Online)</li>
-                <li>Classroom (In-Person)</li>
-                <li>Corporate training</li>
-                <li>Training Schedule</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-[#64748b]">
-                <li>Practice Tests</li>
-                <li>Webinars</li>
-                <li>Blogs</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-4">Get Our Weekly Newsletter</h4>
-              <div className="flex gap-2 mb-4">
-                <input
-                  type="email"
-                  placeholder="Email*"
-                  className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] text-[#1f2c4a] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/40"
-                />
-                <button className="liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium px-6 py-2 rounded-lg transition-colors hover:bg-[#1f2c4a] hover:text-white">
-                  Subscribe
-                </button>
-              </div>
-              <div className="flex gap-4 mt-6">
-                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
-                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
-                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
-                <div className="w-8 h-8 bg-[#1f2c4a]/10 border border-[#1f2c4a]/15 rounded"></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-[#1f2c4a]/10 pt-8 text-center text-sm text-[#64748b]">
-            <p>© 2024 Agile36. All Rights Reserved</p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
