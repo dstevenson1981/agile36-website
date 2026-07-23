@@ -1,2 +1,3 @@
-/** Direct download for No-Code AI Agents & Automation™ course brochure/workshop deck. */
-export const AI_AGENT_BUILDER_BROCHURE_HREF = "/Agile36-AI-Agents-Workshop-Deck.pdf";
+/** Direct download for No-Code AI Agents & Automation™ course brochure. */
+export const AI_AGENT_BUILDER_BROCHURE_HREF =
+  "/brochures/No-Code-AI-Agents-Automation-Brochure-Agile36.pdf";
