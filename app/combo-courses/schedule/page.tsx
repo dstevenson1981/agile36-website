@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { findComboById, HIDDEN_FROM_LISTING_COURSE_SLUGS, type Combo } from "../data";
+import { COMBO_COURSES, type Combo } from "../data";
 import {
   formatComboScheduleOptionLabel,
   formatTimeRange,
@@ -33,7 +33,7 @@ function ComboScheduleContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const found = comboId ? findComboById(comboId) : undefined;
+    const found = COMBO_COURSES.find((c) => c.id === comboId);
     setCombo(found || null);
   }, [comboId]);
 
@@ -49,12 +49,7 @@ function ComboScheduleContent() {
       const result: Record<string, ComboScheduleOption[]> = {};
       for (const course of combo.courses) {
         try {
-          const includeHidden = HIDDEN_FROM_LISTING_COURSE_SLUGS.has(course.slug)
-            ? "&include_hidden=1"
-            : "";
-          const res = await fetch(
-            `/api/course-schedules?course_slug=${course.slug}&status=active${includeHidden}`
-          );
+          const res = await fetch(`/api/course-schedules?course_slug=${course.slug}&status=active`);
           const data = await res.json();
           const schedules = (data.data || []).map((s: {
             id: string;

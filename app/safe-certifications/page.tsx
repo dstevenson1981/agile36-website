@@ -95,7 +95,7 @@ const COURSES = [
     name: "AI-Empowered Release Train Engineer (RTE)",
     url: "/courses/release-train-engineer",
     level: "Advanced",
-    description: "Private cohort — facilitate and coach the ART at program level with responsible AI practices for PI readiness and alignment",
+    description: "Facilitate and coach the ART at program level—with responsible AI practices for PI readiness and alignment",
     duration: "2 days",
     pdus: "16",
     badge: "/RTE.png",
@@ -120,7 +120,7 @@ const COMPARISON_TABLE = [
   { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days" },
   { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days" },
   { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days" },
-  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches (private cohort)", level: "Advanced", duration: "2–3 days" },
+  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches", level: "Advanced", duration: "2–3 days" },
 ];
 
 const FAQS = [

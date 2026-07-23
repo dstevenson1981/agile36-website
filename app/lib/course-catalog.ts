@@ -25,8 +25,6 @@ export interface CatalogCourse {
   trending?: boolean;
   advanced?: boolean;
   privateClass?: boolean;
-  /** Keep course URL live for direct sharing; omit from public catalogs/nav/search. */
-  hiddenFromListing?: boolean;
 }
 
 const COURSE_THUMBNAILS: { [key: string]: string } = {
@@ -174,15 +172,14 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       title: "AI-Empowered SAFe Release Train Engineer",
       category: "SAFe",
       image: "/marvin-meyer-SYTO3xs06fU-unsplash.jpg",
-      price: 0,
-      originalPrice: 0,
+      price: 1299,
+      originalPrice: 1699,
       hours: "16 Hrs",
       days: "02 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "RTE Practices, PI planning, AI-assisted facilitation",
       popular: true,
       advanced: true,
-      privateClass: true,
     },
     // Generative AI courses
     {
@@ -304,10 +301,6 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     },
   ];
 
-/** Public browsing surfaces (homepage, /courses, nav, search). Direct course URLs still work. */
-export const PUBLIC_CATALOG_COURSES: CatalogCourse[] = CATALOG_COURSES.filter(
-  (c) => !c.hiddenFromListing
-);
 
 export function getCatalogCourseUrl(course: CatalogCourse): string {
     // Special cases

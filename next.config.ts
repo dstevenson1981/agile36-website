@@ -79,21 +79,26 @@ const nextConfig: NextConfig = {
         destination: '/courses/release-train-engineer',
         permanent: true,
       },
-      // RTE open schedule retired — private enrollment lives at /private/rte
-      {
-        source: '/courses/release-train-engineer/schedule/checkout',
-        destination: '/private/rte/checkout',
-        permanent: false,
-      },
-      {
-        source: '/courses/release-train-engineer/schedule/checkout/:path*',
-        destination: '/private/rte/checkout/:path*',
-        permanent: false,
-      },
       // AI Agents deck: keep /brochures alias working; canonical file is at site root
       {
         source: '/brochures/Agile36-AI-Agents-Workshop-Deck.pdf',
         destination: '/Agile36-AI-Agents-Workshop-Deck.pdf',
+        permanent: false,
+      },
+      // Old private RTE enrollment URL → public schedule again
+      {
+        source: '/private/rte',
+        destination: '/courses/release-train-engineer/schedule',
+        permanent: false,
+      },
+      {
+        source: '/private/rte/checkout',
+        destination: '/courses/release-train-engineer/schedule/checkout',
+        permanent: false,
+      },
+      {
+        source: '/private/rte/checkout/:path*',
+        destination: '/courses/release-train-engineer/schedule/checkout/:path*',
         permanent: false,
       },
       {

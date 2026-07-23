@@ -362,6 +362,10 @@ export default function AdvancedScrumMasterCoursePage() {
               <h3 className="font-semibold text-base text-[#1f2c4a] mb-2">→ SAFe Scrum Master (SSM)</h3>
               <p className="text-[#475569] text-sm">Recommended foundation — master team-level Scrum Master facilitation within SAFe before SASM.</p>
             </Link>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-semibold text-base text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
+              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader, facilitating PI Planning and continuous improvement.</p>
+            </Link>
             <Link href="/courses/leading-safe" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
               <h3 className="font-semibold text-base text-[#1f2c4a] mb-2">→ Leading SAFe (SAFe Agilist)</h3>
               <p className="text-[#475569] text-sm">Lead Lean-Agile transformations and coordinate Agile Release Trains at enterprise scale.</p>

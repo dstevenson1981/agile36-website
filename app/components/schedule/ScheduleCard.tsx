@@ -31,8 +31,6 @@ type ScheduleCardProps = {
   examLabel?: string;
   showSafeBadges?: boolean;
   enrollLabel?: string;
-  /** Override default `/courses/{slug}/schedule/checkout`. */
-  checkoutBasePath?: string;
 };
 
 function TimeSlotIcon({ timeSlot }: { timeSlot?: string }) {
@@ -127,7 +125,6 @@ export default function ScheduleCard({
   examLabel,
   showSafeBadges = false,
   enrollLabel = "Enroll Now",
-  checkoutBasePath,
 }: ScheduleCardProps) {
   const [shareCopied, setShareCopied] = useState(false);
   const [instructorExpanded, setInstructorExpanded] = useState(false);
@@ -148,11 +145,9 @@ export default function ScheduleCard({
   const instructorDisplayName = schedule.instructor_name?.trim() || "Martina Svoboda";
   const instructorProfile = getScheduleInstructorProfile(instructorDisplayName);
   const hasMetaIcons = Boolean(hoursPerDay || durationLabel || daysOfWeek);
-  const checkoutBase =
-    checkoutBasePath ?? `/courses/${courseSlug}/schedule/checkout`;
 
   const handleShare = async () => {
-    const url = `${window.location.origin}${checkoutBase}?schedule=${schedule.id}&course=${courseSlug}&quantity=${quantity}`;
+    const url = `${window.location.origin}/courses/${courseSlug}/schedule/checkout?schedule=${schedule.id}&course=${courseSlug}&quantity=${quantity}`;
     try {
       if (navigator.share) {
         await navigator.share({ title: "Agile36 Course", url });
@@ -372,7 +367,6 @@ export default function ScheduleCard({
               scheduleId={schedule.id}
               quantity={quantity}
               label={enrollLabel}
-              checkoutBasePath={checkoutBasePath}
               className="flex-1 rounded-lg bg-gradient-to-b from-[#ff6b35] to-[#e8381a] px-4 py-3 text-center text-sm font-bold text-white shadow-sm transition-all hover:from-[#ff7a48] hover:to-[#fa4a23] hover:shadow-md"
             />
             <button

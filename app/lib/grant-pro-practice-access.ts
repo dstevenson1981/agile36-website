@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { findComboById } from '@/app/combo-courses/data';
+import { COMBO_COURSES } from '@/app/combo-courses/data';
 
 /**
  * Manual Pro practice exam unlocks only — not called on checkout.
@@ -37,7 +37,7 @@ export function resolvePracticeExamCourseIds(
   }
 
   const comboId = slug.replace(/^combo-/, '');
-  const combo = findComboById(comboId);
+  const combo = COMBO_COURSES.find((c) => c.id === comboId);
   if (!combo) return [];
 
   return combo.courses

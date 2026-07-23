@@ -61,7 +61,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
   "release-train-engineer-certification-training": {
     courseSlug: "release-train-engineer",
     coursePath: "/courses/release-train-engineer",
-    schedulePath: "/contact?course=release-train-engineer",
+    schedulePath: "/courses/release-train-engineer/schedule",
     imageUrl: `${SITE}/RTE.png`,
     productLabel: "SAFe® Release Train Engineer (RTE)",
     credentialName: "SAFe Release Train Engineer (RTE) Certification",

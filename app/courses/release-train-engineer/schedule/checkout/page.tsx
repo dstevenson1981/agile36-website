@@ -306,7 +306,7 @@ function CheckoutContent() {
           duration: selectedSchedule?.duration,
           timezone: selectedSchedule?.timezone,
         },
-        successUrl: (paymentIntentId) => `/private/rte/checkout/success?payment_intent=${paymentIntentId}`,
+        successUrl: (paymentIntentId) => `/courses/release-train-engineer/schedule/checkout/success?payment_intent=${paymentIntentId}`,
         onCardReady: (secret, piId) => {
           setClientSecret(secret);
           setPaymentIntentId(piId);
@@ -592,7 +592,7 @@ function CheckoutContent() {
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/private/rte/checkout/success?${params.toString()}`);
+                      router.push(`/courses/release-train-engineer/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
                       router.push(`/`);

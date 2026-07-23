@@ -10,13 +10,6 @@ export async function GET(request: NextRequest) {
     const courseSlug = searchParams.get('course_slug') || searchParams.get('course');
     const status = searchParams.get('status') || 'active';
     const scheduleId = searchParams.get('schedule_id') || searchParams.get('schedule');
-    // Soft-hidden courses (e.g. RTE): allow listing hidden rows for direct combo/share URLs only.
-    const includeHidden =
-      searchParams.get('include_hidden') === '1' ||
-      searchParams.get('include_hidden') === 'true';
-    const softHiddenSlugs = new Set(['release-train-engineer']);
-    const allowHiddenList =
-      includeHidden && Boolean(courseSlug) && softHiddenSlugs.has(courseSlug!);
 
     // Check if Supabase is configured
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -65,12 +58,9 @@ export async function GET(request: NextRequest) {
       .from('course_schedules')
       .select('*')
       .eq('status', status)
+      .or('hidden.is.null,hidden.eq.false')
       .gte('start_date', new Date().toISOString())
       .order('start_date', { ascending: true });
-
-    if (!allowHiddenList) {
-      query = query.or('hidden.is.null,hidden.eq.false');
-    }
 
     if (courseSlug) query = query.eq('course_slug', courseSlug);
 

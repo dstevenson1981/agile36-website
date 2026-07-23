@@ -377,6 +377,10 @@ export default function ProductOwnerManagerCoursePage() {
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Scrum Master (SSM)</h3>
               <p className="text-[#475569] text-sm">Master facilitation of Agile teams, Scrum events, and the execution of Program Increments within the SAFe framework.</p>
             </Link>
+            <Link href="/release-train-engineer-certification-training" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Release Train Engineer (RTE)</h3>
+              <p className="text-[#475569] text-sm">Lead Agile Release Trains as a servant leader and coach, facilitating PI Planning and driving continuous improvement.</p>
+            </Link>
             <Link href="/courses/lean-portfolio-management" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ Lean Portfolio Management (LPM)</h3>
               <p className="text-[#475569] text-sm">Align strategy and execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.</p>

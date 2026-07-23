@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  PUBLIC_CATALOG_COURSES,
+  CATALOG_COURSES,
   COURSE_CATEGORIES,
   formatCatalogLiveDate,
   getCatalogCourseAcronym,
@@ -98,11 +98,9 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
   const courseUrl = getCatalogCourseUrl(course);
   const scheduleUrl = getCatalogScheduleUrl(course);
   const acronym = getCatalogCourseAcronym(course.title);
-  const liveLabel = course.privateClass
-    ? "Private class"
-    : nextStartDate
-      ? `Starts ${formatCatalogLiveDate(nextStartDate)}`
-      : "Live remote class — view schedule";
+  const liveLabel = nextStartDate
+    ? `Starts ${formatCatalogLiveDate(nextStartDate)}`
+    : "Live remote class — view schedule";
 
   const badge = course.advanced
     ? { label: "Advanced", className: "bg-purple-500/15 text-purple-300" }
@@ -182,21 +180,12 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
           >
             View course
           </Link>
-          {course.privateClass ? (
-            <Link
-              href={`/contact?course=${getCatalogCourseSlug(course)}`}
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#16243f] text-[#1f2c4a] px-4 py-2.5 text-sm font-medium transition-colors text-center"
-            >
-              Contact us
-            </Link>
-          ) : (
-            <Link
-              href={scheduleUrl}
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#16243f] text-[#1f2c4a] px-4 py-2.5 text-sm font-medium transition-colors text-center"
-            >
-              View schedule
-            </Link>
-          )}
+          <Link
+            href={scheduleUrl}
+            className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#16243f] text-[#1f2c4a] px-4 py-2.5 text-sm font-medium transition-colors text-center"
+          >
+            View schedule
+          </Link>
         </div>
       </div>
     </article>
@@ -245,7 +234,7 @@ function CoursesContent() {
   }, []);
 
   const filteredCourses = useMemo(
-    () => PUBLIC_CATALOG_COURSES.filter((c) => c.category === selectedCategory),
+    () => CATALOG_COURSES.filter((c) => c.category === selectedCategory),
     [selectedCategory],
   );
 
@@ -255,7 +244,7 @@ function CoursesContent() {
       "Generative AI": 0,
       "AI Product": 0,
     };
-    for (const c of PUBLIC_CATALOG_COURSES) {
+    for (const c of CATALOG_COURSES) {
       counts[c.category] += 1;
     }
     return counts;

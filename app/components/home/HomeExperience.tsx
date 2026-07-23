@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import {
-  PUBLIC_CATALOG_COURSES,
+  CATALOG_COURSES,
   COURSE_CATEGORIES,
   getCatalogCourseUrl,
   type CatalogCourse,
@@ -286,8 +286,8 @@ export function HomeExperienceBody({
 
   const visibleCourses =
     activeTab === "All"
-      ? PUBLIC_CATALOG_COURSES
-      : PUBLIC_CATALOG_COURSES.filter((c) => c.category === activeTab);
+      ? CATALOG_COURSES
+      : CATALOG_COURSES.filter((c) => c.category === activeTab);
 
   // Browsers pause offscreen background videos and don't always resume them;
   // re-play each one whenever it scrolls back into view.
@@ -600,8 +600,8 @@ export function HomeExperienceBody({
                 {tab}
                 <span className={`ml-2 text-xs ${activeTab === tab ? "text-[#94a3b8]" : "text-[#94a3b8]"}`}>
                   {tab === "All"
-                    ? PUBLIC_CATALOG_COURSES.length
-                    : PUBLIC_CATALOG_COURSES.filter((c) => c.category === tab).length}
+                    ? CATALOG_COURSES.length
+                    : CATALOG_COURSES.filter((c) => c.category === tab).length}
                 </span>
               </button>
             ))}

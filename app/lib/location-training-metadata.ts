@@ -75,8 +75,5 @@ export function buildLocationTrainingMetadata(
       siteName: "Agile36",
       type: "website",
     },
-    ...(segment === "release-train-engineer-certification-training"
-      ? { robots: { index: false, follow: false } }
-      : {}),
   };
 }

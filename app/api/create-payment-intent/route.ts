@@ -9,7 +9,7 @@ import {
 } from '@/app/lib/course-promo-caps';
 import { chargeCorporateAccount } from '@/app/lib/corporate-charge';
 import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corporate';
-import { findComboById } from '@/app/combo-courses/data';
+import { COMBO_COURSES } from '@/app/combo-courses/data';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -29,7 +29,7 @@ function resolveComboCheckout(body: {
   const slug = typeof body.courseSlug === 'string' ? body.courseSlug.trim() : '';
   const fromSlug = slug.startsWith('combo-') ? slug.slice('combo-'.length) : '';
   const comboId = rawComboId || fromSlug;
-  const catalog = comboId ? findComboById(comboId) : undefined;
+  const catalog = comboId ? COMBO_COURSES.find((c) => c.id === comboId) : undefined;
   const isCombo = Boolean(body.isCombo) || Boolean(comboId);
   return {
     isCombo,
