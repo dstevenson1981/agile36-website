@@ -142,6 +142,23 @@ function ComboScheduleContent() {
             <h1 className="text-2xl font-bold text-[#334155] mb-6">
               Customize Your Training Experience
             </h1>
+            <div className="mb-6 rounded-xl border border-[#1f2c4a]/15 bg-white p-4">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
+                Combo price
+              </p>
+              <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span
+                  className="text-[1.75rem] font-semibold leading-none text-[#1f2c4a]"
+                  style={{ letterSpacing: "-0.03em" }}
+                >
+                  ${combo.comboPrice.toLocaleString()}
+                </span>
+                <span className="text-sm text-[#94a3b8] line-through">
+                  ${combo.originalPrice.toLocaleString()}
+                </span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-[#1f2c4a]">{combo.name}</p>
+            </div>
             <ul className="space-y-3 mb-8">
               <li className="flex items-center gap-2 text-[#475569]">
                 <span className="text-emerald-600">✓</span> Flexible Learning Schedules

@@ -3,6 +3,9 @@ import type { ReactNode } from "react";
 import CourseHeroPriceScheduleCta from "@/app/components/CourseHeroPriceScheduleCta";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
 
+/** Courses that keep a "Private cohort" label but still show public list price + enroll. */
+const PRIVATE_LABEL_SLUGS = new Set(["release-train-engineer"]);
+
 type Props = {
   courseSlug: string;
   children: ReactNode;
@@ -12,6 +15,7 @@ type Props = {
 export default function CourseHeroRightColumn({ courseSlug, children }: Props) {
   const list = COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
   const scheduleHref = `/courses/${courseSlug}/schedule?course=${courseSlug}`;
+  const privateLabel = PRIVATE_LABEL_SLUGS.has(courseSlug);
 
   return (
     <div className="lg:flex lg:justify-end">
@@ -19,7 +23,7 @@ export default function CourseHeroRightColumn({ courseSlug, children }: Props) {
         {list ? (
           <div className="liquid-glass overflow-hidden rounded-2xl lg:sticky lg:top-24">
             <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
-              Live, instructor-led cohort
+              {privateLabel ? "Private cohort" : "Live, instructor-led cohort"}
             </div>
 
             <div className="p-4">
