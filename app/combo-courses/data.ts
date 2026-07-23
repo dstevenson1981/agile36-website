@@ -140,7 +140,7 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     "leading-safe|scrum-master": 799,
     "lean-portfolio-management|agile-product-management": 1700,
     "leading-safe|lean-portfolio-management": 1350,
-    "scrum-master|release-train-engineer": 1350,
+    "scrum-master|release-train-engineer": 1150,
     "ai-driven-scrum-master|certified-genai-practitioner": 399,
     "ai-driven-scrum-master|certified-ai-product-manager": 549,
     "certified-genai-practitioner|certified-ai-product-manager": 499,
