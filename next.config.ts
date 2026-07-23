@@ -90,11 +90,11 @@ const nextConfig: NextConfig = {
         destination: '/private/rte/checkout/:path*',
         permanent: false,
       },
-      // AI Agents deck lives under /brochures (old root URL 404'd)
+      // AI Agents deck: keep /brochures alias working; canonical file is at site root
       {
-        source: '/Agile36-AI-Agents-Workshop-Deck.pdf',
-        destination: '/brochures/Agile36-AI-Agents-Workshop-Deck.pdf',
-        permanent: true,
+        source: '/brochures/Agile36-AI-Agents-Workshop-Deck.pdf',
+        destination: '/Agile36-AI-Agents-Workshop-Deck.pdf',
+        permanent: false,
       },
       {
         source: '/safe-value-stream-mapping-microcredential-course',

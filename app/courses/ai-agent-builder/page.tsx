@@ -83,6 +83,7 @@ export default function NoCodeAIAgentsCoursePage() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
                   href={AI_AGENT_BUILDER_BROCHURE_HREF}
+                  download
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
@@ -274,6 +275,7 @@ export default function NoCodeAIAgentsCoursePage() {
                       </div>
                       <a
                         href={AI_AGENT_BUILDER_BROCHURE_HREF}
+                        download
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
