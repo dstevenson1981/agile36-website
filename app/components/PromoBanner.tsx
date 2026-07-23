@@ -5,6 +5,7 @@ import {
   isSitePromoActive,
   getPromoCountdown,
   BANNER_COUPON_CODE,
+  PROMO_BANNER_TITLE,
   PROMO_ENDS_SHORT,
   PROMO_EXPIRES_ISO,
   type PromoCountdown,
@@ -193,7 +194,7 @@ export default function PromoBanner() {
           <SparkStar className="animate-promo-spark h-4 w-4 shrink-0 text-[#fa4a23]" />
           <div className="min-w-0">
             <p className="truncate text-sm font-bold leading-tight text-neutral-900 sm:text-base">
-              Build Skills. Build Your Future.
+              {PROMO_BANNER_TITLE}
             </p>
             <p className="truncate text-xs font-medium text-neutral-600 sm:text-sm">
               Ends{" "}
