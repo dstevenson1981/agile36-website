@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import PrivateRegisterButton from "./PrivateRegisterButton";
 
 export const metadata: Metadata = {
   title: "Private RTE Class | Agile36",
@@ -27,12 +28,7 @@ export default function RtePublicScheduleRetiredPage() {
           to discuss dates, pricing, and registration.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/contact?course=release-train-engineer"
-            className="inline-flex rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#16243f]"
-          >
-            Contact Us to Register
-          </Link>
+          <PrivateRegisterButton />
           <Link
             href="/courses/release-train-engineer"
             className="inline-flex rounded-lg border border-[#1f2c4a]/20 px-5 py-2.5 text-sm font-medium text-[#1f2c4a] hover:bg-[#1f2c4a]/[0.06]"

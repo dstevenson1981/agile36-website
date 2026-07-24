@@ -8,6 +8,7 @@ import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
+import PrivateCohortContactModal from "@/app/components/PrivateCohortContactModal";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 
@@ -131,7 +132,10 @@ export default function ReleaseTrainEngineerCoursePage() {
               </div>
             </div>
 
-            <CourseHeroRightColumn courseSlug={courseSlug}>
+            <CourseHeroRightColumn
+              courseSlug={courseSlug}
+              onPrivateContactClick={() => setShowConsultationModal(true)}
+            >
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1286,64 +1290,12 @@ export default function ReleaseTrainEngineerCoursePage() {
         </div>
       </section>
 
-      {/* Consultation Modal */}
-      {showConsultationModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#ffffff] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={() => setShowConsultationModal(false)}
-              className="absolute top-4 right-4 text-[#64748b] hover:text-[#1f2c4a]"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div className="p-8">
-              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Get Course Information</h2>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-2">Phone</label>
-                  <input
-                    type="tel"
-                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                    placeholder="Tell us about your requirements"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#1f2c4a] text-white font-medium py-3 rounded-lg hover:bg-[#16243f] transition-colors"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      <PrivateCohortContactModal
+        open={showConsultationModal}
+        onClose={() => setShowConsultationModal(false)}
+        courseSlug={courseSlug}
+        courseLabel="SAFe Release Train Engineer (RTE)"
+      />
     </main>
   );
 }

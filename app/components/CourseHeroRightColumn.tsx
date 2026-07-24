@@ -1,17 +1,25 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import type { ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import CourseHeroPriceScheduleCta from "@/app/components/CourseHeroPriceScheduleCta";
+import PrivateCohortContactModal from "@/app/components/PrivateCohortContactModal";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
 
 /** Courses listed publicly but sold as private cohorts (no schedule / checkout). */
 const PRIVATE_CLASS_SLUGS = new Set(["release-train-engineer"]);
+
+const PRIVATE_COURSE_LABELS: Record<string, string> = {
+  "release-train-engineer": "SAFe Release Train Engineer (RTE)",
+};
 
 type Props = {
   courseSlug: string;
   children: ReactNode;
   /** Override auto-detection from PRIVATE_CLASS_SLUGS. */
   privateClass?: boolean;
+  /** If set, private CTA calls this instead of the built-in modal. */
+  onPrivateContactClick?: () => void;
 };
 
 /** Compact sticky pricing card: glass shell, price block, what's-included, trust footer. */
@@ -19,11 +27,22 @@ export default function CourseHeroRightColumn({
   courseSlug,
   children,
   privateClass,
+  onPrivateContactClick,
 }: Props) {
   const isPrivate = privateClass ?? PRIVATE_CLASS_SLUGS.has(courseSlug);
   const list = isPrivate ? null : COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
   const scheduleHref = `/courses/${courseSlug}/schedule?course=${courseSlug}`;
-  const contactHref = `/contact?course=${courseSlug}`;
+  const [showContactModal, setShowContactModal] = useState(false);
+  const courseLabel =
+    PRIVATE_COURSE_LABELS[courseSlug] ?? courseSlug.replace(/-/g, " ");
+
+  function handlePrivateContact() {
+    if (onPrivateContactClick) {
+      onPrivateContactClick();
+      return;
+    }
+    setShowContactModal(true);
+  }
 
   return (
     <div className="lg:flex lg:justify-end">
@@ -46,8 +65,9 @@ export default function CourseHeroRightColumn({
                   >
                     Contact for pricing
                   </p>
-                  <Link
-                    href={contactHref}
+                  <button
+                    type="button"
+                    onClick={handlePrivateContact}
                     className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
                   >
                     Contact Us to Register
@@ -64,7 +84,7 @@ export default function CourseHeroRightColumn({
                         d="M5 12h14m-6-6l6 6-6 6"
                       />
                     </svg>
-                  </Link>
+                  </button>
                   <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
                     Private cohorts · dates arranged with your team
                   </p>
@@ -109,6 +129,15 @@ export default function CourseHeroRightColumn({
           children
         )}
       </div>
+
+      {isPrivate && !onPrivateContactClick ? (
+        <PrivateCohortContactModal
+          open={showContactModal}
+          onClose={() => setShowContactModal(false)}
+          courseSlug={courseSlug}
+          courseLabel={courseLabel}
+        />
+      ) : null}
     </div>
   );
 }
