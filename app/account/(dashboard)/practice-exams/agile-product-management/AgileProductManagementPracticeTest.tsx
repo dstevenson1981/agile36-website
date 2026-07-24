@@ -6,7 +6,16 @@ import { AGILE_PRODUCT_MANAGEMENT_QUESTIONS } from './questions';
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
 
-export default function AgileProductManagementPracticeTest() {
+type Props = {
+  /** Shared open link — avoid /account URLs that require login */
+  backHref?: string;
+  backLabel?: string;
+};
+
+export default function AgileProductManagementPracticeTest({
+  backHref = '/account/practice-exams',
+  backLabel = 'Back to Practice Exams',
+}: Props = {}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
@@ -79,9 +88,11 @@ export default function AgileProductManagementPracticeTest() {
                   </p>
                   <p className="text-sm">
                     Your answer:{' '}
-                    {userAnswer !== undefined
-                      ? OPTION_LETTERS[userAnswer] + '. ' + q.options[userAnswer]
-                      : '—'}
+                    <span className={isCorrect ? 'text-green-700' : 'text-red-700'}>
+                      {userAnswer !== undefined
+                        ? `${OPTION_LETTERS[userAnswer]}. ${q.options[userAnswer]}`
+                        : 'Not answered'}
+                    </span>
                   </p>
                   {!isCorrect && (
                     <p className="text-sm text-green-700 mt-1">
@@ -100,10 +111,10 @@ export default function AgileProductManagementPracticeTest() {
               Retake Test
             </button>
             <Link
-              href="/account/practice-exams"
+              href={backHref}
               className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
             >
-              Back to Practice Exams
+              {backLabel}
             </Link>
           </div>
         </div>
@@ -152,21 +163,28 @@ export default function AgileProductManagementPracticeTest() {
                 <button
                   type="button"
                   onClick={() => handleSelect(idx)}
-                  disabled={hasAnswered}
-                  className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors flex items-start gap-3 ${
-                    hasAnswered
-                      ? showAsCorrect
-                        ? 'border-green-500 bg-green-50 text-slate-900'
-                        : showAsWrong
-                          ? 'border-red-400 bg-red-50 text-slate-900'
-                          : isCorrect
-                            ? 'border-green-500 bg-green-50 text-slate-900'
-                            : 'border-slate-200 bg-slate-50 text-slate-500 cursor-default'
-                      : 'border-slate-200 hover:border-slate-300 text-slate-700'
+                  className={`w-full text-left px-4 py-3 rounded-lg border flex items-start gap-3 transition-colors ${
+                    showAsCorrect
+                      ? 'border-green-500 bg-green-50'
+                      : showAsWrong
+                        ? 'border-red-400 bg-red-50'
+                        : isUserChoice
+                          ? 'border-[#fa4a23] bg-orange-50'
+                          : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                   }`}
                 >
-                  <span className="font-medium text-slate-500 flex-shrink-0 w-6">
-                    {OPTION_LETTERS[idx]}.
+                  <span
+                    className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-semibold ${
+                      showAsCorrect
+                        ? 'bg-green-600 text-white'
+                        : showAsWrong
+                          ? 'bg-red-500 text-white'
+                          : isUserChoice
+                            ? 'bg-[#fa4a23] text-white'
+                            : 'bg-slate-100 text-slate-600'
+                    }`}
+                  >
+                    {OPTION_LETTERS[idx]}
                   </span>
                   <span className="flex-1">{option}</span>
                   {hasAnswered && isCorrect && (
@@ -193,11 +211,8 @@ export default function AgileProductManagementPracticeTest() {
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
-          href="/account/practice-exams"
-          className="text-sm text-slate-600 hover:text-slate-900"
-        >
-          ← Back to Practice Exams
+        <Link href={backHref} className="text-sm text-slate-600 hover:text-slate-900">
+          ← {backLabel}
         </Link>
         <button
           onClick={handleSubmit}

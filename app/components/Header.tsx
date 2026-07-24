@@ -138,7 +138,7 @@ export default function Header() {
   }, [isHome]);
 
   // Hide shared header on practice exam pages since they have their own custom headers
-  if (pathname?.startsWith("/test/")) {
+  if (pathname?.startsWith("/test/") || pathname === "/apm-pro-temp") {
     return null;
   }
 
