@@ -42,8 +42,6 @@ const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
   '/ssmpro': '/test/scrum-master',
   '/scrum-master-pro-temp': '/test/scrum-master',
   '/scrum-master-pro-temp-2': '/test/scrum-master',
-  '/lpmpro': '/test/lean-portfolio-management',
-  '/lpm-pro-temp': '/test/lean-portfolio-management',
   '/sasm-practice': '/courses/advanced-scrum-master',
   '/test/advanced-scrum-master': '/courses/advanced-scrum-master',
 };

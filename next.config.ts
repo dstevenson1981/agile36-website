@@ -212,16 +212,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/lpmpro',
-        destination: '/test/lean-portfolio-management',
-        permanent: true,
-      },
-      {
-        source: '/lpm-pro-temp',
-        destination: '/test/lean-portfolio-management',
-        permanent: true,
-      },
-      {
         source: '/sasm-practice',
         destination: '/courses/advanced-scrum-master',
         permanent: true,
