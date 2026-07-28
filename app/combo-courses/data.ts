@@ -46,7 +46,7 @@ type CatalogEntry = {
 const CATALOG: CatalogEntry[] = [
   { slug: "leading-safe", name: "AI-Empowered Leading SAFe (SA)", shortName: "Leading SAFe", price: 515, original: 1030 },
   { slug: "scrum-master", name: "AI-Empowered SAFe Scrum Master (SSM)", shortName: "SSM", price: 515, original: 1030 },
-  { slug: "product-owner-manager", name: "AI-Empowered SAFe POPM", shortName: "POPM", price: 515, original: 1030 },
+  { slug: "product-owner-manager", name: "AI-Empowered SAFe POPM", shortName: "POPM", price: 545, original: 1090 },
   { slug: "safe-for-teams", name: "AI-Empowered SAFe for Teams (SP)", shortName: "SAFe for Teams", price: 599, original: 1030 },
   { slug: "advanced-scrum-master", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", shortName: "SASM", price: 599, original: 1198 },
   { slug: "devops", name: "SAFe DevOps", shortName: "DevOps", price: 599, original: 1398 },
