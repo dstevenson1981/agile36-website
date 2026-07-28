@@ -25,7 +25,6 @@ export const BADGES: Record<string, string> = {
   "lean-portfolio-management": "/Lean Portfolio.png",
   "agile-product-management": "/AgileProductManagment.png",
   "advanced-scrum-master": "/AdvancedSM.png",
-  "release-train-engineer": "/RTE.png",
   "value-stream-mapping": "/MicroCredential.jpeg",
   "responsible-ai": "/MicroCredential.jpeg",
   "ai-driven-scrum-master": "/GenAI_2.png",
@@ -60,23 +59,10 @@ const CATALOG: CatalogEntry[] = [
   { slug: "generative-ai-project-managers", name: "Generative AI for Project Managers", shortName: "GenAI for PMs", price: 400, original: 800 },
 ];
 
-/**
- * Soft-hidden courses: combo URLs stay live for direct sharing / checkout,
- * but pairs are omitted from /combo-courses and site search.
- */
-const HIDDEN_CATALOG: CatalogEntry[] = [
-  {
-    slug: "release-train-engineer",
-    name: "AI-Empowered SAFe Release Train Engineer (RTE)",
-    shortName: "RTE",
-    price: 1299,
-    original: 1699,
-  },
-];
-
-const BY_SLUG = Object.fromEntries(
-  [...CATALOG, ...HIDDEN_CATALOG].map((c) => [c.slug, c])
-) as Record<string, CatalogEntry>;
+const BY_SLUG = Object.fromEntries(CATALOG.map((c) => [c.slug, c])) as Record<
+  string,
+  CatalogEntry
+>;
 
 /** Keep legacy URL/order IDs for existing combos. */
 const LEGACY_IDS: Record<string, string> = {
@@ -90,7 +76,6 @@ const LEGACY_IDS: Record<string, string> = {
   "scrum-master|advanced-scrum-master": "ssm-advanced",
   "advanced-scrum-master|product-owner-manager": "sasm-popm",
   "lean-portfolio-management|agile-product-management": "lpm-apm",
-  "release-train-engineer|scrum-master": "ssm-rte",
   "ai-driven-scrum-master|certified-genai-practitioner": "ai-scrum-genai",
   "ai-driven-scrum-master|certified-ai-product-manager": "ai-scrum-ai-product",
   "certified-genai-practitioner|certified-ai-product-manager": "genai-ai-product",
@@ -112,7 +97,6 @@ function shortId(slug: string): string {
     "devops": "devops",
     "lean-portfolio-management": "lpm",
     "agile-product-management": "apm",
-    "release-train-engineer": "rte",
     "ai-driven-scrum-master": "ai-scrum",
     "certified-genai-practitioner": "genai",
     "certified-ai-product-manager": "ai-pm",
@@ -162,7 +146,6 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     "product-owner-manager|certified-ai-product-manager": 799,
     "scrum-master|safe-for-teams": 850,
     "advanced-scrum-master|product-owner-manager": 699,
-    "release-train-engineer|scrum-master": 1350,
   };
   if (overrides[key] != null) comboPrice = overrides[key];
 
@@ -199,7 +182,7 @@ function buildCombo(aSlug: string, bSlug: string): Combo {
 }
 
 /** Prefer this display order when listing pairs. */
-const PAIR_ORDER = [...CATALOG, ...HIDDEN_CATALOG].map((c) => c.slug);
+const PAIR_ORDER = CATALOG.map((c) => c.slug);
 
 function allTwoCoursePairs(slugs: string[]): [string, string][] {
   const pairs: [string, string][] = [];
@@ -240,19 +223,6 @@ const CROSS_SAFE = [
   "agile-product-management",
 ];
 
-/** Soft-hidden RTE pairs (direct combo URLs / checkout only). */
-const HIDDEN_SAFE_SLUGS = ["release-train-engineer"];
-const HIDDEN_CROSS_SAFE = [
-  "leading-safe",
-  "scrum-master",
-  "product-owner-manager",
-  "advanced-scrum-master",
-  "lean-portfolio-management",
-  "agile-product-management",
-  "safe-for-teams",
-  "devops",
-];
-
 function sortCombos(combos: Combo[]): Combo[] {
   const rank = (slug: string) => {
     const i = PAIR_ORDER.indexOf(slug);
@@ -286,36 +256,15 @@ function buildPublicCombos(): Combo[] {
   return sortCombos(combos);
 }
 
-function buildHiddenCombos(): Combo[] {
-  const seen = new Set<string>();
-  const combos: Combo[] = [];
-
-  const add = (a: string, b: string) => {
-    const key = pairKey(a, b);
-    if (seen.has(key)) return;
-    seen.add(key);
-    combos.push(buildCombo(a, b));
-  };
-
-  for (const rte of HIDDEN_SAFE_SLUGS) {
-    for (const safe of HIDDEN_CROSS_SAFE) add(rte, safe);
-    for (const ai of AI_SLUGS) add(rte, ai);
-  }
-
-  return sortCombos(combos);
-}
-
 /** Public combo catalog (listed on /combo-courses + site search). */
 export const COMBO_COURSES: Combo[] = buildPublicCombos();
 
-/** Includes soft-hidden RTE combos for direct URL / checkout resolution. */
-export const ALL_COMBO_COURSES: Combo[] = [...COMBO_COURSES, ...buildHiddenCombos()];
+/** Alias kept for call sites that previously included soft-hidden RTE combos. */
+export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 
 export function findComboById(comboId: string): Combo | undefined {
-  return ALL_COMBO_COURSES.find((c) => c.id === comboId);
+  return COMBO_COURSES.find((c) => c.id === comboId);
 }
-
-export const HIDDEN_FROM_LISTING_COURSE_SLUGS = new Set(["release-train-engineer"]);
 
 /** Combos that include a given course slug (for course-hero carousels). */
 export function combosForCourseSlug(courseSlug: string): Combo[] {
