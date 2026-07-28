@@ -182,21 +182,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/popmpro',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/popm-prep-pro',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/popm-practice-temp',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
         source: '/ssmpro',
         destination: '/test/scrum-master',
         permanent: true,

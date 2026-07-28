@@ -6,7 +6,16 @@ import { POPM_QUESTIONS } from './questions';
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
 
-export default function PopmPracticeTest() {
+type Props = {
+  /** e.g. shared /popm-pro-temp link — avoid /account URLs that require login */
+  backHref?: string;
+  backLabel?: string;
+};
+
+export default function PopmPracticeTest({
+  backHref = '/account/practice-exams',
+  backLabel = 'Back to Practice Exams',
+}: Props = {}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
@@ -95,10 +104,10 @@ export default function PopmPracticeTest() {
               Retake Test
             </button>
             <Link
-              href="/account/practice-exams"
+              href={backHref}
               className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
             >
-              Back to Practice Exams
+              {backLabel}
             </Link>
           </div>
         </div>
@@ -136,28 +145,22 @@ export default function PopmPracticeTest() {
         </h2>
         <ul className="space-y-3">
           {question.options.map((option, idx) => {
+            const selected = answers[question.id] === idx;
             const hasAnswered = answers[question.id] !== undefined;
-            const isUserChoice = answers[question.id] === idx;
             const isCorrect = idx === question.correctIndex;
-            const showAsCorrect = hasAnswered && isCorrect;
-            const showAsWrong = hasAnswered && isUserChoice && !isCorrect;
-
             return (
               <li key={idx}>
                 <button
                   type="button"
                   onClick={() => handleSelect(idx)}
-                  disabled={hasAnswered}
                   className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors flex items-start gap-3 ${
-                    hasAnswered
-                      ? showAsCorrect
-                        ? 'border-green-500 bg-green-50 text-slate-900'
-                        : showAsWrong
-                          ? 'border-red-400 bg-red-50 text-slate-900'
-                          : isCorrect
-                            ? 'border-green-500 bg-green-50 text-slate-900'
-                            : 'border-slate-200 bg-slate-50 text-slate-500 cursor-default'
-                      : 'border-slate-200 hover:border-slate-300 text-slate-700'
+                    selected
+                      ? isCorrect
+                        ? 'border-green-500 bg-green-50 text-green-900'
+                        : 'border-[#fa4a23] bg-orange-50 text-slate-900'
+                      : hasAnswered && isCorrect
+                        ? 'border-green-500 bg-green-50 text-green-900'
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700'
                   }`}
                 >
                   <span className="font-medium text-slate-500 flex-shrink-0 w-6">
@@ -181,10 +184,10 @@ export default function PopmPracticeTest() {
 
       <div className="flex justify-between items-center">
         <Link
-          href="/account/practice-exams"
+          href={backHref}
           className="text-sm text-slate-600 hover:text-slate-900"
         >
-          ← Back to Practice Exams
+          ← {backLabel}
         </Link>
         <button
           onClick={handleSubmit}

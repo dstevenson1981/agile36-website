@@ -142,7 +142,11 @@ export default function Header() {
     pathname?.startsWith("/test/") ||
     pathname === "/apm-pro-temp" ||
     pathname === "/lpm-pro-temp" ||
-    pathname === "/lpmpro"
+    pathname === "/lpmpro" ||
+    pathname === "/popm-pro-temp" ||
+    pathname === "/popmpro" ||
+    pathname === "/popm-practice-temp" ||
+    pathname === "/popm-prep-pro"
   ) {
     return null;
   }
