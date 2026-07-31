@@ -5,6 +5,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
+import { formatTimezoneLabel } from "@/app/lib/schedule-display";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -193,7 +194,7 @@ function CourseScheduleContent() {
     const hour = parseInt(hours);
     const ampm = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour % 12 || 12;
-    const tz = timezone === 'America/New_York' ? 'EST' : timezone || '';
+    const tz = formatTimezoneLabel(timezone);
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 

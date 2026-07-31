@@ -14,6 +14,7 @@ import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillin
 import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
+import { formatTimezoneLabel } from "@/app/lib/schedule-display";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -144,7 +145,7 @@ function CheckoutContent() {
     const hour = parseInt(hours);
     const ampm = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour % 12 || 12;
-    const tz = timezone.split('/').pop();
+    const tz = formatTimezoneLabel(timezone);
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 

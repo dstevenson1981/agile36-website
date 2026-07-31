@@ -96,6 +96,7 @@ export function formatComboScheduleOptionLabel(schedule: {
 export function formatTimezoneLabel(timezone?: string): string {
   if (!timezone) return "EST";
   if (timezone === "America/New_York") return "EST";
+  if (timezone === "Asia/Kolkata" || timezone === "IST") return "IST";
   return timezone;
 }
 
@@ -112,6 +113,9 @@ export function formatTimezonePillLabel(timezone?: string): string {
   }
   if (timezone === "America/Los_Angeles" || timezone === "PST" || timezone === "PDT") {
     return "Pacific Time";
+  }
+  if (timezone === "Asia/Kolkata" || timezone === "IST") {
+    return "IST";
   }
   return timezone;
 }
