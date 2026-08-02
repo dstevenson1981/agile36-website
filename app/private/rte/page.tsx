@@ -29,7 +29,6 @@ function CourseScheduleContent() {
     nextMonth: false,
     weekdays: false,
     weekend: false,
-    timeSlot: false,
   });
 
   const courseNames: { [key: string]: string } = {
@@ -125,8 +124,7 @@ function CourseScheduleContent() {
       nextMonth: false,
       weekdays: false,
       weekend: false,
-      timeSlot: false,
-    });
+      });
   };
 
   const updateQuantity = (scheduleId: string, delta: number) => {
@@ -162,23 +160,6 @@ function CourseScheduleContent() {
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 
-  const getTimeSlotLabel = (timeSlot: string) => {
-    const labels: { [key: string]: string } = {
-      'morning': 'Morning',
-      'afternoon': 'Afternoon',
-      'evening': 'Evening',
-    };
-    return labels[timeSlot] || 'Morning';
-  };
-
-  const getTimeSlotColor = (timeSlot: string) => {
-    const colors: { [key: string]: string } = {
-      'morning': 'bg-green-100 text-green-800',
-      'afternoon': 'bg-blue-100 text-blue-800',
-      'evening': 'bg-purple-100 text-purple-800',
-    };
-    return colors[timeSlot] || 'bg-gray-100 text-[#334155]';
-  };
 
   const calculateDiscount = (originalPrice: number, salePrice: number) => {
     const discount = ((originalPrice - salePrice) / originalPrice) * 100;

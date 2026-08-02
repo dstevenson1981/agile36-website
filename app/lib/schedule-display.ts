@@ -6,7 +6,6 @@ export type CourseScheduleRow = {
   end_time?: string;
   timezone?: string;
   duration?: string;
-  time_slot?: string;
   is_weekend?: boolean;
   instructor_name?: string | null;
   instructor_image?: string | null;
@@ -14,8 +13,9 @@ export type CourseScheduleRow = {
   exam_included?: boolean | null;
   price: string;
   original_price?: string | null;
-  is_best_deal?: boolean;
-  seats_available?: number | null;
+  /** Paid enrollments for this cohort (incremented on successful checkout). */
+  total_registrants?: number | null;
+  total_seats?: number | null;
 };
 
 export function formatDateRange(startDate: string, endDate: string): string {
@@ -207,24 +207,6 @@ export function formatTime(time: string, timezone?: string): string {
   return `${short} (${tz})`;
 }
 
-export function getTimeSlotLabel(timeSlot?: string): string {
-  const labels: Record<string, string> = {
-    morning: "Morning",
-    afternoon: "Afternoon",
-    evening: "Evening",
-  };
-  return labels[timeSlot || ""] || "Morning";
-}
-
-export function getTimeSlotColor(timeSlot?: string): string {
-  const colors: Record<string, string> = {
-    morning: "bg-emerald-50 text-emerald-800 ring-1 ring-emerald-200",
-    afternoon: "bg-sky-50 text-sky-800 ring-1 ring-sky-200",
-    evening: "bg-violet-50 text-violet-800 ring-1 ring-violet-200",
-  };
-  return colors[timeSlot || ""] || "bg-gray-50 text-gray-700 ring-1 ring-gray-200";
-}
-
 export function calculateDiscount(originalPrice: number, salePrice: number): number {
   const discount = ((originalPrice - salePrice) / originalPrice) * 100;
   return Math.round(discount);
@@ -254,20 +236,25 @@ export function getScheduleUrgency(schedule: CourseScheduleRow): ScheduleUrgency
 
   const isWithinNext7Days = startDateOnly >= now && startDateOnly <= sevenDaysFromNow;
   const isWithin8to14Days = startDateOnly > sevenDaysFromNow && startDateOnly <= fourteenDaysFromNow;
+  const totalSeats = schedule.total_seats ?? null;
+  const registrants = schedule.total_registrants ?? 0;
+  const seatsLeft =
+    totalSeats !== null && totalSeats !== undefined
+      ? Math.max(totalSeats - registrants, 0)
+      : null;
   const isLowSeats =
     !isWithinNext7Days &&
     !isWithin8to14Days &&
-    schedule.seats_available !== null &&
-    schedule.seats_available !== undefined &&
-    schedule.seats_available > 0 &&
-    schedule.seats_available <= 5;
+    seatsLeft !== null &&
+    seatsLeft > 0 &&
+    seatsLeft <= 5;
 
   const show = isWithinNext7Days || isWithin8to14Days || isLowSeats;
 
   let message = "";
   if (isWithinNext7Days) message = "Only 3 seats left";
   else if (isWithin8to14Days) message = "Sales ending soon";
-  else if (isLowSeats) message = `Only ${schedule.seats_available} seats left`;
+  else if (isLowSeats) message = `Only ${seatsLeft} seats left`;
 
   return { show, isWithinNext7Days, isWithin8to14Days, isLowSeats, message };
 }

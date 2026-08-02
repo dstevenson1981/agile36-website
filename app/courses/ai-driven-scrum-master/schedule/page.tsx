@@ -33,7 +33,6 @@ function CourseScheduleContent() {
     nextMonth: false,
     weekdays: false,
     weekend: false,
-    timeSlot: false,
   });
 
   // Map course slugs to display names
@@ -153,8 +152,7 @@ function CourseScheduleContent() {
       nextMonth: false,
       weekdays: false,
       weekend: false,
-      timeSlot: false,
-    });
+      });
   };
 
   const updateQuantity = (scheduleId: string, delta: number) => {
@@ -200,23 +198,6 @@ function CourseScheduleContent() {
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 
-  const getTimeSlotLabel = (timeSlot: string) => {
-    const labels: { [key: string]: string } = {
-      'morning': 'Morning',
-      'afternoon': 'Afternoon',
-      'evening': 'Evening',
-    };
-    return labels[timeSlot] || 'Morning';
-  };
-
-  const getTimeSlotColor = (timeSlot: string) => {
-    const colors: { [key: string]: string } = {
-      'morning': 'bg-green-100 text-green-800',
-      'afternoon': 'bg-blue-100 text-blue-800',
-      'evening': 'bg-purple-100 text-purple-800',
-    };
-    return colors[timeSlot] || 'bg-gray-100 text-[#334155]';
-  };
 
   const calculateDiscount = (originalPrice: number, salePrice: number) => {
     const discount = ((originalPrice - salePrice) / originalPrice) * 100;
@@ -338,20 +319,6 @@ function CourseScheduleContent() {
               }`}
             >
               Weekend
-            </button>
-            <button
-              onClick={() => toggleFilter('timeSlot')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
-                activeFilters.timeSlot
-                  ? 'bg-[#d97706] text-white'
-                  : 'bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20'
-              }`}
-            >
-              Time Slot
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-              {activeFilters.timeSlot && <span className="bg-black text-[#1f2c4a] px-2 py-0.5 rounded text-xs">0</span>}
             </button>
             {hasActiveFilters && (
               <button

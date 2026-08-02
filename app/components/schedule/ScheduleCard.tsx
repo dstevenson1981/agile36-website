@@ -13,8 +13,6 @@ import {
   formatTimeRange,
   formatTimezonePillLabel,
   getScheduleUrgency,
-  getTimeSlotColor,
-  getTimeSlotLabel,
   type CourseScheduleRow,
 } from "@/app/lib/schedule-display";
 import { getScheduleInstructorProfile } from "@/app/lib/schedule-instructors";
@@ -34,36 +32,6 @@ type ScheduleCardProps = {
   /** Override default `/courses/{slug}/schedule/checkout`. */
   checkoutBasePath?: string;
 };
-
-function TimeSlotIcon({ timeSlot }: { timeSlot?: string }) {
-  if (timeSlot === "afternoon") {
-    return (
-      <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-        <path
-          fillRule="evenodd"
-          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 0a1 1 0 100 2H3a1 1 0 100-2h3zM3.05 6.464A1 1 0 104.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM17 11a9 9 0 11-18 0 9 9 0 0118 0z"
-          clipRule="evenodd"
-        />
-      </svg>
-    );
-  }
-  if (timeSlot === "evening") {
-    return (
-      <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-      </svg>
-    );
-  }
-  return (
-    <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-      <path
-        fillRule="evenodd"
-        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 100 2h.01a1 1 0 100-2H10z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
 
 function BrochureLink({
   href,
@@ -174,15 +142,6 @@ export default function ScheduleCard({
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* Left — schedule & instructor */}
         <div className="flex flex-col gap-4 p-5 lg:p-6">
-          <div className="flex items-start gap-3">
-            <span
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${getTimeSlotColor(schedule.time_slot)}`}
-            >
-              <TimeSlotIcon timeSlot={schedule.time_slot} />
-              {getTimeSlotLabel(schedule.time_slot)}
-            </span>
-          </div>
-
           <div>
             <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
               {formatDateRange(schedule.start_date, schedule.end_date)}
@@ -345,14 +304,6 @@ export default function ScheduleCard({
         <div
           className={`flex flex-col gap-4 border-t border-dotted border-gray-300 p-5 mx-5 lg:mx-0 lg:border-t-0 lg:p-6 ${columnDivider}`}
         >
-          {schedule.is_best_deal && (
-            <div className="flex flex-wrap items-start justify-end gap-2">
-              <span className="inline-flex items-center rounded-md bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-900 ring-1 ring-amber-300">
-                Best Deal
-              </span>
-            </div>
-          )}
-
           <div className="text-right">
             {schedule.original_price && (
               <div className="flex items-center justify-end gap-2">

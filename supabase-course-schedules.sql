@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS course_schedules (
   start_time TIME NOT NULL, -- e.g., '09:00:00'
   end_time TIME NOT NULL, -- e.g., '17:00:00'
   timezone TEXT DEFAULT 'America/New_York', -- Timezone for the course
-  time_slot TEXT CHECK (time_slot IN ('morning', 'afternoon', 'evening')), -- Morning, Afternoon, Evening
   format TEXT NOT NULL CHECK (format IN ('live-virtual', 'in-person', 'self-paced')), -- Course delivery format
   duration TEXT, -- e.g., '2 Days', '3 Days'
   instructor_name TEXT,
@@ -19,17 +18,11 @@ CREATE TABLE IF NOT EXISTS course_schedules (
   price DECIMAL(10, 2) NOT NULL,
   original_price DECIMAL(10, 2), -- Original price before discount
   currency TEXT DEFAULT 'USD',
-  seats_available INTEGER,
+  total_registrants INTEGER DEFAULT 0,
   total_seats INTEGER,
-  location TEXT, -- For in-person courses
-  meeting_link TEXT, -- For virtual courses
-  registration_url TEXT, -- Registration link
   language TEXT DEFAULT 'English',
   exam_included BOOLEAN DEFAULT true,
-  curriculum_url TEXT, -- Link to download curriculum
   status TEXT DEFAULT 'active' CHECK (status IN ('active', 'full', 'cancelled', 'completed')),
-  description TEXT,
-  is_best_deal BOOLEAN DEFAULT false, -- Flag for "BEST DEAL" badge
   is_weekend BOOLEAN DEFAULT false, -- Flag for weekend batch
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
