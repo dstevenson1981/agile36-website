@@ -25,6 +25,7 @@ export const BADGES: Record<string, string> = {
   "lean-portfolio-management": "/Lean Portfolio.png",
   "agile-product-management": "/AgileProductManagment.png",
   "advanced-scrum-master": "/AdvancedSM.png",
+  "release-train-engineer": "/RTE.png",
   "value-stream-mapping": "/MicroCredential.jpeg",
   "responsible-ai": "/MicroCredential.jpeg",
   "ai-driven-scrum-master": "/GenAI_2.png",
@@ -52,6 +53,7 @@ const CATALOG: CatalogEntry[] = [
   { slug: "devops", name: "SAFe DevOps", shortName: "DevOps", price: 599, original: 1398 },
   { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 1050, original: 2100 },
   { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1100, original: 2200 },
+  { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
   { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
   { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
   { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 400, original: 800 },
@@ -76,6 +78,7 @@ const LEGACY_IDS: Record<string, string> = {
   "scrum-master|advanced-scrum-master": "ssm-advanced",
   "advanced-scrum-master|product-owner-manager": "sasm-popm",
   "lean-portfolio-management|agile-product-management": "lpm-apm",
+  "release-train-engineer|scrum-master": "ssm-rte",
   "ai-driven-scrum-master|certified-genai-practitioner": "ai-scrum-genai",
   "ai-driven-scrum-master|certified-ai-product-manager": "ai-scrum-ai-product",
   "certified-genai-practitioner|certified-ai-product-manager": "genai-ai-product",
@@ -97,6 +100,7 @@ function shortId(slug: string): string {
     "devops": "devops",
     "lean-portfolio-management": "lpm",
     "agile-product-management": "apm",
+    "release-train-engineer": "rte",
     "ai-driven-scrum-master": "ai-scrum",
     "certified-genai-practitioner": "genai",
     "certified-ai-product-manager": "ai-pm",
@@ -146,6 +150,7 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     "product-owner-manager|certified-ai-product-manager": 799,
     "scrum-master|safe-for-teams": 850,
     "advanced-scrum-master|product-owner-manager": 699,
+    "release-train-engineer|scrum-master": 1350,
   };
   if (overrides[key] != null) comboPrice = overrides[key];
 
@@ -203,6 +208,7 @@ const SAFE_SLUGS = [
   "devops",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
 
 const AI_SLUGS = [
@@ -221,7 +227,16 @@ const CROSS_SAFE = [
   "advanced-scrum-master",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
+
+/**
+ * Private / soft-hidden schedule rows that still need to load for combo checkout
+ * (RTE public calendars stay empty; combos use include_hidden=1).
+ */
+export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set([
+  "release-train-engineer",
+]);
 
 function sortCombos(combos: Combo[]): Combo[] {
   const rank = (slug: string) => {
@@ -259,7 +274,7 @@ function buildPublicCombos(): Combo[] {
 /** Public combo catalog (listed on /combo-courses + site search). */
 export const COMBO_COURSES: Combo[] = buildPublicCombos();
 
-/** Alias kept for call sites that previously included soft-hidden RTE combos. */
+/** Alias kept for call sites that previously distinguished listing vs checkout catalogs. */
 export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 
 export function findComboById(comboId: string): Combo | undefined {
