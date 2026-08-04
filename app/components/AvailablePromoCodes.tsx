@@ -1,14 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  isSitePromoActive,
+  PROMO_ENDS_SHORT,
+  BANNER_COUPON_CODE,
+} from "@/app/lib/site-promo";
 
 export type AvailablePromo = {
   code: string;
   label: string;
 };
 
-/** Clip coupons at checkout — $100 off (same code as the promo banner tap-to-copy). */
-const DEFAULT_PROMOS: AvailablePromo[] = [{ code: "100OFF", label: "$100 Off" }];
+/** Clip coupons at checkout — $100 off while the site flash sale is active. */
+const DEFAULT_PROMOS: AvailablePromo[] = [
+  { code: BANNER_COUPON_CODE, label: "$100 Off" },
+];
 
 type Props = {
   availablePromos?: AvailablePromo[];
@@ -18,20 +25,43 @@ type Props = {
 };
 
 export default function AvailablePromoCodes({
-  availablePromos = DEFAULT_PROMOS,
+  availablePromos,
   appliedPromoCode,
   onSelectCode,
   isValidatingPromo,
 }: Props) {
-  if (availablePromos.length === 0) {
+  const [promoLive, setPromoLive] = useState(() => isSitePromoActive());
+
+  useEffect(() => {
+    const tick = () => setPromoLive(isSitePromoActive());
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const promos =
+    availablePromos ??
+    (promoLive ? DEFAULT_PROMOS : []);
+
+  if (promos.length === 0) {
     return null;
   }
 
+  const showingDefaultFlashSale =
+    availablePromos == null && promoLive && promos.some((p) => p.code === BANNER_COUPON_CODE);
+
   return (
     <div className="mb-3">
-      <p className="text-sm font-medium text-gray-900 mb-2">Clip Coupon Code</p>
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <p className="text-sm font-medium text-gray-900">Clip Coupon Code</p>
+        {showingDefaultFlashSale && (
+          <p className="text-xs font-semibold text-[#fa4a23]">
+            Limited time · ends {PROMO_ENDS_SHORT}
+          </p>
+        )}
+      </div>
       <div className="space-y-2">
-        {availablePromos.map((promo) => {
+        {promos.map((promo) => {
           const isSelected = appliedPromoCode?.toUpperCase() === promo.code.toUpperCase();
           return (
             <button

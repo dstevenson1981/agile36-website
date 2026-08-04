@@ -1224,7 +1224,7 @@ export default function LeanPortfolioManagementCoursePage() {
               What is the Fee for SAFe Lean Portfolio Management Certification?
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              The cost of the SAFe Lean Portfolio Management certification course typically ranges from <strong>$950 to $1,900</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Lean Portfolio Management certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
+              The cost of the SAFe Lean Portfolio Management certification course typically ranges from <strong>$1,050 to $2,100</strong>, depending on the specific course offerings and training provider. This investment includes two days of instructor-led training, comprehensive digital study materials, one exam attempt, and a one-year membership to the SAFe Community Platform provided by Scaled Agile, Inc. The pricing for SAFe Lean Portfolio Management certification training reflects the value of expert instruction, official materials, and ongoing community access that supports your professional development.
             </p>
           </div>
         </div>

@@ -50,8 +50,8 @@ const CATALOG: CatalogEntry[] = [
   { slug: "safe-for-teams", name: "AI-Empowered SAFe for Teams (SP)", shortName: "SAFe for Teams", price: 599, original: 1030 },
   { slug: "advanced-scrum-master", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", shortName: "SASM", price: 599, original: 1198 },
   { slug: "devops", name: "SAFe DevOps", shortName: "DevOps", price: 599, original: 1398 },
-  { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
-  { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1299, original: 2598 },
+  { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 1050, original: 2100 },
+  { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1100, original: 2200 },
   { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
   { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
   { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 400, original: 800 },
@@ -118,16 +118,16 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     comboPrice = 699;
   } else if (max <= 599) {
     comboPrice = 799;
-  } else if (max <= 950 && min <= 599) {
+  } else if (max <= 1050 && min <= 599) {
     // LPM / mid + foundation
     comboPrice = 1350;
-  } else if (max >= 1299 && min >= 950) {
+  } else if (max >= 1100 && min >= 1050) {
     // LPM+APM
     comboPrice = 1700;
-  } else if (max >= 1299 && min <= 599) {
+  } else if (max >= 1100 && min <= 599) {
     // APM + foundation
     comboPrice = 1350;
-  } else if (max >= 950) {
+  } else if (max >= 1050) {
     comboPrice = 1450;
   } else {
     comboPrice = 799;
