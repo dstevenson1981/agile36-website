@@ -6,20 +6,19 @@ export const BANNER_COUPON_CODE = "100OFF";
 export const PROMO_CODE_EXPIRES_IN = "30 mins";
 
 /**
- * July Flash Sale ends Thursday Jul 30, 2026 23:59:59 America/New_York (EDT, UTC-4).
+ * August Flash Sale ends Friday Aug 7, 2026 23:59:59 America/New_York (EDT, UTC-4).
  * ISO with offset so the instant is unambiguous in all runtimes.
  */
-export const SITE_PROMO_END_ISO = "2026-07-30T23:59:59-04:00";
+export const SITE_PROMO_END_ISO = "2026-08-07T23:59:59-04:00";
 
 /** Alias used by PromoBanner `<time dateTime>`. */
 export const PROMO_EXPIRES_ISO = SITE_PROMO_END_ISO;
 
 /** Short label for banner copy (America/New_York end date). */
-export const PROMO_ENDS_SHORT = "Thu Jul 30";
+export const PROMO_ENDS_SHORT = "Fri Aug 7";
 
 /** Banner headline shown in PromoBanner. */
-export const PROMO_BANNER_TITLE = "July Flash Sale";
-
+export const PROMO_BANNER_TITLE = "August Flash Sale";
 /** Epoch ms for SITE_PROMO_END_ISO */
 export const SITE_PROMO_ENDS_AT_MS = new Date(SITE_PROMO_END_ISO).getTime();
 
