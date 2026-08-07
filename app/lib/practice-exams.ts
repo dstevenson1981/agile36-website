@@ -484,6 +484,12 @@ export async function hasLpmProAccess(): Promise<boolean> {
   return lpmWhitelistMatch(serviceSupabase, user.email, profile?.email);
 }
 
+/** Check if the logged-in user has Pro plan for SAFe for Teams (safe-for-teams). */
+export async function hasSafeForTeamsProAccess(): Promise<boolean> {
+  if (isProPracticeExamExpiredForCourse('safe-for-teams')) return false;
+  return checkProAccess('safe-for-teams');
+}
+
 /** Pro practice exam + Studio-style access for SASM (advanced-scrum-master), including SSM+SASM combo. */
 export async function hasAdvancedScrumMasterProAccess(): Promise<boolean> {
   if (isProPracticeExamExpiredForCourse('advanced-scrum-master')) return false;

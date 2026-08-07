@@ -16,6 +16,7 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'scrum-master',
   'agile-product-management',
   'advanced-scrum-master',
+  'safe-for-teams',
 ]);
 
 const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
@@ -25,10 +26,11 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/scrum-master',
   '/account/practice-exams/agile-product-management',
   '/account/practice-exams/advanced-scrum-master',
+  '/account/practice-exams/safe-for-teams',
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master|safe-for-teams)\/practice-exam\/?$/;
 
 /** Former public Pro shortcuts → free /test mocks or course pages (always). */
 const PUBLIC_PRO_REDIRECTS: Record<string, string> = {

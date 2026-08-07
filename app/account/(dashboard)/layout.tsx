@@ -8,7 +8,10 @@ export const dynamic = 'force-dynamic';
 /** Paths under /account that anyone can open without logging in. */
 function isPublicAccountPath(pathWithSearch: string): boolean {
   const path = pathWithSearch.split('?')[0] || '';
-  return path === '/account/practice-exams/advanced-scrum-master';
+  return (
+    path === '/account/practice-exams/advanced-scrum-master' ||
+    path === '/account/practice-exams/safe-for-teams'
+  );
 }
 
 function PublicPracticeExamShell({ children }: { children: React.ReactNode }) {
