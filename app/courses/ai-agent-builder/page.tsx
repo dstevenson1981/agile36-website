@@ -105,7 +105,7 @@ export default function NoCodeAIAgentsCoursePage() {
             <CourseHeroRightColumn courseSlug={courseSlug}>
               <div className="mt-8 lg:mt-20">
                 <img
-                  src="/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg"
+                  src="/Logo_Agents.png"
                   alt="No-Code AI Agents & Automation"
                   className="w-full h-auto rounded-lg"
                 />

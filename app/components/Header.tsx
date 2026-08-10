@@ -169,11 +169,15 @@ export default function Header() {
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
+    "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };
 
   const getMegaMenuImage = (course: Course) => {
+    if (course.title.includes("No-Code AI Agents")) {
+      return "/Logo_Agents.png";
+    }
     // Use GenAI_2.png for all Generative AI and AI Product courses
     if (course.category === "Generative AI" || course.category === "AI Product") {
       return "/GenAI_2.png";
@@ -480,7 +484,7 @@ export default function Header() {
       id: "29",
       title: "No-Code AI Agents & Automation™",
       category: "AI Product",
-      image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
+      image: "/Logo_Agents.png",
       price: 400,
       originalPrice: 800,
       hours: "10 Hrs",
