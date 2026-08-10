@@ -323,7 +323,7 @@ export default function Home() {
       hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.8K+ Enrolled",
-      skills: "No-Code Automation, AI Agents, Workflow Optimization",
+      skills: "Claude Agents, Claude Code, Codex, n8n Automation",
       popular: true,
     },
     // AI Product courses

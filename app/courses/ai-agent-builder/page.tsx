@@ -56,18 +56,18 @@ export default function NoCodeAIAgentsCoursePage() {
                   No-Code AI Agents & Automation™ Certification Training
                 </h1>
                 <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Build AI-Powered Automation Without Programming - Master No-Code AI Agents
+                  Build AI Agents That Actually Do Work
                 </p>
                 <CourseHeroSocialProof enrolledLabel="2,800+ enrolled" />
 
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Build AI agents and automation workflows without coding",
-                    "Master n8n, Make.com, and Langflow platforms",
-                    "Create 25+ practical business automations",
-                    "Integrate ChatGPT and Claude APIs into workflows",
-                    "Earn No-Code AI Agents & Automation™ certification"
+                    "Build practical AI agents without traditional coding",
+                    "Work with Claude, Claude Code, Codex, and n8n",
+                    "Automate real multi-step business workflows",
+                    "Connect agents to tools, data, APIs, and apps",
+                    "Design human-in-the-loop and multi-agent workflows",
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,43 +225,118 @@ export default function NoCodeAIAgentsCoursePage() {
                     <div>
                       <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
                       <p className="text-base text-[#475569] mb-4">
-                        The No-Code AI Agents & Automation™ Certification Training teaches professionals to build AI-powered automation without programming. This intensive 2-day course covers creating intelligent agents, automating workflows using n8n and Make.com, integrating ChatGPT APIs, and building 25+ practical automations for business productivity.
+                        Learn how to build practical AI agents and automate real business workflows using tools like Claude, Claude Code, Codex, and n8n — without needing to be a programmer.
                       </p>
                       <p className="text-base text-[#475569] mb-4">
-                        Learn how to build intelligent AI agents that automate repetitive tasks, integrate with hundreds of apps and services, and make decisions autonomously. This course is designed for non-technical professionals who want to boost productivity with AI automation without learning to code.
+                        This live, hands-on course takes you beyond simply prompting AI. You’ll learn how to give AI agents instructions, tools, context, and workflows so they can complete tasks across applications and business processes.
+                      </p>
+                      <p className="text-base text-[#475569]">
+                        You won’t spend two days listening to lectures about AI. You’ll build working agents and automations that demonstrate how AI can perform real business tasks from start to finish. No programming background is required.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You&apos;ll Learn</h3>
+                      <div className="space-y-4">
                         {[
-                          "Build AI agents and automation workflows without coding",
-                          "Master n8n, Make.com, and Langflow platforms",
-                          "Create 25+ practical business automations",
-                          "Integrate ChatGPT and Claude APIs into workflows",
-                          "Automate lead qualification and email outreach",
-                          "Build content generation and data processing pipelines"
+                          {
+                            title: "Build AI Agents Without Traditional Coding",
+                            body: "Create AI agents that can reason through tasks, use tools, access information, and complete work on your behalf.",
+                          },
+                          {
+                            title: "Build with Claude",
+                            body: "Use Claude to design agents, define instructions, work with business information, analyze problems, and turn ideas into functioning AI solutions.",
+                          },
+                          {
+                            title: "Build with Claude Code and Codex",
+                            body: "Learn how AI coding agents can build applications, agents, integrations, and automations for you — even if you are not a software developer.",
+                          },
+                          {
+                            title: "Automate Workflows with n8n",
+                            body: "Connect AI agents to business applications and automate multi-step workflows using n8n.",
+                          },
+                          {
+                            title: "Connect Agents to Tools and Data",
+                            body: "Give agents access to the applications, documents, APIs, and information they need to complete real work.",
+                          },
+                          {
+                            title: "Design Human-in-the-Loop Workflows",
+                            body: "Determine what AI can handle autonomously and where human review, approval, or escalation should happen.",
+                          },
+                          {
+                            title: "Build Multi-Step Agent Workflows",
+                            body: "Create workflows where agents research, analyze, generate outputs, make decisions, trigger actions, and hand work between systems.",
+                          },
+                          {
+                            title: "Turn Business Processes into AI Workflows",
+                            body: "Learn how to identify repetitive or knowledge-heavy work and redesign it around AI agents and automation.",
+                          },
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14.5px] text-[#475569]">{item}</span>
+                            <div>
+                              <p className="text-[14.5px] font-semibold text-[#1f2c4a]">{item.title}</p>
+                              <p className="text-[14.5px] text-[#475569] mt-1">{item.body}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You&apos;ll Build</h3>
+                      <p className="text-base text-[#475569] mb-3">
+                        You’ll work through practical use cases such as research and information-gathering agents, workflow automation agents, document and data processing agents, customer and employee support workflows, agents that interact with multiple applications, human approval and escalation workflows, multi-agent workflows, and end-to-end business process automation.
+                      </p>
+                      <p className="text-base text-[#475569]">
+                        By the end of the course, you’ll understand how to go from <strong className="text-[#1f2c4a]">Manual Process → AI Workflow → Working Agent</strong>.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Tools You&apos;ll Work With</h3>
                       <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
-                        <li>Business professionals handling repetitive digital tasks</li>
-                        <li>Operations Managers and Process Improvement Specialists</li>
-                        <li>Marketing and Sales Professionals</li>
-                        <li>Customer Success and Support Teams</li>
-                        <li>Anyone who wants to automate workflows without programming</li>
+                        <li>Claude</li>
+                        <li>Claude Code</li>
+                        <li>Codex</li>
+                        <li>n8n</li>
+                        <li>APIs and integrations</li>
+                        <li>AI agent tools and connectors</li>
                       </ul>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Who Should Attend</h3>
+                      <p className="text-base text-[#475569] mb-3">
+                        This course is designed for professionals who want to build with AI rather than simply learn about AI. You do not need a software development background.
+                      </p>
+                      <ul className="list-disc list-inside space-y-2 text-base text-[#475569]">
+                        <li>Business professionals</li>
+                        <li>Product Managers and Product Owners</li>
+                        <li>Project and Program Managers</li>
+                        <li>Operations professionals</li>
+                        <li>Consultants</li>
+                        <li>Entrepreneurs and business owners</li>
+                        <li>Marketing and sales professionals</li>
+                        <li>Customer support teams</li>
+                        <li>Process improvement professionals</li>
+                        <li>Anyone responsible for improving how work gets done</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What Makes This Course Different</h3>
+                      <p className="text-base text-[#475569] mb-3">
+                        Most AI courses teach you how to use ChatGPT or write better prompts. This course teaches you how to build AI-powered systems that perform work.
+                      </p>
+                      <p className="text-base text-[#475569] mb-3">
+                        You’ll learn how to combine AI agents, workflow automation, business applications, data, and human decision points to automate real processes.
+                      </p>
+                      <p className="text-base text-[#475569]">
+                        The goal isn’t simply to understand AI agents. <strong className="text-[#1f2c4a]">The goal is to leave knowing how to build them.</strong>
+                      </p>
                     </div>
                   </div>
                 )}
@@ -289,49 +364,52 @@ export default function NoCodeAIAgentsCoursePage() {
 
                     <div className="space-y-4">
                       {[
-                        { 
-                          title: "Module 1: Introduction to Generative AI",
+                        {
+                          title: "Module 1: Build AI Agents Without Traditional Coding",
                           topics: [
-                            "What is Generative AI and how it works",
-                            "Key concepts: LLMs, transformers, and neural networks",
-                            "GenAI vs traditional AI",
-                            "Current state and future of GenAI"
+                            "Create agents that reason through tasks",
+                            "Give agents instructions, tools, and context",
+                            "Complete work across applications without programming",
                           ],
-                          learningObjective: "Understand the fundamentals of Generative AI and its core technologies"
+                          learningObjective: "Build AI agents that can use tools, access information, and complete work on your behalf",
                         },
-                        { 
-                          title: "Module 2: Prompt Engineering Fundamentals",
+                        {
+                          title: "Module 2: Build with Claude",
                           topics: [
-                            "Basic prompting techniques",
-                            "Advanced prompt patterns",
-                            "Few-shot and zero-shot learning",
-                            "Chain-of-thought prompting",
-                            "Prompt optimization strategies"
+                            "Design agents and define instructions in Claude",
+                            "Work with business information and analyze problems",
+                            "Turn ideas into functioning AI solutions",
                           ],
-                          learningObjective: "Master effective prompt engineering techniques for optimal AI responses"
+                          learningObjective: "Use Claude to design and shape working AI agent solutions",
                         },
-                        { 
-                          title: "Module 3: AI Ethics and Responsible Implementation",
+                        {
+                          title: "Module 3: Build with Claude Code and Codex",
                           topics: [
-                            "Understanding AI bias and fairness",
-                            "Privacy and data protection",
-                            "Transparency and explainability",
-                            "AI governance frameworks",
-                            "Best practices for responsible AI"
+                            "Use AI coding agents to build applications and agents",
+                            "Create integrations and automations without being a developer",
+                            "Turn requirements into working software with AI assistance",
                           ],
-                          learningObjective: "Apply ethical principles and responsible practices in AI implementation"
+                          learningObjective: "Apply Claude Code and Codex to build agents, apps, and automations",
                         },
-                        { 
-                          title: "Module 4: Practical GenAI Applications",
+                        {
+                          title: "Module 4: Automate Workflows with n8n",
                           topics: [
-                            "Content generation and creation",
-                            "Data analysis and insights",
-                            "Customer service automation",
-                            "Code generation and assistance",
-                            "Business process optimization"
+                            "Connect AI agents to business applications",
+                            "Automate multi-step workflows in n8n",
+                            "Trigger actions across systems and hand off work",
                           ],
-                          learningObjective: "Apply GenAI tools to solve real-world business challenges"
-                        }
+                          learningObjective: "Automate multi-step business workflows with n8n and AI agents",
+                        },
+                        {
+                          title: "Module 5: Tools, Data, and Human-in-the-Loop Design",
+                          topics: [
+                            "Connect agents to apps, documents, APIs, and data",
+                            "Decide what AI can do autonomously vs. with approval",
+                            "Design escalation, review, and multi-agent workflows",
+                            "Redesign business processes around AI agents and automation",
+                          ],
+                          learningObjective: "Design reliable agent workflows with the right tools, data, and human decision points",
+                        },
                       ].map((part, index) => (
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
                           <button
@@ -394,19 +472,19 @@ export default function NoCodeAIAgentsCoursePage() {
                         { 
                           name: "David Martinez", 
                           role: "Business Analyst", 
-                          review: "Excellent introduction to Generative AI! The prompt engineering module was incredibly practical and I've already started applying these techniques in my work. The 4-hour format was perfect for a quick but comprehensive overview.",
+                          review: "This course finally showed me how to move past prompting. We built agents with Claude and connected them through n8n to real workflows. I left with something I could actually use at work.",
                           rating: 5
                         },
                         { 
                           name: "Jennifer Kim", 
                           role: "Marketing Director", 
-                          review: "This course gave me the confidence to start using GenAI tools effectively. The ethics section was particularly valuable, and the hands-on exercises helped me understand real-world applications. Highly recommend for anyone new to AI.",
+                          review: "Claude Code and Codex made it possible to build integrations without waiting on engineering. The human-in-the-loop pieces were especially practical for our team processes.",
                           rating: 5
                         },
                         { 
                           name: "Robert Thompson", 
-                          role: "Consultant", 
-                          review: "Great foundational course on GenAI. The practical applications module showed me how to leverage AI across different business functions. The instructor was knowledgeable and the content was well-structured.",
+                          role: "Operations Consultant", 
+                          review: "Hands-on from start to finish. We went from a manual process to a working AI workflow in class. Exactly what I needed for clients who want automation without a programming team.",
                           rating: 5
                         }
                       ].map((review, index) => (
@@ -438,10 +516,10 @@ export default function NoCodeAIAgentsCoursePage() {
                     <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a comprehensive 2-day course designed to help professionals build AI-powered automation without programming. You learn to create intelligent agents using tools like n8n, Make.com, and Langflow, automate repetitive tasks, integrate ChatGPT and Claude APIs, and build 25+ practical business automations through hands-on projects." },
-                  { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." },
-                        { q: "What is included in the course?", a: "The course includes live training sessions, comprehensive course materials, hands-on exercises with GenAI tools, and access to learning resources." },
-                        { q: "Do I need prior AI experience?", a: "No prior AI experience is required. This course is designed for professionals who are new to Generative AI and want to quickly gain practical skills." }
+                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a live, hands-on course that teaches you to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer. You learn how to give agents instructions, tools, context, and workflows so they can complete work across applications and processes." },
+                  { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on building working agents and automations you can apply immediately." },
+                        { q: "What is included in the course?", a: "The course includes live training, hands-on builds with Claude, Claude Code, Codex, and n8n, course materials, and guidance on connecting agents to tools, data, APIs, and human-in-the-loop workflows." },
+                        { q: "Do I need prior AI or programming experience?", a: "No. You do not need a software development background. The course is designed for professionals who want to build with AI rather than only learn about AI." }
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
@@ -559,10 +637,11 @@ export default function NoCodeAIAgentsCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials and resources. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a comprehensive 2-day course designed to help professionals build AI-powered automation without programming. You learn to create intelligent agents using tools like n8n, Make.com, and Langflow, automate repetitive tasks, integrate ChatGPT and Claude APIs, and build 25+ practical business automations through hands-on projects." },
-                  { q: "Who should take this course?", a: "This course is ideal for business professionals, Product Managers, Business Analysts, Marketing professionals, Consultants, and anyone looking to leverage Generative AI in their work without needing extensive technical background." },
-                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. This course is designed for professionals with no prior AI experience, though basic computer literacy is recommended." },
-                  { q: "Is there a certification exam?", a: "No, this course does not include a certification exam. It focuses on practical skills and knowledge for applying Generative AI tools effectively in professional environments." }
+                  { q: "What is the No-Code AI Agents & Automation™ Certification Training?", a: "The No-Code AI Agents & Automation™ Certification Training is a live, hands-on course that teaches you to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer." },
+                  { q: "Who should take this course?", a: "This course is ideal for business professionals, Product Managers and Product Owners, Project and Program Managers, operations professionals, consultants, entrepreneurs, marketing and sales teams, customer support teams, process improvement professionals, and anyone responsible for improving how work gets done." },
+                  { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. You do not need a software development background." },
+                  { q: "Is there a certification exam?", a: "No, this course does not include a certification exam. The focus is building working AI agents and automations." },
+                  { q: "What makes this course different from prompt-writing courses?", a: "Most AI courses teach you how to use ChatGPT or write better prompts. This course teaches you how to build AI-powered systems that perform work by combining agents, workflow automation, business applications, data, and human decision points." }
                 ]
               };
 

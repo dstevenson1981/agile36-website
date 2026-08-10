@@ -7,32 +7,34 @@ import {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days | Agile36",
-  description: "Live 2-day certification: build 25+ real AI automations — marketing, lead gen, content — with n8n, Make.com and ChatGPT. No coding required. Expert-led, hands-on.",
+  title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work | Agile36",
+  description:
+    "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
   keywords: [
-    "No-code AI",
+    "No-code AI agents",
     "AI automation",
-    "No-code automation",
-    "AI agents",
-    "Workflow automation",
-    "ChatGPT automation",
+    "Claude agents",
+    "Claude Code",
+    "Codex",
     "n8n training",
-    "Make.com",
-    "Langflow",
-    "Business automation",
+    "AI workflow automation",
+    "Human-in-the-loop AI",
+    "No-code automation",
+    "Business process automation",
     "AI for non-programmers",
-    "Automation training"
   ],
   openGraph: {
-    title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days | Agile36",
-    description: "Live 2-day certification: build 25+ real AI automations — marketing, lead gen, content — with n8n, Make.com and ChatGPT. No coding required.",
+    title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work | Agile36",
+    description:
+      "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-agent-builder",
   },
   twitter: {
     card: "summary_large_image",
-    title: "No-Code AI Agents Course — Build 25+ Real Automations in 2 Days",
-    description: "Live 2-day certification: build 25+ real AI automations with n8n, Make.com and ChatGPT. No coding required.",
+    title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work",
+    description:
+      "Build practical AI agents and automate workflows with Claude, Claude Code, Codex, and n8n. No programming background required.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-agent-builder",
@@ -52,16 +54,16 @@ export default async function AIAgentBuilderLayout({
       schedulePath: "/courses/ai-agent-builder/schedule",
       courseDisplayName: "No-Code AI Agents & Automation™ Certification Training",
       description:
-        "No-Code AI Agents & Automation teaches professionals to build AI-powered automation without programming. Learn to create intelligent agents, automate workflows using n8n and Make.com, integrate ChatGPT APIs, and build 25+ practical automations for business productivity.",
+        "Learn how to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer. Go beyond prompting to give agents instructions, tools, context, and workflows that complete real work.",
       teaches: [
-        "Building No-Code AI Agents",
-        "Multi-Step Workflow Automation",
-        "ChatGPT and Claude API Integration",
-        "n8n, Make.com, and Langflow Platforms",
-        "Business Process Automation",
-        "Lead Qualification and Outreach Automation",
-        "Content Generation Pipelines",
-        "AI-Enhanced Coding (Low-Code)",
+        "Building AI Agents Without Traditional Coding",
+        "Building Agents with Claude",
+        "Building with Claude Code and Codex",
+        "Automating Workflows with n8n",
+        "Connecting Agents to Tools and Data",
+        "Human-in-the-Loop Workflow Design",
+        "Multi-Step and Multi-Agent Workflows",
+        "Turning Business Processes into AI Workflows",
       ],
       breadcrumbLeafName: "No-Code AI Agents & Automation",
       coursesCrumbLabel: "AI Product Courses",
@@ -70,7 +72,7 @@ export default async function AIAgentBuilderLayout({
       timeRequired: "P2D",
       courseCode: "AI-Agents",
       coursePrerequisites:
-        "No prerequisites. Designed for non-technical professionals. No coding required.",
+        "No prerequisites. Designed for professionals without a software development background.",
       educationalCredentialAwarded: "No-Code AI Agents & Automation™ Certification",
       aggregateRating: {
         ratingValue: 4.9,
@@ -85,56 +87,56 @@ export default async function AIAgentBuilderLayout({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    mainEntity: [
       {
         "@type": "Question",
-        "name": "What is No-Code AI Agents & Automation?",
-        "acceptedAnswer": {
+        name: "What is No-Code AI Agents & Automation?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "No-Code AI Agents & Automation is a 2-day certification teaching professionals to build AI-powered automation without programming. You learn to create intelligent agents using tools like n8n, Make.com, and Langflow, automate repetitive tasks, integrate ChatGPT and Claude APIs, and build 25+ practical business automations through hands-on projects."
-        }
+          text: "No-Code AI Agents & Automation™ is a live, hands-on certification that teaches you to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What is an AI agent?",
-        "acceptedAnswer": {
+        name: "What tools will I use in this course?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "An AI agent is an autonomous software system that performs tasks without human intervention. AI agents can research information, make decisions, execute actions, send emails, generate content, and complete multi-step workflows by using AI models like ChatGPT or Claude to process information and determine next steps."
-        }
+          text: "You’ll work with Claude, Claude Code, Codex, n8n, APIs and integrations, and AI agent tools and connectors to build agents that complete real work across applications and processes.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Do I need programming skills?",
-        "acceptedAnswer": {
+        name: "Do I need programming skills?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "No programming skills are required. The course uses no-code platforms with visual workflow builders. You'll drag-and-drop components to create automations. The course includes optional AI-enhanced coding sections where AI helps write code snippets, but this is not required for certification."
-        }
+          text: "No programming background is required. The course teaches you how AI coding agents like Claude Code and Codex can build applications, agents, integrations, and automations even if you are not a software developer.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What can I automate with no-code AI?",
-        "acceptedAnswer": {
+        name: "What will I build?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "You can automate lead qualification, email outreach sequences, content generation, data entry, report creation, customer onboarding, meeting scheduling, document processing, social media posting, research tasks, and any repetitive digital work. The course includes 25+ real-world automation examples you build during training."
-        }
+          text: "You’ll build research and information-gathering agents, workflow automation agents, document and data processing agents, customer and employee support workflows, multi-application agents, human approval and escalation workflows, multi-agent workflows, and end-to-end business process automation.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What is n8n and Make.com?",
-        "acceptedAnswer": {
+        name: "Who should take this course?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "n8n and Make.com are no-code automation platforms that connect different apps and services. They provide visual workflow builders where you drag-and-drop nodes to create automations. Both integrate with hundreds of tools (Gmail, Slack, databases, APIs) and support AI models for intelligent automation."
-        }
+          text: "This course is ideal for business professionals, Product Managers and Product Owners, Project and Program Managers, operations professionals, consultants, entrepreneurs, marketing and sales professionals, customer support teams, process improvement professionals, and anyone responsible for improving how work gets done.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Who should take this course?",
-        "acceptedAnswer": {
+        name: "How is this different from prompt-writing courses?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "This course is ideal for business professionals, operations managers, marketers, salespeople, customer success teams, and anyone handling repetitive digital tasks who wants to boost productivity with AI automation. No technical background needed—if you can use a web browser, you can build AI agents."
-        }
-      }
-    ]
+          text: "Most AI courses teach you how to use ChatGPT or write better prompts. This course teaches you how to build AI-powered systems that perform work by combining AI agents, workflow automation, business applications, data, and human decision points.",
+        },
+      },
+    ],
   };
 
   return (
@@ -145,4 +147,3 @@ export default async function AIAgentBuilderLayout({
     </>
   );
 }
-
