@@ -77,6 +77,17 @@ export default function NoCodeAIAgentsCoursePage() {
                     </div>
                   ))}
                 </div>
+
+                <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Certification</span>
+                  <Image
+                    src="/Logo_Agents.png"
+                    alt="No-Code AI Agents & Automation™ Certification Badge"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
+                </div>
               </div>
 
               {/* Action Buttons */}
@@ -103,12 +114,37 @@ export default function NoCodeAIAgentsCoursePage() {
             </div>
 
             <CourseHeroRightColumn courseSlug={courseSlug}>
-              <div className="mt-8 lg:mt-20">
-                <img
-                  src="/Logo_Agents.png"
-                  alt="No-Code AI Agents & Automation"
-                  className="w-full h-auto rounded-lg"
-                />
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[13.5px] text-[#475569]">10 Hours Training</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[13.5px] text-[#475569]">2 Days Duration</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[13.5px] text-[#475569]">No-Code AI Agents & Automation™</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[13.5px] text-[#475569]">Claude, Claude Code, Codex & n8n</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[13.5px] text-[#475569]">Lifetime Access to Materials</span>
+                </div>
               </div>
             </CourseHeroRightColumn>
           </div>

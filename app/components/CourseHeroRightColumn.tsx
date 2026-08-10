@@ -9,6 +9,22 @@ import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pr
 /** Courses listed publicly but sold as private cohorts (no schedule / checkout). */
 const PRIVATE_CLASS_SLUGS = new Set(["release-train-engineer"]);
 
+/** Official SAFe / Scaled Agile offerings — show Silver Partner trust footer. */
+const SCALED_AGILE_COURSE_SLUGS = new Set([
+  "leading-safe",
+  "scrum-master",
+  "product-owner-manager",
+  "agile-product-management",
+  "lean-portfolio-management",
+  "safe-for-teams",
+  "release-train-engineer",
+  "devops",
+  "responsible-ai",
+  "value-stream-mapping",
+  "ai-driven-scrum-master",
+  "advanced-scrum-master",
+]);
+
 const PRIVATE_COURSE_LABELS: Record<string, string> = {
   "release-train-engineer": "SAFe Release Train Engineer (RTE)",
 };
@@ -20,6 +36,8 @@ type Props = {
   privateClass?: boolean;
   /** If set, private CTA calls this instead of the built-in modal. */
   onPrivateContactClick?: () => void;
+  /** Override Scaled Agile Silver Partner footer (defaults on for SAFe course slugs). */
+  showScaledAgilePartner?: boolean;
 };
 
 /** Compact sticky pricing card: glass shell, price block, what's-included, trust footer. */
@@ -28,9 +46,12 @@ export default function CourseHeroRightColumn({
   children,
   privateClass,
   onPrivateContactClick,
+  showScaledAgilePartner,
 }: Props) {
   const isPrivate = privateClass ?? PRIVATE_CLASS_SLUGS.has(courseSlug);
   const list = isPrivate ? null : COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
+  const showPartner =
+    showScaledAgilePartner ?? SCALED_AGILE_COURSE_SLUGS.has(courseSlug);
   const scheduleHref = `/courses/${courseSlug}/schedule?course=${courseSlug}`;
   const [showContactModal, setShowContactModal] = useState(false);
   const courseLabel =
@@ -108,21 +129,23 @@ export default function CourseHeroRightColumn({
                 </div>
               ) : null}
 
-              <div className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
-                <Image
-                  src="/Silver.png"
-                  alt="Scaled Agile Silver Partner"
-                  width={28}
-                  height={28}
-                  className="h-7 w-7 shrink-0 object-contain"
-                />
-                <p className="text-[11px] leading-snug text-[#475569]">
-                  Official training under our{" "}
-                  <span className="font-semibold text-[#1f2c4a]">
-                    Scaled Agile Silver Partnership
-                  </span>
-                </p>
-              </div>
+              {showPartner ? (
+                <div className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+                  <Image
+                    src="/Silver.png"
+                    alt="Scaled Agile Silver Partner"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 shrink-0 object-contain"
+                  />
+                  <p className="text-[11px] leading-snug text-[#475569]">
+                    Official training under our{" "}
+                    <span className="font-semibold text-[#1f2c4a]">
+                      Scaled Agile Silver Partnership
+                    </span>
+                  </p>
+                </div>
+              ) : null}
             </div>
           </div>
         ) : (
