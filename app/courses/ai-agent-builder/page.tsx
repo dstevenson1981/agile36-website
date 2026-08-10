@@ -78,14 +78,15 @@ export default function NoCodeAIAgentsCoursePage() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+                <div className="flex flex-col gap-3 border-t border-[#1f2c4a]/10 pt-6 sm:flex-row sm:items-center sm:gap-5">
                   <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Certification</span>
                   <Image
                     src="/Logo_Agents.png"
                     alt="No-Code AI Agents & Automation™ Certification Badge"
-                    width={56}
-                    height={56}
-                    className="h-14 w-14 object-contain"
+                    width={200}
+                    height={200}
+                    priority
+                    className="h-40 w-40 object-contain sm:h-44 sm:w-44"
                   />
                 </div>
               </div>
