@@ -353,31 +353,40 @@ export default async function PracticeExamsPage({
           </article>
         ))}
 
-        <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-[#1f2c4a]/20 bg-white/70">
-          <div className="bg-[#1f2c4a]/10 px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">
-            Coming soon
-          </div>
-          <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
-            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc]">
-              <svg className="h-6 w-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
+        {!hasAnyExam && (
+          <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-[#1f2c4a]/20 bg-white/70 sm:col-span-2 xl:col-span-3">
+            <div className="bg-[#1f2c4a]/10 px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">
+              No exams yet
             </div>
-            <h2 className="mb-2 text-[0.95rem] font-semibold text-[#1f2c4a]">
-              {hasAnyExam ? 'More practice exams coming soon' : 'Enroll in a course to see practice exams'}
-            </h2>
-            <p className="max-w-xs text-sm leading-relaxed text-[#64748b]">
-              {hasAnyExam
-                ? 'Additional SAFe certification practice tests will be added for Pro plan purchasers.'
-                : 'Practice exams appear here for each course in your enrollment or combo.'}
-            </p>
-          </div>
-        </article>
+            <div className="flex flex-1 flex-col items-center justify-center p-8 text-center">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc]">
+                <svg className="h-6 w-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </div>
+              <h2 className="mb-2 text-[0.95rem] font-semibold text-[#1f2c4a]">
+                No practice exams for this account
+              </h2>
+              <p className="max-w-md text-sm leading-relaxed text-[#64748b]">
+                Practice exams show up here after you enroll in a supported course. Pro plan
+                includes the exam (unlocked on the last day of class); Basic plan can upgrade
+                for $50. If you already paid under a different email, sign in with that address
+                or contact support.
+              </p>
+              <Link
+                href="/courses"
+                className="mt-5 inline-flex items-center justify-center rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+              >
+                Browse courses
+              </Link>
+            </div>
+          </article>
+        )}
       </div>
     </div>
   );
