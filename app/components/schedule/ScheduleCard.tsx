@@ -144,7 +144,7 @@ export default function ScheduleCard({
         <div className="flex flex-col gap-4 p-5 lg:p-6">
           <div>
             <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
-              {formatDateRange(schedule.start_date, schedule.end_date)}
+              {formatDateRange(schedule.start_date, schedule.end_date, schedule.timezone)}
             </h3>
 
             {(timeRange || tzPill) && (

@@ -18,18 +18,69 @@ export type CourseScheduleRow = {
   total_seats?: number | null;
 };
 
-export function formatDateRange(startDate: string, endDate: string): string {
+export function formatDateRange(
+  startDate: string,
+  endDate: string,
+  timezone?: string
+): string {
   try {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const startFormatted = start.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    const endFormatted = end.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const tz =
+      timezone === "IST"
+        ? "Asia/Kolkata"
+        : timezone || undefined;
+    const opts: Intl.DateTimeFormatOptions = {
+      month: "short",
+      day: "numeric",
+      ...(tz ? { timeZone: tz } : {}),
+    };
 
-    if (start.toDateString() === end.toDateString()) {
-      return startFormatted;
+    // Prefer the class timezone so IST cohorts don't shift a day in US browsers.
+    if (tz) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const startFormatted = start.toLocaleDateString("en-US", opts);
+      const endFormatted = end.toLocaleDateString("en-US", opts);
+      const startKey = start.toLocaleDateString("en-CA", { timeZone: tz });
+      const endKey = end.toLocaleDateString("en-CA", { timeZone: tz });
+      if (startKey === endKey) return startFormatted;
+      const startMonth = start.toLocaleDateString("en-US", {
+        month: "short",
+        timeZone: tz,
+      });
+      const endMonth = end.toLocaleDateString("en-US", {
+        month: "short",
+        timeZone: tz,
+      });
+      const endDay = end.toLocaleDateString("en-US", {
+        day: "numeric",
+        timeZone: tz,
+      });
+      if (startMonth === endMonth && startKey.slice(0, 4) === endKey.slice(0, 4)) {
+        return `${startFormatted} - ${endDay}`;
+      }
+      return `${startFormatted} - ${endFormatted}`;
     }
-    if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
-      return `${startFormatted} - ${end.getDate()}`;
+
+    // Fallback: calendar date from ISO prefix (avoids browser-local day shifts).
+    const start = parseCalendarDate(startDate);
+    const end = parseCalendarDate(endDate);
+    if (!start || !end) return "Date TBA";
+    const startFormatted = start.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+    const endFormatted = end.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+    if (start.toDateString() === end.toDateString()) return startFormatted;
+    if (
+      start.getUTCMonth() === end.getUTCMonth() &&
+      start.getUTCFullYear() === end.getUTCFullYear()
+    ) {
+      return `${startFormatted} - ${end.getUTCDate()}`;
     }
     return `${startFormatted} - ${endFormatted}`;
   } catch {
