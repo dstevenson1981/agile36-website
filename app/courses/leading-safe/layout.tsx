@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     "SAFe certification training",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
     description:
       "2026 Leading SAFe training: become a SAFe Agilist (SA) with live expert instruction, exam included, and enterprise transformation focus.",
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
     url: "https://www.agile36.com/courses/leading-safe",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "AI-Empowered Leading SAFe® 6.0 (2026) | SAFe Agilist (SA)",
     description:

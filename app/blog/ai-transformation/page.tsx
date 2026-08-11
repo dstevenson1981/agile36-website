@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title:
     "What Is AI Transformation? A Complete Guide for Modern Organizations | Agile36",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/blog/ai-transformation",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "What Is AI Transformation? A Complete Guide for Modern Organizations",
     description:
       "AI transformation explained: strategy, operating model, talent, governance, and how enterprises move from pilots to durable value with AI.",

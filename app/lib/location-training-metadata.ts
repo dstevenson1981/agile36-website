@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 const SITE = "https://www.agile36.com";
 
 export function cityDisplayFromSlug(city: string): string {
@@ -71,6 +72,7 @@ export function buildLocationTrainingMetadata(
       canonical,
     },
     openGraph: {
+      images: [...DEFAULT_OG_IMAGES],
       url: canonical,
       siteName: "Agile36",
       type: "website",

@@ -7,6 +7,7 @@ import {
   SCHEMA_INSTRUCTOR_PERSON_NODES,
 } from "./lib/schema-site";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 /** Sitewide Person @id anchors so course JSON-LD instructor references resolve beyond a single page graph. */
 const homepageInstructorPersonGraph = {
   "@context": "https://schema.org",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Agile36 — Expert SAFe, Agile, AI & Product Management Training",
     description:
       "Expert training in Agile, AI, and product management. Live virtual SAFe and certification training from a Scaled Agile Silver Partner.",

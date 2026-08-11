@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     "AI for non-programmers",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work | Agile36",
     description:
       "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
     url: "https://www.agile36.com/courses/ai-agent-builder",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work",
     description:

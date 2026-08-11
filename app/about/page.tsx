@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "About Agile36 (2026) | SAFe Silver Partner & Enterprise Training",
   description:
     "2026: Meet Agile36 — a SAFe Silver Partner delivering live virtual SAFe, Agile, and AI product training with SPC-led instructors and enterprise-scale experience.",
   alternates: { canonical: "https://www.agile36.com/about" },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "About Agile36 (2026) | Agile36",
     description:
       "Who we are: SAFe Silver Partner training firm focused on certification quality and real program delivery.",

@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export const metadata: Metadata = {
     "AI Project Certification"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
     description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
     type: "website",
     url: "https://www.agile36.com/courses/generative-ai-project-managers",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "Generative AI for Project Managers Certification Training (2026)",
     description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",

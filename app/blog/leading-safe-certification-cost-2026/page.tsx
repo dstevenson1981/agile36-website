@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title:
     "Leading SAFe Certification Cost in 2026: What's Included | Agile36",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "how much does leading safe cost",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title:
       "Leading SAFe Certification Cost in 2026: What's Included and What to Expect",
     description:

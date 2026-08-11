@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Combo Courses (2026) | Save on SAFe & AI Bundles | Agile36",
   description:
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/combo-courses",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Combo Courses (2026) | Agile36",
     description:
       "2026 bundled SAFe and AI certification combos — save with coordinated live training.",

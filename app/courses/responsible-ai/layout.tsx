@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export const metadata: Metadata = {
     "SAFe AI integration"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Achieving Responsible AI with SAFe Micro-credential Course | Responsible AI Training (2026) | Agile36",
     description: "2026: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",
     type: "website",
     url: "https://www.agile36.com/courses/responsible-ai",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "Achieving Responsible AI with SAFe Micro-credential Course (2026)",
     description: "2026: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, and communication strategies.",

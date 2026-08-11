@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Lean Portfolio Management (LPM): The Complete Guide | Agile36",
   description:
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/blog/lean-portfolio-management",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Lean Portfolio Management: A Complete Guide for Enterprise Leaders",
     description:
       "Lean Portfolio Management (LPM) in SAFe: strategy, funding flow, guardrails, and how portfolio leaders connect strategy to agile execution.",

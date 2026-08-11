@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "PI Planning Explained: How SAFe's 2-Day Event Actually Works | Agile36",
   description:
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     "PI planning outputs",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title:
       "PI Planning Explained: How SAFe's 2-Day Planning Event Actually Works",
     description:

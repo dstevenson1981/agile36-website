@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "SAFe Scrum Master Exam Questions: Format, Sample Topics, Prep Tips | Agile36",
   description:
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     "SSM practice exam",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "SAFe Scrum Master Exam Questions: Format, Topics, and How to Prep",
     description:
       "What SAFe Scrum Master exam questions actually look like: format, passing score, sample topics, and a preparation plan from an SPC who teaches the course.",

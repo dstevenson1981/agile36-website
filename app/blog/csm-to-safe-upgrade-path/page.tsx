@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "CSM to SAFe Upgrade Path: Practical Certification Order (2026) | Agile36",
   description:
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     "SAFe certification order",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "CSM to SAFe Upgrade Path: Practical Certification Order (2026)",
     description:
       "A clear order of SAFe classes and exams for people who already hold CSM — built for enterprise hiring reality, not alphabet soup.",

@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     "AI-Empowered SAFe Advanced Scrum Master certification"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification (2026) | Agile36",
     description:
     "2026: Become an AI-Empowered SAFe Advanced Scrum Master: improve flow, build high-performing teams, manage cross-team conflict, and strengthen ART performance—with responsible AI practices. Exam included.",
@@ -34,6 +36,7 @@ export const metadata: Metadata = {
     url: "https://www.agile36.com/courses/advanced-scrum-master",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) (2026)",
     description:

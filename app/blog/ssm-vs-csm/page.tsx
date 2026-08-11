@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "SSM vs CSM: Which Scrum Master Certification Is Right for You? | Agile36",
   description:
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     "scrum master certification comparison",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "SSM vs CSM: Which Scrum Master Certification Is Right for You?",
     description:
       "SSM vs CSM compared side-by-side: cost, exam format, what each teaches, who hires for which, and how to pick the one that actually matches your work.",

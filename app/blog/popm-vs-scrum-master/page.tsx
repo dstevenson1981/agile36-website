@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "POPM vs Scrum Master (SSM): Roles, Certifications, and Career Fit | Agile36",
   description:
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     "SAFe product manager vs scrum master",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "POPM vs Scrum Master: SAFe certifications and real job roles",
     description:
       "Clarify POPM (product) vs Scrum Master (delivery) in SAFe — certifications, day-to-day work, and how to choose without mixing frameworks.",

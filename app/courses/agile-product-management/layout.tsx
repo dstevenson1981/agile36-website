@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -29,12 +30,14 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026) | Agile36",
     description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy. Earn 24 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/agile-product-management",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026)",
     description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy.",

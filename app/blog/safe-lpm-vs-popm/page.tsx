@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "SAFe LPM vs POPM: Which Certification First? | Agile36",
   description:
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "SAFe certification path",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title:
       "SAFe LPM vs POPM: Which Certification Should You Get First?",
     description:

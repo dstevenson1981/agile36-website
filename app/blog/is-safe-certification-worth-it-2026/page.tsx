@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BlogAuthorByline from "@/app/components/blog/BlogAuthorByline";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Is SAFe Certification Worth It in 2026? ROI & Salary | Agile36",
   description:
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     "SAFe certification worth it salary",
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title:
       "Is SAFe Certification Worth It in 2026? ROI, Salary Data, and the Honest Answer",
     description:

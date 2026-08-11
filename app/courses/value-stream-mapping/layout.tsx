@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -26,12 +27,14 @@ export const metadata: Metadata = {
     "Cycle Time Optimization"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "SAFe® Value Stream Mapping Course | SAFe VSM Training (2026) | Agile36",
     description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
     type: "website",
     url: "https://www.agile36.com/courses/value-stream-mapping",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "SAFe® Value Stream Mapping Course (2026)",
     description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",

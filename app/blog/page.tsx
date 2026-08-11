@@ -4,6 +4,7 @@ import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { getGeneratedBlogSummaries } from "@/app/lib/generated-blog";
 import { SCHEMA_ORGANIZATION_ID, SCHEMA_WEBSITE_ID } from "@/app/lib/schema-site";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Blog (2026) | Agile36 — SAFe, Agile, AI & Career Guides",
   description:
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/blog",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Agile36 Blog (2026) — SAFe, Agile & AI",
     description:
       "Browse 2026 articles: SAFe paths, certification comparisons, AI adoption, and career playbooks.",

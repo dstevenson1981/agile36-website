@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export const metadata: Metadata = {
     "AI Scrum practices"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
     description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-driven-scrum-master",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "AI-Driven Scrum Master™ Certification Training (2026)",
     description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Student Testimonials (2026) | Agile36 SAFe & AI Training Reviews",
   description:
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/testimonials",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Student Testimonials | Agile36",
     description:
       "Reviews and outcomes from Agile36 certification cohorts — SAFe, AI, and product training.",

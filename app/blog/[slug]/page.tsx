@@ -18,6 +18,7 @@ import {
 import { buildGeneratedBlogPostingGraph } from "@/app/lib/blog-posting-jsonld";
 import { getGeneratedBlogPost, getGeneratedBlogSlugs } from "@/app/lib/generated-blog";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -106,6 +107,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical,
     },
     openGraph: {
+      images: [...DEFAULT_OG_IMAGES],
       type: "article",
       url: canonical,
       siteName: "Agile36",

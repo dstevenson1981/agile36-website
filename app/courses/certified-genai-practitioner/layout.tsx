@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export const metadata: Metadata = {
     "GenAI course"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
     description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-genai-practitioner",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "Certified GenAI Practitioner™ Certification Training (2026)",
     description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",

@@ -4,6 +4,7 @@ import {
   fetchScheduleJsonLdCohorts,
 } from "@/app/lib/live-schedule-course-jsonld";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -24,12 +25,14 @@ export const metadata: Metadata = {
     "Product analytics AI"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
     description: "2026: Master AI-powered product management! Use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-ai-product-manager",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "Certified AI Product Manager™ Training (2026)",
     description: "2026: Master AI-powered product management! Build prototypes and validate ideas with AI tools.",

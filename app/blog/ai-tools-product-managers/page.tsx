@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
+import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Top AI Tools Every Product Manager Should Know in 2025 | Agile36",
   description:
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: "https://www.agile36.com/blog/ai-tools-product-managers",
   },
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "Top AI Tools Every Product Manager Should Know in 2025",
     description:
       "A practical tour of AI tools product managers use for research, roadmapping, writing, analytics, and delivery — with adoption tips for enterprise teams.",
