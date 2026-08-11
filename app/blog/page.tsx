@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import BlogHub, { type BlogHubPost } from "@/app/components/BlogHub";
 import { BLOG_EDITORIAL } from "@/app/lib/blog-editorial";
 import { getGeneratedBlogSummaries } from "@/app/lib/generated-blog";
-import { SCHEMA_ORGANIZATION_ID, SCHEMA_WEBSITE_ID } from "@/app/lib/schema-site";
+import {
+  SCHEMA_ORGANIZATION_ID,
+  SCHEMA_WEBSITE_ID,
+} from "@/app/lib/schema-site";
 
 import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
