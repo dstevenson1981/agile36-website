@@ -103,21 +103,67 @@ export async function POST(request: NextRequest) {
       break;
     }
 
-    case 'payment_intent.payment_failed':
+    case 'payment_intent.payment_failed': {
       const failedPayment = event.data.object as Stripe.PaymentIntent;
       console.log('Payment failed:', failedPayment.id);
-      
+
       // Update order status
       if (failedPayment.id) {
         await supabase
           .from('orders')
-          .update({ 
+          .update({
             payment_status: 'failed',
             updated_at: new Date().toISOString(),
           })
           .eq('payment_intent_id', failedPayment.id);
       }
+
+      // Failed payments should not get abandoned-cart recovery emails.
+      // Cancel pending enrollment_leads for this buyer so N8N skips them.
+      let failedEmail = (
+        failedPayment.receipt_email ||
+        failedPayment.metadata?.customerEmail ||
+        failedPayment.metadata?.email ||
+        ''
+      )
+        .trim()
+        .toLowerCase();
+
+      if (!failedEmail && failedPayment.id) {
+        const { data: failedOrder } = await supabase
+          .from('orders')
+          .select('customer_email')
+          .eq('payment_intent_id', failedPayment.id)
+          .maybeSingle();
+        failedEmail = String(failedOrder?.customer_email || '')
+          .trim()
+          .toLowerCase();
+      }
+
+      if (failedEmail) {
+        const { error: cancelLeadError } = await supabase
+          .from('enrollment_leads')
+          .update({
+            status: 'cancelled',
+            updated_at: new Date().toISOString(),
+          })
+          .eq('email', failedEmail)
+          .eq('status', 'pending');
+
+        if (cancelLeadError) {
+          console.error(
+            'Error cancelling enrollment_leads after payment failure:',
+            cancelLeadError
+          );
+        } else {
+          console.log(
+            'Cancelled pending enrollment_leads after payment failure for',
+            failedEmail
+          );
+        }
+      }
       break;
+    }
 
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;

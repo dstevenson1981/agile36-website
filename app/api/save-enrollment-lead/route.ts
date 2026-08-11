@@ -60,7 +60,10 @@ export async function POST(request: NextRequest) {
 
     // Skip insert if email is in abandoned cart suppressions (no email will be sent)
     const trimmedEmail = email.trim().toLowerCase();
-    const hardSuppressed = new Set(['enriquesan@iadb.org']);
+    const hardSuppressed = new Set([
+      'enriquesan@iadb.org',
+      'steven.garcia@sncorp.com',
+    ]);
     if (hardSuppressed.has(trimmedEmail)) {
       return NextResponse.json({
         success: true,
