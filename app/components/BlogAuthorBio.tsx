@@ -16,11 +16,11 @@ export default function BlogAuthorBio({ articleCount }: Props) {
       <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 sm:items-start">
         <div className="shrink-0 flex justify-center sm:justify-start">
           <Image
-            src="/agile36-logo-final.png"
+            src="/agile36-logo-header.png"
             alt="Agile36"
-            width={88}
-            height={88}
-            className="h-[72px] w-[72px] sm:h-[88px] sm:w-[88px] object-contain"
+            width={196}
+            height={61}
+            className="h-10 w-auto sm:h-12 object-contain"
           />
         </div>
         <div className="min-w-0 flex-1 text-center sm:text-left">
