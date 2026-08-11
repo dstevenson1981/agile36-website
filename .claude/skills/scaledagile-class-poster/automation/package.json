@@ -1,0 +1,12 @@
+{
+  "name": "safe-class-poster",
+  "private": true,
+  "type": "module",
+  "description": "Playwright automation for posting Agile36 classes to the SAFe partner portal. Isolated from the Next.js app's package.json on purpose.",
+  "scripts": {
+    "post": "node post-classes.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.62.1"
+  }
+}

@@ -1,0 +1,7 @@
+# Generated each run — the scripts rebuild these, and committing them just
+# creates noise and merge conflicts.
+reports/
+competition.json
+competition-*.json
+automation/classes.csv
+automation/posted-classes.csv
