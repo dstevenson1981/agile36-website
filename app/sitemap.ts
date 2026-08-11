@@ -88,6 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "ssm-vs-csm",
     "safe-scrum-master-exam-questions",
     "pi-planning-explained",
+    "what-is-a-component-team-in-safe",
   ];
 
   const generatedBlogSlugs = await getGeneratedBlogSlugs();

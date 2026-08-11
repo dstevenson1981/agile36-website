@@ -94,6 +94,14 @@ export const BLOG_EDITORIAL: BlogEditorialEntry[] = [
     description: "What happens in a Program Increment planning event and how teams align on outcomes.",
     date: "2025-09-01",
   },
+  {
+    slug: "what-is-a-component-team-in-safe",
+    title: "What Is a Component Team in SAFe? (vs. Feature Team)",
+    categoryId: "glossary",
+    description:
+      "How component teams differ from feature teams in SAFe, when each model fits, and the coordination tradeoffs on an ART.",
+    date: "2026-08-11",
+  },
 ];
 
 /** Distinct article URLs represented on /blog (generated MDX + editorial routes, deduplicated by slug). */
