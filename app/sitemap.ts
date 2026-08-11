@@ -56,58 +56,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const cities = [
-    "new-york",
-    "los-angeles",
-    "chicago",
-    "houston",
-    "phoenix",
-    "philadelphia",
-    "san-antonio",
-    "san-diego",
-    "dallas",
-    "san-jose",
-    "austin",
-    "jacksonville",
-    "fort-worth",
-    "columbus",
-    "charlotte",
-    "san-francisco",
-    "indianapolis",
-    "seattle",
-    "denver",
-    "washington",
-    "boston",
-    "nashville",
-    "oklahoma-city",
-    "las-vegas",
-    "portland",
-    "miami",
-    "tampa",
-    "orlando",
-    "raleigh",
-    "baltimore",
-  ];
+  const { KEPT_LOCATION_PAGES } = await import(
+    "@/app/lib/location-training-pages"
+  );
 
-  const geoRoutes = [
-    "leading-safe-certification-training",
-    "safe-for-teams-certification-training",
-    "scrum-master-certification-training",
-    "agile-product-management-certification-training",
-    "safe-product-owner-product-manager-certification-training",
-    "lean-portfolio-management-certification-training",
-  ];
-
-  const geoPages: MetadataRoute.Sitemap = [];
-  for (const route of geoRoutes) {
-    for (const city of cities) {
-      geoPages.push({
-        url: `${BASE_URL}/${route}/${city}`,
-        changeFrequency: "monthly",
-        priority: 0.6,
-      });
-    }
-  }
+  const geoPages: MetadataRoute.Sitemap = KEPT_LOCATION_PAGES.map(
+    ({ segment, city }) => ({
+      url: `${BASE_URL}/${segment}/${city}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })
+  );
 
   /** Legacy city URL shapes; canonical geo lives under /{segment}/{city}. Vercel 301s these to /courses/* — omit from sitemap to avoid competing URLs. */
   const legacyCitySlug = /^(safe-training|safe-certification)-/;

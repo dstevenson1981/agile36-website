@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { locationTrainingRedirects } from "./app/lib/location-training-pages";
 
 const nextConfig: NextConfig = {
   // Parent ~/package-lock.json makes Turbopack pick the wrong root and 404 nested routes.
@@ -17,6 +18,8 @@ const nextConfig: NextConfig = {
         destination: "https://www.agile36.com/:path*",
         permanent: true,
       },
+      // City geo landings pruned to 11 keep pages — all other course×city URLs → parent course
+      ...locationTrainingRedirects(),
       // Blog consolidation: duplicate LPM explainer merged into the main guide
       {
         source: '/blog/what-is-lean-portfolio-management',

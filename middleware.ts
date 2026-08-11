@@ -12,6 +12,7 @@ import {
   SSM_PRO_OPEN_COOKIE,
   SSM_PRO_OPEN_COOKIE_VALUE,
 } from './app/lib/ssm-pro-open-gate';
+import { parentCourseForLocationPath } from './app/lib/location-training-pages';
 
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
@@ -43,6 +44,17 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
+
+  // Pruned city geo landings → parent course (covers unknown city slugs too).
+  const locationParent = parentCourseForLocationPath(pathname);
+  if (locationParent) {
+    const redirectRes = NextResponse.redirect(
+      new URL(locationParent, request.url),
+      301
+    );
+    applyCspAndHreflang(request, redirectRes);
+    return redirectRes;
+  }
 
   // Public site never serves Pro banks — send shortcuts to free /test or course pages.
   const publicProDest = getPublicProPracticeRedirect(pathname);

@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import LocationPageClient from "./LocationPageClient";
 import { LocationTrainingCityShell } from "@/app/components/location-training/LocationTrainingCityShell";
 import { buildLocationTrainingMetadata } from "@/app/lib/location-training-metadata";
+import { generateLocationStaticParams } from "@/app/lib/location-training-pages";
 
 export const revalidate = 3600;
 export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return generateLocationStaticParams("leading-safe-certification-training");
+}
 
 type Props = { params: Promise<{ city: string }> };
 
