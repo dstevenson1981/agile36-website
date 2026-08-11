@@ -11,6 +11,7 @@ import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import SasmOutcomesDashboard from "@/app/components/SasmOutcomesDashboard";
+import { courseLong } from "@/app/lib/course-seo";
 
 
 export default function AdvancedScrumMasterCoursePage() {
@@ -54,7 +55,7 @@ export default function AdvancedScrumMasterCoursePage() {
 
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification Training
+                  {courseLong("advanced-scrum-master")}
                 </h1>
                 <p className="mt-5 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Move from team ceremonies to ART-level results: faster flow, cleaner multi-team conflict, and a SASM credential that signals you can coach the train — not just one team.

@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
+  title: courseTitle("certified-ai-product-manager"),
   description: "2026 live cohorts: Master AI-powered product management! Learn to use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders. Earn your Certified AI Product Manager™ certification. 2-day intensive course.",
   keywords: [
     "AI Product Manager",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "Certified AI Product Manager™ Training | AI Product Development & Prototyping (2026) | Agile36",
+    title: courseOgTitle("certified-ai-product-manager"),
     description: "2026: Master AI-powered product management! Use AI throughout the product lifecycle, build prototypes, and validate ideas with stakeholders.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-ai-product-manager",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "Certified AI Product Manager™ Training (2026)",
+    title: courseLong("certified-ai-product-manager"),
     description: "2026: Master AI-powered product management! Build prototypes and validate ideas with AI tools.",
   },
   alternates: {

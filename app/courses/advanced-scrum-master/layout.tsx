@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe Advanced Scrum Master (SASM) Certification (2026) | Agile36",
+  title: courseTitle("advanced-scrum-master"),
   description:
     "2026 live cohorts: AI-Empowered SAFe Advanced Scrum Master (SASM) training: flow, high-performing teams, multi-team collaboration, and conflict skills on the ART—with AI-empowered facilitation. Expert-led course; exam included.",
   keywords: [
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) Certification (2026) | Agile36",
+    title: courseOgTitle("advanced-scrum-master"),
     description:
     "2026: Become an AI-Empowered SAFe Advanced Scrum Master: improve flow, build high-performing teams, manage cross-team conflict, and strengthen ART performance—with responsible AI practices. Exam included.",
     type: "website",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "AI-Empowered SAFe® Advanced Scrum Master (SASM) (2026)",
+    title: courseLong("advanced-scrum-master"),
     description:
       "Flow, high-performing teams, conflict skills, and ART performance—plus AI fundamentals and SAFe CoPilot-style guidance for the SASM role.",
   },

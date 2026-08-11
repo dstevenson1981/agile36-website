@@ -3,10 +3,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe Agile Product Management (APM) Certification Training (2026) | Agile36",
+  title: courseTitle("agile-product-management"),
   description: "2026 live cohorts: Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Agile Product Management",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026) | Agile36",
+    title: courseOgTitle("agile-product-management"),
     description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy. Earn 24 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/agile-product-management",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe® 6.0 Agile Product Management (APM) Certification Training (2026)",
+    title: courseLong("agile-product-management"),
     description: "2026: Master Agile Product Management with SAFe® APM Certification Training. Learn design thinking, continuous exploration, and product strategy.",
   },
   alternates: {

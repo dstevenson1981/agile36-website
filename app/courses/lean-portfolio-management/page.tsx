@@ -11,6 +11,7 @@ import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import { LPM_QUESTIONS } from "@/app/account/(dashboard)/practice-exams/lpm/questions";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function LeanPortfolioManagementCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -97,7 +98,7 @@ export default function LeanPortfolioManagementCoursePage() {
 
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  AI-Empowered SAFe® Lean Portfolio Management (LPM) Certification Training
+                  {courseLong("lean-portfolio-management")}
                 </h1>
                 <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Align strategy with execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.

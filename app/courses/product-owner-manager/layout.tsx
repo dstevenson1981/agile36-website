@@ -4,10 +4,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe Product Owner (POPM) Certification",
+  title: courseTitle("product-owner-manager"),
   description: "2026 live cohorts: Get AI-Empowered SAFe POPM certified with Agile36. 2-day live training covering backlog management, PI Planning, and Lean-Agile product delivery. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Product Owner",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training (2026) | Agile36",
+    title: courseOgTitle("product-owner-manager"),
     description: "2026: Master AI-Empowered SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/product-owner-manager",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training (2026)",
+    title: courseLong("product-owner-manager"),
     description: "2026: Master AI-Empowered SAFe Product Owner/Product Manager (POPM) Certification Training. Learn product ownership and backlog management.",
   },
   alternates: {

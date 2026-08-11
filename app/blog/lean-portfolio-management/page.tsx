@@ -4,8 +4,15 @@ import type { Metadata } from "next";
 import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaBlock";
 
 import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
-export const metadata: Metadata = {
+
+/** Two-field SEO: short SERP title + long H1/og title (no independent third string). */
+const PAGE_SEO = {
   title: "What Is Lean Portfolio Management? LPM Explained | Agile36",
+  long: "Lean Portfolio Management: A Complete Guide for Enterprise Leaders",
+} as const;
+
+export const metadata: Metadata = {
+  title: PAGE_SEO.title,
   description:
     "What Lean Portfolio Management is, how SAFe LPM works — lean budgeting, portfolio Kanban, WSJF, governance — and how to implement it, from Scaled Agile Silver Partner Agile36.",
   alternates: {
@@ -13,12 +20,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "Lean Portfolio Management: A Complete Guide for Enterprise Leaders",
+    title: PAGE_SEO.long,
     description:
       "Lean Portfolio Management (LPM) in SAFe: strategy, funding flow, guardrails, and how portfolio leaders connect strategy to agile execution.",
     url: "https://www.agile36.com/blog/lean-portfolio-management",
     siteName: "Agile36",
     type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_SEO.long,
   },
 };
 
@@ -57,7 +68,7 @@ export default async function LeanPortfolioManagementBlogPost() {
         </div>
         {/* Title */}
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-white text-center px-8 relative z-10">
-          Lean Portfolio Management: A Complete Guide for Enterprise Leaders
+          {PAGE_SEO.long}
         </h1>
       </div>
 
@@ -550,64 +561,7 @@ export default async function LeanPortfolioManagementBlogPost() {
           </div>
         </div>
       </article>
-
-      {/* Footer */}
-      <footer className="w-full border-t border-white/10 bg-white/[0.03] text-white py-16 px-4 sm:px-6 lg:px-20 mt-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>About us</li>
-                <li>Accreditation</li>
-                <li>Careers</li>
-                <li>Contact us</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Offerings</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>Live virtual (Online)</li>
-                <li>Classroom (In-Person)</li>
-                <li>Corporate training</li>
-                <li>Training Schedule</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>Practice Tests</li>
-                <li>Webinars</li>
-                <li>Blogs</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Get Our Weekly Newsletter</h4>
-              <div className="flex gap-2 mb-4">
-                <input 
-                  type="email" 
-                  placeholder="Email*" 
-                  className="flex-1 px-4 py-2 rounded-md bg-white/10 border border-white/15 text-white placeholder-gray-400"
-                />
-                <button className="bg-white hover:bg-gray-100 text-black font-medium px-6 py-2 rounded-md">
-                  Subscribe
-                </button>
-              </div>
-              <div className="flex gap-4 mt-6">
-                <div className="w-8 h-8 bg-white/10 rounded"></div>
-                <div className="w-8 h-8 bg-white/10 rounded"></div>
-                <div className="w-8 h-8 bg-white/10 rounded"></div>
-                <div className="w-8 h-8 bg-white/10 rounded"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-gray-300">
-            <p>© 2024 Agile36. All Rights Reserved</p>
-          </div>
-        </div>
-      </footer>
-    </main>
+</main>
     </>
   );
 }

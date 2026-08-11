@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe Value Stream Mapping Certification Training (2026) | Agile36",
+  title: courseTitle("value-stream-mapping"),
   description: "2026 live cohorts: Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now.",
   keywords: [
     "Value Stream Mapping",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe® Value Stream Mapping Course | SAFe VSM Training (2026) | Agile36",
+    title: courseOgTitle("value-stream-mapping"),
     description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
     type: "website",
     url: "https://www.agile36.com/courses/value-stream-mapping",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe® Value Stream Mapping Course (2026)",
+    title: courseLong("value-stream-mapping"),
     description: "2026: Master value stream mapping with Value Stream Mapping Micro-credential Course. Learn to map value streams, identify bottlenecks, and optimize flow.",
   },
   alternates: {

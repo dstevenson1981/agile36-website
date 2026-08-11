@@ -6,6 +6,7 @@ import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function ExecutiveGenAILeadershipCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -103,7 +104,7 @@ export default function ExecutiveGenAILeadershipCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  Executive GenAI Leadership™ Certification Training
+                  {courseLong("executive-genai-leadership")}
                 </h1>
                 <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
                   Lead Your Organization&apos;s AI Transformation with Strategic GenAI Leadership

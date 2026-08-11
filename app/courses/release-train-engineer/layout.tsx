@@ -3,10 +3,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification (2026) | Agile36",
+  title: courseTitle("release-train-engineer"),
   description:
     "2026 live cohorts: SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 21 PDUs. Expert-led course.",
   keywords: [
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe® AI-Empowered Release Train Engineer (RTE) Certification (2026) | Agile36",
+    title: courseOgTitle("release-train-engineer"),
     description:
     "2026: RTE certification training with an AI-empowered curriculum: strengthen PI planning, dependency management, and facilitation using responsible AI practices alongside official SAFe outcomes.",
     type: "website",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe® AI-Empowered Release Train Engineer (RTE) (2026)",
+    title: courseLong("release-train-engineer"),
     description:
       "AI-empowered RTE training: ART facilitation, PI planning, and practical AI-assisted workflows with exam-aligned SAFe outcomes.",
   },

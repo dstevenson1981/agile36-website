@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
+  title: courseTitle("certified-genai-practitioner"),
   description: "2026 live cohorts: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications in this comprehensive 4-hour course. Expert-led training.",
   keywords: [
     "GenAI Practitioner",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "Certified GenAI Practitioner™ Certification Training | GenAI Training (2026) | Agile36",
+    title: courseOgTitle("certified-genai-practitioner"),
     description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
     type: "website",
     url: "https://www.agile36.com/courses/certified-genai-practitioner",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "Certified GenAI Practitioner™ Certification Training (2026)",
+    title: courseLong("certified-genai-practitioner"),
     description: "2026: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications.",
   },
   alternates: {

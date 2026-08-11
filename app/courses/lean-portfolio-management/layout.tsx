@@ -4,10 +4,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe Lean Portfolio Management (LPM) Certification | Agile36",
+  title: courseTitle("lean-portfolio-management"),
   description: "2026 live cohorts: Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
   keywords: [
     "SAFe Lean Portfolio Management",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
+    title: courseOgTitle("lean-portfolio-management"),
     description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/lean-portfolio-management",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026)",
+    title: courseLong("lean-portfolio-management"),
     description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding.",
   },
   alternates: {

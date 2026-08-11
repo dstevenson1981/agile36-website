@@ -6,6 +6,7 @@ import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function CertifiedAIProductManagerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -53,7 +54,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  Certified AI Product Manager™ Certification Training
+                  {courseLong("certified-ai-product-manager")}
                 </h1>
                 <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
                   Master AI-Powered Product Development and Build Prototypes That Validate Ideas Fast

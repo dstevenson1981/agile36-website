@@ -3,10 +3,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
+  title: courseTitle("leading-safe"),
   description:
     "2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. 2-day virtual training, exam included, SPC instructors. Lead enterprise Agile transformation with current SAFe practices.",
   keywords: [
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "AI-Empowered Leading SAFe® 6.0 Certification (2026) | SAFe Agilist (SA) | Agile36",
+    title: courseOgTitle("leading-safe"),
     description:
       "2026 Leading SAFe training: become a SAFe Agilist (SA) with live expert instruction, exam included, and enterprise transformation focus.",
     type: "website",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "AI-Empowered Leading SAFe® 6.0 (2026) | SAFe Agilist (SA)",
+    title: courseLong("leading-safe"),
     description:
       "2026 SAFe Agilist path: AI-Empowered Leading SAFe live training and certification exam with Agile36.",
   },

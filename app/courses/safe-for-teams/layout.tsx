@@ -3,10 +3,11 @@ import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-co
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training | Agile36",
+  title: courseTitle("safe-for-teams"),
   description: "Earn your SAFe Practitioner (SP) certification in a live 2-day SAFe for Teams course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs.",
   keywords: [
     "SAFe for Teams",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training | Agile36",
+    title: courseOgTitle("safe-for-teams"),
     description: "Live 2-day SAFe for Teams (SP) course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/safe-for-teams",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe for Teams Certification — SAFe Practitioner (SP) Training",
+    title: courseLong("safe-for-teams"),
     description: "Live 2-day SAFe for Teams (SP) course taught by certified SPCs. Exam included, weekday and weekend cohorts.",
   },
   alternates: {

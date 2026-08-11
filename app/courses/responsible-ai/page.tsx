@@ -8,6 +8,7 @@ import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function ResponsibleAICoursePage() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -54,7 +55,7 @@ export default function ResponsibleAICoursePage() {
 
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  Achieving Responsible AI with SAFe Micro-credential Course
+                  {courseLong("responsible-ai")}
                 </h1>
                 <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master Responsible AI practices in SAFe environments — stakeholder engagement, RAI policies, and Epic Hypothesis Statements.

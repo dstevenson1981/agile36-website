@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe DevOps Practitioner (SDP) Certification Training (2026) | Agile36",
+  title: courseTitle("devops"),
   description: "2026 live cohorts: Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included.",
   keywords: [
     "SAFe DevOps",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "SAFe® 6.0 DevOps (SDP) Certification Training (2026) | Agile36",
+    title: courseOgTitle("devops"),
     description: "2026: Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/devops",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "SAFe® 6.0 DevOps (SDP) Certification Training (2026)",
+    title: courseLong("devops"),
     description: "2026: Master DevOps practices with SAFe® DevOps Certification Training. Learn continuous delivery pipelines, deployment automation, and DevOps practices in SAFe.",
   },
   alternates: {

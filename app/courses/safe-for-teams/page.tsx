@@ -10,6 +10,7 @@ import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function SafeForTeamsCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -100,7 +101,7 @@ export default function SafeForTeamsCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  AI-Empowered SAFe® 6.0 for Teams Certification Training
+                  {courseLong("safe-for-teams")}
                 </h1>
                 <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
                   Master SAFe team member skills to excel in Agile Release Trains with expert-led SAFe® 6.0 training and hands-on iteration simulations.

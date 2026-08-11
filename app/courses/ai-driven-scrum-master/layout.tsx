@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
+  title: courseTitle("ai-driven-scrum-master"),
   description: "2026 live cohorts: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching. Expert-led training.",
   keywords: [
     "AI-Driven Scrum Master",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "AI-Driven Scrum Master™ Certification Training | AI Scrum Master Course (2026) | Agile36",
+    title: courseOgTitle("ai-driven-scrum-master"),
     description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-driven-scrum-master",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "AI-Driven Scrum Master™ Certification Training (2026)",
+    title: courseLong("ai-driven-scrum-master"),
     description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
   },
   alternates: {

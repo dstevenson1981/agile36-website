@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
+  title: courseTitle("generative-ai-project-managers"),
   description: "2026 live cohorts: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, apply AI-assisted risk analysis, and integrate GenAI across Agile, hybrid, and traditional methodologies. Expert-led training.",
   keywords: [
     "Generative AI for Project Managers",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "Generative AI for Project Managers Certification Training | AI Project Management Course (2026) | Agile36",
+    title: courseOgTitle("generative-ai-project-managers"),
     description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
     type: "website",
     url: "https://www.agile36.com/courses/generative-ai-project-managers",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "Generative AI for Project Managers Certification Training (2026)",
+    title: courseLong("generative-ai-project-managers"),
     description: "2026: Transform your project management with AI-powered tools and practices. Learn to create project artifacts using AI, develop efficient prompting techniques, and integrate GenAI across various methodologies.",
   },
   alternates: {

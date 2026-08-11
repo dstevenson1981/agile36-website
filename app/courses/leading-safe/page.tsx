@@ -11,6 +11,7 @@ import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import { BadgeCheck, BookOpen, Users, CreditCard, BarChart3, Wrench } from "lucide-react";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import { courseLong } from "@/app/lib/course-seo";
 
 export default function LeadingSafeCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -103,10 +104,10 @@ export default function LeadingSafeCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  AI-Empowered Leading SAFe® Training with SAFe Agilist Certification
+                  {courseLong("leading-safe")}
                 </h1>
                 <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
-                  Lead Agile transformations with expert-led SAFe® 6.0 Agile training and simulations.
+                  This Leading SAFe® 6.0 course prepares you for the SAFe Agilist certification exam with expert-led live training and simulations.
                 </p>
               </div>
 
@@ -1090,6 +1091,7 @@ export default function LeadingSafeCoursePage() {
                 ],
                 generic: [
                   { q: "What is Leading SAFe certification?", a: "Leading SAFe is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
+                  { q: "Is this course updated for SAFe 6.0?", a: "Yes — this training reflects the current SAFe 6.0 framework release." },
                   { q: "Who should take this course?", a: "This course is ideal for executives, leaders, Agile coaches, program managers, product managers, and anyone interested in leading enterprise Agile transformations." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in software development or IT projects is recommended." },
                   { q: "How long is the course?", a: "The Leading SAFe course is a 2-day intensive training program, totaling 16 hours of instruction." },

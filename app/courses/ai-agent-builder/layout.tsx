@@ -5,10 +5,11 @@ import {
 } from "@/app/lib/live-schedule-course-jsonld";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
+import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work | Agile36",
+  title: courseTitle("ai-agent-builder"),
   description:
     "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
   keywords: [
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
-    title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work | Agile36",
+    title: courseOgTitle("ai-agent-builder"),
     description:
       "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
     type: "website",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
-    title: "No-Code AI Agents & Automation™ — Build AI Agents That Actually Do Work",
+    title: courseLong("ai-agent-builder"),
     description:
       "Build practical AI agents and automate workflows with Claude, Claude Code, Codex, and n8n. No programming background required.",
   },
