@@ -7,7 +7,7 @@ import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "SAFe Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
+  title: "SAFe Lean Portfolio Management (LPM) Certification | Agile36",
   description: "2026 live cohorts: Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
   keywords: [
     "SAFe Lean Portfolio Management",

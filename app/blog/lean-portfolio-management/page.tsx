@@ -5,7 +5,7 @@ import EditorialBlogSchemaBlock from "@/app/components/blog/EditorialBlogSchemaB
 
 import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
-  title: "Lean Portfolio Management (LPM): The Complete Guide | Agile36",
+  title: "What Is Lean Portfolio Management? LPM Explained | Agile36",
   description:
     "What Lean Portfolio Management is, how SAFe LPM works — lean budgeting, portfolio Kanban, WSJF, governance — and how to implement it, from Scaled Agile Silver Partner Agile36.",
   alternates: {
@@ -105,6 +105,10 @@ export default async function LeanPortfolioManagementBlogPost() {
           </p>
           <p className="text-lg text-gray-300 leading-relaxed mb-8">
             The fundamental shift: from managing projects to funding product <Link href="/blog/what-is-a-value-stream-in-safe" className="text-amber-400 hover:underline">value streams</Link>. From annual budgets to continuous allocation. From plan-driven governance to hypothesis-driven investment. LPM is one of the seven core competencies of the <Link href="/blog/what-is-safe-framework" className="text-amber-400 hover:underline">Scaled Agile Framework (SAFe)</Link>.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-8">
+            Want to lead this in your own organization? Agile36 runs live, instructor-led <Link href="/courses/lean-portfolio-management" className="text-amber-400 hover:underline">SAFe LPM certification training</Link> taught by SAFe Program Consultants who have implemented LPM at enterprise scale.
           </p>
 
           <h2 className="text-3xl font-normal tracking-[-0.03em] text-white mt-10 mb-4">Why Traditional Portfolio Management Fails</h2>
