@@ -378,6 +378,10 @@ export default function AgileProductManagementCoursePage() {
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ SAFe Scrum Master (SSM)</h3>
               <p className="text-[#475569] text-sm">Master facilitation of Agile teams and Program Increment execution within SAFe.</p>
             </Link>
+            <Link href="/courses/ai-agent-builder" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ No-Code AI Agents</h3>
+              <p className="text-[#475569] text-sm">Build working AI agents with Claude, Codex, and n8n — no engineering background required.</p>
+            </Link>
           </div>
         </div>
       </section>

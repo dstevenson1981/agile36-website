@@ -388,6 +388,10 @@ export default function ScrumMasterCoursePage() {
               <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Empowered Advanced Scrum Master (SASM)</h3>
               <p className="text-[#475569] text-sm">Advanced facilitation, coaching, and leadership skills for experienced Scrum Masters working in SAFe environments.</p>
             </Link>
+            <Link href="/courses/ai-driven-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-bold text-lg text-[#1f2c4a] mb-2">→ AI-Driven Scrum Master</h3>
+              <p className="text-[#475569] text-sm">Apply AI to the Scrum Master role: automate reporting and backlog hygiene, and coach teams working alongside AI tools.</p>
+            </Link>
           </div>
         </div>
       </section>

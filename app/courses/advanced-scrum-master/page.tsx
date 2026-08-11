@@ -378,6 +378,10 @@ export default function AdvancedScrumMasterCoursePage() {
               <h3 className="font-semibold text-base text-[#1f2c4a] mb-2">→ SAFe Agile Product Management (APM)</h3>
               <p className="text-[#475569] text-sm">Apply design thinking and continuous exploration to build products customers love.</p>
             </Link>
+            <Link href="/courses/ai-driven-scrum-master" className="block p-6 liquid-glass rounded-2xl transition-all hover:bg-[#1f2c4a]/[0.1]">
+              <h3 className="font-semibold text-base text-[#1f2c4a] mb-2">→ AI-Driven Scrum Master</h3>
+              <p className="text-[#475569] text-sm">Bring AI into the Scrum Master role — automate reporting and backlog hygiene, and coach teams working alongside AI tools.</p>
+            </Link>
           </div>
         </div>
       </section>
