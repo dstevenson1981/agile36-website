@@ -7,7 +7,7 @@ import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "AI-Empowered SAFe POPM Certification Training | Product Owner Product Manager (2026) | Agile36",
+  title: "AI-Empowered SAFe Product Owner (POPM) Certification",
   description: "2026 live cohorts: Get AI-Empowered SAFe POPM certified with Agile36. 2-day live training covering backlog management, PI Planning, and Lean-Agile product delivery. SAFe Silver Partner. Exam included.",
   keywords: [
     "SAFe Product Owner",
