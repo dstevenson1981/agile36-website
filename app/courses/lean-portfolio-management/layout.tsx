@@ -3,6 +3,7 @@ import PracticeExamUpsellBanner from "@/app/components/PracticeExamUpsellBanner"
 import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
+import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -25,12 +26,14 @@ export const metadata: Metadata = {
     "SAFe certification training"
   ],
   openGraph: {
+    images: [...DEFAULT_OG_IMAGES],
     title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026) | Agile36",
     description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding. Earn 16 PDUs & SEUs.",
     type: "website",
     url: "https://www.agile36.com/courses/lean-portfolio-management",
   },
   twitter: {
+    images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training (2026)",
     description: "2026: Master SAFe Lean Portfolio Management (LPM) Certification Training. Learn portfolio strategy and investment funding.",
@@ -128,7 +131,7 @@ export default async function LeanPortfolioManagementLayout({
         "name": "How long is SAFe LPM training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe LPM training is 3 days (24 hours). After completing the course, you take the online LPM exam within 30 days. The exam takes 120 minutes. Upon passing, you earn the LPM certification valid for one year. The certification demonstrates enterprise-level SAFe portfolio management expertise."
+          "text": "SAFe LPM training is 2 days (16 hours). After completing the course, you take the online LPM exam within 30 days. The exam takes 120 minutes. Upon passing, you earn the LPM certification valid for one year. The certification demonstrates enterprise-level SAFe portfolio management expertise."
         }
       }
     ]
