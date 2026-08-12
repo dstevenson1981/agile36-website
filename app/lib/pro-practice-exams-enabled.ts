@@ -13,7 +13,7 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
   'leading-safe',
-  'scrum-master',
+  // 'scrum-master' — temporarily disabled; re-add to enable SSM Pro again
   'agile-product-management',
   'advanced-scrum-master',
   'safe-for-teams',
@@ -23,14 +23,14 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
   '/account/practice-exams/popm',
   '/account/practice-exams/leading-safe',
-  '/account/practice-exams/scrum-master',
+  // '/account/practice-exams/scrum-master' — temporarily disabled with SSM Pro
   '/account/practice-exams/agile-product-management',
   '/account/practice-exams/advanced-scrum-master',
   '/account/practice-exams/safe-for-teams',
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master|safe-for-teams)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|agile-product-management|advanced-scrum-master|safe-for-teams)\/practice-exam\/?$/;
 
 /** Former public Pro shortcuts → free /test mocks or course pages (always). */
 const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
