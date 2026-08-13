@@ -58,15 +58,12 @@ export default function SiteSearch() {
   const showPanel = open && query.trim().length > 0;
 
   return (
-    <div
-      className="relative flex-1 min-w-0 max-w-[10rem] sm:max-w-xs md:max-w-sm xl:max-w-md mx-1 sm:mx-2"
-      ref={rootRef}
-    >
+    <div className="relative w-full min-w-0" ref={rootRef}>
       <label htmlFor={inputId} className="sr-only">
         Search courses, practice tests, and pages
       </label>
-      <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 sm:pl-3.5">
+      <div className="relative w-full min-w-0">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 sm:pl-3.5">
           <svg
             className="h-4 w-4 sm:h-5 sm:w-5 text-[#64748b]"
             fill="none"
@@ -90,7 +87,7 @@ export default function SiteSearch() {
           aria-controls={`${inputId}-results`}
           aria-autocomplete="list"
           autoComplete="off"
-          placeholder="Search…"
+          placeholder="What do you want to learn today?"
           value={query}
           onChange={(e) => runSearch(e.target.value)}
           onFocus={() => {
@@ -102,13 +99,13 @@ export default function SiteSearch() {
               (e.target as HTMLInputElement).blur();
             }
           }}
-          className="w-full h-10 sm:h-12 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-[15px] font-medium rounded-xl bg-white border-2 border-[#1f2c4a]/25 text-[#1f2c4a] placeholder:text-[#94a3b8] placeholder:font-normal shadow-sm shadow-[#1f2c4a]/8 transition-[border-color,box-shadow] focus:outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/20"
+          className="w-full min-w-0 h-10 sm:h-11 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-[15px] font-medium rounded-full bg-white border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder:text-[#94a3b8] placeholder:font-normal transition-[border-color,box-shadow] focus:outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/15"
         />
         {query ? (
           <button
             type="button"
             onClick={clearSearch}
-            className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#64748b] hover:text-[#1f2c4a]"
+            className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748b] hover:text-[#1f2c4a]"
             aria-label="Clear search"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +119,7 @@ export default function SiteSearch() {
         <div
           id={`${inputId}-results`}
           role="listbox"
-          className="absolute top-full left-0 mt-2 z-[60] w-[min(100vw-1.5rem,28rem)] sm:left-auto sm:right-0 bg-white border border-[#1f2c4a]/12 rounded-xl shadow-2xl shadow-[#1f2c4a]/20 max-h-[min(70vh,32rem)] overflow-y-auto"
+          className="absolute top-full left-0 right-0 mt-2 z-[60] w-full min-w-[16rem] max-w-[min(100vw-1.5rem,28rem)] sm:left-auto sm:right-0 sm:w-[28rem] bg-white border border-[#1f2c4a]/12 rounded-xl shadow-2xl shadow-[#1f2c4a]/20 max-h-[min(70vh,32rem)] overflow-y-auto"
         >
           {didYouMean ? (
             <div className="px-4 pt-3 pb-1 text-sm text-[#64748b]">

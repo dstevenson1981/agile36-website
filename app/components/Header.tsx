@@ -543,20 +543,21 @@ export default function Header() {
                 : "bg-black border-b border-[#1f2c4a]/10"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 sm:gap-3 py-3 lg:py-4 min-w-0">
-            {/* Logo and All Courses */}
-            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
+        <nav className="max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-8">
+          {/* KnowledgeHut-style: left cluster | flexible search | right links — grid prevents overlap */}
+          <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 sm:gap-3 lg:gap-4 py-3 lg:py-3.5 min-w-0">
+            {/* Left: Logo + All Courses */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
               <Link href="/" className="shrink-0 flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/agile36-logo-header.png"
                   alt="Agile36 Logo"
-                  className="h-8 sm:h-10 w-auto max-w-[140px] sm:max-w-none block object-contain"
+                  className="h-8 sm:h-9 w-auto max-w-[130px] sm:max-w-[150px] block object-contain"
                 />
               </Link>
               
-              {/* All Courses Dropdown with Mega Menu — desktop/tablet only; phones use the hamburger */}
+              {/* All Courses — pill control like KnowledgeHut */}
               <div 
                 ref={megaMenuRef}
                 className="relative hidden md:block"
@@ -564,13 +565,14 @@ export default function Header() {
                 onMouseLeave={handleMouseLeave}
               >
                 <button 
-                  className="flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-4 py-2 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                  type="button"
+                  className="flex items-center gap-2 h-10 px-3.5 rounded-full border border-[#1f2c4a]/20 bg-white text-[#1f2c4a] hover:border-[#1f2c4a]/40 hover:bg-[#1f2c4a]/[0.03] transition-colors"
                 >
-                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <span className="font-medium text-sm xl:text-base whitespace-nowrap">All Courses</span>
-                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="font-medium text-sm whitespace-nowrap">All Courses</span>
+                  <svg className="w-3.5 h-3.5 shrink-0 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
@@ -697,41 +699,46 @@ export default function Header() {
               </div>
             </div>
             
-            <SiteSearch />
-            
-            {/* Navigation Links — only when there is room (xl+). Below that: hamburger. */}
-            <div className="hidden xl:flex items-center gap-4 2xl:gap-6 shrink-0">
-              <Link href="/combo-courses" className="flex items-center gap-1.5 whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px] group">
-                Combo Courses
-                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30 group-hover:bg-[#d97706]/20 transition-colors">
-                  New
-                </span>
-              </Link>
-              <Link href="/courses" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                Courses
-              </Link>
-              <Link href="/blog" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                Blogs
-              </Link>
-              <Link href="/test" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                Practice Tests
-              </Link>
-              <Link href="/testimonials" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                Testimonials
-              </Link>
-              <Link href="/corporate" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                Corporate
-              </Link>
-              <Link href="/account" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
-                My Account
-              </Link>
+            {/* Center: search fills only the middle column */}
+            <div className="min-w-0 w-full">
+              <SiteSearch />
             </div>
             
-            {/* Utility Icons */}
-            <div className="flex items-center gap-0.5 sm:gap-1 shrink-0 ml-auto xl:ml-0">
+            {/* Right: primary links + account CTA (fewer items = no collision) */}
+            <div className="flex items-center gap-1 sm:gap-2 shrink-0 justify-end">
+              <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+                <Link
+                  href="/combo-courses"
+                  className="flex items-center gap-1.5 whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                >
+                  Combo Courses
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30">
+                    New
+                  </span>
+                </Link>
+                <Link
+                  href="/blog"
+                  className="hidden xl:inline whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                >
+                  Blogs
+                </Link>
+                <Link
+                  href="/corporate"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                >
+                  Corporate
+                </Link>
+                <Link
+                  href="/account"
+                  className="inline-flex items-center justify-center h-10 px-4 rounded-lg bg-[#1f2c4a] text-white text-sm font-semibold hover:bg-[#16243f] transition-colors whitespace-nowrap"
+                >
+                  My Account
+                </Link>
+              </div>
+
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -743,22 +750,13 @@ export default function Header() {
                   )}
                 </svg>
               </button>
-              <Link 
-                href="/contact" 
-                className="hidden sm:flex p-2 text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
-                title="Contact Us"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </Link>
             </div>
           </div>
         </nav>
 
-        {/* Compact menu — phones + tablets + laptops below xl */}
+        {/* Compact menu — phones + tablets below lg */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
+          <div className="lg:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               <Link 
                 href="/combo-courses" 
@@ -808,7 +806,7 @@ export default function Header() {
               <Link 
                 href="/account" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-semibold"
               >
                 My Account
               </Link>
