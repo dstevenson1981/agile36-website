@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/app/lib/supabase/server';
 import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
+import { hasAiProductManagementCourseAccess } from '@/app/lib/course-materials';
 import AccountNav from '../AccountNav';
 
 export const dynamic = 'force-dynamic';
@@ -56,6 +57,7 @@ export default async function DashboardLayout({
     }
 
     const showCourseExams = await hasAiProductManagementExamAccess();
+    const showCourseMaterials = await hasAiProductManagementCourseAccess();
 
     return (
       <div className="min-h-screen bg-[#f6f9fd] text-[#1f2c4a]">
@@ -65,6 +67,7 @@ export default async function DashboardLayout({
               <AccountNav
                 userEmail={user.email}
                 showCourseExams={showCourseExams}
+                showCourseMaterials={showCourseMaterials}
               />
             </aside>
             <main className="flex-1 min-w-0">

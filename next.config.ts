@@ -8,9 +8,18 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingIncludes: {
     "/*": ["./content/blog/**/*", "./data/**/*", "./app/**/*.ts", "./app/**/*.tsx", "./mcp/**/*"],
+    "/api/account/coursebooks/ai-product-management": [
+      "./content/coursebooks/AI-Product-Management.pdf",
+    ],
   },
   async redirects() {
     return [
+      // AI PM coursebook is account-gated (no longer public)
+      {
+        source: "/AI-Product-Management.pdf",
+        destination: "/account/materials",
+        permanent: false,
+      },
       // learn.agile36.com → main site (same paths)
       {
         source: "/:path*",

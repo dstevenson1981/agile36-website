@@ -1,5 +1,6 @@
 import { createClient } from '@/app/lib/supabase/server';
 import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
+import { hasAiProductManagementCourseAccess } from '@/app/lib/course-materials';
 import Link from 'next/link';
 
 function ProfileCard({ completion }: { completion: number }) {
@@ -94,6 +95,34 @@ function PracticeExamsCard() {
   );
 }
 
+function CourseMaterialsCard() {
+  return (
+    <Link
+      href="/account/materials"
+      className="block rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 shadow-sm hover:border-[#1f2c4a]/20 hover:shadow-md transition-all group"
+    >
+      <div className="flex items-start gap-4">
+        <div className="w-14 h-14 rounded-xl bg-[#1f2c4a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1f2c4a]/15 transition-colors">
+          <svg className="w-7 h-7 text-[#1f2c4a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="font-medium text-[#1f2c4a] transition-colors">
+            Course Materials
+          </h3>
+          <p className="text-sm text-[#64748b] mt-1">
+            AI Product Management coursebook PDF
+          </p>
+          <span className="inline-flex items-center gap-1 text-sm font-medium text-[#d97706] mt-2 group-hover:gap-2 transition-all">
+            Open materials →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 function CourseExamsCard() {
   return (
     <Link
@@ -132,7 +161,10 @@ export default async function AccountDashboardPage() {
     .single();
 
   const completion = profile?.profile_completion_percent ?? 25;
-  const showCourseExams = await hasAiProductManagementExamAccess();
+  const [showCourseExams, showCourseMaterials] = await Promise.all([
+    hasAiProductManagementExamAccess(),
+    hasAiProductManagementCourseAccess(),
+  ]);
 
   return (
     <div>
@@ -143,6 +175,7 @@ export default async function AccountDashboardPage() {
         <ProfileCard completion={completion} />
         <OrdersCard />
         <PracticeExamsCard />
+        {showCourseMaterials && <CourseMaterialsCard />}
         {showCourseExams && <CourseExamsCard />}
       </div>
     </div>

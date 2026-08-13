@@ -14,20 +14,26 @@ const baseNavItems = [
 export default function AccountNav({
   userEmail,
   showCourseExams = false,
+  showCourseMaterials = false,
 }: {
   userEmail?: string;
   /** AI PM (and future) rostered course exams — only show when the user is on a roster. */
   showCourseExams?: boolean;
+  /** Enrolled course materials (e.g. AI PM coursebook). */
+  showCourseMaterials?: boolean;
 }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  const navItems = showCourseExams
-    ? [
-        ...baseNavItems,
-        { href: '/account/exams', label: 'Course Exams', icon: '🎓' },
-      ]
-    : baseNavItems;
+  const navItems = [
+    ...baseNavItems,
+    ...(showCourseMaterials
+      ? [{ href: '/account/materials', label: 'Course Materials', icon: '📚' }]
+      : []),
+    ...(showCourseExams
+      ? [{ href: '/account/exams', label: 'Course Exams', icon: '🎓' }]
+      : []),
+  ];
 
   const handleLogout = async () => {
     const supabase = createClient();
