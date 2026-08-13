@@ -11,12 +11,14 @@ import {
   getRegisteredCourseSlugs,
   practiceExamCoursesFromRegistrations,
 } from '@/app/lib/practice-exams';
+import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
 import {
   isPracticeExamsHubEnabled,
   isProPracticeExamExpiredForCourse,
 } from '@/app/lib/pro-practice-exams-enabled';
 import { BADGES } from '@/app/combo-courses/data';
+import { AI_PRODUCT_MANAGEMENT_PRACTICE_QUESTIONS } from './ai-product-management/questions';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -138,6 +140,7 @@ export default async function PracticeExamsPage({
     hasLeadingSafePro,
     hasSsmPro,
     hasAsmPro,
+    hasAiPm,
     registeredCourses,
     hasPopmProPlan,
     hasApmProPlan,
@@ -152,6 +155,7 @@ export default async function PracticeExamsPage({
     hasLeadingSafeProAccess(),
     hasScrumMasterProAccess(),
     hasAdvancedScrumMasterProAccess(),
+    hasAiProductManagementExamAccess(),
     getRegisteredCourseSlugs(),
     hasProPlanEnrollmentForCourse('product-owner-manager'),
     hasProPlanEnrollmentForCourse('agile-product-management'),
@@ -168,6 +172,7 @@ export default async function PracticeExamsPage({
   if (hasLpmPro) eligible.add('lean-portfolio-management');
   if (hasSsmPro) eligible.add('scrum-master');
   if (hasAsmPro) eligible.add('advanced-scrum-master');
+  if (hasAiPm) eligible.add('certified-ai-product-manager');
 
   const exams: ExamCard[] = [
     {
@@ -202,6 +207,18 @@ export default async function PracticeExamsPage({
       testHref: '/account/practice-exams/agile-product-management',
       unlocked: hasApmPro,
       hasProPlan: hasApmProPlan,
+    },
+    {
+      courseSlug: 'certified-ai-product-manager',
+      title: 'AI Product Management',
+      shortLabel: 'AI PM',
+      description: '45 scenario-based questions from the AI Product Management practice set',
+      questionCount: `${AI_PRODUCT_MANAGEMENT_PRACTICE_QUESTIONS.length} questions`,
+      badge: BADGES['certified-ai-product-manager'],
+      testHref: '/account/practice-exams/ai-product-management',
+      unlocked: hasAiPm,
+      hasProPlan: hasAiPm,
+      skipExpiration: true,
     },
     {
       courseSlug: 'scrum-master',

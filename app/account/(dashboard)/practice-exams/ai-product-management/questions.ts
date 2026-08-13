@@ -1,0 +1,505 @@
+export type AiProductManagementPracticeQuestion = {
+  id: number;
+  question: string;
+  options: [string, string, string, string];
+  correctIndex: 0 | 1 | 2 | 3;
+};
+
+export const AI_PRODUCT_MANAGEMENT_PRACTICE_QUESTIONS: AiProductManagementPracticeQuestion[] = [
+  {
+    id: 1,
+    question: "In the Planning & Design phase comparison, what happens to the number of vision-statement drafts when AI is introduced?",
+    options: [
+      "It drops from 5–10 drafts to 1–2 refined drafts",
+      "It increases from 1–2 drafts to 5–10 drafts",
+      "It stays the same regardless of AI involvement",
+      "Vision drafting isn't part of this phase",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 2,
+    question: "Which PM responsibility is explicitly tied to the Development phase rather than Planning & Design?",
+    options: [
+      "Define vision and goals",
+      "Clarify edge cases",
+      "Develop GTM strategy",
+      "Prioritize features",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 3,
+    question: "According to the Post-Launch & Monitoring phase, what is the foundational reason continuous monitoring matters?",
+    options: [
+      "Monitoring is optional once adoption targets are hit",
+      "Competitive tracking replaces the need for user feedback",
+      "Launch is just the beginning — sustained success requires continuous monitoring and fast adaptation",
+      "Post-launch work is primarily an engineering responsibility",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 4,
+    question: "In the Development phase comparison table, what changes about edge case handling when AI is introduced?",
+    options: [
+      "Edge cases are eliminated entirely",
+      "Edge cases become the sole responsibility of QA",
+      "Edge case handling is unaffected by AI tools",
+      "Edge cases move from being discovered late to being proactively identified",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 5,
+    question: "Per the Understanding User Research methods table, which method is best suited for \"identifying drop-offs and usage patterns\"?",
+    options: [
+      "User Interviews",
+      "Analytics & Usage Data",
+      "Surveys",
+      "Usability Testing",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 6,
+    question: "A PM has thousands of open-ended survey responses and wants AI to extract common pain points without manually reading each one. Which AI research capability does this describe?",
+    options: [
+      "Emerging Trends",
+      "Real-Time Learning",
+      "Unstructured Feedback",
+      "Faster Research",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 7,
+    question: "In the \"Where Should We Grow?\" activity, what is the team's business context?",
+    options: [
+      "A hardware company entering the automotive market",
+      "A retailer deciding whether to open physical stores",
+      "A media company evaluating a streaming pivot",
+      "A SaaS company selling AI chatbots for e-commerce post-purchase support, deciding where to expand",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 8,
+    question: "A PM wants deep, exploratory context on why users abandon onboarding — not just how many do. Which method is best suited for this, per the User Research framework?",
+    options: [
+      "User Interviews",
+      "Surveys",
+      "Usability Testing",
+      "Continuous Research",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 9,
+    question: "According to the course's definition, what does a strategic theme primarily do?",
+    options: [
+      "Replaces the need for OKRs entirely",
+      "Serves only as an internal marketing slogan",
+      "Connects day-to-day work to broader business strategy and helps the team prioritize and say \"no\" to distractions",
+      "Functions as a KPI dashboard",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 10,
+    question: "In the course's KPI example tied to the Disney+ OKR, which is a correctly stated weekly KPI?",
+    options: [
+      "\"Expand into three international markets\"",
+      "\"Achieve 100,000 new subscribers within 90 days\"",
+      "\"Launch localized platforms in 3 countries\"",
+      "\"5% weekly subscriber growth per market\"",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 11,
+    question: "A team proposes tracking \"number of tweets mentioning the product\" as a core KPI, even though no one on the team can act on that number. What does the course's KPI guidance say about this choice?",
+    options: [
+      "It should be avoided — KPIs should be metrics the team can directly influence, not vanity metrics",
+      "It's appropriate as long as it's measured weekly",
+      "It's appropriate since more metrics are always better",
+      "It's appropriate only if leadership requests it",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 12,
+    question: "Which AI tool does the course associate specifically with extracting themes from long documents to propose initiatives?",
+    options: [
+      "Airtable + AI",
+      "Claude",
+      "FigJam AI",
+      "Perplexity.ai",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 13,
+    question: "Per the course's definition, what are the three key components of a product roadmap?",
+    options: [
+      "Budget, Timeline, Owner",
+      "Objectives, Budget, Risk",
+      "Features, Budget, Status",
+      "Objectives, Timeline, Status",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 14,
+    question: "In the Roadmap Timeline Structure, what is the primary purpose associated with the \"Later\" phase?",
+    options: [
+      "Scale to broader markets, add features",
+      "Build MVP, prove strategy works",
+      "Expand to early adopters, improve",
+      "Long-term bets, R&D, vision features",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 15,
+    question: "Which of the following is listed as an AI-assisted roadmapping capability?",
+    options: [
+      "Executive sign-off automation",
+      "Timeline Suggestions",
+      "Legal compliance review",
+      "Budget forecasting",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 16,
+    question: "In the Sample Roadmap example (\"Improve Post-Purchase Support Experience\"), what is planned for Q2 of Year 1?",
+    options: [
+      "Pilot AI-assisted support response",
+      "Analyze top drivers of support tickets",
+      "Launch self-service support tools",
+      "Roll out upgraded support portal across all regions",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 17,
+    question: "Per the Roadmap Decomposition framework, what does a \"feature\" represent?",
+    options: [
+      "The need of a stakeholder or customer tied to the overarching initiative",
+      "A small slice of desired user functionality",
+      "A high-level strategic goal aligned to OKRs",
+      "A single line of acceptance criteria",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 18,
+    question: "A PM wants AI to scan thousands of support tickets and reviews to surface recurring feature requests, rather than writing code or approving features outright. Which Feature Development capability does this match?",
+    options: [
+      "Translate Objectives",
+      "Generate Descriptions",
+      "Analyze Feedback",
+      "None of these — this isn't a listed AI capability",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 19,
+    question: "Which AI tool does the course associate with turning customer feedback into prioritized feature ideas?",
+    options: [
+      "Notion AI",
+      "Productboard AI",
+      "Aha! Ideas AI",
+      "ChatGPT",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 20,
+    question: "Which Pre-Launch Testing activity uses tools like Chattermill and MonkeyLearn to process feedback before it's structured into test cases?",
+    options: [
+      "Generate Test Cases & Flows",
+      "Simulate User Behavior",
+      "Create Surveys & Prompts",
+      "Summarize Feedback",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 21,
+    question: "In the Validation activity, how many primary use cases are teams asked to write?",
+    options: [
+      "1–2",
+      "6–8",
+      "3–5",
+      "As many as possible",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 22,
+    question: "Which tools does the course pair with \"Track Adoption & Behavior\" under Post-Launch Testing?",
+    options: [
+      "Mixpanel + AI, Heap + AI",
+      "Forethought, Zendesk AI, ChatGPT",
+      "Pendo, Gainsight PX",
+      "Chattermill, MonkeyLearn, Claude",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 23,
+    question: "According to the PM vs. PMM breakdown, which responsibility sits with PMMs, not PMs?",
+    options: [
+      "The problem framing and value prop the campaign should reinforce",
+      "The timing and readiness of product capabilities",
+      "The goals of the launch (adoption, upsell, engagement)",
+      "Campaign execution — messaging, content creation, promotional strategy",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 24,
+    question: "Which AI tools does the course associate with identifying target segments using market and user data?",
+    options: [
+      "Jasper, ChatGPT, Copy.ai",
+      "Clearbit, Perplexity, ChatGPT",
+      "HubSpot AI, MadKudu",
+      "Apollo AI, Lavender, Instantly AI",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 25,
+    question: "Per \"Why Iteration Matters More Than Launch,\" which of these describes \"Fix Friction\"?",
+    options: [
+      "Improve what's broken or confusing",
+      "Make sure the product keeps growing in value",
+      "Double down on what's working",
+      "Respond to what users are actually doing",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 26,
+    question: "A PM wants to know exactly where users abandon the signup-to-purchase flow. Which AI prompt example from the course matches this use case?",
+    options: [
+      "\"Group 100 open-text user comments into top 5 themes.\"",
+      "\"Compare adoption of Feature A vs. Feature B over 3 weeks.\"",
+      "\"Rate user satisfaction scores and highlight patterns in low-rated experiences.\"",
+      "\"Where are most users dropping off in this signup-to-purchase flow?\"",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 27,
+    question: "Which best distinguishes a \"hybrid\" AI product pattern from a purely probabilistic one?",
+    options: [
+      "A hybrid product never uses a model at all",
+      "A hybrid product always skips human review",
+      "In a hybrid pattern, AI interprets intent while software executes the actual rule or transaction",
+      "Hybrid products are identical to purely deterministic systems",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 28,
+    question: "Which of the following is listed as a reason context window size matters to a PM, beyond just what the model can \"see\"?",
+    options: [
+      "It determines the company's pricing tier automatically",
+      "More context tends to increase latency and cost, making it a product tradeoff, not just an engineering one",
+      "It has no bearing on product decisions",
+      "It only affects image-generation tasks",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 29,
+    question: "Why does the course caution against treating an LLM as a database?",
+    options: [
+      "Databases cannot store text, only numbers",
+      "LLMs are always more accurate than databases",
+      "Databases require more tokens to query than LLMs",
+      "LLMs generate likely answers, while databases and tools hold exact, verified facts",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 30,
+    question: "In the prompt structure taught in the course (Role, Objective, Constraints, Output), which element answers \"what must it never do?\"",
+    options: [
+      "Role",
+      "Constraints",
+      "Objective",
+      "Output",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 31,
+    question: "Which best reflects the RAG process as taught in the course?",
+    options: [
+      "Relevant source content is organized, stored, and retrieved so the AI can generate an answer grounded in real information rather than a guess",
+      "The model retrains itself on new documents every time a question is asked",
+      "RAG replaces the need for any human-curated source content",
+      "RAG is primarily used to reduce token costs, not improve accuracy",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 32,
+    question: "Per the model-selection criteria taught in the course, which question maps to \"Capabilities\" rather than \"Quality & Reliability\" or \"Latency & Cost\"?",
+    options: [
+      "Can it perform the task accurately and consistently?",
+      "How fast and cheap must each interaction be at scale?",
+      "Does it need images, tools, or structured output?",
+      "Is the model open source?",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 33,
+    question: "According to the course, which best describes the relationship between \"Permission Levels\" and agent design?",
+    options: [
+      "Every agent should default to full execute access to minimize friction",
+      "Access should range from Read to Recommend to Draft to Execute, matched to the risk of the action",
+      "Permission levels apply only to read-only agents",
+      "Permission levels are set once and never revisited",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 34,
+    question: "Which of the following pairs correctly matches the \"Workflow vs. Agent vs. Human-in-the-Loop\" table?",
+    options: [
+      "Workflow — the path requires judgment or flexibility",
+      "Agent — steps are predefined and the process is predictable",
+      "Human-in-the-Loop — steps are predefined and the process is predictable",
+      "Human-in-the-Loop — the action is high-risk or irreversible",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 35,
+    question: "Per \"AI Products Need Two Kinds of Metrics,\" which examples fall under Product Performance rather than AI Performance?",
+    options: [
+      "Adoption, resolution time, satisfaction, cost savings",
+      "Accuracy, hallucination rate, tool success, latency",
+      "Tokens processed, context window size, model parameters",
+      "Prompt length, temperature setting, embedding dimensions",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 36,
+    question: "Which of the following is listed as one of the six risks to address before launching an AI product safely?",
+    options: [
+      "Server uptime percentage",
+      "Marketing budget overrun",
+      "Data Leakage — could private or proprietary information be exposed in a response?",
+      "Domain name expiration",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 37,
+    question: "In \"Designing Safe Agents,\" what is the purpose of \"Log Everything\"?",
+    options: [
+      "To reduce the model's token usage",
+      "To automatically approve high-risk actions faster",
+      "To eliminate the need for approval gates",
+      "To capture what happened so failures are traceable, not invisible",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 38,
+    question: "Which best reflects the course's guidance on \"Evaluation Cadence\"?",
+    options: [
+      "Evaluation should happen once, before launch, and not be repeated",
+      "Evaluation should be ongoing, testing normal, edge, ambiguous, and adversarial cases regularly",
+      "Evaluation only applies to the AI Performance category, not Product Performance",
+      "Evaluation should stop once hallucination rate reaches zero",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 39,
+    question: "An AI agent designed only to draft product descriptions is discovered to also have write access to the customer payment database. Which safe-launch risk does this most directly represent?",
+    options: [
+      "Excess Permissions",
+      "Hallucination Risk",
+      "Prompt Injection",
+      "Observability",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 40,
+    question: "In the \"Map Your Product's AI Architecture\" activity, what are teams asked to sketch, in order?",
+    options: [
+      "Budget → Timeline → Team → Launch",
+      "Objective → Key Result → KPI → Initiative",
+      "Model → Context → Tools → Guardrails",
+      "Feature → User Story → Acceptance Criteria → Release",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 41,
+    question: "A PM is told a new AI feature has excellent accuracy in testing. Based on the course's evaluation framework, is that sufficient to greenlight launch?",
+    options: [
+      "Yes — accuracy alone is sufficient for any launch decision",
+      "No — AI performance metrics like accuracy must be paired with product performance metrics like adoption and satisfaction",
+      "Yes, but only if the model is also the cheapest option available",
+      "No — only qualitative feedback should ever inform a launch decision",
+    ],
+    correctIndex: 1,
+  },
+  {
+    id: 42,
+    question: "A team is deciding whether a new AI capability needs a full RAG implementation or just a well-written prompt. Which factor from the course should drive that decision?",
+    options: [
+      "Whether the team prefers RAG as a technology",
+      "Whether the marketing team wants to promote RAG as a feature",
+      "Whether the task depends on proprietary, static company knowledge that the model wouldn't otherwise have access to",
+      "Whether the model has ever hallucinated before",
+    ],
+    correctIndex: 2,
+  },
+  {
+    id: 43,
+    question: "Using the \"Designing Safe Agents\" framework, which of the following scenarios most clearly violates the \"Limit Tool Access\" principle?",
+    options: [
+      "An agent that can only read order status and draft (not execute) refunds",
+      "An agent restricted to a single, well-defined tool for its assigned task",
+      "An agent that logs every tool call it makes",
+      "An agent given full read/write access to the customer database to handle a single, narrow task like updating a shipping address",
+    ],
+    correctIndex: 3,
+  },
+  {
+    id: 44,
+    question: "A PM is choosing between two models: one is highly capable but slow and expensive; the other is fast, cheap, and \"good enough\" for a simple classification task. Per the course's model-selection guidance, what's the most defensible approach?",
+    options: [
+      "Match the model to the task — use the faster, cheaper model for the simple classification task and reserve the capable model for tasks that need it",
+      "Always default to the most capable model for consistency across the product",
+      "Alternate randomly between models to average out cost and quality",
+      "Choose based solely on which model has the largest context window",
+    ],
+    correctIndex: 0,
+  },
+  {
+    id: 45,
+    question: "Which pairing correctly reflects a concept from the course's AI fundamentals content?",
+    options: [
+      "Tokens — the exact dollar cost of running a customer support team",
+      "Hallucination — a rare technical bug that has no product impact",
+      "Latency — the delay introduced by more context or a larger model, treated as a product requirement",
+      "Context Window — a setting that only affects image generation",
+    ],
+    correctIndex: 2,
+  },
+];
+
