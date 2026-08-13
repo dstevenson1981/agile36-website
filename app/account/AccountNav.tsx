@@ -4,17 +4,30 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/app/lib/supabase/client';
 
-const navItems = [
+const baseNavItems = [
   { href: '/account', label: 'Dashboard', icon: '🏠' },
   { href: '/account/profile', label: 'My Profile', icon: '👤' },
   { href: '/account/orders', label: 'Orders & Receipts', icon: '📄' },
   { href: '/account/practice-exams', label: 'Practice Exams', icon: '📝' },
-  { href: '/account/exams', label: 'Course Exams', icon: '🎓' },
 ];
 
-export default function AccountNav({ userEmail }: { userEmail?: string }) {
+export default function AccountNav({
+  userEmail,
+  showCourseExams = false,
+}: {
+  userEmail?: string;
+  /** AI PM (and future) rostered course exams — only show when the user is on a roster. */
+  showCourseExams?: boolean;
+}) {
   const pathname = usePathname();
   const router = useRouter();
+
+  const navItems = showCourseExams
+    ? [
+        ...baseNavItems,
+        { href: '/account/exams', label: 'Course Exams', icon: '🎓' },
+      ]
+    : baseNavItems;
 
   const handleLogout = async () => {
     const supabase = createClient();
@@ -32,7 +45,9 @@ export default function AccountNav({ userEmail }: { userEmail?: string }) {
       )}
       <ul className="space-y-1">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || (item.href !== '/account' && pathname.startsWith(item.href));
+          const isActive =
+            pathname === item.href ||
+            (item.href !== '/account' && pathname.startsWith(item.href));
           return (
             <li key={item.href}>
               <Link

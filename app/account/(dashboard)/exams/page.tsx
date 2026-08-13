@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { hasAiProductManagementExamAccess } from "@/app/lib/exams/ai-product-management-access";
 import {
   AI_PM_EXAM_PASS_PERCENT,
@@ -7,12 +8,15 @@ import {
 
 export const metadata = {
   title: "Course Exams | Agile36",
-  description: "Secure course exams for enrolled Agile36 learners.",
+  description: "Secure course exams for rostered Agile36 learners.",
   robots: "noindex, nofollow",
 };
 
 export default async function CourseExamsPage() {
   const hasAiPm = await hasAiProductManagementExamAccess();
+  if (!hasAiPm) {
+    redirect("/account");
+  }
 
   return (
     <div className="space-y-6">
@@ -21,7 +25,7 @@ export default async function CourseExamsPage() {
           Course Exams
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-slate-600">
-          Final assessments for enrolled courses. These are scored exams, not
+          Final assessments assigned to your account. These are scored exams, not
           practice drills.
         </p>
       </div>
@@ -29,7 +33,7 @@ export default async function CourseExamsPage() {
       <div className="overflow-hidden rounded-sm border border-[#1f2c4a]/15 bg-white shadow-sm">
         <div className="border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-5 py-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#64748b]">
-            Available exams
+            Assigned to you
           </p>
         </div>
         <div className="divide-y divide-[#1f2c4a]/10">
@@ -39,30 +43,16 @@ export default async function CourseExamsPage() {
                 AI Product Management Exam
               </h2>
               <p className="mt-1 text-sm text-slate-600">
-                {AI_PM_EXAM_QUESTIONS.length} questions ·{" "}
+                Closed book · {AI_PM_EXAM_QUESTIONS.length} questions ·{" "}
                 {AI_PM_EXAM_PASS_PERCENT}% to pass · 75 minutes
               </p>
-              {!hasAiPm && (
-                <p className="mt-2 text-sm text-amber-800">
-                  Enrollment in Certified AI Product Manager required.
-                </p>
-              )}
             </div>
-            {hasAiPm ? (
-              <Link
-                href="/account/exams/ai-product-management"
-                className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
-              >
-                Open exam
-              </Link>
-            ) : (
-              <Link
-                href="/courses/certified-ai-product-manager/schedule"
-                className="inline-flex shrink-0 items-center justify-center rounded-sm border border-[#1f2c4a]/20 px-5 py-2.5 text-sm font-semibold text-[#1f2c4a] hover:bg-[#1f2c4a]/5"
-              >
-                View course
-              </Link>
-            )}
+            <Link
+              href="/account/exams/ai-product-management"
+              className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
+            >
+              Open exam
+            </Link>
           </div>
         </div>
       </div>
