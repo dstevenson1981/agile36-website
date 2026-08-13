@@ -46,6 +46,14 @@ export default async function DashboardLayout({
       redirect(`/account/login?next=${encodeURIComponent(pathWithSearch)}`);
     }
 
+    const path = pathWithSearch.split('?')[0] || '';
+    const isFullscreenExam =
+      path === '/account/exams/ai-product-management';
+
+    if (isFullscreenExam) {
+      return <div className="min-h-screen bg-[#e8eef5]">{children}</div>;
+    }
+
     return (
       <div className="min-h-screen bg-black text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

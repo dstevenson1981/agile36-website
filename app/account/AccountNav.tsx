@@ -9,6 +9,7 @@ const navItems = [
   { href: '/account/profile', label: 'My Profile', icon: '👤' },
   { href: '/account/orders', label: 'Orders & Receipts', icon: '📄' },
   { href: '/account/practice-exams', label: 'Practice Exams', icon: '📝' },
+  { href: '/account/exams', label: 'Course Exams', icon: '🎓' },
 ];
 
 export default function AccountNav({ userEmail }: { userEmail?: string }) {
