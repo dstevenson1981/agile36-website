@@ -97,6 +97,12 @@ export default function Header() {
     }, 200); // 200ms delay
   };
   
+  // Close menus on navigation
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setShowMegaMenu(false);
+  }, [pathname]);
+
   // Close mega menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -527,7 +533,7 @@ export default function Header() {
       {/* Navigation Header — offset when thin promo strip is visible */}
       <header
         style={{ top: promoBannerActive ? PROMO_BANNER_STICKY_OFFSET_PX : 0 }}
-        className={`w-full sticky z-50 overflow-visible transition-colors duration-300 ${
+        className={`w-full sticky z-50 overflow-x-clip overflow-y-visible transition-colors duration-300 ${
           isHome && cinematicHero && !scrolledPastHero
             ? "bg-white/82 backdrop-blur-xl border-b border-[#1f2c4a]/12 shadow-sm shadow-[#1f2c4a]/5"
             : isHome && !scrolledPastHero
@@ -537,34 +543,34 @@ export default function Header() {
                 : "bg-black border-b border-[#1f2c4a]/10"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-2 sm:gap-3 py-3.5 lg:py-4 min-w-0">
+        <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 sm:gap-3 py-3 lg:py-4 min-w-0">
             {/* Logo and All Courses */}
-            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0 min-w-0">
-              <Link href="/" className="flex-shrink-0 flex items-center">
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
+              <Link href="/" className="shrink-0 flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/agile36-logo-header.png"
                   alt="Agile36 Logo"
-                  className="h-9 sm:h-11 w-auto block object-contain"
+                  className="h-8 sm:h-10 w-auto max-w-[140px] sm:max-w-none block object-contain"
                 />
               </Link>
               
-              {/* All Courses Dropdown with Mega Menu */}
+              {/* All Courses Dropdown with Mega Menu — desktop/tablet only; phones use the hamburger */}
               <div 
                 ref={megaMenuRef}
-                className="relative"
+                className="relative hidden md:block"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <button 
-                  className="hidden sm:flex items-center gap-2 px-3 sm:px-4 py-2 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                  className="flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-4 py-2 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <span className="font-medium text-base">All Courses</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="font-medium text-sm xl:text-base whitespace-nowrap">All Courses</span>
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
@@ -693,41 +699,41 @@ export default function Header() {
             
             <SiteSearch />
             
-            {/* Navigation Links - Desktop */}
-            <div className="hidden lg:flex items-center gap-5 xl:gap-7">
-              <Link href="/combo-courses" className="flex items-center gap-1.5 whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px] group">
+            {/* Navigation Links — only when there is room (xl+). Below that: hamburger. */}
+            <div className="hidden xl:flex items-center gap-4 2xl:gap-6 shrink-0">
+              <Link href="/combo-courses" className="flex items-center gap-1.5 whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px] group">
                 Combo Courses
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30 group-hover:bg-[#d97706]/20 transition-colors">
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30 group-hover:bg-[#d97706]/20 transition-colors">
                   New
                 </span>
               </Link>
-              <Link href="/courses" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/courses" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 Courses
               </Link>
-              <Link href="/blog" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/blog" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 Blogs
               </Link>
-              <Link href="/test" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/test" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 Practice Tests
               </Link>
-              <Link href="/testimonials" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/testimonials" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 Testimonials
               </Link>
-              <Link href="/corporate" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/corporate" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 Corporate
               </Link>
-              <Link href="/account" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-[15px]">
+              <Link href="/account" className="whitespace-nowrap text-[#334155] hover:text-[#1f2c4a] font-medium transition-colors text-sm 2xl:text-[15px]">
                 My Account
               </Link>
             </div>
             
             {/* Utility Icons */}
-            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-              {/* Mobile Menu Button */}
+            <div className="flex items-center gap-0.5 sm:gap-1 shrink-0 ml-auto xl:ml-0">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
                 aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {isMobileMenuOpen ? (
@@ -739,82 +745,77 @@ export default function Header() {
               </button>
               <Link 
                 href="/contact" 
-                className="p-2 text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                className="hidden sm:flex p-2 text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
                 title="Contact Us"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </Link>
-              <button className="p-2 text-[#334155] hover:text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors relative">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
             </div>
           </div>
         </nav>
 
-        {/* Mobile Menu Panel */}
+        {/* Compact menu — phones + tablets + laptops below xl */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-[#1f2c4a]/10 shadow-lg">
+          <div className="xl:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               <Link 
                 href="/combo-courses" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="flex items-center gap-2 px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Combo Courses
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#fa4a23]/15 text-[#fa4a23] border border-[#fa4a23]/30">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30">
                   New
                 </span>
               </Link>
               <Link 
                 href="/courses" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 All Courses
               </Link>
               <Link 
                 href="/blog" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Blogs
               </Link>
               <Link 
                 href="/test" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Practice Tests
               </Link>
               <Link 
                 href="/testimonials" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Testimonials
               </Link>
               <Link 
                 href="/corporate" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Corporate
               </Link>
               <Link 
                 href="/account" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 My Account
               </Link>
               <Link 
                 href="/contact" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#334155] hover:bg-[#1f2c4a]/10 rounded-md font-medium"
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 Contact Us
               </Link>

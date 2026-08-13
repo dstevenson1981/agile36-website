@@ -59,16 +59,16 @@ export default function SiteSearch() {
 
   return (
     <div
-      className="relative flex-1 min-w-[160px] sm:min-w-[220px] max-w-xl lg:max-w-[320px] xl:max-w-md mx-2 sm:mx-3"
+      className="relative flex-1 min-w-0 max-w-[10rem] sm:max-w-xs md:max-w-sm xl:max-w-md mx-1 sm:mx-2"
       ref={rootRef}
     >
       <label htmlFor={inputId} className="sr-only">
         Search courses, practice tests, and pages
       </label>
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 sm:pl-3.5">
           <svg
-            className="h-5 w-5 text-[#64748b]"
+            className="h-4 w-4 sm:h-5 sm:w-5 text-[#64748b]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -90,7 +90,7 @@ export default function SiteSearch() {
           aria-controls={`${inputId}-results`}
           aria-autocomplete="list"
           autoComplete="off"
-          placeholder="Search courses, tests…"
+          placeholder="Search…"
           value={query}
           onChange={(e) => runSearch(e.target.value)}
           onFocus={() => {
@@ -102,7 +102,7 @@ export default function SiteSearch() {
               (e.target as HTMLInputElement).blur();
             }
           }}
-          className="w-full h-12 sm:h-[3.25rem] pl-11 pr-11 text-[15px] sm:text-base font-medium rounded-xl bg-white border-2 border-[#1f2c4a]/25 text-[#1f2c4a] placeholder:text-[#94a3b8] placeholder:font-normal shadow-sm shadow-[#1f2c4a]/8 transition-[border-color,box-shadow] focus:outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/20"
+          className="w-full h-10 sm:h-12 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-[15px] font-medium rounded-xl bg-white border-2 border-[#1f2c4a]/25 text-[#1f2c4a] placeholder:text-[#94a3b8] placeholder:font-normal shadow-sm shadow-[#1f2c4a]/8 transition-[border-color,box-shadow] focus:outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/20"
         />
         {query ? (
           <button

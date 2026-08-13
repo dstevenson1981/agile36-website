@@ -466,31 +466,31 @@ function CheckoutContent() {
 
   return (
     <main className="min-h-screen bg-black text-[#1f2c4a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 py-4 sm:py-6 overflow-x-hidden">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Content - Enrollment Form */}
           <div className="flex-1">
             {/* Step Navigation */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8 min-w-0">
               <div className={`flex items-center gap-2 ${currentStep >= 1 ? 'text-[#d97706]' : 'text-[#64748b]'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
                   currentStep >= 1 ? 'bg-[#d97706] text-white' : 'bg-[#1f2c4a]/10 text-[#64748b]'
                 }`}>1</div>
-                <span className="font-medium">Basic Details</span>
+                <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Basic Details</span>
               </div>
-              <div className="w-12 h-0.5 bg-[#1f2c4a]/20"></div>
+              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#1f2c4a]/20 shrink-0"></div>
               <div className={`flex items-center gap-2 ${currentStep >= 2 ? 'text-[#d97706]' : 'text-[#64748b]'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
                   currentStep >= 2 ? 'bg-[#d97706] text-white' : 'bg-[#1f2c4a]/10 text-[#64748b]'
                 }`}>2</div>
-                <span className="font-medium">Choose Your Plan</span>
+                <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Choose Your Plan</span>
               </div>
-              <div className="w-12 h-0.5 bg-[#1f2c4a]/20"></div>
+              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#1f2c4a]/20 shrink-0"></div>
               <div className={`flex items-center gap-2 ${currentStep >= 3 ? 'text-[#d97706]' : 'text-[#64748b]'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
                   currentStep >= 3 ? 'bg-[#d97706] text-white' : 'bg-[#1f2c4a]/10 text-[#64748b]'
                 }`}>3</div>
-                <span className="font-medium">Secure Payment</span>
+                <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Secure Payment</span>
               </div>
             </div>
 

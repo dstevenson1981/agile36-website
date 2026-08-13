@@ -241,7 +241,7 @@ function ComboCheckoutContent() {
                 </div>
                 <span className="font-medium">Details</span>
               </div>
-              <div className="w-12 h-0.5 bg-[#1f2c4a]/20" />
+              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#1f2c4a]/20 shrink-0" />
               <div className={`flex items-center gap-2 ${currentStep >= 2 ? "text-[#d97706]" : "text-[#64748b]"}`}>
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
@@ -250,7 +250,7 @@ function ComboCheckoutContent() {
                 >
                   2
                 </div>
-                <span className="font-medium">Payment</span>
+                <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Payment</span>
               </div>
             </div>
 
