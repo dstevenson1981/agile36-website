@@ -10,6 +10,12 @@ const OWNER_PREVIEW_EMAILS = new Set([
   "deadra@agile36.com",
 ]);
 
+/** Explicit coursebook grants (in addition to enrollment). */
+const COURSEBOOK_ALLOWLIST_EMAILS = new Set([
+  "d.stevenson@agile36.com",
+  "rachenko.yelyzaveta@gmail.com",
+]);
+
 export const AI_PM_COURSEBOOK = {
   courseSlug: "certified-ai-product-manager",
   title: "AI Product Management Coursebook",
@@ -50,7 +56,13 @@ export async function hasAiProductManagementCourseAccess(): Promise<boolean> {
   const emails = [user.email, profile?.email]
     .map((e) => e?.trim().toLowerCase())
     .filter((e): e is string => Boolean(e));
-  if (emails.some((e) => OWNER_PREVIEW_EMAILS.has(e))) return true;
+  if (
+    emails.some(
+      (e) => OWNER_PREVIEW_EMAILS.has(e) || COURSEBOOK_ALLOWLIST_EMAILS.has(e)
+    )
+  ) {
+    return true;
+  }
 
   const slugs = await getRegisteredCourseSlugs();
   return slugs.some(matchesAiPmSlug);
