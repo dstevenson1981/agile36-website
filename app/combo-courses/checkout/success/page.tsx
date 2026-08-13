@@ -17,39 +17,42 @@ function ComboSuccessContent() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fbbf24]" />
+      <main className="min-h-screen bg-[#f6f9fd] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" />
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#f6f9fd] text-[#1f2c4a]">
       <div className="max-w-3xl mx-auto px-4 py-12">
-        <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-8 text-center">
-          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-500/15 mb-6">
-            <svg className="h-8 w-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-white p-8 text-center shadow-sm">
+          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-50 mb-6">
+            <svg className="h-8 w-8 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-3xl font-normal text-white tracking-[-0.03em] mb-4">Payment Successful!</h1>
-          <p className="text-lg text-gray-400 mb-2">Thank you for enrolling in your combo course.</p>
+          <h1 className="text-3xl font-normal text-[#1f2c4a] tracking-[-0.03em] mb-4">Payment Successful!</h1>
+          <p className="text-lg text-[#64748b] mb-2">Thank you for enrolling in your combo course.</p>
           {amount && (
-            <p className="text-sm text-gray-400 mb-8">
-              Amount paid: <span className="font-semibold">${amount}</span>
+            <p className="text-sm text-[#64748b] mb-8">
+              Amount paid: <span className="font-semibold text-[#1f2c4a]">${amount}</span>
             </p>
           )}
-          <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6 mb-8 text-left">
-            <h2 className="font-semibold text-white mb-4">What&apos;s Next?</h2>
-            <ul className="space-y-3 text-sm text-gray-300">
+          {comboId && (
+            <p className="sr-only">Combo: {comboId}</p>
+          )}
+          <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-6 mb-8 text-left">
+            <h2 className="font-semibold text-[#1f2c4a] mb-4">What&apos;s Next?</h2>
+            <ul className="space-y-3 text-sm text-[#475569]">
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>You will receive a confirmation email with course details and access information.</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Our team will contact you within 24 hours with additional course materials and login credentials.</span>
@@ -57,10 +60,10 @@ function ComboSuccessContent() {
             </ul>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/combo-courses" className="px-6 py-3 border border-white/20 rounded-lg text-gray-300 font-medium hover:bg-white/10 transition-colors">
+            <Link href="/combo-courses" className="px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/5 transition-colors">
               Browse Combo Courses
             </Link>
-            <Link href="/" className="px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-colors">
+            <Link href="/" className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors">
               Back to Home
             </Link>
           </div>
@@ -72,7 +75,7 @@ function ComboSuccessContent() {
 
 export default function ComboCheckoutSuccessPage() {
   return (
-    <Suspense fallback={<main className="min-h-screen bg-black flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fbbf24]" /></main>}>
+    <Suspense fallback={<main className="min-h-screen bg-[#f6f9fd] flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" /></main>}>
       <ComboSuccessContent />
     </Suspense>
   );

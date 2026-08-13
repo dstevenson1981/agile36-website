@@ -58,7 +58,7 @@ export default function UpgradeCheckout({
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white" />
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#1f2c4a]" />
       </div>
     );
   }
@@ -66,12 +66,12 @@ export default function UpgradeCheckout({
   if (error) {
     return (
       <div className="space-y-4">
-        <div className="bg-red-500/15 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg">
+        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
           {error}
         </div>
         <button
           onClick={() => router.push('/account/practice-exams')}
-          className="text-[#fbbf24] font-medium hover:underline"
+          className="text-[#d97706] font-medium hover:underline"
         >
           ← Back to Practice Exams
         </button>
@@ -85,7 +85,7 @@ export default function UpgradeCheckout({
 
   const options = {
     clientSecret,
-    appearance: { theme: 'night' as const, variables: { colorPrimary: '#fbbf24' } },
+    appearance: { theme: 'stripe' as const, variables: { colorPrimary: '#1f2c4a' } },
   };
 
   return (
