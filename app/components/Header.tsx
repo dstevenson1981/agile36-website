@@ -704,12 +704,12 @@ export default function Header() {
               <SiteSearch />
             </div>
             
-            {/* Right: primary links + account CTA (fewer items = no collision) */}
+            {/* Right: full nav set — grid middle column shrinks so these never get covered */}
             <div className="flex items-center gap-1 sm:gap-2 shrink-0 justify-end">
-              <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+              <div className="hidden xl:flex items-center gap-2.5 2xl:gap-4">
                 <Link
                   href="/combo-courses"
-                  className="flex items-center gap-1.5 whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                  className="flex items-center gap-1 whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Combo Courses
                   <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30">
@@ -717,28 +717,55 @@ export default function Header() {
                   </span>
                 </Link>
                 <Link
+                  href="/courses"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                >
+                  Courses
+                </Link>
+                <Link
                   href="/blog"
-                  className="hidden xl:inline whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Blogs
                 </Link>
                 <Link
+                  href="/test"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                >
+                  Practice Tests
+                </Link>
+                <Link
+                  href="/testimonials"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                >
+                  Testimonials
+                </Link>
+                <Link
                   href="/corporate"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-sm"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Corporate
                 </Link>
                 <Link
                   href="/account"
-                  className="inline-flex items-center justify-center h-10 px-4 rounded-lg bg-[#1f2c4a] text-white text-sm font-semibold hover:bg-[#16243f] transition-colors whitespace-nowrap"
+                  className="inline-flex items-center justify-center h-9 px-3.5 rounded-lg bg-[#1f2c4a] text-white text-[13px] 2xl:text-sm font-semibold hover:bg-[#16243f] transition-colors whitespace-nowrap"
                 >
                   My Account
+                </Link>
+                <Link
+                  href="/contact"
+                  className="p-2 text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                  title="Contact Us"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
                 </Link>
               </div>
 
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -754,9 +781,9 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* Compact menu — phones + tablets below lg */}
+        {/* Compact menu — below xl so every item is still available on laptop/phone */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
+          <div className="xl:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               <Link 
                 href="/combo-courses" 
