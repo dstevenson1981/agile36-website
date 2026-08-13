@@ -84,34 +84,39 @@ export default function AiProductManagementExam() {
           </div>
 
           <div className="space-y-5 px-6 py-7 text-[15px] leading-relaxed text-slate-700">
-            <p className="font-semibold text-[#0f2744]">Before you begin</p>
+            <p className="font-semibold text-[#0f2744]">Exam instructions</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                You have <strong>75 minutes</strong> to complete all {total}{" "}
-                questions.
+                <strong>Closed book.</strong> No notes, course materials, AI
+                tools, or outside assistance.
               </li>
               <li>
-                Select one answer per question. You may navigate freely and flag
-                items for review.
+                <strong>{total} questions</strong>, multiple choice (one answer
+                per question).
               </li>
               <li>
-                A score of <strong>{AI_PM_EXAM_PASS_PERCENT}% or higher</strong>{" "}
-                ({Math.ceil((AI_PM_EXAM_PASS_PERCENT / 100) * total)} correct) is
-                required to pass.
+                <strong>75 minutes</strong> total. The timer starts when you
+                begin and cannot be paused. Unanswered items are scored as
+                incorrect when time expires.
               </li>
               <li>
-                Once you end the exam, your answers are scored immediately. Do
-                not refresh or close the browser during the session.
+                Passing score: <strong>{AI_PM_EXAM_PASS_PERCENT}%</strong> (
+                {Math.ceil((AI_PM_EXAM_PASS_PERCENT / 100) * total)} of {total}{" "}
+                correct).
               </li>
               <li>
-                This is an individual assessment. Complete it without outside
-                assistance.
+                You may move freely between questions and flag items for review
+                before submitting.
+              </li>
+              <li>
+                Scoring is automatic when you end the exam (or when time runs
+                out). Do not refresh or close the browser during the session.
               </li>
             </ul>
 
             <div className="rounded-sm border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
               By starting, you confirm you are the enrolled learner and will
-              complete this exam honestly under the stated rules.
+              complete this closed-book exam under the stated rules.
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
