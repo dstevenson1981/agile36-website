@@ -12,7 +12,8 @@ function isPublicAccountPath(pathWithSearch: string): boolean {
   const path = pathWithSearch.split('?')[0] || '';
   return (
     path === '/account/practice-exams/advanced-scrum-master' ||
-    path === '/account/practice-exams/safe-for-teams'
+    path === '/account/practice-exams/safe-for-teams' ||
+    path === '/account/practice-exams/rte'
   );
 }
 
