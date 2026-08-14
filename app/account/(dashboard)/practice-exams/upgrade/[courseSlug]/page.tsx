@@ -10,6 +10,7 @@ const COURSE_NAMES: Record<string, string> = {
   'lean-portfolio-management': 'SAFe Lean Portfolio Management (LPM)',
   'scrum-master': 'AI-Empowered SAFe Scrum Master (SSM)',
   'advanced-scrum-master': 'AI-Empowered SAFe Advanced Scrum Master (SASM)',
+  'release-train-engineer': 'AI-Empowered SAFe Release Train Engineer (RTE)',
 };
 
 export const metadata = {
@@ -33,6 +34,7 @@ export default async function PracticeExamUpgradePage({
       'lean-portfolio-management',
       'scrum-master',
       'advanced-scrum-master',
+      'release-train-engineer',
     ].includes(courseSlug)
   ) {
     redirect('/account/practice-exams');

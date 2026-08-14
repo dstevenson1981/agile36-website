@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "question": "Which statement is true about Kanban boards?",
+    "options": [
+      "Each column represents two states",
+      "WIP limits are concrete",
+      "Flow of items moves from right to left",
+      "Columns can be split"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8466-eb49a7bb-ebe1-4a49-af34-945bb4d8664d.png"
+  },
+  {
+    "id": 2,
+    "question": "The teams on the ART just finished the second Iteration in the PI and have nothing to demonstrate at the System Demo. What steps should be taken next?",
+    "options": [
+      "Continue to work on new functionality and reserve time to fully integrate the system during the IP Iteration",
+      "Stop working on any new functionality and fully integrate and test the system; adjust scope based on learnings",
+      "Require every team demonstrate their team increment to the stakeholders separately in the team branch",
+      "Re-architect the system so that there are no dependencies between the teams, and integration is not needed"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8467-238de662-a585-4e3d-a05a-b1c7aef4a1f4.png"
+  },
+  {
+    "id": 3,
+    "question": "Which statement is true about the definition of done (DoD)?",
+    "options": [
+      "The DoD is used as a method to manage technical debt across the ART",
+      "The teams share one common DoD",
+      "The DoD should evolve as system capabilities evolve",
+      "At the higher levels there is only one DoD for everything that passes through the ART to a Solution increment or a release"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8468-2594db51-bccc-402c-9e3a-ed01eff49673.png"
+  },
+  {
+    "id": 4,
+    "question": "What is an example of applying cadence and synchronization in SAFe?",
+    "options": [
+      "Using a Portfolio Kanban system",
+      "Allocating budgets to Value Streams",
+      "Creating cross-functional ARTs and Agile teams",
+      "Conducting a PI Planning event"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8469-6db9389c-a1cf-4ce4-92c9-6c15a8ab7241.png"
+  },
+  {
+    "id": 5,
+    "question": "What is one activity the Release Train Engineer (RTE) performs before an upcoming PI?",
+    "options": [
+      "Facilitate ART Backlog prioritization with Product Management and other stakeholders",
+      "Allocates time in the Coach Sync for Product Management to socialize with the teams on the Features",
+      "Provides approval and sign-off for draft Team Backlogs",
+      "Ensures at least 30% of the ART Backlog is allocated to Enabler Features"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8470-68538ea1-8b4f-4d14-b3da-884bac3b4ce2.png"
+  },
+  {
+    "id": 6,
+    "question": "What is the formula to calculate flow efficiency?",
+    "options": [
+      "Total active time / Flow time [Total active time divided by Flow time]",
+      "Total wait time + Flow time [Total wait time plus Flow time]",
+      "Total wait time / Flow time [Total wait time divided by Flow time]",
+      "Total active time + Flow time [Total active time plus Flow time]"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8471-a5bf1332-b2b9-4741-8a40-db05507b03fe.png"
+  },
+  {
+    "id": 7,
+    "question": "Which role does the RTE work with to prioritize Enablers?",
+    "options": [
+      "Development Manager",
+      "Solution Management",
+      "System Architect",
+      "Product Owner"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8472-3c20fcf7-9f4b-4ab4-87d3-be9a6f97e131.png"
+  },
+  {
+    "id": 8,
+    "question": "During PI Planning, the Release Train Engineer (RTE) sees the team's excitement decline as Product Management changes priorities, including the top ten Features in the ART Backlog. In addition, Product Management is asking for new estimates, timelines, and scope changes. What is the likely reason for this behavior?",
+    "options": [
+      "People are over-controlled and under-utilized",
+      "Management stakeholders are not involved in changing the system",
+      "Lack of training and preparation for PI Planning",
+      "Cadence and synchronization are not in alignment"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8474-a1e3b1c8-07d6-4feb-994f-254a10150ef4.png"
+  },
+  {
+    "id": 9,
+    "question": "The Release Train Engineer (RTE) learns the teams feel the business value needs to reflect the effort and progress. What is one technique the RTE can use to provide the Business Owners a better understanding of the value the teams have created?",
+    "options": [
+      "Illustrate the link between business values and the market communications/release objectives tied to the three to six-month Enterprise Strategy",
+      "Publish the team business values and coach teams that these values are for tracking each ART deliverable",
+      "Educate teams that business value provides the Enterprise with a metric of how fast the team executed work during the PI",
+      "Work with the team to ensure they are actively involved when the Business Owners score the business value achieved"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8475-3606459f-cf26-460b-b4ae-a3ba52868c8c.png"
+  },
+  {
+    "id": 10,
+    "question": "How can a Release Train Engineer (RTE) stay informed about employee satisfaction?",
+    "options": [
+      "Survey full-time employees",
+      "Gather employee metrics immediately after the ART launches",
+      "Address and resolve any problems areas",
+      "Conduct an employee Net Promoter Score (NPS) survey"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8476-22080e9a-b6a0-4c9d-8e8d-72c5b2e05f45.png"
+  },
+  {
+    "id": 11,
+    "question": "Which activity occurs during Team Breakout #2 on the second day of PI Planning?",
+    "options": [
+      "The RTE modifies the PI Iteration schedule, if needed, based on the scope of high priority Features",
+      "The Release Train Engineer (RTE) combines all Team PI Objectives into ART PI Objectives",
+      "Business Owners independently assign business value to normalize business value across all teams",
+      "All Feature delivery and dependencies are visualized on the ART planning board"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8477-145c8748-a115-427a-ad39-be4a0a4935d7.png"
+  },
+  {
+    "id": 12,
+    "question": "Which action describes the behavior of applying Systems Thinking for a Release Train Engineer (RTE)?",
+    "options": [
+      "Implements strict adherence to process and documentation standards, ensuring all teams follow the defined procedures regardless of context",
+      "Analyzes the flow of value through the Agile Release Train (ART) and looks for systemic bottlenecks or dependencies that impede progress",
+      "Tracks individual team performance metrics to foster healthy competition among teams",
+      "Focuses the teams on meeting individual deadlines and commitments, ensuring each team stays on track"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8478-29ed2128-3304-4afd-80cb-71bf8c2a6367.png"
+  },
+  {
+    "id": 13,
+    "question": "A team is consistently meeting 100% of their PI Objectives. How should the Release Train Engineer (RTE) respond?",
+    "options": [
+      "Coach the team on their tendency to under-commit",
+      "Praise the team for being high performers",
+      "Coach the team on their tendency to over-commit",
+      "Praise the team for being a cross-functional team"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8479-54e9605a-2f1c-4968-9156-f59a46d1721a.png"
+  },
+  {
+    "id": 14,
+    "question": "What is one reason why the ART predictability measure is important?",
+    "options": [
+      "It identifies under-performing teams",
+      "It indicates where the Solution is ready to be released",
+      "It allows the business and other stakeholders to plan effectively",
+      "It demonstrates the need to fix the scope at the beginning of the PI"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8480-3b0cc74f-7478-4920-b5e3-29e299f2b11f.png"
+  },
+  {
+    "id": 15,
+    "question": "Which of the SAFe Core Values enables trust across the ART?",
+    "options": [
+      "Decentralized decision-making",
+      "Adaptation",
+      "Transparency",
+      "Built-in Quality"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8481-f54d0ae5-ae37-4e59-bf21-50cfedcb39cf.png"
+  },
+  {
+    "id": 16,
+    "question": "What does the \"R\" in SMART stand for that is used to write PI Objectives?",
+    "options": [
+      "Realistic",
+      "Required",
+      "Rationalized",
+      "Random"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8482-fe44e985-899d-4611-b0b4-4c781ef87dfb.png"
+  },
+  {
+    "id": 17,
+    "question": "What hourly activity helps keep teams on track and facilitates early identification of risks during the Team Breakout portion of PI Planning?",
+    "options": [
+      "Business Owner feedback meeting",
+      "Iteration Review",
+      "Coach Sync",
+      "ART planning board inspection"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8483-6ee41078-ba08-4d49-95b3-1f8908a83a22.png"
+  },
+  {
+    "id": 19,
+    "question": "Which value is used when calculating flow efficiency?",
+    "options": [
+      "Flow load",
+      "Flow velocity",
+      "Flow time",
+      "Flow distribution"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8484-03b85e88-5f8f-420f-8b89-93ee3b237d80.png"
+  },
+  {
+    "id": 20,
+    "question": "What can a Release Train Engineer (RTE) use to support Relentless Improvement for the PI?",
+    "options": [
+      "PO Sync",
+      "Inspect & Adapt (I&A) event",
+      "Release management meeting",
+      "Iteration Retrospective"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8485-979b465e-df9a-45e0-9dc1-5de84df5c314.png"
+  },
+  {
+    "id": 21,
+    "question": "What does an ART planning board support?",
+    "options": [
+      "Feature delivery",
+      "ART predictability",
+      "Problem-solving",
+      "Business Value assignment"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8486-09e230f0-c7aa-4885-b1b9-62cd5199c56d.png"
+  },
+  {
+    "id": 22,
+    "question": "What is one method for developing a sufficient Architectural Runway for the ART?",
+    "options": [
+      "Create alignment with the System Architect and Product Management that the first PI is all about Enablers to plan for creating business value in the second PI",
+      "Work with Product Management and System Architects to identify future Features and determine the Enablers to achieve them",
+      "Ask the teams to commit only to Enablers as their PI Objectives during the PI Planning and address Features as uncommitted objectives for the first PI",
+      "Ask the Business Owner which Enablers have high business value"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8487-228f8e58-2cc2-4b2b-9291-78d51fcd21a9.png"
+  },
+  {
+    "id": 23,
+    "question": "What is one reason an environment of mutual influence is desirable?",
+    "options": [
+      "It demonstrates Respect for People",
+      "It helps fund Value Streams",
+      "It centralizes decision making",
+      "It provides guardrails for decision making"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8488-dec47f0a-d8f1-4aa5-9d78-eca67775e1ec.png"
+  },
+  {
+    "id": 25,
+    "question": "When planning for a distributed PI Planning with a significant difference in time zones, what is a key preparation and facilitation focus?",
+    "options": [
+      "Adjust the PI agenda to 2.5-3 days, allowing for overlapping hours",
+      "Split up the PI Planning event per time zone and then have the final plan review, confidence vote, and planning retrospective as one centralized meeting",
+      "Share the outcomes of preparation meetings with local Scrum Masters/Team Coaches (SM/TCs) so they can arrange local rooms",
+      "Have a single Release Train Engineer (RTE) and technical support person that acts as a central point of communication for all locations"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8490-519b3c03-6605-486b-a91d-dd13674c334c.png"
+  },
+  {
+    "id": 26,
+    "question": "What is the most accurate definition of DevOps?",
+    "options": [
+      "A process that provides visibility to impediments between writing code and delivering value",
+      "A mindset, culture, and set of technical practices that emphasizes close cooperation to provide value to the Customer",
+      "A set of tools and processes that govern how code is deployed",
+      "A method that ensures operations works with development every day to deliver value"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8491-8cfd6986-0955-4387-85fd-51ece2590d5d.png"
+  },
+  {
+    "id": 27,
+    "question": "What is the best way for the Release Train Engineer (RTE) to show progress of work in the current PI to management?",
+    "options": [
+      "Arrange for a separate meeting with Business Owners",
+      "Conduct a System Demo",
+      "Generate a velocity trend report",
+      "Conduct a retrospective"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8492-4d4e6658-1231-43ed-8d4d-055f4f69b69d.png"
+  },
+  {
+    "id": 29,
+    "question": "Which statement is a value from the Agile Manifesto?",
+    "options": [
+      "Customer collaboration over following a plan",
+      "Individuals and interactions over processes and tools",
+      "Customer collaboration over a constant indefinite pace",
+      "Apply systems thinking"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8494-1be733db-630e-4d3a-a198-c1f08e9ed1ee.png"
+  },
+  {
+    "id": 30,
+    "question": "What is one benefit of having a well-executed Innovation and Planning (IP) Iteration?",
+    "options": [
+      "Shorter lead times before Feature delivery",
+      "Higher flow of program-level business value",
+      "Improved dependency management between teams",
+      "Occasional buffer time to deliver more predictably"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8495-9e062fc3-3f78-457c-818b-ec61510fb3b4.png"
+  },
+  {
+    "id": 31,
+    "question": "What is the next step after identifying the root cause during the problem-solving workshop?",
+    "options": [
+      "Brainstorm solutions",
+      "Identify improvement backlog items",
+      "Restate the problem",
+      "Trace the chain of causality"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8497-a4abae0f-d0d7-4bdc-b101-55aceeba7285.png"
+  },
+  {
+    "id": 32,
+    "question": "What is one benefit of an Iteration and PI calendar?",
+    "options": [
+      "Ability to visualize the ART cadence and synchronization",
+      "Ability to create a big visible information radiator (BVIR) of the important team and ART milestones",
+      "Ability to know the cycle time between important team and ART events",
+      "Ability to ensure that key events do not conflict with non-SAFe events"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8498-64c6b1ad-e74c-4d8f-9037-96daf2161660.png"
+  },
+  {
+    "id": 33,
+    "question": "Which SAFe tool might the Release Train Engineer (RTE) use to identify areas for an ART to improve?",
+    "options": [
+      "Architectural Runway ART Backlog Enablers",
+      "SAFe Business Agility assessment",
+      "Conduct empathy interviews with system architects/engineers",
+      "Facilitate a CDP sync every Iteration"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8499-70f6f2fd-d2b3-427b-80ad-371f1d10b3ef.png"
+  },
+  {
+    "id": 34,
+    "question": "What is one technique for building a one-team culture across the ART?",
+    "options": [
+      "Ensure the team leader does not show vulnerability",
+      "Foster an environment in which the whole ART succeeds and fails together",
+      "Rotate team members to new teams to facilitate relationship building",
+      "Review each teams' predictability measure with the ART"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8500-c207f43c-c307-4660-a8ca-193039e9e63f.png"
+  },
+  {
+    "id": 35,
+    "question": "An ART frequently discovers compatibility issues between the developed Solution and the Enterprise information architecture. What can the Release Train Engineer (RTE) do to prevent this from occurring?",
+    "options": [
+      "Develop more detailed Feature definitions",
+      "Add data architects to the ART",
+      "Confirm attendance of architectural representatives at PI Planning",
+      "Conduct the entire data architecture design upfront"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8501-9e76c5e9-f455-48c8-be93-ba670d9dcba6.png"
+  },
+  {
+    "id": 37,
+    "question": "A Release Train Engineer (RTE) should build a relationship with which SAFe role to effectively assign business value to a team PI Objective?",
+    "options": [
+      "Objective Owners",
+      "Solution Managers",
+      "Lean-Agile Leaders",
+      "Business Owners"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8503-8bba4b24-d945-43af-adda-feb7e805e91c.png"
+  },
+  {
+    "id": 38,
+    "question": "The ART is near the end of the final Iteration of its first PI. Integration into staging is more challenging than estimated. The ART adds a week to the Innovation and Planning (IP) Iteration for integration and testing. Why is this action considered an anti-pattern?",
+    "options": [
+      "It decreases job satisfaction by removing autonomy and purpose",
+      "It reduces the overall predictability established through cadence and synchronization",
+      "Overall, train velocity goes up, and the time-to-market goes down",
+      "It substantially decreases the predictability of the Solution Intent"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8505-e0bc83f7-6e72-492a-84ff-cd6d73181c05.png"
+  },
+  {
+    "id": 39,
+    "question": "What promotes alignment between the Business Owners and Product Management (PM)?",
+    "options": [
+      "Quantification of transaction and holding costs",
+      "Prioritized ART Backlog",
+      "Applying cadence and synchronization",
+      "Epics supported by Lean Business Cases"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8507-8d662e85-2ee5-435e-948a-d41e9a182441.png"
+  },
+  {
+    "id": 40,
+    "question": "During the management review and problem-solving meeting, one team raises the risk of not finishing a Feature before the end of the PI. How can the management team help ensure they complete the Feature within the PI?",
+    "options": [
+      "ROAM the risk appropriately",
+      "Negotiate a reduction in the scope",
+      "Redefine the definition of done (DoD)",
+      "Use buffer resources as a guard band"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8508-849a77c4-9be2-4942-8437-c73b0adeea06.png"
+  },
+  {
+    "id": 41,
+    "question": "What should be measured in a CALMR approach to DevOps?",
+    "options": [
+      "Code coverage",
+      "Net Promoter Score (NPS)",
+      "Objectives and Key Results (OKRs)",
+      "Flow through the pipeline"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8509-c17a357e-01ec-4a09-894d-10f386431732.png"
+  },
+  {
+    "id": 42,
+    "question": "Which of the following PI Planning element(s) creates transparency and helps engage Business Owners and stakeholders in the planning process?",
+    "options": [
+      "Problem-solving workshop",
+      "Team Iteration plans",
+      "ROAMing Risks",
+      "Draft objectives"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8510-9ea48766-ff39-48fc-b9a3-e950b51d53b5.png"
+  },
+  {
+    "id": 43,
+    "question": "What is one recommended practice when planning across large time zone differences?",
+    "options": [
+      "Choose one time zone for planning, then rotate for the next PI",
+      "Allow for overlapping hours",
+      "Plan by time zone, then consolidate the plans",
+      "Choose the time zone with the most team members"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8511-c96a5ad7-2271-4db7-b72e-362c74e16e03.png"
+  },
+  {
+    "id": 44,
+    "question": "The RTE collaborates with which other two roles to help focus the ART on delivering value and operational excellence?",
+    "options": [
+      "Product Management and System Architect",
+      "Solution Architect and Enterprise Architect",
+      "Enterprise Architect and Solution Management",
+      "Solution Management and Solution Architect"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8512-ea949543-29e5-498d-b0bb-062d1954ad9f.png"
+  },
+  {
+    "id": 45,
+    "question": "Which skill do Release Train Engineers (RTEs) have the opportunity to regularly practice and improve?",
+    "options": [
+      "Test-driven development",
+      "Continuous Integration",
+      "Servant leadership",
+      "Return-on-investment (ROI) projections"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8514-f6041788-6a53-477a-8213-d6b84ff5bff0.png"
+  },
+  {
+    "id": 46,
+    "question": "Which statement describes flow velocity?",
+    "options": [
+      "The system throughput",
+      "The amount of Architectural Runway items in the backlog",
+      "The number of Story points the combined ART plans for within each Iteration",
+      "The number of Features committed to during PI Planning"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8516-5ea42862-ece1-4760-8e81-e7929c1d151b.png"
+  },
+  {
+    "id": 47,
+    "question": "Why is it important for the Release Train Engineer (RTE) to understand Tuckman's group dynamic stages?",
+    "options": [
+      "The Tuckman dynamic nature of the stages requires that we assume variability and preserve options",
+      "An ART is a team of teams and will likely progress through the Tuckman stages",
+      "The Tuckman four stages should be reflected in the design of the ART Kanban",
+      "Tuckman helps RTEs to better understand Team and ART topologies"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8515-de04b5e7-efda-46c8-a77c-780275f71674.png"
+  },
+  {
+    "id": 48,
+    "question": "What is one purpose of the System Demo?",
+    "options": [
+      "To flow, dependencies, and risks",
+      "To plan the Inspect & Adapt (I&A) event",
+      "To demonstrate the full Solution in a production-like context",
+      "To demonstrate a team's build"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8517-52c4d6e0-c496-4672-a18a-4477bb082490.png"
+  },
+  {
+    "id": 49,
+    "question": "What is one risk of eliminating an Innovation and Planning (IP) Iteration?",
+    "options": [
+      "Delivery can be blocked",
+      "Technical debt can grow uncontrollably",
+      "Teams have no time for fixing bugs",
+      "Bottlenecks can be hard to identify and resolve"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8518-ed158151-7efd-4851-918e-4f6a487a983e.png"
+  },
+  {
+    "id": 50,
+    "question": "What might a Release Train Engineer (RTE) do to embrace Relentless Improvement and a growth mindset as an individual?",
+    "options": [
+      "Use personal Gemba to find useful improvements",
+      "Identify personal challenges and create an action plan to address them",
+      "Frequently execute the SAFe individual self-assessment",
+      "Establish personal KPIs to be able to quantify progress"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8519-d24f3eae-bb41-4de9-bc2c-86f2cd364796.png"
+  },
+  {
+    "id": 51,
+    "question": "What is an anti-pattern for a Release Train Engineer (RTE) facilitating a Coach Sync?",
+    "options": [
+      "Run the meeting in front of the ART planning board",
+      "Address the most important questions for PI execution",
+      "Review individual team performance",
+      "Facilitate the meeting using a focused and visible agenda and timebox"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8520-fafcb0a8-122d-4acc-8c3d-5138163e6fef.png"
+  },
+  {
+    "id": 52,
+    "question": "What is one practice to ensure facility readiness when preparing for PI Planning?",
+    "options": [
+      "Print ART planning boards",
+      "Print PI Objectives",
+      "Engage audio-visual technical support",
+      "Share business value documents"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8521-9da86702-03f4-499f-bda5-6292486f969c.png"
+  },
+  {
+    "id": 53,
+    "question": "What occurs without a shared understanding of the principles?",
+    "options": [
+      "Lean-Agile mindset is achievable",
+      "Practices are systematically adapted to local context",
+      "Business outcomes improve significantly",
+      "Measures that were once beneficial become problematic"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8522-259615eb-6254-43ed-b4a6-090f6457d102.png"
+  },
+  {
+    "id": 54,
+    "question": "Who is one collaborator with the Release Train Engineer (RTE) to support the ART?",
+    "options": [
+      "System Architect",
+      "Release Management",
+      "Scrum Master/Team Coach (SM/TC)",
+      "Product Owner (PO)"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8523-41e9991c-2827-4a3e-a81d-ca2c9af6ab76.png"
+  },
+  {
+    "id": 55,
+    "question": "What behavior is an important part of the Release Train Engineer (RTE) role?",
+    "options": [
+      "Manage dependencies for teams",
+      "Provide teams with answers about Features",
+      "Drive teams to specific outcomes",
+      "Encourage teams to self-organize"
+    ],
+    "correctIndex": 3,
+    "source": "IMG_8524-f0da2a08-7c26-4ef6-a1ac-7213d48fa7d4.png"
+  },
+  {
+    "id": 56,
+    "question": "Which event facilitated by the Release Train Engineer (RTE) is designed to keep the ART on the tracks?",
+    "options": [
+      "Team Sync",
+      "Coach Sync",
+      "Iteration review",
+      "Solution Demo"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8525-4a58a39c-9e19-4bb9-bd6e-bf108e0ec037.png"
+  },
+  {
+    "id": 57,
+    "question": "What is communicated on the ART planning board?",
+    "options": [
+      "PI Objectives",
+      "Dependencies between teams",
+      "Team velocity",
+      "ART PI risks"
+    ],
+    "correctIndex": 1,
+    "source": "IMG_8526-45b6be3d-dec1-4324-b32e-bcb05d27b8f0.png"
+  },
+  {
+    "id": 58,
+    "question": "Some teams need help to identify where they might make process improvements. How might a Release Train Engineer (RTE) support them?",
+    "options": [
+      "Conduct a survey to identify the worst problems the team is having",
+      "Observe the team's events and share observations",
+      "Encourage the team to perform regular self-assessments and discuss findings",
+      "Run longer Inspect & Adapt (I&A) events to brainstorm improvement items"
+    ],
+    "correctIndex": 2,
+    "source": "IMG_8527-377513c6-6e34-4241-99cc-8dcafb14efff.png"
+  },
+  {
+    "id": 59,
+    "question": "Which behavior exemplifies servant leadership?",
+    "options": [
+      "Creating an environment of mutual influence",
+      "Supporting the interests of customers and stakeholders",
+      "Ensuring appropriate consequences if things go wrong",
+      "Protecting the teams and ART from negative reviews"
+    ],
+    "correctIndex": 0,
+    "source": "IMG_8528-02c2ee1d-d826-44da-88d8-f9f1f5ad9c71.png"
+  }
+]

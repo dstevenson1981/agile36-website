@@ -15,6 +15,7 @@ export const PRACTICE_EXAM_COURSE_IDS = new Set([
   'scrum-master',
   'advanced-scrum-master',
   'safe-for-teams',
+  'release-train-engineer',
 ]);
 
 function normalizeEmail(email: string): string {

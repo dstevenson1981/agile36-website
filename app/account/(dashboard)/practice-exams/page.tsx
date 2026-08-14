@@ -10,6 +10,7 @@ import {
   hasProPlanEnrollmentForCourse,
   getRegisteredCourseSlugs,
   practiceExamCoursesFromRegistrations,
+  hasRteProAccess,
 } from '@/app/lib/practice-exams';
 import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
 import UpgradeSuccessBanner from './UpgradeSuccessBanner';
@@ -19,6 +20,7 @@ import {
 } from '@/app/lib/pro-practice-exams-enabled';
 import { BADGES } from '@/app/combo-courses/data';
 import { AI_PRODUCT_MANAGEMENT_PRACTICE_QUESTIONS } from './ai-product-management/questions';
+import { RTE_QUESTIONS } from './rte/questions';
 
 export const metadata = {
   title: 'Practice Exams | Agile36',
@@ -141,6 +143,7 @@ export default async function PracticeExamsPage({
     hasSsmPro,
     hasAsmPro,
     hasAiPm,
+    hasRtePro,
     registeredCourses,
     hasPopmProPlan,
     hasApmProPlan,
@@ -148,6 +151,7 @@ export default async function PracticeExamsPage({
     hasLeadingSafeProPlan,
     hasSsmProPlan,
     hasAsmProPlan,
+    hasRteProPlan,
   ] = await Promise.all([
     hasPopmProAccess(),
     hasApmProAccess(),
@@ -156,6 +160,7 @@ export default async function PracticeExamsPage({
     hasScrumMasterProAccess(),
     hasAdvancedScrumMasterProAccess(),
     hasAiProductManagementExamAccess(),
+    hasRteProAccess(),
     getRegisteredCourseSlugs(),
     hasProPlanEnrollmentForCourse('product-owner-manager'),
     hasProPlanEnrollmentForCourse('agile-product-management'),
@@ -163,6 +168,7 @@ export default async function PracticeExamsPage({
     hasProPlanEnrollmentForCourse('leading-safe'),
     hasProPlanEnrollmentForCourse('scrum-master'),
     hasProPlanEnrollmentForCourse('advanced-scrum-master'),
+    hasProPlanEnrollmentForCourse('release-train-engineer'),
   ]);
 
   const eligible = practiceExamCoursesFromRegistrations(registeredCourses);
@@ -173,6 +179,7 @@ export default async function PracticeExamsPage({
   if (hasSsmPro) eligible.add('scrum-master');
   if (hasAsmPro) eligible.add('advanced-scrum-master');
   if (hasAiPm) eligible.add('certified-ai-product-manager');
+  if (hasRtePro) eligible.add('release-train-engineer');
 
   const exams: ExamCard[] = [
     {
@@ -253,6 +260,17 @@ export default async function PracticeExamsPage({
       unlocked: hasLpmPro,
       hasProPlan: hasLpmProPlan,
       skipExpiration: true,
+    },
+    {
+      courseSlug: 'release-train-engineer',
+      title: 'SAFe Release Train Engineer (RTE)',
+      shortLabel: 'RTE',
+      description: 'Practice questions aligned to the SAFe RTE certification exam',
+      questionCount: `${RTE_QUESTIONS.length} questions`,
+      badge: BADGES['release-train-engineer'],
+      testHref: '/account/practice-exams/rte',
+      unlocked: hasRtePro,
+      hasProPlan: hasRteProPlan,
     },
   ];
 
