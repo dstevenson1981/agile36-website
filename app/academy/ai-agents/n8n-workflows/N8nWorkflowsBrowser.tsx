@@ -28,6 +28,7 @@ export default function N8nWorkflowsBrowser({
   const [category, setCategory] = useState('All');
   const [page, setPage] = useState(0);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const categories = useMemo(() => categoriesFor(catalog), [catalog]);
 
   const filtered = useMemo(() => {
@@ -46,13 +47,40 @@ export default function N8nWorkflowsBrowser({
   const safePage = Math.min(page, pageCount - 1);
   const pageItems = filtered.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
 
+  const workflowKey = (w: N8nWorkflow) => w.path || w.filename || w.id;
+
   const copyUrl = async (w: N8nWorkflow) => {
     try {
       await navigator.clipboard.writeText(w.downloadUrl);
-      setCopiedId(w.path || w.id);
+      setCopiedId(workflowKey(w));
       window.setTimeout(() => setCopiedId(null), 1600);
     } catch {
       // ignore
+    }
+  };
+
+  /** Force a real .json download via same-origin proxy (raw GitHub opens in-tab). */
+  const downloadJson = async (w: N8nWorkflow) => {
+    const key = workflowKey(w);
+    setDownloadingId(key);
+    const proxy = `/api/academy/n8n-download?url=${encodeURIComponent(w.downloadUrl)}&filename=${encodeURIComponent(w.filename)}`;
+    try {
+      const res = await fetch(proxy);
+      if (!res.ok) throw new Error(`Download failed (${res.status})`);
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = w.filename.endsWith('.json') ? w.filename : `${w.filename}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(objectUrl);
+    } catch {
+      // Last resort: navigate to proxy so Content-Disposition can still save
+      window.location.assign(proxy);
+    } finally {
+      setDownloadingId(null);
     }
   };
 
@@ -102,7 +130,8 @@ export default function N8nWorkflowsBrowser({
 
       <div className="grid gap-4 sm:grid-cols-2">
         {pageItems.map((w) => {
-          const key = w.path || w.filename;
+          const key = workflowKey(w);
+          const isDownloading = downloadingId === key;
           return (
             <article
               key={key}
@@ -129,14 +158,14 @@ export default function N8nWorkflowsBrowser({
                 )}
               </div>
               <div className="mt-auto flex flex-wrap gap-2 pt-5">
-                <a
-                  href={w.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-lg bg-[#1f2c4a] px-3 py-2 text-xs font-semibold text-white hover:bg-[#16243f]"
+                <button
+                  type="button"
+                  onClick={() => downloadJson(w)}
+                  disabled={isDownloading}
+                  className="inline-flex items-center rounded-lg bg-[#1f2c4a] px-3 py-2 text-xs font-semibold text-white hover:bg-[#16243f] disabled:opacity-60"
                 >
-                  Download JSON
-                </a>
+                  {isDownloading ? 'Downloading…' : 'Download JSON'}
+                </button>
                 <button
                   type="button"
                   onClick={() => copyUrl(w)}
