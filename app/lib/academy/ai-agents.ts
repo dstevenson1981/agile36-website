@@ -20,14 +20,6 @@ export const AI_AGENTS_ACADEMY = {
 
 export const AI_AGENTS_MODULES: AcademyModule[] = [
   {
-    id: 'foundations',
-    title: 'Foundations: Agent = LLM + Context + Tools',
-    summary:
-      'The core loop every agent runs: observe, decide, act, check. Separate judgment (agents) from orchestration (workflows).',
-    tools: ['Claude', 'Claude Code', 'Codex'],
-    status: 'ready',
-  },
-  {
     id: 'n8n-workflows',
     title: 'Class n8n templates',
     summary:
@@ -44,14 +36,6 @@ export const AI_AGENTS_MODULES: AcademyModule[] = [
     tools: ['Claude Code', 'Codex'],
     status: 'ready',
     href: '/academy/ai-agents/agents',
-  },
-  {
-    id: 'agent-vs-workflow',
-    title: 'Workflows vs Agents',
-    summary:
-      'Same business goal, two implementations: a fixed n8n path vs Claude Code / Codex deciding mid-task. See where each wins.',
-    tools: ['n8n', 'Claude Code', 'Codex'],
-    status: 'coming-soon',
   },
   {
     id: 'capstone',
