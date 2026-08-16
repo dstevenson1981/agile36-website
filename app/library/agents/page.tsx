@@ -69,7 +69,7 @@ export default async function BusinessAgentLibraryPage() {
       </div>
 
       <div className="mt-8">
-        <AgencyAgentsBrowser catalog={AGENCY_AGENTS_BUSINESS_CATALOG} />
+        <AgencyAgentsBrowser catalog={AGENCY_AGENTS_BUSINESS_CATALOG} mode="business" />
       </div>
     </main>
   );

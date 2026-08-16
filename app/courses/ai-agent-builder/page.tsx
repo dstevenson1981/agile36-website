@@ -95,10 +95,10 @@ export default function NoCodeAIAgentsCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
-                  href="/academy/ai-agents"
+                  href="/academy"
                   className="inline-flex items-center justify-center rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
                 >
-                  Open AI Agents Academy
+                  Open AI Academy
                 </Link>
                 <a
                   href={AI_AGENT_BUILDER_BROCHURE_HREF}

@@ -16,6 +16,7 @@ const FOOTER_COLUMNS = [
     title: "Training",
     links: [
       { label: "View All Courses", href: "/courses" },
+      { label: "AI Academy", href: "/academy" },
       { label: "Combo Courses", href: "/combo-courses" },
       { label: "Corporate Training", href: "/corporate" },
       { label: "Practice Tests", href: "/test" },

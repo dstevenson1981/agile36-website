@@ -1,0 +1,94 @@
+{
+  "skills": [
+    {
+      "id": "a11y-audit",
+      "name": "a11y-audit",
+      "description": "Audit UI against WCAG 2.2 A/AA — scan, fix, verify. Use when checking accessibility before handoff or release.",
+      "downloadUrl": "/academy/ai-agents/skills/a11y-audit/SKILL.md"
+    },
+    {
+      "id": "architecture-tradeoffs",
+      "name": "architecture-tradeoffs",
+      "description": "Make and record engineering trade-offs before coding complex features. Use when choosing libraries, data models, or system boundaries.",
+      "downloadUrl": "/academy/ai-agents/skills/architecture-tradeoffs/SKILL.md"
+    },
+    {
+      "id": "code-review",
+      "name": "code-review",
+      "description": "Review diffs for correctness, tests, security, and maintainability. Use after implementation before merge or handoff to QA.",
+      "downloadUrl": "/academy/ai-agents/skills/code-review/SKILL.md"
+    },
+    {
+      "id": "frontend-ui-implementation",
+      "name": "frontend-ui-implementation",
+      "description": "Implement responsive, accessible UI from a design system or mock. Use when building React/Next (or similar) screens to match design intent.",
+      "downloadUrl": "/academy/ai-agents/skills/frontend-ui-implementation/SKILL.md"
+    },
+    {
+      "id": "project-status-risks",
+      "name": "project-status-risks",
+      "description": "Produce a clear status update with risks, owners, and next actions. Use for sprint or capstone coordination across agent roles.",
+      "downloadUrl": "/academy/ai-agents/skills/project-status-risks/SKILL.md"
+    },
+    {
+      "id": "rapid-prototype",
+      "name": "rapid-prototype",
+      "description": "Build the smallest demo that proves a riskiest assumption. Use for spikes, hackathon pace, or validating UX before production polish.",
+      "downloadUrl": "/academy/ai-agents/skills/rapid-prototype/SKILL.md"
+    },
+    {
+      "id": "reality-check",
+      "name": "reality-check",
+      "description": "Evidence-based readiness review — default to NEEDS WORK until proof exists. Use before calling a feature production-ready.",
+      "downloadUrl": "/academy/ai-agents/skills/reality-check/SKILL.md"
+    },
+    {
+      "id": "sprint-prioritize",
+      "name": "sprint-prioritize",
+      "description": "Rank backlog items with RICE (Reach, Impact, Confidence, Effort). Use when choosing what ships this sprint or cutting scope.",
+      "downloadUrl": "/academy/ai-agents/skills/sprint-prioritize/SKILL.md"
+    },
+    {
+      "id": "test-automation",
+      "name": "test-automation",
+      "description": "Plan and write automated tests (unit, integration, E2E) for the critical path. Use when adding coverage or scaffolding a test suite.",
+      "downloadUrl": "/academy/ai-agents/skills/test-automation/SKILL.md"
+    },
+    {
+      "id": "test-driven-development",
+      "name": "test-driven-development",
+      "description": "Write a failing test first, then minimal code to pass. Use for features and bug fixes (not throwaway prototypes).",
+      "downloadUrl": "/academy/ai-agents/skills/test-driven-development/SKILL.md"
+    },
+    {
+      "id": "ui-design-system",
+      "name": "ui-design-system",
+      "description": "Define tokens, components, and handoff notes for a consistent UI. Use when creating or extending a visual system before building screens.",
+      "downloadUrl": "/academy/ai-agents/skills/ui-design-system/SKILL.md"
+    },
+    {
+      "id": "user-stories",
+      "name": "user-stories",
+      "description": "Turn a PRD or problem into crisp user stories with Given/When/Then acceptance criteria and clear out-of-scope notes. Use when breaking work for engineering.",
+      "downloadUrl": "/academy/ai-agents/skills/user-stories/SKILL.md"
+    },
+    {
+      "id": "ux-flows",
+      "name": "ux-flows",
+      "description": "Map user journeys, information architecture, and critical path screens. Use when structuring product UX before visual polish.",
+      "downloadUrl": "/academy/ai-agents/skills/ux-flows/SKILL.md"
+    },
+    {
+      "id": "ux-research-synth",
+      "name": "ux-research-synth",
+      "description": "Plan lightweight research and synthesize findings into decisions. Use when validating problems, flows, or designs with users or evidence.",
+      "downloadUrl": "/academy/ai-agents/skills/ux-research-synth/SKILL.md"
+    },
+    {
+      "id": "write-prd",
+      "name": "write-prd",
+      "description": "Write a short, evidence-gated PRD — problem, metrics, scope, and non-goals before engineering starts. Use when specifying a feature or initiative for handoff.",
+      "downloadUrl": "/academy/ai-agents/skills/write-prd/SKILL.md"
+    }
+  ]
+}

@@ -78,6 +78,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const promoBannerActive = usePromoBannerActive();
 
   // Handle mouse enter with immediate show
   const handleMouseEnter = () => {
@@ -174,7 +175,7 @@ export default function Header() {
     "SAFe Product Owner/Product Manager": "/POPM.jpg",
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
-    "Certified AI Product Manager": "/PMAI.jpeg",
+    "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
@@ -515,8 +516,6 @@ export default function Header() {
     },
   ];
 
-  const promoBannerActive = usePromoBannerActive();
-
   const selectedCategoryMeta =
     MEGA_MENU_CATEGORIES.find((c) => c.id === selectedMegaMenuCategory) ?? MEGA_MENU_CATEGORIES[0];
 
@@ -723,6 +722,12 @@ export default function Header() {
                   Courses
                 </Link>
                 <Link
+                  href="/academy"
+                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                >
+                  AI Academy
+                </Link>
+                <Link
                   href="/blog"
                   className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
@@ -801,6 +806,13 @@ export default function Header() {
                 className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 All Courses
+              </Link>
+              <Link 
+                href="/academy" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+              >
+                AI Academy
               </Link>
               <Link 
                 href="/blog" 

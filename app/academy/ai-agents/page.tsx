@@ -23,7 +23,7 @@ export default function AiAgentsAcademyPage() {
             </Link>
             <span>/</span>
             <Link href="/academy" className="hover:text-[#1f2c4a]">
-              Academy
+              AI Academy
             </Link>
             <span>/</span>
             <span className="text-[#1f2c4a]">AI Agents</span>

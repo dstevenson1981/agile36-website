@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Academy | Agile36',
-  description: 'Agile36 learning academies — AI Agents and more.',
+  title: 'AI Academy | Agile36',
+  description: 'Agile36 AI Academy — agents, tools, case studies, and class materials.',
 };
 
 export default function AcademyLayout({ children }: { children: React.ReactNode }) {

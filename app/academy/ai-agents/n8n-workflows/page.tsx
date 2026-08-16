@@ -17,7 +17,7 @@ export default function N8nWorkflowsPage() {
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#64748b]">
         <Link href="/academy" className="hover:text-[#1f2c4a]">
-          Academy
+          AI Academy
         </Link>
         <span>/</span>
         <Link href="/academy/ai-agents" className="hover:text-[#1f2c4a]">
