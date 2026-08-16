@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { AGENCY_AGENTS_CLASS_CATALOG } from '@/app/lib/academy/agency-agents';
 import { AI_AGENTS_ACADEMY, AI_AGENTS_MODULES } from '@/app/lib/academy/ai-agents';
 import { N8N_CLASS_CATALOG } from '@/app/lib/academy/n8n-workflows';
 
@@ -42,8 +43,14 @@ export default function AiAgentsAcademyPage() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/academy/ai-agents/n8n-workflows"
+                  href="/academy/ai-agents/agents"
                   className="inline-flex items-center justify-center rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                >
+                  Class agents
+                </Link>
+                <Link
+                  href="/academy/ai-agents/n8n-workflows"
+                  className="inline-flex items-center justify-center rounded-lg border border-[#1f2c4a]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#1f2c4a]/[0.04]"
                 >
                   Class n8n templates
                 </Link>
@@ -137,16 +144,23 @@ export default function AiAgentsAcademyPage() {
       <section className="border-t border-[#1f2c4a]/10 bg-white">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
           <h2 className="text-xl font-semibold text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
-            Class templates
+            Class marketplaces
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
-            {N8N_CLASS_CATALOG.workflows.length} curated workflows for labs. Your full business
-            inventory lives separately under the internal automation library.
+            {AGENCY_AGENTS_CLASS_CATALOG.agents.length} installable agents and{' '}
+            {N8N_CLASS_CATALOG.workflows.length} n8n workflows for labs. Full business inventories
+            stay owner-only under the internal libraries.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/academy/ai-agents/n8n-workflows"
+              href="/academy/ai-agents/agents"
               className="inline-flex items-center rounded-lg bg-[#1f2c4a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
+            >
+              Open class agents
+            </Link>
+            <Link
+              href="/academy/ai-agents/n8n-workflows"
+              className="inline-flex items-center rounded-lg border border-[#1f2c4a]/20 bg-white px-4 py-2.5 text-sm font-semibold text-[#1f2c4a] hover:bg-[#1f2c4a]/[0.04]"
             >
               Open class templates
             </Link>

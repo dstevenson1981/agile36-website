@@ -15,7 +15,7 @@ export const AI_AGENTS_ACADEMY = {
   badge: '/Logo_Agents.png',
   tagline: 'Build agents that do real work — with Claude Code, Codex, and n8n.',
   description:
-    "Class materials, workflow templates, and the software-team capstone for Agile36's No-Code AI Agents training. Start with the mental model, practice in n8n, then ship a multi-agent team.",
+    "Class materials, installable agent packs, n8n templates, and the software-team capstone for Agile36's No-Code AI Agents training.",
 };
 
 export const AI_AGENTS_MODULES: AcademyModule[] = [
@@ -37,6 +37,15 @@ export const AI_AGENTS_MODULES: AcademyModule[] = [
     href: '/academy/ai-agents/n8n-workflows',
   },
   {
+    id: 'agents-marketplace',
+    title: 'Class agent marketplace',
+    summary:
+      'Install PM, Designer, Dev, and Tester agents into Claude Code or Codex — skip inventing prompts on a limited plan.',
+    tools: ['Claude Code', 'Codex'],
+    status: 'ready',
+    href: '/academy/ai-agents/agents',
+  },
+  {
     id: 'agent-vs-workflow',
     title: 'Workflows vs Agents',
     summary:
@@ -48,8 +57,9 @@ export const AI_AGENTS_MODULES: AcademyModule[] = [
     id: 'capstone',
     title: 'Capstone: Software Engineering Agent Team',
     summary:
-      'Stand up PM, Designer, Dev, and Tester agents. Use n8n for handoffs and status; use coding agents for judgment inside each role.',
+      'Stand up PM, Designer, Dev, and Tester from the class marketplace. Use n8n for handoffs; use agents for judgment.',
     tools: ['n8n', 'Claude Code', 'Codex'],
-    status: 'coming-soon',
+    status: 'ready',
+    href: '/academy/ai-agents/agents',
   },
 ];
