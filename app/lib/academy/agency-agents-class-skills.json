@@ -19,10 +19,34 @@
       "downloadUrl": "/academy/ai-agents/skills/code-review/SKILL.md"
     },
     {
+      "id": "discovery-process",
+      "name": "discovery-process",
+      "description": "Run a full discovery cycle from problem hypothesis to validated solution. Use when a team needs a structured path through framing, interviews, synthesis, and experiments.",
+      "downloadUrl": "/academy/ai-agents/skills/discovery-process/SKILL.md"
+    },
+    {
       "id": "frontend-ui-implementation",
       "name": "frontend-ui-implementation",
       "description": "Implement responsive, accessible UI from a design system or mock. Use when building React/Next (or similar) screens to match design intent.",
       "downloadUrl": "/academy/ai-agents/skills/frontend-ui-implementation/SKILL.md"
+    },
+    {
+      "id": "jobs-to-be-done",
+      "name": "jobs-to-be-done",
+      "description": "Uncover customer jobs, pains, and gains in a structured JTBD format. Use when clarifying unmet needs, repositioning a product, or improving discovery and messaging.",
+      "downloadUrl": "/academy/ai-agents/skills/jobs-to-be-done/SKILL.md"
+    },
+    {
+      "id": "prioritization-advisor",
+      "name": "prioritization-advisor",
+      "description": "Choose a prioritization framework based on stage, team context, and stakeholder needs. Use when deciding between RICE, ICE, value/effort, or another scoring approach.",
+      "downloadUrl": "/academy/ai-agents/skills/prioritization-advisor/SKILL.md"
+    },
+    {
+      "id": "product-strategy-session",
+      "name": "product-strategy-session",
+      "description": "Run an end-to-end product strategy session across positioning, discovery, and roadmap planning. Use when a team needs validated direction before committing to execution.",
+      "downloadUrl": "/academy/ai-agents/skills/product-strategy-session/SKILL.md"
     },
     {
       "id": "project-status-risks",
@@ -41,6 +65,12 @@
       "name": "reality-check",
       "description": "Evidence-based readiness review — default to NEEDS WORK until proof exists. Use before calling a feature production-ready.",
       "downloadUrl": "/academy/ai-agents/skills/reality-check/SKILL.md"
+    },
+    {
+      "id": "roadmap-planning",
+      "name": "roadmap-planning",
+      "description": "Plan a strategic roadmap across prioritization, epic definition, stakeholder alignment, and sequencing. Use when turning strategy into a release plan that teams can execute.",
+      "downloadUrl": "/academy/ai-agents/skills/roadmap-planning/SKILL.md"
     },
     {
       "id": "sprint-prioritize",
@@ -71,6 +101,12 @@
       "name": "user-stories",
       "description": "Turn a PRD or problem into crisp user stories with Given/When/Then acceptance criteria and clear out-of-scope notes. Use when breaking work for engineering.",
       "downloadUrl": "/academy/ai-agents/skills/user-stories/SKILL.md"
+    },
+    {
+      "id": "user-story",
+      "name": "user-story",
+      "description": "Create user stories with Mike Cohn format and Gherkin acceptance criteria. Use when turning user needs into development-ready work with clear outcomes and testable conditions.",
+      "downloadUrl": "/academy/ai-agents/skills/user-story/SKILL.md"
     },
     {
       "id": "ux-flows",

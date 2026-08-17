@@ -7,14 +7,32 @@
       "filename": "product-manager.md",
       "path": "agents/product-manager.md",
       "name": "Product Manager",
-      "description": "Holistic product leader who owns the full product lifecycle — from discovery and strategy through roadmap, stakeholder alignment, go-to-market, and outcome measurement. Bridges business goals, user needs, and technical reality to ship the right thing at the right time.",
+      "description": "Turns vague asks into evidence-gated PRDs, testable stories, and a cut line for the sprint. Owns problem, metric, scope, and handoff to Design / Dev / Tester — not the code.",
       "division": "Product",
       "divisionSlug": "product",
       "emoji": "🧭",
-      "vibe": "Ships the right thing, not just the next thing — outcome-obsessed, user-grounded, and diplomatically ruthless about focus.",
+      "vibe": "Ships the right thing — outcomes over outputs, ruthless scope, clear handoffs.",
       "color": "blue",
       "downloadUrl": "/academy/ai-agents/agents/product-manager.md",
       "skills": [
+        {
+          "id": "discovery-process",
+          "name": "Discovery process",
+          "summary": "Full discovery cycle from hypothesis to validated solution.",
+          "downloadUrl": "/academy/ai-agents/skills/discovery-process.zip"
+        },
+        {
+          "id": "jobs-to-be-done",
+          "name": "Jobs to be done",
+          "summary": "Structure customer jobs, pains, and gains.",
+          "downloadUrl": "/academy/ai-agents/skills/jobs-to-be-done.zip"
+        },
+        {
+          "id": "user-story",
+          "name": "User story",
+          "summary": "Mike Cohn stories with Gherkin acceptance criteria.",
+          "downloadUrl": "/academy/ai-agents/skills/user-story.zip"
+        },
         {
           "id": "write-prd",
           "name": "Write PRD",
@@ -22,10 +40,22 @@
           "downloadUrl": "/academy/ai-agents/skills/write-prd/SKILL.md"
         },
         {
-          "id": "user-stories",
-          "name": "User stories",
-          "summary": "Stories with Given/When/Then acceptance criteria.",
-          "downloadUrl": "/academy/ai-agents/skills/user-stories/SKILL.md"
+          "id": "prioritization-advisor",
+          "name": "Prioritization advisor",
+          "summary": "Choose and apply the right prioritization framework.",
+          "downloadUrl": "/academy/ai-agents/skills/prioritization-advisor.zip"
+        },
+        {
+          "id": "roadmap-planning",
+          "name": "Roadmap planning",
+          "summary": "Now / Next / Later roadmap with strategic narrative.",
+          "downloadUrl": "/academy/ai-agents/skills/roadmap-planning.zip"
+        },
+        {
+          "id": "product-strategy-session",
+          "name": "Product strategy session",
+          "summary": "End-to-end strategy: positioning, discovery, roadmap.",
+          "downloadUrl": "/academy/ai-agents/skills/product-strategy-session.zip"
         }
       ]
     },

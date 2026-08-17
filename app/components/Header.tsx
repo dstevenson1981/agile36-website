@@ -722,12 +722,6 @@ export default function Header() {
                   Courses
                 </Link>
                 <Link
-                  href="/academy"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
-                >
-                  AI Academy
-                </Link>
-                <Link
                   href="/blog"
                   className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
@@ -806,13 +800,6 @@ export default function Header() {
                 className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
               >
                 All Courses
-              </Link>
-              <Link 
-                href="/academy" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
-              >
-                AI Academy
               </Link>
               <Link 
                 href="/blog" 
