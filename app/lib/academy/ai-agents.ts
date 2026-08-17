@@ -20,6 +20,15 @@ export const AI_AGENTS_ACADEMY = {
 
 export const AI_AGENTS_MODULES: AcademyModule[] = [
   {
+    id: 'job-search-agent',
+    title: 'Day 1: Job Search Agent',
+    summary:
+      'Foundation lab — agent contract, context, tools, skills stubs, and a copy-paste prompt for Claude Code / Codex.',
+    tools: ['Claude Code', 'Codex'],
+    status: 'ready',
+    href: '/academy/ai-agents/job-search-agent',
+  },
+  {
     id: 'n8n-workflows',
     title: 'Class n8n templates',
     summary:
