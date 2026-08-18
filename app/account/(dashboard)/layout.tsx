@@ -7,21 +7,17 @@ import AccountNav from '../AccountNav';
 
 export const dynamic = 'force-dynamic';
 
-/** Paths under /account that anyone can open without logging in. */
+/** Temporary: SSM Pro open until Friday — direct URL only, not linked from the public site. */
 function isPublicAccountPath(pathWithSearch: string): boolean {
   const path = pathWithSearch.split('?')[0] || '';
-  return (
-    path === '/account/practice-exams/advanced-scrum-master' ||
-    path === '/account/practice-exams/safe-for-teams' ||
-    path === '/account/practice-exams/rte'
-  );
+  return path === '/account/practice-exams/scrum-master';
 }
 
 function PublicPracticeExamShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-[#f6f9fd]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <main className="min-w-0 rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 sm:p-8 shadow-sm">
+      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+        <main className="min-w-0 rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 shadow-sm sm:p-8">
           {children}
         </main>
       </div>
@@ -38,50 +34,57 @@ export default async function DashboardLayout({
   const pathWithSearch = hdrs.get('x-agile36-path') || '/account';
   const publicPath = isPublicAccountPath(pathWithSearch);
 
+  let user: { email?: string | null } | null = null;
+  let showCourseExams = false;
+  let showCourseMaterials = false;
+
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    user = authUser;
 
-    if (!user) {
-      if (publicPath) {
-        return <PublicPracticeExamShell>{children}</PublicPracticeExamShell>;
-      }
-      redirect(`/account/login?next=${encodeURIComponent(pathWithSearch)}`);
+    if (authUser) {
+      [showCourseExams, showCourseMaterials] = await Promise.all([
+        hasAiProductManagementExamAccess(),
+        hasAiProductManagementCourseAccess(),
+      ]);
     }
-
-    const path = pathWithSearch.split('?')[0] || '';
-    const isFullscreenExam =
-      path === '/account/exams/ai-product-management';
-
-    if (isFullscreenExam) {
-      return <div className="min-h-screen bg-[#e8eef5]">{children}</div>;
-    }
-
-    const showCourseExams = await hasAiProductManagementExamAccess();
-    const showCourseMaterials = await hasAiProductManagementCourseAccess();
-
-    return (
-      <div className="min-h-screen bg-[#f6f9fd] text-[#1f2c4a]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col lg:flex-row gap-8">
-            <aside className="lg:w-56 flex-shrink-0">
-              <AccountNav
-                userEmail={user.email}
-                showCourseExams={showCourseExams}
-                showCourseMaterials={showCourseMaterials}
-              />
-            </aside>
-            <main className="flex-1 min-w-0">
-              {children}
-            </main>
-          </div>
-        </div>
-      </div>
-    );
   } catch {
     if (publicPath) {
       return <PublicPracticeExamShell>{children}</PublicPracticeExamShell>;
     }
-    redirect('/account/login');
   }
+
+  if (!user) {
+    if (publicPath) {
+      return <PublicPracticeExamShell>{children}</PublicPracticeExamShell>;
+    }
+    redirect(`/account/login?next=${encodeURIComponent(pathWithSearch)}`);
+  }
+
+  const path = pathWithSearch.split('?')[0] || '';
+  const isFullscreenExam = path === '/account/exams/ai-product-management';
+
+  if (isFullscreenExam) {
+    return <div className="min-h-screen bg-[#e8eef5]">{children}</div>;
+  }
+
+  return (
+    <div className="min-h-screen bg-[#f6f9fd] text-[#1f2c4a]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <aside className="lg:w-56 flex-shrink-0">
+            <AccountNav
+              userEmail={user.email ?? undefined}
+              showCourseExams={showCourseExams}
+              showCourseMaterials={showCourseMaterials}
+            />
+          </aside>
+          <main className="flex-1 min-w-0">{children}</main>
+        </div>
+      </div>
+    </div>
+  );
 }
