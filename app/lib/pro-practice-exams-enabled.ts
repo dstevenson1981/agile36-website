@@ -13,7 +13,7 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
   'leading-safe',
-  // 'scrum-master' — temporarily disabled; re-add to enable SSM Pro again
+  'scrum-master', // account Pro + ?ssm_pro= share cookie only — not public /test
   'agile-product-management',
   'advanced-scrum-master',
   'safe-for-teams',
@@ -25,7 +25,7 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
   '/account/practice-exams/popm',
   '/account/practice-exams/leading-safe',
-  // '/account/practice-exams/scrum-master' — temporarily disabled with SSM Pro
+  '/account/practice-exams/scrum-master', // Pro gate or share-key cookie; not public practice
   '/account/practice-exams/agile-product-management',
   '/account/practice-exams/advanced-scrum-master',
   '/account/practice-exams/safe-for-teams',
@@ -34,7 +34,7 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
 ]);
 
 const ALWAYS_ENABLED_COURSE_PRACTICE_EXAM =
-  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|agile-product-management|advanced-scrum-master|safe-for-teams|certified-ai-product-manager|release-train-engineer)\/practice-exam\/?$/;
+  /^\/courses\/(lean-portfolio-management|product-owner-manager|leading-safe|scrum-master|agile-product-management|advanced-scrum-master|safe-for-teams|certified-ai-product-manager|release-train-engineer)\/practice-exam\/?$/;
 
 /** Former public Pro shortcuts → free /test mocks or course pages (always). */
 const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
@@ -47,6 +47,13 @@ const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
   '/scrum-master-pro-temp-2': '/test/scrum-master',
   '/sasm-practice': '/courses/advanced-scrum-master',
   '/test/advanced-scrum-master': '/courses/advanced-scrum-master',
+  '/popm-pro-temp': '/test/product-owner-manager',
+  '/popmpro': '/test/product-owner-manager',
+  '/popm-practice-temp': '/test/product-owner-manager',
+  '/popm-prep-pro': '/test/product-owner-manager',
+  '/lpm-pro-temp': '/test/lean-portfolio-management',
+  '/lpmpro': '/test/lean-portfolio-management',
+  '/apm-pro-temp': '/test/agile-product-management',
 };
 
 const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;
