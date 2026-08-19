@@ -123,6 +123,27 @@ the partner calendar yet. She approves by replying `approved` on that issue.
 
 Never ask her to go and find a file.
 
+## Supabase decides what may exist at all
+
+Two things follow from the same principle, and neither needs Deadra to
+restate them:
+
+**A date with no cohort is a decision.** She is off that day. Sept 5-6 2026
+is the example — not an oversight.
+
+**A cancelled cohort is not a class.** If the status is anything other than
+`active`, or the row is `hidden`, it must never reach the spreadsheet, even
+though the date exists in Supabase.
+
+Both are enforced at `scripts/diff-classes.mjs`, which whitelists rather than
+blacklists — `if (r.status !== "active" || r.hidden) return false;` — before
+any candidate is built. A whitelist is the right shape here: any future status
+she invents is excluded by default rather than silently allowed through.
+
+Verified 2026-08-18: all 11 proposed dates existed in Supabase, none invented.
+The API returned 460 rows, all `active`, so the cancelled path is correct but
+has not yet been exercised against real cancelled data.
+
 ## An empty date in Supabase is a decision, not a gap
 
 Supabase is the source of truth for which dates exist at all. **If a date has
