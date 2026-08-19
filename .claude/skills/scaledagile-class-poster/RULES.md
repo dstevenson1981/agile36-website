@@ -109,3 +109,16 @@ or you will create duplicates and burn listings.
 The Course Admin header shows **Calendar Listings Available** (base + earned −
 scheduled). Read it before planning a batch. Deadra has said the number is not
 a hard blocker in practice — but report it, and never silently plan past it.
+
+## Delivery is the board, not the disk
+
+Deadra does not read chat transcripts, terminal output, or files in `reports/`.
+**If it is not on the Multica board, it did not happen.** A run that produced a
+correct CSV and left it on disk is a failed run — that is exactly what happened
+on 2026-08-18, when the sync wrote `classes.csv` at 17:18 and she saw nothing.
+
+Every run ends by posting to the issue it was triggered from: a plain-language
+summary plus the CSV attached, and an explicit line saying nothing has reached
+the partner calendar yet. She approves by replying `approved` on that issue.
+
+Never ask her to go and find a file.

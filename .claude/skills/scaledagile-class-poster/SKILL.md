@@ -83,9 +83,29 @@ node scripts/select-batch.mjs --diff <diff.json> --competition competition.json 
 node scripts/to-automation-csv.mjs --plan plan.json
 ```
 
-Then **send `automation/classes.csv` to Deadra and wait.** Show her, in the
-message: how many classes, on which dates, which trainer, and how many
-already-listed classes each date carries. Do not post until she says go.
+Then **put the CSV on the Multica board and wait.** Deadra does not read
+chat transcripts or files on disk — if it is not on the board, it did not
+happen. Writing the CSV to `reports/` is not delivery.
+
+Post it as a comment on the run's issue, with the file attached:
+
+```bash
+cd automation
+multica issue comment add <issue-id> \
+  --content-file /tmp/summary.md --allow-external-file \
+  --attachment classes.csv
+```
+
+`<issue-id>` is the issue this run was triggered from — the autopilot creates
+one per run. Find it with `multica issue list` if it was not passed in.
+
+The comment must state, in plain text above the attachment: how many classes,
+the breakdown by course and by trainer, which dates carry the full four, and
+an explicit line that **nothing has been posted to the partner calendar yet**
+and that replying `approved` is the go signal. Attaching a bare CSV with no
+summary is not enough — she should be able to decide without opening it.
+
+Then stop. Do not post until she approves on that issue.
 
 Every rule in `RULES.md` should already be satisfied by the CSV. Verify before
 sending — per-day cap counting existing listings, no trainer on overlapping
