@@ -9,7 +9,7 @@
  *   node dump-portal.mjs
  */
 import { chromium } from "playwright";
-import { writeFileSync } from "node:fs";
+import { writeFileSync, readFileSync } from "node:fs";
 import { readInstructors } from "./lib-instructors.mjs";
 
 const PORTAL = "https://community.scaledagile.com/s/course-admin";
@@ -30,7 +30,12 @@ const scrape = () =>
         const c = [...x.querySelectorAll('[role="gridcell"],[role="rowheader"]')].map((v) =>
           v.innerText.trim().replace(/\s+/g, " ")
         );
-        if (c.length >= 6) out.push({ name: c[0], date: c[2], instructors: Number(c[5]) || 0 });
+        if (c.length >= 6) {
+          // The row already links straight to the detail page; keeping the href
+          // avoids reloading the whole grid just to find this row again.
+          const a = x.querySelector("a[href*='ilt-course']");
+          out.push({ name: c[0], date: c[2], instructors: Number(c[5]) || 0, href: a ? a.href : null });
+        }
       });
       r.querySelectorAll("*").forEach((e) => e.shadowRoot && walk(e.shadowRoot));
     };
@@ -125,20 +130,32 @@ const upcoming = rows.filter((r) => {
   const d = new Date(r.date);
   return !isNaN(d) && d.toISOString().slice(0, 10) >= today && r.instructors > 0;
 });
+// Instructor names and end dates do not change once a class is created, so a
+// previous snapshot answers for any class we have already visited. Only new
+// listings cost a page load.
+let priorByHref = new Map();
+let cacheHits = 0;
+try {
+  const prior = JSON.parse(readFileSync("portal-state.json", "utf8")).listings ?? [];
+  for (const l of prior) if (l.href && l.trainers) priorByHref.set(l.href, l);
+} catch {}
+
 for (const r of upcoming) {
   try {
-    await page.goto(PORTAL, { waitUntil: "domcontentloaded" });
-    for (let i = 0; i < 12; i++) {
-      const c = page.getByRole("button", { name: /cancel and close/i });
-      if (await c.count()) await c.first().click().catch(() => {});
-      if ((await page.getByRole("row").count()) > 3) break;
-      await page.waitForTimeout(3000);
+    // Straight to the detail page. Reloading the admin grid and re-finding the
+    // row cost two full page loads per class — ~15s each, 9+ minutes across 45
+    // upcoming classes. The href came back with the row.
+    if (!r.href) continue;
+    const cached = priorByHref.get(r.href);
+    if (cached) {
+      r.trainers = cached.trainers;
+      r.endDate = cached.endDate;
+      r.type = cached.type;
+      cacheHits++;
+      continue;
     }
-    const row = page.getByRole("row").filter({ hasText: r.name }).filter({ hasText: r.date });
-    if ((await row.count()) !== 1) continue;
-    await row.first().getByRole("link").first().click();
-    await page.waitForURL(/ilt-course/, { timeout: 30000 });
-    await page.waitForTimeout(3500);
+    await page.goto(r.href, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
     // Instructor rows are the ones carrying an email address. Attendee rows do
     // too, so stop at the Attendees heading.
     // End date matters: a class running 9/16-9/18 occupies its trainer for all
@@ -181,6 +198,6 @@ writeFileSync("portal-state.json", JSON.stringify({ capturedRows: listings.lengt
 
 const byDate = {};
 for (const l of listings) byDate[l.date] = (byDate[l.date] || 0) + 1;
-console.log(`wrote portal-state.json — ${listings.length} listings`);
+console.log(`wrote portal-state.json — ${listings.length} listings (${cacheHits} reused from the previous snapshot, ${upcoming.length - cacheHits} fetched)`);
 const over = Object.entries(byDate).filter(([, n]) => n > 4);
 console.log(over.length ? `OVER CAP: ${over.map(([d, n]) => `${d}=${n}`).join(", ")}` : "no date over the 4-class cap");
