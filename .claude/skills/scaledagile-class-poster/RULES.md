@@ -122,3 +122,20 @@ summary plus the CSV attached, and an explicit line saying nothing has reached
 the partner calendar yet. She approves by replying `approved` on that issue.
 
 Never ask her to go and find a file.
+
+## An empty date in Supabase is a decision, not a gap
+
+Supabase is the source of truth for which dates exist at all. **If a date has
+no cohort there, it is because Deadra is not working that day** — she takes
+time off, and the absence is deliberate. Sept 5–6 2026 is the example: not an
+oversight, she is off.
+
+The pipeline already honours this structurally — `diff-classes.mjs` builds
+candidates by diffing the live schedule API against the partner calendar, so a
+date with no cohort never becomes a candidate. Verified 2026-08-18: all 11
+proposed dates existed in Supabase, zero invented.
+
+Do not "fill" an empty date, do not treat a quiet week as an opportunity, and
+never add a hardcoded blackout to paper over this — the absence in Supabase is
+already the instruction. If a future change starts generating candidate dates
+from cohort-day patterns instead of from Supabase rows, that change is wrong.
