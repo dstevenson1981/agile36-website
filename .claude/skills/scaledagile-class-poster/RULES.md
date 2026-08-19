@@ -179,20 +179,19 @@ never add a hardcoded blackout to paper over this — the absence in Supabase is
 already the instruction. If a future change starts generating candidate dates
 from cohort-day patterns instead of from Supabase rows, that change is wrong.
 
-## The admin grid cannot see classes that have started
+## The portal grid is paginated — read all of it
 
-`dump-portal.mjs` reads the Course Admin **My Courses** grid, and that grid
-**drops a class once it reaches its start date**. A class running today is live
-on the public calendar and absent from the grid, so the diff reads it as
-unlisted and proposes it again — a duplicate on the live calendar.
+`dump-portal.mjs` reads the Course Admin **My Courses** grid, which paginates
+at 25 rows via a `<c-lwc-pager>` inside a shadow root, reporting counts like
+"1-25 of 1955". **Scrolling does nothing.** The pager has a page-size select
+(25/50/100) and two chevron buttons; both must be driven from script.
 
-Measured 2026-08-19: the grid held exactly 25 rows, sorted newest-first,
-earliest Sep 7, nothing in August, stable after 60 seconds. It is not
-paginated and nothing was missing — August was simply gone.
+Reading page one only compared Deadra's whole schedule against 25 listings and
+proposed classes that were already live — `2026-08-19 Agile Product Management`
+was on the calendar the entire time. After the fix the snapshot holds 100
+listings back to July, and that class is present.
 
-Therefore **never propose a class starting today or earlier**
-(`postingPolicy.minLeadDays`). "Not in the grid" only means "not listed" for
-dates from tomorrow onward.
-
-This is the one qualification to *the portal is the source of truth*: it is
-authoritative for upcoming classes, and blind to ones already under way.
+**Everything is in the grid, past and future.** If a class appears missing,
+the snapshot is incomplete — check the row count against the pager's total
+before concluding anything. Verify by measuring the live grid, not by reading
+the scraper.

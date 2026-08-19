@@ -47,37 +47,75 @@ for (let i = 0; i < 15; i++) {
   await page.waitForTimeout(4000);
 }
 
-// The grid lazy-loads: it renders one page and appends more as you reach the
-// bottom. Scraping once captured exactly 25 rows starting at 2026-09-07 and
-// nothing in August, so the planner compared the full Supabase schedule against
-// a partial calendar and proposed classes that were already listed — a real
-// duplicate on 2026-08-19. Keep scrolling and clicking "load more" until the
-// row count stops growing.
-let stable = 0;
-for (let i = 0; i < 40 && stable < 3; i++) {
-  const before = rows.length;
+// The grid paginates: a <c-lwc-pager> in a shadow root with a page-size select
+// (25/50/100) and two chevron buttons, reporting "1-25 of 1955" — 79 pages.
+// Reading only page one compared Deadra's whole schedule against 25 listings
+// and proposed classes that were already live (2026-08-19 Agile Product
+// Management, which she caught). Scrolling does nothing here; the pager must be
+// driven. Rows come back newest-first, so paging walks backwards in time —
+// stop once the oldest loaded row predates today, because everything still to
+// come has loaded by then.
 
-  const more = page.getByRole("button", { name: /load more|show more|view all|next/i });
-  if (await more.count()) await more.first().click().catch(() => {});
-
-  // Scroll whichever element actually owns the overflow, shadow roots included.
-  await page.evaluate(() => {
-    const scrollers = [];
+/** Reach into the pager's shadow root; it is not reachable by CSS from document. */
+const pagerDo = (action) =>
+  page.evaluate((act) => {
+    let pager = null;
     const walk = (r) => {
       r.querySelectorAll("*").forEach((e) => {
-        if (e.scrollHeight > e.clientHeight + 40) scrollers.push(e);
+        if (e.tagName === "C-LWC-PAGER" && e.shadowRoot && !pager) pager = e;
         if (e.shadowRoot) walk(e.shadowRoot);
       });
     };
     walk(document);
-    for (const e of scrollers) e.scrollTop = e.scrollHeight;
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-  await page.waitForTimeout(1500);
+    if (!pager) return "no-pager";
+    const root = pager.shadowRoot;
 
-  rows = await scrape();
-  stable = rows.length > before ? 0 : stable + 1;
+    if (act === "maxPageSize") {
+      const sel = root.querySelector("select");
+      if (!sel) return "no-select";
+      const biggest = [...sel.options].map((o) => Number(o.value)).sort((a, b) => b - a)[0];
+      sel.value = String(biggest);
+      sel.dispatchEvent(new Event("change", { bubbles: true }));
+      return `size=${biggest}`;
+    }
+
+    // The last chevron is "next"; a disabled one is parked with pointer-events:none.
+    const btns = [...root.querySelectorAll("lightning-button")];
+    const next = btns[btns.length - 1];
+    if (!next) return "no-next";
+    if ((next.getAttribute("style") || "").includes("pointer-events: none")) return "exhausted";
+    const inner = next.shadowRoot && next.shadowRoot.querySelector("button");
+    (inner || next).click();
+    return "clicked";
+  }, action);
+
+const oldestLoaded = async () => {
+  const times = (await scrape())
+    .map((r) => new Date(r.date).getTime())
+    .filter((n) => !isNaN(n));
+  return times.length ? new Date(Math.min(...times)).toISOString().slice(0, 10) : null;
+};
+
+console.log(`page size: ${await pagerDo("maxPageSize")}`);
+await page.waitForTimeout(3000);
+rows = await scrape();
+
+const todayIso = new Date().toISOString().slice(0, 10);
+const seen = new Map();
+const keep = (rs) => rs.forEach((r) => seen.set(`${r.name}|${r.date}`, r));
+keep(rows);
+
+for (let i = 0; i < 40; i++) {
+  const oldest = await oldestLoaded();
+  if (oldest && oldest < todayIso) break;
+  const res = await pagerDo("next");
+  if (res !== "clicked") break;
+  await page.waitForTimeout(2500);
+  const batch = await scrape();
+  if (!batch.length) break;
+  keep(batch);
 }
+rows = [...seen.values()];
 console.log(`grid rows after paging: ${rows.length}`);
 // Instructor NAMES for upcoming classes. The planner needs these, not just a
 // count: a trainer already teaching a live class that day cannot take a new
