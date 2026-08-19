@@ -47,6 +47,17 @@ date. A class running 9/16–9/18 means that trainer takes nothing on 9/16,
 9/17, or 9/18. Agile Product Management is three days, so this bites often.
 Always compare full ranges; comparing start dates alone is wrong.
 
+This applies to the batch being built, not only to what is already on the
+calendar. A trainer assigned earlier in the same run is occupied for that
+class's whole span in every date still being staffed. The code enforced this
+against live listings but not against its own assignments until 2026-08-19,
+which put Deadra on Agile Product Management 10/07-10/09 and Scrum Master
+10/08-10/09 in one proposal.
+
+**Supabase permits an overlap; the partner portal does not** — it rejects the
+second class because the instructor is already registered to teach. So Supabase
+being happy proves nothing here.
+
 ## Only public classes count
 
 Private classes are invisible to the partner calendar. They do not count
@@ -220,17 +231,6 @@ anything else; do not report it back to her as a possible problem.
 The job is to take that schedule and post what is not yet on the partner
 calendar. Every minute spent litigating the source data is a minute not spent
 doing that.
-
-## Trainer overlap is checked across the batch, not just the calendar
-
-A trainer booked for a class in *this batch* is occupied for every day that
-class spans, in every other date group the run is still staffing. Checking only
-what is already live on the calendar let Deadra be rostered for Agile Product
-Management 10/07-10/09 and Scrum Master 10/08-10/09 in the same proposal.
-
-**Supabase permits it; the partner portal does not** — it rejects the second
-class because the instructor is already registered to teach. Agile Product
-Management is three days, so this recurs whenever it is scheduled.
 
 ## Staff the higher earner when trainers are scarce
 
