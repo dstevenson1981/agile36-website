@@ -89,61 +89,30 @@
         "className": "Value Stream Mapping-Guaranteed to Run"
       }
     },
-    "listingQuotaNote": "The Course Admin header shows 'Calendar Listings Available' \u2014 a hard cap on how many more classes can be posted. Read it EVERY run before posting and never plan a batch larger than it. As of 2026-08-10: 19 available (25 base + 37 earned).",
+    "listingQuotaNote": "The Course Admin header shows 'Calendar Listings Available' — a hard cap on how many more classes can be posted. Read it EVERY run before posting and never plan a batch larger than it. As of 2026-08-10: 19 available (25 base + 37 earned).",
     "reconcileAgainstPortal": "The portal's My Courses grid is the authority on what already exists. The public Training Finder can lag or omit rows, so a class can exist in the portal without appearing there. Reconcile against the portal before posting or you will create duplicates."
   },
   "actualRevenue": {
     "asOf": "2026-08-10",
-    "note": "Owner-supplied actuals. NEVER infer a revenue ranking from how often a course runs or from what Deadra calls an anchor \u2014 those are delivery-rhythm decisions, not earnings. Ask for fresh numbers rather than guessing.",
+    "note": "Owner-supplied actuals. NEVER infer a revenue ranking from how often a course runs or from what Deadra calls an anchor — those are delivery-rhythm decisions, not earnings. Ask for fresh numbers rather than guessing.",
     "byCourse": {
-      "product-owner-manager": {
-        "revenue": 11614,
-        "orders": 24
-      },
-      "agile-product-management": {
-        "revenue": 11075,
-        "orders": 10
-      },
-      "lean-portfolio-management": {
-        "revenue": 7278,
-        "orders": 8
-      },
-      "leading-safe": {
-        "revenue": 3367,
-        "orders": 7
-      },
-      "advanced-scrum-master": {
-        "revenue": 2422,
-        "orders": 7
-      },
-      "scrum-master": {
-        "revenue": 2384,
-        "orders": 5
-      },
-      "value-stream-mapping": {
-        "revenue": 2000,
-        "orders": 4
-      },
-      "safe-for-teams": {
-        "revenue": 589,
-        "orders": 1
-      }
+      "product-owner-manager": { "revenue": 11614, "orders": 24 },
+      "agile-product-management": { "revenue": 11075, "orders": 10 },
+      "lean-portfolio-management": { "revenue": 7278, "orders": 8 },
+      "leading-safe": { "revenue": 3367, "orders": 7 },
+      "advanced-scrum-master": { "revenue": 2422, "orders": 7 },
+      "scrum-master": { "revenue": 2384, "orders": 5 },
+      "value-stream-mapping": { "revenue": 2000, "orders": 4 },
+      "safe-for-teams": { "revenue": 589, "orders": 1 }
     }
   },
   "postingPolicy": {
     "maxClassesPerDay": 4,
-    "minLeadDays": 7,
-    "blackoutDates": [
-      "2026-09-05",
-      "2026-09-06",
-      "2026-09-07",
-      "2026-09-08",
-      "2026-09-09"
-    ],
-    "blackoutNote": "Dates Deadra has told us to keep clear. Nothing posts on these, whatever Supabase carries. Confirm the list each run \u2014 it is hers to set, never inferred.",
+    "blackoutDates": ["2026-09-05", "2026-09-06", "2026-09-07", "2026-09-08", "2026-09-09"],
+    "blackoutNote": "Dates Deadra has told us to keep clear. Nothing posts on these, whatever Supabase carries. Confirm the list each run — it is hers to set, never inferred.",
     "competitionScope": "eastern",
-    "competitionNote": "Score competition on Eastern/New York listings only \u2014 that is the bucket Agile36 sells into and the one buyers filter on. A class in another timezone is not competing for the same seat. Set to 'all' to score worldwide.",
-    "anchorRationale": "Product Owner/Product Manager stays an anchor regardless of competition \u2014 it is the highest-revenue course.",
+    "competitionNote": "Score competition on Eastern/New York listings only — that is the bucket Agile36 sells into and the one buyers filter on. A class in another timezone is not competing for the same seat. Set to 'all' to score worldwide.",
+    "anchorRationale": "Product Owner/Product Manager stays an anchor regardless of competition — it is the highest-revenue course.",
     "note": "Supabase lists every course on every date (run-what-fills catalog). The partner calendar names a trainer per listing, so we post a credible subset: at most 4 a day, no trainer double-booked.",
     "courseTiers": {
       "anchors": [
@@ -151,49 +120,27 @@
         "product-owner-manager",
         "scrum-master"
       ],
-      "floaters": [
-        "leading-safe",
-        "advanced-scrum-master",
-        "safe-for-teams"
-      ],
-      "floaterBudgets": {
-        "safe-for-teams": 2
-      },
-      "twicePerMonth": [
-        "agile-product-management"
-      ],
-      "excluded": [
-        "devops"
-      ],
-      "exclusiveCourses": [
-        "agile-product-management"
-      ],
-      "exclusiveNote": "A date carrying one of these runs it ALONE \u2014 nothing else is scheduled that day. Deadra: 'Sept 12-13 should be Agile Product Management only.' APM is a multi-day course, so its dates belong to it."
+      "floaters": ["leading-safe", "advanced-scrum-master", "safe-for-teams"],
+      "floaterBudgets": { "safe-for-teams": 2 },
+      "twicePerMonth": ["agile-product-management"],
+      "excluded": ["devops"],
+      "exclusiveCourses": ["agile-product-management"],
+      "exclusiveNote": "A date carrying one of these runs it ALONE — nothing else is scheduled that day. Deadra: 'Sept 12-13 should be Agile Product Management only.' APM is a multi-day course, so its dates belong to it."
     },
-    "anchorNote": "Anchors run on every cohort day (Mon/Tue, Thu/Fri, Sat/Sun). One floater rotates in to fill the 4th slot. DevOps is excluded \u2014 it never draws registrations.",
+    "anchorNote": "Anchors run on every cohort day (Mon/Tue, Thu/Fri, Sat/Sun). One floater rotates in to fill the 4th slot. DevOps is excluded — it never draws registrations.",
     "trainers": {
-      "rotation": [
-        "Marcus Ball",
-        "Joseph Puoci",
-        "Deadra Stevenson"
-      ],
+      "rotation": ["Marcus Ball", "Joseph Puoci", "Deadra Stevenson"],
       "restricted": {
         "Martina Svoboda": {
-          "courses": [
-            "product-owner-manager",
-            "leading-safe"
-          ]
+          "courses": ["product-owner-manager", "leading-safe"]
         }
       },
       "courseRestrictions": {
-        "lean-portfolio-management": [
-          "Deadra Stevenson",
-          "Joseph Puoci"
-        ]
+        "lean-portfolio-management": ["Deadra Stevenson", "Joseph Puoci"]
       },
-      "publicOnlyRule": "Only PUBLIC classes count toward the 4-per-day cap and the no-overlap rule. Private classes are invisible to the partner calendar and a trainer may run one alongside a public class \u2014 seeing the same trainer twice on a date is fine when one of them is private. Check the class Type before reporting a conflict.",
-      "noOverlapRule": "A trainer is occupied for EVERY day their class spans, not just its start date. A 9/16-9/18 class means that trainer takes nothing on 9/16, 9/17, or 9/18. Multi-day courses (Agile Product Management is 3 days) make this bite often \u2014 always compare full date ranges, never start dates alone.",
-      "courseRestrictionsNote": "Whitelist of who may teach a course; overrides the rotation. Only Deadra and Joe are certified for Lean Portfolio Management \u2014 Marcus Ball and Martina Svoboda must never be assigned to it. Ask before assuming any other course is open to everyone."
+      "publicOnlyRule": "Only PUBLIC classes count toward the 4-per-day cap and the no-overlap rule. Private classes are invisible to the partner calendar and a trainer may run one alongside a public class — seeing the same trainer twice on a date is fine when one of them is private. Check the class Type before reporting a conflict.",
+      "noOverlapRule": "A trainer is occupied for EVERY day their class spans, not just its start date. A 9/16-9/18 class means that trainer takes nothing on 9/16, 9/17, or 9/18. Multi-day courses (Agile Product Management is 3 days) make this bite often — always compare full date ranges, never start dates alone.",
+      "courseRestrictionsNote": "Whitelist of who may teach a course; overrides the rotation. Only Deadra and Joe are certified for Lean Portfolio Management — Marcus Ball and Martina Svoboda must never be assigned to it. Ask before assuming any other course is open to everyone."
     }
   },
   "timezonePortalLabels": {

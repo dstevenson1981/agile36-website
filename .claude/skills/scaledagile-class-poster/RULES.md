@@ -160,31 +160,3 @@ Do not "fill" an empty date, do not treat a quiet week as an opportunity, and
 never add a hardcoded blackout to paper over this — the absence in Supabase is
 already the instruction. If a future change starts generating candidate dates
 from cohort-day patterns instead of from Supabase rows, that change is wrong.
-
-## A registrant closes every day of the proposed class, not just its start
-
-The block works in both directions, and both were broken until 2026-08-19.
-
-A class with registrants closes **every day it spans**. A *proposed* class is
-disqualified if **any day it occupies** falls on a closed date — checking only
-its start date is wrong. Agile Product Management runs three days, so a clean
-Monday can still land on a closed Tuesday.
-
-What that bug produced: APM 8/19–8/21 proposed over a Product Owner class
-holding **six registrants** on 8/20–8/21, and APM 9/2–9/4 proposed over a
-booked Advanced Scrum Master on 9/3–9/4. Both looked fine because their start
-dates were free.
-
-## Never propose a class starting immediately
-
-`postingPolicy.minLeadDays` (7) is the floor. A class starting today cannot be
-listed and sold — it needs lead time on the partner calendar before day one.
-The same run proposed a class starting the very day it ran.
-
-## Validate against Supabase, not just against the batch
-
-A check that only compares proposed rows to each other will pass a batch that
-violates every rule about the live schedule. On 2026-08-19 exactly that
-happened: an in-batch trainer-overlap check reported "no violations" on a CSV
-that double-booked six registrants. Any validation must load the live schedule
-and check spans, registrants, and instructors against it.
