@@ -195,3 +195,18 @@ listings back to July, and that class is present.
 the snapshot is incomplete — check the row count against the pager's total
 before concluding anything. Verify by measuring the live grid, not by reading
 the scraper.
+
+## An empty date cannot conflict
+
+Nothing on a date with **zero registrants** is a conflict. Not two classes
+stacked, not Agile Product Management sharing a date, not a trainer appearing
+twice. Until someone registers, the listing is speculative and costs nothing.
+
+So **do not flag conflicts on empty dates** — not in a CSV summary, not as a
+warning, not as a question. It reads as a problem and it is not one.
+
+"Agile Product Management runs alone on its dates" and the per-day cap describe
+what happens **once a date has registrants**: Deadra then protects the class
+that is selling and clears the rest. Before that, they are not constraints on
+what may be proposed. Asked about Oct 8 on 2026-08-19: "i have no one registered
+for that date. until people register it doesnt matter."
