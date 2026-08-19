@@ -156,6 +156,18 @@ const capacityFor = (date) =>
 
 // Trainers already teaching a LIVE class on a date. They cannot take another
 // one that day — Agile36's trainers never overlap.
+/** Every ISO day a row occupies, inclusive — trainers are booked across spans. */
+const spanOf = (row) => {
+  const out = [];
+  const d = new Date(`${row.start}T00:00:00Z`);
+  const last = new Date(`${row.end || row.start}T00:00:00Z`);
+  while (d <= last) {
+    out.push(d.toISOString().slice(0, 10));
+    d.setUTCDate(d.getUTCDate() + 1);
+  }
+  return out;
+};
+
 const liveBusy = new Map();
 for (const l of portalListings) {
   for (const t of l.trainers ?? []) {
@@ -191,7 +203,7 @@ const dates = [...byDate.keys()].sort();
 const cohortDates = dates.filter((d) => tiers.anchors.some((s) => has(d, s)));
 const lightDates = dates.filter((d) => !cohortDates.includes(d));
 
-const selected = [];
+let selected = [];
 const gaps = [];
 const floaterUsed = new Map();
 
@@ -324,10 +336,21 @@ for (const date of [...dateGroups.keys()].sort()) {
   // Seed with whoever is already committed on the live calendar that day.
   const taken = new Set(liveBusy.get(date) ?? []);
   // Staff the most constrained rows (fewest eligible trainers) first.
-  const order = [...rows].sort((a, b) => eligibleFor(a).length - eligibleFor(b).length);
+  // Most-constrained first, then by what the course actually earns. SAFe for
+  // Teams has taken $589 across one order; Scrum Master $2,384. Ordering on
+  // constraint alone let SAFe for Teams take the last free trainer on 10/08 and
+  // leave Scrum Master with nobody.
+  const revenueOf = (row) =>
+    config.actualRevenue?.byCourse?.[slugOf[row.course]]?.revenue ?? 0;
+  const order = [...rows].sort(
+    (a, b) => eligibleFor(a).length - eligibleFor(b).length || revenueOf(b) - revenueOf(a)
+  );
 
   for (const row of order) {
-    const free = eligibleFor(row).filter((n) => !taken.has(n));
+    // Free means free on EVERY day this class runs, not just its first.
+    const free = eligibleFor(row).filter(
+      (n) => !taken.has(n) && !spanOf(row).some((d) => liveBusy.get(d)?.has(n))
+    );
     if (!free.length) continue;
     const underCap = free.filter(
       (n) => (perCourse.get(`${n}|${row.course}`) || 0) < courseCap.get(row.course)
@@ -345,12 +368,25 @@ for (const date of [...dateGroups.keys()].sort()) {
     const name = candidates[0];
     row.trainer = name;
     taken.add(name);
+    // A trainer is occupied for EVERY day their class spans, and dates are
+    // processed one group at a time — so an Agile Product Management class on
+    // Oct 7-9 has to block that trainer on the 8th and 9th too, in the groups
+    // that have not been staffed yet. Without this, Deadra was rostered for
+    // APM 10/07-10/09 and Scrum Master 10/08-10/09; Supabase allows it but the
+    // partner portal rejects the second class as a double booking.
+    for (const d of spanOf(row)) {
+      if (!liveBusy.has(d)) liveBusy.set(d, new Set());
+      liveBusy.get(d).add(name);
+    }
     bump(perCourse, `${name}|${row.course}`);
     bump(perTrainer, name);
   }
 }
 
 const unstaffed = selected.filter((r) => !r.trainer);
+// A class with no instructor never reaches the training calendar — it burns a
+// listing and shows nobody. Report it, never emit it.
+selected = selected.filter((r) => r.trainer);
 
 const tally = (rows, key) =>
   Object.entries(rows.reduce((a, r) => ((a[r[key]] = (a[r[key]] || 0) + 1), a), {}))

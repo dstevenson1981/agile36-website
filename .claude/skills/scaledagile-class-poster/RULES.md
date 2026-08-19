@@ -220,3 +220,30 @@ anything else; do not report it back to her as a possible problem.
 The job is to take that schedule and post what is not yet on the partner
 calendar. Every minute spent litigating the source data is a minute not spent
 doing that.
+
+## Trainer overlap is checked across the batch, not just the calendar
+
+A trainer booked for a class in *this batch* is occupied for every day that
+class spans, in every other date group the run is still staffing. Checking only
+what is already live on the calendar let Deadra be rostered for Agile Product
+Management 10/07-10/09 and Scrum Master 10/08-10/09 in the same proposal.
+
+**Supabase permits it; the partner portal does not** — it rejects the second
+class because the instructor is already registered to teach. Agile Product
+Management is three days, so this recurs whenever it is scheduled.
+
+## Staff the higher earner when trainers are scarce
+
+When two classes on a date compete for the last free trainer, the one that
+earns more gets it. SAFe for Teams has taken $589 across a single order;
+Scrum Master $2,384. Ordering by scheduling constraint alone let SAFe for
+Teams take Marcus on 10/08 and leave Scrum Master with nobody.
+
+SAFe for Teams is a low-value course. It should appear rarely — twice in one
+week is wrong.
+
+## Never emit a class without a trainer
+
+A class with no instructor never reaches the training calendar: it burns a
+listing and shows nobody. Unstaffed rows are reported and dropped, never
+written to the CSV.
