@@ -1,5 +1,23 @@
 # Agile36 scheduling rules
 
+## The purpose: post new dates
+
+This tool exists to **get Agile36's unlisted classes onto the partner
+calendar**. It diffs the live schedule against what is already listed and
+posts the gap. That is the whole job.
+
+It is **not** an analysis tool for classes that are already running. A cohort
+with registrants is doing fine and needs nothing — do not study it, do not
+report on it, and never treat it as a problem to solve.
+
+**The registrant rule governs which *new* dates may be filled, not whether an
+existing cohort may be listed.** Every proposal already comes from Supabase, so
+it is a real class Deadra decided to run; listing it is correct even when
+another class that day is booked. Getting this backwards on 2026-08-19 produced
+a "fix" that would have permanently suppressed two real Agile Product
+Management classes from the calendar because other classes on overlapping days
+had registrants. Her words: "Both are running, with registrants, who cares."
+
 Deadra's rules for what may go on the Scaled Agile partner calendar. Every one
 of these came from her correcting a real mistake — none are inferred, and none
 should be relaxed without asking. The machine-readable versions live in
