@@ -210,3 +210,13 @@ what happens **once a date has registrants**: Deadra then protects the class
 that is selling and clears the rest. Before that, they are not constraints on
 what may be proposed. Asked about Oct 8 on 2026-08-19: "i have no one registered
 for that date. until people register it doesnt matter."
+
+## Supabase is accurate — do not debate it
+
+What is in Supabase is correct. Deadra set it. Do not question a cohort's
+date, trainer, course, or absence; do not "verify" it against the site or
+anything else; do not report it back to her as a possible problem.
+
+The job is to take that schedule and post what is not yet on the partner
+calendar. Every minute spent litigating the source data is a minute not spent
+doing that.
