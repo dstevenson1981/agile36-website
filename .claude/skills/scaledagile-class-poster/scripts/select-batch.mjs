@@ -166,9 +166,33 @@ for (const l of portalListings) {
 
 const committedInWindow = committed.filter((c) => c.date >= from && c.date <= to);
 
+/** Every ISO day a class occupies, inclusive of both ends. */
+const spanDays = (start, end) => {
+  const out = [];
+  const d = new Date(`${start}T00:00:00Z`);
+  const last = new Date(`${end || start}T00:00:00Z`);
+  while (d <= last) {
+    out.push(d.toISOString().slice(0, 10));
+    d.setUTCDate(d.getUTCDate() + 1);
+  }
+  return out;
+};
+
+// A class starting today cannot credibly be listed and sold — the partner
+// calendar needs lead time before the first day.
+const leadCutoff = new Date(Date.now() + (policy.minLeadDays ?? 7) * 864e5)
+  .toISOString()
+  .slice(0, 10);
+
 const byDate = new Map();
 for (const row of all) {
-  if (blockedDates.has(row.start)) continue;
+  // A registrant closes every day of ITS span, and a proposal is disqualified
+  // if ANY day it occupies is closed — not just its start date. Agile Product
+  // Management runs three days, so a clean Monday can still land on a closed
+  // Tuesday. Checking only row.start proposed APM over a POPM class holding
+  // six registrants (2026-08-19) and over a booked SASM (2026-09-02).
+  if (spanDays(row.start, row.end).some((d) => blockedDates.has(d))) continue;
+  if (row.start < leadCutoff) continue;
   if (!byDate.has(row.start)) byDate.set(row.start, []);
   byDate.get(row.start).push(row);
 }
