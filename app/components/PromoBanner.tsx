@@ -5,6 +5,7 @@ import {
   isSitePromoActive,
   getPromoCountdown,
   BANNER_COUPON_CODE,
+  BANNER_DISCOUNT_AMOUNT,
   PROMO_BANNER_TITLE,
   PROMO_ENDS_SHORT,
   PROMO_EXPIRES_ISO,
@@ -117,7 +118,7 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
 }
 
 /**
- * Promo strip — tap to copy 100OFF (no email gate), with countdown + motion.
+ * Promo strip — tap to copy 50OFF (no email gate), with countdown + motion.
  */
 export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
@@ -201,7 +202,9 @@ export default function PromoBanner() {
               <time dateTime={PROMO_EXPIRES_ISO} className="font-semibold text-[#fa4a23]">
                 {PROMO_ENDS_SHORT}
               </time>{" "}
-              • Save <span className="font-bold text-[#fa4a23]">$100 off</span> with code
+              • Save{" "}
+              <span className="font-bold text-[#fa4a23]">${BANNER_DISCOUNT_AMOUNT} off</span> with
+              code
             </p>
           </div>
         </div>
@@ -217,7 +220,7 @@ export default function PromoBanner() {
               aria-label={copied ? "Promo code copied" : `Copy promo code ${BANNER_COUPON_CODE}`}
               translate="no"
             >
-              {copied ? "Copied!" : `${BANNER_COUPON_CODE} · $100 off`}
+              {copied ? "Copied!" : `${BANNER_COUPON_CODE} · $${BANNER_DISCOUNT_AMOUNT} off`}
             </button>
             <p className="mt-0.5 text-[11px] font-medium text-neutral-500">tap to copy</p>
           </div>

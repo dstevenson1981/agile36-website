@@ -5,6 +5,7 @@ import {
   isSitePromoActive,
   PROMO_ENDS_SHORT,
   BANNER_COUPON_CODE,
+  BANNER_DISCOUNT_AMOUNT,
 } from "@/app/lib/site-promo";
 
 export type AvailablePromo = {
@@ -12,9 +13,9 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Clip coupons at checkout — $100 off while the site flash sale is active. */
+/** Clip coupons at checkout — $50 off while the site flash sale is active. */
 const DEFAULT_PROMOS: AvailablePromo[] = [
-  { code: BANNER_COUPON_CODE, label: "$100 Off" },
+  { code: BANNER_COUPON_CODE, label: `$${BANNER_DISCOUNT_AMOUNT} Off` },
 ];
 
 type Props = {

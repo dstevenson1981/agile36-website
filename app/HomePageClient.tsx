@@ -61,7 +61,7 @@ export default function Home() {
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "Certified AI Product Manager": "/PMAI.jpeg",
+    "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "Responsible AI": "/MicroCredential.jpeg",
@@ -492,7 +492,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Promo Banner — tap to copy 100OFF */}
+      {/* Promo Banner — tap to copy 50OFF */}
       <PromoBanner />
 
       {/* Navigation Header with Mega Menu - Only on Home Page */}

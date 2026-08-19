@@ -1,21 +1,24 @@
-/** Site-wide 100OFF promo */
+/** Site-wide 50OFF promo */
 
-export const BANNER_COUPON_CODE = "100OFF";
+export const BANNER_COUPON_CODE = "50OFF";
+
+/** Dollar amount shown in the banner / checkout clip UI. */
+export const BANNER_DISCOUNT_AMOUNT = 50;
 
 /** Marketing urgency copy (not enforced at checkout). Used by CouponDisplayModal if shown elsewhere. */
 export const PROMO_CODE_EXPIRES_IN = "30 mins";
 
 /**
- * August Flash Sale ends Friday Aug 7, 2026 23:59:59 America/New_York (EDT, UTC-4).
+ * August Flash Sale ends Friday Aug 28, 2026 23:59:59 America/New_York (EDT, UTC-4).
  * ISO with offset so the instant is unambiguous in all runtimes.
  */
-export const SITE_PROMO_END_ISO = "2026-08-07T23:59:59-04:00";
+export const SITE_PROMO_END_ISO = "2026-08-28T23:59:59-04:00";
 
 /** Alias used by PromoBanner `<time dateTime>`. */
 export const PROMO_EXPIRES_ISO = SITE_PROMO_END_ISO;
 
 /** Short label for banner copy (America/New_York end date). */
-export const PROMO_ENDS_SHORT = "Fri Aug 7";
+export const PROMO_ENDS_SHORT = "Fri Aug 28";
 
 /** Banner headline shown in PromoBanner. */
 export const PROMO_BANNER_TITLE = "August Flash Sale";
