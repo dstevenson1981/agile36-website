@@ -166,13 +166,11 @@ for (const l of portalListings) {
 
 const committedInWindow = committed.filter((c) => c.date >= from && c.date <= to);
 
-// The Course Admin grid drops a class once it reaches its start date, so a
-// class starting today is live on the public calendar but invisible to
-// dump-portal.mjs. The diff then reads it as unlisted and proposes it again —
-// that is how 2026-08-19 Agile Product Management, already listed, ended up in
-// the batch. Anything starting today or earlier is therefore untrustworthy as
-// "missing" and is skipped. Verified 2026-08-19: the grid held 25 rows,
-// newest-first, ending at Sep 7, with nothing in August.
+// A class starting today cannot usefully be listed — the calendar needs lead
+// time before day one. This is a small guard, NOT a duplicate check: duplicates
+// are caught by diffing against a complete portal snapshot. (An earlier version
+// of this comment claimed the grid hides classes on their start date. That was
+// wrong — the grid holds everything; the scraper was reading page 1 of 79.)
 const leadFloor = new Date(Date.now() + (policy.minLeadDays ?? 1) * 864e5)
   .toISOString()
   .slice(0, 10);
