@@ -178,3 +178,21 @@ Do not "fill" an empty date, do not treat a quiet week as an opportunity, and
 never add a hardcoded blackout to paper over this — the absence in Supabase is
 already the instruction. If a future change starts generating candidate dates
 from cohort-day patterns instead of from Supabase rows, that change is wrong.
+
+## The admin grid cannot see classes that have started
+
+`dump-portal.mjs` reads the Course Admin **My Courses** grid, and that grid
+**drops a class once it reaches its start date**. A class running today is live
+on the public calendar and absent from the grid, so the diff reads it as
+unlisted and proposes it again — a duplicate on the live calendar.
+
+Measured 2026-08-19: the grid held exactly 25 rows, sorted newest-first,
+earliest Sep 7, nothing in August, stable after 60 seconds. It is not
+paginated and nothing was missing — August was simply gone.
+
+Therefore **never propose a class starting today or earlier**
+(`postingPolicy.minLeadDays`). "Not in the grid" only means "not listed" for
+dates from tomorrow onward.
+
+This is the one qualification to *the portal is the source of truth*: it is
+authoritative for upcoming classes, and blind to ones already under way.

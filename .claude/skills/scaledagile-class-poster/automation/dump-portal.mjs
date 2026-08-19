@@ -21,11 +21,9 @@ const ctx = await chromium.launchPersistentContext(".profile", {
 const page = ctx.pages()[0] ?? (await ctx.newPage());
 await page.goto(PORTAL, { waitUntil: "domcontentloaded" });
 
-let rows = [];
-for (let i = 0; i < 15; i++) {
-  const c = page.getByRole("button", { name: /cancel and close/i });
-  if (await c.count()) await c.first().click().catch(() => {});
-  rows = await page.evaluate(() => {
+/** Scrape every row currently in the DOM, descending through shadow roots. */
+const scrape = () =>
+  page.evaluate(() => {
     const out = [];
     const walk = (r) => {
       r.querySelectorAll('[role="row"]').forEach((x) => {
@@ -39,9 +37,48 @@ for (let i = 0; i < 15; i++) {
     walk(document);
     return out;
   });
+
+let rows = [];
+for (let i = 0; i < 15; i++) {
+  const c = page.getByRole("button", { name: /cancel and close/i });
+  if (await c.count()) await c.first().click().catch(() => {});
+  rows = await scrape();
   if (rows.length) break;
   await page.waitForTimeout(4000);
 }
+
+// The grid lazy-loads: it renders one page and appends more as you reach the
+// bottom. Scraping once captured exactly 25 rows starting at 2026-09-07 and
+// nothing in August, so the planner compared the full Supabase schedule against
+// a partial calendar and proposed classes that were already listed — a real
+// duplicate on 2026-08-19. Keep scrolling and clicking "load more" until the
+// row count stops growing.
+let stable = 0;
+for (let i = 0; i < 40 && stable < 3; i++) {
+  const before = rows.length;
+
+  const more = page.getByRole("button", { name: /load more|show more|view all|next/i });
+  if (await more.count()) await more.first().click().catch(() => {});
+
+  // Scroll whichever element actually owns the overflow, shadow roots included.
+  await page.evaluate(() => {
+    const scrollers = [];
+    const walk = (r) => {
+      r.querySelectorAll("*").forEach((e) => {
+        if (e.scrollHeight > e.clientHeight + 40) scrollers.push(e);
+        if (e.shadowRoot) walk(e.shadowRoot);
+      });
+    };
+    walk(document);
+    for (const e of scrollers) e.scrollTop = e.scrollHeight;
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+  await page.waitForTimeout(1500);
+
+  rows = await scrape();
+  stable = rows.length > before ? 0 : stable + 1;
+}
+console.log(`grid rows after paging: ${rows.length}`);
 // Instructor NAMES for upcoming classes. The planner needs these, not just a
 // count: a trainer already teaching a live class that day cannot take a new
 // one, and nobody teaches two classes at once.
