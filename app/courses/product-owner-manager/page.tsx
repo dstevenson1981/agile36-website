@@ -365,6 +365,13 @@ export default function ProductOwnerManagerCoursePage() {
       {/* AI-SEO: Related SAFe Certifications - Entity Linking */}
       <section className="w-full bg-[#1f2c4a]/[0.03] py-12 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
+          <p className="text-lg text-[#475569] mb-10 max-w-4xl">
+            Researching before you enroll? Start with the{" "}
+            <Link href="/blog/safe-popm-certification-guide" className="font-semibold text-[#d97706] underline hover:no-underline">
+              SAFe POPM certification guide
+            </Link>{" "}
+            (exam, cost, career path, and prep), then come back here to register.
+          </p>
           <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Related SAFe Certifications</h2>
           <p className="text-lg text-[#475569] mb-8 max-w-4xl">
             Build on your SAFe POPM certification with these complementary SAFe certifications to deepen your expertise:

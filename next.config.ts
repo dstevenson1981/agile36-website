@@ -46,6 +46,27 @@ const nextConfig: NextConfig = {
         destination: '/courses/product-owner-manager',
         permanent: true,
       },
+      // Broken blog CTA paths → live POPM course
+      {
+        source: '/safe-popm-certification',
+        destination: '/courses/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/safe-popm-training',
+        destination: '/courses/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/safe-product-owner-product-manager',
+        destination: '/courses/product-owner-manager',
+        permanent: true,
+      },
+      {
+        source: '/safe-product-owner-product-manager/',
+        destination: '/courses/product-owner-manager',
+        permanent: true,
+      },
       {
         source: '/safe-lean-portfolio-management-course',
         destination: '/courses/lean-portfolio-management',

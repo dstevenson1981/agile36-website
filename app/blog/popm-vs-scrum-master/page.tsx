@@ -262,6 +262,15 @@ export default function PopmVsScrumMasterPage() {
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
               <li>
                 <Link
+                  href="/blog/safe-popm-certification-guide"
+                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                >
+                  SAFe POPM certification guide
+                </Link>{" "}
+                — exam, cost, career path, and prep in one place.
+              </li>
+              <li>
+                <Link
                   href="/blog/ssm-vs-csm"
                   className="font-semibold text-[#d97706] underline hover:no-underline"
                 >
