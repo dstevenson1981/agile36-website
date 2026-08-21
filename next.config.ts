@@ -239,41 +239,6 @@ const nextConfig: NextConfig = {
         destination: '/courses/advanced-scrum-master',
         permanent: true,
       },
-      {
-        source: '/popm-pro-temp',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/popmpro',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/popm-practice-temp',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/popm-prep-pro',
-        destination: '/test/product-owner-manager',
-        permanent: true,
-      },
-      {
-        source: '/lpm-pro-temp',
-        destination: '/test/lean-portfolio-management',
-        permanent: true,
-      },
-      {
-        source: '/lpmpro',
-        destination: '/test/lean-portfolio-management',
-        permanent: true,
-      },
-      {
-        source: '/apm-pro-temp',
-        destination: '/test/agile-product-management',
-        permanent: true,
-      },
     ];
   },
 };
