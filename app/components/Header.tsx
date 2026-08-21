@@ -152,6 +152,7 @@ export default function Header() {
     pathname === "/lpm-pro-temp" ||
     pathname === "/lpmpro" ||
     pathname === "/popm-pro-temp" ||
+    pathname === "/popm-pro-class" ||
     pathname === "/popmpro" ||
     pathname === "/popm-practice-temp" ||
     pathname === "/popm-prep-pro"
