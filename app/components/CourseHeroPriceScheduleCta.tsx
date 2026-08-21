@@ -6,6 +6,8 @@ type Props = {
   originalUsd: number;
   buttonLabel?: string;
   className?: string;
+  /** SAFe courses: label Tuition + all-inclusive copy under the price. */
+  showSafeTuition?: boolean;
 };
 
 function formatUsdInt(n: number): string {
@@ -19,13 +21,16 @@ export default function CourseHeroPriceScheduleCta({
   originalUsd,
   buttonLabel = "View Schedules & Enroll",
   className = "",
+  showSafeTuition = false,
 }: Props) {
   const discountPct =
     originalUsd > 0 ? Math.round((100 * (originalUsd - currentUsd)) / originalUsd) : 0;
 
   return (
     <div className={className}>
-      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">Starting from</p>
+      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
+        {showSafeTuition ? "Tuition" : "Starting from"}
+      </p>
       <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <span className="text-[1.75rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
           {formatUsdInt(currentUsd)}
@@ -37,6 +42,17 @@ export default function CourseHeroPriceScheduleCta({
           </span>
         ) : null}
       </div>
+      {showSafeTuition ? (
+        <div className="mt-2.5">
+          <p className="text-[13px] font-semibold leading-snug text-[#1f2c4a]">
+            Simple pricing. Everything included.
+          </p>
+          <p className="mt-1 text-[12px] leading-snug text-[#64748b]">
+            One fee covers your training, exam, courseware, credits, and a year of
+            SAFe Studio.
+          </p>
+        </div>
+      ) : null}
       <Link
         href={scheduleHref}
         className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"

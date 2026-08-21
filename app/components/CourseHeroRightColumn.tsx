@@ -78,7 +78,7 @@ export default function CourseHeroRightColumn({
               {isPrivate ? (
                 <div>
                   <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
-                    Pricing
+                    Tuition
                   </p>
                   <p
                     className="mt-1 text-[1.35rem] font-semibold leading-none text-[#1f2c4a]"
@@ -86,6 +86,17 @@ export default function CourseHeroRightColumn({
                   >
                     Contact for pricing
                   </p>
+                  {showPartner ? (
+                    <div className="mt-2.5">
+                      <p className="text-[13px] font-semibold leading-snug text-[#1f2c4a]">
+                        Simple pricing. Everything included.
+                      </p>
+                      <p className="mt-1 text-[12px] leading-snug text-[#64748b]">
+                        One fee covers your training, exam, courseware, credits,
+                        and a year of SAFe Studio.
+                      </p>
+                    </div>
+                  ) : null}
                   <button
                     type="button"
                     onClick={handlePrivateContact}
@@ -115,6 +126,7 @@ export default function CourseHeroRightColumn({
                   scheduleHref={scheduleHref}
                   currentUsd={list.current}
                   originalUsd={list.original}
+                  showSafeTuition={showPartner}
                 />
               ) : null}
 
