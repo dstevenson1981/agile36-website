@@ -7,10 +7,13 @@ import AccountNav from '../AccountNav';
 
 export const dynamic = 'force-dynamic';
 
-/** Temporary: SSM Pro open until Friday — direct URL only, not linked from the public site. */
+/** Temporary: Pro practice exams open for class use — direct URL only, not linked from the public site. */
 function isPublicAccountPath(pathWithSearch: string): boolean {
   const path = pathWithSearch.split('?')[0] || '';
-  return path === '/account/practice-exams/scrum-master';
+  return (
+    path === '/account/practice-exams/scrum-master' ||
+    path === '/account/practice-exams/agile-product-management'
+  );
 }
 
 function PublicPracticeExamShell({ children }: { children: React.ReactNode }) {
