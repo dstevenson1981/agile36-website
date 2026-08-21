@@ -53,7 +53,6 @@ const PUBLIC_PRO_REDIRECTS: Record<string, string> = {
   '/popm-prep-pro': '/test/product-owner-manager',
   '/lpm-pro-temp': '/test/lean-portfolio-management',
   '/lpmpro': '/test/lean-portfolio-management',
-  '/apm-pro-temp': '/test/agile-product-management',
 };
 
 const ANY_COURSE_PRACTICE_EXAM = /^\/courses\/[^/]+\/practice-exam\/?$/;

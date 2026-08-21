@@ -269,11 +269,6 @@ const nextConfig: NextConfig = {
         destination: '/test/lean-portfolio-management',
         permanent: true,
       },
-      {
-        source: '/apm-pro-temp',
-        destination: '/test/agile-product-management',
-        permanent: true,
-      },
     ];
   },
 };

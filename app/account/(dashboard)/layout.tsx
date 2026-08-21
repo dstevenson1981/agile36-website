@@ -9,10 +9,12 @@ export const dynamic = 'force-dynamic';
 
 /** Temporary: Pro practice exams open for class use — direct URL only, not linked from the public site. */
 function isPublicAccountPath(pathWithSearch: string): boolean {
-  const path = pathWithSearch.split('?')[0] || '';
+  const path = (pathWithSearch.split('?')[0] || '').replace(/\/$/, '') || '/';
   return (
     path === '/account/practice-exams/scrum-master' ||
-    path === '/account/practice-exams/agile-product-management'
+    path === '/account/practice-exams/agile-product-management' ||
+    path.endsWith('/practice-exams/scrum-master') ||
+    path.endsWith('/practice-exams/agile-product-management')
   );
 }
 
