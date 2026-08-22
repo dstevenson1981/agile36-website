@@ -43,7 +43,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/leading-safe/schedule
 
@@ -140,7 +140,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -214,7 +214,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/product-owner-manager/schedule
 
@@ -311,7 +311,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -385,7 +385,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/lean-portfolio-management/schedule
 
@@ -482,7 +482,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -556,7 +556,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/agile-product-management/schedule
 
@@ -653,7 +653,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -727,7 +727,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/scrum-master/schedule
 
@@ -824,7 +824,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -898,7 +898,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/safe-for-teams/schedule
 
@@ -995,7 +995,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1069,7 +1069,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/devops/schedule
 
@@ -1166,7 +1166,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1240,7 +1240,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/advanced-scrum-master/schedule
 
@@ -1337,7 +1337,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1411,7 +1411,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/value-stream-mapping/schedule
 
@@ -1508,7 +1508,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1582,7 +1582,7 @@ Why finish now:
 Official SAFe course materials, the certification exam where applicable, and the learning resources you need to succeed are included.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/responsible-ai/schedule
 
@@ -1679,7 +1679,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1753,7 +1753,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/ai-driven-scrum-master/schedule
 
@@ -1850,7 +1850,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -1924,7 +1924,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/executive-genai-leadership/schedule
 
@@ -2021,7 +2021,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -2095,7 +2095,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/generative-ai-project-managers/schedule
 
@@ -2192,7 +2192,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -2266,7 +2266,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/certified-genai-practitioner/schedule
 
@@ -2363,7 +2363,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -2437,7 +2437,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/ai-agent-builder/schedule
 
@@ -2534,7 +2534,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
@@ -2608,7 +2608,7 @@ Why finish now:
 Live instruction, practical exercises, and course materials designed for working professionals.
 
 Complete your enrollment and use code 100OFF to save $100.
-Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.
+This offer expires in one hour. Seats per cohort are limited.
 
 Complete your enrollment: https://www.agile36.com/courses/certified-ai-product-manager/schedule
 
@@ -2705,7 +2705,7 @@ Agile36 • 1000 Brickell Ave, Suite 715, Miami, FL • SAFe Silver Partner',
 <tr>
 <td style="padding:18px 24px;" align="center">
 <p style="margin:0; font-size:16px; line-height:1.5; color:#0f2a4d;"><strong>Complete your enrollment and use code <span style="color:#b8860b;">100OFF</span> to save $100.</strong></p>
-<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">Offer ends Monday, Jul 20, 2026. Seats per cohort are limited.</p>
+<p style="margin:6px 0 0 0; font-size:14px; color:#6b7683;">This offer expires in one hour. Seats per cohort are limited.</p>
 </td>
 </tr>
 </table>
