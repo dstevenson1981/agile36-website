@@ -31,7 +31,8 @@ export default function AvailablePromoCodes({
   onSelectCode,
   isValidatingPromo,
 }: Props) {
-  const [promoLive, setPromoLive] = useState(() => isSitePromoActive());
+  // Defer until mount so SSR and the first client paint match.
+  const [promoLive, setPromoLive] = useState(false);
 
   useEffect(() => {
     const tick = () => setPromoLive(isSitePromoActive());

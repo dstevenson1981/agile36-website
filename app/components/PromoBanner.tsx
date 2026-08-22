@@ -23,7 +23,8 @@ export function isPromoBannerVisible(): boolean {
 
 /** Live promo visibility — rechecks every second so sticky nav offset clears when the countdown ends. */
 export function usePromoBannerActive(): boolean {
-  const [active, setActive] = useState(() => isSitePromoActive());
+  // Start false so SSR + first client paint match (avoid hydration mismatch).
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const tick = () => setActive(isSitePromoActive());
@@ -122,12 +123,13 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
  */
 export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
-  const [countdown, setCountdown] = useState<PromoCountdown | null>(() =>
-    isSitePromoActive() ? getPromoCountdown() : null
-  );
-  const [active, setActive] = useState(() => isSitePromoActive());
+  // Defer live countdown until after mount so SSR HTML matches the first client paint.
+  const [countdown, setCountdown] = useState<PromoCountdown | null>(null);
+  const [active, setActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const tick = () => {
       const nextActive = isSitePromoActive();
       setActive(nextActive);
@@ -138,7 +140,7 @@ export default function PromoBanner() {
     return () => window.clearInterval(id);
   }, []);
 
-  if (!active || !countdown) {
+  if (!mounted || !active || !countdown) {
     return null;
   }
 

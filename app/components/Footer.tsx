@@ -93,7 +93,8 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-3 border-t border-[#1f2c4a]/10 py-8 md:flex-row">
           <p className="text-xs text-[#94a3b8]">
-            © {new Date().getFullYear()} Agile36. All Rights Reserved.
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Agile36. All Rights
+            Reserved.
           </p>
           <p className="text-xs text-[#94a3b8]">
             SAFe Silver Partner | Agile Training & AI Consulting
