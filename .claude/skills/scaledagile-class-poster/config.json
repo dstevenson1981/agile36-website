@@ -194,12 +194,24 @@
       "publicOnlyRule": "Only PUBLIC classes count toward the 4-per-day cap and the no-overlap rule. Private classes are invisible to the partner calendar and a trainer may run one alongside a public class \u2014 seeing the same trainer twice on a date is fine when one of them is private. Check the class Type before reporting a conflict.",
       "noOverlapRule": "A trainer is occupied for EVERY day their class spans, not just its start date. A 9/16-9/18 class means that trainer takes nothing on 9/16, 9/17, or 9/18. Multi-day courses (Agile Product Management is 3 days) make this bite often \u2014 always compare full date ranges, never start dates alone.",
       "courseRestrictionsNote": "Whitelist of who may teach a course; overrides the rotation. Only Deadra and Joe are certified for Lean Portfolio Management \u2014 Marcus Ball and Martina Svoboda must never be assigned to it. Ask before assuming any other course is open to everyone."
-    }
+    },
+    "courseDurationDays": {
+      "_note": "How many days each course occupies. A portal grid row shows only a start date; this expands it into the full span a trainer is booked for. Agile Product Management is 3 days, everything else 2.",
+      "agile-product-management": 3,
+      "default": 2
+    },
+    "cities": [
+      "Atlanta",
+      "Miami",
+      "Los Angeles"
+    ],
+    "cityNote": "Every class is listed under Miami, Atlanta, or Los Angeles \u2014 never New York. Rotate across the three so no single city carries the whole calendar."
   },
   "timezonePortalLabels": {
-    "America/New_York": "Eastern Daylight Time - New York",
+    "America/New_York": "GMT-05:00 Eastern Standard Time",
     "America/Chicago": "Central Daylight Time - Chicago",
     "America/Denver": "Mountain Daylight Time - Denver",
     "America/Los_Angeles": "Pacific Time - Los Angeles"
-  }
+  },
+  "timezonePortalNote": "Portal renders the option as 'GMT\u221205:00 Eastern Standard Time' with a Unicode minus (U+2212), not a hyphen. Match it with a loose regex, never an exact string."
 }

@@ -129,16 +129,44 @@ const grid = await loadGrid(page);
 const broken = grid.filter((r) => r.inst === 0 && /2026/.test(r.date));
 log(`${grid.length} classes on the portal | ${broken.length} with no instructor\n`);
 
-// Who is already committed on each affected date, so nobody is double-booked.
-const busy = new Map();
+// A trainer is occupied for EVERY day their class spans, not just its start
+// date. The grid only carries a start date, so expand it by the course's
+// duration. Matching `r.date === b.date` instead — which is what this did —
+// left a 10/14-10/16 class looking free on 10/15, and would have put Deadra on
+// Agile Product Management 10/14-10/16 while she already had Lean Portfolio
+// 10/15-10/16.
+const DURATIONS = config.postingPolicy.courseDurationDays ?? {};
+function spanOf(className, startDate) {
+  const slugs = Object.keys(DURATIONS).filter((k) => k !== "default" && k !== "_note");
+  const name = String(className).toLowerCase();
+  const slug = slugs.find((s) =>
+    s.split("-").filter((w) => w.length > 3).every((w) => name.includes(w))
+  );
+  const len = DURATIONS[slug] ?? DURATIONS.default ?? 2;
+  const out = [];
+  const d = new Date(`${startDate}T00:00:00`);
+  if (isNaN(d)) return [String(startDate)];
+  for (let i = 0; i < len; i++) {
+    out.push(d.toISOString().slice(0, 10));
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
+}
+const overlaps = (a, b) => a.some((d) => b.includes(d));
+
+// Who is already committed across each affected span, so nobody is double-booked.
+const busy = new Map(); // trainer -> Set of occupied days
 for (const r of grid) {
-  if (r.inst > 0 && broken.some((b) => b.date === r.date)) {
+  const rSpan = spanOf(r.name, r.date);
+  if (r.inst > 0 && broken.some((b) => overlaps(rSpan, spanOf(b.name, b.date)))) {
     try {
       await openClass(page, r.name, r.date);
       const names = await currentInstructors(page);
-      if (!busy.has(r.date)) busy.set(r.date, new Set());
-      names.forEach((n) => busy.get(r.date).add(n));
-      log(`  ${r.date}  ${r.name} → ${names.join(", ") || "(unreadable)"}`);
+      for (const n of names) {
+        if (!busy.has(n)) busy.set(n, new Set());
+        rSpan.forEach((d) => busy.get(n).add(d));
+      }
+      log(`  ${r.date} (${rSpan.join(", ")})  ${r.name} → ${names.join(", ") || "(unreadable)"}`);
     } catch {
       /* if we cannot read it, fall through — the clash check just gets weaker */
     }
@@ -148,11 +176,13 @@ for (const r of grid) {
 log("");
 const results = [];
 for (const b of broken) {
-  const taken = busy.get(b.date) ?? new Set();
-  const pool = eligible(b.name).filter((n) => !taken.has(n));
+  const bSpan = spanOf(b.name, b.date);
+  const pool = eligible(b.name).filter(
+    (n) => !bSpan.some((d) => busy.get(n)?.has(d))
+  );
   const label = `${b.date}  ${b.name}`;
   if (!pool.length) {
-    log(`SKIP  ${label}  (no eligible trainer free that day)`);
+    log(`SKIP  ${label}  (no eligible trainer free across ${bSpan.join(", ")})`);
     results.push({ ...b, status: "no-trainer" });
     continue;
   }
@@ -174,9 +204,11 @@ for (const b of broken) {
       throw new Error(`${pick} did not persist on the class (found: ${after.join(", ") || "none"})`);
     }
     if (!after.includes(pick)) log(`      (portal lists them as "${after.find((n) => n.includes(surname))}")`);
-    if (!busy.has(b.date)) busy.set(b.date, new Set());
-    busy.get(b.date).add(pick);
-    log(`FIXED ${label} → ${pick}`);
+    // Book them across the whole span, so a second broken class that overlaps
+    // this one cannot be handed the same trainer.
+    if (!busy.has(pick)) busy.set(pick, new Set());
+    bSpan.forEach((d) => busy.get(pick).add(d));
+    log(`FIXED ${label} → ${pick}   (booked ${bSpan.join(", ")})`);
     results.push({ ...b, status: "fixed", trainer: pick });
   } catch (err) {
     log(`FAIL  ${label}\n      ${err.message}`);

@@ -56,7 +56,8 @@ Agile36 classes are always **Remote Public Course**.
 | Start Date | text | `M/D/YYYY` |
 | End Date | text | `M/D/YYYY` |
 | Start Time | text | e.g. `9:00 AM` |
-| Timezone | combobox | Eastern → the **New York** option, never plain "Eastern Standard Time" |
+| Timezone | combobox | plain **Eastern Standard Time** — not the "…- New York" option |
+| City | text | **Miami**, **Atlanta**, or **Los Angeles** — never New York |
 | Language | combobox | `English` |
 | Country | combobox | `United States` |
 | City | text | `New York` for Eastern classes (cosmetic; no city filter on the Finder) |

@@ -26,6 +26,7 @@ import readline from "node:readline";
 const here = dirname(fileURLToPath(import.meta.url));
 const PROFILE = join(here, ".profile");
 const PORTAL = "https://community.scaledagile.com/s/course-admin";
+const config = JSON.parse(readFileSync(join(here, "..", "config.json"), "utf8"));
 
 const args = process.argv.slice(2);
 const flag = (n) => args.includes(`--${n}`);
@@ -241,18 +242,72 @@ async function verifySaved(page, c) {
   if (problems.length) throw new Error("saved wrong: " + problems.join("; "));
 }
 
-/** Who may teach what. Martina Svoboda is only approved for Product
- *  Owner/Product Manager and Leading SAFe; the other three teach anything. */
-const ROTATION = ["Deadra Stevenson", "Marcus Ball", "Joe Puoci", "Martina Svoboda"];
-const RESTRICTED = { "Martina Svoboda": [/product owner/i, /leading safe/i] };
+/** Who may teach what. Read from config.json rather than restated here — a
+ *  second copy of the trainer list drifts from the first. The old hardcoded
+ *  copy spelled him "Joe Puoci", which the portal directory does not contain,
+ *  and omitted the Lean Portfolio whitelist entirely, so the fallback offered
+ *  Marcus Ball for a course he is not certified to teach. */
+const TRAINERS = config.postingPolicy.trainers;
+const ROTATION = [...TRAINERS.rotation, ...Object.keys(TRAINERS.restricted)];
 
-function eligibleTrainers(className, preferred) {
-  const ok = (t) => {
-    const limits = RESTRICTED[t];
-    return !limits || limits.some((re) => re.test(className));
-  };
-  // Preferred first, then the rest of the rotation as fallbacks.
-  return [preferred, ...ROTATION.filter((t) => t !== preferred)].filter(ok);
+/** Match a course slug ("lean-portfolio-management") against a portal class
+ *  name ("Lean Portfolio Management-Guaranteed to Run"). */
+const slugMatches = (slug, className) => {
+  const name = className.toLowerCase();
+  return slug.split("-").filter((w) => w.length > 3).every((w) => name.includes(w));
+};
+
+/** Course whitelists win over the rotation: Lean Portfolio Management is
+ *  certified to Deadra and Joseph only. */
+function certifiedFor(className) {
+  for (const [slug, allowed] of Object.entries(TRAINERS.courseRestrictions ?? {})) {
+    if (slugMatches(slug, className)) return allowed;
+  }
+  return ROTATION.filter((t) => {
+    const limit = TRAINERS.restricted[t];
+    return !limit || limit.courses.some((slug) => slugMatches(slug, className));
+  });
+}
+
+// ------------------------------------------------- span-aware availability
+/** Every day a class occupies, inclusive. A trainer is booked for the whole
+ *  span, not the start date — Agile Product Management is three days, so
+ *  10/14-10/16 collides with a 10/15-10/16 class even though the start dates
+ *  differ. Comparing start dates alone is the bug this replaces. */
+function spanDays(start, end) {
+  const out = [];
+  const d = new Date(`${dayKey(start)}T00:00:00`);
+  const last = new Date(`${dayKey(end || start)}T00:00:00`);
+  while (d <= last) {
+    out.push(d.toISOString().slice(0, 10));
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
+}
+
+/** Bookings for the batch, one entry per CSV row, so a fallback swap can be
+ *  written back and seen by every later row. */
+const bookings = [];
+const bookingFor = (row) => bookings.find((b) => b.row === row);
+
+function isFree(trainer, row) {
+  const days = new Set(spanDays(row.start, row.end));
+  return !bookings.some(
+    (b) => b.row !== row && b.trainer === trainer && b.days.some((d) => days.has(d))
+  );
+}
+
+function eligibleTrainers(className, preferred, row) {
+  const certified = certifiedFor(className);
+  const ordered = [preferred, ...ROTATION.filter((t) => t !== preferred)];
+  const eligible = ordered.filter((t) => certified.includes(t));
+  if (!row) return eligible;
+  const free = eligible.filter((t) => isFree(t, row));
+  const blocked = eligible.filter((t) => !free.includes(t));
+  if (blocked.length) {
+    log(`      unavailable across ${row.start}–${row.end}: ${blocked.join(", ")}`);
+  }
+  return free;
 }
 
 /** Attach one instructor. Tries the assigned trainer, then falls back through
@@ -264,8 +319,16 @@ async function attachedTrainers(page) {
   return readInstructors(page);
 }
 
-async function addInstructor(page, className, preferred) {
-  const candidates = eligibleTrainers(className, preferred);
+async function addInstructor(page, className, preferred, row) {
+  const candidates = eligibleTrainers(className, preferred, row);
+  if (!candidates.length) {
+    // Leaving the class unstaffed is the correct outcome: an unstaffed listing
+    // is invisible, but a double-booked trainer is rejected by the portal and
+    // breaks a class that is already selling.
+    throw new Error(
+      `no trainer is both certified for "${className}" and free across ${row?.start}–${row?.end}`
+    );
+  }
   let lastErr;
 
   for (const name of candidates) {
@@ -332,6 +395,22 @@ async function openInstructorDialog(page) {
 // ---------------------------------------------------------------- main
 const classes = parseCsv(readFileSync(CSV, "utf8"));
 log(`${classes.length} classes in ${CSV}${DRY ? "  (DRY RUN)" : ""}\n`);
+
+// Seed the booking ledger from the CSV's own assignments so a fallback swap on
+// an early class is visible to every later one. Without this the run only
+// checked course certification and would hand the same trainer two overlapping
+// classes — Deadra on 10/14-10/16 while already on 10/15-10/16.
+for (const c of classes) {
+  bookings.push({ row: c, trainer: c.trainer, days: spanDays(c.start, c.end) });
+}
+
+// Report clashes the CSV itself contains, before touching the portal.
+const preClashes = classes.filter((c) => !isFree(c.trainer, c));
+if (preClashes.length) {
+  log("CSV assigns a trainer to overlapping classes:");
+  for (const c of preClashes) log(`  ${c.start}–${c.end}  ${c.class_name}  ${c.trainer}`);
+  log("");
+}
 
 // Chromium hands off to an already-running instance on the same profile and
 // then exits, which looks like "nothing happened". Catch it with a clear message.
@@ -402,7 +481,8 @@ for (const c of classes) {
       try {
         await page.goto(row.href, { waitUntil: "domcontentloaded" });
         await page.waitForTimeout(4000);
-        const used = await addInstructor(page, c.class_name, c.trainer);
+        const used = await addInstructor(page, c.class_name, c.trainer, c);
+        bookingFor(c).trainer = used;
         log(`      instructor added: ${used}`);
         results.push({ ...c, status: "repaired", trainer_used: used });
       } catch (err) {
@@ -424,7 +504,8 @@ for (const c of classes) {
     let used = c.trainer;
     if (!DRY) {
       await verifySaved(page, c);
-      used = await addInstructor(page, c.class_name, c.trainer);
+      used = await addInstructor(page, c.class_name, c.trainer, c);
+      bookingFor(c).trainer = used;
       log(`      created + ${used} + link verified`);
     }
     results.push({ ...c, status: DRY ? "dry-run" : "created", url, trainer_used: used });

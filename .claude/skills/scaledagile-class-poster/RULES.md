@@ -58,6 +58,26 @@ which put Deadra on Agile Product Management 10/07-10/09 and Scrum Master
 second class because the instructor is already registered to teach. So Supabase
 being happy proves nothing here.
 
+The planner honoured this from 2026-08-19, but the **posting scripts did not**,
+and they are where a trainer is actually chosen. Both were fixed on 2026-08-19
+after Deadra caught it:
+
+- `post-classes.mjs` picked its fallback trainer on course certification alone,
+  with no availability check of any kind — so when the assigned trainer could
+  not be attached it would offer Deadra for Agile Product Management 10/14-10/16
+  while she already held Lean Portfolio 10/15-10/16. It now carries a booking
+  ledger seeded from the CSV, span-aware, and refuses to staff a class rather
+  than double-book. It also kept a **second hardcoded copy** of the trainer list
+  that spelled him "Joe Puoci" (not in the portal directory) and omitted the
+  Lean Portfolio whitelist, so it offered Marcus Ball for LPM. It now reads
+  `config.json` and nothing else.
+- `repair-instructors.mjs` compared **start dates only** (`b.date === r.date`) —
+  the exact mistake this section warns about. A grid row carries only a start
+  date, so spans are now expanded via `postingPolicy.courseDurationDays`.
+
+If a future script picks a trainer, it must use the span check. Course
+certification alone is not enough.
+
 ## Only public classes count
 
 Private classes are invisible to the partner calendar. They do not count
@@ -123,8 +143,15 @@ Also: an absent competition entry means **no data**, not "no rivals."
 
 Every Agile36 class is a **Remote Public Course**, named
 `{Course}- Guaranteed to Run`. There is no Guaranteed-to-Run checkbox — the
-name is what conveys it. Timezone is always the **New York** option, never
-plain "Eastern Standard Time", which buyers cannot filter on. Language is
+name is what conveys it.
+
+**Timezone is plain `Eastern Standard Time`.** Deadra changed this on
+2026-08-19: the "Eastern Daylight Time - New York" option does not work for
+her. Do not switch it back or argue the daylight-saving point — she has tested
+it on the live calendar and EST is what she wants.
+
+**City is Miami, Atlanta, or Los Angeles — never New York.** Rotate across the
+three so no one city carries the whole calendar. Language is
 always English; ignore the Portuguese/Chinese/French/German learning plans.
 
 ## The portal is the source of truth for what exists
