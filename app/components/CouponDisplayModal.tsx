@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PROMO_CODE_EXPIRES_IN } from "@/app/lib/site-promo";
+import { BANNER_DISCOUNT_AMOUNT, PROMO_CODE_EXPIRES_IN } from "@/app/lib/site-promo";
 
 interface CouponDisplayModalProps {
   isOpen: boolean;
@@ -45,7 +45,7 @@ export default function CouponDisplayModal({
           <p className="text-xs font-bold uppercase tracking-widest text-[#ea3d12] mb-2">
             Limited-time offer
           </p>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Your $100 off code</h2>
+          <h2 className="text-2xl font-bold text-[#1f2c4a] mb-2">Your ${BANNER_DISCOUNT_AMOUNT} off code</h2>
           <p className="text-gray-600 text-sm mb-6">
             Apply this code at checkout on any eligible course.
           </p>

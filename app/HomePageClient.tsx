@@ -160,8 +160,8 @@ export default function Home() {
       title: "SAFe Lean Portfolio Management",
       category: "SAFe",
       image: "/brooke-cagle--uHVRvDr7pg-unsplash.jpg",
-      price: 1050,
-      originalPrice: 2100,
+      price: 950,
+      originalPrice: 1900,
       hours: "16 Hrs",
       days: "02 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
@@ -174,8 +174,8 @@ export default function Home() {
       title: "SAFe Agile Product Management",
       category: "SAFe",
       image: "/campaign-creators-gMsnXqILjp4-unsplash.jpg",
-      price: 1100,
-      originalPrice: 2200,
+      price: 999,
+      originalPrice: 1998,
       hours: "24 Hrs",
       days: "03 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
@@ -492,7 +492,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Promo Banner — tap to copy 50OFF */}
+      {/* Promo Banner — tap to copy 100OFF */}
       <PromoBanner />
 
       {/* Navigation Header with Mega Menu - Only on Home Page */}

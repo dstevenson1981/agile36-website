@@ -13,7 +13,7 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Clip coupons at checkout — $50 off while the site flash sale is active. */
+/** Clip coupons at checkout — $100 off while the site flash sale is active. */
 const DEFAULT_PROMOS: AvailablePromo[] = [
   { code: BANNER_COUPON_CODE, label: `$${BANNER_DISCOUNT_AMOUNT} Off` },
 ];

@@ -119,7 +119,7 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
 }
 
 /**
- * Promo strip — tap to copy 50OFF (no email gate), with countdown + motion.
+ * Promo strip — tap to copy 100OFF (no email gate), with countdown + motion.
  */
 export default function PromoBanner() {
   const [copied, setCopied] = useState(false);

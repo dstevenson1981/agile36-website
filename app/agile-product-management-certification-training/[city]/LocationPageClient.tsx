@@ -720,7 +720,7 @@ export default function CityAPMCoursePage() {
                       {[
                         { q: "What is the SAFe Agile Product Management certification?", a: "The SAFe Agile Product Management (APM) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
                         { q: "How long is the certification valid?", a: "The SAFe Agile Product Management certification is valid for one year from the date of issue. You can renew it by earning continuing education credits." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
+                        { q: "What is included in the course?", a: "The course includes 24 hours of live training over 3 days, course materials, practice exam, and one year of access to the SAFe Community Platform." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] rounded-lg p-6">
@@ -738,8 +738,8 @@ export default function CityAPMCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$1,100</div>
-                  <div className="text-base text-[#64748b] line-through">$2,200</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$999</div>
+                  <div className="text-base text-[#64748b] line-through">$1,998</div>
                   <div className="text-sm text-green-700 font-semibold mt-2">50% OFF</div>
                 </div>
 
@@ -748,13 +748,13 @@ export default function CityAPMCoursePage() {
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">16 Hours Training</span>
+                    <span className="text-sm text-[#475569]">24 Hours Training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">2 Days Duration</span>
+                    <span className="text-sm text-[#475569]">3 Days Duration</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -766,7 +766,7 @@ export default function CityAPMCoursePage() {
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
+                    <span className="text-sm text-[#475569]">24 PDUs & SEUs</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

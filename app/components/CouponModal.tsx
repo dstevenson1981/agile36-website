@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { BANNER_COUPON_CODE } from "@/app/lib/site-promo";
+
 interface CouponModalProps {
   isOpen: boolean;
   onClose: () => void;
   onClaimCoupon: (email: string, course: string) => void;
-  /** Stored with the lead and shown in the success modal (default 100OFF) */
+  /** Stored with the lead and shown in the success modal (default: site banner code) */
   couponCode?: string;
 }
 
@@ -32,7 +34,7 @@ export default function CouponModal({
   isOpen,
   onClose,
   onClaimCoupon,
-  couponCode = "100OFF",
+  couponCode = BANNER_COUPON_CODE,
 }: CouponModalProps) {
   const [email, setEmail] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("");

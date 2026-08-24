@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { BANNER_COUPON_CODE } from '@/app/lib/site-promo';
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
         {
           email,
           course: course || null,
-          coupon_code: couponCode || '50OFF',
+          coupon_code: couponCode || BANNER_COUPON_CODE,
           created_at: new Date().toISOString()
         }
       ])

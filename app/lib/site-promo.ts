@@ -1,9 +1,9 @@
-/** Site-wide 50OFF promo */
+/** Site-wide 100OFF promo */
 
-export const BANNER_COUPON_CODE = "50OFF";
+export const BANNER_COUPON_CODE = "100OFF";
 
 /** Dollar amount shown in the banner / checkout clip UI. */
-export const BANNER_DISCOUNT_AMOUNT = 50;
+export const BANNER_DISCOUNT_AMOUNT = 100;
 
 /** Marketing urgency copy (not enforced at checkout). Used by CouponDisplayModal if shown elsewhere. */
 export const PROMO_CODE_EXPIRES_IN = "30 mins";

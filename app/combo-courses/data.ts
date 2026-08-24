@@ -51,8 +51,8 @@ const CATALOG: CatalogEntry[] = [
   { slug: "safe-for-teams", name: "AI-Empowered SAFe for Teams (SP)", shortName: "SAFe for Teams", price: 599, original: 1030 },
   { slug: "advanced-scrum-master", name: "AI-Empowered SAFe Advanced Scrum Master (SASM)", shortName: "SASM", price: 599, original: 1198 },
   { slug: "devops", name: "SAFe DevOps", shortName: "DevOps", price: 599, original: 1398 },
-  { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 1050, original: 2100 },
-  { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1100, original: 2200 },
+  { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
+  { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 999, original: 1998 },
   { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
   { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
   { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
@@ -122,16 +122,16 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     comboPrice = 699;
   } else if (max <= 599) {
     comboPrice = 799;
-  } else if (max <= 1050 && min <= 599) {
-    // LPM / mid + foundation
+  } else if (max <= 999 && min <= 599) {
+    // LPM / APM / mid + foundation
     comboPrice = 1350;
-  } else if (max >= 1100 && min >= 1050) {
+  } else if (max >= 999 && min >= 950) {
     // LPM+APM
     comboPrice = 1700;
-  } else if (max >= 1100 && min <= 599) {
+  } else if (max >= 999 && min <= 599) {
     // APM + foundation
     comboPrice = 1350;
-  } else if (max >= 1050) {
+  } else if (max >= 950) {
     comboPrice = 1450;
   } else {
     comboPrice = 799;
