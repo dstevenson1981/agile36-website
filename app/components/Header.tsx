@@ -151,6 +151,7 @@ export default function Header() {
     pathname === "/apm-pro-class" ||
     pathname === "/leading-safe-pro-class" ||
     pathname === "/lpm-pro-temp" ||
+    pathname === "/lpm-pro-class" ||
     pathname === "/lpmpro" ||
     pathname === "/popm-pro-temp" ||
     pathname === "/popm-pro-class" ||
