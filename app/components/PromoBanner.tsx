@@ -7,8 +7,6 @@ import {
   BANNER_COUPON_CODE,
   BANNER_DISCOUNT_AMOUNT,
   PROMO_BANNER_TITLE,
-  PROMO_ENDS_SHORT,
-  PROMO_EXPIRES_ISO,
   type PromoCountdown,
 } from "@/app/lib/site-promo";
 
@@ -21,16 +19,19 @@ export function isPromoBannerVisible(): boolean {
   return isSitePromoActive();
 }
 
-/** Live promo visibility — rechecks every second so sticky nav offset clears when the countdown ends. */
+/** Live promo visibility — used to offset sticky nav while the banner is showing. */
 export function usePromoBannerActive(): boolean {
   // Start false so SSR + first client paint match (avoid hydration mismatch).
   const [active, setActive] = useState(false);
 
   useEffect(() => {
     const tick = () => setActive(isSitePromoActive());
-    tick();
     const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
+    const raf = window.requestAnimationFrame(tick);
+    return () => {
+      window.clearInterval(id);
+      window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   return active;
@@ -81,39 +82,45 @@ function SparkStar({ className }: { className?: string }) {
   );
 }
 
-function CountdownUnit({ value, label }: { value: string; label: string }) {
+function ClockOutlineIcon({ className }: { className?: string }) {
   return (
-    <div className="flex min-w-[1.75rem] flex-col items-center leading-none sm:min-w-[2rem]">
-      <span className="font-mono text-[11px] font-extrabold tabular-nums text-[#01203d] sm:text-sm">
-        {value}
-      </span>
-      <span className="mt-0.5 text-[8px] font-semibold uppercase tracking-wide text-neutral-500 sm:text-[9px]">
-        {label}
-      </span>
-    </div>
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="8.25" stroke="currentColor" strokeWidth="1.75" />
+      <path
+        d="M12 8.25V12l2.75 1.65"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
+function formatHms(countdown: PromoCountdown): string {
+  return `${pad2(countdown.hours)}:${pad2(countdown.minutes)}:${pad2(countdown.seconds)}`;
+}
+
 function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
+  const clock = formatHms(countdown);
   return (
     <div
-      className="flex shrink-0 items-center gap-0.5 rounded-xl border border-[#fa4a23]/25 bg-white/80 px-1.5 py-1 shadow-[0_1px_0_rgba(250,74,35,.08)] sm:gap-1 sm:px-2.5"
+      className="flex shrink-0 items-center gap-1.5 sm:gap-2"
       aria-live="polite"
       aria-atomic="true"
+      aria-label={`Sale ends in ${clock}`}
     >
-      <CountdownUnit value={pad2(countdown.days)} label="days" />
-      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
-        :
+      <ClockOutlineIcon className="h-4 w-4 shrink-0 text-[#64748b] sm:h-[18px] sm:w-[18px]" />
+      <span className="text-xs font-normal text-[#475569] sm:text-sm">Sale Ends In:</span>
+      <span className="text-base font-extrabold tabular-nums tracking-tight text-[#d97706] sm:text-xl">
+        {clock}
       </span>
-      <CountdownUnit value={pad2(countdown.hours)} label="hrs" />
-      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
-        :
-      </span>
-      <CountdownUnit value={pad2(countdown.minutes)} label="min" />
-      <span className="pb-2.5 text-[10px] font-bold text-[#fa4a23]/70" aria-hidden>
-        :
-      </span>
-      <CountdownUnit value={pad2(countdown.seconds)} label="sec" />
     </div>
   );
 }
@@ -129,15 +136,18 @@ export default function PromoBanner() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const tick = () => {
+      setMounted(true);
       const nextActive = isSitePromoActive();
       setActive(nextActive);
       setCountdown(nextActive ? getPromoCountdown() : null);
     };
-    tick();
     const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
+    const raf = window.requestAnimationFrame(tick);
+    return () => {
+      window.clearInterval(id);
+      window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   if (!mounted || !active || !countdown) {
@@ -196,16 +206,12 @@ export default function PromoBanner() {
           <ConfettiLeft className="animate-promo-confetti hidden h-7 w-8 shrink-0 opacity-90 sm:block" />
           <SparkStar className="animate-promo-spark h-4 w-4 shrink-0 text-[#fa4a23]" />
           <div className="min-w-0">
-            <p className="truncate text-sm font-bold leading-tight text-neutral-900 sm:text-base">
+            <p className="truncate text-sm font-bold leading-tight text-[#1f2c4a] sm:text-base">
               {PROMO_BANNER_TITLE}
             </p>
-            <p className="truncate text-xs font-medium text-neutral-600 sm:text-sm">
-              Ends{" "}
-              <time dateTime={PROMO_EXPIRES_ISO} className="font-semibold text-[#fa4a23]">
-                {PROMO_ENDS_SHORT}
-              </time>{" "}
-              • Save{" "}
-              <span className="font-bold text-[#fa4a23]">${BANNER_DISCOUNT_AMOUNT} off</span> with
+            <p className="truncate text-xs font-medium text-[#475569] sm:text-sm">
+              Save{" "}
+              <span className="font-bold text-[#d97706]">${BANNER_DISCOUNT_AMOUNT} off</span> with
               code
             </p>
           </div>

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import {
   isSitePromoActive,
-  PROMO_ENDS_SHORT,
   BANNER_COUPON_CODE,
   BANNER_DISCOUNT_AMOUNT,
 } from "@/app/lib/site-promo";
@@ -58,7 +57,7 @@ export default function AvailablePromoCodes({
         <p className="text-sm font-medium text-gray-900">Clip Coupon Code</p>
         {showingDefaultFlashSale && (
           <p className="text-xs font-semibold text-[#fa4a23]">
-            Limited time · ends {PROMO_ENDS_SHORT}
+            Limited time
           </p>
         )}
       </div>
