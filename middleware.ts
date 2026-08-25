@@ -7,11 +7,6 @@ import {
   getPublicProPracticeRedirect,
   isProPracticeExamPath,
 } from './app/lib/pro-practice-exams-enabled';
-import {
-  getScrumMasterProShareKey,
-  SSM_PRO_OPEN_COOKIE,
-  SSM_PRO_OPEN_COOKIE_VALUE,
-} from './app/lib/ssm-pro-open-gate';
 import { parentCourseForLocationPath } from './app/lib/location-training-pages';
 
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
@@ -99,28 +94,6 @@ export async function middleware(request: NextRequest) {
     await supabase.auth.getUser();
   } catch {
     // Don't block requests if Supabase auth fails
-  }
-
-  // Temporary: SSM Pro practice exam open link (?ssm_pro=KEY → httpOnly cookie, strip query). Retire with ssm-pro-open-gate.
-  const ssmPracticePath = '/account/practice-exams/scrum-master';
-  if (areProPracticeExamsEnabled() && pathname === ssmPracticePath) {
-    const token = request.nextUrl.searchParams.get('ssm_pro');
-    if (token && token === getScrumMasterProShareKey()) {
-      const dest = new URL(ssmPracticePath, request.url);
-      const redirectRes = NextResponse.redirect(dest);
-      for (const c of response.cookies.getAll()) {
-        redirectRes.cookies.set(c.name, c.value);
-      }
-      redirectRes.cookies.set(SSM_PRO_OPEN_COOKIE, SSM_PRO_OPEN_COOKIE_VALUE, {
-        path: ssmPracticePath,
-        maxAge: 60 * 60 * 24 * 180,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-      });
-      applyCspAndHreflang(request, redirectRes);
-      return redirectRes;
-    }
   }
 
   applyCspAndHreflang(request, response);

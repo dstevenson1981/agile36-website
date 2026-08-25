@@ -13,7 +13,7 @@ const ALWAYS_ENABLED_COURSE_IDS = new Set([
   'lean-portfolio-management',
   'product-owner-manager',
   'leading-safe',
-  'scrum-master', // account Pro + ?ssm_pro= share cookie only — not public /test
+  'scrum-master', // account Pro only — not public /test
   'agile-product-management',
   'advanced-scrum-master',
   'safe-for-teams',
@@ -25,7 +25,7 @@ const ALWAYS_ENABLED_ACCOUNT_PATHS = new Set([
   '/account/practice-exams/lpm',
   '/account/practice-exams/popm',
   '/account/practice-exams/leading-safe',
-  '/account/practice-exams/scrum-master', // Pro gate or share-key cookie; not public practice
+  '/account/practice-exams/scrum-master', // Pro gate; not public practice
   '/account/practice-exams/agile-product-management',
   '/account/practice-exams/advanced-scrum-master',
   '/account/practice-exams/safe-for-teams',
