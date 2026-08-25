@@ -149,6 +149,7 @@ export default function Header() {
     pathname?.startsWith("/test/") ||
     pathname === "/apm-pro-temp" ||
     pathname === "/apm-pro-class" ||
+    pathname === "/leading-safe-pro-class" ||
     pathname === "/lpm-pro-temp" ||
     pathname === "/lpmpro" ||
     pathname === "/popm-pro-temp" ||
