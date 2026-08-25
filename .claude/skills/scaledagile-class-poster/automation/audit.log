@@ -1,0 +1,51 @@
+BAD  2026-08-27  GMT+10:00 Australian Eastern Standard Time Atlanta
+ok   2026-08-29  GMT–05:00 Eastern Standard Time            AtlantaAtlanta
+ok   2026-08-29  GMT–05:00 Eastern Standard Time            MiamiMiami
+BAD  2026-08-29  GMT–04:00 Eastern Daylight Time - New York New York
+BAD  2026-08-31  GMT–04:00 Eastern Daylight Time - New York Miami
+BAD  2026-08-31  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-08-31  GMT–04:00 Eastern Daylight Time - New York Miami
+BAD  2026-09-03  GMT+10:00 Australian Eastern Standard Time Atlanta
+ok   2026-09-05  GMT–05:00 Eastern Standard Time            Miami
+BAD  2026-09-07  GMT+05:30 India Standard Time - Kolkata    New York
+BAD  2026-09-10  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-12  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-14  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-17  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-19  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-19  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-19  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-19  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-21  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-24  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-24  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-24  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-26  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-26  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-26  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-26  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-28  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-09-28  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-09-28  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-01  GMT–04:00 Eastern Daylight Time - New York New York
+BAD  2026-10-01  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-03  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-03  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-05  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-07  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-08  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-08  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-08  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-10  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-10  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-10  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-10  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-12  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-12  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-12  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-12  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-14  GMT+10:00 Australian Eastern Standard Time Atlanta
+BAD  2026-10-15  GMT+10:00 Australian Eastern Standard Time Miami
+BAD  2026-10-15  GMT+10:00 Australian Eastern Standard Time Atlanta
+
+BAD: 46 of 49

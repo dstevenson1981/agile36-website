@@ -33,8 +33,18 @@ const scrape = () =>
         if (c.length >= 6) {
           // The row already links straight to the detail page; keeping the href
           // avoids reloading the whole grid just to find this row again.
-          const a = x.querySelector("a[href*='ilt-course']");
-          out.push({ name: c[0], date: c[2], instructors: Number(c[5]) || 0, href: a ? a.href : null });
+          // The row's link lives inside nested shadow roots, so a plain
+          // querySelector from the row element finds nothing.
+          let href = null;
+          const findLink = (node) => {
+            if (href) return;
+            node.querySelectorAll("a[href]").forEach((a) => {
+              if (!href && /ilt-course/.test(a.getAttribute("href") || "")) href = a.href;
+            });
+            node.querySelectorAll("*").forEach((e) => e.shadowRoot && findLink(e.shadowRoot));
+          };
+          findLink(x);
+          out.push({ name: c[0], date: c[2], instructors: Number(c[5]) || 0, href });
         }
       });
       r.querySelectorAll("*").forEach((e) => e.shadowRoot && walk(e.shadowRoot));

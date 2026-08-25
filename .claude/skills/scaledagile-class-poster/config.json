@@ -201,11 +201,16 @@
       "default": 2
     },
     "cities": [
-      "Atlanta",
-      "Miami",
-      "Los Angeles"
+      {
+        "city": "Atlanta",
+        "state": "Georgia"
+      },
+      {
+        "city": "Miami",
+        "state": "Florida"
+      }
     ],
-    "cityNote": "Every class is listed under Miami, Atlanta, or Los Angeles \u2014 never New York. Rotate across the three so no single city carries the whole calendar."
+    "cityNote": "Only Atlanta, Georgia and Miami, Florida. Alternate between them. Never New York, never Los Angeles."
   },
   "timezonePortalLabels": {
     "America/New_York": "GMT-05:00 Eastern Standard Time",

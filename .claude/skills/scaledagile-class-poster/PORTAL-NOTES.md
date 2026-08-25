@@ -129,3 +129,41 @@ them entirely. The Language field is always `English`.
 The only real choice is plain vs `- Updated` on the courses that have both
 (POPM, Scrum Master, RTE). Use the variant in the table above, which is what
 Deadra's existing listings use.
+
+## Editing an existing class — different from creating one
+
+The create dialog and the edit panel look like the same form. They are not, and
+assuming they were cost a full day on 2026-08-19.
+
+Open a class by its **direct URL** (`/s/ilt-course/<id>`), captured as `href` by
+`dump-portal.mjs`. Do not search the My Courses grid for it — the grid paginates
+at 25 rows and anything outside page one is invisible.
+
+| Step | What works |
+|---|---|
+| Open the editor | `page.getByText(/^Basic Info$/i).click()` — **not** `getByRole("button")`, which times out even though the a11y tree reports a button |
+| Scope | It *is* a dialog: `page.getByRole("dialog")` |
+| Text fields | `getByRole("textbox", {name})` + **`.fill()`** — `.fill()` replaces, typing appends (`MiamiMiami`) |
+| Dropdowns | Address by **Salesforce API name**: `[name="Timezone__c"]`, `[name="State_Province__c"]`, `[name="Country__c"]`. In the create modal the same fields resolve by label; here they do not |
+| Clicking a dropdown | The `[name]` element is the `lightning-combobox` host and has **no clickable box** — click the `button` inside it |
+| Picking an option | Match the **full label, anchored**. The portal renders the offset with a Unicode minus (U+2212), so `GMT-05:00 …` never matches — allow `[-−–]`. **Never** match on a loose substring |
+
+### The trap that put 41 live classes on Australian time
+
+Matching `/Eastern Standard Time/` also matches **"GMT+10:00 Australian Eastern
+Standard Time"**, which sorts first. The run then *verified* with the same loose
+string, so every wrong class reported success. One was set to India Standard
+Time the same way.
+
+Two rules follow, and they are not optional:
+
+1. **Anchor option matches.** Reject `GMT+` and `Australian` explicitly.
+2. **Never let the script that made a change be the only thing that checks it.**
+   Audit with a separate pass that re-reads the live page. `audit-tz.mjs` does
+   this; the discrepancy it found was 41 classes wrong while the run said 37 OK.
+
+### Dates are the easy case
+
+Start Date and End Date are plain textboxes — `.fill()` with `M/D/YYYY`. None of
+the dropdown traps above apply. `move-classes.mjs` does this, and per `RULES.md`
+moving a date is the *only* remedy for a surplus or mis-dated class.
