@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  isRtePrivateCohortInquiry,
+  sendPrivateCohortInquiryNotification,
+} from '@/app/lib/send-private-cohort-inquiry-email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -68,6 +72,15 @@ export async function POST(request: NextRequest) {
       }
       // Check if it's a duplicate email error
       if (error.code === '23505') {
+        if (isRtePrivateCohortInquiry(source, exam_name)) {
+          await sendPrivateCohortInquiryNotification({
+            name,
+            email,
+            source,
+            exam_name,
+            message,
+          });
+        }
         // Duplicate email is okay, just proceed
         return NextResponse.json({ success: true, message: 'Email already exists' });
       }
@@ -77,11 +90,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (isRtePrivateCohortInquiry(source, exam_name)) {
+      await sendPrivateCohortInquiryNotification({
+        name,
+        email,
+        source,
+        exam_name,
+        message,
+      });
+    }
+
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error storing email:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { error: `Failed to store email: ${error?.message || 'Unknown error'}` },
+      { error: `Failed to store email: ${message}` },
       { status: 500 }
     );
   }
