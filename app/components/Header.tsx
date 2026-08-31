@@ -32,11 +32,12 @@ const MEGA_MENU_SAFE_ORDER: Record<string, number> = {
   "18": 3,
   "10": 4,
   "11": 5,
-  "12": 6,
-  "13": 7,
-  "27": 8,
-  "17": 9,
-  "15": 10, // DevOps
+  "28": 6, // SAFe for Architects
+  "12": 7,
+  "13": 8,
+  "27": 9,
+  "17": 10,
+  "15": 11, // DevOps
 };
 
 function sortMegaMenuCourses(courses: Course[], category: string): Course[] {
@@ -171,6 +172,7 @@ export default function Header() {
     "Leading SAFe® 6.0 Certification Training": "/Leading SAFe.png",
     "SAFe Lean Portfolio Management": "/Lean Portfolio.png",
     "SAFe Agile Product Management": "/AgileProductManagment.png",
+    "SAFe for Architects": "/ARCH.png",
     "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
     "SAFe for Teams": "/SAFe for Teams.png",
     "SAFe DevOps": "/Devops.png",
@@ -244,6 +246,10 @@ export default function Header() {
     // Special case for SAFe Agile Product Management
     if (course.title.includes("SAFe Agile Product Management") || course.title.includes("Agile Product Management")) {
       return "/courses/agile-product-management";
+    }
+
+    if (course.title.includes("SAFe for Architects") || course.title.includes("Architects")) {
+      return "/courses/safe-for-architects";
     }
     
       // Special case for SAFe Advanced Scrum Master (must come before regular Scrum Master)
@@ -356,6 +362,20 @@ export default function Header() {
       days: "03 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "Agile Product Management, Continuous Exploration",
+      popular: true,
+      advanced: true,
+    },
+    {
+      id: "28",
+      title: "SAFe for Architects",
+      category: "SAFe",
+      image: "/andreea-avramescu-wR56AUlEsE4-unsplash.jpg",
+      price: 1399,
+      originalPrice: 2798,
+      hours: "24 Hrs",
+      days: "03 days",
+      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
+      skills: "Agile Architecture, Architectural Runway, Solution Intent",
       popular: true,
       advanced: true,
     },

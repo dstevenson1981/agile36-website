@@ -15,6 +15,7 @@ const SCALED_AGILE_COURSE_SLUGS = new Set([
   "scrum-master",
   "product-owner-manager",
   "agile-product-management",
+  "safe-for-architects",
   "lean-portfolio-management",
   "safe-for-teams",
   "release-train-engineer",

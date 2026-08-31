@@ -37,6 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "product-owner-manager",
     "lean-portfolio-management",
     "agile-product-management",
+    "safe-for-architects",
     "scrum-master",
     "safe-for-teams",
     "devops",

@@ -18,6 +18,10 @@ export const COURSE_SEO = {
     title: "SAFe Agile Product Management (APM) Certification | Agile36",
     long: "AI-Empowered SAFe® 6.0 Agile Product Management (APM) Certification Training (2026)",
   },
+  "safe-for-architects": {
+    title: "SAFe for Architects (ARCH) Certification | Agile36",
+    long: "SAFe® 6.0 for Architects (ARCH) Certification Training (2026)",
+  },
   devops: {
     title: "SAFe DevOps Practitioner (SDP) Certification | Agile36",
     long: "AI-Empowered SAFe® 6.0 DevOps (SDP) Certification Training (2026)",

@@ -391,6 +391,7 @@ function courseIntents(course: CatalogCourse): string[] {
   else if (title.includes("scrum master")) intents.push("ssm");
   if (title.includes("release train")) intents.push("rte");
   if (title.includes("agile product management")) intents.push("apm");
+  if (title.includes("architect")) intents.push("arch");
   if (title.includes("for teams")) intents.push("s4t");
   if (title.includes("devops")) intents.push("devops");
   if (title.includes("value stream")) intents.push("vsm");
@@ -419,6 +420,7 @@ function buildDocuments(): SearchDocument[] {
       if (i === "sasm") return ["sasm"];
       if (i === "rte") return ["rte"];
       if (i === "apm") return ["apm"];
+      if (i === "arch") return ["arch"];
       if (i === "s4t") return ["s4t", "sp"];
       if (i === "leading_safe") return ["sa", "leading safe"];
       return [];
@@ -461,6 +463,7 @@ function buildDocuments(): SearchDocument[] {
         if (slug.includes("safe-for-teams")) return ["s4t"];
         if (slug.includes("devops")) return ["devops"];
         if (slug.includes("agile-product")) return ["apm"];
+        if (slug.includes("architect")) return ["arch"];
         if (slug.includes("release-train")) return ["rte"];
         return [];
       }),

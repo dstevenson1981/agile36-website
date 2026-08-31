@@ -35,6 +35,7 @@ const COURSE_THUMBNAILS: { [key: string]: string } = {
     "Leading SAFe® 6.0 Certification Training": "/Leading SAFe.png",
     "SAFe Lean Portfolio Management": "/Lean Portfolio.png",
     "SAFe Agile Product Management": "/AgileProductManagment.png",
+    "SAFe for Architects": "/ARCH.png",
     "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
     "SAFe for Teams": "/SAFe for Teams.png",
     "SAFe DevOps": "/Devops.png",
@@ -119,6 +120,20 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       days: "03 days",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "Agile Product Management, Continuous Exploration",
+      popular: true,
+      advanced: true,
+    },
+    {
+      id: "28",
+      title: "SAFe for Architects",
+      category: "SAFe",
+      image: "/andreea-avramescu-wR56AUlEsE4-unsplash.jpg",
+      price: 1399,
+      originalPrice: 2798,
+      hours: "24 Hrs",
+      days: "03 days",
+      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
+      skills: "Agile Architecture, Architectural Runway, Solution Intent",
       popular: true,
       advanced: true,
     },
@@ -331,6 +346,10 @@ export function getCatalogCourseUrl(course: CatalogCourse): string {
       return "/courses/agile-product-management";
     }
 
+    if (course.title.includes("SAFe for Architects") || course.title.includes("Architects")) {
+      return "/courses/safe-for-architects";
+    }
+
     if (course.title.includes("AI-Driven Scrum Master") || course.title.includes("AI Scrum Master")) {
       return "/courses/ai-driven-scrum-master";
     }
@@ -415,6 +434,7 @@ export function getCatalogCourseAcronym(title: string): string {
   if (title.includes("Product Owner/Product Manager")) return "POPM";
   if (title.includes("Lean Portfolio")) return "LPM";
   if (title.includes("Agile Product Management")) return "APM";
+  if (title.includes("Architects")) return "ARCH";
   if (title.includes("Advanced Scrum Master")) return "SASM";
   if (title.includes("Scrum Master")) return "SSM";
   if (title.includes("for Teams")) return "S4T";

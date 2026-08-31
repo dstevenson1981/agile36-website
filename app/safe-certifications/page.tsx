@@ -67,6 +67,15 @@ const COURSES = [
     badge: "/AgileProductManagment.png",
   },
   {
+    name: "SAFe for Architects (ARCH)",
+    url: "/courses/safe-for-architects",
+    level: "Advanced",
+    description: "Agile architecture, architectural runway, and Solution Intent across ARTs",
+    duration: "3 days",
+    pdus: "24",
+    badge: "/ARCH.png",
+  },
+  {
     name: "AI-Empowered SAFe Advanced Scrum Master (SASM)",
     url: "/courses/advanced-scrum-master",
     level: "Advanced",
@@ -119,6 +128,7 @@ const COMPARISON_TABLE = [
   { cert: "AI-Empowered SAFe POPM", bestFor: "Product Owners, Product Managers", level: "Team/Program", duration: "2 days" },
   { cert: "SAFe LPM", bestFor: "PMO Directors, Portfolio Managers, Executives", level: "Portfolio", duration: "2 days" },
   { cert: "SAFe APM", bestFor: "Senior Product Managers, Heads of Product", level: "Advanced", duration: "3 days" },
+  { cert: "SAFe for Architects", bestFor: "System, Solution, and Enterprise Architects", level: "Advanced", duration: "3 days" },
   { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days" },
   { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days" },
   { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days" },
