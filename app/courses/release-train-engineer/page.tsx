@@ -884,13 +884,10 @@ export default function ReleaseTrainEngineerCoursePage() {
 
           {/* Certificate Display */}
           <div className="rounded-2xl border border-[#1f2c4a]/15 overflow-hidden">
-            <Image
+            <img
               src="/RTE_Cert.jpg"
               alt="SAFe Release Train Engineer Certificate"
-              width={800}
-              height={600}
               className="w-full h-auto"
-              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </div>

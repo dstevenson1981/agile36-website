@@ -153,7 +153,7 @@ export default function CityRTECoursePage() {
             <div className="lg:flex lg:justify-end">
               <div className="max-w-md w-full">
                 <img
-                  src="/RTE_Header.jpg"
+                  src="/RTEimage.png"
                   alt="SAFe Release Train Engineer"
                   width={1200}
                   height={675}

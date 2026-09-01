@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import WhyAgile36Section from "@/app/components/WhyAgile36Section";
-import { SAFE_COURSE_PARTICIPANTS_LABEL, SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
+import { SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseHeroStats from "@/app/components/CourseHeroStats";
 import { RadialGauge, RangeBar, FactChip, DemandMeter } from "@/app/components/CourseInfographics";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
-import { courseLong } from "@/app/lib/course-seo";
 
 export default function ProductOwnerManagerCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -92,34 +91,32 @@ export default function ProductOwnerManagerCoursePage() {
           <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
             {/* Left Content */}
             <div className="space-y-5">
-              {/* Category Badge */}
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="liquid-glass rounded-full px-3 py-1 text-xs font-medium text-[#1f2c4a]">SAFe</span>
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-700">
-                  Certification Exam Included
-                </span>
-              </div>
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+                SAFe® Certification · Live Online
+              </p>
 
-              {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
-                  {courseLong("product-owner-manager")}
+                <h1 className="text-[1.85rem] font-normal leading-[1.12] tracking-[-0.03em] text-[#1f2c4a] sm:text-[2.15rem] lg:text-[2.35rem]">
+                  <span className="block">AI-Empowered SAFe®</span>
+                  <span className="block">Product Owner / Product Manager</span>
+                  <span className="block">(POPM) Certification Training</span>
                 </h1>
                 <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-[#475569] md:text-[15px]">
-                  Master product ownership at enterprise scale with expert-led SAFe® 6.0 training, backlog management, and PI Planning simulations.
+                  The official 2-day SAFe® POPM course, taught live by certified SAFe® trainers. You leave ready to own the backlog, run PI Planning, apply customer-centric design, and sit the POPM exam.
+                </p>
+                <p className="mt-2 max-w-2xl text-[14.5px] font-medium text-[#1f2c4a] md:text-[15px]">
+                  Your first two attempts are included.
                 </p>
               </div>
 
-              {/* Social proof */}
-              <CourseHeroSocialProof enrolledLabel={SAFE_COURSE_PARTICIPANTS_LABEL} />
+              <CourseHeroSocialProof enrolledLabel="52,000+ professionals trained" />
 
-              {/* Infographic stats */}
               <CourseHeroStats
                 stats={[
-                  { value: SAFE_COURSE_PARTICIPANTS_VALUE, label: "Participants", icon: "users" },
-                  { value: "4.9", label: "Avg. rating", icon: "star" },
-                  { value: "16", label: "Hours live", icon: "clock" },
-                  { value: "2", label: "Days", icon: "calendar" },
+                  { value: "4.9", label: "2,500+ Google reviews", icon: "star" },
+                  { value: SAFE_COURSE_PARTICIPANTS_VALUE, label: "Professionals trained", icon: "users" },
+                  { value: "Included", label: "Exam fee" },
+                  { value: "16 · 16", label: "PDUs · SEUs" },
                 ]}
               />
 
@@ -145,7 +142,7 @@ export default function ProductOwnerManagerCoursePage() {
 
               {/* Accredited By */}
               <div className="flex items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
-                <span className="text-sm font-semibold uppercase tracking-wider text-[#94a3b8]">Accredited by</span>
+                <span className="text-sm text-[#64748b]">Authorized by Scaled Agile, Inc.</span>
                 <div className="flex items-center gap-4">
                   <Image
                     src="/Silver.png"
@@ -1031,9 +1028,9 @@ export default function ProductOwnerManagerCoursePage() {
       <section className="w-full bg-black py-6 px-4 sm:px-6 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-4">
-            <p className="text-sm text-[#d97706] mb-1">Get the SAFe Product Owner/Product Manager Certification</p>
+            <p className="text-sm text-[#d97706] mb-1">Get the AI-Empowered SAFe® Product Owner/Product Manager Certification</p>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe Product Owner/Product Manager Certificate</h2>
+              <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">AI-Empowered SAFe® POPM Certificate</h2>
               <div className="flex gap-1">
                 <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1047,13 +1044,10 @@ export default function ProductOwnerManagerCoursePage() {
 
           {/* Certificate Display */}
           <div className="rounded-2xl border border-[#1f2c4a]/15 overflow-hidden">
-            <Image
-              src="/POPM Certificate.jpeg"
-              alt="SAFe Product Owner/Product Manager Certificate"
-              width={800}
-              height={600}
+            <img
+              src="/POPM_Certificate.jpg"
+              alt="Certified AI-Empowered SAFe 6 Product Owner/Product Manager certificate"
               className="w-full h-auto"
-              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </div>

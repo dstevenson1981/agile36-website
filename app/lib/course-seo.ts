@@ -12,7 +12,7 @@ export const COURSE_SEO = {
   },
   "product-owner-manager": {
     title: "SAFe Product Owner/Manager (POPM) Certification | Agile36",
-    long: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training (2026)",
+    long: "AI-Empowered SAFe® Product Owner / Product Manager (POPM) Certification Training",
   },
   "agile-product-management": {
     title: "SAFe Agile Product Management (APM) Certification | Agile36",
