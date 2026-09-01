@@ -2,26 +2,24 @@
 
 import { useEffect } from "react";
 
-type CrispQueue = unknown[] & { push: (...args: unknown[]) => number };
-
-declare global {
-  interface Window {
-    $crisp?: CrispQueue;
-  }
+function crispQueue(): unknown[] {
+  const w = window as Window & { $crisp?: unknown[] };
+  if (!w.$crisp) w.$crisp = [];
+  return w.$crisp;
 }
 
 export default function HideCrispChat() {
   useEffect(() => {
     document.documentElement.classList.add("hide-crisp-chat");
-    const crisp = (window.$crisp ??= [] as unknown as CrispQueue);
+    const crisp = crispQueue();
     crisp.push(["do", "chat:hide"]);
     crisp.push(["on", "session:loaded", () => {
-      window.$crisp?.push(["do", "chat:hide"]);
+      crispQueue().push(["do", "chat:hide"]);
     }]);
 
     return () => {
       document.documentElement.classList.remove("hide-crisp-chat");
-      window.$crisp?.push(["do", "chat:show"]);
+      crispQueue().push(["do", "chat:show"]);
     };
   }, []);
 
