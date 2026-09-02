@@ -1,0 +1,1523 @@
+{
+  "classKey": "teams",
+  "sessionId": "AIKSCUYJSB",
+  "joinId": "000-240-100",
+  "eventId": "FHJAS3Q35AR5KN12A5QEUPXCKYVDKZP5",
+  "forumUid": "4PHNUWCWFHHSEMDVEBUBRBR5Y4RCOQ0V",
+  "forumUniqueId": "F-4PHNUWCWFHHSEMDVEBUBRBR5Y4RCOQ0V",
+  "forumName": "Activities: Write User Stories; Estimate Stories",
+  "itemCount": 101,
+  "typeCounts": {
+    "Feature": 14,
+    "Label": 10,
+    "Inner label": 3,
+    "Story": 5,
+    "Lesson": 8,
+    "Responsibilities": 24,
+    "Capacity": 2,
+    "Business Value (BV)": 1,
+    "PI Objective": 1,
+    "Load": 2,
+    "Orange Sticky": 1,
+    "Green Sticky": 1,
+    "Challenge": 1,
+    "Possible Solution": 1,
+    "Quality aspect": 1,
+    "Value": 1,
+    "Brainstorm": 2,
+    "Ideas": 2,
+    "Techniques": 2,
+    "Check": 12,
+    "1": 1,
+    "2": 3,
+    "100": 1,
+    "20": 1,
+    "40": 1
+  },
+  "items": [
+    {
+      "name": "FEATURE: Shopping Cart",
+      "description": "BENEFIT: Shoppers can manage items in a shopping cart for immediate or future purchase\nAC: Shoppers can easily access their cart from any page, change the quantity, add &remove it from their cart. A subtotal for all items in their shopping cart should be displayed at the bottom. Checkout button is at the bottom of the shopping cart.",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Selected Feature",
+      "description": "",
+      "itemType": {
+        "id": "T1706120192142BKJMF4MBGUFD2R0",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Refined Story",
+      "description": "",
+      "itemType": {
+        "id": "T1706120192142BKJMF4MBGUFD2R0",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Acceptance Criteria",
+      "description": "",
+      "itemType": {
+        "id": "T1706120192142BKJMF4MBGUFD2R0",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "As a...",
+      "description": "",
+      "itemType": {
+        "id": "T17061203180543DQFOQOCDHHDRHP",
+        "name": "Inner label",
+        "description": "",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "I want...",
+      "description": "",
+      "itemType": {
+        "id": "T17061203180543DQFOQOCDHHDRHP",
+        "name": "Inner label",
+        "description": "",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "So that...",
+      "description": "",
+      "itemType": {
+        "id": "T17061203180543DQFOQOCDHHDRHP",
+        "name": "Inner label",
+        "description": "",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Access Cart",
+      "description": "As a shopper, I want to be able to access my shopping cart from any page, so that I can manage my cart/items at any time.\n\nAC: Given the shopper is on the website,\nWhen they are browsing on any page,\nThen the shopping cart icon is visible on the upper right-hand corner",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Edit/Modify Cart",
+      "description": "As a shopper, I want to be able to edit/modify the selected items and quantities in my cart, so that I can purchase the correct item(s).\n\nAC: The shopper should be able to click on the \"view cart\" button/image.\nThen the shopper should be able to change the the quantity of each item selected by clicking on a \"+\" or \"-\" sign (cross-reference with the total quantity available).\nThen the shopper should be able to remove items from the card by clicking on the \"delete\" button or \"trash can\" icon.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Add to Cart",
+      "description": "As a shopper, I want to be able to add selected items and quantities to my cart, so that I can purchase them.\n\nAC: The shopper should be able to click on the \"add to cart\" button.\nThen that selected item with the price, image, title and quantity are displayed in the shopping cart.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Review Order",
+      "description": "As a shopper, I want to review the items selected, the quantity of each item, and the price (along with any discounts/coupons), so that I can make the correct payment.\n\nAC: The customer should be able to see the items selected with the correct quantities and a subtotal amount. There should be a \"checkout\" button that will move your over to the purchase page that allows you to pay.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Checkout / Purchase",
+      "description": "As a shopper, I want to checkout so that I can purchase the items.\n\nAC: which isinclusive of on a separate line item. Any discount/coupons/promo codes should be inclusive of the subtotal.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 1: Introducing SAFe",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 2: Form Agile Teams as an Agile Release Train",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 3: Connect to the Customer",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 4: Plan the work",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 5: Deliver Value",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 6: Get feedback",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 7: Improve relentlessly",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 8: Practicing SAFe",
+      "description": "",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Attend Team Sync meeting",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Demo the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend backlog refinement",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Improve flow",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Plan the Iteration",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Prepare the agenda for Iteration Review",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Prioritize the Team Backlog",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Develop the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Create User Stories",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Ensure quality",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend Coach Sync meeting",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Participate in PI Planning Event",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend the Iteration Retrospective",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Accept Requirements",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Facilitate team events",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Connect with the Customer",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Execute the Iteration",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Continuously integrate and deploy",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Test the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Communicate with other teams",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Help remove impediments",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend the Iteration Review",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Getting and applying feedback",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Improving ART performance",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration"
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration"
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598304972777T42QFMUK3JRESXL",
+        "name": "Business Value (BV)",
+        "description": "Enter Business Value per Objective"
+      }
+    },
+    {
+      "name": "1. PI Objective",
+      "description": "",
+      "itemType": {
+        "id": "T1598303887161IDQIW3X14YQD2FS",
+        "name": "PI Objective",
+        "description": "Enter one PI Objective per item."
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration"
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration"
+      }
+    },
+    {
+      "name": "Brainstorm questions",
+      "description": "",
+      "itemType": {
+        "id": "T1661875091875BXKBCHPWVZXAXG1",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Plan to address questions",
+      "description": "",
+      "itemType": {
+        "id": "T1661875091875BXKBCHPWVZXAXG1",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Example question 1",
+      "description": "",
+      "itemType": {
+        "id": "T1660346610628XTDOTNZWIR0NHYT",
+        "name": "Orange Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Plan Step 1",
+      "description": "",
+      "itemType": {
+        "id": "T1660346617264MOHVQ3TRUYFJQYL",
+        "name": "Green Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 95,
+            "g": 192,
+            "b": 139
+          }
+        }
+      }
+    },
+    {
+      "name": "Example CE challenge",
+      "description": "",
+      "itemType": {
+        "id": "T1599229675071J5KV325UFQ2GNHF",
+        "name": "Challenge",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 241,
+            "g": 81,
+            "b": 91
+          }
+        }
+      }
+    },
+    {
+      "name": "Example CE challenge solution",
+      "description": "",
+      "itemType": {
+        "id": "T1599229689906HJGJSDY2M3XGZ5P",
+        "name": "Possible Solution",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Example Build Quality In definition",
+      "description": "",
+      "itemType": {
+        "id": "T1599229303110FAHAI34Y2WDYN0B",
+        "name": "Quality aspect",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "What does \"Build Quality In\" mean to you?",
+      "description": "",
+      "itemType": {
+        "id": "T1661875821170EOIOR4QNCTW2R4X",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How do you build quality in today?",
+      "description": "",
+      "itemType": {
+        "id": "T1661875821170EOIOR4QNCTW2R4X",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example current quality practice",
+      "description": "",
+      "itemType": {
+        "id": "T16603331344643GGC4DSM3PXYLPR",
+        "name": "Value",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Build Quality In",
+      "description": "",
+      "itemType": {
+        "id": "T1661875821170EOIOR4QNCTW2R4X",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Brainstorm actions to influence CE/CI/CD",
+      "description": "",
+      "itemType": {
+        "id": "T1660346867259GBGVXWJ3NG5EPAU",
+        "name": "Brainstorm",
+        "description": "",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Identify one action to take into the coming PI",
+      "description": "",
+      "itemType": {
+        "id": "T1660346881540YTF0DEKS3ODT2X5",
+        "name": "Ideas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "What techniques do the ART and teams already utilize to get Customer feedback?",
+      "description": "",
+      "itemType": {
+        "id": "T1661876493174ZJM1KWEKA5CCMH1",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 241,
+            "g": 97,
+            "b": 78
+          }
+        }
+      }
+    },
+    {
+      "name": "What techniques may be valuable to add in?",
+      "description": "",
+      "itemType": {
+        "id": "T1661876493174ZJM1KWEKA5CCMH1",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 241,
+            "g": 97,
+            "b": 78
+          }
+        }
+      }
+    },
+    {
+      "name": "Example current technique",
+      "description": "",
+      "itemType": {
+        "id": "T1661876549985GML1ROZL00IQKND",
+        "name": "Techniques",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Example future technique",
+      "description": "",
+      "itemType": {
+        "id": "T1661876549985GML1ROZL00IQKND",
+        "name": "Techniques",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Brainstorm feedback collection techniques and necessary collaborators",
+      "description": "",
+      "itemType": {
+        "id": "T1660346867259GBGVXWJ3NG5EPAU",
+        "name": "Brainstorm",
+        "description": "",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Build a plan for how to engage with collaborators at PI Planning",
+      "description": "",
+      "itemType": {
+        "id": "T1660346881540YTF0DEKS3ODT2X5",
+        "name": "Ideas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "Shopping Cart",
+      "description": "Shopping Cart",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Payment",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Directory",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer Service Contact us",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Search",
+      "description": "Customer Benefit:\n\nFocus on what you want\n\nBusiness benefit:\n\nCustomer reach\n\nMore revenue\n\nAC:\nSearch box available\nSearch parameters: author, title, genre\nSearch input: accurate results, backend results\nIn case of misspell, auto correct, show suggestions\nSearch will return image, cost, availability \nBook Link availability",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "AI bot",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Shipping/Returns",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700228963D50TDGJVIPU10IG",
+        "name": "1",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/13E25DYZCNRUVTEFDFHWEU3MXA2FVY2K"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700247789PCMBUNCGDSE30S1",
+        "name": "2",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/LYHNLFELWR1J2Q1HWNSPWWWU0GYBXN0A"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700400633LPX5GZDXDQD4QEC",
+        "name": "100",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/S44GP4I1EMVB5PBOTACHCNCQNZ51SAKL"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700370751ANVFG2XWYYMV0YT",
+        "name": "20",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/J0A0Y15CKNHCMGVAYTECTHT3QGOAKZXP"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700386303QSG03Z4I04HRVPC",
+        "name": "40",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/T4TEF2NSOGCJEZTXNV5YD5NTJN2PEOSS"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700247789PCMBUNCGDSE30S1",
+        "name": "2",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/LYHNLFELWR1J2Q1HWNSPWWWU0GYBXN0A"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700247789PCMBUNCGDSE30S1",
+        "name": "2",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/LYHNLFELWR1J2Q1HWNSPWWWU0GYBXN0A"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Shopping Cart",
+      "description": "BENEFIT: Shoppers can manage items in a shopping cart for immediate or future purchase\nAC: Shoppers can easily access their cart from any page, change the quantity, add &remove it from their cart. A subtotal for all items in their shopping cart should be displayed at the bottom. Checkout button is at the bottom of the shopping cart.",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Access Cart",
+      "description": "As a Customer\nI want to easily access my cart from any page\nSo that I can easily buy when ready\n\n\nAC\n\nGiven the shopper is on the website\nWhen they're browsing on any page\nThen the shopping cart icon is visible in the upper right\n\n\nGiven the shopper is browsing on any page\nWhen they click on the shopping cart icon\nThen they are routed to the shopping cart page",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Change Quantity",
+      "description": "As a Customer \nI want to change the quantity of my items\nso that I purchase the right amount",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Add & Remove from Cart",
+      "description": "As a Customer\nI want to add &remove it from my cart\nSo that I purchase the correct items in the wanted quantity\n\nAC\n\nGiven the shopper is on the product page\nWhen they click in the add to cart button\nThen the item should appear in the shopping cart\n\nGiven the shopper is on the shopping cart page\nWhen they click in the remove items button from the cart\nThen the item should no longer be visible in the shopping cart",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Display of Sub Total",
+      "description": "As a Shopper\nI want to have a display of the subtotal for all the items in my shopping cart at the bottom\nSo that I can verified the amount of the purchase",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Check Out Button Display",
+      "description": "As a Shopper\nI want to have the Checkout button is at the bottom of the shopping cart.\nSo that I can easily complete the order",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    }
+  ]
+}

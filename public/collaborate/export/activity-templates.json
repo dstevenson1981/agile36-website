@@ -1,0 +1,626 @@
+{
+  "source": "export/templates/catalog.json",
+  "matches": [
+    {
+      "classKey": "devops",
+      "activityTitle": "Logistics: Course Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "devops",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "devops",
+      "activityTitle": "Activity: Create an experience matrix (DevOps 6.0)",
+      "action": "Join",
+      "templateId": "FMW432S5CILPQTGWQSC3Y0CLRDIAOMQJ",
+      "templateName": "Agile Experience Matrix",
+      "image": "https://engage.appliedframeworks.com/image_logic/MT252AXM2D0SZ12ZUFFE30BNYP504INB",
+      "score": 1.0
+    },
+    {
+      "classKey": "devops",
+      "activityTitle": "DevOps Transformation Canvas (Revisit for multiple activities)",
+      "action": "GROUPS",
+      "templateId": "TRPV2BOZZZ2XPNDH21U2XIVKKVNTP2M2",
+      "templateName": "DevOps Transformation Canvas",
+      "image": "https://engage.appliedframeworks.com/image_logic/TCIJ0WXXN0VJJKM24HXOFJY1WMSA0EKJ",
+      "score": 1.0
+    },
+    {
+      "classKey": "devops",
+      "activityTitle": "VSM: Current State Value Stream Map Canvas (6.0)",
+      "action": "GROUPS",
+      "templateId": "Y0JMU152VW5APWEANASZXLJ4YXU40R4T",
+      "templateName": "Current State Value Stream Map Canvas - For use with SAFe Value Stream Mapping Workshops",
+      "image": "https://engage.appliedframeworks.com/image_logic/V4OMXQAZBX5HKFPYZ5BAC1FZ1DESQKOH",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Logistics: Parking lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Logistics: Course feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: Agile principles at scale",
+      "action": "GROUPS",
+      "templateId": "QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "templateName": "Agile Principles at Scale",
+      "image": "https://engage.appliedframeworks.com/image_logic/CCDWGVSRP2BEDCT1M0SAVBWBPRGMGRSO",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: Experience large and small batch sizes",
+      "action": "GROUPS",
+      "templateId": "WSKTEL0023N33XS5TSA2BYRYQWDPH5RI",
+      "templateName": "Experience Large and Small Batch Sizes",
+      "image": "https://engage.appliedframeworks.com/image_logic/QLO5K4JERG5XLZOKFJDHJQNLLA5TDFWR",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: WSJF prioritization",
+      "action": "GROUPS",
+      "templateId": "M22VCG2OJ2FSCY0MFGDNQVPHICRL2JTN",
+      "templateName": "WSJF Prioritization",
+      "image": "https://engage.appliedframeworks.com/image_logic/DCABD4LDECXOYFZ11QE12Z4JNA0D0OQL",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: Simulation Team Board",
+      "action": "GROUPS",
+      "templateId": "BPEZAC4G2SGNE5NYCVVXR1SXFRMAKJX5",
+      "templateName": "Simulation Team Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/WSGPTB0GLL31UZV40X5MAASA1GAI4KVF",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: Manage ART PI Risks",
+      "action": "GROUPS",
+      "templateId": "1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "templateName": "SAFe\u00ae ROAM Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/BVT2EJV2BQLFAGYUTZQBEQI51EC3RADS",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Feature Storming and Refining",
+      "action": "GROUPS",
+      "templateId": "TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "templateName": "Feature Storming and Refining",
+      "image": "https://engage.appliedframeworks.com/image_logic/RAS2JTPKRR4Q2W3XWLZ53CZ3IL4J4IUZ",
+      "score": 1.0
+    },
+    {
+      "classKey": "leading-safe",
+      "activityTitle": "Activity: Epic writing",
+      "action": "GROUPS",
+      "templateId": "ASLOIUCYILT5DRAU20XHZARW5P0O2LQ5",
+      "templateName": "Epic Writing",
+      "image": "https://engage.appliedframeworks.com/image_logic/YJ0NWNQQ3LDE5XS5CA2JOEVYM0EQVWXR",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Logistics: Course Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Activity: Understand Portfolio Canvas Structure",
+      "action": "GROUPS",
+      "templateId": "Y0E4VM5F4UOKFK0R14IYSW5JB2Z4VFBI",
+      "templateName": "LPM Current State Portfolio Canvas",
+      "image": "https://engage.appliedframeworks.com/image_logic/CFAPRZA4XESYNC1XE3QIW30IVYCSWNXF",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Activity: LPM Future State Portfolio Canvas TTC",
+      "action": "GROUPS",
+      "templateId": "210DMI30RGIKY134ZJPFYBVQ41ZKCVD5",
+      "templateName": "LPM Future State Portfolio Canvas",
+      "image": "https://engage.appliedframeworks.com/image_logic/SBDFGKNQ411QMIGWYDBR2NOKWXLMQ123",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "SWOT / TOWS Analysis",
+      "action": "GROUPS",
+      "templateId": "52ADBEMQNAG4YPRXZJCA0YSACWAYEFNT",
+      "templateName": "SWOT / TOWS Analysis",
+      "image": "https://engage.appliedframeworks.com/image_logic/KFLXDEH5Z5QVPUZD0TQYNELV0JS2UQMQ",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Discussion: Adapting the Lean business case template",
+      "action": "GROUPS",
+      "templateId": "U1BROFNVVBVRSJELLLKSKPW3LN5O2HNQ",
+      "templateName": "LPM Lean Business Case",
+      "image": "https://engage.appliedframeworks.com/image_logic/A4D225CYU2GD1XSFF5O5HJ2NI1YBY32Q",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Activity: Sequence Portfolio Epics",
+      "action": "GROUPS",
+      "templateId": "R0UCMEYF211JRRPMOKWWLE2D0ER2JRNO",
+      "templateName": "LPM - Epic Sequencing WSJF",
+      "image": "https://engage.appliedframeworks.com/image_logic/F3XFVQUARRSO4H00XJ2BJ2HU45F24GFH",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "Discussion: The role of the LACE and VMO",
+      "action": "GROUPS",
+      "templateId": "MCNAKPGM3YF52P3HNP1LVFF3ZAWLSQU2",
+      "templateName": "Identifying the LACE",
+      "image": "https://engage.appliedframeworks.com/image_logic/HHY2YE4U1HJLHCC1NUL211QQJTTIJXS0",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "LPM Getting Started: Advocating the LPM Implementation",
+      "action": "GROUPS",
+      "templateId": "DAK2J3JZHBY4PQIS5TXM3VU4XLNDTVXF",
+      "templateName": "Advocating the Change",
+      "image": "https://engage.appliedframeworks.com/image_logic/OTQTRMCEC4ZDY4T3KYU0OCTYMM1JXZKA",
+      "score": 1.0
+    },
+    {
+      "classKey": "lpm",
+      "activityTitle": "LPM Getting Started: Prepare for Empathy Interviews",
+      "action": "GROUPS",
+      "templateId": "WXMK2UPO4NUZZNSR2RU3LDD3E0UEYASQ",
+      "templateName": "Empathy Map Canvas",
+      "image": "https://engage.appliedframeworks.com/image_logic/21M4HU4KFH33WJMXCCDQH1IA510EMD5I",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Logistics: Course Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Ice Breaker: Where in the World",
+      "action": "Join",
+      "templateId": "CU5NXUYLZ3CESZQGG0RCUHF0B1W15LJY",
+      "templateName": "Ice Breaker - Where in the World",
+      "image": "https://engage.appliedframeworks.com/image_logic/MMCQARWMMRTG5DNTDL1XNYBR5EK2HORZ",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Agile Principles at Scale",
+      "action": "GROUPS",
+      "templateId": "QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "templateName": "Agile Principles at Scale",
+      "image": "https://engage.appliedframeworks.com/image_logic/CCDWGVSRP2BEDCT1M0SAVBWBPRGMGRSO",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Feature Storming and Refining",
+      "action": "GROUPS",
+      "templateId": "TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "templateName": "Feature Storming and Refining",
+      "image": "https://engage.appliedframeworks.com/image_logic/RAS2JTPKRR4Q2W3XWLZ53CZ3IL4J4IUZ",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Prioritize Features using WSJF",
+      "action": "GROUPS",
+      "templateId": "2FFUZQXROP11HDDLJW5KFVBMLLNBC4ML",
+      "templateName": "Prioritize Features using WSJF",
+      "image": "https://engage.appliedframeworks.com/image_logic/MCWFBKXLSNW1BS5K15O0NE3QVLBJNX1A",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "Activity: Communicate the Vision",
+      "action": "GROUPS",
+      "templateId": "Q1V0G55MDCLL3RAVNWCEDNS1RH2MO5PV",
+      "templateName": "Product Vision Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/VELRQ0T505KZ2N5I0L1S3UXLUTLUHD4I",
+      "score": 1.0
+    },
+    {
+      "classKey": "popm",
+      "activityTitle": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "action": "GROUPS",
+      "templateId": "5TRPRBQ034O35QCWYRJL2QMVSPFCEIUK",
+      "templateName": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "image": "https://engage.appliedframeworks.com/image_logic/J5HDI3G4PUXPELEIQU5T5HTPD2F0U412",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Logistics: Course Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Discussion: The System Team",
+      "action": "GROUPS",
+      "templateId": "452JIBSYVENGJQCOZNK2CV2AKDNTJDU0",
+      "templateName": "The System Team",
+      "image": "https://engage.appliedframeworks.com/image_logic/SAZSH4XUHBYYPXCR2RIGPD4UKVMY2KYK",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "ART Readiness",
+      "action": "GROUPS",
+      "templateId": "NFILN4IBYHEJIZB51B1CAZN3VTF5DOTG",
+      "templateName": "ART Readiness",
+      "image": "https://engage.appliedframeworks.com/image_logic/2K05GBSSJ1XFSA1E1DWPYXQQP1ZJBUP1",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: Reading the ART Planning Board in PI Planning",
+      "action": "GROUPS",
+      "templateId": "TVIMFFQKIUPDT2WNZIJLPYDXLFA3YN5D",
+      "templateName": "SAFe\u00ae ART Planning Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/UB1EXRZ0TDWADOC5KSV5LT0TBFL1LRRA",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: ROAM and program risks",
+      "action": "GROUPS",
+      "templateId": "1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "templateName": "SAFe\u00ae ROAM Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/BVT2EJV2BQLFAGYUTZQBEQI51EC3RADS",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: Facilitating a distributed PI Planning",
+      "action": "GROUPS",
+      "templateId": "LLAUQ4AA245EV0QJLSAW4SCTQIN4I4IC",
+      "templateName": "Facilitating a distributed PI Planning",
+      "image": "https://engage.appliedframeworks.com/image_logic/MBBX2UCQDO2BJ14FZKDXAGQJFCFC23O5",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Discussion: Selecting team methods",
+      "action": "GROUPS",
+      "templateId": "VDGXANKDNJO5HH4SQ3COY2AJVQZDUL3T",
+      "templateName": "Discussion: Selecting team methods",
+      "image": "https://engage.appliedframeworks.com/image_logic/5KKITBGPDYVXZYEMRGJ53XSCZ3YVUMQ5",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: The RTE and ART Events",
+      "action": "GROUPS",
+      "templateId": "QIEPBBGAMRBSON03IK1AL2521IPGFL5G",
+      "templateName": "The RTE and ART Events",
+      "image": "https://engage.appliedframeworks.com/image_logic/GI3B4YEW3XTVPGO02TEWEKNZAQALKQWI",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: Build your own ART Kanban Board",
+      "action": "GROUPS",
+      "templateId": "D30FVLXAC3QWVPUCCLS3B4M4MKHSMJPK",
+      "templateName": "Build a Program Kanban Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZTOMDAAOGL3L3FNORRO3OJSRIPX3ZYLU",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activities: Root Cause Analysis and Problem Solving Board Activities",
+      "action": "GROUPS",
+      "templateId": "1DFZE1O1IAJ1JM0NDDOFLGGZMZBPNKN1",
+      "templateName": "Root Cause Analysis and Problem-Solving Board Activities",
+      "image": "https://engage.appliedframeworks.com/image_logic/HRXEFWGQIPGBFNIRWC3N0O1D2NGV0HPN",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: Development Value Stream Mapping \u2013 current state",
+      "action": "GROUPS",
+      "templateId": "Y0JMU152VW5APWEANASZXLJ4YXU40R4T",
+      "templateName": "Current State Value Stream Map Canvas - For use with SAFe Value Stream Mapping Workshops",
+      "image": "https://engage.appliedframeworks.com/image_logic/V4OMXQAZBX5HKFPYZ5BAC1FZ1DESQKOH",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "Activity: Development Value Stream Mapping \u2013 future state",
+      "action": "GROUPS",
+      "templateId": "EYK0DS5AKRBGFFPQZLTIL3YLMCSMYUUU",
+      "templateName": "Future State Value Stream Map Canvas- For use with SAFe Value Stream Mapping Workshops",
+      "image": "https://engage.appliedframeworks.com/image_logic/C5PAYQFVMARY1APATKM2SDF1QPFURVUW",
+      "score": 1.0
+    },
+    {
+      "classKey": "rte",
+      "activityTitle": "VSM: Current State Value Stream Map Canvas (6.0)",
+      "action": "GROUPS",
+      "templateId": "Y0JMU152VW5APWEANASZXLJ4YXU40R4T",
+      "templateName": "Current State Value Stream Map Canvas - For use with SAFe Value Stream Mapping Workshops",
+      "image": "https://engage.appliedframeworks.com/image_logic/V4OMXQAZBX5HKFPYZ5BAC1FZ1DESQKOH",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Logistics: Course Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Agile Principles at Scale",
+      "action": "GROUPS",
+      "templateId": "QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "templateName": "Agile Principles at Scale",
+      "image": "https://engage.appliedframeworks.com/image_logic/CCDWGVSRP2BEDCT1M0SAVBWBPRGMGRSO",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "The role of an effective Scrum Master in SAFe",
+      "action": "GROUPS",
+      "templateId": "Y4JPZYREK0VDCNGMCKWMTMCWQ54ZU15N",
+      "templateName": "Scrum Team Structure",
+      "image": "https://engage.appliedframeworks.com/image_logic/CFNATUK3E2EXH4QTC5C0W1ORAIJLEIM4",
+      "score": 0.9
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activity: Agile team roles and responsibilities",
+      "action": "GROUPS",
+      "templateId": "31UUOU3WCCCQPQZPSVLYT15MWBYMHW0V",
+      "templateName": "Role identification and team formation",
+      "image": "https://engage.appliedframeworks.com/image_logic/FBAX2OEMRF2XKHNXVYWIVQT4XHSLIHGL",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activity: Feature writing",
+      "action": "GROUPS",
+      "templateId": "TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "templateName": "Feature Storming and Refining",
+      "image": "https://engage.appliedframeworks.com/image_logic/RAS2JTPKRR4Q2W3XWLZ53CZ3IL4J4IUZ",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Story writing",
+      "action": "GROUPS",
+      "templateId": "0UZQQF35MIIXLVL5S52ANAAWFD51XCRK",
+      "templateName": "Story Storming & Refining",
+      "image": "https://engage.appliedframeworks.com/image_logic/HX1Q14RNJV4LMSHSRDDRZKNQAQ05I5UA",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activity: Estimating Poker",
+      "action": "GROUPS",
+      "templateId": "QWMRZSUSKQ2U1OHMS35FHK3IPJN502RG",
+      "templateName": "Estimating Poker",
+      "image": "https://engage.appliedframeworks.com/image_logic/1ZPJMGZUQG5GRQWKVOYPMUOTZHSFBHGP",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activities: Identify Team Names and Roles",
+      "action": "Join",
+      "templateId": "VK2I1B2EXGAXQZ0FHL0QNMMUBKOYLL0B",
+      "templateName": "Agile Team Charter: Team formation",
+      "image": "https://engage.appliedframeworks.com/image_logic/V0HAIQWRDNEF1WMSPR2A3XI2DTWKOJWP",
+      "score": 0.9
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activities: PI Planning simulation",
+      "action": "GROUPS",
+      "templateId": "BPEZAC4G2SGNE5NYCVVXR1SXFRMAKJX5",
+      "templateName": "Simulation Team Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/WSGPTB0GLL31UZV40X5MAASA1GAI4KVF",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activity: Coach Sync",
+      "action": "Join",
+      "templateId": "DGIH0RLZ1LACMV3QSBTJYNPCWMTAGO54",
+      "templateName": "Coach Sync Questions",
+      "image": "https://engage.appliedframeworks.com/image_logic/T4ZCK5I5PTKFVQRCSMVEFCHM5BGJAHM3",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Activity: Manage ART PI Risks",
+      "action": "Join",
+      "templateId": "1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "templateName": "SAFe\u00ae ROAM Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/BVT2EJV2BQLFAGYUTZQBEQI51EC3RADS",
+      "score": 1.0
+    },
+    {
+      "classKey": "scrum-master",
+      "activityTitle": "Root Cause Analysis and Problem-Solving Board",
+      "action": "GROUPS",
+      "templateId": "GDF1ND45WHQ3TEV0DB4JJU502H3MG1TU",
+      "templateName": "Root Cause Analysis and Problem-Solving Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/B2XRHHCZIUBOKWBMVKJ32XMNDL1YGLUR",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Logistics: Parking Lot",
+      "action": "Join",
+      "templateId": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "templateName": "Course Parking Lot",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Logistics: Course Feedback",
+      "action": "Join",
+      "templateId": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "templateName": "Course Feedback",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Agile Principles at Scale",
+      "action": "GROUPS",
+      "templateId": "QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "templateName": "Agile Principles at Scale",
+      "image": "https://engage.appliedframeworks.com/image_logic/CCDWGVSRP2BEDCT1M0SAVBWBPRGMGRSO",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Activity: Team roles and responsibilities",
+      "action": "GROUPS",
+      "templateId": "31UUOU3WCCCQPQZPSVLYT15MWBYMHW0V",
+      "templateName": "Role identification and team formation",
+      "image": "https://engage.appliedframeworks.com/image_logic/FBAX2OEMRF2XKHNXVYWIVQT4XHSLIHGL",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Feature Storming and Refining",
+      "action": "GROUPS",
+      "templateId": "TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "templateName": "Feature Storming and Refining",
+      "image": "https://engage.appliedframeworks.com/image_logic/RAS2JTPKRR4Q2W3XWLZ53CZ3IL4J4IUZ",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Estimating Poker",
+      "action": "GROUPS",
+      "templateId": "QWMRZSUSKQ2U1OHMS35FHK3IPJN502RG",
+      "templateName": "Estimating Poker",
+      "image": "https://engage.appliedframeworks.com/image_logic/1ZPJMGZUQG5GRQWKVOYPMUOTZHSFBHGP",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "action": "GROUPS",
+      "templateId": "5TRPRBQ034O35QCWYRJL2QMVSPFCEIUK",
+      "templateName": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "image": "https://engage.appliedframeworks.com/image_logic/J5HDI3G4PUXPELEIQU5T5HTPD2F0U412",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Activities: Write User Stories; Estimate Stories",
+      "action": "GROUPS",
+      "templateId": "5TRPRBQ034O35QCWYRJL2QMVSPFCEIUK",
+      "templateName": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "image": "https://engage.appliedframeworks.com/image_logic/J5HDI3G4PUXPELEIQU5T5HTPD2F0U412",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Activity: Manage ART PI Risks",
+      "action": "Join",
+      "templateId": "1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "templateName": "SAFe\u00ae ROAM Board",
+      "image": "https://engage.appliedframeworks.com/image_logic/BVT2EJV2BQLFAGYUTZQBEQI51EC3RADS",
+      "score": 1.0
+    },
+    {
+      "classKey": "teams",
+      "activityTitle": "Discussion: What is your definition of done?",
+      "action": "GROUPS",
+      "templateId": "1ZSOYF2UKOLASALLWRYTSD4Z0YJS2F2O",
+      "templateName": "Determine the Team's Definition of Done",
+      "image": "https://engage.appliedframeworks.com/image_logic/3PGQ5AWNQ4XD124HJLL0WUJZURTWZQBE",
+      "score": 1.0
+    }
+  ]
+}

@@ -8,7 +8,7 @@ const baseNavItems = [
   { href: '/account', label: 'Dashboard', icon: '🏠' },
   { href: '/account/profile', label: 'My Profile', icon: '👤' },
   { href: '/account/orders', label: 'Orders & Receipts', icon: '📄' },
-  { href: '/account/practice-exams', label: 'Practice Exams', icon: '📝' },
+  { href: '/account/practice-exams', label: 'Pro Practice Exams', icon: '📝' },
 ];
 
 export default function AccountNav({

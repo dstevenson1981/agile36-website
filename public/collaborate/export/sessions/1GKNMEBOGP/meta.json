@@ -1,0 +1,33 @@
+{
+  "sessionId": "1GKNMEBOGP",
+  "forumJoinId": "000-292-681",
+  "sourceUrl": "https://engage.appliedframeworks.com/forum/session?id=1GKNMEBOGP",
+  "joinUrl": "https://engage.appliedframeworks.com/forum/join?id=000-292-681",
+  "fetchedAt": "2026-08-26T01:02:24Z",
+  "http": {
+    "unauthenticated": "302 Found",
+    "location": "/forum/join?id=000-292-681",
+    "finalStatus": 200,
+    "pageTitle": "Join Forum | Horizon Engage"
+  },
+  "reachable": "auth_wall",
+  "copied": [],
+  "publiclyVisible": [
+    "Join Forum form",
+    "9-Digit Forum ID field (prefilled mapping 000-292-681)",
+    "Locate Forum / Change Forum",
+    "Name, Email, Forum Passcode, Password fields (not filled)",
+    "Waiting/joining modal copy",
+    "Legal footer links"
+  ],
+  "notRetrieved": [
+    "Event title",
+    "Activity list",
+    "Canvas layout / regions",
+    "Stickies and votes",
+    "Participant list",
+    "Board images",
+    "Template identity"
+  ],
+  "boardPayload": null
+}

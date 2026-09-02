@@ -490,41 +490,10 @@ export async function hasSafeForTeamsProAccess(): Promise<boolean> {
   return checkProAccess('safe-for-teams');
 }
 
-const EMERGENCY_RTE_PRO_ACCESS_EMAILS = new Set([
-  'd.stevenson@agile36.com',
-  'd.stevenso1@agile36.com',
-]);
-
-function hasEmergencyRteProAccess(
-  authEmail: string | undefined,
-  profileEmail: string | null | undefined
-): boolean {
-  return distinctEmailsForWhitelist(authEmail, profileEmail).some((email) =>
-    EMERGENCY_RTE_PRO_ACCESS_EMAILS.has(email.toLowerCase())
-  );
-}
-
 /** Check if the logged-in user has Pro plan for SAFe RTE (release-train-engineer). */
 export async function hasRteProAccess(): Promise<boolean> {
   if (isProPracticeExamExpiredForCourse('release-train-engineer')) return false;
-  const fromUserAccess = await checkProAccess('release-train-engineer');
-  if (fromUserAccess) return true;
-
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user?.email) return false;
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('email')
-    .eq('user_id', user.id)
-    .single();
-
-  if (hasEmergencyRteProAccess(user.email, profile?.email)) return true;
-
-  return false;
+  return checkProAccess('release-train-engineer');
 }
 
 /** Pro practice exam + Studio-style access for SASM (advanced-scrum-master), including SSM+SASM combo. */

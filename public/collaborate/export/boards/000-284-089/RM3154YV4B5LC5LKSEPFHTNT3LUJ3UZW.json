@@ -1,0 +1,941 @@
+{
+  "joinId": "000-284-089",
+  "eventId": "FFVLDOKUD3O41GXYSZTWVDZRI0N3I2ZJ",
+  "forumUid": "RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW",
+  "forumUniqueId": "F-RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW",
+  "forumName": "User Stories, Acceptance Criteria, and Estimating Stories",
+  "participantCount": 49,
+  "itemCount": 62,
+  "typeCounts": {
+    "Feature": 14,
+    "Story": 8,
+    "Lesson": 6,
+    "Check": 12,
+    "Text Box": 22
+  },
+  "dumpStatus": "ok",
+  "items": [
+    {
+      "name": "FEATURE: Shopping Cart",
+      "description": "BENEFIT: Shoppers can manage items in a shopping cart for immediate or future purchase\n\nAC: Shoppers can easily access their cart from any page, change the quantity, add & remove it from their cart, or save it for later. A subtotal for all items in their shopping cart should be displayed at the bottom. Items saved for later should appear below that. Check out option should be available at the bottom of the cart. Shopping cart should integrate with inventory management.",
+      "itemType": {
+        "id": "T1621623504973QKAJBANLK0QLBIM",
+        "name": "Feature",
+        "description": "Use this item to create your feature.",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Access shopping cart",
+      "description": "As a shopper \nI want to access my shopping card easy from any place on the page\nSo that I can review what I have selected for purchase\nAC: Shopping cart icon is displayed on every page.when clicking the icon it should redirect to the shopping cart page.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Change quantity of books",
+      "description": "As a shopper \nI want change quantity of the books\nso that I increase/decrease volume of the the same book I want to purchase",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Add & remove book from shopping cart",
+      "description": "As a shopper\nI want to add & remove book from shopping cart\nSo that I can add book I want to purchase and remove book I do not want to purchase\nAC: In the Book details page,We should be able to add to cart next to the selected book and the book title ,image & price gets added to the cart. We should also be able to remove from the cart next to the selected book by clicking on the trash icon available.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Save book for later",
+      "description": "As a shopper\nI want to be able to save book for the later\nSo that quick access to book later when I'm decide to purchase it.",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "View subtotal for all items in my shopping cart",
+      "description": "As a shopper\nI want to view subtotal for all items in my shopping cart\nSo that I can see the total price",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Access checkout",
+      "description": "As a shopper\nI want to access checkout\nSo that I can continue the purchase",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "(Enabler) Integrate with inventory management.",
+      "description": "Integrate with inventory management",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "View shopping cart",
+      "description": "As a shopper\nI want to view my shopping cart page\nSo that I can review books I added, their prices and other reltated information",
+      "itemType": {
+        "id": "T1621623567657NAE5JLQ3W0PDW3V",
+        "name": "Story",
+        "description": "Use this item to create your refined Story.",
+        "icon": {
+          "imageUrl": "/image_logic/C4T0KR4NLGZIC44BYRER1QKBIZYO4PBA"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 1: Exploring the Product Owner and Product Management Roles and Responsibilities",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 2: Preparing for PI Planning",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 3: Leading PI Planning",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 4: Executing Iterations",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 5: Executing the PI",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 6: Practicing SAFe",
+      "description": "",
+      "itemType": {
+        "id": "T1715018014483V3SIMD1OMGBFCD1",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "Catalog",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Search book",
+      "description": "Customer benefit: Easy way to find a desired book.\nBusiness benefit: \n1) Track what our customers are interested in. Gather analytics. \n2) Drive revenue.\nAcceptance criteria:\n1) Free text search box, to search by title, author, description, gander, fuzzy search.\n2) Search criteria/filters: price, year of publication, reviews, title, author, description, best seller\n3) view book details: image, description, price,  title, author.\n4) sorting\n5) \"out of store\" notification (user friendly to encourage to come back) + subscribe to get notified when book is back to store.\n6) Store all the search words entered by the customers. \n7) NFRs: Search shall not take more than 3secs; Lazy load with most relevant results on top; no injections (Security); response design for mobile devices;  accessible design.",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "User profile mngt",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Billing module",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "User support & FAQ",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Shipping",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Stock mngt",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Legal terms & Privacy",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Shopping cart",
+      "description": "Customer benefit: See and check-out my purchases. \nBusiness benefit: Gather insight of interest of what customers intend to purchase\nAcceptance criteria: \n1) Add books to shopping cart\n2) View list of books in my shopping cart\n3) View/mange details of purchase: quantity, price, delivery options/costs.\n4) Option to add to favorites/save for later\n5) Personalization (Up-sell) \n6) Add check-out/BUY button\n7) Integrate Shopping cart with Inventory system (to check availability).\n8) NFRs: Secure, Loading of the cart shall be \"instant\", Save cart so when user comes back list in the cart is still available.",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Payment Integration Stripe",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "CRM",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Loyalty & Rewards",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer retention",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Same Day Delivery",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Profile",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Book recommendations",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1,2,3,5,8,13,21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "55",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "18",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "3",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "34",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1.6",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "2.25",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "3",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    }
+  ]
+}

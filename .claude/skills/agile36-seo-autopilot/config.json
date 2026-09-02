@@ -1,0 +1,77 @@
+{
+  "site": "https://www.agile36.com",
+  "repo": "/Users/deadrastevenson/Desktop/agile36-website",
+  "branch": "main",
+  "blastRadius": {
+    "maxFiles": 20,
+    "maxLinesPerFile": 60
+  },
+  "allow": {
+    "paths": [
+      "app/**/page.tsx",
+      "app/**/layout.tsx",
+      "app/lib/*-jsonld.ts",
+      "app/sitemap.ts",
+      "app/robots.ts",
+      "public/llms.txt"
+    ],
+    "note": "A path being allowed is necessary but not sufficient — the denied patterns below are checked against every changed line regardless of which file it is in."
+  },
+  "deny": {
+    "paths": [
+      "app/api/**",
+      "app/(legacy)/**",
+      "app/*-temp/**",
+      "app/*-temp-*/**",
+      "app/lib/course-catalog.ts",
+      "app/lib/schedule-display.ts",
+      "app/lib/course-hero-schedule-pricing.ts",
+      "app/lib/course-promo-caps.ts",
+      "app/components/home/HomeExperience.tsx",
+      "supabase/**",
+      "scripts/**",
+      ".env*",
+      "**/*.sql"
+    ],
+    "linePatterns": [
+      {
+        "pattern": "\\$\\s?\\d{2,5}",
+        "why": "a price"
+      },
+      {
+        "pattern": "(?i)\\b(price|amount|cost|stripe|priceId|unit_amount)\\b",
+        "why": "a payment field"
+      },
+      {
+        "pattern": "\\b20\\d{2}-\\d{2}-\\d{2}\\b",
+        "why": "an ISO date, probably a class date"
+      },
+      {
+        "pattern": "(?i)\\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.?\\s+\\d{1,2}\\b",
+        "why": "a written date, probably a class date"
+      },
+      {
+        "pattern": "\\b(78%|3,?200)\\b",
+        "why": "an owner-sourced statistic"
+      },
+      {
+        "pattern": "(?i)total_registrants|course_schedules|enrollment",
+        "why": "enrolment data"
+      }
+    ]
+  },
+  "grading": {
+    "revertImmediatelyOn": [
+      "url dropped out of the index",
+      "url now 404s or redirects",
+      "structured data no longer validates",
+      "canonical points somewhere unintended"
+    ],
+    "rankingWindowWeeks": 4,
+    "cooldownWeeks": 4,
+    "note": "Hard regressions are unambiguous and get reverted on sight. Ranking movement is not judged for four weeks, and a page this agent edited is not touched again inside that window — otherwise no change is ever attributable."
+  },
+  "commitPrefix": "SEO:",
+  "deferredLog": "reports/deferred.md",
+  "failureLog": "reports/failures.log"
+}

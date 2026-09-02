@@ -1,0 +1,287 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=WIY2CSCM2C",
+  "title": "\ud83d\udc34 RTE - Root Cause Analysis and Problem Solving Board Activities - 000-190-969 Forum | Horizon Engage",
+  "course": "Lessons & Activities",
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "Course Outline: Release Train Engineer Course Kanban",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Activity: RTE and SAFe Experience",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.4",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.5",
+      "title": "OPTIONAL: Release Train Engineer Action Plan",
+      "action": "Join"
+    },
+    {
+      "code": "1.2.1",
+      "title": "Activity: The RTE role and responsibilities",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.1",
+      "title": "Activity: Establish Agile Teams with team topoloigies",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.2.1",
+      "title": "Discussion: Key ART collaborations",
+      "action": "Join"
+    },
+    {
+      "code": "3.2.3",
+      "title": "Discussion: Who are the Business Owners?",
+      "action": "Join"
+    },
+    {
+      "code": "3.3.1",
+      "title": "Discussion: The System Team",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "ART Readiness",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.1.1",
+      "title": "Discussion: What can capacity allocation be used for?",
+      "action": "Join"
+    },
+    {
+      "code": "4.1.2",
+      "title": "Activity: How much planning is enough?",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.2.1",
+      "title": "Activity: Reading the ART Planning Board in PI Planning",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.2.2",
+      "title": "Activity: Management review and problem-solving meeting",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.1",
+      "title": "Activity: Conflicting views of value",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.2",
+      "title": "Activity: ROAM and program risks",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.3",
+      "title": "Discussion: Confidence not high? Plan rework.",
+      "action": "Join"
+    },
+    {
+      "code": "4.4.1",
+      "title": "Activity: Facilitating a distributed PI Planning",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.1.1",
+      "title": "Discussion: Selecting team methods",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.1.2",
+      "title": "Activity: The RTE and ART Events",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.2.1",
+      "title": "Discussion: Built-in Quality",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.3.1",
+      "title": "Activity: Build your own ART Kanban Board",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.3.2",
+      "title": "Discussion: Measuring the flow of value",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.4.1",
+      "title": "Activity: The IP Iteration",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.5.1",
+      "title": "Activity: Create a two-minute pitch",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.1.1",
+      "title": "Activity: Preparing for PI System Demo and quantitative metrics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.1.2",
+      "title": "Activities: Root Cause Analysis and Problem Solving Board Activities",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.3.1",
+      "title": "Activity: Development Value Stream Mapping \u2013 current state",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.3.2",
+      "title": "Activity: Development Value Stream Mapping \u2013 future state",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.4.1",
+      "title": "Activity: Flow accelerators and Flow metrics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "VSM: Current State Value Stream Map Canvas (6.0)",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.1.1",
+      "title": "Activity: The Servant Leader Characteristics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.2.1",
+      "title": "Activity: The RTE and ART group dynamics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.6.1",
+      "title": "Activity: The ART can't run without trust",
+      "action": "Join"
+    },
+    {
+      "code": "7.4.1",
+      "title": "Discussion: Group facilitation techniques",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.5.1",
+      "title": "Discussion: Sustaining the victory",
+      "action": "GROUPS"
+    },
+    {
+      "code": "8.1.1",
+      "title": "Activities: Define the RTE and ART Improvement Roadmap",
+      "action": "GROUPS"
+    }
+  ],
+  "lessons": [
+    {
+      "text": [
+        "0",
+        "Facilitating Lean-Agile Program Execution",
+        "0.1.1",
+        "Course Outline: Release Train Engineer Course Kanban",
+        "Join",
+        "0.1.2"
+      ]
+    },
+    {
+      "text": [
+        "1",
+        "Exploring the RTE Role and Responsibilities",
+        "1.2.1",
+        "Activity: The RTE role and responsibilities",
+        "GROUPS"
+      ]
+    },
+    {
+      "text": [
+        "2",
+        "Applying SAFe Principles"
+      ]
+    },
+    {
+      "text": [
+        "3",
+        "Organizing the ART",
+        "3.1.1",
+        "Activity: Establish Agile Teams with team topoloigies",
+        "GROUPS",
+        "3.2.1"
+      ]
+    },
+    {
+      "text": [
+        "4",
+        "Planning a PI",
+        "4.1.1",
+        "Discussion: What can capacity allocation be used for?",
+        "Join",
+        "4.1.2"
+      ]
+    },
+    {
+      "text": [
+        "5",
+        "Executing a PI",
+        "5.1.1",
+        "Discussion: Selecting team methods",
+        "GROUPS",
+        "5.1.2"
+      ]
+    },
+    {
+      "text": [
+        "6",
+        "Fostering Relentless Improvement",
+        "6.1.1",
+        "Activity: Preparing for PI System Demo and quantitative metrics",
+        "GROUPS",
+        "6.1.2"
+      ]
+    },
+    {
+      "text": [
+        "7",
+        "Serving the ART",
+        "7.1.1",
+        "Activity: The Servant Leader Characteristics",
+        "GROUPS",
+        "7.2.1"
+      ]
+    },
+    {
+      "text": [
+        "8",
+        "Continuing Your Learning Journey",
+        "8.1.1",
+        "Activities: Define the RTE and ART Improvement Roadmap",
+        "GROUPS"
+      ]
+    }
+  ],
+  "classKey": "rte",
+  "classLabel": "RTE",
+  "joinId": "000-190-969",
+  "note": "Used the running RTE class with the SAFe Release Train Engineer 6.0 outline. Event 000-292-681 is titled RTE but loads SSM course materials."
+}

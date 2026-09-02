@@ -1,0 +1,241 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=T1AD4I0Q3H",
+  "title": "\ud83d\udc34 SSM - Story writing - 000-144-400 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 SSM - Story writing - 000-144-400 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": "35",
+  "groups": [
+    {
+      "heading": [
+        "Applying the Scrum Master Role within a SAFe Enterprise"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "Course Map: SSM Course Kanban",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Course Parking Lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.3",
+          "title": "Logistics: Course Feedback",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.4",
+          "title": "Discussion: Spell out SAFe Scrum Master",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.5",
+          "title": "SSM Action Plan",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.6",
+          "title": "Introductions",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nApplying the Scrum Master Role within a SAFe Enterprise\n0.1.1\nCourse Map: SSM Course Kanban\nJoin\n0.1.2\nLogistics: Course Parking Lot\nJoin\n0.1.3\nLogistics: Course Feedback\nJoin\n0.1.4\nDiscussion: Spell out SAFe Scrum Master\nJoin\n0.1.5\nSSM Action Plan\nJoin\n0.1.6\nIntroductions\nJoin"
+    },
+    {
+      "heading": [
+        "Introducing Scrum in SAFe"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Agile Principles at Scale",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "1\nIntroducing Scrum in SAFe\nEXTRA\nAgile Principles at Scale\nGROUPS"
+    },
+    {
+      "heading": [
+        "Characterizing the Role of the Scrum Master"
+      ],
+      "activities": [
+        {
+          "code": "2.2.1",
+          "title": "The role of an effective Scrum Master in SAFe",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.2.2",
+          "title": "Activity: Agile team roles and responsibilities",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "2\nCharacterizing the Role of the Scrum Master\n2.2.1\nThe role of an effective Scrum Master in SAFe\nGROUPS\n2.2.2\nActivity: Agile team roles and responsibilities\nGROUPS"
+    },
+    {
+      "heading": [
+        "Experiencing PI Planning"
+      ],
+      "activities": [
+        {
+          "code": "3.1.1",
+          "title": "Activity: Feature writing",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.1.2",
+          "title": "Story writing",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.1.3",
+          "title": "Activity: Estimating Poker",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.2.1",
+          "title": "Activities: Identify Team Names and Roles",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "3.2.2",
+          "title": "Activities: PI Planning simulation",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.2.3",
+          "title": "Activity: Coach Sync",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "3.4.1",
+          "title": "Activity: Manage ART PI Risks",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "3\nExperiencing PI Planning\n3.1.1\nActivity: Feature writing\nGROUPS\n3.1.2\nStory writing\nGROUPS\nGroup 1\n3.1.3\nActivity: Estimating Poker\nGROUPS\n3.2.1\nActivities: Identify Team Names and Roles\nJoin\n3.2.2\nActivities: PI Planning simulation\nGROUPS\n3.2.3\nActivity: Coach Sync\nJoin\n3.4.1\nActivity: Manage ART PI Risks\nJoin"
+    },
+    {
+      "heading": [
+        "Facilitating Iteration Execution"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Root Cause Analysis and Problem-Solving Board",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "4\nFacilitating Iteration Execution\nEXTRA\nRoot Cause Analysis and Problem-Solving Board\nGROUPS"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "Course Map: SSM Course Kanban",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Course Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.4",
+      "title": "Discussion: Spell out SAFe Scrum Master",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.5",
+      "title": "SSM Action Plan",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.6",
+      "title": "Introductions",
+      "action": "Join"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Agile Principles at Scale",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.2.1",
+      "title": "The role of an effective Scrum Master in SAFe",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.2.2",
+      "title": "Activity: Agile team roles and responsibilities",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.1",
+      "title": "Activity: Feature writing",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.2",
+      "title": "Story writing",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.3",
+      "title": "Activity: Estimating Poker",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.2.1",
+      "title": "Activities: Identify Team Names and Roles",
+      "action": "Join"
+    },
+    {
+      "code": "3.2.2",
+      "title": "Activities: PI Planning simulation",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.2.3",
+      "title": "Activity: Coach Sync",
+      "action": "Join"
+    },
+    {
+      "code": "3.4.1",
+      "title": "Activity: Manage ART PI Risks",
+      "action": "Join"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Root Cause Analysis and Problem-Solving Board",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "scrum-master",
+  "classLabel": "Scrum Master (SSM)",
+  "joinId": "000-144-400"
+}

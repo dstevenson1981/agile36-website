@@ -1,0 +1,218 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=A0TMP04QER",
+  "title": "\ud83d\udc34 Leading SAFe - Experience Large and Small Batch Sizes - 000-110-224 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 Leading SAFe - Experience Large and Small Batch Sizes - 000-110-224 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": "19",
+  "groups": [
+    {
+      "heading": [
+        "Leading SAFe Introduction"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "Agenda Kanban: Leading SAFe",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Parking lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.2.3",
+          "title": "Leading SAFe - Action Plan",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.4",
+          "title": "Logistics: Course feedback",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nLeading SAFe Introduction\n0.1.1\nAgenda Kanban: Leading SAFe\nJoin\n0.1.2\nLogistics: Parking lot\nJoin\n0.2.3\nLeading SAFe - Action Plan\nJoin\n0.1.4\nLogistics: Course feedback\nJoin"
+    },
+    {
+      "heading": [
+        "Thriving in the Digital Age with Business Agility"
+      ],
+      "activities": [],
+      "raw": "1\nThriving in the Digital Age with Business Agility"
+    },
+    {
+      "heading": [
+        "Building a Foundation with Mindset, Values, and Principles"
+      ],
+      "activities": [
+        {
+          "code": "2.1.2",
+          "title": "Activity: Agile principles at scale",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.3.2",
+          "title": "Activity: Experience large and small batch sizes",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "2\nBuilding a Foundation with Mindset, Values, and Principles\n2.1.2\nActivity: Agile principles at scale\nGROUPS\n2.3.2\nActivity: Experience large and small batch sizes\nGROUPS\nGroup 1"
+    },
+    {
+      "heading": [
+        "Establishing Team and Technical Agility"
+      ],
+      "activities": [
+        {
+          "code": "3.1.1",
+          "title": "Activity: Form teams for the PI Planning simulation",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "3\nEstablishing Team and Technical Agility\n3.1.1\nActivity: Form teams for the PI Planning simulation\nGROUPS"
+    },
+    {
+      "heading": [
+        "Building Solutions with Agile Product Delivery"
+      ],
+      "activities": [
+        {
+          "code": "4.2.2",
+          "title": "Activity: WSJF prioritization",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.3.1",
+          "title": "Activity: Simulation Team Board",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.3.2",
+          "title": "Activity: Coach Sync",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.3.3",
+          "title": "Activity: Manage ART PI Risks",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "EXTRA",
+          "title": "Feature Storming and Refining",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "4\nBuilding Solutions with Agile Product Delivery\n4.2.2\nActivity: WSJF prioritization\nGROUPS\n4.3.1\nActivity: Simulation Team Board\nGROUPS\n4.3.2\nActivity: Coach Sync\nGROUPS\n4.3.3\nActivity: Manage ART PI Risks\nGROUPS\nEXTRA\nFeature Storming and Refining\nGROUPS"
+    },
+    {
+      "heading": [
+        "Exploring Lean Portfolio Management"
+      ],
+      "activities": [
+        {
+          "code": "5.4.1",
+          "title": "Activity: Epic writing",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "5\nExploring Lean Portfolio Management\n5.4.1\nActivity: Epic writing\nGROUPS"
+    },
+    {
+      "heading": [
+        "Leading the Change"
+      ],
+      "activities": [],
+      "raw": "6\nLeading the Change"
+    },
+    {
+      "heading": [
+        "Practicing SAFe"
+      ],
+      "activities": [],
+      "raw": "7\nPracticing SAFe"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "Agenda Kanban: Leading SAFe",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Parking lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.2.3",
+      "title": "Leading SAFe - Action Plan",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.4",
+      "title": "Logistics: Course feedback",
+      "action": "Join"
+    },
+    {
+      "code": "2.1.2",
+      "title": "Activity: Agile principles at scale",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.3.2",
+      "title": "Activity: Experience large and small batch sizes",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.1",
+      "title": "Activity: Form teams for the PI Planning simulation",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.2.2",
+      "title": "Activity: WSJF prioritization",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.1",
+      "title": "Activity: Simulation Team Board",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.2",
+      "title": "Activity: Coach Sync",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.3",
+      "title": "Activity: Manage ART PI Risks",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Feature Storming and Refining",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.4.1",
+      "title": "Activity: Epic writing",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "leading-safe",
+  "classLabel": "Leading SAFe",
+  "joinId": "000-110-224"
+}

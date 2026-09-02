@@ -39,6 +39,9 @@ type Props = {
   onPrivateContactClick?: () => void;
   /** Override Scaled Agile Silver Partner footer (defaults on for SAFe course slugs). */
   showScaledAgilePartner?: boolean;
+  /** Override the schedule CTA href (e.g. on-page `#upcoming-dates`). */
+  scheduleHref?: string;
+  scheduleButtonLabel?: string;
 };
 
 /** Compact sticky pricing card: glass shell, price block, what's-included, trust footer. */
@@ -48,12 +51,15 @@ export default function CourseHeroRightColumn({
   privateClass,
   onPrivateContactClick,
   showScaledAgilePartner,
+  scheduleHref,
+  scheduleButtonLabel,
 }: Props) {
   const isPrivate = privateClass ?? PRIVATE_CLASS_SLUGS.has(courseSlug);
   const list = isPrivate ? null : COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
   const showPartner =
     showScaledAgilePartner ?? SCALED_AGILE_COURSE_SLUGS.has(courseSlug);
-  const scheduleHref = `/courses/${courseSlug}/schedule?course=${courseSlug}`;
+  const resolvedScheduleHref =
+    scheduleHref ?? `/courses/${courseSlug}/schedule?course=${courseSlug}`;
   const [showContactModal, setShowContactModal] = useState(false);
   const courseLabel =
     PRIVATE_COURSE_LABELS[courseSlug] ?? courseSlug.replace(/-/g, " ");
@@ -124,10 +130,11 @@ export default function CourseHeroRightColumn({
                 </div>
               ) : list ? (
                 <CourseHeroPriceScheduleCta
-                  scheduleHref={scheduleHref}
+                  scheduleHref={resolvedScheduleHref}
                   currentUsd={list.current}
                   originalUsd={list.original}
                   showSafeTuition={showPartner}
+                  buttonLabel={scheduleButtonLabel}
                 />
               ) : null}
 

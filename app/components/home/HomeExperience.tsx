@@ -13,6 +13,7 @@ import {
   type CatalogCourse,
   type CourseCategory,
 } from "@/app/lib/course-catalog";
+import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
 
 declare global {
   interface Window {
@@ -21,16 +22,6 @@ declare global {
 }
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
-
-const COMPANY_LOGOS = [
-  { src: "/logo-amazon.svg", alt: "Amazon" },
-  { src: "/apple-11.svg", alt: "Apple" },
-  { src: "/accenture-6.svg", alt: "Accenture" },
-  { src: "/tesla-9.svg", alt: "Tesla" },
-  { src: "/netflix-3.svg", alt: "Netflix" },
-  { src: "/disney-2.svg", alt: "Disney" },
-  { src: "/deloitte-1 (2).svg", alt: "Deloitte" },
-];
 
 const INSTRUCTORS = [
   {
@@ -427,14 +418,14 @@ export function HomeExperienceBody({
             className="marquee-mask marquee-paused -mx-6 mt-9 w-[calc(100%+3rem)] overflow-hidden sm:mx-auto sm:w-full sm:max-w-6xl"
           >
             <div className="marquee-track flex w-max items-center gap-8 pr-8 md:gap-10 md:pr-10">
-              {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
+              {[...TRUSTED_BY_LOGOS, ...TRUSTED_BY_LOGOS].map((logo, i) => (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   key={`${logo.alt}-${i}`}
                   src={logo.src}
                   alt={logo.alt}
-                  aria-hidden={i >= COMPANY_LOGOS.length}
-                  className="h-6 w-auto shrink-0 opacity-60 grayscale transition-opacity duration-300 hover:opacity-90 md:h-8"
+                  aria-hidden={i >= TRUSTED_BY_LOGOS.length}
+                  className="trusted-by-logo h-6 w-auto shrink-0 md:h-8"
                   loading="lazy"
                 />
               ))}

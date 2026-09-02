@@ -30,7 +30,7 @@ export const BADGES: Record<string, string> = {
   "responsible-ai": "/MicroCredential.jpeg",
   "ai-driven-scrum-master": "/GenAI_2.png",
   "certified-genai-practitioner": "/GenAI_2.png",
-  "certified-ai-product-manager": "/PMAI.jpeg",
+  "certified-ai-product-manager": "/PMAI.png",
   "executive-genai-leadership": "/GenAI_2.png",
   "generative-ai-project-managers": "/GenAI_2.png",
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import ScheduleCard from "@/app/components/schedule/ScheduleCard";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
@@ -58,9 +59,6 @@ export default function CourseScheduleEmbed({
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [showGroupInquiry, setShowGroupInquiry] = useState(false);
   const [inquirySchedule, setInquirySchedule] = useState<CourseScheduleRow | null>(null);
-  const [inquiryName, setInquiryName] = useState("");
-  const [inquiryEmail, setInquiryEmail] = useState("");
-  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -150,43 +148,6 @@ export default function CourseScheduleEmbed({
     }));
   }
 
-  async function handleGroupInquirySubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!inquiryEmail.includes("@") || !inquiryName.trim()) {
-      alert("Please enter your full name and a valid email address.");
-      return;
-    }
-    setIsSubmittingInquiry(true);
-    try {
-      const response = await fetch("/api/store-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: inquiryName.trim(),
-          email: inquiryEmail.trim(),
-          source: "Group Inquiry - 5+ Participants",
-          exam_name: inquirySchedule
-            ? `${courseName} - ${inquirySchedule.start_date}`
-            : courseName,
-        }),
-      });
-      if (response.ok) {
-        alert("Thank you for your inquiry. We will contact you shortly about group pricing.");
-        setShowGroupInquiry(false);
-        setInquiryName("");
-        setInquiryEmail("");
-        setInquirySchedule(null);
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        alert(errorData.error || "Failed to submit inquiry. Please try again.");
-      }
-    } catch {
-      alert("An error occurred. Please try again.");
-    } finally {
-      setIsSubmittingInquiry(false);
-    }
-  }
-
   const hasActiveFilters = Object.values(filters).some(Boolean);
   const visible = filtered.slice(0, displayedCount);
 
@@ -274,73 +235,20 @@ export default function CourseScheduleEmbed({
         </div>
       )}
 
-      {showGroupInquiry ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2c4a]/40 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl sm:p-8">
-            <button
-              type="button"
-              onClick={() => {
-                setShowGroupInquiry(false);
-                setInquirySchedule(null);
-              }}
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#1f2c4a]/10 text-[#334155] hover:bg-[#1f2c4a]/20"
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
-              Groups of 5+
-            </p>
-            <h3 className="mt-2 text-xl font-normal tracking-[-0.03em] text-[#1f2c4a]">
-              Request group pricing
-            </h3>
-            <p className="mt-2 text-sm text-[#475569]">
-              25% off for five or more seats. Tell us who to contact and we will send dates and pricing.
-            </p>
-            <form onSubmit={handleGroupInquirySubmit} className="mt-5 space-y-4">
-              <div>
-                <label htmlFor="embed-inquiry-name" className="mb-1.5 block text-sm font-medium text-[#475569]">
-                  Full name
-                </label>
-                <input
-                  id="embed-inquiry-name"
-                  required
-                  value={inquiryName}
-                  onChange={(e) => setInquiryName(e.target.value)}
-                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/[0.04] px-4 py-2 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="embed-inquiry-email" className="mb-1.5 block text-sm font-medium text-[#475569]">
-                  Email
-                </label>
-                <input
-                  id="embed-inquiry-email"
-                  type="email"
-                  required
-                  value={inquiryEmail}
-                  onChange={(e) => setInquiryEmail(e.target.value)}
-                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/[0.04] px-4 py-2 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                  placeholder="you@company.com"
-                />
-              </div>
-              {inquirySchedule ? (
-                <p className="rounded-lg bg-[#1f2c4a]/[0.06] px-3 py-2 text-sm text-[#475569]">
-                  {courseName} · {inquirySchedule.start_date.slice(0, 10)}
-                </p>
-              ) : null}
-              <button
-                type="submit"
-                disabled={isSubmittingInquiry}
-                className="w-full rounded-lg bg-[#1f2c4a] py-3 text-sm font-medium text-white hover:bg-[#16243f] disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {isSubmittingInquiry ? "Sending…" : "Request group pricing"}
-              </button>
-            </form>
-          </div>
-        </div>
-      ) : null}
+      <CorporateQuoteModal
+        open={showGroupInquiry}
+        onClose={() => {
+          setShowGroupInquiry(false);
+          setInquirySchedule(null);
+        }}
+        courseSlug={courseSlug}
+        courseLabel={courseName}
+        contextLine={
+          inquirySchedule
+            ? `${courseName} · ${inquirySchedule.start_date.slice(0, 10)}`
+            : courseName
+        }
+      />
     </div>
   );
 }

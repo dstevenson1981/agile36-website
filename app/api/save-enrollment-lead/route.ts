@@ -63,6 +63,7 @@ export async function POST(request: NextRequest) {
     const hardSuppressed = new Set([
       'enriquesan@iadb.org',
       'steven.garcia@sncorp.com',
+      'kristen.kunkel@gmail.com',
     ]);
     if (hardSuppressed.has(trimmedEmail)) {
       return NextResponse.json({

@@ -1,0 +1,1096 @@
+{
+  "classKey": "leading-safe",
+  "sessionId": "A0TMP04QER",
+  "joinId": "000-110-224",
+  "eventId": "BO0TD32FU1E0PDE5EHKBUCZ5534VEZZJ",
+  "forumUid": "OG5NAK10CHMYCE5KO31W2SLZ4LFESWCO",
+  "forumUniqueId": "F-OG5NAK10CHMYCE5KO31W2SLZ4LFESWCO",
+  "forumName": "Experience Large and Small Batch Sizes",
+  "itemCount": 82,
+  "typeCounts": {
+    "Coin": 10,
+    "Text": 6,
+    "Lesson": 7,
+    "Parking Lot Item": 1,
+    "Check": 12,
+    "Text Box": 22,
+    "Capacity": 2,
+    "Business Value (BV)": 1,
+    "Actual Business Value (ABV)": 1,
+    "PI Objective": 1,
+    "Uncommitted Objective": 1,
+    "Load": 2,
+    "Epic Name": 1,
+    "Funnel Entry Date": 5,
+    "Feature": 10
+  },
+  "items": [
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597945705236M0MB0BWXCY0HNSQ",
+        "name": "Coin",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/5FQPHJWCTEZ5W5WZP4SYWRPEDAFABJEZ"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Rita",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Eliana",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Geeta",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Joao",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1 min and 34 sec",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "38 sec",
+      "description": "",
+      "itemType": {
+        "id": "T1597091591265EUO2OCJXWZM5NEQ",
+        "name": "Text",
+        "description": "Add the large and small batch times here",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Lesson 1:",
+      "description": "Thriving in the Digital Age with Business Agility",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 2:",
+      "description": "Building a Foundation with Mindset, Values, and Principles",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 3:",
+      "description": "Establishing Team and Technical Agility",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 4:",
+      "description": "Building Solutions with Agile Product Delivery",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 5:",
+      "description": "Exploring Lean Portfolio \nManagement",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 6:",
+      "description": "Leading the Change",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 7:",
+      "description": "Practicing SAFe",
+      "itemType": {
+        "id": "T1598479092636TJHMRCWEKFL4RXU",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Link",
+      "description": "https://netorgft5246682-my.sharepoint.com/:x:/g/personal/d_stevenson_agile36_com/IQCOoXR6w2YzQIFxF04izLssAT2o09lc9U_VBVyRIvoge3g?e=ObVA4C",
+      "itemType": {
+        "id": "T1602627345186GRHTTVYDGHVTHVE",
+        "name": "Parking Lot Item",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "Same day delivery",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Profile Management",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Book Recommendations",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1,2,3,5,8,13,21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "63",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "19",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "7",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "34",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "7",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "2",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Text Box",
+        "description": "Add text or a number for each category in the WSJF table.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598304972777T42QFMUK3JRESXL",
+        "name": "Business Value (BV)",
+        "description": "Enter Business Value per Objective",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598305035730CMGWFRQUMT3ALVQ",
+        "name": "Actual Business Value (ABV)",
+        "description": "Enter Actual Business Value per Objective",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1. PI Objective",
+      "description": "",
+      "itemType": {
+        "id": "T1598303887161IDQIW3X14YQD2FS",
+        "name": "PI Objective",
+        "description": "Enter one PI Objective per item.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1. Uncommitted Objective",
+      "description": "",
+      "itemType": {
+        "id": "T15983052805961P0LYEA1EPSXTIT",
+        "name": "Uncommitted Objective",
+        "description": "Enter one uncommitted objective per item",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Digital Bookstore Experience",
+      "description": "",
+      "itemType": {
+        "id": "T1597701094637QMLMISRBXK2X2PH",
+        "name": "Epic Name",
+        "description": "Write the name of your Epic.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Aug 25, 2026",
+      "description": "",
+      "itemType": {
+        "id": "T15971636282553FWSGVR2JBQKWQN",
+        "name": "Funnel Entry Date",
+        "description": "Record the date your epic will enter the funnel.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Epic description",
+      "description": "For: bookstore customers\nWho: customers who are struggling to collect books from the store\nThe: online bookstore\nis a: flexible and reliable way\nthat: allows more people to read books with many option as renting or buying\nUnlike: traditional bookstores (limited to buying option)\nour solution: reading becomes easier",
+      "itemType": {
+        "id": "T15971636282553FWSGVR2JBQKWQN",
+        "name": "Funnel Entry Date",
+        "description": "Record the date your epic will enter the funnel.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "Increase online book sales by 20%\nIncrease customer retention by 30%",
+      "itemType": {
+        "id": "T15971636282553FWSGVR2JBQKWQN",
+        "name": "Funnel Entry Date",
+        "description": "Record the date your epic will enter the funnel.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "Checkout completition per week\nHow many items, on average, are in the shopping cart per week",
+      "itemType": {
+        "id": "T15971636282553FWSGVR2JBQKWQN",
+        "name": "Funnel Entry Date",
+        "description": "Record the date your epic will enter the funnel.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "Encrypt payments\n99% online\nWebsite accessibility \nWebsite reliability",
+      "itemType": {
+        "id": "T15971636282553FWSGVR2JBQKWQN",
+        "name": "Funnel Entry Date",
+        "description": "Record the date your epic will enter the funnel.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Catalog of books - Online",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Reporting system",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Payment system",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "User accounts",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Inventory",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Search",
+      "description": "Customer: Provides fast feedback on whether the book is available or not\nBusiness benefit: Enhance customer engagement; increase revenue and retention; analytics\nAC: search results should return in 2 sec; if book is not available show a message saying that is not available + similar recommendation; title + author + genre; reliable/accurate; search result -> cover + author + title + price + rating;",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Book recommendation",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Shopping Cart",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Shpping system",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Chatbot",
+      "description": "",
+      "itemType": {
+        "id": "T1621974096507DXC31XYS0YWRJIQ",
+        "name": "Feature",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/34ZLDSA4WQA5QBNXNECNLYHHC0OV2LOC"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    }
+  ]
+}

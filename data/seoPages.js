@@ -2678,6 +2678,12 @@ Leading SAFe is designed for leaders, managers, and change agents responsible fo
 
 Many professionals start with SAFe for Teams to build foundational knowledge, then progress to Leading SAFe as they advance into leadership roles. However, Leading SAFe can also be pursued directly if you're already in a leadership position.
 
+## What Is a Component Team in SAFe?
+
+A component team in SAFe builds a specific component, subsystem, or technical layer that multiple other teams depend on — rather than delivering a full end-to-end customer feature on its own. Component teams are common in large systems with deep technical layers (a shared platform, a hardware subsystem, a core services layer) where splitting work by feature isn't practical.
+
+SAFe generally recommends feature teams over component teams because feature teams can deliver value independently, without waiting on a handoff. But component teams still show up on most Agile Release Trains — usually for the platform, infrastructure, or architecture runway work that other teams build on top of. The tradeoff: component teams create dependencies and coordination overhead, so SAFe leans on the ART sync events (Scrum of Scrums, PO Sync) to keep them aligned with the feature teams around them.
+
 ## Training Options
 
 Agile36 offers both SAFe for Teams and Leading SAFe certifications with expert instruction and comprehensive exam preparation. Our courses prepare you for success in either role.

@@ -1,0 +1,364 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=AIKSCUYJSB",
+  "title": "\ud83d\udc34 Teams - Activities: Write User Stories; Estimate Stories - 000-240-100 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 Teams - Activities: Write User Stories; Estimate Stories - 000-240-100 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": "5",
+  "groups": [
+    {
+      "heading": [
+        "Establishing Team Agility for Agile Release Trains"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "SAFe for Teams - Course Kanban (6.0)",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Parking Lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.3",
+          "title": "Logistics: Course Feedback",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.4",
+          "title": "Activity: Icebreaker",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nEstablishing Team Agility for Agile Release Trains\n0.1.1\nSAFe for Teams - Course Kanban (6.0)\nJoin\n0.1.2\nLogistics: Parking Lot\nJoin\n0.1.3\nLogistics: Course Feedback\nJoin\n0.1.4\nActivity: Icebreaker\nJoin"
+    },
+    {
+      "heading": [
+        "Introducing SAFe"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Agile Principles at Scale",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "1\nIntroducing SAFe\nEXTRA\nAgile Principles at Scale\nGROUPS"
+    },
+    {
+      "heading": [
+        "Form Agile Teams as an Agile Release Train"
+      ],
+      "activities": [
+        {
+          "code": "2.3.1",
+          "title": "Activity: Team roles and responsibilities",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "2\nForm Agile Teams as an Agile Release Train\n2.3.1\nActivity: Team roles and responsibilities\nGROUPS"
+    },
+    {
+      "heading": [
+        "Connect to the Customer"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Feature Storming and Refining",
+          "action": "GROUPS",
+          "extra": true
+        },
+        {
+          "code": "EXTRA",
+          "title": "Estimating Poker",
+          "action": "GROUPS",
+          "extra": true
+        },
+        {
+          "code": "EXTRA",
+          "title": "User Stories, Acceptance Criteria, and Estimating Stories",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "3\nConnect to the Customer\nEXTRA\nFeature Storming and Refining\nGROUPS\nEXTRA\nEstimating Poker\nGROUPS\nEXTRA\nUser Stories, Acceptance Criteria, and Estimating Stories\nGROUPS"
+    },
+    {
+      "heading": [
+        "Plan the Work"
+      ],
+      "activities": [
+        {
+          "code": "4.1.1",
+          "title": "Activities: Write User Stories; Estimate Stories",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.2.1",
+          "title": "Activities: Identify ART Roles",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "4.2.2",
+          "title": "Activities: Team breakout #1; Draft plan review; Setting business value",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.2.3",
+          "title": "Activity: Coach Sync",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "4.2.4",
+          "title": "Activity: Manage ART PI Risks",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "4.3.1",
+          "title": "Action Plan: Plan the work",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "4\nPlan the Work\n4.1.1\nActivities: Write User Stories; Estimate Stories\nGROUPS\n4.2.1\nActivities: Identify ART Roles\nJoin\n4.2.2\nActivities: Team breakout #1; Draft plan review; Setting business value\nGROUPS\n4.2.3\nActivity: Coach Sync\nJoin\n4.2.4\nActivity: Manage ART PI Risks\nJoin\n4.3.1\nAction Plan: Plan the work\nGROUPS"
+    },
+    {
+      "heading": [
+        "Deliver Value"
+      ],
+      "activities": [
+        {
+          "code": "5.1.1",
+          "title": "Discussion: Continuous Delivery Culture",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "5.1.2",
+          "title": "Discussion: Continuous Integration and Continuous Deployment Challenges",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "5.3.1",
+          "title": "Discussion: Express \u201cBuild Quality In\u201d\u200b",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "5.3.2",
+          "title": "Discussion: What is your definition of done?",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "5.4.1",
+          "title": "Action Plan: Deliver value",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "5\nDeliver Value\n5.1.1\nDiscussion: Continuous Delivery Culture\nGROUPS\n5.1.2\nDiscussion: Continuous Integration and Continuous Deployment Challenges\nGROUPS\n5.3.1\nDiscussion: Express \u201cBuild Quality In\u201d\u200b\nJoin\n5.3.2\nDiscussion: What is your definition of done?\nGROUPS\n5.4.1\nAction Plan: Deliver value\nGROUPS"
+    },
+    {
+      "heading": [
+        "Get Feedback"
+      ],
+      "activities": [
+        {
+          "code": "6.1.1",
+          "title": "Activity: Keeping the Customer focus",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "6.3.1",
+          "title": "Activity: System Demo Challenges",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "6.4.1",
+          "title": "Action Plan: Get feedback",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "6\nGet Feedback\n6.1.1\nActivity: Keeping the Customer focus\nJoin\n6.3.1\nActivity: System Demo Challenges\nGROUPS\n6.4.1\nAction Plan: Get feedback\nGROUPS"
+    },
+    {
+      "heading": [
+        "Improve Relentlessly"
+      ],
+      "activities": [
+        {
+          "code": "7.1.1",
+          "title": "Activity: Simulate a retrospective",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "7.2.1",
+          "title": "Activity: Which Accelerators Assist in What Kind of Problems?\u200b",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "7.5.1",
+          "title": "Action Plan: How will we Improve Together?\u200b",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "7\nImprove Relentlessly\n7.1.1\nActivity: Simulate a retrospective\nJoin\n7.2.1\nActivity: Which Accelerators Assist in What Kind of Problems?\u200b\nGROUPS\n7.5.1\nAction Plan: How will we Improve Together?\u200b\nGROUPS"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "SAFe for Teams - Course Kanban (6.0)",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.4",
+      "title": "Activity: Icebreaker",
+      "action": "Join"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Agile Principles at Scale",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.3.1",
+      "title": "Activity: Team roles and responsibilities",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Feature Storming and Refining",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Estimating Poker",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.1.1",
+      "title": "Activities: Write User Stories; Estimate Stories",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.2.1",
+      "title": "Activities: Identify ART Roles",
+      "action": "Join"
+    },
+    {
+      "code": "4.2.2",
+      "title": "Activities: Team breakout #1; Draft plan review; Setting business value",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.2.3",
+      "title": "Activity: Coach Sync",
+      "action": "Join"
+    },
+    {
+      "code": "4.2.4",
+      "title": "Activity: Manage ART PI Risks",
+      "action": "Join"
+    },
+    {
+      "code": "4.3.1",
+      "title": "Action Plan: Plan the work",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.1.1",
+      "title": "Discussion: Continuous Delivery Culture",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.1.2",
+      "title": "Discussion: Continuous Integration and Continuous Deployment Challenges",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.3.1",
+      "title": "Discussion: Express \u201cBuild Quality In\u201d\u200b",
+      "action": "Join"
+    },
+    {
+      "code": "5.3.2",
+      "title": "Discussion: What is your definition of done?",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.4.1",
+      "title": "Action Plan: Deliver value",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.1.1",
+      "title": "Activity: Keeping the Customer focus",
+      "action": "Join"
+    },
+    {
+      "code": "6.3.1",
+      "title": "Activity: System Demo Challenges",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.4.1",
+      "title": "Action Plan: Get feedback",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.1.1",
+      "title": "Activity: Simulate a retrospective",
+      "action": "Join"
+    },
+    {
+      "code": "7.2.1",
+      "title": "Activity: Which Accelerators Assist in What Kind of Problems?\u200b",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.5.1",
+      "title": "Action Plan: How will we Improve Together?\u200b",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "teams",
+  "classLabel": "Teams",
+  "joinId": "000-240-100"
+}

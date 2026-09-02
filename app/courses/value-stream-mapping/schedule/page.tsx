@@ -1,6 +1,7 @@
 "use client";
 
 import ScheduleCard from "@/app/components/schedule/ScheduleCard";
+import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,11 +20,6 @@ function CourseScheduleContent() {
   
   // Group inquiry modal state
   const [showGroupInquiryModal, setShowGroupInquiryModal] = useState(false);
-  const [groupInquiryFormData, setGroupInquiryFormData] = useState({
-    name: "",
-    email: "",
-  });
-  const [isSubmittingGroupInquiry, setIsSubmittingGroupInquiry] = useState(false);
   const [selectedScheduleForInquiry, setSelectedScheduleForInquiry] = useState<any>(null);
   
   
@@ -217,49 +213,6 @@ function CourseScheduleContent() {
   };
 
 
-  const handleGroupInquirySubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!groupInquiryFormData.email || !groupInquiryFormData.email.includes('@')) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    if (!groupInquiryFormData.name || groupInquiryFormData.name.trim() === '') {
-      alert('Please enter your full name');
-      return;
-    }
-
-    setIsSubmittingGroupInquiry(true);
-    try {
-      const response = await fetch('/api/store-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: groupInquiryFormData.name,
-          email: groupInquiryFormData.email,
-          source: 'Group Inquiry - 5+ Participants',
-          exam_name: selectedScheduleForInquiry ? `${courseName} - ${selectedScheduleForInquiry.start_date}` : courseName
-        }),
-      });
-
-      if (response.ok) {
-        alert('Thank you for your inquiry! We will contact you shortly about group pricing.');
-        setShowGroupInquiryModal(false);
-        setGroupInquiryFormData({ name: "", email: "" });
-        setSelectedScheduleForInquiry(null);
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('API Error:', errorData);
-        alert(errorData.error || 'Failed to submit inquiry. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    } finally {
-      setIsSubmittingGroupInquiry(false);
-    }
-  };
 
   const hasActiveFilters = Object.values(activeFilters).some(v => v);
 
@@ -441,143 +394,20 @@ function CourseScheduleContent() {
         </div>
       </section>
 
-      {/* Group Inquiry Modal */}
-      {showGroupInquiryModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#ffffff] rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
-            {/* Close Button */}
-            <button
-              onClick={() => {
-                setShowGroupInquiryModal(false);
-                setGroupInquiryFormData({ name: "", email: "" });
-                setSelectedScheduleForInquiry(null);
-              }}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center z-10"
-            >
-              <span className="text-[#334155] text-xl">×</span>
-            </button>
-
-            <div className="flex flex-col md:flex-row">
-              {/* Left Section - Group Discount Promotion */}
-              <div className="bg-gradient-to-br from-[#1f2c4a]/10 to-transparent p-8 md:w-2/5 flex flex-col justify-center">
-                <div>
-                  <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-3">
-                    Group Training Discount Available
-                  </h2>
-                  <p className="text-base text-[#475569] mb-4">
-                    Get special pricing when enrolling 5 or more participants in our training courses.
-                  </p>
-                  <div className="bg-[#1f2c4a]/10 rounded-lg p-4 mb-4 border border-[#d97706]/50">
-                    <p className="text-sm font-semibold text-[#d97706] mb-1">
-                      🎯 Special Group Offer
-                    </p>
-                    <p className="text-base font-bold text-[#1f2c4a]">
-                      25% Off for Groups of 5+
-                    </p>
-                  </div>
-                  <ul className="space-y-2 text-sm text-[#475569]">
-                    <li className="flex items-center gap-2">
-                      <span className="text-emerald-600">✓</span>
-                      Customized training schedules
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-emerald-600">✓</span>
-                      Dedicated account manager
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-emerald-600">✓</span>
-                      Flexible payment options
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Right Section - Group Inquiry Form */}
-              <div className="p-8 md:w-3/5">
-                <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
-                  Request Group Pricing
-                </h3>
-                <p className="text-[#64748b] mb-6 text-sm">
-                  Enter your details below and we'll contact you with special group pricing for 5 or more participants
-                </p>
-                <form onSubmit={handleGroupInquirySubmit} className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="group-inquiry-name"
-                      className="block text-sm font-medium text-[#475569] mb-2"
-                    >
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="group-inquiry-name"
-                      required
-                      value={groupInquiryFormData.name}
-                      onChange={(e) =>
-                        setGroupInquiryFormData({ ...groupInquiryFormData, name: e.target.value })
-                      }
-                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="group-inquiry-email"
-                      className="block text-sm font-medium text-[#475569] mb-2"
-                    >
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="group-inquiry-email"
-                      required
-                      value={groupInquiryFormData.email}
-                      onChange={(e) =>
-                        setGroupInquiryFormData({ ...groupInquiryFormData, email: e.target.value })
-                      }
-                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
-                      placeholder="Enter your email address"
-                    />
-                    <p className="text-xs text-[#64748b] mt-1">
-                      We'll send you group pricing and available dates
-                    </p>
-                  </div>
-
-                  {selectedScheduleForInquiry && (
-                    <div className="bg-[#1f2c4a]/[0.06] p-3 rounded-lg">
-                      <p className="text-xs text-[#64748b] mb-1">Selected Course:</p>
-                      <p className="text-sm font-medium text-[#1f2c4a]">{courseName}</p>
-                      <p className="text-xs text-[#64748b]">
-                        {new Date(selectedScheduleForInquiry.start_date).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          day: 'numeric', 
-                          year: 'numeric' 
-                        })}
-                      </p>
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmittingGroupInquiry}
-                    className="w-full bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmittingGroupInquiry ? 'Submitting...' : 'Request Group Pricing'}
-                  </button>
-
-                  <p className="text-xs text-[#64748b] text-center">
-                    By submitting, you agree to our{' '}
-                    <Link href="#" className="text-[#d97706] hover:underline">Privacy Policy</Link>
-                    {' '}and{' '}
-                    <Link href="#" className="text-[#d97706] hover:underline">Terms and Conditions</Link>
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <CorporateQuoteModal
+        open={showGroupInquiryModal}
+        onClose={() => {
+          setShowGroupInquiryModal(false);
+          setSelectedScheduleForInquiry(null);
+        }}
+        courseSlug="value-stream-mapping"
+        courseLabel={courseName}
+        contextLine={
+          selectedScheduleForInquiry
+            ? `${courseName} · ${String(selectedScheduleForInquiry.start_date).slice(0, 10)}`
+            : courseName
+        }
+      />
     </main>
   );
 }

@@ -139,6 +139,21 @@ const nextConfig: NextConfig = {
         destination: '/courses/agile-product-management',
         permanent: true,
       },
+      {
+        source: '/safe-for-architects-course',
+        destination: '/courses/safe-for-architects',
+        permanent: true,
+      },
+      {
+        source: '/safe-architects-certification',
+        destination: '/courses/safe-for-architects',
+        permanent: true,
+      },
+      {
+        source: '/safe-architects',
+        destination: '/courses/safe-for-architects',
+        permanent: true,
+      },
       // AI Courses
       {
         source: '/certified-ai-product-manager-pmai',
@@ -270,6 +285,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ];
+  },
+  async rewrites() {
+    return [
+      { source: "/collaborate", destination: "/collaborate/index.html" },
+      { source: "/collaborate/events", destination: "/collaborate/index.html" },
+      { source: "/collaborate/events/:path*", destination: "/collaborate/index.html" },
+      { source: "/collaborate/templates", destination: "/collaborate/index.html" },
+      { source: "/collaborate/templates/:path*", destination: "/collaborate/index.html" },
+      { source: "/collaborate/session", destination: "/collaborate/index.html" },
+    ];
+  },
+  async headers() {
+    const originTrial =
+      process.env.WEBMCP_ORIGIN_TRIAL_TOKEN || process.env.NEXT_PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN;
+    const headers: { key: string; value: string }[] = [
+      // Lets the page register WebMCP tools when the browser implements the API.
+      { key: "Permissions-Policy", value: "tools=(self)" },
+    ];
+    if (originTrial) {
+      headers.push({ key: "Origin-Trial", value: originTrial });
+    }
+    return [{ source: "/:path*", headers }];
   },
 };
 

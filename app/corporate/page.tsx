@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { TRUSTED_BY_LOGOS } from '@/app/lib/trusted-by-logos';
 
 export default function CorporatePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -153,23 +154,15 @@ export default function CorporatePage() {
           <p className="text-center text-xs font-medium text-[#94a3b8] uppercase tracking-[0.3em] mb-8">
             Trusted by Industry Leaders
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-items-center">
-            {[
-              { src: "/logo-amazon.svg", alt: "Amazon" },
-              { src: "/apple-11.svg", alt: "Apple" },
-              { src: "/accenture-6.svg", alt: "Accenture" },
-              { src: "/tesla-9.svg", alt: "Tesla" },
-              { src: "/netflix-3.svg", alt: "Netflix" },
-              { src: "/disney-2.svg", alt: "Disney" },
-              { src: "/deloitte-1 (2).svg", alt: "Deloitte" }
-            ].map((logo, index) => (
-              <div key={index} className="relative w-24 h-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+            {TRUSTED_BY_LOGOS.map((logo) => (
+              <div key={logo.alt} className="relative w-24 h-12">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={96}
                   height={48}
-                  className="w-full h-full object-contain opacity-40 grayscale transition-opacity hover:opacity-70"
+                  className="trusted-by-logo h-full w-full object-contain"
                 />
               </div>
             ))}

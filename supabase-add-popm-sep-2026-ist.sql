@@ -1,0 +1,132 @@
+-- SAFe POPM — Sep 2026 IST cohorts (8:00 AM – 4:00 PM Asia/Kolkata)
+-- Parallel to existing ET dates; trainers alternate Deadra / Marcus.
+
+INSERT INTO course_schedules (
+  course_name,
+  course_slug,
+  course_type,
+  start_date,
+  end_date,
+  start_time,
+  end_time,
+  timezone,
+  format,
+  duration,
+  instructor_name,
+  instructor_image,
+  price,
+  original_price,
+  currency,
+  total_seats,
+  language,
+  exam_included,
+  status,
+  is_weekend,
+  hidden
+)
+SELECT * FROM (VALUES
+  (
+    'SAFe Product Owner/Product Manager',
+    'product-owner-manager',
+    'SAFe Product',
+    (TIMESTAMP '2026-09-05 08:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    (TIMESTAMP '2026-09-06 16:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    '08:00:00'::time,
+    '16:00:00'::time,
+    'Asia/Kolkata',
+    'live-virtual',
+    '2 Days',
+    'Deadra Stevenson',
+    '/Deadra.jpeg',
+    545.00,
+    1090.00,
+    'USD',
+    20,
+    'English',
+    true,
+    'active',
+    true,
+    false
+  ),
+  (
+    'SAFe Product Owner/Product Manager',
+    'product-owner-manager',
+    'SAFe Product',
+    (TIMESTAMP '2026-09-07 08:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    (TIMESTAMP '2026-09-08 16:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    '08:00:00'::time,
+    '16:00:00'::time,
+    'Asia/Kolkata',
+    'live-virtual',
+    '2 Days',
+    'Marcus Ball',
+    '/marcus.jpeg',
+    545.00,
+    1090.00,
+    'USD',
+    20,
+    'English',
+    true,
+    'active',
+    false,
+    false
+  ),
+  (
+    'SAFe Product Owner/Product Manager',
+    'product-owner-manager',
+    'SAFe Product',
+    (TIMESTAMP '2026-09-19 08:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    (TIMESTAMP '2026-09-20 16:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    '08:00:00'::time,
+    '16:00:00'::time,
+    'Asia/Kolkata',
+    'live-virtual',
+    '2 Days',
+    'Deadra Stevenson',
+    '/Deadra.jpeg',
+    545.00,
+    1090.00,
+    'USD',
+    20,
+    'English',
+    true,
+    'active',
+    true,
+    false
+  ),
+  (
+    'SAFe Product Owner/Product Manager',
+    'product-owner-manager',
+    'SAFe Product',
+    (TIMESTAMP '2026-09-24 08:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    (TIMESTAMP '2026-09-25 16:00:00' AT TIME ZONE 'Asia/Kolkata'),
+    '08:00:00'::time,
+    '16:00:00'::time,
+    'Asia/Kolkata',
+    'live-virtual',
+    '2 Days',
+    'Marcus Ball',
+    '/marcus.jpeg',
+    545.00,
+    1090.00,
+    'USD',
+    20,
+    'English',
+    true,
+    'active',
+    false,
+    false
+  )
+) AS v(
+  course_name, course_slug, course_type,
+  start_date, end_date, start_time, end_time, timezone,
+  format, duration, instructor_name, instructor_image,
+  price, original_price, currency, total_seats, language,
+  exam_included, status, is_weekend, hidden
+)
+WHERE NOT EXISTS (
+  SELECT 1 FROM course_schedules cs
+  WHERE cs.course_slug = v.course_slug
+    AND cs.timezone = 'Asia/Kolkata'
+    AND cs.start_date = v.start_date
+);

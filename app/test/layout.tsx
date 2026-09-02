@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-/** Internal / demo routes — not intended for organic search. */
+/** Public free Basic practice mocks — Pro banks stay under /account/practice-exams. */
 export const metadata: Metadata = {
-  title: "Practice test demos (internal) | Agile36",
+  title: "Free SAFe Practice Tests | Agile36",
   description:
-    "Internal practice-test demo pages for Agile36 — not part of the public certification catalog.",
+    "Free SAFe practice tests for Leading SAFe, POPM, LPM, Scrum Master, DevOps, APM, and SAFe for Teams. Exam-style questions with explanations.",
   robots: { index: false, follow: false },
 };
 

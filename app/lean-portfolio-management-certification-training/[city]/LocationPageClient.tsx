@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
+import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
 
 export default function CityLPMCoursePage() {
   const params = useParams();
@@ -18,6 +19,8 @@ export default function CityLPMCoursePage() {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ')
     : '';
+
+  const locationCourseH1 = getLocationCourseTitle("lean-portfolio-management-certification-training").long;
 
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [showAssessmentModal, setShowAssessmentModal] = useState(false);
@@ -60,7 +63,7 @@ export default function CityLPMCoursePage() {
       });
 
       if (response.ok) {
-        window.location.href = '/account/practice-exams/lpm';
+        window.location.href = '/test/lean-portfolio-management';
       } else {
         const errorData = await response.json().catch(() => ({}));
         console.error('API Error:', errorData);
@@ -106,7 +109,7 @@ export default function CityLPMCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl font-normal tracking-[-0.03em] leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
-                  SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training
+                  {locationCourseH1}
                   {cityDisplayName && (
                     <span className="block text-3xl font-normal tracking-[-0.03em] sm:text-4xl md:text-5xl mt-2">in {cityDisplayName}</span>
                   )}
@@ -866,7 +869,7 @@ export default function CityLPMCoursePage() {
                   <span className="text-base text-[#475569] font-medium">English</span>
                 </div>
                 <Link
-                  href="/account/practice-exams/lpm"
+                  href="/test/lean-portfolio-management"
                   className="bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium px-8 py-3 rounded-lg transition-colors"
                 >
                   Start Test

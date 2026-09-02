@@ -1,0 +1,157 @@
+{
+  "joinId": "000-284-089",
+  "eventId": "FFVLDOKUD3O41GXYSZTWVDZRI0N3I2ZJ",
+  "activityCount": 10,
+  "activities": [
+    {
+      "name": "Course Kanban: POPM",
+      "forumUid": "E1GXLUAWVUTYQ2CKZX21NVTLFXHW12NH",
+      "uniqueId": "F-E1GXLUAWVUTYQ2CKZX21NVTLFXHW12NH",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/E1GXLUAWVUTYQ2CKZX21NVTLFXHW12NH",
+      "file": "export/boards/000-284-089/E1GXLUAWVUTYQ2CKZX21NVTLFXHW12NH.json"
+    },
+    {
+      "name": "Course Parking Lot",
+      "forumUid": "I2V1AMAHO0JT1J3413BVMA41IMTS1FSJ",
+      "uniqueId": "F-I2V1AMAHO0JT1J3413BVMA41IMTS1FSJ",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/I2V1AMAHO0JT1J3413BVMA41IMTS1FSJ",
+      "file": "export/boards/000-284-089/I2V1AMAHO0JT1J3413BVMA41IMTS1FSJ.json"
+    },
+    {
+      "name": "Course Feedback",
+      "forumUid": "JY2AGMUVEVNHL1P52FZJJKZC4ZKPNCVR",
+      "uniqueId": "F-JY2AGMUVEVNHL1P52FZJJKZC4ZKPNCVR",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/JY2AGMUVEVNHL1P52FZJJKZC4ZKPNCVR",
+      "file": "export/boards/000-284-089/JY2AGMUVEVNHL1P52FZJJKZC4ZKPNCVR.json"
+    },
+    {
+      "name": "Ice Breaker: Where in the World",
+      "forumUid": "UIAVI3D3STRWUA0CSKYPR112KDYZ33CJ",
+      "uniqueId": "F-UIAVI3D3STRWUA0CSKYPR112KDYZ33CJ",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/UIAVI3D3STRWUA0CSKYPR112KDYZ33CJ",
+      "file": "export/boards/000-284-089/UIAVI3D3STRWUA0CSKYPR112KDYZ33CJ.json"
+    },
+    {
+      "name": "Communicate the Vision",
+      "forumUid": "5MJSDYAPQX12XMMNASE3KABUJODOOY4R",
+      "uniqueId": "F-5MJSDYAPQX12XMMNASE3KABUJODOOY4R",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/5MJSDYAPQX12XMMNASE3KABUJODOOY4R",
+      "file": "export/boards/000-284-089/5MJSDYAPQX12XMMNASE3KABUJODOOY4R.json"
+    },
+    {
+      "name": "Identify dependency issues and resolve them",
+      "forumUid": "4YGMMTL4OJRCQVBSKOV45Q5XIKLASOG3",
+      "uniqueId": "F-4YGMMTL4OJRCQVBSKOV45Q5XIKLASOG3",
+      "itemCount": 62,
+      "typeCounts": {
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/4YGMMTL4OJRCQVBSKOV45Q5XIKLASOG3",
+      "file": "export/boards/000-284-089/4YGMMTL4OJRCQVBSKOV45Q5XIKLASOG3.json"
+    },
+    {
+      "name": "Agile Principles at Scale",
+      "forumUid": "IHRSG24JE11W5KY0NMLPTEAB4RYGBGPK",
+      "uniqueId": "F-IHRSG24JE11W5KY0NMLPTEAB4RYGBGPK",
+      "itemCount": 62,
+      "typeCounts": {
+        "Check": 12,
+        "Lesson": 6,
+        "Feature": 14,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/IHRSG24JE11W5KY0NMLPTEAB4RYGBGPK",
+      "file": "export/boards/000-284-089/IHRSG24JE11W5KY0NMLPTEAB4RYGBGPK.json"
+    },
+    {
+      "name": "Feature Storming and Refining",
+      "forumUid": "SPJRFIU5KNADACBVAHI5S35RAHTLSBRP",
+      "uniqueId": "F-SPJRFIU5KNADACBVAHI5S35RAHTLSBRP",
+      "itemCount": 62,
+      "typeCounts": {
+        "Feature": 14,
+        "Lesson": 6,
+        "Check": 12,
+        "Text Box": 22,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/SPJRFIU5KNADACBVAHI5S35RAHTLSBRP",
+      "file": "export/boards/000-284-089/SPJRFIU5KNADACBVAHI5S35RAHTLSBRP.json"
+    },
+    {
+      "name": "Prioritize Features using WSJF",
+      "forumUid": "TKNPKPY4TTCNE1EZPUJ1EVDO3M015PVO",
+      "uniqueId": "F-TKNPKPY4TTCNE1EZPUJ1EVDO3M015PVO",
+      "itemCount": 62,
+      "typeCounts": {
+        "Text Box": 22,
+        "Lesson": 6,
+        "Check": 12,
+        "Feature": 14,
+        "Story": 8
+      },
+      "localPath": "/events/000-284-089/TKNPKPY4TTCNE1EZPUJ1EVDO3M015PVO",
+      "file": "export/boards/000-284-089/TKNPKPY4TTCNE1EZPUJ1EVDO3M015PVO.json"
+    },
+    {
+      "name": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "forumUid": "RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW",
+      "uniqueId": "F-RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW",
+      "itemCount": 62,
+      "typeCounts": {
+        "Feature": 14,
+        "Story": 8,
+        "Lesson": 6,
+        "Check": 12,
+        "Text Box": 22
+      },
+      "localPath": "/events/000-284-089/RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW",
+      "file": "export/boards/000-284-089/RM3154YV4B5LC5LKSEPFHTNT3LUJ3UZW.json"
+    }
+  ]
+}

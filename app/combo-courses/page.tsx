@@ -5,17 +5,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { COMBO_COURSES, type Combo } from "./data";
 import ComboCourseHeroCollage from "./ComboCourseHeroCollage";
+import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
 
 const INDUSTRY_LOGOS = [
-  { src: "/accenture-6.svg", alt: "Accenture" },
-  { src: "/deloitte-1 (2).svg", alt: "Deloitte" },
+  ...TRUSTED_BY_LOGOS,
   { src: "/jpmorgan-2 (1).svg", alt: "JPMorgan" },
   { src: "/bank-of-america-2 (1).svg", alt: "Bank of America" },
-  { src: "/disney-2.svg", alt: "Disney" },
-  { src: "/netflix-3.svg", alt: "Netflix" },
-  { src: "/tesla-9.svg", alt: "Tesla" },
-  { src: "/apple-11.svg", alt: "Apple" },
-  { src: "/logo-amazon.svg", alt: "Amazon" },
 ];
 
 const BENEFITS = [
@@ -359,7 +354,7 @@ export default function ComboCoursesPage() {
                 alt={logo.alt}
                 width={120}
                 height={40}
-                className="h-8 w-auto opacity-50 grayscale transition hover:opacity-90 hover:grayscale-0 sm:h-9"
+                className="trusted-by-logo h-8 w-auto sm:h-9"
               />
             ))}
           </div>

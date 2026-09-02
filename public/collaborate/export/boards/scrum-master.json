@@ -1,0 +1,1578 @@
+{
+  "classKey": "scrum-master",
+  "sessionId": "T1AD4I0Q3H",
+  "joinId": "000-144-400",
+  "eventId": "WYQTPIMR0XAG5DYDMT0EY1OK4NRH2JHC",
+  "forumUid": "HONR0N0WI1WRTP1U5JAOT5XURHZK0FA4",
+  "forumUniqueId": "F-HONR0N0WI1WRTP1U5JAOT5XURHZK0FA4",
+  "forumName": "Story writing",
+  "itemCount": 109,
+  "typeCounts": {
+    "Text": 7,
+    "Lesson": 6,
+    "Parking Lot Item": 1,
+    "Scrum Master Responsibility": 13,
+    "Responsibilities": 24,
+    "Feature": 15,
+    "2": 1,
+    "1": 2,
+    "20": 2,
+    "5": 1,
+    "8": 1,
+    "Capacity": 2,
+    "Business Value (BV)": 1,
+    "Actual Business Value (ABV)": 1,
+    "PI Objective": 1,
+    "Uncommitted Objective": 1,
+    "Load": 2,
+    "Check": 12,
+    "Original Problem": 1,
+    "Five Why's / Potential Causes": 7,
+    "Biggest Root Cause": 3,
+    "Improvement Item": 5
+  },
+  "items": [
+    {
+      "name": "FEATURE: Shopping Cart",
+      "description": "BENEFIT: Shoppers can manage items in a shopping cart for immediate or future purchase\n\nAC: \nShoppers can easily access their cart from any page, \nChange the quantity, \nAdd & remove it from their cart. \nA subtotal for all items in their shopping cart should be displayed at the bottom. \nCheck out button is at the bottom of the cart.\nIntegrate with inventory mgmt.",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Access Cart",
+      "description": "As a Shopper\nI want to access my shopping card from any page\nSo that I can access my shopping cart easily\n\nAC \nGiven that I am a shopper on the website\nWhen I am on any page on the website\nThen the shopping cart icon is visible in the upper right-hand corner\n\nGiven that I am a shopper browsing on any page\nWhen I select/click the shopping cart icon\nThen I am routed to the shopping cart page\n\nGiven that I am a shopper on any page\nWhen I hover over the icon \nThen I can see a modal preview of what I have in my cart\n\nGiven that I have nothing in my cart\nWhen I select the shopping cart icon\nThen I am notified that my cart is empty w/a pop-up close to the cart icon",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Add Item to cart",
+      "description": "As a Shopper\nI want to add books to the cart and update quantity\nSo that I can manage my book purchase and quantity",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Remove item from the cart",
+      "description": "As a Shopper\nI want to remove books from the cart\nSo that I can manage the books I want to purchase",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "View cart total",
+      "description": "As a Shopper\nI want to see individual and total price for all items in my cart\nSo that I can do an informed purchase",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Checkout",
+      "description": "As a Shopper\nI want to check out the cart\nSo that I can complete the purchase of the selected books\n\nAC\nGiven that I have added all the books I want to purchase in my cart and on the shopping cart page\nWhen I click on \"checkout\"\nThen I am navigated to the checkout page \n\nGiven that I am on the checkout page\nWhen the checkout page loads\nThen I am able to see the sum total of my items for purchase, sum quantities, and total amount to purchase \n\nGiven that I am on shopping cart page with no items \nWhen I click on checkout\nThen I receive a message that there are no items to purchase greyed out \n\nGiven that I have items in my shopping cart and the availability of the item has changed since adding \nWhen I click the check out button\nThen I receive a message that the item(s) and/or quantity are no longer available",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Inventory Management integration",
+      "description": "Description: Implement integration between the Shopping Cart service and Inventory Management system to enable real-time inventory validation, reservation, and stock synchronization throughout the shopping journey. This capability will ensure accurate product availability is presented to customers, prevent overselling, and maintain inventory consistency across catalog, cart, checkout, and order management systems.\n\nThe integration should support inventory availability checks when products are added to the cart, quantity updates within the cart, inventory reservation during checkout, and inventory deduction upon successful order completion.\nAC:\nShopping Cart service must invoke Inventory APIs to validate stock availability when a product is added to the cart.",
+      "itemType": {
+        "id": "T1599768734490ZSAVB3MLEHKWGXL",
+        "name": "Text",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 1:",
+      "description": "Introducing Scrum in SAFe",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 2:",
+      "description": "Characterizing the Role of the Scrum Master",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 3:",
+      "description": "Experiencing PI Planning",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 4:",
+      "description": "Facilitating Iteration Execution",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 5:",
+      "description": "Finishing the PI",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "Lesson 6:",
+      "description": "Becoming a Certified SAFe Scrum Master",
+      "itemType": {
+        "id": "T1598481196250EMSBF1NGYI0LZPZ",
+        "name": "Lesson",
+        "description": ""
+      }
+    },
+    {
+      "name": "LINK",
+      "description": "https://netorgft5246682-my.sharepoint.com/:w:/g/personal/d_stevenson_agile36_com/IQBb8yE31gkDRb3I49jbMgCdAU1ohHa20XXsFCC_MnCEnHw?e=zUo0te",
+      "itemType": {
+        "id": "T1602627345186GRHTTVYDGHVTHVE",
+        "name": "Parking Lot Item",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Facilitating team meetings.",
+      "description": "Facilitating team meetings.",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Remove impediments",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Coach the team",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Check progress",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "SOS meeting",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Manage dependencies",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Training",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Support the PO",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Stakeholder coordination",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Encourage automation",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Increase team velocity",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Adhoc meeting",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Team growth",
+      "description": "",
+      "itemType": {
+        "id": "T1599753057799VLDQLSGZAMMR05F",
+        "name": "Scrum Master Responsibility",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Attend Team Sync meeting",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Demo the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend backlog refinement",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Improve flow",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Plan the Iteration",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Prepare the agenda for Iteration Review",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Prioritize the Team Backlog",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Develop the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Create User Stories",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Ensure quality",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend Coach Sync meeting",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Participate in PI Planning Event",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend the Iteration Retrospective",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Accept Requirements",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Facilitate team events",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Connect with the Customer",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Execute the Iteration",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Continuously integrate and deploy",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Test the system",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Communicate with other teams",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Help remove impediments",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Attend the Iteration Review",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Getting and applying feedback",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Improving ART performance",
+      "description": "",
+      "itemType": {
+        "id": "T15989093822473NPMPUWMM3USXRS",
+        "name": "Responsibilities",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/10CWUZ43P20EUW34GOOMV4I2UM0T0FY0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Catalogue of Inventory",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Search Features",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Shopping Cart",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Payment Method Acceptance",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "User Accounts",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Branding and UI",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Web Hosting",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Reviews and Ratings",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Shipping + Logistics",
+      "description": "",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer Benefit",
+      "description": "As a customer, searching provides an understanding of available books and find what they want.",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Business Benefit",
+      "description": "Purchasing, Revenue driver, analytics + pattern",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "AC",
+      "description": "Ability to search with book title, author, genre, publication, ISBN; Language; query catalogue for reliable results; fuzzy match/search; suggestions; display availability; returns results in ~3 seconds; pageanted results ~20 per page; browser support/mobile/tablet;",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer Benefit",
+      "description": "Ability to purchase; select books while continuing to browse; holds items/save for later; manage what you want to buy;",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "Business Benefit",
+      "description": "Mechanism for purchase/revenue; analytics;",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "ac",
+      "description": "ability to add multiple items or single; add or remove items; increase quantity of items; apply coupon code; save for later/wishlist; see total cost for all items selected (total and line item); reduce price after applying discount; integrate w/inventory",
+      "itemType": {
+        "id": "T15990729694922I1EHDMEUAFQQX1",
+        "name": "Feature",
+        "description": "Brainstorm as many Features as possible",
+        "note": {
+          "backgroundColor": {
+            "r": 51,
+            "g": 153,
+            "b": 254
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700247789PCMBUNCGDSE30S1",
+        "name": "2",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/LYHNLFELWR1J2Q1HWNSPWWWU0GYBXN0A"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700228963D50TDGJVIPU10IG",
+        "name": "1",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/13E25DYZCNRUVTEFDFHWEU3MXA2FVY2K"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700228963D50TDGJVIPU10IG",
+        "name": "1",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/13E25DYZCNRUVTEFDFHWEU3MXA2FVY2K"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700370751ANVFG2XWYYMV0YT",
+        "name": "20",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/J0A0Y15CKNHCMGVAYTECTHT3QGOAKZXP"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700370751ANVFG2XWYYMV0YT",
+        "name": "20",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/J0A0Y15CKNHCMGVAYTECTHT3QGOAKZXP"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1597700283034SRJWWOEMVZPMIHJ",
+        "name": "5",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/NL14ILZUHBX4H5RVJCKN1WPLWZHYTVGV"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T15977003065554F0EUFLDQK0JPWU",
+        "name": "8",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/RRM3AXFGUC3KFHHJJD053ZSDKFKD33YM"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T15983043124190UMQGTBMGBNWDJK",
+        "name": "Capacity",
+        "description": "Enter the capacity for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598304972777T42QFMUK3JRESXL",
+        "name": "Business Value (BV)",
+        "description": "Enter Business Value per Objective",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598305035730CMGWFRQUMT3ALVQ",
+        "name": "Actual Business Value (ABV)",
+        "description": "Enter Actual Business Value per Objective",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1. PI Objective",
+      "description": "",
+      "itemType": {
+        "id": "T1598303887161IDQIW3X14YQD2FS",
+        "name": "PI Objective",
+        "description": "Enter one PI Objective per item.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "1. Uncommitted Objective",
+      "description": "",
+      "itemType": {
+        "id": "T15983052805961P0LYEA1EPSXTIT",
+        "name": "Uncommitted Objective",
+        "description": "Enter one uncommitted objective per item",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "0",
+      "description": "",
+      "itemType": {
+        "id": "T1598305546105YOHCOKGBEZ44HH2",
+        "name": "Load",
+        "description": "Enter the load for the Iteration",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1744658565454LS5IKZCMRE5S5BE",
+        "name": "Check",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/VCUSG4KXUAZML4HG0OEMBRAX1L4JBRI0"
+        }
+      }
+    },
+    {
+      "name": "Effort estimation",
+      "description": "During upgrades, the team performs discovery in the first part of the iteration. Even if they do the discovery, they end up spending more time than estimated.",
+      "itemType": {
+        "id": "T1584035521926PSYM2HIT2OB1GUB",
+        "name": "Original Problem",
+        "description": "Create a clear problem statement and place it on the Original problem statement section",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Missing knowledge on the team to understand the existing implementation or underlying system?",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "The Team hasn't been cross-trained",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Team members aren't comfortable reaching out to SMEs or ask for help",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "People try to solution the ask themselves",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Insufficient time for Backlog grooming and refinement",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Overloaded - team members wear multiple hats",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Too many competing priorities and the carry over work",
+      "description": "",
+      "itemType": {
+        "id": "T158403556160820JN4SRG1RGA4PC",
+        "name": "Biggest Root Cause",
+        "description": "Describe the biggest root cause here",
+        "note": {
+          "backgroundColor": {
+            "r": 95,
+            "g": 192,
+            "b": 139
+          }
+        }
+      }
+    },
+    {
+      "name": "Support/Meetings take up more time",
+      "description": "",
+      "itemType": {
+        "id": "T1584035546492DFGWWKGGNBU2DKT",
+        "name": "Five Why's / Potential Causes",
+        "description": "Brainstorm potential causes of the problem and add to the Root Cause Analysis",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Leadership wants a lot of initiatives done but doesnt consider team capacity and bandwidth.",
+      "description": "",
+      "itemType": {
+        "id": "T158403556160820JN4SRG1RGA4PC",
+        "name": "Biggest Root Cause",
+        "description": "Describe the biggest root cause here",
+        "note": {
+          "backgroundColor": {
+            "r": 95,
+            "g": 192,
+            "b": 139
+          }
+        }
+      }
+    },
+    {
+      "name": "Disconnect between business units and SAFe process",
+      "description": "",
+      "itemType": {
+        "id": "T158403556160820JN4SRG1RGA4PC",
+        "name": "Biggest Root Cause",
+        "description": "Describe the biggest root cause here",
+        "note": {
+          "backgroundColor": {
+            "r": 95,
+            "g": 192,
+            "b": 139
+          }
+        }
+      }
+    },
+    {
+      "name": "Train leadership",
+      "description": "",
+      "itemType": {
+        "id": "T15867947822305BJCNBPXFRM3A3K",
+        "name": "Improvement Item",
+        "description": "Describe the improvement items to add to the backlog here",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Create a common platform with leaders from various teams",
+      "description": "",
+      "itemType": {
+        "id": "T15867947822305BJCNBPXFRM3A3K",
+        "name": "Improvement Item",
+        "description": "Describe the improvement items to add to the backlog here",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Process Improvement",
+      "description": "Trade-offs and de-prioritization required",
+      "itemType": {
+        "id": "T15867947822305BJCNBPXFRM3A3K",
+        "name": "Improvement Item",
+        "description": "Describe the improvement items to add to the backlog here",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Present impact analysis of being over worked",
+      "description": "",
+      "itemType": {
+        "id": "T15867947822305BJCNBPXFRM3A3K",
+        "name": "Improvement Item",
+        "description": "Describe the improvement items to add to the backlog here",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Agile Coaches and Consultants - Build a transformation team",
+      "description": "",
+      "itemType": {
+        "id": "T15867947822305BJCNBPXFRM3A3K",
+        "name": "Improvement Item",
+        "description": "Describe the improvement items to add to the backlog here",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    }
+  ]
+}

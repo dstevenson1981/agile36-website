@@ -1,0 +1,1577 @@
+{
+  "classKey": "lpm",
+  "sessionId": "13WZ4AQ3MY",
+  "joinId": "000-228-484",
+  "eventId": "I0MRCKGDTLSDS2Z5QOM3YU3M4JFHVZQK",
+  "forumUid": "QYEOKJTU3SCXZRYYRJDYVYRQPRTEUGUX",
+  "forumUniqueId": "F-QYEOKJTU3SCXZRYYRJDYVYRQPRTEUGUX",
+  "forumName": "LPM - Epic Sequencing WSJF",
+  "itemCount": 103,
+  "typeCounts": {
+    "TTC Epic": 22,
+    "Lesson": 8,
+    "Sticky - Objective": 1,
+    "Card": 24,
+    "Market Milestone": 1,
+    "Market Rhythm": 12,
+    "Blue Sticky": 10,
+    "Text": 14,
+    "Label": 2,
+    "Blue Stickie": 9
+  },
+  "items": [
+    {
+      "name": "Image recognition system",
+      "description": "Current state: Inconsistent image recognition leads to navigation errors and safety risks.\n\nImproving accuracy to 90% will reduce errors, increase reliability, and enable safer, more scalable autonomous delivery operations.\n\nForecasted Cost: 700K",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Enhance navigation",
+      "description": "Current state: Inefficient routing increases drive time and limits delivery capacity.\nEnhancing navigation to reduce drive time by 20% will improve delivery speed, lower costs, and increase throughput.\n\nForecasted Cost: ($300K)",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Delivery platform development",
+      "description": "Build in-house delivery platform to acquire customers and grow market share by +10% \n\nBuilding an in-house courier platform (booking, tracking, routing, and customer management) enables direct customer acquisition, improves margins, and supports ~+10% market share growth.\n\nForecasted Cost:  $1M.",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "1,2,3,5,8,13,21",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "3",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "21",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "43",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "17",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "22",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "3",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "14.33",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "17",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "2.75",
+      "description": "",
+      "itemType": {
+        "id": "T1598570489234HCKF5BHO44T0EMH",
+        "name": "TTC Epic",
+        "description": "Epic descriptions",
+        "icon": {
+          "imageUrl": "/image_logic/PBVMB2REYLARPE0G4XXWIDSMISOPCPYQ"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 1:",
+      "description": "Introducing Lean Portfolio Management",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 2:",
+      "description": "Establishing Portfolio Strategy and Vision",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 3:",
+      "description": "Realizing Portfolio Vision Through Epics",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 4:",
+      "description": "Establishing Investment Funding",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 5:",
+      "description": "Managing Portfolio Flow",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 6:",
+      "description": "Applying Agile Portfolio Operations",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 7:",
+      "description": "Applying Lean Governance",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Lesson 8:",
+      "description": "Becoming a SAFe Lean Portfolio Manager",
+      "itemType": {
+        "id": "T1598479844837XTS51CIDV4TNGJ5",
+        "name": "Lesson",
+        "description": "Lesson titles"
+      }
+    },
+    {
+      "name": "Expand Autonomous Delivery Into Retail",
+      "description": "",
+      "itemType": {
+        "id": "T15907879131143SX1JPHOTQZY2WU",
+        "name": "Sticky - Objective",
+        "description": "Identify at least one objective that could be a strategic theme for TTC in the Objective area.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1.) Autonomous Commercial Delivery Vehicles; Autonomous Public Transportation Vehicles",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "2.) Development and innovation lab; Regulation and license fees",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "3.) Engineers building the SaaS solution on TTC Web Services Partner Network; Enhanced vision system and laser-based lidars",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "4.) Service charge; Membership subscription",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "5.) 4 million; 5 million",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "6.) Safe and fast on-demand grocery delivery; Safe, reliable, fast and economical transportation with built-in onboard services",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "7.) Autonomous vehicles for delivery of commercial goods; Autonomous vehicles for public transportation of people",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "8.) Online platform with eCommerce capabilities; Interactive app with customizable preferences",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "9.) Local business delivery; local public transportation service",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "10.) Voice of the customer; Service subscribers",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "11.) TTC Web Services Partner Network; Regional Transportation Transit System",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "12.) Average profit margin, customer acquisition cost; Customer retention",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Drag the card to the correct location of the portfolio canvas.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "1.) Autonomous Commercial Delivery Vehicles; Autonomous Public Transportation Vehicles",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "2.) Development and innovation lab; Regulation and license fees",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "3.) Engineers building the SaaS solution on TTC Web Services Partner Network; Enhanced vision system and laser-based lidars",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "4.) Service charge; Membership subscription",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "5.) 4 million; 5 million",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "6.) Safe and fast on-demand grocery delivery; Safe, reliable, fast and economical transportation with built-in onboard services",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "7.) Autonomous vehicles for delivery of commercial goods; Autonomous vehicles for public transportation of people",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "8.) Online platform with eCommerce capabilities; Interactive app with customizable preferences",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "9.) Local business delivery; local public transportation service",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "10.) Voice of the customer; Service subscribers",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "11.) TTC Web Services Partner Network; Regional Transportation Transit System",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "12.) Average profit margin, customer acquisition cost; Customer retention",
+      "description": "",
+      "itemType": {
+        "id": "T1595901401703WLGWU2SZ2ZLD0JL",
+        "name": "Card",
+        "description": "Current State Portfolio - TTC",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "1st Milestone",
+      "description": "",
+      "itemType": {
+        "id": "T16045259536641ER01CSHHLXTJPZ",
+        "name": "Market Milestone",
+        "description": "Add a Market Milestone Item Type to identify milestones throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/LMYT5YYNA0KM0FHX5WZ3BR5ERUQHK4JU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1591735912043I0TEGSZF0Z4BYF5",
+        "name": "Market Rhythm",
+        "description": "Add a Market Rhythm Item Type to identify high and low demand throughout the year.",
+        "icon": {
+          "imageUrl": "/image_logic/4A0GBXAIPWY4U3BSLZHUCMMVH2N0KJ1O"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Lauch Autonomous Delivery for 5 retail customers",
+      "description": "",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "15.08.2026",
+      "description": "",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Description",
+      "description": "For 5 Retail Customers \nwho deliver commercial goods to their customers to use our services.\nWe deliver autonomeous delivery vehicle which helps customer reduce delivery cost and enables them to deliver in 24/7.\nUnlike traditional delivery method which is not scalable and reliant on human drivers or limited hours.",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Sales",
+      "description": "We manage to sell it to 5 retail customers in our region and increase revenue by 5 %",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Reduce Cost",
+      "description": "Reduce production and delivery costs to customers",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Sales Leads Metrics",
+      "description": "Sales Calls\nCustomer Contact\nSales Demo\nAdvertisement Performance",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Cost per Vehicle",
+      "description": "Cost trend for production cost per vehicle\nMaintenance",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Reliability",
+      "description": "Break downs\nRepairs",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Scalibility",
+      "description": "",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Local Laws and Regulations",
+      "description": "",
+      "itemType": {
+        "id": "T1605048262012ZKTEROXPAA2J3I3",
+        "name": "Blue Sticky",
+        "description": "Add a Blue Sticky to define the categories in the Epic Hypothesis Statement.",
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "Military",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Autonomous retail",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Trucks",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Courier vans",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5%",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "15",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "20",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "60",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "30%",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "30%",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "35",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "5%",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "h3 , h2",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "h1,h0",
+      "description": "",
+      "itemType": {
+        "id": "T1605219118938DL5LHKI22OF0RFI",
+        "name": "Text",
+        "description": "Add numbers and text to each quadrant to practice how to establish lean budget guardrails.",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "What artifacts are required to ensure an efficient portfolio sync?",
+      "description": "",
+      "itemType": {
+        "id": "T16898745885874FF4CPSXAWI0A4W",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What might determine who should attend a given portfolio sync?",
+      "description": "",
+      "itemType": {
+        "id": "T16898745885874FF4CPSXAWI0A4W",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Experienced engineers and software developers",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Limited venture capital",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Expand automonous delivery into retail",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Revenue from courier vans is diminishing due to Amazon taking the majority of the market",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Autonomous commercial vehicle needed",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Software",
+      "description": "Tracking, Route optimization",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Niche market",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Investors/Partnerships",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    },
+    {
+      "name": "Sell 50% of our vehicles",
+      "description": "",
+      "itemType": {
+        "id": "T1576888714080BXRNJ4UP0MH5ANW",
+        "name": "Blue Stickie",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/L4HVIPUAK4UDD1YVUDCLI3REZZ1FUMO0"
+        }
+      }
+    }
+  ]
+}

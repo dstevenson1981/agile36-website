@@ -120,7 +120,7 @@ export function buildLocalLocationContent(
   const hiring = HIRING_ANGLE[(v + 1) % HIRING_ANGLE.length];
   const scheduleNote = SCHEDULE_NOTE[(v + 2) % SCHEDULE_NOTE.length];
 
-  const courseTitle = getLocationCourseTitle(segment);
+  const courseTitle = getLocationCourseTitle(segment).long;
   const p1 = `Agile36 runs live virtual ${courseTitle} for learners in and around ${city}. You attend from your home or office—there is no “${city} classroom day”—but the agenda is designed for US-friendly time blocks so teams across the ${city} metro can participate without travel friction.`;
 
   const p2 = `${angles[0]} In practice, that means ${hiring}`;

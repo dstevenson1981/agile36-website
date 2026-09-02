@@ -1,0 +1,287 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=PTTR2APGRX",
+  "title": "\ud83d\udc34 DevOps - SAFe DevOps (6.0) Kanban - 000-207-025 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 DevOps - SAFe DevOps (6.0) Kanban - 000-207-025 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": null,
+  "groups": [
+    {
+      "heading": [
+        "SAFe DevOps Remote Course Logistics"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "SAFe DevOps (6.0) - Course Kanban",
+          "action": "Here",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Course Parking Lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.3",
+          "title": "Logistics: Course Feedback",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.4",
+          "title": "Logistics: Introductions",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nSAFe DevOps Remote Course Logistics\n0.1.1\nSAFe DevOps (6.0) - Course Kanban\nHere\n0.1.2\nLogistics: Course Parking Lot\nJoin\n0.1.3\nLogistics: Course Feedback\nJoin\n0.1.4\nLogistics: Introductions\nJoin"
+    },
+    {
+      "heading": [
+        "Introducing DevOps"
+      ],
+      "activities": [
+        {
+          "code": "1.1.1",
+          "title": "Activity: Create an experience matrix (DevOps 6.0)",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "1.1.2",
+          "title": "Discussion: The impact of the Digital Age",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "1.2.1",
+          "title": "Activity: What does DevOps mean to you? Part 1 and Part 2",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "1.4.1",
+          "title": "Discussion: Flow",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "1\nIntroducing DevOps\n1.1.1\nActivity: Create an experience matrix (DevOps 6.0)\nJoin\n1.1.2\nDiscussion: The impact of the Digital Age\nGROUPS\n1.2.1\nActivity: What does DevOps mean to you? Part 1 and Part 2\nJoin\n1.4.1\nDiscussion: Flow\nGROUPS"
+    },
+    {
+      "heading": [
+        "Mapping Your Value Stream"
+      ],
+      "activities": [
+        {
+          "code": "2.1.1",
+          "title": "DevOps Transformation Canvas (Revisit for multiple activities)",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.2.1",
+          "title": "Activities: Visualize the Development Value Stream and Measure the health of your Development Value Stream",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "EXTRA",
+          "title": "VSM: Current State Value Stream Map Canvas (6.0)",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "2\nMapping Your Value Stream\n2.1.1\nDevOps Transformation Canvas (Revisit for multiple activities)\nGROUPS\n2.2.1\nActivities: Visualize the Development Value Stream and Measure the health of your Development Value Stream\nGROUPS\nEXTRA\nVSM: Current State Value Stream Map Canvas (6.0)\nGROUPS"
+    },
+    {
+      "heading": [
+        "Gaining Alignment with Continuous Exploration"
+      ],
+      "activities": [
+        {
+          "code": "3.4.1",
+          "title": "Activity: Apply Continuous Exploration to your Value Stream",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "3\nGaining Alignment with Continuous Exploration\n3.4.1\nActivity: Apply Continuous Exploration to your Value Stream\nGROUPS"
+    },
+    {
+      "heading": [
+        "Building Quality In with Continuous Integration"
+      ],
+      "activities": [
+        {
+          "code": "4.1.1",
+          "title": "Discussion: Continuous Integration problems",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.4.1",
+          "title": "Activity: Apply Continuous Integration to your Value Stream",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "4\nBuilding Quality In with Continuous Integration\n4.1.1\nDiscussion: Continuous Integration problems\nGROUPS\n4.4.1\nActivity: Apply Continuous Integration to your Value Stream\nGROUPS"
+    },
+    {
+      "heading": [
+        "Reducing Time-to-Market with Continuous Deployment"
+      ],
+      "activities": [
+        {
+          "code": "5.4.1",
+          "title": "Apply Continuous Deployment to your Value Stream",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "5\nReducing Time-to-Market with Continuous Deployment\n5.4.1\nApply Continuous Deployment to your Value Stream\nGROUPS"
+    },
+    {
+      "heading": [
+        "Delivering Business Value with Release on Demand"
+      ],
+      "activities": [
+        {
+          "code": "6.1.1",
+          "title": "Discussion: Analyze TTC's failure",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "6.4.1",
+          "title": "Apply Release on Demand to your Value Stream",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "6.4.2",
+          "title": "Discussion: An unwanted Solution",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "6\nDelivering Business Value with Release on Demand\n6.1.1\nDiscussion: Analyze TTC's failure\nGROUPS\n6.4.1\nApply Release on Demand to your Value Stream\nGROUPS\n6.4.2\nDiscussion: An unwanted Solution\nGROUPS"
+    },
+    {
+      "heading": [
+        "Taking Action"
+      ],
+      "activities": [
+        {
+          "code": "7.1.1",
+          "title": "Activity: Prioritize your DevOps backlog",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "7\nTaking Action\n7.1.1\nActivity: Prioritize your DevOps backlog\nGROUPS"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "SAFe DevOps (6.0) - Course Kanban",
+      "action": "Here"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Course Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.4",
+      "title": "Logistics: Introductions",
+      "action": "Join"
+    },
+    {
+      "code": "1.1.1",
+      "title": "Activity: Create an experience matrix (DevOps 6.0)",
+      "action": "Join"
+    },
+    {
+      "code": "1.1.2",
+      "title": "Discussion: The impact of the Digital Age",
+      "action": "GROUPS"
+    },
+    {
+      "code": "1.2.1",
+      "title": "Activity: What does DevOps mean to you? Part 1 and Part 2",
+      "action": "Join"
+    },
+    {
+      "code": "1.4.1",
+      "title": "Discussion: Flow",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.1.1",
+      "title": "DevOps Transformation Canvas (Revisit for multiple activities)",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.2.1",
+      "title": "Activities: Visualize the Development Value Stream and Measure the health of your Development Value Stream",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "VSM: Current State Value Stream Map Canvas (6.0)",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.4.1",
+      "title": "Activity: Apply Continuous Exploration to your Value Stream",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.1.1",
+      "title": "Discussion: Continuous Integration problems",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.4.1",
+      "title": "Activity: Apply Continuous Integration to your Value Stream",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.4.1",
+      "title": "Apply Continuous Deployment to your Value Stream",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.1.1",
+      "title": "Discussion: Analyze TTC's failure",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.4.1",
+      "title": "Apply Release on Demand to your Value Stream",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.4.2",
+      "title": "Discussion: An unwanted Solution",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.1.1",
+      "title": "Activity: Prioritize your DevOps backlog",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "devops",
+  "classLabel": "DevOps",
+  "joinId": "000-207-025"
+}

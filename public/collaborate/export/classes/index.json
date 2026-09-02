@@ -1,0 +1,66 @@
+[
+  {
+    "key": "rte",
+    "label": "RTE",
+    "joinId": "000-190-969",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=WIY2CSCM2C",
+    "title": "RTE - Root Cause Analysis and Problem Solving Board Activities - 000-190-969 Forum | Horizon Engage",
+    "activityCount": 38,
+    "file": "export/classes/rte.json",
+    "note": "Used the running RTE class with the SAFe Release Train Engineer 6.0 outline. Event 000-292-681 is titled RTE but loads SSM course materials."
+  },
+  {
+    "key": "scrum-master",
+    "label": "Scrum Master (SSM)",
+    "joinId": "000-144-400",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=T1AD4I0Q3H",
+    "title": "SSM - Story writing - 000-144-400 Forum | Horizon Engage",
+    "activityCount": 17,
+    "file": "export/classes/scrum-master.json"
+  },
+  {
+    "key": "popm",
+    "label": "POPM",
+    "joinId": "000-284-089",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=EDCMX1ZLVD",
+    "title": "POPM - Course Kanban: POPM - 000-284-089 Forum | Horizon Engage",
+    "activityCount": 10,
+    "file": "export/classes/popm.json"
+  },
+  {
+    "key": "lpm",
+    "label": "Lean Portfolio Management",
+    "joinId": "000-228-484",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=13WZ4AQ3MY",
+    "title": "LPM - LPM - Epic Sequencing WSJF - 000-228-484 Forum | Horizon Engage",
+    "activityCount": 29,
+    "file": "export/classes/lpm.json"
+  },
+  {
+    "key": "leading-safe",
+    "label": "Leading SAFe",
+    "joinId": "000-110-224",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=A0TMP04QER",
+    "title": "Leading SAFe - Experience Large and Small Batch Sizes - 000-110-224 Forum | Horizon Engage",
+    "activityCount": 13,
+    "file": "export/classes/leading-safe.json"
+  },
+  {
+    "key": "teams",
+    "label": "Teams",
+    "joinId": "000-240-100",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=AIKSCUYJSB",
+    "title": "Teams - Activities: Write User Stories; Estimate Stories - 000-240-100 Forum | Horizon Engage",
+    "activityCount": 26,
+    "file": "export/classes/teams.json"
+  },
+  {
+    "key": "devops",
+    "label": "DevOps",
+    "joinId": "000-207-025",
+    "url": "https://engage.appliedframeworks.com/forum/session?id=PTTR2APGRX",
+    "title": "DevOps - SAFe DevOps (6.0) Kanban - 000-207-025 Forum | Horizon Engage",
+    "activityCount": 19,
+    "file": "export/classes/devops.json"
+  }
+]

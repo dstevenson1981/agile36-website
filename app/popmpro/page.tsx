@@ -1,11 +1,10 @@
 import { redirect } from 'next/navigation';
-import { POPM_PRO_PUBLIC_PATH } from '@/app/lib/popm-pro-temp-access';
 
 export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-/** Short alias → unlisted POPM Pro practice exam. */
+/** Short alias → free POPM mock. */
 export default function PopmProShortcutPage() {
-  redirect(POPM_PRO_PUBLIC_PATH);
+  redirect('/test/product-owner-manager');
 }

@@ -1,0 +1,2347 @@
+{
+  "classKey": "devops",
+  "sessionId": "PTTR2APGRX",
+  "joinId": "000-207-025",
+  "eventId": "Q11YLDUFRTSW34HVHEKDBQYUKZVRJOQR",
+  "forumUid": "RXNDPWLNN31OD54WM34HH0AZ53RC21WE",
+  "forumUniqueId": "F-RXNDPWLNN31OD54WM34HH0AZ53RC21WE",
+  "forumName": "SAFe DevOps (6.0) Kanban",
+  "itemCount": 146,
+  "typeCounts": {
+    "Lesson": 8,
+    "My Experience": 1,
+    "Axis Labels": 4,
+    "Impact": 1,
+    "Label": 16,
+    "Note": 1,
+    "Region 1": 6,
+    "Step information": 27,
+    "DevOps Practices": 26,
+    "Common Problems": 1,
+    "Future State Value Stream Map: DevOps Transformation Canvas": 3,
+    "Analysis": 1,
+    "Ideas": 1,
+    "Step Information": 12,
+    "Business Context region": 18,
+    "Baseline Metrics region": 5,
+    "Analysis region": 3,
+    "Wait Time": 12
+  },
+  "items": [
+    {
+      "name": "1. Introducing DevOps",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "2. Mapping Your Value Stream",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "3. Gaining alignment with Continuous Exploration",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "4. Building Quality In with Continuous Integration",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "5. Reducing Time-to-Market with continuous Deployment",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "6. Delivering Business Value with Release on Demand",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "7. Taking Action",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "8. Practicing SAFe",
+      "description": "",
+      "itemType": {
+        "id": "T1613753727392JQHY5LJKTBRRKOY",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Example: Greg",
+      "description": "Product Manager for 5 years at Exciting Enterprise. This is my second SAFe class.",
+      "itemType": {
+        "id": "T1685047608521SPHWUFTHGHN4DQG",
+        "name": "My Experience",
+        "description": "Drag and drop onto the board to identify your SAFe and Product Management experience.",
+        "icon": {
+          "imageUrl": "/image_logic/15PYV45YTQ0BTJBJGYDF3A2V40PBMUMI"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "+5 Years of DevOps Experience",
+      "description": "",
+      "itemType": {
+        "id": "T1685047709990M3ESP5AO0H0XFLH",
+        "name": "Axis Labels",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "-2 SAFe Courses",
+      "description": "",
+      "itemType": {
+        "id": "T1685047709990M3ESP5AO0H0XFLH",
+        "name": "Axis Labels",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "-5 Years of DevOps Experience",
+      "description": "",
+      "itemType": {
+        "id": "T1685047709990M3ESP5AO0H0XFLH",
+        "name": "Axis Labels",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "+2 SAFe Courses",
+      "description": "",
+      "itemType": {
+        "id": "T1685047709990M3ESP5AO0H0XFLH",
+        "name": "Axis Labels",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Impact",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "The Impact of the Digital Age",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Challenges",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Opportunities",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What does DevOps mean to you? Part 1",
+      "description": "",
+      "itemType": {
+        "id": "T1691701740592CJAXZNX0WBL2TOV",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Note",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "The flow of work in the image",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How would you feel if you were on the Agile Team making products in batches of 10?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What is a large batch in your context?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How would you feel if you were on the team with a batch of 1?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How can you improve flow?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Website (Chatbot)",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer Request",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Product Owner",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "10",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Deployment to Prod",
+      "description": "",
+      "itemType": {
+        "id": "T1614637952060P1VRGVSKSRFAPJ1",
+        "name": "Region 1",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days/50%",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "PI Planning",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days 50%",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Product Backlog Assignment",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "0 days/100%",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Analysis",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week/75%",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Intake process is not gathering the requirements well enough to move forward",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Backlog refinement/requirement gathering could solve for this",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Intake worksheet is not sufficient",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Threshold of what goes through PI planning and what doesnt",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "If upfront requirements are better analysis will get faster",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Customer Centricity",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Feature writing could be better",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "WSJF for prioritizing (economic)",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Development",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Testing/(Test Env)",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Deploy to Staging",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Automated Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "TDD/Unit Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Trunk Based Dev (Merging)",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "System Demos",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Business test incrementally instead of big bang UAT in the end",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Automated Builds & Deployment",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Testing in Staging",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Deploy in Production",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Test in Prod",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Measuring",
+      "description": "",
+      "itemType": {
+        "id": "T1614641259635GR5PWWITEXFUADA",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Automated Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Regression/Integration Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Features Toggles",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Automated Deployment",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Selected Deployments to Pilots",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Sanity Testing/Smoke Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Monitoring in Production",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Alerts from Ops",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Measure business value",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Customer engagement (Leading/Lagging Indicators)",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "VSM",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Bug tracking",
+      "description": "",
+      "itemType": {
+        "id": "T1693319980743TNJMEGZMFJG4ZUD",
+        "name": "DevOps Practices",
+        "description": "Use this item to capture DevOps practices that support the Value Stream.",
+        "icon": {
+          "imageUrl": "/image_logic/12KFWBVXWVS3H4ZNVRFLMLD5ZIP5KTK1"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Common Problems",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Common problems:\nCode integration",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Common problems: Testing",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Future State Value Stream Map:                                         \nDevOps Transformation Canvas",
+      "description": "",
+      "itemType": {
+        "id": "T16921086855320AWHYVGZAVBHXEY",
+        "name": "Future State Value Stream Map: DevOps Transformation Canvas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Future State Value Stream Map:                                         \nDevOps Transformation Canvas",
+      "description": "",
+      "itemType": {
+        "id": "T16921086855320AWHYVGZAVBHXEY",
+        "name": "Future State Value Stream Map: DevOps Transformation Canvas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Analysis",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "What could Deb have done differently?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What could Hops have done differently?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Who is at fault for the buoyancy control logic failure?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Who is at fault for the complete system failure?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Future State Value Stream Map:                                         \nDevOps Transformation Canvas",
+      "description": "",
+      "itemType": {
+        "id": "T16921086855320AWHYVGZAVBHXEY",
+        "name": "Future State Value Stream Map: DevOps Transformation Canvas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 61,
+            "g": 61,
+            "b": 61
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Ideas",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "How could TTC have avoided developing an unwanted solution?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Feature Toggles",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Business Testing Earlier",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Team Backlog Refinement for Analysis",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "13",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "8",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": ".07",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1.6",
+      "description": "",
+      "itemType": {
+        "id": "T1597089830923IINNS0AD43YPTB5",
+        "name": "Step Information",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream",
+      "description": "Enter the product, Solution, or service you are focusing on in this workshop.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Trigger",
+      "description": "Enter the event that kicks off the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "First Step",
+      "description": "Identify the First Step in the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer",
+      "description": "Identify the Customer here.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "10/quarter",
+      "description": "Enter how often you experience demand over a period of time.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Last Step",
+      "description": "Identify the Last Step in the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Use Case",
+      "description": "Enter the Use Case here and delete this text when finished.\n\nDescription:\nUse case is the specific execution scenario being mapped such as most common type of Customer request or new product development.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "44 days",
+      "description": "Add up all Total Active Time in your Current State Map and enter it here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "151 days",
+      "description": "Add up the sum of all AT and delays and enter it here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "3.89%",
+      "description": "Enter your %C&A here\n\n%C&A = (# Complete & Accurate / Total) * 100",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "29.1%",
+      "description": "Enter the your Flow Efficiency here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Velocity",
+      "description": "Enter the number of items completed in a given time.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Impacted Metrics",
+      "description": "Enter your list of Impacted Metrics here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Top Causes of Wait Time",
+      "description": "Enter the top causes of Wait Time here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Top Problem Steps",
+      "description": "Enter the top Problem Steps here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "PI Planning/Everyone on ART",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "30 days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "5 days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "0 days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 week",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "0 days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 12 Wait Time",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Intake/Intake to Deployment",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Product Backlog Assignment/PEO's",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Analysis/Teams (SME's)",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Development/Teams (Devs)",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Testing in Test Env/ (QA)",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Deploy to UAT env/Ops",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Business Testing/Business",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Schedule Deploy to Prod/Depends",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Deployment/Ops",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Prod Verification/Teams & Business",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 12",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days/50%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days/50%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "0 days/100%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week/75%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week/50%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week/50%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days/98%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "2 weeks/90%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 day/100%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 day/99%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 day/95%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    }
+  ]
+}

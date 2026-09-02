@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
+import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
 
 export default function CityAPMCoursePage() {
   const params = useParams();
@@ -18,6 +19,8 @@ export default function CityAPMCoursePage() {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ')
     : '';
+
+  const locationCourseH1 = getLocationCourseTitle("agile-product-management-certification-training").long;
 
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const [showAssessmentModal, setShowAssessmentModal] = useState(false);
@@ -107,7 +110,7 @@ export default function CityAPMCoursePage() {
               {/* Title */}
               <div>
                 <h1 className="text-4xl font-normal tracking-[-0.03em] leading-[1.08] text-[#1f2c4a] sm:text-5xl md:text-6xl lg:text-[3.35rem] mb-3 md:mb-4">
-                  SAFe® 6.0 Agile Product Management (APM) Certification Training
+                  {locationCourseH1}
                   {cityDisplayName && (
                     <span className="block text-3xl font-normal tracking-[-0.03em] sm:text-4xl md:text-5xl mt-2">in {cityDisplayName}</span>
                   )}

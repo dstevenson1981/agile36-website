@@ -1,0 +1,1225 @@
+{
+  "sourceUrl": "https://engage.appliedframeworks.com/template",
+  "fetchedAt": "2026-08-26T01:20:00Z",
+  "listedCount": 152,
+  "copiedCount": 152,
+  "note": "Public catalog cards only. Canvas/regions/stickies require starting a forum (email gate on /template/try).",
+  "templates": [
+    {
+      "id": "O35E2RMDADPOQXINB2H34LVKOTM2QCW1",
+      "name": "Buy a Feature: Generic (for in-forum editing)",
+      "description": "This is a generic version of Buy a Feature that you can use as an instant start forum to tailor content to meet your needs.\n\nStart the forum and edit each item name, description and cost. This can be done collaboratively. Simply copy the forum url and share it with colleagues. They can join and h...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=O35E2RMDADPOQXINB2H34LVKOTM2QCW1",
+      "image": "https://engage.appliedframeworks.com/images/weave/DEpreview.png",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MYXPYF1CREXK01CU5Q30Y1E0024ZHU2M",
+      "name": "Value-Effort Matrix",
+      "description": "This template helps establish priorities by mapping potential work items (Initiatives, Epics, Features, or Stories) in two dimensions:\n\nX-axis: Effort/Size\nY-axis: Value//Impact\n\nThe template has pre-built regions that align to the Fibonacci sequence to help you post-process the items and establish ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MYXPYF1CREXK01CU5Q30Y1E0024ZHU2M",
+      "image": "https://engage.appliedframeworks.com/image_logic/NQJAY2YQAVKL3V0LNRI1CK3XCN1VICYL",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "VY0IX0TWAFWIQWUI5OWEBHVHEYUU5X0I",
+      "name": "Six Thinking Hats",
+      "description": "This Six Thinking Hats framework, based on De Bono's work which is described on Wikipedia, can be used effectively for a retrospective. \n\nDirections: According to Wikipedia the order of hats most suited to process improvement is Blue, White, White (Other peoples views), Yellow, Black, Green, Red, Bl...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=VY0IX0TWAFWIQWUI5OWEBHVHEYUU5X0I",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZFKDQJYO2ZCE3N4ZIU0S0P42JQ4E0A5J",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ET2LYVXW0XZDCZGA30GJREQUBN2OYTOY",
+      "name": "Business Model Canvas",
+      "description": "The Business Model Canvas is a powerful tool for Design Thinking, innovation, and agile teams to describe, design, challenge, and pivot business models.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ET2LYVXW0XZDCZGA30GJREQUBN2OYTOY",
+      "image": "https://engage.appliedframeworks.com/image_logic/EK1KO133100B3WVYDPV41K4UGEEPOP4V",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "GR05R4DFCAKI2JF4ZEMTELZOCJVOJUFP",
+      "name": "Significance Radar",
+      "description": "This template helps participants organize items based on importance/relevance. Items near the center are more important!\nUse this template to identify concepts or items based on relevance to a specific topic. \nThe most significant items are placed in the center circle, which is deliberately small. \n...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=GR05R4DFCAKI2JF4ZEMTELZOCJVOJUFP",
+      "image": "https://engage.appliedframeworks.com/image_logic/RORGA4P5ACSSIA00O32MCVJYYGRAUMSY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PWPPJQT1H2VHQJKKF3JQJ40IVSXLPJAG",
+      "name": "Rose, Thorn, Bud",
+      "description": "Rose, Thorn, Bud is a template that helps you identify positive, negative and potential aspects of one or more topics. \n\n-Roses : Positive aspects. \n-Thorns : Negative aspects. \n-Buds : Potential opportunities.\n-Stars: Describe your ideas and share with your teammates.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PWPPJQT1H2VHQJKKF3JQJ40IVSXLPJAG",
+      "image": "https://engage.appliedframeworks.com/image_logic/DIUZZECVBZ4WBHYD0EVWABPSXSKSYORX",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PGMBCUOWK1FGMAGN2SVUA4T3IC1JU4PS",
+      "name": "Bull's Eye",
+      "description": "This template helps participants organize items based on importance/relevance. Items near the center are more important!\nUse this template to identify concepts or items based on relevance to a specific topic. \nThe most significant items are placed in the center circle, which is deliberately small. \n...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PGMBCUOWK1FGMAGN2SVUA4T3IC1JU4PS",
+      "image": "https://engage.appliedframeworks.com/image_logic/RORGA4P5ACSSIA00O32MCVJYYGRAUMSY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "4NY3D5YJGPSHNB2PQ4G4Y2FWRHE4QECS",
+      "name": "What's on your Radar?",
+      "description": "This template helps participants organize items based on importance/relevance. Items near the center are more important!\n\nUse this template to identify concepts or items based on relevance to a specific topic. \nThe most significant items are placed in the center circle, which is deliberately small. ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=4NY3D5YJGPSHNB2PQ4G4Y2FWRHE4QECS",
+      "image": "https://engage.appliedframeworks.com/image_logic/OU2MXZOST15DR1D0LGWS4WZT00MQXDGC",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "KRW1H1MCW2B12CXKMCSMM0GWR4W53D2D",
+      "name": "Assumptions Mapping Template",
+      "description": "This is a template created by David Bland to help you map assumptions for testing.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=KRW1H1MCW2B12CXKMCSMM0GWR4W53D2D",
+      "image": "https://engage.appliedframeworks.com/image_logic/UKASURKGF4FB4NMGH5NVGVEWKAANX54F",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "B3GNKGLMRPSNYTVY52GOCMWIODSB02XQ",
+      "name": "Business Value Framework",
+      "description": "The Business Value template helps product teams prioritize requirements and develop product roadmaps by helping them organize features into four key categories: New Business, Up Sell, Retainment and Operational Efficiency.\n\nNew Business: Every feature that will potentially bring new customers or new...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=B3GNKGLMRPSNYTVY52GOCMWIODSB02XQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/XTEX3DZJDG0BVDDKEOKF0MAHJVLPQBIU",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BZMZX2TEWANT5LQO2C23CO2JXTPOHGRI",
+      "name": "Sinek Template",
+      "description": "This template is designed to help a group understand and develop a Sinek \"Start With Why\" template. \n\nIt operates in two phases. \n\nPhase 1: Ask participants to answer the questions: \n - Why should someone come to work at your company?\n - Why should someone work on your product?\n\nPhase 2: Organize th...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BZMZX2TEWANT5LQO2C23CO2JXTPOHGRI",
+      "image": "https://engage.appliedframeworks.com/image_logic/3MFO0QW50DTJEAGNSIYQZ0U0D1VJK4CP",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "Q1V0G55MDCLL3RAVNWCEDNS1RH2MO5PV",
+      "name": "Product Vision Board",
+      "description": "The Product Vision Board helps you describe, visualize, and validate your product vision and your product strategy in a way that helps align everyone in making the product a success: product management, development, marketing, sales, and support. \n\nVIsion : What is your purpose for creating the Prod...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=Q1V0G55MDCLL3RAVNWCEDNS1RH2MO5PV",
+      "image": "https://engage.appliedframeworks.com/image_logic/VELRQ0T505KZ2N5I0L1S3UXLUTLUHD4I",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MI1SOP4JJDUJNCDYWMNAXOGAIGJHQNIA",
+      "name": "Persona Canvas",
+      "description": "The persona canvas can be used to give a customer segment a face and name and make it easier to step into the shoes of the customer. \n\nA tool often used in design thinking, personas make talking about customers and their characteristics more tangible and concrete, and make it easier to refer back t...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MI1SOP4JJDUJNCDYWMNAXOGAIGJHQNIA",
+      "image": "https://engage.appliedframeworks.com/image_logic/DLIHPWE0JABRCYBN4GWWUPKCAVFXHSP3",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "Y4JPZYREK0VDCNGMCKWMTMCWQ54ZU15N",
+      "name": "Scrum Team Structure",
+      "description": "This template is designed to help Agile teams define their structure and can also be helpful in eventually creating working agreements within a team.\n\nUse the Blue Stickie to describe the Product or Component at the top of the framework. \nUse the Person item to represent specific team members in th...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=Y4JPZYREK0VDCNGMCKWMTMCWQ54ZU15N",
+      "image": "https://engage.appliedframeworks.com/image_logic/CFNATUK3E2EXH4QTC5C0W1ORAIJLEIM4",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "EE50CLSVDSYYYAO0CCWE0DXK2LIGLM3H",
+      "name": "Home Remodel Projects",
+      "description": "This template is useful in illustrating how you can use Participatory Budgeting / Buy a Feature to collaboratively prioritize a list of items. This example uses a case study of remodeling a home to identify which specific investments the homeowners would like to make.\n\nInstructions:\n1. Identify a se...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=EE50CLSVDSYYYAO0CCWE0DXK2LIGLM3H",
+      "image": "https://engage.appliedframeworks.com/images/weave/DEpreview.png",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PRIRL2X2K1E3YNE4MFXASR1PY3KHSQMP",
+      "name": "SAFe® Participatory Budgeting",
+      "description": "SAFe® Participatory Budgeting enables Lean Portfolio Management fiduciaries to collaborate with Business Owners and other relevant stakeholders to right-size the investments in value streams and helps manage the approval process of epics in the portfolio Kanban. \n\nThis template provides an example o...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PRIRL2X2K1E3YNE4MFXASR1PY3KHSQMP",
+      "image": "https://engage.appliedframeworks.com/images/weave/DEpreview.png",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "YJQZS2DDX4QG3DXA1BAGTMWNK2DBAGPE",
+      "name": "Retrospective Voyage",
+      "description": "Purpose: To help Agile Teams reflect on their Iteration or PI, review their practices, and identify ways to improve\n\nItems:\n\n- Trees: Desirable outcomes or goals the team is trying to achieve.\n\n- Anchors: Problems or things that hold you and your team back from achieving desired outcomes. The deeper...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=YJQZS2DDX4QG3DXA1BAGTMWNK2DBAGPE",
+      "image": "https://engage.appliedframeworks.com/image_logic/O3PX4KAIMP1OLDYZX3IKTVYZ3B2324J1",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "KDEWIOBJC1EWFU0N0FSKJ105JJJ0OTQP",
+      "name": "Actions for Retrospectives",
+      "description": "This retrospective format enables the less obvious improvement items to surface.\n\nInstructions:\nEach person uses the board and the corresponding icons to identify the following:\n\n- Appreciations: What or who do you appreciate in your work together?\n\n- Puzzles: What questions do you have for which yo...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=KDEWIOBJC1EWFU0N0FSKJ105JJJ0OTQP",
+      "image": "https://engage.appliedframeworks.com/image_logic/JJXUAQPAMRPKY4U4E0YN5ICTAIDVLJRU",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DBAM1I1QGNZ1NWAFMCZOTPYX5XXD4CNN",
+      "name": "Start - Stop - Continue & I Wish Retrospective",
+      "description": "This template combines two great retrospective techniques into one awesome tool: Stop-Start-Continue & I WISH. Teams can reflect on previous work and things they would like to change. \n\nAreas:\n- Start: Things that the team should work on\n- Stop: Things that are not working\n- Continue: Things that ar...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DBAM1I1QGNZ1NWAFMCZOTPYX5XXD4CNN",
+      "image": "https://engage.appliedframeworks.com/image_logic/XDMPYAE5TQYJY5AIW2WSP21WISFP40HB",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "CNRXXVFFZPMFOEAPDVRZD4BYBFL1H4Z5",
+      "name": "Lean Coffee",
+      "description": "A Lean Coffee is a method of facilitating a meeting in which the agenda is collaboratively built by the meeting attendees. It allows for flexibility with time boxes, and helps focus the meeting on a prioritized list of topics.\n\nInstructions:\n1) Attendees submit possible topics for discussion.\n\n2) At...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=CNRXXVFFZPMFOEAPDVRZD4BYBFL1H4Z5",
+      "image": "https://engage.appliedframeworks.com/image_logic/P1GY3FFBBTAOEIP1RGQL30WSTNKLTNSO",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "FM2SXXOUPIOPD1YFMPRLFI33UM3ZDP5N",
+      "name": "SAFe® Solutions by Horizon",
+      "description": "An integral part of SAFe® Lean Portfolio Management, the Solutions by Horizon template enables Lean Portfolio Managers and value stream owners to collaboratively map solutions and manage portfolios more effectively.\n\nInstructions:\n1) Lean Portfolio Managers should add one sticky for each solution wi...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=FM2SXXOUPIOPD1YFMPRLFI33UM3ZDP5N",
+      "image": "https://engage.appliedframeworks.com/image_logic/D3EU5NLTGWW4O0UNWNQ3D3KUXGV31VNO",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PTS0LTI41YZVAFVUDHLN1SVSSFM2FNCL",
+      "name": "SWOT Analysis",
+      "description": "SWOT analysis is used to identify the strengths, weaknesses, opportunities, and threats related to the current business situation.\n\nInstructions:\n1) Participants add items to each of the four categories for a specified time box.\n\n2) When the time box is complete, participants should review the items...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PTS0LTI41YZVAFVUDHLN1SVSSFM2FNCL",
+      "image": "https://engage.appliedframeworks.com/image_logic/OFJE4O1EFDB3V4XYZ5PIFSHD21IICVHD",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "UKCRZW0UYLL2AE20L2SEWXOIRIS0W3CG",
+      "name": "Whole Product",
+      "description": "Inspired by Ted Levitt, the Whole Product template helps companies create differentiated products and services by identifying how they can uniquely meet customer needs.\n\nInstructions:\n1. Participants should start by adding items into each area of the template that captures their perceptions of custo...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=UKCRZW0UYLL2AE20L2SEWXOIRIS0W3CG",
+      "image": "https://engage.appliedframeworks.com/image_logic/TWTYVDTDFIJSTK1YUFGN2SXVRO13BID5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PNEJHLVLJRXLQXF3UWBGB1LWSOFECPWF",
+      "name": "Learning Objectives",
+      "description": "This template is designed to capture class learning objectives at the beginning of a class or workshop as well as insights, agreements, and action items throughout the workshop.\n\nInstructions:\n1. Before your event, start a forum. Make sure the forum is configured to be \"manual stop\" because you will...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PNEJHLVLJRXLQXF3UWBGB1LWSOFECPWF",
+      "image": "https://engage.appliedframeworks.com/image_logic/4MTSWVRGKO0VTPTWMPWISCQOBMY5MER5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "52ADBEMQNAG4YPRXZJCA0YSACWAYEFNT",
+      "name": "SWOT / TOWS Analysis",
+      "description": "SWOT analysis is used to identify the strengths, weaknesses, opportunities, and threats related to the current business situation. \n\nTOWS is used for identifying strategic options to create a better future state based on the SWOT results.\n\nThe key difference between the SWOT and TOWS analysis is the...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=52ADBEMQNAG4YPRXZJCA0YSACWAYEFNT",
+      "image": "https://engage.appliedframeworks.com/image_logic/KFLXDEH5Z5QVPUZD0TQYNELV0JS2UQMQ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "GFZOMQFEMJY5NA2TFH41NMVK0AXJEKW3",
+      "name": "20/20 Vision Prioritization Canvas",
+      "description": "20/20 Vision a template that helps your team surface and discuss work to be done and to rank the importance or priority of each item relative to the other ideas presented.\n\nInstructions:\n1. Each participant individually adds new ideas to 'New Ideas' region.\n2. The team collaborates with to organize ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=GFZOMQFEMJY5NA2TFH41NMVK0AXJEKW3",
+      "image": "https://engage.appliedframeworks.com/image_logic/SHIPBFRKMWMEXKWTTCBVCVMOKFXKGD52",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "TJRQ0QBECK4WETWZHP0WXKBZFAV02L2L",
+      "name": "SAFe® ROAM Board",
+      "description": "During PI planning, teams identify program risks and impediments that could impact their ability to meet their objectives. These need to be discussed and addressed with honesty and transparency and then categorized into on the following categories:\n\nResolved – The teams agree that the risk is no lon...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=TJRQ0QBECK4WETWZHP0WXKBZFAV02L2L",
+      "image": "https://engage.appliedframeworks.com/image_logic/RZKL42GCIEIYF05FEVV3PGODB5VPYHQG",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "53WOY0AWVWS04WWYLHPYV2KKLPLQSREJ",
+      "name": "Plus, Minus, Delta",
+      "description": "Purpose: to generate constructive feedback on how a team or an ART can improve",
+      "url": "https://engage.appliedframeworks.com/template/try?id=53WOY0AWVWS04WWYLHPYV2KKLPLQSREJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/5GPSCQXTWI0LFIWVRO2HUX3CFVPES13C",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "0VFLBKXC4JUVZDENCAJZOTNQESC2JR0N",
+      "name": "SAFe® ART Planning Board",
+      "description": "Purpose: To capture the commitments an ART makes during PI Planning; to highlight Feature and Enabler delivery dates, dependencies among teams, and relevant Milestones",
+      "url": "https://engage.appliedframeworks.com/template/try?id=0VFLBKXC4JUVZDENCAJZOTNQESC2JR0N",
+      "image": "https://engage.appliedframeworks.com/image_logic/UB1EXRZ0TDWADOC5KSV5LT0TBFL1LRRA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ALL1X3KMJ0NHYGNNSOT0X35EDAKBFAAX",
+      "name": "Speedboat",
+      "description": "Speedboat is an Innovation Game® that can be used internally with agile teams for retrospectives or externally with customers to support market research. \n\nWhen used as a retrospective technique, the boat represents your development process. Impediments are captured via anchors. The lower the anchor...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ALL1X3KMJ0NHYGNNSOT0X35EDAKBFAAX",
+      "image": "https://engage.appliedframeworks.com/image_logic/XKPM1ZR0SS3QHP2G02E4G3E4C4GS5IBK",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "FPZJ33AZ2FGOIHOLZSNCNZHG2U24CN1K",
+      "name": "Business - Engineering Planning Wall (Impact-Effort Matrix)",
+      "description": "This template helps establish priorities by mapping potential work items (Epics, Features, or Stories) in two dimensions:\n\n X-axis: Effort/Size (left to right)\n Y-axis: Value/Priority/Impact (low to high)\n\nThe template has pre-built regions to help you post-process the items and establish a ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=FPZJ33AZ2FGOIHOLZSNCNZHG2U24CN1K",
+      "image": "https://engage.appliedframeworks.com/image_logic/W0XRWWPH31FZ3R4MKMIAWRZSPVZQGIGC",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DLIHCMY3UFGDXGN002C5IRNHKTHGYTNK",
+      "name": "SAFe® Problem Solving Board",
+      "description": "The SAFe® Problem Solving Board is a single template that guides agile teams and ARTs through each step of the Problem Solving Workshop.\n\nInstructions:\n1. Original problem. Teams should state the problem, with the ‘what’, ‘where’, ‘when’, and ‘impact’ as succinctly as possible. Review all statements...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DLIHCMY3UFGDXGN002C5IRNHKTHGYTNK",
+      "image": "https://engage.appliedframeworks.com/image_logic/NW5OX1NWWBAB2Z5HKL0ZUKW5QZAJKQRK",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MIH0QGZB5R5IHGMRXPC142FMELD3AYXH",
+      "name": "PI Planning Room (Medium)",
+      "description": "PI planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Medium) Template i...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MIH0QGZB5R5IHGMRXPC142FMELD3AYXH",
+      "image": "https://engage.appliedframeworks.com/image_logic/G2H04MB4BWN0NU4OBGDDUI0VXYVK5YG0",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "LQ2RXOUIC1FMEEBXANIMDSVV5EARFQ5P",
+      "name": "PI Planning Room (Large)",
+      "description": "PI planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Large) Template is...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=LQ2RXOUIC1FMEEBXANIMDSVV5EARFQ5P",
+      "image": "https://engage.appliedframeworks.com/image_logic/31KOZM3A1CBQALZJBNXQVEP1EIUEX41S",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "C4ZKEFXAAPMCSUJGMPOTOXZ4PLLOHMJQ",
+      "name": "PI Planning Room (Small)",
+      "description": "PI planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Small) Template is...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=C4ZKEFXAAPMCSUJGMPOTOXZ4PLLOHMJQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/QANOYFS4ZOSNARN2DV4THAV1X03EMNIY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DO10QGI0TEVZIIN21ECD0X1BLQ4MRLXH",
+      "name": "PI Planning SoS Radiator Day 1",
+      "description": "During PI Planning, the Scrum of Scrums checkpoints help keep the teams on track and facilitates early identification of risks. On the first day of PI Planning, there is typically 4 SoS checkpoints. \n\nThe first is the Getting Started Check-In which typically happens at the start of the Team Breakout...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DO10QGI0TEVZIIN21ECD0X1BLQ4MRLXH",
+      "image": "https://engage.appliedframeworks.com/image_logic/4PAB0Q5NO3RJILDWNEUVQH4MT1LSUNII",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "FT5JQKLEGGCXWHUUXNTYVM3WA2GBXFNI",
+      "name": "PI Planning SoS Radiator Day 2",
+      "description": "During PI Planning, the Scrum of Scrums checkpoints help keep the teams on track and facilitates early identification of risks. On the second day of PI Planning, there is typically 2 SoS checkpoints. The first is a Progress Check-In. This checkpoint allows the teams to report on their progress towar...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=FT5JQKLEGGCXWHUUXNTYVM3WA2GBXFNI",
+      "image": "https://engage.appliedframeworks.com/image_logic/YD1OAIMJXGUT4SNHI3XYN0NARWU2ZPON",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ARNRI4FMYHYQMJ5J3RKM3QHTA5DA5QTJ",
+      "name": "Team Board",
+      "description": "The Team Boards are a crucial artifact in PI Planning. They allow teams to visualize work, understand the load vs. capacity in each iteration, surface dependencies and possible risks, renegotiate scope if needed, and more.\n\nInstructions:\n\n1. Calculate and enter capacity for the team for each iterati...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ARNRI4FMYHYQMJ5J3RKM3QHTA5DA5QTJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/FW014H4TKEXG0LXJ045TFKYA1AE2SX3S",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DB5AC3FEHJV3TTNXAU4QQYAMVDD4AVWM",
+      "name": "SAFe® LPM Course - SAFe® Participatory Budgeting for TTC",
+      "description": "LPM Course SAFe® Participatory Budgeting:\n\nBusiness Context:\nYou and your colleagues are members of the LPM team for Terrific Transport Corporation (TTC). The board has set a budget (Total Portfolio Budget) of $6,000,000 for the next cycle. Considering the projected cost for the solutions and propos...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DB5AC3FEHJV3TTNXAU4QQYAMVDD4AVWM",
+      "image": "https://engage.appliedframeworks.com/images/weave/DEpreview.png",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "U1BROFNVVBVRSJELLLKSKPW3LN5O2HNQ",
+      "name": "LPM Lean Business Case",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=U1BROFNVVBVRSJELLLKSKPW3LN5O2HNQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/A4D225CYU2GD1XSFF5O5HJ2NI1YBY32Q",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "210DMI30RGIKY134ZJPFYBVQ41ZKCVD5",
+      "name": "LPM Future State Portfolio Canvas",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=210DMI30RGIKY134ZJPFYBVQ41ZKCVD5",
+      "image": "https://engage.appliedframeworks.com/image_logic/SBDFGKNQ411QMIGWYDBR2NOKWXLMQ123",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "Y0E4VM5F4UOKFK0R14IYSW5JB2Z4VFBI",
+      "name": "LPM Current State Portfolio Canvas",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=Y0E4VM5F4UOKFK0R14IYSW5JB2Z4VFBI",
+      "image": "https://engage.appliedframeworks.com/image_logic/CFAPRZA4XESYNC1XE3QIW30IVYCSWNXF",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "M22VCG2OJ2FSCY0MFGDNQVPHICRL2JTN",
+      "name": "WSJF Prioritization",
+      "description": "Purpose: To prioritize Features using WSJF",
+      "url": "https://engage.appliedframeworks.com/template/try?id=M22VCG2OJ2FSCY0MFGDNQVPHICRL2JTN",
+      "image": "https://engage.appliedframeworks.com/image_logic/DCABD4LDECXOYFZ11QE12Z4JNA0D0OQL",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ASLOIUCYILT5DRAU20XHZARW5P0O2LQ5",
+      "name": "Epic Writing",
+      "description": "Purpose: To write an Epic hypothesis statement using an Epic from each learner's context",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ASLOIUCYILT5DRAU20XHZARW5P0O2LQ5",
+      "image": "https://engage.appliedframeworks.com/image_logic/YJ0NWNQQ3LDE5XS5CA2JOEVYM0EQVWXR",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "name": "Agile Principles at Scale",
+      "description": "Purpose: To demonstrate how all the principles behind the Agile Manifesto do scale",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QNX5ANVXYUXB4ARBGQ2IXKW3RLGI1DJF",
+      "image": "https://engage.appliedframeworks.com/image_logic/CCDWGVSRP2BEDCT1M0SAVBWBPRGMGRSO",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "FMW432S5CILPQTGWQSC3Y0CLRDIAOMQJ",
+      "name": "Agile Experience Matrix",
+      "description": "Purpose: Connect with other learners by sharing experiences.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=FMW432S5CILPQTGWQSC3Y0CLRDIAOMQJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/MT252AXM2D0SZ12ZUFFE30BNYP504INB",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QWMRZSUSKQ2U1OHMS35FHK3IPJN502RG",
+      "name": "Estimating Poker",
+      "description": "Purpose: Play Estimating Poker to relatively estimate the mass of a set of animals to practice how to estimate the size of stories.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QWMRZSUSKQ2U1OHMS35FHK3IPJN502RG",
+      "image": "https://engage.appliedframeworks.com/image_logic/1ZPJMGZUQG5GRQWKVOYPMUOTZHSFBHGP",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MCNAKPGM3YF52P3HNP1LVFF3ZAWLSQU2",
+      "name": "Identifying the LACE",
+      "description": "Purpose: To identify key assumptions and roadblocks for creating the Lean-Agile Center of Excellence and create forward momentum by identifying who needs to be included",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MCNAKPGM3YF52P3HNP1LVFF3ZAWLSQU2",
+      "image": "https://engage.appliedframeworks.com/image_logic/HHY2YE4U1HJLHCC1NUL211QQJTTIJXS0",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BKF2WUVLPRIC3IFTHRVIPZJEV122CPOQ",
+      "name": "Accelerating Value Delivery",
+      "description": "Purpose: To demonstrate that early value delivery effects time-to-market, customer feedback integration, and profitability",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BKF2WUVLPRIC3IFTHRVIPZJEV122CPOQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/KZOR0JD5KPZFVE0W3FQEVQRCELF5PGQH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "TVIMFFQKIUPDT2WNZIJLPYDXLFA3YN5D",
+      "name": "SAFe® ART Planning Board",
+      "description": "Purpose: To capture the commitments an ART makes during PI Planning; to highlight Feature and Enabler delivery dates, dependencies among teams, and relevant Milestones",
+      "url": "https://engage.appliedframeworks.com/template/try?id=TVIMFFQKIUPDT2WNZIJLPYDXLFA3YN5D",
+      "image": "https://engage.appliedframeworks.com/image_logic/UB1EXRZ0TDWADOC5KSV5LT0TBFL1LRRA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "1YRRGXAVWOETEUUTDQJ0SDBJIPA1EHWW",
+      "name": "Team Boards",
+      "description": "Purpose: To allow teams to visualize work, understand their load vs. capacity in each Iteration, surface dependencies and possible risks, and renegotiate scope if needed",
+      "url": "https://engage.appliedframeworks.com/template/try?id=1YRRGXAVWOETEUUTDQJ0SDBJIPA1EHWW",
+      "image": "https://engage.appliedframeworks.com/image_logic/XBOOIXAN0UYH5S04FPKAIT5BLHOLMYZW",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DAK2J3JZHBY4PQIS5TXM3VU4XLNDTVXF",
+      "name": "Advocating the Change",
+      "description": "Purpose: To prepare a pitch that will inspire others to take action toward adopting SAFe",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DAK2J3JZHBY4PQIS5TXM3VU4XLNDTVXF",
+      "image": "https://engage.appliedframeworks.com/image_logic/OTQTRMCEC4ZDY4T3KYU0OCTYMM1JXZKA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "01MOWGT31CWT4LAPRLCWAF0KWCBI1GGA",
+      "name": "Who should attend the Leading SAFe class?",
+      "description": "Purpose: To prepare learners for their first Leading SAFe class by exploring who should and should not be in the class",
+      "url": "https://engage.appliedframeworks.com/template/try?id=01MOWGT31CWT4LAPRLCWAF0KWCBI1GGA",
+      "image": "https://engage.appliedframeworks.com/image_logic/G1AAYLQU3UPDLJXJIVNBHOKPXQ5RWTC1",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "NFILN4IBYHEJIZB51B1CAZN3VTF5DOTG",
+      "name": "ART Readiness",
+      "description": "Purpose: Determine what preparations need to be in place before launching an ART",
+      "url": "https://engage.appliedframeworks.com/template/try?id=NFILN4IBYHEJIZB51B1CAZN3VTF5DOTG",
+      "image": "https://engage.appliedframeworks.com/image_logic/2K05GBSSJ1XFSA1E1DWPYXQQP1ZJBUP1",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "name": "SAFe® ROAM Board",
+      "description": "Purpose: During PI planning, teams identify program risks and impediments that could impact their ability to meet their objectives. These need to be discussed and addressed with honesty and transparency and then categorized into the following categories:\n\nResolved – The teams agree that the risk is ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=1QBTXA22DS43LIFNOT0X05OQ43MGE32O",
+      "image": "https://engage.appliedframeworks.com/image_logic/BVT2EJV2BQLFAGYUTZQBEQI51EC3RADS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "WXMK2UPO4NUZZNSR2RU3LDD3E0UEYASQ",
+      "name": "Empathy Map Canvas",
+      "description": "Purpose: To practice creating an empathy map as a group activity",
+      "url": "https://engage.appliedframeworks.com/template/try?id=WXMK2UPO4NUZZNSR2RU3LDD3E0UEYASQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/21M4HU4KFH33WJMXCCDQH1IA510EMD5I",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BPEZAC4G2SGNE5NYCVVXR1SXFRMAKJX5",
+      "name": "Simulation Team Board",
+      "description": "Purpose: To practice calculating capacity, create drafts of the Iteration plans, team PI Objectives, and ART PI Risks, and achieve alignment around the key ART priorities; to practice presenting draft PI Objectives and receive feedback",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BPEZAC4G2SGNE5NYCVVXR1SXFRMAKJX5",
+      "image": "https://engage.appliedframeworks.com/image_logic/WSGPTB0GLL31UZV40X5MAASA1GAI4KVF",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "name": "Course Feedback",
+      "description": "Purpose: To generate constructive feedback for improving the course lessons, activities, and overall flow of the course",
+      "url": "https://engage.appliedframeworks.com/template/try?id=1GQGES0YUXT3RDCN2AOU0BGSB2YZYBAT",
+      "image": "https://engage.appliedframeworks.com/image_logic/F12ZH4MPP3FR4VZAZET12AQSWM5Z5TOE",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "R0UCMEYF211JRRPMOKWWLE2D0ER2JRNO",
+      "name": "LPM - Epic Sequencing WSJF",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=R0UCMEYF211JRRPMOKWWLE2D0ER2JRNO",
+      "image": "https://engage.appliedframeworks.com/image_logic/F3XFVQUARRSO4H00XJ2BJ2HU45F24GFH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "GHD35DRZTJBPEEQJU3KGLMUDXFTR1PLJ",
+      "name": "Retrospective Voyage",
+      "description": "Purpose: To help Agile Teams reflect on their Iteration or PI, review their practices, and identify ways to improve\n\nItems:\n\n- Trees: Desirable outcomes or goals the team is trying to achieve.\n\n- Anchors: Problems or things that hold you and your team back from achieving desired outcomes. The deeper...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=GHD35DRZTJBPEEQJU3KGLMUDXFTR1PLJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/PUJFDGIFVDLS3X4HIFOIGT1J2U2ACSZQ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "CU5NXUYLZ3CESZQGG0RCUHF0B1W15LJY",
+      "name": "Ice Breaker - Where in the World",
+      "description": "Purpose: To get to know and connect with learners in your SAFe course offering and to practice using SAFe Collaborate to prepare for the course activities in the SAFe Virtual Classroom",
+      "url": "https://engage.appliedframeworks.com/template/try?id=CU5NXUYLZ3CESZQGG0RCUHF0B1W15LJY",
+      "image": "https://engage.appliedframeworks.com/image_logic/MMCQARWMMRTG5DNTDL1XNYBR5EK2HORZ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "0ETBRJQF10QHMBAQIQT24PTMEL1AVQBS",
+      "name": "SAFe Implementation Roadmap",
+      "description": "Purpose: Identify where learners are in their journey with SAFe",
+      "url": "https://engage.appliedframeworks.com/template/try?id=0ETBRJQF10QHMBAQIQT24PTMEL1AVQBS",
+      "image": "https://engage.appliedframeworks.com/image_logic/V5ZIHN4TRUHPSPJKK55NLDFJJGH110NH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "name": "Course Parking Lot",
+      "description": "Purpose: To capture questions to be addressed regularly throughout the course",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ZXD1QODNZLGKAVI5JOUTNYP243I0QDL5",
+      "image": "https://engage.appliedframeworks.com/image_logic/MNADM1DBEGMMULBWQS3TCYYJS1NPPA0V",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "5N3HNHXRQ0IO0ZXG501E025RE5G3YAXP",
+      "name": "Customize your Kanban",
+      "description": "Purpose: Explore Kanban design.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=5N3HNHXRQ0IO0ZXG501E025RE5G3YAXP",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZTOMDAAOGL3L3FNORRO3OJSRIPX3ZYLU",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "452JIBSYVENGJQCOZNK2CV2AKDNTJDU0",
+      "name": "The System Team",
+      "description": "Purpose: To explore the System Team and what a dedicated System Team can do for the ART.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=452JIBSYVENGJQCOZNK2CV2AKDNTJDU0",
+      "image": "https://engage.appliedframeworks.com/image_logic/SAZSH4XUHBYYPXCR2RIGPD4UKVMY2KYK",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "3BVNMHLP4KKSWLIL45JCWQMHNQ5PSQYU",
+      "name": "RTE Pre-PI Planning Template",
+      "description": "To discuss the impacts of pre-PI Planning",
+      "url": "https://engage.appliedframeworks.com/template/try?id=3BVNMHLP4KKSWLIL45JCWQMHNQ5PSQYU",
+      "image": "https://engage.appliedframeworks.com/image_logic/HYSK3SK5WG4O02FURAT0LDAA1EO5QPWH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MY4RJH2P0KFIO2NKE3UGI5QEEQVJDRKC",
+      "name": "Lean Coffee",
+      "description": "A Lean Coffee is a method of facilitating a meeting in which the agenda is collaboratively built by the meeting attendees. It allows for flexibility with time boxes, and helps focus the meeting on a prioritized list of topics.\n\nInstructions:\n1) Attendees submit possible topics for discussion.\n\n2) At...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MY4RJH2P0KFIO2NKE3UGI5QEEQVJDRKC",
+      "image": "https://engage.appliedframeworks.com/image_logic/P1GY3FFBBTAOEIP1RGQL30WSTNKLTNSO",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QAQ4T2GC4YC0QISPWOBFSZ1NLVQN411S",
+      "name": "Future State Value Stream",
+      "description": "Value Stream Mapping is a systematic way to view all the steps required to produce value. Teams should use the Current State Value Stream Map first to understand time-to-market. Then they can use this Future State Value Stream Map to identify improvements in time-to-market.\n\nThis board is intended t...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QAQ4T2GC4YC0QISPWOBFSZ1NLVQN411S",
+      "image": "https://engage.appliedframeworks.com/image_logic/A3ZBPKJXDU5IMM4HNDLRJSA5EQV5JJ5P",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "U4KA3WZPHJVSL2XL05BX3DX4NJ03EHBL",
+      "name": "Current State Value Stream Map",
+      "description": "Value Stream Mapping is a systematic way to view all the steps required to produce value. Teams can use the Current State Value Stream Map first to understand time-to-market. This should be followed by the Future State Value Stream Map to improve time-to-market.\n\nThis board is intended to be used in...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=U4KA3WZPHJVSL2XL05BX3DX4NJ03EHBL",
+      "image": "https://engage.appliedframeworks.com/image_logic/A3ZBPKJXDU5IMM4HNDLRJSA5EQV5JJ5P",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "TRPV2BOZZZ2XPNDH21U2XIVKKVNTP2M2",
+      "name": "DevOps Transformation Canvas",
+      "description": "The DevOps Transformation Canvas is used to hold the outputs from the Value Stream Mapping activities and becomes an action plan so you can quickly and reliably move new ideas through the end-to-end delivery process.\n\nThis board is intended to be used in conjunction with:\n1. Current State Value Str...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=TRPV2BOZZZ2XPNDH21U2XIVKKVNTP2M2",
+      "image": "https://engage.appliedframeworks.com/image_logic/TCIJ0WXXN0VJJKM24HXOFJY1WMSA0EKJ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QWHDJX3PSTRTMU3QSBS3SAWSLAAPFPAF",
+      "name": "Value Stream Definition Template",
+      "description": "The Value Stream Definition template can be used to further elaborate and understand the characteristics of the identified Operational Value Stream.\n\nThis template is designed to support SPCs who are facilitating the Value Stream and ART Identification Workshop remotely.\n\nThis workshop is available...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QWHDJX3PSTRTMU3QSBS3SAWSLAAPFPAF",
+      "image": "https://engage.appliedframeworks.com/image_logic/MMJHLKWBO0MODI1HQA145VKEGQ5XDCNS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "P5H4OT0OPWJT5U5G5EBENJHHKF2OCCED",
+      "name": "ART Team Organization",
+      "description": "Understand the trade-offs that take place when we organize the teams on the train",
+      "url": "https://engage.appliedframeworks.com/template/try?id=P5H4OT0OPWJT5U5G5EBENJHHKF2OCCED",
+      "image": "https://engage.appliedframeworks.com/image_logic/UIMQM0LAW4QSA51UJL2CD30GKWLYJ2ZD",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QIEPBBGAMRBSON03IK1AL2521IPGFL5G",
+      "name": "The RTE and ART Events",
+      "description": "Purpose: To learn about and share good practices related to effectively facilitating ART events",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QIEPBBGAMRBSON03IK1AL2521IPGFL5G",
+      "image": "https://engage.appliedframeworks.com/image_logic/GI3B4YEW3XTVPGO02TEWEKNZAQALKQWI",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "UKVWJYVDWVC405EPMR1CSJZONCYH0NT3",
+      "name": "Identifying Value Streams and ARTs",
+      "description": "Identifying Value Streams and Agile Release Trains (ARTs) requires an understanding of a new organizational model, one that is optimized to facilitate the flow of value across functional silos, activities, and boundaries, and includes the following steps:\n• Identify the Operational Value Streams\n• I...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=UKVWJYVDWVC405EPMR1CSJZONCYH0NT3",
+      "image": "https://engage.appliedframeworks.com/image_logic/E2XSVYUSVIDGLVRFJNJKFNS1LRV0OC3J",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "LLAUQ4AA245EV0QJLSAW4SCTQIN4I4IC",
+      "name": "Facilitating a distributed PI Planning",
+      "description": "Explore and share ideas for how to run and facilitate a distributed PI planning event across time zones.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=LLAUQ4AA245EV0QJLSAW4SCTQIN4I4IC",
+      "image": "https://engage.appliedframeworks.com/image_logic/MBBX2UCQDO2BJ14FZKDXAGQJFCFC23O5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "D30FVLXAC3QWVPUCCLS3B4M4MKHSMJPK",
+      "name": "Build a Program Kanban Board",
+      "description": "Build a Program Kanban board",
+      "url": "https://engage.appliedframeworks.com/template/try?id=D30FVLXAC3QWVPUCCLS3B4M4MKHSMJPK",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZTOMDAAOGL3L3FNORRO3OJSRIPX3ZYLU",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "GDF1ND45WHQ3TEV0DB4JJU502H3MG1TU",
+      "name": "Root Cause Analysis and Problem-Solving Board",
+      "description": "Purpose: To run an Inspect & Adapt problem-solving workshop; to use a fishbone diagram to brainstorm potential causes of the problem; to identify the largest root cause of a problem using dot voting and Pareto analysis; to make visible the potential solutions to the revised problem statement",
+      "url": "https://engage.appliedframeworks.com/template/try?id=GDF1ND45WHQ3TEV0DB4JJU502H3MG1TU",
+      "image": "https://engage.appliedframeworks.com/image_logic/B2XRHHCZIUBOKWBMVKJ32XMNDL1YGLUR",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "KTAELSFLTHNVTFUOWDOXQKZMI0CMRUWF",
+      "name": "Open Space",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=KTAELSFLTHNVTFUOWDOXQKZMI0CMRUWF",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZDRJHXDQGORPUQSN1O0CXRQZN4P0LS0Y",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "W4WFWQQ33AM41BQSQBZYQWDM5BDOPGBZ",
+      "name": "4 Ls Retro",
+      "description": "Purpose: To facilitate the team to identify what went well and what did not go well during the last Iteration",
+      "url": "https://engage.appliedframeworks.com/template/try?id=W4WFWQQ33AM41BQSQBZYQWDM5BDOPGBZ",
+      "image": "https://engage.appliedframeworks.com/image_logic/HFSGMYVAZL1ESL4BNJI45FO3J4I2ZMOS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "L2GFYENUDPTVMLR12ONVLL1OOAKAQDUI",
+      "name": "Identify your Operational Value Stream",
+      "description": "Purpose: To identify an Operational Value Stream",
+      "url": "https://engage.appliedframeworks.com/template/try?id=L2GFYENUDPTVMLR12ONVLL1OOAKAQDUI",
+      "image": "https://engage.appliedframeworks.com/image_logic/ECXYCG03OY55FA0MFJYUHXAMHK2DRXKI",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "0UZQQF35MIIXLVL5S52ANAAWFD51XCRK",
+      "name": "Story Storming & Refining",
+      "description": "Decompose Features into Stories and refine them.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=0UZQQF35MIIXLVL5S52ANAAWFD51XCRK",
+      "image": "https://engage.appliedframeworks.com/image_logic/HX1Q14RNJV4LMSHSRDDRZKNQAQ05I5UA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "AUNCLWBXTA4YDBPPYIPQPL50FIHJJ0D4",
+      "name": "Prioritizing the Program Backlog",
+      "description": "Purpose: To practice using WSJF calculation",
+      "url": "https://engage.appliedframeworks.com/template/try?id=AUNCLWBXTA4YDBPPYIPQPL50FIHJJ0D4",
+      "image": "https://engage.appliedframeworks.com/image_logic/0ZHJESH1C32XICNGWH1DEGMZDXCAFCYU",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "XMRAFTHZEDV1AQPX21PEIORQAK40WEDD",
+      "name": "Creating an Epic Hypothesis Statement",
+      "description": "Use this Epic Hypothesis Statement Template to capture, organize, and communicate critical information about an epic.\n\nVisit the Epic article on the Scaled Agile Framework website to learn more: https://www.scaledagileframework.com/epic/",
+      "url": "https://engage.appliedframeworks.com/template/try?id=XMRAFTHZEDV1AQPX21PEIORQAK40WEDD",
+      "image": "https://engage.appliedframeworks.com/image_logic/BUKM1UV42FOPJ5BSROTLHNGYCL4EVXS4",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "name": "Feature Storming and Refining",
+      "description": "Use this template to decompose Epics into Features and refine those features in preparation of PI Planning.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=TE35CST2HNYGBXRFSMQNOFOL1EZ4FFFQ",
+      "image": "https://engage.appliedframeworks.com/image_logic/RAS2JTPKRR4Q2W3XWLZ53CZ3IL4J4IUZ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "JHGL2PM0RGTO4GDT1WZL1ITDVULT2ICS",
+      "name": "Splitting Stories",
+      "description": "Collaborate on splitting large Stories into smaller ones by identifying the Story to split and refining each smaller Story.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=JHGL2PM0RGTO4GDT1WZL1ITDVULT2ICS",
+      "image": "https://engage.appliedframeworks.com/image_logic/2YWXX5GTJZBUABFCFVO3RLSWWFIYRB0W",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "4MUXKPWAEOGJMYAAOO1C5HBFOAA1XGD1",
+      "name": "Activity: Tune and adjust",
+      "description": "Speedboat is an Innovation Game® that can be used internally with agile teams for retrospectives or externally with customers to support market research. \n\nWhen used as a retrospective technique, the boat represents your development process. Impediments are captured via anchors. The lower the anchor...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=4MUXKPWAEOGJMYAAOO1C5HBFOAA1XGD1",
+      "image": "https://engage.appliedframeworks.com/image_logic/XKASP3P4O4AZIAJH0J3MHILZHHZRCCCC",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "YHDK3XAHWZUXIRR5LVLDODCEJQZ4WNI4",
+      "name": "ARCH - Practicing SAFe",
+      "description": "change description",
+      "url": "https://engage.appliedframeworks.com/template/try?id=YHDK3XAHWZUXIRR5LVLDODCEJQZ4WNI4",
+      "image": "https://engage.appliedframeworks.com/image_logic/YZMCOFNOL0YPUO33W4EALCAXJXVIIC2F",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PH4Q10HT5ZLYG50YFWR1GHHVQEIOYOPA",
+      "name": "Decentralizing Decision Making",
+      "description": "Purpose: Practice considering which decisions can be decentralized.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PH4Q10HT5ZLYG50YFWR1GHHVQEIOYOPA",
+      "image": "https://engage.appliedframeworks.com/image_logic/P4SVEMZUEK5L5M0KZCHHVS5ZLJHYO0QO",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "QH4VOBXLZNQZ5ILEKB5YSORGRJCFBDN1",
+      "name": "Recognizing Anti-Patterns",
+      "description": "Purpose: Identify anti-patterns including those that may emerge between between the SM and PO.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=QH4VOBXLZNQZ5ILEKB5YSORGRJCFBDN1",
+      "image": "https://engage.appliedframeworks.com/image_logic/JCK2XQ51E0GCN2HEJ5QMQYVDNKSLESRJ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "YVO2UWAA2CJVYUNLSTYIMDQKFDO2B5J1",
+      "name": "Story splitting on an Agile Team",
+      "description": "Practice splitting Stories",
+      "url": "https://engage.appliedframeworks.com/template/try?id=YVO2UWAA2CJVYUNLSTYIMDQKFDO2B5J1",
+      "image": "https://engage.appliedframeworks.com/image_logic/2YWXX5GTJZBUABFCFVO3RLSWWFIYRB0W",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ABTHJTUZDMIYXBRAZ0XT2PYMCRRIBCWJ",
+      "name": "Proactive Facilitation of the Confidence Vote",
+      "description": "Purpose: Prepare for a successful confidence vote",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ABTHJTUZDMIYXBRAZ0XT2PYMCRRIBCWJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/0MKOJ1NVRETHG0CR3IUVFK4QUPSK3JWY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "RMQFKIK42ZVBTOVOAVGN44NUNA4R3AJA",
+      "name": "Creating a Team Improvement Roadmap",
+      "description": "Purpose: Building an improvement roadmap using small incremental changes",
+      "url": "https://engage.appliedframeworks.com/template/try?id=RMQFKIK42ZVBTOVOAVGN44NUNA4R3AJA",
+      "image": "https://engage.appliedframeworks.com/image_logic/SVTL0BNFAWHTAKGG3GUS3PCI52OQHMN4",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "NXL3P3BV3MIGW1XJFDDBOZAJJ0MVIQCS",
+      "name": "Release Coordination",
+      "description": "Purpose: To prepare for an upcoming release",
+      "url": "https://engage.appliedframeworks.com/template/try?id=NXL3P3BV3MIGW1XJFDDBOZAJJ0MVIQCS",
+      "image": "https://engage.appliedframeworks.com/image_logic/F2TFKNBXDHSNIOQCZWMXPTG0AE4GBV05",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "VK2I1B2EXGAXQZ0FHL0QNMMUBKOYLL0B",
+      "name": "Agile Team Charter: Team formation",
+      "description": "Purpose: To define a team's purpose, responsibilities, and success criteria amongst other critical elements",
+      "url": "https://engage.appliedframeworks.com/template/try?id=VK2I1B2EXGAXQZ0FHL0QNMMUBKOYLL0B",
+      "image": "https://engage.appliedframeworks.com/image_logic/V0HAIQWRDNEF1WMSPR2A3XI2DTWKOJWP",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "I4Q1MFQIVPQ341JRCPREN5ZQJI0XKOPK",
+      "name": "Establish the Portfolio Kanban",
+      "description": "Instructions\n\nStep 1: Identify the current Epics in your portfolio and collaboratively place them in the appropriate column of the Portfolio Kanban\n\nStep 2: If your portfolio still has traditional projects, create a separate swim lane for them and determine which ones can be converted to Epics or st...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=I4Q1MFQIVPQ341JRCPREN5ZQJI0XKOPK",
+      "image": "https://engage.appliedframeworks.com/image_logic/QN44EDGGFXYGEQMGGY0NQZBA1QGH4IFJ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "3T5UAQUEXNTT31DUYFMNXE2DJ2AN2X4F",
+      "name": "Development Value Stream Canvas",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=3T5UAQUEXNTT31DUYFMNXE2DJ2AN2X4F",
+      "image": "https://engage.appliedframeworks.com/image_logic/SHBNLDCW4X404DA45WNH5FJFY51HFNQA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "CMT0DASPNDQLA4PT020XOGITNEBQE05B",
+      "name": "Plus, Minus, Delta",
+      "description": "Purpose: To generate constructive feedback on how a team or an ART can improve",
+      "url": "https://engage.appliedframeworks.com/template/try?id=CMT0DASPNDQLA4PT020XOGITNEBQE05B",
+      "image": "https://engage.appliedframeworks.com/image_logic/XFUER5W1S4A3PV5B1RA2UESBHHDU1DLW",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "LTDZ5USCINWAV3AX4ZX4FE2EPPKAQT5Z",
+      "name": "Apples and Oranges Game",
+      "description": "Purpose:\n\nExplore the impact to teams when unplanned work is added mid-Iteration.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=LTDZ5USCINWAV3AX4ZX4FE2EPPKAQT5Z",
+      "image": "https://engage.appliedframeworks.com/image_logic/SJVYWPXFZHKGP3SZW5PARI42PZ1XLGMC",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "4FSRP3VUYNO2PMVDRKR14SMOPZNBBQAA",
+      "name": "Define Success Measures",
+      "description": "Purpose: To define success measures for your team, supporting alignment and providing teams with quantifiable measures for success",
+      "url": "https://engage.appliedframeworks.com/template/try?id=4FSRP3VUYNO2PMVDRKR14SMOPZNBBQAA",
+      "image": "https://engage.appliedframeworks.com/image_logic/UKCTZT4PZ5FQQALXVR2OAODWDPRTQTOQ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "HH124DAIF5N5JIPYQ0DUSQQLMCQPRINM",
+      "name": "Define Team Member Responsibilities",
+      "description": "Purpose: To document and clarify the roles and responsibilities of the team",
+      "url": "https://engage.appliedframeworks.com/template/try?id=HH124DAIF5N5JIPYQ0DUSQQLMCQPRINM",
+      "image": "https://engage.appliedframeworks.com/image_logic/3LM1RPKKCOEZOYS2UVG15D2FVRQ35GLS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "2GPUT4LJF515U25AIAFATRCIGGKMCO32",
+      "name": "Experience Batch Sizes",
+      "description": "Purpose: Experience how large and small batch sizes go through the system.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=2GPUT4LJF515U25AIAFATRCIGGKMCO32",
+      "image": "https://engage.appliedframeworks.com/image_logic/3G25LXT43U5ODK22VXQYWNUY1Y34DXCA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "2DNPMS4GRRWWULPF2OZ0UGAFQYPDYSGG",
+      "name": "Agile Team Charter: Define Your Team Purpose",
+      "description": "Purpose: To define the purpose of your team. Start by answering \"WHY\" your team engages in the work it does.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=2DNPMS4GRRWWULPF2OZ0UGAFQYPDYSGG",
+      "image": "https://engage.appliedframeworks.com/image_logic/WC4GXASY3KMVRH4FEJNQRPWE5UHNPEHS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "F1YOZTVLSKAFJCABE0HNDCJZWP1YXOLD",
+      "name": "Agile Team Charter: Define Team Type and Responsibility",
+      "description": "Purpose:\nAgree on a team name, team type, and the responsibilities that best represent your team.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=F1YOZTVLSKAFJCABE0HNDCJZWP1YXOLD",
+      "image": "https://engage.appliedframeworks.com/image_logic/IAKEJ3RDTPLSQBG1CEIXJVGBZKSJDHGG",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "T1J0I2CBGO1G0CJ1VBGMBEBNJOVFIXIA",
+      "name": "Agile Team Charter: Establish Working Agreements",
+      "description": "Purpose:\nDiscuss and define as a group team working agreements.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=T1J0I2CBGO1G0CJ1VBGMBEBNJOVFIXIA",
+      "image": "https://engage.appliedframeworks.com/image_logic/GHLL0LSPSSBU4OYEJRPV22PXVUFIEK23",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PCP5MGGKBM32WXN20VF2O4P502OJULWD",
+      "name": "Agile Team Charter: Define Success Measures",
+      "description": "Purpose:\nDefine success measures for your team, which help support alignment, and provide quantifiable measures, creating an important feedback loop.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PCP5MGGKBM32WXN20VF2O4P502OJULWD",
+      "image": "https://engage.appliedframeworks.com/image_logic/UKCTZT4PZ5FQQALXVR2OAODWDPRTQTOQ",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "1ZSOYF2UKOLASALLWRYTSD4Z0YJS2F2O",
+      "name": "Determine the Team's Definition of Done",
+      "description": "Purpose: To discuss and determine your team's Definition of Done.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=1ZSOYF2UKOLASALLWRYTSD4Z0YJS2F2O",
+      "image": "https://engage.appliedframeworks.com/image_logic/3PGQ5AWNQ4XD124HJLL0WUJZURTWZQBE",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "LGHAO43O40PTOAHO5Q1K02E5ALQLGDPU",
+      "name": "Agile Team Charter: Define Key Interactions",
+      "description": "Purpose:\nDetermine which other teams your team will interact with, their area of responsibility, the type of interactions you will have, and how frequently you will interact.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=LGHAO43O40PTOAHO5Q1K02E5ALQLGDPU",
+      "image": "https://engage.appliedframeworks.com/image_logic/MBB443CUOGTKMNQTTLPEDOAGLU1EXUEA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "H51VV4ZLDWJYUBX31BIM2QL430IWOAER",
+      "name": "Agile Team Charter: Identify Key Stakeholders",
+      "description": "Purpose: \nIdentify the team’s key stakeholders based on their level of interest and level of influence.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=H51VV4ZLDWJYUBX31BIM2QL430IWOAER",
+      "image": "https://engage.appliedframeworks.com/image_logic/YALSTJPRWGAHG3F0SRUZFSJL5S1IK33M",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "ODNYAWZ0AXLBUKMTL4LJKOOSSOMX2HYE",
+      "name": "Agile Team Charter: Define Team Member Responsibilities",
+      "description": "Purpose:\nTo document and clarify the roles and responsibilities on the team.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=ODNYAWZ0AXLBUKMTL4LJKOOSSOMX2HYE",
+      "image": "https://engage.appliedframeworks.com/image_logic/3LM1RPKKCOEZOYS2UVG15D2FVRQ35GLS",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "AK4FKKHSZCCDRAHNSURGWMVAJGHIHPS0",
+      "name": "Agile Team Charter: Outline Distinctive Competencies",
+      "description": "Purpose: To identify unique skills and interests of the team not captured as part of a defined job role.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=AK4FKKHSZCCDRAHNSURGWMVAJGHIHPS0",
+      "image": "https://engage.appliedframeworks.com/image_logic/F41UQQ2E3IBX0SL243BD22GVQ2MLYATI",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "5ENSSHAJFJWFLIZRE4TXITILPNEVGN4I",
+      "name": "Agile Team Charter: Agree on Team Events",
+      "description": "Purpose: \nTo agree on team events' time, location, and duration, including backup plans for when events cannot be in person.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=5ENSSHAJFJWFLIZRE4TXITILPNEVGN4I",
+      "image": "https://engage.appliedframeworks.com/image_logic/V1K1VNM4RH53YEKKQNGFAGREOT4SG5CW",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "JYFFT4ORVPHEPEYF201ZVMCKAGWNQLXR",
+      "name": "Experience Teams!",
+      "description": "Purpose: Experience how an Agile team functions by cooking as many complete skewers as you can.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=JYFFT4ORVPHEPEYF201ZVMCKAGWNQLXR",
+      "image": "https://engage.appliedframeworks.com/image_logic/QOXJPXDP4XB5P3AV4XFUTUCS5X434SRH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "SOY2F0BG2WCZ2GTDAEDPU2XANGORZ0KN",
+      "name": "Icebreaker: How comfortable are you using SAFe Collaborate?",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=SOY2F0BG2WCZ2GTDAEDPU2XANGORZ0KN",
+      "image": "https://engage.appliedframeworks.com/image_logic/MO2IWNSTHDDPB1WRI3BNYTH2L41HGPT1",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "5TRPRBQ034O35QCWYRJL2QMVSPFCEIUK",
+      "name": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "description": "",
+      "url": "https://engage.appliedframeworks.com/template/try?id=5TRPRBQ034O35QCWYRJL2QMVSPFCEIUK",
+      "image": "https://engage.appliedframeworks.com/image_logic/J5HDI3G4PUXPELEIQU5T5HTPD2F0U412",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BDAT0TIGTLW5NDU525L3EIS3WQL0HSDK",
+      "name": "CALMR Approach",
+      "description": "Purpose: Discuss how to connect a CALMR approach to any business team",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BDAT0TIGTLW5NDU525L3EIS3WQL0HSDK",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZVJWAEMSFSTVNSVNE4NLGABDK1SSVVU5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DGYZCM4IOGAWXFOMEPGJSODX5X5Y2Y3B",
+      "name": "Iteration Planning",
+      "description": "Purpose: To provide teams with an information radiator so they can access and review key Iteration information",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DGYZCM4IOGAWXFOMEPGJSODX5X5Y2Y3B",
+      "image": "https://engage.appliedframeworks.com/image_logic/IMXS1IG02MWBZ2QDP5VQXBNRO1K3WBCH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "UENOYSAGSYO0YQMOHLULO4RP1QM4KBAR",
+      "name": "Team Sync",
+      "description": "Purpose: To facilitate Team Sync conversations and capture any team needs or follow-up items",
+      "url": "https://engage.appliedframeworks.com/template/try?id=UENOYSAGSYO0YQMOHLULO4RP1QM4KBAR",
+      "image": "https://engage.appliedframeworks.com/image_logic/54NU3WKLRZ55DEKQPXPHDZDNRQ0GLF4C",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "IGOUUASGD0WNRC02DIBF2XKEHVFSVBWC",
+      "name": "Release Coordination",
+      "description": "Purpose: To prepare for an upcoming release",
+      "url": "https://engage.appliedframeworks.com/template/try?id=IGOUUASGD0WNRC02DIBF2XKEHVFSVBWC",
+      "image": "https://engage.appliedframeworks.com/image_logic/F2TFKNBXDHSNIOQCZWMXPTG0AE4GBV05",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "TPKPCV4SMKHGNSGSVF41S02NJXDE4BND",
+      "name": "Agile Testing Matrix",
+      "description": "Purpose:\nIdentify gaps in your current testing infrastructure to uncover areas for improvement.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=TPKPCV4SMKHGNSGSVF41S02NJXDE4BND",
+      "image": "https://engage.appliedframeworks.com/image_logic/HF3YPVJLMARNTGJJSEJEAT124OVWHUGX",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "WSKTEL0023N33XS5TSA2BYRYQWDPH5RI",
+      "name": "Experience Large and Small Batch Sizes",
+      "description": "Purpose: To demonstrate that large batches go through a system slowly and with high variability; to demonstrate that small batches go through a system faster and with lower variability, while keeping cross-functional teams more effectively utilized",
+      "url": "https://engage.appliedframeworks.com/template/try?id=WSKTEL0023N33XS5TSA2BYRYQWDPH5RI",
+      "image": "https://engage.appliedframeworks.com/image_logic/QLO5K4JERG5XLZOKFJDHJQNLLA5TDFWR",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "5IO1G0RQCCRCBFX1W410ZILIDH1DUTWT",
+      "name": "Anticipating PI Problems",
+      "description": "Purpose: Examine PI events to recognize which require the greatest attention from an SPC",
+      "url": "https://engage.appliedframeworks.com/template/try?id=5IO1G0RQCCRCBFX1W410ZILIDH1DUTWT",
+      "image": "https://engage.appliedframeworks.com/image_logic/SG5ACTXICP43WTMOCQXVDE5YYJCHPW5L",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "EYK0DS5AKRBGFFPQZLTIL3YLMCSMYUUU",
+      "name": "Future State Value Stream Map Canvas- For use with SAFe Value Stream Mapping Workshops",
+      "description": "This is the Future State Value Stream map for the SAFe Value Stream Mapping workshop.\n\nUse this canvas with the slides from the SAFe Value Stream Mapping workshop to fully map the Future State of the Value Stream and identify improvement items.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=EYK0DS5AKRBGFFPQZLTIL3YLMCSMYUUU",
+      "image": "https://engage.appliedframeworks.com/image_logic/C5PAYQFVMARY1APATKM2SDF1QPFURVUW",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "Y0JMU152VW5APWEANASZXLJ4YXU40R4T",
+      "name": "Current State Value Stream Map Canvas - For use with SAFe Value Stream Mapping Workshops",
+      "description": "This is the Current State Value Stream map for the SAFe Value Stream Mapping workshop.\n\nUse this canvas with the slides from the SAFe Value Stream Mapping workshop to fully map the Current State of the Value Stream and identify bottlenecks that may be impeding flow.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=Y0JMU152VW5APWEANASZXLJ4YXU40R4T",
+      "image": "https://engage.appliedframeworks.com/image_logic/V4OMXQAZBX5HKFPYZ5BAC1FZ1DESQKOH",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PGUPD151KJHSE4WPRLGTCBNJVL2YJAAR",
+      "name": "Value Proposition Canvas",
+      "description": "The value proposition canvas helps create products and Solutions that match Customer needs. It provides context to create more effective Solutions and business models, and evolves over time as you learn more about your Customers.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PGUPD151KJHSE4WPRLGTCBNJVL2YJAAR",
+      "image": "https://engage.appliedframeworks.com/image_logic/FYQX5JSJ440HSUPXFDF1WBOZWBUHSH52",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MZW0A3AWFRLNKLM4G10KYM2UK3RB5IZN",
+      "name": "PI Roadmap",
+      "description": "The PI roadmap consists of a series of planned PIs with milestones and releases called out. Each element on the roadmap is a feature, capability (or even an epic) that is planned to be completed in a particular PI. The PI roadmap may also reflect fixed-date and learning milestones that occur during ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MZW0A3AWFRLNKLM4G10KYM2UK3RB5IZN",
+      "image": "https://engage.appliedframeworks.com/image_logic/YXGQGJ4UKT02TJLQCEISSF3FX0F0SEDF",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "HD13AFYVQQRWPCSJRVFEC1HNL214RW2X",
+      "name": "Prune the Product Tree",
+      "description": "Prune the Product Tree is a template that enables teams to explore how the roadmap can evolve in ways that better align stakeholder needs with business leader intentions (e.g., Product Managers / Product Owners / Portfolio Managers). When used with external customers and stakeholders, Prune the Prod...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=HD13AFYVQQRWPCSJRVFEC1HNL214RW2X",
+      "image": "https://engage.appliedframeworks.com/image_logic/DN3QRS2B1E233ZSCYDTBBFBSDJSFBQE2",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "AJHC4T0ORS0ZQO0L3AKVIBAJVCJSNQ0F",
+      "name": "Identify Value Streams and ARTs",
+      "description": "Purpose: To identify the sequence of steps from trigger to value received, and the people who are involved in each step of the Value Stream; to identify the Solutions supporting the Operational Value Streams (OVS) and any Solutions the OVS provides to Customers; to identify the number and locations ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=AJHC4T0ORS0ZQO0L3AKVIBAJVCJSNQ0F",
+      "image": "https://engage.appliedframeworks.com/image_logic/X44WWXRXDMRAUQVIZARSNKWWOWKJCKLY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "1DFZE1O1IAJ1JM0NDDOFLGGZMZBPNKN1",
+      "name": "Root Cause Analysis and Problem-Solving Board Activities",
+      "description": "Purpose: To run an Inspect & Adapt problem-solving workshop; to use a fishbone diagram to brainstorm potential causes of the problem; to identify the largest root cause of a problem using dot voting and Pareto analysis; to make visible the potential solutions to the revised problem statement",
+      "url": "https://engage.appliedframeworks.com/template/try?id=1DFZE1O1IAJ1JM0NDDOFLGGZMZBPNKN1",
+      "image": "https://engage.appliedframeworks.com/image_logic/HRXEFWGQIPGBFNIRWC3N0O1D2NGV0HPN",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PH0KXCRAJ5WGKCVS1ZVRKBPFDK0CSWDJ",
+      "name": "Architect activities",
+      "description": "Purpose: To compare and contrast specific behaviors that represent Agile architectural patterns and anti-patterns",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PH0KXCRAJ5WGKCVS1ZVRKBPFDK0CSWDJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/UU0VTH2WGZRIQJKSXGQDOOMQ0XKV0AXE",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "31UUOU3WCCCQPQZPSVLYT15MWBYMHW0V",
+      "name": "Role identification and team formation",
+      "description": "Purpose:\n-For learners to select which SAFe role they most strongly identify with \n-For learners to understand where they have strengths and weaknesses in that role \n-To form cross-functional teams for the duration of the course",
+      "url": "https://engage.appliedframeworks.com/template/try?id=31UUOU3WCCCQPQZPSVLYT15MWBYMHW0V",
+      "image": "https://engage.appliedframeworks.com/image_logic/FBAX2OEMRF2XKHNXVYWIVQT4XHSLIHGL",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BGWVK5NG1VHRTEBS2WO3VMMGU3VCKGAJ",
+      "name": "Define an NFR",
+      "description": "Purpose: To identify the need for an NFR in the TTC scenario and define it using a structured format",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BGWVK5NG1VHRTEBS2WO3VMMGU3VCKGAJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/1QSDNMTM500UVAG0FOCNLVZIWEK3N5LY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "2FFUZQXROP11HDDLJW5KFVBMLLNBC4ML",
+      "name": "Prioritize Features using WSJF",
+      "description": "Purpose: To practice using WSJF calculation",
+      "url": "https://engage.appliedframeworks.com/template/try?id=2FFUZQXROP11HDDLJW5KFVBMLLNBC4ML",
+      "image": "https://engage.appliedframeworks.com/image_logic/MCWFBKXLSNW1BS5K15O0NE3QVLBJNX1A",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "EBJ40TEMWGZT4KJ54LJD1FKURIBHBADC",
+      "name": "Value Stream and ART Identification Workshop Room",
+      "description": "Instructions:\n\n1. Use the Text Item to assign people to each table. Include their name and links to any other items needed to collaborate with them or understand their role and contribution to the workshop.\n\n2. Use the Presentation Item to link the presentations that will be presented during the wor...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=EBJ40TEMWGZT4KJ54LJD1FKURIBHBADC",
+      "image": "https://engage.appliedframeworks.com/image_logic/QANOYFS4ZOSNARN2DV4THAV1X03EMNIY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "YUUPFEY15WNAK3CC4CHDX03SCFAUMGOX",
+      "name": "Business Model Canvas",
+      "description": "A business model canvas (BMC) documents how a business creates, delivers, and captures value; or how it intends to create, deliver, and capture value in the future.\n\nWatch this video to learn more: https://vimeo.com/78350794\n\nThis can be difficult to do the first time. The whole process can take 4 –...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=YUUPFEY15WNAK3CC4CHDX03SCFAUMGOX",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZPDTRLFFE414KNVHSHWBLAFEVG4YCLTW",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "CDNUDHKY5G0MOGFDQFNLUHNUA3JNQBPY",
+      "name": "Empathy Map",
+      "description": "Empathy Map is a template designed to help development teams gain a deeper level of understanding of an internal or external stakeholder, such as a customer, a prospect, a partner or a peer in your own company.\n\nYou should be able to make a rough empathy map in about 20 minutes, provided you have a ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=CDNUDHKY5G0MOGFDQFNLUHNUA3JNQBPY",
+      "image": "https://engage.appliedframeworks.com/image_logic/BNBA0QAEOVPSXBXFMETWLGKEQJAA1ZW5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "KLVNFDUUSEWWYHBRZDRGYQZ3LW4C555Z",
+      "name": "Persona Canvas",
+      "description": "The persona canvas can be used to give a customer segment a face and name and make it easier to step into the shoes of the customer.\n\nA tool often used in design thinking, personas make talking about customers and their characteristics more tangible and concrete, and make it easier to refer back to ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=KLVNFDUUSEWWYHBRZDRGYQZ3LW4C555Z",
+      "image": "https://engage.appliedframeworks.com/image_logic/MQQ4QFIZ2U2DHFPQ2132GDW4B32U2O1S",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "34F3OD1Z1VSLRBKJNTC5SCGCWELLULA3",
+      "name": "Customer Journey Map",
+      "description": "A Customer journey map illustrates the user’s experience engaging with a company through products, online experiences, and services.–May document user’s desires, activities, feelings, questions, pain points, etc.–Identifies gaps and opportunities for new products and capabilities. Start with a simpl...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=34F3OD1Z1VSLRBKJNTC5SCGCWELLULA3",
+      "image": "https://engage.appliedframeworks.com/image_logic/OOWORI0NM3D0A4XBASXNAPU3V00LYVW5",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "H2UJID13FOQXEENRRWSIRLY4QDCXXM25",
+      "name": "Lean Canvas",
+      "description": "Most startups fail because they waste time, money, and effort building the wrong product. This lack of \"problem understanding\" motivated Ash Mayura to create the Lean Canvas, a compact and efficient derivation of the Business Model Canvas to help focus entrepreneurial and high-growth enterprises on ...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=H2UJID13FOQXEENRRWSIRLY4QDCXXM25",
+      "image": "https://engage.appliedframeworks.com/image_logic/EDNQMZCQXKAOWG0UCM1LSYHCHJ3NNG5F",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "53VLENW5S5UIJYGS55Z0MTSL0QGZKI4P",
+      "name": "Prune the Product Tree",
+      "description": "Prune the Product Tree is a template that enables teams to explore how the roadmap can evolve in ways that better align stakeholder needs with business leader intentions (e.g., Product Managers / Product Owners / Portfolio Managers). When used with external customers and stakeholders, Prune the Prod...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=53VLENW5S5UIJYGS55Z0MTSL0QGZKI4P",
+      "image": "https://engage.appliedframeworks.com/image_logic/YEHE2CPXBKTZG5FRHXR0DEQBPSEKA3H0",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "5HUEG4FYO5WHHJMVT12VJAS5BMRSFAOK",
+      "name": "Story Map",
+      "description": "Use this template to map features that represent a workflow. Story maps organize a sequence of stories according to the tasks a user needs to accomplish their goal.\n\nLearn more in the Design Thinking Article at https://www.scaledagileframework.com/design-thinking/",
+      "url": "https://engage.appliedframeworks.com/template/try?id=5HUEG4FYO5WHHJMVT12VJAS5BMRSFAOK",
+      "image": "https://engage.appliedframeworks.com/image_logic/2X1XKVXIUMDWGKAJRB3XY1VRZN0HNUVB",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "DGIH0RLZ1LACMV3QSBTJYNPCWMTAGO54",
+      "name": "Coach Sync Questions",
+      "description": "Purpose: Participate in the Scrum of Scrums event as part of the PI Planning simulation.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=DGIH0RLZ1LACMV3QSBTJYNPCWMTAGO54",
+      "image": "https://engage.appliedframeworks.com/image_logic/T4ZCK5I5PTKFVQRCSMVEFCHM5BGJAHM3",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "Y1EQ2HOTXZGNU2I30D4TB5H0K3F5LR1H",
+      "name": "Learner Persona Template",
+      "description": "Learner Persona Template",
+      "url": "https://engage.appliedframeworks.com/template/try?id=Y1EQ2HOTXZGNU2I30D4TB5H0K3F5LR1H",
+      "image": "https://engage.appliedframeworks.com/image_logic/QVWXCHAU3DOUXYH3IZRBKKIE5JMV20IX",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "WG0PESSRZPVMHF231HMFC54PF5DJ0IYJ",
+      "name": "Agile Team Charter",
+      "description": "Purpose: To summarize the outputs of the Agile Team Charter",
+      "url": "https://engage.appliedframeworks.com/template/try?id=WG0PESSRZPVMHF231HMFC54PF5DJ0IYJ",
+      "image": "https://engage.appliedframeworks.com/image_logic/SUX54JQEO5KXJZ2V5ONC2LLXB15LHWXM",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "HIIBM3BJCKAAHRVVGNAX30PTN0UNO4DO",
+      "name": "Story splitting on an Agile Team",
+      "description": "Note: An example of an oversized Story and its component split Stories are placed on the board.\n\nLearner Guidance:\n\n1. Working as a group, choose either the Stories you have previously created or a Story from your Backlog. Import these Stories into the template by dragging an \"Oversize Story\" item o...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=HIIBM3BJCKAAHRVVGNAX30PTN0UNO4DO",
+      "image": "https://engage.appliedframeworks.com/image_logic/2YWXX5GTJZBUABFCFVO3RLSWWFIYRB0W",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "2YMVB3OXHX4UIDUU13MNLZDIKCQAZCDO",
+      "name": "PI Planning Room (Large)",
+      "description": "PI Planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Large) Template is...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=2YMVB3OXHX4UIDUU13MNLZDIKCQAZCDO",
+      "image": "https://engage.appliedframeworks.com/image_logic/TXMLXB0FZGJGQRH2FEBSI0CPQRXISN5U",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "BQ23UJZZFBWUDQ2KNMJGU0QOUAFGUTOT",
+      "name": "PI Planning Room (Medium)",
+      "description": "PI Planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Medium) Template i...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=BQ23UJZZFBWUDQ2KNMJGU0QOUAFGUTOT",
+      "image": "https://engage.appliedframeworks.com/image_logic/5EH4J5RBI4ZDZDBFHVKW320ZQOSK3YCC",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "MARRACYJLPKYZDRCUC3YTJ5CL2KHTXL2",
+      "name": "PI Planning Room (Small)",
+      "description": "PI Planning is the most critical event in all of SAFe. As such, it is critical to have a space that is conducive to collaboration and alignment between all members of a train, regardless of whether you are planning in-person, dispersed, or fully distributed.\n\nThe PI Planning Room (Small) Template is...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=MARRACYJLPKYZDRCUC3YTJ5CL2KHTXL2",
+      "image": "https://engage.appliedframeworks.com/image_logic/MYIWCVVDG241SZMDVXP2FXUVYNV1A1Y3",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "NOYM5YRAFBFWJS2HZ1FVVLW2GIBM2LKF",
+      "name": "PI Planning Coach Sync Radiator Day 1",
+      "description": "During PI Planning, the Coach Sync checkpoints help keep the teams on track and facilitate early identification of risks. On the first day of PI Planning, there are typically 4 Coach Sync checkpoints. \n\nThe first is the Getting Started Check-In, which typically happens at the start of the Team Break...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=NOYM5YRAFBFWJS2HZ1FVVLW2GIBM2LKF",
+      "image": "https://engage.appliedframeworks.com/image_logic/TF4ROWLLF3WZ0II4AGYG1V53MCKZYQXY",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "VFRT5HSWTERMH122EZQVSDM1BF533WPY",
+      "name": "PI Planning Coach Sync Radiator Day 2",
+      "description": "During PI Planning, the Coach Sync checkpoints help keep the teams on track and facilitate early identification of risks. On the second day of PI Planning, there are typically 2 Coach Sync checkpoints. \n\nThe first is a Progress Check-In. This checkpoint allows the teams to report on their progress t...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=VFRT5HSWTERMH122EZQVSDM1BF533WPY",
+      "image": "https://engage.appliedframeworks.com/image_logic/CTC2BNM3JCANTGOCIPOQSJQWR50VSPL0",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "WFMKF5ZXYT1OKWNIRUU5MUE5OJGTWA0X",
+      "name": "Actions for Retrospectives",
+      "description": "This retrospective format enables the less obvious improvement items to surface.\n\nInstructions:\nEach person uses the board and the corresponding icons to identify the following:\n\n- Appreciations: What or who do you appreciate in your work together?\n\n- Puzzles: What questions do you have for which yo...",
+      "url": "https://engage.appliedframeworks.com/template/try?id=WFMKF5ZXYT1OKWNIRUU5MUE5OJGTWA0X",
+      "image": "https://engage.appliedframeworks.com/image_logic/ZIXLLE4KO1KM02XZBFMGANQWYWXZRF0G",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "PWADOJ2PEGERQVHJCXMZOPEG4JBFYUMN",
+      "name": "Prioritizing the ART Backlog",
+      "description": "Use this template to help calculate weighted-shortest-job-first (WSJF) for multiple Features to inform prioritization of the ART Backlog.",
+      "url": "https://engage.appliedframeworks.com/template/try?id=PWADOJ2PEGERQVHJCXMZOPEG4JBFYUMN",
+      "image": "https://engage.appliedframeworks.com/image_logic/4QV5QJBENF4DLA531ULA5E3VKRCZ41CA",
+      "source": "https://engage.appliedframeworks.com/template"
+    },
+    {
+      "id": "VDGXANKDNJO5HH4SQ3COY2AJVQZDUL3T",
+      "name": "Discussion: Selecting team methods",
+      "description": "Purpose: To help learners discover the nuances between each approach; to share best practices on how different teams apply SAFe guidance",
+      "url": "https://engage.appliedframeworks.com/template/try?id=VDGXANKDNJO5HH4SQ3COY2AJVQZDUL3T",
+      "image": "https://engage.appliedframeworks.com/image_logic/5KKITBGPDYVXZYEMRGJ53XSCZ3YVUMQ5",
+      "source": "https://engage.appliedframeworks.com/template"
+    }
+  ]
+}

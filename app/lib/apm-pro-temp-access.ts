@@ -1,4 +1,4 @@
-/** Unlisted APM Pro practice exam (no login). Not linked from nav/sitemap. */
-export const APM_PRO_PUBLIC_PATH = '/apm-pro-temp';
+/** @deprecated Public Pro share URLs retired — redirect to free Basic mocks. */
+export const APM_PRO_PUBLIC_PATH = '/test/agile-product-management';
 
 export const APM_PRO_PUBLIC_URL = `https://www.agile36.com${APM_PRO_PUBLIC_PATH}`;

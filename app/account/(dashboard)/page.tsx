@@ -83,11 +83,11 @@ function PracticeExamsCard() {
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-medium text-[#1f2c4a] transition-colors">
-            Practice Exams
+            Pro Practice Exams
           </h3>
-          <p className="text-sm text-[#64748b] mt-1">Prepare for your certification exam</p>
+          <p className="text-sm text-[#64748b] mt-1">Enrolled Pro banks for your courses</p>
           <span className="inline-flex items-center gap-1 text-sm font-medium text-[#d97706] mt-2 group-hover:gap-2 transition-all">
-            View practice exams →
+            View Pro practice exams →
           </span>
         </div>
       </div>

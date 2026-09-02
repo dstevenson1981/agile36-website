@@ -1,7 +1,7 @@
-/** Unlisted POPM Pro practice exam (no login). Not linked from nav/sitemap. */
-export const POPM_PRO_PUBLIC_PATH = '/popm-pro-temp';
+/** @deprecated Public Pro share URLs retired — redirect to free Basic mocks. */
+export const POPM_PRO_PUBLIC_PATH = '/test/product-owner-manager';
 
 export const POPM_PRO_PUBLIC_URL = `https://www.agile36.com${POPM_PRO_PUBLIC_PATH}`;
 
-/** Short alias that redirects to {@link POPM_PRO_PUBLIC_PATH}. */
+/** @deprecated Short alias also redirects to Basic mock. */
 export const POPM_PRO_SHORT_PATH = '/popmpro';

@@ -1,0 +1,412 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=13WZ4AQ3MY",
+  "title": "\ud83d\udc34 LPM - LPM - Epic Sequencing WSJF - 000-228-484 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 LPM - LPM - Epic Sequencing WSJF - 000-228-484 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": "48",
+  "groups": [
+    {
+      "heading": [
+        "Lean Portfolio Management Logistics"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "Course Outline: Lean Portfolio Management Course Kanban",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Course Parking Lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.3",
+          "title": "Logistics: Course Feedback",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nLean Portfolio Management Logistics\n0.1.1\nCourse Outline: Lean Portfolio Management Course Kanban\nJoin\n0.1.2\nLogistics: Course Parking Lot\nJoin\n0.1.3\nLogistics: Course Feedback\nJoin"
+    },
+    {
+      "heading": [
+        "Introducing Lean Portfolio Management"
+      ],
+      "activities": [
+        {
+          "code": "1.5.1",
+          "title": "Activity: LPM Portfolio Process Map",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "1\nIntroducing Lean Portfolio Management\n1.5.1\nActivity: LPM Portfolio Process Map\nGROUPS"
+    },
+    {
+      "heading": [
+        "Establishing Portfolio Strategy and Vision"
+      ],
+      "activities": [
+        {
+          "code": "2.1.1",
+          "title": "Activity: Establish Strategic Themes",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.2.1",
+          "title": "Activity: Understand Portfolio Canvas Structure",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.2.3",
+          "title": "Activity: LPM Future State Portfolio Canvas TTC",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "2.3.1",
+          "title": "Activity: Identify Market Rhythms and Milestones",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "EXTRA",
+          "title": "SWOT / TOWS Analysis",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "2\nEstablishing Portfolio Strategy and Vision\n2.1.1\nActivity: Establish Strategic Themes\nGROUPS\n2.2.1\nActivity: Understand Portfolio Canvas Structure\nGROUPS\n2.2.3\nActivity: LPM Future State Portfolio Canvas TTC\nGROUPS\n2.3.1\nActivity: Identify Market Rhythms and Milestones\nGROUPS\nEXTRA\nSWOT / TOWS Analysis\nGROUPS"
+    },
+    {
+      "heading": [
+        "Realizing Portfolio Vision Through Epics"
+      ],
+      "activities": [
+        {
+          "code": "3.1.1",
+          "title": "Activity: Describe portfolio Epics",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.1.2",
+          "title": "Discussion: Adapting the Lean business case template",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.3.1",
+          "title": "Discussion: Exploring pivots",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "3\nRealizing Portfolio Vision Through Epics\n3.1.1\nActivity: Describe portfolio Epics\nGROUPS\n3.1.2\nDiscussion: Adapting the Lean business case template\nGROUPS\n3.3.1\nDiscussion: Exploring pivots\nGROUPS"
+    },
+    {
+      "heading": [
+        "Establishing Investment Funding"
+      ],
+      "activities": [
+        {
+          "code": "4.1.1",
+          "title": "Activity: Establish Lean Budget Guardrails",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "4.3.1",
+          "title": "Discussion: Efficient portfolio sync events",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "4\nEstablishing Investment Funding\n4.1.1\nActivity: Establish Lean Budget Guardrails\nGROUPS\n4.3.1\nDiscussion: Efficient portfolio sync events\nGROUPS"
+    },
+    {
+      "heading": [
+        "Managing Portfolio Flow"
+      ],
+      "activities": [
+        {
+          "code": "5.1.1",
+          "title": "Discussion: Assessing portfolio Kanban design",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "5.2.1",
+          "title": "Activity: Sequence Portfolio Epics",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "5\nManaging Portfolio Flow\n5.1.1\nDiscussion: Assessing portfolio Kanban design\nGROUPS\n5.2.1\nActivity: Sequence Portfolio Epics\nGROUPS\nGroup 1"
+    },
+    {
+      "heading": [
+        "Applying Agile Portfolio Operations"
+      ],
+      "activities": [
+        {
+          "code": "6.1.1",
+          "title": "Discussion: Releasing value across the portfolio",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "6.2.1",
+          "title": "Discussion: The role of the LACE and VMO",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "6\nApplying Agile Portfolio Operations\n6.1.1\nDiscussion: Releasing value across the portfolio\nGROUPS\n6.2.1\nDiscussion: The role of the LACE and VMO\nGROUPS"
+    },
+    {
+      "heading": [
+        "Applying Lean Governance"
+      ],
+      "activities": [
+        {
+          "code": "7.1.1",
+          "title": "Discussion: Measuring LPM Performance",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "7.5.1",
+          "title": "Discussion: Getting ready for the LPM Getting Started Workshop",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "7\nApplying Lean Governance\n7.1.1\nDiscussion: Measuring LPM Performance\nGROUPS\n7.5.1\nDiscussion: Getting ready for the LPM Getting Started Workshop\nGROUPS"
+    },
+    {
+      "heading": [
+        "Practicing SAFe - N/A"
+      ],
+      "activities": [],
+      "raw": "8\nPracticing SAFe - N/A"
+    },
+    {
+      "heading": [
+        "Optional Day Three: Getting Started With Lean Portfolio Management Workshop"
+      ],
+      "activities": [
+        {
+          "code": "9.1.1",
+          "title": "LPM Getting Started: LPM Roadmap Review",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.2",
+          "title": "LPM Getting Started: Advocating the LPM Implementation",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.3",
+          "title": "LPM Getting Started: Define the Portfolio Scope",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.4",
+          "title": "LPM Getting Started: Identify LPM Participants",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.5",
+          "title": "LPM Getting Started: Prepare for Empathy Interviews",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.6",
+          "title": "LPM Getting Started: Design LPM Events",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.7",
+          "title": "LPM Getting Started: Sponsoring the LPM CoP",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.8",
+          "title": "LPM Getting Started: Identify strategies to address common challenges\u200b",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "9.1.9",
+          "title": "LPM Getting Started: Kickoff Preparation",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "9\nOptional Day Three: Getting Started With Lean Portfolio Management Workshop\n9.1.1\nLPM Getting Started: LPM Roadmap Review\nGROUPS\n9.1.2\nLPM Getting Started: Advocating the LPM Implementation\nGROUPS\n9.1.3\nLPM Getting Started: Define the Portfolio Scope\nGROUPS\n9.1.4\nLPM Getting Started: Identify LPM Participants\nGROUPS\n9.1.5\nLPM Getting Started: Prepare for Empathy Interviews\nGROUPS\n9.1.6\nLPM Getti"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "Course Outline: Lean Portfolio Management Course Kanban",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Course Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "1.5.1",
+      "title": "Activity: LPM Portfolio Process Map",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.1.1",
+      "title": "Activity: Establish Strategic Themes",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.2.1",
+      "title": "Activity: Understand Portfolio Canvas Structure",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.2.3",
+      "title": "Activity: LPM Future State Portfolio Canvas TTC",
+      "action": "GROUPS"
+    },
+    {
+      "code": "2.3.1",
+      "title": "Activity: Identify Market Rhythms and Milestones",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "SWOT / TOWS Analysis",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.1",
+      "title": "Activity: Describe portfolio Epics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.2",
+      "title": "Discussion: Adapting the Lean business case template",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.3.1",
+      "title": "Discussion: Exploring pivots",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.1.1",
+      "title": "Activity: Establish Lean Budget Guardrails",
+      "action": "GROUPS"
+    },
+    {
+      "code": "4.3.1",
+      "title": "Discussion: Efficient portfolio sync events",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.1.1",
+      "title": "Discussion: Assessing portfolio Kanban design",
+      "action": "GROUPS"
+    },
+    {
+      "code": "5.2.1",
+      "title": "Activity: Sequence Portfolio Epics",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.1.1",
+      "title": "Discussion: Releasing value across the portfolio",
+      "action": "GROUPS"
+    },
+    {
+      "code": "6.2.1",
+      "title": "Discussion: The role of the LACE and VMO",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.1.1",
+      "title": "Discussion: Measuring LPM Performance",
+      "action": "GROUPS"
+    },
+    {
+      "code": "7.5.1",
+      "title": "Discussion: Getting ready for the LPM Getting Started Workshop",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.1",
+      "title": "LPM Getting Started: LPM Roadmap Review",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.2",
+      "title": "LPM Getting Started: Advocating the LPM Implementation",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.3",
+      "title": "LPM Getting Started: Define the Portfolio Scope",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.4",
+      "title": "LPM Getting Started: Identify LPM Participants",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.5",
+      "title": "LPM Getting Started: Prepare for Empathy Interviews",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.6",
+      "title": "LPM Getting Started: Design LPM Events",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.7",
+      "title": "LPM Getting Started: Sponsoring the LPM CoP",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.8",
+      "title": "LPM Getting Started: Identify strategies to address common challenges\u200b",
+      "action": "GROUPS"
+    },
+    {
+      "code": "9.1.9",
+      "title": "LPM Getting Started: Kickoff Preparation",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "lpm",
+  "classLabel": "Lean Portfolio Management",
+  "joinId": "000-228-484"
+}

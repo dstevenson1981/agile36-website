@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Applied Frameworks">
+  <rect width="32" height="32" rx="6" fill="#134981"/>
+  <path fill="#0DBDCA" d="M8 7h7.2L20.5 25h-4.2l-.9-3.2H10.4L9.5 25H5.4L8 7zm2.4 9.4h3.7L12.3 10l-1.9 6.4z"/>
+  <path fill="#fff" d="M21 7h3.9l5 10.6L34.8 7H39L32.2 25h-4.2L21 7z" transform="scale(.72) translate(8 4)"/>
+</svg>

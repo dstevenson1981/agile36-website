@@ -78,6 +78,17 @@ body {
   animation-play-state: paused;
 }
 
+/* Trusted-by wordmarks: flatten brand color to a medium gray.
+   brightness(0) invert(100%) would go white on this light theme.
+   invert(40%) lands near slate-500 — visible, still secondary. */
+.trusted-by-logo {
+  filter: grayscale(1) brightness(0) invert(40%);
+  transition: filter 0.3s ease;
+}
+.trusted-by-logo:hover {
+  filter: grayscale(1) brightness(0) invert(28%);
+}
+
 @media (max-width: 768px) {
   .marquee-track {
     animation-duration: 30s;

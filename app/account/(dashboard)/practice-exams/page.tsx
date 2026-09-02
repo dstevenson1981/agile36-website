@@ -23,9 +23,9 @@ import { AI_PRODUCT_MANAGEMENT_PRACTICE_QUESTIONS } from './ai-product-managemen
 import { RTE_QUESTIONS } from './rte/questions';
 
 export const metadata = {
-  title: 'Practice Exams | Agile36',
+  title: 'Pro Practice Exams | My Account | Agile36',
   description:
-    'Practice exams for Agile36 Pro enrollees — Leading SAFe, POPM, Agile Product Management, LPM, SSM, and Advanced Scrum Master. Sign-in required.',
+    'Pro practice exams for Agile36 enrollees — Leading SAFe, POPM, Agile Product Management, LPM, SSM, and Advanced Scrum Master. Sign-in and enrollment required.',
   robots: 'noindex, nofollow',
 };
 
@@ -286,13 +286,18 @@ export default async function PracticeExamsPage({
       {upgraded && <UpgradeSuccessBanner courseSlug={upgraded} />}
 
       <div className="mb-8">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">Account</p>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">My Account · Enrolled students</p>
         <h1 className="text-2xl font-bold text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: '-0.03em' }}>
-          Practice Exams
+          Pro Practice Exams
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
-          Practice tests for your courses and combo bundles. Pro exams unlock on the last day of class. Basic plan?
-          Upgrade for $50.
+          Full Pro banks for your courses and combo bundles — not the free public mocks on the website.
+          Pro exams unlock on the last day of class. Basic plan? Upgrade for $50. Looking for free practice?
+          Use{' '}
+          <Link href="/test" className="font-semibold text-[#d97706] underline">
+            Practice Tests
+          </Link>
+          .
         </p>
       </div>
 

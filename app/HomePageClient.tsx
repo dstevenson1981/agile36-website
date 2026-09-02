@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
+import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
 import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./components/PromoBanner";
 import HeroTrustStrip from "./components/HeroTrustStrip";
 
@@ -877,48 +878,16 @@ export default function Home() {
               <div className="pt-8 space-y-4">
                 <p className="text-base font-semibold text-gray-900">Trusted by</p>
                 <div className="flex flex-wrap items-center gap-6 py-4">
-                  <Image
-                    src="/logo-amazon.svg"
-                    alt="Amazon"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
-                  <Image
-                    src="/apple-11.svg"
-                    alt="Apple"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
-                  <Image
-                    src="/accenture-6.svg"
-                    alt="Accenture"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
-                  <Image
-                    src="/tesla-9.svg"
-                    alt="Tesla"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
-                  <Image
-                    src="/netflix-3.svg"
-                    alt="Netflix"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
-                  <Image
-                    src="/disney-2.svg"
-                    alt="Disney"
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto"
-                  />
+                  {TRUSTED_BY_LOGOS.map((logo) => (
+                    <Image
+                      key={logo.alt}
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={80}
+                      height={24}
+                      className="h-6 w-auto"
+                    />
+                  ))}
                 </div>
                 <p className="text-sm text-[#718aa5]">
                   and 6,000+ companies across the globe
@@ -1378,17 +1347,9 @@ export default function Home() {
           </div>
           
           <div className="bg-gray-100 rounded-lg border-2 border-[#01203d] p-6 md:p-8">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 items-center justify-items-center">
-              {[
-                { src: "/logo-amazon.svg", alt: "Amazon" },
-                { src: "/apple-11.svg", alt: "Apple" },
-                { src: "/accenture-6.svg", alt: "Accenture" },
-                { src: "/tesla-9.svg", alt: "Tesla" },
-                { src: "/netflix-3.svg", alt: "Netflix" },
-                { src: "/disney-2.svg", alt: "Disney" },
-                { src: "/deloitte-1 (2).svg", alt: "Deloitte" }
-              ].map((logo, index) => (
-                <div key={index} className="flex items-center justify-center h-10 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center">
+              {TRUSTED_BY_LOGOS.map((logo) => (
+                <div key={logo.alt} className="flex items-center justify-center h-10 w-full">
                   <div className="relative w-full h-10 flex items-center justify-center">
                     <Image
                       src={logo.src}

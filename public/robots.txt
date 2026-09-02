@@ -51,3 +51,4 @@ Allow: /
 Sitemap: https://www.agile36.com/sitemap.xml
 
 # LLM guidance lives at /llms.txt (not a robots.txt directive)
+# Browser agents (ChatGPT Desktop, Chrome WebMCP) use in-page tools on each visit.

@@ -1,0 +1,164 @@
+{
+  "url": "https://engage.appliedframeworks.com/forum/session?id=EDCMX1ZLVD",
+  "title": "\ud83d\udc34 POPM - Course Kanban: POPM - 000-284-089 Forum | Horizon Engage",
+  "header": "\ud83d\udc34 POPM - Course Kanban: POPM - 000-284-089 Forum | Horizon Engage",
+  "courseSidebar": "Lessons & Activities",
+  "people": "84",
+  "groups": [
+    {
+      "heading": [
+        "Course Logistics"
+      ],
+      "activities": [
+        {
+          "code": "0.1.1",
+          "title": "Logistics: Course Kanban: POPM",
+          "action": "Here",
+          "extra": false
+        },
+        {
+          "code": "0.1.2",
+          "title": "Logistics: Course Parking Lot",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.1.3",
+          "title": "Logistics: Course Feedback",
+          "action": "Join",
+          "extra": false
+        },
+        {
+          "code": "0.2.1",
+          "title": "Ice Breaker: Where in the World",
+          "action": "Join",
+          "extra": false
+        }
+      ],
+      "raw": "0\nCourse Logistics\n0.1.1\nLogistics: Course Kanban: POPM\nHere\n0.1.2\nLogistics: Course Parking Lot\nJoin\n0.1.3\nLogistics: Course Feedback\nJoin\n0.2.1\nIce Breaker: Where in the World\nJoin"
+    },
+    {
+      "heading": [
+        "Exploring the Product Owner and Product Management Roles and Responsibilities"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Agile Principles at Scale",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "1\nExploring the Product Owner and Product Management Roles and Responsibilities\nEXTRA\nAgile Principles at Scale\nGROUPS"
+    },
+    {
+      "heading": [
+        "Preparing for PI Planning"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "Feature Storming and Refining",
+          "action": "GROUPS",
+          "extra": true
+        },
+        {
+          "code": "EXTRA",
+          "title": "Prioritize Features using WSJF",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "2\nPreparing for PI Planning\nEXTRA\nFeature Storming and Refining\nGROUPS\nEXTRA\nPrioritize Features using WSJF\nGROUPS"
+    },
+    {
+      "heading": [
+        "Leading PI Planning"
+      ],
+      "activities": [
+        {
+          "code": "3.1.1",
+          "title": "Activity: Communicate the Vision",
+          "action": "GROUPS",
+          "extra": false
+        },
+        {
+          "code": "3.3.1",
+          "title": "Activity: Identify dependency issues and resolve them",
+          "action": "GROUPS",
+          "extra": false
+        }
+      ],
+      "raw": "3\nLeading PI Planning\n3.1.1\nActivity: Communicate the Vision\nGROUPS\n3.3.1\nActivity: Identify dependency issues and resolve them\nGROUPS"
+    },
+    {
+      "heading": [
+        "Executing Iterations"
+      ],
+      "activities": [
+        {
+          "code": "EXTRA",
+          "title": "User Stories, Acceptance Criteria, and Estimating Stories",
+          "action": "GROUPS",
+          "extra": true
+        }
+      ],
+      "raw": "4\nExecuting Iterations\nEXTRA\nUser Stories, Acceptance Criteria, and Estimating Stories\nGROUPS"
+    }
+  ],
+  "activities": [
+    {
+      "code": "0.1.1",
+      "title": "Logistics: Course Kanban: POPM",
+      "action": "Here"
+    },
+    {
+      "code": "0.1.2",
+      "title": "Logistics: Course Parking Lot",
+      "action": "Join"
+    },
+    {
+      "code": "0.1.3",
+      "title": "Logistics: Course Feedback",
+      "action": "Join"
+    },
+    {
+      "code": "0.2.1",
+      "title": "Ice Breaker: Where in the World",
+      "action": "Join"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Agile Principles at Scale",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Feature Storming and Refining",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "Prioritize Features using WSJF",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.1.1",
+      "title": "Activity: Communicate the Vision",
+      "action": "GROUPS"
+    },
+    {
+      "code": "3.3.1",
+      "title": "Activity: Identify dependency issues and resolve them",
+      "action": "GROUPS"
+    },
+    {
+      "code": "EXTRA",
+      "title": "User Stories, Acceptance Criteria, and Estimating Stories",
+      "action": "GROUPS"
+    }
+  ],
+  "classKey": "popm",
+  "classLabel": "POPM",
+  "joinId": "000-284-089"
+}

@@ -1,0 +1,580 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
+import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
+import TrustedByStrip from "@/app/components/TrustedByStrip";
+import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
+import FeaturedCohortCard from "@/app/components/schedule/FeaturedCohortCard";
+import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
+import type { CourseScheduleRow } from "@/app/lib/schedule-display";
+
+const HERO_AVATARS = [
+  "image 120.png",
+  "image 137.png",
+  "image 247.png",
+  "image 476.png",
+] as const;
+
+export default function CatalogCourseLanding({
+  content,
+  initialSchedules = [],
+}: {
+  content: CatalogLandingContent;
+  initialSchedules?: CourseScheduleRow[];
+}) {
+  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
+  const [showCorporateQuote, setShowCorporateQuote] = useState(false);
+  const [assessmentFormData, setAssessmentFormData] = useState({ name: "", email: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeFaqCategory, setActiveFaqCategory] = useState("generic");
+  const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);
+
+  const handleAssessmentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!assessmentFormData.email || !assessmentFormData.email.includes("@")) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    if (!assessmentFormData.name.trim()) {
+      alert("Please enter your full name");
+      return;
+    }
+    if (!content.assessmentHref) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/store-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: assessmentFormData.name,
+          email: assessmentFormData.email,
+          source: "SA Free Assessment",
+          exam_name: content.examName || content.practiceTestTitle,
+        }),
+      });
+
+      if (response.ok) {
+        window.location.href = content.assessmentHref;
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        alert(errorData.error || "Failed to submit email. Please try again.");
+        setIsSubmitting(false);
+      }
+    } catch {
+      alert("An error occurred. Please try again.");
+      setIsSubmitting(false);
+    }
+  };
+
+  const faqGroups = content.faqs;
+
+  return (
+    <main className="min-h-screen bg-[#faf8f4] text-[#1f2c4a]">
+      <section className="relative w-full px-4 pb-10 pt-8 sm:px-6 lg:px-20 lg:pb-12 lg:pt-10">
+        <div className="mx-auto max-w-7xl">
+          <nav className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#94a3b8]">
+            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
+            <span>/</span>
+            <Link href="/courses" className="hover:text-[#1f2c4a]">SAFe</Link>
+            <span>/</span>
+            <span className="text-[#64748b]">{content.crumb}</span>
+          </nav>
+
+          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-x-14 lg:gap-y-0">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+                {content.eyebrow || "SAFe® Certification · Live Online"}
+              </p>
+              <h1 className="mt-3 text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+                {content.title}
+              </h1>
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#475569]">
+                {content.lede}
+              </p>
+              {content.attemptsLine === null ? null : (
+                <p className="mt-2 text-[15px] font-medium text-[#1f2c4a]">
+                  {content.attemptsLine || "Your first two attempts are included."}
+                </p>
+              )}
+            </div>
+
+            <div id="next-class" className="lg:sticky lg:top-24 lg:row-span-2">
+              <FeaturedCohortCard
+                courseSlug={content.slug}
+                initialSchedule={initialSchedules[0] ?? null}
+                badgeSrc={content.badgeSrc}
+                cardTitle={content.cardTitle}
+                durationLabel={content.durationLabel}
+                includesLine={content.includesLine}
+              />
+              <div className="mt-4 inline-flex items-center gap-3 rounded-lg bg-[#efe8dc] px-4 py-2.5">
+                <Image src="/Silver.png" alt="" width={36} height={36} className="h-9 w-9 object-contain" />
+                <p className="text-sm font-medium text-[#1f2c4a]">Scaled Agile Silver Partner</p>
+                <Image
+                  src={content.badgeSrc}
+                  alt={content.badgeAlt}
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                />
+              </div>
+            </div>
+
+            <div className="lg:pt-8">
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2" aria-hidden>
+                    {HERO_AVATARS.map((name) => (
+                      <Image
+                        key={name}
+                        src={`/Images/${encodeURIComponent(name)}`}
+                        alt=""
+                        width={36}
+                        height={36}
+                        className="h-9 w-9 rounded-full border-2 border-white object-cover"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-sm font-semibold text-[#1f2c4a]">
+                    {SAFE_COURSE_PARTICIPANTS_VALUE} trained
+                  </p>
+                </div>
+
+                <div className="inline-flex items-center gap-2 rounded-md border border-[#1f2c4a]/10 bg-white px-2.5 py-1.5 text-sm">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" aria-hidden>
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09A6.97 6.97 0 015.5 12c0-.72.12-1.43.34-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                  </svg>
+                  <span className="font-medium text-[#475569]">Google</span>
+                  <span className="font-semibold text-[#1f2c4a]">4.9/5</span>
+                </div>
+
+                <Link
+                  href="https://training.scaledagile.com/?sort=feedbackScore&page=1&limit=25"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-[#1f2c4a]/10 bg-white px-2.5 py-1.5 text-sm hover:border-[#1f2c4a]/25"
+                >
+                  <span className="text-[#d97706]" aria-hidden>★</span>
+                  <span className="font-semibold text-[#1f2c4a]">4.94</span>
+                  <span className="font-medium text-[#475569]">Highest-rated Scaled Agile partner</span>
+                </Link>
+              </div>
+
+              <ul className="mt-7 space-y-3">
+                {content.highlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d97706] text-white">
+                      <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <p className="text-[15px] leading-relaxed text-[#334155]">{item}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href="#next-class"
+                  className="inline-flex items-center justify-center rounded-md bg-[#d97706] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b45309]"
+                >
+                  Enroll Now
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setShowCorporateQuote(true)}
+                  className="inline-flex items-center justify-center rounded-md border border-[#1f2c4a] bg-white px-6 py-2.5 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#1f2c4a] hover:text-white"
+                >
+                  Team / Corporate Training
+                </button>
+              </div>
+              <p className="mt-4 text-sm text-[#64748b]">
+                Looking for more information?{" "}
+                {content.brochureHref ? (
+                  <a
+                    href={content.brochureHref}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-[#d97706] underline decoration-[#d97706]/40 underline-offset-2 hover:text-[#b45309]"
+                  >
+                    Download Brochure
+                  </a>
+                ) : null}
+                {content.brochureHref && content.assessmentHref ? " · " : null}
+                {content.assessmentHref ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowAssessmentModal(true)}
+                    className="font-medium text-[#1f2c4a] underline decoration-[#1f2c4a]/25 underline-offset-2 hover:decoration-[#1f2c4a]"
+                  >
+                    {content.assessmentLabel || "Free Assessment"}
+                  </button>
+                ) : null}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TrustedByStrip />
+
+      <section id="upcoming-dates" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+            Live online cohorts
+          </p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            {content.datesTitle}
+          </h2>
+          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
+            Pick a cohort and enroll on this page. Checkout stays on Agile36.
+          </p>
+          <div className="mt-8">
+            <CourseScheduleEmbed
+              courseSlug={content.slug}
+              courseName={content.scheduleCourseName}
+              brochureHref={content.brochureHref}
+              showSafeBadges
+              initialSchedules={initialSchedules}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="why-agile36" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Why Agile36</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            This is why they should choose us
+          </h2>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
+            <div className="hidden border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
+              <span>What to check</span>
+              <span className="text-[#1f2c4a]">Agile36</span>
+              <span>{content.whyOtherLabel || "Other SAFe training providers"}</span>
+            </div>
+            {content.whyRows.map((row) => (
+              <div
+                key={row.n}
+                className={`grid gap-4 border-b border-[#1f2c4a]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
+                  row.featured
+                    ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07] py-7 lg:py-8"
+                    : "bg-white"
+                }`}
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#d97706]">
+                    {row.n}
+                  </span>
+                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#1f2c4a]">{row.check}</h3>
+                </div>
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706] lg:hidden">
+                    Agile36
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#475569]">
+                    <span className="font-semibold text-[#1f2c4a]">{row.usLead}</span> {row.usRest}
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#94a3b8] lg:hidden">
+                    {content.whyOtherLabel || "Other SAFe training providers"}
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#64748b]">{row.other}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="curriculum" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+            Official outline
+          </p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            Course curriculum
+          </h2>
+          <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-[#475569]">
+            {content.curriculumLede ||
+              "This course follows Scaled Agile's current outline. Lessons map to the exam domains, so class time is also exam prep."}
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {content.outcomes.map((outcome) => (
+              <li
+                key={outcome}
+                className="flex items-start gap-3 rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-3"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                <p className="text-[15px] leading-relaxed text-[#475569]">{outcome}</p>
+              </li>
+            ))}
+          </ul>
+          <div className={`mt-8 grid gap-6 ${content.curriculum.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+            {content.curriculum.map((block) => (
+              <div key={block.day} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6">
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">{block.day}</p>
+                <h3 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a]">{block.focus}</h3>
+                <div className="mt-5 space-y-5">
+                  {block.modules.map((mod) => (
+                    <div
+                      key={mod.title}
+                      className={`rounded-xl px-4 py-4 ${
+                        mod.featured
+                          ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07]"
+                          : "bg-[#1f2c4a]/[0.03]"
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h4 className="text-[15px] font-semibold text-[#1f2c4a]">{mod.title}</h4>
+                        {mod.weight ? (
+                          <span className="text-[12px] font-semibold tabular-nums text-[#d97706]">
+                            {mod.weight} of exam
+                          </span>
+                        ) : null}
+                      </div>
+                      <ul className="mt-3 space-y-1.5">
+                        {mod.topics.map((topic) => (
+                          <li key={topic} className="flex gap-2 text-[15px] leading-relaxed text-[#475569]">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                            {topic}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-[15px] leading-relaxed text-[#64748b]">
+            {content.examNote}
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="student-reviews"
+        className="scroll-mt-28 w-full border-t border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-4 py-12 sm:px-6 lg:px-20"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Google reviews</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+                What students say
+              </h2>
+            </div>
+            <p className="text-sm font-semibold text-[#1f2c4a]">4.9 Google rating</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {content.reviews.map((review) => (
+              <article key={review.name} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6">
+                <div className="mb-3 flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-semibold text-[#1f2c4a]">{review.name}</h3>
+                    <p className="text-sm text-[#64748b]">{review.role}</p>
+                  </div>
+                </div>
+                <p className="text-[15px] leading-relaxed text-[#475569]">{review.review}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {content.practiceTestTitle && content.assessmentHref ? (
+        <section className="w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
+          <div className="mx-auto max-w-2xl">
+            <div className="liquid-glass rounded-2xl p-8">
+              <span className="rounded-md border border-[#d97706]/30 bg-[#d97706]/10 px-4 py-1.5 text-sm font-semibold text-[#d97706]">
+                1 Practice Test
+              </span>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+                {content.practiceTestTitle}
+              </h2>
+              <p className="mt-2 text-[15px] text-[#475569]">
+                {SAFE_COURSE_PARTICIPANTS_VALUE} participants · {content.practiceQuestions || "Practice questions"} ·{" "}
+                {content.practiceDuration || "Timed"}
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowAssessmentModal(true)}
+                className="mt-6 rounded-lg bg-[#d97706] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#b45309]"
+              >
+                Start Test
+              </button>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {content.certificateSrc ? (
+        <section className="w-full bg-black px-4 py-6 sm:px-6 lg:px-20">
+          <div className="mx-auto max-w-3xl">
+            <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+              Get certified
+            </p>
+            <h2 className="mb-4 text-center text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+              {content.certificateTitle}
+            </h2>
+            <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/15">
+              <img src={content.certificateSrc} alt={content.certificateTitle} className="h-auto w-full" />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-4xl">
+          <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+            Questions
+          </p>
+          <h2 className="mb-8 text-center text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">FAQs</h2>
+          <div className="mb-8 flex flex-wrap justify-center gap-4">
+            {(
+              [
+                ["courses", "FAQ Courses"],
+                ["exam", "FAQ Exam"],
+                ["payment", "FAQ Payment"],
+                ["generic", "FAQ Generic"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => {
+                  setActiveFaqCategory(id);
+                  setExpandedFaqs([]);
+                }}
+                className={`rounded-md px-6 py-2 font-semibold transition-colors ${
+                  activeFaqCategory === id
+                    ? "bg-[#1f2c4a] text-white"
+                    : "liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a] hover:text-white"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <div className="space-y-4">
+            {faqGroups[activeFaqCategory as keyof typeof faqGroups]?.map((faq, index) => {
+              const isExpanded = expandedFaqs.includes(index);
+              return (
+                <div
+                  key={faq.q}
+                  className="rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] transition-colors hover:bg-[#1f2c4a]/[0.1]"
+                >
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedFaqs(
+                        isExpanded ? expandedFaqs.filter((i) => i !== index) : [...expandedFaqs, index]
+                      )
+                    }
+                    className="flex w-full items-center justify-between p-4 text-left"
+                  >
+                    <span className="pr-4 text-[15px] font-semibold text-[#1f2c4a]">
+                      {index + 1}. {faq.q}
+                    </span>
+                    <svg
+                      className={`h-5 w-5 shrink-0 text-[#d97706] transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {isExpanded ? (
+                    <div className="px-4 pb-4">
+                      <div className="border-t border-[#1f2c4a]/20 pt-4">
+                        <p className="text-[15px] leading-relaxed text-[#475569]">{faq.a}</p>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <CorporateQuoteModal
+        open={showCorporateQuote}
+        onClose={() => setShowCorporateQuote(false)}
+        courseSlug={content.slug}
+        courseLabel={content.scheduleCourseName}
+      />
+
+      {showAssessmentModal && content.assessmentHref ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+          <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-8">
+            <button
+              type="button"
+              onClick={() => {
+                setShowAssessmentModal(false);
+                setAssessmentFormData({ name: "", email: "" });
+              }}
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20"
+            >
+              <span className="text-xl text-[#334155]">×</span>
+            </button>
+            <h3 className="mb-2 text-xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+              Start Your Practice Test
+            </h3>
+            <p className="mb-6 text-sm text-[#64748b]">
+              Enter your details below to access the {content.examName || content.practiceTestTitle}
+            </p>
+            <form onSubmit={handleAssessmentSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="assessment-name" className="mb-2 block text-sm font-medium text-[#475569]">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="assessment-name"
+                  required
+                  value={assessmentFormData.name}
+                  onChange={(e) => setAssessmentFormData({ ...assessmentFormData, name: e.target.value })}
+                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/10 px-4 py-2 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div>
+                <label htmlFor="assessment-email" className="mb-2 block text-sm font-medium text-[#475569]">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="assessment-email"
+                  required
+                  value={assessmentFormData.email}
+                  onChange={(e) => setAssessmentFormData({ ...assessmentFormData, email: e.target.value })}
+                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/10 px-4 py-2 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
+                  placeholder="Enter your email address"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex w-full items-center justify-center rounded-lg bg-[#d97706] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#b45309] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isSubmitting ? "Submitting..." : "Start Practice Test"}
+              </button>
+            </form>
+          </div>
+        </div>
+      ) : null}
+    </main>
+  );
+}

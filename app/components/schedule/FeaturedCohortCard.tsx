@@ -19,6 +19,10 @@ type Props = {
   courseSlug: string;
   allDatesHref?: string;
   initialSchedule?: CourseScheduleRow | null;
+  badgeSrc?: string;
+  cardTitle?: string;
+  durationLabel?: string;
+  includesLine?: string;
 };
 
 function usd(amount: number): string {
@@ -36,6 +40,10 @@ export default function FeaturedCohortCard({
   courseSlug,
   allDatesHref = "#upcoming-dates",
   initialSchedule = null,
+  badgeSrc = "/POPM.jpg",
+  cardTitle = "SAFe® Certification",
+  durationLabel = "2-Day Live Online · Instructor-Led",
+  includesLine = "Includes exam (first two attempts), official courseware, 16 PDUs · 16 SEUs & 1-year SAFe Studio access.",
 }: Props) {
   const list = COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
   const [schedule, setSchedule] = useState<CourseScheduleRow | null>(initialSchedule);
@@ -119,15 +127,15 @@ export default function FeaturedCohortCard({
       <div className="px-5 py-5">
         <div className="flex items-start gap-3">
           <Image
-            src="/POPM.jpg"
+            src={badgeSrc}
             alt=""
             width={48}
             height={48}
             className="h-12 w-12 rounded-md object-contain"
           />
           <div>
-            <p className="font-semibold text-[#1f2c4a]">SAFe® POPM Certification</p>
-            <p className="mt-0.5 text-sm text-[#64748b]">2-Day Live Online · Instructor-Led</p>
+            <p className="font-semibold text-[#1f2c4a]">{cardTitle}</p>
+            <p className="mt-0.5 text-sm text-[#64748b]">{durationLabel}</p>
           </div>
         </div>
 
@@ -216,8 +224,7 @@ export default function FeaturedCohortCard({
         )}
 
         <p className="mt-3 text-center text-[12px] leading-relaxed text-[#64748b]">
-          Includes exam (first two attempts), official courseware, 16 PDUs · 16 SEUs &amp; 1-year
-          SAFe Studio access.
+          {includesLine}
         </p>
       </div>
     </article>

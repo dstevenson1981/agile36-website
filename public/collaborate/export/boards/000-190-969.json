@@ -1,0 +1,4219 @@
+{
+  "classKey": "rte",
+  "sessionId": "WIY2CSCM2C",
+  "joinId": "000-190-969",
+  "eventId": "OC5LKFGZDRPPKX0I43DRK5O5NDVCBHEU",
+  "forumUid": "P4BXX4AJFOF1ICCPDULW2FUKN10LYSKD",
+  "forumUniqueId": "F-P4BXX4AJFOF1ICCPDULW2FUKN10LYSKD",
+  "forumName": "Root Cause Analysis and Problem Solving Board Activities",
+  "itemCount": 259,
+  "typeCounts": {
+    "Lesson": 9,
+    "Discussion Questions": 5,
+    "Sticky": 34,
+    "New Item Type": 3,
+    "Label": 34,
+    "Label - Scenario": 2,
+    "Risk": 10,
+    "Facilitation Idea": 6,
+    "Text": 2,
+    "Location": 2,
+    "Event": 25,
+    "Local Time": 4,
+    "Funnel": 1,
+    "Analyzing": 1,
+    "Backlog": 1,
+    "Implementing": 1,
+    "Validating on staging": 1,
+    "Deploying to production": 1,
+    "Releasing": 1,
+    "Done": 1,
+    "Policies": 1,
+    "WIP Limit": 1,
+    "Value Stream Map Step": 10,
+    "Delay Time": 8,
+    "Process Time": 10,
+    "Flow Accelerator": 12,
+    "Flow Metric": 6,
+    "Tuckman Stage descriptions": 4,
+    "Activities": 1,
+    "Yes": 15,
+    "Business Context region": 15,
+    "Baseline Metrics region": 5,
+    "Analysis region": 3,
+    "Step information": 12,
+    "Wait Time": 12
+  },
+  "items": [
+    {
+      "name": "Lesson 1: Exploring the RTE Roles and Responsibilities",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 2: Applying SAFe Principles",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 3: Organizing the ART",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 4: Planning a PI",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 5: Executing a PI",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 6: Fostering Relentless Improvement",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 7: Serving the ART",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 8: Continuing Your Learning Journey",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Lesson 9: Becoming a Certified Release Train Engineer",
+      "description": "",
+      "itemType": {
+        "id": "T1609796419124S21UQW3IZZXUEVZ",
+        "name": "Lesson",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "How might you organize stream-aligned teams so they could deliver end-to-end value?",
+      "description": "",
+      "itemType": {
+        "id": "T1683667307607GH35CBIM5FZT1GZ",
+        "name": "Discussion Questions",
+        "description": "Use to capture the activity discussion questions.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Give example of complicated subsystem teams?",
+      "description": "UX\nCompliance\nPlatform (DBAs)",
+      "itemType": {
+        "id": "T1683667307607GH35CBIM5FZT1GZ",
+        "name": "Discussion Questions",
+        "description": "Use to capture the activity discussion questions.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Give examples of platform team?",
+      "description": "Cloud Services AWS\nPayment infrastructure\nDevOps",
+      "itemType": {
+        "id": "T1683667307607GH35CBIM5FZT1GZ",
+        "name": "Discussion Questions",
+        "description": "Use to capture the activity discussion questions.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "What other enabling team might be beneficial?",
+      "description": "Enabler Teams:\n- JIRA admins\n- coaches\n- PMOs\n- System testers",
+      "itemType": {
+        "id": "T1683667307607GH35CBIM5FZT1GZ",
+        "name": "Discussion Questions",
+        "description": "Use to capture the activity discussion questions.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Team Makeup",
+      "description": "Developers\nTesters / QA Professionals\nArchitects\nSMEs / Product person\nBuild Engineers\nScrum Master",
+      "itemType": {
+        "id": "T1683667307607GH35CBIM5FZT1GZ",
+        "name": "Discussion Questions",
+        "description": "Use to capture the activity discussion questions.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "Product Manager",
+      "description": "PO Sync\nART Sync\nBacklog refinement at ART level (anti-pattern)",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Architect",
+      "description": "Architectural sync\nPI planning\nRefinement Meetings",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Business Owners",
+      "description": "CCB, act as a bridge between PO/PM and business owners\nPI planning\nSystem demos",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "System Team",
+      "description": "PI Planning Prep\nSystem Demo\nScrum of scrums\nDevOps Team",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Hardened siloes",
+      "description": "- Poor communication upfront and during execution\n- Lack of alignment",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Unclear dependencies",
+      "description": "- Missing skills / experience\n- Lack of subject matter expertise",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Blame festivals",
+      "description": "- lack of skills for enabling end to end responsibility\n- Unclear dependencies upfront",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Communication",
+      "description": "- Facilitate communication\n- Coach the scrum masters\n- Ask uncomfortable questions in the PI planning prep\n- Train the people on the technology used (SMEs)",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Alignment",
+      "description": "- Promote the added value of T-shaped skills to management\n- Ask critical questions for better maturity of feature descriptions (dependencies, DoDs)",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Engage stakeholders",
+      "description": "- engage developers and managers to take part in the system demo",
+      "itemType": {
+        "id": "T1612806905099ZSRZIETAZ51J00C",
+        "name": "Sticky",
+        "description": "Add one answer per item.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "What other work types can leverage capacity allocation when preparing for PI Planning?",
+      "description": "",
+      "itemType": {
+        "id": "T16837280238384GWMPCAQQ0GD4U4",
+        "name": "New Item Type",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Other than allocating dedicated capacity for Enablers...",
+      "description": "",
+      "itemType": {
+        "id": "T16837280238384GWMPCAQQ0GD4U4",
+        "name": "New Item Type",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What about during PI Planning?",
+      "description": "",
+      "itemType": {
+        "id": "T16837280238384GWMPCAQQ0GD4U4",
+        "name": "New Item Type",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683727996925OK4CM2TGB452VHR",
+        "name": "Sticky",
+        "description": "Use one per idea",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683727996925OK4CM2TGB452VHR",
+        "name": "Sticky",
+        "description": "Use one per idea",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Which roles or functions must attend?",
+      "description": "",
+      "itemType": {
+        "id": "T1683729012825BVFRKHRQHYU2RLF",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Agenda",
+      "description": "Risks, dependencies\nBoard review,",
+      "itemType": {
+        "id": "T1683729012825BVFRKHRQHYU2RLF",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Who's gonna be there",
+      "description": "Stakeholders\nExecutives\nProduct - PM, PO\nPMO - SM, RTE\nArchitecture\nDev Management\nSystems team rep.\nSMEs",
+      "itemType": {
+        "id": "T1683729012825BVFRKHRQHYU2RLF",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Inputs",
+      "description": "",
+      "itemType": {
+        "id": "T1683729012825BVFRKHRQHYU2RLF",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Outputs",
+      "description": "",
+      "itemType": {
+        "id": "T1683729012825BVFRKHRQHYU2RLF",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Which roles or functions must attend?",
+      "description": "",
+      "itemType": {
+        "id": "T1683730015649S3RBNWYHGZER4T4",
+        "name": "Label - Scenario",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Agenda",
+      "description": "",
+      "itemType": {
+        "id": "T1683730015649S3RBNWYHGZER4T4",
+        "name": "Label - Scenario",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Team member X is a bottleneck. They are the only one who can handle critical parts of the implementation",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "No System Team is available yet. The integration infrastructure",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "Two teams have a shared Product Owner. This might have a negative impact on the team Iteration Planning and demos.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "The QA team is pointing out the application performance might be at risk during",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "In Iteration 3 an important supplier might be delayed with their crucial delivery.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "There is a holiday mid-PI and many people will be on vacation.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "for an important Feature that is scheduled for delivery in the Iteration.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "is in bad shape and could put the integration and/or system demo at risk.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "Iteration 3 when there will be an influx of new users. We are unsure how this might impact us.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "They have been late before, and this time it might impact several teams.",
+      "description": "",
+      "itemType": {
+        "id": "T16137722991131HJOMJEO1WHOQRQ",
+        "name": "Risk",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/15BDWCDXJPU3TYRCHZUGEN10MAWEGEFN"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 188,
+            "b": 168
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea 1",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1612900211679AXIQUMTJN2LJ1EM",
+        "name": "Facilitation Idea",
+        "description": "Add one approach and why per item for each risk.",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "How can the RTE ensure that attendees feel safe to voice their concerns?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How would you facilitate reworking the plan if there is little to no confidence (teams vote a 1 or 2)?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What agreements would you put in place to rework the plan?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732194731IDLKPXKNLC2HE2T",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T16837322765535XOAV215EFEPHUH",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Location 1",
+      "description": "",
+      "itemType": {
+        "id": "T1612914763193A4SNMKNPNBRCMTX",
+        "name": "Text",
+        "description": "List ideas and tools for what the RTE needs too do to prepare to facilitate the distributed PI Planning event",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Boulder, CO USA",
+      "description": "",
+      "itemType": {
+        "id": "T1612914328209VCT0OYGGGOOBCNN",
+        "name": "Location",
+        "description": "Add the locations of people on the ART.",
+        "icon": {
+          "imageUrl": "/image_logic/TD1OKW435V3PB0QPK3GXYY0DRZPNA0OG"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Location 2",
+      "description": "",
+      "itemType": {
+        "id": "T1612914763193A4SNMKNPNBRCMTX",
+        "name": "Text",
+        "description": "List ideas and tools for what the RTE needs too do to prepare to facilitate the distributed PI Planning event",
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Yorkshire, England",
+      "description": "",
+      "itemType": {
+        "id": "T1612914328209VCT0OYGGGOOBCNN",
+        "name": "Location",
+        "description": "Add the locations of people on the ART.",
+        "icon": {
+          "imageUrl": "/image_logic/TD1OKW435V3PB0QPK3GXYY0DRZPNA0OG"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Opening",
+      "description": "Introduction, agenda, objectives, and working agreements\n(Facilitator) \n\nPlanning Context and Deliverables\n(Facilitator) \n\nART and Pl Planning context as needed\n(Facilitator) \n\nReview of release cadence - Iterations and PIs\n(Facilitator)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "8:00am",
+      "description": "",
+      "itemType": {
+        "id": "T1612914290128EULAQSFIXQGKPOS",
+        "name": "Local Time",
+        "description": "Add the time for the locations of people on the ART",
+        "icon": {
+          "imageUrl": "/image_logic/FIRVL2KLNM4Y4CGLQB234RGJ2GMWEP2Q"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "4:00pm",
+      "description": "",
+      "itemType": {
+        "id": "T1612914290128EULAQSFIXQGKPOS",
+        "name": "Local Time",
+        "description": "Add the time for the locations of people on the ART",
+        "icon": {
+          "imageUrl": "/image_logic/FIRVL2KLNM4Y4CGLQB234RGJ2GMWEP2Q"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Business Context",
+      "description": "State of the business\n(Executive)\n\nUpcoming objectives\n(Executive)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Product/Solution Vision",
+      "description": "Vision of solution, products/services, and prioritized features \n(Product Management)\n\nVision of solution features or components \n(Individual Solution Owners)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "BREAK",
+      "description": "",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Architecture Vision",
+      "description": "Vision  for architecture, new architecture epics, common frameworks, and program-level NFRs\n(Technology Office, System Architect)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Development Practices",
+      "description": "Updates on project setup, agile tooling, improvements in engineering practices, etc.\n(Development Management)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Planning Requirements",
+      "description": "Specific planning process, draft plan acceptance criteria, etc.\n(Facilitator)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "LUNCH/DINNER",
+      "description": "",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Team Breakouts (1 of 2)",
+      "description": "Features broken into stories\n(each team)\n\nPl plan and objectives drafted\n(each team)\n\nRisks and impediments identified\n(each team)\n\nHourly Scrum of Scrums checkpoint to discuss planning status, program impediments, and dependencies\n(Scrum Masters)\n\nProgram Feature Board continuously updated\n(Scrum Masters)\n\nArchitects and Product Managers circulate",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Team Synchronization",
+      "description": "Distributed teams collaborate with Product Management and  Solution Owners to synchronize",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "8:00am",
+      "description": "",
+      "itemType": {
+        "id": "T1612914290128EULAQSFIXQGKPOS",
+        "name": "Local Time",
+        "description": "Add the time for the locations of people on the ART",
+        "icon": {
+          "imageUrl": "/image_logic/FIRVL2KLNM4Y4CGLQB234RGJ2GMWEP2Q"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "4:00pm",
+      "description": "",
+      "itemType": {
+        "id": "T1612914290128EULAQSFIXQGKPOS",
+        "name": "Local Time",
+        "description": "Add the time for the locations of people on the ART",
+        "icon": {
+          "imageUrl": "/image_logic/FIRVL2KLNM4Y4CGLQB234RGJ2GMWEP2Q"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Draft Plan Review",
+      "description": "Velocity and Load Overview of plan flow Draft Pl objectives Program risks, impediments, and Program Board dependencies",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "BREAK",
+      "description": "",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Managers Review and Problem Solving",
+      "description": "Discussion of scope, challenges to plan, risks, and  impediments\n(Line Management, Product Management, Architects, and Team Representatives)\n\nConducted with all teams in attendance\n\nAdjustments of scope and resources as necessary\n(same as above)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Planning Adjustments",
+      "description": "Management review and problem solving meeting readout:\nAdjustments to plan, scope, resources, etc.\n(Managers)",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "LUNCH/DINNER",
+      "description": "",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Team Breakouts (2 of 2)",
+      "description": "Pl plan and objectives finalized Risks and impediments finalized\n\nHourly Scrum of Scrums checkpoint to discuss planning  status, program impediments, and dependencies\n(Scrum Masters)\n\nProgram Feature Board continuously updated\n(Scrum Masters)\n\nArchitects and Product Managers circulate Business Owners review objectives and assign business value",
+      "itemType": {
+        "id": "T1612914301716IPR3BLKVLKSEEMA",
+        "name": "Event",
+        "description": "Hover or double click for event details",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Which approach is best suited for various teams on your ART?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732755525BR5NTBF2V3BWJTP",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "What does the RTE need to consider when coaching ARTs that have teams using both approaches?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732755525BR5NTBF2V3BWJTP",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How can the RTE support teams combining models to work for their team needs?",
+      "description": "",
+      "itemType": {
+        "id": "T1683732755525BR5NTBF2V3BWJTP",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Considering SAFe Team Kanban and SAFe Scrum:",
+      "description": "",
+      "itemType": {
+        "id": "T1683732838993HKGIXZWQQZ4EDLK",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 248,
+            "g": 186,
+            "b": 77
+          }
+        }
+      }
+    },
+    {
+      "name": "Discuss the following:",
+      "description": "",
+      "itemType": {
+        "id": "T1683732755525BR5NTBF2V3BWJTP",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Coach Sync",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "PO Sync",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "ART Sync",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "System Demo",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "A clear statement about the purpose of the event and why it\u2019s important for the RTE role",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "A list of facilitators and attendees",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Agenda",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Anti-patterns",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Success criteria for the RTE",
+      "description": "",
+      "itemType": {
+        "id": "T16129987586313ADDOQFOVIPXKZK",
+        "name": "Event",
+        "description": "Drag the event up to the Event area of the board",
+        "icon": {
+          "imageUrl": "/image_logic/OHHKFZV20TRABIVM2A1Z2DT55GKENVEU"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "How can the RTE coach toward basic Agile quality practices?",
+      "description": "",
+      "itemType": {
+        "id": "T1683733331570AOI5NTT0HAUKE5P",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 204,
+            "b": 228
+          }
+        }
+      }
+    },
+    {
+      "name": "What events can the RTE leverage?",
+      "description": "",
+      "itemType": {
+        "id": "T1683733331570AOI5NTT0HAUKE5P",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 204,
+            "b": 228
+          }
+        }
+      }
+    },
+    {
+      "name": "What roles can the RTE collaborate with?",
+      "description": "",
+      "itemType": {
+        "id": "T1683733331570AOI5NTT0HAUKE5P",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 204,
+            "b": 228
+          }
+        }
+      }
+    },
+    {
+      "name": "What tools can the RTE use?",
+      "description": "",
+      "itemType": {
+        "id": "T1683733331570AOI5NTT0HAUKE5P",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 204,
+            "b": 228
+          }
+        }
+      }
+    },
+    {
+      "name": "Example Idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683733420526UIF1D5R42VTWQWR",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Example Idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683733420526UIF1D5R42VTWQWR",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683733420526UIF1D5R42VTWQWR",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Funnel",
+      "description": "",
+      "itemType": {
+        "id": "T1683238359900WW5F1FWQTKHXWVB",
+        "name": "Funnel",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/ED04XTJCXLYLS0C4LT0LH0TMRMLMSMMF"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Analyzing",
+      "description": "",
+      "itemType": {
+        "id": "T1683238442930PV5TFAUQBGVHPIF",
+        "name": "Analyzing",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/TRKFVCRN4NICGTUGKZFVB35F40SLC45C"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Backlog",
+      "description": "",
+      "itemType": {
+        "id": "T1683238713527ZU0LY3SV04155XR",
+        "name": "Backlog",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/HOJXUJ0EGJWQB4GZ4235TC5CVZFCNZNP"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Implementing",
+      "description": "",
+      "itemType": {
+        "id": "T1683238776058K44ATWWYXP30NSX",
+        "name": "Implementing",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/DOXVZE3NT20D1P4VUPWM0WW0FKQDV3DR"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Validating on staging",
+      "description": "",
+      "itemType": {
+        "id": "T16832388347730HD4TW3EKMXVWI3",
+        "name": "Validating on staging",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/0JDVZZ3C0FRRI2KKWPKHFF33S0XZJ3LM"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Deploying to production",
+      "description": "",
+      "itemType": {
+        "id": "T1683238895218J4OFPZGKI44NB5V",
+        "name": "Deploying to production",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/KBYTZ513WOLHTY2ITBGJQOKUXMQAVFY0"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Releasing",
+      "description": "",
+      "itemType": {
+        "id": "T16832389629195DZRCAV12KBSUTZ",
+        "name": "Releasing",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/1HSAWZ0CPNPPESQRRVLQZHWCKO0JSBWD"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Done",
+      "description": "",
+      "itemType": {
+        "id": "T1683239002185PHKQY4CLCX3SHSD",
+        "name": "Done",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/BMIXUEA541BTVUQSUHQ3335CYUQ44LUW"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "All new ideas welcome!",
+      "description": "",
+      "itemType": {
+        "id": "T1605025568613ITWQKR4ZGB1ZXAX",
+        "name": "Policies",
+        "description": "Add additional notes or comments",
+        "icon": {
+          "imageUrl": "/image_logic/W1LMULD51TL1A3V0K4FQXWUS4SJFATQB"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 206,
+            "g": 233,
+            "b": 224
+          }
+        }
+      }
+    },
+    {
+      "name": "No WIP Limit",
+      "description": "",
+      "itemType": {
+        "id": "T16837337853065R2UX510RLTVW5E",
+        "name": "WIP Limit",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 248,
+            "g": 186,
+            "b": 77
+          }
+        }
+      }
+    },
+    {
+      "name": "Custom Stage",
+      "description": "",
+      "itemType": {
+        "id": "T1604517065234LVFMI3L4Q4BQDKZ",
+        "name": "Sticky",
+        "description": "Add one idea per item",
+        "icon": {
+          "imageUrl": "/image_logic/0UFOQ2PUYUUUHPXTXQWIEWUA3KGADDS2"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Brainstorm the Metrics you currently use to measure success on your ART",
+      "description": "",
+      "itemType": {
+        "id": "T1683735453552SLO2Q3INHDFP5PM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example metric",
+      "description": "",
+      "itemType": {
+        "id": "T1683735482447JGVOLVCORZ5M3HX",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Is your ART Kanban optimized to measure Flow?",
+      "description": "",
+      "itemType": {
+        "id": "T1683735453552SLO2Q3INHDFP5PM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683735482447JGVOLVCORZ5M3HX",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "If you\u2019re already using Flow Metrics, how do you apply them in your role?",
+      "description": "",
+      "itemType": {
+        "id": "T1683735453552SLO2Q3INHDFP5PM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683735482447JGVOLVCORZ5M3HX",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Create a two-minute pitch to the Business Owners and Product Mgmt about the need to build DevOps capabilities.",
+      "description": "",
+      "itemType": {
+        "id": "T1683754872746GOAAEOCWQJWJLCM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Include the following:",
+      "description": "",
+      "itemType": {
+        "id": "T1683754872746GOAAEOCWQJWJLCM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "A clear statement about what is likely to happen if the practice is not implemented",
+      "description": "",
+      "itemType": {
+        "id": "T1683754872746GOAAEOCWQJWJLCM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "A statement about how the RTE can support this practice",
+      "description": "",
+      "itemType": {
+        "id": "T1683754872746GOAAEOCWQJWJLCM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Metrics to support your pitch",
+      "description": "",
+      "itemType": {
+        "id": "T1683754872746GOAAEOCWQJWJLCM",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T16130803091855R1Q2OJPK5MGYLU",
+        "name": "Sticky",
+        "description": "Add one idea per item",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T16130803091855R1Q2OJPK5MGYLU",
+        "name": "Sticky",
+        "description": "Add one idea per item",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T16130803091855R1Q2OJPK5MGYLU",
+        "name": "Sticky",
+        "description": "Add one idea per item",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T16130803091855R1Q2OJPK5MGYLU",
+        "name": "Sticky",
+        "description": "Add one idea per item",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 1",
+      "description": "",
+      "itemType": {
+        "id": "T1683744204341OKDVTRJNUCBECXH",
+        "name": "Value Stream Map Step",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 2",
+      "description": "",
+      "itemType": {
+        "id": "T1683744204341OKDVTRJNUCBECXH",
+        "name": "Value Stream Map Step",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 3",
+      "description": "",
+      "itemType": {
+        "id": "T1683744204341OKDVTRJNUCBECXH",
+        "name": "Value Stream Map Step",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 4",
+      "description": "",
+      "itemType": {
+        "id": "T1683744204341OKDVTRJNUCBECXH",
+        "name": "Value Stream Map Step",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 5",
+      "description": "",
+      "itemType": {
+        "id": "T1683744204341OKDVTRJNUCBECXH",
+        "name": "Value Stream Map Step",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Map a current development process and identify the process time and the delay time between the steps",
+      "description": "",
+      "itemType": {
+        "id": "T1683744981971KQ25EU5W2BI4LUE",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "2 days",
+      "description": "",
+      "itemType": {
+        "id": "T1683745974013T353V3NI2N23DM0",
+        "name": "Delay Time",
+        "description": "Use to identify the delays between steps.",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "4 hours",
+      "description": "",
+      "itemType": {
+        "id": "T16837460148161GV045R20WCVISJ",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1683745974013T353V3NI2N23DM0",
+        "name": "Delay Time",
+        "description": "Use to identify the delays between steps.",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1683745974013T353V3NI2N23DM0",
+        "name": "Delay Time",
+        "description": "Use to identify the delays between steps.",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1683745974013T353V3NI2N23DM0",
+        "name": "Delay Time",
+        "description": "Use to identify the delays between steps.",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T16837460148161GV045R20WCVISJ",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T16837460148161GV045R20WCVISJ",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T16837460148161GV045R20WCVISJ",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T16837460148161GV045R20WCVISJ",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 1",
+      "description": "",
+      "itemType": {
+        "id": "T1683746805043OB5SBSD32J5ZHZV",
+        "name": "Value Stream Map Step",
+        "description": "Use one per step in the future state value stream.",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Process Time 1",
+      "description": "",
+      "itemType": {
+        "id": "T1683746965973CYFBKQROVQKHZR3",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Delay time 1",
+      "description": "",
+      "itemType": {
+        "id": "T1683746975672SDI15LDVY3SW15R",
+        "name": "Delay Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 2",
+      "description": "",
+      "itemType": {
+        "id": "T1683746805043OB5SBSD32J5ZHZV",
+        "name": "Value Stream Map Step",
+        "description": "Use one per step in the future state value stream.",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Delay time 2",
+      "description": "",
+      "itemType": {
+        "id": "T1683746975672SDI15LDVY3SW15R",
+        "name": "Delay Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 3",
+      "description": "",
+      "itemType": {
+        "id": "T1683746805043OB5SBSD32J5ZHZV",
+        "name": "Value Stream Map Step",
+        "description": "Use one per step in the future state value stream.",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 4",
+      "description": "",
+      "itemType": {
+        "id": "T1683746805043OB5SBSD32J5ZHZV",
+        "name": "Value Stream Map Step",
+        "description": "Use one per step in the future state value stream.",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Delay time 3",
+      "description": "",
+      "itemType": {
+        "id": "T1683746975672SDI15LDVY3SW15R",
+        "name": "Delay Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Delay time 4",
+      "description": "",
+      "itemType": {
+        "id": "T1683746975672SDI15LDVY3SW15R",
+        "name": "Delay Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/X0BGCUM112XI5102WV43M5ERL5IES4YH"
+        },
+        "note": {
+          "backgroundColor": {
+            "origStr": "rgba(255, 255, 255, 0.7)",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "alpha": 0.7
+          }
+        }
+      }
+    },
+    {
+      "name": "Value Stream Map Step 5",
+      "description": "",
+      "itemType": {
+        "id": "T1683746805043OB5SBSD32J5ZHZV",
+        "name": "Value Stream Map Step",
+        "description": "Use one per step in the future state value stream.",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Process Time 2",
+      "description": "",
+      "itemType": {
+        "id": "T1683746965973CYFBKQROVQKHZR3",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Process Time 3",
+      "description": "",
+      "itemType": {
+        "id": "T1683746965973CYFBKQROVQKHZR3",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Process Time 4",
+      "description": "",
+      "itemType": {
+        "id": "T1683746965973CYFBKQROVQKHZR3",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Process Time 5",
+      "description": "",
+      "itemType": {
+        "id": "T1683746965973CYFBKQROVQKHZR3",
+        "name": "Process Time",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/WBUP1BZH2ZF5GQ4RP3M35BJXYVDKUP05"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Visualize and limit WIP",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Address Bottlenecks",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Minimize handoffs and dependencies",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Get faster feedback",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Work in smaller batches",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Reduce queue lengths",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Optimize time \"in the zone\"",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Remediate legacy policies and practices",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Distribution",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Velocity",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Time",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Load",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Efficiency",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Predictability",
+      "description": "",
+      "itemType": {
+        "id": "T1683748260604ATYZ3P5JJDIBY1V",
+        "name": "Flow Metric",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Visualize and Limit WIP",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Address Bottlenecks",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Remediate legacy policies and practices",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Address Bottlenecks",
+      "description": "",
+      "itemType": {
+        "id": "T16837482164682JFANZXZX4REK2X",
+        "name": "Flow Accelerator",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "Forming: Who\u2019s on our team? What are we working on? How do we do it?",
+      "description": "Who\u2019s on our team? What are we working on? How do we do it?",
+      "itemType": {
+        "id": "T1614191874114AVKQHUAKRECX2P1",
+        "name": "Tuckman Stage descriptions",
+        "description": "Hover or double-click to see the stage description",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Storming: The team resolves initial conflicts and difficulties in establishing a shared understanding;\u000bmakes attempts to coordinate work, roles and processes",
+      "description": "The team resolves initial conflicts and difficulties in establishing a shared understanding;\u000bmakes attempts to coordinate work, roles and processes",
+      "itemType": {
+        "id": "T1614191874114AVKQHUAKRECX2P1",
+        "name": "Tuckman Stage descriptions",
+        "description": "Hover or double-click to see the stage description",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Norming: The team establishes internal agreements about roles and responsibilities; it becomes a community, and individuals adapt to it.",
+      "description": "",
+      "itemType": {
+        "id": "T1614191874114AVKQHUAKRECX2P1",
+        "name": "Tuckman Stage descriptions",
+        "description": "Hover or double-click to see the stage description",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Performing: The processes, roles and responsibilities become just a tool for the team in their new main game \u2014 getting the job done!",
+      "description": "The processes, roles and responsibilities become just a tool for the team in their new main game \u2014 getting the job done!",
+      "itemType": {
+        "id": "T1614191874114AVKQHUAKRECX2P1",
+        "name": "Tuckman Stage descriptions",
+        "description": "Hover or double-click to see the stage description",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Example activity - PI Planning",
+      "description": "",
+      "itemType": {
+        "id": "T1613497267157YZ5Q1QQN02J5VQH",
+        "name": "Activities",
+        "description": "Add an item to the board for activities that establish for trust.",
+        "icon": {
+          "imageUrl": "/image_logic/RLKQCNH33CUDDW0PBVPJRYNFL4ZCPG3W"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "PI Planning",
+      "description": "-Example RTE action\n-Example RTE action",
+      "itemType": {
+        "id": "T1613497316888TZMGCRSCZ3DZ504",
+        "name": "Sticky",
+        "description": "Add a Sticky next to the identified SAFe activities to capture how the RTE can act to increase the trust.",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Working in your groups, select one event from the Big Picture where you will be facilitating a large group of people",
+      "description": "",
+      "itemType": {
+        "id": "T16837531467413BQGELD1WFSZH4J",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example best practice",
+      "description": "",
+      "itemType": {
+        "id": "T168375320690555P3HR0CWOXJHIP",
+        "name": "Sticky",
+        "description": "Use one per idea to capture best practices for facilitating a large group event.",
+        "icon": {
+          "imageUrl": "/image_logic/JYZ4JSPM0KUOQAYG5SCQWYUGBFZBTH34"
+        },
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "What techniques will you use to facilitate the event?",
+      "description": "",
+      "itemType": {
+        "id": "T16837531467413BQGELD1WFSZH4J",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How are you connecting team victories to the Vision?",
+      "description": "",
+      "itemType": {
+        "id": "T16837536565052J0NHP2L3XJYJJQ",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "How are you creating connections between yourself and the teams?",
+      "description": "",
+      "itemType": {
+        "id": "T16837536565052J0NHP2L3XJYJJQ",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Discuss an upcoming PI event and how the RTE could sustain the victory. What will you say at the event?",
+      "description": "",
+      "itemType": {
+        "id": "T16837536565052J0NHP2L3XJYJJQ",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683753998120KEFPKWOVCDDFKO5",
+        "name": "Sticky",
+        "description": "Use one per idea",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683753998120KEFPKWOVCDDFKO5",
+        "name": "Sticky",
+        "description": "Use one per idea",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "Idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683753998120KEFPKWOVCDDFKO5",
+        "name": "Sticky",
+        "description": "Use one per idea",
+        "note": {
+          "backgroundColor": {
+            "r": 195,
+            "g": 145,
+            "b": 194
+          }
+        }
+      }
+    },
+    {
+      "name": "First priority personal action",
+      "description": "",
+      "itemType": {
+        "id": "T1683754222502MOYSTKC4KBWHDJX",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example personal action",
+      "description": "",
+      "itemType": {
+        "id": "T1683754254587HHWYCCO5UGOWTOW",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "First priority ART improvement item",
+      "description": "",
+      "itemType": {
+        "id": "T1683754222502MOYSTKC4KBWHDJX",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Example ART idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683754254587HHWYCCO5UGOWTOW",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "How will you hold eachother accountable?",
+      "description": "",
+      "itemType": {
+        "id": "T1683754222502MOYSTKC4KBWHDJX",
+        "name": "Label",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 39,
+            "g": 68,
+            "b": 98
+          }
+        }
+      }
+    },
+    {
+      "name": "Accountability idea",
+      "description": "",
+      "itemType": {
+        "id": "T1683754254587HHWYCCO5UGOWTOW",
+        "name": "Sticky",
+        "description": "",
+        "note": {
+          "backgroundColor": {
+            "r": 110,
+            "g": 210,
+            "b": 208
+          }
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "",
+      "description": "",
+      "itemType": {
+        "id": "T1587651986026DZ15H15MCNTNEJP",
+        "name": "Yes",
+        "description": "",
+        "icon": {
+          "imageUrl": "/image_logic/XGKPGHNVONKGB5QUVYXGJEJ5LBQSHIG0"
+        },
+        "note": {
+          "backgroundColor": {}
+        }
+      }
+    },
+    {
+      "name": "Data Ingestion",
+      "description": "Enter the product, Solution, or service you are focusing on in this workshop.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Agreement to share data",
+      "description": "Enter the event that kicks off the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Complete data sharing form",
+      "description": "Identify the First Step in the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Search System",
+      "description": "Identify the Customer here.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "9 times in a quarter",
+      "description": "Enter how often you experience demand over a period of time.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "Install the adaptor",
+      "description": "Identify the Last Step in the Value Stream.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "An agency agrees to share data, so we have to create an adaptor to translate the data into an ingestible form",
+      "description": "Enter the Use Case here and delete this text when finished.\n\nDescription:\nUse case is the specific execution scenario being mapped such as most common type of Customer request or new product development.",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "100.2 day",
+      "description": "Add up all Total Active Time in your Current State Map and enter it here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "398.29 days",
+      "description": "Add up the sum of all AT and delays and enter it here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "41.47%",
+      "description": "Enter your %C&A here\n\n%C&A = (# Complete & Accurate / Total) * 100",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "25.2%",
+      "description": "Enter the your Flow Efficiency here.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Flow Velocity",
+      "description": "Enter the number of items completed in a given time.",
+      "itemType": {
+        "id": "T1630532817743LECHJV42GAGTR40",
+        "name": "Baseline Metrics region",
+        "description": "Use this item for the Baseline Metrics region.",
+        "note": {
+          "backgroundColor": {
+            "r": 222,
+            "g": 243,
+            "b": 80
+          }
+        }
+      }
+    },
+    {
+      "name": "Impacted Metrics",
+      "description": "Enter your list of Impacted Metrics here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Top Causes of Wait Time",
+      "description": "Enter the top causes of Wait Time here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Top Problem Steps",
+      "description": "Enter the top Problem Steps here.",
+      "itemType": {
+        "id": "T1630533185920P2JIF3ACMTMGKTL",
+        "name": "Analysis region",
+        "description": "Use this item for the Analysis region.",
+        "note": {
+          "backgroundColor": {
+            "r": 249,
+            "g": 243,
+            "b": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "Schedule kickoff meeting",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 month",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 week",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "6 months",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "3 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "1 day, 100%",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "3days",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "6 weeks",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 9 Wait Time",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 10 Wait Time",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 11 Wait Time",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 12 Wait Time",
+      "description": "Enter the WT here.",
+      "itemType": {
+        "id": "T1690222664205G1QCFVLTPOGQ2FE",
+        "name": "Wait Time",
+        "description": "Use this item for the Wait Time.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Complete data sharing form",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Hold kickoff meeting",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Receive database copy",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Map data elements",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Build adaptor",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Run internal testing",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Install the adaptor",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 9",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 10",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 11",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "Step 12",
+      "description": "Step description: Enter the name for this step here. \nTeam/Function: Enter the name of the team responsible for this step here.\nAT: Enter the AT for this step here.\n%C&A: Enter the %C&A for this step here.",
+      "itemType": {
+        "id": "T1630533341723PMBVEDYUCKJJI0K",
+        "name": "Step information",
+        "description": "Use this item to complete each step from first to last as identified in the Business Context region.\n\nEach item should have:\n1. Step description\n2. Team/Function\n3. AT\n4. %C&A",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 153,
+            "b": 42
+          }
+        }
+      }
+    },
+    {
+      "name": "2days, 75%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 hour, 100%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "2 hours, 95%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 day, 75%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "2 months, 97%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1 month, 100%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "1weeks, 80%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    },
+    {
+      "name": "4 hours, 100%",
+      "description": "",
+      "itemType": {
+        "id": "T1630532707310MZU2VCKICFPAMIC",
+        "name": "Business Context region",
+        "description": "Use this item for the Business Context region.",
+        "note": {
+          "backgroundColor": {
+            "r": 255,
+            "g": 212,
+            "b": 45
+          }
+        }
+      }
+    }
+  ]
+}

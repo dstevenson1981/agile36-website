@@ -17,6 +17,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ClarityAnalytics from "./components/ClarityAnalytics";
+import WebMcpProvider from "./components/WebMcpProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "uvoTYHwVpjLfOgpwChNX0GLOqog9pAb9iKyJW1jiTP8",
+  },
+  alternates: {
+    types: {
+      "text/plain": "/llms.txt",
+    },
   },
 };
 
@@ -143,6 +149,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootSchemaGraph) }}
         />
+        <link rel="alternate" type="text/plain" title="llms.txt" href="https://www.agile36.com/llms.txt" />
+        {process.env.WEBMCP_ORIGIN_TRIAL_TOKEN || process.env.NEXT_PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN ? (
+          <meta
+            httpEquiv="origin-trial"
+            content={
+              process.env.WEBMCP_ORIGIN_TRIAL_TOKEN ||
+              process.env.NEXT_PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN
+            }
+          />
+        ) : null}
         <script
           src="/hyper-agent.js"
           data-rb2b="GNLKQH7LPW6Q"
@@ -152,6 +168,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
+        <WebMcpProvider />
         <Header />
         <div className="flex-1">
           {children}

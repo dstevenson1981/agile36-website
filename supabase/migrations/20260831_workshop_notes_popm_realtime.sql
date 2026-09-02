@@ -44,6 +44,12 @@ alter table public.workshop_notes replica identity full;
 
 grant select, insert, update, delete on table public.workshop_notes to anon, authenticated;
 
+alter table public.workshop_notes
+  add column if not exists lane text not null default 'board';
+
+create index if not exists workshop_notes_lane_idx
+  on public.workshop_notes (board_id, activity_id, lane);
+
 do $$
 begin
   if not exists (
