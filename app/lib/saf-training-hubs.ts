@@ -109,7 +109,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
       "Connecting portfolio decisions to Agile delivery",
     ],
     timeRequired: "PT16H",
-    price: 950,
+    price: 1395,
     currency: "USD",
   },
   "safe-product-owner-product-manager-certification-training": {
@@ -145,7 +145,7 @@ export const SAF_TRAINING_HUBS: Record<LocationSegment, HubConfig> = {
       "Aligning product strategy to delivery outcomes",
     ],
     timeRequired: "PT24H",
-    price: 999,
+    price: 1495,
     currency: "USD",
   },
 };

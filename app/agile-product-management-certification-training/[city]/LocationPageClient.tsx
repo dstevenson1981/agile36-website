@@ -738,7 +738,7 @@ export default function CityAPMCoursePage() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$999</div>
+                  <div className="text-4xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">$1,495</div>
                   <div className="text-base text-[#64748b] line-through">$1,998</div>
                   <div className="text-sm text-green-700 font-semibold mt-2">50% OFF</div>
                 </div>
