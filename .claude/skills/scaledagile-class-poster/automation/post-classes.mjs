@@ -122,7 +122,15 @@ async function readExisting(page) {
   let rows = [];
   for (let i = 0; i < 15; i++) {
     await dismissCssError(page);
-    rows = await scrape();
+    // The Lightning page can navigate itself mid-evaluate, which destroys the
+    // execution context and throws. Treat that as "not ready yet" and retry.
+    try {
+      rows = await scrape();
+    } catch (err) {
+      if (!/Execution context was destroyed|Target closed/i.test(err.message)) throw err;
+      await page.waitForTimeout(2000);
+      continue;
+    }
     if (rows.length) break;
     await page.waitForTimeout(4000);
   }
@@ -179,11 +187,15 @@ async function pickCombo(dialog, label, optionText) {
   const combo = dialog.getByRole("combobox", { name: label });
   await combo.click();
   await dialog.page().waitForTimeout(400);
-  await dialog
-    .page()
-    .getByRole("option", { name: optionText, exact: false })
-    .first()
-    .click();
+  // exact:false matched "GMT+10:00 Australian Eastern Standard Time" for a
+  // wanted "Eastern Standard Time" — it sorts first — and put 41 live classes
+  // on Australian time. Anchor the whole label and allow either dash, since the
+  // portal renders the offset with a Unicode minus (U+2212).
+  const want = new RegExp(
+    "^\\s*" + optionText.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/[-\u2212\u2013]/g, "[-\u2212\u2013]") + "\\s*$",
+    "i"
+  );
+  await dialog.page().getByRole("option", { name: want }).first().click({ timeout: 15000 });
   await dialog.page().waitForTimeout(400);
 }
 
@@ -208,8 +220,11 @@ async function createClass(page, c) {
 
   // Timezone silently reverts if focus moved too fast — verify before saving.
   const tz = await dialog.getByRole("combobox", { name: "Timezone" }).innerText();
-  if (!/Eastern Daylight Time - New York/i.test(tz)) {
+  if (!/Eastern Standard Time/i.test(tz) || /Australian|GMT\+/i.test(tz)) {
     await pickCombo(dialog, "Timezone", c.timezone);
+    const again = await dialog.getByRole("combobox", { name: "Timezone" }).innerText();
+    if (!/Eastern Standard Time/i.test(again) || /Australian|GMT\+/i.test(again))
+      throw new Error(`timezone would be wrong: ${again.trim().slice(0, 48)}`);
   }
 
   if (DRY) {
@@ -235,8 +250,14 @@ async function verifySaved(page, c) {
   }
   if (!text.includes(usDate(c.start))) problems.push(`start date not ${usDate(c.start)}`);
   if (!text.includes(usDate(c.end))) problems.push(`end date not ${usDate(c.end)}`);
-  if (!/Eastern Daylight Time - New York/i.test(text)) {
-    problems.push("timezone is not the New York bucket");
+  // Deadra moved every listing to plain EST on 2026-08-25; this still demanded
+  // the old New York label and so failed all 20 classes it had just created
+  // correctly. Australian Eastern Standard Time contains "Eastern Standard
+  // Time", so reject it explicitly rather than matching loosely.
+  if (!/Eastern Standard Time/i.test(text) || /Australian|GMT\+/i.test(text)) {
+    problems.push(
+      `timezone wrong: ${(text.match(/GMT[^\n]{0,40}/) || ["not found"])[0]}`
+    );
   }
   if (!text.includes(c.class_name)) problems.push("class name mismatch");
   if (problems.length) throw new Error("saved wrong: " + problems.join("; "));

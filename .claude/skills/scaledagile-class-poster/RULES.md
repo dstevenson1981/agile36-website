@@ -274,3 +274,19 @@ week is wrong.
 A class with no instructor never reaches the training calendar: it burns a
 listing and shows nobody. Unstaffed rows are reported and dropped, never
 written to the CSV.
+
+## Value Stream Mapping is a one-day class
+
+Start and end are the same date. Its learning plan is
+**`Advanced Facilitator: Value Stream Mapping`** — not a `(6.0)` name like the
+other courses, and guessing `Value Stream Mapping (6.0)` fails the whole batch
+on the learning-plan dropdown.
+
+## Trainer substitution is acceptable
+
+When the intended instructor cannot be attached, `post-classes.mjs` cycles to
+the next eligible one and reports the substitution. Deadra confirmed on
+2026-08-25 that this is fine: **"I don't care about who the trainers are as
+long as it's scheduled."** Do not stop a run over a substitution — report it and
+carry on. The hard constraints still hold: no trainer on overlapping spans, and
+Lean Portfolio stays with Deadra or Joseph.

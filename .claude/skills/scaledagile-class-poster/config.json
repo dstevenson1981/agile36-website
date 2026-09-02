@@ -38,7 +38,10 @@
     },
     "value-stream-mapping": {
       "safeName": "Value Stream Mapping",
-      "regUrl": "https://www.agile36.com/courses/value-stream-mapping"
+      "regUrl": "https://www.agile36.com/courses/value-stream-mapping",
+      "learningPlan": "Advanced Facilitator: Value Stream Mapping",
+      "portalName": "Value Stream Mapping-Guaranteed to Run",
+      "oneDay": true
     }
   },
   "portal": {
