@@ -93,14 +93,18 @@ export function daysFromDomains(
   });
 }
 
-export function sharedWhyTail(): WhyRow[] {
+export function sharedWhyTail(examAttempts: 1 | 2 = 2): WhyRow[] {
+  const oneAttempt = examAttempts === 1;
   return [
     {
       n: "04",
       check: "Certification confidence",
-      usLead: "Two exam attempts are included.",
-      usRest:
-        "Exam preparation is incorporated into the training, with a second attempt included if you need it.",
+      usLead: oneAttempt
+        ? "One exam attempt is included."
+        : "Two exam attempts are included.",
+      usRest: oneAttempt
+        ? "Exam preparation is incorporated into the training. Additional attempts can be purchased from Scaled Agile if you need them."
+        : "Exam preparation is incorporated into the training, with a second attempt included if you need it.",
       other: "Exam retake policies and additional costs vary by provider.",
     },
     {

@@ -15,21 +15,26 @@ const DURATION_2 = "2-Day Live Online · Instructor-Led";
 const DURATION_3 = "3-Day Live Online · Instructor-Led";
 const INCLUDES_16 =
   "Includes exam (first two attempts), official courseware, 16 PDUs · 16 SEUs & 1-year SAFe Studio access.";
+const INCLUDES_16_ONE =
+  "Includes exam (first attempt), official courseware, 16 PDUs · 16 SEUs & 1-year SAFe Studio access.";
 const INCLUDES_24 =
   "Includes exam (first two attempts), official courseware, 24 PDUs · 24 SEUs & 1-year SAFe Studio access.";
+const INCLUDES_24_ONE =
+  "Includes exam (first attempt), official courseware, 24 PDUs · 24 SEUs & 1-year SAFe Studio access.";
 const GUIDELINE_SCORE =
   "See Scaled Agile exam guidelines for the current passing score.";
 
 function featuredWhy(
   row01: Omit<WhyRow, "n" | "featured">,
   row02: Omit<WhyRow, "n" | "featured">,
-  row03: Omit<WhyRow, "n" | "featured">
+  row03: Omit<WhyRow, "n" | "featured">,
+  examAttempts: 1 | 2 = 2
 ): WhyRow[] {
   return [
     { n: "01", featured: true, ...row01 },
     { n: "02", featured: true, ...row02 },
     { n: "03", ...row03 },
-    ...sharedWhyTail(),
+    ...sharedWhyTail(examAttempts),
   ];
 }
 
@@ -68,10 +73,24 @@ function faqsFor(args: {
   };
 }
 
-function examIncluded(windowDays: 30 | 60): FaqItem {
+function examIncluded(windowDays: 30 | 60, attempts: 1 | 2 = 2): FaqItem {
+  const attemptCopy =
+    attempts === 1
+      ? "Your first exam attempt is included."
+      : "Your first two exam attempts are included.";
   return {
     q: "Is the exam included in the course fee?",
-    a: `Yes. Your first two exam attempts are included. The exam must be completed within ${windowDays} days of the course.`,
+    a: `Yes. ${attemptCopy} The exam must be completed within ${windowDays} days of the course.`,
+  };
+}
+
+function failExamFaq(attempts: 1 | 2 = 2): FaqItem {
+  return {
+    q: "What happens if I fail the exam?",
+    a:
+      attempts === 1
+        ? "Your first exam attempt is included. Additional attempts can be purchased from Scaled Agile. Contact Agile36 for guidance on next steps. The attempt must be completed within 30 days of the course."
+        : "Your first two attempts are included. Contact Agile36 for guidance on next steps. Attempts must be completed within 30 days of the course.",
   };
 }
 
@@ -793,10 +812,11 @@ const lpm: CatalogLandingContent = {
   badgeAlt: "SAFe Lean Portfolio Management badge",
   cardTitle: "SAFe® LPM Certification",
   durationLabel: DURATION_2,
-  includesLine: INCLUDES_16,
+  includesLine: INCLUDES_16_ONE,
+  attemptsLine: "Your first exam attempt is included.",
   highlights: [
     "Attend 16 hours of live SAFe LPM training and earn 16 PDUs and SEUs",
-    "Sit the official exam with your first two attempts included",
+    "Sit the official exam with your first attempt included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
   brochureHref: "/LPM_6.0_Partner (1).pdf",
@@ -826,7 +846,8 @@ const lpm: CatalogLandingContent = {
       usRest:
         "You map strategy, budgets, operations, and governance to how your portfolio actually runs.",
       other: "Framework walkthroughs rarely include a concrete adoption plan.",
-    }
+    },
+    1
   ),
   outcomes: [
     "Align strategy with execution through a SAFe portfolio",
@@ -875,7 +896,7 @@ const lpm: CatalogLandingContent = {
     ["Strategy and lean budgets", "Portfolio operations and adoption"]
   ),
   examNote:
-    "Exam: 90 minutes. Scaled Agile's current guideline is 77% (35/45) to pass. Your first two attempts are included.",
+    "Exam: 90 minutes. Scaled Agile's current guideline is 77% (35/45) to pass. Your first exam attempt is included.",
   examGuidelinesHref:
     "https://scaledagile.com/certification/lean-portfolio-management/",
   reviews: [
@@ -942,7 +963,7 @@ const lpm: CatalogLandingContent = {
         q: "What is the format of the SAFe Lean Portfolio Management exam?",
         a: "The exam is 90 minutes. Scaled Agile's current guideline is 77% (35/45) to pass. Confirm the latest details on Scaled Agile's LPM exam guidelines.",
       },
-      examIncluded(30),
+      examIncluded(30, 1),
       {
         q: "What is the passing score for the SAFe LPM exam?",
         a: "Scaled Agile's current guideline is 77% (35/45) to pass on a 90-minute exam. See the exam guidelines on this page under Course curriculum.",
@@ -951,10 +972,7 @@ const lpm: CatalogLandingContent = {
         q: "Can I take the exam online?",
         a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course.",
       },
-      {
-        q: "What happens if I fail the exam?",
-        a: "Your first two attempts are included. Contact Agile36 for guidance on next steps. Attempts must be completed within 30 days of the course.",
-      },
+      failExamFaq(1),
       {
         q: "How do I renew my SAFe LPM certification?",
         a: "The SAFe Lean Portfolio Management certification is valid for one year. Confirm current continuing-education and renewal steps on scaledagile.com.",
@@ -979,7 +997,7 @@ const lpm: CatalogLandingContent = {
       },
       {
         q: "What materials are included?",
-        a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam. Your first two exam attempts are included.",
+        a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam. Your first exam attempt is included.",
       },
       {
         q: "Is this course available online?",
@@ -1002,10 +1020,11 @@ const apm: CatalogLandingContent = {
   badgeAlt: "SAFe Agile Product Management badge",
   cardTitle: "SAFe® APM Certification",
   durationLabel: DURATION_3,
-  includesLine: INCLUDES_24,
+  includesLine: INCLUDES_24_ONE,
+  attemptsLine: "Your first exam attempt is included.",
   highlights: [
     "Attend 24 hours of live SAFe APM training and earn 24 PDUs and SEUs",
-    "Sit the official exam with your first two attempts included",
+    "Sit the official exam with your first attempt included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
   brochureHref: "/APM_Brochure_Agile36.pdf",
@@ -1033,9 +1052,10 @@ const apm: CatalogLandingContent = {
       check: "Innovation in the value stream",
       usLead: "Leave able to create space for innovation without stalling delivery.",
       usRest:
-        "Day 3 covers value delivery, innovation in the value stream, and exam prep with two attempts included.",
+        "Day 3 covers value delivery, innovation in the value stream, and exam prep with one attempt included.",
       other: "Exam-only courses can skip the innovation and delivery practices product leaders need.",
-    }
+    },
+    1
   ),
   outcomes: [
     "Clarify the Product Manager role in the Lean enterprise",
@@ -1130,13 +1150,13 @@ const apm: CatalogLandingContent = {
           topics: [
             "Review of APM practices",
             "Practice exam and Q&A",
-            "Your first two exam attempts are included",
+            "Your first exam attempt is included",
           ],
         },
       ],
     },
   ],
-  examNote: `${GUIDELINE_SCORE} Your first two attempts are included.`,
+  examNote: `${GUIDELINE_SCORE} Your first exam attempt is included.`,
   examGuidelinesHref:
     "https://scaledagile.com/certification/agile-product-management/",
   reviews: [
@@ -1201,7 +1221,7 @@ const apm: CatalogLandingContent = {
         q: "What is the format of the SAFe Agile Product Management exam?",
         a: `${GUIDELINE_SCORE} You'll receive access instructions after completing the course.`,
       },
-      examIncluded(30),
+      examIncluded(30, 1),
       {
         q: "What is the passing score for the SAFe APM exam?",
         a: GUIDELINE_SCORE,
@@ -1210,10 +1230,7 @@ const apm: CatalogLandingContent = {
         q: "Can I take the exam online?",
         a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course.",
       },
-      {
-        q: "What happens if I fail the exam?",
-        a: "Your first two attempts are included. Contact Agile36 for guidance on next steps. Attempts must be completed within 30 days of the course.",
-      },
+      failExamFaq(1),
       {
         q: "How do I renew my APM certification?",
         a: "The SAFe Agile Product Management (APM) certification is valid for one year. Confirm current continuing-education and renewal steps on scaledagile.com.",
@@ -1238,7 +1255,7 @@ const apm: CatalogLandingContent = {
       },
       {
         q: "What materials are included?",
-        a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam. Your first two exam attempts are included.",
+        a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam. Your first exam attempt is included.",
       },
       {
         q: "Is this course available online?",
