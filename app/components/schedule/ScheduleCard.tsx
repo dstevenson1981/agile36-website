@@ -43,10 +43,10 @@ function BrochureLink({
   label: string;
 }) {
   const className =
-    "inline-flex items-center gap-2 text-sm font-medium text-[#1a56db] hover:text-[#0f3d99] hover:underline transition-colors";
+    "inline-flex items-center gap-2 text-sm font-medium text-[#d97706] hover:text-[#b45309] hover:underline transition-colors";
 
   const icon = (
-    <svg className="h-4 w-4 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <svg className="h-4 w-4 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -143,14 +143,14 @@ export default function ScheduleCard({
         {/* Left — schedule & instructor */}
         <div className="flex flex-col gap-4 p-5 lg:p-6">
           <div>
-            <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
+            <h3 className="text-xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
               {formatDateRange(schedule.start_date, schedule.end_date, schedule.timezone)}
             </h3>
 
             {(timeRange || tzPill) && (
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 {timeRange && (
-                  <p className="text-base font-bold tracking-tight text-[#01203d] sm:text-lg">
+                  <p className="text-[15px] font-semibold tracking-tight text-[#1f2c4a]">
                     {timeRange}
                   </p>
                 )}
@@ -283,7 +283,7 @@ export default function ScheduleCard({
           </div>
 
           {urgency.show && (
-            <p className="flex items-center gap-1.5 text-xs font-medium text-red-600">
+            <p className="flex items-center gap-1.5 text-xs font-medium text-[#b45309]">
               <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -294,7 +294,7 @@ export default function ScheduleCard({
           <button
             type="button"
             onClick={onGroupInquiry}
-            className="text-center text-sm text-[#1a56db] hover:underline"
+            className="text-center text-sm text-[#d97706] hover:underline"
           >
             More than 5 participants? <span className="font-semibold">Enquire Now »</span>
           </button>
@@ -308,13 +308,13 @@ export default function ScheduleCard({
             {schedule.original_price && (
               <div className="flex items-center justify-end gap-2">
                 <span className="text-sm text-gray-400 line-through">USD {schedule.original_price}</span>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-600">
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-emerald-100 text-[10px]">%</span>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#d97706]">
+                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#d97706]/15 text-[10px]">%</span>
                   {discount}% OFF
                 </span>
               </div>
             )}
-            <p className="mt-1 text-3xl font-bold tracking-tight text-[#01203d]">USD {totalPrice}</p>
+            <p className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">USD {totalPrice}</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -324,7 +324,7 @@ export default function ScheduleCard({
               quantity={quantity}
               label={enrollLabel}
               checkoutBasePath={checkoutBasePath}
-              className="flex-1 rounded-lg bg-gradient-to-b from-[#ff6b35] to-[#e8381a] px-4 py-3 text-center text-sm font-bold text-white shadow-sm transition-all hover:from-[#ff7a48] hover:to-[#fa4a23] hover:shadow-md"
+              className="flex-1 rounded-lg bg-[#d97706] px-4 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#b45309]"
             />
             <button
               type="button"
@@ -334,7 +334,7 @@ export default function ScheduleCard({
               aria-label="Share enrollment link"
             >
               {shareCopied ? (
-                <svg className="h-5 w-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <svg className="h-5 w-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               ) : (
