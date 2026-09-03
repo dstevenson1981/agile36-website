@@ -1,6 +1,7 @@
 import {
   type CatalogLandingContent,
   daysFromDomains,
+  safeExamFormat,
   sharedCourseFaqs,
   sharedPaymentFaqs,
   sharedPaymentFaqsMicrocredential,
@@ -2724,6 +2725,171 @@ const responsibleAi: CatalogLandingContent = {
   }),
 };
 
+const CAREER: Record<
+  string,
+  { summary: string; lede: string; next: { href: string; name: string; forWho: string }[] }
+> = {
+  "leading-safe": {
+    summary:
+      "Leading SAFe is the foundation cert for people who will run SAFe in a real enterprise: Lean-Agile mindset, PI Planning, Agile Release Trains, and connecting strategy to delivery. Completing the course is what makes you eligible for the SAFe Agilist exam.",
+    lede:
+      "Most Agilists do not stop here. The next class depends on the job you actually do — product, teams, or portfolio.",
+    next: [
+      {
+        href: "/courses/product-owner-manager",
+        name: "SAFe POPM",
+        forWho: "If you own a backlog, features, or PI Planning from the product seat.",
+      },
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If you facilitate a team on an ART and want the SSM credential next.",
+      },
+      {
+        href: "/courses/lean-portfolio-management",
+        name: "SAFe LPM",
+        forWho: "If you fund value streams, set lean budgets, or sit in the PMO.",
+      },
+    ],
+  },
+  "product-owner-manager": {
+    summary:
+      "POPM is the product seat on the ART: backlog, PI Planning, customer-centric design, and the POPM exam. It is the usual second cert after Leading SAFe for Product Owners and Product Managers.",
+    lede: "From POPM, the next step is either deeper product craft or portfolio-level funding.",
+    next: [
+      {
+        href: "/courses/agile-product-management",
+        name: "SAFe APM",
+        forWho: "If you run product strategy, vision, and roadmaps at enterprise scale.",
+      },
+      {
+        href: "/courses/lean-portfolio-management",
+        name: "SAFe LPM",
+        forWho: "If your work moved from team backlogs to investment funding and flow.",
+      },
+    ],
+  },
+  "scrum-master": {
+    summary:
+      "SAFe Scrum Master is the team-level facilitation cert: iteration execution, PI Planning as a Scrum Master, and the SSM exam. It is the usual path for Scrum Masters who already sit on an ART.",
+    lede: "SSM is the start of the facilitation track. SASM is the usual next class.",
+    next: [
+      {
+        href: "/courses/advanced-scrum-master",
+        name: "SAFe Advanced Scrum Master",
+        forWho: "If you already coach multiple teams or want the SASM credential.",
+      },
+      {
+        href: "/courses/safe-for-teams",
+        name: "SAFe for Teams",
+        forWho: "If the rest of the team needs the same ART language you just learned.",
+      },
+    ],
+  },
+  "lean-portfolio-management": {
+    summary:
+      "LPM is the portfolio cert: strategy to execution, lean budgets, Kanban flow, and lean governance. It is the class executives, PMO, and portfolio leads take after they have a SAFe foundation.",
+    lede: "LPM pairs with product leadership when the same company is building both funding and product craft.",
+    next: [
+      {
+        href: "/courses/agile-product-management",
+        name: "SAFe APM",
+        forWho: "If product managers in the same portfolio need design thinking and roadmaps.",
+      },
+      {
+        href: "/courses/leading-safe",
+        name: "Leading SAFe",
+        forWho: "If leaders on the ART still need the Agilist foundation.",
+      },
+    ],
+  },
+  "agile-product-management": {
+    summary:
+      "APM is the product-leadership cert: continuous exploration, empathy-driven design, vision, and roadmaps. It sits above POPM for people who own product strategy, not only the team backlog.",
+    lede: "APM and LPM are the pair companies use when product and portfolio have to move together.",
+    next: [
+      {
+        href: "/courses/lean-portfolio-management",
+        name: "SAFe LPM",
+        forWho: "If you now need lean budgets and portfolio flow around that product work.",
+      },
+      {
+        href: "/courses/product-owner-manager",
+        name: "SAFe POPM",
+        forWho: "If POs on the ART still need the team-level product cert.",
+      },
+    ],
+  },
+  "advanced-scrum-master": {
+    summary:
+      "SASM is the next Scrum Master cert after SSM: coaching, facilitation at ART scale, and the Advanced Scrum Master exam.",
+    lede: "After SASM, most people either deepen architecture collaboration or stay on the facilitation track with their teams.",
+    next: [
+      {
+        href: "/courses/safe-for-architects",
+        name: "SAFe for Architects",
+        forWho: "If you work the architectural runway with ARTs and Solution Trains.",
+      },
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If teammates still need the SSM foundation you already have.",
+      },
+    ],
+  },
+  "safe-for-teams": {
+    summary:
+      "SAFe for Teams is the practitioner cert for people who sit on an ART: iterate, plan a PI, and deliver with Built-In Quality. It is the class you send a whole team through together.",
+    lede: "Once the team shares the language, the usual next certs are the role seats: Scrum Master or POPM.",
+    next: [
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If you facilitate the team after this class.",
+      },
+      {
+        href: "/courses/product-owner-manager",
+        name: "SAFe POPM",
+        forWho: "If you own the backlog for that same ART.",
+      },
+    ],
+  },
+  devops: {
+    summary:
+      "SAFe DevOps is the continuous-delivery cert: CALMS, the pipeline, and the SDP exam. It is for people who have to make the ART's work actually ship.",
+    lede: "DevOps usually sits next to the team and architecture classes, not instead of them.",
+    next: [
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If you also facilitate delivery on the ART.",
+      },
+      {
+        href: "/courses/safe-for-architects",
+        name: "SAFe for Architects",
+        forWho: "If your next problem is runway and Solution Intent, not only the pipeline.",
+      },
+    ],
+  },
+  "safe-for-architects": {
+    summary:
+      "SAFe for Architects is the architecture cert: runway, Solution Intent, and leading Agile architecture across ARTs. It is the usual next class for architects who already understand SAFe from Leading SAFe or the ART.",
+    lede: "Architects often pair this with LPM when architecture and funding have to move on the same portfolio.",
+    next: [
+      {
+        href: "/courses/lean-portfolio-management",
+        name: "SAFe LPM",
+        forWho: "If you now sit with portfolio on epics, enablers, and lean budgets.",
+      },
+      {
+        href: "/courses/leading-safe",
+        name: "Leading SAFe",
+        forWho: "If you still need the Agilist foundation before architecture depth.",
+      },
+    ],
+  },
+};
+
 export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
   "product-owner-manager": popm,
   "leading-safe": leadingSafe,
@@ -2739,10 +2905,71 @@ export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
   "responsible-ai": responsibleAi,
 };
 
+const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetails"]>> = {
+  "leading-safe": {
+    prerequisites:
+      "There are no formal prerequisites or eligibility requirements to become a SAFe® Agilist. However, familiarity and experience with Agile concepts and environments are recommended.",
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "80%" }),
+  },
+  "product-owner-manager": {
+    prerequisites:
+      "There are no formal prerequisites. A working knowledge of Agile or Scrum, and experience with product backlogs or customer requirements, is recommended but not required.",
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "82%" }),
+  },
+  "scrum-master": {
+    prerequisites:
+      "There are no formal prerequisites. A basic understanding of Scrum or Agile, and familiarity with iteration-based delivery, is recommended but not required.",
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "80%" }),
+  },
+  "lean-portfolio-management": {
+    prerequisites:
+      "There are no formal prerequisites. Familiarity with Agile and experience in product, program, or portfolio work is recommended. Leading SAFe is helpful before this class.",
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "77% (35/45)" }),
+  },
+  "agile-product-management": {
+    prerequisites:
+      "There are no formal prerequisites. A basic understanding of Agile and experience in product management or software delivery is recommended.",
+    format: safeExamFormat(),
+  },
+  "safe-for-architects": {
+    prerequisites:
+      "There are no formal prerequisites. Architecture experience is recommended. Leading SAFe is helpful.",
+    format: safeExamFormat(),
+  },
+  "safe-for-teams": {
+    prerequisites:
+      "There are no formal prerequisites. A basic understanding of Agile and experience on a software or delivery team is recommended.",
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "76%" }),
+  },
+  devops: {
+    prerequisites:
+      "There are no formal prerequisites. Experience in software development, testing, or IT operations is recommended.",
+    format: safeExamFormat({ questions: 45 }),
+  },
+  "advanced-scrum-master": {
+    prerequisites:
+      "Experience as a Scrum Master or Agile Coach is recommended. Familiarity with SAFe and team-level delivery is expected, and SAFe Scrum Master (SSM) certification is often preferred.",
+    format: safeExamFormat({ passingScore: "82%" }),
+  },
+  "release-train-engineer": {
+    prerequisites:
+      "Leading SAFe (SA) or SAFe Scrum Master (SSM) certification is recommended. Experience with Agile teams and PI Planning is helpful.",
+    format: safeExamFormat(),
+  },
+};
+
 export function getCatalogLanding(slug: string): CatalogLandingContent {
   const content = CATALOG_LANDING[slug];
   if (!content) {
     throw new Error(`Missing catalog landing content for ${slug}`);
   }
-  return content;
+  const career = CAREER[slug];
+  const examDetails = EXAM_DETAILS[slug];
+  return {
+    ...content,
+    ...(career
+      ? { summary: career.summary, careerPath: { lede: career.lede, next: career.next } }
+      : {}),
+    ...(examDetails ? { examDetails } : {}),
+  };
 }

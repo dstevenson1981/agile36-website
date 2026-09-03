@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { type MouseEvent, useEffect, useMemo, useState } from "react";
 import { SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
 import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
@@ -69,6 +69,50 @@ export default function CatalogCourseLanding({
       setIsSubmitting(false);
     }
   };
+
+  const [activeSection, setActiveSection] = useState("overview");
+
+  const pageTabs = useMemo(() => {
+    const tabs: { id: string; label: string }[] = [
+      { id: "overview", label: "Overview" },
+      { id: "upcoming-dates", label: "Get Certified" },
+    ];
+    if (content.attemptsLine !== null || content.examDetails) {
+      tabs.push({ id: "exam", label: "Exam Details" });
+    }
+    tabs.push(
+      { id: "why-agile36", label: "Why Agile36" },
+      { id: "curriculum", label: "Curriculum" }
+    );
+    if (content.careerPath) tabs.push({ id: "career-path", label: "Career Path" });
+    tabs.push({ id: "faqs", label: "FAQs" });
+    return tabs;
+  }, [content.attemptsLine, content.examDetails, content.careerPath]);
+
+  useEffect(() => {
+    const ids = pageTabs.map((tab) => tab.id);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-28% 0px -55% 0px", threshold: [0.1, 0.25, 0.5] }
+    );
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, [pageTabs]);
+
+  function scrollToSection(event: MouseEvent<HTMLAnchorElement>, id: string) {
+    event.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveSection(id);
+    window.history.replaceState(null, "", `#${id}`);
+  }
 
   const faqGroups = content.faqs;
 
@@ -226,12 +270,51 @@ export default function CatalogCourseLanding({
 
       <TrustedByStrip />
 
+      <nav
+        aria-label="On this page"
+        className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/10 bg-[#faf8f4]/95 backdrop-blur-md"
+      >
+        <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 py-2 sm:px-6 lg:px-20">
+          {pageTabs.map((tab) => {
+            const active = activeSection === tab.id;
+            return (
+              <a
+                key={tab.id}
+                href={`#${tab.id}`}
+                onClick={(event) => scrollToSection(event, tab.id)}
+                className={`shrink-0 rounded-md px-3 py-2 text-[13px] font-medium transition ${
+                  active
+                    ? "bg-[#1f2c4a] text-white"
+                    : "text-[#64748b] hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+                }`}
+              >
+                {tab.label}
+              </a>
+            );
+          })}
+        </div>
+      </nav>
+
+      <section id="overview" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+            {content.crumb} course summary
+          </p>
+          <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+            What this class is for
+          </h2>
+          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-[#475569]">
+            {content.summary || content.lede}
+          </p>
+        </div>
+      </section>
+
       <section id="upcoming-dates" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Live online cohorts
           </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
             {content.datesTitle}
           </h2>
           <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
@@ -249,10 +332,91 @@ export default function CatalogCourseLanding({
         </div>
       </section>
 
+      {content.examDetails ? (
+        <section id="exam" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
+                  Exam Details
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+                  Prerequisites
+                </h2>
+                <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-[#475569]">
+                  {content.examDetails.prerequisites}
+                </p>
+              </div>
+              <div>
+                <p className="hidden text-[13px] font-medium uppercase tracking-[0.16em] lg:block" aria-hidden>
+                  &nbsp;
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+                  Exam Format
+                </h2>
+                <ul className="mt-6 space-y-4">
+                  {content.examDetails.format.map((line) => (
+                    <li key={`${line.before ?? ""}${line.highlight}${line.after ?? ""}`} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#d97706] text-white">
+                        <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      <p className="text-[17px] leading-snug text-[#334155]">
+                        {line.before}
+                        <span className="font-semibold text-[#d97706]">{line.highlight}</span>
+                        {line.after}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {content.attemptsLine === null ? null : (
+              <div className="mt-10 flex items-start gap-4 rounded-2xl bg-[#1f2c4a] px-6 py-6 text-white sm:px-8">
+                <span
+                  className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#d97706]"
+                  aria-hidden
+                >
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 6.75h15M6 6.75V18a1.5 1.5 0 001.5 1.5h9A1.5 1.5 0 0018 18V6.75M9 10.5h6M9 14.25h3.75"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-[17px] font-semibold tracking-[-0.02em]">
+                    Exam prep is part of the class, not an extra product
+                  </p>
+                  <p className="mt-1 text-[15px] leading-relaxed text-white/75">
+                    {content.attemptsLine || "Your first two attempts are included."} Official courseware
+                    and a year of SAFe Studio come with enrollment.
+                  </p>
+                </div>
+              </div>
+            )}
+            <p className="mt-6 text-[15px] leading-relaxed text-[#64748b]">
+              {content.examNote}{" "}
+              <a
+                href={content.examGuidelinesHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#d97706] underline decoration-[#d97706]/30 underline-offset-2 hover:text-[#b45309]"
+              >
+                Scaled Agile exam guidelines
+              </a>
+              .
+            </p>
+          </div>
+        </section>
+      ) : null}
+
       <section id="why-agile36" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Why Agile36</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
             This is why they should choose us
           </h2>
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
@@ -301,7 +465,7 @@ export default function CatalogCourseLanding({
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Official outline
           </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
             Course curriculum
           </h2>
           <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-[#475569]">
@@ -356,11 +520,65 @@ export default function CatalogCourseLanding({
               </div>
             ))}
           </div>
-          <p className="mt-6 text-[15px] leading-relaxed text-[#64748b]">
-            {content.examNote}
-          </p>
+          {content.examDetails ? null : (
+            <p id="exam" className="mt-6 scroll-mt-28 text-[15px] leading-relaxed text-[#64748b]">
+              {content.examNote}{" "}
+              <a
+                href={content.examGuidelinesHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#d97706] underline decoration-[#d97706]/30 underline-offset-2 hover:text-[#b45309]"
+              >
+                Scaled Agile exam guidelines
+              </a>
+              .
+            </p>
+          )}
         </div>
       </section>
+
+      {content.careerPath ? (
+        <section id="career-path" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+              After this cert
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+              Career path
+            </h2>
+            <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
+              {content.careerPath.lede}
+            </p>
+            <div
+              className={`mt-8 grid gap-4 ${
+                content.careerPath.next.length > 2 ? "md:grid-cols-3" : "md:grid-cols-2"
+              }`}
+            >
+              {content.careerPath.next.map((step, index) => (
+                <Link
+                  key={step.href}
+                  href={step.href}
+                  className="group rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 transition hover:border-[#d97706]/40"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706]">
+                    Next {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a] group-hover:text-[#d97706]">
+                    {step.name}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-[#475569]">{step.forWho}</p>
+                  <p className="mt-4 text-sm font-semibold text-[#1f2c4a]">
+                    View dates
+                    <span aria-hidden className="ml-1 transition group-hover:ml-2">
+                      →
+                    </span>
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section
         id="student-reviews"
@@ -370,7 +588,7 @@ export default function CatalogCourseLanding({
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Google reviews</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
                 What students say
               </h2>
             </div>
@@ -399,7 +617,7 @@ export default function CatalogCourseLanding({
               <span className="rounded-md border border-[#d97706]/30 bg-[#d97706]/10 px-4 py-1.5 text-sm font-semibold text-[#d97706]">
                 1 Practice Test
               </span>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
                 {content.practiceTestTitle}
               </h2>
               <p className="mt-2 text-[15px] text-[#475569]">
@@ -419,12 +637,12 @@ export default function CatalogCourseLanding({
       ) : null}
 
       {content.certificateSrc ? (
-        <section className="w-full bg-black px-4 py-6 sm:px-6 lg:px-20">
+        <section id="get-certified" className="scroll-mt-28 w-full bg-black px-4 py-6 sm:px-6 lg:px-20">
           <div className="mx-auto max-w-3xl">
             <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
               Get certified
             </p>
-            <h2 className="mb-4 text-center text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            <h2 className="mb-4 text-center text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
               {content.certificateTitle}
             </h2>
             <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/15">
@@ -434,12 +652,42 @@ export default function CatalogCourseLanding({
         </section>
       ) : null}
 
-      <section className="w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
+      {content.attemptsLine !== null && !content.examDetails ? (
+        <section className="w-full px-4 py-6 sm:px-6 lg:px-20">
+          <div className="mx-auto flex max-w-7xl items-start gap-4 rounded-2xl bg-[#1f2c4a] px-6 py-6 text-white sm:px-8">
+            <span
+              className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#d97706]"
+              aria-hidden
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 6.75h15M6 6.75V18a1.5 1.5 0 001.5 1.5h9A1.5 1.5 0 0018 18V6.75M9 10.5h6M9 14.25h3.75"
+                />
+              </svg>
+            </span>
+            <div>
+              <p className="text-[15px] font-semibold tracking-[-0.02em]">
+                Exam prep is part of the class, not an extra product
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-white/75">
+                {content.attemptsLine || "Your first two attempts are included."} Official courseware
+                and a year of SAFe Studio come with enrollment.
+              </p>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section id="faqs" className="scroll-mt-28 w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-4xl">
           <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Questions
           </p>
-          <h2 className="mb-8 text-center text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">FAQs</h2>
+          <h2 className="mb-8 text-center text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+            FAQs
+          </h2>
           <div className="mb-8 flex flex-wrap justify-center gap-4">
             {(
               [

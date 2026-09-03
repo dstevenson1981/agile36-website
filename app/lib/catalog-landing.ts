@@ -24,6 +24,60 @@ export type CurriculumDay = {
 
 export type FaqItem = { q: string; a: string };
 
+export type ExamFormatLine = {
+  before?: string;
+  highlight: string;
+  after?: string;
+};
+
+/** Shared SAFe web-exam rules plus the duration, question count, and passing score we already publish. */
+export function safeExamFormat(args: {
+  durationMinutes?: number;
+  questions?: number;
+  passingScore?: string;
+} = {}): ExamFormatLine[] {
+  const lines: ExamFormatLine[] = [];
+  if (args.durationMinutes) {
+    lines.push({
+      highlight: `${args.durationMinutes} minutes`,
+      after: " Online closed book exam",
+    });
+  } else {
+    lines.push({
+      highlight: "Online closed book exam",
+      after: " Taken on Scaled Agile's platform after class",
+    });
+  }
+  if (args.questions) {
+    lines.push({
+      highlight: `${args.questions} questions of`,
+      after: " multiple-choice, single select",
+    });
+  } else {
+    lines.push({
+      highlight: "Multiple-choice, single select",
+      after: ". Confirm the current question count on Scaled Agile's exam guidelines",
+    });
+  }
+  lines.push({
+    before: "Gets submitted when the ",
+    highlight: "timer goes out",
+  });
+  if (args.passingScore) {
+    lines.push({ highlight: `Passing score ${args.passingScore}` });
+  } else {
+    lines.push({
+      highlight: "Passing score",
+      after: " is listed in Scaled Agile's current exam guidelines",
+    });
+  }
+  lines.push({
+    highlight: "Unanswered questions",
+    after: " are considered wrong",
+  });
+  return lines;
+}
+
 export type CatalogLandingContent = {
   slug: string;
   crumb: string;
@@ -59,6 +113,18 @@ export type CatalogLandingContent = {
   /** Curriculum intro. Defaults to Scaled Agile outline / exam-prep copy. */
   curriculumLede?: string;
   whyOtherLabel?: string;
+  /** Short course-summary block under the in-page tabs. */
+  summary?: string;
+  /** Next certifications after this course. Omit to hide the Career Path tab. */
+  careerPath?: {
+    lede: string;
+    next: { href: string; name: string; forWho: string }[];
+  };
+  /** Prerequisites + exam format for the Exam Details tab. */
+  examDetails?: {
+    prerequisites: string;
+    format: ExamFormatLine[];
+  };
   faqs: {
     courses: FaqItem[];
     exam: FaqItem[];
