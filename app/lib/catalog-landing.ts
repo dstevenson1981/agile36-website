@@ -115,6 +115,8 @@ export type CatalogLandingContent = {
   whyOtherLabel?: string;
   /** Short course-summary block under the in-page tabs. */
   summary?: string;
+  /** Overview heading. Defaults to "What this class is for". */
+  summaryTitle?: string;
   /** Next certifications after this course. Omit to hide the Career Path tab. */
   careerPath?: {
     lede: string;

@@ -301,11 +301,15 @@ export default function CatalogCourseLanding({
             {content.crumb} course summary
           </p>
           <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
-            What this class is for
+            {content.summaryTitle || "What this class is for"}
           </h2>
-          <p className="mt-4 max-w-4xl text-[17px] leading-relaxed text-[#475569]">
-            {content.summary || content.lede}
-          </p>
+          <div className="mt-4 max-w-4xl space-y-4">
+            {(content.summary || content.lede).split(/\n\n/).map((paragraph) => (
+              <p key={paragraph} className="text-[17px] leading-relaxed text-[#475569]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
       </section>
 

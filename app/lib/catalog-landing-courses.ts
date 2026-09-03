@@ -1934,6 +1934,7 @@ const sasm: CatalogLandingContent = {
   title:
     "AI-Empowered SAFe® 6.0 Advanced Scrum Master (SASM) Certification Training",
   lede: "Move from team ceremonies to ART-level results: faster flow, cleaner multi-team conflict, and a SASM credential that signals you can coach the train — not just one team.",
+  summaryTitle: "Become a SAFe Certified Advanced Scrum Master",
   badgeSrc: "/AdvancedSM.png",
   badgeAlt: "SAFe Advanced Scrum Master badge",
   cardTitle: "SAFe® Advanced Scrum Master Certification",
@@ -2826,7 +2827,7 @@ const CAREER: Record<
   },
   "advanced-scrum-master": {
     summary:
-      "This class is the next Scrum Master cert after SSM: you move from one-team ceremonies to flow, conflict, and coaching across the ART. You practice built-in quality, Inspect & Adapt, and the problem-solving workshop so you can improve how the train actually delivers. Completing the course is what makes you eligible for the SASM exam.",
+      "Elevate your Scrum Master impact by fostering high-performing teams that collaborate seamlessly within the Agile Release Train. This certification helps you improve flow, create high-performing teams, and build strong conflict management skills so the train stays aligned.\n\nLeverage AI to eliminate administrative bottlenecks and focus on high-impact team facilitation. You will gain the advanced tools needed to optimize flow, resolve multi-team conflict, and support relentless improvement across the ART.",
     lede: "After SASM, most people either deepen architecture collaboration or stay on the facilitation track with their teams.",
     next: [
       {
