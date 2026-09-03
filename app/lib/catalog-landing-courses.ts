@@ -2888,6 +2888,23 @@ const CAREER: Record<
       },
     ],
   },
+  "release-train-engineer": {
+    summary:
+      "RTE is the program-level facilitation cert: PI Planning, ART sync, dependencies, and keeping the train delivering after the planning weekend. It is the class for people who already run or are about to run an Agile Release Train.",
+    lede: "After RTE, the usual next step is either portfolio funding or making sure ART leaders share the same SAFe foundation.",
+    next: [
+      {
+        href: "/courses/lean-portfolio-management",
+        name: "SAFe LPM",
+        forWho: "If you now sit with the PMO on lean budgets, epics, and portfolio flow.",
+      },
+      {
+        href: "/courses/leading-safe",
+        name: "Leading SAFe",
+        forWho: "If leaders on the ART still need the Agilist foundation.",
+      },
+    ],
+  },
 };
 
 export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
