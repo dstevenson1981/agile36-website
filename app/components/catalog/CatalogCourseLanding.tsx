@@ -303,7 +303,7 @@ export default function CatalogCourseLanding({
           <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
             What this class is for
           </h2>
-          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-[#475569]">
+          <p className="mt-4 max-w-4xl text-[17px] leading-relaxed text-[#475569]">
             {content.summary || content.lede}
           </p>
         </div>

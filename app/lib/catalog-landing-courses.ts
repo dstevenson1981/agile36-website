@@ -2394,6 +2394,8 @@ const vsm: CatalogLandingContent = {
   crumb: "SAFe® VSM",
   title: "SAFe® Value Stream Mapping Certification Training",
   lede: "Map the stream from concept to customer, find the bottlenecks, and leave with a future-state plan you can run on the ART.",
+  summary:
+    "This half-day workshop is how you map a value stream from concept to customer and see where work actually stalls. You facilitate current-state mapping, find delays and waste, and leave with a future-state map the ART can run. There is no exam — completing the live workshop is the micro-credential.",
   badgeSrc: "/MicroCredential.jpeg",
   badgeAlt: "SAFe Value Stream Mapping micro-credential badge",
   cardTitle: "SAFe® Value Stream Mapping",
@@ -2562,6 +2564,8 @@ const responsibleAi: CatalogLandingContent = {
   crumb: "SAFe® RAI",
   title: "Achieving Responsible AI with SAFe Micro-credential Course",
   lede: "Identify the people who own AI risk, evaluate RAI policy, and write Epic Hypothesis Statements that keep AI work inside SAFe.",
+  summary:
+    "This half-day workshop is how you keep AI work inside SAFe instead of treating it as a side project. You name the people who own AI risk, evaluate Responsible AI policy, and write Epic Hypothesis Statements you can actually backlog. There is no exam — completing the live workshop is the micro-credential.",
   badgeSrc: "/MicroCredential.jpeg",
   badgeAlt: "SAFe Responsible AI micro-credential badge",
   cardTitle: "Responsible AI with SAFe",
@@ -2731,7 +2735,7 @@ const CAREER: Record<
 > = {
   "leading-safe": {
     summary:
-      "Leading SAFe is the foundation cert for people who will run SAFe in a real enterprise: Lean-Agile mindset, PI Planning, Agile Release Trains, and connecting strategy to delivery. Completing the course is what makes you eligible for the SAFe Agilist exam.",
+      "This class gives you the Lean-Agile mindset and the working pieces of SAFe so you can run it in a real enterprise, not only talk about it. You practice PI Planning, how Agile Release Trains stay aligned, and how strategy actually reaches delivery. Completing the course is what makes you eligible for the SAFe Agilist exam.",
     lede:
       "Most Agilists do not stop here. The next class depends on the job you actually do — product, teams, or portfolio.",
     next: [
@@ -2754,7 +2758,7 @@ const CAREER: Record<
   },
   "product-owner-manager": {
     summary:
-      "POPM is the product seat on the ART: backlog, PI Planning, customer-centric design, and the POPM exam. It is the usual second cert after Leading SAFe for Product Owners and Product Managers.",
+      "This class is for people who own product work on an Agile Release Train: the backlog, Lean thinking, and customer-centric delivery. You write epics, features, and stories, manage program and team backlogs, and plan a PI with the rest of the ART. Completing the course is what makes you eligible for the POPM exam.",
     lede: "From POPM, the next step is either deeper product craft or portfolio-level funding.",
     next: [
       {
@@ -2771,7 +2775,7 @@ const CAREER: Record<
   },
   "scrum-master": {
     summary:
-      "SAFe Scrum Master is the team-level facilitation cert: iteration execution, PI Planning as a Scrum Master, and the SSM exam. It is the usual path for Scrum Masters who already sit on an ART.",
+      "This class prepares Scrum Masters to coach a team that sits on an Agile Release Train, not a standalone Scrum team. You run iteration planning, team sync, and retrospectives, and you help the team plan and execute the PI with the rest of the train. Completing the course is what makes you eligible for the SAFe Scrum Master exam.",
     lede: "SSM is the start of the facilitation track. SASM is the usual next class.",
     next: [
       {
@@ -2788,7 +2792,7 @@ const CAREER: Record<
   },
   "lean-portfolio-management": {
     summary:
-      "LPM is the portfolio cert: strategy to execution, lean budgets, Kanban flow, and lean governance. It is the class executives, PMO, and portfolio leads take after they have a SAFe foundation.",
+      "This class is how portfolio leaders connect strategy to the work that actually gets funded. You practice Strategy and Investment Funding, Agile Portfolio Operations, and Lean Governance, including the Portfolio Canvas and Portfolio Kanban. Completing the course is what makes you eligible for the LPM exam.",
     lede: "LPM pairs with product leadership when the same company is building both funding and product craft.",
     next: [
       {
@@ -2805,7 +2809,7 @@ const CAREER: Record<
   },
   "agile-product-management": {
     summary:
-      "APM is the product-leadership cert: continuous exploration, empathy-driven design, vision, and roadmaps. It sits above POPM for people who own product strategy, not only the team backlog.",
+      "This class is for people who own product strategy, not only the team backlog. You use design thinking and continuous exploration to write a vision, strategy, and roadmap, and you work with architects and RTEs to keep ARTs pointed at the same outcomes. Completing the course is what makes you eligible for the APM exam.",
     lede: "APM and LPM are the pair companies use when product and portfolio have to move together.",
     next: [
       {
@@ -2822,7 +2826,7 @@ const CAREER: Record<
   },
   "advanced-scrum-master": {
     summary:
-      "SASM is the next Scrum Master cert after SSM: coaching, facilitation at ART scale, and the Advanced Scrum Master exam.",
+      "This class is the next Scrum Master cert after SSM: you move from one-team ceremonies to flow, conflict, and coaching across the ART. You practice built-in quality, Inspect & Adapt, and the problem-solving workshop so you can improve how the train actually delivers. Completing the course is what makes you eligible for the SASM exam.",
     lede: "After SASM, most people either deepen architecture collaboration or stay on the facilitation track with their teams.",
     next: [
       {
@@ -2839,7 +2843,7 @@ const CAREER: Record<
   },
   "safe-for-teams": {
     summary:
-      "SAFe for Teams is the practitioner cert for people who sit on an ART: iterate, plan a PI, and deliver with Built-In Quality. It is the class you send a whole team through together.",
+      "This class is how a whole team learns to sit on an Agile Release Train together. You write stories, split features, plan and run iterations, and line that work up to the PI. Completing the course is what makes you eligible for the SAFe Practitioner exam.",
     lede: "Once the team shares the language, the usual next certs are the role seats: Scrum Master or POPM.",
     next: [
       {
@@ -2856,7 +2860,7 @@ const CAREER: Record<
   },
   devops: {
     summary:
-      "SAFe DevOps is the continuous-delivery cert: CALMS, the pipeline, and the SDP exam. It is for people who have to make the ART's work actually ship.",
+      "This class is how people who build and run the system get a working Continuous Delivery Pipeline. You map the value stream, find the delays, and practice continuous exploration, integration, and deployment. Completing the course is what makes you eligible for the SAFe DevOps exam.",
     lede: "DevOps usually sits next to the team and architecture classes, not instead of them.",
     next: [
       {
@@ -2873,7 +2877,7 @@ const CAREER: Record<
   },
   "safe-for-architects": {
     summary:
-      "SAFe for Architects is the architecture cert: runway, Solution Intent, and leading Agile architecture across ARTs. It is the usual next class for architects who already understand SAFe from Leading SAFe or the ART.",
+      "This class is for system, solution, and enterprise architects who have to keep architecture pointed at the same outcomes as the business. You plan architectural runway, work Solution Intent, and lead architecture through PI Planning and Lean-Agile transformation. Completing the course is what makes you eligible for the SAFe Architect exam.",
     lede: "Architects often pair this with LPM when architecture and funding have to move on the same portfolio.",
     next: [
       {
@@ -2890,7 +2894,7 @@ const CAREER: Record<
   },
   "release-train-engineer": {
     summary:
-      "RTE is the program-level facilitation cert: PI Planning, ART sync, dependencies, and keeping the train delivering after the planning weekend. It is the class for people who already run or are about to run an Agile Release Train.",
+      "This class is how you run an Agile Release Train after the planning weekend: servant leadership, coaching, and the operating cadence of the ART. You facilitate PI Planning, manage dependencies and risks, and keep leaders, teams, and Scrum Masters aligned through the PI. Completing the course is what makes you eligible for the RTE exam.",
     lede: "After RTE, the usual next step is either portfolio funding or making sure ART leaders share the same SAFe foundation.",
     next: [
       {
