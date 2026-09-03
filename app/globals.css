@@ -106,6 +106,31 @@ body {
   }
 }
 
+@keyframes cert-station-on {
+  0% {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.55);
+  }
+  45% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 16px rgba(217, 119, 6, 0);
+  }
+  100% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 8px rgba(217, 119, 6, 0.28);
+  }
+}
+
+.cert-station-on {
+  animation: cert-station-on 0.65s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-station-on {
+    animation: none;
+  }
+}
+
 /* Cinematic texture: subtle animated film grain (homepage) */
 .film-grain {
   position: fixed;

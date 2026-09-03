@@ -18,6 +18,191 @@ const HERO_AVATARS = [
   "image 476.png",
 ] as const;
 
+const COURSE_SUMMARY_TITLE: Record<string, string> = {
+  "leading-safe": "AI-Empowered Leading SAFe® (6.0) Course Summary",
+  "product-owner-manager": "AI-Empowered SAFe® Product Owner / Product Manager (6.0) Course Summary",
+  "scrum-master": "AI-Empowered SAFe® Scrum Master (6.0) Course Summary",
+  "lean-portfolio-management": "AI-Empowered SAFe® Lean Portfolio Management (6.0) Course Summary",
+  "agile-product-management": "AI-Empowered SAFe® Agile Product Management (6.0) Course Summary",
+  "safe-for-architects": "SAFe® for Architects (6.0) Course Summary",
+  "safe-for-teams": "AI-Empowered SAFe® for Teams (6.0) Course Summary",
+  devops: "AI-Empowered SAFe® DevOps (6.0) Course Summary",
+  "advanced-scrum-master": "AI-Empowered SAFe® Advanced Scrum Master (6.0) Course Summary",
+  "release-train-engineer": "AI-Empowered SAFe® Release Train Engineer Course Summary",
+  "value-stream-mapping": "SAFe® Value Stream Mapping Course Summary",
+  "responsible-ai": "Achieving Responsible AI with SAFe Course Summary",
+};
+
+function durationPhrase(label: string): string {
+  if (/3-Day/i.test(label)) return "three-day";
+  if (/Half-Day/i.test(label)) return "half-day";
+  return "two-day";
+}
+
+function passingScoreLabel(content: CatalogLandingContent): string | null {
+  const line = content.examDetails?.format.find((item) =>
+    item.highlight.toLowerCase().startsWith("passing score")
+  );
+  if (!line) return null;
+  return line.highlight.replace(/^Passing score\s*/i, "");
+}
+
+function certShortName(content: CatalogLandingContent): string {
+  return (content.certificateTitle || content.cardTitle).replace(/\s*Certificate$/i, "").trim();
+}
+
+function goalParts(outcome: string): { title: string; rest: string } {
+  const cut = outcome.search(/,| — | – /);
+  if (cut > 12) {
+    return { title: outcome.slice(0, cut), rest: outcome.slice(cut).replace(/^,\s*/, "") };
+  }
+  const words = outcome.split(" ");
+  if (words.length <= 6) return { title: outcome, rest: "" };
+  return { title: words.slice(0, 4).join(" "), rest: words.slice(4).join(" ") };
+}
+
+function certifiedCopy(content: CatalogLandingContent) {
+  const hasExam = content.attemptsLine !== null;
+  const days = durationPhrase(content.durationLabel);
+  const cert = certShortName(content);
+  const score = passingScoreLabel(content);
+
+  if (!hasExam) {
+    return {
+      path: [
+        { n: "01", label: "Register for the course" },
+        { n: "02", label: "Attend the workshop" },
+        { n: "03", label: "Do the work in class" },
+        { n: "04", label: "Receive the micro-credential" },
+        { n: "05", label: "Keep a year of SAFe Community" },
+      ],
+      steps: [
+        { lead: "Enroll", rest: ` in our ${content.scheduleCourseName} workshop` },
+        { lead: `Attend the ${days} live session`, rest: "" },
+        { lead: "Complete the in-class work", rest: " — the credential is the workshop, not an exam" },
+        { lead: "Receive the official micro-credential", rest: " from Scaled Agile" },
+        { lead: "Keep one year of SAFe Community access", rest: " with the courseware" },
+      ],
+    };
+  }
+
+  return {
+    path: [
+      { n: "01", label: "Register for the course" },
+      { n: "02", label: "Attend the live class" },
+      { n: "03", label: "Pass the online exam" },
+      { n: "04", label: `Receive your ${cert} certificate` },
+      { n: "05", label: "Continue with 1 year of SAFe Studio" },
+    ],
+    steps: [
+      { lead: "Enroll", rest: ` in our ${content.scheduleCourseName} course` },
+      { lead: `Attend the ${days} live training`, rest: "" },
+      { lead: "After you finish class,", rest: " exam access is granted" },
+      { lead: "Accept the Candidate Agreement", rest: " and sit the exam" },
+      {
+        lead: score ? `Score ${score} to pass` : "Meet the passing score",
+        rest: score ? " and pass the exam" : " listed in Scaled Agile's exam guidelines",
+      },
+      { lead: `Get certified as ${cert}`, rest: " from Scaled Agile" },
+    ],
+  };
+}
+
+function CertifiedTrack({
+  path,
+  steps,
+}: {
+  path: { n: string; label: string }[];
+  steps: { lead: string; rest: string }[];
+}) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActive((current) => (current + 1) % path.length);
+    }, 700);
+    return () => window.clearInterval(id);
+  }, [path.length]);
+
+  const fill = path.length > 1 ? (active / (path.length - 1)) * 100 : 0;
+  const highlightedStep = active === path.length - 1 ? steps.length - 1 : Math.min(active, steps.length - 1);
+
+  return (
+    <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+      <div>
+        <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          Get Certified
+        </p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+          Steps to getting certified
+        </h2>
+        <div className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-2">
+          <span
+            className="pointer-events-none absolute left-[10%] right-[10%] top-7 hidden h-1 overflow-hidden rounded-full bg-[#1f2c4a]/15 sm:block"
+            aria-hidden
+          >
+            <span
+              className="block h-full rounded-full bg-[#d97706] transition-[width] duration-500 ease-out"
+              style={{ width: `${fill}%` }}
+            />
+          </span>
+          {path.map((stop, index) => {
+            const on = index === active;
+            const done = index < active;
+            return (
+              <div key={stop.n} className="relative flex flex-col items-center text-center">
+                <span
+                  className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-full text-[15px] font-semibold ring-4 ring-[#faf8f4] ${
+                    on
+                      ? "cert-station-on bg-[#d97706] text-white"
+                      : done
+                        ? "bg-[#d97706] text-white"
+                        : "bg-[#1f2c4a] text-white"
+                  }`}
+                >
+                  {stop.n}
+                </span>
+                <p
+                  className={`mt-3 max-w-[9.5rem] text-[13px] font-medium leading-snug ${
+                    on || done ? "text-[#1f2c4a]" : "text-[#64748b]"
+                  }`}
+                >
+                  {stop.label}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <ol className="space-y-3 rounded-2xl bg-[#1f2c4a] p-6 sm:p-7">
+        {steps.map((step, index) => {
+          const on = index === highlightedStep;
+          return (
+            <li
+              key={step.lead}
+              className={`flex items-start gap-3 text-[15px] leading-snug transition-opacity duration-500 ${
+                on ? "text-white" : "text-white/55"
+              }`}
+            >
+              <span
+                className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-semibold transition-colors duration-500 ${
+                  on ? "bg-[#d97706] text-white" : "bg-white/15 text-white"
+                }`}
+              >
+                {index + 1}
+              </span>
+              <p>
+                <span className="font-semibold text-white">{step.lead}</span>
+                {step.rest}
+              </p>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
 export default function CatalogCourseLanding({
   content,
   initialSchedules = [],
@@ -272,9 +457,9 @@ export default function CatalogCourseLanding({
 
       <nav
         aria-label="On this page"
-        className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/10 bg-[#faf8f4]/95 backdrop-blur-md"
+        className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/15 bg-[#faf8f4]/95 backdrop-blur-md"
       >
-        <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 py-2 sm:px-6 lg:px-20">
+        <div className="mx-auto flex max-w-7xl overflow-x-auto px-4 sm:px-6 lg:px-20">
           {pageTabs.map((tab) => {
             const active = activeSection === tab.id;
             return (
@@ -282,26 +467,29 @@ export default function CatalogCourseLanding({
                 key={tab.id}
                 href={`#${tab.id}`}
                 onClick={(event) => scrollToSection(event, tab.id)}
-                className={`shrink-0 rounded-md px-3 py-2 text-[13px] font-medium transition ${
+                className={`relative shrink-0 px-4 py-4 text-[15px] font-semibold tracking-[-0.02em] transition sm:flex-1 sm:px-2 sm:text-center md:text-base ${
                   active
-                    ? "bg-[#1f2c4a] text-white"
-                    : "text-[#64748b] hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+                    ? "text-[#1f2c4a]"
+                    : "text-[#64748b] hover:text-[#1f2c4a]"
                 }`}
               >
                 {tab.label}
+                <span
+                  className={`absolute inset-x-3 bottom-0 h-[3px] rounded-full transition sm:inset-x-4 ${
+                    active ? "bg-[#d97706]" : "bg-transparent"
+                  }`}
+                  aria-hidden
+                />
               </a>
             );
           })}
         </div>
       </nav>
 
-      <section id="overview" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+      <section id="overview" className="scroll-mt-32 w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
-            {content.crumb} course summary
-          </p>
-          <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
-            {content.summaryTitle || "What this class is for"}
+          <h2 className="max-w-4xl text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+            {COURSE_SUMMARY_TITLE[content.slug] || content.summaryTitle || "Course Summary"}
           </h2>
           <div className="mt-4 max-w-4xl space-y-4">
             {(content.summary || content.lede).split(/\n\n/).map((paragraph) => (
@@ -313,9 +501,63 @@ export default function CatalogCourseLanding({
         </div>
       </section>
 
-      <section id="upcoming-dates" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+      <section id="upcoming-dates" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          {(() => {
+            const certified = certifiedCopy(content);
+            return (
+              <>
+                <CertifiedTrack path={certified.path} steps={certified.steps} />
+
+                <div className="mt-14 grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+                  <div>
+                    <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+                      Learning goals
+                    </h2>
+                    <ul className="mt-6 space-y-4">
+                      {content.outcomes.map((outcome) => {
+                        const goal = goalParts(outcome);
+                        return (
+                          <li key={outcome} className="flex items-start gap-3">
+                            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#d97706] text-white">
+                              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </span>
+                            <p className="text-[16px] leading-relaxed text-[#334155]">
+                              <span className="font-semibold text-[#1f2c4a]">{goal.title}</span>
+                              {goal.rest ? ` ${goal.rest}` : null}
+                            </p>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
+                    {content.certificateSrc ? (
+                      <img
+                        src={content.certificateSrc}
+                        alt={content.certificateTitle || content.cardTitle}
+                        className="h-auto w-full"
+                      />
+                    ) : (
+                      <div className="flex aspect-[4/3] items-center justify-center bg-[#1f2c4a]/[0.04] p-8">
+                        <Image
+                          src={content.badgeSrc}
+                          alt={content.badgeAlt}
+                          width={120}
+                          height={120}
+                          className="h-28 w-28 object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            );
+          })()}
+
+          <p className="mt-14 text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Live online cohorts
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
@@ -337,7 +579,7 @@ export default function CatalogCourseLanding({
       </section>
 
       {content.examDetails ? (
-        <section id="exam" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+        <section id="exam" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
@@ -417,7 +659,7 @@ export default function CatalogCourseLanding({
         </section>
       ) : null}
 
-      <section id="why-agile36" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+      <section id="why-agile36" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Why Agile36</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
@@ -464,7 +706,7 @@ export default function CatalogCourseLanding({
         </div>
       </section>
 
-      <section id="curriculum" className="scroll-mt-28 w-full px-4 py-10 sm:px-6 lg:px-20">
+      <section id="curriculum" className="scroll-mt-32 w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Official outline
@@ -525,7 +767,7 @@ export default function CatalogCourseLanding({
             ))}
           </div>
           {content.examDetails ? null : (
-            <p id="exam" className="mt-6 scroll-mt-28 text-[15px] leading-relaxed text-[#64748b]">
+            <p id="exam" className="mt-6 scroll-mt-32 text-[15px] leading-relaxed text-[#64748b]">
               {content.examNote}{" "}
               <a
                 href={content.examGuidelinesHref}
@@ -542,7 +784,7 @@ export default function CatalogCourseLanding({
       </section>
 
       {content.careerPath ? (
-        <section id="career-path" className="scroll-mt-28 w-full px-4 py-12 sm:px-6 lg:px-20">
+        <section id="career-path" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
           <div className="mx-auto max-w-7xl">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
               After this cert
@@ -586,7 +828,7 @@ export default function CatalogCourseLanding({
 
       <section
         id="student-reviews"
-        className="scroll-mt-28 w-full border-t border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-4 py-12 sm:px-6 lg:px-20"
+        className="scroll-mt-32 w-full border-t border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-4 py-12 sm:px-6 lg:px-20"
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -640,22 +882,6 @@ export default function CatalogCourseLanding({
         </section>
       ) : null}
 
-      {content.certificateSrc ? (
-        <section id="get-certified" className="scroll-mt-28 w-full bg-black px-4 py-6 sm:px-6 lg:px-20">
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
-              Get certified
-            </p>
-            <h2 className="mb-4 text-center text-3xl font-semibold tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
-              {content.certificateTitle}
-            </h2>
-            <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/15">
-              <img src={content.certificateSrc} alt={content.certificateTitle} className="h-auto w-full" />
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       {content.attemptsLine !== null && !content.examDetails ? (
         <section className="w-full px-4 py-6 sm:px-6 lg:px-20">
           <div className="mx-auto flex max-w-7xl items-start gap-4 rounded-2xl bg-[#1f2c4a] px-6 py-6 text-white sm:px-8">
@@ -684,7 +910,7 @@ export default function CatalogCourseLanding({
         </section>
       ) : null}
 
-      <section id="faqs" className="scroll-mt-28 w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
+      <section id="faqs" className="scroll-mt-32 w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-4xl">
           <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Questions
