@@ -13,6 +13,8 @@ import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 const HEADING =
   "text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl";
+const SECTION_HEADING =
+  "text-2xl font-semibold leading-[1.2] tracking-[-0.03em] text-[#1f2c4a] sm:text-[1.85rem]";
 const BODY = "text-[15px] leading-relaxed text-[#475569]";
 
 const HERO_AVATARS = [
@@ -137,7 +139,7 @@ function CertifiedTrack({
         <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
           Get Certified
         </p>
-        <h2 className={`mt-3 ${HEADING}`}>
+                <h2 className={`mt-3 ${SECTION_HEADING}`}>
           Steps to getting certified
         </h2>
         <div className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-2">
@@ -492,7 +494,7 @@ export default function CatalogCourseLanding({
 
       <section id="overview" className="scroll-mt-32 w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <h2 className={`max-w-xl ${HEADING}`}>
+          <h2 className={`max-w-xl ${SECTION_HEADING}`}>
             {COURSE_SUMMARY_TITLE[content.slug] || content.summaryTitle || "Course Summary"}
           </h2>
           <div className="mt-4 max-w-xl space-y-4">
@@ -515,7 +517,7 @@ export default function CatalogCourseLanding({
 
                 <div className="mt-14 grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
                   <div>
-                    <h2 className={HEADING}>
+                    <h2 className={SECTION_HEADING}>
                       Learning goals
                     </h2>
                     <ul className="mt-6 space-y-4">
@@ -564,7 +566,7 @@ export default function CatalogCourseLanding({
           <p className="mt-14 text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Live online cohorts
           </p>
-          <h2 className={`mt-3 ${HEADING}`}>
+          <h2 className={`mt-3 ${SECTION_HEADING}`}>
             {content.datesTitle}
           </h2>
           <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
@@ -590,7 +592,7 @@ export default function CatalogCourseLanding({
                 <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
                   Exam Details
                 </p>
-                <h2 className={`mt-3 ${HEADING}`}>
+                <h2 className={`mt-3 ${SECTION_HEADING}`}>
                   Prerequisites
                 </h2>
                 <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-[#475569]">
@@ -601,7 +603,7 @@ export default function CatalogCourseLanding({
                 <p className="hidden text-[13px] font-medium uppercase tracking-[0.16em] lg:block" aria-hidden>
                   &nbsp;
                 </p>
-                <h2 className={`mt-3 ${HEADING}`}>
+                <h2 className={`mt-3 ${SECTION_HEADING}`}>
                   Exam Format
                 </h2>
                 <ul className="mt-6 space-y-4">
@@ -666,7 +668,7 @@ export default function CatalogCourseLanding({
       <section id="why-agile36" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Why Agile36</p>
-          <h2 className={`mt-3 ${HEADING}`}>
+          <h2 className={`mt-3 ${SECTION_HEADING}`}>
             This is why they should choose us
           </h2>
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
@@ -715,7 +717,7 @@ export default function CatalogCourseLanding({
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Official outline
           </p>
-          <h2 className={`mt-3 ${HEADING}`}>
+          <h2 className={`mt-3 ${SECTION_HEADING}`}>
             Course curriculum
           </h2>
           <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-[#475569]">
@@ -793,7 +795,7 @@ export default function CatalogCourseLanding({
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
               After this cert
             </p>
-            <h2 className={`mt-3 ${HEADING}`}>
+            <h2 className={`mt-3 ${SECTION_HEADING}`}>
               Career path
             </h2>
             <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
@@ -838,7 +840,7 @@ export default function CatalogCourseLanding({
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Google reviews</p>
-              <h2 className={`mt-3 ${HEADING}`}>
+              <h2 className={`mt-3 ${SECTION_HEADING}`}>
                 What students say
               </h2>
             </div>
@@ -867,7 +869,7 @@ export default function CatalogCourseLanding({
               <span className="rounded-md border border-[#d97706]/30 bg-[#d97706]/10 px-4 py-1.5 text-sm font-semibold text-[#d97706]">
                 1 Practice Test
               </span>
-              <h2 className={`mt-4 ${HEADING}`}>
+              <h2 className={`mt-4 ${SECTION_HEADING}`}>
                 {content.practiceTestTitle}
               </h2>
               <p className="mt-2 text-[15px] text-[#475569]">
@@ -919,7 +921,7 @@ export default function CatalogCourseLanding({
           <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Questions
           </p>
-          <h2 className={`mb-8 text-center ${HEADING}`}>
+          <h2 className={`mb-8 text-center ${SECTION_HEADING}`}>
             FAQs
           </h2>
           <div className="mb-8 flex flex-wrap justify-center gap-4">
