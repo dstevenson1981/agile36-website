@@ -569,9 +569,6 @@ export default function CatalogCourseLanding({
           <h2 className={`mt-3 ${SECTION_HEADING}`}>
             {content.datesTitle}
           </h2>
-          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#475569]">
-            Pick a cohort and enroll on this page. Checkout stays on Agile36.
-          </p>
           <div className="mt-8">
             <CourseScheduleEmbed
               courseSlug={content.slug}
