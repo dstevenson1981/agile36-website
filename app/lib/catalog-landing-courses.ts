@@ -100,7 +100,8 @@ const popm: CatalogLandingContent = {
   crumb: "SAFe® POPM",
   title:
     "AI-Empowered SAFe® Product Owner / Product Manager (POPM) Certification Training",
-  lede: "The official 2-day live course. You leave ready to own the backlog, run PI Planning, apply customer-centric design, and sit the POPM exam.",
+  lede:
+    "Step up your product leadership and learn how to do the PO and PM job on an Agile Release Train. This expert-led, interactive 2-day AI-Empowered SAFe® Product Owner/Product Manager (6.0) course gives you the tools to deliver value in a Lean-Agile environment.\n\nThe SAFe® POPM certification is officially recognized by Scaled Agile and shows you can operate in the role. Class is live and hands-on — activities, role-play, real examples, and Q&A — alongside practitioners from around the world.",
   badgeSrc: "/POPM.jpg",
   badgeAlt: "SAFe POPM badge",
   cardTitle: "SAFe® POPM Certification",
@@ -570,7 +571,8 @@ const scrumMaster: CatalogLandingContent = {
   slug: "scrum-master",
   crumb: "SAFe SSM",
   title: "AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training",
-  lede: "Become a certified AI-Empowered SAFe Scrum Master in 2 days with live, expert-led training from a SAFe Silver Partner.",
+  lede:
+    "Learn the tactical and operational work of implementing SAFe® in our AI-Empowered SAFe® Scrum Master certification course. This expert-led 2-day program gives you the tools to facilitate an Agile Release Train and show up as a high-performing team member in a SAFe enterprise.\n\nClass is built around activities, real-world role-play, practical examples, and Q&A. Whether you want stronger Scrum Master skills, a path toward coaching, or a respected Certified SAFe Scrum Master credential, you train alongside practitioners from around the world.",
   badgeSrc: "/SSM.jpeg",
   badgeAlt: "SAFe Scrum Master badge",
   cardTitle: "SAFe® Scrum Master Certification",
@@ -808,7 +810,8 @@ const lpm: CatalogLandingContent = {
   slug: "lean-portfolio-management",
   crumb: "SAFe LPM",
   title: "AI-Empowered SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
-  lede: "Align strategy with execution, manage portfolio flow, and optimize value streams across the enterprise portfolio.",
+  lede:
+    "Define, communicate, and align strategy with execution in our SAFe® Lean Portfolio Management training. This interactive two-day course, led by experienced SAFe trainers, gives you practical tools for Lean portfolio operations, investment funding, and Lean governance.\n\nThe SAFe® Lean Portfolio Management (LPM 6.0) certification is the official Scaled Agile credential for this work. Class includes simulations, activities, and Q&A so you get hands-on practice and meet other people building Agile portfolio capability.",
   badgeSrc: "/Lean Portfolio.png",
   badgeAlt: "SAFe Lean Portfolio Management badge",
   cardTitle: "SAFe® LPM Certification",
@@ -1016,7 +1019,8 @@ const apm: CatalogLandingContent = {
   slug: "agile-product-management",
   crumb: "SAFe APM",
   title: "AI-Empowered SAFe® 6.0 Agile Product Management (APM) Certification Training",
-  lede: "Apply design thinking, continuous exploration, and Lean UX to build products customers love at enterprise scale.",
+  lede:
+    "Learn to run design thinking and customer-centric product work at enterprise scale — and use AI where it actually helps discovery, strategy, and delivery. This 3-day, expert-led AI-Empowered SAFe® Agile Product Management course trains you to build products that are desirable, feasible, and sustainable.\n\nCompleting the class makes you eligible for the official SAFe® Agile Product Manager (APM) 6.0 certification from Scaled Agile. You practice through activities, role-play, real case studies, and Q&A alongside product leaders from around the world.",
   badgeSrc: "/AgileProductManagment.png",
   badgeAlt: "SAFe Agile Product Management badge",
   cardTitle: "SAFe® APM Certification",
@@ -1274,7 +1278,8 @@ const architects: CatalogLandingContent = {
   slug: "safe-for-architects",
   crumb: "SAFe ARCH",
   title: "SAFe® 6.0 for Architects (ARCH) Certification Training",
-  lede: "Align architecture with business value, plan architectural runway, and lead Agile architecture across ARTs and Solution Trains.",
+  lede:
+    "Align Agile architecture with business value in our SAFe® for Architects certification course. This expert-led, three-day class gives you the tools to design scalable architecture that supports Agile Release Trains and keeps delivery moving.\n\nYou leave eligible for the official SAFe® Architect certification from Scaled Agile. Class is hands-on — case studies, role-play, and practical work — with architects, consultants, and Agile leaders from around the world.",
   badgeSrc: "/ARCH.png",
   badgeAlt: "SAFe for Architects badge",
   cardTitle: "SAFe® for Architects Certification",
@@ -1478,7 +1483,8 @@ const safeForTeams: CatalogLandingContent = {
   slug: "safe-for-teams",
   crumb: "SAFe SP",
   title: "AI-Empowered SAFe® 6.0 for Teams Certification Training",
-  lede: "Master SAFe team member skills to excel in Agile Release Trains with expert-led SAFe® 6.0 training and hands-on iteration simulations.",
+  lede:
+    "Get the team-level skills to sit on an Agile Release Train and do the work well. This expert-led, two-day SAFe® for Teams course trains you to collaborate across teams and use Scrum, Kanban, and XP in a Lean-Agile environment.\n\nYou leave eligible for the official SAFe® Practitioner (SP 6.0) certification from Scaled Agile. Class is interactive — case studies, hands-on activities, simulations, role-play, and Q&A — with Agile practitioners from around the world.",
   badgeSrc: "/SAFe for Teams.png",
   badgeAlt: "SAFe for Teams / Practitioner badge",
   cardTitle: "SAFe® Practitioner Certification",
@@ -2394,7 +2400,8 @@ const vsm: CatalogLandingContent = {
   slug: "value-stream-mapping",
   crumb: "SAFe® VSM",
   title: "SAFe® Value Stream Mapping Certification Training",
-  lede: "Map the stream from concept to customer, find the bottlenecks, and leave with a future-state plan you can run on the ART.",
+  lede:
+    "Learn to facilitate a Value Stream Mapping workshop — not just sit through the theory. This SAFe® micro-credential is a live, practical session that trains you to map a stream and see where work actually stalls.\n\nYou practice current-state mapping, find delays, and leave ready to run a workshop with a future-state plan the ART can use. Real case studies and guided facilitation give you the frameworks and reps under an experienced instructor.",
   summary:
     "This half-day workshop is how you map a value stream from concept to customer and see where work actually stalls. You facilitate current-state mapping, find delays and waste, and leave with a future-state map the ART can run. There is no exam — completing the live workshop is the micro-credential.",
   badgeSrc: "/MicroCredential.jpeg",

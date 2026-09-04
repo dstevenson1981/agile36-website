@@ -336,9 +336,13 @@ export default function CatalogCourseLanding({
               <h1 className={`mt-3 ${HEADING}`}>
                 {content.title}
               </h1>
-              <p className={`mt-4 max-w-xl ${BODY}`}>
-                {content.lede}
-              </p>
+              <div className="mt-4 max-w-xl space-y-4">
+                {content.lede.split(/\n\n/).map((paragraph) => (
+                  <p key={paragraph} className={BODY}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
               {content.attemptsLine === null ? null : (
                 <p className="mt-2 text-[15px] font-medium text-[#1f2c4a]">
                   {content.attemptsLine || "Your first two attempts are included."}
