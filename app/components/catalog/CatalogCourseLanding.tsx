@@ -6,8 +6,8 @@ import { type MouseEvent, useEffect, useMemo, useState } from "react";
 import { SAFE_COURSE_PARTICIPANTS_VALUE } from "@/app/lib/course-catalog";
 import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
+import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
-import FeaturedCohortCard from "@/app/components/schedule/FeaturedCohortCard";
 import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
@@ -55,6 +55,15 @@ function passingScoreLabel(content: CatalogLandingContent): string | null {
 
 function certShortName(content: CatalogLandingContent): string {
   return (content.certificateTitle || content.cardTitle).replace(/\s*Certificate$/i, "").trim();
+}
+
+function catalogIncludedItems(content: CatalogLandingContent): string[] {
+  const items = [content.durationLabel, content.cardTitle];
+  if (content.attemptsLine !== null) items.push("Certification exam included");
+  if (/24 PDU/i.test(content.includesLine)) items.push("24 PDUs & SEUs");
+  else if (/16 PDU/i.test(content.includesLine)) items.push("16 PDUs & SEUs");
+  if (/SAFe Studio/i.test(content.includesLine)) items.push("1-year SAFe Studio access");
+  return items;
 }
 
 function goalParts(outcome: string): { title: string; rest: string } {
@@ -337,26 +346,23 @@ export default function CatalogCourseLanding({
               )}
             </div>
 
-            <div id="next-class" className="lg:sticky lg:top-24 lg:row-span-2">
-              <FeaturedCohortCard
+            <div id="next-class" className="lg:row-span-2">
+              <CourseHeroRightColumn
                 courseSlug={content.slug}
-                initialSchedule={initialSchedules[0] ?? null}
-                badgeSrc={content.badgeSrc}
-                cardTitle={content.cardTitle}
-                durationLabel={content.durationLabel}
-                includesLine={content.includesLine}
-              />
-              <div className="mt-4 inline-flex items-center gap-3 rounded-lg bg-[#efe8dc] px-4 py-2.5">
-                <Image src="/Silver.png" alt="" width={36} height={36} className="h-9 w-9 object-contain" />
-                <p className="text-sm font-medium text-[#1f2c4a]">Scaled Agile Silver Partner</p>
-                <Image
-                  src={content.badgeSrc}
-                  alt={content.badgeAlt}
-                  width={36}
-                  height={36}
-                  className="h-9 w-9 object-contain"
-                />
-              </div>
+                scheduleHref="#class-dates"
+                scheduleButtonLabel="See dates & enroll"
+              >
+                <div className="space-y-2.5">
+                  {catalogIncludedItems(content).map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <svg className="h-4 w-4 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </CourseHeroRightColumn>
             </div>
 
             <div className="lg:pt-8">
@@ -417,7 +423,7 @@ export default function CatalogCourseLanding({
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href="#next-class"
+                  href="#class-dates"
                   className="inline-flex items-center justify-center rounded-md bg-[#d97706] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b45309]"
                 >
                   Enroll Now
@@ -563,7 +569,7 @@ export default function CatalogCourseLanding({
             );
           })()}
 
-          <p className="mt-14 text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          <p id="class-dates" className="mt-14 scroll-mt-32 text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
             Live online cohorts
           </p>
           <h2 className={`mt-3 ${SECTION_HEADING}`}>
