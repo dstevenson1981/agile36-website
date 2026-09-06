@@ -312,6 +312,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch contacts' }, { status: 500 });
     }
 
+    const { data: unsubscribedRows } = await supabase
+      .from('email_unsubscribes')
+      .select('email')
+      .not('unsubscribed_at', 'is', null);
+    const unsubscribed = new Set(
+      (unsubscribedRows || []).map((row: { email?: string }) =>
+        String(row.email || '').trim().toLowerCase()
+      )
+    );
+    contacts = contacts.filter(
+      (contact) => !unsubscribed.has(String(contact.email || '').trim().toLowerCase())
+    );
+
     if (!contacts || contacts.length === 0) {
       const audienceHint =
         audienceMode === 'tagFilters'
@@ -399,8 +412,18 @@ export async function POST(request: NextRequest) {
       const batch = contacts.slice(i, i + RATE_LIMIT_PER_SECOND);
       const promises = batch.map(async (contact) => {
         try {
-          // Generate unsubscribe token
+          // Generate unsubscribe token and store it so the link works on click.
           const token = generateUnsubscribeToken(contact.email, campaignId);
+          const { error: tokenError } = await supabase
+            .from('email_unsubscribes')
+            .insert({
+              email: String(contact.email).trim().toLowerCase(),
+              token,
+              campaign_id: campaignId,
+            });
+          if (tokenError) {
+            console.error('Failed to store unsubscribe token:', tokenError);
+          }
 
           // Add unsubscribe link to email
           const htmlWithUnsubscribe = addUnsubscribeLink(campaign.html_content, token);

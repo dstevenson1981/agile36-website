@@ -36,7 +36,18 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
 
     const compact = window.innerWidth < 768;
     const maxDpr = compact ? 1.5 : 2;
-    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: false,
+        alpha: true,
+        failIfMajorPerformanceCaveat: false,
+      });
+    } catch {
+      // Some browsers/GPUs throw "Error creating WebGL context". Leave the
+      // static hero background instead of blowing up the homepage.
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
@@ -199,7 +210,11 @@ export default function HeroField({ heroSelector }: { heroSelector: string }) {
       camera.position.x = uniforms.uMouse.value.x * 0.5;
       camera.position.y = 2.2 + uniforms.uMouse.value.y * 0.25;
       camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
+      try {
+        renderer.render(scene, camera);
+      } catch {
+        cancelAnimationFrame(raf);
+      }
     };
     raf = requestAnimationFrame(tick);
 

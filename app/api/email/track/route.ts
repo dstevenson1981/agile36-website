@@ -135,21 +135,26 @@ export async function POST(request: NextRequest) {
             .update({ subscribed: false })
             .eq('email', email);
 
-          // Add to unsubscribes table if not exists
-          const { data: unsubscribeRecord } = await supabase
+          const now = new Date().toISOString();
+          const { data: pending } = await supabase
             .from('email_unsubscribes')
-            .select('id')
-            .eq('email', email)
-            .single();
+            .update({
+              unsubscribed_at: now,
+              reason: 'Unsubscribed via email',
+            })
+            .ilike('email', email)
+            .is('unsubscribed_at', null)
+            .select('id');
 
-          if (!unsubscribeRecord) {
+          if (!pending?.length) {
             await supabase
               .from('email_unsubscribes')
               .insert({
-                email: email,
+                email: String(email).trim().toLowerCase(),
                 token: event.token || crypto.randomBytes(32).toString('hex'),
                 campaign_id: campaign_id || null,
                 reason: 'Unsubscribed via email',
+                unsubscribed_at: now,
               });
           }
           break;

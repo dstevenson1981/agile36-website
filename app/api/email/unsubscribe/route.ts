@@ -2,18 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
 
+function normalizeEmail(value: unknown): string {
+  return typeof value === 'string' ? value.trim().toLowerCase() : '';
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { token, email } = await request.json();
+    const incomingToken = typeof token === 'string' ? token.trim() : '';
+    const incomingEmail = normalizeEmail(email);
 
-    if (!token && !email) {
+    if (!incomingToken && !incomingEmail) {
       return NextResponse.json(
         { error: 'Token or email is required' },
         { status: 400 }
       );
     }
 
-    // Supabase setup
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -31,24 +36,23 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Find unsubscribe record by token
-    let unsubscribeEmail = email;
+    let unsubscribeEmail = incomingEmail;
 
-    if (token) {
-      const { data: unsubscribeRecord, error: findError } = await supabase
+    if (incomingToken) {
+      const { data: unsubscribeRecord } = await supabase
         .from('email_unsubscribes')
-        .select('email')
-        .eq('token', token)
-        .single();
+        .select('email, unsubscribed_at')
+        .eq('token', incomingToken)
+        .limit(1);
 
-      if (findError || !unsubscribeRecord) {
+      const row = unsubscribeRecord?.[0];
+      if (!row?.email) {
         return NextResponse.json(
           { error: 'Invalid unsubscribe token' },
           { status: 404 }
         );
       }
-
-      unsubscribeEmail = unsubscribeRecord.email;
+      unsubscribeEmail = normalizeEmail(row.email);
     }
 
     if (!unsubscribeEmail) {
@@ -58,51 +62,53 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update contact subscription status
+    const now = new Date().toISOString();
+
     const { error: updateError } = await supabase
       .from('email_contacts')
       .update({ subscribed: false })
-      .eq('email', unsubscribeEmail);
+      .ilike('email', unsubscribeEmail);
 
     if (updateError) {
       console.error('Error updating contact:', updateError);
-      return NextResponse.json(
-        { error: 'Failed to unsubscribe' },
-        { status: 500 }
-      );
     }
 
-    // Ensure unsubscribe record exists
-    if (token) {
+    if (incomingToken) {
       await supabase
         .from('email_unsubscribes')
-        .upsert({
+        .update({
           email: unsubscribeEmail,
-          token: token,
-          unsubscribed_at: new Date().toISOString(),
-        }, {
-          onConflict: 'token'
-        });
+          unsubscribed_at: now,
+        })
+        .eq('token', incomingToken);
     } else {
-      await supabase
+      const { data: existing } = await supabase
         .from('email_unsubscribes')
-        .insert({
+        .select('id')
+        .ilike('email', unsubscribeEmail)
+        .not('unsubscribed_at', 'is', null)
+        .limit(1);
+
+      if (!existing?.length) {
+        await supabase.from('email_unsubscribes').insert({
           email: unsubscribeEmail,
           token: crypto.randomBytes(32).toString('hex'),
-          unsubscribed_at: new Date().toISOString(),
+          unsubscribed_at: now,
         });
+      }
     }
 
     return NextResponse.json({
       success: true,
+      email: unsubscribeEmail,
       message: 'Successfully unsubscribed',
     });
-  } catch (error: any) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to unsubscribe';
     console.error('Error processing unsubscribe:', error);
     return NextResponse.json(
-      { error: `Failed to unsubscribe: ${error.message}` },
+      { error: message },
       { status: 500 }
     );
   }
 }
-

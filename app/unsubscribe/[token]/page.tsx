@@ -1,56 +1,55 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
 export default function UnsubscribePage() {
   const params = useParams();
   const router = useRouter();
-  const token = params.token as string;
+  const token = typeof params.token === 'string' ? params.token : '';
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [manualEmail, setManualEmail] = useState('');
+  const [formError, setFormError] = useState('');
+  const ranToken = useRef(false);
 
   useEffect(() => {
-    if (token) {
-      handleUnsubscribe();
-    }
-  }, [token]);
+    if (!token || ranToken.current) return;
+    ranToken.current = true;
 
-  const handleUnsubscribe = async () => {
-    try {
-      const response = await fetch('/api/email/unsubscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setStatus('success');
-        // Try to get email from response if available
-        if (data.email) {
-          setEmail(data.email);
+    const run = async () => {
+      try {
+        const response = await fetch('/api/email/unsubscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          setEmail(data.email || '');
+          setStatus('success');
+          return;
         }
-      } else {
+        setStatus('error');
+      } catch (error) {
+        console.error('Error unsubscribing:', error);
         setStatus('error');
       }
-    } catch (error) {
-      console.error('Error unsubscribing:', error);
-      setStatus('error');
-    }
-  };
+    };
+
+    void run();
+  }, [token]);
 
   const handleManualUnsubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const emailInput = formData.get('email') as string;
+    const emailInput = manualEmail.trim();
 
     if (!emailInput || !emailInput.includes('@')) {
-      alert('Please enter a valid email address');
+      setFormError('Enter the email address we send to.');
       return;
     }
 
+    setFormError('');
     setStatus('loading');
     try {
       const response = await fetch('/api/email/unsubscribe', {
@@ -58,20 +57,18 @@ export default function UnsubscribePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailInput }),
       });
-
       const data = await response.json();
-
       if (data.success) {
+        setEmail(data.email || emailInput);
         setStatus('success');
-        setEmail(emailInput);
-      } else {
-        setStatus('error');
-        alert(data.error || 'Failed to unsubscribe');
+        return;
       }
+      setStatus('error');
+      setFormError(data.error || 'Could not unsubscribe. Try again.');
     } catch (error) {
       console.error('Error unsubscribing:', error);
       setStatus('error');
-      alert('An error occurred. Please try again.');
+      setFormError('Could not unsubscribe. Try again.');
     }
   };
 
@@ -107,14 +104,14 @@ export default function UnsubscribePage() {
                 />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Successfully Unsubscribed</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">You are unsubscribed</h2>
             {email && (
               <p className="text-gray-600 mb-4">
-                {email} has been unsubscribed from all future emails.
+                {email} will not get marketing email from Agile36.
               </p>
             )}
             <p className="text-sm text-gray-500 mb-6">
-              You will no longer receive marketing emails from Agile36. If you change your mind, you can contact us to resubscribe.
+              If you change your mind, email us and we can add you back.
             </p>
             <button
               onClick={() => router.push('/')}
@@ -127,44 +124,34 @@ export default function UnsubscribePage() {
 
         {status === 'error' && (
           <div>
-            {token ? (
-              <div className="text-center py-8">
-                <div className="mb-4">
-                  <svg
-                    className="mx-auto h-12 w-12 text-red-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-2">Invalid Unsubscribe Link</h2>
-                <p className="text-gray-600 mb-6">
-                  The unsubscribe link you used is invalid or has expired. Please use the form below to unsubscribe manually.
-                </p>
-              </div>
-            ) : null}
+            <div className="text-center py-4">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                Enter your email to unsubscribe
+              </h2>
+              <p className="text-gray-600 mb-6">
+                We could not match that link. Type the address we send to and we will take you off the list.
+              </p>
+            </div>
 
             <form onSubmit={handleManualUnsubscribe} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Enter your email address to unsubscribe
+                  Email address
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
+                  value={manualEmail}
+                  onChange={(e) => setManualEmail(e.target.value)}
                   placeholder="your.email@example.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
+              {formError ? (
+                <p className="text-sm text-red-600">{formError}</p>
+              ) : null}
               <button
                 type="submit"
                 className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
@@ -187,22 +174,3 @@ export default function UnsubscribePage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
