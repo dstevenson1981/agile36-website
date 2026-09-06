@@ -33,7 +33,7 @@ export default function CouponTicket() {
         <div className="flex-1 min-w-0 flex flex-col gap-0.5">
           <span className="text-[#01203d] font-bold text-lg">${BANNER_DISCOUNT_AMOUNT} OFF</span>
           <span className="text-[#01203d] text-sm">Coupon Code &quot;{code}&quot;</span>
-          <span className="text-[#01203d]/80 text-xs">Limited time · Ends soon</span>
+          <span className="text-[#01203d]/80 text-xs">Labor Day sale · Ends Monday morning</span>
         </div>
         <button
           onClick={handleCopy}

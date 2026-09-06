@@ -12,7 +12,7 @@ export type AvailablePromo = {
   label: string;
 };
 
-/** Clip coupons at checkout — $100 off while the site flash sale is active. */
+/** Clip coupons at checkout — $100 off while the Labor Day sale is active. */
 const DEFAULT_PROMOS: AvailablePromo[] = [
   { code: BANNER_COUPON_CODE, label: `$${BANNER_DISCOUNT_AMOUNT} Off` },
 ];
@@ -57,7 +57,7 @@ export default function AvailablePromoCodes({
         <p className="text-sm font-medium text-gray-900">Clip Coupon Code</p>
         {showingDefaultFlashSale && (
           <p className="text-xs font-semibold text-[#fa4a23]">
-            Limited time
+            Ends Monday morning
           </p>
         )}
       </div>

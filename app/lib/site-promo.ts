@@ -1,4 +1,4 @@
-/** Site-wide 100OFF promo */
+/** Site-wide 100OFF Labor Day sale */
 
 export const BANNER_COUPON_CODE = "100OFF";
 
@@ -6,40 +6,40 @@ export const BANNER_COUPON_CODE = "100OFF";
 export const BANNER_DISCOUNT_AMOUNT = 100;
 
 /** Marketing urgency copy (not enforced at checkout). Used by CouponDisplayModal if shown elsewhere. */
-export const PROMO_CODE_EXPIRES_IN = "30 mins";
+export const PROMO_CODE_EXPIRES_IN = "Monday morning";
 
-/** Rolling urgency window: clock never hits a hard end — it resets every 4 hours. */
-export const PROMO_WINDOW_MS = 4 * 60 * 60 * 1000;
+/**
+ * Labor Day 2026 — Monday 9:00 AM America/New_York (EDT).
+ * Checkout also enforces this via promo_codes.expires_at.
+ */
+export const PROMO_ENDS_AT_ISO = "2026-09-07T09:00:00-04:00";
+export const PROMO_ENDS_AT_MS = Date.parse(PROMO_ENDS_AT_ISO);
 
 /** Banner headline shown in PromoBanner. */
-export const PROMO_BANNER_TITLE = "August Flash Sale";
+export const PROMO_BANNER_TITLE = "Labor Day Sale";
 
 export type PromoCountdown = {
+  days: number;
   hours: number;
   minutes: number;
   seconds: number;
   totalMs: number;
 };
 
-/**
- * Remaining time in the current 4-hour window.
- * Windows are aligned to the Unix epoch so every client ticks the same clock.
- * When the remainder would be 0, the next window starts immediately (never a 00:00:00 end state).
- */
+/** Remaining time until Monday morning. Zeroed once the sale ends. */
 export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
-  const elapsedInWindow = nowMs % PROMO_WINDOW_MS;
-  const totalMs =
-    elapsedInWindow === 0 ? PROMO_WINDOW_MS : PROMO_WINDOW_MS - elapsedInWindow;
-  const totalSecs = Math.max(1, Math.floor(totalMs / 1000));
+  const totalMs = Math.max(0, PROMO_ENDS_AT_MS - nowMs);
+  const totalSecs = Math.floor(totalMs / 1000);
   return {
-    hours: Math.floor(totalSecs / 3600),
+    days: Math.floor(totalSecs / 86400),
+    hours: Math.floor((totalSecs % 86400) / 3600),
     minutes: Math.floor((totalSecs % 3600) / 60),
     seconds: totalSecs % 60,
     totalMs,
   };
 }
 
-/** Banner stays visible while this returns true. Rolling window — always active. */
-export function isSitePromoActive(): boolean {
-  return true;
+/** Banner stays visible until Monday morning. */
+export function isSitePromoActive(nowMs: number = Date.now()): boolean {
+  return nowMs < PROMO_ENDS_AT_MS;
 }

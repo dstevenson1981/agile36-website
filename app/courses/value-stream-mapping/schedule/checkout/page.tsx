@@ -9,6 +9,7 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
+import CheckoutEmailField from "@/app/components/CheckoutEmailField";
 import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillingCodeField';
 import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
@@ -487,13 +488,17 @@ function CheckoutContent() {
                     <label className="block text-sm font-medium text-[#475569] mb-2">
                       Email <span className="text-red-600">*</span>
                     </label>
-                    <input
-                      type="email"
-                      required
+                    <CheckoutEmailField
                       value={enrollmentFormData.email}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, email: e.target.value })}
-                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
-                      placeholder="your.email@example.com"
+                      onChange={(email) => setEnrollmentFormData({ ...enrollmentFormData, email })}
+                      capture={{
+                        courseSlug,
+                        courseName,
+                        scheduleId: selectedSchedule?.id,
+                        firstName: enrollmentFormData.firstName,
+                        lastName: enrollmentFormData.lastName,
+                        phone: enrollmentFormData.phone,
+                      }}
                     />
                   </div>
 

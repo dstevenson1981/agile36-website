@@ -79,7 +79,7 @@ export default function CouponDisplayModal({
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-left">
             <p className="text-sm text-gray-700 mb-1">
               <span className="font-semibold text-[#ea3d12]">
-                Expires in {PROMO_CODE_EXPIRES_IN}
+                Ends {PROMO_CODE_EXPIRES_IN}
               </span>
             </p>
             <p className="text-xs text-gray-600">

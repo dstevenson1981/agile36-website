@@ -57,7 +57,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                   {courseLong("certified-ai-product-manager")}
                 </h1>
                 <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Master AI-Powered Product Development and Build Prototypes That Validate Ideas Fast
+                  Prompting ChatGPT for research notes is last year&apos;s class. In this one you leave with a working app you built.
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="2,500+ enrolled"
@@ -74,10 +74,10 @@ export default function CertifiedAIProductManagerCoursePage() {
                 {/* Key Benefits with Checkmarks */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Use AI throughout the entire product development lifecycle",
-                    "Build and demo functional prototypes to stakeholders",
-                    "Validate product ideas rapidly with AI-powered tools",
-                    "Master AI-assisted product strategy and roadmapping",
+                    "Leave class with a live app, not a slide deck or a Figma file",
+                    "Build with Cursor, v0, Bolt, and Lovable — real UI, data, and deploy",
+                    "Put AI inside the product, not just in your PM workflow",
+                    "Make product calls while you build: scope, data, auth, what to cut",
                     "Earn Certified AI Product Manager™ certification"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
@@ -134,7 +134,7 @@ export default function CertifiedAIProductManagerCoursePage() {
               Why AI Product Managers Are Essential
             </h2>
             <p className="text-lg text-[#64748b] max-w-3xl mx-auto">
-              Product managers who leverage AI across the development lifecycle deliver better products faster. Companies need PMs who can build prototypes and validate ideas rapidly.
+              Companies do not need another PM who can summarize a backlog in ChatGPT. They need PMs who can sit down and ship a working product.
             </p>
           </div>
 
@@ -152,10 +152,10 @@ export default function CertifiedAIProductManagerCoursePage() {
             {/* Stat 2 - Faster Time-to-Market */}
             <div className="liquid-glass rounded-2xl p-6 md:p-8 transition-colors hover:bg-[#1f2c4a]/[0.1]">
               <div className="text-lg md:text-xl font-semibold text-[#1f2c4a] mb-3">Faster Time-to-Market</div>
-              <p className="text-sm text-[#64748b] mb-4">AI tools accelerate product development cycles significantly.</p>
+              <p className="text-sm text-[#64748b] mb-4">PMs who can build skip the handoff and show a live product instead of a deck.</p>
               <div className="pt-4 border-t border-[#1f2c4a]/15">
-                <div className="text-xl md:text-2xl font-bold text-[#d97706]">Rapid Prototyping</div>
-                <div className="text-xs md:text-sm text-[#64748b] mt-1">validate ideas in days</div>
+                <div className="text-xl md:text-2xl font-bold text-[#d97706]">Ship in class</div>
+                <div className="text-xs md:text-sm text-[#64748b] mt-1">a live URL, not a mock</div>
               </div>
             </div>
 
@@ -172,41 +172,41 @@ export default function CertifiedAIProductManagerCoursePage() {
 
           {/* Skills Section */}
           <div className="liquid-glass rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl md:text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6 text-center">Key Skills You'll Master</h3>
+            <h3 className="text-xl md:text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6 text-center">Key Skills You&apos;ll Master</h3>
             <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Powered Product Strategy</div>
-                  <div className="text-sm text-[#64748b]">Essential Competency</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Ship a working app in two days</div>
+                  <div className="text-sm text-[#64748b]">The class deliverable</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#d97706] rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Rapid Prototyping with AI Tools</div>
-                  <div className="text-sm text-[#64748b]">High Demand</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Build with Cursor, v0, Bolt, and Lovable</div>
+                  <div className="text-sm text-[#64748b]">The tools product teams ship with now</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Driven User Research & Insights</div>
-                  <div className="text-sm text-[#64748b]">Critical Skill</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Put AI inside the product</div>
+                  <div className="text-sm text-[#64748b]">A real feature, not a writing assistant</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#d97706] rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Stakeholder Validation & Demos</div>
-                  <div className="text-sm text-[#64748b]">Essential for Success</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Product calls while you build</div>
+                  <div className="text-sm text-[#64748b]">Scope, data, auth, what to cut</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">AI-Powered Product Analytics</div>
-                  <div className="text-sm text-[#64748b]">Data-Driven Decisions</div>
+                  <div className="font-semibold text-[#1f2c4a] text-sm md:text-base mb-1">Demo a live URL to stakeholders</div>
+                  <div className="text-sm text-[#64748b]">Sell the product from the product</div>
                 </div>
               </div>
             </div>
@@ -270,7 +270,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 ), 
-                title: "Hands-On Experience" 
+                title: "You Leave With an App" 
               }
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center text-center">
@@ -321,26 +321,26 @@ export default function CertifiedAIProductManagerCoursePage() {
                     <div>
                       <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">Course Overview</h2>
                       <p className="text-base text-[#475569] mb-4">
-                        The Certified AI Product Manager™ Certification Training is an intensive 2-day program (10 hours total) designed to teach product managers how to leverage AI throughout the entire product development lifecycle. This hands-on course focuses on practical AI applications from discovery through launch and iteration.
+                        This is a 2-day build class (10 hours). You pick a product, stand it up, and leave with a working app. We are not covering how to use AI in discovery, roadmapping, and launch. That class is everywhere, and it is stale.
                       </p>
                       <p className="text-base text-[#475569] mb-4">
-                        Learn to use AI for market research, user insights, competitive analysis, feature prioritization, and roadmap planning. The highlight of this course is building a functional prototype that you'll demo to validate product ideas with stakeholders—all powered by AI tools that dramatically accelerate development timelines.
+                        You will use the same tools product teams ship with now — Cursor, v0, Bolt, Lovable — to get a real UI, real data, and a live URL. Then you put an AI feature inside the product itself and demo it. Stakeholders click the app. They do not sit through a deck about the app.
                       </p>
                       <p className="text-base text-[#475569] mb-4">
-                        You'll master AI-powered product strategy, rapid prototyping techniques, and stakeholder validation methods. By the end of this course, you'll have built a working prototype and earned your Certified AI Product Manager™ certification, positioning you at the forefront of modern product management.
+                        The product work still matters: what to cut, what to persist, what the AI should never do, and what you would hand an engineer next. You make those calls on something you built, not on a slide. You leave with the Certified AI Product Manager™ certification and a URL you can send on Monday.
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You'll Learn</h3>
+                      <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">What You&apos;ll Learn</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         {[
-                          "Use AI across the entire product lifecycle",
-                          "Build functional prototypes for stakeholder demos",
-                          "Accelerate product discovery with AI insights",
-                          "Master AI-powered feature prioritization",
-                          "Validate ideas rapidly with AI tools",
-                          "Create data-driven product roadmaps with AI"
+                          "Stand up a working app in class and deploy it",
+                          "Build with Cursor, v0, Bolt, and Lovable",
+                          "Add data, auth, and a path a real user can complete",
+                          "Ship an AI feature inside the product",
+                          "Make scope and cut calls while you build",
+                          "Demo a live URL instead of a prototype deck"
                         ].map((item, index) => (
                           <div key={index} className="flex items-start gap-3">
                             <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -359,12 +359,12 @@ export default function CertifiedAIProductManagerCoursePage() {
                         <li>Product Leaders and Directors</li>
                         <li>Product Marketing Managers</li>
                         <li>Innovation Leaders and Strategists</li>
-                        <li>Anyone building AI-powered products</li>
+                        <li>Anyone who wants to ship the first version themselves</li>
                       </ul>
 
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4 mt-6">Certification</h3>
                       <p className="text-[14.5px] text-[#475569]">
-                        You'll earn the <strong>Certified AI Product Manager™ Certification</strong>, issued through <strong>Accredible</strong>, the global credentialing platform used by top universities and training providers.
+                        You&apos;ll earn the <strong>Certified AI Product Manager™ Certification</strong>, issued through <strong>Accredible</strong>, the global credentialing platform used by top universities and training providers.
                       </p>
                     </div>
                   </div>
@@ -391,92 +391,92 @@ export default function CertifiedAIProductManagerCoursePage() {
                     <div className="space-y-4">
                       {[
                         { 
-                          title: "Module 1: AI in Product Discovery & Research",
+                          title: "Module 1: From idea to a shippable product",
                           topics: [
-                            "Use AI for market research and competitive analysis",
-                            "Generate customer insights with AI tools",
-                            "Identify market opportunities using AI",
-                            "Analyze trends and patterns with AI analytics",
-                            "Validate market fit with AI-powered surveys"
+                            "Pick the app you will build and cut it to something you can ship in two days",
+                            "Name the user, the job, and the one workflow that has to work",
+                            "Set up Cursor, v0 / Bolt / Lovable, and hosting",
+                            "Define done: a live URL someone else can click",
+                            "Write the thinnest product brief that still guides a build"
                           ],
-                          learningObjective: "Master AI-powered product discovery techniques to identify opportunities, understand markets, and validate product-market fit faster"
+                          learningObjective: "Leave with a scoped product and a running project, not a PRD"
                         },
                         { 
-                          title: "Module 2: AI-Powered User Research & Insights",
+                          title: "Module 2: Build the first working version",
                           topics: [
-                            "Conduct AI-assisted user interviews",
-                            "Analyze user feedback at scale with AI",
-                            "Generate user personas with AI",
-                            "Identify pain points using sentiment analysis",
-                            "Create journey maps with AI assistance"
+                            "Generate the app shell and get it running",
+                            "Screens, navigation, and the core user path",
+                            "Fake data vs real data — when each is enough",
+                            "Fix what the tools get wrong instead of starting over",
+                            "Keep the first version clickable before you add more"
                           ],
-                          learningObjective: "Leverage AI to accelerate user research, extract deeper insights, and understand customer needs more comprehensively"
+                          learningObjective: "Have a working first version, not a mock, before you go further"
                         },
                         { 
-                          title: "Module 3: AI-Driven Product Strategy & Roadmapping",
+                          title: "Module 3: Data, auth, and the parts that make it an app",
                           topics: [
-                            "Develop product vision with AI assistance",
-                            "Prioritize features using AI algorithms",
-                            "Create data-driven roadmaps with AI",
-                            "Forecast product metrics with AI",
-                            "Generate strategic alternatives with AI"
+                            "Persist something: lists, records, or user-generated content",
+                            "Add login or a simple access path",
+                            "Connect an API or backend the product actually needs",
+                            "Do not overbuild — ship the thinnest real version",
+                            "Know the difference between a demo and an app people can use"
                           ],
-                          learningObjective: "Build strategic product roadmaps and make prioritization decisions using AI-powered insights and analytics"
+                          learningObjective: "Turn the first version into something a real user can complete"
                         },
                         { 
-                          title: "Module 4: Rapid Prototyping with AI Tools",
+                          title: "Module 4: Put AI in the product",
                           topics: [
-                            "Design prototypes using AI tools (Figma, V0, etc.)",
-                            "Generate UI/UX elements with AI",
-                            "Build interactive prototypes quickly",
-                            "Create realistic mockups with AI",
-                            "Iterate designs based on AI feedback"
+                            "Add a real AI feature: generate, extract, classify, or assist",
+                            "Treat prompting as product work, not chat",
+                            "Design what the user sees when the model is wrong",
+                            "Guardrails, cost, latency, and when not to use a model",
+                            "Ship the capability inside the app, not in a sidebar of your workflow"
                           ],
-                          learningObjective: "Master rapid prototyping techniques using AI to create realistic, interactive prototypes in hours instead of weeks"
+                          learningObjective: "Ship an AI feature customers would recognize as part of the product"
                         },
                         { 
-                          title: "Module 5: Building Your Product Prototype (Hands-On)",
+                          title: "Module 5: Finish and deploy",
                           topics: [
-                            "Hands-on: Build a functional prototype from scratch",
-                            "Integrate AI features into your prototype",
-                            "Create demo-ready product experiences",
-                            "Test prototypes with AI usability analysis",
-                            "Prepare presentation materials for stakeholders"
+                            "Polish the path you will demo",
+                            "Deploy to a live URL",
+                            "Open it on your phone. Send it to someone else.",
+                            "Break it, then fix what would embarrass you in a stakeholder meeting",
+                            "Package the URL, the story, and the ask"
                           ],
-                          learningObjective: "Build a complete, functional prototype that demonstrates your product concept and is ready to present to stakeholders"
+                          learningObjective: "Leave with a public URL you can send after class"
                         },
                         { 
-                          title: "Module 6: Stakeholder Validation & Presentations",
+                          title: "Module 6: Product calls you only make when you are building",
                           topics: [
-                            "Present prototypes effectively to stakeholders",
-                            "Gather and analyze feedback with AI",
-                            "Iterate based on stakeholder input",
-                            "Build business cases with AI data",
-                            "Communicate product vision compellingly"
+                            "What you cut and why",
+                            "What you would hire an engineer for next",
+                            "Price the next 30 days of work from the build, not a guess",
+                            "Write the product story from the working app",
+                            "Decide what is a bug, a feature, and a later release"
                           ],
-                          learningObjective: "Master techniques for validating product ideas with stakeholders and gathering actionable feedback using your AI-powered prototype"
+                          learningObjective: "Practice PM judgment on something you shipped"
                         },
                         { 
-                          title: "Module 7: AI in Product Development & Launch",
+                          title: "Module 7: Demo the live app",
                           topics: [
-                            "Manage product backlogs with AI",
-                            "Write user stories using AI assistance",
-                            "Optimize development workflows with AI",
-                            "Plan go-to-market strategies with AI",
-                            "Track launch metrics with AI analytics"
+                            "Walk a stakeholder through the working product",
+                            "Take feedback against a live build, not slides",
+                            "Decide what to change tonight vs next week",
+                            "Handle the questions only a real app surfaces",
+                            "Close with a clear next ask"
                           ],
-                          learningObjective: "Apply AI throughout product development and launch phases to improve efficiency and increase chances of success"
+                          learningObjective: "Sell the product from the product"
                         },
                         { 
-                          title: "Module 8: AI-Powered Product Analytics & Iteration",
+                          title: "Module 8: What you take back to work",
                           topics: [
-                            "Measure product performance with AI",
-                            "Analyze user behavior using AI tools",
-                            "Generate insights from product data",
-                            "Identify improvement opportunities with AI",
-                            "Build continuous iteration processes"
+                            "Run this build loop on Monday with your team",
+                            "When to build it yourself vs when to brief engineering",
+                            "Measure whether the app is doing the job",
+                            "Repeat the loop on the next idea",
+                            "Exam prep and certification"
                           ],
-                          learningObjective: "Use AI analytics to measure product success, understand user behavior, and drive continuous product improvement"
+                          learningObjective: "Leave with a repeatable way to ship, not a one-off class project"
                         }
                       ].map((part, index) => (
                         <div key={index} className="border border-blue-200 rounded-lg bg-white">
@@ -540,19 +540,19 @@ export default function CertifiedAIProductManagerCoursePage() {
                         { 
                           name: "Sarah Johnson", 
                           role: "Senior Product Manager", 
-                          review: "This course completely transformed how I approach product development. I built a working prototype in class that we actually used to secure funding from our board. The AI techniques for user research and competitive analysis alone were worth the price. Highly recommend!",
+                          review: "I left with a live app, not a deck. We used the URL in a board meeting that week. That is a different conversation than walking through research slides. Build the thing.",
                           rating: 5
                         },
                         { 
                           name: "Michael Chen", 
                           role: "Product Director", 
-                          review: "Incredible value! The hands-on prototype building session was the highlight—we created something demo-ready that validated our entire product hypothesis. The AI-powered roadmapping and prioritization techniques have become essential in my daily workflow. Worth every dollar!",
+                          review: "The build sessions are the class. Cursor and v0 got me to a working product the first day. I still cut features and write the story — I just do it against something people can click.",
                           rating: 5
                         },
                         { 
                           name: "Emily Rodriguez", 
                           role: "Product Lead", 
-                          review: "Finally, a course that shows PMs how to actually USE AI, not just understand it. The stakeholder validation module helped me present better demos, and the AI analytics section revolutionized how I measure product success. The certification is already opening doors!",
+                          review: "I have sat through the 'use AI across the lifecycle' class. This is not that. We shipped an app, put an AI feature in it, and demoed a live URL. That is the job now.",
                           rating: 5
                         }
                       ].map((review, index) => (
@@ -584,10 +584,10 @@ export default function CertifiedAIProductManagerCoursePage() {
                     <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Frequently Asked Questions</h2>
                     <div className="space-y-4">
                       {[
-                  { q: "What is the Certified AI Product Manager™ Certification Training?", a: "This is a comprehensive 2-day intensive program (10 hours total) designed to teach product managers how to leverage AI throughout the entire product development lifecycle. You'll build a functional prototype in class and learn AI-powered techniques for research, strategy, and validation." },
-                  { q: "Do I need technical or coding experience?", a: "No coding experience is required! This course uses AI tools that are accessible to all product managers. We focus on practical application of AI in product management, not programming." },
-                        { q: "What is included in the course?", a: "The course includes 10 hours of live training, hands-on prototype building, AI product management tools and templates, comprehensive course materials, and certification upon completion." },
-                        { q: "What tools will I learn to use?", a: "You'll learn to use AI tools for product research (ChatGPT, Claude), prototyping (Figma, V0, Bolt), analytics, user research, competitive analysis, and product roadmapping. All tools are accessible and product-manager friendly." }
+                  { q: "What is the Certified AI Product Manager™ Certification Training?", a: "A 2-day build class (10 hours). You leave with a working app you shipped in class — a live URL, not a prototype deck — and the Certified AI Product Manager™ certification." },
+                  { q: "Do I need technical or coding experience?", a: "No traditional coding background is required. You build with Cursor, v0, Bolt, and Lovable. You will be making the product, not sitting through a lecture about tools." },
+                        { q: "What is included in the course?", a: "Ten hours of live training, a working app you build and deploy, the tools and templates for the next build, course materials, and certification when you pass the exam." },
+                        { q: "What tools will I learn to use?", a: "Cursor, v0, Bolt, and Lovable to ship the app. Claude and ChatGPT when they help the product, not as a substitute for building it." }
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
                           <h3 className="font-bold text-[#1f2c4a] mb-2">{faq.q}</h3>
@@ -626,7 +626,7 @@ export default function CertifiedAIProductManagerCoursePage() {
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">Hands-On Exercises</span>
+                    <span className="text-sm text-[#475569]">You leave with a live app</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -705,9 +705,9 @@ export default function CertifiedAIProductManagerCoursePage() {
                   { q: "Are there any hidden fees?", a: "No, the course price includes all training materials and resources. There are no hidden fees." }
                 ],
                 generic: [
-                  { q: "What is the Certified AI Product Manager™ Certification Training?", a: "This is a comprehensive 2-day intensive program (10 hours total) that teaches product managers how to use AI throughout the product development lifecycle. You'll build a working prototype in class and learn to validate ideas with stakeholders effectively." },
-                  { q: "Who should take this course?", a: "This course is ideal for Product Managers, Product Owners, Product Leaders, Product Marketing Managers, Innovation Leaders, and anyone responsible for building and launching products." },
-                  { q: "What are the prerequisites for this course?", a: "Product management experience is helpful but not required. No coding or technical background needed—this course uses accessible AI tools designed for product managers." },
+                  { q: "What is the Certified AI Product Manager™ Certification Training?", a: "A 2-day class where product managers build and deploy a working app. The old version of this course was about using AI across the product lifecycle. This one is about shipping." },
+                  { q: "Who should take this course?", a: "Product Managers, Product Owners, Product Leaders, and anyone who is tired of briefing other people to build and wants to ship the first version themselves." },
+                  { q: "What are the prerequisites for this course?", a: "Product sense helps. Traditional coding does not. You will be in the tools and shipping, not watching slides about AI." },
                   { q: "Will I receive a certification?", a: "Yes! Upon passing the certification exam, you'll receive the Certified AI Product Manager™ Certification, issued through Accredible, the global credentialing platform used by top universities and training providers." }
                 ]
               };

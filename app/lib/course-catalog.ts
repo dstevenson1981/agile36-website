@@ -278,7 +278,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       hours: "16 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "AI Product Strategy, Product Management with AI, AI Integration",
+      skills: "Ship a Working App, Cursor / v0 / Bolt, Live Product Demos",
       popular: true,
     },
     {

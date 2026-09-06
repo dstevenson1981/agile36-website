@@ -8,6 +8,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { findComboById, type Combo } from "../data";
 import ComboPaymentForm from "./ComboPaymentForm";
 import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
+import CheckoutEmailField from "@/app/components/CheckoutEmailField";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -330,16 +331,24 @@ function ComboCheckoutContent() {
                     <label className="block text-sm font-medium text-[#475569] mb-2">
                       Email <span className="text-red-600">*</span>
                     </label>
-                    <input
-                      type="email"
-                      required
+                    <CheckoutEmailField
                       value={formData.email}
-                      onChange={(e) => {
-                        setFormData({ ...formData, email: e.target.value });
+                      onChange={(email) => {
+                        setFormData({ ...formData, email });
                         setFormError(null);
                       }}
-                      className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
                       placeholder="your@email.com"
+                      capture={{
+                        courseSlug: comboId ? `combo-${comboId}` : "combo",
+                        courseName: combo?.name,
+                        scheduleId:
+                          Object.values(parsedSelections).find((s) => s?.scheduleId)?.scheduleId ||
+                          scheduleIds[0],
+                        firstName: formData.firstName,
+                        lastName: formData.lastName,
+                        phone: formData.phone,
+                        comboId: comboId || undefined,
+                      }}
                     />
                   </div>
                 </div>

@@ -104,7 +104,11 @@ function ClockOutlineIcon({ className }: { className?: string }) {
 }
 
 function formatHms(countdown: PromoCountdown): string {
-  return `${pad2(countdown.hours)}:${pad2(countdown.minutes)}:${pad2(countdown.seconds)}`;
+  const clock = `${pad2(countdown.hours)}:${pad2(countdown.minutes)}:${pad2(countdown.seconds)}`;
+  if (countdown.days > 0) {
+    return `${countdown.days}d ${clock}`;
+  }
+  return clock;
 }
 
 function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {

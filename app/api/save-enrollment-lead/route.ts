@@ -30,17 +30,16 @@ export async function POST(request: NextRequest) {
       createStripeCustomer = true,
     } = body;
 
-    // Validate required fields
-    if (!scheduleId || !courseSlug || !firstName || !lastName || !email || !phone) {
+    // Email + course are enough. Names/phone/schedule come later if they continue.
+    if (!courseSlug || !email) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(String(email))) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
@@ -85,28 +84,63 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Store enrollment lead in Supabase
+    const first = typeof firstName === 'string' ? firstName.trim() : '';
+    const last = typeof lastName === 'string' ? lastName.trim() : '';
+    const phoneValue = typeof phone === 'string' ? phone.trim() : '';
+    const resolvedScheduleId =
+      typeof scheduleId === 'string' && scheduleId.trim()
+        ? scheduleId.trim()
+        : 'unknown';
+
+    const { data: existingRows } = await supabase
+      .from('enrollment_leads')
+      .select('id, first_name, last_name, phone, schedule_id, status')
+      .eq('email', trimmedEmail)
+      .eq('course_slug', courseSlug)
+      .in('status', ['pending', 'abandoned'])
+      .order('created_at', { ascending: false })
+      .limit(1);
+    const existing = existingRows?.[0] ?? null;
+
     const leadData = {
-      schedule_id: scheduleId,
+      schedule_id:
+        resolvedScheduleId !== 'unknown'
+          ? resolvedScheduleId
+          : existing?.schedule_id || 'unknown',
       course_slug: courseSlug,
       course_name: courseName || null,
       enrolling_for: enrollingFor || 'myself',
-      first_name: firstName.trim(),
-      last_name: lastName.trim(),
+      first_name: first || existing?.first_name || '',
+      last_name: last || existing?.last_name || '',
       email: trimmedEmail,
-      phone: phone.trim(),
+      phone: phoneValue || existing?.phone || '',
       alternative_contact: alternativeContact?.trim() || null,
       referral_code: referralCode?.trim() || null,
-      status: 'pending',
-      created_at: new Date().toISOString(),
+      status: existing?.status === 'abandoned' ? 'pending' : existing?.status || 'pending',
       updated_at: new Date().toISOString(),
     };
 
-    const { data: lead, error: leadError } = await supabase
-      .from('enrollment_leads')
-      .insert(leadData)
-      .select()
-      .single();
+    let lead: { id: string } | null = existing ? { id: existing.id } : null;
+    let leadError: { code?: string; message?: string } | null = null;
+
+    if (existing?.id) {
+      const { error } = await supabase
+        .from('enrollment_leads')
+        .update(leadData)
+        .eq('id', existing.id);
+      leadError = error;
+    } else {
+      const inserted = await supabase
+        .from('enrollment_leads')
+        .insert({
+          ...leadData,
+          created_at: new Date().toISOString(),
+        })
+        .select('id')
+        .single();
+      lead = inserted.data;
+      leadError = inserted.error;
+    }
 
     if (leadError) {
       console.error('Error saving enrollment lead:', leadError);
@@ -125,20 +159,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new Stripe customer when Basic Details are entered (always create new, no lookup).
-    // Skipped when createStripeCustomer is false (e.g. subsequent combo schedule lead inserts).
+    // Stripe customer only when they have a real name (Continue), not email-only capture.
     let stripeCustomerId: string | null = null;
     const stripeKey = process.env.STRIPE_SECRET_KEY;
-    if (createStripeCustomer !== false && stripeKey) {
+    const hasIdentity = Boolean(first && last);
+    if (createStripeCustomer !== false && hasIdentity && stripeKey) {
       try {
         const stripe = new Stripe(stripeKey);
-        const customerName = `${firstName.trim()} ${lastName.trim()}`;
+        const customerName = `${first} ${last}`.trim();
         const isComboLead = Boolean(comboId);
 
         const customer = await stripe.customers.create({
           email: trimmedEmail,
           name: customerName,
-          phone: phone.trim() || undefined,
+          phone: phoneValue || undefined,
           metadata: {
             courseSlug: courseSlug || '',
             ...(isComboLead ? { comboId: String(comboId) } : {}),
@@ -155,7 +189,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      leadId: lead.id,
+      leadId: lead?.id,
       stripeCustomerId,
       message: 'Enrollment lead saved successfully',
     });

@@ -538,7 +538,7 @@ export default function Header() {
       hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "AI Product Development, Prototype Building, Stakeholder Validation",
+      skills: "Ship a Working App, Cursor / v0 / Bolt, Live Product Demos",
       popular: true,
     },
   ];
