@@ -12,8 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
-import type { BrochureCourse, Lesson } from "./types";
+import type { BrochureCourse, BrochureLanding, Lesson } from "./types";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const CSS = fs.readFileSync(path.join(here, "brochure.css"), "utf8");
@@ -84,7 +83,7 @@ function statTiles(items: { value: string; unit?: string; label: string }[]) {
 
 /* ------------------------------- pages ---------------------------------- */
 
-function cover(c: BrochureCourse, l: CatalogLandingContent) {
+function cover(c: BrochureCourse, l: BrochureLanding) {
   const { main: line1, accent: tail } = c.coverTitle;
   return `<section class="page cover">
   <div class="cover-band"><img src="${esc(c.band)}" alt="" /></div>
@@ -132,7 +131,7 @@ ${c.whatsNew
 </section>`;
 }
 
-function contents(c: BrochureCourse, l: CatalogLandingContent) {
+function contents(c: BrochureCourse, l: BrochureLanding) {
   const rows: [string, string, number][] = [
     ["01", "Program overview &amp; what's included", 3],
     ["02", "Why this certification, now", 4],
@@ -230,7 +229,7 @@ const INCLUDE_ICONS = [
   "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
 ];
 
-function overview(c: BrochureCourse, l: CatalogLandingContent) {
+function overview(c: BrochureCourse, l: BrochureLanding) {
   const paras = c.overview.body ?? l.lede.split("\n\n");
   const includes: { t: string; d: string; accent?: boolean }[] = [
     { t: `${c.duration.hours} hours live`, d: `${c.duration.days} of instructor-led virtual classroom — not recordings.` },
@@ -258,7 +257,7 @@ ${paras.map((t, i) => `      <p class="lede"${i === paras.length - 1 ? ' style="
     <div class="panel navy">
       <span class="eyebrow">The Agile36 difference</span>
       <div class="rule"></div>
-      <p class="small" style="color:rgba(255,255,255,0.78)">${rich(l.whyRows[0]?.usRest ?? "")}</p>
+      <p class="small" style="color:rgba(255,255,255,0.78)">${rich(l.difference)}</p>
       <p class="small" style="color:rgba(255,255,255,0.78); margin:0">Every class is live, capped for discussion, and led by a certified SAFe® Practice Consultant.</p>
     </div>
   </div>
@@ -292,8 +291,8 @@ ${pageFoot(3)}
 </section>`;
 }
 
-function whyNow(c: BrochureCourse, l: CatalogLandingContent) {
-  const review = l.reviews[0];
+function whyNow(c: BrochureCourse, l: BrochureLanding) {
+  const review = l.review;
   return `<section class="page compact">
 ${pageHead(l.crumb, "Why now · Delivery · Prerequisites")}
 
@@ -360,7 +359,7 @@ ${pageFoot(4)}
 </section>`;
 }
 
-function outcomes(c: BrochureCourse, l: CatalogLandingContent) {
+function outcomes(c: BrochureCourse, l: BrochureLanding) {
   // Prefer the courseware's own learning objectives; the catalog's outcomes
   // field is a four-line marketing summary and reads thin at this size.
   const groups = c.outcomeGroups
@@ -420,10 +419,10 @@ ${pageFoot(5)}
 </section>`;
 }
 
-function curriculum(c: BrochureCourse, l: CatalogLandingContent) {
+function curriculum(c: BrochureCourse, l: BrochureLanding) {
   // Lessons come from the courseware kit; the weighted domains beside them are
   // the exam blueprint, which Scaled Agile versions separately.
-  const mods = l.curriculum.flatMap((d) => d.modules);
+  const mods = l.curriculumModules;
   // Courses with a courseware kit use its lessons; the rest use the catalog
   // modules the website already publishes.
   const lessons: Lesson[] =
@@ -437,7 +436,7 @@ ${pageHead(l.crumb, `Curriculum · ${c.version}`)}
   <span class="eyebrow amber">06 · Course curriculum</span>
   <h2 class="section">${lessons.length} ${c.lessons ? "lessons" : "modules"}, ${days}</h2>
   <div class="rule"></div>
-  <p class="small" style="margin:-6px 0 14px; max-width:5.6in">The official ${esc(c.version)} ${c.lessons ? "lesson" : "module"} structure.${c.ai ? ` Topics marked <span class="aitag" style="margin-left:0">AI</span> are new or reworked in this release — AI runs through the lessons rather than sitting in one at the end.` : ""}</p>
+  <p class="small" style="margin:-6px 0 14px; max-width:5.6in">The official ${esc(c.version)} ${c.lessons ? "lesson" : "module"} structure.${lessons.some((m) => m.aiTopics?.length) ? ` Topics marked <span class="aitag" style="margin-left:0">AI</span> are new or reworked in this release — AI runs through the lessons rather than sitting in one at the end.` : ""}</p>
 
   <div class="grid-2" style="gap:11px">
 ${lessons
@@ -481,7 +480,7 @@ ${pageFoot(6)}
 </section>`;
 }
 
-function aiPage(c: BrochureCourse, l: CatalogLandingContent) {
+function aiPage(c: BrochureCourse, l: BrochureLanding) {
   const ai = c.ai!;
   return `<section class="page compact">
 ${pageHead(l.crumb, "AI in this course")}
@@ -551,7 +550,7 @@ ${pageFoot(7)}
 </section>`;
 }
 
-function closing(c: BrochureCourse, l: CatalogLandingContent, n: number) {
+function closing(c: BrochureCourse, l: BrochureLanding, n: number) {
   return `<section class="page">
 ${pageHead(l.crumb, "Instructors · Enrollment")}
 
@@ -619,7 +618,7 @@ ${pageFoot(n)}
 
 /* ------------------------------- render --------------------------------- */
 
-export function renderBrochure(c: BrochureCourse, l: CatalogLandingContent): string {
+export function renderBrochure(c: BrochureCourse, l: BrochureLanding): string {
   const pages = [
     cover(c, l),
     contents(c, l),
@@ -635,7 +634,7 @@ export function renderBrochure(c: BrochureCourse, l: CatalogLandingContent): str
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>${esc(l.title)} — Course Brochure | Agile36</title>
+<title>${esc(c.coverTitle.main.replace(/<br \/>/g, " "))}${c.coverTitle.accent ? " " + esc(c.coverTitle.accent) : ""} — Course Brochure | Agile36</title>
 <style>
 ${CSS}</style>
 </head>

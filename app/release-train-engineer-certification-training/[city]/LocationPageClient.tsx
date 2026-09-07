@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 export default function CityRTECoursePage() {
   const params = useParams();
@@ -131,7 +132,7 @@ export default function CityRTECoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
-                  href="/RTE_Brochure.pdf" 
+                  href={COURSE_BROCHURE_HREF["release-train-engineer"]} 
                   download
                   target="_blank"
                   rel="noopener noreferrer"

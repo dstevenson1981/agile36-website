@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
-import { AI_AGENT_BUILDER_BROCHURE_HREF } from "@/app/lib/ai-agent-builder-brochure";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import { courseLong } from "@/app/lib/course-seo";
 
@@ -101,7 +101,7 @@ export default function NoCodeAIAgentsCoursePage() {
                   Open AI Academy
                 </Link>
                 <a
-                  href={AI_AGENT_BUILDER_BROCHURE_HREF}
+                  href={COURSE_BROCHURE_HREF["ai-agent-builder"]}
                   download
                   target="_blank"
                   rel="noopener noreferrer"
@@ -393,7 +393,7 @@ export default function NoCodeAIAgentsCoursePage() {
                         <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">No-Code AI Agents & Automation™ Course Curriculum</h2>
                       </div>
                       <a
-                        href={AI_AGENT_BUILDER_BROCHURE_HREF}
+                        href={COURSE_BROCHURE_HREF["ai-agent-builder"]}
                         download
                         target="_blank"
                         rel="noopener noreferrer"

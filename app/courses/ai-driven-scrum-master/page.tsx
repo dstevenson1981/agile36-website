@@ -7,6 +7,7 @@ import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import { courseLong } from "@/app/lib/course-seo";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 export default function AIDrivenScrumMasterCoursePage() {
   const [showConsultationModal, setShowConsultationModal] = useState(false);
@@ -93,7 +94,7 @@ export default function AIDrivenScrumMasterCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
-                  href="/AI_Driven_Scrum_Master_Brochure.pdf" 
+                  href={COURSE_BROCHURE_HREF["ai-driven-scrum-master"]} 
                   download
                   target="_blank"
                   rel="noopener noreferrer"
@@ -579,7 +580,7 @@ export default function AIDrivenScrumMasterCoursePage() {
                         <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">AI-Driven Scrum Master™ Course Curriculum</h2>
                       </div>
                       <a 
-                        href="/AI_Driven_Scrum_Master_Brochure.pdf" 
+                        href={COURSE_BROCHURE_HREF["ai-driven-scrum-master"]} 
                         download
                         target="_blank"
                         rel="noopener noreferrer"

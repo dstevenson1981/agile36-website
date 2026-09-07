@@ -33,6 +33,22 @@ export type Lesson = {
   aiTopics?: string[];
 };
 
+/**
+ * The slice of course content the template needs. Catalog courses adapt
+ * `getCatalogLanding(slug)` into this; bespoke courses (the AI/GenAI catalog,
+ * which has no catalog entry) supply it directly on the course.
+ */
+export type BrochureLanding = {
+  crumb: string;
+  lede: string;
+  /** The "Agile36 difference" paragraph. */
+  difference: string;
+  outcomes: string[];
+  curriculumModules: { title: string; topics: string[]; weight?: string }[];
+  examNote: string;
+  review?: { name: string; role: string; review: string };
+};
+
 export type BrochureCourse = {
   slug: string;
   /** Courseware version stamped on the cover, e.g. "2026.05". */
@@ -63,6 +79,11 @@ export type BrochureCourse = {
   audience: { role: string; note: string }[];
   /** Sectors this training has been delivered into. */
   industries: string[];
+  /**
+   * Course content for brochures with no catalog landing entry.
+   * Catalog courses leave this out and the catalog is adapted instead.
+   */
+  landing?: BrochureLanding;
   /**
    * Lesson structure from the official courseware kit.
    * Omit for courses with no kit — the catalog curriculum is used instead,

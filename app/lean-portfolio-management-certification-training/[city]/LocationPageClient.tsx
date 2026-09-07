@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 export default function CityLPMCoursePage() {
   const params = useParams();
@@ -178,7 +179,7 @@ export default function CityLPMCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
-                  href="/LPM_6.0_Partner (1).pdf" 
+                  href={COURSE_BROCHURE_HREF["lean-portfolio-management"]} 
                   download
                   target="_blank"
                   rel="noopener noreferrer"

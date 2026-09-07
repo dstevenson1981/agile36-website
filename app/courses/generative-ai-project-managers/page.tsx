@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
-import { GENERATIVE_AI_PM_BROCHURE_HREF } from "@/app/lib/generative-ai-pm-brochure";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import { courseLong } from "@/app/lib/course-seo";
 
@@ -93,7 +93,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
-                  href={GENERATIVE_AI_PM_BROCHURE_HREF}
+                  href={COURSE_BROCHURE_HREF["generative-ai-project-managers"]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2"
@@ -608,7 +608,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                         <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Generative AI for Project Managers Course Curriculum</h2>
                       </div>
                       <a
-                        href={GENERATIVE_AI_PM_BROCHURE_HREF}
+                        href={COURSE_BROCHURE_HREF["generative-ai-project-managers"]}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"

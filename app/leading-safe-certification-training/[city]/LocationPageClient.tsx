@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 export default function CityLeadingSafeCoursePage() {
   const params = useParams();
@@ -179,7 +180,7 @@ export default function CityLeadingSafeCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
-                  href="/Leading-SAFe_6.0_Partner.pdf" 
+                  href={COURSE_BROCHURE_HREF["leading-safe"]} 
                   download
                   target="_blank"
                   rel="noopener noreferrer"

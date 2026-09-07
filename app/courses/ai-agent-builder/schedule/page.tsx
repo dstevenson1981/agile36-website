@@ -5,7 +5,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { AI_AGENT_BUILDER_BROCHURE_HREF } from "@/app/lib/ai-agent-builder-brochure";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -417,7 +417,7 @@ function CourseScheduleContent() {
                         quantity={qty}
                         onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
                         onGroupInquiry={() => handleGroupInquiryClick(schedule)}
-                        brochureHref={AI_AGENT_BUILDER_BROCHURE_HREF}
+                        brochureHref={COURSE_BROCHURE_HREF["ai-agent-builder"]}
                         examLabel={"No Exam"}
                         showSafeBadges
                       />

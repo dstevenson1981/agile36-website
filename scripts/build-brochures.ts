@@ -14,6 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { getCatalogLanding } from "@/app/lib/catalog-landing-courses";
+import type { BrochureCourse, BrochureLanding } from "@/content/brochures/lib/types";
 import { BROCHURE_COURSES } from "@/content/brochures/lib/courses";
 import { renderBrochure } from "@/content/brochures/lib/template";
 
@@ -35,7 +36,31 @@ export const BROCHURE_FILE: Record<string, string> = {
   devops: "SAFe-DevOps-Brochure-Agile36",
   "value-stream-mapping": "Value-Stream-Mapping-Brochure-Agile36",
   "responsible-ai": "Responsible-AI-Brochure-Agile36",
+  "ai-agent-builder": "No-Code-AI-Agents-Automation-Brochure-Agile36",
+  "generative-ai-project-managers": "GenAI-for-Project-Managers-Brochure-Agile36",
+  "certified-ai-product-manager": "Certified-AI-Product-Manager-Brochure-Agile36",
+  "certified-genai-practitioner": "Certified-GenAI-Practitioner-Brochure-Agile36",
+  "executive-genai-leadership": "Executive-GenAI-Leadership-Brochure-Agile36",
+  "ai-driven-scrum-master": "AI-Driven-Scrum-Master-Brochure-Agile36",
 };
+
+/**
+ * Catalog courses read their content from the website; the bespoke AI/GenAI
+ * courses have no catalog entry and carry it on the course itself.
+ */
+function landingFor(course: BrochureCourse): BrochureLanding {
+  if (course.landing) return course.landing;
+  const l = getCatalogLanding(course.slug);
+  return {
+    crumb: l.crumb,
+    lede: l.lede,
+    difference: l.whyRows[0]?.usRest ?? "",
+    outcomes: l.outcomes,
+    curriculumModules: l.curriculum.flatMap((d) => d.modules),
+    examNote: l.examNote,
+    review: l.reviews[0],
+  };
+}
 
 async function main() {
   const want = process.argv.slice(2);
@@ -55,8 +80,7 @@ async function main() {
 
   for (const slug of slugs) {
     const course = BROCHURE_COURSES[slug];
-    const landing = getCatalogLanding(slug);
-    const html = renderBrochure(course, landing);
+    const html = renderBrochure(course, landingFor(course));
 
     const htmlPath = path.join(htmlDir, `${slug}.html`);
     fs.writeFileSync(htmlPath, html);

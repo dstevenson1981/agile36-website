@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import CourseHeroSocialProof from "@/app/components/CourseHeroSocialProof";
 import { getLocationCourseTitle } from "@/app/lib/location-training-metadata";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 export default function CitySSMCoursePage() {
   const params = useParams();
@@ -179,7 +180,7 @@ export default function CitySSMCoursePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <a 
-                  href="/SSM_Agile36_Brochure.pdf" 
+                  href={COURSE_BROCHURE_HREF["scrum-master"]} 
                   download
                   target="_blank"
                   rel="noopener noreferrer"
