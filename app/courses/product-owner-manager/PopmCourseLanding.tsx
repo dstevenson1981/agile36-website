@@ -816,10 +816,10 @@ export default function PopmCourseLanding({
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
                 {content.eyebrow || "Official SAFe® certification · Live online"}
               </div>
-              <h1 className="mt-6 text-sm font-semibold tracking-[-0.01em] text-[#d97706] sm:text-base">
+              <h1 className="mt-6 max-w-4xl text-[2.55rem] font-normal leading-[1.01] tracking-[-0.05em] text-[#1f2c4a] sm:text-[3.6rem] lg:text-[3.75rem]">
                 {content.title}
               </h1>
-              <p className="mt-3 max-w-3xl text-[2.6rem] font-normal leading-[.98] tracking-[-0.055em] text-[#1f2c4a] sm:text-[4.35rem]">
+              <p className="mt-5 max-w-2xl text-lg font-medium leading-7 tracking-[-0.015em] text-[#d97706] sm:text-xl sm:leading-8">
                 {content.outcomes[0] || content.cardTitle}
               </p>
               <div className="mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
