@@ -24,6 +24,7 @@ type Props = {
   courseName: string;
   brochureHref?: string;
   showSafeBadges?: boolean;
+  premium?: boolean;
   initialCount?: number;
   initialSchedules?: CourseScheduleRow[];
 };
@@ -46,6 +47,7 @@ export default function CourseScheduleEmbed({
   courseName,
   brochureHref,
   showSafeBadges = false,
+  premium = false,
   initialCount = 6,
   initialSchedules = [],
 }: Props) {
@@ -155,10 +157,12 @@ export default function CourseScheduleEmbed({
     <button
       type="button"
       onClick={() => toggleFilter(key)}
-      className={`rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors ${
+      className={`${premium ? "rounded-full border px-4 py-2 text-xs font-semibold" : "rounded-md px-3.5 py-1.5 text-sm font-medium"} transition-all ${
         filters[key]
-          ? "bg-[#d97706] text-white"
-          : "bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20"
+          ? "border-[#d97706] bg-[#d97706] text-white shadow-[0_6px_16px_-8px_rgba(217,119,6,.8)]"
+          : premium
+            ? "border-[#1f2c4a]/15 bg-white text-[#475569] hover:border-[#d97706]/40 hover:text-[#b45309]"
+            : "bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20"
       }`}
     >
       {label}
@@ -167,7 +171,7 @@ export default function CourseScheduleEmbed({
 
   return (
     <div>
-      <div className="mb-5 flex flex-wrap items-center gap-2">
+      <div className={`mb-5 flex flex-wrap items-center gap-2 ${premium ? "rounded-2xl border border-[#1f2c4a]/10 bg-[#eef3f8] p-3" : ""}`}>
         {chip("thisMonth", "This month")}
         {chip("nextMonth", "Next month")}
         {chip("weekdays", "Weekdays")}
@@ -184,8 +188,8 @@ export default function CourseScheduleEmbed({
             Clear
           </button>
         ) : null}
-        <p className="ml-auto text-sm text-[#64748b]">
-          {filtered.length} upcoming {filtered.length === 1 ? "cohort" : "cohorts"}
+        <p className={`ml-auto text-sm text-[#64748b] ${premium ? "rounded-full bg-[#1f2c4a] px-3 py-1.5 text-xs font-semibold text-white" : ""}`}>
+          <span className={premium ? "text-[#fbbf24]" : ""}>{filtered.length}</span> upcoming {filtered.length === 1 ? "cohort" : "cohorts"}
         </p>
       </div>
 
@@ -217,6 +221,7 @@ export default function CourseScheduleEmbed({
               }}
               brochureHref={brochureHref}
               showSafeBadges={showSafeBadges}
+              premium={premium}
             />
           ))}
           {displayedCount < filtered.length ? (
