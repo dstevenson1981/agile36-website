@@ -8,6 +8,7 @@ import {
   sharedWhyTail,
   sharedWhyTailMicrocredential,
 } from "@/app/lib/catalog-landing";
+import { POPM_BROCHURE_HREF } from "@/app/lib/popm-brochure";
 
 type WhyRow = CatalogLandingContent["whyRows"][number];
 type FaqItem = CatalogLandingContent["faqs"]["exam"][number];
@@ -112,7 +113,7 @@ const popm: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: "/POPM_6.0_Partner.pdf",
+  brochureHref: POPM_BROCHURE_HREF,
   assessmentLabel: "Free POPM Assessment",
   assessmentHref: "/test/product-owner-manager",
   examName: "SAFe Product Owner/Product Manager Practice Test",

@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { formatTimezoneLabel } from "@/app/lib/schedule-display";
+import { POPM_BROCHURE_HREF } from "@/app/lib/popm-brochure";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -358,7 +359,7 @@ function CourseScheduleContent() {
                         quantity={qty}
                         onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
                         onGroupInquiry={() => handleGroupInquiryClick(schedule)}
-                        brochureHref="/POPM_6.0_Partner.pdf"
+                        brochureHref={POPM_BROCHURE_HREF}
                         showSafeBadges
                       />
                     );
