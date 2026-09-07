@@ -10,6 +10,7 @@ import CourseHeroRightColumn from "@/app/components/CourseHeroRightColumn";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
+import PopmCourseLanding from "@/app/courses/product-owner-manager/PopmCourseLanding";
 
 const HEADING =
   "text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl";
@@ -218,7 +219,7 @@ function CertifiedTrack({
   );
 }
 
-export default function CatalogCourseLanding({
+export function LegacyCatalogCourseLanding({
   content,
   initialSchedules = [],
 }: {
@@ -1068,4 +1069,14 @@ export default function CatalogCourseLanding({
       ) : null}
     </main>
   );
+}
+
+export default function CatalogCourseLanding({
+  content,
+  initialSchedules,
+}: {
+  content: CatalogLandingContent;
+  initialSchedules: CourseScheduleRow[];
+}) {
+  return <PopmCourseLanding content={content} initialSchedules={initialSchedules} />;
 }

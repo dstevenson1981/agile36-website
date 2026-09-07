@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
@@ -73,13 +73,30 @@ function ArrowIcon() {
   );
 }
 
-function FlowCanvas() {
-  const stages = [
-    { label: "Discover", sub: "Customer signal", value: "01" },
-    { label: "Prioritize", sub: "WSJF + value", value: "02" },
-    { label: "Plan", sub: "PI objectives", value: "03" },
-    { label: "Deliver", sub: "Validated outcome", value: "04" },
-  ];
+function compactText(value: string, max = 30): string {
+  const clean = value.replace(/\s+/g, " ").trim();
+  return clean.length > max ? `${clean.slice(0, max - 1).trim()}…` : clean;
+}
+
+function courseModules(content: CatalogLandingContent) {
+  return content.curriculum.flatMap((day) => day.modules);
+}
+
+function firstParagraph(value: string): string {
+  return value.split(/\n\s*\n/)[0]?.trim() || value.trim();
+}
+
+function FlowCanvas({ content }: { content: CatalogLandingContent }) {
+  const modules = courseModules(content);
+  const fallbackStages = ["Learn", "Practice", "Apply", "Validate"];
+  const stages = Array.from({ length: 4 }, (_, index) => {
+    const courseModule = modules[index];
+    return {
+      label: compactText(courseModule?.title || fallbackStages[index] || "Apply", 18),
+      sub: compactText(courseModule?.topics[0] || content.outcomes[index] || "Live workshop", 22),
+      value: `0${index + 1}`,
+    };
+  });
 
   return (
     <div className="relative overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_30px_80px_-45px_rgba(31,44,74,.45)] sm:p-7">
@@ -88,8 +105,8 @@ function FlowCanvas() {
         <div className="relative mx-auto">
           <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-[#22c1c3]/20 to-[#1f2c4a]/10 blur-xl" />
           <Image
-            src="/POPM.jpg"
-            alt="Official SAFe POPM certification badge"
+            src={content.badgeSrc}
+            alt={content.badgeAlt}
             width={140}
             height={140}
             priority
@@ -104,9 +121,9 @@ function FlowCanvas() {
               Value flow live
             </span>
           </div>
-          <p className="mt-2 text-xl font-normal tracking-[-0.03em] text-[#1f2c4a]">SAFe® POPM</p>
+          <p className="mt-2 text-xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{content.cardTitle}</p>
           <p className="mt-1 text-[13px] leading-5 text-[#64748b]">
-            Product leadership across discovery, backlog economics, PI Planning, and delivery.
+            {compactText(content.outcomes[0] || firstParagraph(content.lede), 105)}
           </p>
         </div>
       </div>
@@ -131,7 +148,7 @@ function FlowCanvas() {
 
       <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-4 rounded-2xl bg-[#1f2c4a] p-4 text-white">
         <div>
-          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">Decision signals</p>
+          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">Learning progress</p>
           <div className="mt-3 space-y-2">
             {[86, 69, 54].map((width, index) => (
               <div key={width} className="h-1.5 overflow-hidden rounded-full bg-white/10">
@@ -144,8 +161,8 @@ function FlowCanvas() {
           </div>
         </div>
         <div className="text-right">
-          <p className="text-3xl font-medium tracking-[-0.05em]">Aligned</p>
-          <p className="mt-1 text-[11px] text-white/55">Vision → backlog → delivery</p>
+          <p className="text-3xl font-medium tracking-[-0.05em]">Ready</p>
+          <p className="mt-1 text-[11px] text-white/55">Learn → practice → apply</p>
         </div>
       </div>
     </div>
@@ -174,7 +191,13 @@ function SectionHeading({
   );
 }
 
-function OutcomeChart({ outcomes }: { outcomes: string[] }) {
+function OutcomeChart({
+  outcomes,
+  courseName,
+}: {
+  outcomes: string[];
+  courseName: string;
+}) {
   const { observe, active } = useMotionOnView<HTMLDivElement>();
   const shapes = [
     "M20 126 C85 120,95 85,153 88 S232 44,302 54 S373 20,440 25",
@@ -187,11 +210,11 @@ function OutcomeChart({ outcomes }: { outcomes: string[] }) {
     >
       <div className="absolute -right-20 -top-24 h-60 w-60 rounded-full bg-[#d97706]/15 blur-3xl" />
       <div className="relative">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Product impact map</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Capability impact map</p>
         <h3 className="mt-3 max-w-xl text-2xl font-normal tracking-[-0.03em] sm:text-3xl">
-          Connect customer evidence to work the ART can execute.
+          Turn {compactText(courseName, 42)} concepts into capability you can use.
         </h3>
-        <svg className="mt-6 h-40 w-full overflow-visible" viewBox="0 0 460 150" role="img" aria-label="Animated product value and delivery lines trending upward">
+        <svg className="mt-6 h-40 w-full overflow-visible" viewBox="0 0 460 150" role="img" aria-label="Animated learning and capability lines trending upward">
           {[0, 1, 2, 3].map((line) => (
             <line key={line} x1="20" x2="440" y1={35 + line * 30} y2={35 + line * 30} stroke="rgba(255,255,255,.08)" />
           ))}
@@ -403,6 +426,79 @@ function SkillGrid() {
   );
 }
 
+function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
+  const { observe, active } = useMotionOnView<HTMLDivElement>();
+  const modules = courseModules(content);
+  const cards = Array.from({ length: 4 }, (_, index) => {
+    const courseModule = modules[index];
+    const topics = courseModule?.topics.slice(0, 3) || [];
+    return {
+      number: `0${index + 1}`,
+      title: courseModule?.title || compactText(content.outcomes[index] || `Apply ${content.crumb}`, 42),
+      copy: content.outcomes[index] || topics.join(". "),
+      topics: topics.length ? topics : [content.highlights[index % content.highlights.length]],
+      className: index < 2 ? "lg:col-span-6" : "lg:col-span-6",
+      tone: index % 3,
+    };
+  });
+
+  return (
+    <div ref={observe} className={`mt-14 grid gap-5 lg:grid-cols-12 ${active ? "popm-motion-on" : ""}`}>
+      {cards.map((card, index) => (
+        <article key={`${card.number}-${card.title}`} className={`group overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-5 sm:p-6 ${card.className}`}>
+          <div className="flex items-start justify-between gap-5">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{card.number} · Practice</p>
+              <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#1f2c4a]">{card.title}</h3>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-[#64748b]">{card.copy}</p>
+            </div>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#1f2c4a]/10 bg-white text-[#1f2c4a] transition group-hover:rotate-45 group-hover:text-[#d97706]">
+              <ArrowIcon />
+            </span>
+          </div>
+
+          <div className="relative mt-5 min-h-44 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+            <div className="flex items-center justify-between">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">
+                {index === 0 ? "Concept map" : index === 1 ? "Practice queue" : index === 2 ? "Application path" : "Capability board"}
+              </p>
+              <span className="flex items-center gap-1.5 text-[9px] font-semibold text-emerald-700">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                Live
+              </span>
+            </div>
+            <div className="mt-4 space-y-2.5">
+              {card.topics.map((topic, topicIndex) => (
+                <div
+                  key={topic}
+                  className="popm-backlog-row rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-3"
+                  style={{ animationDelay: `${topicIndex * 220}ms` }}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[9px] font-semibold ${
+                      card.tone === 0 ? "bg-[#1f2c4a] text-white" : card.tone === 1 ? "bg-[#fff7ed] text-[#b45309]" : "bg-emerald-50 text-emerald-700"
+                    }`}>
+                      {topicIndex + 1}
+                    </span>
+                    <p className="min-w-0 flex-1 truncate text-[11px] font-semibold text-[#1f2c4a]">{topic}</p>
+                    <span className="text-[9px] font-semibold text-[#94a3b8]">{65 + topicIndex * 12}%</span>
+                  </div>
+                  <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#1f2c4a]/[0.06]">
+                    <span
+                      className="popm-priority-bar block h-full rounded-full bg-gradient-to-r from-[#d97706] to-[#fbbf24]"
+                      style={{ "--bar-width": `${65 + topicIndex * 12}%` } as CSSProperties}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function Curriculum({ content }: { content: CatalogLandingContent }) {
   const [activeDay, setActiveDay] = useState(0);
   const day = content.curriculum[activeDay] ?? content.curriculum[0];
@@ -542,19 +638,54 @@ export default function PopmCourseLanding({
 }) {
   const [activeSection, setActiveSection] = useState("overview");
   const [showCorporateQuote, setShowCorporateQuote] = useState(false);
+  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
+  const [assessmentFormData, setAssessmentFormData] = useState({ name: "", email: "" });
+  const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
   const reviews = content.reviews.slice(0, 6);
-  const tuition = COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
+  const isPrivateClass = content.slug === "release-train-engineer";
+  const tuition = isPrivateClass ? null : COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
+  const navItems = useMemo(
+    () => [
+      ...NAV_ITEMS.slice(0, 5),
+      ...(content.careerPath ? [{ id: "career-path", label: "Career path" }] : []),
+      ...NAV_ITEMS.slice(5),
+    ],
+    [content.careerPath],
+  );
   const featureItems = useMemo(
     () => [
-      { title: "16 hours live", copy: "Instructor-led, interactive training", tone: "navy" as const },
-      { title: "2 exam attempts", copy: "Official exam fee included", tone: "amber" as const },
-      { title: "1 year access", copy: "SAFe Studio and courseware", tone: "green" as const },
-      { title: "16 PDUs + SEUs", copy: "Professional development credits", tone: "navy" as const },
-      { title: "AI at work", copy: "Practical tools for product teams", tone: "amber" as const },
+      { title: "Live instruction", copy: content.durationLabel, tone: "navy" as const },
+      { title: "Official credential", copy: content.cardTitle, tone: "amber" as const },
+      { title: "Everything included", copy: compactText(content.includesLine, 82), tone: "green" as const },
+      { title: "Practice, not lectures", copy: compactText(content.highlights[0], 82), tone: "navy" as const },
+      { title: "Skills for real work", copy: compactText(content.outcomes[0] || content.highlights[1], 82), tone: "amber" as const },
       { title: "Guaranteed dates", copy: "Your class runs as scheduled", tone: "green" as const },
     ],
-    [],
+    [content],
   );
+
+  async function handleAssessmentSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!assessmentFormData.name.trim() || !assessmentFormData.email.includes("@") || !content.assessmentHref) return;
+    setIsSubmittingAssessment(true);
+    try {
+      const response = await fetch("/api/store-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: assessmentFormData.name,
+          email: assessmentFormData.email,
+          source: "SA Free Assessment",
+          exam_name: content.examName || content.practiceTestTitle,
+        }),
+      });
+      if (!response.ok) throw new Error("Assessment registration failed");
+      window.location.href = content.assessmentHref;
+    } catch {
+      window.alert("We could not start the assessment. Please try again.");
+      setIsSubmittingAssessment(false);
+    }
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -566,12 +697,12 @@ export default function PopmCourseLanding({
       },
       { rootMargin: "-28% 0px -58% 0px", threshold: [0.08, 0.25] },
     );
-    NAV_ITEMS.forEach(({ id }) => {
+    navItems.forEach(({ id }) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [navItems]);
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#1f2c4a]">
@@ -673,20 +804,20 @@ export default function PopmCourseLanding({
             <span>/</span>
             <Link href="/courses" className="hover:text-[#1f2c4a]">Courses</Link>
             <span>/</span>
-            <span className="text-[#475569]">SAFe® POPM</span>
+            <span className="text-[#475569]">{content.crumb}</span>
           </nav>
 
           <div className="mt-9 grid items-start gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(28rem,.98fr)] lg:gap-16">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#b45309]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
-                Official SAFe® certification · Live online
+                {content.eyebrow || "Official SAFe® certification · Live online"}
               </div>
               <h1 className="mt-6 text-sm font-semibold tracking-[-0.01em] text-[#d97706] sm:text-base">
-                AI-Empowered SAFe® Product Owner / Product Manager (POPM) 6.0
+                {content.title}
               </h1>
               <p className="mt-3 max-w-3xl text-[2.6rem] font-normal leading-[.98] tracking-[-0.055em] text-[#1f2c4a] sm:text-[4.35rem]">
-                Turn product strategy into work teams can deliver.
+                {content.outcomes[0] || content.cardTitle}
               </p>
               <div className="mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-3 rounded-xl border border-emerald-700/15 bg-emerald-50 px-4 py-3">
@@ -713,27 +844,30 @@ export default function PopmCourseLanding({
                 </div>
               </div>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#475569]">
-                Become an AI-Empowered SAFe® Product Owner / Product Manager. Learn to shape vision,
-                prioritize the ART backlog, lead PI Planning, and move customer value from idea to outcome.
+                {firstParagraph(content.lede)}
               </p>
 
               <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-[#334155]">
-                {["Official certification", "Exam fee + 2 attempts", "16 PDUs & SEUs"].map((item) => (
+                {content.highlights.map((item) => (
                   <span key={item} className="flex items-center gap-2">
                     <span className="h-5 w-5 text-emerald-600">{CHECK}</span>
-                    {item}
+                    {compactText(item, 52)}
                   </span>
                 ))}
               </div>
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
-                <a
-                  href="#dates"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(31,44,74,.8)] transition hover:-translate-y-0.5 hover:bg-[#16243f]"
-                >
-                  View dates & enroll
-                  <ArrowIcon />
-                </a>
+                {isPrivateClass ? (
+                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(31,44,74,.8)] transition hover:-translate-y-0.5 hover:bg-[#16243f]">
+                    Request a private cohort
+                    <ArrowIcon />
+                  </button>
+                ) : (
+                  <a href="#dates" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(31,44,74,.8)] transition hover:-translate-y-0.5 hover:bg-[#16243f]">
+                    View dates & enroll
+                    <ArrowIcon />
+                  </a>
+                )}
                 <button
                   type="button"
                   onClick={() => setShowCorporateQuote(true)}
@@ -774,7 +908,7 @@ export default function PopmCourseLanding({
             </div>
 
             <div className="space-y-5">
-              <FlowCanvas />
+              <FlowCanvas content={content} />
               {tuition ? (
                 <div className="grid gap-5 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_22px_55px_-38px_rgba(31,44,74,.55)] sm:grid-cols-[auto_1fr_auto] sm:items-center">
                   <div className="sm:border-r sm:border-[#1f2c4a]/10 sm:pr-5">
@@ -791,7 +925,7 @@ export default function PopmCourseLanding({
                   <div>
                     <p className="text-sm font-semibold text-[#1f2c4a]">Everything you need is included.</p>
                     <p className="mt-1 text-xs leading-5 text-[#64748b]">
-                      16 live hours · courseware · exam + 2 attempts · 1-year SAFe Studio
+                      {content.includesLine}
                     </p>
                     <div className="mt-2 flex items-center gap-2 text-[11px] font-medium text-[#475569]">
                       <Image src="/Silver.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
@@ -816,7 +950,7 @@ export default function PopmCourseLanding({
 
       <nav className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/10 bg-white/95 backdrop-blur-xl" aria-label="On this page">
         <div className="mx-auto flex max-w-7xl overflow-x-auto px-2 sm:px-6">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -835,8 +969,8 @@ export default function PopmCourseLanding({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Course overview"
-            title="Learn both sides of product leadership at scale."
-            copy="POPM is where product intent meets delivery reality. You will practice the decisions, conversations, and artifacts that keep an Agile Release Train focused on the right customer outcomes."
+            title={content.summaryTitle || `Build practical capability in ${content.crumb}.`}
+            copy={content.summary || firstParagraph(content.lede)}
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
             <div className="grid gap-4 sm:grid-cols-2">
@@ -856,7 +990,7 @@ export default function PopmCourseLanding({
                 </div>
               ))}
             </div>
-            <OutcomeChart outcomes={content.outcomes} />
+            <OutcomeChart outcomes={content.outcomes} courseName={content.crumb} />
           </div>
         </div>
       </section>
@@ -865,30 +999,46 @@ export default function PopmCourseLanding({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Skills you will build"
-            title="Not just a certificate. A working product operating system."
-            copy="The class follows the real flow of product work—from hearing the customer to helping teams deliver and learn."
+            title={content.slug === "product-owner-manager" ? "Not just a certificate. A working product operating system." : `Not just a credential. A working ${content.crumb} toolkit.`}
+            copy={content.slug === "product-owner-manager" ? "The class follows the real flow of product work—from hearing the customer to helping teams deliver and learn." : "Follow the work from core concepts through hands-on practice, application, and measurable capability."}
             align="center"
           />
-          <SkillGrid />
+          {content.slug === "product-owner-manager" ? <SkillGrid /> : <UniversalSkillGrid content={content} />}
         </div>
       </section>
 
       <section id="dates" className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Live online cohorts"
-            title="Choose the class that fits your schedule."
-            copy="Every listed Agile36 cohort is guaranteed to run. Your tuition includes live training, official courseware, exam fee, two attempts, and one year of SAFe Studio."
+            eyebrow={isPrivateClass ? "Private team training" : "Live online cohorts"}
+            title={isPrivateClass ? "Bring the official RTE experience to your organization." : "Choose the class that fits your schedule."}
+            copy={isPrivateClass ? "RTE is delivered as a private cohort tailored to your leaders, transformation context, and calendar." : "Every listed Agile36 cohort is guaranteed to run. Your tuition includes live training, official courseware, and the credential items listed for this course."}
           />
           <div className="mt-10">
-            <CourseScheduleEmbed
-              courseSlug={content.slug}
-              courseName={content.scheduleCourseName}
-              brochureHref={content.brochureHref}
-              showSafeBadges
-              premium
-              initialSchedules={initialSchedules}
-            />
+            {isPrivateClass ? (
+              <div className="grid overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/15 bg-white shadow-[0_24px_60px_-40px_rgba(31,44,74,.6)] lg:grid-cols-[1fr_auto] lg:items-center">
+                <div className="p-6 sm:p-8">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Built around your ART</p>
+                  <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Choose dates, team size, and organizational focus.</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#64748b]">We will shape the private cohort with you and provide a clear group proposal before anything is booked.</p>
+                </div>
+                <div className="border-t border-[#1f2c4a]/10 bg-[#eef3f8] p-6 lg:border-l lg:border-t-0 lg:p-8">
+                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white hover:bg-[#16243f]">
+                    Request private training
+                    <ArrowIcon />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <CourseScheduleEmbed
+                courseSlug={content.slug}
+                courseName={content.scheduleCourseName}
+                brochureHref={content.brochureHref}
+                showSafeBadges
+                premium
+                initialSchedules={initialSchedules}
+              />
+            )}
           </div>
         </div>
       </section>
@@ -897,7 +1047,7 @@ export default function PopmCourseLanding({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Course curriculum"
-            title="Two days from product vision to PI execution."
+            title={`${content.durationLabel.split("·")[0]?.trim() || "Live training"} from concepts to confident application.`}
             copy={content.curriculumLede || "Official SAFe content, exam preparation, and practical AI applications woven into one live experience."}
           />
           <Curriculum content={content} />
@@ -908,8 +1058,8 @@ export default function PopmCourseLanding({
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_.9fr]">
           <div>
             <SectionHeading
-              eyebrow="Exam & certification"
-              title="Leave class ready to earn the official SAFe® POPM credential."
+              eyebrow={content.attemptsLine === null ? "Official micro-credential" : "Exam & certification"}
+              title={`Leave class ready to earn the official ${content.cardTitle}.`}
               copy={content.examNote}
             />
             <div className="mt-9 grid gap-3 sm:grid-cols-2">
@@ -928,9 +1078,9 @@ export default function PopmCourseLanding({
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               {content.assessmentHref ? (
-                <Link href={content.assessmentHref} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f]">
-                  Take the free POPM assessment
-                </Link>
+                <button type="button" onClick={() => setShowAssessmentModal(true)} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f]">
+                  {content.assessmentLabel || "Take the free assessment"}
+                </button>
               ) : null}
               <a href={content.examGuidelinesHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-[#d97706]">
                 Official exam guidelines
@@ -959,6 +1109,26 @@ export default function PopmCourseLanding({
           </div>
         </div>
       </section>
+
+      {content.careerPath ? (
+        <section id="career-path" className="scroll-mt-32 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <SectionHeading eyebrow="After this course" title="Keep building your career path." copy={content.careerPath.lede} />
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {content.careerPath.next.map((next, index) => (
+                <Link key={next.href} href={next.href} className="group rounded-[1.5rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 transition hover:-translate-y-1 hover:border-[#d97706]/30 hover:bg-white hover:shadow-xl">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-semibold text-[#d97706]">0{index + 1}</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#1f2c4a] transition group-hover:rotate-45 group-hover:text-[#d97706]"><ArrowIcon /></span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a]">{next.name}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#64748b]">{next.forWho}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="reviews" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
@@ -1002,9 +1172,9 @@ export default function PopmCourseLanding({
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#1f2c4a] px-6 py-12 text-white sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-14">
           <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#d97706]/20 blur-3xl" />
           <div className="relative max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Your next PI starts here</p>
-            <h2 className="mt-3 text-3xl font-normal tracking-[-0.04em] sm:text-4xl">Build the product leadership system your ART needs.</h2>
-            <p className="mt-4 text-base leading-7 text-white/65">Two live days. Official certification. Practical AI. Skills you can use immediately.</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Your next step starts here</p>
+            <h2 className="mt-3 text-3xl font-normal tracking-[-0.04em] sm:text-4xl">Build the {content.crumb} capability your work needs.</h2>
+            <p className="mt-4 text-base leading-7 text-white/65">Live instruction. Official courseware. Hands-on practice. Skills you can use immediately.</p>
           </div>
           <a href="#dates" className="relative mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#d97706] px-6 text-sm font-semibold text-white transition hover:bg-[#b45309] lg:mt-0">
             Choose your cohort
@@ -1019,6 +1189,55 @@ export default function PopmCourseLanding({
         courseSlug={content.slug}
         courseLabel={content.scheduleCourseName}
       />
+
+      {showAssessmentModal && content.assessmentHref ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2c4a]/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="assessment-title">
+          <div className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-white/20 bg-white p-6 shadow-2xl sm:p-8">
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
+            <button
+              type="button"
+              onClick={() => {
+                setShowAssessmentModal(false);
+                setAssessmentFormData({ name: "", email: "" });
+              }}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#eef3f8] text-xl text-[#475569] hover:bg-[#1f2c4a]/10"
+              aria-label="Close assessment form"
+            >
+              ×
+            </button>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Free practice assessment</p>
+            <h3 id="assessment-title" className="mt-3 text-2xl font-normal tracking-[-0.035em] text-[#1f2c4a]">Start your practice test</h3>
+            <p className="mt-2 pr-8 text-sm leading-6 text-[#64748b]">Enter your details to access the {content.examName || content.practiceTestTitle}.</p>
+            <form onSubmit={handleAssessmentSubmit} className="mt-6 space-y-4">
+              <label className="block text-sm font-semibold text-[#1f2c4a]">
+                Full name
+                <input
+                  type="text"
+                  required
+                  value={assessmentFormData.name}
+                  onChange={(event) => setAssessmentFormData((current) => ({ ...current, name: event.target.value }))}
+                  className="mt-2 w-full rounded-xl border border-[#1f2c4a]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#1f2c4a] outline-none transition focus:border-[#d97706]/50 focus:ring-4 focus:ring-[#d97706]/10"
+                  placeholder="Enter your full name"
+                />
+              </label>
+              <label className="block text-sm font-semibold text-[#1f2c4a]">
+                Email address
+                <input
+                  type="email"
+                  required
+                  value={assessmentFormData.email}
+                  onChange={(event) => setAssessmentFormData((current) => ({ ...current, email: event.target.value }))}
+                  className="mt-2 w-full rounded-xl border border-[#1f2c4a]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#1f2c4a] outline-none transition focus:border-[#d97706]/50 focus:ring-4 focus:ring-[#d97706]/10"
+                  placeholder="you@company.com"
+                />
+              </label>
+              <button type="submit" disabled={isSubmittingAssessment} className="flex min-h-12 w-full items-center justify-center rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f] disabled:cursor-not-allowed disabled:opacity-60">
+                {isSubmittingAssessment ? "Preparing assessment…" : "Start practice test"}
+              </button>
+            </form>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
