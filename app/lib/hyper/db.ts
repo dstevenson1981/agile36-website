@@ -74,24 +74,140 @@ export async function findPersonForCompany(companyName: string): Promise<KnownPe
 }
 
 export async function insertVisit(row: {
-  company: string;
+  company: string | null;
   page: string | null;
+  page_title?: string | null;
+  referrer?: string | null;
   session_id: string | null;
+  visitor_id?: string | null;
+  city?: string | null;
+  region?: string | null;
+  country?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
   person: KnownPerson | null;
-}): Promise<void> {
+}): Promise<{ ok: boolean; newSession: boolean }> {
   const sb = supabaseAdmin();
-  if (!sb) return;
+  if (!sb) return { ok: false, newSession: false };
+
+  let newSession = true;
+  if (row.session_id) {
+    const since = new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString();
+    const { data } = await sb
+      .from('website_visitors')
+      .select('id')
+      .eq('session_id', row.session_id)
+      .gte('visited_at', since)
+      .limit(1);
+    newSession = !data?.length;
+  }
+
   const { error } = await sb.from('website_visitors').insert({
     company: row.company,
-    company_norm: normalizeCompany(row.company),
+    company_norm: row.company ? normalizeCompany(row.company) : null,
     page: row.page,
+    page_title: row.page_title ?? null,
+    referrer: row.referrer ?? null,
     session_id: row.session_id,
+    visitor_id: row.visitor_id ?? null,
+    city: row.city ?? null,
+    region: row.region ?? null,
+    country: row.country ?? null,
+    latitude: row.latitude ?? null,
+    longitude: row.longitude ?? null,
     person_name: row.person?.person_name ?? null,
     email: row.person?.email ?? null,
     title: row.person?.title ?? null,
     linkedin_url: row.person?.linkedin_url ?? null,
   });
-  if (error) console.error('[hyper] visit insert failed:', error.message);
+  if (error) {
+    console.error('[hyper] visit insert failed:', error.message);
+    return { ok: false, newSession: false };
+  }
+  return { ok: true, newSession };
+}
+
+/** Keep a tab marked live without writing another pageview row. */
+export async function touchVisit(sessionId: string | null): Promise<void> {
+  const sb = supabaseAdmin();
+  if (!sb || !sessionId) return;
+  const { data } = await sb
+    .from("website_visitors")
+    .select("id")
+    .eq("session_id", sessionId)
+    .order("visited_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (!data?.id) return;
+  await sb
+    .from("website_visitors")
+    .update({ visited_at: new Date().toISOString() })
+    .eq("id", data.id);
+}
+
+export type VisitorPresence = {
+  session_id: string;
+  visitor_id: string | null;
+  path: string | null;
+  page_title: string | null;
+  mouse_x: number | null;
+  mouse_y: number | null;
+  scroll_y: number | null;
+  scroll_max: number | null;
+  viewport_w: number | null;
+  viewport_h: number | null;
+  is_private: boolean;
+  clicked_at: string | null;
+  updated_at: string;
+};
+
+export async function upsertPresence(row: {
+  session_id: string;
+  visitor_id?: string | null;
+  path?: string | null;
+  page_title?: string | null;
+  mouse_x?: number | null;
+  mouse_y?: number | null;
+  scroll_y?: number | null;
+  scroll_max?: number | null;
+  viewport_w?: number | null;
+  viewport_h?: number | null;
+  is_private?: boolean;
+  clicked?: boolean;
+}): Promise<void> {
+  const sb = supabaseAdmin();
+  if (!sb || !row.session_id) return;
+  const payload: Record<string, unknown> = {
+    session_id: row.session_id,
+    visitor_id: row.visitor_id ?? null,
+    path: row.path ?? null,
+    page_title: row.page_title ?? null,
+    is_private: Boolean(row.is_private),
+    updated_at: new Date().toISOString(),
+  };
+  if (!row.is_private) {
+    payload.mouse_x = row.mouse_x ?? null;
+    payload.mouse_y = row.mouse_y ?? null;
+    payload.scroll_y = row.scroll_y ?? null;
+    payload.scroll_max = row.scroll_max ?? null;
+    payload.viewport_w = row.viewport_w ?? null;
+    payload.viewport_h = row.viewport_h ?? null;
+    if (row.clicked) payload.clicked_at = new Date().toISOString();
+  } else {
+    payload.mouse_x = null;
+    payload.mouse_y = null;
+    payload.scroll_y = null;
+    payload.scroll_max = null;
+    payload.clicked_at = null;
+  }
+  await sb.from("visitor_presence").upsert(payload, { onConflict: "session_id" });
+}
+
+export async function getPresence(sessionId: string): Promise<VisitorPresence | null> {
+  const sb = supabaseAdmin();
+  if (!sb || !sessionId) return null;
+  const { data } = await sb.from("visitor_presence").select("*").eq("session_id", sessionId).maybeSingle();
+  return (data as VisitorPresence | null) ?? null;
 }
 
 /**

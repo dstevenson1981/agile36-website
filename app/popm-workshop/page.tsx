@@ -1,4 +1,3 @@
-import HideCrispChat from "./HideCrispChat";
 import PopmWorkshopBoard from "./PopmWorkshopBoard";
 
 export const metadata = {
@@ -10,7 +9,6 @@ export const metadata = {
 export default function PopmWorkshopPage() {
   return (
     <>
-      <HideCrispChat />
       <PopmWorkshopBoard />
     </>
   );

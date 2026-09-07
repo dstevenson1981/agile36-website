@@ -48,6 +48,7 @@
   var lastPath = null;
 
   function trackPageview() {
+    if (window.self !== window.top) return;
     var path = location.pathname + location.search;
     if (path === lastPath) return;
     lastPath = path;
@@ -82,4 +83,64 @@
   });
 
   trackPageview();
+
+  function isPrivatePath(path) {
+    return /^\/(admin|account|api|popm-workshop)/.test(path);
+  }
+
+  var pointer = { x: 50, y: 40, clicked: false };
+  document.addEventListener(
+    "mousemove",
+    function (event) {
+      var w = window.innerWidth || 1;
+      var h = window.innerHeight || 1;
+      pointer.x = (event.clientX / w) * 100;
+      pointer.y = (event.clientY / h) * 100;
+    },
+    { passive: true }
+  );
+  document.addEventListener(
+    "click",
+    function (event) {
+      var w = window.innerWidth || 1;
+      var h = window.innerHeight || 1;
+      pointer.x = (event.clientX / w) * 100;
+      pointer.y = (event.clientY / h) * 100;
+      pointer.clicked = true;
+    },
+    { passive: true }
+  );
+
+  function sendPresence() {
+    if (document.visibilityState !== "visible") return;
+    if (window.self !== window.top) return;
+    var path = location.pathname + location.search;
+    var priv = isPrivatePath(path);
+    var maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    var clicked = pointer.clicked;
+    pointer.clicked = false;
+    fetch(trackUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "presence",
+        path: path,
+        title: document.title,
+        sessionId: sessionId,
+        visitorId: visitorId,
+        private: priv,
+        mouseX: priv ? null : pointer.x,
+        mouseY: priv ? null : pointer.y,
+        scrollY: priv ? null : window.scrollY || 0,
+        scrollMax: priv ? null : maxScroll,
+        vw: window.innerWidth,
+        vh: window.innerHeight,
+        clicked: !priv && clicked,
+      }),
+      keepalive: true,
+    }).catch(function () {});
+  }
+
+  setInterval(sendPresence, 1500);
+  sendPresence();
 })();

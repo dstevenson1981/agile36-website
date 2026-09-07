@@ -12,6 +12,8 @@ export interface IpIdentity {
   city: string | null;
   region: string | null;
   country: string | null;
+  latitude: number | null;
+  longitude: number | null;
   asn: string | null;
   isBusiness: boolean;
   source: 'ipinfo' | 'ip-api' | 'none';
@@ -56,9 +58,13 @@ async function lookupIpinfo(ip: string, token: string): Promise<IpIdentity | nul
     city?: string;
     region?: string;
     country?: string;
+    loc?: string;
     company?: { name?: string; domain?: string; type?: string };
     privacy?: { vpn?: boolean; proxy?: boolean; hosting?: boolean };
   };
+  const loc = data.loc?.split(",").map(Number) ?? [];
+  const latitude = Number.isFinite(loc[0]) ? loc[0] : null;
+  const longitude = Number.isFinite(loc[1]) ? loc[1] : null;
   const company = data.company;
   const parsed = data.org ? parseAsnOrg(data.org) : { asn: null, name: '' };
   const name = company?.name ?? (parsed.name || null);
@@ -75,6 +81,8 @@ async function lookupIpinfo(ip: string, token: string): Promise<IpIdentity | nul
     city: data.city ?? null,
     region: data.region ?? null,
     country: data.country ?? null,
+    latitude,
+    longitude,
     asn: parsed.asn,
     isBusiness: !flaggedNonBusiness && looksLikeBusiness(name),
     source: 'ipinfo',
@@ -84,7 +92,7 @@ async function lookupIpinfo(ip: string, token: string): Promise<IpIdentity | nul
 async function lookupIpApi(ip: string): Promise<IpIdentity | null> {
   // Free for non-commercial use, 45 req/min. Set IPINFO_TOKEN for production.
   const res = await fetch(
-    `http://ip-api.com/json/${ip}?fields=status,country,regionName,city,isp,org,as,asname,proxy,hosting`,
+    `http://ip-api.com/json/${ip}?fields=status,country,regionName,city,lat,lon,isp,org,as,asname,proxy,hosting`,
     { signal: AbortSignal.timeout(4000) }
   );
   if (!res.ok) return null;
@@ -93,6 +101,8 @@ async function lookupIpApi(ip: string): Promise<IpIdentity | null> {
     country?: string;
     regionName?: string;
     city?: string;
+    lat?: number;
+    lon?: number;
     isp?: string;
     org?: string;
     as?: string;
@@ -110,6 +120,8 @@ async function lookupIpApi(ip: string): Promise<IpIdentity | null> {
     city: data.city ?? null,
     region: data.regionName ?? null,
     country: data.country ?? null,
+    latitude: typeof data.lat === "number" ? data.lat : null,
+    longitude: typeof data.lon === "number" ? data.lon : null,
     asn,
     isBusiness: !flaggedNonBusiness && looksLikeBusiness(name),
     source: 'ip-api',
@@ -124,6 +136,8 @@ export async function identifyIp(ip: string): Promise<IpIdentity> {
     city: null,
     region: null,
     country: null,
+    latitude: null,
+    longitude: null,
     asn: null,
     isBusiness: false,
     source: 'none',
@@ -131,7 +145,11 @@ export async function identifyIp(ip: string): Promise<IpIdentity> {
   if (!ip || isPrivateIp(ip)) return none;
 
   const cached = (await getCachedIpResult(ip)) as IpIdentity | null;
-  if (cached) return cached;
+  const cacheHasCoords =
+    cached &&
+    typeof cached.latitude === "number" &&
+    typeof cached.longitude === "number";
+  if (cached && cacheHasCoords) return cached;
 
   let identity: IpIdentity | null = null;
   try {
@@ -141,5 +159,5 @@ export async function identifyIp(ip: string): Promise<IpIdentity> {
     console.error(`[hyper] IP lookup failed for ${ip}:`, err);
   }
   if (identity) await cacheIpResult(ip, identity);
-  return identity ?? none;
+  return identity ?? cached ?? none;
 }

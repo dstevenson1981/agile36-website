@@ -1,3 +1,5 @@
+import { rememberVisitor } from "@/app/lib/site-assistant/journey";
+
 export const CHECKOUT_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export type CheckoutLeadPayload = {
@@ -40,6 +42,11 @@ export function captureCheckoutLead(payload: CheckoutLeadPayload): void {
   const key = leadKey({ ...payload, email });
   if (sentKeys.has(key)) return;
   sentKeys.add(key);
+
+  rememberVisitor({
+    name: [payload.firstName, payload.lastName].filter(Boolean).join(" "),
+    email,
+  });
 
   void fetch("/api/save-enrollment-lead", {
     method: "POST",

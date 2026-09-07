@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 // Relative imports: some Vercel Edge middleware bundlers fail on `@/` aliases.
-import { AGILE36_CONTENT_SECURITY_POLICY } from './app/lib/csp-header';
+import { agile36Csp } from './app/lib/csp-header';
 import {
   areProPracticeExamsEnabled,
   getPublicProPracticeRedirect,
@@ -21,7 +21,10 @@ function applyCspAndHreflang(request: NextRequest, response: NextResponse) {
   const lastSegment = pathname.split('/').pop() ?? '';
   if (STATIC_FILE.test(lastSegment)) return;
 
-  response.headers.set('Content-Security-Policy', AGILE36_CONTENT_SECURITY_POLICY);
+  response.headers.set(
+    'Content-Security-Policy',
+    agile36Csp(process.env.NODE_ENV !== 'production'),
+  );
 
   const canonical = `${request.nextUrl.origin}${pathname}${request.nextUrl.search}`;
   const hreflang =
@@ -36,7 +39,7 @@ export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-agile36-path', request.nextUrl.pathname + request.nextUrl.search);
 
-  let response = NextResponse.next({ request: { headers: requestHeaders } });
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
 
