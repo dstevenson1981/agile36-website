@@ -5,6 +5,7 @@ import {
   isSitePromoActive,
   BANNER_COUPON_CODE,
   BANNER_DISCOUNT_AMOUNT,
+  PROMO_CODE_EXPIRES_IN,
 } from "@/app/lib/site-promo";
 
 export type AvailablePromo = {
@@ -57,7 +58,7 @@ export default function AvailablePromoCodes({
         <p className="text-sm font-medium text-gray-900">Clip Coupon Code</p>
         {showingDefaultFlashSale && (
           <p className="text-xs font-semibold text-[#fa4a23]">
-            Ends Monday morning
+            Ends {PROMO_CODE_EXPIRES_IN}
           </p>
         )}
       </div>

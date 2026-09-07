@@ -1,4 +1,4 @@
-/** Site-wide 100OFF Labor Day sale */
+/** Site-wide 100OFF one-day Labor Day sale */
 
 export const BANNER_COUPON_CODE = "100OFF";
 
@@ -6,17 +6,17 @@ export const BANNER_COUPON_CODE = "100OFF";
 export const BANNER_DISCOUNT_AMOUNT = 100;
 
 /** Marketing urgency copy (not enforced at checkout). Used by CouponDisplayModal if shown elsewhere. */
-export const PROMO_CODE_EXPIRES_IN = "Monday morning";
+export const PROMO_CODE_EXPIRES_IN = "tonight";
 
 /**
- * Labor Day 2026 — Monday 9:00 AM America/New_York (EDT).
+ * Labor Day 2026 — one day, through midnight America/New_York (EDT).
  * Checkout also enforces this via promo_codes.expires_at.
  */
-export const PROMO_ENDS_AT_ISO = "2026-09-07T09:00:00-04:00";
+export const PROMO_ENDS_AT_ISO = "2026-09-08T00:00:00-04:00";
 export const PROMO_ENDS_AT_MS = Date.parse(PROMO_ENDS_AT_ISO);
 
 /** Banner headline shown in PromoBanner. */
-export const PROMO_BANNER_TITLE = "Labor Day Sale";
+export const PROMO_BANNER_TITLE = "One-Day Labor Day Sale";
 
 export type PromoCountdown = {
   days: number;
@@ -26,7 +26,7 @@ export type PromoCountdown = {
   totalMs: number;
 };
 
-/** Remaining time until Monday morning. Zeroed once the sale ends. */
+/** Remaining time until tonight. Zeroed once the sale ends. */
 export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
   const totalMs = Math.max(0, PROMO_ENDS_AT_MS - nowMs);
   const totalSecs = Math.floor(totalMs / 1000);
@@ -39,7 +39,7 @@ export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
   };
 }
 
-/** Banner stays visible until Monday morning. */
+/** Banner stays visible until midnight tonight. */
 export function isSitePromoActive(nowMs: number = Date.now()): boolean {
   return nowMs < PROMO_ENDS_AT_MS;
 }

@@ -221,7 +221,7 @@ export async function decideDiscount(input: {
       percent: null,
       payUsd: listPrice ? Math.max(0, listPrice - off) : null,
       endsAt: sale.expiresAt,
-      note: "Current public sale. One code at checkout.",
+      note: "One-day Labor Day sale. One code at checkout.",
     });
   }
 
