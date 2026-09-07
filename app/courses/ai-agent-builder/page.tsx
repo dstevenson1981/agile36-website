@@ -53,11 +53,11 @@ export default function NoCodeAIAgentsCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
+                <h1 className="text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                   {courseLong("ai-agent-builder")}
                 </h1>
-                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Build AI Agents That Actually Do Work
+                <p className="mb-5 mt-6 text-[15px] font-normal leading-7 text-[#475569] md:text-base md:leading-8">
+                  Build AI agents that complete practical work instead of producing isolated chat responses. This live certification course teaches you to design multi-step workflows, connect agents to tools, data, APIs, and business applications, and create reliable human-in-the-loop automations using platforms such as Claude, Codex, and n8n—without traditional software development.
                 </p>
                 <CourseHeroSocialProof enrolledLabel="2,800+ enrolled" />
 

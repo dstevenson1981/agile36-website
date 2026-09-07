@@ -53,11 +53,11 @@ export default function CertifiedGenAIPractitionerCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
+                <h1 className="text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                   {courseLong("certified-genai-practitioner")}
                 </h1>
-                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Master the Fundamentals of Generative AI and Practical Applications
+                <p className="mb-5 mt-6 text-[15px] font-normal leading-7 text-[#475569] md:text-base md:leading-8">
+                  Build a practical foundation in generative AI and learn how to apply it responsibly at work. This live certification course covers core GenAI concepts, prompt engineering, ethical use, and business applications through guided exercises—giving you the language, judgment, and hands-on confidence to use modern AI tools effectively.
                 </p>
                 <CourseHeroSocialProof enrolledLabel="3,000+ enrolled" />
 

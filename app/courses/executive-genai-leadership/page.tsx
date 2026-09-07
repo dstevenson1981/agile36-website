@@ -103,11 +103,11 @@ export default function ExecutiveGenAILeadershipCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
+                <h1 className="text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                   {courseLong("executive-genai-leadership")}
                 </h1>
-                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Lead Your Organization&apos;s AI Transformation with Strategic GenAI Leadership
+                <p className="mb-5 mt-6 text-[15px] font-normal leading-7 text-[#475569] md:text-base md:leading-8">
+                  Develop the strategic understanding to lead responsible generative AI adoption across your organization. This executive certification course examines AI opportunity, governance, operating-model decisions, workforce readiness, risk, and value realization—helping leaders move from scattered experimentation to a focused transformation agenda.
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="1,800+ enrolled"

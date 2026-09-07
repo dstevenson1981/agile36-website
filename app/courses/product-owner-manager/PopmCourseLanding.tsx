@@ -810,18 +810,20 @@ export default function PopmCourseLanding({
             <span className="text-[#475569]">{content.crumb}</span>
           </nav>
 
-          <div className="mt-9 grid items-start gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(28rem,.98fr)] lg:gap-16">
+          <div className="mt-9 grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(24rem,.85fr)] lg:gap-14">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#b45309]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
                 {content.eyebrow || "Official SAFe® certification · Live online"}
               </div>
-              <h1 className="mt-6 max-w-4xl text-[2.55rem] font-normal leading-[1.01] tracking-[-0.05em] text-[#1f2c4a] sm:text-[3.6rem] lg:text-[3.75rem]">
+              <h1 className="mt-6 max-w-4xl text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                 {content.title}
               </h1>
-              <p className="mt-5 max-w-2xl text-lg font-medium leading-7 tracking-[-0.015em] text-[#d97706] sm:text-xl sm:leading-8">
-                {content.outcomes[0] || content.cardTitle}
-              </p>
+              <div className="mt-6 max-w-3xl space-y-3 text-[15px] leading-7 text-[#475569] sm:text-base sm:leading-8">
+                {content.lede.split(/\n\s*\n/).map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
               <div className="mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-3 rounded-xl border border-emerald-700/15 bg-emerald-50 px-4 py-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-white">
@@ -846,15 +848,11 @@ export default function PopmCourseLanding({
                   </div>
                 </div>
               </div>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#475569]">
-                {firstParagraph(content.lede)}
-              </p>
-
-              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-[#334155]">
+              <div className="mt-7 grid max-w-3xl gap-3 text-sm font-medium text-[#334155] sm:grid-cols-2">
                 {content.highlights.map((item) => (
-                  <span key={item} className="flex items-center gap-2">
-                    <span className="h-5 w-5 text-emerald-600">{CHECK}</span>
-                    {compactText(item, 52)}
+                  <span key={item} className="flex items-start gap-2.5 leading-6">
+                    <span className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600">{CHECK}</span>
+                    {item}
                   </span>
                 ))}
               </div>

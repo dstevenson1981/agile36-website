@@ -53,11 +53,11 @@ export default function CertifiedAIProductManagerCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
+                <h1 className="text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                   {courseLong("certified-ai-product-manager")}
                 </h1>
-                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Prompting ChatGPT for research notes is last year&apos;s class. In this one you leave with a working app you built.
+                <p className="mb-5 mt-6 text-[15px] font-normal leading-7 text-[#475569] md:text-base md:leading-8">
+                  Move beyond using AI only for research notes and product documents. In this live, hands-on certification course, you will make real product decisions while building a working application with modern AI development tools—shaping scope, user experience, data, and intelligent features from idea through deployment.
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="2,500+ enrolled"

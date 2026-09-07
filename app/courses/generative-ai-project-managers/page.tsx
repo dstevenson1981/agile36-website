@@ -53,11 +53,11 @@ export default function GenerativeAIProjectManagersCoursePage() {
 
               {/* Title */}
               <div>
-                <h1 className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">
+                <h1 className="text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                   {courseLong("generative-ai-project-managers")}
                 </h1>
-                <p className="mb-4 mt-4 text-[14.5px] font-normal leading-relaxed text-[#475569] md:mb-5 md:text-[15px]">
-                  Transform Your Project Management with AI-Powered Tools and Practices
+                <p className="mb-5 mt-6 text-[15px] font-normal leading-7 text-[#475569] md:text-base md:leading-8">
+                  Learn to use generative AI across the real project-management lifecycle. This live certification course combines core AI knowledge with hands-on practice creating project artifacts, improving prompts, analyzing risks, supporting decisions, and communicating with stakeholders—so you can work faster while maintaining sound professional judgment and responsible oversight.
                 </p>
                 <CourseHeroSocialProof
                   enrolledLabel="2,200+ enrolled"
