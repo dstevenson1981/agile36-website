@@ -1,176 +1,128 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+
+type Status = 'checking' | 'ready' | 'submitting' | 'success' | 'invalid' | 'error';
 
 export default function UnsubscribePage() {
   const params = useParams();
   const router = useRouter();
   const token = typeof params.token === 'string' ? params.token : '';
-  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
-  const [email, setEmail] = useState('');
-  const [manualEmail, setManualEmail] = useState('');
-  const [formError, setFormError] = useState('');
-  const ranToken = useRef(false);
+  const [status, setStatus] = useState<Status>(() => token ? 'checking' : 'invalid');
+  const checkedToken = useRef(false);
 
   useEffect(() => {
-    if (!token || ranToken.current) return;
-    ranToken.current = true;
+    if (!token || checkedToken.current) return;
+    checkedToken.current = true;
 
-    const run = async () => {
+    const validate = async () => {
       try {
-        const response = await fetch('/api/email/unsubscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token }),
+        const response = await fetch(`/api/email/unsubscribe?token=${encodeURIComponent(token)}`, {
+          method: 'GET',
+          cache: 'no-store',
         });
         const data = await response.json();
-        if (data.success) {
-          setEmail(data.email || '');
-          setStatus('success');
-          return;
-        }
-        setStatus('error');
+        setStatus(response.ok && data.valid ? 'ready' : 'invalid');
       } catch (error) {
-        console.error('Error unsubscribing:', error);
+        console.error('Error validating unsubscribe link:', error);
         setStatus('error');
       }
     };
 
-    void run();
+    void validate();
   }, [token]);
 
-  const handleManualUnsubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const emailInput = manualEmail.trim();
-
-    if (!emailInput || !emailInput.includes('@')) {
-      setFormError('Enter the email address we send to.');
-      return;
-    }
-
-    setFormError('');
-    setStatus('loading');
+  const confirmUnsubscribe = async () => {
+    if (!token || status !== 'ready') return;
+    setStatus('submitting');
     try {
       const response = await fetch('/api/email/unsubscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: emailInput }),
+        body: JSON.stringify({ token }),
       });
       const data = await response.json();
-      if (data.success) {
-        setEmail(data.email || emailInput);
-        setStatus('success');
-        return;
-      }
-      setStatus('error');
-      setFormError(data.error || 'Could not unsubscribe. Try again.');
+      setStatus(response.ok && data.success ? 'success' : 'error');
     } catch (error) {
       console.error('Error unsubscribing:', error);
       setStatus('error');
-      setFormError('Could not unsubscribe. Try again.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Unsubscribe</h1>
-          <p className="text-gray-600">Manage your email preferences</p>
+    <main className="flex min-h-screen items-center justify-center bg-[#eef3f8] p-4 text-[#1f2c4a]">
+      <section className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/15 bg-white p-7 shadow-[0_28px_70px_-45px_rgba(31,44,74,.65)] sm:p-10">
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
+        <div className="text-center">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d97706]">Email preferences</p>
+          <h1 className="mt-3 text-3xl font-normal tracking-[-0.04em]">Unsubscribe</h1>
         </div>
 
-        {status === 'loading' && (
-          <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Processing your request...</p>
+        {status === 'checking' || status === 'submitting' ? (
+          <div className="py-12 text-center" aria-live="polite">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-[#1f2c4a]/10 border-t-[#d97706]" />
+            <p className="mt-4 text-sm text-[#64748b]">
+              {status === 'checking' ? 'Checking your secure link…' : 'Updating your preferences…'}
+            </p>
           </div>
-        )}
+        ) : null}
 
-        {status === 'success' && (
-          <div className="text-center py-8">
-            <div className="mb-4">
-              <svg
-                className="mx-auto h-12 w-12 text-green-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+        {status === 'ready' ? (
+          <div className="py-9 text-center">
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#fff7ed] text-[#d97706]">
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6" />
               </svg>
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">You are unsubscribed</h2>
-            {email && (
-              <p className="text-gray-600 mb-4">
-                {email} will not get marketing email from Agile36.
-              </p>
-            )}
-            <p className="text-sm text-gray-500 mb-6">
-              If you change your mind, email us and we can add you back.
+            </span>
+            <h2 className="mt-5 text-2xl font-normal tracking-[-0.03em]">Confirm your request</h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-[#64748b]">
+              You will stop receiving Agile36 marketing emails. Course confirmations and purchase receipts are not affected.
             </p>
             <button
-              onClick={() => router.push('/')}
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              type="button"
+              onClick={confirmUnsubscribe}
+              className="mt-7 min-h-12 w-full rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
             >
-              Return to Home
+              Confirm unsubscribe
+            </button>
+            <button type="button" onClick={() => router.push('/')} className="mt-4 text-sm font-semibold text-[#64748b] hover:text-[#1f2c4a]">
+              Keep me subscribed
             </button>
           </div>
-        )}
+        ) : null}
 
-        {status === 'error' && (
-          <div>
-            <div className="text-center py-4">
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                Enter your email to unsubscribe
-              </h2>
-              <p className="text-gray-600 mb-6">
-                We could not match that link. Type the address we send to and we will take you off the list.
-              </p>
-            </div>
-
-            <form onSubmit={handleManualUnsubscribe} className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={manualEmail}
-                  onChange={(e) => setManualEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-              {formError ? (
-                <p className="text-sm text-red-600">{formError}</p>
-              ) : null}
-              <button
-                type="submit"
-                className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-              >
-                Unsubscribe
-              </button>
-            </form>
-
-            <div className="mt-6 text-center">
-              <button
-                onClick={() => router.push('/')}
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
-                Return to Home
-              </button>
-            </div>
+        {status === 'success' ? (
+          <div className="py-9 text-center" aria-live="polite">
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m5 12 4 4L19 6" />
+              </svg>
+            </span>
+            <h2 className="mt-5 text-2xl font-normal tracking-[-0.03em]">You are unsubscribed</h2>
+            <p className="mt-3 text-sm leading-6 text-[#64748b]">Your email preferences have been updated.</p>
+            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl border border-[#1f2c4a]/15 px-5 text-sm font-semibold hover:bg-[#eef3f8]">
+              Return home
+            </button>
           </div>
-        )}
-      </div>
-    </div>
+        ) : null}
+
+        {status === 'invalid' || status === 'error' ? (
+          <div className="py-9 text-center" aria-live="polite">
+            <h2 className="text-2xl font-normal tracking-[-0.03em]">
+              {status === 'invalid' ? 'This link is not valid' : 'We could not update your preferences'}
+            </h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-[#64748b]">
+              {status === 'invalid'
+                ? 'Nothing was changed. Use the unsubscribe link in the most recent Agile36 email if you intended to leave the list.'
+                : 'Nothing was changed. Please try again from your most recent Agile36 email.'}
+            </p>
+            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f]">
+              Return home
+            </button>
+          </div>
+        ) : null}
+      </section>
+    </main>
   );
 }

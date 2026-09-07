@@ -6,6 +6,40 @@ function normalizeEmail(value: unknown): string {
   return typeof value === 'string' ? value.trim().toLowerCase() : '';
 }
 
+function getDatabaseConfig() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  return url && key ? { url, key } : null;
+}
+
+export async function GET(request: NextRequest) {
+  const token = request.nextUrl.searchParams.get('token')?.trim() || '';
+  if (!token) {
+    return NextResponse.json({ valid: false }, { status: 400 });
+  }
+
+  const config = getDatabaseConfig();
+  if (!config) {
+    return NextResponse.json({ valid: false }, { status: 500 });
+  }
+
+  const supabase = createClient(config.url, config.key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data, error } = await supabase
+    .from('email_unsubscribes')
+    .select('id')
+    .eq('token', token)
+    .limit(1);
+
+  if (error) {
+    console.error('Error validating unsubscribe token:', error);
+    return NextResponse.json({ valid: false }, { status: 500 });
+  }
+
+  return NextResponse.json({ valid: Boolean(data?.length) });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { token, email } = await request.json();
@@ -19,17 +53,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
+    const config = getDatabaseConfig();
+    if (!config) {
       return NextResponse.json(
         { error: 'Database not configured' },
         { status: 500 }
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey, {
+    const supabase = createClient(config.url, config.key, {
       auth: {
         persistSession: false,
         autoRefreshToken: false,

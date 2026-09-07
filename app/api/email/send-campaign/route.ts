@@ -420,6 +420,9 @@ export async function POST(request: NextRequest) {
               email: String(contact.email).trim().toLowerCase(),
               token,
               campaign_id: campaignId,
+              // The database column defaults to now(); a campaign token must stay
+              // pending until the recipient explicitly confirms unsubscribe.
+              unsubscribed_at: null,
             });
           if (tokenError) {
             console.error('Failed to store unsubscribe token:', tokenError);
