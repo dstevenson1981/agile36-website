@@ -5,10 +5,12 @@ import {
   listActiveChats,
   setTakenOver,
 } from "@/app/lib/site-assistant/live-chat";
+import { isVisitorsAuthorized, visitorsUnauthorizedResponse } from "@/app/lib/hyper/visitors-gate";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  if (!isVisitorsAuthorized(request)) return visitorsUnauthorizedResponse();
   const sessionId = request.nextUrl.searchParams.get("session")?.trim().slice(0, 80) || "";
   if (!sessionId) {
     const chats = await listActiveChats();
@@ -22,6 +24,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  if (!isVisitorsAuthorized(request)) return visitorsUnauthorizedResponse();
   let body: unknown;
   try {
     body = await request.json();

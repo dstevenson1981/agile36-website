@@ -8,6 +8,13 @@ import {
   isProPracticeExamPath,
 } from './app/lib/pro-practice-exams-enabled';
 import { parentCourseForLocationPath } from './app/lib/location-training-pages';
+import {
+  VISITORS_QUERY,
+  attachVisitorsCookie,
+  isVisitorsAuthorized,
+  isVisitorsPath,
+  visitorsUnauthorizedResponse,
+} from './app/lib/hyper/visitors-gate';
 
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
@@ -17,6 +24,7 @@ const STATIC_FILE = /\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|woff2?|ttf|
 function applyCspAndHreflang(request: NextRequest, response: NextResponse) {
   const pathname = request.nextUrl.pathname;
   if (pathname.startsWith('/api/') || pathname.startsWith('/_next/')) return;
+  if (isVisitorsPath(pathname)) return;
 
   const lastSegment = pathname.split('/').pop() ?? '';
   if (STATIC_FILE.test(lastSegment)) return;
@@ -42,6 +50,26 @@ export async function middleware(request: NextRequest) {
   const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   const pathname = request.nextUrl.pathname;
+
+  if (isVisitorsPath(pathname)) {
+    if (!isVisitorsAuthorized(request)) {
+      const denied = visitorsUnauthorizedResponse();
+      applyCspAndHreflang(request, denied);
+      return denied;
+    }
+    if (request.nextUrl.searchParams.has(VISITORS_QUERY)) {
+      const clean = request.nextUrl.clone();
+      clean.searchParams.delete(VISITORS_QUERY);
+      const redirected = attachVisitorsCookie(NextResponse.redirect(clean));
+      redirected.headers.set('Referrer-Policy', 'no-referrer');
+      redirected.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      applyCspAndHreflang(request, redirected);
+      return redirected;
+    }
+    attachVisitorsCookie(response);
+    response.headers.set('Referrer-Policy', 'no-referrer');
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
 
   // Pruned city geo landings → parent course (covers unknown city slugs too).
   const locationParent = parentCourseForLocationPath(pathname);

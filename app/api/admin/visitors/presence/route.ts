@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPresence } from "@/app/lib/hyper/db";
 import { isHiddenWatchPath } from "@/app/lib/hyper/private-path";
+import { isVisitorsAuthorized, visitorsUnauthorizedResponse } from "@/app/lib/hyper/visitors-gate";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
+  if (!isVisitorsAuthorized(request)) return visitorsUnauthorizedResponse();
   const session = request.nextUrl.searchParams.get("session")?.trim();
   if (!session) {
     return NextResponse.json({ error: "Missing session" }, { status: 400 });
