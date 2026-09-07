@@ -133,6 +133,14 @@ function renderText(text: string) {
   });
 }
 
+function previewText(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function fileToDataUrl(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -198,6 +206,7 @@ export default function SiteAssistant() {
     framed ||
     HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix));
   const [open, setOpen] = useState(false);
+  const [promptVisible, setPromptVisible] = useState(false);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -213,6 +222,7 @@ export default function SiteAssistant() {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const startedRef = useRef(false);
   const hydratedRef = useRef(false);
+  const remoteMessageCountRef = useRef(0);
   const pathRef = useRef(pathname);
   pathRef.current = pathname;
 
@@ -278,14 +288,15 @@ export default function SiteAssistant() {
     writeSession({ messages, actions });
   }, [messages, actions]);
 
-  const openChat = useCallback(() => {
+  const openChat = useCallback((expand = true) => {
     if (!startedRef.current) {
       startedRef.current = true;
       setBusy(false);
       setError(null);
       setMessages([{ role: "assistant", content: greetingFor(loadVisitor(), pathRef.current) }]);
     }
-    setOpen(true);
+    setOpen(expand);
+    if (expand) setPromptVisible(false);
     const sessionId = hyperSessionId();
     if (!sessionId) return;
     void fetch("/api/site-assistant", {
@@ -324,7 +335,8 @@ export default function SiteAssistant() {
       /* private mode */
     }
     const timer = window.setTimeout(() => {
-      openChat();
+      openChat(false);
+      setPromptVisible(true);
     }, 900);
     return () => {
       window.clearTimeout(timer);
@@ -354,10 +366,13 @@ export default function SiteAssistant() {
           } catch {
             /* private mode */
           }
-          setOpen(true);
           startedRef.current = true;
         }
         if (remote.length > 0) {
+          if (remote.length > remoteMessageCountRef.current) {
+            setPromptVisible(true);
+          }
+          remoteMessageCountRef.current = remote.length;
           setMessages((current) => (remote.length >= current.length ? remote : current));
         }
       } catch {
@@ -495,6 +510,10 @@ export default function SiteAssistant() {
 
   if (hidden) return null;
 
+  const latestAssistantMessage =
+    [...messages].reverse().find((message) => message.role === "assistant")?.content ||
+    "Hi! I can help you find the right certification and next available class.";
+
   return (
     <div className="fixed bottom-4 right-4 z-[80] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {open ? (
@@ -518,6 +537,7 @@ export default function SiteAssistant() {
               type="button"
               onClick={() => {
                 setOpen(false);
+                setPromptVisible(false);
                 try {
                   sessionStorage.setItem(DISMISS_KEY, "1");
                 } catch {
@@ -717,19 +737,59 @@ export default function SiteAssistant() {
           </form>
         </section>
       ) : (
-        <button
-          type="button"
-          onClick={() => openChat()}
-          className="flex items-center gap-3 rounded-full bg-[#1a73e8] py-2 pl-2 pr-4 text-white shadow-[0_12px_30px_rgba(26,115,232,0.35)] hover:bg-[#1557c0]"
-          aria-expanded={false}
-          aria-label="Chat with Angela"
-        >
-          <AgentAvatar src={AGENT.image} online />
-          <span className="pr-1 text-left leading-tight">
-            <span className="block text-sm font-medium">Angela</span>
-            <span className="block text-[10px] text-white/80">from Agile36</span>
-          </span>
-        </button>
+        <div className="flex max-w-[calc(100vw-2rem)] items-end gap-2 sm:gap-3">
+          {promptVisible ? (
+            <div className="relative w-[min(21rem,calc(100vw-6.5rem))] rounded-2xl border border-[#1f2c4a]/15 bg-white p-4 pr-9 shadow-[0_16px_40px_rgba(31,44,74,0.2)] sm:p-5 sm:pr-10">
+              <button
+                type="button"
+                onClick={() => {
+                  setPromptVisible(false);
+                  try {
+                    sessionStorage.setItem(DISMISS_KEY, "1");
+                  } catch {
+                    /* private mode */
+                  }
+                }}
+                className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-lg font-semibold text-[#94a3b8] hover:bg-[#eef3f8] hover:text-[#475569]"
+                aria-label="Dismiss chat message"
+              >
+                ×
+              </button>
+              <button type="button" onClick={() => openChat()} className="block w-full text-left" aria-label="Open chat with Angela">
+                <span className="flex items-center gap-2">
+                  <AgentAvatar src={AGENT.image} size={30} online />
+                  <span className="text-sm font-semibold text-[#1f2c4a]">{AGENT.from}</span>
+                </span>
+                <span className="mt-3 line-clamp-2 text-[15px] font-medium leading-6 text-[#334155]">
+                  {previewText(latestAssistantMessage)}
+                </span>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#1a73e8]">
+                  Reply to Angela
+                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          ) : null}
+
+          <button
+            type="button"
+            onClick={() => openChat()}
+            className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#1a73e8] text-white shadow-[0_12px_30px_rgba(26,115,232,0.35)] transition hover:-translate-y-0.5 hover:bg-[#1557c0] sm:h-16 sm:w-16"
+            aria-expanded={false}
+            aria-label="Chat with Angela"
+          >
+            <svg className="h-7 w-7 sm:h-8 sm:w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M20 11.5a8 8 0 0 1-8.4 8A9.5 9.5 0 0 1 7.7 18.4L3 20l1.5-4.3A8 8 0 1 1 20 11.5Z" />
+            </svg>
+            {promptVisible ? (
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-white bg-red-600 px-1 text-[10px] font-bold text-white">
+                1
+              </span>
+            ) : null}
+          </button>
+        </div>
       )}
     </div>
   );
