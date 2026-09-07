@@ -8,11 +8,13 @@ import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
+import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 const NAV_ITEMS = [
   { id: "overview", label: "Overview" },
   { id: "skills", label: "Skills" },
+  { id: "instructors", label: "Instructors" },
   { id: "dates", label: "Dates & tuition" },
   { id: "curriculum", label: "Curriculum" },
   { id: "certification", label: "Certification" },
@@ -644,11 +646,12 @@ export default function PopmCourseLanding({
   const reviews = content.reviews.slice(0, 6);
   const isPrivateClass = content.slug === "release-train-engineer";
   const tuition = isPrivateClass ? null : COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
+  const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles(), []);
   const navItems = useMemo(
     () => [
-      ...NAV_ITEMS.slice(0, 5),
+      ...NAV_ITEMS.slice(0, 6),
       ...(content.careerPath ? [{ id: "career-path", label: "Career path" }] : []),
-      ...NAV_ITEMS.slice(5),
+      ...NAV_ITEMS.slice(6),
     ],
     [content.careerPath],
   );
@@ -1004,6 +1007,89 @@ export default function PopmCourseLanding({
             align="center"
           />
           {content.slug === "product-owner-manager" ? <SkillGrid /> : <UniversalSkillGrid content={content} />}
+        </div>
+      </section>
+
+      <section id="instructors" className="scroll-mt-32 bg-[#eef3f8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+            <SectionHeading
+              eyebrow="Meet your instructors"
+              title="Learn from practitioners who know what the work feels like."
+              copy="Your class is led live by a SAFe® Practice Consultant and enterprise coach who connects the official curriculum to real decisions, team dynamics, and transformation challenges."
+            />
+            <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white text-center">
+              {[
+                ["SPC®", "certified"],
+                ["Enterprise", "experience"],
+                ["Live", "Q&A"],
+              ].map(([value, label], index) => (
+                <div key={value} className={`px-3 py-4 sm:px-5 ${index ? "border-l border-[#1f2c4a]/10" : ""}`}>
+                  <p className="text-sm font-semibold text-[#1f2c4a]">{value}</p>
+                  <p className="mt-0.5 text-[9px] uppercase tracking-[0.12em] text-[#94a3b8]">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {instructors.map((profile, index) => (
+              <article key={profile.name} className={`group overflow-hidden rounded-[1.75rem] border bg-white transition hover:-translate-y-1 hover:shadow-xl ${index === 0 ? "border-[#d97706]/30" : "border-[#1f2c4a]/10"}`}>
+                <div className={`h-1 ${index === 0 ? "bg-gradient-to-r from-[#d97706] to-[#fbbf24]" : "bg-[#1f2c4a]"}`} />
+                <div className="p-5 sm:p-6">
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="relative shrink-0">
+                      <div className="absolute -inset-1.5 rounded-2xl bg-[#d97706]/10 transition group-hover:bg-[#d97706]/20" />
+                      <Image
+                        src={profile.image}
+                        alt={`${profile.name}, Agile36 instructor`}
+                        width={112}
+                        height={112}
+                        className="relative h-20 w-20 rounded-xl object-cover object-top sm:h-24 sm:w-24"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">Agile36 instructor</p>
+                      <h3 className="mt-1.5 text-xl font-semibold tracking-[-0.025em] text-[#1f2c4a]">{profile.name}</h3>
+                      <p className="mt-1 text-xs leading-5 text-[#64748b]">{profile.title}</p>
+                      {profile.linkedin ? (
+                        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[#0a66c2] hover:underline">
+                          LinkedIn profile
+                          <ArrowIcon />
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <p className="mt-5 line-clamp-5 text-sm leading-6 text-[#475569] sm:line-clamp-none">{profile.bio[0]}</p>
+
+                  {profile.clients.length ? (
+                    <div className="mt-5 border-t border-[#1f2c4a]/10 pt-4">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#94a3b8]">Experience across organizations including</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {profile.clients.slice(0, 5).map((client) => (
+                          <span key={client.name} className="flex h-9 min-w-16 items-center justify-center rounded-lg border border-[#1f2c4a]/10 bg-[#f8fafc] px-2.5">
+                            <Image src={client.logo} alt={client.name} width={72} height={24} className="max-h-5 w-auto max-w-full object-contain" />
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {profile.testimonials[0] ? (
+                    <blockquote className="mt-5 line-clamp-5 rounded-xl bg-[#f8fafc] p-4 text-[13px] leading-5 text-[#64748b] sm:line-clamp-none">
+                      <span className="mr-1 text-[#d97706]">★★★★★</span>
+                      “{profile.testimonials[0].quote}”
+                    </blockquote>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center text-xs leading-5 text-[#64748b]">
+            The exact instructor assigned to each cohort is shown with its class date.
+          </p>
         </div>
       </section>
 

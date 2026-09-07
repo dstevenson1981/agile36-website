@@ -186,3 +186,12 @@ export function getScheduleInstructorProfile(
   if (!instructorName?.trim()) return null;
   return SCHEDULE_INSTRUCTOR_PROFILES[instructorName.trim().toLowerCase()] ?? null;
 }
+
+export function getFeaturedScheduleInstructorProfiles(): ScheduleInstructorProfile[] {
+  return [
+    SCHEDULE_INSTRUCTOR_PROFILES["deadra stevenson"],
+    SCHEDULE_INSTRUCTOR_PROFILES["marcus ball"],
+    SCHEDULE_INSTRUCTOR_PROFILES["joe puoci"],
+    SCHEDULE_INSTRUCTOR_PROFILES["martina svoboda"],
+  ].filter((profile): profile is ScheduleInstructorProfile => Boolean(profile));
+}
