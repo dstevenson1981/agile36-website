@@ -8,7 +8,7 @@ import {
   sharedWhyTail,
   sharedWhyTailMicrocredential,
 } from "@/app/lib/catalog-landing";
-import { POPM_BROCHURE_HREF } from "@/app/lib/popm-brochure";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 type WhyRow = CatalogLandingContent["whyRows"][number];
 type FaqItem = CatalogLandingContent["faqs"]["exam"][number];
@@ -113,7 +113,7 @@ const popm: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: POPM_BROCHURE_HREF,
+  brochureHref: COURSE_BROCHURE_HREF["product-owner-manager"],
   assessmentLabel: "Free POPM Assessment",
   assessmentHref: "/test/product-owner-manager",
   examName: "SAFe Product Owner/Product Manager Practice Test",
@@ -351,7 +351,7 @@ const leadingSafe: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: "/Leading-SAFe_6.0_Partner.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["leading-safe"],
   assessmentLabel: "Free Leading SAFe Assessment",
   assessmentHref: "/test/leading-safe",
   examName: "Leading SAFe Practice Test | SAFe Agilist Mock",
@@ -584,7 +584,7 @@ const scrumMaster: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: "/SSM_Agile36_Brochure.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["scrum-master"],
   assessmentLabel: "Free SSM Assessment",
   assessmentHref: "/test/scrum-master",
   examName: "SAFe Scrum Master Practice Test",
@@ -1033,7 +1033,7 @@ const apm: CatalogLandingContent = {
     "Sit the official exam with your first attempt included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: "/APM_Brochure_Agile36.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["agile-product-management"],
   assessmentLabel: "Free APM Assessment",
   assessmentHref: "/test/agile-product-management",
   examName: "SAFe Agile Product Management Practice Test",
@@ -1291,6 +1291,7 @@ const architects: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
+  brochureHref: COURSE_BROCHURE_HREF["safe-for-architects"],
   datesTitle: "Upcoming ARCH dates",
   scheduleCourseName: "SAFe for Architects",
   whyRows: featuredWhy(
@@ -1733,7 +1734,7 @@ const devops: CatalogLandingContent = {
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
-  brochureHref: "/SDP_6.0_Partner.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["devops"],
   assessmentLabel: "Free DevOps Assessment",
   assessmentHref: "/test/devops",
   examName: "SAFe DevOps Practice Test",
@@ -2415,7 +2416,7 @@ const vsm: CatalogLandingContent = {
     "Identify bottlenecks, waste, and delays in delivery",
     "Leave with a future-state map and an improvement plan",
   ],
-  brochureHref: "/VS_Mapping_Agile36.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["value-stream-mapping"],
   datesTitle: "Upcoming Value Stream Mapping dates",
   scheduleCourseName: "SAFe Value Stream Mapping",
   eyebrow: MICRO_EYEBROW,
@@ -2585,7 +2586,7 @@ const responsibleAi: CatalogLandingContent = {
     "Evaluate and apply Responsible AI policies in SAFe",
     "Write RAI Epic Hypothesis Statements you can backlog",
   ],
-  brochureHref: "/Responsible_AI-Brochure_Agile36.pdf",
+  brochureHref: COURSE_BROCHURE_HREF["responsible-ai"],
   datesTitle: "Upcoming Responsible AI dates",
   scheduleCourseName: "Responsible AI with SAFe",
   eyebrow: MICRO_EYEBROW,

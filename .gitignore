@@ -56,3 +56,6 @@ next-env.d.ts
 # Local MCP drafts and staged operator actions
 mcp/outbox/
 seo-agent-data/
+
+# Brochure HTML is build output; sources live in content/brochures/lib/
+content/brochures/generated/

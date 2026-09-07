@@ -6,6 +6,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
+import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 function CourseScheduleContent() {
   const searchParams = useSearchParams();
@@ -368,7 +369,7 @@ function CourseScheduleContent() {
                         quantity={qty}
                         onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
                         onGroupInquiry={() => handleGroupInquiryClick(schedule)}
-                        brochureHref="/Responsible_AI-Brochure_Agile36.pdf"
+                        brochureHref={COURSE_BROCHURE_HREF["responsible-ai"]}
                         examLabel={"No Exam"}
                         showSafeBadges
                       />

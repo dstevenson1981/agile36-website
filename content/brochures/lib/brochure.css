@@ -1,0 +1,469 @@
+/* ---------------------------------------------------------------
+     Agile36 course brochure — light "soft cinematic" print system.
+     Palette mirrors app/globals.css: navy #1f2c4a, slate #475569,
+     secondary #64748b, de-emphasized #94a3b8, deep amber #d97706.
+     --------------------------------------------------------------- */
+  @page { size: letter; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1f2c4a;
+    --navy-deep: #16243f;
+    --slate: #475569;
+    --muted: #64748b;
+    --faint: #94a3b8;
+    --amber: #d97706;
+    --amber-soft: #fbbf24;
+    --paper: #f6f9fd;
+    --line: rgba(31, 44, 74, 0.12);
+    --line-soft: rgba(31, 44, 74, 0.08);
+    --tint: rgba(31, 44, 74, 0.04);
+    --tint-2: rgba(31, 44, 74, 0.07);
+  }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--slate);
+    background: #fff;
+    line-height: 1.5;
+    font-size: 10.5pt;
+  }
+
+  .page {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    padding: 0.6in 0.68in 0.86in;
+    background: var(--paper);
+    overflow: hidden;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Soft cinematic wash behind every interior page */
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(115% 62% at 88% -6%, rgba(217, 119, 6, 0.07) 0%, rgba(217, 119, 6, 0) 62%),
+      radial-gradient(95% 55% at -8% 102%, rgba(31, 44, 74, 0.09) 0%, rgba(31, 44, 74, 0) 60%),
+      linear-gradient(180deg, #ffffff 0%, var(--paper) 100%);
+    z-index: 0;
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  /* ---------------- Typography ---------------- */
+  h1, h2, h3, h4 { color: var(--navy); font-weight: 400; letter-spacing: -0.03em; }
+
+  .eyebrow {
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .eyebrow.amber { color: var(--amber); }
+
+  h2.section {
+    font-size: 21pt;
+    line-height: 1.12;
+    margin: 6px 0 4px;
+  }
+  .rule {
+    width: 46px;
+    height: 2px;
+    background: var(--amber);
+    border-radius: 2px;
+    margin: 10px 0 16px;
+  }
+
+  h3 { font-size: 11.5pt; letter-spacing: -0.02em; margin-bottom: 5px; }
+  h4 { font-size: 9.5pt; letter-spacing: -0.01em; }
+
+  p { margin-bottom: 9px; }
+  p.lede { font-size: 11pt; line-height: 1.62; color: var(--slate); }
+  .small { font-size: 8.5pt; color: var(--muted); line-height: 1.5; }
+  .tiny  { font-size: 7.5pt; color: var(--faint); line-height: 1.45; }
+  strong { color: var(--navy); font-weight: 600; }
+  em.q { font-style: normal; color: var(--amber); font-weight: 600; }
+
+  /* ---------------- Surfaces ---------------- */
+  .panel {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .panel.tint { background: var(--tint); }
+  .panel.navy {
+    background: linear-gradient(135deg, var(--navy) 0%, #24365c 55%, var(--navy-deep) 100%);
+    border-color: transparent;
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .panel.navy h2, .panel.navy h3, .panel.navy h4 { color: #fff; }
+  .panel.navy .eyebrow { color: rgba(255, 255, 255, 0.55); }
+  .panel.navy .rule { background: var(--amber-soft); }
+  .panel.amber {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.09) 0%, rgba(217, 119, 6, 0.03) 100%);
+    border-color: rgba(217, 119, 6, 0.24);
+  }
+
+  /* ---------------- Layout helpers ---------------- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .stack { display: flex; flex-direction: column; }
+  .row { display: flex; align-items: center; }
+  .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; }
+  .mt-a { margin-top: auto; }
+  .mb-14 { margin-bottom: 14px; }
+  .mb-20 { margin-bottom: 20px; }
+
+  /* ---------------- Lists ---------------- */
+  ul.ticks { list-style: none; }
+  ul.ticks li {
+    position: relative;
+    padding-left: 19px;
+    margin-bottom: 7px;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+  ul.ticks li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 5px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: rgba(217, 119, 6, 0.14);
+    border: 1px solid rgba(217, 119, 6, 0.42);
+  }
+  ul.ticks li::after {
+    content: "";
+    position: absolute;
+    left: 3.4px; top: 8.4px;
+    width: 4px; height: 2px;
+    border-left: 1.4px solid var(--amber);
+    border-bottom: 1.4px solid var(--amber);
+    transform: rotate(-45deg);
+  }
+
+  ul.dots { list-style: none; }
+  ul.dots li {
+    position: relative;
+    padding-left: 13px;
+    margin-bottom: 4.5px;
+    font-size: 9pt;
+    line-height: 1.45;
+    color: var(--slate);
+  }
+  ul.dots li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6.5px;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--faint);
+  }
+  ul.dots li.ai { color: var(--navy); }
+  ul.dots li.ai::before { background: var(--amber); }
+
+  /* Density modifier for the three content-heavy pages (5, 6, 7). */
+  .page.compact .panel { padding: 12px 14px; }
+  .page.compact .tile { padding: 10px 11px; }
+  .page.compact h2.section { font-size: 19pt; }
+  .page.compact .rule { margin: 8px 0 12px; }
+  .page.compact p.lede { font-size: 10pt; line-height: 1.55; }
+  .page.compact ul.ticks li { margin-bottom: 5px; font-size: 9pt; line-height: 1.45; }
+  .page.compact ul.dots li { margin-bottom: 3.5px; font-size: 8.5pt; line-height: 1.4; }
+  .page.compact .pagehead { padding-bottom: 8px; margin-bottom: 16px; }
+  .page.compact table.blueprint td { padding: 4px 0; font-size: 8pt; }
+  .page.compact .lesson-body { padding: 8px 10px 7px; }
+  .page.compact .lesson-head { padding: 6px 10px; }
+
+  /* ---------------- Cover ---------------- */
+  .cover {
+    padding: 0;
+    background: linear-gradient(158deg, #16243f 0%, #1f2c4a 42%, #2a3d66 100%);
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(78% 48% at 82% 8%, rgba(251, 191, 36, 0.20) 0%, rgba(251, 191, 36, 0) 60%),
+      radial-gradient(70% 46% at 6% 88%, rgba(120, 170, 255, 0.16) 0%, rgba(120, 170, 255, 0) 62%);
+  }
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 0.78in 0.72in 0.6in;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover .logo { height: 38px; width: auto; align-self: flex-start; }
+  .cover-eyebrow {
+    font-size: 8pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+  }
+  .cover h1 {
+    color: #fff;
+    font-size: 33pt;
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    margin: 16px 0 0;
+  }
+  .cover h1 .accent { color: var(--amber-soft); font-weight: 400; }
+  .cover .subtitle {
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 13pt;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin-top: 14px;
+  }
+  .cover-line {
+    width: 64px; height: 2px;
+    background: var(--amber-soft);
+    border-radius: 2px;
+    margin: 26px 0;
+  }
+  .cover-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cover-fact {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 11px;
+  }
+  .cover-fact .v {
+    color: #fff;
+    font-size: 14pt;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    display: block;
+    line-height: 1.15;
+  }
+  .cover-fact .k {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 7.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+  /* Cinematic band that dissolves into the navy at both edges */
+  .cover-band {
+    position: absolute;
+    left: 0; right: 0;
+    top: 44%;
+    height: 25%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .cover-band img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cover-new {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-top: 16px;
+    margin-bottom: 26px;
+  }
+  .cover-new-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 12px;
+  }
+  .cover-new-grid .t {
+    display: block;
+    color: #fff;
+    font-size: 9.5pt;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .cover-new-grid .d {
+    display: block;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 7.5pt;
+    line-height: 1.5;
+  }
+  .cover-badges { display: flex; align-items: flex-end; gap: 18px; }
+  .cover-badges img.popm { height: 96px; width: auto; border-radius: 10px; }
+  .cover-badges img.silver { height: 66px; width: auto; border-radius: 5px; }
+  .cover-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-top: 14px;
+  }
+  .cover-foot .site { color: #fff; font-size: 10pt; letter-spacing: 0.02em; }
+  .cover-foot .who { color: rgba(255, 255, 255, 0.5); font-size: 8pt; }
+
+  /* ---------------- Page furniture ---------------- */
+  .pagehead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 9px;
+    margin-bottom: 20px;
+  }
+  .pagehead .course { font-size: 7.5pt; color: var(--faint); letter-spacing: 0.16em; text-transform: uppercase; }
+
+  .pagefoot {
+    position: absolute;
+    left: 0.68in; right: 0.68in; bottom: 0.4in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 9px;
+    z-index: 1;
+  }
+  .pagefoot img { height: 15px; width: auto; opacity: 0.85; }
+  .pagefoot .n { font-size: 8pt; color: var(--faint); }
+
+  /* ---------------- Contents ---------------- */
+  .toc { list-style: none; }
+  .toc li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 10pt;
+    color: var(--navy);
+  }
+  .toc li .num { color: var(--amber); font-size: 8pt; font-weight: 600; width: 18px; flex: none; }
+  .toc li .dots { flex: 1; border-bottom: 1px dotted rgba(31, 44, 74, 0.22); transform: translateY(-3px); }
+  .toc li .pg { color: var(--muted); font-size: 9pt; flex: none; }
+
+  /* ---------------- Feature tiles ---------------- */
+  .tile {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 13px;
+  }
+  .tile .ico {
+    width: 24px; height: 24px;
+    border-radius: 7px;
+    background: rgba(31, 44, 74, 0.06);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px;
+  }
+  .tile .ico svg { width: 13px; height: 13px; stroke: var(--navy); fill: none; stroke-width: 1.7; }
+  .tile.accent .ico { background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.28); }
+  .tile.accent .ico svg { stroke: var(--amber); }
+  .tile h4 { margin-bottom: 3px; }
+  .tile p { font-size: 8.5pt; color: var(--muted); line-height: 1.45; margin: 0; }
+
+  /* ---------------- Stat tiles ---------------- */
+  .stat { text-align: left; }
+  .stat .v {
+    font-size: 26pt;
+    color: var(--navy);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    display: block;
+  }
+  .stat .v .unit { font-size: 12pt; color: var(--amber); vertical-align: baseline; }
+  .stat .k { font-size: 8pt; color: var(--muted); margin-top: 6px; display: block; line-height: 1.4; }
+
+  /* ---------------- Lesson cards ---------------- */
+  .lesson { break-inside: avoid; }
+  .lesson-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    padding: 7px 11px;
+  }
+  .lesson-head .n {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--amber-soft);
+    letter-spacing: 0.08em;
+  }
+  .lesson-head .t { font-size: 9.5pt; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+  .lesson-body {
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 10px 11px 9px;
+    background: rgba(255, 255, 255, 0.66);
+  }
+
+  .aitag {
+    display: inline-block;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: rgba(217, 119, 6, 0.1);
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    border-radius: 3px;
+    padding: 0.5px 4px;
+    margin-left: 5px;
+    vertical-align: 1px;
+  }
+
+  /* ---------------- Blueprint table ---------------- */
+  table.blueprint { width: 100%; border-collapse: collapse; }
+  table.blueprint td {
+    font-size: 8.5pt;
+    padding: 5.5px 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--slate);
+  }
+  table.blueprint tr:last-child td { border-bottom: none; }
+  table.blueprint td.w { text-align: right; color: var(--navy); font-weight: 600; white-space: nowrap; }
+
+  /* ---------------- Instructors ---------------- */
+  .trainer { display: flex; gap: 11px; align-items: flex-start; }
+  .trainer img {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    flex: none;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .trainer .nm { font-size: 10pt; color: var(--navy); letter-spacing: -0.02em; }
+  .trainer .rl { font-size: 7.5pt; color: var(--amber); font-weight: 600; margin: 2px 0 4px; }
+  .trainer p { font-size: 8pt; color: var(--muted); line-height: 1.45; margin: 0; }
+
+  /* ---------------- CTA ---------------- */
+  .cta-price { display: flex; align-items: baseline; gap: 9px; }
+  .cta-price .now { font-size: 27pt; color: #fff; font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
+  .cta-price .was { font-size: 11pt; color: rgba(255, 255, 255, 0.42); text-decoration: line-through; }
+  .btn {
+    display: inline-block;
+    background: var(--amber);
+    color: #fff;
+    font-size: 9.5pt;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 9px 18px;
+    border-radius: 7px;
+  }
+  .contact-row { display: flex; gap: 26px; }
+  .contact-row .k { font-size: 7pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 3px; }
+  .contact-row .v { font-size: 9pt; color: var(--navy); }
