@@ -9,14 +9,17 @@ import Lenis from "lenis";
 import {
   PUBLIC_CATALOG_COURSES,
   COURSE_CATEGORIES,
-  getCatalogCourseSlug,
   getCatalogCourseUrl,
   type CatalogCourse,
   type CourseCategory,
 } from "@/app/lib/course-catalog";
 import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
-import { openSiteChat } from "@/app/lib/site-assistant/open-chat";
-import { courseInterestFromVisitor, loadVisitor } from "@/app/lib/site-assistant/journey";
+
+declare global {
+  interface Window {
+    $crisp?: unknown[];
+  }
+}
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
 
@@ -91,8 +94,11 @@ function formatPrice(n: number) {
 }
 
 function openChat(e: React.MouseEvent) {
-  e.preventDefault();
-  openSiteChat();
+  // Crisp is loaded globally in the root layout; fall back to /contact if absent.
+  if (typeof window !== "undefined" && window.$crisp) {
+    e.preventDefault();
+    window.$crisp.push(["do", "chat:open"]);
+  }
 }
 
 /** Fades children in after `delay` ms. */
@@ -161,14 +167,12 @@ function AnimatedHeading({ text, className = "" }: { text: string; className?: s
   );
 }
 
-function CourseCard({ course, emphasized }: { course: CatalogCourse; emphasized?: boolean }) {
+function CourseCard({ course }: { course: CatalogCourse }) {
   const isPrivate = course.privateClass || course.price === 0;
   return (
     <Link
       href={getCatalogCourseUrl(course)}
-      className={`course-card group relative flex flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] ${
-        emphasized ? "ring-2 ring-[#d97706]/50" : ""
-      }`}
+      className="course-card group relative flex flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -183,11 +187,11 @@ function CourseCard({ course, emphasized }: { course: CatalogCourse; emphasized?
           <span className="liquid-glass rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-[#1f2c4a]">
             {course.category}
           </span>
-          {course.popular && !emphasized ? (
+          {course.popular && (
             <span className="rounded-full bg-[#1f2c4a] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
               Popular
             </span>
-          ) : null}
+          )}
         </div>
       </div>
 
@@ -267,26 +271,14 @@ export function HomeExperienceBody({
   const rootRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"All" | CourseCategory>("All");
-  const [focusSlug] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    return courseInterestFromVisitor(loadVisitor().pages)?.slug ?? null;
-  });
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [expandedInstructor, setExpandedInstructor] = useState<number | null>(null);
   const firstRender = useRef(true);
 
-  const visibleCourses = (() => {
-    const list =
-      activeTab === "All"
-        ? [...PUBLIC_CATALOG_COURSES]
-        : PUBLIC_CATALOG_COURSES.filter((c) => c.category === activeTab);
-    if (!focusSlug) return list;
-    return list.sort((a, b) => {
-      const aMatch = getCatalogCourseSlug(a) === focusSlug ? 0 : 1;
-      const bMatch = getCatalogCourseSlug(b) === focusSlug ? 0 : 1;
-      return aMatch - bMatch;
-    });
-  })();
+  const visibleCourses =
+    activeTab === "All"
+      ? PUBLIC_CATALOG_COURSES
+      : PUBLIC_CATALOG_COURSES.filter((c) => c.category === activeTab);
 
   // Browsers pause offscreen background videos and don't always resume them;
   // re-play each one whenever it scrolls back into view.
@@ -612,11 +604,7 @@ export function HomeExperienceBody({
             className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
             {visibleCourses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                emphasized={focusSlug === getCatalogCourseSlug(course)}
-              />
+              <CourseCard key={course.id} course={course} />
             ))}
           </div>
         </div>

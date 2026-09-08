@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { LiveVisitor } from "@/app/lib/hyper/live-visitors";
 import type { VisitorsPayload } from "@/app/lib/hyper/load-visitors";
 import LiveWatch from "./LiveWatch";
-import TakeoverChat from "./TakeoverChat";
 import { isCheckoutPath } from "@/app/lib/hyper/private-path";
 
 function when(iso: string): string {
@@ -307,8 +306,6 @@ export default function VisitorsBoard({
               {isCheckoutPath(selected.page) ? (
                 <p className="mt-2 text-center text-xs text-[#94a3b8]">Card numbers are masked.</p>
               ) : null}
-
-              <TakeoverChat key={selected.id} sessionId={selected.id} />
 
               <p className="mt-6 text-[11px] uppercase tracking-[0.14em] text-[#94a3b8]">Pages they hit</p>
               <ul className="mt-2 space-y-2">
