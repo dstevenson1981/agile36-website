@@ -1,12 +1,11 @@
 /**
  * Visitor tracking. Called by /hyper-agent.js on every pageview.
- * Logs city/state/page to website_visitors and emails Deadra on a new session.
+ * Logs city/state/page to website_visitors. Visitor-alert emails are disabled.
  */
 import { NextRequest, NextResponse } from "next/server";
 import { findPersonForCompany, insertVisit, touchVisit, upsertPresence } from "@/app/lib/hyper/db";
 import { identifyIp } from "@/app/lib/hyper/identify";
 import { isHiddenWatchPath } from "@/app/lib/hyper/private-path";
-import { sendVisitorAlert } from "@/app/lib/send-visitor-alert";
 
 export const runtime = "nodejs";
 
@@ -118,27 +117,9 @@ export async function POST(req: NextRequest) {
     person,
   });
 
-  const worthAlert = Boolean(identity.city || identity.region || identity.isBusiness);
-  if (logged.ok && logged.newSession && worthAlert) {
-    try {
-      await sendVisitorAlert({
-        city: identity.city,
-        region: identity.region,
-        country: identity.country,
-        page: path,
-        pageTitle: body.title ?? null,
-        company: identity.isBusiness ? identity.companyName : null,
-        personName: person?.person_name ?? null,
-        referrer: body.referrer ?? null,
-      });
-    } catch (error) {
-      console.error("[hyper] visitor alert failed:", error);
-    }
-  }
-
   return NextResponse.json({
     ok: true,
     logged: logged.ok,
-    alerted: logged.ok && logged.newSession && worthAlert,
+    alerted: false,
   });
 }

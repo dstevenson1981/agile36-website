@@ -1,5 +1,8 @@
 import sgMail from "@sendgrid/mail";
 
+/** Live-visitor emails to Deadra. Tracking still writes to the visitors board. */
+const VISITOR_ALERTS_ENABLED = false;
+
 const DEFAULT_TO = "d.stevenson@agile36.com";
 
 export type VisitorAlert = {
@@ -32,6 +35,8 @@ function place(alert: VisitorAlert): string {
 }
 
 export async function sendVisitorAlert(alert: VisitorAlert): Promise<void> {
+  if (!VISITOR_ALERTS_ENABLED) return;
+
   const apiKey = process.env.SENDGRID_API_KEY?.trim();
   if (!apiKey) return;
 
