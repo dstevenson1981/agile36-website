@@ -31,5 +31,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "Flowise", "supabase/functions/**/*", "seo-drafts/**/*"]
+  "exclude": ["node_modules", "Flowise", "supabase/functions/**/*", "seo-drafts/**/*",
+    "scripts/build-brochures.ts"]
 }
