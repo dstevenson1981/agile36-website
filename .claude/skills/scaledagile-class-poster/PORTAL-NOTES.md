@@ -162,6 +162,72 @@ Two rules follow, and they are not optional:
    Audit with a separate pass that re-reads the live page. `audit-tz.mjs` does
    this; the discrepancy it found was 41 classes wrong while the run said 37 OK.
 
+## Making a class private — Change Type, not the edit panel
+
+Captured 2026-09-08 while taking every class after Nov 18 off the public
+calendar. `automation/privatize-classes.mjs` does this; `audit-private.mjs`
+checks it independently.
+
+Course **Type** is a Salesforce record type. It is **not** a field in Basic
+Info — that dialog holds only Learning Plan, name, dates, time, timezone,
+city/state/country, registration URL and Sold Out. Type lives behind the
+class's **Show menu → Change Course Type** (also on the My Courses grid row's
+**Actions → Change Type**, which avoids opening 40 detail pages).
+
+| Step | What works |
+|---|---|
+| Open it | `getByRole("button", {name:/show menu/i})` → `getByRole("menuitem", {name:/Change Course Type/i})` |
+| Pick a type | The four radios are `input[name="recordTypeId"]` carrying record-type ids and **no accessible name** — click the label text (`^Remote Private Course$`) instead |
+| Confirm it took | The **Change Type** button stays disabled until a type other than the current one is selected — check `isEnabled()` before clicking, it is a free assertion |
+
+### "Change Type" does not change the type
+
+It swaps the form and drops you into **Edit Remote Private Course**. The detail
+page behind it still reads `Remote Public Course`, and stays that way until
+that form is saved. The first version of this script checked the type right
+after clicking Change Type, saw Public, and reported failure on a class that
+was mid-edit.
+
+The private record type requires a field the public one does not:
+**`Remote_Attendees_Company__c`**, empty after the swap, set to `Agile36, LLC`.
+It is a **plain text field** — the "Agile36, LLC / Manage Addresses…" dropdown
+that appears when you type into it by hand is *Chrome's autofill*, not a
+Salesforce lookup, and it never appears under automation. `.fill()` it and move
+on; waiting for a suggestion to click just times out. The private form also
+drops Registration URL entirely (no Public Settings section).
+
+The Save button sits in the form footer, **outside the dialog's a11y subtree** —
+scoping to `getByRole("dialog")` finds Close and the section toggles but no
+Save. Address it from the page.
+
+### The page does not repaint after this save
+
+Deadra: *"once you make the changes and save it you will have to refresh the
+screen."* Reading the live DOM after saving reports the old type on every class
+that did in fact save. `page.reload()` first, then verify.
+
+### A class with attendees cannot change type at all
+
+The save fails with:
+
+> Oops! There was a problem saving the record. Course type cannot change once
+> attendee(s) have been added.
+
+There is no way around it, and it is the right behaviour anyway — per
+`RULES.md` a date with a registrant is the class she is running. The grid's
+**Attendees** column (cell index 4) is now captured by `dump-portal.mjs` for
+exactly this, so these are skipped and reported rather than attempted. On
+2026-09-08 one class of 43 was locked this way: Nov 19 Lean Portfolio, 2
+attendees.
+
+### dump-portal.mjs caches Type — refresh it after a type change
+
+Instructor names, end dates and **type** are reused from the previous snapshot
+for any class already visited, because the first two never change. Type now
+does. After a privatize run, write the audit's live types back into
+`portal-state.json`, or the planner keeps counting private classes against the
+4-per-day cap.
+
 ### Dates are the easy case
 
 Start Date and End Date are plain textboxes — `.fill()` with `M/D/YYYY`. None of

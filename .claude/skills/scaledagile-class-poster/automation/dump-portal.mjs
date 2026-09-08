@@ -44,7 +44,17 @@ const scrape = () =>
             node.querySelectorAll("*").forEach((e) => e.shadowRoot && findLink(e.shadowRoot));
           };
           findLink(x);
-          out.push({ name: c[0], date: c[2], instructors: Number(c[5]) || 0, href });
+          // Columns: Name, Learning Plan, Start Date, City, Attendees,
+          // Instructors, Actions. Attendees matters beyond planning: the portal
+          // refuses "Course type cannot change once attendee(s) have been
+          // added", so a class with registrants can never be made private.
+          out.push({
+            name: c[0],
+            date: c[2],
+            attendees: Number(c[4]) || 0,
+            instructors: Number(c[5]) || 0,
+            href,
+          });
         }
       });
       r.querySelectorAll("*").forEach((e) => e.shadowRoot && walk(e.shadowRoot));
