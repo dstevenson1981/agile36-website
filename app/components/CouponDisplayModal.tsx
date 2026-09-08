@@ -83,7 +83,8 @@ export default function CouponDisplayModal({
               </span>
             </p>
             <p className="text-xs text-gray-600">
-              $100 off one eligible enrollment. Enter the code in the promo field at checkout.
+              $100 off one eligible enrollment. This code expires {PROMO_CODE_EXPIRES_IN}. Enter
+              it in the promo field at checkout.
             </p>
           </div>
 

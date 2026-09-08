@@ -509,7 +509,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#f0f9ff]">
-      {/* Promo Banner — tap to copy 100OFF */}
+      {/* Promo Banner — subscribe to reveal 100OFF */}
       <PromoBanner />
 
       {/* Navigation Header with Mega Menu - Only on Home Page */}

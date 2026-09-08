@@ -1,18 +1,18 @@
-/** Site-wide 100OFF flash sale */
+/** Site-wide 100OFF flash sale — subscribe on the banner to reveal the code. */
 
 export const BANNER_COUPON_CODE = "100OFF";
 
 /** Dollar amount shown in the banner / checkout clip UI. */
 export const BANNER_DISCOUNT_AMOUNT = 100;
 
-/** Marketing urgency copy (not enforced at checkout). Used by CouponDisplayModal if shown elsewhere. */
-export const PROMO_CODE_EXPIRES_IN = "in 2 hours";
+/** Marketing urgency copy (not enforced at checkout). */
+export const PROMO_CODE_EXPIRES_IN = "in 30 mins";
 
 /**
- * Rolling urgency window: clock never hits a hard end — it resets every 2 hours.
+ * Rolling urgency window: clock never hits a hard end — it resets every 30 minutes.
  * Checkout does not use this; 100OFF stays valid in promo_codes until we turn it off.
  */
-export const PROMO_WINDOW_MS = 2 * 60 * 60 * 1000;
+export const PROMO_WINDOW_MS = 30 * 60 * 1000;
 
 /** Banner headline shown in PromoBanner. */
 export const PROMO_BANNER_TITLE = "Flash Sale";
@@ -31,7 +31,7 @@ function remainingInWindowMs(nowMs: number): number {
 }
 
 /**
- * Remaining time in the current 2-hour window.
+ * Remaining time in the current 30-minute window.
  * Windows are aligned to the Unix epoch so every client ticks the same clock.
  * When the remainder would be 0, the next window starts immediately (never a 00:00:00 end state).
  */
@@ -47,7 +47,7 @@ export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
   };
 }
 
-/** ISO of the current visual window end (rolls every 2 hours). */
+/** ISO of the current visual window end (rolls every 30 minutes). */
 export function getPromoEndsAtIso(nowMs: number = Date.now()): string {
   return new Date(nowMs + remainingInWindowMs(nowMs)).toISOString();
 }

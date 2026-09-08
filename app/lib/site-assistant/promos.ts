@@ -147,7 +147,7 @@ export async function publicSaleFromSupabase(): Promise<{
       code: sale.code.toUpperCase(),
       amountUsd: sale.discountValue,
       endsAt: getPromoEndsAtIso(),
-      note: "Flash sale. Say it ends in about two hours. They type this code at checkout. One code only. Discounted enrollments are not refundable.",
+      note: "Flash sale. Public banner is subscribe-to-unlock — do not read the code off the homepage. In chat you may give 100OFF. Say the code expires in about 30 minutes. One code at checkout. Discounted enrollments are not refundable.",
       source: "supabase",
     };
   }
@@ -167,7 +167,7 @@ export async function publicSaleFromSupabase(): Promise<{
       code: BANNER_COUPON_CODE,
       amountUsd: BANNER_DISCOUNT_AMOUNT,
       endsAt: getPromoEndsAtIso(),
-      note: "Flash sale. Say it ends in about two hours. They type this code at checkout. One code only. Discounted enrollments are not refundable.",
+      note: "Flash sale. Public banner is subscribe-to-unlock — do not read the code off the homepage. In chat you may give 100OFF. Say the code expires in about 30 minutes. One code at checkout. Discounted enrollments are not refundable.",
       source: "fallback",
     };
   }
@@ -221,7 +221,7 @@ export async function decideDiscount(input: {
       percent: null,
       payUsd: listPrice ? Math.max(0, listPrice - off) : null,
       endsAt: getPromoEndsAtIso(),
-      note: "Public flash sale. Say it ends in about two hours. One code at checkout.",
+      note: "Public flash sale. Say the code expires in about 30 minutes. One code at checkout.",
     });
   }
 

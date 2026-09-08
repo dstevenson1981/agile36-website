@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { BANNER_COUPON_CODE } from "@/app/lib/site-promo";
 
 interface CouponModalProps {
@@ -104,7 +105,7 @@ export default function CouponModal({
               $100 off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to unlock your code.
+              Subscribe below to unlock your code. It expires in 30 minutes.
             </p>
           </div>
         </div>
@@ -125,7 +126,8 @@ export default function CouponModal({
           </p>
           <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your $100 off code</h3>
           <p className="text-gray-600 text-sm mb-6">
-            Enter your email and course interest — we&apos;ll reveal your code instantly.
+            Enter your email and course interest — we&apos;ll reveal your code instantly. It
+            expires in 30 minutes.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -189,13 +191,13 @@ export default function CouponModal({
               <span className="text-green-600 mt-0.5">✓</span>
               <span>
                 By providing your contact details you agreed to our{" "}
-                <a href="/privacy-policy" className="text-[#e53935] hover:underline">
+                <Link href="/privacy-policy" className="text-[#e53935] hover:underline">
                   Privacy Policy
-                </a>{" "}
+                </Link>{" "}
                 &{" "}
-                <a href="/privacy-policy" className="text-[#e53935] hover:underline">
+                <Link href="/privacy-policy" className="text-[#e53935] hover:underline">
                   Terms and Conditions
-                </a>
+                </Link>
                 .
               </span>
             </p>
