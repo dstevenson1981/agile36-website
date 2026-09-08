@@ -624,7 +624,9 @@ function CheckoutContent() {
                       router.push(`/courses/executive-genai-leadership/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/executive-genai-leadership/schedule?course=${courseSlug}`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(1);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

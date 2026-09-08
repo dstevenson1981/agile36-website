@@ -859,7 +859,9 @@ function CheckoutContent() {
                       router.push(`/courses/agile-product-management/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/agile-product-management/schedule?course=${courseSlug}`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(2);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

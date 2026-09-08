@@ -820,7 +820,9 @@ function CheckoutContent() {
                       router.push(`/courses/value-stream-mapping/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/value-stream-mapping/schedule?course=${courseSlug}`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(2);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

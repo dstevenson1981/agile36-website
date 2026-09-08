@@ -625,7 +625,9 @@ function CheckoutContent() {
                       router.push(`/courses/ai-agent-builder/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/ai-agent-builder/schedule?course=${courseSlug}`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(1);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

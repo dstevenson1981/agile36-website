@@ -819,7 +819,9 @@ function CheckoutContent() {
                       router.push(`/courses/leading-safe/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/leading-safe/schedule?course=${courseSlug}`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(2);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

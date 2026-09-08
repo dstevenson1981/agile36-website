@@ -600,7 +600,9 @@ function CheckoutContent() {
                       router.push(`/private/rte/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/`);
+                      setClientSecret(null);
+                      setPaymentIntentId(null);
+                      setCurrentStep(1);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}
