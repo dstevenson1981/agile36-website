@@ -553,7 +553,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Promo Banner — tap to copy 100OFF */}
+      {/* Promo Banner — subscribe to reveal 100OFF */}
       <PromoBanner />
 
       {/* Navigation Header — offset when thin promo strip is visible */}

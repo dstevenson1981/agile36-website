@@ -2,7 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 export async function fetchActiveCourseSchedules(
-  courseSlug: string
+  courseSlug: string,
+  options?: { includeHidden?: boolean }
 ): Promise<CourseScheduleRow[]> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey =
@@ -13,28 +14,35 @@ export async function fetchActiveCourseSchedules(
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
-  let query = supabase
-    .from("course_schedules")
-    .select("*")
-    .eq("status", "active")
-    .eq("course_slug", courseSlug)
-    .gte("start_date", new Date().toISOString())
-    .or("hidden.is.null,hidden.eq.false")
-    .order("start_date", { ascending: true });
+  const includeHidden = options?.includeHidden === true;
+  const softHiddenSlugs = new Set(["release-train-engineer"]);
+  const allowHiddenList = includeHidden && softHiddenSlugs.has(courseSlug);
 
-  let { data, error } = await query;
-
-  if (
-    error &&
-    (error.code === "42703" || String(error.message).includes('column "hidden" does not exist'))
-  ) {
-    const retry = await supabase
+  const run = (withHiddenFilter: boolean) => {
+    let query = supabase
       .from("course_schedules")
       .select("*")
       .eq("status", "active")
       .eq("course_slug", courseSlug)
       .gte("start_date", new Date().toISOString())
       .order("start_date", { ascending: true });
+    if (withHiddenFilter) {
+      query = query.or("hidden.is.null,hidden.eq.false");
+    }
+    return query;
+  };
+
+  let { data, error } = await run(!allowHiddenList);
+
+  if (
+    error &&
+    (error.code === "42703" || String(error.message).includes('column "hidden" does not exist'))
+  ) {
+    const retry = await run(false);
+    data = retry.data;
+    error = retry.error;
+  } else if (error) {
+    const retry = await run(!allowHiddenList);
     data = retry.data;
     error = retry.error;
   }

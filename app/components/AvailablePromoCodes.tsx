@@ -1,22 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import {
-  isSitePromoActive,
-  BANNER_COUPON_CODE,
-  BANNER_DISCOUNT_AMOUNT,
-  PROMO_CODE_EXPIRES_IN,
-} from "@/app/lib/site-promo";
+import React from "react";
+import { BANNER_DISCOUNT_AMOUNT, PROMO_CODE_EXPIRES_IN } from "@/app/lib/site-promo";
 
 export type AvailablePromo = {
   code: string;
   label: string;
 };
 
-/** Clip coupons at checkout — $100 off while the Labor Day sale is active. */
-const DEFAULT_PROMOS: AvailablePromo[] = [
-  { code: BANNER_COUPON_CODE, label: `$${BANNER_DISCOUNT_AMOUNT} Off` },
-];
+/** 100OFF is email-gated via the site banner subscribe flow — not clipped at checkout. */
+const DEFAULT_PROMOS: AvailablePromo[] = [];
 
 type Props = {
   availablePromos?: AvailablePromo[];
@@ -25,45 +18,31 @@ type Props = {
   isValidatingPromo: boolean;
 };
 
+export function SubscribePromoHint() {
+  return (
+    <p className="mb-3 rounded-lg border border-orange-100 bg-orange-50/80 px-3 py-2 text-xs text-gray-600">
+      <span className="font-semibold text-[#e8431f]">${BANNER_DISCOUNT_AMOUNT} off:</span>{" "}
+      Click the banner at the top of the site, subscribe with your email, and we&apos;ll reveal
+      your promo code. It expires {PROMO_CODE_EXPIRES_IN}. Enter it below at checkout.
+    </p>
+  );
+}
+
 export default function AvailablePromoCodes({
-  availablePromos,
+  availablePromos = DEFAULT_PROMOS,
   appliedPromoCode,
   onSelectCode,
   isValidatingPromo,
 }: Props) {
-  // Defer until mount so SSR and the first client paint match.
-  const [promoLive, setPromoLive] = useState(false);
-
-  useEffect(() => {
-    const tick = () => setPromoLive(isSitePromoActive());
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const promos =
-    availablePromos ??
-    (promoLive ? DEFAULT_PROMOS : []);
-
-  if (promos.length === 0) {
-    return null;
+  if (availablePromos.length === 0) {
+    return <SubscribePromoHint />;
   }
-
-  const showingDefaultFlashSale =
-    availablePromos == null && promoLive && promos.some((p) => p.code === BANNER_COUPON_CODE);
 
   return (
     <div className="mb-3">
-      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <p className="text-sm font-medium text-gray-900">Clip Coupon Code</p>
-        {showingDefaultFlashSale && (
-          <p className="text-xs font-semibold text-[#fa4a23]">
-            Ends {PROMO_CODE_EXPIRES_IN}
-          </p>
-        )}
-      </div>
+      <p className="mb-2 text-sm font-medium text-gray-900">Clip Coupon Code</p>
       <div className="space-y-2">
-        {promos.map((promo) => {
+        {availablePromos.map((promo) => {
           const isSelected = appliedPromoCode?.toUpperCase() === promo.code.toUpperCase();
           return (
             <button
@@ -71,25 +50,21 @@ export default function AvailablePromoCodes({
               type="button"
               onClick={() => onSelectCode(promo.code)}
               disabled={isValidatingPromo}
-              className="w-full flex items-center justify-between gap-3 p-3 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent text-left"
+              className="flex w-full items-center justify-between gap-3 rounded-lg border border-gray-200 p-3 text-left transition-colors hover:border-gray-300 hover:bg-gray-50/50 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-transparent"
             >
               <div className="flex items-center gap-3">
-                <span className="inline-flex items-center px-2 py-0.5 rounded border-2 border-dashed border-orange-400 bg-orange-50 text-orange-600 font-bold text-sm">
+                <span className="inline-flex items-center rounded border-2 border-dashed border-orange-400 bg-orange-50 px-2 py-0.5 text-sm font-bold text-orange-600">
                   {promo.code}
                 </span>
                 <span className="font-semibold text-gray-900">{promo.label}</span>
               </div>
               <div className="flex-shrink-0">
                 <div
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    isSelected
-                      ? "border-blue-500 bg-blue-500"
-                      : "border-gray-300 bg-white"
+                  className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${
+                    isSelected ? "border-blue-500 bg-blue-500" : "border-gray-300 bg-white"
                   }`}
                 >
-                  {isSelected && (
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  )}
+                  {isSelected && <div className="h-1.5 w-1.5 rounded-full bg-white" />}
                 </div>
               </div>
             </button>

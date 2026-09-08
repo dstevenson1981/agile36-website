@@ -605,7 +605,6 @@ body {
 .animate-promo-cta {
   position: relative;
   overflow: hidden;
-  background: #fff;
   animation: promo-banner-cta-pulse 2.4s ease-in-out infinite;
 }
 
