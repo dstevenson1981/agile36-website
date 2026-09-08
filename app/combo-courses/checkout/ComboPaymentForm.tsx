@@ -86,7 +86,7 @@ export default function ComboPaymentForm({
             className="flex-1 px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/10 transition-colors"
             disabled={isProcessing}
           >
-            Cancel
+            Back
           </button>
           <button
             type="submit"
