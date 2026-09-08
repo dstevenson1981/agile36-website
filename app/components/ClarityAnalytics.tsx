@@ -11,7 +11,6 @@ export default function ClarityAnalytics() {
   useEffect(() => {
     const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
     if (!projectId) return;
-
     Clarity.init(projectId);
   }, []);
 

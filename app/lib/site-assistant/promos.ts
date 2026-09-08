@@ -2,7 +2,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import {
   BANNER_COUPON_CODE,
   BANNER_DISCOUNT_AMOUNT,
-  PROMO_ENDS_AT_ISO,
+  getPromoEndsAtIso,
   isSitePromoActive,
 } from "@/app/lib/site-promo";
 import {
@@ -146,8 +146,8 @@ export async function publicSaleFromSupabase(): Promise<{
       active: true,
       code: sale.code.toUpperCase(),
       amountUsd: sale.discountValue,
-      endsAt: sale.expiresAt ?? undefined,
-      note: "They type this code at checkout. One code only. Discounted enrollments are not refundable.",
+      endsAt: getPromoEndsAtIso(),
+      note: "Flash sale. Say it ends in about two hours. They type this code at checkout. One code only. Discounted enrollments are not refundable.",
       source: "supabase",
     };
   }
@@ -156,7 +156,7 @@ export async function publicSaleFromSupabase(): Promise<{
       active: isSitePromoActive(),
       code: isSitePromoActive() ? BANNER_COUPON_CODE : undefined,
       amountUsd: isSitePromoActive() ? BANNER_DISCOUNT_AMOUNT : undefined,
-      endsAt: isSitePromoActive() ? PROMO_ENDS_AT_ISO : undefined,
+      endsAt: isSitePromoActive() ? getPromoEndsAtIso() : undefined,
       note: error,
       source: "fallback",
     };
@@ -166,8 +166,8 @@ export async function publicSaleFromSupabase(): Promise<{
       active: true,
       code: BANNER_COUPON_CODE,
       amountUsd: BANNER_DISCOUNT_AMOUNT,
-      endsAt: PROMO_ENDS_AT_ISO,
-      note: "They type this code at checkout. One code only. Discounted enrollments are not refundable.",
+      endsAt: getPromoEndsAtIso(),
+      note: "Flash sale. Say it ends in about two hours. They type this code at checkout. One code only. Discounted enrollments are not refundable.",
       source: "fallback",
     };
   }
@@ -220,8 +220,8 @@ export async function decideDiscount(input: {
       amountUsd: off,
       percent: null,
       payUsd: listPrice ? Math.max(0, listPrice - off) : null,
-      endsAt: sale.expiresAt,
-      note: "One-day Labor Day sale. One code at checkout.",
+      endsAt: getPromoEndsAtIso(),
+      note: "Public flash sale. Say it ends in about two hours. One code at checkout.",
     });
   }
 

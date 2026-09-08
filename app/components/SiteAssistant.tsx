@@ -41,7 +41,7 @@ const AGENT = {
   logo: "/Favicon/web-app-manifest-192x192.png",
 };
 
-const HIDDEN_PREFIXES = ["/admin", "/popm-workshop"];
+const HIDDEN_PREFIXES = ["/admin", "/popm-workshop", "/unsubscribe"];
 const SESSION_KEY = "a36_chat_v4";
 const DISMISS_KEY = "a36_chat_dismissed";
 const MAX_FILES = 3;

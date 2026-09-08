@@ -15,6 +15,7 @@
     "land-expand": "tsx land-and-expand/run.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.60",
     "@gsap/react": "^2.1.2",
     "@microsoft/clarity": "^1.0.2",
     "@modelcontextprotocol/sdk": "^1.29.0",
@@ -26,6 +27,7 @@
     "@tiptap/react": "^3.13.0",
     "@tiptap/starter-kit": "^3.13.0",
     "@vercel/analytics": "^1.6.0",
+    "ai": "^7.0.93",
     "csv-parse": "^6.1.0",
     "framer-motion": "^12.40.0",
     "gray-matter": "^4.0.3",
