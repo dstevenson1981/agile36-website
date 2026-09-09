@@ -65,6 +65,7 @@ export default function Home() {
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
+    "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
@@ -74,8 +75,11 @@ export default function Home() {
     if (course.title.includes("No-Code AI Agents")) {
       return "/Logo_Agents.png";
     }
-    // Use GenAI_2.png for all Generative AI and AI Product courses
-    if (course.category === "Generative AI" || course.category === "AI Product") {
+    if (course.title.includes("AI Workflow Automation")) {
+      return "/Logo_AI_Workflow_Automation.png";
+    }
+    // Use GenAI_2.png for remaining AI Courses without a dedicated badge
+    if (course.category === "AI Courses") {
       return "/GenAI_2.png";
     }
     return megaMenuThumbnails[course.title] || course.image;
@@ -336,14 +340,27 @@ export default function Home() {
     {
       id: "29",
       title: "No-Code AI Agents & Automation™",
-      category: "AI Product",
+      category: "AI Courses",
       image: "/Logo_Agents.png",
       price: 400,
       originalPrice: 800,
-      hours: "10 Hrs",
+      hours: "8 Hrs",
       days: "02 days",
       enrolled: "2.8K+ Enrolled",
-      skills: "Claude Agents, Claude Code, Codex, n8n Automation",
+      skills: "GrokBot, RAG, Voice AI, Claude Code, n8n",
+      popular: true,
+    },
+    {
+      id: "31",
+      title: "AI Workflow Automation™",
+      category: "AI Courses",
+      image: "/Logo_AI_Workflow_Automation.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "n8n, Claude, APIs, Webhooks",
       popular: true,
     },
     // AI Product courses
@@ -378,10 +395,10 @@ export default function Home() {
 
   const filteredCourses = activeTab === "SAFe"
     ? allCourses.filter(course => course.category === "SAFe")
-    : activeTab === "Generative AI"
-    ? allCourses.filter(course => course.category === "Generative AI")
-    : activeTab === "AI Product"
-    ? allCourses.filter(course => course.category === "AI Product")
+    : activeTab === "AI Courses"
+    ? allCourses.filter(course =>
+        course.title.includes("No-Code AI Agents") || course.title.includes("AI Workflow Automation")
+      )
     : allCourses;
 
   // Helper function to generate course URL
@@ -412,6 +429,7 @@ export default function Home() {
       "Generative AI for Project Managers": "/courses/generative-ai-project-managers",
       "Certified GenAI Practitioner™": "/courses/certified-genai-practitioner",
       "No-Code AI Agents & Automation™": "/courses/ai-agent-builder",
+      "AI Workflow Automation™": "/courses/ai-workflow-automation",
       "Certified AI Product Manager": "/courses/certified-ai-product-manager",
       "AI-Driven Project Manager™": "/courses/generative-ai-project-managers",
       "Agentic Product Leader Certification": "/courses/certified-ai-product-manager",
@@ -560,7 +578,7 @@ export default function Home() {
                       <div className="w-full sm:w-48 bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-200 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg p-4">
                         <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Categories</h3>
                         <ul className="space-y-1">
-                          {["SAFe", "Generative AI", "AI Product"].map((category) => (
+                          {["SAFe", "AI Courses"].map((category) => (
                             <li key={category}>
                               <button
                                 onMouseEnter={() => setSelectedMegaMenuCategory(category)}
@@ -937,24 +955,14 @@ export default function Home() {
               SAFe
             </button>
             <button 
-              onClick={() => setActiveTab("Generative AI")}
+              onClick={() => setActiveTab("AI Courses")}
               className={`px-6 py-2 font-semibold rounded-lg border-2 transition-colors ${
-                activeTab === "Generative AI"
+                activeTab === "AI Courses"
                   ? "bg-[#edf5f0] text-[#0dae6b] border-transparent hover:bg-[#d4e8dd]"
                   : "bg-white text-[#828282] border border-gray-200 hover:bg-gray-50"
               }`}
             >
-              Generative AI
-            </button>
-            <button 
-              onClick={() => setActiveTab("AI Product")}
-              className={`px-6 py-2 font-semibold rounded-lg border-2 transition-colors ${
-                activeTab === "AI Product"
-                  ? "bg-[#edf5f0] text-[#0dae6b] border-transparent hover:bg-[#d4e8dd]"
-                  : "bg-white text-[#828282] border border-gray-200 hover:bg-gray-50"
-              }`}
-            >
-              AI Product
+              AI Courses
             </button>
           </div>
         </div>

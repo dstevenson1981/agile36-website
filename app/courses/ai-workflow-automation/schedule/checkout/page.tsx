@@ -23,13 +23,13 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const scheduleId = searchParams.get('schedule');
-  const courseSlug = searchParams.get('course') || 'certified-ai-product-manager';
+  const courseSlug = searchParams.get('course') || 'ai-workflow-automation';
   
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedSchedule, setSelectedSchedule] = useState<any>(null);
   const [enrollmentQuantity, setEnrollmentQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [courseName, setCourseName] = useState("Certified AI Product Manager™");
+  const [courseName, setCourseName] = useState("AI Workflow Automation™");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -65,9 +65,7 @@ function CheckoutContent() {
   });
 
   const courseNames: { [key: string]: string } = {
-    'ai-agent-builder': 'No-Code AI Agents & Automation™',
     'ai-workflow-automation': 'AI Workflow Automation™',
-    'certified-ai-product-manager': 'Certified AI Product Manager™',
     'leading-safe': 'AI-Empowered Leading SAFe® / SAFe Agilist',
     'scrum-master': 'AI-Empowered SAFe Scrum Master',
     'product-owner-manager': 'AI-Empowered SAFe Product Owner/Product Manager',
@@ -81,7 +79,7 @@ function CheckoutContent() {
     const fetchSchedule = async () => {
       if (!scheduleId) {
         // Redirect to schedule page if no schedule ID
-        router.push(`/courses/certified-ai-product-manager/schedule`);
+        router.push(`/courses/ai-workflow-automation/schedule`);
         return;
       }
 
@@ -97,14 +95,14 @@ function CheckoutContent() {
             setEnrollmentQuantity(1);
           } else {
             // Schedule not found, redirect to schedule page
-            router.push(`/courses/certified-ai-product-manager/schedule`);
+            router.push(`/courses/ai-workflow-automation/schedule`);
           }
         } else {
-          router.push(`/courses/certified-ai-product-manager/schedule`);
+          router.push(`/courses/ai-workflow-automation/schedule`);
         }
       } catch (error) {
         console.error('Error fetching schedule:', error);
-        router.push(`/courses/certified-ai-product-manager/schedule`);
+        router.push(`/courses/ai-workflow-automation/schedule`);
       } finally {
         setIsLoading(false);
       }
@@ -172,7 +170,7 @@ function CheckoutContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code, courseSlug }),
+        body: JSON.stringify({ code }),
       });
 
       const data = await response.json();
@@ -334,7 +332,7 @@ function CheckoutContent() {
           duration: selectedSchedule?.duration,
           timezone: selectedSchedule?.timezone,
         },
-        successUrl: (paymentIntentId) => `/courses/certified-ai-product-manager/schedule/checkout/success?payment_intent=${paymentIntentId}`,
+        successUrl: (paymentIntentId) => `/courses/ai-workflow-automation/schedule/checkout/success?payment_intent=${paymentIntentId}`,
         onCardReady: (secret, piId) => {
           setClientSecret(secret);
           setPaymentIntentId(piId);
@@ -624,10 +622,10 @@ function CheckoutContent() {
                         course: courseSlug,
                         amount: totalPrice.toFixed(2),
                       });
-                      router.push(`/courses/certified-ai-product-manager/schedule/checkout/success?${params.toString()}`);
+                      router.push(`/courses/ai-workflow-automation/schedule/checkout/success?${params.toString()}`);
                     }}
                     onCancel={() => {
-                      router.push(`/courses/certified-ai-product-manager/schedule?course=${courseSlug}`);
+                      router.push(`/courses/ai-workflow-automation/schedule?course=${courseSlug}`);
                     }}
                     enrollmentData={enrollmentFormData}
                     paymentIntentId={paymentIntentId || ''}

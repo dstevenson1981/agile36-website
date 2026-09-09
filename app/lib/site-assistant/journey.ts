@@ -183,6 +183,7 @@ const COURSE_LABELS: Record<string, string> = {
   "generative-ai-project-managers": "GenAI for PMs",
   "ai-driven-scrum-master": "AI-Driven Scrum Master",
   "ai-agent-builder": "AI Agent Builder",
+  "ai-workflow-automation": "AI Workflow Automation",
 };
 
 export function labelPath(path: string): string {

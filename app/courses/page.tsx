@@ -250,11 +250,10 @@ function CoursesContent() {
   );
 
   const categoryCounts = useMemo(() => {
-    const counts: Record<CourseCategory, number> = {
-      SAFe: 0,
-      "Generative AI": 0,
-      "AI Product": 0,
-    };
+    const counts = Object.fromEntries(COURSE_CATEGORIES.map((c) => [c, 0])) as Record<
+      CourseCategory,
+      number
+    >;
     for (const c of PUBLIC_CATALOG_COURSES) {
       counts[c.category] += 1;
     }
@@ -317,7 +316,7 @@ function CoursesContent() {
                 className="text-xl md:text-2xl font-normal text-[#1f2c4a]"
                 style={{ letterSpacing: "-0.03em" }}
               >
-                Choose {selectedCategory} courses
+                Choose {selectedCategory === "AI Courses" ? "AI Courses" : `${selectedCategory} courses`}
                 <span className="text-[#94a3b8] ml-2">
                   ({filteredCourses.length})
                 </span>

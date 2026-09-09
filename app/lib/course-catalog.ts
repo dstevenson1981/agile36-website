@@ -1,4 +1,4 @@
-export type CourseCategory = "SAFe" | "Generative AI" | "AI Product";
+export type CourseCategory = "SAFe" | "AI Courses";
 
 /** Shown on SAFe course heroes, catalog cards, and nav for participants trained. */
 export const SAFE_COURSE_PARTICIPANTS_LABEL = "52,000+ Participants";
@@ -6,8 +6,7 @@ export const SAFE_COURSE_PARTICIPANTS_VALUE = "52,000+";
 
 export const COURSE_CATEGORIES: CourseCategory[] = [
   "SAFe",
-  "Generative AI",
-  "AI Product",
+  "AI Courses",
 ];
 
 export interface CatalogCourse {
@@ -50,6 +49,7 @@ const COURSE_THUMBNAILS: { [key: string]: string } = {
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
     "Certified AI Product Manager": "/PMAI.jpeg",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
+    "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
@@ -61,7 +61,10 @@ export function getCatalogCourseImage(course: CatalogCourse): string {
   if (course.title.includes("No-Code AI Agents")) {
     return "/Logo_Agents.png";
   }
-  if (course.category === "Generative AI" || course.category === "AI Product") {
+  if (course.title.includes("AI Workflow Automation")) {
+    return "/Logo_AI_Workflow_Automation.png";
+  }
+  if (course.category === "AI Courses") {
     return "/GenAI_2.png";
   }
   return COURSE_THUMBNAILS[course.title] || course.image;
@@ -203,11 +206,12 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       advanced: true,
       privateClass: true,
     },
-    // Generative AI courses
+    // Hidden AI courses — URLs stay live; omitted from nav, catalog, and search.
     {
       id: "19",
       title: "AI-Driven Scrum Master™",
-      category: "Generative AI",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
       price: 555,
       originalPrice: 1110,
@@ -220,7 +224,8 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     {
       id: "20",
       title: "Executive GenAI Leadership™",
-      category: "Generative AI",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/redd-francisco-PTRzqc_h1r4-unsplash.jpg",
       price: 400,
       originalPrice: 800,
@@ -232,7 +237,8 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     {
       id: "21",
       title: "AI-Driven Project Manager™",
-      category: "Generative AI",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/vitaly-gariev--X4Qx4_4iMU-unsplash.jpg",
       price: 400,
       originalPrice: 800,
@@ -244,7 +250,8 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     {
       id: "22",
       title: "Certified GenAI Practitioner™",
-      category: "Generative AI",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg",
       price: 299,
       originalPrice: 598,
@@ -257,21 +264,34 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     {
       id: "23",
       title: "No-Code AI Agents & Automation™",
-      category: "AI Product",
+      category: "AI Courses",
       image: "/Logo_Agents.png",
       price: 400,
       originalPrice: 800,
-      hours: "10 Hrs",
+      hours: "8 Hrs",
       days: "02 days",
       enrolled: "2.8K+ Enrolled",
-      skills: "Claude Agents, Claude Code, Codex, n8n Automation",
+      skills: "GrokBot, RAG, Voice AI, Claude Code, n8n",
       popular: true,
     },
-    // AI Product courses
+    {
+      id: "31",
+      title: "AI Workflow Automation™",
+      category: "AI Courses",
+      image: "/Logo_AI_Workflow_Automation.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "n8n, Claude, APIs, Webhooks",
+      popular: true,
+    },
     {
       id: "24",
       title: "Certified AI Product Manager",
-      category: "AI Product",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
       price: 400,
       originalPrice: 800,
@@ -284,7 +304,8 @@ export const CATALOG_COURSES: CatalogCourse[] = [
     {
       id: "25",
       title: "Agentic Product Leader Certification",
-      category: "AI Product",
+      category: "AI Courses",
+      hiddenFromListing: true,
       image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
       price: 400,
       originalPrice: 800,
@@ -386,6 +407,10 @@ export function getCatalogCourseUrl(course: CatalogCourse): string {
     if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
       return "/courses/ai-agent-builder";
     }
+
+    if (course.title.includes("AI Workflow Automation")) {
+      return "/courses/ai-workflow-automation";
+    }
     
     if (course.title.includes("Certified AI Product Manager")) {
       return "/courses/certified-ai-product-manager";
@@ -462,6 +487,9 @@ export function formatCatalogLiveDate(iso: string): string {
 }
 
 export function normalizeCourseCategory(cat: string | null): CourseCategory {
+  if (cat === "Generative AI" || cat === "AI Product" || cat === "AI Courses") {
+    return "AI Courses";
+  }
   const categories = COURSE_CATEGORIES;
   if (!cat || cat === "PMI" || !categories.includes(cat as CourseCategory)) {
     return "SAFe";

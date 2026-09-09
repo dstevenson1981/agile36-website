@@ -102,6 +102,13 @@ const INTENT_KEYWORDS: Record<string, string[]> = {
     "chatgpt",
     "prompt engineering",
   ],
+  workflow_automation: [
+    "n8n",
+    "workflow automation",
+    "ai workflow",
+    "business process automation",
+    "webhooks",
+  ],
   ai_courses: ["ai", "artificial intelligence", "ai course", "ai training"],
   practice: [
     "practice",
@@ -396,9 +403,9 @@ function courseIntents(course: CatalogCourse): string[] {
   if (title.includes("devops")) intents.push("devops");
   if (title.includes("value stream")) intents.push("vsm");
   if (title.includes("responsible ai")) intents.push("rai");
+  if (title.includes("workflow automation")) intents.push("workflow_automation");
   if (
-    course.category === "Generative AI" ||
-    course.category === "AI Product" ||
+    course.category === "AI Courses" ||
     title.includes("ai-") ||
     title.includes("genai") ||
     /\bai\b/.test(title)
@@ -423,6 +430,7 @@ function buildDocuments(): SearchDocument[] {
       if (i === "arch") return ["arch"];
       if (i === "s4t") return ["s4t", "sp"];
       if (i === "leading_safe") return ["sa", "leading safe"];
+      if (i === "workflow_automation") return ["n8n", "workflow automation"];
       return [];
     });
     const haystack = normalize(
@@ -725,6 +733,7 @@ export function searchSite(query: string, limit = 10): SiteSearchResponse {
       sasm: "advanced scrum master",
       practice: "practice test",
       combo: "combo courses",
+      workflow_automation: "workflow automation",
     };
     didYouMean = intentHint[intents[0]];
   } else if (suggestion && suggestion !== normalized && results.length > 0) {

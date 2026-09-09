@@ -112,13 +112,13 @@ export const agile36WebMcpTools: ModelContextTool[] = [
     name: "list_courses",
     title: "List courses",
     description:
-      "List public Agile36 certification courses with prices, duration, and URLs. Filter by category (SAFe, Generative AI, AI Product) or a search query.",
+      "List public Agile36 certification courses with prices, duration, and URLs. Filter by category (SAFe, AI Courses) or a search query.",
     inputSchema: {
       type: "object",
       properties: {
         category: {
           type: "string",
-          enum: ["SAFe", "Generative AI", "AI Product"],
+          enum: ["SAFe", "AI Courses"],
           description: "Optional catalog category.",
         },
         query: { type: "string", description: "Optional title or skill keywords." },

@@ -16,6 +16,7 @@ export const COURSE_HERO_SCHEDULE_LIST_USD: Record<string, { current: number; or
   "certified-genai-practitioner": { current: 299, original: 598 },
   "certified-ai-product-manager": { current: 400, original: 800 },
   "ai-agent-builder": { current: 400, original: 800 },
+  "ai-workflow-automation": { current: 400, original: 800 },
   "executive-genai-leadership": { current: 400, original: 800 },
   "generative-ai-project-managers": { current: 400, original: 800 },
   "ai-driven-scrum-master": { current: 555, original: 1110 },

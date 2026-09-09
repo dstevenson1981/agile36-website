@@ -574,7 +574,7 @@ export function HomeExperienceBody({
           <SectionHeading
             eyebrow="The Catalog"
             title="Programs built for the AI era"
-            copy="SAFe® certifications, Generative AI credentials, and AI product leadership — every course live, every instructor certified."
+            copy="SAFe® certifications and hands-on AI courses — every class live, every instructor certified."
           />
 
           <div data-reveal className="mt-10 flex flex-wrap justify-center gap-2.5">

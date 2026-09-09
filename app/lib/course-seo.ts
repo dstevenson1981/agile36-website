@@ -54,6 +54,10 @@ export const COURSE_SEO = {
     title: "No-Code AI Agents & Automation™ Certification | Agile36",
     long: "No-Code AI Agents & Automation™ Certification Training (2026)",
   },
+  "ai-workflow-automation": {
+    title: "AI Workflow Automation™ Certification | Agile36",
+    long: "AI Workflow Automation™ Certification Training (2026)",
+  },
   "ai-driven-scrum-master": {
     title: "AI-Driven Scrum Master™ Certification | Agile36",
     long: "AI-Driven Scrum Master™ Certification Training (2026)",

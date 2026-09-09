@@ -48,6 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "safe-devops",
     "certified-ai-product-manager",
     "ai-agent-builder",
+    "ai-workflow-automation",
     "ai-driven-scrum-master",
     "executive-genai-leadership",
     "generative-ai-project-managers",

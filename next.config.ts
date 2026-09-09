@@ -186,6 +186,11 @@ const nextConfig: NextConfig = {
         destination: '/courses/ai-agent-builder',
         permanent: true,
       },
+      {
+        source: '/ai-workflow-automation',
+        destination: '/courses/ai-workflow-automation',
+        permanent: true,
+      },
       // Agile courses
       {
         source: '/agile-product-management',

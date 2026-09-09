@@ -18,6 +18,7 @@ export const COURSE_BROCHURE_HREF: Record<string, string> = {
   "value-stream-mapping": "/brochures/Value-Stream-Mapping-Brochure-Agile36.pdf",
   "responsible-ai": "/brochures/Responsible-AI-Brochure-Agile36.pdf",
   "ai-agent-builder": "/brochures/No-Code-AI-Agents-Automation-Brochure-Agile36.pdf",
+  "ai-workflow-automation": "/brochures/AI-Workflow-Automation-Brochure-Agile36.pdf",
   "generative-ai-project-managers": "/brochures/GenAI-for-Project-Managers-Brochure-Agile36.pdf",
   "certified-ai-product-manager": "/brochures/Certified-AI-Product-Manager-Brochure-Agile36.pdf",
   "certified-genai-practitioner": "/brochures/Certified-GenAI-Practitioner-Brochure-Agile36.pdf",

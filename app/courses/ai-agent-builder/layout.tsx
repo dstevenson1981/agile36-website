@@ -11,11 +11,13 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("ai-agent-builder"),
   description:
-    "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
+    "Build a fleet of AI agents, a voice agent, and a working app in two live days. Combine GrokBot, RAG, Claude Code, Codex, n8n, and voice AI — 8 hours, 4 hours per day.",
   keywords: [
     "No-code AI agents",
     "AI automation",
-    "Claude agents",
+    "GrokBot",
+    "RAG",
+    "Voice AI",
     "Claude Code",
     "Codex",
     "n8n training",
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
     images: [...DEFAULT_OG_IMAGES],
     title: courseOgTitle("ai-agent-builder"),
     description:
-      "Live hands-on training: build practical AI agents and automate real workflows with Claude, Claude Code, Codex, and n8n — no programming background required.",
+      "Build a fleet of AI agents, a voice agent, and a working app in two live days. Combine GrokBot, RAG, Claude Code, Codex, n8n, and voice AI — 8 hours, 4 hours per day.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-agent-builder",
   },
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: courseLong("ai-agent-builder"),
     description:
-      "Build practical AI agents and automate workflows with Claude, Claude Code, Codex, and n8n. No programming background required.",
+      "Build a fleet of AI agents, a voice agent, and a working app. GrokBot, RAG, Claude Code, Codex, n8n, and voice AI. 8 hours over two days.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-agent-builder",
@@ -58,22 +60,21 @@ export default async function AIAgentBuilderLayout({
       schedulePath: "/courses/ai-agent-builder/schedule",
       courseDisplayName: "No-Code AI Agents & Automation™ Certification Training",
       description:
-        "Learn how to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer. Go beyond prompting to give agents instructions, tools, context, and workflows that complete real work.",
+        "This is not another course about prompting AI. Over two live, hands-on days you build a connected fleet of business agents, an AI voice agent, and a working application planned and built by Claude Code or Codex — using GrokBot, RAG, n8n, and voice AI.",
       teaches: [
-        "Building AI Agents Without Traditional Coding",
-        "Building Agents with Claude",
-        "Building with Claude Code and Codex",
-        "Automating Workflows with n8n",
-        "Connecting Agents to Tools and Data",
-        "Human-in-the-Loop Workflow Design",
-        "Multi-Step and Multi-Agent Workflows",
-        "Turning Business Processes into AI Workflows",
+        "Building a fleet of specialized agents",
+        "Grounding agents in company knowledge with RAG",
+        "Agent handoffs and human approvals",
+        "Connecting workflows with n8n",
+        "Building a voice agent",
+        "Using Claude Code or Codex to build a working application",
+        "Connecting agents, knowledge, voice, and software into one system",
       ],
       breadcrumbLeafName: "No-Code AI Agents & Automation",
-      coursesCrumbLabel: "AI Product Courses",
+      coursesCrumbLabel: "AI Courses",
       defaultPrice: 400,
       defaultCurrency: "USD",
-      timeRequired: "P2D",
+      timeRequired: "PT8H",
       courseCode: "AI-Agents",
       coursePrerequisites:
         "No prerequisites. Designed for professionals without a software development background.",
@@ -97,7 +98,7 @@ export default async function AIAgentBuilderLayout({
         name: "What is No-Code AI Agents & Automation?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No-Code AI Agents & Automation™ is a live, hands-on certification that teaches you to build practical AI agents and automate real business workflows using Claude, Claude Code, Codex, and n8n — without needing to be a programmer.",
+          text: "No-Code AI Agents & Automation™ is a live, two-day hands-on certification. You build a connected fleet of business agents, a RAG knowledge system, a voice agent, and a working application using GrokBot, RAG, Claude Code, Codex, n8n, and voice AI. Eight hours total, four hours per day.",
         },
       },
       {
@@ -105,7 +106,7 @@ export default async function AIAgentBuilderLayout({
         name: "What tools will I use in this course?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You’ll work with Claude, Claude Code, Codex, n8n, APIs and integrations, and AI agent tools and connectors to build agents that complete real work across applications and processes.",
+          text: "You’ll work with GrokBot, RAG, Claude Code, Codex, n8n, and voice AI to build an agent fleet, a voice agent, and a working application.",
         },
       },
       {
@@ -121,7 +122,7 @@ export default async function AIAgentBuilderLayout({
         name: "What will I build?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You’ll build research and information-gathering agents, workflow automation agents, document and data processing agents, customer and employee support workflows, multi-application agents, human approval and escalation workflows, multi-agent workflows, and end-to-end business process automation.",
+          text: "You’ll build a fleet of specialized agents, a RAG knowledge system, connected workflows with handoffs and human approvals, a voice agent, a working application planned and built by an AI agent, and one complete workflow connecting agents, knowledge, voice, and software.",
         },
       },
       {
@@ -137,7 +138,7 @@ export default async function AIAgentBuilderLayout({
         name: "How is this different from prompt-writing courses?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Most AI courses teach you how to use ChatGPT or write better prompts. This course teaches you how to build AI-powered systems that perform work by combining AI agents, workflow automation, business applications, data, and human decision points.",
+          text: "You will not spend eight hours watching AI demonstrations. You will build with AI: Company Challenge → Agent Fleet → RAG Knowledge → Voice Agent → AI-Built Application → Working Business System.",
         },
       },
     ],

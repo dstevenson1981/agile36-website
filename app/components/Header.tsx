@@ -55,15 +55,9 @@ const MEGA_MENU_CATEGORIES = [
     gridCols: "grid-cols-2",
   },
   {
-    id: "Generative AI",
-    label: "Generative AI",
-    description: "Practical GenAI skills for leaders, scrum masters, and project managers.",
-    gridCols: "grid-cols-2",
-  },
-  {
-    id: "AI Product",
-    label: "AI Product",
-    description: "Build and ship AI-powered products with hands-on product management training.",
+    id: "AI Courses",
+    label: "AI Courses",
+    description: "Hands-on training to build AI agents and automate business workflows — no traditional programming required.",
     gridCols: "grid-cols-1 sm:grid-cols-2",
   },
 ] as const;
@@ -186,6 +180,7 @@ export default function Header() {
     "SAFe Scrum Master": "/SSM.jpeg",
     "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
+    "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };
@@ -194,8 +189,10 @@ export default function Header() {
     if (course.title.includes("No-Code AI Agents")) {
       return "/Logo_Agents.png";
     }
-    // Use GenAI_2.png for all Generative AI and AI Product courses
-    if (course.category === "Generative AI" || course.category === "AI Product") {
+    if (course.title.includes("AI Workflow Automation")) {
+      return "/Logo_AI_Workflow_Automation.png";
+    }
+    if (course.category === "AI Courses") {
       return "/GenAI_2.png";
     }
     return megaMenuThumbnails[course.title] || course.image;
@@ -216,6 +213,10 @@ export default function Header() {
     // Special case for No-Code AI Agents & Automation
     if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
       return "/courses/ai-agent-builder";
+    }
+
+    if (course.title.includes("AI Workflow Automation")) {
+      return "/courses/ai-workflow-automation";
     }
 
     // Special case for Certified AI Product Manager
@@ -517,14 +518,27 @@ export default function Header() {
     {
       id: "29",
       title: "No-Code AI Agents & Automation™",
-      category: "AI Product",
+      category: "AI Courses",
       image: "/Logo_Agents.png",
       price: 400,
       originalPrice: 800,
-      hours: "10 Hrs",
+      hours: "8 Hrs",
       days: "02 days",
       enrolled: "2.8K+ Enrolled",
-      skills: "Claude Agents, Claude Code, Codex, n8n Automation",
+      skills: "GrokBot, RAG, Voice AI, Claude Code, n8n",
+      popular: true,
+    },
+    {
+      id: "31",
+      title: "AI Workflow Automation™",
+      category: "AI Courses",
+      image: "/Logo_AI_Workflow_Automation.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "n8n, Claude, APIs, Webhooks",
       popular: true,
     },
     // AI Product courses
@@ -663,11 +677,11 @@ export default function Header() {
                             </p>
                           </div>
                           <Link
-                            href={`/courses?category=${selectedMegaMenuCategory}`}
+                            href={`/courses?category=${encodeURIComponent(selectedMegaMenuCategory)}`}
                             onClick={() => setShowMegaMenu(false)}
                             className="text-sm text-[#d97706] hover:text-[#b45309] font-medium whitespace-nowrap shrink-0"
                           >
-                            View all {selectedCategoryMeta.label} Courses
+                            View all {selectedCategoryMeta.label === "AI Courses" ? "AI Courses" : `${selectedCategoryMeta.label} Courses`}
                           </Link>
                         </div>
                         <ul className={`grid ${selectedCategoryMeta.gridCols} gap-x-6 gap-y-1`}>

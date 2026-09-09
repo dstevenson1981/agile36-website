@@ -13,7 +13,7 @@ export const AI_AGENTS_ACADEMY = {
   courseName: 'No-Code AI Agents & Automation™',
   courseHref: '/courses/ai-agent-builder',
   badge: '/Logo_Agents.png',
-  tagline: 'Build agents that do real work — with Claude Code, Codex, and n8n.',
+  tagline: 'Build a fleet of AI agents, a voice agent, and a working app — with GrokBot, RAG, Claude Code, Codex, n8n, and voice AI.',
   description:
     "Class materials, installable agent packs, n8n templates, and the software-team capstone for Agile36's No-Code AI Agents training.",
 };
