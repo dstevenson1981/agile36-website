@@ -25,6 +25,15 @@ const rich = (s: string) => s.replace(/&(?!amp;|lt;|gt;|#)/g, "&amp;");
 
 const money = (n: number) => `$${n.toLocaleString("en-US")}`;
 
+/**
+ * Is this an accredited Scaled Agile course?
+ *
+ * Gates every SAFe claim in the brochure — the Silver Partner marks, the SPC
+ * instructor line, SAFe Studio membership, the micro-credential, and the
+ * trademark notice. Agile36's own AI/GenAI courses are none of those things.
+ */
+const safe = (c: BrochureCourse) => c.accreditation?.safe !== false;
+
 type Trainer = { name: string; role: string; bio: string; image: string };
 
 const TRAINERS: Trainer[] = [
@@ -118,13 +127,17 @@ ${c.whatsNew
         </div>
       </div>
 
-      <div class="cover-badges mb-20">
-        <img class="popm" src="${P}${esc(c.badge)}" alt="Certification badge" />
-        <img class="silver" src="${P}/Silver.png" alt="Scaled Agile Silver Partner" />
-      </div>
+      ${
+        c.badge || safe(c)
+          ? `<div class="cover-badges mb-20">
+        ${c.badge ? `<img class="popm" src="${P}${esc(c.badge)}" alt="Certification badge" />` : ""}
+        ${safe(c) ? `<img class="silver" src="${P}/Silver.png" alt="Scaled Agile Silver Partner" />` : ""}
+      </div>`
+          : ""
+      }
       <div class="cover-foot">
         <span class="site">www.agile36.com</span>
-        <span class="who">Agile36 · Scaled Agile Silver Partner · Live online, instructor-led by certified SPCs, worldwide</span>
+        <span class="who">Agile36 · ${safe(c) ? "Scaled Agile Silver Partner · Live online, instructor-led by certified SPCs, worldwide" : "Live online, instructor-led, worldwide"}</span>
       </div>
     </div>
   </div>
@@ -153,8 +166,9 @@ function contents(c: BrochureCourse, l: BrochureLanding) {
           ["Passing score", c.exam.pass],
           ["Exam attempts", c.exam.attempts],
         ] as [string, string][])
-      : ([["Assessment", "Micro-credential, no exam"]] as [string, string][])),
-    ["Membership", "1 year SAFe Studio"],
+      : ([["Assessment", safe(c) ? "Micro-credential, no exam" : (c.accreditation?.assessment ?? "No exam")]] as [string, string][])),
+    ...(safe(c) ? ([["Membership", "1 year SAFe Studio"]] as [string, string][]) : []),
+    ...(c.accreditation ? ([["Credential", c.accreditation.credential]] as [string, string][]) : []),
     ["Prerequisites", c.prerequisites.length && /^none/i.test(c.prerequisites[0]) ? "None" : "See page 4"],
   ];
   return `<section class="page">
@@ -235,12 +249,18 @@ function overview(c: BrochureCourse, l: BrochureLanding) {
     { t: `${c.duration.hours} hours live`, d: `${c.duration.days} of instructor-led virtual classroom — not recordings.` },
     c.exam
       ? { t: "Exam + retake", d: `Official exam fee with ${c.exam.attempts.toLowerCase()}.`, accent: true }
-      : { t: "Micro-credential", d: "A Scaled Agile micro-credential badge on completion.", accent: true },
+      : safe(c)
+        ? { t: "Micro-credential", d: "A Scaled Agile micro-credential badge on completion.", accent: true }
+        : { t: "Certification", d: `${c.accreditation?.credential ?? "Certificate on completion"}.`, accent: true },
     { t: c.credits, d: "Credit toward PMI and Scrum Alliance renewal requirements." },
-    { t: "SAFe Studio", d: "One-year membership plus SAFe Connect community access." },
-    { t: "Digital workbook", d: `The official ${c.version} courseware, yours to keep and annotate.` },
+    ...(safe(c)
+      ? [{ t: "SAFe Studio", d: "One-year membership plus SAFe Connect community access." }]
+      : [{ t: "Post-class coaching", d: "One-to-one executive coaching sessions after the cohort ends." }]),
+    { t: "Digital workbook", d: `The ${safe(c) ? "official " : ""}${c.version} courseware, yours to keep and annotate.` },
     { t: "AI prompt library", d: "Reusable prompt patterns you can run the week after class.", accent: true },
-    { t: "Practice test", d: "Free practice exam and preparation materials." },
+    safe(c)
+      ? { t: "Practice test", d: "Free practice exam and preparation materials." }
+      : { t: "Case studies", d: "Real-world scenarios from organizations already doing this." },
     { t: "Free reschedule", d: "Miss a session and join the next cohort at no extra cost." },
   ];
   return `<section class="page compact">
@@ -258,7 +278,7 @@ ${paras.map((t, i) => `      <p class="lede"${i === paras.length - 1 ? ' style="
       <span class="eyebrow">The Agile36 difference</span>
       <div class="rule"></div>
       <p class="small" style="color:rgba(255,255,255,0.78)">${rich(l.difference)}</p>
-      <p class="small" style="color:rgba(255,255,255,0.78); margin:0">Every class is live, capped for discussion, and led by a certified SAFe® Practice Consultant.</p>
+      <p class="small" style="color:rgba(255,255,255,0.78); margin:0">Every class is live, capped for discussion, and led by ${safe(c) ? "a certified SAFe® Practice Consultant" : "practitioners who have led enterprise AI and transformation programs"}.</p>
     </div>
   </div>
 
@@ -339,7 +359,7 @@ ${
         <div class="rule"></div>
         <ul class="ticks">
           <li>Live virtual classroom delivered remotely worldwide, over ${c.duration.days.toLowerCase()}</li>
-          <li>Taught by certified SAFe® Practice Consultants (SPCs), never contractors reading slides</li>
+          <li>${safe(c) ? "Taught by certified SAFe® Practice Consultants (SPCs), never contractors reading slides" : "Taught by practitioners who have led enterprise AI and transformation programs, never contractors reading slides"}</li>
           <li>Cohorts kept small enough for real discussion and Q&amp;A</li>
           <li>Open to attendees anywhere — weekday and weekend cohorts across US time zones, with private cohorts timed to your region</li>
         </ul>
@@ -594,11 +614,15 @@ ${TRAINERS.map(
   <div class="grid-2 gap-16" style="grid-template-columns:1.4fr 1fr; align-items:start">
     <div>
       <p class="small">Agile36 is a transformation and technology enablement firm helping organizations accelerate performance, modernize operations, and build the capabilities required to compete in the digital era. For more than a decade we have partnered with Fortune 100 and Fortune 500 companies, government agencies, and universities to guide large-scale change.</p>
-      <p class="small" style="margin-bottom:0">As a <strong>Scaled Agile Silver Partner</strong>, we deliver accredited SAFe® courses led by industry-recognized SPCs — hands-on, practical training that helps teams adopt new ways of working and produce measurable results.</p>
+      <p class="small" style="margin-bottom:0">${
+        safe(c)
+          ? "As a <strong>Scaled Agile Silver Partner</strong>, we deliver accredited SAFe® courses led by industry-recognized SPCs — hands-on, practical training that helps teams adopt new ways of working and produce measurable results."
+          : "This course is Agile36's own programme, built and delivered by our practitioners — hands-on, practical training that helps leaders adopt new ways of working and produce measurable results."
+      }</p>
     </div>
     <div class="row gap-16" style="justify-content:flex-end">
-      <img src="${P}/Silver.png" alt="Scaled Agile Silver Partner" style="height:74px; border-radius:5px" />
-      <img src="${P}${esc(c.badge)}" alt="Certification badge" style="height:74px; border-radius:9px" />
+      ${safe(c) ? `<img src="${P}/Silver.png" alt="Scaled Agile Silver Partner" style="height:74px; border-radius:5px" />` : ""}
+      ${c.badge ? `<img src="${P}${esc(c.badge)}" alt="Certification badge" style="height:74px; border-radius:9px" />` : ""}
     </div>
   </div>
 
@@ -610,7 +634,11 @@ ${TRAINERS.map(
     </div>
   </div>
 
-  <p class="tiny" style="margin-top:12px">SAFe® and Scaled Agile Framework® are registered trademarks of Scaled Agile, Inc. Course content, exam details, and certification requirements are set by Scaled Agile and current as of course version ${esc(c.version)}. Pricing and schedules current at time of publication; see agile36.com for live availability.</p>
+  <p class="tiny" style="margin-top:12px">${
+    safe(c)
+      ? `SAFe® and Scaled Agile Framework® are registered trademarks of Scaled Agile, Inc. Course content, exam details, and certification requirements are set by Scaled Agile and current as of course version ${esc(c.version)}.`
+      : `This is an Agile36 programme. It is not a Scaled Agile course and confers no SAFe® certification${c.accreditation ? `; the credential awarded is ${rich(c.accreditation.credential)}` : ""}. Course content current as of version ${esc(c.version)}.`
+  } Pricing and schedules current at time of publication; see agile36.com for live availability.</p>
 
 ${pageFoot(n)}
 </section>`;

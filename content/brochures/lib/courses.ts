@@ -1104,7 +1104,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
   "ai-agent-builder": {
     slug: "ai-agent-builder",
     version: "2026",
-    subtitle: "Building working agents without writing code",
+    subtitle: "Agents on day one, a working app on day two",
     coverTitle: { main: "No-Code AI Agents", accent: "& Automation™" },
     badge: "/Logo_Agents.png",
     band: BAND,
@@ -1112,6 +1112,11 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     price: PRICE["ai-agent-builder"],
     duration: { days: "2 days", hours: "10" },
     credits: "10 PDUs",
+    accreditation: {
+      safe: false,
+      credential: "AI Agents and Automation™",
+      assessment: "Working agents, no exam",
+    },
     prerequisites: [
       "None. No programming background is required.",
       "Bring a real business process you would like to automate.",
@@ -1131,29 +1136,29 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     landing: {
       crumb: "No-Code AI Agents",
       lede: "Build AI agents that use tools, read your data, and complete real work — without writing code.",
-      difference: "This is a build class, not a demo. You leave with agents running against your own business processes, built in Claude, Claude Code, Codex, and n8n.",
+      difference: "This is a build class, not a demo. You leave with agents running against your own business processes, built in Grok, Claude, Claude Code, Codex, and n8n.",
       outcomes: [],
       curriculumModules: [
         { title: "Build AI Agents Without Traditional Coding", topics: ["Create agents that reason through tasks", "Give agents instructions, tools, and context", "Complete work across applications without programming"] },
-        { title: "Build with Claude", topics: ["Design agents and define instructions in Claude", "Work with business information and analyze problems", "Turn ideas into functioning AI solutions"] },
-        { title: "Build with Claude Code and Codex", topics: ["Use AI coding agents to build applications and agents", "Create integrations and automations without being a developer", "Turn requirements into working software with AI assistance"] },
+        { title: "Build with Grok and Claude", topics: ["Design agents and define instructions in Grok and Claude", "Work with business information and analyze problems", "Turn ideas into functioning AI solutions"] },
+        { title: "Day Two — Build a Working App", topics: ["Use Claude Code and Codex to build a real application end to end", "Create integrations and automations without being a developer", "Go from requirement to running software inside the session", "Leave with the app you built, not a prototype you cannot run"] },
         { title: "Automate Workflows with n8n", topics: ["Connect AI agents to business applications", "Automate multi-step workflows in n8n", "Trigger actions across systems and hand off work"] },
         { title: "Tools, Data, and Human-in-the-Loop Design", topics: ["Connect agents to apps, documents, APIs, and data", "Decide what AI can do autonomously vs. with approval", "Design escalation, review, and multi-agent workflows", "Redesign business processes around AI agents and automation"] },
       ],
-      examNote: "No exam. You leave with working agents and a certificate of completion, plus the workflows you built in class.",
+      examNote: "No exam. You earn the AI Agents and Automation™ certification, and leave with the agents and the app you built, plus the workflows you set up in class.",
     },
     outcomeGroups: [
-      { title: "Build", items: ["Build AI agents that use tools, access information, and complete work on your behalf", "Use Claude to design and shape working AI agent solutions", "Apply Claude Code and Codex to build agents, apps, and automations", "Turn requirements into working software with AI assistance"] },
+      { title: "Build", items: ["Build AI agents that use tools, access information, and complete work on your behalf", "Use Grok and Claude to design and shape working AI agent solutions", "Apply Claude Code and Codex to build agents, apps, and automations", "Build and ship a working application on day two of class"] },
       { title: "Automate", items: ["Automate multi-step business workflows with n8n and AI agents", "Connect agents to apps, documents, APIs, and your own data", "Trigger actions across systems and hand work between them", "Redesign a business process around agents rather than around people"] },
       { title: "Control", items: ["Decide what an agent may do autonomously and what needs approval", "Design escalation, review, and multi-agent workflows", "Build reliability into agent workflows from the start", "Know when an agent is the wrong answer"] },
     ],
     ai: {
       heading: "Five modules,<br />all of them hands-on",
-      lede: "Every module ends with something running. You build in Claude, then with Claude Code and Codex, then wire it into your business systems with n8n.",
+      lede: "Every module ends with something running. You build in Grok and Claude, then with Claude Code and Codex, then wire it into your business systems with n8n.",
       activities: [
         { title: "Your first working agent", where: "Module 1", body: "Build an agent that reasons through a task, given instructions, tools, and context — and completes work across applications without a line of code." },
-        { title: "Design in Claude", where: "Module 2", body: "Shape an agent around a real business problem: define its instructions, give it your information, and turn the idea into something that runs." },
-        { title: "Build with coding agents", where: "Module 3", body: "Use Claude Code and Codex to produce integrations and automations you could not have written yourself." },
+        { title: "Design in Grok and Claude", where: "Module 2", body: "Shape an agent around a real business problem: define its instructions, give it your information, and turn the idea into something that runs." },
+        { title: "Build an app on day two", where: "Module 3 · Day 2", body: "The last day of class is app building: you use Claude Code and Codex to take a real requirement all the way to running software, and you leave with the app." },
         { title: "Wire it into the business", where: "Module 4", body: "Connect agents to your applications in n8n, automate a multi-step workflow, and hand work between systems." },
       ],
       techniques: [
@@ -1166,8 +1171,8 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       responsible: RESPONSIBLE_AI,
     },
     whatsNew: [
-      { title: "You build, we don't demo", body: "Every module ends with something running that you built in the session." },
-      { title: "Real tools, current versions", body: "Claude, Claude Code, Codex, and n8n — the stack people are actually shipping agents on." },
+      { title: "Day two, you build an app", body: "The final day is spent building a working application end to end — you leave with it running." },
+      { title: "Real tools, current versions", body: "Grok, Claude, Claude Code, Codex, and n8n — the stack people are actually shipping agents on." },
       { title: "Human-in-the-loop by design", body: "Module 5 is about deciding what an agent does alone and what waits for a person." },
     ],
     changed: [
@@ -1177,15 +1182,15 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     ],
     stats: [
       { value: "2", label: "Days, live and instructor-led" },
-      { value: "5", label: "Modules, each ending in something that runs" },
-      { value: "4", label: "Platforms: Claude, Claude Code, Codex, and n8n" },
+      { value: "1", label: "Working app, built by you on day two" },
+      { value: "5", label: "Platforms: Grok, Claude, Claude Code, Codex, and n8n" },
       { value: "10", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "Agents that do the work,<br />built by people who don't code",
       body: [
         "This is a two-day build class. You create AI agents that reason through tasks, use tools, read your documents and data, and complete work across the applications your business already runs on — without writing code.",
-        "It moves from designing agents in Claude, to building apps and integrations with Claude Code and Codex, to automating multi-step workflows in n8n. The final module is the one that matters most in practice: deciding what an agent may do on its own, and where a human stays in the loop.",
+        "Day one is agents: designing them in Grok and Claude, connecting them to your tools and data, and automating multi-step workflows in n8n. Day two is app building — you use Claude Code and Codex to take a real requirement all the way to running software, and you leave with the application you built. Throughout, the question that matters most in practice: deciding what an agent may do on its own, and where a human stays in the loop.",
       ],
     },
     whyNow: {
@@ -1505,12 +1510,20 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     version: "2026",
     subtitle: "From scattered pilots to a funded agenda",
     coverTitle: { main: "Executive GenAI", accent: "Leadership" },
-    badge: "/AIMP.jpeg",
+    // No badge: the Accredible credential has no artwork in public/ yet, and
+    // borrowing another course's mark is how AIMP.jpeg (the AI Product Manager
+    // badge) ended up on this cover.
     band: BAND,
     path: "/courses/executive-genai-leadership",
     price: PRICE["executive-genai-leadership"],
-    duration: { days: "1 day", hours: "8" },
-    credits: "8 PDUs",
+    // Two days at 5 hrs/day, matching every cohort on the schedule page.
+    duration: { days: "2 days", hours: "10" },
+    credits: "10 PDUs",
+    accreditation: {
+      safe: false,
+      credential: "Executive GenAI Leadership™, issued through Accredible",
+      assessment: "Capstone, no exam",
+    },
     prerequisites: [
       "None. Built for senior leaders, not technologists.",
       "No technical AI background is assumed.",
@@ -1529,7 +1542,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     industries: INDUSTRIES,
     landing: {
       crumb: "Executive GenAI",
-      lede: "A one-day executive programme on AI opportunity, governance, operating-model choices, workforce readiness, risk, and value realization — moving from scattered experimentation to a focused transformation agenda.",
+      lede: "A two-day executive programme on AI opportunity, governance, operating-model choices, workforce readiness, risk, and value realization — moving from scattered experimentation to a focused transformation agenda.",
       difference: "Taught in business language by people who have led enterprise transformations, and it ends in a capstone: a full AI strategy for your own organization with the use cases and ROI modelled.",
       outcomes: [],
       curriculumModules: [
@@ -1555,7 +1568,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     ],
     ai: {
       heading: "A strategy, not<br />a set of pilots",
-      lede: "The whole day is AI leadership. Two hands-on workshops and a capstone mean you leave with a strategy for your own organization rather than notes about someone else's.",
+      lede: "The whole programme is AI leadership. Two hands-on workshops and a capstone mean you leave with a strategy for your own organization rather than notes about someone else's.",
       activities: [
         { title: "Use-case discovery workshop", where: "Module 8", body: "Work your own organization's opportunities into a scored, prioritized list rather than a wish list of pilots." },
         { title: "Value modeling simulation", where: "Module 8", body: "Model the ROI on your highest-value cases using KPI frameworks for automation, productivity, and cycle time." },
@@ -1582,21 +1595,21 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { title: "Workforce readiness included", body: "Roles, job redesign, and organizational readiness rather than technology alone." },
     ],
     stats: [
-      { value: "1", label: "Day, live and instructor-led" },
+      { value: "2", label: "Days, live and instructor-led" },
       { value: "12", label: "Modules from opportunity through to capstone" },
       { value: "2", label: "Hands-on workshops using your own portfolio" },
-      { value: "8", label: "PDUs toward renewal" },
+      { value: "10", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "From scattered pilots<br />to a funded agenda",
       body: [
-        "A one-day executive programme covering AI opportunity, governance, operating-model decisions, workforce readiness, risk, and value realization. It is built for leaders who have experimentation happening across the business and no coherent agenda holding it together.",
-        "The day moves from identifying and scoring high-value use cases, through quantifying ROI and choosing an operating model, into why AI initiatives fail and how leaders prevent it. It ends with a capstone: a full AI strategy for your own organization.",
+        "A two-day executive programme covering AI opportunity, governance, operating-model decisions, workforce readiness, risk, and value realization. It is built for leaders who have experimentation happening across the business and no coherent agenda holding it together.",
+        "The programme moves from identifying and scoring high-value use cases, through quantifying ROI and choosing an operating model, into why AI initiatives fail and how leaders prevent it. It ends with a capstone: a full AI strategy for your own organization.",
       ],
     },
     whyNow: {
       heading: "Pilots are cheap.<br />A strategy is not",
-      body: "Most enterprises now have AI activity in a dozen places and no view of which of it matters. The expensive failure is not a pilot that does not work — it is a year of pilots that were never going to scale, funded because nobody scored them. This day exists to produce that scoring, and the agenda that follows from it.",
+      body: "Most enterprises now have AI activity in a dozen places and no view of which of it matters. The expensive failure is not a pilot that does not work — it is a year of pilots that were never going to scale, funded because nobody scored them. These two days exist to produce that scoring, and the agenda that follows from it.",
     },
   },
 

@@ -61,8 +61,28 @@ export type BrochureCourse = {
    * `accent` renders in amber on its own line.
    */
   coverTitle: { main: string; accent?: string };
-  /** Certification badge in public/, e.g. "/POPM.jpg". */
-  badge: string;
+  /**
+   * Certification badge in public/, e.g. "/POPM.jpg". Omit when the course has
+   * no badge artwork of its own — never borrow another course's.
+   */
+  badge?: string;
+  /**
+   * Scaled Agile accreditation. SAFe courses leave this out and get the
+   * default: Silver Partner marks, SPC instructor claims, SAFe Studio
+   * membership, and the SAFe® trademark notice.
+   *
+   * Agile36's own AI/GenAI courses set `safe: false` — none of that is true of
+   * them, and claiming it on a non-accredited course misrepresents both the
+   * course and the partnership. `credential` then names what the learner
+   * actually earns.
+   */
+  accreditation?: {
+    safe: false;
+    /** What the course awards, e.g. "Issued through Accredible". */
+    credential: string;
+    /** At-a-glance assessment line. Defaults to "No exam". */
+    assessment?: string;
+  };
   /** Cover band photo, relative to content/brochures/. */
   band: string;
   /** Public URL path for the course page, used on the enrol panel. */
