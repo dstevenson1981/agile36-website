@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import {
-  isRtePrivateCohortInquiry,
-  sendPrivateCohortInquiryNotification,
-} from '@/app/lib/send-private-cohort-inquiry-email';
+import { sendAssessmentLeadNotification } from '@/app/lib/send-assessment-lead-email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -72,16 +69,13 @@ export async function POST(request: NextRequest) {
       }
       // Check if it's a duplicate email error
       if (error.code === '23505') {
-        if (isRtePrivateCohortInquiry(source, exam_name)) {
-          await sendPrivateCohortInquiryNotification({
-            name,
-            email,
-            source,
-            exam_name,
-            message,
-          });
-        }
-        // Duplicate email is okay, just proceed
+        await sendAssessmentLeadNotification({
+          name,
+          email,
+          source,
+          exam_name,
+          message,
+        });
         return NextResponse.json({ success: true, message: 'Email already exists' });
       }
       return NextResponse.json(
@@ -90,15 +84,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (isRtePrivateCohortInquiry(source, exam_name)) {
-      await sendPrivateCohortInquiryNotification({
-        name,
-        email,
-        source,
-        exam_name,
-        message,
-      });
-    }
+    await sendAssessmentLeadNotification({
+      name,
+      email,
+      source,
+      exam_name,
+      message,
+    });
 
     return NextResponse.json({ success: true, data });
   } catch (error: unknown) {
