@@ -129,40 +129,69 @@ export default function NoCodeAIAgentsCoursePage() {
               </div>
             </div>
 
-            <CourseHeroRightColumn courseSlug={courseSlug}>
-              <div className="space-y-2.5">
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[13.5px] text-[#475569]">8 Hours of Live Training</span>
+            <div className="w-full max-w-[20.5rem] justify-self-center space-y-6 lg:justify-self-end">
+              <figure aria-labelledby="agent-fleet-video-title">
+                <figcaption className="mb-3">
+                  <h2 id="agent-fleet-video-title" className="text-lg font-semibold text-[#1f2c4a]">
+                    AI agent fleet walkthrough
+                  </h2>
+                  <p className="mt-1 text-sm text-[#64748b]">With Deadra Stevenson · 1:49</p>
+                </figcaption>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  width={1080}
+                  height={1920}
+                  poster="/videos/ai-agent-fleet-walkthrough.jpg"
+                  aria-label="AI agent fleet walkthrough narrated by Deadra Stevenson"
+                  className="aspect-[9/16] w-full rounded-lg bg-black object-contain"
+                >
+                  <source src="/videos/ai-agent-fleet-walkthrough.mp4" type="video/mp4" />
+                  <track
+                    kind="captions"
+                    src="/videos/ai-agent-fleet-walkthrough.en.vtt"
+                    srcLang="en"
+                    label="English"
+                  />
+                  <a href="/videos/ai-agent-fleet-walkthrough.mp4">Watch the AI agent fleet walkthrough</a>
+                </video>
+              </figure>
+              <CourseHeroRightColumn courseSlug={courseSlug}>
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[13.5px] text-[#475569]">8 Hours of Live Training</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[13.5px] text-[#475569]">2 Days · 4 Hours Per Day</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[13.5px] text-[#475569]">Agent fleet, voice agent, and working app</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[13.5px] text-[#475569]">GrokBot, RAG, Claude Code, Codex, n8n</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-[13.5px] text-[#475569]">Lifetime Access to Materials</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[13.5px] text-[#475569]">2 Days · 4 Hours Per Day</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[13.5px] text-[#475569]">Agent fleet, voice agent, and working app</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[13.5px] text-[#475569]">GrokBot, RAG, Claude Code, Codex, n8n</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[13.5px] text-[#475569]">Lifetime Access to Materials</span>
-                </div>
-              </div>
-            </CourseHeroRightColumn>
+              </CourseHeroRightColumn>
+            </div>
           </div>
         </div>
       </section>
@@ -656,4 +685,3 @@ export default function NoCodeAIAgentsCoursePage() {
     </main>
   );
 }
-
