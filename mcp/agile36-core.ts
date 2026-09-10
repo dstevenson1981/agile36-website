@@ -948,6 +948,7 @@ export function createAgile36McpServer(): McpServer {
         '/contact',
         '/ai-agent-builder',
         '/ai-workflow-automation',
+        '/ai-app-builder',
       ],
       courseRoutes: CATALOG_COURSES.map((course) => getCatalogCourseUrl(course)),
       blogRoutes: (await walkFiles(path.join(ROOT_DIR, 'content/blog'), (filePath) => filePath.endsWith('index.mdx'), 150)).map(

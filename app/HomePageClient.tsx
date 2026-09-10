@@ -66,6 +66,7 @@ export default function Home() {
     "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
+    "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
@@ -77,6 +78,9 @@ export default function Home() {
     }
     if (course.title.includes("AI Workflow Automation")) {
       return "/Logo_AI_Workflow_Automation.png";
+    }
+    if (course.title.includes("App Builder")) {
+      return "/Logo_AI_App_Builder.png";
     }
     // Use GenAI_2.png for remaining AI Courses without a dedicated badge
     if (course.category === "AI Courses") {
@@ -363,6 +367,19 @@ export default function Home() {
       skills: "n8n, Claude, APIs, Webhooks",
       popular: true,
     },
+    {
+      id: "32",
+      title: "No-Code AI App Builder™",
+      category: "AI Courses",
+      image: "/Logo_AI_App_Builder.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "No-Code Apps, Client Customization, Publishing",
+      popular: true,
+    },
     // AI Product courses
     {
       id: "24",
@@ -397,7 +414,9 @@ export default function Home() {
     ? allCourses.filter(course => course.category === "SAFe")
     : activeTab === "AI Courses"
     ? allCourses.filter(course =>
-        course.title.includes("No-Code AI Agents") || course.title.includes("AI Workflow Automation")
+        course.title.includes("No-Code AI Agents") ||
+        course.title.includes("AI Workflow Automation") ||
+        course.title.includes("App Builder")
       )
     : allCourses;
 
@@ -430,6 +449,7 @@ export default function Home() {
       "Certified GenAI Practitioner™": "/courses/certified-genai-practitioner",
       "No-Code AI Agents & Automation™": "/courses/ai-agent-builder",
       "AI Workflow Automation™": "/courses/ai-workflow-automation",
+      "No-Code AI App Builder™": "/courses/ai-app-builder",
       "Certified AI Product Manager": "/courses/certified-ai-product-manager",
       "AI-Driven Project Manager™": "/courses/generative-ai-project-managers",
       "Agentic Product Leader Certification": "/courses/certified-ai-product-manager",

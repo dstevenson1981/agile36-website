@@ -184,6 +184,7 @@ const COURSE_LABELS: Record<string, string> = {
   "ai-driven-scrum-master": "AI-Driven Scrum Master",
   "ai-agent-builder": "AI Agent Builder",
   "ai-workflow-automation": "AI Workflow Automation",
+  "ai-app-builder": "AI App Builder",
 };
 
 export function labelPath(path: string): string {

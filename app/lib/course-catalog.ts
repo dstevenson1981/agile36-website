@@ -50,6 +50,7 @@ const COURSE_THUMBNAILS: { [key: string]: string } = {
     "Certified AI Product Manager": "/PMAI.jpeg",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
+    "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
     "Agentic Product Leader Certification": "/Agentic.jpeg",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
@@ -63,6 +64,9 @@ export function getCatalogCourseImage(course: CatalogCourse): string {
   }
   if (course.title.includes("AI Workflow Automation")) {
     return "/Logo_AI_Workflow_Automation.png";
+  }
+  if (course.title.includes("App Builder")) {
+    return "/Logo_AI_App_Builder.png";
   }
   if (course.category === "AI Courses") {
     return "/GenAI_2.png";
@@ -288,6 +292,19 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       popular: true,
     },
     {
+      id: "32",
+      title: "No-Code AI App Builder™",
+      category: "AI Courses",
+      image: "/Logo_AI_App_Builder.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "No-Code Apps, Client Customization, Publishing",
+      popular: true,
+    },
+    {
       id: "24",
       title: "Certified AI Product Manager",
       category: "AI Courses",
@@ -404,6 +421,10 @@ export function getCatalogCourseUrl(course: CatalogCourse): string {
       return "/courses/release-train-engineer";
     }
     
+    if (course.title.includes("App Builder")) {
+      return "/courses/ai-app-builder";
+    }
+
     if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
       return "/courses/ai-agent-builder";
     }
@@ -470,6 +491,7 @@ export function getCatalogCourseAcronym(title: string): string {
   if (title.includes("GenAI Practitioner")) return "CGP";
   if (title.includes("Executive GenAI")) return "EGL";
   if (title.includes("Project Manager")) return "PM";
+  if (title.includes("App Builder")) return "APP";
   if (title.includes("AI Agents")) return "AI";
   if (title.includes("AI Product Manager")) return "CAPM";
   if (title.includes("Agentic")) return "APL";

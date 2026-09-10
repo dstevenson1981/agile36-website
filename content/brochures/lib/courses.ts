@@ -1292,6 +1292,109 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     },
   },
 
+  /* ------------------------------------------ No-Code AI App Builder */
+  "ai-app-builder": {
+    slug: "ai-app-builder",
+    version: "2026",
+    subtitle: "Build apps you can sell, or use to grow your own business",
+    coverTitle: { main: "No-Code AI", accent: "App Builder™" },
+    badge: "/Logo_AI_App_Builder.png",
+    band: BAND,
+    path: "/courses/ai-app-builder",
+    price: PRICE["ai-app-builder"],
+    duration: { days: "2 days", hours: "8" },
+    credits: "8 PDUs",
+    accreditation: {
+      safe: false,
+      credential: "No-Code AI App Builder™",
+      assessment: "Working app, no exam",
+    },
+    prerequisites: [
+      "None. No coding experience is required.",
+      "Bring a real business problem you would like to solve with an application.",
+      "A laptop and a willingness to build in the session.",
+    ],
+    audience: [
+      { role: "Entrepreneurs", note: "Building a product you can sell." },
+      { role: "Consultants", note: "Offering app-building as a service." },
+      { role: "Small-Business Owners", note: "Replacing spreadsheets and manual work." },
+      { role: "Product Managers", note: "Shipping without waiting on engineering." },
+      { role: "Product Owners", note: "Turning needs into a working app." },
+      { role: "Operations Leads", note: "Building internal tools." },
+      { role: "Marketers", note: "Standing up lead and membership tools." },
+      { role: "Freelancers", note: "Packaging a repeatable client offer." },
+    ],
+    industries: INDUSTRIES,
+    landing: {
+      crumb: "No-Code AI App Builder",
+      lede: "Turn a real business problem into a working application you can sell to a small business or use inside your own company, without writing code.",
+      difference: "You will not simply build a practice app and forget it after class. You learn a repeatable process: Business Problem → App Requirements → Working Solution → Client Customization → Published App → Sellable Service.",
+      outcomes: [],
+      curriculumModules: [
+        { title: "Day One: Find the Opportunity and Build the App", topics: ["Identify a valuable small-business problem", "Define the customer and desired business outcome", "Turn the problem into app requirements", "Generate the initial application", "Build the screens, navigation, and user experience", "Add forms, data, and core functionality", "Complete the first working version"] },
+        { title: "Day Two: Customize, Launch, and Sell", topics: ["Add business rules and advanced features", "Add user accounts and permissions", "Connect external tools and services", "Customize the app for a specific business", "Improve the design and user experience", "Test and publish the finished application", "Create a client-ready demonstration and service offer"] },
+      ],
+      examNote: "No exam. You earn the No-Code AI App Builder™ certification and leave with a published application and a service offer you can sell.",
+    },
+    outcomeGroups: [
+      { title: "Find", items: ["Identify processes small businesses would pay to improve", "Turn a client conversation into users, workflows, and features", "Write clear build instructions before you generate the app"] },
+      { title: "Build", items: ["Generate screens, navigation, and functionality with AI", "Add data, rules, users, and integrations", "Customize branding, content, and workflows for a client"] },
+      { title: "Sell", items: ["Test realistic user scenarios and publish the app", "Demonstrate the business value", "Package the build as a repeatable client service"] },
+    ],
+    ai: {
+      heading: "Two days,<br />all of them hands-on",
+      lede: "Day one is the opportunity and the first working version. Day two is customization, launch, and a service you can sell.",
+      activities: [
+        { title: "Find the opportunity", where: "Day 1", body: "Identify a valuable small-business problem, define the customer and outcome, and turn it into app requirements." },
+        { title: "Build the first version", where: "Day 1", body: "Generate the application, build screens and navigation, and add forms, data, and core functionality." },
+        { title: "Customize for a client", where: "Day 2", body: "Add business rules, users, permissions, and integrations, then brand the app for a specific business." },
+        { title: "Publish and package", where: "Day 2", body: "Test, publish, demonstrate the finished product, and structure it as a client-ready service offer." },
+      ],
+      techniques: [
+        "Use an <strong>AI-powered no-code platform</strong> to generate the app",
+        "Add <strong>data, users, workflows, and integrations</strong>",
+        "Customize <strong>branding, content, and features</strong> for different businesses",
+        "Test, publish, and <strong>demonstrate</strong> the finished product",
+        "Package the app as a <strong>service you can sell</strong>",
+      ],
+      responsible: {
+        lede: "A full topic, not a disclaimer. You'll work through common AI risks and the three aspects of responsible use:",
+        points: [
+          "<strong>Trustworthy AI</strong>: reliable enough to base a decision on",
+          "<strong>Explainable AI</strong>: you can say why it produced that",
+          "<strong>Human-centric AI</strong>: the person stays accountable",
+        ],
+      },
+    },
+    whatsNew: [
+      { title: "A real business problem first", body: "You start with a need worth solving, not with a template tour of a no-code tool." },
+      { title: "Built to sell or to use", body: "The same process works for a client engagement or an internal operations tool." },
+      { title: "A repeatable service", body: "You leave with a published app and a way to turn one successful build into more." },
+    ],
+    changed: [
+      { title: "Not a practice app you abandon", body: "You finish with a published application and a client-ready demonstration." },
+      { title: "Eight hours, four hours a day", body: "Two live days. You build the whole time." },
+      { title: "No coding required", body: "AI-powered no-code tools, not a programming class." },
+    ],
+    stats: [
+      { value: "2", label: "Days, live and instructor-led" },
+      { value: "4", label: "Hours per day" },
+      { value: "8", label: "Hours of live training" },
+      { value: "1", label: "Working app, ready to publish" },
+    ],
+    overview: {
+      heading: "Build apps you can sell,<br />or use to grow your own business",
+      body: [
+        "Learn how to turn real business problems into working applications without manually writing code.",
+        "You will identify a valuable need, turn it into requirements, build the application with AI, customize it for a client, and package it as a service you can sell.",
+      ],
+    },
+    whyNow: {
+      heading: "Custom software used to be<br />expensive and slow",
+      body: "AI-powered no-code platforms changed that. You leave able to move from Business Problem → App Requirements → Working Solution → Client Customization → Published App → Sellable Service.",
+    },
+  },
+
   /* ------------------------------------------ GenAI for Project Managers */
   "generative-ai-project-managers": {
     slug: "generative-ai-project-managers",

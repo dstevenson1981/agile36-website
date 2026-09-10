@@ -57,7 +57,7 @@ const MEGA_MENU_CATEGORIES = [
   {
     id: "AI Courses",
     label: "AI Courses",
-    description: "Hands-on training to build AI agents and automate business workflows — no traditional programming required.",
+    description: "Hands-on training to build AI agents, automations, and apps you can sell. No traditional programming required.",
     gridCols: "grid-cols-1 sm:grid-cols-2",
   },
 ] as const;
@@ -181,6 +181,7 @@ export default function Header() {
     "Certified AI Product Manager": "/PMAI.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
+    "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
     "Responsible AI": "/MicroCredential.jpeg",
     "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
   };
@@ -191,6 +192,9 @@ export default function Header() {
     }
     if (course.title.includes("AI Workflow Automation")) {
       return "/Logo_AI_Workflow_Automation.png";
+    }
+    if (course.title.includes("App Builder")) {
+      return "/Logo_AI_App_Builder.png";
     }
     if (course.category === "AI Courses") {
       return "/GenAI_2.png";
@@ -210,7 +214,10 @@ export default function Header() {
       return "/courses/certified-genai-practitioner";
     }
 
-    // Special case for No-Code AI Agents & Automation
+    if (course.title.includes("App Builder")) {
+      return "/courses/ai-app-builder";
+    }
+
     if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
       return "/courses/ai-agent-builder";
     }
@@ -539,6 +546,19 @@ export default function Header() {
       days: "02 days",
       enrolled: "Now enrolling",
       skills: "n8n, Claude, APIs, Webhooks",
+      popular: true,
+    },
+    {
+      id: "32",
+      title: "No-Code AI App Builder™",
+      category: "AI Courses",
+      image: "/Logo_AI_App_Builder.png",
+      price: 400,
+      originalPrice: 800,
+      hours: "8 Hrs",
+      days: "02 days",
+      enrolled: "Now enrolling",
+      skills: "No-Code Apps, Client Customization, Publishing",
       popular: true,
     },
     // AI Product courses
