@@ -135,7 +135,7 @@ export default function NoCodeAIAgentsCoursePage() {
                   <h2 id="agent-fleet-video-title" className="text-lg font-semibold text-[#1f2c4a]">
                     AI agent fleet walkthrough
                   </h2>
-                  <p className="mt-1 text-sm text-[#64748b]">With Deadra Stevenson · 1:49</p>
+                  <p className="mt-1 text-sm text-[#64748b]">Deadra Stevenson&apos;s AI voice · 2:05</p>
                 </figcaption>
                 <video
                   controls
@@ -143,18 +143,18 @@ export default function NoCodeAIAgentsCoursePage() {
                   preload="metadata"
                   width={1080}
                   height={1920}
-                  poster="/videos/ai-agent-fleet-walkthrough.jpg"
-                  aria-label="AI agent fleet walkthrough narrated by Deadra Stevenson"
+                  poster="/videos/ai-agent-fleet-walkthrough.jpg?v=course-services-20260910"
+                  aria-label="AI agent fleet walkthrough narrated with Deadra Stevenson's AI voice"
                   className="aspect-[9/16] w-full rounded-lg bg-black object-contain"
                 >
-                  <source src="/videos/ai-agent-fleet-walkthrough.mp4" type="video/mp4" />
+                  <source src="/videos/ai-agent-fleet-walkthrough.mp4?v=course-services-20260910" type="video/mp4" />
                   <track
                     kind="captions"
-                    src="/videos/ai-agent-fleet-walkthrough.en.vtt"
+                    src="/videos/ai-agent-fleet-walkthrough.en.vtt?v=course-services-20260910"
                     srcLang="en"
                     label="English"
                   />
-                  <a href="/videos/ai-agent-fleet-walkthrough.mp4">Watch the AI agent fleet walkthrough</a>
+                  <a href="/videos/ai-agent-fleet-walkthrough.mp4?v=course-services-20260910">Watch the AI agent fleet walkthrough</a>
                 </video>
               </figure>
               <CourseHeroRightColumn courseSlug={courseSlug}>
