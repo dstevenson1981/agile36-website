@@ -30,13 +30,15 @@
 - [SAFe Certifications Guide](https://www.agile36.com/safe-certifications): Overview and comparison of all SAFe certifications.
 - [Combo Courses](https://www.agile36.com/combo-courses): Discounted multi-certification bundles.
 
-## AI & GenAI Courses
+## AI Courses
+- [No-Code AI Agents & Automation](https://www.agile36.com/courses/ai-agent-builder): Build a connected fleet of business agents, a voice agent, and a working app. No traditional programming required.
+- [AI Workflow Automation](https://www.agile36.com/courses/ai-workflow-automation): Map a manual process and build a working n8n automation with Claude, APIs, and webhooks.
+- [No-Code AI App Builder](https://www.agile36.com/courses/ai-app-builder): Turn a business problem into a published application and a service offer you can sell.
 - [Certified GenAI Practitioner](https://www.agile36.com/courses/certified-genai-practitioner): Generative AI fundamentals, prompt engineering, AI ethics, and practical application.
 - [Certified AI Product Manager](https://www.agile36.com/courses/certified-ai-product-manager): Using AI across the product lifecycle, prototyping, and stakeholder validation.
 - [AI-Driven Scrum Master](https://www.agile36.com/courses/ai-driven-scrum-master): AI-enhanced backlog refinement, sprint planning, and Scrum facilitation.
 - [Generative AI for Project Managers](https://www.agile36.com/courses/generative-ai-project-managers): AI-powered project artifacts, prompting, and PM workflow automation.
 - [Executive GenAI Leadership](https://www.agile36.com/courses/executive-genai-leadership): GenAI strategy development and executive AI decision-making frameworks.
-- [No-Code AI Agents & Automation](https://www.agile36.com/courses/ai-agent-builder): Building AI agents and automated workflows without programming.
 
 ## Local Training Pages
 City-specific training pages exist for 30 major U.S. metros (New York, Los Angeles,

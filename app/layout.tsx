@@ -32,7 +32,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.agile36.com"),
   title: "Agile36 - Expert Training in Agile, AI, and Product Management",
-  description: "Take the next step in your career with a global leader in SAFe, Generative AI, AI Product, and PMI training. Start your learning journey today.",
+  description: "Take the next step in your career with a global leader in SAFe and hands-on AI training. Start your learning journey today.",
   icons: {
     icon: [
       { url: "/Favicon/favicon.ico", sizes: "any" },
@@ -82,7 +82,7 @@ export default function RootLayout({
       "width": SCHEMA_ORGANIZATION_LOGO_WIDTH,
       "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
-    "description": "Agile36 provides enterprise Agile and AI training including SAFe, Scrum, Generative AI, and AI Product certifications. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
+    "description": "Agile36 provides enterprise Agile and AI training including SAFe certifications and hands-on courses in AI agents, workflow automation, and no-code apps. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
     "address": {
@@ -106,11 +106,11 @@ export default function RootLayout({
     "knowsAbout": [
       "SAFe (Scaled Agile Framework)",
       "Scrum and Agile Methodologies",
-      "Generative AI and AI Product Management",
+      "No-Code AI Agents and Automation",
       "Enterprise Agile Transformation",
       "DevOps and Continuous Delivery",
       "Lean Portfolio Management",
-      "AI-Driven Scrum and Product Management",
+      "AI Workflow Automation and No-Code Apps",
     ],
   };
 

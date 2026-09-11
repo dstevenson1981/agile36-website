@@ -28,6 +28,9 @@ export const BADGES: Record<string, string> = {
   "release-train-engineer": "/RTE.png",
   "value-stream-mapping": "/MicroCredential.jpeg",
   "responsible-ai": "/MicroCredential.jpeg",
+  "ai-agent-builder": "/Logo_Agents.png",
+  "ai-workflow-automation": "/Logo_AI_Workflow_Automation.png",
+  "ai-app-builder": "/Logo_AI_App_Builder.png",
   "ai-driven-scrum-master": "/GenAI_2.png",
   "certified-genai-practitioner": "/GenAI_2.png",
   "certified-ai-product-manager": "/PMAI.png",
@@ -54,6 +57,9 @@ const CATALOG: CatalogEntry[] = [
   { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
   { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1199, original: 1998 },
   { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
+  { slug: "ai-agent-builder", name: "No-Code AI Agents & Automation™", shortName: "AI Agents", price: 400, original: 800 },
+  { slug: "ai-workflow-automation", name: "AI Workflow Automation™", shortName: "AI Workflow", price: 400, original: 800 },
+  { slug: "ai-app-builder", name: "No-Code AI App Builder™", shortName: "AI App Builder", price: 400, original: 800 },
   { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
   { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
   { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 400, original: 800 },
@@ -81,9 +87,9 @@ const LEGACY_IDS: Record<string, string> = {
   "release-train-engineer|scrum-master": "ssm-rte",
   "ai-driven-scrum-master|certified-genai-practitioner": "ai-scrum-genai",
   "ai-driven-scrum-master|certified-ai-product-manager": "ai-scrum-ai-product",
-  "certified-genai-practitioner|certified-ai-product-manager": "genai-ai-product",
-  "scrum-master|ai-driven-scrum-master": "ssm-ai-scrum",
-  "product-owner-manager|certified-ai-product-manager": "popm-ai-product",
+  "certified-ai-product-manager|certified-genai-practitioner": "genai-ai-product",
+  "ai-driven-scrum-master|scrum-master": "ssm-ai-scrum",
+  "certified-ai-product-manager|product-owner-manager": "popm-ai-product",
 };
 
 function pairKey(a: string, b: string): string {
@@ -101,6 +107,9 @@ function shortId(slug: string): string {
     "lean-portfolio-management": "lpm",
     "agile-product-management": "apm",
     "release-train-engineer": "rte",
+    "ai-agent-builder": "ai-agents",
+    "ai-workflow-automation": "ai-workflow",
+    "ai-app-builder": "ai-app",
     "ai-driven-scrum-master": "ai-scrum",
     "certified-genai-practitioner": "genai",
     "certified-ai-product-manager": "ai-pm",
@@ -212,6 +221,18 @@ const SAFE_SLUGS = [
 ];
 
 const AI_SLUGS = [
+  "ai-agent-builder",
+  "ai-workflow-automation",
+  "ai-app-builder",
+  "ai-driven-scrum-master",
+  "certified-genai-practitioner",
+  "certified-ai-product-manager",
+  "executive-genai-leadership",
+  "generative-ai-project-managers",
+];
+
+/** Retired AI courses — still resolvable for existing combo checkouts/orders. */
+const LEGACY_AI_SLUGS = [
   "ai-driven-scrum-master",
   "certified-genai-practitioner",
   "certified-ai-product-manager",
@@ -251,7 +272,7 @@ function sortCombos(combos: Combo[]): Combo[] {
   });
 }
 
-function buildPublicCombos(): Combo[] {
+function buildCombosForAiSlugs(aiSlugs: string[], includeSafePairs: boolean): Combo[] {
   const seen = new Set<string>();
   const combos: Combo[] = [];
 
@@ -262,23 +283,28 @@ function buildPublicCombos(): Combo[] {
     combos.push(buildCombo(a, b));
   };
 
-  for (const [a, b] of allTwoCoursePairs(SAFE_SLUGS)) add(a, b);
-  for (const [a, b] of allTwoCoursePairs(AI_SLUGS)) add(a, b);
+  if (includeSafePairs) {
+    for (const [a, b] of allTwoCoursePairs(SAFE_SLUGS)) add(a, b);
+  }
+  for (const [a, b] of allTwoCoursePairs(aiSlugs)) add(a, b);
   for (const safe of CROSS_SAFE) {
-    for (const ai of AI_SLUGS) add(safe, ai);
+    for (const ai of aiSlugs) add(safe, ai);
   }
 
   return sortCombos(combos);
 }
 
 /** Public combo catalog (listed on /combo-courses + site search). */
-export const COMBO_COURSES: Combo[] = buildPublicCombos();
+export const COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
+
+/** Retired AI combos remain purchasable via existing checkout/order IDs. */
+const LEGACY_AI_COMBOS: Combo[] = buildCombosForAiSlugs(LEGACY_AI_SLUGS, false);
 
 /** Alias kept for call sites that previously distinguished listing vs checkout catalogs. */
 export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 
 export function findComboById(comboId: string): Combo | undefined {
-  return COMBO_COURSES.find((c) => c.id === comboId);
+  return COMBO_COURSES.find((c) => c.id === comboId) ?? LEGACY_AI_COMBOS.find((c) => c.id === comboId);
 }
 
 /** Combos that include a given course slug (for course-hero carousels). */

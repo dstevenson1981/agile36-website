@@ -4,26 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
+import {
+  PUBLIC_CATALOG_COURSES,
+  getCatalogCourseImage,
+  getCatalogCourseUrl,
+  type CatalogCourse,
+} from "@/app/lib/course-catalog";
 import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./PromoBanner";
 import SiteSearch from "./SiteSearch";
-
-interface Course {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  price: number;
-  originalPrice: number;
-  hours: string;
-  days: string;
-  enrolled: string;
-  skills: string;
-  popular?: boolean;
-  trending?: boolean;
-  advanced?: boolean;
-  privateClass?: boolean;
-}
 
 const MEGA_MENU_SAFE_ORDER: Record<string, number> = {
   "16": 0, // Advanced Scrum Master
@@ -40,10 +28,22 @@ const MEGA_MENU_SAFE_ORDER: Record<string, number> = {
   "15": 11, // DevOps
 };
 
-function sortMegaMenuCourses(courses: Course[], category: string): Course[] {
-  if (category !== "SAFe") return courses;
+const MEGA_MENU_AI_ORDER: Record<string, number> = {
+  "23": 0, // No-Code AI Agents
+  "31": 1, // AI Workflow Automation
+  "32": 2, // No-Code AI App Builder
+  "19": 3, // AI-Driven Scrum Master
+  "22": 4, // Certified GenAI Practitioner
+  "24": 5, // Certified AI Product Manager
+  "20": 6, // Executive GenAI Leadership
+  "21": 7, // AI-Driven Project Manager
+};
+
+function sortMegaMenuCourses(courses: CatalogCourse[], category: string): CatalogCourse[] {
+  const order = category === "SAFe" ? MEGA_MENU_SAFE_ORDER : category === "AI Courses" ? MEGA_MENU_AI_ORDER : null;
+  if (!order) return courses;
   return [...courses].sort(
-    (a, b) => (MEGA_MENU_SAFE_ORDER[a.id] ?? 99) - (MEGA_MENU_SAFE_ORDER[b.id] ?? 99)
+    (a, b) => (order[a.id] ?? 99) - (order[b.id] ?? 99)
   );
 }
 
@@ -160,428 +160,11 @@ export default function Header() {
     return null;
   }
 
-  // Mapping for mega menu thumbnail images
-  const megaMenuThumbnails: { [key: string]: string } = {
-    "AI-Empowered Leading SAFe® / SAFe Agilist": "/Leading SAFe.png",
-    "Leading SAFe/ SAFe Agilist": "/Leading SAFe.png",
-    "Leading SAFe® 6.0 Certification Training": "/Leading SAFe.png",
-    "SAFe Lean Portfolio Management": "/Lean Portfolio.png",
-    "SAFe Agile Product Management": "/AgileProductManagment.png",
-    "SAFe for Architects": "/ARCH.png",
-    "AI-Empowered SAFe for Teams": "/SAFe for Teams.png",
-    "SAFe for Teams": "/SAFe for Teams.png",
-    "SAFe DevOps": "/Devops.png",
-    "AI-Empowered SAFe Advanced Scrum Master": "/AdvancedSM.png",
-    "SAFe Advanced Scrum Master": "/AdvancedSM.png",
-    "SAFe Release Train Engineer": "/RTE.png",
-    "AI-Empowered SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "SAFe Product Owner/Product Manager": "/POPM.jpg",
-    "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
-    "SAFe Scrum Master": "/SSM.jpeg",
-    "Certified AI Product Manager": "/PMAI.png",
-    "No-Code AI Agents & Automation™": "/Logo_Agents.png",
-    "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
-    "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
-    "Responsible AI": "/MicroCredential.jpeg",
-    "SAFe Value Stream Mapping": "/MicroCredential.jpeg",
-  };
-
-  const getMegaMenuImage = (course: Course) => {
-    if (course.title.includes("No-Code AI Agents")) {
-      return "/Logo_Agents.png";
-    }
-    if (course.title.includes("AI Workflow Automation")) {
-      return "/Logo_AI_Workflow_Automation.png";
-    }
-    if (course.title.includes("App Builder")) {
-      return "/Logo_AI_App_Builder.png";
-    }
-    if (course.category === "AI Courses") {
-      return "/GenAI_2.png";
-    }
-    return megaMenuThumbnails[course.title] || course.image;
-  };
-
-  // Helper function to generate course URL
-  const getCourseUrl = (course: Course): string => {
-    // Special cases
-    if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI for Project Managers")) {
-      return "/courses/generative-ai-project-managers";
-    }
-
-    // Special case for Certified GenAI Practitioner
-    if (course.title.includes("Certified GenAI Practitioner")) {
-      return "/courses/certified-genai-practitioner";
-    }
-
-    if (course.title.includes("App Builder")) {
-      return "/courses/ai-app-builder";
-    }
-
-    if (course.title.includes("No-Code AI Agents") || course.title.includes("AI Agent Builder")) {
-      return "/courses/ai-agent-builder";
-    }
-
-    if (course.title.includes("AI Workflow Automation")) {
-      return "/courses/ai-workflow-automation";
-    }
-
-    // Special case for Certified AI Product Manager
-    if (course.title.includes("Certified AI Product Manager")) {
-      return "/courses/certified-ai-product-manager";
-    }
-    
-    if (course.title.includes("Executive GenAI Leadership") || course.title.includes("GenAI Leadership")) {
-      return "/courses/executive-genai-leadership";
-    }
-    
-    if (course.title.includes("AI-Driven Scrum Master") || course.title.includes("AI Scrum Master")) {
-      return "/courses/ai-driven-scrum-master";
-    }
-    
-    if (course.title.includes("Leading SAFe") || course.title.includes("SAFe Agilist")) {
-      return "/courses/leading-safe";
-    }
-    
-    if (course.title.includes("SAFe Product Owner/Product Manager") || course.title.includes("Product Owner/Product Manager")) {
-      return "/courses/product-owner-manager";
-    }
-    
-    // Special case for SAFe Lean Portfolio Management
-    if (course.title.includes("SAFe Lean Portfolio Management") || course.title.includes("Lean Portfolio Management")) {
-      return "/courses/lean-portfolio-management";
-    }
-    
-    // Special case for SAFe Agile Product Management
-    if (course.title.includes("SAFe Agile Product Management") || course.title.includes("Agile Product Management")) {
-      return "/courses/agile-product-management";
-    }
-
-    if (course.title.includes("SAFe for Architects") || course.title.includes("Architects")) {
-      return "/courses/safe-for-architects";
-    }
-    
-      // Special case for SAFe Advanced Scrum Master (must come before regular Scrum Master)
-      if (course.title.includes("Advanced Scrum Master") || course.title.includes("Advanced Scrum")) {
-        return "/courses/advanced-scrum-master";
-      }
-      
-      // Special case for SAFe Scrum Master
-      if (course.title.includes("SAFe Scrum Master") || course.title.includes("Scrum Master")) {
-        return "/courses/scrum-master";
-      }
-      
-      // Special case for SAFe for Teams
-      if (course.title.includes("SAFe for Teams") || course.title.includes("for Teams")) {
-        return "/courses/safe-for-teams";
-      }
-      
-      // Special case for Responsible AI
-      if (course.title.includes("Responsible AI") || course.title.includes("AI with SAFe")) {
-        return "/courses/responsible-ai";
-      }
-      
-      // Special case for SAFe DevOps
-      if (course.title.includes("SAFe DevOps") || course.title.includes("DevOps")) {
-        return "/courses/devops";
-      }
-      
-      // Special case for Value Stream Mapping
-      if (course.title.includes("Value Stream Mapping") || course.title.includes("Value Stream")) {
-        return "/courses/value-stream-mapping";
-      }
-      
-      // Special case for SAFe Release Train Engineer
-      if (course.title.includes("Release Train Engineer") || course.title.includes("RTE")) {
-        return "/courses/release-train-engineer";
-      }
-    
-    const titleSlug = course.title
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '')
-      .replace(/\//g, '-');
-    
-    return `/courses/${titleSlug}`;
-  };
-
-  const allCourses: Course[] = [
-    // SAFe courses
-    {
-      id: "8",
-      title: "AI-Empowered Leading SAFe® / SAFe Agilist",
-      category: "SAFe",
-      image: "/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg",
-      price: 515,
-      originalPrice: 1030,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "SAFe Principles, Lean-Agile Practices, AI-empowered collaboration",
-      popular: true,
-    },
-    {
-      id: "9",
-      title: "AI-Empowered SAFe Product Owner/Product Manager",
-      category: "SAFe",
-      image: "/annie-spratt-hCb3lIB8L8E-unsplash.jpg",
-      price: 545,
-      originalPrice: 1090,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Product Ownership, SAFe PO/PM Practices, AI-assisted delivery",
-      popular: true,
-    },
-    {
-      id: "18",
-      title: "SAFe Value Stream Mapping",
-      category: "SAFe",
-      image: "/ninthgrid-ti8cT-DKwes-unsplash.jpg",
-      price: 350,
-      originalPrice: 700,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Value Stream Mapping, Process Optimization",
-      trending: true,
-    },
-    {
-      id: "10",
-      title: "SAFe Lean Portfolio Management",
-      category: "SAFe",
-      image: "/brooke-cagle--uHVRvDr7pg-unsplash.jpg",
-      price: 950,
-      originalPrice: 1900,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Portfolio Strategy, Investment Funding, Value Stream Management",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "11",
-      title: "SAFe Agile Product Management",
-      category: "SAFe",
-      image: "/campaign-creators-gMsnXqILjp4-unsplash.jpg",
-      price: 1199,
-      originalPrice: 1998,
-      hours: "24 Hrs",
-      days: "03 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Agile Product Management, Continuous Exploration",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "28",
-      title: "SAFe for Architects",
-      category: "SAFe",
-      image: "/andreea-avramescu-wR56AUlEsE4-unsplash.jpg",
-      price: 1399,
-      originalPrice: 2798,
-      hours: "24 Hrs",
-      days: "03 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Agile Architecture, Architectural Runway, Solution Intent",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "12",
-      title: "AI-Empowered SAFe Scrum Master",
-      category: "SAFe",
-      image: "/christina-wocintechchat-com-0Nfqp0WiJqc-unsplash (1).jpg",
-      price: 515,
-      originalPrice: 1030,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "SAFe Scrum, Team Facilitation, Coaching, AI-empowered ceremonies",
-      popular: true,
-    },
-    {
-      id: "13",
-      title: "AI-Empowered SAFe for Teams",
-      category: "SAFe",
-      image: "/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg",
-      price: 599,
-      originalPrice: 1198,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "SAFe Team Practices, Iteration Execution, AI-empowered teamwork",
-      popular: true,
-    },
-    {
-      id: "15",
-      title: "SAFe DevOps",
-      category: "SAFe",
-      image: "/ewan-buck-xc9B3i-1QiI-unsplash.jpg",
-      price: 599,
-      originalPrice: 1198,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "DevOps Practices, Continuous Delivery, SAFe Pipeline",
-      popular: true,
-    },
-    {
-      id: "27",
-      title: "Responsible AI",
-      category: "SAFe",
-      image: "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
-      price: 350,
-      originalPrice: 700,
-      hours: "8 Hrs",
-      days: "01 day",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Responsible AI, Ethical AI Practices, AI Governance",
-      trending: true,
-    },
-    {
-      id: "16",
-      title: "AI-Empowered SAFe Advanced Scrum Master",
-      category: "SAFe",
-      image: "/headway-5QgIuuBxKwM-unsplash.jpg",
-      price: 599,
-      originalPrice: 1198,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "Flow, facilitation with AI, ART performance",
-      popular: true,
-      advanced: true,
-    },
-    {
-      id: "17",
-      title: "SAFe Release Train Engineer",
-      category: "SAFe",
-      image: "/RTE.png",
-      price: 0,
-      originalPrice: 0,
-      hours: "16 Hrs",
-      days: "03 days",
-      enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
-      skills: "RTE Practices, Agile Release Train Facilitation",
-      popular: true,
-      advanced: true,
-      privateClass: true,
-    },
-    // Generative AI courses
-    {
-      id: "19",
-      title: "AI-Driven Scrum Master™",
-      category: "Generative AI",
-      image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
-      price: 555,
-      originalPrice: 1110,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2.5K+ Enrolled",
-      skills: "AI-Enhanced Scrum Practices, Agile AI Tools, Team Facilitation",
-      trending: true,
-    },
-    {
-      id: "20",
-      title: "Executive GenAI Leadership™",
-      category: "Generative AI",
-      image: "/redd-francisco-PTRzqc_h1r4-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "1.8K+ Enrolled",
-      skills: "GenAI Strategy, Executive AI Decision Making, Leadership in AI Era",
-      trending: true,
-    },
-    {
-      id: "23",
-      title: "Generative AI for Project Managers",
-      category: "Generative AI",
-      image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "16 Hrs",
-      days: "02 days",
-      enrolled: "2.2K+ Enrolled",
-      skills: "AI Project Management, AI-Assisted Planning, Prompt Engineering",
-      trending: true,
-    },
-    {
-      id: "22",
-      title: "Certified GenAI Practitioner™",
-      category: "Generative AI",
-      image: "/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg",
-      price: 299,
-      originalPrice: 598,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: "3K+ Enrolled",
-      skills: "GenAI Fundamentals, AI Ethics, Prompt Engineering, AI Applications",
-      trending: true,
-    },
-    {
-      id: "29",
-      title: "No-Code AI Agents & Automation™",
-      category: "AI Courses",
-      image: "/Logo_Agents.png",
-      price: 400,
-      originalPrice: 800,
-      hours: "8 Hrs",
-      days: "02 days",
-      enrolled: "2.8K+ Enrolled",
-      skills: "GrokBot, RAG, Voice AI, Claude Code, n8n",
-      popular: true,
-    },
-    {
-      id: "31",
-      title: "AI Workflow Automation™",
-      category: "AI Courses",
-      image: "/Logo_AI_Workflow_Automation.png",
-      price: 400,
-      originalPrice: 800,
-      hours: "8 Hrs",
-      days: "02 days",
-      enrolled: "Now enrolling",
-      skills: "n8n, Claude, APIs, Webhooks",
-      popular: true,
-    },
-    {
-      id: "32",
-      title: "No-Code AI App Builder™",
-      category: "AI Courses",
-      image: "/Logo_AI_App_Builder.png",
-      price: 400,
-      originalPrice: 800,
-      hours: "8 Hrs",
-      days: "02 days",
-      enrolled: "Now enrolling",
-      skills: "No-Code Apps, Client Customization, Publishing",
-      popular: true,
-    },
-    // AI Product courses
-    {
-      id: "24",
-      title: "Certified AI Product Manager",
-      category: "AI Product",
-      image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
-      price: 400,
-      originalPrice: 800,
-      hours: "10 Hrs",
-      days: "02 days",
-      enrolled: "2.5K+ Enrolled",
-      skills: "Ship a Working App, Cursor / v0 / Bolt, Live Product Demos",
-      popular: true,
-    },
-  ];
-
   const selectedCategoryMeta =
     MEGA_MENU_CATEGORIES.find((c) => c.id === selectedMegaMenuCategory) ?? MEGA_MENU_CATEGORIES[0];
 
   const megaMenuCourses = sortMegaMenuCourses(
-    allCourses.filter((course) => course.category === selectedMegaMenuCategory),
+    PUBLIC_CATALOG_COURSES.filter((course) => course.category === selectedMegaMenuCategory),
     selectedMegaMenuCategory
   );
 
@@ -708,13 +291,13 @@ export default function Header() {
                           {megaMenuCourses.map((course) => (
                             <li key={course.id}>
                               <Link
-                                href={getCourseUrl(course)}
+                                href={getCatalogCourseUrl(course)}
                                 onClick={() => setShowMegaMenu(false)}
                                 className="flex items-start gap-2.5 py-2 px-1.5 -mx-1.5 rounded-md hover:bg-[#1f2c4a]/[0.06] transition-colors group"
                               >
                                 <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-[#1f2c4a]/10 ring-1 ring-[#1f2c4a]/10">
                                   <Image
-                                    src={getMegaMenuImage(course)}
+                                    src={getCatalogCourseImage(course)}
                                     alt=""
                                     width={36}
                                     height={36}

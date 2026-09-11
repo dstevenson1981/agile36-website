@@ -182,7 +182,7 @@ const COURSE_LABELS: Record<string, string> = {
   "executive-genai-leadership": "Executive GenAI",
   "generative-ai-project-managers": "GenAI for PMs",
   "ai-driven-scrum-master": "AI-Driven Scrum Master",
-  "ai-agent-builder": "AI Agent Builder",
+  "ai-agent-builder": "No-Code AI Agents",
   "ai-workflow-automation": "AI Workflow Automation",
   "ai-app-builder": "AI App Builder",
 };
