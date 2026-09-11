@@ -116,7 +116,13 @@ function CheckoutContent() {
   const formatDateRange = (startDate: string, endDate: string) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
-    const opts = { month: 'short' as const, day: 'numeric' as const, timeZone: 'America/New_York' as const };
+    const tz = 'America/New_York' as const;
+    const opts = { month: 'short' as const, day: 'numeric' as const, timeZone: tz };
+    const startKey = start.toLocaleDateString('en-CA', { timeZone: tz });
+    const endKey = end.toLocaleDateString('en-CA', { timeZone: tz });
+    if (startKey === endKey) {
+      return start.toLocaleDateString('en-US', { ...opts, year: 'numeric' });
+    }
     const startFormatted = start.toLocaleDateString('en-US', opts);
     const endFormatted = end.toLocaleDateString('en-US', { ...opts, year: 'numeric' as const });
     return `${startFormatted} - ${endFormatted}`;

@@ -1712,9 +1712,9 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     band: BAND,
     path: "/courses/executive-genai-leadership",
     price: PRICE["executive-genai-leadership"],
-    // Two days at 5 hrs/day, matching every cohort on the schedule page.
-    duration: { days: "2 days", hours: "10" },
-    credits: "10 PDUs",
+    // One day, 9 AM–2 PM, matching every cohort on the schedule page.
+    duration: { days: "1 day", hours: "5" },
+    credits: "5 PDUs",
     accreditation: {
       safe: false,
       credential: "Executive GenAI Leadership™, issued through Accredible",
@@ -1738,7 +1738,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     industries: INDUSTRIES,
     landing: {
       crumb: "Executive GenAI",
-      lede: "A two-day executive programme on AI opportunity, governance, operating-model choices, workforce readiness, risk, and value realization — moving from scattered experimentation to a focused transformation agenda.",
+      lede: "A one-day executive programme on AI opportunity, governance, operating-model choices, workforce readiness, risk, and value realization — moving from scattered experimentation to a focused transformation agenda.",
       difference: "Taught in business language by people who have led enterprise transformations, and it ends in a capstone: a full AI strategy for your own organization with the use cases and ROI modelled.",
       outcomes: [],
       curriculumModules: [
@@ -1791,21 +1791,21 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { title: "Workforce readiness included", body: "Roles, job redesign, and organizational readiness rather than technology alone." },
     ],
     stats: [
-      { value: "2", label: "Days, live and instructor-led" },
+      { value: "1", label: "Day, live and instructor-led (9 AM–2 PM)" },
       { value: "12", label: "Modules from opportunity through to capstone" },
       { value: "2", label: "Hands-on workshops using your own portfolio" },
-      { value: "10", label: "PDUs toward renewal" },
+      { value: "5", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "From scattered pilots<br />to a funded agenda",
       body: [
-        "A two-day executive programme covering AI opportunity, governance, operating-model decisions, workforce readiness, risk, and value realization. It is built for leaders who have experimentation happening across the business and no coherent agenda holding it together.",
+        "A one-day executive programme covering AI opportunity, governance, operating-model decisions, workforce readiness, risk, and value realization. It is built for leaders who have experimentation happening across the business and no coherent agenda holding it together.",
         "The programme moves from identifying and scoring high-value use cases, through quantifying ROI and choosing an operating model, into why AI initiatives fail and how leaders prevent it. It ends with a capstone: a full AI strategy for your own organization.",
       ],
     },
     whyNow: {
       heading: "Pilots are cheap.<br />A strategy is not",
-      body: "Most enterprises now have AI activity in a dozen places and no view of which of it matters. The expensive failure is not a pilot that does not work — it is a year of pilots that were never going to scale, funded because nobody scored them. These two days exist to produce that scoring, and the agenda that follows from it.",
+      body: "Most enterprises now have AI activity in a dozen places and no view of which of it matters. The expensive failure is not a pilot that does not work — it is a year of pilots that were never going to scale, funded because nobody scored them. This day exists to produce that scoring, and the agenda that follows from it.",
     },
   },
 

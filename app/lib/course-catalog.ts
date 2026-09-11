@@ -230,7 +230,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       image: "/redd-francisco-PTRzqc_h1r4-unsplash.jpg",
       price: 400,
       originalPrice: 800,
-      hours: "8 Hrs",
+      hours: "5 Hrs",
       days: "01 day",
       enrolled: "1.8K+ Enrolled",
       skills: "GenAI Strategy, Executive AI Decision Making, Leadership in AI Era",

@@ -291,7 +291,7 @@ export default function ExecutiveGenAILeadershipCoursePage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#1f2c4a] mb-1">8 Hours of Live Sessions With Industry Experts</h3>
+                  <h3 className="font-semibold text-[#1f2c4a] mb-1">5 Hours of Live Sessions With Industry Experts (9 AM–2 PM)</h3>
                 </div>
               </div>
 
@@ -859,7 +859,7 @@ export default function ExecutiveGenAILeadershipCoursePage() {
                       {[
                         { q: "What is the Executive GenAI Leadership™ Certification Training?", a: "The Executive GenAI Leadership™ Certification Training is designed to help executives and senior leaders develop comprehensive GenAI strategies and lead AI transformation initiatives effectively. It covers GenAI strategy development, executive AI decision-making frameworks, ethical AI implementation, and organizational transformation." },
                         { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on strategic leadership skills and knowledge for leading GenAI initiatives at the executive level." },
-                        { q: "What is included in the course?", a: "The course includes 8 hours of live virtual training, comprehensive course materials, strategic frameworks, case studies, and a GenAI leadership action plan for your organization." },
+                        { q: "What is included in the course?", a: "The course includes one day of live virtual training from 9 AM to 2 PM, comprehensive course materials, strategic frameworks, case studies, and a GenAI leadership action plan for your organization." },
                         { q: "Do I need prior AI experience?", a: "While prior AI experience is helpful, the course is designed for executives and senior leaders who want to develop strategic GenAI leadership capabilities, regardless of technical background." }
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
@@ -887,7 +887,7 @@ export default function ExecutiveGenAILeadershipCoursePage() {
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">1 Day (8 Hours) Live Virtual Training</span>
+                    <span className="text-sm text-[#475569]">1 Day (9 AM–2 PM) Live Virtual Training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

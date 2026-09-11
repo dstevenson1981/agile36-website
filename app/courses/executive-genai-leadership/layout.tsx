@@ -73,7 +73,7 @@ export default async function ExecutiveGenAILeadershipLayout({
       coursesCrumbLabel: "Generative AI Courses",
       defaultPrice: 400,
       defaultCurrency: "USD",
-      timeRequired: "P2D",
+      timeRequired: "P1D",
       courseCode: "EGL",
       coursePrerequisites: "Executive, VP, or senior leadership role recommended",
       educationalCredentialAwarded: "Executive GenAI Leadership™ Certification",
@@ -96,7 +96,7 @@ export default async function ExecutiveGenAILeadershipLayout({
         "name": "What is Executive GenAI Leadership certification?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Executive GenAI Leadership is a 2-day certification for C-suite and senior leaders driving AI transformation. You learn to develop AI strategy, build governance frameworks, assess risks, measure ROI, manage organizational change, and lead enterprise-wide generative AI adoption from the executive level."
+          "text": "Executive GenAI Leadership is a 1-day certification for C-suite and senior leaders driving AI transformation. You learn to develop AI strategy, build governance frameworks, assess risks, measure ROI, manage organizational change, and lead enterprise-wide generative AI adoption from the executive level."
         }
       },
       {
