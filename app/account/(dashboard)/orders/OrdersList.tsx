@@ -4,7 +4,7 @@ type Order = {
   id: string;
   course_name: string;
   course_slug: string;
-  amount: number;
+  amount: number | string;
   currency: string;
   schedule_date: string;
   payment_status: string;
@@ -42,7 +42,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                 {!order.schedule_date && new Date(order.created_at).toLocaleDateString('en-US', { dateStyle: 'medium' })}
               </p>
               <p className="text-sm text-[#475569] mt-1">
-                ${order.amount.toFixed(2)} {order.currency.toUpperCase()}
+                ${Number(order.amount).toFixed(2)} {order.currency.toUpperCase()}
               </p>
             </div>
             <div className="flex items-center gap-3">

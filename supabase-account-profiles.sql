@@ -59,12 +59,21 @@ CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
--- Update orders RLS to allow users to read orders matching their email
--- (orders use customer_email; we match to profile email)
+-- Update orders RLS to allow users to read orders matching their email.
+-- Do not SELECT from auth.users here: authenticated has no privilege on that
+-- table, which throws "permission denied for table users" and breaks /account/orders.
 DROP POLICY IF EXISTS "Users can view their own orders" ON orders;
 CREATE POLICY "Users can view their own orders" ON orders
   FOR SELECT
+  TO authenticated
   USING (
-    auth.role() = 'service_role'
-    OR customer_email = (SELECT email FROM profiles WHERE user_id = auth.uid())
+    lower(trim(customer_email)) = lower(trim(coalesce(auth.jwt() ->> 'email', '')))
+    OR EXISTS (
+      SELECT 1
+      FROM profiles p
+      WHERE p.user_id = auth.uid()
+        AND p.email IS NOT NULL
+        AND trim(p.email) <> ''
+        AND lower(trim(customer_email)) = lower(trim(p.email))
+    )
   );
