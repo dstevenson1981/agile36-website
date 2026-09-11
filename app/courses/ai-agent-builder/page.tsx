@@ -133,9 +133,9 @@ export default function NoCodeAIAgentsCoursePage() {
               <figure aria-labelledby="agent-fleet-video-title">
                 <figcaption className="mb-3">
                   <h2 id="agent-fleet-video-title" className="text-lg font-semibold text-[#1f2c4a]">
-                    AI agent fleet walkthrough
+                    See What You&apos;ll Build
                   </h2>
-                  <p className="mt-1 text-sm text-[#64748b]">Deadra Stevenson&apos;s AI voice · 2:05</p>
+                  <p className="mt-1 text-sm text-[#64748b]">AI agent fleet demo · 2:05</p>
                 </figcaption>
                 <video
                   controls
@@ -144,7 +144,7 @@ export default function NoCodeAIAgentsCoursePage() {
                   width={1080}
                   height={1920}
                   poster="/videos/ai-agent-fleet-walkthrough.jpg?v=course-services-20260910"
-                  aria-label="AI agent fleet walkthrough narrated with Deadra Stevenson's AI voice"
+                  aria-label="AI agent fleet demo"
                   className="aspect-[9/16] w-full rounded-lg bg-black object-contain"
                 >
                   <source src="/videos/ai-agent-fleet-walkthrough.mp4?v=course-services-20260910" type="video/mp4" />
