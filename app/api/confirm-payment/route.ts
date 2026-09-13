@@ -1,8 +1,6 @@
-import { NextRequest, NextResponse, after } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-import { grantProPracticeAccessForEmail } from '@/app/lib/grant-pro-practice-access';
-import { triggerLandExpandForPaidOrder } from '@/land-and-expand/lib/process';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -186,22 +184,7 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if order storage fails, payment is already successful
     }
 
-    // $50 practice-exam-only upgrades unlock immediately; full Pro enrollments stay locked until manual unlock.
-    if (
-      paymentIntent.metadata?.upgradeType === 'practice_exam_only' &&
-      paymentIntent.metadata?.courseSlug &&
-      orderData.customer_email
-    ) {
-      try {
-        await grantProPracticeAccessForEmail(
-          supabase,
-          orderData.customer_email,
-          paymentIntent.metadata.courseSlug,
-        );
-      } catch (grantError) {
-        console.error('Error granting practice exam upgrade access:', grantError);
-      }
-    }
+    // $50 practice-exam-only upgrades insert plan=pro above; exam pages read that order.
 
     // Mark matching enrollment_leads as completed (same email + schedule)
     if (!isComboOrder && order?.id && orderData.customer_email && orderData.schedule_id) {
@@ -277,18 +260,6 @@ export async function POST(request: NextRequest) {
           console.error('Error inserting combo enrollment lead:', insertComboLeadError);
         }
       }
-    }
-
-    // Corporate-email land-and-expand: runs after the response so checkout is not delayed.
-    if (order?.id && orderData.payment_status === 'succeeded') {
-      const orderId = order.id as string;
-      after(async () => {
-        try {
-          await triggerLandExpandForPaidOrder(orderId);
-        } catch (landExpandError) {
-          console.error('[land-expand] confirm-payment trigger failed:', landExpandError);
-        }
-      });
     }
 
     return NextResponse.json({

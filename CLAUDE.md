@@ -77,8 +77,8 @@ reimbursement rate and 3,200 LPMs came from real data Deadra has. If a number
 looks unverifiable, do not delete it — flag it and ask, or reframe it with
 attribution.
 
-**Don't run the production data scripts.** `sync-stripe-names`, `enrich-apollo`,
-and `land-expand` hit live Stripe, Apollo, and email systems. They are blocked in
+**Don't run the production data scripts.** `sync-stripe-names` and `enrich-apollo`
+hit live Stripe, Apollo, and email systems. They are blocked in
 `.claude/settings.json`; don't work around that.
 
 **Don't commit secrets.** `.env.local` holds live keys. It's gitignored — keep it

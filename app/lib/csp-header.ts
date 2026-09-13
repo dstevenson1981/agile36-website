@@ -7,7 +7,7 @@
  * a host added (prefer narrow origins over `https:` in script-src).
  *
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
- * Apollo, RB2B (via /hyper-agent.js), Stripe (checkout), Microsoft Clarity,
+ * Apollo, Stripe (checkout), Microsoft Clarity,
  * Vercel Analytics from fpcdn/openfpcdn depending on version/build.
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
@@ -21,8 +21,6 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://client.crisp.chat " +
   "https://*.crisp.chat " +
   "https://assets.apollo.io " +
-  "https://ddwl4m2hdecbv.cloudfront.net " + // RB2B person-identification pixel (loaded by /hyper-agent.js)
-  "https://*.reb2b.com " +
   "https://app.upvert.io " +
   "https://va.vercel-scripts.com " +
   "https://vercel.live " +

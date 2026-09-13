@@ -159,11 +159,6 @@ export default function RootLayout({
             }
           />
         ) : null}
-        <script
-          src="/hyper-agent.js"
-          data-rb2b="GNLKQH7LPW6Q"
-          async
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}

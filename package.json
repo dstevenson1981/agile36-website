@@ -11,8 +11,7 @@
     "mcp:agile36:self-test": "tsx mcp/agile36-server.ts --self-test",
     "clean-suppressions": "node clean-suppressions.js",
     "sync-stripe-names": "tsx sync-stripe-names.ts",
-    "enrich-apollo": "tsx enrich-apollo.ts",
-    "land-expand": "tsx land-and-expand/run.ts"
+    "enrich-apollo": "tsx enrich-apollo.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

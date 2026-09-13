@@ -19,7 +19,19 @@ import {
   getCatalogScheduleUrl,
 } from '../app/lib/course-catalog';
 import { COURSE_HERO_SCHEDULE_LIST_USD } from '../app/lib/course-hero-schedule-pricing';
-import { normalizeCompany } from '../app/lib/hyper/people';
+
+function normalizeCompany(name: string | null | undefined): string {
+  if (!name) return '';
+  return name
+    .toLowerCase()
+    .replace(/[.,'"()]/g, ' ')
+    .replace(
+      /\b(incorporated|inc|llc|l\.l\.c|ltd|limited|corp|corporation|co|company|gmbh|s\.a|plc|holdings|group|technologies|technology|labs)\b/g,
+      ' '
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 type WriteMode = 'off' | 'draft' | 'live';
 type JsonObject = Record<string, unknown>;
@@ -182,7 +194,7 @@ function createManifest(): JsonObject {
       courses: true,
       schedules: true,
       contentSearch: true,
-      visitors: true,
+      visitors: false,
       leads: true,
       companyProfiles: true,
       intentScoring: true,
@@ -198,7 +210,7 @@ function createManifest(): JsonObject {
       catalog: 'app/lib/course-catalog.ts',
       schedulePricing: 'app/lib/course-hero-schedule-pricing.ts',
       schedules: 'Supabase course_schedules',
-      visitors: 'Supabase website_visitors and hyper_people',
+      visitors: 'disabled',
       leads: 'Supabase enrollment_leads, coupon_leads, assessment_emails, corporate_accounts',
       content: 'content/blog, app routes, data/seoPages.js',
     },
@@ -419,29 +431,6 @@ async function listSchedules(input: {
   return { configured: true, count: data?.length ?? 0, schedules: data ?? [] };
 }
 
-async function getRecentVisitors(input: { limit?: number; company?: string; pageContains?: string }): Promise<JsonObject> {
-  const sb = getSupabase();
-  if (!sb) return { configured: false, reason: 'Supabase env vars are required.' };
-
-  const limit = clampLimit(input.limit, 25, 200);
-  let query = sb
-    .from('website_visitors')
-    .select('id, created_at, company, company_norm, page, session_id, person_name, email, title, linkedin_url')
-    .order('created_at', { ascending: false })
-    .limit(limit);
-
-  if (input.company) {
-    const normalized = normalizeCompany(input.company);
-    if (normalized) query = query.eq('company_norm', normalized);
-    else query = query.ilike('company', `%${input.company}%`);
-  }
-  if (input.pageContains) query = query.ilike('page', `%${input.pageContains}%`);
-
-  const { data, error } = await query;
-  if (error) return { configured: true, error: redactError(error) };
-  return { configured: true, count: data?.length ?? 0, visitors: data ?? [] };
-}
-
 async function getTableRows(
   table: string,
   select: string,
@@ -505,60 +494,21 @@ async function getCompanyProfile(companyName: string): Promise<JsonObject> {
   if (!sb) return { configured: false, companyName, companyNorm, reason: 'Supabase env vars are required.' };
   if (!companyNorm) return { configured: true, error: { message: 'A company name is required.' } };
 
-  const [visits, people] = await Promise.all([
-    sb
-      .from('website_visitors')
-      .select('id, created_at, company, page, session_id, person_name, email, title, linkedin_url')
-      .eq('company_norm', companyNorm)
-      .order('created_at', { ascending: false })
-      .limit(100),
-    sb
-      .from('hyper_people')
-      .select('revealed_at, first_name, last_name, title, email, linkedin_url, company_name, company_domain, city, region')
-      .eq('company_norm', companyNorm)
-      .order('revealed_at', { ascending: false })
-      .limit(20),
-  ]);
-
-  const visitRows = visits.data ?? [];
-  const pages = [...new Set(visitRows.map((row) => row.page).filter(Boolean))];
-  const sessions = new Set(visitRows.map((row) => row.session_id).filter(Boolean));
-  const contacts = [
-    ...(people.data ?? []).map((person) => ({
-      name: [person.first_name, person.last_name].filter(Boolean).join(' ') || null,
-      title: person.title,
-      email: person.email,
-      linkedinUrl: person.linkedin_url,
-      source: 'hyper_people',
-      revealedAt: person.revealed_at,
-    })),
-    ...visitRows
-      .filter((row) => row.person_name || row.email)
-      .map((row) => ({
-        name: row.person_name,
-        title: row.title,
-        email: row.email,
-        linkedinUrl: row.linkedin_url,
-        source: 'website_visitors',
-        revealedAt: row.created_at,
-      })),
-  ];
-
   return {
     configured: true,
     companyName,
     companyNorm,
-    errors: [visits.error, people.error].filter(Boolean).map(redactError),
+    visitorTracking: false,
     summary: {
-      visitCount: visitRows.length,
-      uniqueSessions: sessions.size,
-      knownContacts: contacts.length,
-      firstSeenAt: visitRows.at(-1)?.created_at ?? null,
-      lastSeenAt: visitRows[0]?.created_at ?? null,
-      pages,
+      visitCount: 0,
+      uniqueSessions: 0,
+      knownContacts: 0,
+      firstSeenAt: null,
+      lastSeenAt: null,
+      pages: [],
     },
-    recentVisits: visitRows.slice(0, 25),
-    contacts: contacts.slice(0, 20),
+    recentVisits: [],
+    contacts: [],
   };
 }
 
@@ -669,7 +619,7 @@ function recommendNextActions(context: string, maxActions: number): JsonObject {
   }
 
   if (actions.length === 0) {
-    push('Gather visitor and lead context', 'The context is too broad to safely execute; enrich first.', 'get_recent_visitors');
+    push('Gather lead context', 'The context is too broad to safely execute; enrich first.', 'get_leads');
     push('Score revenue intent', 'Use deterministic signals before choosing a sales motion.', 'score_revenue_intent');
     push('Draft next best action', 'Keep action staged until the signal is clearer.', 'log_agent_action');
   }
@@ -1177,22 +1127,6 @@ export function createAgile36McpServer(): McpServer {
       }
       return { route, found };
     },
-  );
-
-  registerTool(
-    server,
-    'get_recent_visitors',
-    {
-      title: 'Get Recent Visitors',
-      description: 'Read recent identified website visitors and RB2B-enriched person fields from Supabase.',
-      readOnly: true,
-      inputSchema: {
-        limit: z.number().int().positive().max(200).default(25).optional(),
-        company: z.string().optional(),
-        pageContains: z.string().optional(),
-      },
-    },
-    getRecentVisitors,
   );
 
   registerTool(

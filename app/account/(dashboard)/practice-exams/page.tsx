@@ -74,10 +74,10 @@ function ExamAccessBlock({
     return (
       <>
         <div className="mt-3.5 flex w-full items-center justify-center rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] py-2.5 text-center text-[13px] font-semibold text-[#1f2c4a]">
-          Unlocks last day of class
+          Practice window ended
         </div>
         <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
-          Your instructor will enable access
+          Contact us if you still need access
         </p>
       </>
     );
@@ -292,7 +292,7 @@ export default async function PracticeExamsPage({
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
           Full Pro banks for your courses and combo bundles — not the free public mocks on the website.
-          Pro exams unlock on the last day of class. Basic plan? Upgrade for $50. Looking for free practice?
+          Included with a Pro enrollment. Basic plan? Upgrade for $50. Looking for free practice?
           Use{' '}
           <Link href="/test" className="font-semibold text-[#d97706] underline">
             Practice Tests
@@ -308,7 +308,7 @@ export default async function PracticeExamsPage({
             className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#1f2c4a]/15 bg-white shadow-[0_12px_40px_-18px_rgba(31,44,74,0.35)] transition-shadow duration-300 hover:border-[#1f2c4a]/30 hover:shadow-[0_22px_50px_-16px_rgba(31,44,74,0.4)]"
           >
             <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
-              {exam.unlocked ? 'Pro practice exam' : exam.hasProPlan ? 'Pro · locked until class end' : 'Basic · upgrade available'}
+              {exam.unlocked ? 'Pro practice exam' : exam.hasProPlan ? 'Pro' : 'Basic · upgrade available'}
             </div>
 
             <div className="flex flex-1 flex-col p-5">
