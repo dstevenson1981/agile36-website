@@ -8,7 +8,7 @@ import {
 
 export const metadata = {
   title: "Course Exams | Agile36",
-  description: "Secure course exams for rostered Agile36 learners.",
+  description: "Course exams for enrolled Agile36 learners.",
   robots: "noindex, nofollow",
 };
 

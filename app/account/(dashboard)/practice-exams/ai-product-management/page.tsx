@@ -20,14 +20,14 @@ export default async function AiProductManagementPracticeExamPage() {
           AI Product Management Practice Exam
         </h1>
         <p className="text-slate-600 mb-6">
-          This practice exam is available to learners rostered for the Certified
-          AI Product Manager course.
+          This practice exam is included with a Certified AI Product Manager
+          enrollment.
         </p>
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-8 max-w-xl">
-          <h2 className="font-semibold text-amber-900 mb-2">Not on the roster</h2>
+          <h2 className="font-semibold text-amber-900 mb-2">Enrollment required</h2>
           <p className="text-amber-800 mb-4">
-            If you recently finished class, ask your instructor to add your
-            account email to the AI PM exam roster.
+            Sign in with the email you used at checkout. If you just enrolled,
+            the exam should appear on your account shortly.
           </p>
           <Link
             href="/courses/certified-ai-product-manager/schedule"

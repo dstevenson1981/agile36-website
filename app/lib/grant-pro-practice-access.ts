@@ -10,6 +10,7 @@ export const PRACTICE_EXAM_COURSE_IDS = new Set([
   'advanced-scrum-master',
   'safe-for-teams',
   'release-train-engineer',
+  'certified-ai-product-manager',
 ]);
 
 /** Map an order course_slug (including combo-*) to practice-exam course ids. */

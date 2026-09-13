@@ -129,7 +129,7 @@ async function enrichCustomers() {
     // Only corporate emails (exclude Gmail, Yahoo, Hotmail, Outlook, AOL, iCloud, etc.)
     const { data: customers, error: fetchError } = await supabase
       .from('customers')
-      .select('email, name, first_name, last_name, stripe_customer_id')
+      .select('email, name')
       .not('name', 'is', null)
       .not('email', 'is', null)
       .not('email', 'ilike', '%@gmail.com')
@@ -145,9 +145,7 @@ async function enrichCustomers() {
       .not('email', 'ilike', '%@yandex.com')
       .not('email', 'ilike', '%@zoho.com')
       .not('email', 'ilike', '%@gmx.com')
-      // Only enrich customers that don't have apollo_raw_data yet
-      // This prevents wasting credits on customers we already enriched
-      .is('apollo_raw_data', null);
+      .is('linkedin_url', null);
     
     if (fetchError) {
       throw new Error(`Error fetching customers: ${fetchError.message}`);
@@ -233,40 +231,15 @@ async function enrichCustomers() {
             industry: person.organization?.industry || person.organization_industry || null
           } : null;
           
-          // Store the complete raw Apollo response as JSON
-          const apolloRawData = JSON.parse(JSON.stringify(person)); // Deep copy to avoid circular references
-          
-          const enrichedData: any = {
-            apollo_id: person.id?.toString() || null,
+          const enrichedData: {
+            job_title: string | null;
+            company_name: string | null;
+            linkedin_url: string | null;
+          } = {
             job_title: person.title || person.job_title || null,
             company_name: organization?.name || person.company_name || null,
-            company_website: organization?.website_url || person.company_website || null,
-            company_size: organization?.estimated_num_employees?.toString() || person.company_size?.toString() || null,
-            company_industry: organization?.industry || person.company_industry || null,
             linkedin_url: person.linkedin_url || null,
-            phone_number: person.phone_numbers?.[0]?.raw_number || person.phone_numbers?.[0]?.sanitized_number || person.phone_number || null,
-            city: person.city || null,
-            state: person.state || null,
-            country: person.country || null,
-            seniority: person.seniority || null,
-            departments: person.departments?.join(', ') || person.department || null,
-            apollo_raw_data: apolloRawData, // Store complete Apollo response
-            enriched_at: new Date().toISOString()
           };
-          
-          // Log what we're about to save
-          if (enriched === 0) {
-            console.log(`    DEBUG - enrichedData.job_title:`, enrichedData.job_title);
-            console.log(`    DEBUG - enrichedData.company_name:`, enrichedData.company_name);
-          }
-          
-          // Also update first_name and last_name if we have them from Apollo
-          if (person.first_name) {
-            enrichedData.first_name = person.first_name;
-          }
-          if (person.last_name) {
-            enrichedData.last_name = person.last_name;
-          }
           
           // Update in Supabase using email as primary key
           const { error: updateError, data: updateData } = await supabase

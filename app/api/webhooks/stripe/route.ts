@@ -100,8 +100,7 @@ export async function POST(request: NextRequest) {
           .eq('payment_intent_id', failedPayment.id);
       }
 
-      // Failed payments should not get abandoned-cart recovery emails.
-      // Cancel pending enrollment_leads for this buyer so N8N skips them.
+      // Payment failed — close any pending checkout-started lead for this buyer.
       let failedEmail = (
         failedPayment.receipt_email ||
         failedPayment.metadata?.customerEmail ||

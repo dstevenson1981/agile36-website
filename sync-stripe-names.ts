@@ -46,8 +46,8 @@ async function syncCustomerNames() {
     while (hasMore) {
       const { data: customers, error: fetchError } = await supabase
         .from('customers')
-        .select('email, stripe_customer_id, name')
-        .not('stripe_customer_id', 'is', null)
+        .select('email, name')
+        .not('email', 'is', null)
         .range(page * pageSize, (page + 1) * pageSize - 1);
       
       if (fetchError) {
@@ -65,7 +65,7 @@ async function syncCustomerNames() {
     }
     
     const customers = allCustomers;
-    console.log(`Found ${customers.length} total customers with Stripe IDs in Supabase`);
+    console.log(`Found ${customers.length} total customers in Supabase`);
     
     let updated = 0;
     let skipped = 0;
@@ -86,11 +86,15 @@ async function syncCustomerNames() {
       }
       
       try {
-        // Fetch customer from Stripe using stripe_customer_id
-        const stripeCustomer = await stripe.customers.retrieve(customer.stripe_customer_id);
-        
+        const listed = await stripe.customers.list({ email: customer.email, limit: 1 });
+        const stripeCustomer = listed.data[0];
+        if (!stripeCustomer) {
+          console.log(`⚠️  No Stripe customer for ${customer.email}`);
+          notFound++;
+          continue;
+        }
         if (stripeCustomer.deleted) {
-          console.log(`⚠️  Customer ${customer.stripe_customer_id} is deleted in Stripe`);
+          console.log(`⚠️  Stripe customer for ${customer.email} is deleted`);
           notFound++;
           continue;
         }
@@ -109,7 +113,7 @@ async function syncCustomerNames() {
         }
         
         if (!fullName || fullName.trim() === '') {
-          console.log(`⚠️  No name found for ${customer.email} (${customer.stripe_customer_id})`);
+          console.log(`⚠️  No name found for ${customer.email}`);
           notFound++;
           continue;
         }
@@ -138,10 +142,10 @@ async function syncCustomerNames() {
         
       } catch (error: any) {
         if (error.code === 'resource_missing') {
-          console.log(`⚠️  Customer ${customer.stripe_customer_id} not found in Stripe`);
+          console.log(`⚠️  Stripe customer missing for ${customer.email}`);
           notFound++;
         } else {
-          console.error(`Error processing ${customer.email} (${customer.stripe_customer_id}):`, error.message);
+          console.error(`Error processing ${customer.email}:`, error.message);
           errors++;
         }
       }

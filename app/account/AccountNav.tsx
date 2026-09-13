@@ -17,7 +17,7 @@ export default function AccountNav({
   showCourseMaterials = false,
 }: {
   userEmail?: string;
-  /** AI PM (and future) rostered course exams — only show when the user is on a roster. */
+  /** AI PM course exam — shown when the user has a paid AI PM order. */
   showCourseExams?: boolean;
   /** Enrolled course materials (e.g. AI PM coursebook). */
   showCourseMaterials?: boolean;
