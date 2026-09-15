@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { hasLeadingSafeProAccess } from '@/app/lib/practice-exams';
 import LeadingSafePracticeTest from './LeadingSafePracticeTest';
+import { LEADING_SAFE_QUESTIONS } from './questions';
 
 export const metadata = {
-  title: 'SAFe Agilist Practice Test | Agile36',
+  title: 'Leading SAFe Pro Exam Prep | Agile36',
   description:
     'Leading SAFe (SAFe Agilist) practice exam for Agile36 Pro students — timed questions aligned to the current SAFe exam style.',
   robots: 'noindex, nofollow',
@@ -42,7 +43,7 @@ export default async function LeadingSafePracticeTestPage() {
     <div>
       <h1 className="text-2xl font-bold text-slate-900 mb-2">SAFe Agilist (Leading SAFe) Practice Test</h1>
       <p className="text-slate-600 mb-8">
-        45 questions to help you prepare for the SAFe Agilist certification exam. Answer all questions, then submit to see your score and review.
+        {LEADING_SAFE_QUESTIONS.length} questions to help you prepare for the SAFe Agilist certification exam. Answer all questions, then submit to see your score and review.
       </p>
       <LeadingSafePracticeTest />
     </div>

@@ -17,7 +17,7 @@ export default function LeadingSafeProClassPage() {
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         <main className="min-w-0 rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 shadow-sm sm:p-8">
           <h1 className="mb-2 text-2xl font-bold text-slate-900">
-            SAFe Agilist (Leading SAFe) Practice Test
+            Leading SAFe Pro Exam Prep
           </h1>
           <p className="mb-8 text-slate-600">
             {n} questions to help you prepare for the SAFe Agilist certification exam. Answer all

@@ -47,7 +47,8 @@ export default function LeadingSafePracticeTest({
 
   if (showResults) {
     const correct = LEADING_SAFE_QUESTIONS.filter((q) => answers[q.id] === q.correctIndex).length;
-    const score = Math.round((correct / total) * 100);
+    const scoredTotal = LEADING_SAFE_QUESTIONS.filter((q) => q.correctIndex !== null).length;
+    const score = scoredTotal ? Math.round((correct / scoredTotal) * 100) : 0;
     const passingScore = 73; // SAFe Agilist exam typically ~73% to pass
 
     return (
@@ -60,11 +61,11 @@ export default function LeadingSafePracticeTest({
             </div>
             <div>
               <p className="text-slate-600">
-                You got {correct} out of {total} questions correct.
+                You matched {correct} out of {scoredTotal} supplied answers. {total - scoredTotal} questions have no supplied answer key and are not scored.
               </p>
               <p className="text-sm text-slate-500 mt-1">
                 {score >= passingScore
-                  ? 'Great job! You\'re on track for the SAFe Agilist certification exam.'
+                  ? 'Review your answers below or retake the practice set.'
                   : 'Review the questions below and try again when ready.'}
               </p>
             </div>
@@ -77,18 +78,20 @@ export default function LeadingSafePracticeTest({
                 <div
                   key={q.id}
                   className={`p-4 rounded-lg border ${
-                    isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
+                    q.correctIndex === null ? 'bg-slate-50 border-slate-200' : isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
                   }`}
                 >
                   <p className="font-medium text-slate-900 mb-2">
                     {q.id}. {q.question}
                   </p>
+                  {q.sourceNote && <p className="mb-2 text-sm text-amber-800">{q.sourceNote}</p>}
+                  {q.correctIndex === null && <p className="mb-2 text-sm text-slate-600">No answer key supplied — not scored.</p>}
                   <p className="text-sm">
                     Your answer: {userAnswer !== undefined ? OPTION_LETTERS[userAnswer] + '. ' + q.options[userAnswer] : '—'}
                   </p>
-                  {!isCorrect && (
+                  {!isCorrect && q.correctIndex !== null && (
                     <p className="text-sm text-green-700 mt-1">
-                      Correct: {OPTION_LETTERS[q.correctIndex]}. {q.options[q.correctIndex]}
+                      Supplied answer: {OPTION_LETTERS[q.correctIndex]}. {q.options[q.correctIndex]}
                     </p>
                   )}
                 </div>
@@ -116,7 +119,13 @@ export default function LeadingSafePracticeTest({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+        This set contains 41 unique questions from the supplied photos, preserving their wording,
+        answer order, and selected answers. Original question numbers are retained; 8, 9, 28, and 45
+        were not supplied. Questions 1 and 7 are unscored because no answer was selected. Question
+        22 has a cut-off answer. Feedback follows the supplied selections.
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-slate-600">
           Question {currentIndex + 1} of {total} • {answeredCount} answered
         </p>
@@ -142,6 +151,12 @@ export default function LeadingSafePracticeTest({
         <h2 className="text-lg font-semibold text-slate-900 mb-6">
           {question.id}. {question.question}
         </h2>
+        {question.sourceNote && (
+          <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">{question.sourceNote}</p>
+        )}
+        {question.correctIndex === null && (
+          <p className="mb-4 text-sm text-slate-600">No answer key supplied — your response will be saved without grading.</p>
+        )}
         <ul className="space-y-3">
           {question.options.map((option, idx) => {
             const hasAnswered = answers[question.id] !== undefined;
@@ -180,14 +195,14 @@ export default function LeadingSafePracticeTest({
             );
           })}
         </ul>
-        {answers[question.id] !== undefined && (
+        {answers[question.id] !== undefined && question.correctIndex !== null && (
           <p className={`mt-4 text-sm font-medium ${answers[question.id] === question.correctIndex ? 'text-green-600' : 'text-amber-600'}`}>
-            {answers[question.id] === question.correctIndex ? '✓ Correct!' : `The correct answer is ${OPTION_LETTERS[question.correctIndex]}.`}
+            {answers[question.id] === question.correctIndex ? '✓ Matches the supplied answer.' : `The supplied answer is ${OPTION_LETTERS[question.correctIndex]}.`}
           </p>
         )}
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex flex-wrap justify-between items-center gap-3">
         <Link href={backHref} className="text-sm text-slate-600 hover:text-slate-900">
           ← {backLabel}
         </Link>
