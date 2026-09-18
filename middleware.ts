@@ -12,6 +12,78 @@ import { parentCourseForLocationPath } from './app/lib/location-training-pages';
 // Paths that don't need auth (skip Supabase session refresh to avoid refresh_token errors)
 const PUBLIC_PATHS = ['/combo-courses', '/courses', '/contact', '/corporate', '/about', '/'];
 
+const CLASS_EXAM_SKIP = new Set([
+  'about',
+  'academy',
+  'account',
+  'admin',
+  'api',
+  'blog',
+  'class-exam',
+  'collaborate',
+  'combo-courses',
+  'contact',
+  'corporate',
+  'courses',
+  'login',
+  'privacy-policy',
+  'private',
+  'refund-policy',
+  'safe-certifications',
+  'test',
+  'testimonials',
+]);
+
+/** Existing App Router pages — leave them in place; middleware only serves new table paths. */
+const STATIC_CLASS_PAGES = new Set([
+  'leading-safe-pro-class',
+  'scrum-master-pro-class',
+  'lpm-pro-class',
+  'apm-pro-class',
+  'apm-pro-temp',
+  'advanced-scrum-master-pro-class',
+]);
+
+type ClassExamCache = { at: number; byPath: Map<string, string> };
+let classExamCache: ClassExamCache | null = null;
+const CLASS_EXAM_CACHE_MS = 15_000;
+
+async function lookupClassExamToken(pathname: string): Promise<string | null> {
+  const path = pathname.replace(/\/$/, '') || '/';
+  if (path === '/' || path.slice(1).includes('/')) return null;
+  const slug = path.slice(1);
+  if (!slug || CLASS_EXAM_SKIP.has(slug) || STATIC_CLASS_PAGES.has(slug)) return null;
+
+  const now = Date.now();
+  if (!classExamCache || now - classExamCache.at > CLASS_EXAM_CACHE_MS) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) return null;
+    try {
+      const res = await fetch(
+        `${url}/rest/v1/pro_practice_exam_links?is_active=eq.true&select=path`,
+        {
+          headers: { apikey: key, Authorization: `Bearer ${key}` },
+          cache: 'no-store',
+        },
+      );
+      if (res.ok) {
+        const rows = (await res.json()) as { path: string }[];
+        classExamCache = {
+          at: now,
+          byPath: new Map(
+            rows.map((row) => [row.path, row.path.replace(/^\//, '')]),
+          ),
+        };
+      }
+    } catch {
+      // Fall through to stale cache if present.
+    }
+  }
+
+  return classExamCache?.byPath.get(path) ?? null;
+}
+
 const STATIC_FILE = /\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|woff2?|ttf|eot|map)$/i;
 
 function applyCspAndHreflang(request: NextRequest, response: NextResponse) {
@@ -39,9 +111,24 @@ export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-agile36-path', request.nextUrl.pathname + request.nextUrl.search);
 
-  const response = NextResponse.next({ request: { headers: requestHeaders } });
-
   const pathname = request.nextUrl.pathname;
+
+  if (pathname === '/class-exam' || pathname.startsWith('/class-exam/')) {
+    requestHeaders.set('x-agile36-class-exam', '1');
+  }
+
+  const classExamToken = await lookupClassExamToken(pathname);
+  if (classExamToken) {
+    requestHeaders.set('x-agile36-class-exam', '1');
+    const rewriteRes = NextResponse.rewrite(
+      new URL(`/class-exam/${classExamToken}`, request.url),
+      { request: { headers: requestHeaders } },
+    );
+    applyCspAndHreflang(request, rewriteRes);
+    return rewriteRes;
+  }
+
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   // Pruned city geo landings → parent course (covers unknown city slugs too).
   const locationParent = parentCourseForLocationPath(pathname);

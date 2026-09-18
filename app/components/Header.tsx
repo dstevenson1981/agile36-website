@@ -142,6 +142,8 @@ export default function Header() {
   // Hide shared header on practice exam pages since they have their own custom headers
   if (
     pathname?.startsWith("/test/") ||
+    pathname?.startsWith("/class-exam/") ||
+    pathname === "/popm-pro-sep19" ||
     pathname === "/apm-pro-temp" ||
     pathname === "/apm-pro-class" ||
     pathname === "/leading-safe-pro-class" ||
@@ -153,7 +155,6 @@ export default function Header() {
     pathname === "/popmpro" ||
     pathname === "/popm-practice-temp" ||
     pathname === "/popm-prep-pro" ||
-    pathname === "/popm-workshop" ||
     pathname === "/scrum-master-pro-class" ||
     pathname === "/advanced-scrum-master-pro-class"
   ) {

@@ -132,7 +132,7 @@ export function rememberVisitor(partial: { name?: string; email?: string }) {
 
 export function recordPageView(path: string, title: string) {
   if (typeof window === "undefined") return;
-  if (!path || path.startsWith("/admin") || path.startsWith("/popm-workshop")) return;
+  if (!path || path.startsWith("/admin")) return;
   const profile = loadVisitor();
   const last = profile.pages[profile.pages.length - 1];
   if (last && last.path === path) {
@@ -251,7 +251,7 @@ export function courseInterestFromPath(path: string): CourseInterest | null {
     if (path.includes(hub)) return interestForSlug(slug);
   }
 
-  if (/^\/(popm-pro-class|popmpro|popm-prep-pro|popm-practice-temp)/.test(path)) {
+  if (/^\/(popm-pro-sep19|popm-pro-class|popmpro|popm-prep-pro|popm-practice-temp)/.test(path)) {
     return interestForSlug("product-owner-manager");
   }
   if (/^\/(leading-safe-pro-class|leading-safepro|leading-safe-pro-temp)/.test(path)) {
