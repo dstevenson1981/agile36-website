@@ -1,6 +1,6 @@
 /** Transcribed from the supplied photos. Preserve wording, option order, and selected answers.
  * correctIndex records the source selection, not an independently verified answer key.
- * null means the photo has no selected answer. Missing source questions: 8, 9, 28, 45.
+ * null means no answer key was supplied. Missing source questions: 8, 9, 28, 45.
  */
 export type LeadingSafeQuestion = {
   id: number;
@@ -21,7 +21,7 @@ export const LEADING_SAFE_QUESTIONS: LeadingSafeQuestion[] = [
       "As a way of working to include the Customer in daily work processes and planning",
       "As a mindset focused on the Customer journey that produces the best innovations"
     ],
-    "correctIndex": null,
+    "correctIndex": 3,
     "sourceImage": "IMG_0037.jpg"
   },
   {
