@@ -93,7 +93,7 @@ export const LEADING_SAFE_QUESTIONS: LeadingSafeQuestion[] = [
       "Approve the highest-value initiatives first",
       "Eliminate work-in-process limits to increase throughput"
     ],
-    "correctIndex": null,
+    "correctIndex": 0,
     "sourceImage": "IMG_0039.jpg"
   },
   {
