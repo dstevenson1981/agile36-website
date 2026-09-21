@@ -5,6 +5,7 @@ import {
   SCHEMA_ORGANIZATION_LOGO_URL,
   SCHEMA_ORGANIZATION_LOGO_WIDTH,
 } from "@/app/lib/schema-site";
+import { CLAUDE_PARTNER_BADGE_URL } from "@/app/lib/course-partners";
 
 export const metadata: Metadata = {
   title: "Contact Agile36 (2026) | SAFe & AI Training Partner",
@@ -65,12 +66,16 @@ export default function ContactLayout({
     "email": "d.stevenson@agile36.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "1000 Brickell Ave, Suite 715",
+      "addressLocality": "Miami",
+      "addressRegion": "Florida",
+      "postalCode": "33131",
       "addressCountry": "US",
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "34.0522",
-      "longitude": "-118.2437",
+      "latitude": "25.7617",
+      "longitude": "-80.1918",
     },
     "areaServed": {
       "@type": "Place",
@@ -79,7 +84,11 @@ export default function ContactLayout({
         "Live virtual instructor-led training; English-language delivery; US-based team.",
     },
     "openingHours": "Mo-Fr 09:00-18:00",
-    "sameAs": ["https://www.linkedin.com/company/agile36"],
+    "sameAs": [
+      "https://www.linkedin.com/company/agile36",
+      "https://www.facebook.com/agile36/",
+      CLAUDE_PARTNER_BADGE_URL,
+    ],
     "parentOrganization": { "@id": SCHEMA_ORGANIZATION_ID },
   };
 

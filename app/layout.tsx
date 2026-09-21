@@ -14,6 +14,7 @@ import {
   SCHEMA_WEBSITE_ID,
   SCALED_AGILE_TRAINING_FEEDBACK_URL,
 } from "@/app/lib/schema-site";
+import { CLAUDE_PARTNER_BADGE_URL } from "@/app/lib/course-partners";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -94,11 +95,13 @@ export default async function RootLayout({
       "streetAddress": "1000 Brickell Ave, Suite 715",
       "addressLocality": "Miami",
       "addressRegion": "Florida",
-      "postalCode": "3313",
+      "postalCode": "33131",
       "addressCountry": "US"
     },
     "sameAs": [
       "https://www.linkedin.com/company/agile36",
+      "https://www.facebook.com/agile36/",
+      CLAUDE_PARTNER_BADGE_URL,
       SCALED_AGILE_TRAINING_FEEDBACK_URL,
     ],
     "areaServed": {
