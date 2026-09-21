@@ -1,72 +1,64 @@
 "use client";
 
 import Image from "next/image";
-import Script from "next/script";
-import {
-  CLAUDE_PARTNER_BADGE_ID,
-  CLAUDE_PARTNER_BADGE_URL,
-} from "@/app/lib/course-partners";
 
-type Variant = "mark" | "footer" | "embed";
+type Variant = "mark" | "footer" | "hero";
 
 type Props = {
   variant?: Variant;
 };
 
 export default function ClaudePartnerBadge({ variant = "footer" }: Props) {
-  if (variant === "embed") {
+  if (variant === "hero") {
     return (
-      <div className="flex justify-center">
-        <div
-          data-iframe-width="150"
-          data-iframe-height="270"
-          data-share-badge-id={CLAUDE_PARTNER_BADGE_ID}
-          data-share-badge-host="https://www.credly.com"
+      <div className="flex items-center gap-4 rounded-2xl border border-[#1f2c4a]/10 bg-white px-4 py-3 shadow-[0_16px_40px_-32px_rgba(31,44,74,.55)]">
+        <Image
+          src="/claude-partner-badge.png"
+          alt="Claude Partner Badge — Claude Code"
+          width={88}
+          height={88}
+          className="h-[5.5rem] w-[5.5rem] shrink-0 object-contain"
+          priority
         />
-        <Script src="https://cdn.credly.com/assets/utilities/embed.js" strategy="lazyOnload" />
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+            Partner badge
+          </p>
+          <p className="mt-1 text-sm font-semibold text-[#1f2c4a]">Claude Partner</p>
+          <p className="mt-0.5 text-xs leading-5 text-[#64748b]">Claude Code · issued by Anthropic</p>
+        </div>
       </div>
     );
   }
 
   if (variant === "mark") {
     return (
-      <a
-        href={CLAUDE_PARTNER_BADGE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-[11px] font-medium text-[#475569] hover:text-[#1f2c4a]"
-      >
+      <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#475569]">
         <Image
           src="/claude-partner-badge.png"
           alt="Claude Partner Badge — Claude Code"
-          width={28}
-          height={28}
-          className="h-7 w-7 object-contain"
+          width={40}
+          height={40}
+          className="h-10 w-10 object-contain"
         />
         Claude Partner
-      </a>
+      </span>
     );
   }
 
   return (
-    <a
-      href={CLAUDE_PARTNER_BADGE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5 transition hover:bg-[#1f2c4a]/[0.07]"
-    >
+    <div className="mt-4 flex items-center gap-3 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
       <Image
         src="/claude-partner-badge.png"
-        alt="Claude Partner Badge — Claude Code, issued by Anthropic"
-        width={40}
-        height={40}
-        className="h-10 w-10 shrink-0 object-contain"
+        alt="Claude Partner Badge — Claude Code"
+        width={56}
+        height={56}
+        className="h-14 w-14 shrink-0 object-contain"
       />
-      <p className="text-[11px] leading-snug text-[#475569]">
+      <p className="text-[12px] leading-snug text-[#475569]">
         Taught under our{" "}
-        <span className="font-semibold text-[#1f2c4a]">Claude Partner</span>{" "}
-        badge — Claude Code
+        <span className="font-semibold text-[#1f2c4a]">Claude Partner</span> badge
       </p>
-    </a>
+    </div>
   );
 }

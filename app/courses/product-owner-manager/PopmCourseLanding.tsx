@@ -15,6 +15,7 @@ import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 const NAV_ITEMS = [
   { id: "overview", label: "Overview" },
+  { id: "why", label: "Why Agile36" },
   { id: "skills", label: "Skills" },
   { id: "instructors", label: "Instructors" },
   { id: "dates", label: "Dates & tuition" },
@@ -90,7 +91,13 @@ function firstParagraph(value: string): string {
   return value.split(/\n\s*\n/)[0]?.trim() || value.trim();
 }
 
-function FlowCanvas({ content }: { content: CatalogLandingContent }) {
+function FlowCanvas({
+  content,
+  showClaudePartner = false,
+}: {
+  content: CatalogLandingContent;
+  showClaudePartner?: boolean;
+}) {
   const modules = courseModules(content);
   const fallbackStages = ["Learn", "Practice", "Apply", "Validate"];
   const stages = Array.from({ length: 4 }, (_, index) => {
@@ -105,7 +112,7 @@ function FlowCanvas({ content }: { content: CatalogLandingContent }) {
   return (
     <div className="relative overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_30px_80px_-45px_rgba(31,44,74,.45)] sm:p-7">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
-      <div className="grid items-center gap-5 sm:grid-cols-[7.5rem_1fr]">
+      <div className={`grid items-center gap-5 ${showClaudePartner ? "sm:grid-cols-[7.5rem_1fr_7.5rem]" : "sm:grid-cols-[7.5rem_1fr]"}`}>
         <div className="relative mx-auto">
           <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-[#22c1c3]/20 to-[#1f2c4a]/10 blur-xl" />
           <Image
@@ -130,6 +137,17 @@ function FlowCanvas({ content }: { content: CatalogLandingContent }) {
             {compactText(content.outcomes[0] || firstParagraph(content.lede), 105)}
           </p>
         </div>
+        {showClaudePartner ? (
+          <div className="relative mx-auto">
+            <Image
+              src="/claude-partner-badge.png"
+              alt="Claude Partner Badge — Claude Code"
+              width={140}
+              height={140}
+              className="relative h-[7.5rem] w-[7.5rem] object-contain"
+            />
+          </div>
+        ) : null}
       </div>
 
       <div className="relative mt-6 grid gap-3 sm:grid-cols-4 sm:gap-2">
@@ -433,15 +451,16 @@ function SkillGrid() {
 function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
   const { observe, active } = useMotionOnView<HTMLDivElement>();
   const modules = courseModules(content);
-  const cards = Array.from({ length: 4 }, (_, index) => {
-    const courseModule = modules[index];
-    const topics = courseModule?.topics.slice(0, 3) || [];
+  const showAll = content.slug === "ai-driven-scrum-master";
+  const source = showAll ? modules : modules.slice(0, 4);
+  const cards = source.map((courseModule, index) => {
+    const topics = courseModule?.topics.slice(0, 4) || [];
     return {
-      number: `0${index + 1}`,
+      number: String(index + 1).padStart(2, "0"),
       title: courseModule?.title || compactText(content.outcomes[index] || `Apply ${content.crumb}`, 42),
       copy: content.outcomes[index] || topics.join(". "),
       topics: topics.length ? topics : [content.highlights[index % content.highlights.length]],
-      className: index < 2 ? "lg:col-span-6" : "lg:col-span-6",
+      className: showAll ? "lg:col-span-4" : "lg:col-span-6",
       tone: index % 3,
     };
   });
@@ -550,7 +569,7 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
           </div>
           <div className="mt-2 divide-y divide-[#1f2c4a]/10">
             {day.modules.map((module) => (
-              <details key={module.title} className="group py-5" open={module.featured}>
+              <details key={module.title} className="group py-5" open={content.slug === "ai-driven-scrum-master" || module.featured}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                   <div>
                     <p className="font-semibold text-[#1f2c4a]">{module.title}</p>
@@ -822,7 +841,7 @@ export default function PopmCourseLanding({
                   <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
                   {content.eyebrow || "Official SAFe® certification · Live online"}
                 </div>
-                {showClaudePartner ? <ClaudePartnerBadge variant="mark" /> : null}
+                {showClaudePartner ? <ClaudePartnerBadge variant="hero" /> : null}
               </div>
               <h1 className="mt-6 max-w-4xl text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                 {content.title}
@@ -917,7 +936,7 @@ export default function PopmCourseLanding({
             </div>
 
             <div className="space-y-5">
-              <FlowCanvas content={content} />
+              <FlowCanvas content={content} showClaudePartner={showClaudePartner} />
               {tuition ? (
                 <div className="grid gap-5 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_22px_55px_-38px_rgba(31,44,74,.55)] sm:grid-cols-[auto_1fr_auto] sm:items-center">
                   <div className="sm:border-r sm:border-[#1f2c4a]/10 sm:pr-5">
@@ -1010,6 +1029,58 @@ export default function PopmCourseLanding({
               ))}
             </div>
             <OutcomeChart outcomes={content.outcomes} courseName={content.crumb} />
+          </div>
+        </div>
+      </section>
+
+      <section id="why" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Why Agile36"
+            title="This is why they should choose us"
+            copy={
+              isAiScrumMaster
+                ? "A working AI Scrum Master system in two days — not a prompt list and not another 9-to-5 slide deck."
+                : "What to check before you book, and how this class is built differently."
+            }
+          />
+          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white">
+            <div className="hidden border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
+              <span>What to check</span>
+              <span className="text-[#1f2c4a]">Agile36</span>
+              <span>{content.whyOtherLabel || "Other training providers"}</span>
+            </div>
+            {content.whyRows.map((row) => (
+              <div
+                key={row.n}
+                className={`grid gap-4 border-b border-[#1f2c4a]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
+                  row.featured
+                    ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07] py-7 lg:py-8"
+                    : "bg-white"
+                }`}
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#d97706]">
+                    {row.n}
+                  </span>
+                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#1f2c4a]">{row.check}</h3>
+                </div>
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706] lg:hidden">
+                    Agile36
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#475569]">
+                    <span className="font-semibold text-[#1f2c4a]">{row.usLead}</span> {row.usRest}
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#94a3b8] lg:hidden">
+                    {content.whyOtherLabel || "Other training providers"}
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#64748b]">{row.other}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1230,13 +1301,19 @@ export default function PopmCourseLanding({
                   </div>
                 </div>
               ) : showClaudePartner ? (
-                <div className="mt-4 rounded-xl bg-white px-4 py-3">
-                  <p className="text-sm font-semibold text-[#1f2c4a]">
-                    {content.certificateTitle || content.cardTitle}
-                  </p>
-                  <p className="mt-1 text-xs text-[#64748b]">Issued through Accredible · no exam</p>
-                  <div className="mt-3">
-                    <ClaudePartnerBadge variant="embed" />
+                <div className="mt-4 flex items-center gap-3 rounded-xl bg-white px-4 py-3">
+                  <Image
+                    src="/claude-partner-badge.png"
+                    alt="Claude Partner Badge — Claude Code"
+                    width={72}
+                    height={72}
+                    className="h-[4.5rem] w-[4.5rem] object-contain"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold text-[#1f2c4a]">
+                      {content.certificateTitle || content.cardTitle}
+                    </p>
+                    <p className="mt-0.5 text-xs text-[#64748b]">Claude Partner · issued through Accredible · no exam</p>
                   </div>
                 </div>
               ) : (
