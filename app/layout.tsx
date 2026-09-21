@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import {
@@ -18,6 +19,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ClarityAnalytics from "./components/ClarityAnalytics";
 import WebMcpProvider from "./components/WebMcpProvider";
+import SiteAgent from "./components/SiteAgent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,11 +66,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const hideSiteHeader = requestHeaders.get("x-agile36-class-exam") === "1";
   // Global Organization + WebSite graph (logo on org + site; articles use /og default in blog JSON-LD)
   const organizationNode = {
     "@type": "EducationalOrganization",
@@ -164,31 +168,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <WebMcpProvider />
-        <Header />
+        {hideSiteHeader ? null : <Header />}
         <div className="flex-1">
           {children}
         </div>
         <Footer />
         
-        {/* Crisp Live Chat Widget */}
-        <Script
-          id="crisp-chat"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.$crisp=[];
-              window.CRISP_WEBSITE_ID="fa52d23e-ef39-4fdb-8ecd-8c568cd46d15";
-              (function(){
-                d=document;
-                s=d.createElement("script");
-                s.src="https://client.crisp.chat/l.js";
-                s.async=1;
-                d.getElementsByTagName("head")[0].appendChild(s);
-              })();
-            `,
-          }}
-        />
-        
+        <SiteAgent />
+         
         {/* Apollo Tracking */}
         <Script
           id="apollo-tracking"

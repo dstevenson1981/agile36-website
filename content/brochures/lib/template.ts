@@ -106,7 +106,7 @@ function cover(c: BrochureCourse, l: BrochureLanding) {
       <div class="cover-line"></div>
       <div class="cover-facts">
         <div class="cover-fact"><span class="v">${esc(c.duration.days)}</span><span class="k">Live online</span></div>
-        <div class="cover-fact"><span class="v">${esc(c.duration.hours)} hrs</span><span class="k">PDUs &amp; SEUs</span></div>
+        <div class="cover-fact"><span class="v">${esc(c.duration.hours)} hrs</span><span class="k">${safe(c) ? "PDUs &amp; SEUs" : "PDUs"}</span></div>
         <div class="cover-fact"><span class="v">${c.exam ? "Included" : "Included"}</span><span class="k">${c.exam ? "Exam + retake" : "Courseware"}</span></div>
         <div class="cover-fact"><span class="v">${money(c.price.current)}</span><span class="k">Per seat</span></div>
       </div>
@@ -200,7 +200,7 @@ ${glance.map(([k, v]) => `          <tr><td>${rich(k)}</td><td class="w">${rich(
 
       <div class="panel amber">
         <h4 style="margin-bottom:4px">Training a team?</h4>
-        <p class="small" style="margin:0">25% off any group of five or more, plus private cohorts scheduled around your PI calendar. Email <strong>d.stevenson@agile36.com</strong>.</p>
+        <p class="small" style="margin:0">20% off any group of five or more, plus private cohorts scheduled around your PI calendar. Email <strong>d.stevenson@agile36.com</strong>.</p>
       </div>
 
       <div class="panel">
@@ -601,7 +601,7 @@ ${TRAINERS.map(
           <span class="was">${money(c.price.original)}</span>
           <span class="small" style="color:rgba(255,255,255,0.6); margin:0">per seat, everything included</span>
         </div>
-        <p class="small" style="color:rgba(255,255,255,0.72); margin:0">Weekday and weekend cohorts running throughout the year. Groups of five or more save 25%; private cohorts can be scheduled around your PI calendar.</p>
+        <p class="small" style="color:rgba(255,255,255,0.72); margin:0">Weekday and weekend cohorts running throughout the year. Groups of five or more save 20%; private cohorts can be scheduled around your PI calendar.</p>
       </div>
       <div style="text-align:right; flex:none">
         <span class="btn">agile36.com${esc(c.path)}</span>

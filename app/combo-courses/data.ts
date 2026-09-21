@@ -31,11 +31,11 @@ export const BADGES: Record<string, string> = {
   "ai-agent-builder": "/Logo_Agents.png",
   "ai-workflow-automation": "/Logo_AI_Workflow_Automation.png",
   "ai-app-builder": "/Logo_AI_App_Builder.png",
-  "ai-driven-scrum-master": "/GenAI_2.png",
-  "certified-genai-practitioner": "/GenAI_2.png",
-  "certified-ai-product-manager": "/PMAI.png",
-  "executive-genai-leadership": "/GenAI_2.png",
-  "generative-ai-project-managers": "/GenAI_2.png",
+  "ai-driven-scrum-master": "/Logo_AI_Driven_Scrum_Master.png",
+  "certified-genai-practitioner": "/Logo_GenAI_Practitioner.png",
+  "certified-ai-product-manager": "/Logo_AI_Product_Manager.png",
+  "executive-genai-leadership": "/Logo_Executive_GenAI_Leadership.png",
+  "generative-ai-project-managers": "/Logo_GenAI_Project_Managers.png",
 };
 
 type CatalogEntry = {

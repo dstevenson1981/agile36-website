@@ -13,6 +13,7 @@ import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
 import CheckoutEmailField from "@/app/components/CheckoutEmailField";
 import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillingCodeField';
 import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
+import { getCoursePromoCapByCode } from '@/app/lib/course-promo-caps';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
 import { formatTimezoneLabel } from "@/app/lib/schedule-display";
@@ -231,7 +232,8 @@ function CheckoutContent() {
   };
 
   useEffect(() => {
-    if (!appliedPromoCode || appliedPromoCode.toUpperCase() !== 'POPM' || !selectedSchedule?.price) {
+    const cap = appliedPromoCode ? getCoursePromoCapByCode(appliedPromoCode) : null;
+    if (!cap || cap.courseSlug !== courseSlug || !selectedSchedule?.price) {
       return;
     }
     let cancelled = false;
@@ -243,7 +245,7 @@ function CheckoutContent() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            code: 'POPM',
+            code: cap.code,
             courseSlug,
             scheduleBasicPrice: parseFloat(selectedSchedule.price),
             selectedPlan,

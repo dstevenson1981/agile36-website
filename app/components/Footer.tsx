@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const FOOTER_COLUMNS = [
   {
@@ -34,9 +33,6 @@ const FOOTER_COLUMNS = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  if (pathname === "/popm-workshop") return null;
-
   return (
     <footer className="relative w-full overflow-hidden border-t border-[#1f2c4a]/10 bg-black text-[#1f2c4a] mt-auto">
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">

@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  groupPurchaseStatsByCampaign,
+  type CampaignPurchase,
+} from '@/app/lib/email-campaign-purchases';
 
 export async function GET(request: NextRequest) {
   try {
@@ -34,9 +38,30 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const { data: purchaseRows, error: purchaseError } = await supabase.rpc(
+      'email_campaign_purchases',
+      { p_campaign_id: null }
+    );
+
+    if (purchaseError) {
+      console.error('Error fetching campaign purchases:', purchaseError);
+    }
+
+    const purchaseStats = groupPurchaseStatsByCampaign(
+      (purchaseRows || []) as CampaignPurchase[]
+    );
+
     return NextResponse.json({
       success: true,
-      campaigns: campaigns || [],
+      campaigns: (campaigns || []).map((campaign) => ({
+        ...campaign,
+        ...(purchaseStats[campaign.id] || {
+          buyers_on_list: 0,
+          purchases_after_send: 0,
+          revenue_after_send: 0,
+          revenue_on_list: 0,
+        }),
+      })),
     });
   } catch (error: any) {
     console.error('Error in campaigns API:', error);

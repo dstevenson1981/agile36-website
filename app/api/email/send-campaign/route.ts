@@ -112,6 +112,31 @@ async function fetchContactsByIdsPaged(supabase: any, contactIds: number[]) {
   return Array.from(new Map(contacts.map((c) => [c.id, c])).values());
 }
 
+async function fetchAlreadySentContactIds(
+  supabase: any,
+  campaignId: number
+): Promise<Set<number>> {
+  const ids = new Set<number>();
+  const pageSize = 1000;
+  let from = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('email_sends')
+      .select('contact_id')
+      .eq('campaign_id', campaignId)
+      .not('sendgrid_message_id', 'is', null)
+      .range(from, from + pageSize - 1);
+    if (error) throw error;
+    if (!data || data.length === 0) break;
+    for (const row of data) {
+      if (typeof row.contact_id === 'number') ids.add(row.contact_id);
+    }
+    if (data.length < pageSize) break;
+    from += pageSize;
+  }
+  return ids;
+}
+
 // Helper function to generate unsubscribe token
 function generateUnsubscribeToken(email: string, campaignId: number): string {
   const data = `${email}-${campaignId}-${Date.now()}`;
@@ -325,7 +350,34 @@ export async function POST(request: NextRequest) {
       (contact) => !unsubscribed.has(String(contact.email || '').trim().toLowerCase())
     );
 
+    // Resume-safe: never send again to contacts who already got a SendGrid-accepted copy.
+    const alreadySentIds = await fetchAlreadySentContactIds(supabase, campaignId);
+    if (alreadySentIds.size > 0) {
+      const before = contacts.length;
+      contacts = contacts.filter((contact) => !alreadySentIds.has(contact.id));
+      console.log(
+        `Campaign ${campaignId}: skipped ${before - contacts.length} already-sent contacts, ${contacts.length} remaining`
+      );
+    }
+
     if (!contacts || contacts.length === 0) {
+      if (alreadySentIds.size > 0) {
+        await supabase
+          .from('email_campaigns')
+          .update({
+            status: 'sent',
+            sent_count: alreadySentIds.size,
+            sent_at: new Date().toISOString(),
+          })
+          .eq('id', campaignId);
+        return NextResponse.json({
+          success: true,
+          sent: 0,
+          alreadySent: alreadySentIds.size,
+          total: alreadySentIds.size,
+          message: 'Everyone on this campaign has already been sent.',
+        });
+      }
       const audienceHint =
         audienceMode === 'tagFilters'
           ? ` with tags: ${resolvedTagFilters.join(', ')}`
@@ -517,18 +569,28 @@ export async function POST(request: NextRequest) {
 
       await Promise.all(promises);
 
+      await supabase
+        .from('email_campaigns')
+        .update({
+          sent_count: alreadySentIds.size + sentCount,
+          status: 'sending',
+        })
+        .eq('id', campaignId);
+
       // Rate limiting: wait before next batch (except for last batch)
       if (i + RATE_LIMIT_PER_SECOND < contacts.length) {
         await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_BATCHES));
       }
     }
 
+    const totalAccepted = alreadySentIds.size + sentCount;
+
     // Update campaign with final status
     await supabase
       .from('email_campaigns')
       .update({
         status: cancelledMidSend ? 'cancelled' : 'sent',
-        sent_count: sentCount,
+        sent_count: totalAccepted,
         sent_at: new Date().toISOString(),
       })
       .eq('id', campaignId);
@@ -536,9 +598,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       sent: sentCount,
+      alreadySent: alreadySentIds.size,
       errors: errorCount,
       errorDetails: errors,
-      total: contacts.length,
+      total: alreadySentIds.size + contacts.length,
+      remaining: contacts.length - sentCount - errorCount,
       cancelled: cancelledMidSend,
       audienceMode,
       tagFilters: resolvedTagFilters,

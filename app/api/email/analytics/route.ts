@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  summarizeCampaignPurchases,
+  type CampaignPurchase,
+} from '@/app/lib/email-campaign-purchases';
 
 export async function GET(request: NextRequest) {
   try {
@@ -72,6 +76,27 @@ export async function GET(request: NextRequest) {
     const clickRate = totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(2) : '0';
     const bounceRate = totalSent > 0 ? ((totalBounced / totalSent) * 100).toFixed(2) : '0';
 
+    const { data: purchaseRows, error: purchaseError } = await supabase.rpc(
+      'email_campaign_purchases',
+      { p_campaign_id: null }
+    );
+    if (purchaseError) {
+      console.error('Error fetching campaign purchases:', purchaseError);
+    }
+    const purchases = (purchaseRows || []) as CampaignPurchase[];
+    const uniqueOrders = Array.from(
+      purchases
+        .reduce((map, row) => {
+          const existing = map.get(row.order_id);
+          if (!existing || (row.purchased_after_send && !existing.purchased_after_send)) {
+            map.set(row.order_id, row);
+          }
+          return map;
+        }, new Map<string, CampaignPurchase>())
+        .values()
+    );
+    const purchaseStats = summarizeCampaignPurchases(uniqueOrders);
+
     return NextResponse.json({
       success: true,
       analytics: {
@@ -83,6 +108,10 @@ export async function GET(request: NextRequest) {
         openRate: parseFloat(openRate),
         clickRate: parseFloat(clickRate),
         bounceRate: parseFloat(bounceRate),
+        buyersOnList: purchaseStats.buyers_on_list,
+        purchasesAfterSend: purchaseStats.purchases_after_send,
+        revenueAfterSend: purchaseStats.revenue_after_send,
+        purchases: uniqueOrders,
       },
     });
   } catch (error: any) {

@@ -243,7 +243,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#1f2c4a] mb-1">16 Hours of Live Interactive Sessions</h3>
+                  <h3 className="font-semibold text-[#1f2c4a] mb-1">10 Hours Live Over Two Days — 9:00 AM–2:00 PM Eastern</h3>
                 </div>
               </div>
 
@@ -535,7 +535,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                         Our hands-on training approach enables project managers to apply Generative AI effectively, creating project artifacts, improving decision-making, and optimizing project outcomes across Agile, hybrid, and traditional project management methodologies.
                       </p>
                       <p className="text-base text-[#475569] mb-4">
-                        This course includes 16 hours of live, interactive sessions with extensive hands-on experience using industry-leading AI tools. You'll practice with real projects and exercises, allowing you to confidently apply Generative AI tools in your everyday project management activities.
+                        This course includes 10 hours of live, interactive sessions over two days (9:00 AM–2:00 PM Eastern each day) with extensive hands-on experience using industry-leading AI tools. You'll practice with real projects and exercises, allowing you to confidently apply Generative AI tools in your everyday project management activities.
                       </p>
                     </div>
 
@@ -838,7 +838,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                       {[
                         { q: "What is the Generative AI for Project Managers Certification Training?", a: "The Generative AI for Project Managers Certification Training provides a comprehensive introduction to leveraging AI tools to enhance project management processes. This course teaches project managers how to seamlessly integrate Generative AI into their workflows, create project artifacts using AI, and optimize project outcomes across various methodologies." },
                         { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on hands-on practical skills and knowledge for applying AI tools in project management." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live virtual training, comprehensive course materials, hands-on exercises with industry-leading AI tools (ChatGPT, Mural, Julius.AI, Jira, Microsoft Copilot, Claude, Google AI Studio), real project scenarios, and practical workshops." },
+                        { q: "What is included in the course?", a: "The course includes 10 hours of live virtual training over two days, 9:00 AM–2:00 PM Eastern each day, comprehensive course materials, hands-on exercises with industry-leading AI tools (ChatGPT, Mural, Julius.AI, Jira, Microsoft Copilot, Claude, Google AI Studio), real project scenarios, and practical workshops." },
                         { q: "Do I need prior AI experience?", a: "No prior AI experience is required. This course is designed for project managers at all levels who want to enhance their skills with AI tools, regardless of technical background." }
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
@@ -866,7 +866,7 @@ export default function GenerativeAIProjectManagersCoursePage() {
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">1 Day (8 Hours) Live Virtual Training</span>
+                    <span className="text-sm text-[#475569]">2 Days (10 Hours) Live Virtual Training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

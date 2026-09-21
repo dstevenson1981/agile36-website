@@ -63,7 +63,7 @@ export default function Home() {
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "Certified AI Product Manager": "/PMAI.png",
+    "Certified AI Product Manager": "/Logo_AI_Product_Manager.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
     "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
@@ -81,6 +81,21 @@ export default function Home() {
     }
     if (course.title.includes("App Builder")) {
       return "/Logo_AI_App_Builder.png";
+    }
+    if (course.title.includes("AI-Driven Scrum Master")) {
+      return "/Logo_AI_Driven_Scrum_Master.png";
+    }
+    if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI-Driven Project Manager")) {
+      return "/Logo_GenAI_Project_Managers.png";
+    }
+    if (course.title.includes("Certified AI Product Manager")) {
+      return "/Logo_AI_Product_Manager.png";
+    }
+    if (course.title.includes("GenAI Practitioner")) {
+      return "/Logo_GenAI_Practitioner.png";
+    }
+    if (course.title.includes("Executive GenAI Leadership")) {
+      return "/Logo_Executive_GenAI_Leadership.png";
     }
     // Use GenAI_2.png for remaining AI Courses without a dedicated badge
     if (course.category === "AI Courses") {
@@ -299,7 +314,7 @@ export default function Home() {
       hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "AI-Enhanced Scrum Practices, Agile AI Tools, Team Facilitation",
+      skills: "Reusable AI Skills, Sprint Intelligence, Automated Scrum Workflows",
       trending: true,
     },
     {
@@ -322,7 +337,7 @@ export default function Home() {
       image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
       price: 400,
       originalPrice: 800,
-      hours: "16 Hrs",
+      hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.2K+ Enrolled",
       skills: "AI Project Management, AI-Assisted Planning, Prompt Engineering",
@@ -402,8 +417,8 @@ export default function Home() {
       image: "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
       price: 350,
       originalPrice: 700,
-      hours: "8 Hrs",
-      days: "01 day",
+      hours: "4 Hrs",
+      days: "Half day",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "Responsible AI, Ethical AI Practices, AI Governance",
       trending: true,

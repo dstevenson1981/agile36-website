@@ -14,6 +14,14 @@ export const POPM_PROMO_CAP: CoursePromoCap = {
   description: "POPM — $399 per seat",
 };
 
+/** Shareable alias: sale price in the name, not "399 off". */
+export const POPM399_PROMO_CAP: CoursePromoCap = {
+  code: "POPM399",
+  courseSlug: "product-owner-manager",
+  pricePerSeat: 399,
+  description: "POPM — $399 per seat",
+};
+
 export const SASM465_PROMO_CAP: CoursePromoCap = {
   code: "SASM465",
   courseSlug: "advanced-scrum-master",
@@ -23,6 +31,7 @@ export const SASM465_PROMO_CAP: CoursePromoCap = {
 
 const CAP_BY_CODE = new Map<string, CoursePromoCap>([
   [POPM_PROMO_CAP.code, POPM_PROMO_CAP],
+  [POPM399_PROMO_CAP.code, POPM399_PROMO_CAP],
   [SASM465_PROMO_CAP.code, SASM465_PROMO_CAP],
 ]);
 

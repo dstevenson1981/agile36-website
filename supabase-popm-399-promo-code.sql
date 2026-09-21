@@ -1,5 +1,7 @@
-/* POPM promo: $399 per seat cap for SAFe POPM (product-owner-manager) checkout.
+/* POPM / POPM399: $399 per seat for SAFe POPM (product-owner-manager).
+   Not a "$399 off" code — it caps the seat at $399.
    Pricing is enforced in application code — validate-promo-code + create-payment-intent.
-   Remove any legacy promo_codes row named POPM so it is not confused with DB-driven codes. */
+   Remove any leftover promo_codes rows so these are not confused with DB-driven codes. */
 
-DELETE FROM promo_codes WHERE UPPER(TRIM(code)) = 'POPM';
+DELETE FROM promo_codes
+WHERE UPPER(TRIM(code)) IN ('POPM', 'POPM399', '399OFF');

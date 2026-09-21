@@ -1,12 +1,7 @@
 "use client";
 
 import { type FormEvent, useEffect, useState } from "react";
-
-declare global {
-  interface Window {
-    $crisp?: unknown[];
-  }
-}
+import { openSiteAgent } from "@/app/lib/site-agent/open";
 
 type Props = {
   open: boolean;
@@ -75,12 +70,8 @@ export default function PrivateCohortContactModal({
   }
 
   function speakWithAgent() {
-    if (typeof window !== "undefined" && window.$crisp) {
-      window.$crisp.push(["do", "chat:open"]);
-      onClose();
-      return;
-    }
-    window.location.href = `/contact?course=${encodeURIComponent(courseSlug)}`;
+    openSiteAgent();
+    onClose();
   }
 
   return (

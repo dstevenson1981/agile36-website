@@ -14,12 +14,7 @@ import {
   type CourseCategory,
 } from "@/app/lib/course-catalog";
 import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
-
-declare global {
-  interface Window {
-    $crisp?: unknown[];
-  }
-}
+import { openSiteAgent } from "@/app/lib/site-agent/open";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
 
@@ -94,11 +89,7 @@ function formatPrice(n: number) {
 }
 
 function openChat(e: React.MouseEvent) {
-  // Crisp is loaded globally in the root layout; fall back to /contact if absent.
-  if (typeof window !== "undefined" && window.$crisp) {
-    e.preventDefault();
-    window.$crisp.push(["do", "chat:open"]);
-  }
+  openSiteAgent(e);
 }
 
 /** Fades children in after `delay` ms. */

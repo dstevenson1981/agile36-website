@@ -47,7 +47,7 @@ const COURSE_THUMBNAILS: { [key: string]: string } = {
     "AI-Empowered SAFe Scrum Master": "/SSM.jpeg",
     "SAFe Scrum Master": "/SSM.jpeg",
     "Responsible AI with SAFe": "/MicroCredential.jpeg",
-    "Certified AI Product Manager": "/PMAI.jpeg",
+    "Certified AI Product Manager": "/Logo_AI_Product_Manager.png",
     "No-Code AI Agents & Automation™": "/Logo_Agents.png",
     "AI Workflow Automation™": "/Logo_AI_Workflow_Automation.png",
     "No-Code AI App Builder™": "/Logo_AI_App_Builder.png",
@@ -67,6 +67,21 @@ export function getCatalogCourseImage(course: CatalogCourse): string {
   }
   if (course.title.includes("App Builder")) {
     return "/Logo_AI_App_Builder.png";
+  }
+  if (course.title.includes("AI-Driven Scrum Master")) {
+    return "/Logo_AI_Driven_Scrum_Master.png";
+  }
+  if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI-Driven Project Manager")) {
+    return "/Logo_GenAI_Project_Managers.png";
+  }
+  if (course.title.includes("Certified AI Product Manager")) {
+    return "/Logo_AI_Product_Manager.png";
+  }
+  if (course.title.includes("GenAI Practitioner")) {
+    return "/Logo_GenAI_Practitioner.png";
+  }
+  if (course.title.includes("Executive GenAI Leadership")) {
+    return "/Logo_Executive_GenAI_Leadership.png";
   }
   if (course.category === "AI Courses") {
     return "/GenAI_2.png";
@@ -220,7 +235,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
-      skills: "AI-Enhanced Scrum Practices, Agile AI Tools, Team Facilitation",
+      skills: "Reusable AI Skills, Sprint Intelligence, Automated Scrum Workflows",
       popular: true,
     },
     {
@@ -306,7 +321,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       image: "/annie-spratt-QckxruozjRg-unsplash.jpg",
       price: 400,
       originalPrice: 800,
-      hours: "16 Hrs",
+      hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
       skills: "Ship a Working App, Cursor / v0 / Bolt, Live Product Demos",
@@ -334,8 +349,8 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       image: "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
       price: 350,
       originalPrice: 700,
-      hours: "8 Hrs",
-      days: "01 day",
+      hours: "4 Hrs",
+      days: "Half day",
       enrolled: SAFE_COURSE_PARTICIPANTS_LABEL,
       skills: "Responsible AI, Ethical AI Practices, AI Governance",
       popular: true,

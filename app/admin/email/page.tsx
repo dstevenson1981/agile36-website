@@ -28,6 +28,27 @@ interface Campaign {
   sent_count: number;
   created_at: string;
   sent_at: string | null;
+  buyers_on_list?: number;
+  purchases_after_send?: number;
+  revenue_after_send?: number;
+  revenue_on_list?: number;
+}
+
+interface CampaignPurchase {
+  campaign_id: number;
+  campaign_name: string;
+  order_id: string;
+  customer_email: string;
+  customer_name: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  course_name: string;
+  amount: number;
+  purchased_at: string;
+  sent_at: string | null;
+  opened: boolean;
+  clicked: boolean;
+  purchased_after_send: boolean;
 }
 
 type Tab = 'contacts' | 'compose' | 'campaigns' | 'analytics';
@@ -67,6 +88,9 @@ export default function EmailAdminPage() {
 
   // Analytics state
   const [analytics, setAnalytics] = useState<any>(null);
+  const [expandedPurchasesId, setExpandedPurchasesId] = useState<number | null>(null);
+  const [campaignPurchases, setCampaignPurchases] = useState<Record<number, CampaignPurchase[]>>({});
+  const [loadingPurchasesId, setLoadingPurchasesId] = useState<number | null>(null);
   
   // Blocked contacts state
   const [showBlockedOnly, setShowBlockedOnly] = useState(false);
@@ -667,6 +691,38 @@ export default function EmailAdminPage() {
   const handleEditCampaign = (campaignId: number) => {
     router.push(`/admin/email/campaigns/edit/${campaignId}`);
   };
+
+  const toggleCampaignPurchases = async (campaignId: number) => {
+    if (expandedPurchasesId === campaignId) {
+      setExpandedPurchasesId(null);
+      return;
+    }
+
+    setExpandedPurchasesId(campaignId);
+    if (campaignPurchases[campaignId]) return;
+
+    setLoadingPurchasesId(campaignId);
+    try {
+      const response = await fetch(`/api/email/campaigns/${campaignId}/purchases`);
+      const data = await response.json();
+      if (data.success) {
+        setCampaignPurchases((prev) => ({ ...prev, [campaignId]: data.purchases || [] }));
+      } else {
+        alert(data.error || 'Failed to load purchases');
+      }
+    } catch (error) {
+      console.error('Error fetching campaign purchases:', error);
+      alert('Error loading purchases');
+    } finally {
+      setLoadingPurchasesId(null);
+    }
+  };
+
+  const formatMoney = (value: number | undefined) =>
+    `$${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+  const purchaserName = (row: CampaignPurchase) =>
+    row.customer_name || [row.first_name, row.last_name].filter(Boolean).join(' ') || '—';
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
@@ -1351,6 +1407,8 @@ export default function EmailAdminPage() {
                       Created: {new Date(campaign.created_at).toLocaleDateString()}
                       {campaign.sent_at && ` | Sent: ${new Date(campaign.sent_at).toLocaleDateString()}`}
                       {campaign.sent_count > 0 && ` | Sent to ${campaign.sent_count} contacts`}
+                      {` | Bought after email: ${campaign.purchases_after_send || 0}`}
+                      {` | Buyers on list: ${campaign.buyers_on_list || 0}`}
                     </div>
                     <div className="flex gap-2">
                       {campaign.status === 'draft' && (
@@ -1379,7 +1437,60 @@ export default function EmailAdminPage() {
                       >
                         {loading ? 'Duplicating...' : 'Duplicate'}
                       </button>
+                      {(campaign.sent_count > 0 || (campaign.buyers_on_list || 0) > 0) && (
+                        <button
+                          onClick={() => toggleCampaignPurchases(campaign.id)}
+                          className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700"
+                        >
+                          {expandedPurchasesId === campaign.id ? 'Hide purchases' : 'Purchases'}
+                        </button>
+                      )}
                     </div>
+                    {expandedPurchasesId === campaign.id && (
+                      <div className="mt-4 overflow-x-auto rounded-md border border-gray-200">
+                        {loadingPurchasesId === campaign.id ? (
+                          <div className="p-4 text-sm text-gray-500">Loading purchases...</div>
+                        ) : (campaignPurchases[campaign.id] || []).length === 0 ? (
+                          <div className="p-4 text-sm text-gray-500">
+                            No Stripe orders match people on this campaign yet.
+                          </div>
+                        ) : (
+                          <table className="min-w-full text-sm">
+                            <thead className="bg-gray-50 text-left text-gray-600">
+                              <tr>
+                                <th className="px-3 py-2 font-medium">Buyer</th>
+                                <th className="px-3 py-2 font-medium">Course</th>
+                                <th className="px-3 py-2 font-medium">Amount</th>
+                                <th className="px-3 py-2 font-medium">Purchased</th>
+                                <th className="px-3 py-2 font-medium">Opened</th>
+                                <th className="px-3 py-2 font-medium">After email</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(campaignPurchases[campaign.id] || []).map((row) => (
+                                <tr key={row.order_id} className="border-t border-gray-100">
+                                  <td className="px-3 py-2">
+                                    <div className="font-medium text-gray-900">{purchaserName(row)}</div>
+                                    <div className="text-gray-500">{row.customer_email}</div>
+                                  </td>
+                                  <td className="px-3 py-2 text-gray-700">{row.course_name}</td>
+                                  <td className="px-3 py-2 text-gray-700">{formatMoney(row.amount)}</td>
+                                  <td className="px-3 py-2 text-gray-700">
+                                    {new Date(row.purchased_at).toLocaleDateString()}
+                                  </td>
+                                  <td className="px-3 py-2 text-gray-700">{row.opened ? 'Yes' : 'No'}</td>
+                                  <td className="px-3 py-2">
+                                    <span className={row.purchased_after_send ? 'text-emerald-700' : 'text-gray-500'}>
+                                      {row.purchased_after_send ? 'Yes' : 'Already a customer'}
+                                    </span>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
                 {campaigns.length === 0 && (
@@ -1420,12 +1531,57 @@ export default function EmailAdminPage() {
                     <div className="text-sm text-gray-600">Blocked/Spam</div>
                   </div>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="bg-emerald-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-emerald-700">{analytics.purchasesAfterSend || 0}</div>
+                    <div className="text-sm text-gray-600">Bought after an email</div>
+                  </div>
+                  <div className="bg-emerald-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-emerald-700">{analytics.buyersOnList || 0}</div>
+                    <div className="text-sm text-gray-600">Buyers also on a campaign list</div>
+                  </div>
+                  <div className="bg-emerald-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-emerald-700">{formatMoney(analytics.revenueAfterSend)}</div>
+                    <div className="text-sm text-gray-600">Revenue after an email</div>
+                  </div>
+                </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <div className="text-sm text-gray-600 mb-2">Open Rate: {analytics.openRate || 0}%</div>
                   <div className="text-sm text-gray-600 mb-2">Click Rate: {analytics.clickRate || 0}%</div>
                   <div className="text-sm text-gray-600 mb-2">Bounce Rate: {analytics.bounceRate || 0}%</div>
                   <div className="text-sm text-gray-600">Blocked Contacts: {analytics.totalBlocked || 0} (automatically excluded from campaigns)</div>
                 </div>
+                {Array.isArray(analytics.purchases) && analytics.purchases.length > 0 && (
+                  <div className="mt-6 overflow-x-auto rounded-md border border-gray-200">
+                    <table className="min-w-full text-sm">
+                      <thead className="bg-gray-50 text-left text-gray-600">
+                        <tr>
+                          <th className="px-3 py-2 font-medium">Buyer</th>
+                          <th className="px-3 py-2 font-medium">Course</th>
+                          <th className="px-3 py-2 font-medium">Amount</th>
+                          <th className="px-3 py-2 font-medium">Campaign</th>
+                          <th className="px-3 py-2 font-medium">After email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {analytics.purchases.map((row: CampaignPurchase) => (
+                          <tr key={`${row.campaign_id}-${row.order_id}`} className="border-t border-gray-100">
+                            <td className="px-3 py-2">
+                              <div className="font-medium text-gray-900">{purchaserName(row)}</div>
+                              <div className="text-gray-500">{row.customer_email}</div>
+                            </td>
+                            <td className="px-3 py-2 text-gray-700">{row.course_name}</td>
+                            <td className="px-3 py-2 text-gray-700">{formatMoney(row.amount)}</td>
+                            <td className="px-3 py-2 text-gray-700">{row.campaign_name}</td>
+                            <td className="px-3 py-2 text-gray-700">
+                              {row.purchased_after_send ? 'Yes' : 'Already a customer'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">No analytics data available</div>

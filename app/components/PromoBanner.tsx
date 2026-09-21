@@ -25,17 +25,12 @@ export function isPromoBannerVisible(): boolean {
 
 /** Live promo visibility — used to offset sticky nav while the banner is showing. */
 export function usePromoBannerActive(): boolean {
-  // Start false so SSR + first client paint match (avoid hydration mismatch).
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(isSitePromoActive);
 
   useEffect(() => {
     const tick = () => setActive(isSitePromoActive());
     const id = window.setInterval(tick, 1000);
-    const raf = window.requestAnimationFrame(tick);
-    return () => {
-      window.clearInterval(id);
-      window.cancelAnimationFrame(raf);
-    };
+    return () => window.clearInterval(id);
   }, []);
 
   return active;
@@ -139,27 +134,16 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
 export default function PromoBanner() {
   const [showCouponModal, setShowCouponModal] = useState(false);
   const [showCouponDisplay, setShowCouponDisplay] = useState(false);
-  // Defer live countdown until after mount so SSR HTML matches the first client paint.
   const [countdown, setCountdown] = useState<PromoCountdown | null>(null);
-  const [active, setActive] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const tick = () => {
-      setMounted(true);
-      const nextActive = isSitePromoActive();
-      setActive(nextActive);
-      setCountdown(nextActive ? getPromoCountdown() : null);
-    };
+    const tick = () => setCountdown(getPromoCountdown());
+    tick();
     const id = window.setInterval(tick, 1000);
-    const raf = window.requestAnimationFrame(tick);
-    return () => {
-      window.clearInterval(id);
-      window.cancelAnimationFrame(raf);
-    };
+    return () => window.clearInterval(id);
   }, []);
 
-  if (!mounted || !active || !countdown) {
+  if (!isSitePromoActive()) {
     return null;
   }
 
@@ -170,7 +154,7 @@ export default function PromoBanner() {
 
   return (
     <>
-      <div className="sticky top-0 z-[60] bg-[#f8f7f3] px-2 py-2 sm:px-3">
+      <div className="sticky top-0 z-[80] bg-[#f8f7f3] px-2 py-2 sm:px-3">
         <button
           type="button"
           onClick={() => setShowCouponModal(true)}
@@ -203,7 +187,11 @@ export default function PromoBanner() {
           </div>
 
           <div className="relative flex shrink-0 items-center gap-2 sm:gap-3">
-            <PromoCountdownDisplay countdown={countdown} />
+            {countdown ? (
+              <PromoCountdownDisplay countdown={countdown} />
+            ) : (
+              <div className="h-6 w-[9.5rem] shrink-0 sm:h-7 sm:w-[11.5rem]" aria-hidden />
+            )}
             <div className="hidden h-8 w-px bg-[#fa4a23]/20 sm:block" aria-hidden />
             <div className="text-right">
               <span className="animate-promo-cta inline-flex items-center rounded-full border border-[#fa4a23]/70 bg-[#fa4a23] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white sm:px-4 sm:text-sm">
