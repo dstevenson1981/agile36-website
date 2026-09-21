@@ -9,6 +9,7 @@ import {
   sharedWhyTailMicrocredential,
 } from "@/app/lib/catalog-landing";
 import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
+import { AI_CAREER, AI_CATALOG_LANDING, AI_EXAM_DETAILS } from "@/app/lib/catalog-landing-ai";
 
 type WhyRow = CatalogLandingContent["whyRows"][number];
 type FaqItem = CatalogLandingContent["faqs"]["exam"][number];
@@ -3256,6 +3257,7 @@ const CAREER: Record<
       },
     ],
   },
+  ...AI_CAREER,
 };
 
 export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
@@ -3272,6 +3274,7 @@ export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
   "value-stream-mapping": vsm,
   "responsible-ai": responsibleAi,
   "ai-driven-scrum-master": aiDrivenScrumMaster,
+  ...AI_CATALOG_LANDING,
 };
 
 const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetails"]>> = {
@@ -3347,6 +3350,7 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
       },
     ],
   },
+  ...AI_EXAM_DETAILS,
 };
 
 export function getCatalogLanding(slug: string): CatalogLandingContent {

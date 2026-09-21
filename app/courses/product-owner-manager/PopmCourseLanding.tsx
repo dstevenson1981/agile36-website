@@ -451,7 +451,7 @@ function SkillGrid() {
 function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
   const { observe, active } = useMotionOnView<HTMLDivElement>();
   const modules = courseModules(content);
-  const showAll = content.slug === "ai-driven-scrum-master";
+  const showAll = isClaudePartnerCourse(content.slug);
   const source = showAll ? modules : modules.slice(0, 4);
   const cards = source.map((courseModule, index) => {
     const topics = courseModule?.topics.slice(0, 4) || [];
@@ -569,7 +569,7 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
           </div>
           <div className="mt-2 divide-y divide-[#1f2c4a]/10">
             {day.modules.map((module) => (
-              <details key={module.title} className="group py-5" open={content.slug === "ai-driven-scrum-master" || module.featured}>
+              <details key={module.title} className="group py-5" open={isClaudePartnerCourse(content.slug) || module.featured}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                   <div>
                     <p className="font-semibold text-[#1f2c4a]">{module.title}</p>
@@ -667,7 +667,6 @@ export default function PopmCourseLanding({
   const reviews = content.reviews.slice(0, 6);
   const isPrivateClass = content.slug === "release-train-engineer";
   const isSafePartner = content.safePartner !== false;
-  const isAiScrumMaster = content.slug === "ai-driven-scrum-master";
   const showClaudePartner = isClaudePartnerCourse(content.slug);
   const tuition = isPrivateClass ? null : COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
   const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles(), []);
@@ -1039,8 +1038,8 @@ export default function PopmCourseLanding({
             eyebrow="Why Agile36"
             title="This is why they should choose us"
             copy={
-              isAiScrumMaster
-                ? "A working AI Scrum Master system in two days — not a prompt list and not another 9-to-5 slide deck."
+              showClaudePartner
+                ? content.curriculumLede || "What to check before you book, and how this class is built differently."
                 : "What to check before you book, and how this class is built differently."
             }
           />
@@ -1092,15 +1091,15 @@ export default function PopmCourseLanding({
             title={
               content.slug === "product-owner-manager"
                 ? "Not just a certificate. A working product operating system."
-                : isAiScrumMaster
-                  ? "Not just a certificate. A working AI Scrum Master system."
+                : showClaudePartner
+                  ? `Not just a certificate. A working ${content.crumb} toolkit.`
                   : `Not just a credential. A working ${content.crumb} toolkit.`
             }
             copy={
               content.slug === "product-owner-manager"
                 ? "The class follows the real flow of product work—from hearing the customer to helping teams deliver and learn."
-                : isAiScrumMaster
-                  ? "Day 1 you put AI on the work you already run. Day 2 you turn it into reusable skills and automated workflows — then you build the system you take home."
+                : showClaudePartner
+                  ? content.curriculumLede || "Follow the work from core concepts through hands-on practice, application, and measurable capability."
                   : "Follow the work from core concepts through hands-on practice, application, and measurable capability."
             }
             align="center"
@@ -1116,8 +1115,8 @@ export default function PopmCourseLanding({
               eyebrow="Meet your instructors"
               title="Learn from practitioners who know what the work feels like."
               copy={
-                isAiScrumMaster
-                  ? "Your class is led live by practitioners who run Scrum with AI in the room — not a slide deck about tools."
+                showClaudePartner
+                  ? "Your class is led live by practitioners who use these tools in the work — not a slide deck about AI."
                   : "Your class is led live by a SAFe® Practice Consultant and enterprise coach who connects the official curriculum to real decisions, team dynamics, and transformation challenges."
               }
             />
@@ -1251,7 +1250,11 @@ export default function PopmCourseLanding({
                 content.certificationEyebrow ||
                 (content.attemptsLine === null ? "Official micro-credential" : "Exam & certification")
               }
-              title={`Leave class ready to earn the official ${content.cardTitle}.`}
+              title={
+                isSafePartner
+                  ? `Leave class ready to earn the official ${content.cardTitle}.`
+                  : `Leave class with the ${content.cardTitle}.`
+              }
               copy={content.examNote}
             />
             <div className="mt-9 grid gap-3 sm:grid-cols-2">

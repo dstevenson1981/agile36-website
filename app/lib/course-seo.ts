@@ -51,8 +51,8 @@ export const COURSE_SEO = {
     long: "AI-Empowered SAFe® 6.0 for Teams Certification Training (2026)",
   },
   "ai-agent-builder": {
-    title: "No-Code AI Agents & Automation™ Certification | Agile36",
-    long: "No-Code AI Agents & Automation™ Certification Training (2026)",
+    title: "No-Code AI Agents™ Certification | Agile36",
+    long: "No-Code AI Agents™ Certification Training",
   },
   "ai-workflow-automation": {
     title: "AI Workflow Automation™ Certification | Agile36",
