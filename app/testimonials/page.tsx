@@ -32,7 +32,6 @@ const aiCourses = [
   "No-Code AI Agents & Automation",
   "AI Workflow Automation",
   "No-Code AI App Builder",
-  "Certified GenAI Practitioner",
   "Certified AI Product Manager",
   "AI-Driven Scrum Master",
   "Executive GenAI Leadership",

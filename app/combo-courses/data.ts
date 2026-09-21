@@ -225,7 +225,6 @@ const AI_SLUGS = [
   "ai-workflow-automation",
   "ai-app-builder",
   "ai-driven-scrum-master",
-  "certified-genai-practitioner",
   "certified-ai-product-manager",
   "executive-genai-leadership",
   "generative-ai-project-managers",

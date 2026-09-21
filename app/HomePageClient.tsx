@@ -91,9 +91,6 @@ export default function Home() {
     if (course.title.includes("Certified AI Product Manager")) {
       return "/Logo_AI_Product_Manager.png";
     }
-    if (course.title.includes("GenAI Practitioner")) {
-      return "/Logo_GenAI_Practitioner.png";
-    }
     if (course.title.includes("Executive GenAI Leadership")) {
       return "/Logo_Executive_GenAI_Leadership.png";
     }
@@ -344,19 +341,6 @@ export default function Home() {
       trending: true,
     },
     {
-      id: "22",
-      title: "Certified GenAI Practitioner™",
-      category: "Generative AI",
-      image: "/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg",
-      price: 299,
-      originalPrice: 598,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: "3K+ Enrolled",
-      skills: "GenAI Fundamentals, AI Ethics, Prompt Engineering, AI Applications",
-      trending: true,
-    },
-    {
       id: "29",
       title: "No-Code AI Agents & Automation™",
       category: "AI Courses",
@@ -461,7 +445,6 @@ export default function Home() {
       "AI-Driven Scrum Master™": "/courses/ai-driven-scrum-master",
       "Executive GenAI Leadership™": "/courses/executive-genai-leadership",
       "Generative AI for Project Managers": "/courses/generative-ai-project-managers",
-      "Certified GenAI Practitioner™": "/courses/certified-genai-practitioner",
       "No-Code AI Agents & Automation™": "/courses/ai-agent-builder",
       "AI Workflow Automation™": "/courses/ai-workflow-automation",
       "No-Code AI App Builder™": "/courses/ai-app-builder",

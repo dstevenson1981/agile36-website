@@ -38,7 +38,6 @@ const ALIASES: Record<string, string> = {
   devops: "devops",
   vsm: "value-stream-mapping",
   rai: "responsible-ai",
-  cgp: "certified-genai-practitioner",
   egl: "executive-genai-leadership",
 };
 

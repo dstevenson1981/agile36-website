@@ -33,7 +33,6 @@ const MEGA_MENU_AI_ORDER: Record<string, number> = {
   "31": 1, // AI Workflow Automation
   "32": 2, // No-Code AI App Builder
   "19": 3, // AI-Driven Scrum Master
-  "22": 4, // Certified GenAI Practitioner
   "24": 5, // Certified AI Product Manager
   "20": 6, // Executive GenAI Leadership
   "21": 7, // AI-Driven Project Manager

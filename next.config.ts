@@ -160,9 +160,20 @@ const nextConfig: NextConfig = {
         destination: '/courses/certified-ai-product-manager',
         permanent: true,
       },
+      // Certified GenAI Practitioner is retired; send old links to the AI lineup.
       {
         source: '/certified-genai-practitioner',
-        destination: '/courses/certified-genai-practitioner',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/certified-genai-practitioner/:path*',
+        destination: '/courses',
+        permanent: true,
+      },
+      {
+        source: '/courses/certified-genai-practitioner',
+        destination: '/courses',
         permanent: true,
       },
       // Additional AI courses (for consistency)

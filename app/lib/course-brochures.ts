@@ -22,7 +22,6 @@ export const COURSE_BROCHURE_HREF: Record<string, string> = {
   "ai-app-builder": "/brochures/No-Code-AI-App-Builder-Brochure-Agile36.pdf",
   "generative-ai-project-managers": "/brochures/GenAI-for-Project-Managers-Brochure-Agile36.pdf",
   "certified-ai-product-manager": "/brochures/Certified-AI-Product-Manager-Brochure-Agile36.pdf",
-  "certified-genai-practitioner": "/brochures/Certified-GenAI-Practitioner-Brochure-Agile36.pdf",
   "executive-genai-leadership": "/brochures/Executive-GenAI-Leadership-Brochure-Agile36.pdf",
   "ai-driven-scrum-master": "/brochures/AI-Driven-Scrum-Master-Brochure-Agile36.pdf",
 };

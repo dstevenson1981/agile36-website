@@ -608,7 +608,7 @@ function CourseScheduleContent() {
             <div className="p-8">
               <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6">Request Course Brochure</h2>
               <p className="text-sm text-[#64748b] mb-6">
-                Fill out the form below and we'll send you the Certified GenAI Practitioner™ course brochure.
+                Fill out the form below and we'll send you the Certified AI Product Manager™ course brochure.
               </p>
               <form className="space-y-4">
                 <div>

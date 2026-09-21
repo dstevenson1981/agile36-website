@@ -41,7 +41,6 @@ export const BROCHURE_FILE: Record<string, string> = {
   "ai-app-builder": "No-Code-AI-App-Builder-Brochure-Agile36",
   "generative-ai-project-managers": "GenAI-for-Project-Managers-Brochure-Agile36",
   "certified-ai-product-manager": "Certified-AI-Product-Manager-Brochure-Agile36",
-  "certified-genai-practitioner": "Certified-GenAI-Practitioner-Brochure-Agile36",
   "executive-genai-leadership": "Executive-GenAI-Leadership-Brochure-Agile36",
   "ai-driven-scrum-master": "AI-Driven-Scrum-Master-Brochure-Agile36",
 };

@@ -21,7 +21,6 @@ export const CLAUDE_PARTNER_COURSE_SLUGS = new Set([
   "ai-agent-builder",
   "ai-app-builder",
   "certified-ai-product-manager",
-  "certified-genai-practitioner",
   "executive-genai-leadership",
   "generative-ai-project-managers",
 ]);

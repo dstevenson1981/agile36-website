@@ -24,7 +24,6 @@ const courses = [
   "SAFe Value Stream Mapping",
   "Achieving Responsible AI with SAFe",
   "Certified AI Product Manager",
-  "Certified GenAI Practitioner",
   "No-Code AI Agents & Automation™",
   "AI Workflow Automation™",
   "No-Code AI App Builder™",

@@ -77,9 +77,6 @@ export function getCatalogCourseImage(course: CatalogCourse): string {
   if (course.title.includes("Certified AI Product Manager")) {
     return "/Logo_AI_Product_Manager.png";
   }
-  if (course.title.includes("GenAI Practitioner")) {
-    return "/Logo_GenAI_Practitioner.png";
-  }
   if (course.title.includes("Executive GenAI Leadership")) {
     return "/Logo_Executive_GenAI_Leadership.png";
   }
@@ -263,19 +260,6 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       skills: "AI Project Management, Automated Planning, AI Risk Management",
     },
     {
-      id: "22",
-      title: "Certified GenAI Practitioner™",
-      category: "AI Courses",
-      image: "/christina-wocintechchat-com-IxmHiUC-yOw-unsplash.jpg",
-      price: 299,
-      originalPrice: 598,
-      hours: "4 Hrs",
-      days: "Half day",
-      enrolled: "3K+ Enrolled",
-      skills: "GenAI Fundamentals, AI Ethics, Prompt Engineering, AI Applications",
-      popular: true,
-    },
-    {
       id: "23",
       title: "No-Code AI Agents & Automation™",
       category: "AI Courses",
@@ -450,10 +434,6 @@ export function getCatalogCourseUrl(course: CatalogCourse): string {
       return "/courses/executive-genai-leadership";
     }
     
-    if (course.title.includes("Certified GenAI Practitioner")) {
-      return "/courses/certified-genai-practitioner";
-    }
-    
     if (course.title.includes("Generative AI for Project Managers") || course.title.includes("AI-Driven Project Manager")) {
       return "/courses/generative-ai-project-managers";
     }
@@ -497,7 +477,6 @@ export function getCatalogCourseAcronym(title: string): string {
   if (title.includes("Release Train Engineer")) return "RTE";
   if (title.includes("Value Stream")) return "VSM";
   if (title.includes("Responsible AI")) return "RAI";
-  if (title.includes("GenAI Practitioner")) return "CGP";
   if (title.includes("Executive GenAI")) return "EGL";
   if (title.includes("Project Manager")) return "PM";
   if (title.includes("App Builder")) return "APP";
