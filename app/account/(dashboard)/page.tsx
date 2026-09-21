@@ -1,6 +1,7 @@
 import { createClient } from '@/app/lib/supabase/server';
 import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
 import { hasAiProductManagementCourseAccess } from '@/app/lib/course-materials';
+import { hasPracticeExamHubAccess } from '@/app/lib/practice-exams';
 import Link from 'next/link';
 
 function ProfileCard({ completion }: { completion: number }) {
@@ -161,9 +162,10 @@ export default async function AccountDashboardPage() {
     .single();
 
   const completion = profile?.profile_completion_percent ?? 25;
-  const [showCourseExams, showCourseMaterials] = await Promise.all([
+  const [showCourseExams, showCourseMaterials, showPracticeExams] = await Promise.all([
     hasAiProductManagementExamAccess(),
     hasAiProductManagementCourseAccess(),
+    hasPracticeExamHubAccess(),
   ]);
 
   return (
@@ -174,7 +176,7 @@ export default async function AccountDashboardPage() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <ProfileCard completion={completion} />
         <OrdersCard />
-        <PracticeExamsCard />
+        {showPracticeExams && <PracticeExamsCard />}
         {showCourseMaterials && <CourseMaterialsCard />}
         {showCourseExams && <CourseExamsCard />}
       </div>

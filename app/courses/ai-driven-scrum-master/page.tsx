@@ -783,7 +783,7 @@ export default function AIDrivenScrumMasterCoursePage() {
                       {[
                         { q: "What is the AI-Driven Scrum Master™ Certification Training?", a: "The AI-Driven Scrum Master™ Certification Training is designed to help Scrum Masters enhance their facilitation, coaching, and team leadership skills using AI-powered tools and practices. It covers AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching." },
                         { q: "Is there an exam for this course?", a: "No, this course does not include an exam. It focuses on practical skills and knowledge for applying AI tools to enhance Scrum Master effectiveness." },
-                        { q: "What is included in the course?", a: "The course includes 8 hours of live virtual training, comprehensive course materials, hands-on exercises with AI tools, practical examples for Jira and Confluence, and a 30-day AI adoption plan." },
+                        { q: "What is included in the course?", a: "The course includes 10 hours of live virtual training over two days (9:00 AM–2:00 PM Eastern each day), comprehensive course materials, hands-on exercises with AI tools, practical examples for Jira and Confluence, and a 30-day AI adoption plan." },
                         { q: "Do I need prior Scrum Master experience?", a: "While prior Scrum Master experience is helpful, the course is designed for both new and experienced Scrum Masters who want to enhance their practice with AI tools." }
                       ].map((faq, index) => (
                         <div key={index} className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">

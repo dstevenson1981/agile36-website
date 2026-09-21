@@ -3,32 +3,10 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/app/lib/supabase/server';
 import { hasAiProductManagementExamAccess } from '@/app/lib/exams/ai-product-management-access';
 import { hasAiProductManagementCourseAccess } from '@/app/lib/course-materials';
+import { hasPracticeExamHubAccess } from '@/app/lib/practice-exams';
 import AccountNav from '../AccountNav';
 
 export const dynamic = 'force-dynamic';
-
-/** Temporary: Pro practice exams open for class use — direct URL only, not linked from the public site. */
-function isPublicAccountPath(pathWithSearch: string): boolean {
-  const path = (pathWithSearch.split('?')[0] || '').replace(/\/$/, '') || '/';
-  return (
-    path === '/account/practice-exams/scrum-master' ||
-    path === '/account/practice-exams/agile-product-management' ||
-    path.endsWith('/practice-exams/scrum-master') ||
-    path.endsWith('/practice-exams/agile-product-management')
-  );
-}
-
-function PublicPracticeExamShell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="min-h-screen bg-[#f6f9fd]">
-      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-        <main className="min-w-0 rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 shadow-sm sm:p-8">
-          {children}
-        </main>
-      </div>
-    </div>
-  );
-}
 
 export default async function DashboardLayout({
   children,
@@ -37,39 +15,27 @@ export default async function DashboardLayout({
 }) {
   const hdrs = await headers();
   const pathWithSearch = hdrs.get('x-agile36-path') || '/account';
-  const publicPath = isPublicAccountPath(pathWithSearch);
 
-  let user: { email?: string | null } | null = null;
-  let showCourseExams = false;
-  let showCourseMaterials = false;
-
-  try {
-    const supabase = await createClient();
-    const {
-      data: { user: authUser },
-    } = await supabase.auth.getUser();
-    user = authUser;
-
-    if (authUser) {
-      [showCourseExams, showCourseMaterials] = await Promise.all([
-        hasAiProductManagementExamAccess(),
-        hasAiProductManagementCourseAccess(),
-      ]);
-    }
-  } catch {
-    if (publicPath) {
-      return <PublicPracticeExamShell>{children}</PublicPracticeExamShell>;
-    }
-  }
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
-    if (publicPath) {
-      return <PublicPracticeExamShell>{children}</PublicPracticeExamShell>;
-    }
     redirect(`/account/login?next=${encodeURIComponent(pathWithSearch)}`);
   }
 
-  const path = pathWithSearch.split('?')[0] || '';
+  const [showCourseExams, showCourseMaterials, showPracticeExams] = await Promise.all([
+    hasAiProductManagementExamAccess(),
+    hasAiProductManagementCourseAccess(),
+    hasPracticeExamHubAccess(),
+  ]);
+
+  const path = (pathWithSearch.split('?')[0] || '').replace(/\/$/, '') || '/';
+  if (path.startsWith('/account/practice-exams') && !showPracticeExams) {
+    redirect('/account');
+  }
+
   const isFullscreenExam = path === '/account/exams/ai-product-management';
 
   if (isFullscreenExam) {
@@ -83,6 +49,7 @@ export default async function DashboardLayout({
           <aside className="lg:w-56 flex-shrink-0">
             <AccountNav
               userEmail={user.email ?? undefined}
+              showPracticeExams={showPracticeExams}
               showCourseExams={showCourseExams}
               showCourseMaterials={showCourseMaterials}
             />

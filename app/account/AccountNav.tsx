@@ -8,15 +8,17 @@ const baseNavItems = [
   { href: '/account', label: 'Dashboard', icon: '🏠' },
   { href: '/account/profile', label: 'My Profile', icon: '👤' },
   { href: '/account/orders', label: 'Orders & Receipts', icon: '📄' },
-  { href: '/account/practice-exams', label: 'Pro Practice Exams', icon: '📝' },
 ];
 
 export default function AccountNav({
   userEmail,
+  showPracticeExams = false,
   showCourseExams = false,
   showCourseMaterials = false,
 }: {
   userEmail?: string;
+  /** Pro practice exams — only when the user is enrolled in a supported course. */
+  showPracticeExams?: boolean;
   /** AI PM course exam — shown when the user has a paid AI PM order. */
   showCourseExams?: boolean;
   /** Enrolled course materials (e.g. AI PM coursebook). */
@@ -27,6 +29,9 @@ export default function AccountNav({
 
   const navItems = [
     ...baseNavItems,
+    ...(showPracticeExams
+      ? [{ href: '/account/practice-exams', label: 'Pro Practice Exams', icon: '📝' }]
+      : []),
     ...(showCourseMaterials
       ? [{ href: '/account/materials', label: 'Course Materials', icon: '📚' }]
       : []),

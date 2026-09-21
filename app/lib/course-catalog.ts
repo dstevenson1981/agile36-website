@@ -217,7 +217,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       image: "/redd-francisco-5U_28ojjgms-unsplash.jpg",
       price: 555,
       originalPrice: 1110,
-      hours: "16 Hrs",
+      hours: "10 Hrs",
       days: "02 days",
       enrolled: "2.5K+ Enrolled",
       skills: "AI-Enhanced Scrum Practices, Agile AI Tools, Team Facilitation",

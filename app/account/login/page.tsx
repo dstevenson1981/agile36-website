@@ -80,7 +80,7 @@ function LoginForm() {
         <div className="liquid-glass rounded-2xl p-8">
           <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Sign in to your account</h1>
           <p className="text-[#475569] mb-6">
-            Access your orders, receipts, and practice exams.
+            Access your orders, receipts, and learning resources.
           </p>
           <p className="text-sm text-[#64748b] mb-6 -mt-4">
             Use the same email you used when enrolling in a course to see your orders and receipts.

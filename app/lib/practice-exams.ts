@@ -210,3 +210,24 @@ export async function hasRteProAccess(): Promise<boolean> {
 export async function hasAdvancedScrumMasterProAccess(): Promise<boolean> {
   return hasCourseProAccess('advanced-scrum-master');
 }
+
+/**
+ * True when this signed-in user should see Pro practice exams in account nav.
+ * Enrollment (including combos) or a Pro / emergency grant — not merely having an account.
+ */
+export async function hasPracticeExamHubAccess(): Promise<boolean> {
+  const registered = await getRegisteredCourseSlugs();
+  if (practiceExamCoursesFromRegistrations(registered).size > 0) return true;
+
+  const grants = await Promise.all([
+    hasPopmProAccess(),
+    hasApmProAccess(),
+    hasLpmProAccess(),
+    hasLeadingSafeProAccess(),
+    hasScrumMasterProAccess(),
+    hasAdvancedScrumMasterProAccess(),
+    hasSafeForTeamsProAccess(),
+    hasRteProAccess(),
+  ]);
+  return grants.some(Boolean);
+}

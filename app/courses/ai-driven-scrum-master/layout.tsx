@@ -135,7 +135,7 @@ export default async function AIDrivenScrumMasterLayout({
         "name": "How long is the AI-Driven Scrum Master course?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The course is 2 days (16 hours) delivered as live virtual training. It includes hands-on practice with AI tools, real-world scenarios, group exercises, and certification upon completion. You receive lifetime access to course materials and AI prompt templates."
+          "text": "The course is 2 days, 9:00 AM–2:00 PM Eastern each day (5 hours per day, 10 hours total), delivered as live virtual training. It includes hands-on practice with AI tools, real-world scenarios, group exercises, and certification upon completion. You receive lifetime access to course materials and AI prompt templates."
         }
       }
     ]
