@@ -14,6 +14,7 @@ type WhyRow = CatalogLandingContent["whyRows"][number];
 type FaqItem = CatalogLandingContent["faqs"]["exam"][number];
 
 const DURATION_2 = "2-Day Live Online · Instructor-Led";
+const DURATION_2_FIVE = "2-Day Live Online · 9:00 AM–2:00 PM ET";
 const DURATION_3 = "3-Day Live Online · Instructor-Led";
 const INCLUDES_16 =
   "Includes exam (first two attempts), official courseware, 16 PDUs · 16 SEUs & 1-year SAFe Studio access.";
@@ -61,6 +62,7 @@ function faqsFor(args: {
   generic: FaqItem[];
   hasExam?: boolean;
   payment?: FaqItem[];
+  certIssuer?: string;
 }): CatalogLandingContent["faqs"] {
   return {
     courses: sharedCourseFaqs({
@@ -68,6 +70,7 @@ function faqsFor(args: {
       datesTitle: args.datesTitle,
       certName: args.certName,
       hasExam: args.hasExam,
+      certIssuer: args.certIssuer,
     }),
     exam: args.exam,
     payment: args.payment ?? sharedPaymentFaqs(),
@@ -2739,6 +2742,299 @@ const responsibleAi: CatalogLandingContent = {
   }),
 };
 
+const aiDrivenScrumMaster: CatalogLandingContent = {
+  slug: "ai-driven-scrum-master",
+  crumb: "AI Scrum Master",
+  title: "AI-Driven Scrum Master™ Certification Training",
+  lede:
+    "Two days, 9:00 AM–2:00 PM Eastern. You leave with the AI-Driven Scrum Master™ certification and a working system for the job you already do.\n\nDay 1 is the Scrum Master week with AI in the loop: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is where you stop doing it by hand — reusable skills, automated workflows, and a capstone you take back to your team.",
+  badgeSrc: "/Logo_AI_Driven_Scrum_Master.png",
+  badgeAlt: "AI-Driven Scrum Master™ certification",
+  cardTitle: "AI-Driven Scrum Master™ Certification",
+  durationLabel: DURATION_2_FIVE,
+  includesLine:
+    "Includes AI-Driven Scrum Master™ certification (Accredible), live training, reusable AI skills, and 10 PDUs.",
+  highlights: [
+    "10 hours live over two days — 9:00 AM–2:00 PM Eastern each day",
+    "Build reusable AI skills and automated Scrum workflows in class",
+    "Leave certified — AI-Driven Scrum Master™, issued through Accredible",
+  ],
+  brochureHref: COURSE_BROCHURE_HREF["ai-driven-scrum-master"],
+  datesTitle: "Upcoming AI Scrum Master dates",
+  scheduleCourseName: "AI-Driven Scrum Master™",
+  eyebrow: "AI Scrum Master certification · Live online",
+  attemptsLine: "AI-Driven Scrum Master™ certificate included — issued through Accredible.",
+  certificationEyebrow: "Certification included",
+  curriculumLede:
+    "Twelve modules across two days. Day 1 is AI skills for Scrum Masters. Day 2 is reusable skills, automated workflows, and the capstone system you take home.",
+  summaryTitle: "The Scrum Master job, rebuilt with AI",
+  safePartner: false,
+  whyRows: [
+    {
+      n: "01",
+      featured: true,
+      check: "You build the system in class",
+      usLead: "The capstone is your AI Scrum Master system, not a slide about prompts.",
+      usRest:
+        "Reusable skills, sprint health analysis, facilitation packs, and the workflows you will actually trigger on Monday.",
+      other: "Most AI classes end with a prompt list that dies in the first real sprint.",
+    },
+    {
+      n: "02",
+      featured: true,
+      check: "Every event, then the work after the event",
+      usLead: "Day 1 covers Planning, Daily Scrum, Review, Retro, backlog, and coaching.",
+      usRest:
+        "Day 2 turns that into skills and automations: sprint summaries, blocker tracking, action follow-up, stakeholder updates.",
+      other: "A single 'AI for Agile' lecture rarely reaches the admin that eats the week.",
+    },
+    {
+      n: "03",
+      check: "Human judgment stays in the seat",
+      usLead: "Module 1 is what AI should and should not do.",
+      usRest: "You keep coaching, conflict, and team dynamics. AI handles preparation, analysis, and follow-up.",
+      other: "Tool demos without a judgment line quietly train people to paste team data into the wrong place.",
+    },
+    {
+      n: "04",
+      check: "Certification included",
+      usLead: "You leave with the AI-Driven Scrum Master™ credential.",
+      usRest: "Issued through Accredible. Complete the live class and capstone — there is no exam.",
+      other: "Many AI courses send a PDF with no shareable credential.",
+    },
+    {
+      n: "05",
+      check: "Your class actually runs",
+      usLead: "Register for the date you want with confidence.",
+      usRest: "Agile36 classes are guaranteed to run, even with a small cohort.",
+      other: "Some providers cancel or consolidate classes when enrollment is low.",
+    },
+    {
+      n: "06",
+      check: "Five focused hours, twice",
+      usLead: "9:00 AM–2:00 PM Eastern each day. Ten hours total.",
+      usRest: "Long enough to build the system. Short enough to still do your job that week.",
+      other: "Full 9–5 days leave no room to practice on your own board.",
+    },
+  ],
+  outcomes: [
+    "Put AI on sprint data: blockers, aging work, carryover, dependencies, and trends",
+    "Run Planning, Daily Scrum, Review, and Retro with AI in the preparation, not the room",
+    "Raise story quality, acceptance criteria, splitting, and readiness before refinement",
+    "Turn repeatable Scrum Master work into reusable AI skills",
+    "Automate sprint summaries, blocker tracking, action follow-up, and stakeholder updates",
+    "Leave with a working AI Scrum Master system and the certification to match",
+  ],
+  curriculum: [
+    {
+      day: "Day 1",
+      focus: "AI Skills for Scrum Masters",
+      modules: [
+        {
+          title: "1. The AI-Empowered Scrum Master",
+          topics: [
+            "How AI changes Scrum Master work",
+            "What AI should and should not do",
+            "Where human judgment stays in the seat",
+          ],
+        },
+        {
+          title: "2. Working Effectively with AI",
+          topics: [
+            "Context that actually changes the output",
+            "Prompting and reusable instructions",
+            "Working with documents and team data",
+          ],
+        },
+        {
+          title: "3. Sprint & Team Intelligence",
+          topics: [
+            "Analyze sprint data",
+            "Blockers, aging work, and carryover",
+            "Dependencies and trends",
+          ],
+        },
+        {
+          title: "4. AI-Powered Scrum Events",
+          topics: ["Sprint Planning", "Daily Scrum", "Sprint Review", "Retrospectives"],
+        },
+        {
+          title: "5. Backlog & Story Analysis",
+          topics: [
+            "Story quality and acceptance criteria",
+            "Splitting and dependencies",
+            "Readiness before refinement",
+          ],
+        },
+        {
+          title: "6. AI for Coaching & Facilitation",
+          topics: [
+            "Coaching questions",
+            "Difficult conversations",
+            "Team dynamics and facilitation planning",
+          ],
+        },
+      ],
+    },
+    {
+      day: "Day 2",
+      focus: "AI Skills & Automated Scrum Workflows",
+      modules: [
+        {
+          title: "7. Creating Reusable AI Skills",
+          topics: [
+            "Turn repeatable Scrum Master activities into reusable AI skills",
+            "Name the job, the input, and the output",
+            "Keep the skill usable next sprint, not just in class",
+          ],
+        },
+        {
+          title: "8. Sprint Health Skill",
+          topics: [
+            "Analyze sprint information",
+            "Produce risks, blockers, and trends",
+            "Recommended actions the team can take",
+          ],
+        },
+        {
+          title: "9. Facilitation & Retrospective Skills",
+          topics: [
+            "Meeting preparation",
+            "Retrospective analysis",
+            "Action tracking after the room",
+          ],
+        },
+        {
+          title: "10. Designing Automated Workflows",
+          topics: [
+            "Trigger → AI analysis → decision → action",
+            "Identifying good automation candidates",
+            "Where a human still has to decide",
+          ],
+        },
+        {
+          title: "11. Automating Scrum Master Work",
+          topics: [
+            "Sprint summaries",
+            "Blocker tracking and action-item follow-up",
+            "Stakeholder updates and recurring team health analysis",
+          ],
+        },
+        {
+          title: "12. Capstone: Build Your AI Scrum Master System",
+          featured: true,
+          topics: [
+            "Assemble the skills and workflows from class",
+            "Point them at your team, not a sample board",
+            "Leave with the system and the certification",
+          ],
+        },
+      ],
+    },
+  ],
+  examNote:
+    "There is no exam. Complete the live class and capstone and you receive the AI-Driven Scrum Master™ certification, issued through Accredible — a shareable credential you can add to LinkedIn.",
+  examGuidelinesHref: "",
+  certificateTitle: "AI-Driven Scrum Master™ Certificate",
+  reviews: [
+    {
+      name: "David Martinez",
+      role: "Scrum Master",
+      review:
+        "Day 1 put AI on the work I already run. Day 2 I left with a sprint-health skill and a follow-up workflow I used the next Monday. The certification was included — no exam cram.",
+    },
+    {
+      name: "Jennifer Kim",
+      role: "Agile Coach",
+      review:
+        "The reusable skills are the difference. I stopped rewriting the same prompt every sprint. Facilitation prep and retro analysis are now a system, not a Sunday night scramble.",
+    },
+    {
+      name: "Robert Thompson",
+      role: "Team Lead",
+      review:
+        "Five hours a day was the right length. We built the capstone on our own board instead of sitting through another 9-to-5 slide deck. Stakeholder updates are finally not a manual job.",
+    },
+    {
+      name: "Priya Shah",
+      role: "Senior Scrum Master",
+      review:
+        "Module 1 on judgment mattered. I know what never gets pasted into a model, and the automations still leave the coaching conversation to me.",
+    },
+    {
+      name: "Marcus Ellison",
+      role: "RTE",
+      review:
+        "I wanted something I could roll across a train. The sprint health skill and recurring team analysis are the pieces I took back, plus a credential the org can see.",
+    },
+    {
+      name: "Elena Rossi",
+      role: "Delivery Lead",
+      review:
+        "Backlog and story analysis before refinement changed the week. Carryover and aging work show up before the Daily Scrum, not during it.",
+    },
+  ],
+  faqs: faqsFor({
+    shortName: "AI-Driven Scrum Master",
+    datesTitle: "Upcoming AI Scrum Master dates",
+    certName: "AI-Driven Scrum Master™ certification",
+    hasExam: false,
+    certIssuer: "Accredible",
+    payment: sharedPaymentFaqs().map((item) =>
+      item.q === "Are there any hidden fees?"
+        ? {
+            ...item,
+            a: "No. The course price includes live training, course materials, the AI-Driven Scrum Master™ certification issued through Accredible, and 10 PDUs. There is no exam fee and there are no hidden fees.",
+          }
+        : item
+    ),
+    exam: [
+      {
+        q: "Do I get certified?",
+        a: "Yes. Completing the live class and capstone earns the AI-Driven Scrum Master™ certification, issued through Accredible. You can share the credential on LinkedIn.",
+      },
+      {
+        q: "Is there an exam?",
+        a: "No. There is no certification exam. The credential is awarded when you complete the two-day live class and capstone.",
+      },
+      {
+        q: "When do I receive the certificate?",
+        a: "After you finish the live class and capstone. Agile36 issues the AI-Driven Scrum Master™ credential through Accredible.",
+      },
+      {
+        q: "Is this a SAFe certification?",
+        a: "No. This is Agile36's AI-Driven Scrum Master™ certification. If you need SAFe Scrum Master (SSM), that is a separate official Scaled Agile class.",
+      },
+    ],
+    generic: [
+      {
+        q: "What is the AI-Driven Scrum Master™ Certification Training?",
+        a: "A live two-day class (9:00 AM–2:00 PM Eastern each day, 10 hours total). Day 1 is AI skills for Scrum Masters. Day 2 is reusable AI skills, automated Scrum workflows, and a capstone: build your AI Scrum Master system. You leave certified.",
+      },
+      {
+        q: "Who should take this course?",
+        a: "Practising Scrum Masters, team coaches, Agile coaches, delivery leads, RTEs, and facilitators who already run Scrum events and want AI on the work around those events.",
+      },
+      {
+        q: "What are the prerequisites?",
+        a: "There are no formal prerequisites. Scrum Master or Agile facilitation experience helps. No prior AI experience is assumed.",
+      },
+      {
+        q: "How long is the course?",
+        a: "Two days, 9:00 AM–2:00 PM Eastern each day. Five hours per day, 10 hours total.",
+      },
+      {
+        q: "What do I leave with?",
+        a: "Reusable AI skills (including sprint health and facilitation/retro skills), automated workflows for summaries, blockers, follow-up, and stakeholder updates, a capstone system pointed at your team, 10 PDUs, and the AI-Driven Scrum Master™ certification.",
+      },
+      {
+        q: "Is this course available online?",
+        a: "Yes. Cohorts are live virtual. Private cohorts can be scheduled for your team.",
+      },
+    ],
+  }),
+};
+
 const CAREER: Record<
   string,
   { summary: string; lede: string; next: { href: string; name: string; forWho: string }[] }
@@ -2919,6 +3215,28 @@ const CAREER: Record<
       },
     ],
   },
+  "ai-driven-scrum-master": {
+    summary:
+      "This class rebuilds the Scrum Master week with AI. Day 1 is skills: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is reusable skills, automated workflows, and a capstone — you leave with a working AI Scrum Master system and the AI-Driven Scrum Master™ certification, issued through Accredible. There is no exam.",
+    lede: "After this class, the next step is either official SAFe Scrum Master or taking the automations further.",
+    next: [
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If you still need the official SSM credential for an Agile Release Train.",
+      },
+      {
+        href: "/courses/ai-workflow-automation",
+        name: "AI Workflow Automation",
+        forWho: "If you want to push the automations from class into a full business workflow.",
+      },
+      {
+        href: "/courses/advanced-scrum-master",
+        name: "SAFe Advanced Scrum Master",
+        forWho: "If you already coach multiple teams and want the SASM credential next.",
+      },
+    ],
+  },
 };
 
 export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
@@ -2934,6 +3252,7 @@ export const CATALOG_LANDING: Record<string, CatalogLandingContent> = {
   "release-train-engineer": rte,
   "value-stream-mapping": vsm,
   "responsible-ai": responsibleAi,
+  "ai-driven-scrum-master": aiDrivenScrumMaster,
 };
 
 const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetails"]>> = {
@@ -2986,6 +3305,28 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
     prerequisites:
       "Leading SAFe (SA) or SAFe Scrum Master (SSM) certification is recommended. Experience with Agile teams and PI Planning is helpful.",
     format: safeExamFormat(),
+  },
+  "ai-driven-scrum-master": {
+    prerequisites:
+      "There are no formal prerequisites. Scrum Master or Agile facilitation experience helps. No prior AI experience is assumed.",
+    format: [
+      {
+        highlight: "AI-Driven Scrum Master™ certification",
+        after: " issued through Accredible",
+      },
+      {
+        highlight: "No exam",
+        after: ". Complete the live class and capstone",
+      },
+      {
+        highlight: "Shareable credential",
+        after: " you can add to LinkedIn",
+      },
+      {
+        highlight: "10 PDUs",
+        after: " for the 10-hour live class",
+      },
+    ],
   },
 };
 

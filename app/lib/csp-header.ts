@@ -12,6 +12,8 @@
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
  * websocket relay, frames (game widget), and media — see Crisp CSP docs.
+ *
+ * **Credly:** Claude Partner badge embed on AI course pages (`cdn.credly.com` script).
  */
 export const AGILE36_CONTENT_SECURITY_POLICY =
   "default-src 'self'; " +
@@ -29,7 +31,9 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://*.clarity.ms " +
   "https://openfpcdn.io " +
   "https://fpcdn.io " +
-  "https://*.fpjs.io; " +
+  "https://*.fpjs.io " +
+  "https://cdn.credly.com " +
+  "https://www.credly.com; " +
   "style-src 'self' 'unsafe-inline' " +
   "https://fonts.googleapis.com " +
   "https://api.fontshare.com " +

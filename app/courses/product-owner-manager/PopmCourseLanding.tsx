@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
+import ClaudePartnerBadge from "@/app/components/ClaudePartnerBadge";
 import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
+import { isClaudePartnerCourse } from "@/app/lib/course-partners";
 import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
@@ -645,6 +647,9 @@ export default function PopmCourseLanding({
   const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
   const reviews = content.reviews.slice(0, 6);
   const isPrivateClass = content.slug === "release-train-engineer";
+  const isSafePartner = content.safePartner !== false;
+  const isAiScrumMaster = content.slug === "ai-driven-scrum-master";
+  const showClaudePartner = isClaudePartnerCourse(content.slug);
   const tuition = isPrivateClass ? null : COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
   const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles(), []);
   const navItems = useMemo(
@@ -812,9 +817,12 @@ export default function PopmCourseLanding({
 
           <div className="mt-9 grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(24rem,.85fr)] lg:gap-14">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#b45309]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
-                {content.eyebrow || "Official SAFe® certification · Live online"}
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#b45309]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
+                  {content.eyebrow || "Official SAFe® certification · Live online"}
+                </div>
+                {showClaudePartner ? <ClaudePartnerBadge variant="mark" /> : null}
               </div>
               <h1 className="mt-6 max-w-4xl text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
                 {content.title}
@@ -928,10 +936,20 @@ export default function PopmCourseLanding({
                     <p className="mt-1 text-xs leading-5 text-[#64748b]">
                       {content.includesLine}
                     </p>
-                    <div className="mt-2 flex items-center gap-2 text-[11px] font-medium text-[#475569]">
-                      <Image src="/Silver.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                      Scaled Agile Silver Partner
-                    </div>
+                    {isSafePartner ? (
+                      <div className="mt-2 flex items-center gap-2 text-[11px] font-medium text-[#475569]">
+                        <Image src="/Silver.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
+                        Scaled Agile Silver Partner
+                      </div>
+                    ) : showClaudePartner ? (
+                      <div className="mt-2">
+                        <ClaudePartnerBadge variant="mark" />
+                      </div>
+                    ) : (
+                      <p className="mt-2 text-[11px] font-medium text-[#475569]">
+                        Certification issued through Accredible
+                      </p>
+                    )}
                   </div>
                   <a
                     href="#dates"
@@ -1000,8 +1018,20 @@ export default function PopmCourseLanding({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Skills you will build"
-            title={content.slug === "product-owner-manager" ? "Not just a certificate. A working product operating system." : `Not just a credential. A working ${content.crumb} toolkit.`}
-            copy={content.slug === "product-owner-manager" ? "The class follows the real flow of product work—from hearing the customer to helping teams deliver and learn." : "Follow the work from core concepts through hands-on practice, application, and measurable capability."}
+            title={
+              content.slug === "product-owner-manager"
+                ? "Not just a certificate. A working product operating system."
+                : isAiScrumMaster
+                  ? "Not just a certificate. A working AI Scrum Master system."
+                  : `Not just a credential. A working ${content.crumb} toolkit.`
+            }
+            copy={
+              content.slug === "product-owner-manager"
+                ? "The class follows the real flow of product work—from hearing the customer to helping teams deliver and learn."
+                : isAiScrumMaster
+                  ? "Day 1 you put AI on the work you already run. Day 2 you turn it into reusable skills and automated workflows — then you build the system you take home."
+                  : "Follow the work from core concepts through hands-on practice, application, and measurable capability."
+            }
             align="center"
           />
           {content.slug === "product-owner-manager" ? <SkillGrid /> : <UniversalSkillGrid content={content} />}
@@ -1014,7 +1044,11 @@ export default function PopmCourseLanding({
             <SectionHeading
               eyebrow="Meet your instructors"
               title="Learn from practitioners who know what the work feels like."
-              copy="Your class is led live by a SAFe® Practice Consultant and enterprise coach who connects the official curriculum to real decisions, team dynamics, and transformation challenges."
+              copy={
+                isAiScrumMaster
+                  ? "Your class is led live by practitioners who run Scrum with AI in the room — not a slide deck about tools."
+                  : "Your class is led live by a SAFe® Practice Consultant and enterprise coach who connects the official curriculum to real decisions, team dynamics, and transformation challenges."
+              }
             />
             <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white text-center">
               {[
@@ -1118,7 +1152,7 @@ export default function PopmCourseLanding({
                 courseSlug={content.slug}
                 courseName={content.scheduleCourseName}
                 brochureHref={content.brochureHref}
-                showSafeBadges
+                showSafeBadges={isSafePartner}
                 premium
                 initialSchedules={initialSchedules}
               />
@@ -1142,7 +1176,10 @@ export default function PopmCourseLanding({
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_.9fr]">
           <div>
             <SectionHeading
-              eyebrow={content.attemptsLine === null ? "Official micro-credential" : "Exam & certification"}
+              eyebrow={
+                content.certificationEyebrow ||
+                (content.attemptsLine === null ? "Official micro-credential" : "Exam & certification")
+              }
               title={`Leave class ready to earn the official ${content.cardTitle}.`}
               copy={content.examNote}
             />
@@ -1166,10 +1203,12 @@ export default function PopmCourseLanding({
                   {content.assessmentLabel || "Take the free assessment"}
                 </button>
               ) : null}
-              <a href={content.examGuidelinesHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-[#d97706]">
-                Official exam guidelines
-                <ArrowIcon />
-              </a>
+              {content.examGuidelinesHref ? (
+                <a href={content.examGuidelinesHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-[#d97706]">
+                  Official exam guidelines
+                  <ArrowIcon />
+                </a>
+              ) : null}
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-xl">
@@ -1182,13 +1221,32 @@ export default function PopmCourseLanding({
                 height={600}
                 className="h-auto w-full rounded-xl object-contain"
               />
-              <div className="mt-4 flex items-center gap-3">
-                <Image src="/Silver.png" alt="Scaled Agile Silver Partner" width={40} height={40} className="h-10 w-10 object-contain" />
-                <div>
-                  <p className="text-sm font-semibold text-[#1f2c4a]">Official Scaled Agile certification</p>
-                  <p className="mt-0.5 text-xs text-[#64748b]">Delivered by an authorized Silver Partner</p>
+              {isSafePartner ? (
+                <div className="mt-4 flex items-center gap-3">
+                  <Image src="/Silver.png" alt="Scaled Agile Silver Partner" width={40} height={40} className="h-10 w-10 object-contain" />
+                  <div>
+                    <p className="text-sm font-semibold text-[#1f2c4a]">Official Scaled Agile certification</p>
+                    <p className="mt-0.5 text-xs text-[#64748b]">Delivered by an authorized Silver Partner</p>
+                  </div>
                 </div>
-              </div>
+              ) : showClaudePartner ? (
+                <div className="mt-4 rounded-xl bg-white px-4 py-3">
+                  <p className="text-sm font-semibold text-[#1f2c4a]">
+                    {content.certificateTitle || content.cardTitle}
+                  </p>
+                  <p className="mt-1 text-xs text-[#64748b]">Issued through Accredible · no exam</p>
+                  <div className="mt-3">
+                    <ClaudePartnerBadge variant="embed" />
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-4 rounded-xl bg-white px-4 py-3">
+                  <p className="text-sm font-semibold text-[#1f2c4a]">
+                    {content.certificateTitle || content.cardTitle}
+                  </p>
+                  <p className="mt-0.5 text-xs text-[#64748b]">Issued through Accredible · no exam</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

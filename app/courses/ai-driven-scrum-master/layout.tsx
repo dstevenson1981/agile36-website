@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("ai-driven-scrum-master"),
-  description: "2026 live cohorts: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching. Expert-led training.",
+  description: "2026 live cohorts: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows, then leave with the AI-Driven Scrum Master™ certification issued through Accredible.",
   keywords: [
     "AI-Driven Scrum Master",
     "AI Scrum Master",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
     title: courseOgTitle("ai-driven-scrum-master"),
-    description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
+    description: "2026: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-driven-scrum-master",
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: courseLong("ai-driven-scrum-master"),
-    description: "2026: Enhance your Scrum Master skills with AI-powered tools and practices. Learn AI-enhanced backlog refinement, sprint planning, daily Scrum facilitation, and team coaching.",
+    description: "2026: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-driven-scrum-master",
@@ -56,16 +56,20 @@ export default async function AIDrivenScrumMasterLayout({
       schedulePath: "/courses/ai-driven-scrum-master/schedule",
       courseDisplayName: "AI-Driven Scrum Master™ Certification Training",
       description:
-        "AI-Driven Scrum Master certification teaches Scrum Masters to use generative AI for sprint planning, retrospectives, backlog management, and team coaching. Learn prompt engineering, AI-assisted facilitation, and automated workflow optimization.",
+        "Live two-day AI-Driven Scrum Master™ certification. Day 1 is AI skills for Scrum Masters. Day 2 is reusable skills, automated workflows, and a capstone system. Issued through Accredible. No exam.",
       teaches: [
-        "AI-Enhanced Scrum Practices",
-        "AI for Backlog Refinement",
-        "AI-Driven Sprint Planning",
-        "AI-Powered Retrospectives",
-        "AI for Daily Scrum and Flow Metrics",
-        "Coaching and Facilitation with AI",
-        "Prompt Engineering for Agile Coaches",
-        "Ethics and Responsible AI in Agile Teams",
+        "The AI-Empowered Scrum Master",
+        "Working Effectively with AI",
+        "Sprint and Team Intelligence",
+        "AI-Powered Scrum Events",
+        "Backlog and Story Analysis",
+        "AI for Coaching and Facilitation",
+        "Creating Reusable AI Skills",
+        "Sprint Health Skill",
+        "Facilitation and Retrospective Skills",
+        "Designing Automated Workflows",
+        "Automating Scrum Master Work",
+        "Capstone: Build Your AI Scrum Master System",
       ],
       breadcrumbLeafName: "AI-Driven Scrum Master",
       coursesCrumbLabel: "Generative AI Courses",
@@ -95,7 +99,7 @@ export default async function AIDrivenScrumMasterLayout({
         "name": "What is AI-Driven Scrum Master certification?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AI-Driven Scrum Master certification teaches Scrum Masters to integrate generative AI tools into Agile practices. You learn to use AI for sprint planning, facilitate AI-assisted retrospectives, automate repetitive tasks, and enhance team coaching with AI-generated insights. The certification combines traditional Scrum Master skills with practical AI implementation."
+          "text": "AI-Driven Scrum Master™ certification is a live two-day class. Day 1 is AI skills for Scrum Masters: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is reusable AI skills, automated workflows, and a capstone system. You leave with the credential, issued through Accredible. There is no exam."
         }
       },
       {
@@ -111,7 +115,7 @@ export default async function AIDrivenScrumMasterLayout({
         "name": "What AI tools will I learn?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You'll learn to use ChatGPT, Claude, Microsoft Copilot, and specialized Agile AI tools for sprint planning, backlog refinement, retrospective facilitation, and team analytics. The course teaches prompt engineering techniques specific to Scrum ceremonies and practical integration into daily Scrum Master activities."
+          "text": "You'll learn to work with AI on documents and team data, build reusable skills, and automate sprint summaries, blocker tracking, action follow-up, and stakeholder updates. The course is not a vendor tour — it is the Scrum Master job with AI in the loop."
         }
       },
       {
@@ -119,7 +123,7 @@ export default async function AIDrivenScrumMasterLayout({
         "name": "How is this different from regular Scrum Master training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Traditional Scrum Master training focuses on facilitating Scrum events manually. AI-Driven Scrum Master adds generative AI capabilities: automated sprint reports, AI-generated retrospective insights, predictive team analytics, automated documentation, and AI-assisted coaching. It enhances Scrum Master skills with AI efficiency."
+          "text": "Traditional Scrum Master training teaches you to run the events by hand. This class adds reusable AI skills and automated workflows around those events: sprint health, facilitation prep, retros, summaries, and follow-up. You still keep coaching, conflict, and judgment."
         }
       },
       {

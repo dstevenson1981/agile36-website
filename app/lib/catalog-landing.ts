@@ -127,6 +127,10 @@ export type CatalogLandingContent = {
     prerequisites: string;
     format: ExamFormatLine[];
   };
+  /** When false, hide Scaled Agile partner/exam framing. Defaults true. */
+  safePartner?: boolean;
+  /** Certification section eyebrow. Defaults from attemptsLine. */
+  certificationEyebrow?: string;
   faqs: {
     courses: FaqItem[];
     exam: FaqItem[];
@@ -260,8 +264,10 @@ export function sharedCourseFaqs(args: {
   datesTitle: string;
   certName: string;
   hasExam?: boolean;
+  certIssuer?: string;
 }): FaqItem[] {
   const hasExam = args.hasExam !== false;
+  const issuer = args.certIssuer || "Scaled Agile, Inc.";
   return [
     {
       q: "What if I miss a class? Are there any money back options?",
@@ -290,8 +296,8 @@ export function sharedCourseFaqs(args: {
     {
       q: "Do I get any certificate upon completion of the course?",
       a: hasExam
-        ? `Yes, upon successful completion of the course and passing the certification exam, you'll receive the official ${args.certName} certificate from Scaled Agile, Inc.`
-        : `Yes. Completing the live ${args.shortName} workshop earns the official ${args.certName} from Scaled Agile, Inc. There is no certification exam.`,
+        ? `Yes, upon successful completion of the course and passing the certification exam, you'll receive the official ${args.certName} certificate from ${issuer}.`
+        : `Yes. Completing the live ${args.shortName} class earns the official ${args.certName}, issued through ${issuer}. There is no certification exam.`,
     },
   ];
 }

@@ -16,6 +16,8 @@ import {
   type CourseScheduleRow,
 } from "@/app/lib/schedule-display";
 import { getScheduleInstructorProfile } from "@/app/lib/schedule-instructors";
+import { isClaudePartnerCourse } from "@/app/lib/course-partners";
+import ClaudePartnerBadge from "@/app/components/ClaudePartnerBadge";
 
 type ScheduleCardProps = {
   schedule: CourseScheduleRow;
@@ -257,7 +259,9 @@ export default function ScheduleCard({
             />
           </div>
 
-          {showSafeBadges && (
+          {isClaudePartnerCourse(courseSlug) ? (
+            <ClaudePartnerBadge variant="mark" />
+          ) : showSafeBadges ? (
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-md border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">
                 SAFe
@@ -266,7 +270,7 @@ export default function ScheduleCard({
                 Silver Partner
               </span>
             </div>
-          )}
+          ) : null}
         </div>
 
         {/* Middle — curriculum, qty, urgency */}

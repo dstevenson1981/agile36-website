@@ -2,29 +2,17 @@
 
 import Image from "next/image";
 import { type ReactNode, useState } from "react";
+import ClaudePartnerBadge from "@/app/components/ClaudePartnerBadge";
 import CourseHeroPriceScheduleCta from "@/app/components/CourseHeroPriceScheduleCta";
 import PrivateCohortContactModal from "@/app/components/PrivateCohortContactModal";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
+import {
+  isClaudePartnerCourse,
+  isScaledAgileCourse,
+} from "@/app/lib/course-partners";
 
 /** Courses listed publicly but sold as private cohorts (no schedule / checkout). */
 const PRIVATE_CLASS_SLUGS = new Set(["release-train-engineer"]);
-
-/** Official SAFe / Scaled Agile offerings — show Silver Partner trust footer. */
-const SCALED_AGILE_COURSE_SLUGS = new Set([
-  "leading-safe",
-  "scrum-master",
-  "product-owner-manager",
-  "agile-product-management",
-  "safe-for-architects",
-  "lean-portfolio-management",
-  "safe-for-teams",
-  "release-train-engineer",
-  "devops",
-  "responsible-ai",
-  "value-stream-mapping",
-  "ai-driven-scrum-master",
-  "advanced-scrum-master",
-]);
 
 const PRIVATE_COURSE_LABELS: Record<string, string> = {
   "release-train-engineer": "SAFe Release Train Engineer (RTE)",
@@ -56,8 +44,10 @@ export default function CourseHeroRightColumn({
 }: Props) {
   const isPrivate = privateClass ?? PRIVATE_CLASS_SLUGS.has(courseSlug);
   const list = isPrivate ? null : COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
+  const showClaudePartner = isClaudePartnerCourse(courseSlug);
   const showPartner =
-    showScaledAgilePartner ?? SCALED_AGILE_COURSE_SLUGS.has(courseSlug);
+    !showClaudePartner &&
+    (showScaledAgilePartner ?? isScaledAgileCourse(courseSlug));
   const resolvedScheduleHref =
     scheduleHref ?? `/courses/${courseSlug}/schedule?course=${courseSlug}`;
   const [showContactModal, setShowContactModal] = useState(false);
@@ -149,6 +139,7 @@ export default function CourseHeroRightColumn({
                 </div>
               ) : null}
 
+              {showClaudePartner ? <ClaudePartnerBadge /> : null}
               {showPartner ? (
                 <div className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
                   <Image
