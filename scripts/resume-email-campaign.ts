@@ -8,7 +8,7 @@
  */
 import crypto from "node:crypto";
 import { config } from "dotenv";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import sgMail from "@sendgrid/mail";
 
 config({ path: ".env.local" });
@@ -46,7 +46,7 @@ function addUnsubscribeLinkText(textContent: string, token: string): string {
 }
 
 async function fetchAllIds(
-  supabase: ReturnType<typeof createClient>,
+  supabase: SupabaseClient,
   table: string,
   column: string,
   apply: (q: any) => any
@@ -59,7 +59,7 @@ async function fetchAllIds(
     const { data, error } = await q.range(from, from + PAGE - 1);
     if (error) throw error;
     if (!data || data.length === 0) break;
-    for (const row of data as Record<string, number>[]) {
+    for (const row of data as unknown as Record<string, number>[]) {
       if (typeof row[column] === "number") ids.push(row[column]);
     }
     if (data.length < PAGE) break;
