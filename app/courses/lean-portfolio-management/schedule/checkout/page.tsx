@@ -15,6 +15,7 @@ import CorporateBillingCodeField from '@/app/components/checkout/CorporateBillin
 import { handleCreatePaymentIntentResult } from '@/app/lib/checkout-corporate';
 import AvailablePromoCodes from "@/app/components/AvailablePromoCodes";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
+import { formatTimezoneLabel } from "@/app/lib/schedule-display";
 
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -129,10 +130,18 @@ function CheckoutContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scheduleId, courseSlug, router]);
 
-  const formatDateRange = (startDate: string, endDate: string) => {
+  const formatDateRange = (startDate: string, endDate: string, timezone?: string) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
-    const opts = { month: 'short' as const, day: 'numeric' as const, timeZone: 'America/New_York' as const };
+    const timeZone =
+      timezone === "America/Los_Angeles" || timezone === "PST" || timezone === "PDT"
+        ? "America/Los_Angeles"
+        : timezone === "Asia/Kolkata" || timezone === "IST"
+          ? "Asia/Kolkata"
+          : timezone && timezone.includes("/")
+            ? timezone
+            : "America/New_York";
+    const opts = { month: 'short' as const, day: 'numeric' as const, timeZone };
     const startFormatted = start.toLocaleDateString('en-US', opts);
     const endFormatted = end.toLocaleDateString('en-US', { ...opts, year: 'numeric' as const });
     return `${startFormatted} - ${endFormatted}`;
@@ -143,7 +152,7 @@ function CheckoutContent() {
     const hour = parseInt(hours);
     const ampm = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour % 12 || 12;
-    const tz = timezone.split('/').pop();
+    const tz = formatTimezoneLabel(timezone);
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 
@@ -330,7 +339,7 @@ function CheckoutContent() {
           corporateCode: enrollmentFormData.corporateBillingCode?.trim() || null,
           enrollmentData: {
             ...enrollmentFormData,
-            scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),
+            scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date, selectedSchedule.timezone),
             scheduleTime: `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}`,
             duration: selectedSchedule.duration,
             timezone: selectedSchedule.timezone,
@@ -347,7 +356,7 @@ function CheckoutContent() {
       const handled = await handleCreatePaymentIntentResult(data, {
         enrollmentData: {
           ...enrollmentFormData,
-          scheduleDate: selectedSchedule ? formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date) : '',
+          scheduleDate: selectedSchedule ? formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date, selectedSchedule.timezone) : '',
           scheduleTime: selectedSchedule ? `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}` : '',
           duration: selectedSchedule?.duration,
           timezone: selectedSchedule?.timezone,
@@ -900,7 +909,7 @@ function CheckoutContent() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>{formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date)} • {selectedSchedule.duration}</span>
+                    <span>{formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date, selectedSchedule.timezone)} • {selectedSchedule.duration}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

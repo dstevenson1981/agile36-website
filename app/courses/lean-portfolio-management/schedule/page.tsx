@@ -187,7 +187,11 @@ function CourseScheduleContent() {
     const hour = parseInt(hours);
     const ampm = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour % 12 || 12;
-    const tz = timezone === 'America/New_York' ? 'EST' : timezone || '';
+    const tz = timezone === 'America/New_York' || timezone === 'EST' || timezone === 'EDT'
+      ? 'EST'
+      : timezone === 'America/Los_Angeles' || timezone === 'PST' || timezone === 'PDT'
+        ? 'PST'
+        : timezone || '';
     return `${displayHour}:${minutes} ${ampm}${tz ? ` (${tz})` : ''}`;
   };
 

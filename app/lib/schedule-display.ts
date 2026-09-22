@@ -18,16 +18,23 @@ export type CourseScheduleRow = {
   total_seats?: number | null;
 };
 
+function resolveIanaTimezone(timezone?: string): string | undefined {
+  if (!timezone) return undefined;
+  if (timezone === "IST") return "Asia/Kolkata";
+  if (timezone === "EST" || timezone === "EDT") return "America/New_York";
+  if (timezone === "CST" || timezone === "CDT") return "America/Chicago";
+  if (timezone === "MST" || timezone === "MDT") return "America/Denver";
+  if (timezone === "PST" || timezone === "PDT") return "America/Los_Angeles";
+  return timezone;
+}
+
 export function formatDateRange(
   startDate: string,
   endDate: string,
   timezone?: string
 ): string {
   try {
-    const tz =
-      timezone === "IST"
-        ? "Asia/Kolkata"
-        : timezone || undefined;
+    const tz = resolveIanaTimezone(timezone);
     const opts: Intl.DateTimeFormatOptions = {
       month: "short",
       day: "numeric",
@@ -146,7 +153,10 @@ export function formatComboScheduleOptionLabel(schedule: {
 
 export function formatTimezoneLabel(timezone?: string): string {
   if (!timezone) return "EST";
-  if (timezone === "America/New_York") return "EST";
+  if (timezone === "America/New_York" || timezone === "EST" || timezone === "EDT") return "EST";
+  if (timezone === "America/Los_Angeles" || timezone === "PST" || timezone === "PDT") return "PST";
+  if (timezone === "America/Chicago" || timezone === "CST" || timezone === "CDT") return "CST";
+  if (timezone === "America/Denver" || timezone === "MST" || timezone === "MDT") return "MST";
   if (timezone === "Asia/Kolkata" || timezone === "IST") return "IST";
   return timezone;
 }
