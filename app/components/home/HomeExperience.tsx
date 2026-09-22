@@ -14,7 +14,7 @@ import {
   type CourseCategory,
 } from "@/app/lib/course-catalog";
 import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
-import { openSiteAgent } from "@/app/lib/site-agent/open";
+import { openCrispChat } from "@/app/lib/open-crisp-chat";
 
 const HERO_VIDEO_SRC = "/hero-video.mp4";
 
@@ -89,7 +89,7 @@ function formatPrice(n: number) {
 }
 
 function openChat(e: React.MouseEvent) {
-  openSiteAgent(e);
+  openCrispChat(e);
 }
 
 /** Fades children in after `delay` ms. */

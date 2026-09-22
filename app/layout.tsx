@@ -20,7 +20,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ClarityAnalytics from "./components/ClarityAnalytics";
 import WebMcpProvider from "./components/WebMcpProvider";
-import SiteAgent from "./components/SiteAgent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -177,8 +176,25 @@ export default async function RootLayout({
         </div>
         <Footer />
         
-        <SiteAgent />
-         
+        {/* Crisp Live Chat Widget */}
+        <Script
+          id="crisp-chat"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.$crisp=[];
+              window.CRISP_WEBSITE_ID="fa52d23e-ef39-4fdb-8ecd-8c568cd46d15";
+              (function(){
+                d=document;
+                s=d.createElement("script");
+                s.src="https://client.crisp.chat/l.js";
+                s.async=1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+              })();
+            `,
+          }}
+        />
+
         {/* Apollo Tracking */}
         <Script
           id="apollo-tracking"

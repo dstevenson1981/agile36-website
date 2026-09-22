@@ -426,7 +426,7 @@ export default function ContactPage() {
                 </svg>
               </summary>
               <p className="text-[#64748b] mt-4 leading-relaxed">
-                We typically respond to email inquiries within 24 hours during business days. Phone calls are answered during business hours (Monday-Friday, 9AM-5PM EST). Chat is on every page if you want an answer now.
+                We typically respond to email inquiries within 24 hours during business days. Phone calls are answered during business hours (Monday-Friday, 9AM-5PM EST), and our live chat support has an average response time of less than 2 minutes.
               </p>
             </details>
 
