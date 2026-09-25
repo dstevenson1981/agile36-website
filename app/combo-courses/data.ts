@@ -222,6 +222,7 @@ const SAFE_SLUGS = [
   "devops",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
 
 const AI_SLUGS = [
@@ -251,6 +252,7 @@ const CROSS_SAFE = [
   "advanced-scrum-master",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
 
 /**
@@ -302,33 +304,11 @@ export const COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
 /** Retired AI combos remain purchasable via existing checkout/order IDs. */
 const LEGACY_AI_COMBOS: Combo[] = buildCombosForAiSlugs(LEGACY_AI_SLUGS, false);
 
-/** RTE left the public bundles; old combo checkout IDs still resolve. */
-const LEGACY_RTE_COMBOS: Combo[] = (() => {
-  const partners = [
-    ...SAFE_SLUGS,
-    ...AI_SLUGS,
-    ...LEGACY_AI_SLUGS,
-  ];
-  const seen = new Set<string>();
-  const combos: Combo[] = [];
-  for (const partner of partners) {
-    const key = pairKey("release-train-engineer", partner);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    combos.push(buildCombo("release-train-engineer", partner));
-  }
-  return combos;
-})();
-
 /** Alias kept for call sites that previously distinguished listing vs checkout catalogs. */
 export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 
 export function findComboById(comboId: string): Combo | undefined {
-  return (
-    COMBO_COURSES.find((c) => c.id === comboId) ??
-    LEGACY_AI_COMBOS.find((c) => c.id === comboId) ??
-    LEGACY_RTE_COMBOS.find((c) => c.id === comboId)
-  );
+  return COMBO_COURSES.find((c) => c.id === comboId) ?? LEGACY_AI_COMBOS.find((c) => c.id === comboId);
 }
 
 /** Combos that include a given course slug (for course-hero carousels). */
