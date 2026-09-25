@@ -57,7 +57,7 @@ const CATALOG: CatalogEntry[] = [
   { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
   { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1199, original: 1998 },
   { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
-  { slug: "ai-agent-builder", name: "No-Code AI Agents & Automation™", shortName: "AI Agents", price: 400, original: 800 },
+  { slug: "ai-agent-builder", name: "No-Code AI Agents & Automation™", shortName: "AI Agents", price: 555, original: 1110 },
   { slug: "ai-workflow-automation", name: "AI Workflow Automation™", shortName: "AI Workflow", price: 400, original: 800 },
   { slug: "ai-app-builder", name: "No-Code AI App Builder™", shortName: "AI App Builder", price: 400, original: 800 },
   { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
@@ -160,6 +160,11 @@ function priceForPair(a: CatalogEntry, b: CatalogEntry): { comboPrice: number; o
     "scrum-master|safe-for-teams": 850,
     "advanced-scrum-master|product-owner-manager": 699,
     "release-train-engineer|scrum-master": 1350,
+    "ai-agent-builder|ai-app-builder": 499,
+    "ai-agent-builder|ai-workflow-automation": 499,
+    "ai-agent-builder|certified-ai-product-manager": 499,
+    "ai-agent-builder|executive-genai-leadership": 499,
+    "ai-agent-builder|generative-ai-project-managers": 499,
   };
   if (overrides[key] != null) comboPrice = overrides[key];
 
@@ -217,7 +222,6 @@ const SAFE_SLUGS = [
   "devops",
   "lean-portfolio-management",
   "agile-product-management",
-  "release-train-engineer",
 ];
 
 const AI_SLUGS = [
@@ -247,7 +251,6 @@ const CROSS_SAFE = [
   "advanced-scrum-master",
   "lean-portfolio-management",
   "agile-product-management",
-  "release-train-engineer",
 ];
 
 /**
@@ -299,11 +302,33 @@ export const COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
 /** Retired AI combos remain purchasable via existing checkout/order IDs. */
 const LEGACY_AI_COMBOS: Combo[] = buildCombosForAiSlugs(LEGACY_AI_SLUGS, false);
 
+/** RTE left the public bundles; old combo checkout IDs still resolve. */
+const LEGACY_RTE_COMBOS: Combo[] = (() => {
+  const partners = [
+    ...SAFE_SLUGS,
+    ...AI_SLUGS,
+    ...LEGACY_AI_SLUGS,
+  ];
+  const seen = new Set<string>();
+  const combos: Combo[] = [];
+  for (const partner of partners) {
+    const key = pairKey("release-train-engineer", partner);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    combos.push(buildCombo("release-train-engineer", partner));
+  }
+  return combos;
+})();
+
 /** Alias kept for call sites that previously distinguished listing vs checkout catalogs. */
 export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 
 export function findComboById(comboId: string): Combo | undefined {
-  return COMBO_COURSES.find((c) => c.id === comboId) ?? LEGACY_AI_COMBOS.find((c) => c.id === comboId);
+  return (
+    COMBO_COURSES.find((c) => c.id === comboId) ??
+    LEGACY_AI_COMBOS.find((c) => c.id === comboId) ??
+    LEGACY_RTE_COMBOS.find((c) => c.id === comboId)
+  );
 }
 
 /** Combos that include a given course slug (for course-hero carousels). */
