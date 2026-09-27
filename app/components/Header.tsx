@@ -155,7 +155,8 @@ export default function Header() {
     pathname === "/popm-practice-temp" ||
     pathname === "/popm-prep-pro" ||
     pathname === "/scrum-master-pro-class" ||
-    pathname === "/advanced-scrum-master-pro-class"
+    pathname === "/advanced-scrum-master-pro-class" ||
+    pathname === "/rte-pro-class"
   ) {
     return null;
   }
