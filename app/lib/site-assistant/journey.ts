@@ -257,7 +257,7 @@ export function courseInterestFromPath(path: string): CourseInterest | null {
   if (/^\/(leading-safe-pro-class|leading-safepro|leading-safe-pro-temp)/.test(path)) {
     return interestForSlug("leading-safe");
   }
-  if (/^\/(scrum-master-pro-class|ssmpro|scrum-master-pro-temp)/.test(path)) {
+  if (/^\/(scrum-master-pro-class|ssm-ai-pro-class|ssmpro|scrum-master-pro-temp)/.test(path)) {
     return interestForSlug("scrum-master");
   }
   if (/^\/(lpm-pro-class|lpmpro|lpm-pro-temp)/.test(path)) {

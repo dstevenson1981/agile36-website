@@ -43,6 +43,7 @@ const STATIC_CLASS_PAGES = new Set([
   'apm-pro-temp',
   'advanced-scrum-master-pro-class',
   'rte-pro-class',
+  'ssm-ai-pro-class',
 ]);
 
 type ClassExamCache = { at: number; byPath: Map<string, string> };
