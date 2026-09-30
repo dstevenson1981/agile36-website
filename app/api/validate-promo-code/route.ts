@@ -22,8 +22,26 @@ type PromoCodeRow = {
   expires_at: string | null;
   usage_limit: number | null;
   usage_count: number | null;
+  /** One slug, or several separated by commas. Empty means every course. */
   course_slug?: string | null;
 };
+
+const COURSE_LABELS: Record<string, string> = {
+  'agile-product-management': 'SAFe Agile Product Management',
+  'lean-portfolio-management': 'SAFe Lean Portfolio Management',
+};
+
+function allowedCourseSlugs(courseSlug: string | null | undefined): string[] {
+  if (!courseSlug?.trim()) return [];
+  return courseSlug.split(',').map((slug) => slug.trim()).filter(Boolean);
+}
+
+function courseListLabel(slugs: string[]): string {
+  const names = slugs.map((slug) => COURSE_LABELS[slug] ?? slug);
+  if (names.length <= 1) return names[0] ?? 'that course';
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
+}
 
 /** Per-seat price caps (POPM $399, SASM465 $465, etc.) — see course-promo-caps.ts */
 function tryValidateCoursePriceCap(
@@ -199,25 +217,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if code is course-specific and validate course match
-    // If a promo code has a course_slug, it MUST only work for that specific course
-    if (promoCode.course_slug) {
-      // Require courseSlug to be provided when validating a course-specific code
-      if (!courseSlug) {
+    // course_slug may be one course or a comma-separated list. Empty means every course.
+    const allowedSlugs = allowedCourseSlugs(promoCode.course_slug);
+    if (allowedSlugs.length > 0) {
+      const requested = typeof courseSlug === 'string' ? courseSlug.trim() : '';
+      if (!requested || !allowedSlugs.includes(requested)) {
         return NextResponse.json(
-          { 
-            valid: false, 
-            error: 'This promo code is course-specific. Please use it on the correct course page.' 
-          },
-          { status: 200 }
-        );
-      }
-      // Strict match - must match exactly (case-sensitive)
-      if (courseSlug.trim() !== promoCode.course_slug.trim()) {
-        return NextResponse.json(
-          { 
-            valid: false, 
-            error: `This promo code is only valid for the ${promoCode.course_slug} course` 
+          {
+            valid: false,
+            error: `This promo code is only valid for ${courseListLabel(allowedSlugs)}.`,
           },
           { status: 200 }
         );
