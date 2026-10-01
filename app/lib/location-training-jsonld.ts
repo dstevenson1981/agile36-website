@@ -96,7 +96,11 @@ export function buildLocationTrainingJsonLd(
   const city = cityDisplayFromSlug(citySlug);
   const hub = SAF_TRAINING_HUBS[segment];
   const url = pageUrl(segment, citySlug);
-  const courseId = `${url}#course`;
+  const coursePageUrl =
+    segment === "leading-safe-certification-training" && citySlug === "new-york"
+      ? `${SITE}/courses/leading-safe`
+      : url;
+  const courseId = `${coursePageUrl}#course`;
   const pageId = `${url}#webpage`;
 
   const description = `Live virtual ${hub.productLabel} training for professionals in and around ${city}. Sessions are instructor-led by certified SAFe Program Consultants (SPCs), with cohort schedules published on Agile36. This ${city}-focused page explains how the curriculum applies to teams hiring in your metro while you attend remotely—no travel required.`;
@@ -131,7 +135,7 @@ export function buildLocationTrainingJsonLd(
     "@type": "Course",
     "@id": courseId,
     name: `${hub.productLabel} — live virtual for ${city} professionals`,
-    url,
+    url: coursePageUrl,
     description,
     image: hub.imageUrl,
     inLanguage: "en-US",
@@ -198,7 +202,7 @@ export function buildLocationTrainingJsonLd(
       {
         "@type": "WebPage",
         "@id": pageId,
-        url,
+        url: coursePageUrl,
         name: `${hub.productLabel} in ${city} | Agile36`,
         description,
         isPartOf: { "@type": "WebSite", name: "Agile36", url: SITE },

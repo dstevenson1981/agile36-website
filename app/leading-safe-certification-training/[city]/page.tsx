@@ -16,7 +16,20 @@ type Props = { params: Promise<{ city: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city } = await params;
-  return buildLocationTrainingMetadata("leading-safe-certification-training", city);
+  const metadata = buildLocationTrainingMetadata(
+    "leading-safe-certification-training",
+    city
+  );
+  if (city !== "new-york") return metadata;
+  const courseUrl = "https://www.agile36.com/courses/leading-safe";
+  return {
+    ...metadata,
+    alternates: { canonical: courseUrl },
+    openGraph: {
+      ...metadata.openGraph,
+      url: courseUrl,
+    },
+  };
 }
 
 export default async function Page({ params }: Props) {

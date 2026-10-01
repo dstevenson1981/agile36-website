@@ -97,7 +97,7 @@ export default async function ScrumMasterLayout({
         "name": "Is the SAFe SSM exam included in the course price?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Your first exam attempt is included in your Agile36 course fee. The exam must be taken within 30 days of completing the course."
+          "text": "Yes. Your first two exam attempts are included for courses taken after April 14, 2026, and must be completed within 60 days of the course. After that, Scaled Agile lists a $50 unproctored retake."
         }
       },
       {
@@ -105,7 +105,7 @@ export default async function ScrumMasterLayout({
         "name": "How long does SAFe Scrum Master certification last?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "One year. Renewal requires earning 24 Continuing Education Units (CEUs) and paying the $195 annual renewal fee to Scaled Agile."
+          "text": "The SSM certification page says a minimum of 24 CEUs within the two-year certification cycle, which it says amounts to 12 CEUs annually. The August 14, 2026 renewal article lists SSM with the foundational certifications that require 12 CEUs and does not say per year in that sentence."
         }
       },
       {
@@ -113,7 +113,7 @@ export default async function ScrumMasterLayout({
         "name": "Can I take the SAFe SSM exam online?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 30 days of course completion."
+          "text": "Yes. The exam is delivered online through the SAFe Community Platform and can be taken from anywhere within 60 days of course completion."
         }
       },
       {
@@ -121,7 +121,7 @@ export default async function ScrumMasterLayout({
         "name": "What is the passing score for the SAFe Scrum Master exam?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You need to answer at least 33 out of 45 questions correctly (73%) to pass."
+          "text": "The SSM exam is 90 minutes and 45 questions. Official Scaled Agile pages do not agree on a pass mark, so this page does not state a percent."
         }
       },
       {

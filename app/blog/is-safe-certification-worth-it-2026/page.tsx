@@ -359,10 +359,31 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               &quot;I can just self-study.&quot;
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
-              You can learn the material without taking a course, but you cannot
-              earn the certification without completing an accredited course
+              You earn the certification by completing an accredited course
               from a SAFe partner. The exam requires a course attendance code
-              issued by a certified provider.
+              issued by a certified provider. Register for the class that
+              matches the job:{" "}
+              <Link
+                href="/courses/leading-safe"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                Leading SAFe
+              </Link>
+              ,{" "}
+              <Link
+                href="/courses/scrum-master"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                SSM
+              </Link>
+              , or{" "}
+              <Link
+                href="/courses/product-owner-manager"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                POPM
+              </Link>
+              .
             </p>
 
             <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
@@ -380,9 +401,36 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               doesn&apos;t use SAFe, the ROI is less clear. Pursue it when the
               organizational context is there to apply it.
             </p>
-            <p className="text-lg text-[#475569] leading-relaxed mb-8">
+            <p className="text-lg text-[#475569] leading-relaxed mb-4">
               For most enterprise Agile professionals reading this, the answer
               is yes — it&apos;s worth it.
+            </p>
+            <p className="text-lg text-[#475569] leading-relaxed mb-8">
+              Worth it still depends on the job in front of you. If you are
+              responsible for leading the change, the next step is{" "}
+              <Link
+                href="/courses/leading-safe"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                Leading SAFe
+              </Link>
+              . If you facilitate a team on an Agile Release Train, the next
+              step is{" "}
+              <Link
+                href="/courses/scrum-master"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                SSM
+              </Link>
+              . If you own the backlog, the features, or the product seat in
+              planning, the next step is{" "}
+              <Link
+                href="/courses/product-owner-manager"
+                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+              >
+                POPM
+              </Link>
+              .
             </p>
 
             <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
@@ -418,10 +466,79 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
             <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
               Does SAFe certification expire?
             </h3>
-            <p className="text-lg text-[#475569] leading-relaxed mb-6">
-              Yes, after one year. Renewal requires 10 PDUs/SEUs and a $100
-              renewal fee paid directly to Scaled Agile.
-            </p>
+            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] p-6 mb-6">
+              <p className="text-lg text-[#475569] leading-relaxed mb-4">
+                <strong className="font-semibold text-[#1f2c4a]">
+                  Checked 2026-09-30.
+                </strong>{" "}
+                Renewal is not 10 PDUs and not a fee this page can state. For
+                the SAFe Agilist credential after Leading SAFe, Scaled Agile
+                says you must earn a minimum of 12 Continuing Education Units
+                (CEUs) each year. The same renewal article lists 12 CEUs for
+                the foundational certifications SA, SSM, and POPM, and 24 CEUs
+                for advanced certifications, including LPM. That article does
+                not put a dollar amount on renewal, and it does not say
+                &quot;per year&quot; next to the 24.
+              </p>
+              <p className="text-lg text-[#475569] leading-relaxed mb-4">
+                Tuition on the Agile36 course pages that day:{" "}
+                <Link
+                  href="/courses/leading-safe"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  Leading SAFe $515
+                </Link>
+                .{" "}
+                <Link
+                  href="/courses/scrum-master"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  SAFe Scrum Master $515
+                </Link>
+                .{" "}
+                <Link
+                  href="/courses/product-owner-manager"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  POPM $545
+                </Link>
+                .{" "}
+                <Link
+                  href="/courses/lean-portfolio-management"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  LPM $950
+                </Link>
+                .
+              </p>
+              <p className="text-lg text-[#475569] leading-relaxed">
+                Worth it still depends on the job in front of you. If you are
+                responsible for leading the change, the next step is{" "}
+                <Link
+                  href="/courses/leading-safe"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  Leading SAFe
+                </Link>
+                . If you facilitate a team on an Agile Release Train, the next
+                step is{" "}
+                <Link
+                  href="/courses/scrum-master"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  SSM
+                </Link>
+                . If you own the backlog, the features, or the product seat in
+                planning, the next step is{" "}
+                <Link
+                  href="/courses/product-owner-manager"
+                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                >
+                  POPM
+                </Link>
+                .
+              </p>
+            </div>
 
             <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
               Is SAFe recognized internationally?

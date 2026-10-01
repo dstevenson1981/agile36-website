@@ -132,7 +132,7 @@ export default async function LeanPortfolioManagementLayout({
         "name": "How long is SAFe LPM training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SAFe LPM training is 2 days (16 hours). After completing the course, you take the online LPM exam within 30 days. The exam takes 120 minutes. Upon passing, you earn the LPM certification valid for one year. The certification demonstrates enterprise-level SAFe portfolio management expertise."
+          "text": "SAFe LPM training is 2 days (16 hours). The first exam attempt is included and must be taken within 60 days of course completion. The certification page describes a timed, multiple-choice, 45-question exam and does not state the length or the pass mark. Additional attempts can be purchased from Scaled Agile."
         }
       }
     ]

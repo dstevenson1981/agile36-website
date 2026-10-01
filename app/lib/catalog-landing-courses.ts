@@ -157,7 +157,6 @@ const popm: CatalogLandingContent = {
     [
       {
         title: "Product Owner and Product Manager roles",
-        weight: "12–14%",
         topics: [
           "Applying SAFe to the PO and PM roles",
           "The Lean-Agile mindset",
@@ -167,7 +166,6 @@ const popm: CatalogLandingContent = {
       },
       {
         title: "PI Planning preparation",
-        weight: "17–19%",
         topics: [
           "How PI Planning works",
           "Solution vision",
@@ -178,7 +176,6 @@ const popm: CatalogLandingContent = {
       },
       {
         title: "Leadership for PI Planning",
-        weight: "14–16%",
         topics: [
           "Communicating the vision",
           "Planning PI Objectives",
@@ -188,7 +185,6 @@ const popm: CatalogLandingContent = {
       },
       {
         title: "Iteration execution",
-        weight: "28–30%",
         topics: [
           "Creating stories",
           "Planning an iteration",
@@ -200,7 +196,6 @@ const popm: CatalogLandingContent = {
       },
       {
         title: "PI execution",
-        weight: "10–12%",
         topics: [
           "PO Sync",
           "System Demo",
@@ -210,7 +205,6 @@ const popm: CatalogLandingContent = {
       },
       {
         title: "Apply AI to product roles",
-        weight: "12–14%",
         topics: [
           "AI basics and terminology",
           "Prompting for product work",
@@ -222,7 +216,7 @@ const popm: CatalogLandingContent = {
     ["Roles, vision, and PI Planning", "Execution, flow, and AI"]
   ),
   examNote:
-    "Exam: 90 minutes, 82% to pass. Day 2 also includes exam prep — your first two attempts are included.",
+    "Checked 2026-09-30. Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Official pages do not agree on a pass mark, so this page does not state one. Two attempts are included within 60 days of course completion. After that, the May 5, 2026 exam details list a $50 retake fee. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
   examGuidelinesHref:
     "https://scaledagile.com/certification/product-owner-product-manager/#h-exam-guidelines",
   reviews: [
@@ -289,14 +283,14 @@ const popm: CatalogLandingContent = {
         q: "What is the difference between a SAFe Product Owner and a SAFe Product Manager?",
         a: "In SAFe, the Product Owner (PO) works at the team level — managing the team backlog and writing stories. The Product Manager (PM) operates at the program level — defining the product vision, roadmap, and features for the Agile Release Train. The POPM course covers both roles.",
       },
-      examIncluded(30),
+      examIncluded(60),
       {
         q: "What is the passing score for the SAFe POPM exam?",
-        a: "The current AI-Empowered POPM exam is 90 minutes. Scaled Agile requires 82% to pass. See the exam guidelines on this page under Course curriculum.",
+        a: "The POPM exam is 90 minutes and 45 questions. Scaled Agile's certification page and the May 5, 2026 exam details do not match the May 27, 2026 study guide on the pass mark, so this page does not state a percent.",
       },
       {
         q: "How long is SAFe POPM certification valid?",
-        a: "One year from the date you pass the exam. Annual renewal requires a minimum of 12 Continuing Education Units (CEUs).",
+        a: "The POPM certification page says a minimum of 12 CEUs each year. The August 14, 2026 renewal article lists POPM among foundational certifications that require 12 CEUs.",
       },
       {
         q: "Do I need to be in a software company to take SAFe POPM?",
@@ -629,7 +623,6 @@ const scrumMaster: CatalogLandingContent = {
     [
       {
         title: "Introducing Scrum in SAFe",
-        weight: "10-12%",
         topics: [
           "Scrum in a SAFe enterprise",
           "Agile Teams and the Agile Release Train",
@@ -639,7 +632,6 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         title: "Characterizing the role of the Scrum Master",
-        weight: "21-23%",
         topics: [
           "Servant leadership and the Team Coach stance",
           "Coaching the Agile Team",
@@ -649,7 +641,6 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         title: "Participating in PI Planning",
-        weight: "14-16%",
         topics: [
           "PI Planning purpose and agenda",
           "Scrum Master responsibilities during PI Planning",
@@ -659,7 +650,6 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         title: "Facilitating the Iteration Execution",
-        weight: "21-23%",
         topics: [
           "Planning the Iteration",
           "Tracking iteration progress and flow",
@@ -669,7 +659,6 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         title: "Finishing the PI",
-        weight: "14-16%",
         topics: [
           "System Demo",
           "Inspect and Adapt",
@@ -679,7 +668,6 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         title: "Augmenting the Scrum Master Role with AI",
-        weight: "12-14%",
         topics: [
           "AI basics for Scrum Masters",
           "Prompting for facilitation and coaching",
@@ -694,7 +682,7 @@ const scrumMaster: CatalogLandingContent = {
     ]
   ),
   examNote:
-    "Exam: 90 minutes, 80% to pass. Your first two attempts are included.",
+    "Checked 2026-09-30. Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Official pages do not agree on a pass mark, so this page does not state one. Two attempts are included within 60 days of course completion for courses taken after April 14, 2026. After that, the August 11, 2026 exam details list a $50 unproctored retake. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
   examGuidelinesHref: "https://scaledagile.com/certification/scrum-master/",
   reviews: [
     {
@@ -763,7 +751,7 @@ const scrumMaster: CatalogLandingContent = {
       examIncluded(60),
       {
         q: "What is the passing score for the SAFe Scrum Master exam?",
-        a: "The current SSM exam is 90 minutes. Scaled Agile requires 80% to pass. See the exam guidelines on this page under Course curriculum.",
+        a: "The SSM exam is 90 minutes and 45 questions. The certification page and the August 11, 2026 exam details do not agree with an older study guide on the pass mark, so this page does not state a percent.",
       },
       {
         q: "Can I take the SAFe SSM exam online?",
@@ -771,7 +759,7 @@ const scrumMaster: CatalogLandingContent = {
       },
       {
         q: "How long does SAFe Scrum Master certification last?",
-        a: "One year. Confirm current continuing-education and renewal steps on Scaled Agile's SSM certification page when you certify.",
+        a: "The SSM certification page says a minimum of 24 CEUs within the two-year certification cycle, which it says amounts to 12 CEUs annually. The August 14, 2026 renewal article lists SSM with the foundational certifications that require 12 CEUs and does not say per year in that sentence.",
       },
       {
         q: "Does Agile36 offer corporate/team training for SAFe Scrum Master?",
@@ -905,7 +893,7 @@ const lpm: CatalogLandingContent = {
     ["Strategy and lean budgets", "Portfolio operations and adoption"]
   ),
   examNote:
-    "Exam: 90 minutes. Scaled Agile's current guideline is 77% (35/45) to pass. Your first exam attempt is included.",
+    "Checked 2026-09-30. Multiple choice, single select, web-based, closed book, 45 questions. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. The certification page does not state the length or the pass mark, so this page does not state them. Your first attempt is included and must be taken within 60 days of course completion. Additional attempts can be purchased from Scaled Agile. The April 7, 2026 study guide lists a $50 retake fee. The first retake is available immediately after a failed attempt, the next after 10 days, and the next after 30 days.",
   examGuidelinesHref:
     "https://scaledagile.com/certification/lean-portfolio-management/",
   reviews: [
@@ -970,21 +958,24 @@ const lpm: CatalogLandingContent = {
     exam: [
       {
         q: "What is the format of the SAFe Lean Portfolio Management exam?",
-        a: "The exam is 90 minutes. Scaled Agile's current guideline is 77% (35/45) to pass. Confirm the latest details on Scaled Agile's LPM exam guidelines.",
+        a: "The certification page describes a timed, multiple-choice, 45-question exam. It does not state the length or the pass mark, so this page does not state them.",
       },
-      examIncluded(30, 1),
+      examIncluded(60, 1),
       {
         q: "What is the passing score for the SAFe LPM exam?",
-        a: "Scaled Agile's current guideline is 77% (35/45) to pass on a 90-minute exam. See the exam guidelines on this page under Course curriculum.",
+        a: "The LPM certification page does not state a pass mark. This page does not fill one in.",
       },
       {
         q: "Can I take the exam online?",
         a: "Yes, the exam can be taken online from anywhere. You'll receive instructions on how to access the exam portal after completing the course.",
       },
-      failExamFaq(1),
+      {
+        q: "What happens if I fail the exam?",
+        a: "Your first exam attempt is included and must be taken within 60 days of course completion. Additional attempts can be purchased from Scaled Agile. The April 7, 2026 study guide lists a $50 retake fee. The first retake is available immediately after a failed attempt, the next after 10 days, and the next after 30 days.",
+      },
       {
         q: "How do I renew my SAFe LPM certification?",
-        a: "The SAFe Lean Portfolio Management certification is valid for one year. Confirm current continuing-education and renewal steps on scaledagile.com.",
+        a: "The August 14, 2026 renewal article lists LPM among advanced certifications that require 24 CEUs and does not say per year. The LPM certification page says the certification is renewed yearly and does not state a CEU number.",
       },
     ],
     generic: [
@@ -3286,17 +3277,17 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
   "product-owner-manager": {
     prerequisites:
       "There are no formal prerequisites. A working knowledge of Agile or Scrum, and experience with product backlogs or customer requirements, is recommended but not required.",
-    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "82%" }),
+    format: safeExamFormat({ durationMinutes: 90, questions: 45 }),
   },
   "scrum-master": {
     prerequisites:
       "There are no formal prerequisites. A basic understanding of Scrum or Agile, and familiarity with iteration-based delivery, is recommended but not required.",
-    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "80%" }),
+    format: safeExamFormat({ durationMinutes: 90, questions: 45 }),
   },
   "lean-portfolio-management": {
     prerequisites:
       "There are no formal prerequisites. Familiarity with Agile and experience in product, program, or portfolio work is recommended. Leading SAFe is helpful before this class.",
-    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "77% (35/45)" }),
+    format: safeExamFormat({ questions: 45 }),
   },
   "agile-product-management": {
     prerequisites:

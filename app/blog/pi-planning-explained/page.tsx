@@ -1133,10 +1133,21 @@ export default async function PiPlanningExplainedBlogPost() {
               Where to go from here
             </h2>
             <p className="text-lg text-[#475569] mb-6 leading-relaxed">
-              If you&apos;re planning to facilitate PI Planning, the Release
-              Train Engineer certification is the right path. If you&apos;re
-              planning to lead your organization toward adopting SAFe, start
-              with Leading SAFe.
+              If this event is the job you need to learn, the next step is{" "}
+              <Link
+                href="/courses/leading-safe"
+                className="text-[#d97706] font-semibold underline hover:no-underline"
+              >
+                Leading SAFe
+              </Link>
+              . Use{" "}
+              <Link
+                href="/courses/scrum-master"
+                className="text-[#d97706] font-semibold underline hover:no-underline"
+              >
+                SAFe Scrum Master
+              </Link>{" "}
+              only if your seat is team facilitation, not the ART.
             </p>
             <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 text-center mb-8">
               <p className="text-xl font-bold mb-3">

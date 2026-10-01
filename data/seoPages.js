@@ -2688,7 +2688,7 @@ SAFe generally recommends feature teams over component teams because feature tea
 
 Agile36 offers both SAFe for Teams and Leading SAFe certifications with expert instruction and comprehensive exam preparation. Our courses prepare you for success in either role.
 
-**Ready to start your SAFe journey?** Explore our [SAFe for Teams](/safe-for-teams) and [Leading SAFe](/leading-safe-6) courses to find the right certification for your role and experience level.`,
+**Ready to start your SAFe journey?** If you are the leader, the next step is [Leading SAFe](/courses/leading-safe): the SAFe Agilist exam is 90 minutes, 45 questions, 80% to pass ([Scaled Agile](https://scaledagile.com/certification/safe-agilist/)).`,
     category: 'comparison',
     faq: [
       {

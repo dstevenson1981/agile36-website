@@ -472,7 +472,15 @@ export default function CityLeadingSafeCoursePage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#1f2c4a] mb-4">Prerequisites for Leading SAFe Certification Training Course?</h3>
                       <p className="text-base text-[#475569] mb-4">
-                        There are no prerequisites to enroll in the <strong>Leading SAFe Certification course.</strong> However, it is recommended for professionals to have:
+                        There are no prerequisites to enroll in the{" "}
+                        {city === "new-york" ? (
+                          <Link href="/courses/leading-safe" className="font-semibold text-[#d97706] underline hover:text-[#b45309]">
+                            Leading SAFe Certification course
+                          </Link>
+                        ) : (
+                          <strong>Leading SAFe Certification course</strong>
+                        )}
+                        . However, it is recommended for professionals to have:
                       </p>
                       <div className="bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/15 rounded-lg p-6 space-y-3">
                         <div className="flex items-start gap-3">

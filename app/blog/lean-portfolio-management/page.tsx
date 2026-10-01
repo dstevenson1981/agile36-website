@@ -945,6 +945,17 @@ export default async function LeanPortfolioManagementBlogPost() {
               </Link>{" "}
               if you're choosing between portfolio and product tracks.
             </p>
+            <p className="text-lg text-[#475569] leading-relaxed mb-8">
+              If you fund value streams or own portfolio governance, the next
+              step is the live class:{" "}
+              <Link
+                href="/courses/lean-portfolio-management"
+                className="text-[#d97706] hover:underline"
+              >
+                SAFe Lean Portfolio Management
+              </Link>
+              .
+            </p>
 
             <div className="rounded-2xl border border-amber-400/30 bg-[#d97706]/[0.06] p-6 my-8">
               <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
@@ -1046,7 +1057,14 @@ export default async function LeanPortfolioManagementBlogPost() {
               If you're accountable for portfolio strategy, funding, or
               governance in a SAFe organization, LPM is the credential built for
               that role. It's a 2-day course with the exam attempt included —
-              see the{" "}
+              the next step is the{" "}
+              <Link
+                href="/courses/lean-portfolio-management"
+                className="text-[#d97706] hover:underline"
+              >
+                live LPM class
+              </Link>
+              . See the{" "}
               <Link
                 href="/blog/safe-lpm-certification-cost-2026"
                 className="text-[#d97706] hover:underline"

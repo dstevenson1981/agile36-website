@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { seoPages } from '@/data/seoPages';
 import FaqItem from './FaqItem';
@@ -42,6 +43,32 @@ export async function generateMetadata({
   };
 }
 
+function renderInline(text: string, keyPrefix: string) {
+  const tokens = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  return tokens.map((part, pIdx) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={`${keyPrefix}-${pIdx}`}>{part.slice(2, -2)}</strong>;
+    }
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link) {
+      const href = link[2];
+      if (href.startsWith("/")) {
+        return (
+          <Link key={`${keyPrefix}-${pIdx}`} href={href}>
+            {link[1]}
+          </Link>
+        );
+      }
+      return (
+        <a key={`${keyPrefix}-${pIdx}`} href={href} rel="noopener noreferrer" target="_blank">
+          {link[1]}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 function formatBodyContent(body: string | undefined) {
   if (!body) return null;
 
@@ -64,34 +91,14 @@ function formatBodyContent(body: string | undefined) {
       const items = trimmed.split(/\n(?=-|\*)/).map((item) => item.replace(/^[-*] /, '').trim());
       return (
         <ul key={idx}>
-          {items.map((item, i) => {
-            const parts = item.split(/(\*\*[^*]+\*\*)/g);
-            return (
-              <li key={i}>
-                {parts.map((part, pIdx) => {
-                  if (part.startsWith('**') && part.endsWith('**')) {
-                    return <strong key={pIdx}>{part.slice(2, -2)}</strong>;
-                  }
-                  return part;
-                })}
-              </li>
-            );
-          })}
+          {items.map((item, i) => (
+            <li key={i}>{renderInline(item, `${idx}-${i}`)}</li>
+          ))}
         </ul>
       );
     }
 
-    const parts = trimmed.split(/(\*\*[^*]+\*\*)/g);
-    return (
-      <p key={idx}>
-        {parts.map((part, pIdx) => {
-          if (part.startsWith('**') && part.endsWith('**')) {
-            return <strong key={pIdx}>{part.slice(2, -2)}</strong>;
-          }
-          return part;
-        })}
-      </p>
-    );
+    return <p key={idx}>{renderInline(trimmed, String(idx))}</p>;
   });
 }
 
