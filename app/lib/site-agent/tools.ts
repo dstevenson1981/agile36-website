@@ -41,7 +41,7 @@ export const SITE_AGENT_TOOLS = [
         properties: {
           course: { type: "string", description: "Course name, acronym, or slug" },
           proposed_price: { type: "number", description: "Dollar amount you want to offer" },
-          corporate: { type: "boolean", description: "True for a team / private / corporate 20% quote" },
+          corporate: { type: "boolean", description: "True for a team / private / corporate 15% quote" },
         },
         required: ["course"],
       },
@@ -165,7 +165,7 @@ export async function executeSiteAgentTool(
       return {
         ok: false,
         handoff: true,
-        message: "No public list price. Ask for email and hand off, or quote corporate 20% only after a live price exists.",
+        message: "No public list price. Ask for email and hand off, or quote corporate 15% only after a live price exists.",
       };
     }
 

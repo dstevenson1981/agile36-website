@@ -125,7 +125,7 @@ export function floorForCourse(course: ResolvedCourse, publicPrice: number): {
   }
   return {
     floor: null,
-    rule: "No public floor. Do not invent a public cut. Corporate 20% or hand off if unsure.",
+    rule: "No public floor. Do not invent a public cut. Corporate 15% or hand off if unsure.",
   };
 }
 
@@ -144,7 +144,7 @@ export function allowedOffer(args: {
   rule: string;
 } {
   const { floor, rule } = floorForCourse(args.course, args.publicPrice);
-  const corporatePrice = Math.round(args.publicPrice * 0.8);
+  const corporatePrice = Math.round(args.publicPrice * 0.85);
   let lowestAllowed = floor;
 
   if (args.corporate) {
@@ -160,7 +160,7 @@ export function allowedOffer(args: {
       proposed,
       allowed: true,
       handoff: false,
-      rule: args.corporate ? `${rule} Corporate 20% is $${corporatePrice} before the floor.` : rule,
+      rule: args.corporate ? `${rule} Corporate 15% is $${corporatePrice} before the floor.` : rule,
     };
   }
 
