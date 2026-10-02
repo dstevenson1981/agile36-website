@@ -668,7 +668,7 @@ export default function PopmCourseLanding({
   const isPrivateClass = content.slug === "release-train-engineer";
   const isSafePartner = content.safePartner !== false;
   const showClaudePartner = isClaudePartnerCourse(content.slug);
-  const tuition = isPrivateClass ? null : COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
+  const tuition = COURSE_HERO_SCHEDULE_LIST_USD[content.slug] ?? null;
   const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles(), []);
   const navItems = useMemo(
     () => [
@@ -969,13 +969,24 @@ export default function PopmCourseLanding({
                       </p>
                     )}
                   </div>
-                  <a
-                    href="#dates"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
-                  >
-                    Choose a cohort
-                    <ArrowIcon />
-                  </a>
+                  {isPrivateClass ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowCorporateQuote(true)}
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                    >
+                      Request a private cohort
+                      <ArrowIcon />
+                    </button>
+                  ) : (
+                    <a
+                      href="#dates"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                    >
+                      Choose a cohort
+                      <ArrowIcon />
+                    </a>
+                  )}
                 </div>
               ) : null}
             </div>
