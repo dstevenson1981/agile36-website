@@ -212,7 +212,7 @@ export const CATALOG_COURSES: CatalogCourse[] = [
       title: "AI-Empowered SAFe Release Train Engineer",
       category: "SAFe",
       image: "/marvin-meyer-SYTO3xs06fU-unsplash.jpg",
-      price: 0,
+      price: 1150,
       originalPrice: 0,
       hours: "16 Hrs",
       days: "02 days",

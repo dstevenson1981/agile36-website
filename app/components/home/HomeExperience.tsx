@@ -201,8 +201,12 @@ function CourseCard({ course }: { course: CatalogCourse }) {
         </div>
 
         <div className="mt-5 flex items-end justify-between border-t border-[#1f2c4a]/10 pt-4">
-          {isPrivate ? (
+          {isPrivate && course.price <= 0 ? (
             <span className="text-sm font-medium text-[#1f2c4a]">Private cohort</span>
+          ) : isPrivate ? (
+            <span className="text-2xl font-semibold text-[#1f2c4a]">
+              {formatPrice(course.price)}
+            </span>
           ) : (
             <span className="flex items-baseline gap-2">
               <span className="text-2xl font-semibold text-[#1f2c4a]">

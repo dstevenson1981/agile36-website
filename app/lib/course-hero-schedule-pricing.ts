@@ -9,7 +9,7 @@ export const COURSE_HERO_SCHEDULE_LIST_USD: Record<string, { current: number; or
   "safe-for-architects": { current: 1399, original: 2798 },
   "lean-portfolio-management": { current: 950, original: 1900 },
   "safe-for-teams": { current: 599, original: 1030 },
-  "release-train-engineer": { current: 1299, original: 1699 },
+  "release-train-engineer": { current: 1150, original: 1699 },
   "devops": { current: 599, original: 1398 },
   "responsible-ai": { current: 350, original: 700 },
   "value-stream-mapping": { current: 350, original: 700 },

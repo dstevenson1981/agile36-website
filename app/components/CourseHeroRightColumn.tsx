@@ -43,7 +43,7 @@ export default function CourseHeroRightColumn({
   scheduleButtonLabel,
 }: Props) {
   const isPrivate = privateClass ?? PRIVATE_CLASS_SLUGS.has(courseSlug);
-  const list = isPrivate ? null : COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
+  const list = COURSE_HERO_SCHEDULE_LIST_USD[courseSlug];
   const showClaudePartner = isClaudePartnerCourse(courseSlug);
   const showPartner =
     !showClaudePartner &&
@@ -81,7 +81,7 @@ export default function CourseHeroRightColumn({
                     className="mt-1 text-[1.35rem] font-semibold leading-none text-[#1f2c4a]"
                     style={{ letterSpacing: "-0.03em" }}
                   >
-                    Contact for pricing
+                    {list ? `$${list.current.toLocaleString()}` : "Contact for pricing"}
                   </p>
                   {showPartner ? (
                     <div className="mt-2.5">

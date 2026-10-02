@@ -277,7 +277,7 @@ export default function Home() {
       title: "AI-Empowered SAFe Release Train Engineer",
       category: "SAFe",
       image: "/headway-5QgIuuBxKwM-unsplash.jpg",
-      price: 0,
+      price: 1150,
       originalPrice: 0,
       hours: "16 Hrs",
       days: "03 days",

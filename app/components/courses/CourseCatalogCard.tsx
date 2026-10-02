@@ -48,9 +48,11 @@ export default function CourseCatalogCard({
         : null;
 
   const priceLabel =
-    course.privateClass || course.price <= 0
-      ? "Contact for pricing"
-      : `From $${course.price}`;
+    course.price > 0
+      ? course.privateClass
+        ? `$${course.price.toLocaleString()}`
+        : `From $${course.price}`
+      : "Contact for pricing";
 
   return (
     <article className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full">

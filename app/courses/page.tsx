@@ -113,9 +113,11 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
         : null;
 
   const priceLabel =
-    course.privateClass || course.price <= 0
-      ? "Contact for pricing"
-      : `From $${course.price}`;
+    course.price > 0
+      ? course.privateClass
+        ? `$${course.price.toLocaleString()}`
+        : `From $${course.price}`
+      : "Contact for pricing";
 
   return (
     <article className="rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] overflow-hidden flex flex-col h-full">
