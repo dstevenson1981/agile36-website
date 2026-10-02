@@ -330,3 +330,27 @@ export function comboCategoryForCourseSlug(_slug: string): string {
 export function shouldShowCourseHeroCombos(courseSlug: string): boolean {
   return COMBO_COURSES.some((c) => c.courses.some((x) => x.slug === courseSlug));
 }
+
+/** Courses that appear in the public catalog, in catalog order, for the combo filter. */
+export function comboFilterCourses(): { slug: string; label: string }[] {
+  const order = new Map(CATALOG.map((c, i) => [c.slug, i]));
+  const seen = new Map<string, string>();
+  for (const combo of COMBO_COURSES) {
+    for (const course of combo.courses) {
+      if (seen.has(course.slug)) continue;
+      seen.set(course.slug, BY_SLUG[course.slug]?.shortName ?? course.name);
+    }
+  }
+  return [...seen.entries()]
+    .sort((a, b) => (order.get(a[0]) ?? 99) - (order.get(b[0]) ?? 99))
+    .map(([slug, label]) => ({ slug, label }));
+}
+
+/** Published two-course bundle for a pair, if one exists. */
+export function findComboByCourseSlugs(a: string, b: string): Combo | undefined {
+  if (!a || !b || a === b) return undefined;
+  return COMBO_COURSES.find((combo) => {
+    const slugs = combo.courses.map((course) => course.slug);
+    return slugs.includes(a) && slugs.includes(b);
+  });
+}
