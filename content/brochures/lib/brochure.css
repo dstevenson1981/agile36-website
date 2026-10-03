@@ -258,6 +258,12 @@
     margin-top: 4px;
     display: block;
   }
+  .cover-fact .k.long {
+    font-size: 7pt;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    text-transform: none;
+  }
   /* Cinematic band that dissolves into the navy at both edges */
   .cover-band {
     position: absolute;

@@ -105,10 +105,10 @@ export const seoPages = [
     slug: 'safe-rte',
     title: 'SAFe® Release Train Engineer | Agile36',
     h1: 'SAFe® Release Train Engineer Training',
-    description: 'Learn to facilitate ART events, coach teams and leaders, and drive relentless improvement. 2-day class.',
+    description: 'Learn to facilitate ART events, coach teams and leaders, and drive relentless improvement. 3-day class.',
     body: `Become a certified SAFe RTE. Learn facilitation, coaching, and program-level execution skills to lead Agile Release Trains successfully.`,
     category: 'safe-certification',
-    duration: '02 days',
+    duration: '03 days',
     badge: 'Popular',
     level: 'Advanced'
   },
@@ -738,7 +738,7 @@ RTE certification prepares you to facilitate and coordinate Agile Release Trains
 | **Experience Required** | No prerequisites | 5+ years agile experience recommended |
 | **Focus** | Enterprise transformation, SAFe framework understanding | Program coordination, ART facilitation |
 | **Salary Range** | $100,000-$150,000 | $125,000-$190,000 |
-| **Duration** | 2 days | 2-3 days |
+| **Duration** | 2 days | 3 days |
 | **Exam** | 45 questions, 90 minutes | 60 questions, 120 minutes |
 | **Career Path** | Transformation Leader, Enterprise Agile Coach | Senior RTE, Enterprise Agile Coach |
 
@@ -3141,7 +3141,7 @@ SPC certification prepares you to implement SAFe at the enterprise level, train 
 | **Level** | Program level | Enterprise level |
 | **Responsibilities** | Facilitate ARTs, coordinate teams | Implement SAFe, train others, lead transformations |
 | **Salary Range** | $125,000-$190,000 | $130,000-$200,000+ |
-| **Duration** | 2-3 days | 4 days |
+| **Duration** | 3 days | 4 days |
 | **Career Path** | Senior RTE, Enterprise Agile Coach | Transformation Leader, SAFe Trainer, Enterprise Coach |
 
 ## Which Certification Should You Choose?

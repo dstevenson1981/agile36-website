@@ -34,6 +34,26 @@ const money = (n: number) => `$${n.toLocaleString("en-US")}`;
  */
 const safe = (c: BrochureCourse) => c.accreditation?.safe !== false;
 
+/**
+ * Cover hour fact. Most courses award the same count of PDUs and SEUs as
+ * live hours, so the cover shows "16 hrs" over "PDUs & SEUs". When the
+ * counts differ, keep the hours and print the credit line underneath
+ * instead of implying the hour count is both.
+ */
+function coverHoursFact(c: BrochureCourse): { value: string; label: string; long: boolean } {
+  const hours = c.duration.hours;
+  const paired = `${hours} PDUs / SEUs`;
+  const pdusOnly = `${hours} PDUs`;
+  if (c.credits === paired || c.credits === pdusOnly) {
+    return {
+      value: `${hours} hrs`,
+      label: safe(c) ? "PDUs & SEUs" : "PDUs",
+      long: false,
+    };
+  }
+  return { value: `${hours} hrs`, label: c.credits, long: true };
+}
+
 type Trainer = { name: string; role: string; bio: string; image: string };
 
 const TRAINERS: Trainer[] = [
@@ -94,6 +114,7 @@ function statTiles(items: { value: string; unit?: string; label: string }[]) {
 
 function cover(c: BrochureCourse, l: BrochureLanding) {
   const { main: line1, accent: tail } = c.coverTitle;
+  const hoursFact = coverHoursFact(c);
   return `<section class="page cover">
   <div class="cover-band"><img src="${esc(c.band)}" alt="" /></div>
   <div class="cover-inner">
@@ -106,7 +127,7 @@ function cover(c: BrochureCourse, l: BrochureLanding) {
       <div class="cover-line"></div>
       <div class="cover-facts">
         <div class="cover-fact"><span class="v">${esc(c.duration.days)}</span><span class="k">Live online</span></div>
-        <div class="cover-fact"><span class="v">${esc(c.duration.hours)} hrs</span><span class="k">${safe(c) ? "PDUs &amp; SEUs" : "PDUs"}</span></div>
+        <div class="cover-fact"><span class="v">${esc(hoursFact.value)}</span><span class="k${hoursFact.long ? " long" : ""}">${esc(hoursFact.label)}</span></div>
         <div class="cover-fact"><span class="v">${c.exam ? "Included" : "Included"}</span><span class="k">${c.exam ? "Exam + retake" : "Courseware"}</span></div>
         <div class="cover-fact"><span class="v">${money(c.price.current)}</span><span class="k">Per seat</span></div>
       </div>

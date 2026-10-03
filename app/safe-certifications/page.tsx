@@ -107,8 +107,9 @@ const COURSES = [
     url: "/courses/release-train-engineer",
     level: "Advanced",
     description: "Private cohort — facilitate and coach the ART at program level with responsible AI practices for PI readiness and alignment",
-    duration: "2 days",
-    pdus: "16",
+    duration: "3 days",
+    pdus: "20",
+    credits: "20 PDUs and 24 SEU credits",
     badge: "/RTE.png",
   },
   {
@@ -132,7 +133,7 @@ const COMPARISON_TABLE = [
   { cert: "AI-Empowered SAFe SASM", bestFor: "Senior Scrum Masters, Agile Coaches", level: "Advanced", duration: "2 days" },
   { cert: "SAFe DevOps", bestFor: "Dev/Ops Engineers, Release Managers", level: "Specialist", duration: "2 days" },
   { cert: "AI-Empowered SAFe for Teams", bestFor: "All ART team members", level: "Foundation", duration: "2 days" },
-  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches (private cohort)", level: "Advanced", duration: "2–3 days" },
+  { cert: "AI-Empowered RTE", bestFor: "ARTs, Senior Agile Coaches (private cohort)", level: "Advanced", duration: "3 days" },
 ];
 
 const FAQS = [
@@ -295,7 +296,7 @@ export default function SafeCertificationsPage() {
                 <h3 className="text-lg font-medium text-[#1f2c4a] mb-2">{course.name}</h3>
                 <p className="text-sm text-[#475569] mb-4 flex-1">{course.description}</p>
                 <p className="text-xs text-[#64748b] mb-4">
-                  {course.duration} | {course.pdus} PDUs | Exam Included
+                  {course.duration} | {"credits" in course && course.credits ? course.credits : `${course.pdus} PDUs`} | Exam Included
                 </p>
                 <Link
                   href={course.url}
