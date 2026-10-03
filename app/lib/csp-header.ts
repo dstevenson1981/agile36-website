@@ -8,7 +8,8 @@
  *
  * **Known stack:** `app/globals.css` `@import`s Google Fonts; root layout loads Crisp,
  * Apollo, Stripe (checkout), Microsoft Clarity,
- * Vercel Analytics from fpcdn/openfpcdn depending on version/build.
+ * Vercel Analytics from fpcdn/openfpcdn depending on version/build,
+ * and GA4 (gtag.js from www.googletagmanager.com).
  *
  * **Crisp:** needs script + **style** (CSS is served from client.crisp.chat), fonts,
  * websocket relay, frames (game widget), and media — see Crisp CSP docs.
@@ -33,7 +34,8 @@ export const AGILE36_CONTENT_SECURITY_POLICY =
   "https://fpcdn.io " +
   "https://*.fpjs.io " +
   "https://cdn.credly.com " +
-  "https://www.credly.com; " +
+  "https://www.credly.com " +
+  "https://www.googletagmanager.com; " +
   "style-src 'self' 'unsafe-inline' " +
   "https://fonts.googleapis.com " +
   "https://api.fontshare.com " +

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   SCHEMA_DEFAULT_OG_IMAGE_HEIGHT,
   SCHEMA_DEFAULT_OG_IMAGE_URL,
@@ -30,6 +31,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+/** Public GA4 web stream for www.agile36.com. Appears in page source. */
+const DEFAULT_GA_MEASUREMENT_ID = "G-1LCEZNZHZ7";
+
+/** GA4 measurement IDs look like G-XXXXXXXX. A placeholder stays off. */
+function readGaMeasurementId(): string | null {
+  const fromEnv = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "";
+  const value = fromEnv || DEFAULT_GA_MEASUREMENT_ID;
+  return /^G-[A-Z0-9]+$/.test(value) ? value : null;
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.agile36.com"),
@@ -73,6 +84,7 @@ export default async function RootLayout({
 }>) {
   const requestHeaders = await headers();
   const hideSiteHeader = requestHeaders.get("x-agile36-class-exam") === "1";
+  const gaMeasurementId = readGaMeasurementId();
   // Global Organization + WebSite graph (logo on org + site; articles use /og default in blog JSON-LD)
   const organizationNode = {
     "@type": "EducationalOrganization",
@@ -219,6 +231,8 @@ export default async function RootLayout({
         
         <ClarityAnalytics />
         <Analytics />
+        {/* One GA4 tag. Env ID wins when it is a real G- ID; otherwise the live default. */}
+        {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>
   );
