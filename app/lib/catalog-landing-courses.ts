@@ -25,6 +25,8 @@ const INCLUDES_24 =
   "Includes exam (first two attempts), official courseware, 24 PDUs · 24 SEUs & 1-year SAFe Studio access.";
 const INCLUDES_24_ONE =
   "Includes exam (first attempt), official courseware, 24 PDUs · 24 SEUs & 1-year SAFe Studio access.";
+const INCLUDES_RTE =
+  "Includes exam (first two attempts), official courseware, 20 PDUs · 24 SEUs, and 1-year SAFe Studio access.";
 const GUIDELINE_SCORE =
   "See Scaled Agile exam guidelines for the current passing score.";
 
@@ -2165,10 +2167,10 @@ const rte: CatalogLandingContent = {
   badgeSrc: "/RTE.png",
   badgeAlt: "SAFe Release Train Engineer badge",
   cardTitle: "SAFe® RTE Certification",
-  durationLabel: DURATION_2,
-  includesLine: INCLUDES_16,
+  durationLabel: DURATION_3,
+  includesLine: INCLUDES_RTE,
   highlights: [
-    "Attend 16 hours of live SAFe RTE training and earn 16 PDUs and SEUs",
+    "Attend 24 hours of live SAFe RTE training and earn 20 PDUs and 24 SEU credits",
     "Sit the official exam with your first two attempts included",
     "Get a year of SAFe Studio and Community access with courseware included",
   ],
@@ -2368,7 +2370,7 @@ const rte: CatalogLandingContent = {
       },
       {
         q: "How long is the course?",
-        a: "The SAFe Release Train Engineer certification training is a 2-day (16-hour) program.",
+        a: "The SAFe Release Train Engineer certification training is a 3-day (24-hour) program.",
       },
       {
         q: "What materials are included?",

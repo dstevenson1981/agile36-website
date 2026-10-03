@@ -949,8 +949,8 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     path: "/courses/release-train-engineer",
     price: PRICE["release-train-engineer"],
     exam: { minutes: 120, questions: 60, pass: "77%", attempts: "First two included" },
-    duration: { days: "2 days", hours: "16" },
-    credits: "16 PDUs / SEUs",
+    duration: { days: "3 days", hours: "24" },
+    credits: "20 PDUs and 24 SEU credits",
     prerequisites: [
       "None required, though this is an advanced course.",
       "Best suited to people already serving, or about to serve, as an RTE.",
@@ -1007,7 +1007,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { title: "Eight lessons", body: "Coaching the ART and Get Certified close the course after flow and improvement." },
     ],
     stats: [
-      { value: "2", label: "Days, live and instructor-led" },
+      { value: "3", label: "Days, live and instructor-led" },
       { value: "8", label: "Lessons in the official 26.6 courseware" },
       { value: "4", label: "AI topics and discussions across the class" },
       { value: "60", label: "Questions on the SAFe RTE certification exam" },

@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("release-train-engineer"),
   description:
-    "2026 live cohorts: SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 21 PDUs. Expert-led course.",
+    "2026 live cohorts: SAFe® AI-Empowered RTE training: ART facilitation and PI planning plus practical use of generative AI for dependency sense-making, PI readiness, and stakeholder communication—always with human judgment, privacy, and Scaled Agile exam alignment. Earn 20 PDUs and 24 SEU credits. Expert-led course.",
   keywords: [
     "AI-Empowered SAFe RTE",
     "SAFe Release Train Engineer",

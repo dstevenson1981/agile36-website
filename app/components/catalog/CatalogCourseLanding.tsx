@@ -62,6 +62,7 @@ function catalogIncludedItems(content: CatalogLandingContent): string[] {
   const items = [content.durationLabel, content.cardTitle];
   if (content.attemptsLine !== null) items.push("Certification exam included");
   if (/24 PDU/i.test(content.includesLine)) items.push("24 PDUs & SEUs");
+  else if (/20 PDU/i.test(content.includesLine)) items.push("20 PDUs & 24 SEUs");
   else if (/16 PDU/i.test(content.includesLine)) items.push("16 PDUs & SEUs");
   if (/SAFe Studio/i.test(content.includesLine)) items.push("1-year SAFe Studio access");
   return items;

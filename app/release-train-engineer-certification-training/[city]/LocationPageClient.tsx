@@ -90,7 +90,7 @@ export default function CityRTECoursePage() {
                   "Join SAFe AI-Empowered Release Train Engineer Training with Agile36, a Scaled Agile Silver Partner",
                   "Master PI Planning & flow—with responsible AI practices for RTE readiness",
                   "Learn from SPCs & access exclusive SAFe® resources for success",
-                  "Earn 16 PDUs & SEUs and join the global SAFe® Agile leader network",
+                  "Earn 20 PDUs and 24 SEU credits and join the global SAFe® Agile leader network",
                   "Get SAFe RTE certified with live sessions & SAFe exam guidance"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -281,7 +281,7 @@ export default function CityRTECoursePage() {
                         SAFe Release Train Engineer® 6.0 is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). This course prepares you to take the SAFe® 6 Agilist (SA) certification exam.
                       </p>
                       <p className="text-base text-[#475569] mb-4">
-                        During this two-day course, you'll learn how to lead an enterprise Agile transformation by leveraging the Scaled Agile Framework. You'll understand how to establish team and technical agility, organize around value, and lead the transformation.
+                        During this three-day course, you'll learn how to lead an enterprise Agile transformation by leveraging the Scaled Agile Framework. You'll understand how to establish team and technical agility, organize around value, and lead the transformation.
                       </p>
                     </div>
 
@@ -334,7 +334,7 @@ export default function CityRTECoursePage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
-                            <p className="font-semibold text-[#1f2c4a]">16 PDUs & SEUs</p>
+                            <p className="font-semibold text-[#1f2c4a]">20 PDUs & 24 SEUs</p>
                             <p className="text-sm text-[#64748b]">Earn professional development units</p>
                           </div>
                         </div>
@@ -670,7 +670,7 @@ export default function CityRTECoursePage() {
                       {[
                         { q: "What is the SAFe Release Train Engineer certification?", a: "The SAFe Release Train Engineer (SA) certification validates your knowledge of the Scaled Agile Framework and your ability to lead enterprise Agile transformations." },
                         { q: "How long is the certification valid?", a: "The SAFe Release Train Engineer certification is valid for one year from the date of issue. You can renew it by earning continuing education credits." },
-                        { q: "What is included in the course?", a: "The course includes 16 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
+                        { q: "What is included in the course?", a: "The course includes 24 hours of live training, course materials, practice exam, and one year of access to the SAFe Community Platform." },
                         { q: "Do I need prior Agile experience?", a: "While prior Agile experience is helpful, it's not required. The course is designed for both beginners and experienced practitioners." }
                       ].map((faq, index) => (
                         <div key={index} className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] rounded-lg p-6">
@@ -698,13 +698,13 @@ export default function CityRTECoursePage() {
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">16 Hours Training</span>
+                    <span className="text-sm text-[#475569]">24 Hours Training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">2 Days Duration</span>
+                    <span className="text-sm text-[#475569]">3 Days Duration</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -716,7 +716,7 @@ export default function CityRTECoursePage() {
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-[#475569]">16 PDUs & SEUs</span>
+                    <span className="text-sm text-[#475569]">20 PDUs & 24 SEUs</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -832,7 +832,7 @@ export default function CityRTECoursePage() {
                   { q: "What is SAFe Release Train Engineer certification?", a: "SAFe Release Train Engineer is a comprehensive course that provides the knowledge and skills needed to lead a Lean-Agile enterprise using the Scaled Agile Framework (SAFe). It prepares you for the SAFe 6 Agilist (SA) certification exam." },
                   { q: "Who should take this course?", a: "This course is ideal for executives, leaders, Agile coaches, program managers, product managers, and anyone interested in leading enterprise Agile transformations." },
                   { q: "What are the prerequisites for this course?", a: "There are no formal prerequisites. However, having a basic understanding of Agile principles and experience in software development or IT projects is recommended." },
-                  { q: "How long is the course?", a: "The SAFe Release Train Engineer course is a 2-day intensive training program, totaling 16 hours of instruction." },
+                  { q: "How long is the course?", a: "The SAFe Release Train Engineer course is a 3-day intensive training program, totaling 24 hours of instruction." },
                   { q: "What materials are included?", a: "Course materials include comprehensive study guides, practice exams, access to the SAFe Community Platform for one year, and all resources needed to prepare for the certification exam." },
                   { q: "Is this course available online?", a: "Yes, we offer both live virtual training (online) and in-person classroom training options. You can choose the format that works best for you." },
                   { q: "How do I maintain my certification?", a: "The SAFe Release Train Engineer certification is valid for one year. You can renew it by earning continuing education credits or by taking advanced SAFe courses." }
@@ -973,7 +973,7 @@ export default function CityRTECoursePage() {
                     Earn PDUs and SEUs for Career Advancement
                   </h3>
                   <p className="text-base text-[#475569]">
-                    Participants earn 16 PDUs and SEUs to maintain the validity of their certifications and expand professional credibility in the Agile market.
+                    Participants earn 20 PDUs and 24 SEU credits to maintain the validity of their certifications and expand professional credibility in the Agile market.
                   </p>
                 </div>
               </div>
