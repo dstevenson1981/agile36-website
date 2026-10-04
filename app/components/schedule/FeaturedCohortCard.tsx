@@ -83,7 +83,7 @@ export default function FeaturedCohortCard({
     : null;
   const tz = schedule ? formatTimezoneLabel(schedule.timezone) : null;
   const daysOfWeek = schedule
-    ? formatDaysOfWeek(schedule.start_date, schedule.end_date)
+    ? formatDaysOfWeek(schedule.start_date, schedule.end_date, schedule.timezone)
     : null;
   const currentPrice = schedule ? parseFloat(schedule.price) : list?.current;
   const originalPrice = schedule?.original_price

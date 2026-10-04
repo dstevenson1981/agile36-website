@@ -114,7 +114,7 @@ export default function ScheduleCard({
   const tzPill = formatTimezonePillLabel(schedule.timezone);
   const hoursPerDay = formatHoursPerDay(schedule.start_time, schedule.end_time);
   const durationLabel = formatDurationLabel(schedule.duration);
-  const daysOfWeek = formatDaysOfWeek(schedule.start_date, schedule.end_date);
+  const daysOfWeek = formatDaysOfWeek(schedule.start_date, schedule.end_date, schedule.timezone);
   const batchType = schedule.is_weekend === true ? "Weekend" : "Weekday";
   // Match ScheduleInstructorRow fallback so Learn More works when instructor_name is blank.
   const instructorDisplayName = schedule.instructor_name?.trim() || "Martina Svoboda";

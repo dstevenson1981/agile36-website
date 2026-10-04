@@ -229,12 +229,16 @@ const DAY_ABBR = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
 
 /**
  * Inclusive day-of-week labels between start and end dates, e.g. "Mon, Tue".
- * Uses calendar dates (UTC date parts when ISO-like) to avoid TZ day shifts.
+ * Uses the class timezone when one is passed, otherwise the UTC date prefix.
  */
-export function formatDaysOfWeek(startDate: string, endDate: string): string | null {
+export function formatDaysOfWeek(
+  startDate: string,
+  endDate: string,
+  timezone?: string,
+): string | null {
   try {
-    const start = parseCalendarDate(startDate);
-    const end = parseCalendarDate(endDate);
+    const start = calendarDayUtc(startDate, timezone);
+    const end = calendarDayUtc(endDate, timezone);
     if (!start || !end || end < start) return null;
 
     const days: string[] = [];
@@ -248,6 +252,25 @@ export function formatDaysOfWeek(startDate: string, endDate: string): string | n
   } catch {
     return null;
   }
+}
+
+/** Calendar day in the class timezone, so a 5pm Pacific end does not spill into the next UTC date. */
+function calendarDayUtc(value: string, timezone?: string): Date | null {
+  const tz = resolveIanaTimezone(timezone);
+  if (!tz) return parseCalendarDate(value);
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: tz,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const year = Number(parts.find((part) => part.type === "year")?.value);
+  const month = Number(parts.find((part) => part.type === "month")?.value);
+  const day = Number(parts.find((part) => part.type === "day")?.value);
+  if (!year || !month || !day) return null;
+  return new Date(Date.UTC(year, month - 1, day));
 }
 
 function parseCalendarDate(value: string): Date | null {
