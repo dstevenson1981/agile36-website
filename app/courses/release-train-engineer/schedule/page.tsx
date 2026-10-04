@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 import PrivateRegisterButton from "./PrivateRegisterButton";
 
 export const metadata: Metadata = {
@@ -11,6 +13,10 @@ export const metadata: Metadata = {
 
 /** Former public schedule URL — no open enrollment dates. */
 export default function RtePublicScheduleRetiredPage() {
+  if (isRtePublicEnrollmentOpen()) {
+    redirect("/courses/release-train-engineer#dates");
+  }
+
   return (
     <main className="min-h-screen bg-black text-[#1f2c4a]">
       <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-24 text-center">

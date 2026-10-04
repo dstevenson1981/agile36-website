@@ -9,6 +9,7 @@ import {
   getCatalogCourseUrl,
   getCatalogScheduleUrl,
 } from "@/app/lib/course-catalog";
+import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 
 type CourseCatalogCardProps = {
   course: CatalogCourse;
@@ -33,7 +34,10 @@ export default function CourseCatalogCard({
   const courseUrl = getCatalogCourseUrl(course);
   const scheduleUrl = getCatalogScheduleUrl(course);
   const acronym = getCatalogCourseAcronym(course.title);
-  const liveLabel = course.privateClass
+  const listedPrivate =
+    Boolean(course.privateClass) &&
+    !(getCatalogCourseSlug(course) === "release-train-engineer" && isRtePublicEnrollmentOpen());
+  const liveLabel = listedPrivate
     ? "Private class"
     : nextStartDate
       ? `Starts ${formatCatalogLiveDate(nextStartDate)}`
@@ -49,7 +53,7 @@ export default function CourseCatalogCard({
 
   const priceLabel =
     course.price > 0
-      ? course.privateClass
+      ? listedPrivate
         ? `$${course.price.toLocaleString()}`
         : `From $${course.price}`
       : "Contact for pricing";
@@ -116,7 +120,7 @@ export default function CourseCatalogCard({
           >
             View course
           </Link>
-          {course.privateClass ? (
+          {listedPrivate ? (
             <Link
               href={`/contact?course=${getCatalogCourseSlug(course)}`}
               className="flex-1 inline-flex items-center justify-center rounded-md bg-[#fa4a23] hover:bg-[#e03d1a] text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"

@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 export async function fetchActiveCourseSchedules(
@@ -16,7 +17,9 @@ export async function fetchActiveCourseSchedules(
 
   const includeHidden = options?.includeHidden === true;
   const softHiddenSlugs = new Set(["release-train-engineer"]);
-  const allowHiddenList = includeHidden && softHiddenSlugs.has(courseSlug);
+  const allowHiddenList =
+    (courseSlug === "release-train-engineer" && isRtePublicEnrollmentOpen()) ||
+    (includeHidden && softHiddenSlugs.has(courseSlug));
 
   const run = (withHiddenFilter: boolean) => {
     let query = supabase

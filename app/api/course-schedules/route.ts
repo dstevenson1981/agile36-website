@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { isRtePublicEnrollmentOpen } from '@/app/lib/rte-public-weekend';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -16,7 +17,8 @@ export async function GET(request: NextRequest) {
       searchParams.get('include_hidden') === 'true';
     const softHiddenSlugs = new Set(['release-train-engineer']);
     const allowHiddenList =
-      includeHidden && Boolean(courseSlug) && softHiddenSlugs.has(courseSlug!);
+      (courseSlug === 'release-train-engineer' && isRtePublicEnrollmentOpen()) ||
+      (includeHidden && Boolean(courseSlug) && softHiddenSlugs.has(courseSlug!));
 
     // Check if Supabase is configured
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

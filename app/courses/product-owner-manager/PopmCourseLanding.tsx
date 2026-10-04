@@ -9,6 +9,7 @@ import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
+import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 import { isClaudePartnerCourse } from "@/app/lib/course-partners";
 import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
@@ -665,7 +666,8 @@ export default function PopmCourseLanding({
   const [assessmentFormData, setAssessmentFormData] = useState({ name: "", email: "" });
   const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
   const reviews = content.reviews.slice(0, 6);
-  const isPrivateClass = content.slug === "release-train-engineer";
+  const isPrivateClass =
+    content.slug === "release-train-engineer" && !isRtePublicEnrollmentOpen();
   const isSafePartner = content.safePartner !== false;
   const showClaudePartner = isClaudePartnerCourse(content.slug);
   const tuition = COURSE_HERO_SCHEDULE_LIST_USD[content.slug] ?? null;
