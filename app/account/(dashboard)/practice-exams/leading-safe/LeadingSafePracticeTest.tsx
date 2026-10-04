@@ -119,11 +119,6 @@ export default function LeadingSafePracticeTest({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-        This set contains 41 unique questions from the supplied photos, preserving their wording,
-        answer order, and selected answers. Original question numbers are retained; 8, 9, 28, and 45
-        were not supplied. Question 22 has a cut-off answer. Feedback follows the supplied selections.
-      </div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-slate-600">
           Question {currentIndex + 1} of {total} • {answeredCount} answered
