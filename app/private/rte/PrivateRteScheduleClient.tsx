@@ -320,7 +320,7 @@ function CourseScheduleContent({
                         onQuantityChange={(delta) => updateQuantity(schedule.id, delta)}
                         onGroupInquiry={() => handleGroupInquiryClick(schedule)}
                         brochureHref={COURSE_BROCHURE_HREF["release-train-engineer"]}
-                        checkoutBasePath="/private/rte/checkout"
+                        checkoutBasePath="/courses/release-train-engineer/schedule/checkout"
                       />
                     );
                   })}

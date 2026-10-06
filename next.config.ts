@@ -118,15 +118,19 @@ const nextConfig: NextConfig = {
         destination: '/Agile36-AI-Agents-Workshop-Deck.pdf',
         permanent: false,
       },
-      // RTE open schedule retired — private enrollment lives at /private/rte
       {
-        source: '/courses/release-train-engineer/schedule/checkout',
-        destination: '/private/rte/checkout',
+        source: '/private/rte',
+        destination: '/courses/release-train-engineer/schedule',
         permanent: false,
       },
       {
-        source: '/courses/release-train-engineer/schedule/checkout/:path*',
-        destination: '/private/rte/checkout/:path*',
+        source: '/private/rte/checkout',
+        destination: '/courses/release-train-engineer/schedule/checkout',
+        permanent: false,
+      },
+      {
+        source: '/private/rte/checkout/:path*',
+        destination: '/courses/release-train-engineer/schedule/checkout/:path*',
         permanent: false,
       },
       {
