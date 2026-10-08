@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { hasAiProductManagementExamAccess } from "@/app/lib/exams/ai-product-management-access";
+import {
+  AI_PM_PORTAL_EXAM_OPEN,
+  hasAiProductManagementExamAccess,
+} from "@/app/lib/exams/ai-product-management-access";
 import {
   AI_PM_EXAM_PASS_PERCENT,
   AI_PM_EXAM_QUESTIONS,
@@ -47,12 +50,18 @@ export default async function CourseExamsPage() {
                 {AI_PM_EXAM_PASS_PERCENT}% to pass · 75 minutes
               </p>
             </div>
-            <Link
-              href="/account/exams/ai-product-management"
-              className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
-            >
-              Open exam
-            </Link>
+            {AI_PM_PORTAL_EXAM_OPEN ? (
+              <Link
+                href="/account/exams/ai-product-management"
+                className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
+              >
+                Open exam
+              </Link>
+            ) : (
+              <span className="inline-flex shrink-0 items-center justify-center rounded-sm border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] px-5 py-2.5 text-sm font-semibold text-[#64748b]">
+                Locked
+              </span>
+            )}
           </div>
         </div>
       </div>

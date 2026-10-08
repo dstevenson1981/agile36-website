@@ -141,10 +141,10 @@ function CourseExamsCard() {
             Course Exams
           </h3>
           <p className="text-sm text-[#64748b] mt-1">
-            AI Product Management exam — closed book, timed, scored
+            AI Product Management exam — assigned, not open yet
           </p>
-          <span className="inline-flex items-center gap-1 text-sm font-medium text-[#d97706] mt-2 group-hover:gap-2 transition-all">
-            Open your exam →
+          <span className="inline-flex items-center gap-1 text-sm font-medium text-[#64748b] mt-2">
+            Locked
           </span>
         </div>
       </div>

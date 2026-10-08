@@ -2,6 +2,12 @@ import { createClient } from "@/app/lib/supabase/server";
 import { getRegisteredCourseSlugs } from "@/app/lib/practice-exams";
 import { resolvePracticeExamCourseIds } from "@/app/lib/grant-pro-practice-access";
 
+/**
+ * Scored AI Product Management exam in the account portal.
+ * Leave false until Deadra says to open it. Practice exams are separate.
+ */
+export const AI_PM_PORTAL_EXAM_OPEN = false;
+
 /** Owner / instructor emails that can always open the exam for preview and QA. */
 const OWNER_PREVIEW_EMAILS = new Set([
   "d.stevenson@agile36.com",
