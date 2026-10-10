@@ -222,6 +222,7 @@ const SAFE_SLUGS = [
   "devops",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
 
 const AI_SLUGS = [
@@ -251,11 +252,12 @@ const CROSS_SAFE = [
   "advanced-scrum-master",
   "lean-portfolio-management",
   "agile-product-management",
+  "release-train-engineer",
 ];
 
 /**
- * Hidden schedule rows still loaded for an existing combo checkout
- * (the old SSM + RTE bundle).
+ * RTE dates stay hidden in the catalog. Combo checkout still loads them
+ * after the public enrollment window closes.
  */
 export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set([
   "release-train-engineer",
@@ -302,7 +304,7 @@ export const COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
 /** Retired AI combos remain purchasable via existing checkout/order IDs. */
 const LEGACY_AI_COMBOS: Combo[] = buildCombosForAiSlugs(LEGACY_AI_SLUGS, false);
 
-/** RTE is no longer offered in combos. The old SSM + RTE checkout id still resolves. */
+/** Keeps the old SSM + RTE checkout id resolvable if it is missing from the catalog. */
 const LEGACY_RTE_COMBOS: Combo[] = [buildCombo("release-train-engineer", "scrum-master")];
 
 /** Alias kept for call sites that previously distinguished listing vs checkout catalogs. */
