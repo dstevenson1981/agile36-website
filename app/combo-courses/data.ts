@@ -256,8 +256,19 @@ const CROSS_SAFE = [
 ];
 
 /**
- * RTE dates stay hidden in the catalog. Combo checkout still loads them
- * after the public enrollment window closes.
+ * RTE is out of the public combo catalog for now. Remove the slug from this
+ * set to offer RTE combos again. Checkout and practice-exam grants for
+ * combos already sold still resolve.
+ */
+const PAUSED_COMBO_COURSE_SLUGS = new Set(["release-train-engineer"]);
+
+function includesPausedCourse(combo: Combo): boolean {
+  return combo.courses.some((course) => PAUSED_COMBO_COURSE_SLUGS.has(course.slug));
+}
+
+/**
+ * RTE dates stay hidden in the catalog. Existing combo checkout still loads
+ * them after the public enrollment window closes.
  */
 export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set([
   "release-train-engineer",
@@ -298,8 +309,16 @@ function buildCombosForAiSlugs(aiSlugs: string[], includeSafePairs: boolean): Co
   return sortCombos(combos);
 }
 
+/** Full pair set, including courses paused from the public catalog. */
+const BUILT_COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
+
 /** Public combo catalog (listed on /combo-courses + site search). */
-export const COMBO_COURSES: Combo[] = buildCombosForAiSlugs(AI_SLUGS, true);
+export const COMBO_COURSES: Combo[] = BUILT_COMBO_COURSES.filter(
+  (combo) => !includesPausedCourse(combo),
+);
+
+/** Paused combos stay resolvable for existing checkouts and practice-exam grants. */
+const PAUSED_COMBOS: Combo[] = BUILT_COMBO_COURSES.filter(includesPausedCourse);
 
 /** Retired AI combos remain purchasable via existing checkout/order IDs. */
 const LEGACY_AI_COMBOS: Combo[] = buildCombosForAiSlugs(LEGACY_AI_SLUGS, false);
@@ -313,6 +332,7 @@ export const ALL_COMBO_COURSES: Combo[] = COMBO_COURSES;
 export function findComboById(comboId: string): Combo | undefined {
   return (
     COMBO_COURSES.find((c) => c.id === comboId) ??
+    PAUSED_COMBOS.find((c) => c.id === comboId) ??
     LEGACY_AI_COMBOS.find((c) => c.id === comboId) ??
     LEGACY_RTE_COMBOS.find((c) => c.id === comboId)
   );
