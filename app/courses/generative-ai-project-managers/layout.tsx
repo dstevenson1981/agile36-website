@@ -72,7 +72,7 @@ export default async function GenerativeAIProjectManagersLayout({
       ],
       breadcrumbLeafName: "Generative AI for Project Managers",
       coursesCrumbLabel: "Generative AI Courses",
-      defaultPrice: 350,
+      defaultPrice: 400,
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "GAI-PM",

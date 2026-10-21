@@ -73,7 +73,7 @@ export default async function AIDrivenScrumMasterLayout({
       ],
       breadcrumbLeafName: "AI-Driven Scrum Master",
       coursesCrumbLabel: "Generative AI Courses",
-      defaultPrice: 350,
+      defaultPrice: 400,
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "AI-SM",

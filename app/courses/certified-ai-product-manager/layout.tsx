@@ -69,7 +69,7 @@ export default async function CertifiedAIProductManagerLayout({
       ],
       breadcrumbLeafName: "Certified AI Product Manager",
       coursesCrumbLabel: "AI Product Courses",
-      defaultPrice: 350,
+      defaultPrice: 400,
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "AI-PM",

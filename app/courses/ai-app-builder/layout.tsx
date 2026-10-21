@@ -67,7 +67,7 @@ export default async function AIAppBuilderLayout({
       ],
       breadcrumbLeafName: "No-Code AI App Builder",
       coursesCrumbLabel: "AI Courses",
-      defaultPrice: 350,
+      defaultPrice: 400,
       defaultCurrency: "USD",
       timeRequired: "PT8H",
       courseCode: "AI-App-Builder",

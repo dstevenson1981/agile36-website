@@ -269,7 +269,7 @@ function CourseScheduleContent({
                   </svg>
                   <h3 className="mt-2 text-lg font-medium text-[#1f2c4a]">Private class</h3>
                   <p className="mt-2 text-sm text-[#64748b] max-w-md mx-auto">
-                    RTE cohorts are arranged privately. Contact us to discuss dates, pricing, and registration — schedules are not listed for open enrollment.
+                    RTE cohorts are arranged privately. Contact us to discuss dates, pricing, and registration.
                   </p>
                   <Link
                     href="/contact?course=release-train-engineer"
