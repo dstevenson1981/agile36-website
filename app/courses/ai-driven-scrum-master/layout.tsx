@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("ai-driven-scrum-master"),
-  description: "2026 live cohorts: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows, then leave with the AI-Driven Scrum Master™ certification issued through Accredible.",
+  description: "2026 live cohorts: Two days, 4 hours per day. Build reusable AI skills and automated Scrum workflows, then leave with the AI-Driven Scrum Master™ certification issued through Accredible.",
   keywords: [
     "AI-Driven Scrum Master",
     "AI Scrum Master",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
     title: courseOgTitle("ai-driven-scrum-master"),
-    description: "2026: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
+    description: "2026: Two days, 4 hours per day. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
     type: "website",
     url: "https://www.agile36.com/courses/ai-driven-scrum-master",
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: courseLong("ai-driven-scrum-master"),
-    description: "2026: Two days, 9:00 AM–2:00 PM Eastern. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
+    description: "2026: Two days, 4 hours per day. Build reusable AI skills and automated Scrum workflows. Leave with the AI-Driven Scrum Master™ certification.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/ai-driven-scrum-master",
@@ -73,7 +73,7 @@ export default async function AIDrivenScrumMasterLayout({
       ],
       breadcrumbLeafName: "AI-Driven Scrum Master",
       coursesCrumbLabel: "Generative AI Courses",
-      defaultPrice: 555,
+      defaultPrice: 350,
       defaultCurrency: "USD",
       timeRequired: "P2D",
       courseCode: "AI-SM",
@@ -139,7 +139,7 @@ export default async function AIDrivenScrumMasterLayout({
         "name": "How long is the AI-Driven Scrum Master course?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The course is 2 days, 9:00 AM–2:00 PM Eastern each day (5 hours per day, 10 hours total), delivered as live virtual training. It includes hands-on practice with AI tools, real-world scenarios, group exercises, and certification upon completion. You receive lifetime access to course materials and AI prompt templates."
+          "text": "The course is 2 days, 4 hours per day (8 hours total), delivered as live virtual training. It includes hands-on practice with AI tools, real-world scenarios, group exercises, and certification upon completion. You receive lifetime access to course materials and AI prompt templates."
         }
       }
     ]

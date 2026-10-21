@@ -71,7 +71,7 @@ export default async function ExecutiveGenAILeadershipLayout({
       ],
       breadcrumbLeafName: "Executive GenAI Leadership",
       coursesCrumbLabel: "Generative AI Courses",
-      defaultPrice: 400,
+      defaultPrice: 350,
       defaultCurrency: "USD",
       timeRequired: "P1D",
       courseCode: "EGL",

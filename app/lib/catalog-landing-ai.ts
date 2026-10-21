@@ -6,8 +6,7 @@ import {
 import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
 
 const DURATION_2_FOUR = "2-Day Live Online · 4 Hours Per Day";
-const DURATION_2_FIVE = "2-Day Live Online · 9:00 AM–2:00 PM ET";
-const DURATION_1_FIVE = "1-Day Live Online · 9:00 AM–2:00 PM ET";
+const DURATION_1_FOUR = "1-Day Live Online · 4 Hours";
 const DURATION_HALF = "Half-Day Live Online · 4 Hours";
 
 function aiFaqs(args: {
@@ -600,17 +599,17 @@ export const certifiedAiProductManager: CatalogLandingContent = {
   crumb: "AI Product Manager",
   title: "Certified AI Product Manager™ Certification Training",
   lede:
-    "Two days, 9:00 AM–2:00 PM Eastern. You take one idea from a blank page to a deployed application — then make the product calls you only face once it is running.",
+    "Two days, 4 hours per day. You take one idea from a blank page to a deployed application — then make the product calls you only face once it is running.",
   summary:
     "Eight modules. You scope an idea that can finish, stand up the first version, add data and auth, put AI where it actually helps, deploy it live, and demo it from a link. The last modules are the ones product people remember: cutting scope against a running build, and changing how you brief engineering.",
   badgeSrc: "/Logo_AI_Product_Manager.png",
   badgeAlt: "Certified AI Product Manager™ certification",
   cardTitle: "Certified AI Product Manager™",
-  durationLabel: DURATION_2_FIVE,
+  durationLabel: DURATION_2_FOUR,
   includesLine:
-    "Includes Certified AI Product Manager™ certification (Accredible), live training, and 10 PDUs.",
+    "Includes Certified AI Product Manager™ certification (Accredible), live training, and 8 PDUs.",
   highlights: [
-    "10 hours live over two days — 9:00 AM–2:00 PM Eastern",
+    "8 hours live over two days — 4 hours per day",
     "Ship a working app and demo it from a live link",
     "Leave certified — issued through Accredible, no exam",
   ],
@@ -731,12 +730,12 @@ export const certifiedAiProductManager: CatalogLandingContent = {
     datesTitle: "Upcoming AI Product Manager dates",
     certName: "Certified AI Product Manager™ certification",
     includes:
-      "The course price includes live training, course materials, the Certified AI Product Manager™ certification issued through Accredible, and 10 PDUs.",
+      "The course price includes live training, course materials, the Certified AI Product Manager™ certification issued through Accredible, and 8 PDUs.",
     exam: NO_EXAM,
     generic: [
       {
         q: "What is Certified AI Product Manager™ Certification Training?",
-        a: "A live two-day class (9:00 AM–2:00 PM Eastern each day, 10 hours total). You take one idea to a deployed application and leave certified.",
+        a: "A live two-day class (4 hours per day, 8 hours total). You take one idea to a deployed application and leave certified.",
       },
       {
         q: "Do I need an engineering background?",
@@ -898,17 +897,17 @@ export const executiveGenaiLeadership: CatalogLandingContent = {
   crumb: "Executive GenAI",
   title: "Executive GenAI Leadership™ Certification Training",
   lede:
-    "One day, 9:00 AM–2:00 PM Eastern. From scattered pilots to a funded agenda — opportunity, governance, operating model, workforce, risk, and value.",
+    "One day, 4 hours. From scattered pilots to a funded agenda — opportunity, governance, operating model, workforce, risk, and value.",
   summary:
     "A one-day executive programme. You score use cases, model ROI, choose an operating model, and finish with a capstone: an AI strategy for your own organization. Taught in business language, not engineering language.",
   badgeSrc: "/Logo_Executive_GenAI_Leadership.png",
   badgeAlt: "Executive GenAI Leadership™ certification",
   cardTitle: "Executive GenAI Leadership™",
-  durationLabel: DURATION_1_FIVE,
+  durationLabel: DURATION_1_FOUR,
   includesLine:
-    "Includes Executive GenAI Leadership™ certification (Accredible), live training, and 5 PDUs.",
+    "Includes Executive GenAI Leadership™ certification (Accredible), live training, and 4 PDUs.",
   highlights: [
-    "5 hours live — one day, 9:00 AM–2:00 PM Eastern",
+    "4 hours live — one day",
     "Capstone: an AI strategy for your organization",
     "Leave certified — issued through Accredible, no exam",
   ],
@@ -1010,7 +1009,7 @@ export const executiveGenaiLeadership: CatalogLandingContent = {
     datesTitle: "Upcoming Executive GenAI dates",
     certName: "Executive GenAI Leadership™ certification",
     includes:
-      "The course price includes live training, course materials, the Executive GenAI Leadership™ certification issued through Accredible, and 5 PDUs.",
+      "The course price includes live training, course materials, the Executive GenAI Leadership™ certification issued through Accredible, and 4 PDUs.",
     exam: [
       {
         q: "Is there an exam?",
@@ -1024,7 +1023,7 @@ export const executiveGenaiLeadership: CatalogLandingContent = {
     generic: [
       {
         q: "What is Executive GenAI Leadership™ Certification Training?",
-        a: "A live one-day class (9:00 AM–2:00 PM Eastern, 5 hours). Opportunity, governance, operating model, workforce, risk, and a capstone strategy for your organization.",
+        a: "A live one-day class (4 hours). Opportunity, governance, operating model, workforce, risk, and a capstone strategy for your organization.",
       },
       {
         q: "Do I need a technical background?",
@@ -1039,17 +1038,17 @@ export const generativeAiProjectManagers: CatalogLandingContent = {
   crumb: "GenAI for PMs",
   title: "Generative AI for Project Managers™ Certification Training",
   lede:
-    "Two days, 9:00 AM–2:00 PM Eastern. Twelve modules taking generative AI through the project lifecycle you already run.",
+    "Two days, 4 hours per day. Twelve modules taking generative AI through the project lifecycle you already run.",
   summary:
     "Planning, collaboration, risk, budget, stakeholders, quality, Agile practices, and a full module on ethics. Every module lands on an artefact a PM already owns: a schedule, a register, a forecast, a status update. You leave with a prompt library and an adoption plan.",
   badgeSrc: "/Logo_GenAI_Project_Managers.png",
   badgeAlt: "Generative AI for Project Managers™ certification",
   cardTitle: "Generative AI for Project Managers™",
-  durationLabel: DURATION_2_FIVE,
+  durationLabel: DURATION_2_FOUR,
   includesLine:
-    "Includes Generative AI for Project Managers™ certification (Accredible), live training, and 10 PDUs.",
+    "Includes Generative AI for Project Managers™ certification (Accredible), live training, and 8 PDUs.",
   highlights: [
-    "10 hours live over two days — 9:00 AM–2:00 PM Eastern",
+    "8 hours live over two days — 4 hours per day",
     "Twelve modules across the project lifecycle",
     "Leave certified — issued through Accredible, no exam",
   ],
@@ -1153,12 +1152,12 @@ export const generativeAiProjectManagers: CatalogLandingContent = {
     datesTitle: "Upcoming GenAI for PMs dates",
     certName: "Generative AI for Project Managers™ certification",
     includes:
-      "The course price includes live training, course materials, the Generative AI for Project Managers™ certification issued through Accredible, and 10 PDUs.",
+      "The course price includes live training, course materials, the Generative AI for Project Managers™ certification issued through Accredible, and 8 PDUs.",
     exam: NO_EXAM,
     generic: [
       {
         q: "What is Generative AI for Project Managers™ Certification Training?",
-        a: "A live two-day class (9:00 AM–2:00 PM Eastern each day, 10 hours total). Twelve modules across the project lifecycle. You leave certified.",
+        a: "A live two-day class (4 hours per day, 8 hours total). Twelve modules across the project lifecycle. You leave certified.",
       },
       {
         q: "Do I need prior AI experience?",
@@ -1277,7 +1276,7 @@ export const AI_EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["
     format: [
       { highlight: "Certified AI Product Manager™ certification", after: " issued through Accredible" },
       { highlight: "No exam", after: ". Complete the live class" },
-      { highlight: "10 PDUs", after: " for the 10-hour live class" },
+      { highlight: "8 PDUs", after: " for the 8-hour live class" },
     ],
   },
   "certified-genai-practitioner": {
@@ -1293,7 +1292,7 @@ export const AI_EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["
     format: [
       { highlight: "Executive GenAI Leadership™ certification", after: " issued through Accredible" },
       { highlight: "Capstone, no timed exam", after: ". A strategy for your organization" },
-      { highlight: "5 PDUs", after: " for the 5-hour live class" },
+      { highlight: "4 PDUs", after: " for the 4-hour live class" },
     ],
   },
   "generative-ai-project-managers": {
@@ -1301,7 +1300,7 @@ export const AI_EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["
     format: [
       { highlight: "Generative AI for Project Managers™ certification", after: " issued through Accredible" },
       { highlight: "No exam", after: ". Complete the live class" },
-      { highlight: "10 PDUs", after: " for the 10-hour live class" },
+      { highlight: "8 PDUs", after: " for the 8-hour live class" },
     ],
   },
 };

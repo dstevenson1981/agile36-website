@@ -57,14 +57,14 @@ const CATALOG: CatalogEntry[] = [
   { slug: "lean-portfolio-management", name: "SAFe Lean Portfolio Management", shortName: "LPM", price: 950, original: 1900 },
   { slug: "agile-product-management", name: "SAFe Agile Product Management", shortName: "APM", price: 1199, original: 1998 },
   { slug: "release-train-engineer", name: "AI-Empowered SAFe Release Train Engineer (RTE)", shortName: "RTE", price: 1299, original: 1699 },
-  { slug: "ai-agent-builder", name: "No-Code AI Agents & Automation™", shortName: "AI Agents", price: 555, original: 1110 },
-  { slug: "ai-workflow-automation", name: "AI Workflow Automation™", shortName: "AI Workflow", price: 400, original: 800 },
-  { slug: "ai-app-builder", name: "No-Code AI App Builder™", shortName: "AI App Builder", price: 400, original: 800 },
-  { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 555, original: 1110 },
-  { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 299, original: 598 },
-  { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 400, original: 800 },
-  { slug: "executive-genai-leadership", name: "Executive GenAI Leadership", shortName: "Exec GenAI", price: 400, original: 800 },
-  { slug: "generative-ai-project-managers", name: "Generative AI for Project Managers", shortName: "GenAI for PMs", price: 400, original: 800 },
+  { slug: "ai-agent-builder", name: "No-Code AI Agents & Automation™", shortName: "AI Agents", price: 350, original: 1110 },
+  { slug: "ai-workflow-automation", name: "AI Workflow Automation™", shortName: "AI Workflow", price: 350, original: 800 },
+  { slug: "ai-app-builder", name: "No-Code AI App Builder™", shortName: "AI App Builder", price: 350, original: 800 },
+  { slug: "ai-driven-scrum-master", name: "AI-Driven Scrum Master™", shortName: "AI Scrum Master", price: 350, original: 1110 },
+  { slug: "certified-genai-practitioner", name: "Certified GenAI Practitioner™", shortName: "GenAI Practitioner", price: 350, original: 598 },
+  { slug: "certified-ai-product-manager", name: "Certified AI Product Manager", shortName: "AI Product Manager", price: 350, original: 800 },
+  { slug: "executive-genai-leadership", name: "Executive GenAI Leadership", shortName: "Exec GenAI", price: 350, original: 800 },
+  { slug: "generative-ai-project-managers", name: "Generative AI for Project Managers", shortName: "GenAI for PMs", price: 350, original: 800 },
 ];
 
 const BY_SLUG = Object.fromEntries(CATALOG.map((c) => [c.slug, c])) as Record<
@@ -266,13 +266,8 @@ function includesPausedCourse(combo: Combo): boolean {
   return combo.courses.some((course) => PAUSED_COMBO_COURSE_SLUGS.has(course.slug));
 }
 
-/**
- * RTE dates stay hidden in the catalog. Existing combo checkout still loads
- * them after the public enrollment window closes.
- */
-export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set([
-  "release-train-engineer",
-]);
+/** RTE dates stay off combo checkout while the schedule link is disabled. */
+export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set<string>([]);
 
 function sortCombos(combos: Combo[]): Combo[] {
   const rank = (slug: string) => {

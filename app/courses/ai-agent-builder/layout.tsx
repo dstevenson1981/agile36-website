@@ -72,7 +72,7 @@ export default async function AIAgentBuilderLayout({
       ],
       breadcrumbLeafName: "No-Code AI Agents & Automation",
       coursesCrumbLabel: "AI Courses",
-      defaultPrice: 555,
+      defaultPrice: 350,
       defaultCurrency: "USD",
       timeRequired: "PT8H",
       courseCode: "AI-Agents",

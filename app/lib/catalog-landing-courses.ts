@@ -15,7 +15,7 @@ type WhyRow = CatalogLandingContent["whyRows"][number];
 type FaqItem = CatalogLandingContent["faqs"]["exam"][number];
 
 const DURATION_2 = "2-Day Live Online · Instructor-Led";
-const DURATION_2_FIVE = "2-Day Live Online · 9:00 AM–2:00 PM ET";
+const DURATION_2_FOUR = "2-Day Live Online · 4 Hours Per Day";
 const DURATION_3 = "3-Day Live Online · Instructor-Led";
 const INCLUDES_16 =
   "Includes exam (first two attempts), official courseware, 16 PDUs · 16 SEUs & 1-year SAFe Studio access.";
@@ -2741,18 +2741,18 @@ const aiDrivenScrumMaster: CatalogLandingContent = {
   crumb: "AI Scrum Master",
   title: "AI-Driven Scrum Master™ Certification Training",
   lede:
-    "Two days, 9:00 AM–2:00 PM Eastern. You leave with the AI-Driven Scrum Master™ certification and a working system for the job you already do.\n\nDay 1 is the Scrum Master week with AI in the loop: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is where you stop doing it by hand — reusable skills, automated workflows, and a capstone you take back to your team.",
+    "Two days, 4 hours per day. You leave with the AI-Driven Scrum Master™ certification and a working system for the job you already do.\n\nDay 1 is the Scrum Master week with AI in the loop: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is where you stop doing it by hand — reusable skills, automated workflows, and a capstone you take back to your team.",
   summary:
     "This class rebuilds the Scrum Master week with AI. Day 1 is skills: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. You learn what AI should never touch — coaching conversations, conflict, and team dynamics — and what it should take off your plate: sprint data, event prep, story quality, and follow-up.\n\nDay 2 you turn that into reusable AI skills and automated workflows: sprint health, facilitation packs, retrospectives, summaries, blocker tracking, and stakeholder updates. The capstone is your system, pointed at your board. You leave certified — AI-Driven Scrum Master™, issued through Accredible. There is no exam.",
   whyOtherLabel: "Other AI Scrum classes",
   badgeSrc: "/Logo_AI_Driven_Scrum_Master.png",
   badgeAlt: "AI-Driven Scrum Master™ certification",
   cardTitle: "AI-Driven Scrum Master™ Certification",
-  durationLabel: DURATION_2_FIVE,
+  durationLabel: DURATION_2_FOUR,
   includesLine:
-    "Includes AI-Driven Scrum Master™ certification (Accredible), live training, reusable AI skills, and 10 PDUs.",
+    "Includes AI-Driven Scrum Master™ certification (Accredible), live training, reusable AI skills, and 8 PDUs.",
   highlights: [
-    "10 hours live over two days — 9:00 AM–2:00 PM Eastern each day",
+    "8 hours live over two days — 4 hours per day",
     "Build reusable AI skills and automated Scrum workflows in class",
     "Leave certified — AI-Driven Scrum Master™, issued through Accredible",
   ],
@@ -2808,8 +2808,8 @@ const aiDrivenScrumMaster: CatalogLandingContent = {
     },
     {
       n: "06",
-      check: "Five focused hours, twice",
-      usLead: "9:00 AM–2:00 PM Eastern each day. Ten hours total.",
+      check: "Four focused hours, twice",
+      usLead: "9:00 AM–1:00 PM Eastern each day. Eight hours total.",
       usRest: "Long enough to build the system. Short enough to still do your job that week.",
       other: "Full 9–5 days leave no room to practice on your own board.",
     },
@@ -2997,7 +2997,7 @@ const aiDrivenScrumMaster: CatalogLandingContent = {
       item.q === "Are there any hidden fees?"
         ? {
             ...item,
-            a: "No. The course price includes live training, course materials, the AI-Driven Scrum Master™ certification issued through Accredible, and 10 PDUs. There is no exam fee and there are no hidden fees.",
+            a: "No. The course price includes live training, course materials, the AI-Driven Scrum Master™ certification issued through Accredible, and 8 PDUs. There is no exam fee and there are no hidden fees.",
           }
         : item
     ),
@@ -3022,7 +3022,7 @@ const aiDrivenScrumMaster: CatalogLandingContent = {
     generic: [
       {
         q: "What is the AI-Driven Scrum Master™ Certification Training?",
-        a: "A live two-day class (9:00 AM–2:00 PM Eastern each day, 10 hours total). Day 1 is AI skills for Scrum Masters. Day 2 is reusable AI skills, automated Scrum workflows, and a capstone: build your AI Scrum Master system. You leave certified.",
+        a: "A live two-day class (4 hours per day, 8 hours total). Day 1 is AI skills for Scrum Masters. Day 2 is reusable AI skills, automated Scrum workflows, and a capstone: build your AI Scrum Master system. You leave certified.",
       },
       {
         q: "Who should take this course?",
@@ -3034,11 +3034,11 @@ const aiDrivenScrumMaster: CatalogLandingContent = {
       },
       {
         q: "How long is the course?",
-        a: "Two days, 9:00 AM–2:00 PM Eastern each day. Five hours per day, 10 hours total.",
+        a: "Two days, 4 hours per day, 8 hours total.",
       },
       {
         q: "What do I leave with?",
-        a: "Reusable AI skills (including sprint health and facilitation/retro skills), automated workflows for summaries, blockers, follow-up, and stakeholder updates, a capstone system pointed at your team, 10 PDUs, and the AI-Driven Scrum Master™ certification.",
+        a: "Reusable AI skills (including sprint health and facilitation/retro skills), automated workflows for summaries, blockers, follow-up, and stakeholder updates, a capstone system pointed at your team, 8 PDUs, and the AI-Driven Scrum Master™ certification.",
       },
       {
         q: "Is this course available online?",
@@ -3338,8 +3338,8 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
         after: " you can add to LinkedIn",
       },
       {
-        highlight: "10 PDUs",
-        after: " for the 10-hour live class",
+        highlight: "8 PDUs",
+        after: " for the 8-hour live class",
       },
     ],
   },

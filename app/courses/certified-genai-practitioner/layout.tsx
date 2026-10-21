@@ -70,7 +70,7 @@ export default async function CertifiedGenAIPractitionerLayout({
       ],
       breadcrumbLeafName: "Certified GenAI Practitioner",
       coursesCrumbLabel: "Generative AI Courses",
-      defaultPrice: 299,
+      defaultPrice: 350,
       defaultCurrency: "USD",
       timeRequired: "PT4H",
       courseCode: "GenAI-P",

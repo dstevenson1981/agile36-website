@@ -1405,8 +1405,8 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     band: BAND,
     path: "/courses/generative-ai-project-managers",
     price: PRICE["generative-ai-project-managers"],
-    duration: { days: "2 days", hours: "10" },
-    credits: "10 PDUs",
+    duration: { days: "2 days", hours: "8" },
+    credits: "8 PDUs",
     accreditation: {
       safe: false,
       credential: "Generative AI for Project Managers\u2122, issued through Accredible",
@@ -1447,7 +1447,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
         { title: "Ethical Considerations in AI Implementation", topics: ["Data handling and confidentiality", "Bias and fairness in project decisions", "Transparency with your team and client"] },
         { title: "Future Trends and AI Evolution in Project Management", topics: ["Where the tooling is heading", "Preparing your practice", "Building an adoption plan"] },
       ],
-      examNote: "No exam. You leave with the Generative AI for Project Managers\u2122 certification, issued through Accredible, 10 PDUs, and a prompt library covering every stage of the project lifecycle.",
+      examNote: "No exam. You leave with the Generative AI for Project Managers\u2122 certification, issued through Accredible, 8 PDUs, and a prompt library covering every stage of the project lifecycle.",
     },
     outcomeGroups: [
       { title: "Plan and forecast", items: ["Draft plans, work breakdowns, and schedules with AI support", "Model costs and explain budget variance", "Surface risks a register missed and draft mitigations", "Structure options and trade-offs for a real decision"] },
@@ -1493,7 +1493,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { value: "2", label: "Days, live and instructor-led" },
       { value: "12", label: "Modules across the project lifecycle" },
       { value: "1", label: "Full module on ethics, bias, and confidentiality" },
-      { value: "10", label: "PDUs toward renewal" },
+      { value: "8", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "AI applied to the job<br />a PM actually does",
@@ -1518,8 +1518,8 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     band: BAND,
     path: "/courses/certified-ai-product-manager",
     price: PRICE["certified-ai-product-manager"],
-    duration: { days: "2 days", hours: "10" },
-    credits: "10 PDUs",
+    duration: { days: "2 days", hours: "8" },
+    credits: "8 PDUs",
     accreditation: {
       safe: false,
       credential: "Certified AI Product Manager\u2122, issued through Accredible",
@@ -1595,7 +1595,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { value: "2", label: "Days, live and instructor-led" },
       { value: "8", label: "Modules from blank page to deployed app" },
       { value: "1", label: "Working application you leave holding" },
-      { value: "10", label: "PDUs toward renewal" },
+      { value: "8", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "Stop specifying products.<br />Build one",
@@ -1620,9 +1620,9 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     band: BAND,
     path: "/courses/executive-genai-leadership",
     price: PRICE["executive-genai-leadership"],
-    // One day, 9 AM–2 PM, matching every cohort on the schedule page.
-    duration: { days: "1 day", hours: "5" },
-    credits: "5 PDUs",
+    // One day, 4 hours, matching every cohort on the schedule page.
+    duration: { days: "1 day", hours: "4" },
+    credits: "4 PDUs",
     accreditation: {
       safe: false,
       credential: "Executive GenAI Leadership™, issued through Accredible",
@@ -1699,10 +1699,10 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { title: "Workforce readiness included", body: "Roles, job redesign, and organizational readiness rather than technology alone." },
     ],
     stats: [
-      { value: "1", label: "Day, live and instructor-led (9 AM–2 PM)" },
+      { value: "1", label: "Day, 4 hours, live and instructor-led" },
       { value: "12", label: "Modules from opportunity through to capstone" },
       { value: "2", label: "Hands-on workshops using your own portfolio" },
-      { value: "5", label: "PDUs toward renewal" },
+      { value: "4", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "From scattered pilots<br />to a funded agenda",
@@ -1727,8 +1727,8 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
     band: BAND,
     path: "/courses/ai-driven-scrum-master",
     price: PRICE["ai-driven-scrum-master"],
-    duration: { days: "2 days", hours: "10" },
-    credits: "10 PDUs",
+    duration: { days: "2 days", hours: "8" },
+    credits: "8 PDUs",
     accreditation: {
       safe: false,
       credential: "AI-Driven Scrum Master\u2122, issued through Accredible",
@@ -1783,7 +1783,7 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       },
     },
     whatsNew: [
-      { title: "Two days, 9–2 Eastern", body: "Ten live hours — long enough to build the system, short enough to still do your job that week." },
+      { title: "Two days, 4 hours each", body: "Eight live hours — long enough to build the system, short enough to still do your job that week." },
       { title: "Reusable AI skills", body: "Day 2 turns repeatable Scrum Master work into skills you use again next sprint." },
       { title: "A capstone you keep", body: "Your AI Scrum Master system, built on your own team." },
     ],
@@ -1793,10 +1793,10 @@ export const BROCHURE_COURSES: Record<string, BrochureCourse> = {
       { title: "Judgment first", body: "Module 1 is what AI should and should not do in the role." },
     ],
     stats: [
-      { value: "2", label: "Days, 9:00 AM–2:00 PM Eastern" },
+      { value: "2", label: "Days, 4 hours per day" },
       { value: "12", label: "Modules across skills and workflows" },
       { value: "1", label: "Capstone system for your own team" },
-      { value: "10", label: "PDUs toward renewal" },
+      { value: "8", label: "PDUs toward renewal" },
     ],
     overview: {
       heading: "The Scrum Master job,<br />rebuilt with AI",

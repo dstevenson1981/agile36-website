@@ -67,7 +67,7 @@ export default async function AIWorkflowAutomationLayout({
       ],
       breadcrumbLeafName: "AI Workflow Automation",
       coursesCrumbLabel: "AI Courses",
-      defaultPrice: 400,
+      defaultPrice: 350,
       defaultCurrency: "USD",
       timeRequired: "PT8H",
       courseCode: "AI-Workflow",

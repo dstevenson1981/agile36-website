@@ -453,9 +453,9 @@ export default function CertifiedGenAIPractitionerCoursePage() {
             <div className="order-1 lg:order-2 lg:sticky lg:top-24 h-fit">
               <div className="liquid-glass rounded-2xl p-6">
                 <div className="text-center mb-6">
-                  <div className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">$299</div>
+                  <div className="text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem] lg:text-[2rem]">$350</div>
                   <div className="text-base text-[#64748b] line-through">$598</div>
-                  <div className="text-sm text-emerald-600 font-semibold mt-2">50% OFF</div>
+                  <div className="text-sm text-emerald-600 font-semibold mt-2">41% OFF</div>
                 </div>
 
                 <div className="space-y-4 mb-6">
