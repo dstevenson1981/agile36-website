@@ -28,7 +28,7 @@ function CourseScheduleContent({
   const courseSlug = searchParams.get('course') || 'release-train-engineer';
   const [schedules, setSchedules] = useState<CourseScheduleRow[]>(initialSchedules);
   const [filteredSchedules, setFilteredSchedules] = useState<CourseScheduleRow[]>(initialSchedules);
-  const [isLoadingSchedules, setIsLoadingSchedules] = useState(initialSchedules.length === 0);
+  const [isLoadingSchedules, setIsLoadingSchedules] = useState(false);
   const [displayedCount, setDisplayedCount] = useState(10);
   const [courseName, setCourseName] = useState("SAFe AI-Empowered Release Train Engineer");
   const [quantity, setQuantity] = useState<{ [key: string]: number }>(() =>
