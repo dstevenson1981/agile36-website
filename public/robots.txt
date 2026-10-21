@@ -3,6 +3,8 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /account/
+Disallow: /private/
+Disallow: /courses/release-train-engineer/schedule
 Disallow: /*?*utm_
 Disallow: /*?*gclid=
 Disallow: /*?*fbclid=

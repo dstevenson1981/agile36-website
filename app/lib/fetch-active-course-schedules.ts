@@ -1,5 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
-import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
+import {
+  isRtePublicEnrollmentOpen,
+  RTE_SCHEDULE_LINK_ENABLED,
+} from "@/app/lib/rte-public-weekend";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 export async function fetchActiveCourseSchedules(
@@ -16,10 +19,9 @@ export async function fetchActiveCourseSchedules(
   });
 
   const includeHidden = options?.includeHidden === true;
-  const softHiddenSlugs = new Set(["release-train-engineer"]);
   const allowHiddenList =
-    (courseSlug === "release-train-engineer" && isRtePublicEnrollmentOpen()) ||
-    (includeHidden && softHiddenSlugs.has(courseSlug));
+    courseSlug === "release-train-engineer" &&
+    (isRtePublicEnrollmentOpen() || (includeHidden && RTE_SCHEDULE_LINK_ENABLED));
 
   const run = (withHiddenFilter: boolean) => {
     let query = supabase

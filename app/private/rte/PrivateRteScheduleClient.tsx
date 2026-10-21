@@ -51,41 +51,13 @@ function CourseScheduleContent({
   });
 
   useEffect(() => {
-    let cancelled = false;
-    const fetchSchedules = async () => {
-      if (initialSchedules.length === 0) setIsLoadingSchedules(true);
-      try {
-        let response: Response | null = null;
-        for (let attempt = 0; attempt < 2; attempt++) {
-          response = await fetch(
-            `/api/course-schedules?course_slug=${courseSlug}&status=active&include_hidden=1&_t=${Date.now()}`,
-            { cache: "no-store" }
-          );
-          if (response.ok) break;
-        }
-        if (!response) return;
-        const result = await response.json();
-        if (cancelled) return;
-        if (result.success) {
-          const data: CourseScheduleRow[] = result.data || [];
-          setSchedules(data);
-          setFilteredSchedules(data);
-          setQuantity(quantitiesFrom(data));
-        }
-      } catch (error) {
-        console.error('Error fetching schedules:', error);
-      } finally {
-        if (!cancelled) setIsLoadingSchedules(false);
-      }
-    };
-
     const displayName = COURSE_NAMES[courseSlug] || 'SAFe AI-Empowered Release Train Engineer';
     setCourseName(displayName);
-    fetchSchedules();
-    return () => {
-      cancelled = true;
-    };
-  }, [courseSlug, initialSchedules.length]);
+    setSchedules(initialSchedules);
+    setFilteredSchedules(initialSchedules);
+    setQuantity(quantitiesFrom(initialSchedules));
+    setIsLoadingSchedules(false);
+  }, [courseSlug, initialSchedules]);
 
   useEffect(() => {
     let filtered = [...schedules];

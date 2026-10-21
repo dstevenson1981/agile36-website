@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { isRtePublicEnrollmentOpen } from '@/app/lib/rte-public-weekend';
+import { isRtePublicEnrollmentOpen, RTE_SCHEDULE_LINK_ENABLED } from '@/app/lib/rte-public-weekend';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -11,14 +11,12 @@ export async function GET(request: NextRequest) {
     const courseSlug = searchParams.get('course_slug') || searchParams.get('course');
     const status = searchParams.get('status') || 'active';
     const scheduleId = searchParams.get('schedule_id') || searchParams.get('schedule');
-    // Soft-hidden courses (e.g. RTE): allow listing hidden rows for direct combo/share URLs only.
     const includeHidden =
       searchParams.get('include_hidden') === '1' ||
       searchParams.get('include_hidden') === 'true';
-    const softHiddenSlugs = new Set(['release-train-engineer']);
     const allowHiddenList =
-      (courseSlug === 'release-train-engineer' && isRtePublicEnrollmentOpen()) ||
-      (includeHidden && Boolean(courseSlug) && softHiddenSlugs.has(courseSlug!));
+      courseSlug === 'release-train-engineer' &&
+      (isRtePublicEnrollmentOpen() || (includeHidden && RTE_SCHEDULE_LINK_ENABLED));
 
     // Check if Supabase is configured
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -58,7 +56,15 @@ export async function GET(request: NextRequest) {
           { status: 500 }
         );
       }
-      return NextResponse.json({ success: true, data: schedule ? [schedule] : [] });
+      const rteScheduleClosed =
+        schedule?.course_slug === 'release-train-engineer' &&
+        schedule?.hidden === true &&
+        !RTE_SCHEDULE_LINK_ENABLED &&
+        !isRtePublicEnrollmentOpen();
+      return NextResponse.json({
+        success: true,
+        data: schedule && !rteScheduleClosed ? [schedule] : [],
+      });
     }
 
     // Build query - only active, future schedules.
