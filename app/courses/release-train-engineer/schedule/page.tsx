@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { fetchActiveCourseSchedules } from "@/app/lib/fetch-active-course-schedules";
-import { RTE_SCHEDULE_LINK_ENABLED } from "@/app/lib/rte-public-weekend";
+import {
+  isRtePublicEnrollmentOpen,
+  RTE_SCHEDULE_LINK_ENABLED,
+} from "@/app/lib/rte-public-weekend";
 import PrivateRteScheduleClient from "@/app/private/rte/PrivateRteScheduleClient";
 
 export const dynamic = "force-dynamic";
@@ -13,8 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default async function RteSchedulePage() {
-  const initialSchedules = RTE_SCHEDULE_LINK_ENABLED
-    ? await fetchActiveCourseSchedules("release-train-engineer", { includeHidden: true })
-    : [];
+  const initialSchedules =
+    isRtePublicEnrollmentOpen() || RTE_SCHEDULE_LINK_ENABLED
+      ? await fetchActiveCourseSchedules("release-train-engineer", { includeHidden: true })
+      : [];
   return <PrivateRteScheduleClient initialSchedules={initialSchedules} />;
 }
