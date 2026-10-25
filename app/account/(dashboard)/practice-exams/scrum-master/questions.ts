@@ -6,10 +6,12 @@ export type ScrumMasterQuestion = {
 };
 
 /**
- * Pro practice bank reviewed against the supplied October 2026 photos.
+ * Pro practice bank transcribed from the user-supplied photos.
+ * Preserve the source wording, option order, and selected answers.
  * 42 unique questions; source questions 18, 25, and 39 were not supplied.
  * Display IDs are consecutive. Source numbers are preserved in comments.
- * See content/exams/scrum-master-pro-review-2026-10-24.md for corrections.
+ * Answer concerns are recorded separately in
+ * content/exams/scrum-master-pro-review-2026-10-24.md, not applied to this bank.
  */
 export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 1 (IMG_0208.HEIC).
@@ -123,10 +125,10 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 10 (IMG_0217.HEIC).
   {
     id: 10,
-    question: "How can teams use Iteration Planning to stay aligned on their work?",
+    question: "How can teams use Iteration planning to stay aligned on their work?",
     options: [
       "By sharing Stories that could be pairing opportunities",
-      "By reviewing their processes before the next Iteration",
+      "By reviewing its processes before the next iteration",
       "By committing to a set of goals to be delivered",
       "By agreeing on a meeting timebox",
     ],
@@ -140,7 +142,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "Ensuring that all identified risks are fully ROAMed and categorized before the draft plan review",
       "Identifying as many risks and dependencies as possible so that each can be addressed in the management review",
       "Assigning business values to the risks so that prioritization can be given to those that need to be solved first",
-      "Immediately de-scoping any features that present a high level of risk to the team's Iterations",
+      "Immediately de-scoping any features that present a high level of risk to the team's iterations",
     ],
     correctIndex: 1,
   },
@@ -150,7 +152,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
     question: "What does the measurement aspect of the CALMR approach primarily entail?",
     options: [
       "Measuring the flow through the continuous delivery pipeline and implementing full-stack telemetry",
-      "Measuring the individual performance and velocity of each developer during an Iteration",
+      "Measuring the individual performance and velocity of each developer during an iteration",
       "Measuring progress by requiring manual status reporting and detailed timesheets for all DevOps activities",
       "Tracking only the number of critical defects found by a customer in production post-release",
     ],
@@ -178,7 +180,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "Secure support from other teams on how work will be shared and completed",
       "Identify as many risks and dependencies as possible for the management review",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
   },
   // Source question 15 (IMG_0222.HEIC).
   {
@@ -214,7 +216,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "AI systems exhibit unfair or discriminatory outcomes based on the datasets they were trained on",
       "AI creates outputs that seem confident and plausible but are factually incorrect or make no sense",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
   },
   // Source question 19 (IMG_0225.HEIC).
   {
@@ -243,7 +245,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 21 (IMG_0228.HEIC).
   {
     id: 20,
-    question: "Which benefit of regular System Demos provides an objective measure of progress across the Agile Release Train?",
+    question: "What is one benefit of holding regular system demos?",
     options: [
       "Deliverables are reviewed with stakeholders",
       "Execution can be measured across the whole ART",
@@ -283,7 +285,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
     options: [
       "To assign a business value from 1 to 10 to each team's draft PI objectives",
       "To conduct the final confidence vote for both the individual teams and the Agile Release Train",
-      "To finalize the capacity allocation for the upcoming Iterations to ensure a healthy balance of work",
+      "To finalize the capacity allocation for the upcoming iterations to ensure a healthy balance of work",
       "To adjust the scope and objectives based on the day's planning, such as resolving bottlenecks or de-scoping features",
     ],
     correctIndex: 3,
@@ -291,9 +293,9 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 26 (IMG_0232.HEIC).
   {
     id: 24,
-    question: "What is one anti-pattern of Inspect and Adapt?",
+    question: "What is one anti-pattern of the Inspect and Adapt?",
     options: [
-      "Not enough team members attend the PI System Demo",
+      "Not enough team members attend the PI System demo",
       "No actionable improvement Features are created",
       "Too many ideas enter the problem-solving workshop",
       "Only one problem is identified by each team in the retrospective",
@@ -387,14 +389,14 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 34 (IMG_0241.HEIC).
   {
     id: 32,
-    question: "Team A works collaboratively on new functionality for a customer application. The acceptance criteria have been met. The team releases the functionality with a method for collecting direct customer feedback. Which high-performing team characteristic is most directly demonstrated by collecting this feedback?",
+    question: "Team A works collaboratively on new functionality for a customer application. The acceptance criteria have each been minimally met. Team A decides to release the functionality with a method for collecting direct customer feedback. Which of the following high-performing team characteristics is Team A demonstrating?",
     options: [
       "Balancing abilities on the team with the challenge of the work",
       "Focusing on success over trying to avoid failures",
       "Taking appropriate risks without fear of failure",
       "Using regular feedback loops built into the learning cycle",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
   },
   // Source question 35 (IMG_0242.HEIC).
   {
@@ -414,8 +416,8 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
     question: "What is one way to ensure a team is holding successful Iteration Reviews and demos?",
     options: [
       "The team ensures it completes every Story",
-      "The team shares improving metrics based on data from the previous Iteration Review",
-      "The team demos working functionality completed during the Iteration",
+      "The team shares improving metrics based on data from the previous iteration review",
+      "The team demos working and functional updates from the previous iteration review",
       "The team efficiently works together, based on individual strengths, to appropriately prepare for demos",
     ],
     correctIndex: 2,
@@ -442,7 +444,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "Persistence",
       "Communication",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
   },
   // Source question 40 (IMG_0247.HEIC).
   {
@@ -507,7 +509,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 45 (IMG_0252.HEIC).
   {
     id: 42,
-    question: "Which recommended practice helps Scrum Masters/Team Coaches plan the Iteration Review demo when the team is planning its Iteration?",
+    question: "What is one recommended practice for Scrum Masters/Team Coaches when facilitating Iteration Review?",
     options: [
       "Begin to consider how and what to demo in Iteration Planning",
       "Rotate the team member who demos each Iteration to encourage full team member buy-in and project ownership",
