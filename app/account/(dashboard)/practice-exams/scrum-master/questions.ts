@@ -7,11 +7,12 @@ export type ScrumMasterQuestion = {
 
 /**
  * Pro practice bank transcribed from the user-supplied photos.
- * Preserve the source wording, option order, and selected answers.
+ * Preserve the source wording and option order.
  * 42 unique questions; source questions 18, 25, and 39 were not supplied.
  * Display IDs are consecutive. Source numbers are preserved in comments.
- * Answer concerns are recorded separately in
- * content/exams/scrum-master-pro-review-2026-10-24.md, not applied to this bank.
+ * Only the approved answer corrections for source questions 14, 17, and 38
+ * are applied. Ambiguities remain documented separately in
+ * content/exams/scrum-master-pro-review-2026-10-24.md.
  */
 export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
   // Source question 1 (IMG_0208.HEIC).
@@ -180,7 +181,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "Secure support from other teams on how work will be shared and completed",
       "Identify as many risks and dependencies as possible for the management review",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
   },
   // Source question 15 (IMG_0222.HEIC).
   {
@@ -216,7 +217,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "AI systems exhibit unfair or discriminatory outcomes based on the datasets they were trained on",
       "AI creates outputs that seem confident and plausible but are factually incorrect or make no sense",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
   },
   // Source question 19 (IMG_0225.HEIC).
   {
@@ -444,7 +445,7 @@ export const SCRUM_MASTER_QUESTIONS: ScrumMasterQuestion[] = [
       "Persistence",
       "Communication",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
   },
   // Source question 40 (IMG_0247.HEIC).
   {

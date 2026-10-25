@@ -1,6 +1,6 @@
 # Scrum Master Pro source review
 
-Updated October 25, 2026. The user requested the wording, choices, and selected answers from the supplied photos without rewriting or answer substitutions. The bank follows those selections. `correctIndex` is the existing UI field used for the supplied selection; it is not a claim that each photo selection is independently verified as correct.
+Updated October 25, 2026. Question wording, answer choices, and option order are preserved from the supplied photos. At the user’s request, only the answer keys for photo questions 14, 17, and 38 are corrected. Ambiguous selections remain unchanged.
 
 ## Source coverage
 
@@ -13,11 +13,11 @@ Updated October 25, 2026. The user requested the wording, choices, and selected 
 - Display IDs run from 1 to 42; source numbers and image filenames are preserved in code comments and the table below.
 - The bank is shared by the existing account exam and class-only page. Access controls are unchanged.
 
-## Answer concerns — not applied to the bank
+## Approved answer corrections — applied to the bank
 
-These are review notes only. The source selections are preserved as requested.
+Only the three scoring indexes below changed. No question or answer-choice text was rewritten.
 
-| Photo question | Source selection retained | Review finding |
+| Photo question | Original photo selection | Review finding |
 | --- | --- | --- |
 | 14 | B — Stories for the first two Iterations | D — identifying risks and dependencies for management review — is the better match to the course's team breakout #1 best practice (lesson 3, slide 40). |
 | 17 | B — AI stops operating on unfamiliar data | D defines hallucination: plausible but incorrect or nonsensical output (lesson 4, slides 55–56). |
@@ -30,11 +30,11 @@ These are review notes only. The source selections are preserved as requested.
 - **Q36:** The source option C says “The team demos working and functional updates from the previous iteration review.” This wording is retained without editorial changes.
 - **Q45:** A is selected and retained. B is also a sound practice; lesson 4, slide 38 encourages different team members to demo. The prompt is not rewritten to force a unique answer.
 
-## Source answer key
+## Current answer key
 
-Letters follow the photo option order. These are the source selections, including choices flagged above.
+Letters follow the photo option order. Source selections are retained except for the three approved corrections above.
 
-| Exam # | Photo # | Source image | Source answer retained |
+| Exam # | Photo # | Source image | Current answer |
 | --- | --- | --- | --- |
 | 1 | 1 | IMG_0208.HEIC | A. The team can participate in hackathons |
 | 2 | 2 | IMG_0209.HEIC | C. Deep Learning |
@@ -49,10 +49,10 @@ Letters follow the photo option order. These are the source selections, includin
 | 11 | 11 | IMG_0218.HEIC | B. Identifying as many risks and dependencies as possible so that each can be addressed in the management review |
 | 12 | 12 | IMG_0219.HEIC | A. Measuring the flow through the continuous delivery pipeline and implementing full-stack telemetry |
 | 13 | 13 | IMG_0220.HEIC | D. Give each team member the opportunity to contribute |
-| 14 | 14 | IMG_0221.HEIC | B. Ensure the team has Stories written for the first two Iterations of the increment |
+| 14 | 14 | IMG_0221.HEIC | D. Identify as many risks and dependencies as possible for the management review |
 | 15 | 15 | IMG_0222.HEIC | C. Facilitate PI Planning |
 | 16 | 16 | IMG_0223.HEIC | A. Customer collaboration over contract negotiation |
-| 17 | 17 | IMG_0224.HEIC | B. The AI system fails to operate entirely when it encounters data that was not in its training sets |
+| 17 | 17 | IMG_0224.HEIC | D. AI creates outputs that seem confident and plausible but are factually incorrect or make no sense |
 | 18 | 19 | IMG_0225.HEIC | C. To critically evaluate the AI's response and provide follow-up instructions to improve the result |
 | 19 | 20 | IMG_0226.HEIC | B. Backlog Refinement |
 | 20 | 21 | IMG_0228.HEIC | B. Execution can be measured across the whole ART |
@@ -71,7 +71,7 @@ Letters follow the photo option order. These are the source selections, includin
 | 33 | 35 | IMG_0242.HEIC | A. A safe environment for taking risks without fear of embarrassment or criticism |
 | 34 | 36 | IMG_0243.HEIC | C. The team demos working and functional updates from the previous iteration review |
 | 35 | 37 | IMG_0244.HEIC | A. The team is able to prepare requirements for Iteration Planning |
-| 36 | 38 | IMG_0245.HEIC | D. Communication |
+| 36 | 38 | IMG_0245.HEIC | B. Respect |
 | 37 | 40 | IMG_0247.HEIC | C. A constructive IP Iteration at the end of each PI |
 | 38 | 41 | IMG_0248.HEIC | A. ART predictability measure |
 | 39 | 42 | IMG_0249.HEIC | B. By keeping batch sizes small, limiting work in process (WIP), and providing extreme visibility |
@@ -81,4 +81,4 @@ Letters follow the photo option order. These are the source selections, includin
 
 ## Validation
 
-Passed: all 42 bank prompts and option arrays match the source transcription; every scoring index matches the independently recorded photo-selection map. ESLint and git diff checks passed. The earlier browser checks exercised scoring, submit gating, reset, mobile layout, and the unauthenticated account redirect; no UI logic changed in this restoration.
+Passed comparison against the previous committed bank: all 42 question texts and all answer-choice arrays are unchanged. Only photo Q14 → D, Q17 → D, and Q38 → B changed. The ambiguous answers remain unchanged. ESLint and git diff checks passed. Earlier checks covered full-project TypeScript, all 42 questions in the browser, scoring, reset, mobile layout, and unauthenticated account access.
