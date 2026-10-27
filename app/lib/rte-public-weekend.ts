@@ -5,11 +5,15 @@
  * - Weekdays: open from 8:30 PM until 10:00 AM the next morning.
  * - Saturday and Sunday: open the entire day.
  *
+ * Tuesday, October 27, 2026 stays open through 8:30 PM Eastern so registration
+ * is available during the midday gap. After that, the hours above apply.
  * Combo pages do not list it.
  */
 const EASTERN = "America/New_York";
 const OPEN_UNTIL_MINUTES = 10 * 60;
 const OPEN_FROM_MINUTES = 20 * 60 + 30;
+/** 8:30 PM Eastern on Oct 27, 2026. October is still EDT (UTC−4). */
+const OPEN_NOW_UNTIL_MS = Date.parse("2026-10-28T00:30:00.000Z");
 
 function easternClock(now: number): { weekend: boolean; minutes: number } {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -30,6 +34,7 @@ function easternClock(now: number): { weekend: boolean; minutes: number } {
 }
 
 export function isRtePublicEnrollmentOpen(now = Date.now()): boolean {
+  if (now < OPEN_NOW_UNTIL_MS) return true;
   const { weekend, minutes } = easternClock(now);
   if (weekend) return true;
   return minutes < OPEN_UNTIL_MINUTES || minutes >= OPEN_FROM_MINUTES;
