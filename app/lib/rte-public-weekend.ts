@@ -42,7 +42,7 @@ export function isRtePublicEnrollmentOpen(now = Date.now()): boolean {
 
 /**
  * Direct schedule link: /courses/release-train-engineer/schedule
- * false = that page does not list dates, except during the public hours above.
- * Set to true when that link should accept registration outside those hours.
+ * true = that page lists dates and accepts registration at any hour.
+ * The course page and catalog still follow the hours above.
  */
-export const RTE_SCHEDULE_LINK_ENABLED = false;
+export const RTE_SCHEDULE_LINK_ENABLED = true;
