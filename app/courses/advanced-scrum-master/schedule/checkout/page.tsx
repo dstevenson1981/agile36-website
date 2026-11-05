@@ -46,14 +46,6 @@ function CheckoutContent() {
   useCheckoutStepScroll(currentStep, clientSecret);
 
 
-  const resetPaymentIntentIfNeeded = () => {
-    if (clientSecret && currentStep === 3) {
-      setClientSecret(null);
-      setPaymentIntentId(null);
-      setCurrentStep(2);
-    }
-  };
-  
   const [enrollmentFormData, setEnrollmentFormData] = useState({
     enrollingFor: 'myself',
     firstName: '',
@@ -196,12 +188,20 @@ function CheckoutContent() {
       const data = await response.json();
 
       if (data.valid) {
+        const discountValue = Number(data.discountValue);
+        const discountType = data.discountType === 'percentage' ? 'percentage' : 'fixed';
         setAppliedPromoCode(data.code);
-        setPromoDiscountType(data.discountType);
-        setPromoDiscount(data.discountValue);
+        setPromoDiscountType(discountType);
+        setPromoDiscount(discountValue);
         setPromoCodeInput('');
         setPromoError(null);
-        resetPaymentIntentIfNeeded();
+        if (clientSecret) {
+          await createPaymentIntent({
+            code: data.code,
+            discount: discountValue,
+            type: discountType,
+          });
+        }
       } else {
         setPromoError(data.error || 'Invalid promo code');
         setAppliedPromoCode(null);
@@ -237,9 +237,17 @@ function CheckoutContent() {
         const data = await response.json();
         if (cancelled) return;
         if (data.valid) {
-          setPromoDiscountType(data.discountType);
-          setPromoDiscount(data.discountValue);
-          resetPaymentIntentIfNeeded();
+          const discountValue = Number(data.discountValue);
+          const discountType = data.discountType === 'percentage' ? 'percentage' : 'fixed';
+          setPromoDiscountType(discountType);
+          setPromoDiscount(discountValue);
+          if (clientSecret) {
+            await createPaymentIntent({
+              code: appliedPromoCode || 'SASM465',
+              discount: discountValue,
+              type: discountType,
+            });
+          }
         } else {
           setAppliedPromoCode(null);
           setPromoDiscount(0);
@@ -267,7 +275,9 @@ function CheckoutContent() {
     setPromoDiscount(0);
     setPromoDiscountType('fixed');
     setPromoError(null);
-    resetPaymentIntentIfNeeded();
+    if (clientSecret) {
+      void createPaymentIntent({ code: null, discount: 0, type: 'fixed' });
+    }
   };
 
   const handleContinue = async () => {
@@ -325,11 +335,23 @@ function CheckoutContent() {
     }
   };
 
-  const createPaymentIntent = async () => {
+  const createPaymentIntent = async (promoOverride?: {
+    code: string | null;
+    discount: number;
+    type: 'fixed' | 'percentage';
+  }) => {
     if (!selectedSchedule) return;
+
+    const promoCode = promoOverride ? promoOverride.code : appliedPromoCode;
+    const discountValue = promoOverride ? promoOverride.discount : promoDiscount;
+    const discountType = promoOverride ? promoOverride.type : promoDiscountType;
 
     setIsProcessingPayment(true);
     setPaymentError(null);
+    if (clientSecret) {
+      setClientSecret(null);
+      setPaymentIntentId(null);
+    }
 
     try {
       // Calculate discount at the time of payment intent creation to ensure it's current
@@ -340,12 +362,12 @@ function CheckoutContent() {
       
       // Apply promo code discount
       let calculatedPromoDiscount = 0;
-      if (appliedPromoCode && promoDiscount > 0) {
-        if (promoDiscountType === 'fixed') {
-          calculatedPromoDiscount = Math.min(promoDiscount, baseTotal);
+      if (promoCode && discountValue > 0) {
+        if (discountType === 'fixed') {
+          calculatedPromoDiscount = Math.min(discountValue, baseTotal);
         } else {
           // percentage
-          calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
+          calculatedPromoDiscount = (baseTotal * discountValue) / 100;
         }
       }
       
@@ -376,7 +398,7 @@ function CheckoutContent() {
           quantity: enrollmentQuantity,
           customerEmail: enrollmentFormData.email,
           customerName: `${enrollmentFormData.firstName} ${enrollmentFormData.lastName}`,
-          promoCode: appliedPromoCode || null,
+          promoCode: promoCode || null,
           promoDiscount: calculatedPromoDiscount || 0,
           originalAmount: baseTotal,
           corporateCode: enrollmentFormData.corporateBillingCode?.trim() || null,
@@ -884,6 +906,7 @@ function CheckoutContent() {
                 )}
 
                 <Elements
+                  key={clientSecret}
                   stripe={stripePromise}
                   options={{
                     clientSecret,
@@ -902,12 +925,12 @@ function CheckoutContent() {
                   }}
                 >
                   <PaymentForm
-                    onSuccess={() => {
+                    onSuccess={(amountPaid) => {
                       const params = new URLSearchParams({
                         schedule: scheduleId || '',
                         course: courseSlug,
                         plan: selectedPlan,
-                        amount: totalPrice.toFixed(2),
+                        amount: amountPaid.toFixed(2),
                       });
                       router.push(`/courses/advanced-scrum-master/schedule/checkout/success?${params.toString()}`);
                     }}

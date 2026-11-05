@@ -10,6 +10,83 @@ import {
 import { chargeCorporateAccount } from '@/app/lib/corporate-charge';
 import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corporate';
 import { findComboById } from '@/app/combo-courses/data';
+import { anySchedulesOverlap, COMBO_DATE_OVERLAP_MESSAGE } from '@/app/lib/schedule-overlap';
+
+export const dynamic = 'force-dynamic';
+
+type StoredPromo = {
+  code: string;
+  discount_type: string;
+  discount_value: string | number;
+  active: boolean;
+  expires_at: string | null;
+  usage_limit: number | null;
+  usage_count: number | null;
+  course_slug?: string | null;
+};
+
+/** Class price minus the database promo. Ignores the dollar amount the browser already cached. */
+async function priceWithDatabasePromo(args: {
+  code: string;
+  scheduleId: string;
+  courseSlug: string;
+  selectedPlan: unknown;
+  quantity: unknown;
+}): Promise<{ charge: number; discount: number; original: number } | { error: string }> {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!supabaseUrl || !supabaseKey) return { error: 'Server configuration error. Please contact support.' };
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  let promo: StoredPromo | null = null;
+  const { data: rpcData } = await supabase.rpc('get_promo_code_by_code', { p_code: args.code });
+  const first = Array.isArray(rpcData) ? rpcData[0] : rpcData;
+  if (first && typeof first === 'object') promo = first as StoredPromo;
+  if (!promo) {
+    const { data: row } = await supabase.from('promo_codes').select('*').ilike('code', args.code).maybeSingle();
+    if (row) promo = row as StoredPromo;
+  }
+  if (!promo || !promo.active) return { error: 'This promo code is no longer active.' };
+  if (promo.expires_at && new Date(promo.expires_at) < new Date()) {
+    return { error: 'This promo code has expired.' };
+  }
+  if (promo.usage_limit && (promo.usage_count ?? 0) >= promo.usage_limit) {
+    return { error: 'This promo code has reached its usage limit.' };
+  }
+  const allowed = (promo.course_slug || '')
+    .split(',')
+    .map((slug) => slug.trim())
+    .filter(Boolean);
+  if (allowed.length > 0 && !allowed.includes(args.courseSlug)) {
+    return { error: 'This promo code does not apply to this class.' };
+  }
+
+  const { data: schedule, error: schedErr } = await supabase
+    .from('course_schedules')
+    .select('price, course_slug')
+    .eq('id', args.scheduleId)
+    .maybeSingle();
+  if (schedErr || !schedule) return { error: 'Invalid class for this promo code.' };
+  if (args.courseSlug && schedule.course_slug !== args.courseSlug) {
+    return { error: 'Invalid class for this promo code.' };
+  }
+  if (allowed.length > 0 && !allowed.includes(schedule.course_slug)) {
+    return { error: 'This promo code does not apply to this class.' };
+  }
+
+  const basic = parseFloat(String(schedule.price));
+  if (!Number.isFinite(basic) || basic <= 0) return { error: 'Invalid class price.' };
+  const linePerSeat = linePricePerSeat(basic, args.selectedPlan);
+  const qty = Math.max(1, Math.min(100, parseInt(String(args.quantity ?? 1), 10) || 1));
+  const original = roundMoney(linePerSeat * qty);
+  const value = Number(promo.discount_value);
+  if (!Number.isFinite(value) || value <= 0) return { error: 'This promo code has no discount.' };
+  const discount =
+    promo.discount_type === 'percentage'
+      ? roundMoney((original * value) / 100)
+      : roundMoney(Math.min(value, original));
+  return { charge: roundMoney(Math.max(0, original - discount)), discount, original };
+}
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -82,6 +159,35 @@ export async function POST(request: NextRequest) {
         { error: 'Schedule ID is required' },
         { status: 400 }
       );
+    }
+
+    if (isCombo && scheduleIdsArr.length > 1) {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!supabaseUrl || !supabaseKey) {
+        return NextResponse.json(
+          { error: 'Server configuration error. Please contact support.' },
+          { status: 500 },
+        );
+      }
+      const overlapClient = createClient(supabaseUrl, supabaseKey);
+      const { data: selectedSchedules, error: overlapErr } = await overlapClient
+        .from('course_schedules')
+        .select('id, start_date, end_date, timezone')
+        .in('id', scheduleIdsArr);
+      const uniqueIds = Array.from(new Set(scheduleIdsArr));
+      if (overlapErr || !selectedSchedules || selectedSchedules.length !== uniqueIds.length) {
+        return NextResponse.json(
+          { error: 'One of the selected classes could not be found.' },
+          { status: 400 },
+        );
+      }
+      if (scheduleIdsArr.length !== uniqueIds.length || anySchedulesOverlap(selectedSchedules)) {
+        return NextResponse.json(
+          { error: COMBO_DATE_OVERLAP_MESSAGE },
+          { status: 400 },
+        );
+      }
     }
     
     // Validate and prepare customer data
@@ -275,6 +381,20 @@ export async function POST(request: NextRequest) {
       const baseTotal = roundMoney(linePerSeat * qty);
       chargeAmountDollars = roundMoney(baseTotal - promoDiscountDollars);
       stripeOriginalForMeta = baseTotal;
+    } else if (!isCombo && String(effectivePromoCode || '').trim()) {
+      const priced = await priceWithDatabasePromo({
+        code: String(effectivePromoCode).trim(),
+        scheduleId: String(effectiveScheduleId || ''),
+        courseSlug: typeof courseSlug === 'string' ? courseSlug.trim() : '',
+        selectedPlan,
+        quantity,
+      });
+      if ('error' in priced) {
+        return NextResponse.json({ error: priced.error }, { status: 400 });
+      }
+      chargeAmountDollars = priced.charge;
+      promoDiscountDollars = priced.discount;
+      stripeOriginalForMeta = priced.original;
     }
 
     // Get schedule details for better description

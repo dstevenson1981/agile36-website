@@ -45,13 +45,6 @@ function CheckoutContent() {
   useCheckoutStepScroll(currentStep, clientSecret);
 
 
-  const resetPaymentIntentIfNeeded = () => {
-    if (clientSecret && currentStep === 3) {
-      setClientSecret(null);
-      setPaymentIntentId(null);
-      setCurrentStep(2);
-    }
-  };
   
   const [enrollmentFormData, setEnrollmentFormData] = useState({
     enrollingFor: 'myself',
@@ -164,12 +157,20 @@ function CheckoutContent() {
       const data = await response.json();
 
       if (data.valid) {
+        const discountValue = Number(data.discountValue);
+        const discountType = data.discountType === 'percentage' ? 'percentage' : 'fixed';
         setAppliedPromoCode(data.code);
-        setPromoDiscountType(data.discountType);
-        setPromoDiscount(data.discountValue);
+        setPromoDiscountType(discountType);
+        setPromoDiscount(discountValue);
         setPromoCodeInput('');
         setPromoError(null);
-        resetPaymentIntentIfNeeded();
+        if (currentStep >= 2) {
+          await createPaymentIntent({
+            code: data.code,
+            discount: discountValue,
+            type: discountType,
+          });
+        }
       } else {
         setPromoError(data.error || 'Invalid promo code');
         setAppliedPromoCode(null);
@@ -188,7 +189,9 @@ function CheckoutContent() {
     setPromoDiscount(0);
     setPromoDiscountType('fixed');
     setPromoError(null);
-    resetPaymentIntentIfNeeded();
+    if (currentStep >= 2) {
+      void createPaymentIntent({ code: null, discount: 0, type: 'fixed' });
+    }
   };
 
   const handleContinue = async () => {
@@ -242,11 +245,23 @@ function CheckoutContent() {
     }
   };
 
-  const createPaymentIntent = async () => {
+  const createPaymentIntent = async (promoOverride?: {
+    code: string | null;
+    discount: number;
+    type: 'fixed' | 'percentage';
+  }) => {
     if (!selectedSchedule) return;
+
+    const promoCode = promoOverride ? promoOverride.code : appliedPromoCode;
+    const discountValue = promoOverride ? promoOverride.discount : promoDiscount;
+    const discountType = promoOverride ? promoOverride.type : promoDiscountType;
 
     setIsProcessingPayment(true);
     setPaymentError(null);
+    if (clientSecret) {
+      setClientSecret(null);
+      setPaymentIntentId(null);
+    }
 
     try {
       // Use price from database schedule
@@ -255,12 +270,12 @@ function CheckoutContent() {
       
       // Apply promo code discount
       let calculatedPromoDiscount = 0;
-      if (appliedPromoCode && promoDiscount > 0) {
-        if (promoDiscountType === 'fixed') {
-          calculatedPromoDiscount = Math.min(promoDiscount, baseTotal);
+      if (promoCode && discountValue > 0) {
+        if (discountType === 'fixed') {
+          calculatedPromoDiscount = Math.min(discountValue, baseTotal);
         } else {
           // percentage
-          calculatedPromoDiscount = (baseTotal * promoDiscount) / 100;
+          calculatedPromoDiscount = (baseTotal * discountValue) / 100;
         }
       }
       
@@ -279,7 +294,7 @@ function CheckoutContent() {
           quantity: enrollmentQuantity,
           customerEmail: enrollmentFormData.email,
           customerName: `${enrollmentFormData.firstName} ${enrollmentFormData.lastName}`,
-          promoCode: appliedPromoCode || null,
+          promoCode: promoCode || null,
           promoDiscount: calculatedPromoDiscount || 0,
           originalAmount: baseTotal,
           corporateCode: enrollmentFormData.corporateBillingCode?.trim() || null,
@@ -558,6 +573,12 @@ function CheckoutContent() {
               </div>
             )}
 
+            {currentStep === 2 && !clientSecret && (
+              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 text-sm text-[#475569]">
+                Updating the payment amount…
+              </div>
+            )}
+
             {/* Step 2: Secure Payment */}
             {currentStep === 2 && clientSecret && (
               <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
@@ -573,6 +594,7 @@ function CheckoutContent() {
                 )}
 
                 <Elements
+                  key={clientSecret}
                   stripe={stripePromise}
                   options={{
                     clientSecret,
@@ -591,11 +613,11 @@ function CheckoutContent() {
                   }}
                 >
                   <PaymentForm
-                    onSuccess={() => {
+                    onSuccess={(amountPaid) => {
                       const params = new URLSearchParams({
                         schedule: scheduleId || '',
                         course: courseSlug,
-                        amount: totalPrice.toFixed(2),
+                        amount: amountPaid.toFixed(2),
                       });
                       router.push(`/courses/release-train-engineer/schedule/checkout/success?${params.toString()}`);
                     }}

@@ -164,6 +164,7 @@ export async function POST(request: NextRequest) {
       alternative_contact: paymentIntent.metadata?.alternativeContact || enrollmentData?.alternativeContact || '',
       enrolling_for: paymentIntent.metadata?.enrollingFor || enrollmentData?.enrollingFor || 'myself',
       payment_status: paymentIntent.status,
+      promo_code: paymentIntent.metadata?.promoCode || null,
       schedule_date: isComboOrder
         ? JSON.stringify(comboScheduleDates)
         : (paymentIntent.metadata?.scheduleDate || ''),

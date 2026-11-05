@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface PaymentFormProps {
-  onSuccess: () => void;
+  onSuccess: (amountPaid: number) => void;
   onCancel: () => void;
   enrollmentData: any;
   paymentIntentId: string;
@@ -74,7 +74,7 @@ export default function PaymentForm({ onSuccess, onCancel, enrollmentData, payme
           console.error('Error storing order:', err);
         }
 
-        onSuccess();
+        onSuccess(paymentIntent.amount / 100);
       }
     } catch (err: any) {
       setError(err.message || 'An error occurred during payment');
