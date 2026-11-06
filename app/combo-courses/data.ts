@@ -259,14 +259,20 @@ const CROSS_SAFE = [
 /**
  * Courses in this set are omitted from the public combo catalog. Checkout and
  * practice-exam grants for combos already sold still resolve.
+ *
+ * RTE stays on the combo list permanently. Do not add release-train-engineer
+ * here. includesPausedCourse ignores it even if it is added later.
  */
 const PAUSED_COMBO_COURSE_SLUGS = new Set<string>([]);
 
 function includesPausedCourse(combo: Combo): boolean {
+  if (combo.courses.some((course) => course.slug === "release-train-engineer")) {
+    return false;
+  }
   return combo.courses.some((course) => PAUSED_COMBO_COURSE_SLUGS.has(course.slug));
 }
 
-/** RTE dates stay off combo checkout while the schedule link is disabled. */
+/** Slugs whose hidden class dates still appear on the combo date picker. */
 export const COMBO_INCLUDE_HIDDEN_SCHEDULE_SLUGS = new Set<string>([]);
 
 function sortCombos(combos: Combo[]): Combo[] {
