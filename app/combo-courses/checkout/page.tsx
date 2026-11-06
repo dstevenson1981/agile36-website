@@ -10,6 +10,7 @@ import ComboPaymentForm from "./ComboPaymentForm";
 import InternationalPhoneInput from "@/app/components/InternationalPhoneInput";
 import CheckoutEmailField from "@/app/components/CheckoutEmailField";
 import { useCheckoutStepScroll } from "@/app/hooks/useCheckoutStepScroll";
+import { anySchedulesOverlap, COMBO_DATE_OVERLAP_MESSAGE } from "@/app/lib/schedule-overlap";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -27,6 +28,7 @@ function ComboCheckoutContent() {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
+  const [dateCheck, setDateCheck] = useState<"checking" | "ok" | "overlap">("checking");
 
   useCheckoutStepScroll(currentStep, clientSecret);
 
@@ -60,6 +62,32 @@ function ComboCheckoutContent() {
     const found = comboId ? findComboById(comboId) : undefined;
     setCombo(found || null);
   }, [comboId]);
+
+  useEffect(() => {
+    if (scheduleIds.length < 2) {
+      setDateCheck("ok");
+      return;
+    }
+    setDateCheck("checking");
+    let cancelled = false;
+    (async () => {
+      const rows = await Promise.all(
+        scheduleIds.map(async (id) => {
+          const res = await fetch(`/api/course-schedules?schedule_id=${encodeURIComponent(id)}&status=active`);
+          const data = await res.json();
+          return data?.data?.[0] ?? null;
+        })
+      );
+      if (cancelled) return;
+      const spans = rows.filter(Boolean);
+      setDateCheck(spans.length !== scheduleIds.length || anySchedulesOverlap(spans) ? "overlap" : "ok");
+    })().catch(() => {
+      if (!cancelled) setDateCheck("ok");
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [schedulesParam]);
 
   const createPaymentIntent = async () => {
     if (!combo || scheduleIds.length === 0) return;
@@ -168,6 +196,10 @@ function ComboCheckoutContent() {
   const handleContinue = async () => {
     if (currentStep !== 1) return;
 
+    if (dateCheck !== "ok") {
+      setFormError(dateCheck === "overlap" ? COMBO_DATE_OVERLAP_MESSAGE : "Checking the class dates.");
+      return;
+    }
     if (!isDetailsComplete) {
       setFormError("Please fill in all required fields to continue.");
       return;
@@ -184,6 +216,27 @@ function ComboCheckoutContent() {
           <p className="text-[#64748b] mb-4">Combo not found.</p>
           <Link href="/combo-courses" className="text-[#d97706] font-medium hover:underline">
             Back to Combo Courses
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  if (dateCheck === "checking") {
+    return (
+      <main className="min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" />
+      </main>
+    );
+  }
+
+  if (dateCheck === "overlap") {
+    return (
+      <main className="min-h-screen bg-black flex items-center justify-center px-4">
+        <div className="max-w-md text-center">
+          <p className="text-[#1f2c4a] mb-4">{COMBO_DATE_OVERLAP_MESSAGE}</p>
+          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#d97706] font-medium hover:underline">
+            Choose different dates
           </Link>
         </div>
       </main>
@@ -375,6 +428,7 @@ function ComboCheckoutContent() {
                   price of USD {combo.comboPrice.toLocaleString()}.
                 </p>
                 <Elements
+                  key={clientSecret}
                   stripe={stripePromise}
                   options={{
                     clientSecret,

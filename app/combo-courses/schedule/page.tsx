@@ -14,6 +14,7 @@ import {
   formatTimeRange,
   formatTimezoneLabel,
 } from "@/app/lib/schedule-display";
+import { COMBO_DATE_OVERLAP_MESSAGE, scheduleSpansOverlap } from "@/app/lib/schedule-overlap";
 
 type ComboScheduleOption = {
   id: string;
@@ -77,6 +78,7 @@ function ComboScheduleContent() {
               end_date: s.end_date,
               duration: s.duration,
               is_weekend: s.is_weekend,
+              timezone: s.timezone,
             });
             const timeRange = formatTimeRange(s.start_time, s.end_time);
             const tz = formatTimezoneLabel(s.timezone);
@@ -125,6 +127,13 @@ function ComboScheduleContent() {
       };
     }
 
+    const chosenSpans = combo.courses
+      .map((course) => (schedulesByCourse[course.slug] || []).find((item) => item.id === selectedSchedules[course.slug]))
+      .filter((item): item is ComboScheduleOption => Boolean(item));
+    if (chosenSpans.some((item, index) => chosenSpans.slice(index + 1).some((other) => scheduleSpansOverlap(item, other)))) {
+      return;
+    }
+
     const scheduleIds = Object.values(selectedByCourse).map((item) => item.scheduleId);
     router.push(
       `/combo-courses/checkout?combo=${comboId}&schedules=${scheduleIds.join(",")}&selections=${encodeURIComponent(JSON.stringify(selectedByCourse))}`
@@ -144,7 +153,13 @@ function ComboScheduleContent() {
     );
   }
 
-  const ready = combo.courses.every((course) => Boolean(selectedSchedules[course.slug]));
+  const chosen = combo.courses
+    .map((course) => (schedulesByCourse[course.slug] || []).find((item) => item.id === selectedSchedules[course.slug]))
+    .filter((item): item is ComboScheduleOption => Boolean(item));
+  const datesOverlap = chosen.some((item, index) =>
+    chosen.slice(index + 1).some((other) => scheduleSpansOverlap(item, other))
+  );
+  const ready = combo.courses.every((course) => Boolean(selectedSchedules[course.slug])) && !datesOverlap;
   const savePct =
     combo.originalPrice > combo.comboPrice
       ? Math.round((100 * (combo.originalPrice - combo.comboPrice)) / combo.originalPrice)
@@ -168,7 +183,7 @@ function ComboScheduleContent() {
           <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">Combo schedule</p>
           <h1 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] md:text-3xl">{combo.name}</h1>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#475569]">
-            Pick one live date for each course. Both classes are on the same enrollment.
+            Pick one live date for each course. The dates have to be on different days so you can attend both.
           </p>
           <div className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
             <span className="text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
@@ -191,6 +206,12 @@ function ComboScheduleContent() {
           combo.courses.map((course) => {
             const schedules = schedulesByCourse[course.slug] || [];
             const selectedId = selectedSchedules[course.slug];
+            const otherSelections = combo.courses
+              .filter((other) => other.slug !== course.slug)
+              .map((other) =>
+                (schedulesByCourse[other.slug] || []).find((item) => item.id === selectedSchedules[other.slug])
+              )
+              .filter((item): item is ComboScheduleOption => Boolean(item));
             const visibleSchedules = showAllDates[course.slug] ? schedules : schedules.slice(0, 5);
             return (
               <div key={course.slug}>
@@ -214,16 +235,18 @@ function ComboScheduleContent() {
                   <div className="space-y-2" role="radiogroup" aria-label={`${course.name} dates`}>
                     {visibleSchedules.map((schedule) => {
                       const selected = selectedId === schedule.id;
+                      const overlaps = otherSelections.some((other) => scheduleSpansOverlap(schedule, other));
                       return (
                         <button
                           key={schedule.id}
                           type="button"
                           role="radio"
                           aria-checked={selected}
+                          disabled={overlaps}
                           onClick={() =>
                             setSelectedSchedules((prev) => ({ ...prev, [course.slug]: schedule.id }))
                           }
-                          className={`flex w-full items-center justify-between gap-4 rounded-2xl border bg-white px-4 py-3.5 text-left transition-colors ${
+                          className={`flex w-full items-center justify-between gap-4 rounded-2xl border bg-white px-4 py-3.5 text-left transition-colors disabled:cursor-not-allowed disabled:bg-[#1f2c4a]/[0.04] disabled:opacity-60 ${
                             selected
                               ? "border-[#1f2c4a]"
                               : "border-[#1f2c4a]/10 hover:border-[#1f2c4a]/30"
@@ -233,7 +256,9 @@ function ComboScheduleContent() {
                             <span className="block text-[15px] font-medium tracking-[-0.02em] text-[#1f2c4a]">
                               {schedule.displayDate}
                             </span>
-                            <span className="mt-0.5 block text-sm text-[#64748b]">{schedule.displayTime}</span>
+                            <span className="mt-0.5 block text-sm text-[#64748b]">
+                              {overlaps ? "Same days as your other class" : schedule.displayTime}
+                            </span>
                           </span>
                           <span
                             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
@@ -263,6 +288,9 @@ function ComboScheduleContent() {
         )}
 
         <div className="border-t border-[#1f2c4a]/10 pt-6">
+          {datesOverlap ? (
+            <p className="mb-3 text-sm text-[#b45309]">{COMBO_DATE_OVERLAP_MESSAGE}</p>
+          ) : null}
           <button
             type="button"
             onClick={handleProceed}
