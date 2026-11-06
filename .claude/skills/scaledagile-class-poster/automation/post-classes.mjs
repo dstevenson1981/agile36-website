@@ -165,19 +165,39 @@ async function readExisting(page) {
 /** Open Add New → Remote Public Course. The menu closes on stray focus, so
  *  click both in one go and verify the dialog actually opened. */
 async function openCreateDialog(page) {
+  // This used to click "Add New" immediately and check for the menu 600ms
+  // later. The portal takes 6-15s to become interactive, so on a 60-class run
+  // exactly half the classes failed with a 30s click timeout — the button was
+  // not ready, or the menu had not rendered when it was checked once and
+  // abandoned. Wait for each step instead of assuming it, and reload between
+  // attempts so a wedged page cannot fail every remaining class.
   for (let attempt = 1; attempt <= 4; attempt++) {
-    await page.getByRole("button", { name: "Add New" }).click();
-    await page.waitForTimeout(600);
-    const item = page.getByText("Remote Public Course", { exact: true });
-    if (await item.count()) {
-      await item.first().click();
+    try {
+      const addNew = page.getByRole("button", { name: "Add New" });
+      await addNew.waitFor({ state: "visible", timeout: 45000 });
+      await addNew.click({ timeout: 15000 });
+
+      // Poll for the menu rather than checking once.
+      const item = page.getByText("Remote Public Course", { exact: true });
+      await item.first().waitFor({ state: "visible", timeout: 15000 });
+      await item.first().click({ timeout: 10000 });
+
       const dialog = page.getByRole("dialog");
-      try {
-        await dialog.waitFor({ state: "visible", timeout: 8000 });
-        return dialog;
-      } catch { /* fall through and retry */ }
+      await dialog.waitFor({ state: "visible", timeout: 20000 });
+      // The form paints after the dialog frame does; wait for a real field.
+      await dialog
+        .getByRole("textbox", { name: "ILT Course Name" })
+        .waitFor({ state: "visible", timeout: 20000 });
+      return dialog;
+    } catch (err) {
+      if (attempt === 4) {
+        throw new Error(`could not open the create dialog: ${err.message.split("\n")[0]}`);
+      }
+      // Escape closes the modal and discards a filled form, so never press it —
+      // reload instead.
+      await page.goto(PORTAL, { waitUntil: "domcontentloaded" });
+      await page.waitForTimeout(6000);
     }
-    await page.waitForTimeout(1000);
   }
   throw new Error("could not open the Create Remote Public Course dialog");
 }
@@ -269,7 +289,17 @@ async function verifySaved(page, c) {
  *  and omitted the Lean Portfolio whitelist entirely, so the fallback offered
  *  Marcus Ball for a course he is not certified to teach. */
 const TRAINERS = config.postingPolicy.trainers;
-const ROTATION = [...TRAINERS.rotation, ...Object.keys(TRAINERS.restricted)];
+// A trainer excluded for a batch must stay excluded through the substitution
+// fallback, not just be absent from the CSV. On 2026-08-25 the CSV correctly
+// left Martina out and the fallback put her straight back in as a candidate.
+const EXCLUDED = new Set(
+  (process.env.EXCLUDE_TRAINERS || config.postingPolicy.excludedTrainers || []).toString()
+    .split(",").map((t) => t.trim()).filter(Boolean)
+);
+const ROTATION = [...TRAINERS.rotation, ...Object.keys(TRAINERS.restricted)].filter(
+  (t) => !EXCLUDED.has(t)
+);
+if (EXCLUDED.size) console.log(`excluding trainers: ${[...EXCLUDED].join(", ")}\n`);
 
 /** Match a course slug ("lean-portfolio-management") against a portal class
  *  name ("Lean Portfolio Management-Guaranteed to Run"). */

@@ -61,8 +61,10 @@ export async function POST(request: NextRequest) {
     const trimmedEmail = email.trim().toLowerCase();
     const hardSuppressed = new Set([
       'amandar@woodforest.com',
+      'cteadt@uihna.com',
       'enriquesan@iadb.org',
       'heather.mckenney@voya.com',
+      'jgriffin@uihna.com',
       'kristen.kunkel@gmail.com',
       'mpulm@yahoo.com',
       'steven.garcia@sncorp.com',

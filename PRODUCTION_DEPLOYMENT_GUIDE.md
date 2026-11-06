@@ -197,22 +197,16 @@ Vercel automatically provides:
 
 ### Google Analytics:
 
-Add to `app/layout.tsx` before closing `</head>`:
+The root layout already loads GA4 through `@next/third-parties` when this variable is set. Leave it unset until you have a real measurement ID. Do not paste a placeholder.
 
-```tsx
-<Script
-  src={`https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID`}
-  strategy="afterInteractive"
-/>
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'YOUR_GA_ID');
-  `}
-</Script>
 ```
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXX
+```
+
+1. In Google Analytics, create a GA4 property for `https://www.agile36.com` and add a web data stream.
+2. Copy the Measurement ID. It looks like `G-XXXXXXXX`.
+3. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel for Production, and in `.env.local` if you want to check it locally. Do not commit the value.
+4. Redeploy. The tag stays off until the value is a real `G-` ID.
 
 ---
 
