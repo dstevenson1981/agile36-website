@@ -257,11 +257,10 @@ const CROSS_SAFE = [
 ];
 
 /**
- * RTE is out of the public combo catalog for now. Remove the slug from this
- * set to offer RTE combos again. Checkout and practice-exam grants for
- * combos already sold still resolve.
+ * Courses in this set are omitted from the public combo catalog. Checkout and
+ * practice-exam grants for combos already sold still resolve.
  */
-const PAUSED_COMBO_COURSE_SLUGS = new Set(["release-train-engineer"]);
+const PAUSED_COMBO_COURSE_SLUGS = new Set<string>([]);
 
 function includesPausedCourse(combo: Combo): boolean {
   return combo.courses.some((course) => PAUSED_COMBO_COURSE_SLUGS.has(course.slug));

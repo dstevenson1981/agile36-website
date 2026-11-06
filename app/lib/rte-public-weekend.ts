@@ -1,6 +1,5 @@
 /**
  * RTE registration stays open. There is no time gate.
- * Combo pages do not list it.
  */
 export function isRtePublicEnrollmentOpen(_now = Date.now()): boolean {
   return true;

@@ -133,9 +133,12 @@ export function formatComboScheduleOptionLabel(schedule: {
   end_date?: string | null;
   duration?: string | null;
   is_weekend?: boolean | null;
+  timezone?: string | null;
 }): string {
   const endDate = schedule.end_date || schedule.start_date;
-  const datePart = formatDateRangeCompact(schedule.start_date, endDate);
+  const datePart = schedule.timezone
+    ? formatDateRange(schedule.start_date, endDate, schedule.timezone)
+    : formatDateRangeCompact(schedule.start_date, endDate);
 
   const fromField = formatDurationLabel(schedule.duration);
   let durationPart: string | null = null;
