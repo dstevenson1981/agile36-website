@@ -30,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/academy`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/academy/ai-agents`, changeFrequency: "weekly", priority: 0.75 },
     { url: `${BASE_URL}/academy/ai-agents/n8n-workflows`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/academy/scrum-master-skills`, changeFrequency: "weekly", priority: 0.75 },
   ];
 
   const courseSlugs = [

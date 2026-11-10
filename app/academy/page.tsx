@@ -116,6 +116,19 @@ export default function AiAcademyPage() {
             <p className="mt-1 text-sm font-semibold text-[#1f2c4a]">Class n8n templates</p>
             <p className="mt-1 text-xs text-[#64748b]">Curated workflows for labs — not the full warehouse.</p>
           </Link>
+          <Link
+            href="/academy/scrum-master-skills"
+            className="rounded-xl border border-[#1f2c4a]/12 bg-white p-4 transition hover:border-[#1f2c4a]/25 sm:col-span-2"
+          >
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+              Free · Copy or install
+            </p>
+            <p className="mt-1 text-sm font-semibold text-[#1f2c4a]">Scrum Master AI Skills Library</p>
+            <p className="mt-1 text-xs text-[#64748b]">
+              A skill for every Scrum and SAFe event, plus facilitation, risks, backlog and metrics. Works in
+              Claude, Copilot and ChatGPT.
+            </p>
+          </Link>
         </div>
       </section>
 
