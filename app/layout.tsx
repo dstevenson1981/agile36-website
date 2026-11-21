@@ -98,7 +98,7 @@ export default async function RootLayout({
       "width": SCHEMA_ORGANIZATION_LOGO_WIDTH,
       "height": SCHEMA_ORGANIZATION_LOGO_HEIGHT,
     },
-    "description": "Agile36 provides enterprise Agile and AI training including SAFe certifications and hands-on courses in AI agents, workflow automation, and no-code apps. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
+    "description": "Agile36 provides enterprise Agile and AI training including SAFe certifications and hands-on courses in AI agents, workflow automation, and no-code apps. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. Scaled Agile Silver Partner offering expert-led courses for organizational transformation and professional development.",
     "telephone": "310-620-7966",
     "email": "d.stevenson@agile36.com",
     "address": {

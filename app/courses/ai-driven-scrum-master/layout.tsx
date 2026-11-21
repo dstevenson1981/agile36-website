@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("ai-driven-scrum-master"),
-  description: "2026 live cohorts: Two days, 4 hours per day. Build reusable AI skills and automated Scrum workflows, then leave with the AI-Driven Scrum Master™ certification issued through Accredible.",
+  description: "2026 live cohorts: Two days, 4 hours per day. Build reusable AI skills and automated Scrum workflows, then leave with the AI-Driven Scrum Master™ certification issued through Accredible. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "AI-Driven Scrum Master",
     "AI Scrum Master",

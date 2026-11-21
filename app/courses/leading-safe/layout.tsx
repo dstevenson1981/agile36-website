@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("leading-safe"),
   description:
-    "2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. 2-day virtual training, exam included, SPC instructors. Lead enterprise Agile transformation with current SAFe practices.",
+    "2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. 2-day virtual training, exam included, SPC instructors.",
   keywords: [
     "Leading SAFe",
     "SAFe Agilist",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     images: [...DEFAULT_OG_IMAGES],
     title: courseOgTitle("leading-safe"),
     description:
-      "2026 Leading SAFe training: become a SAFe Agilist (SA) with live expert instruction, exam included, and enterprise transformation focus.",
+      "2026 Leading SAFe training: become a SAFe Agilist (SA). Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
     type: "website",
     url: "https://www.agile36.com/courses/leading-safe",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: courseLong("leading-safe"),
     description:
-      "2026 SAFe Agilist path: AI-Empowered Leading SAFe live training and certification exam with Agile36.",
+      "2026 SAFe Agilist path: AI-Empowered Leading SAFe. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/leading-safe",

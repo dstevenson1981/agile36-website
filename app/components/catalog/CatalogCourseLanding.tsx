@@ -11,6 +11,20 @@ import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 import PopmCourseLanding from "@/app/courses/product-owner-manager/PopmCourseLanding";
+import PopmStorefront from "@/app/courses/product-owner-manager/PopmStorefront";
+
+const STOREFRONT_SLUGS = new Set([
+  "leading-safe",
+  "scrum-master",
+  "lean-portfolio-management",
+  "agile-product-management",
+  "safe-for-architects",
+  "safe-for-teams",
+  "devops",
+  "advanced-scrum-master",
+  "release-train-engineer",
+  "value-stream-mapping",
+]);
 
 const HEADING =
   "text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl";
@@ -1079,5 +1093,8 @@ export default function CatalogCourseLanding({
   content: CatalogLandingContent;
   initialSchedules: CourseScheduleRow[];
 }) {
+  if (STOREFRONT_SLUGS.has(content.slug)) {
+    return <PopmStorefront content={content} initialSchedules={initialSchedules} />;
+  }
   return <PopmCourseLanding content={content} initialSchedules={initialSchedules} />;
 }

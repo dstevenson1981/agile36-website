@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("devops"),
-  description: "2026 live cohorts: Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included.",
+  description: "2026 live cohorts: Earn your SAFe DevOps Practitioner certification with Agile36. 2-day training covering continuous delivery pipeline, DevOps culture, and release on demand. Exam included. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe DevOps",
     "SAFe SDP certification",

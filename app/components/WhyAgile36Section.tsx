@@ -13,8 +13,8 @@ export default function WhyAgile36Section() {
       description: "Agile36 has trained tens of thousands of professionals across the US and globally, with a proven track record of high first-attempt pass rates.",
     },
     {
-      title: "4.9/5.0 Rating",
-      description: "Based on 2,500+ verified Scaled Agile reviews from professionals who've completed our training.",
+      title: "4.9/5 from Agile36 learners",
+      description: "Highest feedback score on Scaled Agile.",
     },
     {
       title: "Exam Fee Included",

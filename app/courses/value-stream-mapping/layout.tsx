@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("value-stream-mapping"),
-  description: "2026 live cohorts: Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now.",
+  description: "2026 live cohorts: Learn SAFe Value Stream Mapping with Agile36. Expert-led training covering current and future state mapping, flow optimization, and value stream identification. Enroll now. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "Value Stream Mapping",
     "VSM",

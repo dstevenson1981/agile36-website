@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("lean-portfolio-management"),
-  description: "2026 live cohorts: Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now.",
+  description: "2026 live cohorts: Earn your SAFe LPM certification with Agile36. 2-day live training in portfolio strategy, Lean budgeting, and Agile governance. SAFe Silver Partner. Exam included. Enroll now. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe Lean Portfolio Management",
     "SAFe LPM certification",

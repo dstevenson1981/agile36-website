@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("certified-genai-practitioner"),
-  description: "2026 live cohorts: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications in this comprehensive 4-hour course. Expert-led training.",
+  description: "2026 live cohorts: Master Generative AI fundamentals with Certified GenAI Practitioner™ Certification Training. Learn prompt engineering, AI ethics, and practical applications in this comprehensive 4-hour course. Expert-led training. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "GenAI Practitioner",
     "Generative AI",

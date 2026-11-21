@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("responsible-ai"),
-  description: "2026 live cohorts: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing. Expert-led training.",
+  description: "2026 live cohorts: Master Responsible AI practices with Achieving Responsible AI with SAFe Micro-credential Course. Learn stakeholder identification, RAI policy evaluation, communication strategies, and epic hypothesis statement writing. Expert-led training. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "Responsible AI",
     "AI with SAFe",

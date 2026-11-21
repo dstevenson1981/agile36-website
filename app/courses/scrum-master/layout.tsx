@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("scrum-master"),
-  description: "2026 live cohorts: Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs. Enroll today.",
+  description: "SAFe Scrum Master (SSM) costs $515. Two-day live online class with two exam attempts included. Scaled Agile Silver Partner. Next dates are on this page. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe Scrum Master",
     "SAFe SSM certification",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [...DEFAULT_OG_IMAGES],
     title: courseOgTitle("scrum-master"),
-    description: "2026: Earn your AI-Empowered SAFe Scrum Master (SSM) certification with Agile36, a SAFe Silver Partner. 2-day live training, exam included, taught by Fortune 100-experienced SPCs.",
+    description: "SAFe Scrum Master (SSM) costs $515. Two-day live online class with two exam attempts included.",
     type: "website",
     url: "https://www.agile36.com/courses/scrum-master",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     images: [...DEFAULT_TWITTER_IMAGES],
     card: "summary_large_image",
     title: courseLong("scrum-master"),
-    description: "2026: Master SAFe Scrum Master skills with AI-Empowered SAFe® SSM Certification Training. Learn team facilitation, PI planning support, and Agile Release Train support.",
+    description: "SAFe Scrum Master (SSM) costs $515. Two-day live online class with two exam attempts included.",
   },
   alternates: {
     canonical: "https://www.agile36.com/courses/scrum-master",

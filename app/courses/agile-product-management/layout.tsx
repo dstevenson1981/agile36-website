@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("agile-product-management"),
-  description: "2026 live cohorts: Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included.",
+  description: "2026 live cohorts: Earn your SAFe APM certification with Agile36. 3-day live training covering continuous exploration, product strategy, and design thinking. SAFe Silver Partner. Exam included. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe Agile Product Management",
     "SAFe APM certification",

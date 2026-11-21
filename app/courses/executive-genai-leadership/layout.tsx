@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("executive-genai-leadership"),
-  description: "2026 live cohorts: Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, ethical AI implementation, and organizational transformation. Expert-led training.",
+  description: "2026 live cohorts: Lead your organization's AI transformation with strategic GenAI leadership. Learn GenAI strategy development, executive AI decision-making frameworks, ethical AI implementation, and organizational transformation. Expert-led training. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "Executive GenAI Leadership",
     "GenAI Leadership",

@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("ai-agent-builder"),
   description:
-    "Build a fleet of AI agents, a voice agent, and a working app in two live days. Combine GrokBot, RAG, Claude Code, Codex, n8n, and voice AI — 8 hours, 4 hours per day.",
+    "Build a fleet of AI agents, a voice agent, and a working app in two live days. Combine GrokBot, RAG, Claude Code, Codex, n8n, and voice AI — 8 hours, 4 hours per day. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "No-code AI agents",
     "AI automation",

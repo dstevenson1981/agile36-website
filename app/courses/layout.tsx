@@ -4,7 +4,7 @@ import { DEFAULT_OG_IMAGES } from "@/app/lib/og-defaults";
 export const metadata: Metadata = {
   title: "Certification Courses (2026) | Agile36 — SAFe, Agile & AI",
   description:
-    "2026 course catalog: live virtual SAFe, Agile, AI, and product management certifications from Agile36, a Scaled Agile Silver Partner. Exam-included public schedules.",
+    "2026 course catalog: live virtual SAFe, Agile, AI, and product management certifications from Agile36, a Scaled Agile Silver Partner. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. Exam-included public schedules.",
   alternates: {
     canonical: "https://www.agile36.com/courses",
   },

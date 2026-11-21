@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("safe-for-architects"),
   description:
-    "2026 live cohorts: Earn your SAFe for Architects (ARCH) certification with Agile36. 3-day live training covering Agile architecture, architectural runway, solution intent, and PI planning. SAFe Silver Partner. Exam included. Enroll now.",
+    "2026 live cohorts: Earn your SAFe for Architects (ARCH) certification with Agile36. 3-day live training covering Agile architecture, architectural runway, solution intent, and PI planning. SAFe Silver Partner. Exam included. Enroll now. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe for Architects",
     "SAFe ARCH certification",

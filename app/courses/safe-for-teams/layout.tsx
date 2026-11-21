@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("safe-for-teams"),
-  description: "Earn your SAFe Practitioner (SP) certification in a live 2-day SAFe for Teams course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs.",
+  description: "Earn your SAFe Practitioner (SP) certification in a live 2-day SAFe for Teams course taught by certified SPCs. Exam included, weekday and weekend cohorts, 16 PDUs. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   keywords: [
     "SAFe for Teams",
     "SAFe Practitioner certification",

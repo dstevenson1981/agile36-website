@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("ai-app-builder"),
   description:
-    "Build apps you can sell, or use to grow your own business. Live two-day no-code AI app builder training: 8 hours, 4 hours per day. No coding experience required.",
+    "Build apps you can sell, or use to grow your own business. Live two-day no-code AI app builder training: 8 hours, 4 hours per day. No coding experience required. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "no-code AI app builder",
     "no-code app training",

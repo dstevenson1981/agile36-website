@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: courseTitle("certified-ai-product-manager"),
-  description: "2026 live cohorts: Build and ship a working app in class. Certified AI Product Manager™ is a 2-day build course — Cursor, v0, Bolt, Lovable — not a lecture on using AI across the product lifecycle.",
+  description: "2026 live cohorts: Build and ship a working app in class. Certified AI Product Manager™ is a 2-day build course — Cursor, v0, Bolt, Lovable — not a lecture on using AI across the product lifecycle. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "AI Product Manager",
     "AI Product Management",

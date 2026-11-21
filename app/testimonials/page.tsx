@@ -274,7 +274,7 @@ export default function TestimonialsPage() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <div className="liquid-glass rounded-2xl border border-[#1f2c4a]/10 px-8 py-6 text-center">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-3">Based on 2500+ reviews</p>
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-3">Highest feedback score on Scaled Agile</p>
               <div className="flex items-center justify-center gap-2">
                 <span className="text-3xl font-semibold text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>4.9</span>
                 <div className="flex gap-1">

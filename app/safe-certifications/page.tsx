@@ -171,8 +171,8 @@ const WHY_ITEMS = [
   { title: "SAFe Silver Partner", desc: "Fully accredited by Scaled Agile, Inc. Our instructors are certified SPCs." },
   { title: "Fortune 100 Experience", desc: "Our instructors have led real SAFe transformations — not just taught the framework." },
   { title: "25,000+ Professionals Trained", desc: "Tens of thousands of professionals have earned SAFe certifications through Agile36." },
-  { title: "4.9/5.0 Rating", desc: "Based on 2,500+ verified Scaled Agile reviews from professionals who've completed our training." },
-  { title: "Exam Included", desc: "First certification exam attempt included in every course fee." },
+  { title: "4.9/5 from Agile36 learners", desc: "Highest feedback score on Scaled Agile." },
+  { title: "Exam Included", desc: "Exam attempts are included in the course fee. SAFe Scrum Master and POPM include two attempts." },
 ];
 
 const itemListSchema = {
@@ -240,8 +240,8 @@ export default function SafeCertificationsPage() {
               <p className="text-sm text-[#64748b]">Accredited</p>
             </div>
             <div className="liquid-glass rounded-2xl p-4 md:p-6">
-              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>4.9/5.0</p>
-              <p className="text-sm text-[#64748b]">Rating (2,500+ Reviews)</p>
+              <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>4.9/5</p>
+              <p className="text-sm text-[#64748b]">Highest feedback score on Scaled Agile</p>
             </div>
             <div className="liquid-glass rounded-2xl p-4 md:p-6">
               <p className="text-2xl md:text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>Exam Included</p>

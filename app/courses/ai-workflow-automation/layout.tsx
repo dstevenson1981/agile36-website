@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("ai-workflow-automation"),
   description:
-    "Turn manual business processes into working automations. Live two-day training with n8n, Claude, APIs, and webhooks — 8 hours, 4 hours per day. No traditional programming required.",
+    "Turn manual business processes into working automations. Live two-day training with n8n, Claude, APIs, and webhooks — 8 hours, 4 hours per day. No traditional programming required. Rated 4.9/5 from Agile36 learners.",
   keywords: [
     "AI workflow automation",
     "n8n training",
