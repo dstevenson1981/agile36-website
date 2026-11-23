@@ -19,6 +19,11 @@ export async function fetchActiveCourseSchedules(
   });
 
   const includeHidden = options?.includeHidden === true;
+  const rteClosed =
+    courseSlug === "release-train-engineer" &&
+    !isRtePublicEnrollmentOpen() &&
+    !RTE_SCHEDULE_LINK_ENABLED;
+  if (rteClosed) return [];
   const allowHiddenList =
     courseSlug === "release-train-engineer" &&
     (isRtePublicEnrollmentOpen() || (includeHidden && RTE_SCHEDULE_LINK_ENABLED));

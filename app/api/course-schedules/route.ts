@@ -14,6 +14,8 @@ export async function GET(request: NextRequest) {
     const includeHidden =
       searchParams.get('include_hidden') === '1' ||
       searchParams.get('include_hidden') === 'true';
+    const rteRegistrationClosed =
+      !RTE_SCHEDULE_LINK_ENABLED && !isRtePublicEnrollmentOpen();
     const allowHiddenList =
       courseSlug === 'release-train-engineer' &&
       (isRtePublicEnrollmentOpen() || (includeHidden && RTE_SCHEDULE_LINK_ENABLED));
@@ -57,10 +59,7 @@ export async function GET(request: NextRequest) {
         );
       }
       const rteScheduleClosed =
-        schedule?.course_slug === 'release-train-engineer' &&
-        schedule?.hidden === true &&
-        !RTE_SCHEDULE_LINK_ENABLED &&
-        !isRtePublicEnrollmentOpen();
+        schedule?.course_slug === 'release-train-engineer' && rteRegistrationClosed;
       return NextResponse.json({
         success: true,
         data: schedule && !rteScheduleClosed ? [schedule] : [],
@@ -106,7 +105,11 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true, data: data || [] });
+    const rows = rteRegistrationClosed
+      ? (data || []).filter((row) => row.course_slug !== 'release-train-engineer')
+      : data || [];
+
+    return NextResponse.json({ success: true, data: rows });
   } catch (error: any) {
     console.error('Error fetching course schedules:', error);
     return NextResponse.json(

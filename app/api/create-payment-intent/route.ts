@@ -11,6 +11,7 @@ import { chargeCorporateAccount } from '@/app/lib/corporate-charge';
 import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corporate';
 import { findComboById } from '@/app/combo-courses/data';
 import { anySchedulesOverlap, COMBO_DATE_OVERLAP_MESSAGE } from '@/app/lib/schedule-overlap';
+import { isRtePublicEnrollmentOpen, RTE_SCHEDULE_LINK_ENABLED } from '@/app/lib/rte-public-weekend';
 
 export const dynamic = 'force-dynamic';
 
@@ -159,6 +160,32 @@ export async function POST(request: NextRequest) {
         { error: 'Schedule ID is required' },
         { status: 400 }
       );
+    }
+
+    if (!isCombo && !RTE_SCHEDULE_LINK_ENABLED && !isRtePublicEnrollmentOpen()) {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!supabaseUrl || !supabaseKey) {
+        return NextResponse.json(
+          { error: 'Server configuration error. Please contact support.' },
+          { status: 500 },
+        );
+      }
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data: rteRow } = await supabase
+        .from('course_schedules')
+        .select('course_slug')
+        .eq('id', effectiveScheduleId)
+        .maybeSingle();
+      if (
+        courseSlug === 'release-train-engineer' ||
+        rteRow?.course_slug === 'release-train-engineer'
+      ) {
+        return NextResponse.json(
+          { error: 'RTE registration is closed right now.' },
+          { status: 403 },
+        );
+      }
     }
 
     if (isCombo && scheduleIdsArr.length > 1) {

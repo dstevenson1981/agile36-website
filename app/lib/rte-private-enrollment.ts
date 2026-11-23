@@ -1,4 +1,4 @@
-/** Same URL as the other courses. Dates show only when RTE_SCHEDULE_LINK_ENABLED is true. */
+/** Same URL as the other courses. Dates show during the public registration hours. */
 export const RTE_PRIVATE_SCHEDULE_PATH = "/courses/release-train-engineer/schedule";
 export const RTE_PRIVATE_CHECKOUT_PATH = "/courses/release-train-engineer/schedule/checkout";
 export const RTE_PRIVATE_CHECKOUT_SUCCESS_PATH =
