@@ -13,7 +13,7 @@
   <rect x="50" y="170" width="300" height="150" fill="white" rx="10"/>
   
   <text x="200" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Exam Fee</text>
-  <text x="200" y="220" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="48" font-weight="bold">$395</text>
+  <text x="200" y="220" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="48" font-weight="bold">$515</text>
   <text x="200" y="250" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Base exam cost</text>
   <text x="200" y="270" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">45 questions • 90 minutes</text>
   <text x="200" y="290" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">73% pass rate required</text>
@@ -36,7 +36,7 @@
   
   <text x="150" y="380" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Pro Plan</text>
   <text x="150" y="430" text-anchor="middle" fill="#7c3aed" font-family="Arial, sans-serif" font-size="32" font-weight="bold">+$77</text>
-  <text x="150" y="455" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Free retake ($395 value)</text>
+  <text x="150" y="455" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Free retake ($515 value)</text>
   <text x="150" y="475" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Practice exams</text>
   <text x="150" y="495" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="12">Career resources</text>
   

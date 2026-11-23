@@ -262,9 +262,14 @@ export default function PopmStorefront({
         ["Certificate and badge", content.safePartner === false ? "Issued after you finish the class." : "Issued by Scaled Agile after you pass."],
       ];
   const citation =
-    "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.";
-  const ledeBase = content.lede.split("\n").map((line) => line.trim()).filter(Boolean)[0] || content.lede;
-  const lede = ledeBase.includes("highest feedback score") ? ledeBase : `${ledeBase} ${citation}`;
+    content.safePartner === false
+      ? "Rated 4.9/5 from Agile36 learners."
+      : "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.";
+  const ledeBody = (content.lede.split("\n").map((line) => line.trim()).filter(Boolean)[0] || content.lede)
+    .replaceAll(citation, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const lede = ledeBody.startsWith("Rated 4.9/5") ? ledeBody : `${citation} ${ledeBody}`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(

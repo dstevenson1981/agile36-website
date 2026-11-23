@@ -155,70 +155,84 @@ const popm: CatalogLandingContent = {
     "Optimize workflow with customer-centric design, features, and stories",
     "Apply AI to refinement, prioritization, and discovery — including responsible use",
   ],
+  curriculumLede:
+    "Six modules across two live days. Each one has a learning aim, then the topics you practice in class. AI for product work is woven through the official POPM outline.",
   curriculum: daysFromDomains(
     [
       {
         title: "Product Owner and Product Manager roles",
+        objective:
+          "See how SAFe organizes people around value, and how the Product Owner and Product Manager split the work on an Agile Release Train.",
         topics: [
-          "Applying SAFe to the PO and PM roles",
+          "Introducing SAFe for product roles",
           "The Lean-Agile mindset",
-          "Value streams",
-          "PO and PM responsibilities",
+          "Value streams, Agile teams, and Agile Release Trains",
+          "Responsibilities of the PO and PM, and how they collaborate",
         ],
       },
       {
-        title: "PI Planning preparation",
+        title: "Preparing for PI Planning",
+        objective:
+          "Get a solution vision, a roadmap, and an ART backlog ready before the train plans.",
         topics: [
           "How PI Planning works",
-          "Solution vision",
-          "Forecasting work with roadmaps",
-          "Planning features",
-          "Managing the ART backlog and Kanban",
+          "The solution vision",
+          "Solution and PI roadmaps",
+          "Customer-centric features",
+          "ART backlog and Kanban",
         ],
       },
       {
-        title: "Leadership for PI Planning",
+        title: "Leading PI Planning",
+        objective:
+          "Lead the product side of PI Planning: vision, objectives, dependencies, and risks.",
         topics: [
-          "Communicating the vision",
-          "Planning PI Objectives",
-          "Organizing and managing dependencies",
-          "Analyzing risks",
+          "Communicate the vision",
+          "Establish PI objectives",
+          "Manage dependencies",
+          "Manage risks",
         ],
       },
       {
-        title: "Iteration execution",
+        title: "Executing iterations",
+        objective:
+          "Turn features into stories and keep a team moving through planning, flow, review, and release.",
         topics: [
-          "Creating stories",
-          "Planning an iteration",
-          "Managing flow with Team Kanban",
-          "Refining the Team Backlog",
-          "Iteration Review and Retrospective",
-          "DevOps and Release on Demand",
+          "Stories and story maps",
+          "Iteration Planning",
+          "Team Kanban and Team Sync",
+          "Backlog refinement",
+          "Iteration Review and Iteration Retrospective",
+          "Continuous Delivery Pipeline and Release on Demand",
         ],
       },
       {
-        title: "PI execution",
+        title: "Executing the PI",
+        objective:
+          "Stay aligned across the train after planning, then inspect the increment and adapt.",
         topics: [
-          "PO Sync",
-          "System Demo",
-          "Innovation throughout the PI",
+          "PO Sync and other alignment events",
+          "The System Demo",
+          "The Innovation and Planning iteration",
           "Inspect and Adapt",
         ],
       },
       {
-        title: "Apply AI to product roles",
+        title: "AI for product roles",
+        objective:
+          "Use AI in product work without skipping judgment, customer evidence, or responsible use.",
         topics: [
-          "AI basics and terminology",
-          "Prompting for product work",
-          "Risks and responsible AI use",
-          "Augmenting PO and PM work with AI",
+          "An overview of AI for product roles",
+          "Prompting for discovery, refinement, and prioritization",
+          "Responsible AI",
+          "Building an AI-augmented way of working",
         ],
       },
     ],
     ["Roles, vision, and PI Planning", "Execution, flow, and AI"]
   ),
   examNote:
-    "Checked 2026-09-30. Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Official pages do not agree on a pass mark, so this page does not state one. Two attempts are included within 60 days of course completion. After that, the May 5, 2026 exam details list a $50 retake fee. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
+    "Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. Scaled Agile lists 82% as the passing score. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Two attempts are included within 60 days of course completion. After that, the May 5, 2026 exam details list a $50 retake fee. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
   examGuidelinesHref:
     "https://scaledagile.com/certification/product-owner-product-manager/#h-exam-guidelines",
   reviews: [
@@ -288,15 +302,39 @@ const popm: CatalogLandingContent = {
       examIncluded(60),
       {
         q: "What is the passing score for the SAFe POPM exam?",
-        a: "The POPM exam is 90 minutes and 45 questions. Scaled Agile's certification page and the May 5, 2026 exam details do not match the May 27, 2026 study guide on the pass mark, so this page does not state a percent.",
+        a: "Scaled Agile lists 82% as the passing score on the POPM certification page. The exam is 90 minutes and 45 questions.",
       },
       {
         q: "How long is SAFe POPM certification valid?",
         a: "The POPM certification page says a minimum of 12 CEUs each year. The August 14, 2026 renewal article lists POPM among foundational certifications that require 12 CEUs.",
       },
       {
+        q: "Can I earn SAFe POPM without taking the course?",
+        a: "No. Scaled Agile requires the authorized two-day class. The exam is not offered as a substitute for that training. After class, Scaled Agile sends the exam link.",
+      },
+      {
+        q: "Who issues the SAFe POPM certification?",
+        a: "Scaled Agile, Inc. Agile36 is an authorized training partner. We teach the class. Scaled Agile issues the exam, the certificate, and the digital badge after you pass.",
+      },
+      {
+        q: "Can I pause the POPM exam?",
+        a: "No. You have 90 minutes and the exam cannot be paused. If you close the window, you can reopen it right away. If you lose access for a longer stretch, contact support@scaledagile.com.",
+      },
+      {
+        q: "When do I see my exam result?",
+        a: "As soon as you submit. There is no re-grade. If you do not pass, you use the included second attempt or a later retake under Scaled Agile’s waiting periods.",
+      },
+      {
+        q: "What do I receive after I pass?",
+        a: "A PDF certificate, a shareable digital badge, and a one-year membership to the SAFe Community Platform, including SAFe Studio learning resources. The certificate does not say whether you attended online or in person. The badge stays current while the membership is active.",
+      },
+      {
+        q: "What are the 16 PDUs and 16 SEUs?",
+        a: "The 16-hour class counts as 16 Professional Development Units with PMI and 16 Scrum Education Units with Scrum Alliance. Those credits are for the training hours. Renewing the POPM certification itself is separate: Scaled Agile asks for a minimum of 12 continuing education units each year.",
+      },
+      {
         q: "Do I need to be in a software company to take SAFe POPM?",
-        a: "No. SAFe is used across industries including healthcare, financial services, government, and manufacturing. The POPM certification is valuable in any enterprise using SAFe.",
+        a: "No. People take it from product, delivery, analysis, and engineering seats in healthcare, financial services, government, manufacturing, and software. The class is about the product roles on an Agile Release Train.",
       },
       {
         q: "Does Agile36 offer private POPM training for teams?",
@@ -310,11 +348,15 @@ const popm: CatalogLandingContent = {
       },
       {
         q: "Who should take this course?",
-        a: "Product Owners managing team-level backlogs, Product Managers responsible for program-level vision and roadmaps, Business Analysts transitioning into Agile product roles, and anyone working in or with an Agile Release Train (ART).",
+        a: "Product Owners, Product Managers, Business Analysts, project and program managers, Scrum Masters who work with product, and engineers or architects who help shape the backlog. It is also for leaders who need to understand how product decisions move through an Agile Release Train. It is not limited to software companies.",
       },
       {
         q: "What are the prerequisites for this course?",
-        a: "There are no formal prerequisites. Basic understanding of Agile or Scrum and experience with product backlogs or customer requirements are recommended but not required.",
+        a: "There are no formal prerequisites. You can attend with any amount of experience. The class is easier to use if you already know Agile or Scrum, have worked with a backlog or customer requirements, or have spent time in product, project, analysis, or software delivery. That background is useful for the exam. It is not required to enroll.",
+      },
+      {
+        q: "What will I be able to do after class?",
+        a: "Write and split epics, features, and stories. Prioritize an ART backlog and a team backlog. Represent the customer in PI Planning. Set a vision, PI objectives, dependencies, and risks with the train. Run iteration planning, refinement, review, and flow with Team Kanban. Use AI on discovery and refinement with a clear line on responsible use.",
       },
       {
         q: "How long is the course?",
@@ -340,7 +382,7 @@ const leadingSafe: CatalogLandingContent = {
   slug: "leading-safe",
   crumb: "Leading SAFe®",
   title: "AI-Empowered Leading SAFe® 6.0 Training with SAFe Agilist Certification",
-  lede: "This Leading SAFe® 6.0 course prepares you for the SAFe Agilist certification exam with expert-led live training and simulations.",
+  lede: "This Leading SAFe® 6.0 course prepares you for the SAFe Agilist certification exam with expert-led live training and simulations. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.",
   badgeSrc: "/Leading SAFe.png",
   badgeAlt: "Leading SAFe / SAFe Agilist badge",
   cardTitle: "SAFe® Agilist Certification",
@@ -573,12 +615,13 @@ const scrumMaster: CatalogLandingContent = {
   crumb: "SAFe SSM",
   title: "AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training",
   lede:
-    "Learn the tactical and operational work of implementing SAFe® in our AI-Empowered SAFe® Scrum Master certification course. This expert-led 2-day program gives you the tools to facilitate an Agile Release Train and show up as a high-performing team member in a SAFe enterprise.\n\nClass is built around activities, real-world role-play, practical examples, and Q&A. Whether you want stronger Scrum Master skills, a path toward coaching, or a respected Certified SAFe Scrum Master credential, you train alongside practitioners from around the world.",
+    "A two-day live online class for $515, with two exam attempts included.\n\nLearn the tactical and operational work of implementing SAFe® in our AI-Empowered SAFe® Scrum Master certification course. This expert-led program gives you the tools to facilitate an Agile Release Train and show up as a high-performing team member in a SAFe enterprise. Class is built around activities, real-world role-play, practical examples, and Q&A.",
   badgeSrc: "/SSM.jpeg",
   badgeAlt: "SAFe Scrum Master badge",
   cardTitle: "SAFe® Scrum Master Certification",
   durationLabel: DURATION_2,
   includesLine: INCLUDES_16,
+  attemptsLine: "Two exam attempts are included.",
   highlights: [
     "Attend 16 hours of live SAFe Scrum Master training and earn 16 PDUs and SEUs",
     "Sit the official exam with your first two attempts included",
@@ -684,7 +727,7 @@ const scrumMaster: CatalogLandingContent = {
     ]
   ),
   examNote:
-    "Checked 2026-09-30. Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Official pages do not agree on a pass mark, so this page does not state one. Two attempts are included within 60 days of course completion for courses taken after April 14, 2026. After that, the August 11, 2026 exam details list a $50 unproctored retake. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
+    "Multiple choice, single select, web-based, closed book. 90 minutes, 45 questions. Scaled Agile lists 80% as the passing score. The timer is visible, the exam submits when time ends, and unanswered questions are marked incorrect. Two attempts are included within 60 days of course completion for courses taken after April 14, 2026. After that, the August 11, 2026 exam details list a $50 unproctored retake. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
   examGuidelinesHref: "https://scaledagile.com/certification/scrum-master/",
   reviews: [
     {
@@ -753,7 +796,7 @@ const scrumMaster: CatalogLandingContent = {
       examIncluded(60),
       {
         q: "What is the passing score for the SAFe Scrum Master exam?",
-        a: "The SSM exam is 90 minutes and 45 questions. The certification page and the August 11, 2026 exam details do not agree with an older study guide on the pass mark, so this page does not state a percent.",
+        a: "Scaled Agile lists 80% as the passing score on the SAFe Scrum Master certification page. The exam is 90 minutes and 45 questions.",
       },
       {
         q: "Can I take the SAFe SSM exam online?",
@@ -769,6 +812,18 @@ const scrumMaster: CatalogLandingContent = {
       },
     ],
     generic: [
+      {
+        q: "What happens if I fail the exam?",
+        a: "Your first two attempts are included and must be completed within 60 days of the course. If you do not pass those, Scaled Agile’s August 11, 2026 exam details list a $50 retake. The first retake is available immediately after the second failed attempt, the next after 10 days, and further retakes after 30 days.",
+      },
+      {
+        q: "Is there a refund policy?",
+        a: "Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date. Cancellations received within thirty (30) days of your original scheduled class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Classes rescheduled due to customer conflicts are not eligible for refunds. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. For questions, email d.stevenson@agile36.com.",
+      },
+      {
+        q: "Can I reschedule?",
+        a: "Yes. You can move to another session at no additional cost when the request is submitted at least twenty-four (24) hours before the original class start time. Email d.stevenson@agile36.com.",
+      },
       {
         q: "What is SAFe Scrum Master certification?",
         a: "SAFe Scrum Master (SSM) is a 2-day certification teaching Scrum Masters to facilitate Agile teams within the Scaled Agile Framework. You learn to support teams on Agile Release Trains, participate in PI Planning, remove impediments at scale, and coach teams in SAFe practices.",
@@ -3078,17 +3133,28 @@ const CAREER: Record<
   "product-owner-manager": {
     summary:
       "This class is for people who own product work on an Agile Release Train: the backlog, Lean thinking, and customer-centric delivery. You write epics, features, and stories, manage program and team backlogs, and plan a PI with the rest of the ART. Completing the course is what makes you eligible for the POPM exam.",
-    lede: "From POPM, the next step is either deeper product craft or portfolio-level funding.",
+    lede:
+      "POPM is the product seat on an Agile Release Train. The next class depends on whether you go deeper on product strategy, portfolio funding, team facilitation, or the train itself.",
     next: [
       {
         href: "/courses/agile-product-management",
-        name: "SAFe APM",
-        forWho: "If you run product strategy, vision, and roadmaps at enterprise scale.",
+        name: "SAFe Agile Product Management",
+        forWho: "If you want design thinking, product strategy, and roadmaps beyond the ART backlog.",
       },
       {
         href: "/courses/lean-portfolio-management",
-        name: "SAFe LPM",
-        forWho: "If your work moved from team backlogs to investment funding and flow.",
+        name: "SAFe Lean Portfolio Management",
+        forWho: "If your work moved from features to investment funding and portfolio flow.",
+      },
+      {
+        href: "/courses/release-train-engineer",
+        name: "SAFe Release Train Engineer",
+        forWho: "If you facilitate the ART — PI Planning, the train, and execution — rather than own the backlog.",
+      },
+      {
+        href: "/courses/scrum-master",
+        name: "SAFe Scrum Master",
+        forWho: "If you also coach a team on the train and want the SSM credential beside POPM.",
       },
     ],
   },
@@ -3279,12 +3345,12 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
   "product-owner-manager": {
     prerequisites:
       "There are no formal prerequisites. A working knowledge of Agile or Scrum, and experience with product backlogs or customer requirements, is recommended but not required.",
-    format: safeExamFormat({ durationMinutes: 90, questions: 45 }),
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "82%" }),
   },
   "scrum-master": {
     prerequisites:
       "There are no formal prerequisites. A basic understanding of Scrum or Agile, and familiarity with iteration-based delivery, is recommended but not required.",
-    format: safeExamFormat({ durationMinutes: 90, questions: 45 }),
+    format: safeExamFormat({ durationMinutes: 90, questions: 45, passingScore: "80%" }),
   },
   "lean-portfolio-management": {
     prerequisites:
@@ -3319,7 +3385,7 @@ const EXAM_DETAILS: Record<string, NonNullable<CatalogLandingContent["examDetail
   "release-train-engineer": {
     prerequisites:
       "Leading SAFe (SA) or SAFe Scrum Master (SSM) certification is recommended. Experience with Agile teams and PI Planning is helpful.",
-    format: safeExamFormat(),
+    format: safeExamFormat({ passingScore: "82%" }),
   },
   "ai-driven-scrum-master": {
     prerequisites:

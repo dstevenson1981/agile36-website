@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: courseTitle("leading-safe"),
   description:
-    "2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. 2-day virtual training, exam included, SPC instructors.",
+    "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. 2026 live cohorts: AI-Empowered Leading SAFe (SAFe Agilist) with Agile36, a SAFe Silver Partner. 2-day virtual training, exam included, SPC instructors.",
   keywords: [
     "Leading SAFe",
     "SAFe Agilist",
@@ -59,7 +59,7 @@ export default async function LeadingSafeLayout({
       courseDisplayName:
         "AI-Empowered Leading SAFe® 6.0 Certification (SAFe Agilist)",
       description:
-        "2-day live virtual Leading SAFe 6.0 training leading to the SAFe Agilist (SA) certification. Includes 16 PDUs/SEUs, certification exam, and lifetime material access.",
+        "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile. 2-day live virtual Leading SAFe 6.0 training leading to the SAFe Agilist (SA) certification. Includes 16 PDUs/SEUs, certification exam, and lifetime material access.",
       imageUrl: "https://www.agile36.com/LeadingSAFeHome.jpg",
       eventImageUrl: "https://www.agile36.com/LeadingSAFeHome.jpg",
       coursePrerequisites:

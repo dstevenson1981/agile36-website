@@ -13,6 +13,8 @@ export type CurriculumModule = {
   title: string;
   weight?: string;
   featured?: boolean;
+  /** Short learning aim for this module. Shown on course pages that print it. */
+  objective?: string;
   topics: string[];
 };
 
@@ -140,7 +142,7 @@ export type CatalogLandingContent = {
 };
 
 export function daysFromDomains(
-  domains: { title: string; weight?: string; topics: string[] }[],
+  domains: { title: string; weight?: string; objective?: string; topics: string[] }[],
   focuses: string[],
   dayCount = 2
 ): CurriculumDay[] {
@@ -158,6 +160,7 @@ export function daysFromDomains(
       modules: slice.map((mod) => ({
         title: mod.title,
         weight: mod.weight,
+        objective: mod.objective,
         featured: mod.title === featuredTitle,
         topics: mod.topics,
       })),

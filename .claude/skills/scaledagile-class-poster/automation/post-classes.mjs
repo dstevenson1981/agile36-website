@@ -394,7 +394,8 @@ async function addInstructor(page, className, preferred, row) {
       await search.click();
       await search.fill("");
       // Lightning enables Search off real input events, so type, don't fill.
-      await search.pressSequentially(name.split(" ")[0], { delay: 60 });
+      // Search by surname: first names differ between systems (Joe vs Joseph).
+      await search.pressSequentially(name.split(" ").slice(-1)[0], { delay: 60 });
       const btn = page.getByRole("button", { name: "Search", exact: true });
       await btn.waitFor({ state: "visible", timeout: 10000 });
       for (let i = 0; i < 20 && !(await btn.isEnabled()); i++) {

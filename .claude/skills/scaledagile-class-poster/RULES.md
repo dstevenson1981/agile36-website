@@ -290,3 +290,11 @@ the next eligible one and reports the substitution. Deadra confirmed on
 long as it's scheduled."** Do not stop a run over a substitution — report it and
 carry on. The hard constraints still hold: no trainer on overlapping spans, and
 Lean Portfolio stays with Deadra or Joseph.
+
+## RTE is always private
+
+Release Train Engineer classes are **always private** and **never go on the
+partner calendar**. Deadra, 2026-11-11: "rte classes have to be private and
+they dont need to be on the calendar." Because they are private they do not
+count toward the per-day cap and do not block a trainer's public classes —
+Deadra may teach a public class on days she is running RTE.

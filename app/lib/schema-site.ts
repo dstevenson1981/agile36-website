@@ -4,12 +4,12 @@ export const SCHEMA_ORGANIZATION_ID = "https://www.agile36.com/#organization" as
 /** WebSite entity @id (paired with EducationalOrganization in root JSON-LD). */
 export const SCHEMA_WEBSITE_ID = "https://www.agile36.com/#website" as const;
 
-/** Public brand logo (`public/logo.png`). */
-export const SCHEMA_ORGANIZATION_LOGO_URL = "https://www.agile36.com/logo.png" as const;
+/** Current brand mark (`public/agile36-logo.png`). Same file is also served at `/logo.png`. */
+export const SCHEMA_ORGANIZATION_LOGO_URL = "https://www.agile36.com/agile36-logo.png" as const;
 
-/** Intrinsic dimensions of `public/logo.png` (for JSON-LD ImageObject). */
-export const SCHEMA_ORGANIZATION_LOGO_WIDTH = 1280;
-export const SCHEMA_ORGANIZATION_LOGO_HEIGHT = 853;
+/** Intrinsic dimensions of `public/agile36-logo.png` (for JSON-LD ImageObject). */
+export const SCHEMA_ORGANIZATION_LOGO_WIDTH = 2000;
+export const SCHEMA_ORGANIZATION_LOGO_HEIGHT = 2000;
 
 /** Default Open Graph / article image (place file at `public/og/agile36-default.png`). */
 export const SCHEMA_DEFAULT_OG_IMAGE_URL =

@@ -39,7 +39,7 @@ export const COURSE_SEO = {
     long: "AI-Empowered Leading SAFe® 6.0 Training with SAFe Agilist Certification (2026)",
   },
   "scrum-master": {
-    title: "SAFe Scrum Master (SSM) Certification Training | Agile36",
+    title: "SAFe Scrum Master (SSM) Cost & Training | Agile36",
     long: "AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training (2026)",
   },
   "release-train-engineer": {

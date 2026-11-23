@@ -4,11 +4,6 @@
     "date": "2026-08-27",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000erAwgIAE",
-    "endDate": "2026-08-28",
-    "type": "Remote Private Course",
-    "trainers": [
-      "Joseph Puoci"
-    ],
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -19,7 +14,7 @@
     "instructors": 0,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000eYtvtIAC",
     "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "AtlantaAtlanta",
+    "city": "Atlanta",
     "bad": false
   },
   {
@@ -27,13 +22,8 @@
     "date": "2026-08-29",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000eYuDdIAK",
-    "endDate": "2026-08-30",
-    "type": "Remote Public Course",
-    "trainers": [
-      "Deadra Stevenson"
-    ],
     "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "MiamiMiami",
+    "city": "Miami",
     "bad": false
   },
   {
@@ -41,11 +31,6 @@
     "date": "2026-08-29",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000eYtr3IAC",
-    "endDate": "2026-08-30",
-    "type": "Remote Private Course",
-    "trainers": [
-      "Deadra Stevenson"
-    ],
     "tz": "GMT–04:00 Eastern Daylight Time - New York",
     "city": "New York",
     "bad": true
@@ -55,11 +40,6 @@
     "date": "2026-08-31",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000efajdIAA",
-    "endDate": "2026-09-01",
-    "type": "Remote Private Course",
-    "trainers": [
-      "Deadra Stevenson"
-    ],
     "tz": "GMT–04:00 Eastern Daylight Time - New York",
     "city": "Miami",
     "bad": true
@@ -69,11 +49,6 @@
     "date": "2026-08-31",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000d7MQLIA2",
-    "endDate": "2026-09-01",
-    "type": "Remote Public Course",
-    "trainers": [
-      "Deadra Stevenson"
-    ],
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -83,11 +58,6 @@
     "date": "2026-08-31",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000d7KGTIA2",
-    "endDate": "2026-09-01",
-    "type": "Remote Private Course",
-    "trainers": [
-      "Joseph Puoci"
-    ],
     "tz": "GMT–04:00 Eastern Daylight Time - New York",
     "city": "Miami",
     "bad": true
@@ -97,11 +67,11 @@
     "date": "2026-09-03",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000eK3AnIAK",
-    "endDate": "2026-09-04",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-04",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -111,11 +81,11 @@
     "date": "2026-09-05",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000eK3QvIAK",
-    "endDate": "2026-09-06",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-06",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -125,11 +95,11 @@
     "date": "2026-09-07",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fPSMTIA4",
-    "endDate": "2026-09-08",
-    "type": "Remote Private Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-08",
+    "type": "Remote Private Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -139,11 +109,11 @@
     "date": "2026-09-10",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fDYVvIAO",
-    "endDate": "2026-09-11",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-11",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -153,11 +123,11 @@
     "date": "2026-09-12",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000frvlJIAQ",
-    "endDate": "2026-09-13",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-13",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -167,8 +137,22 @@
     "date": "2026-09-14",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fhGQ5IAM",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
     "endDate": "2026-09-15",
     "type": "Remote Public Course",
+    "tz": "GMT–05:00 Eastern Standard Time",
+    "city": "Atlanta",
+    "bad": false
+  },
+  {
+    "name": "Release Train",
+    "date": "2026-09-16",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gokM1IAI",
+    "endDate": "2026-09-18",
+    "type": "Remote Private Course",
     "trainers": [
       "Deadra Stevenson"
     ],
@@ -181,11 +165,11 @@
     "date": "2026-09-17",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000ftvMDIAY",
-    "endDate": "2026-09-18",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-18",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -195,11 +179,11 @@
     "date": "2026-09-19",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fu0YnIAI",
-    "endDate": "2026-09-20",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
+    "endDate": "2026-09-20",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -218,25 +202,25 @@
     "date": "2026-09-19",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuVhRIAU",
-    "endDate": "2026-09-20",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
+    "endDate": "2026-09-20",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
   },
   {
-    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "name": "Leading SAFe-Guaranteed to Run",
     "date": "2026-09-19",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fu0SLIAY",
-    "endDate": "2026-09-20",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-20",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -246,11 +230,11 @@
     "date": "2026-09-21",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fNfvhIAC",
-    "endDate": "2026-09-22",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-22",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -260,11 +244,11 @@
     "date": "2026-09-24",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuVkfIAE",
-    "endDate": "2026-09-25",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-25",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -274,11 +258,11 @@
     "date": "2026-09-24",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuVsjIAE",
-    "endDate": "2026-09-25",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
+    "endDate": "2026-09-25",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -286,8 +270,13 @@
   {
     "name": "Product Owner- Guaranteed to Run",
     "date": "2026-09-24",
-    "instructors": 0,
+    "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuVeEIAU",
+    "endDate": "2026-09-25",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Marcus Ball"
+    ],
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -297,11 +286,11 @@
     "date": "2026-09-26",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuWGvIAM",
-    "endDate": "2026-09-27",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-27",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -320,11 +309,11 @@
     "date": "2026-09-26",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuWvFIAU",
-    "endDate": "2026-09-27",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
+    "endDate": "2026-09-27",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -334,11 +323,11 @@
     "date": "2026-09-26",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fvYADIA2",
-    "endDate": "2026-09-27",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
+    "endDate": "2026-09-27",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Miami",
     "bad": false
@@ -348,11 +337,11 @@
     "date": "2026-09-28",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuWyTIAU",
-    "endDate": "2026-09-29",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
+    "endDate": "2026-09-29",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -371,11 +360,11 @@
     "date": "2026-09-28",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuX4vIAE",
-    "endDate": "2026-09-29",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
+    "endDate": "2026-09-29",
+    "type": "Remote Public Course",
     "tz": "GMT–05:00 Eastern Standard Time",
     "city": "Atlanta",
     "bad": false
@@ -385,13 +374,12 @@
     "date": "2026-10-01",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fu0grIAA",
-    "endDate": "2026-10-02",
-    "type": "Remote Private Course",
     "trainers": [
       "Marcus Ball"
     ],
-    "tz": "GMT–04:00 Eastern Daylight Time - New York",
-    "city": "New York",
+    "endDate": "2026-10-02",
+    "type": "Remote Private Course",
+    "tz": "ERR",
     "bad": true
   },
   {
@@ -399,250 +387,468 @@
     "date": "2026-10-01",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000ftmNwIAI",
-    "endDate": "2026-10-02",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-02",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Advanced Scrum Master-Guaranteed to Run",
     "date": "2026-10-03",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fu0vNIAQ",
-    "endDate": "2026-10-04",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-04",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Agile Product Management Course-Guaranteed to run",
     "date": "2026-10-03",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fuF9gIAE",
-    "endDate": "2026-10-04",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-04",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Agile Product Management Course-Guaranteed to run",
     "date": "2026-10-05",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000fu0CDIAY",
-    "endDate": "2026-10-06",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-06",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Agile Product Management Course-Guaranteed to run",
     "date": "2026-10-07",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gN9jxIAC",
-    "endDate": "2026-10-09",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-09",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
     "date": "2026-10-08",
-    "instructors": 0,
+    "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNA6XIAW",
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-09",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Robert Wen"
+    ],
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Lean Portfolio Management-Guaranteed to Run",
     "date": "2026-10-08",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gN9jyIAC",
-    "endDate": "2026-10-09",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-09",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Scrum Master- Guaranteed to Run",
     "date": "2026-10-08",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNDnZIAW",
-    "endDate": "2026-10-09",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-09",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
-    "name": "SAFe for Teams 6.0-Guaranteed to Run",
+    "name": "Leading SAFe-Guaranteed to Run",
     "date": "2026-10-10",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNCEnIAO",
-    "endDate": "2026-10-11",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-11",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Lean Portfolio Management-Guaranteed to Run",
     "date": "2026-10-10",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNBdhIAG",
-    "endDate": "2026-10-11",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-11",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
     "date": "2026-10-10",
     "instructors": 0,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNL5BIAW",
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Scrum Master- Guaranteed to Run",
     "date": "2026-10-10",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNCgDIAW",
-    "endDate": "2026-10-11",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-11",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Lean Portfolio Management-Guaranteed to Run",
     "date": "2026-10-12",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNJ4zIAG",
-    "endDate": "2026-10-13",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-13",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Scrum Master- Guaranteed to Run",
     "date": "2026-10-12",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNDE5IAO",
-    "endDate": "2026-10-13",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-13",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
     "date": "2026-10-12",
     "instructors": 0,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gN9fKIAS",
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Advanced Scrum Master-Guaranteed to Run",
     "date": "2026-10-12",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gND9FIAW",
-    "endDate": "2026-10-13",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-13",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Agile Product Management Course-Guaranteed to run",
     "date": "2026-10-14",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNLefIAG",
-    "endDate": "2026-10-16",
-    "type": "Remote Public Course",
     "trainers": [
       "Deadra Stevenson"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-16",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management - Guaranteed to Run",
+    "date": "2026-10-15",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h30txIAA",
+    "endDate": "2026-10-16",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Joseph Puoci"
+    ],
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Lean Portfolio Management-Guaranteed to Run",
     "date": "2026-10-15",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNKHBIA4",
-    "endDate": "2026-10-16",
-    "type": "Remote Public Course",
     "trainers": [
       "Joseph Puoci"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Miami",
-    "bad": false
+    "endDate": "2026-10-16",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
   },
   {
     "name": "Advanced Scrum Master-Guaranteed to Run",
     "date": "2026-10-15",
     "instructors": 1,
     "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gNLRlIAO",
-    "endDate": "2026-10-16",
-    "type": "Remote Public Course",
     "trainers": [
       "Marcus Ball"
     ],
-    "tz": "GMT–05:00 Eastern Standard Time",
-    "city": "Atlanta",
-    "bad": false
+    "endDate": "2026-10-16",
+    "type": "Remote Public Course",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Release Train Engineer",
+    "date": "2026-10-17",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gxQMUIA2",
+    "endDate": "2026-10-18",
+    "type": "Remote Private Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-19",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32fdIAA",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-19",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32e1IAA",
+    "endDate": "2026-10-20",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-19",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32hFIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-22",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32kTIAQ",
+    "endDate": "2026-10-23",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-22",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32m5IAA",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-22",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32nhIAA",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-24",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32sXIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-24",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32u9IAA",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-24",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32qvIAA",
+    "endDate": "2026-10-25",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-26",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32xNIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-26",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32vlIAA",
+    "endDate": "2026-10-27",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-26",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h32sYIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-29",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h335RIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-29",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h332DIAQ",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-29",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h330bIAA",
+    "endDate": "2026-10-30",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-10-31",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h33BtIAI",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-10-31",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h33AHIAY",
+    "endDate": "2026-11-01",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Leading SAFe-Guaranteed to Run",
+    "date": "2026-10-31",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h33DVIAY",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Product Owner/Product Manager 6.0 - Guaranteed to Run",
+    "date": "2026-11-02",
+    "instructors": 0,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h33LZIAY",
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management-Guaranteed to Run",
+    "date": "2026-11-02",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000h33ILIAY",
+    "endDate": "2026-11-03",
+    "type": "Remote Public Course",
+    "trainers": [
+      "Deadra Stevenson"
+    ],
+    "tz": "ERR",
+    "bad": true
+  },
+  {
+    "name": "Lean Portfolio Management - Guaranteed to Run",
+    "date": "2026-11-19",
+    "instructors": 1,
+    "href": "https://community.scaledagile.com/s/ilt-course/a25Rn00000gfDIrIAM",
+    "endDate": "2026-11-20",
+    "type": "Remote Public Course",
+    "trainers": [],
+    "tz": "ERR",
+    "bad": true
   }
 ]

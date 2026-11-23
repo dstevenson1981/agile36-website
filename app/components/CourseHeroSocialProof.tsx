@@ -52,7 +52,7 @@ export default function CourseHeroSocialProof({ enrolledLabel, trailing, classNa
           ★★★★★
         </p>
         <p className="text-sm font-semibold text-[#1f2c4a]">
-          4.94 · <span className="font-medium text-[#475569]">#1-rated on Scaled Agile</span>
+          4.9 · <span className="font-medium text-[#475569]">#1-rated on Scaled Agile</span>
         </p>
       </div>
 

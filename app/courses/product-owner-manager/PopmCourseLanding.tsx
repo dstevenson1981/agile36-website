@@ -574,6 +574,7 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                   <div>
                     <p className="font-semibold text-[#1f2c4a]">{module.title}</p>
+                    {module.objective ? <p className="mt-1 max-w-2xl text-sm leading-6 text-[#64748b]">{module.objective}</p> : null}
                     {module.weight ? <p className="mt-1 text-xs text-[#94a3b8]">{module.weight} of exam content</p> : null}
                   </div>
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] text-[#1f2c4a] transition group-open:rotate-45">
@@ -653,6 +654,197 @@ function Faqs({ groups }: { groups: CatalogLandingContent["faqs"] }) {
   );
 }
 
+const POPM_AUDIENCE = [
+  ["Product Owners", "You own a team backlog and need the ART around it."],
+  ["Product Managers", "You own vision, features, and the ART backlog."],
+  ["Business Analysts", "You are moving from requirements into product decisions."],
+  ["Project & program managers", "You still coordinate delivery and want the product seat."],
+  ["Scrum Masters", "You partner with product and need the same language."],
+  ["Engineers & architects", "You help shape what gets built, not only how."],
+];
+
+const POPM_INCLUDED = [
+  ["16 hours", "Two days of live, instructor-led class. Not a recording."],
+  ["16 PDUs · 16 SEUs", "Training hours you can report to PMI and Scrum Alliance."],
+  ["Two exam attempts", "Included, and due within 60 days of the course."],
+  ["SAFe Studio", "One year of Community Platform access and official courseware."],
+  ["Certificate & badge", "Issued by Scaled Agile after you pass. Share the badge while membership is active."],
+  ["Same credential online", "A live virtual class does not print “virtual” on the certificate."],
+];
+
+const POPM_OBJECTIVES = [
+  ["Apply SAFe from the product seat", "Use the framework inside a Lean enterprise as a Product Owner and Product Manager."],
+  ["Connect principles to the role", "Tie Lean-Agile values to the decisions those two roles actually make."],
+  ["Forecast with the teams", "Estimate and forecast with Agile teams instead of handing them a date."],
+  ["Run value through PI Planning", "Carry vision, features, and objectives into the planning event and back out again."],
+  ["Split the two roles cleanly", "Know what sits with the Product Manager and what sits with the Product Owner."],
+  ["Start from the customer", "Use customer centricity and design thinking before you write the backlog."],
+  ["Write the work", "Break epics into features and features into stories the team can build."],
+  ["Prioritize with economics", "Rank the ART backlog and the team backlog by cost of delay, not by who shouted last."],
+];
+
+function PopmFit() {
+  return (
+    <section id="who" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          eyebrow="Who this class is for"
+          title="No prerequisite. A clearer class if you already touch product work."
+          copy="Anyone can enroll. The people who get the most from it already sit near a backlog, a customer, or an Agile Release Train."
+        />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {POPM_AUDIENCE.map(([title, copy]) => (
+            <article key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-5">
+              <h3 className="font-semibold text-[#1f2c4a]">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-5 grid gap-4 lg:grid-cols-[1.1fr_.9fr]">
+          <div className="rounded-[1.5rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Prerequisites</p>
+            <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">You do not need a prior SAFe certification.</h3>
+            <p className="mt-3 text-sm leading-7 text-[#64748b]">
+              There is no eligibility screen. Familiarity with Agile or Scrum, and time spent with a backlog, customers, or a delivery team, makes the exercises easier to use. People who later sit the exam often already have product, project, analysis, or software experience. That helps. It is not required to book a seat.
+            </p>
+          </div>
+          <div className="rounded-[1.5rem] border border-[#d97706]/25 bg-[#fff7ed] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b45309]">Where this role shows up</p>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[#475569]">
+              <li><span className="font-semibold text-[#1f2c4a]">Product Owner.</span> Team backlog, stories, acceptance criteria, and the customer inside one Agile team.</li>
+              <li><span className="font-semibold text-[#1f2c4a]">Product Manager.</span> Vision, roadmap, features, and the ART backlog for the whole train.</li>
+              <li><span className="font-semibold text-[#1f2c4a]">Later product leadership.</span> Directors and heads of product use the same ART mechanics when the company is running SAFe. The class teaches the role. It does not confer a title.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <SectionHeading
+            eyebrow="Included with tuition"
+            title="The class, the exam attempts, and the membership are in the price."
+            copy="Scaled Agile issues the credential after you pass. Agile36 includes the live class and the attempts listed here."
+          />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {POPM_INCLUDED.map(([title, copy]) => (
+              <div key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
+                <p className="font-semibold text-[#1f2c4a]">{title}</p>
+                <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PopmRoles() {
+  const columns = [
+    {
+      kicker: "Product Owner",
+      title: "The team backlog",
+      points: [
+        "Owns the team backlog and keeps it aligned to the feature the train committed.",
+        "Splits features into stories with acceptance criteria the team can finish in an iteration.",
+        "Joins iteration planning, refinement, Team Sync, review, and the retrospective.",
+        "Brings customer feedback back into the next slice of work.",
+      ],
+    },
+    {
+      kicker: "Product Manager",
+      title: "The ART backlog",
+      points: [
+        "Owns the product vision, the roadmap, and the features on the ART backlog.",
+        "Prioritizes with economics — value, time criticality, risk, and job size.",
+        "Presents the vision in PI Planning and helps teams set objectives, dependencies, and risks.",
+        "Works with stakeholders, customers, and go-to-market partners on what the train should build next.",
+      ],
+    },
+  ];
+  return (
+    <section id="roles" className="scroll-mt-32 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          eyebrow="Two roles, one class"
+          title="Product Owner and Product Manager are not the same job."
+          copy="SAFe splits them on purpose. The Product Manager decides the features for the train. The Product Owner turns those features into stories one team can build. You practice both, and the handoff between them."
+        />
+        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          {columns.map((column) => (
+            <article key={column.kicker} className="rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{column.kicker}</p>
+              <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{column.title}</h3>
+              <ul className="mt-5 space-y-3">
+                {column.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-sm leading-6 text-[#475569]">
+                    <span className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600">{CHECK}</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <p className="mt-5 rounded-2xl border border-[#1f2c4a]/10 bg-[#1f2c4a] px-5 py-4 text-sm leading-6 text-white/80">
+          In practice the Product Manager names the market opportunity and the feature. The Product Owner breaks that feature into stories and stays with the team until it ships. PI Planning is where those two views have to agree.
+        </p>
+
+        <div className="mt-14">
+          <SectionHeading
+            eyebrow="What you practice"
+            title="The skills the exam and the job both ask for."
+            copy="These are the aims of the official POPM outline, plus the AI work Agile36 adds in the same two days."
+          />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {POPM_OBJECTIVES.map(([title, copy], index) => (
+              <article key={title} className="flex gap-4 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-5">
+                <span className="text-sm font-semibold tabular-nums text-[#d97706]">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="font-semibold text-[#1f2c4a]">{title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-[#64748b]">{copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PopmExamPath() {
+  const steps = [
+    ["Attend the class", "Two days with a SAFe Practice Consultant at Agile36, an authorized Scaled Agile partner. Completing the course is what makes you eligible."],
+    ["Get the exam link", "Scaled Agile emails access after the class. The link is not available before you attend."],
+    ["Sit the exam", "90 minutes, 45 multiple-choice questions, one answer each, closed book, online. You cannot pause it. The result appears when you submit."],
+    ["Use the included attempts", "Your first two attempts are included and must be finished within 60 days of the course. Later retakes follow Scaled Agile’s fee and waiting periods."],
+    ["Receive the credential", "Pass, and Scaled Agile issues the PDF certificate and digital badge, usually within a few business days. One year of SAFe Community membership comes with it."],
+  ];
+  return (
+    <section className="bg-[#f8fafc] px-4 pb-2 pt-20 sm:px-6 lg:px-8 lg:pt-28">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          eyebrow="How you get certified"
+          title="Class first. Then the exam. Then the badge."
+          copy="You cannot buy the exam on its own. Scaled Agile ties POPM to the authorized course."
+        />
+        <ol className="mt-10 grid gap-3 lg:grid-cols-5">
+          {steps.map(([title, copy], index) => (
+            <li key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">Step {index + 1}</span>
+              <h3 className="mt-3 font-semibold text-[#1f2c4a]">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-5 max-w-3xl text-sm leading-6 text-[#64748b]">
+          Scaled Agile lists 82% as the passing score. Confirm the current retake fee and renewal rules on the exam guidelines. Renewing POPM is a minimum of 12 continuing education units a year. That is separate from the 16 PDUs you earn by attending.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function PopmCourseLanding({
   content,
   initialSchedules,
@@ -672,14 +864,18 @@ export default function PopmCourseLanding({
   const showClaudePartner = isClaudePartnerCourse(content.slug);
   const tuition = COURSE_HERO_SCHEDULE_LIST_USD[content.slug] ?? null;
   const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles(), []);
-  const navItems = useMemo(
-    () => [
-      ...NAV_ITEMS.slice(0, 6),
+  const navItems = useMemo(() => {
+    const items: { id: string; label: string }[] = [
+      ...NAV_ITEMS.slice(0, 1),
+      ...(content.slug === "product-owner-manager" ? [{ id: "who", label: "Who it's for" }] : []),
+      ...NAV_ITEMS.slice(1, 3),
+      ...(content.slug === "product-owner-manager" ? [{ id: "roles", label: "PO & PM" }] : []),
+      ...NAV_ITEMS.slice(3, 6),
       ...(content.careerPath ? [{ id: "career-path", label: "Career path" }] : []),
       ...NAV_ITEMS.slice(6),
-    ],
-    [content.careerPath],
-  );
+    ];
+    return items;
+  }, [content.careerPath, content.slug]);
   const featureItems = useMemo(
     () => [
       { title: "Live instruction", copy: content.durationLabel, tone: "navy" as const },
@@ -851,6 +1047,13 @@ export default function PopmCourseLanding({
                 {content.lede.split(/\n\s*\n/).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
+                {content.lede.includes("highest feedback score") || content.lede.includes("4.9/5 from Agile36 learners") ? null : (
+                  <p>
+                    {isSafePartner
+                      ? "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile."
+                      : "Rated 4.9/5 from Agile36 learners."}
+                  </p>
+                )}
               </div>
               <div className="mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-3 rounded-xl border border-emerald-700/15 bg-emerald-50 px-4 py-3">
@@ -931,6 +1134,9 @@ export default function PopmCourseLanding({
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1f2c4a]">4.9/5 from Agile36 learners</p>
+                  {isSafePartner ? (
+                    <p className="mt-0.5 text-xs text-[#64748b]">Highest feedback score on Scaled Agile</p>
+                  ) : null}
                   <p className="mt-0.5 text-xs text-[#64748b]">Live instruction from working practitioners</p>
                 </div>
               </div>
@@ -1045,11 +1251,13 @@ export default function PopmCourseLanding({
         </div>
       </section>
 
+      {content.slug === "product-owner-manager" ? <PopmFit /> : null}
+
       <section id="why" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Why Agile36"
-            title="This is why they should choose us"
+            title="What to weigh before you book."
             copy={
               showClaudePartner
                 ? content.curriculumLede || "What to check before you book, and how this class is built differently."
@@ -1120,6 +1328,8 @@ export default function PopmCourseLanding({
           {content.slug === "product-owner-manager" ? <SkillGrid /> : <UniversalSkillGrid content={content} />}
         </div>
       </section>
+
+      {content.slug === "product-owner-manager" ? <PopmRoles /> : null}
 
       <section id="instructors" className="scroll-mt-32 bg-[#eef3f8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
@@ -1254,6 +1464,8 @@ export default function PopmCourseLanding({
           <Curriculum content={content} />
         </div>
       </section>
+
+      {content.slug === "product-owner-manager" ? <PopmExamPath /> : null}
 
       <section id="certification" className="scroll-mt-32 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_.9fr]">

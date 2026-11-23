@@ -423,7 +423,7 @@ export function LegacyCatalogCourseLanding({
                   className="inline-flex items-center gap-2 rounded-md border border-[#1f2c4a]/10 bg-white px-2.5 py-1.5 text-sm hover:border-[#1f2c4a]/25"
                 >
                   <span className="text-[#d97706]" aria-hidden>★</span>
-                  <span className="font-semibold text-[#1f2c4a]">4.94</span>
+                  <span className="font-semibold text-[#1f2c4a]">4.9</span>
                   <span className="font-medium text-[#475569]">Highest-rated Scaled Agile partner</span>
                 </Link>
               </div>
