@@ -63,18 +63,21 @@ async function lookupClassExamToken(pathname: string): Promise<string | null> {
     if (!url || !key) return null;
     try {
       const res = await fetch(
-        `${url}/rest/v1/pro_practice_exam_links?is_active=eq.true&select=path`,
+        `${url}/rest/v1/pro_practice_exam_links?is_active=eq.true&select=path,expires_at`,
         {
           headers: { apikey: key, Authorization: `Bearer ${key}` },
           cache: 'no-store',
         },
       );
       if (res.ok) {
-        const rows = (await res.json()) as { path: string }[];
+        const rows = (await res.json()) as { path: string; expires_at?: string | null }[];
+        const live = rows.filter(
+          (row) => !row.expires_at || Date.parse(row.expires_at) > Date.now(),
+        );
         classExamCache = {
           at: now,
           byPath: new Map(
-            rows.map((row) => [row.path, row.path.replace(/^\//, '')]),
+            live.map((row) => [row.path, row.path.replace(/^\//, '')]),
           ),
         };
       }

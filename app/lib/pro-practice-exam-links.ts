@@ -30,12 +30,18 @@ export async function getActiveClassExamByPath(
 
   const { data, error } = await supabase
     .from("pro_practice_exam_links")
-    .select("course_slug, course_name, path")
+    .select("course_slug, course_name, path, expires_at")
     .eq("path", path)
     .eq("is_active", true)
     .maybeSingle();
 
   if (error || !data) return null;
-  return data;
+  const expiresAt = (data as { expires_at?: string | null }).expires_at;
+  if (expiresAt && Date.parse(expiresAt) <= Date.now()) return null;
+  return {
+    course_slug: data.course_slug,
+    course_name: data.course_name,
+    path: data.path,
+  };
 }
 
