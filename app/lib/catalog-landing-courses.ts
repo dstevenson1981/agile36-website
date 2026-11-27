@@ -57,6 +57,25 @@ function featuredWhyMicro(
   ];
 }
 
+const REFUND_FAQ: FaqItem = {
+  q: "Is there a refund policy?",
+  a: "Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date. Cancellations received within thirty (30) days of your original scheduled class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Classes rescheduled due to customer conflicts are not eligible for refunds. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. For questions, email d.stevenson@agile36.com.",
+};
+
+const RESCHEDULE_FAQ: FaqItem = {
+  q: "Can I reschedule?",
+  a: "Yes. You can move to another session at no additional cost when the request is submitted at least twenty-four (24) hours before the original class start time. Email d.stevenson@agile36.com.",
+};
+
+function withPolicyFaqs(items: FaqItem[]): FaqItem[] {
+  const present = new Set(items.map((item) => item.q));
+  return [
+    ...items,
+    ...(present.has(REFUND_FAQ.q) ? [] : [REFUND_FAQ]),
+    ...(present.has(RESCHEDULE_FAQ.q) ? [] : [RESCHEDULE_FAQ]),
+  ];
+}
+
 function faqsFor(args: {
   shortName: string;
   datesTitle: string;
@@ -77,7 +96,7 @@ function faqsFor(args: {
     }),
     exam: args.exam,
     payment: args.payment ?? sharedPaymentFaqs(),
-    generic: args.generic,
+    generic: withPolicyFaqs(args.generic),
   };
 }
 
@@ -373,6 +392,14 @@ const popm: CatalogLandingContent = {
       {
         q: "How do I maintain my certification?",
         a: "The SAFe Product Owner/Product Manager certification is valid for one year. Scaled Agile requires a minimum of 12 Continuing Education Units (CEUs) each year to renew.",
+      },
+      {
+        q: "Is there a refund policy?",
+        a: "Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date. Cancellations received within thirty (30) days of your original scheduled class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Classes rescheduled due to customer conflicts are not eligible for refunds. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. For questions, email d.stevenson@agile36.com.",
+      },
+      {
+        q: "Can I reschedule?",
+        a: "Yes. You can move to another session at no additional cost when the request is submitted at least twenty-four (24) hours before the original class start time. Email d.stevenson@agile36.com.",
       },
     ],
   }),

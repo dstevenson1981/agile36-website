@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -90,60 +91,7 @@ export default async function AIDrivenScrumMasterLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is AI-Driven Scrum Master certification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI-Driven Scrum Master™ certification is a live two-day class. Day 1 is AI skills for Scrum Masters: judgment, prompting, sprint intelligence, every event, backlog quality, and coaching. Day 2 is reusable AI skills, automated workflows, and a capstone system. You leave with the credential, issued through Accredible. There is no exam."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to be a Scrum Master to take this course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, this course is designed for existing Scrum Masters or those with Agile facilitation experience. You should understand Scrum roles, events, and artifacts before learning to augment these practices with AI. If you're new to Scrum, consider taking SAFe Scrum Master or Certified Scrum Master first."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What AI tools will I learn?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You'll learn to work with AI on documents and team data, build reusable skills, and automate sprint summaries, blocker tracking, action follow-up, and stakeholder updates. The course is not a vendor tour — it is the Scrum Master job with AI in the loop."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is this different from regular Scrum Master training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Traditional Scrum Master training teaches you to run the events by hand. This class adds reusable AI skills and automated workflows around those events: sprint health, facilitation prep, retros, summaries, and follow-up. You still keep coaching, conflict, and judgment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will AI replace Scrum Masters?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. AI augments Scrum Masters but cannot replace the human elements of coaching, facilitation, conflict resolution, and emotional intelligence. This course teaches you to use AI as a productivity tool while maintaining the servant leadership role that requires human judgment and empathy."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long is the AI-Driven Scrum Master course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The course is 2 days, 4 hours per day (8 hours total), delivered as live virtual training. It includes hands-on practice with AI tools, real-world scenarios, group exercises, and certification upon completion. You receive lifetime access to course materials and AI prompt templates."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("ai-driven-scrum-master");
 
   return (
     <>

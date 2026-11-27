@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -85,52 +86,7 @@ export default async function ResponsibleAILayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Responsible AI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Responsible AI (RAI) is the practice of developing and deploying artificial intelligence systems ethically, transparently, and with accountability. It includes ensuring fairness, preventing bias, protecting privacy, maintaining security, providing explainability, and aligning AI systems with human values and societal norms."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the Responsible AI with SAFe micro-credential?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Achieving Responsible AI with SAFe is a 2-day micro-credential teaching how to implement ethical AI within SAFe. You learn to identify RAI stakeholders, evaluate AI policies, write epic hypotheses for AI projects, communicate risks, and integrate responsible AI governance into Agile Release Trains and value streams."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who should take this course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This course is for Product Managers, Product Owners, Solution Architects, Business Owners, executives, and anyone involved in AI initiative planning or implementation within SAFe environments. No technical AI background required—focus is on governance, ethics, and stakeholder management."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are RAI epic hypotheses?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "RAI epic hypotheses are statements defining AI initiatives with measurable outcomes and responsible AI criteria. They articulate the business value, technical approach, ethical considerations, success metrics, and responsible AI guardrails for AI epics moving through portfolio Kanban in SAFe."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this course technical?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, this is not a technical AI course. It focuses on responsible AI governance, policy evaluation, stakeholder management, and integrating RAI practices into SAFe workflows. You don't need programming or data science skills—the course is designed for business and leadership roles."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("responsible-ai");
 
   return (
     <>

@@ -7,7 +7,8 @@ import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
-import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
+import type { CatalogLandingContent } from "@/app/lib/catalog-landing";
+import { learnerReviewCountLabel } from "@/app/lib/learner-review-count";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
 import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
 import {
@@ -152,41 +153,25 @@ function SectionTitle({ eyebrow, title, copy }: { eyebrow: string; title: string
   return (
     <div className="max-w-3xl">
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">{eyebrow}</p>
-      <h2 className="mt-2 text-[1.7rem] font-semibold leading-tight tracking-[-0.03em] text-[#1f2c4a] sm:text-[2rem]">{title}</h2>
-      {copy ? <p className="mt-3 text-[15px] leading-7 text-[#64748b]">{copy}</p> : null}
+      <h2 className="mt-2 text-xl font-semibold leading-snug tracking-[-0.02em] text-[#1f2c4a] sm:text-[1.375rem]">{title}</h2>
+      {copy ? <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p> : null}
     </div>
   );
 }
 
-function Accordion({
-  items,
-  openFirst = true,
-}: {
-  items: { title: string; body: ReactNode }[];
-  openFirst?: boolean;
-}) {
-  const [open, setOpen] = useState(openFirst ? 0 : -1);
+function Accordion({ items }: { items: { title: string; body: ReactNode }[] }) {
   return (
     <div className="divide-y divide-[#1f2c4a]/10 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
-      {items.map((item, index) => {
-        const isOpen = open === index;
-        return (
-          <div key={item.title}>
-            <button
-              type="button"
-              onClick={() => setOpen(isOpen ? -1 : index)}
-              className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left"
-              aria-expanded={isOpen}
-            >
-              <span className="text-[15px] font-semibold text-[#1f2c4a]">{item.title}</span>
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] text-lg leading-none text-[#1f2c4a]">
-                {isOpen ? "−" : "+"}
-              </span>
-            </button>
-            {isOpen ? <div className="px-5 pb-5 text-sm leading-7 text-[#475569]">{item.body}</div> : null}
-          </div>
-        );
-      })}
+      {items.map((item) => (
+        <details key={item.title} open className="group">
+          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+            <h3 className="text-[15px] font-semibold text-[#1f2c4a]">{item.title}</h3>
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] text-lg leading-none text-[#1f2c4a] group-open:hidden">+</span>
+            <span className="hidden h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] text-lg leading-none text-[#1f2c4a] group-open:flex">−</span>
+          </summary>
+          <div className="px-5 pb-5 text-sm leading-7 text-[#475569]">{item.body}</div>
+        </details>
+      ))}
     </div>
   );
 }
@@ -203,8 +188,6 @@ export default function PopmStorefront({
   const [showAssessment, setShowAssessment] = useState(false);
   const [assessment, setAssessment] = useState({ name: "", email: "" });
   const [sending, setSending] = useState(false);
-  const [openFaq, setOpenFaq] = useState(0);
-  const [faqGroup, setFaqGroup] = useState<keyof CatalogLandingContent["faqs"]>("generic");
   const upcoming = useMemo(() => nextCohort(initialSchedules), [initialSchedules]);
   const listPrice = COURSE_HERO_SCHEDULE_LIST_USD[content.slug];
   const price = upcoming?.price || (listPrice ? String(listPrice.current) : "");
@@ -214,13 +197,18 @@ export default function PopmStorefront({
       ? Math.round((1 - Number(String(price).replace(/[^0-9.]/g, "")) / Number(String(original).replace(/[^0-9.]/g, ""))) * 100)
       : null;
   const instructors = useMemo(() => getFeaturedScheduleInstructorProfiles().slice(0, 4), []);
-  const faqItems: FaqItem[] = content.faqs[faqGroup] ?? [];
+  const faqGroups = [
+    ["generic", "Course"],
+    ["exam", "Exam"],
+    ["payment", "Payment"],
+    ["courses", "Training"],
+  ] as const;
   const modules = content.curriculum.flatMap((day) => day.modules.map((module) => ({ ...module, day: day.day })));
   const isPopm = content.slug === "product-owner-manager";
   const pay = PAY[content.slug];
   const nav = NAV.filter((item) => item.id !== "roles" || isPopm);
   const heroPoints = [
-    "Rated 4.9/5 from Agile36 learners",
+    `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews`,
     "Highest feedback score on Scaled Agile",
     ...(isPopm ? HERO_POINTS : (content.highlights.length ? content.highlights : content.outcomes).slice(0, 5)),
   ];
@@ -261,10 +249,11 @@ export default function PopmStorefront({
         ["Exam", content.attemptsLine || content.examNote.split(". ")[0]],
         ["Certificate and badge", content.safePartner === false ? "Issued after you finish the class." : "Issued by Scaled Agile after you pass."],
       ];
+  const reviewLine = `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews`;
   const citation =
     content.safePartner === false
-      ? "Rated 4.9/5 from Agile36 learners."
-      : "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile.";
+      ? `${reviewLine}.`
+      : `${reviewLine}, with the highest feedback score on Scaled Agile.`;
   const ledeBody = (content.lede.split("\n").map((line) => line.trim()).filter(Boolean)[0] || content.lede)
     .replaceAll(citation, "")
     .replace(/\s+/g, " ")
@@ -322,14 +311,19 @@ export default function PopmStorefront({
               <span className="text-[#475569]">{content.crumb}</span>
             </nav>
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d97706]">{content.eyebrow || content.crumb}</p>
-            <h1 className="mt-2 text-[2rem] font-semibold leading-[1.12] tracking-[-0.03em] text-[#1f2c4a] sm:text-[2.45rem]">
+            <h1 className="mt-2 text-[1.65rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2rem]">
               {content.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#475569]">
+            {isPopm ? (
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#475569]">
+                A two-day live class that makes you eligible for the SAFe POPM exam. The tuition includes two exam attempts.
+              </p>
+            ) : null}
+            <p className={`${isPopm ? "mt-2" : "mt-3"} max-w-2xl text-sm leading-6 text-[#475569]`}>
               {lede}
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-              {content.safePartner !== false ? <span className="font-semibold text-[#1f2c4a]">4.9/5 from Agile36 learners · highest feedback score on Scaled Agile</span> : null}
+              <span className="font-semibold text-[#1f2c4a]">4.9/5 from {learnerReviewCountLabel(content.slug)} Agile36 learner reviews{content.safePartner !== false ? " · highest feedback score on Scaled Agile" : ""}</span>
               {content.safePartner !== false ? <span className="text-[#64748b]">Scaled Agile Silver Partner</span> : null}
               <span className="font-semibold text-emerald-700">Guaranteed to run</span>
             </div>
@@ -366,7 +360,7 @@ export default function PopmStorefront({
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#94a3b8]">Upcoming schedule</p>
               {upcoming ? (
                 <>
-                  <p className="mt-3 text-xl font-semibold tracking-[-0.03em]">{formatDateRange(upcoming.start_date, upcoming.end_date, upcoming.timezone)}</p>
+                  <p className="mt-2 text-base font-semibold tracking-[-0.02em]">{formatDateRange(upcoming.start_date, upcoming.end_date, upcoming.timezone)}</p>
                   <p className="mt-1 text-sm text-[#64748b]">
                     {[formatTimeRange(upcoming.start_time, upcoming.end_time), formatTimezoneLabel(upcoming.timezone)].filter(Boolean).join(" · ") || "Live online"}
                   </p>
@@ -378,7 +372,7 @@ export default function PopmStorefront({
               <div className="mt-4 border-t border-[#1f2c4a]/10 pt-4">
                 {discount ? <p className="text-sm font-semibold text-[#d97706]">{discount}% off</p> : null}
                 <div className="mt-1 flex items-baseline gap-2">
-                  <p className="text-3xl font-semibold tracking-[-0.04em]">USD {money(price || "545")}</p>
+                  <p className="text-2xl font-semibold tracking-[-0.03em]">USD {money(price || "545")}</p>
                   {original ? <p className="text-sm text-[#94a3b8] line-through">USD {money(original)}</p> : null}
                 </div>
                 <p className="mt-1 text-xs leading-5 text-[#64748b]">{content.includesLine}</p>
@@ -484,21 +478,32 @@ export default function PopmStorefront({
             title="Product Owner and Product Manager are not the same job"
             copy="SAFe splits them on purpose. You practice both, and the handoff between them."
           />
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {[
-              ["Product Owner", "The team backlog", ["Owns the team backlog", "Splits features into stories with acceptance criteria", "Joins planning, refinement, review, and the retrospective", "Brings customer feedback into the next slice"]],
-              ["Product Manager", "The ART backlog", ["Owns vision, roadmap, and features", "Prioritizes with value, time, risk, and job size", "Presents the vision in PI Planning", "Works with stakeholders on what the train builds next"]],
-            ].map(([role, seat, points]) => (
-              <article key={role as string} className="rounded-2xl border border-[#1f2c4a]/10 p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706]">{role as string}</p>
-                <h3 className="mt-1 text-xl font-semibold">{seat as string}</h3>
-                <ul className="mt-4 space-y-2 text-sm leading-6 text-[#475569]">
-                  {(points as string[]).map((point) => (
-                    <li key={point} className="flex gap-2"><span className="text-emerald-600">✓</span>{point}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+          <div className="mt-8 overflow-x-auto rounded-2xl border border-[#1f2c4a]/10">
+            <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+              <caption className="sr-only">How the Product Owner and Product Manager split the work on an Agile Release Train</caption>
+              <thead>
+                <tr className="border-b border-[#1f2c4a]/10 bg-[#f6f8fb]">
+                  <th scope="col" className="px-5 py-3 font-semibold text-[#64748b]"> </th>
+                  <th scope="col" className="px-5 py-3 font-semibold text-[#1f2c4a]">Product Owner</th>
+                  <th scope="col" className="px-5 py-3 font-semibold text-[#1f2c4a]">Product Manager</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Seat", "The team backlog", "The ART backlog"],
+                  ["Owns", "The team backlog, and the stories in it", "Vision, roadmap, and features"],
+                  ["Breaks the work down", "Splits features into stories with acceptance criteria", "Prioritizes with value, time, risk, and job size"],
+                  ["In the room", "Joins planning, refinement, review, and the retrospective", "Presents the vision in PI Planning"],
+                  ["Customer", "Brings customer feedback into the next slice", "Works with stakeholders on what the train builds next"],
+                ].map(([label, owner, manager]) => (
+                  <tr key={label} className="border-b border-[#1f2c4a]/10 last:border-b-0">
+                    <th scope="row" className="px-5 py-4 align-top font-semibold text-[#1f2c4a]">{label}</th>
+                    <td className="px-5 py-4 align-top leading-6 text-[#475569]">{owner}</td>
+                    <td className="px-5 py-4 align-top leading-6 text-[#475569]">{manager}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
           <p className="mt-4 rounded-xl bg-[#1f2c4a] px-5 py-4 text-sm leading-6 text-white/80">
             The Product Manager names the feature. The Product Owner breaks it into stories and stays with the team until it ships. PI Planning is where those two views have to agree.
@@ -703,40 +708,49 @@ export default function PopmStorefront({
         </section>
       ) : null}
 
+      {content.reviews.length ? (
+        <section className="border-y border-[#1f2c4a]/10 bg-white px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <SectionTitle eyebrow="Learners" title="What people wrote after class." />
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {content.reviews.map((review) => (
+                <figure key={`${review.name}-${review.role}`} className="rounded-2xl border border-[#1f2c4a]/10 p-5">
+                  <blockquote className="text-sm leading-7 text-[#475569]">“{review.review}”</blockquote>
+                  <figcaption className="mt-3 text-sm font-semibold text-[#1f2c4a]">
+                    {review.name}
+                    <span className="font-medium text-[#64748b]"> · {review.role}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section id="faqs" className="scroll-mt-28 px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <SectionTitle eyebrow="FAQs" title="Questions people ask before they enroll." />
-          <div className="mt-6 flex flex-wrap gap-2">
-            {([
-              ["generic", "Course"],
-              ["exam", "Exam"],
-              ["payment", "Payment"],
-              ["courses", "Training"],
-            ] as const).map(([id, label]) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => {
-                  setFaqGroup(id);
-                  setOpenFaq(0);
-                }}
-                className={`min-h-9 cursor-pointer rounded-full px-4 text-sm font-semibold ${faqGroup === id ? "bg-[#1f2c4a] text-white" : "bg-white text-[#64748b] ring-1 ring-[#1f2c4a]/10"}`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <div className="mt-4 divide-y divide-[#1f2c4a]/10 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
-            {faqItems.map((item, index) => (
-              <div key={item.q}>
-                <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left" aria-expanded={openFaq === index}>
-                  <span className="text-[15px] font-semibold">{item.q}</span>
-                  <span className="text-lg text-[#94a3b8]">{openFaq === index ? "−" : "+"}</span>
-                </button>
-                {openFaq === index ? <p className="px-5 pb-5 text-sm leading-7 text-[#475569]">{item.a}</p> : null}
+          {faqGroups.map(([id, label]) => {
+            const items = content.faqs[id] ?? [];
+            if (!items.length) return null;
+            return (
+              <div key={id} className="mt-8">
+                <h3 className="text-lg font-semibold text-[#1f2c4a]">{label}</h3>
+                <div className="mt-3 divide-y divide-[#1f2c4a]/10 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
+                  {items.map((item) => (
+                    <details key={item.q} open className="group">
+                      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                        <span className="text-[15px] font-semibold">{item.q}</span>
+                        <span className="text-lg text-[#94a3b8] group-open:hidden">+</span>
+                        <span className="hidden text-lg text-[#94a3b8] group-open:inline">−</span>
+                      </summary>
+                      <p className="px-5 pb-5 text-sm leading-7 text-[#475569]">{item.a}</p>
+                    </details>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 

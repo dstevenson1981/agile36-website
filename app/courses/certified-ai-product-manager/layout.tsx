@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -86,60 +87,7 @@ export default async function CertifiedAIProductManagerLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Certified AI Product Manager?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Certified AI Product Manager is a 2-day build class. You ship a working app in class with Cursor, v0, Bolt, and Lovable, put an AI feature inside the product, deploy a live URL, and demo it to stakeholders. It is not a course on using AI across the product lifecycle."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need coding skills for this course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No traditional coding background is required. You build with Cursor, v0, Bolt, and Lovable. You will be making the product, not sitting through a lecture about tools."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do we build a real app or a prototype?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A working app. You leave with a live URL someone else can click — screens, a completable user path, persisted data or auth where the product needs it, and an AI feature inside the product. Not a Figma file and not a slide deck."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is this different from traditional product management training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most PM and AI-for-PMs classes teach you to use AI in research, roadmapping, and writing. This class has you ship. You make product calls on something you built and demo a live app instead of a deck about the app."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who should take this certification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Product Managers, Product Owners, Product Leaders, and anyone who is tired of briefing other people to build and wants to ship the first version themselves."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What tools will I use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cursor, v0, Bolt, and Lovable to ship the app. Claude and ChatGPT when they help the product, not as a substitute for building it."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("certified-ai-product-manager");
 
   return (
     <>

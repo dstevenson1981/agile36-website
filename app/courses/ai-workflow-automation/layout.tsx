@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -77,44 +78,7 @@ export default async function AIWorkflowAutomationLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is AI Workflow Automation™ Certification Training?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A live, two-day hands-on course. You map a manual business process and build a working automation with n8n, Claude, APIs, and webhooks. Eight hours total, four hours per day. No traditional programming is required.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What tools will I use?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "n8n to build and coordinate the workflow, Claude to add intelligence, APIs and webhooks to connect systems, and business applications to move work across tools.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do I need programming skills?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No traditional programming experience is required. You build workflows visually in n8n and add AI steps with Claude.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is there an exam?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No exam. You leave with a complete workflow you can run from trigger to business outcome.",
-        },
-      },
-    ],
-  };
+  const faqSchema = faqPageJsonLd("ai-workflow-automation");
 
   return (
     <>

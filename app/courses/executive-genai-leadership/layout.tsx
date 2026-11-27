@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -87,60 +88,7 @@ export default async function ExecutiveGenAILeadershipLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Executive GenAI Leadership certification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Executive GenAI Leadership is a 1-day certification for C-suite and senior leaders driving AI transformation. You learn to develop AI strategy, build governance frameworks, assess risks, measure ROI, manage organizational change, and lead enterprise-wide generative AI adoption from the executive level."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who should take Executive GenAI Leadership?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This certification is designed for CEOs, CTOs, CIOs, VPs, Directors, and Board Members responsible for organizational AI strategy and transformation. It's ideal for executives making strategic AI investment decisions and leading enterprise-wide AI initiatives."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is AI governance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI governance is the framework of policies, procedures, and controls that guide ethical and responsible AI use within an organization. It includes risk management, compliance, data privacy, bias mitigation, transparency, accountability, and ensuring AI aligns with business values and regulatory requirements."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do you measure AI ROI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI ROI is measured by comparing AI implementation costs (technology, training, change management) against business value generated (productivity gains, cost savings, revenue increase, faster time-to-market). Key metrics include efficiency improvements, error reduction, customer satisfaction, and competitive advantage."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need technical skills for this course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No technical or programming skills are required. The course focuses on strategic leadership, decision-making frameworks, governance, and organizational transformation. You'll learn to evaluate AI capabilities, ask the right questions, and lead AI initiatives without needing technical implementation knowledge."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is AI transformation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI transformation is the strategic integration of artificial intelligence across an organization to fundamentally change how work is done. It involves updating processes, reskilling employees, adopting new technologies, changing culture, and aligning AI capabilities with business objectives to create competitive advantage."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("executive-genai-leadership");
 
   return (
     <>

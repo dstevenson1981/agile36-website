@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -88,52 +89,7 @@ export default async function ValueStreamMappingLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Value Stream Mapping?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Value Stream Mapping (VSM) is a Lean technique for visualizing the steps required to deliver value to customers. It maps the flow of materials, information, and value through a process from start to finish, identifying delays, waste, and bottlenecks. VSM helps teams optimize processes for faster delivery and higher quality."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is a value stream in SAFe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In SAFe, a value stream is the series of steps an organization uses to deliver a solution to a customer. There are operational value streams (delivering products/services) and development value streams (building solutions). Value streams include people, processes, and systems that create customer value."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the 8 types of waste in VSM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The 8 types of waste (DOWNTIME) are: Defects, Overproduction, Waiting, Non-utilized talent, Transportation, Inventory, Motion, and Extra-processing. Value Stream Mapping identifies these wastes to eliminate them, reduce lead time, improve flow, and increase value delivery to customers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who should take Value Stream Mapping training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This course is for Value Stream Engineers, Product Managers, Solution Architects, Release Train Engineers, Lean-Agile Leaders, and anyone responsible for optimizing delivery processes. No technical background required—focus is on process analysis and improvement."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do you measure value stream flow?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Value stream flow is measured by Lead Time (total time from request to delivery), Cycle Time (active work time), Process Time (value-add time), Wait Time (delays between steps), and Percent Complete and Accurate (%C&A). These metrics identify where improvements will have the greatest impact."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("value-stream-mapping");
 
   return (
     <>

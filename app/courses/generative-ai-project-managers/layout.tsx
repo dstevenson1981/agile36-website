@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -89,60 +90,7 @@ export default async function GenerativeAIProjectManagersLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Generative AI for Project Managers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Generative AI for Project Managers is a 2-day certification teaching project managers to use AI tools for planning, scheduling, risk management, and artifact creation. You learn to generate project charters, timelines, status reports, and risk analyses using ChatGPT, Claude, and specialized PM AI tools across Agile, Waterfall, and hybrid methodologies."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How can AI help with project management?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI helps project managers by automating documentation, generating risk analyses, creating project plans, scheduling tasks, analyzing data for insights, drafting status reports, identifying dependencies, predicting delays, and accelerating decision-making. AI reduces administrative overhead and allows PMs to focus on strategic leadership and stakeholder management."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need prior project management credentials?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No formal project management certification is required. The course is designed for project managers, project coordinators, program managers, and anyone managing projects. Basic project management experience is helpful but not mandatory. The course teaches AI skills that enhance any project management methodology."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What AI tools will I learn for project management?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You'll learn ChatGPT, Claude, Microsoft Copilot, Jira AI features, and specialized project management AI tools. The course teaches prompt engineering for creating project artifacts, integrating AI into existing PM workflows, and using AI for risk analysis, resource planning, and stakeholder communications."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can AI replace project managers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. AI augments project managers but cannot replace human leadership, stakeholder management, conflict resolution, and strategic thinking. This course teaches you to use AI as a productivity multiplier while maintaining the critical human elements of project leadership that require judgment, empathy, and relationship building."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this course compatible with Agile and Waterfall?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The course covers AI applications across Agile, Scrum, Waterfall, and hybrid methodologies. You learn to use AI for sprint planning in Agile, creating WBS in Waterfall, managing backlogs, generating Gantt charts, and adapting AI tools to any project management framework your organization uses."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("generative-ai-project-managers");
 
   return (
     <>

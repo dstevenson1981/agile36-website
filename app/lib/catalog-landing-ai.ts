@@ -31,7 +31,25 @@ function aiFaqs(args: {
         ? { ...item, a: `No. ${args.includes} There are no hidden fees.` }
         : item
     ),
-    generic: args.generic,
+    generic: [
+      ...args.generic,
+      ...(args.generic.some((item) => item.q === "Is there a refund policy?")
+        ? []
+        : [
+            {
+              q: "Is there a refund policy?",
+              a: "Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date. Cancellations received within thirty (30) days of your original scheduled class start date are not eligible for a refund. Registrations purchased using promotional codes, coupon codes, or any discounted pricing are non-refundable at all times. Classes rescheduled due to customer conflicts are not eligible for refunds. Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid. For questions, email d.stevenson@agile36.com.",
+            },
+          ]),
+      ...(args.generic.some((item) => item.q === "Can I reschedule?")
+        ? []
+        : [
+            {
+              q: "Can I reschedule?",
+              a: "Yes. You can move to another session at no additional cost when the request is submitted at least twenty-four (24) hours before the original class start time. Email d.stevenson@agile36.com.",
+            },
+          ]),
+    ],
   };
 }
 

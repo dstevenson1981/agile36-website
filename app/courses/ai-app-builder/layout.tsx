@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -77,44 +78,7 @@ export default async function AIAppBuilderLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is No-Code AI App Builder™ Certification Training?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A live, two-day hands-on course. You turn a real business problem into a working application using AI-powered no-code tools. Eight hours total, four hours per day. No coding experience is required.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What will I build?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A working application that could be sold to a small business or used inside your own company, such as a client portal, booking system, lead manager, operations tool, or membership portal.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do I need coding experience?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No coding experience is required. You build the interface, features, data, and business rules while AI handles the technical implementation.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is there an exam?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No exam. You leave with a published application and a repeatable process for turning one successful build into a client service.",
-        },
-      },
-    ],
-  };
+  const faqSchema = faqPageJsonLd("ai-app-builder");
 
   return (
     <>

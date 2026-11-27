@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -91,60 +92,7 @@ export default async function DevOpsLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is SAFe DevOps Practitioner?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SAFe DevOps Practitioner (SDP) is a 2-day certification teaching DevOps practices within Scaled Agile Framework. You learn to build continuous delivery pipelines, automate CI/CD, implement infrastructure as code, enable release on demand, integrate security (DevSecOps), and create DevOps culture across Agile Release Trains."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is a Continuous Delivery Pipeline?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Continuous Delivery Pipeline (CDP) is an automated workflow that moves code from development through testing to production. It includes continuous exploration, integration, deployment, and release on demand. The pipeline automates builds, tests, security scans, and deployments to enable frequent, reliable software releases."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to be a developer to take SAFe DevOps?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, but technical experience helps. SAFe DevOps is for developers, operations engineers, release managers, QA automation engineers, site reliability engineers, and technical leaders. Understanding software development lifecycles, deployment processes, and infrastructure basics is beneficial."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Infrastructure as Code (IaC)?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Infrastructure as Code (IaC) is managing and provisioning infrastructure through code instead of manual configuration. Using tools like Terraform, CloudFormation, or Ansible, teams define servers, networks, and configurations as version-controlled code, enabling automated, repeatable, and consistent infrastructure deployments."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What tools are covered in SAFe DevOps?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The course covers DevOps principles applicable to any toolset. Common tools discussed include Jenkins, GitLab CI/CD, Docker, Kubernetes, Terraform, Ansible, Git, monitoring tools, and testing frameworks. Focus is on practices and patterns rather than specific tool implementation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is SAFe DevOps different from regular DevOps?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Traditional DevOps focuses on single team or product workflows. SAFe DevOps applies DevOps at enterprise scale across multiple teams on Agile Release Trains. It addresses coordination of 50-125+ people, shared pipelines, program-level releases, and integrating DevOps with SAFe ceremonies like PI Planning."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("devops");
 
   return (
     <>

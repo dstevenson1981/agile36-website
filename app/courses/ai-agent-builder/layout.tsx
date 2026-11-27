@@ -6,6 +6,7 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -89,60 +90,7 @@ export default async function AIAgentBuilderLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is No-Code AI Agents & Automation?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No-Code AI Agents & Automation™ is a live, two-day hands-on certification. You build a connected fleet of business agents, a RAG knowledge system, a voice agent, and a working application using GrokBot, RAG, Claude Code, Codex, n8n, and voice AI. Eight hours total, four hours per day.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What tools will I use in this course?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You’ll work with GrokBot, RAG, Claude Code, Codex, n8n, and voice AI to build an agent fleet, a voice agent, and a working application.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do I need programming skills?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No programming background is required. The course teaches you how AI coding agents like Claude Code and Codex can build applications, agents, integrations, and automations even if you are not a software developer.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What will I build?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You’ll build a fleet of specialized agents, a RAG knowledge system, connected workflows with handoffs and human approvals, a voice agent, a working application planned and built by an AI agent, and one complete workflow connecting agents, knowledge, voice, and software.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Who should take this course?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "This course is ideal for business professionals, Product Managers and Product Owners, Project and Program Managers, operations professionals, consultants, entrepreneurs, marketing and sales professionals, customer support teams, process improvement professionals, and anyone responsible for improving how work gets done.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How is this different from prompt-writing courses?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You will not spend eight hours watching AI demonstrations. You will build with AI: Company Challenge → Agent Fleet → RAG Knowledge → Voice Agent → AI-Built Application → Working Business System.",
-        },
-      },
-    ],
-  };
+  const faqSchema = faqPageJsonLd("ai-agent-builder");
 
   return (
     <>

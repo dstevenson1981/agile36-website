@@ -11,6 +11,7 @@ import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
 import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 import { isClaudePartnerCourse } from "@/app/lib/course-partners";
+import { learnerReviewCountLabel } from "@/app/lib/learner-review-count";
 import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
@@ -206,10 +207,10 @@ function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#d97706]">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-normal leading-[1.08] tracking-[-0.04em] text-[#1f2c4a] sm:text-[2.65rem]">
+      <h2 className="mt-2 text-xl font-normal leading-snug tracking-[-0.02em] text-[#1f2c4a] sm:text-[1.375rem]">
         {title}
       </h2>
-      {copy ? <p className="mt-5 text-base leading-7 text-[#64748b] sm:text-lg">{copy}</p> : null}
+      {copy ? <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p> : null}
     </div>
   );
 }
@@ -524,64 +525,23 @@ function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
 }
 
 function Curriculum({ content }: { content: CatalogLandingContent }) {
-  const [activeDay, setActiveDay] = useState(0);
-  const day = content.curriculum[activeDay] ?? content.curriculum[0];
   return (
-    <div className="mt-10 grid gap-8 lg:grid-cols-[18rem_minmax(0,1fr)]">
-      <div className="space-y-2">
-        {content.curriculum.map((item, index) => (
-          <button
-            key={item.day}
-            type="button"
-            onClick={() => setActiveDay(index)}
-            className={`w-full cursor-pointer rounded-2xl border p-4 text-left transition ${
-              activeDay === index
-                ? "border-[#1f2c4a] bg-[#1f2c4a] text-white shadow-lg"
-                : "border-[#1f2c4a]/10 bg-white text-[#1f2c4a] hover:border-[#1f2c4a]/25"
-            }`}
-          >
-            <span className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${activeDay === index ? "text-[#fbbf24]" : "text-[#d97706]"}`}>
-              {item.day}
-            </span>
-            <span className="mt-1 block text-sm font-semibold">{item.focus}</span>
-          </button>
-        ))}
-        <a
-          href={content.brochureHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] px-4 text-sm font-semibold text-[#1f2c4a] hover:border-[#d97706]/40"
-        >
-          Download full brochure
-          <ArrowIcon />
-        </a>
-      </div>
-
-      {day ? (
-        <div className="rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 sm:p-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#1f2c4a]/10 pb-6">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{day.day}</p>
-              <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{day.focus}</h3>
-            </div>
-            <span className="rounded-full bg-[#eef3f8] px-3 py-1.5 text-xs font-semibold text-[#475569]">
-              Live + hands-on
-            </span>
+    <div className="mt-10 space-y-8">
+      {content.curriculum.map((day) => (
+        <div key={day.day} className="rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 sm:p-8">
+          <div className="border-b border-[#1f2c4a]/10 pb-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{day.day}</p>
+            <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{day.focus}</h3>
           </div>
           <div className="mt-2 divide-y divide-[#1f2c4a]/10">
             {day.modules.map((module) => (
-              <details key={module.title} className="group py-5" open={isClaudePartnerCourse(content.slug) || module.featured}>
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+              <details key={module.title} className="group py-5" open>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
                   <div>
                     <p className="font-semibold text-[#1f2c4a]">{module.title}</p>
                     {module.objective ? <p className="mt-1 max-w-2xl text-sm leading-6 text-[#64748b]">{module.objective}</p> : null}
                     {module.weight ? <p className="mt-1 text-xs text-[#94a3b8]">{module.weight} of exam content</p> : null}
                   </div>
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] text-[#1f2c4a] transition group-open:rotate-45">
-                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                      <path d="M12 5v14M5 12h14" />
-                    </svg>
-                  </span>
                 </summary>
                 <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                   {module.topics.map((topic) => (
@@ -595,6 +555,17 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
             ))}
           </div>
         </div>
+      ))}
+      {content.brochureHref ? (
+        <a
+          href={content.brochureHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] px-4 text-sm font-semibold text-[#1f2c4a] hover:border-[#d97706]/40"
+        >
+          Download full brochure
+          <ArrowIcon />
+        </a>
       ) : null}
     </div>
   );
@@ -607,49 +578,28 @@ function Faqs({ groups }: { groups: CatalogLandingContent["faqs"] }) {
     ["payment", "Payment"],
     ["courses", "Training"],
   ] as const;
-  const [category, setCategory] = useState<keyof typeof groups>("generic");
-  const [open, setOpen] = useState(0);
-  const items: FaqItem[] = groups[category] ?? [];
 
   return (
-    <div className="mt-10 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)]">
-      <div className="flex gap-2 overflow-x-auto lg:flex-col">
-        {categories.map(([id, label]) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => {
-              setCategory(id);
-              setOpen(0);
-            }}
-            className={`min-h-11 shrink-0 cursor-pointer rounded-xl px-4 text-left text-sm font-semibold transition ${
-              category === id ? "bg-[#1f2c4a] text-white" : "bg-white text-[#64748b] hover:text-[#1f2c4a]"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-      <div className="divide-y divide-[#1f2c4a]/10 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white px-5 sm:px-7">
-        {items.map((item, index) => (
-          <div key={item.q} className="py-5">
-            <button
-              type="button"
-              onClick={() => setOpen(open === index ? -1 : index)}
-              className="flex min-h-11 w-full cursor-pointer items-center justify-between gap-5 text-left"
-              aria-expanded={open === index}
-            >
-              <span className="font-semibold leading-6 text-[#1f2c4a]">{item.q}</span>
-              <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef3f8] transition ${open === index ? "rotate-45" : ""}`}>
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
-              </span>
-            </button>
-            {open === index ? <p className="max-w-3xl pb-2 pt-3 text-[15px] leading-7 text-[#64748b]">{item.a}</p> : null}
+    <div className="mt-10 space-y-10">
+      {categories.map(([id, label]) => {
+        const items: FaqItem[] = groups[id] ?? [];
+        if (!items.length) return null;
+        return (
+          <div key={id}>
+            <h3 className="text-lg font-semibold text-[#1f2c4a]">{label}</h3>
+            <div className="mt-3 divide-y divide-[#1f2c4a]/10 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white px-5 sm:px-7">
+              {items.map((item) => (
+                <details key={item.q} open className="group py-5">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-5 [&::-webkit-details-marker]:hidden">
+                    <span className="font-semibold leading-6 text-[#1f2c4a]">{item.q}</span>
+                  </summary>
+                  <p className="max-w-3xl pb-2 pt-3 text-[15px] leading-7 text-[#64748b]">{item.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }
@@ -1040,18 +990,18 @@ export default function PopmCourseLanding({
                 </div>
                 {showClaudePartner ? <ClaudePartnerBadge variant="hero" /> : null}
               </div>
-              <h1 className="mt-6 max-w-4xl text-[2.15rem] font-normal leading-[1.04] tracking-[-0.045em] text-[#1f2c4a] sm:text-[2.85rem] lg:text-[3rem]">
+              <h1 className="mt-4 max-w-4xl text-[1.75rem] font-normal leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2.05rem]">
                 {content.title}
               </h1>
-              <div className="mt-6 max-w-3xl space-y-3 text-[15px] leading-7 text-[#475569] sm:text-base sm:leading-8">
+              <div className="mt-4 max-w-3xl space-y-2 text-sm leading-6 text-[#475569]">
                 {content.lede.split(/\n\s*\n/).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-                {content.lede.includes("highest feedback score") || content.lede.includes("4.9/5 from Agile36 learners") ? null : (
+                {content.lede.includes("highest feedback score") || content.lede.includes("Agile36 learner") ? null : (
                   <p>
                     {isSafePartner
-                      ? "Rated 4.9/5 from Agile36 learners, with the highest feedback score on Scaled Agile."
-                      : "Rated 4.9/5 from Agile36 learners."}
+                      ? `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews, with the highest feedback score on Scaled Agile.`
+                      : `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews.`}
                   </p>
                 )}
               </div>
@@ -1133,7 +1083,7 @@ export default function PopmCourseLanding({
                   ))}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1f2c4a]">4.9/5 from Agile36 learners</p>
+                  <p className="text-sm font-semibold text-[#1f2c4a]">4.9/5 from {learnerReviewCountLabel(content.slug)} Agile36 learner reviews</p>
                   {isSafePartner ? (
                     <p className="mt-0.5 text-xs text-[#64748b]">Highest feedback score on Scaled Agile</p>
                   ) : null}
@@ -1585,7 +1535,7 @@ export default function PopmCourseLanding({
               <span className="text-6xl font-normal tracking-[-0.06em] text-[#1f2c4a]">4.9</span>
               <div className="pb-1">
                 <p className="tracking-[0.15em] text-[#d97706]">★★★★★</p>
-                <p className="mt-1 text-xs text-[#64748b]">Learner rating</p>
+                <p className="mt-1 text-xs text-[#64748b]">{learnerReviewCountLabel(content.slug)} learner reviews</p>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -83,60 +84,7 @@ export default async function LeanPortfolioManagementLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Lean Portfolio Management?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Lean Portfolio Management (LPM) is the highest level of SAFe, aligning strategy and execution. It manages portfolio vision and strategy, investment funding across value streams, lean governance, portfolio Kanban for epic management, and ensures portfolio work delivers maximum business value through continuous flow and feedback."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does an LPM do?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Lean Portfolio Manager establishes portfolio strategy, allocates budgets to value streams, manages portfolio Kanban, prioritizes epics, governs investment decisions, tracks portfolio metrics, facilitates strategic planning, coordinates across value streams, and ensures alignment between business strategy and execution."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need Leading SAFe before taking LPM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Leading SAFe is recommended but not required. Understanding SAFe principles, Agile Release Trains, PI Planning, and value streams helps you grasp portfolio-level concepts faster. LPM builds on SAFe foundation, adding portfolio strategy, investment management, and enterprise-level governance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Portfolio Kanban?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Portfolio Kanban is a visual workflow system for managing epics from idea through implementation. It includes states like Funnel, Reviewing, Analyzing, Portfolio Backlog, Implementing, and Done. Epics move through Portfolio Kanban based on WSJF prioritization, capacity, and strategic alignment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who should take LPM certification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "LPM certification is for executives, portfolio managers, program managers, business owners, enterprise architects, and leaders responsible for strategic planning, investment decisions, value stream management, or aligning organizational strategy with Agile execution across multiple ARTs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long is SAFe LPM training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SAFe LPM training is 2 days (16 hours). The first exam attempt is included and must be taken within 60 days of course completion. The certification page describes a timed, multiple-choice, 45-question exam and does not state the length or the pass mark. Additional attempts can be purchased from Scaled Agile."
-        }
-      }
-    ]
-  };
+  const faqSchema = faqPageJsonLd("lean-portfolio-management");
 
   return (
     <>

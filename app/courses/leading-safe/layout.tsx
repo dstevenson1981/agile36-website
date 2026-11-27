@@ -4,6 +4,7 @@ import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
+import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -86,76 +87,7 @@ export default async function LeadingSafeLayout({
     scheduleResult
   );
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is Leading SAFe certification?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Leading SAFe (SAFe Agilist or SA) certification validates your knowledge of the Scaled Agile Framework. It teaches you to lead enterprise Agile transformations, implement Agile Release Trains, facilitate PI Planning, and manage value streams at scale. The certification is earned by completing a 2-day course and passing the SAFe Agilist exam.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How long does it take to get Leading SAFe certified?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Leading SAFe course is 2 days (16 hours). After completing the course, you receive one free exam attempt that must be taken within 30 days. The exam takes 90 minutes and most students pass on their first attempt. Total time from start to certification is typically 2-3 days.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What does a SAFe Agilist do?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A SAFe Agilist (SA) leads enterprise Agile transformations. They implement the SAFe framework, coordinate Agile Release Trains, facilitate Program Increment Planning events, manage value streams, coach teams and leadership, and ensure alignment between strategy and execution at organizational scale.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is Leading SAFe certification worth it?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "For many enterprise organizations, Leading SAFe is worth it when the role touches scaled delivery: ARTs, PI Planning, and portfolio alignment. Compensation varies by title and location; compare verified sources such as the U.S. Bureau of Labor Statistics Occupational Employment and Wage Statistics (OEWS) and Scaled Agile's published certification information. The credential is widely recognized where SAFe is in use and validates foundational knowledge of the Scaled Agile Framework.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the difference between Leading SAFe and CSM?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Leading SAFe focuses on scaling Agile across entire enterprises with multiple teams. CSM (Certified Scrum Master) focuses on facilitating a single Scrum team. Leading SAFe covers organizational strategy, portfolio management, and coordinating 50-125+ people. CSM covers team-level Scrum practices for 5-9 people.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do I need Agile experience for Leading SAFe?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Basic Agile and Scrum knowledge is recommended but not required. Understanding Agile principles, Scrum roles, and iterative development helps you grasp SAFe concepts faster. However, the course covers foundational Agile concepts, making it accessible to those new to Agile methodologies.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How much does Leading SAFe certification cost?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Leading SAFe certification through Agile36 costs $515. This includes the 2-day live training, course materials, one-year SAFe Community Platform access, exam fee, one free exam retake, and 16 PDUs/SEUs. The certification is valid for one year and can be renewed.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is an Agile Release Train?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "An Agile Release Train (ART) is a long-lived team of 50-125 Agile teams who work together to deliver value. The ART operates on a fixed schedule (Program Increment) of 8-12 weeks, holds regular PI Planning events, and synchronizes multiple teams toward common objectives using SAFe practices.",
-        },
-      },
-    ],
-  };
+  const faqSchema = faqPageJsonLd("leading-safe");
 
   return (
     <>
