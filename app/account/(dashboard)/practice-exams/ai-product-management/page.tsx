@@ -16,7 +16,7 @@ export default async function AiProductManagementPracticeExamPage() {
   if (!hasAccess) {
     return (
       <div>
-        <h1 className="text-2xl font-bold text-[#1f2c4a] mb-2">
+        <h1 className="text-2xl font-bold text-[#111111] mb-2">
           AI Product Management Practice Exam
         </h1>
         <p className="text-slate-600 mb-6">
@@ -31,7 +31,7 @@ export default async function AiProductManagementPracticeExamPage() {
           </p>
           <Link
             href="/courses/certified-ai-product-manager/schedule"
-            className="inline-flex items-center text-[#d97706] font-medium hover:underline"
+            className="inline-flex items-center text-[#B8860B] font-medium hover:underline"
           >
             View AI Product Manager schedule →
           </Link>
@@ -48,7 +48,7 @@ export default async function AiProductManagementPracticeExamPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-[#1f2c4a] mb-2">
+      <h1 className="text-2xl font-bold text-[#111111] mb-2">
         AI Product Management Practice Exam
       </h1>
       <p className="text-slate-600 mb-8">

@@ -70,7 +70,7 @@ export default function CourseCatalogCard({
             </span>
           ) : null}
           <StarRating />
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#01203d] bg-[#e8f4fc] px-2.5 py-1 rounded-full ml-auto sm:ml-0">
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#111111] bg-[#e8f4fc] px-2.5 py-1 rounded-full ml-auto sm:ml-0">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" aria-hidden />
             Live classes · {liveLabel}
           </span>
@@ -110,13 +110,13 @@ export default function CourseCatalogCard({
           <span aria-hidden>·</span>
           <span>{course.enrolled.replace(" Enrolled", " learners")}</span>
           <span aria-hidden>·</span>
-          <span className="text-[#01203d] font-semibold">{priceLabel}</span>
+          <span className="text-[#111111] font-semibold">{priceLabel}</span>
         </div>
 
         <div className="mt-auto flex flex-col sm:flex-row gap-3">
           <Link
             href={courseUrl}
-            className="flex-1 inline-flex items-center justify-center rounded-md border-2 border-[#01203d] text-[#01203d] hover:bg-[#01203d] hover:text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"
+            className="flex-1 inline-flex items-center justify-center rounded-md border-2 border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white px-4 py-2.5 text-sm font-semibold transition-colors text-center"
           >
             View course
           </Link>

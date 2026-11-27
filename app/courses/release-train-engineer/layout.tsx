@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { fetchScheduleJsonLdCohortsForSegment } from "@/app/lib/live-schedule-course-jsonld";
 import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
-import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
+import { getCatalogLanding } from "@/app/lib/catalog-landing-courses";
+import { mergeCourseAeoGraph } from "@/app/lib/course-aeo";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
@@ -89,15 +90,15 @@ export default async function ReleaseTrainEngineerLayout({
     scheduleResult
   );
 
-  const faqSchema = faqPageJsonLd("release-train-engineer");
+
+  const pageSchema = mergeCourseAeoGraph(courseGraphLd, getCatalogLanding("release-train-engineer"));
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {children}
     </>
   );

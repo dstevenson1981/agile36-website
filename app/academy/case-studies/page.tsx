@@ -13,17 +13,17 @@ export default function AiAcademyCaseStudiesPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#64748b]">
-        <Link href="/academy" className="hover:text-[#1f2c4a]">
+        <Link href="/academy" className="hover:text-[#111111]">
           AI Academy
         </Link>
         <span>/</span>
-        <span className="text-[#1f2c4a]">Case studies</span>
+        <span className="text-[#111111]">Case studies</span>
       </div>
 
-      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#B8860B]">
         AI Academy
       </p>
-      <h1 className="text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+      <h1 className="text-3xl font-normal text-[#111111]" style={{ letterSpacing: '-0.03em' }}>
         Case studies
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#64748b]">
@@ -37,23 +37,23 @@ export default function AiAcademyCaseStudiesPage() {
             <>
               <div className="mb-3 flex items-start justify-between gap-2">
                 {study.industry ? (
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
                     {study.industry}
                   </p>
                 ) : (
                   <span />
                 )}
                 {study.status === 'coming-soon' ? (
-                  <span className="shrink-0 rounded-full bg-[#1f2c4a]/[0.06] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#64748b]">
+                  <span className="shrink-0 rounded-full bg-[#111111]/[0.06] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#64748b]">
                     Soon
                   </span>
                 ) : (
-                  <span className="shrink-0 rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#d97706]">
+                  <span className="shrink-0 rounded-full bg-[#B8860B]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#B8860B]">
                     Published
                   </span>
                 )}
               </div>
-              <h2 className="text-base font-semibold text-[#1f2c4a]">{study.title}</h2>
+              <h2 className="text-base font-semibold text-[#111111]">{study.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{study.summary}</p>
             </>
           );
@@ -63,7 +63,7 @@ export default function AiAcademyCaseStudiesPage() {
               <Link
                 key={study.id}
                 href={study.href}
-                className="rounded-2xl border border-[#1f2c4a]/12 bg-white p-5 shadow-sm transition hover:border-[#1f2c4a]/25 hover:shadow-md"
+                className="rounded-2xl border border-[#111111]/12 bg-white p-5 shadow-sm transition hover:border-[#111111]/25 hover:shadow-md"
               >
                 {inner}
               </Link>
@@ -73,7 +73,7 @@ export default function AiAcademyCaseStudiesPage() {
           return (
             <article
               key={study.id}
-              className="rounded-2xl border border-[#1f2c4a]/10 bg-white/70 p-5 shadow-sm"
+              className="rounded-2xl border border-[#111111]/10 bg-white/70 p-5 shadow-sm"
             >
               {inner}
             </article>
@@ -81,13 +81,13 @@ export default function AiAcademyCaseStudiesPage() {
         })}
       </div>
 
-      <div className="mt-10 rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-4 text-sm text-[#475569]">
-        <strong className="font-semibold text-[#1f2c4a]">Looking for agents?</strong>{' '}
-        <Link href="/academy/ai-agents/agents" className="font-medium text-[#1f2c4a] underline-offset-2 hover:underline">
+      <div className="mt-10 rounded-xl border border-[#111111]/10 bg-white px-4 py-4 text-sm text-[#475569]">
+        <strong className="font-semibold text-[#111111]">Looking for agents?</strong>{' '}
+        <Link href="/academy/ai-agents/agents" className="font-medium text-[#111111] underline-offset-2 hover:underline">
           Open the class agent marketplace
         </Link>{' '}
         or start from the{' '}
-        <Link href="/academy/ai-agents" className="font-medium text-[#1f2c4a] underline-offset-2 hover:underline">
+        <Link href="/academy/ai-agents" className="font-medium text-[#111111] underline-offset-2 hover:underline">
           AI Agents class hub
         </Link>
         .

@@ -39,12 +39,12 @@ export default function CourseHeroStats({ stats, className = "" }: { stats: Cour
       {stats.map((s) => (
         <div key={s.label} className="liquid-glass rounded-xl p-3">
           {s.icon ? (
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#d97706]/10 text-[#d97706] [&_svg]:h-4 [&_svg]:w-4">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#B8860B]/10 text-[#B8860B] [&_svg]:h-4 [&_svg]:w-4">
               {ICONS[s.icon]}
             </span>
           ) : null}
           <p
-            className={`text-lg font-semibold tabular-nums text-[#1f2c4a] ${s.icon ? "mt-2" : ""}`}
+            className={`text-lg font-semibold tabular-nums text-[#111111] ${s.icon ? "mt-2" : ""}`}
             style={{ letterSpacing: "-0.02em" }}
           >
             {s.value}

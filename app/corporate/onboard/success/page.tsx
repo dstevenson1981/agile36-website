@@ -39,10 +39,10 @@ function SuccessContent() {
 
   return (
     <div className="min-h-screen bg-[#f8f7f3] py-16 px-4">
-      <div className="mx-auto max-w-xl rounded-2xl border border-[#1f2c4a]/10 bg-white p-8 shadow-sm text-center">
+      <div className="mx-auto max-w-xl rounded-2xl border border-[#111111]/10 bg-white p-8 shadow-sm text-center">
         {error && (
           <>
-            <h1 className="text-2xl font-semibold text-[#1f2c4a]">Setup incomplete</h1>
+            <h1 className="text-2xl font-semibold text-[#111111]">Setup incomplete</h1>
             <p className="mt-3 text-[#64748b]">{error}</p>
             <Link href="/corporate/onboard" className="mt-6 inline-block text-[#fa4a23] font-medium hover:underline">
               Try again
@@ -59,7 +59,7 @@ function SuccessContent() {
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-2xl">
               ✓
             </div>
-            <h1 className="text-2xl font-semibold text-[#1f2c4a]">Corporate billing is active</h1>
+            <h1 className="text-2xl font-semibold text-[#111111]">Corporate billing is active</h1>
             {companyName && <p className="mt-2 text-[#64748b]">{companyName}</p>}
 
             <p className="mt-6 text-sm text-[#64748b]">
@@ -85,7 +85,7 @@ function SuccessContent() {
 
             <Link
               href="/courses"
-              className="mt-8 inline-block rounded-lg bg-[#1f2c4a] px-8 py-3 font-medium text-white hover:bg-[#16243f]"
+              className="mt-8 inline-block rounded-lg bg-[#111111] px-8 py-3 font-medium text-white hover:bg-[#000000]"
             >
               Browse courses
             </Link>

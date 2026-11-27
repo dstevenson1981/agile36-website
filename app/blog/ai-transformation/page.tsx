@@ -36,16 +36,16 @@ export default async function AITransformationBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="ai-transformation" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
+      <main className="min-h-screen bg-black text-[#111111]">
         {/* Header Image */}
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           {/* Decorative golden dots - top left */}
           <div className="absolute top-4 left-4 flex flex-col gap-1">
             <div className="flex gap-1">
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -53,7 +53,7 @@ export default async function AITransformationBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -64,7 +64,7 @@ export default async function AITransformationBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -72,13 +72,13 @@ export default async function AITransformationBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
           </div>
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             {PAGE_SEO.long}
           </h1>
         </div>
@@ -87,11 +87,11 @@ export default async function AITransformationBlogPost() {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -100,14 +100,14 @@ export default async function AITransformationBlogPost() {
 
           {/* Category and Date */}
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               AI
             </span>
             <span className="text-sm text-[#64748b]">Latest</span>
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-8">
             {PAGE_SEO.long}
           </h1>
 
@@ -131,7 +131,7 @@ export default async function AITransformationBlogPost() {
               transformation achieve entirely different outcomes.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is AI Transformation?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -166,7 +166,7 @@ export default async function AITransformationBlogPost() {
               competitive separation that compounds over time.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why AI Transformation Matters Now
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -193,7 +193,7 @@ export default async function AITransformationBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Five Foundations of AI Transformation
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -201,7 +201,7 @@ export default async function AITransformationBlogPost() {
               components:
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               1. Strategic Vision and Leadership
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -223,7 +223,7 @@ export default async function AITransformationBlogPost() {
               coordination.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               2. Data Infrastructure and Governance
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -256,7 +256,7 @@ export default async function AITransformationBlogPost() {
               stall.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               3. Technical Capabilities
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -290,7 +290,7 @@ export default async function AITransformationBlogPost() {
               platforms.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               4. AI-Literate Workforce
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -323,7 +323,7 @@ export default async function AITransformationBlogPost() {
               collaboration.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               5. New Operating Models
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -352,11 +352,11 @@ export default async function AITransformationBlogPost() {
               <li>Build platforms that accelerate future AI development</li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The AI Transformation Journey: Four Phases
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 1: Foundation Building (3-6 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -386,7 +386,7 @@ export default async function AITransformationBlogPost() {
               </li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 2: Piloting and Learning (6-12 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -414,7 +414,7 @@ export default async function AITransformationBlogPost() {
               that scales later.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 3: Scaling Across the Enterprise (12-24 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -443,7 +443,7 @@ export default async function AITransformationBlogPost() {
               processes.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 4: Continuous Optimization (Ongoing)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -469,11 +469,11 @@ export default async function AITransformationBlogPost() {
               integrated into value creation.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common Pitfalls That Derail Transformation
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Starting with Technology Instead of Problems
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -487,7 +487,7 @@ export default async function AITransformationBlogPost() {
               initiative needs a business owner focused on outcomes.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Underestimating Data Requirements
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -500,7 +500,7 @@ export default async function AITransformationBlogPost() {
               typically consumes 60-80% of effort.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Treating AI as an IT Project
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -513,7 +513,7 @@ export default async function AITransformationBlogPost() {
               Measure business outcomes, not just technical metrics.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Ignoring Change Management
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -526,7 +526,7 @@ export default async function AITransformationBlogPost() {
               fears directly. Make adoption easy through user-friendly design.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Weak Governance
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -539,14 +539,14 @@ export default async function AITransformationBlogPost() {
               verification. Balance innovation with appropriate controls.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Measuring AI Transformation Success
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
               Track both capability development and business value:
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Capability Metrics
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -559,7 +559,7 @@ export default async function AITransformationBlogPost() {
               <li>Breadth of use cases across business functions</li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Business Value Metrics
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -577,7 +577,7 @@ export default async function AITransformationBlogPost() {
               quarterly. Use insights to adapt strategy and allocation.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Transformation by Industry
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -610,7 +610,7 @@ export default async function AITransformationBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Building Your AI Transformation Roadmap
             </h2>
             <ol className="list-decimal pl-6 mb-6 space-y-4 text-[#475569]">
@@ -642,7 +642,7 @@ export default async function AITransformationBlogPost() {
               </li>
             </ol>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Getting Started: Your 30-Day Action Plan
             </h2>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -668,7 +668,7 @@ export default async function AITransformationBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Conclusion
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -688,14 +688,14 @@ export default async function AITransformationBlogPost() {
               transformation capabilities today. Every quarter of delay widens
               the gap with competitors.
             </p>
-            <p className="text-xl font-bold text-[#1f2c4a] mb-8">
+            <p className="text-xl font-bold text-[#111111] mb-8">
               The question isn't whether your organization will transform with
               AI, but whether you'll lead that transformation or scramble to
               follow.
             </p>
 
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 my-8">
-              <h3 className="text-xl font-bold text-[#1f2c4a] mb-3">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 my-8">
+              <h3 className="text-xl font-bold text-[#111111] mb-3">
                 About Agile36
               </h3>
               <p className="text-[#475569]">
@@ -713,10 +713,10 @@ export default async function AITransformationBlogPost() {
             </div>
 
             {/* Back to Blog Link */}
-            <div className="mt-12 pt-8 border-t border-[#1f2c4a]/10">
+            <div className="mt-12 pt-8 border-t border-[#111111]/10">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-[#d97706] font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-[#B8860B] font-semibold hover:underline"
               >
                 <svg
                   className="w-5 h-5"

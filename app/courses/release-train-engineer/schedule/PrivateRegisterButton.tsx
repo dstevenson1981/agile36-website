@@ -11,7 +11,7 @@ export default function PrivateRegisterButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#16243f]"
+        className="inline-flex rounded-lg bg-[#111111] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#000000]"
       >
         Contact Us to Register
       </button>

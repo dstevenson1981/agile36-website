@@ -131,6 +131,15 @@ export type CatalogLandingContent = {
   };
   /** When false, hide Scaled Agile partner/exam framing. Defaults true. */
   safePartner?: boolean;
+  /** ISO date the page copy was last confirmed. Omit until set. */
+  lastUpdated?: string;
+  /**
+   * When true, the banner code comes off the listed sale price.
+   * Combined price is shown only when this is true.
+   */
+  discountStacks?: boolean;
+  /** Fixed per-course offer end (ISO date). The site banner uses its own end in site-promo.ts. */
+  promoEndsAt?: string;
   /** Certification section eyebrow. Defaults from attemptsLine. */
   certificationEyebrow?: string;
   faqs: {

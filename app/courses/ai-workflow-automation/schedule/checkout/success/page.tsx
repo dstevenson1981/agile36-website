@@ -23,15 +23,15 @@ function SuccessContent() {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-8 text-center">
+        <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-8 text-center">
           {/* Success Icon */}
           <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-500/15 mb-6">
             <svg className="h-8 w-8 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ function SuccessContent() {
             </svg>
           </div>
 
-          <h1 className="text-3xl font-normal text-[#1f2c4a] tracking-[-0.03em] mb-4">Payment Successful!</h1>
+          <h1 className="text-3xl font-normal text-[#111111] tracking-[-0.03em] mb-4">Payment Successful!</h1>
           <p className="text-lg text-[#64748b] mb-2">
             Thank you for your enrollment.
           </p>
@@ -49,8 +49,8 @@ function SuccessContent() {
             </p>
           )}
 
-          <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-6 mb-8 text-left">
-            <h2 className="font-semibold text-[#1f2c4a] mb-4">What's Next?</h2>
+          <div className="bg-[#111111]/[0.04] border border-[#111111]/10 rounded-lg p-6 mb-8 text-left">
+            <h2 className="font-semibold text-[#111111] mb-4">What's Next?</h2>
             <ul className="space-y-3 text-sm text-[#475569]">
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -76,13 +76,13 @@ function SuccessContent() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/courses/ai-workflow-automation/schedule"
-              className="px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/10 transition-colors"
+              className="px-6 py-3 border border-[#111111]/20 rounded-lg text-[#475569] font-medium hover:bg-[#111111]/10 transition-colors"
             >
               View Schedule
             </Link>
             <Link
               href="/"
-              className="px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition-colors"
+              className="px-6 py-3 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] transition-colors"
             >
               Back to Home
             </Link>
@@ -97,7 +97,7 @@ export default function SuccessPage() {
   return (
     <Suspense fallback={
       <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
       </main>
     }>
       <SuccessContent />

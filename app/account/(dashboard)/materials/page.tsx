@@ -18,7 +18,7 @@ export default async function AccountMaterialsPage() {
     <div className="space-y-6">
       <div>
         <h1
-          className="text-2xl font-semibold tracking-tight text-[#1f2c4a]"
+          className="text-2xl font-semibold tracking-tight text-[#111111]"
           style={{ letterSpacing: "-0.03em" }}
         >
           Course Materials
@@ -33,13 +33,13 @@ export default async function AccountMaterialsPage() {
         {materials.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col gap-4 rounded-2xl border border-[#1f2c4a]/10 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between"
+            className="flex flex-col gap-4 rounded-2xl border border-[#111111]/10 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
                 {item.courseName}
               </p>
-              <h2 className="mt-1 text-lg font-semibold text-[#1f2c4a]">
+              <h2 className="mt-1 text-lg font-semibold text-[#111111]">
                 {item.title}
               </h2>
               <p className="mt-1 text-sm text-[#64748b]">{item.description}</p>
@@ -48,7 +48,7 @@ export default async function AccountMaterialsPage() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16243f]"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#000000]"
             >
               Open PDF
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@ export default async function AccountMaterialsPage() {
 
       <Link
         href="/account"
-        className="inline-block text-sm font-medium text-[#64748b] hover:text-[#1f2c4a]"
+        className="inline-block text-sm font-medium text-[#64748b] hover:text-[#111111]"
       >
         ← Back to dashboard
       </Link>

@@ -4,8 +4,8 @@ import Link from "next/link";
 const EXAM_DOMAINS = [
   { name: "High-performing teams", pct: 27, color: "#0f766e" },
   { name: "Improving flow", pct: 23, color: "#0369a1" },
-  { name: "Addressing conflict", pct: 19, color: "#d97706" },
-  { name: "ART performance", pct: 18, color: "#1f2c4a" },
+  { name: "Addressing conflict", pct: 19, color: "#B8860B" },
+  { name: "ART performance", pct: 18, color: "#111111" },
   { name: "Evolving the SASM role", pct: 13, color: "#64748b" },
 ];
 
@@ -59,7 +59,7 @@ function KpiTile({
   return (
     <DashboardCard className="p-5">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{label}</p>
-      <p className="mt-2 text-[1.5rem] font-semibold tracking-tight text-[#1f2c4a] tabular-nums">
+      <p className="mt-2 text-[1.5rem] font-semibold tracking-tight text-[#111111] tabular-nums">
         {prefix}
         {value}
         {suffix}
@@ -77,7 +77,7 @@ function ExamDomainChart() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Exam blueprint
           </p>
-          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#1f2c4a]">
+          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#111111]">
             Where the SASM exam puts its weight
           </h3>
         </div>
@@ -102,7 +102,7 @@ function ExamDomainChart() {
                 />
               </div>
             </div>
-            <span className="text-right text-sm font-semibold tabular-nums text-[#1f2c4a]">
+            <span className="text-right text-sm font-semibold tabular-nums text-[#111111]">
               {d.pct}%
             </span>
           </div>
@@ -122,7 +122,7 @@ function SalaryColumnChart() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Compensation ladder
           </p>
-          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#1f2c4a]">
+          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#111111]">
             Typical US midpoint by role
           </h3>
         </div>
@@ -149,7 +149,7 @@ function SalaryColumnChart() {
               <div key={bar.role} className="flex h-full w-full max-w-[4.5rem] flex-col items-center justify-end">
                 <span
                   className={`mb-1 text-[11px] font-semibold tabular-nums ${
-                    bar.highlight ? "text-[#d97706]" : "text-slate-600"
+                    bar.highlight ? "text-[#B8860B]" : "text-slate-600"
                   }`}
                 >
                   {bar.label}
@@ -157,8 +157,8 @@ function SalaryColumnChart() {
                 <div
                   className={`w-full rounded-t-sm ${
                     bar.highlight
-                      ? "bg-gradient-to-t from-[#b45309] to-[#f59e0b]"
-                      : "bg-[#1f2c4a]/80"
+                      ? "bg-gradient-to-t from-[#B8860B] to-[#f59e0b]"
+                      : "bg-[#111111]/80"
                   }`}
                   style={{
                     height: `${h}%`,
@@ -197,7 +197,7 @@ function ImpactLineChart() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Capability growth
           </p>
-          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#1f2c4a]">
+          <h3 className="mt-1 text-base font-semibold tracking-tight text-[#111111]">
             The outcome: train-level impact, not just ceremonies
           </h3>
         </div>
@@ -209,7 +209,7 @@ function ImpactLineChart() {
             <span className="h-2 w-2 rounded-full bg-[#0f766e]" /> Collaboration
           </span>
           <span className="inline-flex items-center gap-1.5 text-slate-700">
-            <span className="h-2 w-2 rounded-full bg-[#d97706]" /> Conflict skill
+            <span className="h-2 w-2 rounded-full bg-[#B8860B]" /> Conflict skill
           </span>
         </div>
       </div>
@@ -237,7 +237,7 @@ function ImpactLineChart() {
             [
               ["flow", "#0369a1"],
               ["collab", "#0f766e"],
-              ["conflict", "#d97706"],
+              ["conflict", "#B8860B"],
             ] as const
           ).map(([key, color]) => (
             <path
@@ -271,7 +271,7 @@ function ImpactLineChart() {
 
 function OutcomesCta() {
   return (
-    <DashboardCard className="flex flex-col justify-between bg-[#1f2c4a] p-6 text-white lg:col-span-1">
+    <DashboardCard className="flex flex-col justify-between bg-[#111111] p-6 text-white lg:col-span-1">
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/60">
           Next step
@@ -294,7 +294,7 @@ function OutcomesCta() {
       </div>
       <Link
         href="/courses/advanced-scrum-master/schedule?course=advanced-scrum-master"
-        className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#f59e0b] px-5 py-3 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#fbbf24]"
+        className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#f59e0b] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#B8860B]"
       >
         View upcoming classes
       </Link>
@@ -308,17 +308,17 @@ function OutcomesCta() {
  */
 export default function SasmOutcomesDashboard() {
   return (
-    <section className="relative w-full overflow-hidden border-y border-[#1f2c4a]/10 bg-black px-4 py-16 sm:px-6 lg:px-20">
+    <section className="relative w-full overflow-hidden border-y border-[#111111]/10 bg-black px-4 py-16 sm:px-6 lg:px-20">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#d97706]/[0.08] blur-[100px]" />
+        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#B8860B]/[0.08] blur-[100px]" />
         <div className="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-sky-400/[0.07] blur-[110px]" />
       </div>
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-8 max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
             Outcomes dashboard
           </p>
-          <h2 className="mt-2 text-[1.375rem] font-semibold tracking-[-0.02em] text-[#1f2c4a]">
+          <h2 className="mt-2 text-[1.375rem] font-semibold tracking-[-0.02em] text-[#111111]">
             What SASM is built to change
           </h2>
           <p className="mt-3 text-[14.5px] leading-relaxed text-slate-600">

@@ -102,8 +102,8 @@ export default function FeaturedCohortCard({
   const urgency = schedule ? getScheduleUrgency(schedule) : null;
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white shadow-[0_12px_40px_rgba(31,44,74,0.1)]">
-      <div className="flex items-start justify-between gap-3 bg-[#1f2c4a] px-5 py-4 text-white">
+    <article className="overflow-hidden rounded-2xl border border-[#111111]/10 bg-white shadow-[0_12px_40px_rgba(17, 17, 17,0.1)]">
+      <div className="flex items-start justify-between gap-3 bg-[#111111] px-5 py-4 text-white">
         <div>
           <p className="text-[11px] font-medium tracking-wide text-white/70">Selected class date</p>
           {isLoading ? (
@@ -134,21 +134,21 @@ export default function FeaturedCohortCard({
             className="h-12 w-12 rounded-md object-contain"
           />
           <div>
-            <p className="font-semibold text-[#1f2c4a]">{cardTitle}</p>
+            <p className="font-semibold text-[#111111]">{cardTitle}</p>
             <p className="mt-0.5 text-sm text-[#64748b]">{durationLabel}</p>
           </div>
         </div>
 
-        <div className="my-4 border-t border-dashed border-[#1f2c4a]/15" />
+        <div className="my-4 border-t border-dashed border-[#111111]/15" />
 
         {isLoading ? (
           <div className="space-y-3" aria-hidden>
-            <div className="h-4 w-56 animate-pulse rounded bg-[#1f2c4a]/10" />
-            <div className="h-4 w-32 animate-pulse rounded bg-[#1f2c4a]/10" />
-            <div className="h-8 w-48 animate-pulse rounded bg-[#1f2c4a]/10" />
+            <div className="h-4 w-56 animate-pulse rounded bg-[#111111]/10" />
+            <div className="h-4 w-32 animate-pulse rounded bg-[#111111]/10" />
+            <div className="h-8 w-48 animate-pulse rounded bg-[#111111]/10" />
           </div>
         ) : (
-          <ul className="space-y-3 text-sm text-[#1f2c4a]">
+          <ul className="space-y-3 text-sm text-[#111111]">
             {timeRange ? (
               <li className="flex items-start gap-3">
                 <ClockIcon />
@@ -183,15 +183,15 @@ export default function FeaturedCohortCard({
         )}
 
         {urgency?.show ? (
-          <p className="mt-4 flex items-center gap-2 rounded-lg border border-[#d97706]/25 bg-[#d97706]/10 px-3 py-2 text-sm font-medium text-[#b45309]">
-            <ClockIcon className="text-[#d97706]" />
+          <p className="mt-4 flex items-center gap-2 rounded-lg border border-[#B8860B]/25 bg-[#B8860B]/10 px-3 py-2 text-sm font-medium text-[#B8860B]">
+            <ClockIcon className="text-[#B8860B]" />
             {urgency.message}
           </p>
         ) : null}
 
         <div className="mt-5 flex flex-wrap items-end gap-2">
           {typeof currentPrice === "number" ? (
-            <p className="text-2xl font-semibold leading-none tracking-[-0.03em] text-[#1f2c4a]">
+            <p className="text-2xl font-semibold leading-none tracking-[-0.03em] text-[#111111]">
               {usd(currentPrice)}
             </p>
           ) : null}
@@ -199,7 +199,7 @@ export default function FeaturedCohortCard({
             <span className="pb-1 text-sm text-[#94a3b8] line-through">{usd(originalPrice)}</span>
           ) : null}
           {saved > 0 ? (
-            <span className="mb-0.5 rounded-full bg-[#1f2c4a] px-2.5 py-1 text-[11px] font-semibold text-white">
+            <span className="mb-0.5 rounded-full bg-[#111111] px-2.5 py-1 text-[11px] font-semibold text-white">
               Save {usd(saved)}
               {discount > 0 ? ` · ${discount}%` : ""}
             </span>
@@ -212,12 +212,12 @@ export default function FeaturedCohortCard({
             scheduleId={schedule.id}
             quantity={1}
             label="Reserve This Class"
-            className="mt-4 flex w-full items-center justify-center rounded-lg bg-[#d97706] py-3 text-sm font-semibold text-white transition hover:bg-[#b45309]"
+            className="mt-4 flex w-full items-center justify-center rounded-lg bg-[#F5B942] py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#e0a82e]"
           />
         ) : (
           <a
             href={allDatesHref}
-            className="mt-4 flex w-full items-center justify-center rounded-lg bg-[#d97706] py-3 text-sm font-semibold text-white transition hover:bg-[#b45309]"
+            className="mt-4 flex w-full items-center justify-center rounded-lg bg-[#F5B942] py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#e0a82e]"
           >
             See dates & enroll
           </a>
@@ -231,7 +231,7 @@ export default function FeaturedCohortCard({
   );
 }
 
-function ClockIcon({ className = "text-[#1f2c4a]" }: { className?: string }) {
+function ClockIcon({ className = "text-[#111111]" }: { className?: string }) {
   return (
     <svg className={`mt-0.5 h-4 w-4 shrink-0 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
       <circle cx="12" cy="12" r="8" strokeWidth="1.8" />
@@ -242,7 +242,7 @@ function ClockIcon({ className = "text-[#1f2c4a]" }: { className?: string }) {
 
 function CalendarIcon() {
   return (
-    <svg className="mt-0.5 h-4 w-4 shrink-0 text-[#1f2c4a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
       <rect x="4" y="5" width="16" height="15" rx="2" strokeWidth="1.8" />
       <path strokeLinecap="round" strokeWidth="1.8" d="M8 3v4M16 3v4M4 10h16" />
     </svg>
@@ -251,7 +251,7 @@ function CalendarIcon() {
 
 function ShieldIcon() {
   return (
-    <svg className="mt-0.5 h-4 w-4 shrink-0 text-[#1f2c4a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

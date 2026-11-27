@@ -16,21 +16,21 @@ export default function N8nWorkflowsPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#64748b]">
-        <Link href="/academy" className="hover:text-[#1f2c4a]">
+        <Link href="/academy" className="hover:text-[#111111]">
           AI Academy
         </Link>
         <span>/</span>
-        <Link href="/academy/ai-agents" className="hover:text-[#1f2c4a]">
+        <Link href="/academy/ai-agents" className="hover:text-[#111111]">
           AI Agents
         </Link>
         <span>/</span>
-        <span className="text-[#1f2c4a]">Class templates</span>
+        <span className="text-[#111111]">Class templates</span>
       </div>
 
-      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#B8860B]">
         For class
       </p>
-      <h1 className="text-3xl font-normal text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+      <h1 className="text-3xl font-normal text-[#111111]" style={{ letterSpacing: '-0.03em' }}>
         Class n8n templates
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#64748b]">
@@ -38,8 +38,8 @@ export default function N8nWorkflowsPage() {
         files. Download JSON and import in n8n (Menu → Import).
       </p>
 
-      <div className="mt-4 rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-3 text-sm text-[#475569]">
-        <strong className="font-semibold text-[#1f2c4a]">Class tip:</strong> run a workflow first to
+      <div className="mt-4 rounded-xl border border-[#111111]/10 bg-white px-4 py-3 text-sm text-[#475569]">
+        <strong className="font-semibold text-[#111111]">Class tip:</strong> run a workflow first to
         show a known path, then replace a step with Claude Code or Codex to show agent judgment.
       </div>
 

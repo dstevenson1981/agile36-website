@@ -60,7 +60,7 @@ export async function sendAssessmentLeadNotification(lead: AssessmentLead): Prom
       subject: `New assessment lead — ${name}`,
       text,
       html: `
-        <p style="margin:0 0 16px;font-size:16px;color:#1f2c4a"><strong>New record in assessment_emails</strong></p>
+        <p style="margin:0 0 16px;font-size:16px;color:#111111"><strong>New record in assessment_emails</strong></p>
         <table style="border-collapse:collapse;font-size:14px;color:#475569">
           <tr><td style="padding:4px 16px 4px 0;color:#64748b">Name</td><td>${escapeHtml(name)}</td></tr>
           <tr><td style="padding:4px 16px 4px 0;color:#64748b">Email</td><td><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></td></tr>

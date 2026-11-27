@@ -56,10 +56,10 @@ function ForgotPasswordForm() {
   };
 
   return (
-    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="liquid-glass rounded-2xl p-8">
-          <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Reset your password</h1>
+          <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Reset your password</h1>
           <p className="text-[#475569] mb-6">
             Enter the email address you used when creating your account. We&apos;ll send you a link to reset your password.
           </p>
@@ -74,7 +74,7 @@ function ForgotPasswordForm() {
                 <button
                   type="button"
                   onClick={() => setSent(false)}
-                  className="text-[#d97706] font-medium hover:underline"
+                  className="text-[#B8860B] font-medium hover:underline"
                 >
                   try again
                 </button>
@@ -93,7 +93,7 @@ function ForgotPasswordForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                   placeholder="you@company.com"
                 />
               </div>
@@ -111,7 +111,7 @@ function ForgotPasswordForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
+                className="w-full py-3 px-4 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] disabled:opacity-50 transition"
               >
                 {loading ? 'Sending...' : 'Send reset link'}
               </button>
@@ -119,7 +119,7 @@ function ForgotPasswordForm() {
           )}
 
           <p className="mt-6 text-center text-sm text-[#64748b]">
-            <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
+            <Link href="/account/login" className="text-[#B8860B] font-medium hover:underline">
               Back to sign in
             </Link>
           </p>

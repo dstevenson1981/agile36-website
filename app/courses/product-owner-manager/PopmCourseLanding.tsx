@@ -11,8 +11,10 @@ import type { CatalogLandingContent, FaqItem } from "@/app/lib/catalog-landing";
 import { COURSE_HERO_SCHEDULE_LIST_USD } from "@/app/lib/course-hero-schedule-pricing";
 import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 import { isClaudePartnerCourse } from "@/app/lib/course-partners";
-import { learnerReviewCountLabel } from "@/app/lib/learner-review-count";
+import { learnerReviewCountLabel, ratingLine } from "@/app/lib/learner-review-count";
+import { examDetailLines, openingDefinition, policyLines } from "@/app/lib/course-aeo";
 import { getFeaturedScheduleInstructorProfiles } from "@/app/lib/schedule-instructors";
+import { testimonialsForSlug } from "@/app/lib/site-testimonials";
 import type { CourseScheduleRow } from "@/app/lib/schedule-display";
 
 const NAV_ITEMS = [
@@ -61,8 +63,8 @@ function Icon({
   tone?: "amber" | "navy" | "green";
 }) {
   const tones = {
-    amber: "bg-[#fff7ed] text-[#d97706] ring-[#d97706]/15",
-    navy: "bg-[#eef3f8] text-[#1f2c4a] ring-[#1f2c4a]/10",
+    amber: "bg-[#fff7ed] text-[#B8860B] ring-[#B8860B]/15",
+    navy: "bg-[#eef3f8] text-[#111111] ring-[#111111]/10",
     green: "bg-emerald-50 text-emerald-700 ring-emerald-700/10",
   };
   return (
@@ -112,18 +114,18 @@ function FlowCanvas({
   });
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_30px_80px_-45px_rgba(31,44,74,.45)] sm:p-7">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
+    <div className="relative overflow-hidden rounded-[1.75rem] border border-[#111111]/10 bg-white p-5 shadow-[0_30px_80px_-45px_rgba(17, 17, 17,.45)] sm:p-7">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#B8860B] via-[#f59e0b] to-[#111111]" />
       <div className={`grid items-center gap-5 ${showClaudePartner ? "sm:grid-cols-[7.5rem_1fr_7.5rem]" : "sm:grid-cols-[7.5rem_1fr]"}`}>
         <div className="relative mx-auto">
-          <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-[#22c1c3]/20 to-[#1f2c4a]/10 blur-xl" />
+          <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-[#22c1c3]/20 to-[#111111]/10 blur-xl" />
           <Image
             src={content.badgeSrc}
             alt={content.badgeAlt}
             width={140}
             height={140}
             priority
-            className="relative h-[7.5rem] w-[7.5rem] rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white object-contain p-2 shadow-lg"
+            className="relative h-[7.5rem] w-[7.5rem] rounded-[1.5rem] border border-[#111111]/10 bg-white object-contain p-2 shadow-lg"
           />
         </div>
         <div>
@@ -134,7 +136,7 @@ function FlowCanvas({
               Value flow live
             </span>
           </div>
-          <p className="mt-2 text-xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{content.cardTitle}</p>
+          <p className="mt-2 text-xl font-normal tracking-[-0.03em] text-[#111111]">{content.cardTitle}</p>
           <p className="mt-1 text-[13px] leading-5 text-[#64748b]">
             {compactText(content.outcomes[0] || firstParagraph(content.lede), 105)}
           </p>
@@ -153,31 +155,31 @@ function FlowCanvas({
       </div>
 
       <div className="relative mt-6 grid gap-3 sm:grid-cols-4 sm:gap-2">
-        <div className="pointer-events-none absolute left-[12%] right-[12%] top-7 hidden h-px bg-[#1f2c4a]/10 sm:block" />
-        <div className="popm-flow-runner pointer-events-none absolute top-[25px] hidden h-1.5 w-1.5 rounded-full bg-[#d97706] shadow-[0_0_0_5px_rgba(217,119,6,.13)] sm:block" />
+        <div className="pointer-events-none absolute left-[12%] right-[12%] top-7 hidden h-px bg-[#111111]/10 sm:block" />
+        <div className="popm-flow-runner pointer-events-none absolute top-[25px] hidden h-1.5 w-1.5 rounded-full bg-[#B8860B] shadow-[0_0_0_5px_rgba(217,119,6,.13)] sm:block" />
         {stages.map((stage, index) => (
           <div
             key={stage.label}
-            className="popm-flow-card relative rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-3"
+            className="popm-flow-card relative rounded-xl border border-[#111111]/10 bg-[#f8fafc] p-3"
             style={{ animationDelay: `${index * 240}ms` }}
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#1f2c4a] text-[10px] font-semibold text-white">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#111111] text-[10px] font-semibold text-white">
               {stage.value}
             </span>
-            <p className="mt-4 text-[13px] font-semibold text-[#1f2c4a]">{stage.label}</p>
+            <p className="mt-4 text-[13px] font-semibold text-[#111111]">{stage.label}</p>
             <p className="mt-0.5 text-[11px] text-[#64748b]">{stage.sub}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-4 rounded-2xl bg-[#1f2c4a] p-4 text-white">
+      <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-4 rounded-2xl bg-[#111111] p-4 text-white">
         <div>
           <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">Learning progress</p>
           <div className="mt-3 space-y-2">
             {[86, 69, 54].map((width, index) => (
               <div key={width} className="h-1.5 overflow-hidden rounded-full bg-white/10">
                 <span
-                  className="popm-bar block h-full rounded-full bg-gradient-to-r from-[#d97706] to-[#fbbf24]"
+                  className="popm-bar block h-full rounded-full bg-gradient-to-r from-[#B8860B] to-[#B8860B]"
                   style={{ "--bar-width": `${width}%`, animationDelay: `${500 + index * 180}ms` } as CSSProperties}
                 />
               </div>
@@ -206,8 +208,8 @@ function SectionHeading({
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#d97706]">{eyebrow}</p>
-      <h2 className="mt-2 text-xl font-normal leading-snug tracking-[-0.02em] text-[#1f2c4a] sm:text-[1.375rem]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{eyebrow}</p>
+      <h2 className="mt-2 text-xl font-normal leading-snug tracking-[-0.02em] text-[#111111] sm:text-[1.375rem]">
         {title}
       </h2>
       {copy ? <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p> : null}
@@ -215,7 +217,7 @@ function SectionHeading({
   );
 }
 
-function OutcomeChart({
+export function OutcomeChart({
   outcomes,
   courseName,
 }: {
@@ -230,11 +232,11 @@ function OutcomeChart({
   return (
     <div
       ref={observe}
-      className={`relative overflow-hidden rounded-[1.75rem] bg-[#1f2c4a] p-6 text-white sm:p-8 ${active ? "popm-motion-on" : ""}`}
+      className={`relative overflow-hidden rounded-[1.75rem] bg-[#111111] p-6 text-white sm:p-8 ${active ? "popm-motion-on" : ""}`}
     >
-      <div className="absolute -right-20 -top-24 h-60 w-60 rounded-full bg-[#d97706]/15 blur-3xl" />
+      <div className="absolute -right-20 -top-24 h-60 w-60 rounded-full bg-[#B8860B]/15 blur-3xl" />
       <div className="relative">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Capability impact map</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Capability impact map</p>
         <h3 className="mt-3 max-w-xl text-2xl font-normal tracking-[-0.03em] sm:text-3xl">
           Turn {compactText(courseName, 42)} concepts into capability you can use.
         </h3>
@@ -243,13 +245,13 @@ function OutcomeChart({
             <line key={line} x1="20" x2="440" y1={35 + line * 30} y2={35 + line * 30} stroke="rgba(255,255,255,.08)" />
           ))}
           <path className="popm-chart-line popm-chart-line-muted" d={shapes[1]} fill="none" stroke="rgba(255,255,255,.28)" strokeWidth="2" />
-          <path className="popm-chart-line" d={shapes[0]} fill="none" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" />
-          <circle className="popm-chart-dot" cx="440" cy="25" r="5" fill="#fbbf24" />
+          <path className="popm-chart-line" d={shapes[0]} fill="none" stroke="#B8860B" strokeWidth="3" strokeLinecap="round" />
+          <circle className="popm-chart-dot" cx="440" cy="25" r="5" fill="#B8860B" />
         </svg>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           {outcomes.map((outcome, index) => (
             <div key={outcome} className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.045] p-3.5">
-              <span className="text-xs font-semibold text-[#fbbf24]">0{index + 1}</span>
+              <span className="text-xs font-semibold text-[#B8860B]">0{index + 1}</span>
               <p className="text-[13px] leading-5 text-white/75">{outcome}</p>
             </div>
           ))}
@@ -259,7 +261,7 @@ function OutcomeChart({
   );
 }
 
-function SkillGrid() {
+export function SkillGrid() {
   const { observe, active } = useMotionOnView<HTMLDivElement>();
   const skills = [
     {
@@ -269,11 +271,11 @@ function SkillGrid() {
       copy: "Turn interviews, behavior, and stakeholder input into a product direction the ART can act on.",
       className: "lg:col-span-7",
       visual: (
-        <div className="relative min-h-48 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+        <div className="relative min-h-48 overflow-hidden rounded-2xl border border-[#111111]/10 bg-white p-4">
           <div className="flex items-center justify-between">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">Signal inbox</p>
-            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-700">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-[#B8860B]">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#F5B942]" />
               3 new insights
             </span>
           </div>
@@ -286,25 +288,25 @@ function SkillGrid() {
               ].map(([initials, quote, tag], index) => (
                 <div
                   key={quote}
-                  className="popm-signal flex items-center gap-3 rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-2.5"
+                  className="popm-signal flex items-center gap-3 rounded-xl border border-[#111111]/10 bg-[#f8fafc] p-2.5"
                   style={{ animationDelay: `${index * 220}ms` }}
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1f2c4a] text-[9px] font-semibold text-white">{initials}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#111111] text-[9px] font-semibold text-white">{initials}</span>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-[11px] font-semibold text-[#1f2c4a]">“{quote}”</p>
+                    <p className="truncate text-[11px] font-semibold text-[#111111]">“{quote}”</p>
                     <p className="mt-0.5 text-[9px] text-[#94a3b8]">Customer interview</p>
                   </div>
-                  <span className="rounded-full bg-[#fff7ed] px-2 py-1 text-[8px] font-semibold text-[#b45309]">{tag}</span>
+                  <span className="rounded-full bg-[#fff7ed] px-2 py-1 text-[8px] font-semibold text-[#B8860B]">{tag}</span>
                 </div>
               ))}
             </div>
-            <div className="rounded-xl bg-[#1f2c4a] p-3 text-white">
+            <div className="rounded-xl bg-[#111111] p-3 text-white">
               <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-white/45">Pattern strength</p>
               <div className="mt-5 flex h-20 items-end gap-2">
                 {[45, 72, 54, 88, 65].map((height, index) => (
                   <span
                     key={height}
-                    className="popm-discovery-bar flex-1 rounded-t-sm bg-gradient-to-t from-[#d97706] to-[#fbbf24]"
+                    className="popm-discovery-bar flex-1 rounded-t-sm bg-gradient-to-t from-[#B8860B] to-[#B8860B]"
                     style={{ "--bar-height": `${height}%`, animationDelay: `${index * 120}ms` } as CSSProperties}
                   />
                 ))}
@@ -322,7 +324,7 @@ function SkillGrid() {
       copy: "Use value, time criticality, risk reduction, and job size to rank what moves next.",
       className: "lg:col-span-5",
       visual: (
-        <div className="min-h-48 rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+        <div className="min-h-48 rounded-2xl border border-[#111111]/10 bg-white p-4">
           <div className="flex items-center justify-between">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">ART backlog · WSJF</p>
             <span className="rounded-full bg-[#eef3f8] px-2 py-1 text-[9px] font-semibold text-[#475569]">Auto-ranked</span>
@@ -335,16 +337,16 @@ function SkillGrid() {
             ].map(([id, name, score, width], index) => (
               <div
                 key={id}
-                className="popm-backlog-row rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] px-3 py-2.5"
+                className="popm-backlog-row rounded-xl border border-[#111111]/10 bg-[#f8fafc] px-3 py-2.5"
                 style={{ animationDelay: `${index * 260}ms` }}
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-[9px] font-semibold text-[#d97706]">{id}</span>
-                  <p className="min-w-0 flex-1 truncate text-[11px] font-semibold text-[#1f2c4a]">{name}</p>
-                  <span className="text-[10px] font-semibold text-[#1f2c4a]">{score}</span>
+                  <span className="text-[9px] font-semibold text-[#B8860B]">{id}</span>
+                  <p className="min-w-0 flex-1 truncate text-[11px] font-semibold text-[#111111]">{name}</p>
+                  <span className="text-[10px] font-semibold text-[#111111]">{score}</span>
                 </div>
-                <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#1f2c4a]/[0.06]">
-                  <span className="popm-priority-bar block h-full rounded-full bg-[#d97706]" style={{ "--bar-width": `${width}%` } as CSSProperties} />
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#111111]/[0.06]">
+                  <span className="popm-priority-bar block h-full rounded-full bg-[#B8860B]" style={{ "--bar-width": `${width}%` } as CSSProperties} />
                 </div>
               </div>
             ))}
@@ -359,14 +361,14 @@ function SkillGrid() {
       copy: "Translate vision into PI Objectives, expose dependencies, and help teams make a plan they believe.",
       className: "lg:col-span-6",
       visual: (
-        <div className="relative min-h-48 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+        <div className="relative min-h-48 overflow-hidden rounded-2xl border border-[#111111]/10 bg-white p-4">
           <div className="flex items-center justify-between">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">PI 26.3 planning board</p>
-            <span className="text-[9px] font-semibold text-emerald-700">Teams aligned</span>
+            <span className="text-[9px] font-semibold text-[#B8860B]">Teams aligned</span>
           </div>
           <div className="relative mt-5 grid grid-cols-3 gap-3">
             <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 420 120" preserveAspectRatio="none" aria-hidden>
-              <path className="popm-dependency-line" d="M65 28 C145 28 145 90 210 90 S300 28 355 28" fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="5 5" />
+              <path className="popm-dependency-line" d="M65 28 C145 28 145 90 210 90 S300 28 355 28" fill="none" stroke="#B8860B" strokeWidth="2" strokeDasharray="5 5" />
             </svg>
             {[
               ["Team Atlas", "Objective 01", "Vision"],
@@ -375,11 +377,11 @@ function SkillGrid() {
             ].map(([team, objective, tag], index) => (
               <div key={team} className="relative z-10">
                 <p className="truncate text-center text-[9px] font-semibold text-[#64748b]">{team}</p>
-                <div className={`popm-pi-card mt-3 rounded-xl border p-3 ${index === 1 ? "border-[#d97706]/30 bg-[#fff7ed]" : "border-[#1f2c4a]/10 bg-[#f8fafc]"}`} style={{ animationDelay: `${index * 180}ms` }}>
-                  <span className="text-[8px] font-semibold uppercase tracking-[0.12em] text-[#d97706]">{tag}</span>
-                  <p className="mt-2 text-[10px] font-semibold leading-4 text-[#1f2c4a]">{objective}</p>
+                <div className={`popm-pi-card mt-3 rounded-xl border p-3 ${index === 1 ? "border-[#B8860B]/30 bg-[#fff7ed]" : "border-[#111111]/10 bg-[#f8fafc]"}`} style={{ animationDelay: `${index * 180}ms` }}>
+                  <span className="text-[8px] font-semibold uppercase tracking-[0.12em] text-[#B8860B]">{tag}</span>
+                  <p className="mt-2 text-[10px] font-semibold leading-4 text-[#111111]">{objective}</p>
                   <div className="mt-4 flex gap-1">
-                    {[0, 1, 2].map((dot) => <span key={dot} className={`h-1.5 flex-1 rounded-full ${dot <= index ? "bg-emerald-500" : "bg-[#1f2c4a]/10"}`} />)}
+                    {[0, 1, 2].map((dot) => <span key={dot} className={`h-1.5 flex-1 rounded-full ${dot <= index ? "bg-[#F5B942]" : "bg-[#111111]/10"}`} />)}
                   </div>
                 </div>
               </div>
@@ -395,7 +397,7 @@ function SkillGrid() {
       copy: "Refine stories, manage Team Kanban, inspect outcomes, and feed what you learn back into discovery.",
       className: "lg:col-span-6",
       visual: (
-        <div className="min-h-48 rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+        <div className="min-h-48 rounded-2xl border border-[#111111]/10 bg-white p-4">
           <div className="flex items-center justify-between">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">Flow board</p>
             <span className="text-[9px] font-semibold text-[#64748b]">WIP 4 / 6</span>
@@ -412,12 +414,12 @@ function SkillGrid() {
                   {(cards as string[]).map((card, cardIndex) => (
                     <div
                       key={card}
-                      className={`popm-kanban-card rounded-lg border bg-white p-2 text-[9px] font-semibold leading-3 text-[#1f2c4a] shadow-sm ${
-                        columnIndex === 2 ? "border-emerald-600/20" : "border-[#1f2c4a]/10"
+                      className={`popm-kanban-card rounded-lg border bg-white p-2 text-[9px] font-semibold leading-3 text-[#111111] shadow-sm ${
+                        columnIndex === 2 ? "border-[#B8860B]/40" : "border-[#111111]/10"
                       }`}
                       style={{ animationDelay: `${(columnIndex * 2 + cardIndex) * 160}ms` }}
                     >
-                      <span className={`mb-1.5 block h-1 w-5 rounded-full ${columnIndex === 2 ? "bg-emerald-500" : "bg-[#d97706]"}`} />
+                      <span className={`mb-1.5 block h-1 w-5 rounded-full ${columnIndex === 2 ? "bg-[#111111]" : "bg-[#F5B942]"}`} />
                       {card}
                     </div>
                   ))}
@@ -432,14 +434,14 @@ function SkillGrid() {
   return (
     <div ref={observe} className={`relative mt-14 grid gap-5 lg:grid-cols-12 ${active ? "popm-motion-on" : ""}`}>
       {skills.map((skill) => (
-        <div key={skill.title} className={`group relative overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-5 sm:p-6 ${skill.className}`}>
+        <div key={skill.title} className={`group relative overflow-hidden rounded-[1.75rem] border border-[#111111]/10 bg-[#f8fafc] p-5 sm:p-6 ${skill.className}`}>
           <div className="mb-5 flex items-start justify-between gap-5">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{skill.number} · {skill.eyebrow}</p>
-              <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#1f2c4a]">{skill.title}</h3>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{skill.number} · {skill.eyebrow}</p>
+              <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#111111]">{skill.title}</h3>
               <p className="mt-2 max-w-xl text-sm leading-6 text-[#64748b]">{skill.copy}</p>
             </div>
-            <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#1f2c4a]/10 bg-white text-[#1f2c4a] transition group-hover:rotate-45 group-hover:border-[#d97706]/30 group-hover:text-[#d97706]">
+            <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#111111]/10 bg-white text-[#111111] transition group-hover:rotate-45 group-hover:border-[#B8860B]/30 group-hover:text-[#B8860B]">
               <ArrowIcon />
             </span>
           </div>
@@ -450,7 +452,7 @@ function SkillGrid() {
   );
 }
 
-function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
+export function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
   const { observe, active } = useMotionOnView<HTMLDivElement>();
   const modules = courseModules(content);
   const showAll = isClaudePartnerCourse(content.slug);
@@ -470,25 +472,25 @@ function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
   return (
     <div ref={observe} className={`mt-14 grid gap-5 lg:grid-cols-12 ${active ? "popm-motion-on" : ""}`}>
       {cards.map((card, index) => (
-        <article key={`${card.number}-${card.title}`} className={`group overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-5 sm:p-6 ${card.className}`}>
+        <article key={`${card.number}-${card.title}`} className={`group overflow-hidden rounded-[1.75rem] border border-[#111111]/10 bg-[#f8fafc] p-5 sm:p-6 ${card.className}`}>
           <div className="flex items-start justify-between gap-5">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{card.number} · Practice</p>
-              <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#1f2c4a]">{card.title}</h3>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{card.number} · Practice</p>
+              <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#111111]">{card.title}</h3>
               <p className="mt-2 max-w-xl text-sm leading-6 text-[#64748b]">{card.copy}</p>
             </div>
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#1f2c4a]/10 bg-white text-[#1f2c4a] transition group-hover:rotate-45 group-hover:text-[#d97706]">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#111111]/10 bg-white text-[#111111] transition group-hover:rotate-45 group-hover:text-[#B8860B]">
               <ArrowIcon />
             </span>
           </div>
 
-          <div className="relative mt-5 min-h-44 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white p-4">
+          <div className="relative mt-5 min-h-44 overflow-hidden rounded-2xl border border-[#111111]/10 bg-white p-4">
             <div className="flex items-center justify-between">
               <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">
                 {index === 0 ? "Concept map" : index === 1 ? "Practice queue" : index === 2 ? "Application path" : "Capability board"}
               </p>
-              <span className="flex items-center gap-1.5 text-[9px] font-semibold text-emerald-700">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+              <span className="flex items-center gap-1.5 text-[9px] font-semibold text-[#B8860B]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#B8860B]" />
                 Live
               </span>
             </div>
@@ -496,21 +498,21 @@ function UniversalSkillGrid({ content }: { content: CatalogLandingContent }) {
               {card.topics.map((topic, topicIndex) => (
                 <div
                   key={topic}
-                  className="popm-backlog-row rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-3"
+                  className="popm-backlog-row rounded-xl border border-[#111111]/10 bg-[#f8fafc] p-3"
                   style={{ animationDelay: `${topicIndex * 220}ms` }}
                 >
                   <div className="flex items-center gap-3">
                     <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[9px] font-semibold ${
-                      card.tone === 0 ? "bg-[#1f2c4a] text-white" : card.tone === 1 ? "bg-[#fff7ed] text-[#b45309]" : "bg-emerald-50 text-emerald-700"
+                      card.tone === 0 ? "bg-[#111111] text-white" : "bg-[#fff7ed] text-[#B8860B]"
                     }`}>
                       {topicIndex + 1}
                     </span>
-                    <p className="min-w-0 flex-1 truncate text-[11px] font-semibold text-[#1f2c4a]">{topic}</p>
+                    <p className="min-w-0 flex-1 truncate text-[11px] font-semibold text-[#111111]">{topic}</p>
                     <span className="text-[9px] font-semibold text-[#94a3b8]">{65 + topicIndex * 12}%</span>
                   </div>
-                  <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#1f2c4a]/[0.06]">
+                  <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#111111]/[0.06]">
                     <span
-                      className="popm-priority-bar block h-full rounded-full bg-gradient-to-r from-[#d97706] to-[#fbbf24]"
+                      className="popm-priority-bar block h-full rounded-full bg-gradient-to-r from-[#B8860B] to-[#B8860B]"
                       style={{ "--bar-width": `${65 + topicIndex * 12}%` } as CSSProperties}
                     />
                   </div>
@@ -528,17 +530,17 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
   return (
     <div className="mt-10 space-y-8">
       {content.curriculum.map((day) => (
-        <div key={day.day} className="rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white p-5 sm:p-8">
-          <div className="border-b border-[#1f2c4a]/10 pb-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{day.day}</p>
-            <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{day.focus}</h3>
+        <div key={day.day} className="rounded-[1.75rem] border border-[#111111]/10 bg-white p-5 sm:p-8">
+          <div className="border-b border-[#111111]/10 pb-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{day.day}</p>
+            <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#111111]">{day.focus}</h3>
           </div>
-          <div className="mt-2 divide-y divide-[#1f2c4a]/10">
+          <div className="mt-2 divide-y divide-[#111111]/10">
             {day.modules.map((module) => (
               <details key={module.title} className="group py-5" open>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
                   <div>
-                    <p className="font-semibold text-[#1f2c4a]">{module.title}</p>
+                    <p className="font-semibold text-[#111111]">{module.title}</p>
                     {module.objective ? <p className="mt-1 max-w-2xl text-sm leading-6 text-[#64748b]">{module.objective}</p> : null}
                     {module.weight ? <p className="mt-1 text-xs text-[#94a3b8]">{module.weight} of exam content</p> : null}
                   </div>
@@ -546,7 +548,7 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
                 <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                   {module.topics.map((topic) => (
                     <li key={topic} className="flex items-start gap-2 text-sm leading-6 text-[#64748b]">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B8860B]" />
                       {topic}
                     </li>
                   ))}
@@ -561,7 +563,7 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
           href={content.brochureHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] px-4 text-sm font-semibold text-[#1f2c4a] hover:border-[#d97706]/40"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#111111]/10 bg-[#f8fafc] px-4 text-sm font-semibold text-[#111111] hover:border-[#B8860B]/40"
         >
           Download full brochure
           <ArrowIcon />
@@ -573,10 +575,10 @@ function Curriculum({ content }: { content: CatalogLandingContent }) {
 
 function Faqs({ groups }: { groups: CatalogLandingContent["faqs"] }) {
   const categories = [
-    ["generic", "Course"],
+    ["courses", "Course"],
     ["exam", "Exam"],
-    ["payment", "Payment"],
-    ["courses", "Training"],
+    ["payment", "Pricing & Payment"],
+    ["generic", "Agile36"],
   ] as const;
 
   return (
@@ -586,14 +588,14 @@ function Faqs({ groups }: { groups: CatalogLandingContent["faqs"] }) {
         if (!items.length) return null;
         return (
           <div key={id}>
-            <h3 className="text-lg font-semibold text-[#1f2c4a]">{label}</h3>
-            <div className="mt-3 divide-y divide-[#1f2c4a]/10 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white px-5 sm:px-7">
+            <p className="text-lg font-semibold text-[#111111]">{label}</p>
+            <div className="mt-3 divide-y divide-[#111111]/10 rounded-[1.5rem] border border-[#111111]/10 bg-white px-5 sm:px-7">
               {items.map((item) => (
                 <details key={item.q} open className="group py-5">
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-5 [&::-webkit-details-marker]:hidden">
-                    <span className="font-semibold leading-6 text-[#1f2c4a]">{item.q}</span>
+                    <h3 className="font-semibold leading-6 text-[#111111]">{item.q}</h3>
                   </summary>
-                  <p className="max-w-3xl pb-2 pt-3 text-[15px] leading-7 text-[#64748b]">{item.a}</p>
+                  <p className="max-w-3xl pb-2 pt-3 text-[15px] leading-6 text-[#64748b]">{item.a}</p>
                 </details>
               ))}
             </div>
@@ -635,7 +637,7 @@ const POPM_OBJECTIVES = [
 
 function PopmFit() {
   return (
-    <section id="who" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="who" className="scroll-mt-32 border-y border-[#111111]/10 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Who this class is for"
@@ -644,26 +646,26 @@ function PopmFit() {
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {POPM_AUDIENCE.map(([title, copy]) => (
-            <article key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-5">
-              <h3 className="font-semibold text-[#1f2c4a]">{title}</h3>
+            <article key={title} className="rounded-2xl border border-[#111111]/10 bg-[#f8fafc] p-5">
+              <h3 className="font-semibold text-[#111111]">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
             </article>
           ))}
         </div>
         <div className="mt-5 grid gap-4 lg:grid-cols-[1.1fr_.9fr]">
-          <div className="rounded-[1.5rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 sm:p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Prerequisites</p>
-            <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">You do not need a prior SAFe certification.</h3>
+          <div className="rounded-[1.5rem] border border-[#111111]/10 bg-[#f8fafc] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Prerequisites</p>
+            <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#111111]">You do not need a prior SAFe certification.</h3>
             <p className="mt-3 text-sm leading-7 text-[#64748b]">
               There is no eligibility screen. Familiarity with Agile or Scrum, and time spent with a backlog, customers, or a delivery team, makes the exercises easier to use. People who later sit the exam often already have product, project, analysis, or software experience. That helps. It is not required to book a seat.
             </p>
           </div>
-          <div className="rounded-[1.5rem] border border-[#d97706]/25 bg-[#fff7ed] p-6 sm:p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b45309]">Where this role shows up</p>
+          <div className="rounded-[1.5rem] border border-[#B8860B]/25 bg-[#fff7ed] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Where this role shows up</p>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[#475569]">
-              <li><span className="font-semibold text-[#1f2c4a]">Product Owner.</span> Team backlog, stories, acceptance criteria, and the customer inside one Agile team.</li>
-              <li><span className="font-semibold text-[#1f2c4a]">Product Manager.</span> Vision, roadmap, features, and the ART backlog for the whole train.</li>
-              <li><span className="font-semibold text-[#1f2c4a]">Later product leadership.</span> Directors and heads of product use the same ART mechanics when the company is running SAFe. The class teaches the role. It does not confer a title.</li>
+              <li><span className="font-semibold text-[#111111]">Product Owner.</span> Team backlog, stories, acceptance criteria, and the customer inside one Agile team.</li>
+              <li><span className="font-semibold text-[#111111]">Product Manager.</span> Vision, roadmap, features, and the ART backlog for the whole train.</li>
+              <li><span className="font-semibold text-[#111111]">Later product leadership.</span> Directors and heads of product use the same ART mechanics when the company is running SAFe. The class teaches the role. It does not confer a title.</li>
             </ul>
           </div>
         </div>
@@ -676,8 +678,8 @@ function PopmFit() {
           />
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {POPM_INCLUDED.map(([title, copy]) => (
-              <div key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
-                <p className="font-semibold text-[#1f2c4a]">{title}</p>
+              <div key={title} className="rounded-2xl border border-[#111111]/10 bg-white p-5">
+                <p className="font-semibold text-[#111111]">{title}</p>
                 <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
               </div>
             ))}
@@ -721,9 +723,9 @@ function PopmRoles() {
         />
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           {columns.map((column) => (
-            <article key={column.kicker} className="rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 sm:p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">{column.kicker}</p>
-              <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">{column.title}</h3>
+            <article key={column.kicker} className="rounded-[1.75rem] border border-[#111111]/10 bg-[#f8fafc] p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{column.kicker}</p>
+              <h3 className="mt-2 text-2xl font-normal tracking-[-0.03em] text-[#111111]">{column.title}</h3>
               <ul className="mt-5 space-y-3">
                 {column.points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-sm leading-6 text-[#475569]">
@@ -735,7 +737,7 @@ function PopmRoles() {
             </article>
           ))}
         </div>
-        <p className="mt-5 rounded-2xl border border-[#1f2c4a]/10 bg-[#1f2c4a] px-5 py-4 text-sm leading-6 text-white/80">
+        <p className="mt-5 rounded-2xl border border-[#111111]/10 bg-[#111111] px-5 py-4 text-sm leading-6 text-white/80">
           In practice the Product Manager names the market opportunity and the feature. The Product Owner breaks that feature into stories and stays with the team until it ships. PI Planning is where those two views have to agree.
         </p>
 
@@ -747,10 +749,10 @@ function PopmRoles() {
           />
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {POPM_OBJECTIVES.map(([title, copy], index) => (
-              <article key={title} className="flex gap-4 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-5">
-                <span className="text-sm font-semibold tabular-nums text-[#d97706]">{String(index + 1).padStart(2, "0")}</span>
+              <article key={title} className="flex gap-4 rounded-2xl border border-[#111111]/10 bg-[#f8fafc] p-5">
+                <span className="text-sm font-semibold tabular-nums text-[#B8860B]">{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="font-semibold text-[#1f2c4a]">{title}</h3>
+                  <h3 className="font-semibold text-[#111111]">{title}</h3>
                   <p className="mt-1 text-sm leading-6 text-[#64748b]">{copy}</p>
                 </div>
               </article>
@@ -780,9 +782,9 @@ function PopmExamPath() {
         />
         <ol className="mt-10 grid gap-3 lg:grid-cols-5">
           {steps.map(([title, copy], index) => (
-            <li key={title} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">Step {index + 1}</span>
-              <h3 className="mt-3 font-semibold text-[#1f2c4a]">{title}</h3>
+            <li key={title} className="rounded-2xl border border-[#111111]/10 bg-white p-5">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">Step {index + 1}</span>
+              <h3 className="mt-3 font-semibold text-[#111111]">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#64748b]">{copy}</p>
             </li>
           ))}
@@ -792,6 +794,99 @@ function PopmExamPath() {
         </p>
       </div>
     </section>
+  );
+}
+
+export function CourseMotionStyles() {
+  return (
+      <style jsx global>{`
+        @keyframes popmFlowCard {
+          0%, 100% { border-color: rgba(17, 17, 17,.1); transform: translateY(0); }
+          45% { border-color: rgba(217,119,6,.42); transform: translateY(-3px); }
+        }
+        @keyframes popmRunner {
+          0% { left: 12%; opacity: 0; }
+          8% { opacity: 1; }
+          92% { opacity: 1; }
+          100% { left: 88%; opacity: 0; }
+        }
+        @keyframes popmBar {
+          from { width: 0; }
+          to { width: var(--bar-width); }
+        }
+        @keyframes popmDraw {
+          from { stroke-dashoffset: 650; }
+          to { stroke-dashoffset: 0; }
+        }
+        @keyframes popmDot {
+          from { opacity: 0; transform: scale(.4); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes popmSignalIn {
+          from { opacity: 0; transform: translateX(-14px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes popmDiscoveryBar {
+          from { height: 0; }
+          to { height: var(--bar-height); }
+        }
+        @keyframes popmBacklogIn {
+          from { opacity: 0; transform: translateX(18px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes popmBacklogPulse {
+          0%, 100% { border-color: rgba(17, 17, 17,.1); }
+          50% { border-color: rgba(217,119,6,.35); }
+        }
+        @keyframes popmDependency {
+          from { stroke-dashoffset: 120; }
+          to { stroke-dashoffset: 0; }
+        }
+        @keyframes popmPiIn {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popmKanban {
+          0%, 100% { transform: translateY(0); box-shadow: 0 1px 2px rgba(17, 17, 17,.05); }
+          50% { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(17, 17, 17,.09); }
+        }
+        .popm-flow-card { animation: popmFlowCard 4s ease-in-out infinite; }
+        .popm-flow-runner { animation: popmRunner 4s linear infinite; }
+        .popm-bar { width: 0; animation: popmBar 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
+        .popm-chart-line { stroke-dasharray: 650; stroke-dashoffset: 650; }
+        .popm-chart-dot { opacity: 0; transform-origin: 440px 25px; }
+        .popm-signal, .popm-backlog-row, .popm-pi-card { opacity: 0; }
+        .popm-discovery-bar { height: 0; }
+        .popm-priority-bar { width: 0; }
+        .popm-dependency-line { stroke-dashoffset: 120; }
+        .popm-motion-on .popm-chart-line { animation: popmDraw 1.2s ease-out forwards; }
+        .popm-motion-on .popm-chart-line-muted { animation-delay: .15s; }
+        .popm-motion-on .popm-chart-dot { animation: popmDot .35s ease-out 1.2s forwards; }
+        .popm-motion-on .popm-signal { animation: popmSignalIn .65s cubic-bezier(.2,.8,.2,1) forwards; }
+        .popm-motion-on .popm-discovery-bar { animation: popmDiscoveryBar .9s cubic-bezier(.2,.8,.2,1) forwards; }
+        .popm-motion-on .popm-backlog-row {
+          animation:
+            popmBacklogIn .7s cubic-bezier(.2,.8,.2,1) forwards,
+            popmBacklogPulse 4s ease-in-out 1.2s infinite;
+        }
+        .popm-motion-on .popm-priority-bar { animation: popmBar 1.1s .45s cubic-bezier(.2,.8,.2,1) forwards; }
+        .popm-motion-on .popm-dependency-line { animation: popmDependency 3s linear infinite; }
+        .popm-motion-on .popm-pi-card { animation: popmPiIn .7s cubic-bezier(.2,.8,.2,1) forwards; }
+        .popm-motion-on .popm-kanban-card { animation: popmKanban 3.2s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .popm-flow-card, .popm-flow-runner, .popm-bar, .popm-chart-line, .popm-chart-dot,
+          .popm-signal, .popm-discovery-bar, .popm-backlog-row, .popm-priority-bar,
+          .popm-dependency-line, .popm-pi-card, .popm-kanban-card {
+            animation: none !important;
+          }
+          .popm-bar, .popm-priority-bar { width: var(--bar-width); }
+          .popm-discovery-bar { height: var(--bar-height); }
+          .popm-signal, .popm-backlog-row, .popm-pi-card { opacity: 1; }
+          .popm-dependency-line { stroke-dashoffset: 0; }
+          .popm-chart-line { stroke-dashoffset: 0; }
+          .popm-chart-dot { opacity: 1; }
+        }
+      `}</style>
   );
 }
 
@@ -807,7 +902,7 @@ export default function PopmCourseLanding({
   const [showAssessmentModal, setShowAssessmentModal] = useState(false);
   const [assessmentFormData, setAssessmentFormData] = useState({ name: "", email: "" });
   const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
-  const reviews = content.reviews.slice(0, 6);
+  const reviews = testimonialsForSlug(content.slug);
   const isPrivateClass =
     content.slug === "release-train-engineer" && !isRtePublicEnrollmentOpen();
   const isSafePartner = content.safePartner !== false;
@@ -879,104 +974,18 @@ export default function PopmCourseLanding({
   }, [navItems]);
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-[#1f2c4a]">
-      <style jsx global>{`
-        @keyframes popmFlowCard {
-          0%, 100% { border-color: rgba(31,44,74,.1); transform: translateY(0); }
-          45% { border-color: rgba(217,119,6,.42); transform: translateY(-3px); }
-        }
-        @keyframes popmRunner {
-          0% { left: 12%; opacity: 0; }
-          8% { opacity: 1; }
-          92% { opacity: 1; }
-          100% { left: 88%; opacity: 0; }
-        }
-        @keyframes popmBar {
-          from { width: 0; }
-          to { width: var(--bar-width); }
-        }
-        @keyframes popmDraw {
-          from { stroke-dashoffset: 650; }
-          to { stroke-dashoffset: 0; }
-        }
-        @keyframes popmDot {
-          0%, 55% { opacity: 0; transform: scale(.4); }
-          75%, 100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes popmSignalIn {
-          from { opacity: 0; transform: translateX(-14px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes popmDiscoveryBar {
-          from { height: 0; }
-          to { height: var(--bar-height); }
-        }
-        @keyframes popmBacklogIn {
-          from { opacity: 0; transform: translateX(18px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes popmBacklogPulse {
-          0%, 100% { border-color: rgba(31,44,74,.1); }
-          50% { border-color: rgba(217,119,6,.35); }
-        }
-        @keyframes popmDependency {
-          from { stroke-dashoffset: 120; }
-          to { stroke-dashoffset: 0; }
-        }
-        @keyframes popmPiIn {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes popmKanban {
-          0%, 100% { transform: translateY(0); box-shadow: 0 1px 2px rgba(31,44,74,.05); }
-          50% { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(31,44,74,.09); }
-        }
-        .popm-flow-card { animation: popmFlowCard 4s ease-in-out infinite; }
-        .popm-flow-runner { animation: popmRunner 4s linear infinite; }
-        .popm-bar { width: 0; animation: popmBar 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
-        .popm-chart-line { stroke-dasharray: 650; stroke-dashoffset: 650; }
-        .popm-chart-dot { opacity: 0; transform-origin: 440px 25px; }
-        .popm-signal, .popm-backlog-row, .popm-pi-card { opacity: 0; }
-        .popm-discovery-bar { height: 0; }
-        .popm-priority-bar { width: 0; }
-        .popm-dependency-line { stroke-dashoffset: 120; }
-        .popm-motion-on .popm-chart-line { animation: popmDraw 2.2s ease-out forwards; }
-        .popm-motion-on .popm-chart-line-muted { animation-delay: .3s; }
-        .popm-motion-on .popm-chart-dot { animation: popmDot 2.8s ease-out forwards; }
-        .popm-motion-on .popm-signal { animation: popmSignalIn .65s cubic-bezier(.2,.8,.2,1) forwards; }
-        .popm-motion-on .popm-discovery-bar { animation: popmDiscoveryBar .9s cubic-bezier(.2,.8,.2,1) forwards; }
-        .popm-motion-on .popm-backlog-row {
-          animation:
-            popmBacklogIn .7s cubic-bezier(.2,.8,.2,1) forwards,
-            popmBacklogPulse 4s ease-in-out 1.2s infinite;
-        }
-        .popm-motion-on .popm-priority-bar { animation: popmBar 1.1s .45s cubic-bezier(.2,.8,.2,1) forwards; }
-        .popm-motion-on .popm-dependency-line { animation: popmDependency 3s linear infinite; }
-        .popm-motion-on .popm-pi-card { animation: popmPiIn .7s cubic-bezier(.2,.8,.2,1) forwards; }
-        .popm-motion-on .popm-kanban-card { animation: popmKanban 3.2s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) {
-          .popm-flow-card, .popm-flow-runner, .popm-bar, .popm-chart-line, .popm-chart-dot,
-          .popm-signal, .popm-discovery-bar, .popm-backlog-row, .popm-priority-bar,
-          .popm-dependency-line, .popm-pi-card, .popm-kanban-card {
-            animation: none !important;
-          }
-          .popm-bar, .popm-priority-bar { width: var(--bar-width); }
-          .popm-discovery-bar { height: var(--bar-height); }
-          .popm-signal, .popm-backlog-row, .popm-pi-card { opacity: 1; }
-          .popm-dependency-line { stroke-dashoffset: 0; }
-          .popm-chart-line { stroke-dashoffset: 0; }
-          .popm-chart-dot { opacity: 1; }
-        }
-      `}</style>
+    <main className="min-h-screen bg-[#f8fafc] text-[#111111]">
+      <CourseMotionStyles />
 
-      <section className="relative overflow-hidden border-b border-[#1f2c4a]/10 bg-[linear-gradient(180deg,#fff_0%,#f3f7fb_100%)]">
-        <div className="pointer-events-none absolute -left-48 top-10 h-[32rem] w-[32rem] rounded-full bg-[#d97706]/[0.07] blur-3xl" />
-        <div className="pointer-events-none absolute -right-48 -top-24 h-[38rem] w-[38rem] rounded-full bg-[#1f2c4a]/[0.06] blur-3xl" />
+
+      <section className="relative overflow-hidden border-b border-[#111111]/10 bg-[linear-gradient(180deg,#fff_0%,#f3f7fb_100%)]">
+        <div className="pointer-events-none absolute -left-48 top-10 h-[32rem] w-[32rem] rounded-full bg-[#B8860B]/[0.07] blur-3xl" />
+        <div className="pointer-events-none absolute -right-48 -top-24 h-[38rem] w-[38rem] rounded-full bg-[#111111]/[0.06] blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 lg:px-8 lg:pb-10">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-[#94a3b8]" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
+            <Link href="/" className="hover:text-[#111111]">Home</Link>
             <span>/</span>
-            <Link href="/courses" className="hover:text-[#1f2c4a]">Courses</Link>
+            <Link href="/courses" className="hover:text-[#111111]">Courses</Link>
             <span>/</span>
             <span className="text-[#475569]">{content.crumb}</span>
           </nav>
@@ -984,24 +993,24 @@ export default function PopmCourseLanding({
           <div className="mt-9 grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(24rem,.85fr)] lg:gap-14">
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#b45309]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#B8860B]/20 bg-[#fff7ed] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#B8860B]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#B8860B]" />
                   {content.eyebrow || "Official SAFe® certification · Live online"}
                 </div>
                 {showClaudePartner ? <ClaudePartnerBadge variant="hero" /> : null}
               </div>
-              <h1 className="mt-4 max-w-4xl text-[1.75rem] font-normal leading-[1.15] tracking-[-0.02em] text-[#1f2c4a] sm:text-[2.05rem]">
+              <h1 className="mt-4 max-w-4xl text-[1.4rem] font-normal leading-[1.15] tracking-[-0.02em] text-[#111111] sm:text-[2rem]">
                 {content.title}
               </h1>
+              <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#475569]">{openingDefinition(content)}</p>
+              {content.lastUpdated ? <p className="mt-2 text-xs text-[#94a3b8]">Last updated: {content.lastUpdated}</p> : null}
               <div className="mt-4 max-w-3xl space-y-2 text-sm leading-6 text-[#475569]">
                 {content.lede.split(/\n\s*\n/).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
                 {content.lede.includes("highest feedback score") || content.lede.includes("Agile36 learner") ? null : (
                   <p>
-                    {isSafePartner
-                      ? `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews, with the highest feedback score on Scaled Agile.`
-                      : `Rated 4.9/5 from ${learnerReviewCountLabel(content.slug)} Agile36 learner reviews.`}
+                    {ratingLine(content.slug, isSafePartner)}
                   </p>
                 )}
               </div>
@@ -1013,18 +1022,18 @@ export default function PopmCourseLanding({
                     </svg>
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-[#1f2c4a]">Guaranteed to run</p>
+                    <p className="text-sm font-semibold text-[#111111]">Guaranteed to run</p>
                     <p className="mt-0.5 text-[11px] leading-4 text-[#64748b]">Every listed Agile36 cohort runs.</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-xl border border-[#d97706]/20 bg-[#fff7ed] px-4 py-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#d97706] text-white">
+                <div className="flex items-center gap-3 rounded-xl border border-[#B8860B]/20 bg-[#fff7ed] px-4 py-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#B8860B] text-[#111111]">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M17 7.5C17 5.6 14.8 4 12 4S7 5.6 7 7.5 9.2 11 12 11s5 1.6 5 3.5S14.8 18 12 18s-5-1.6-5-3.5" />
                     </svg>
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-[#1f2c4a]">Price Match Guarantee</p>
+                    <p className="text-sm font-semibold text-[#111111]">Price Match Guarantee</p>
                     <p className="mt-0.5 text-[11px] leading-4 text-[#64748b]">Lower price for the same live official course? We&apos;ll match it.</p>
                   </div>
                 </div>
@@ -1040,12 +1049,12 @@ export default function PopmCourseLanding({
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 {isPrivateClass ? (
-                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(31,44,74,.8)] transition hover:-translate-y-0.5 hover:bg-[#16243f]">
+                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#111111] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(17, 17, 17,.8)] transition hover:-translate-y-0.5 hover:bg-[#000000]">
                     Request a private cohort
                     <ArrowIcon />
                   </button>
                 ) : (
-                  <a href="#dates" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(31,44,74,.8)] transition hover:-translate-y-0.5 hover:bg-[#16243f]">
+                  <a href="#dates" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#111111] px-6 text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(17, 17, 17,.8)] transition hover:-translate-y-0.5 hover:bg-[#000000]">
                     View dates & enroll
                     <ArrowIcon />
                   </a>
@@ -1053,7 +1062,7 @@ export default function PopmCourseLanding({
                 <button
                   type="button"
                   onClick={() => setShowCorporateQuote(true)}
-                  className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl border border-[#1f2c4a]/20 bg-white px-6 text-sm font-semibold text-[#1f2c4a] transition hover:border-[#1f2c4a]/40"
+                  className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl border border-[#111111]/20 bg-white px-6 text-sm font-semibold text-[#111111] transition hover:border-[#111111]/40"
                 >
                   Train your team
                 </button>
@@ -1062,14 +1071,14 @@ export default function PopmCourseLanding({
                     href={content.brochureHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-12 items-center px-2 text-sm font-semibold text-[#d97706] hover:text-[#b45309]"
+                    className="inline-flex min-h-12 items-center px-2 text-sm font-semibold text-[#B8860B] hover:text-[#B8860B]"
                   >
                     Download brochure
                   </a>
                 ) : null}
               </div>
 
-              <div className="mt-9 flex flex-wrap items-center gap-4 border-t border-[#1f2c4a]/10 pt-6">
+              <div className="mt-9 flex flex-wrap items-center gap-4 border-t border-[#111111]/10 pt-6">
                 <div className="flex -space-x-2" aria-hidden>
                   {["image 120.png", "image 137.png", "image 247.png", "image 476.png"].map((name) => (
                     <Image
@@ -1083,7 +1092,10 @@ export default function PopmCourseLanding({
                   ))}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1f2c4a]">4.9/5 from {learnerReviewCountLabel(content.slug)} Agile36 learner reviews</p>
+                  <p className="text-[4.25rem] font-semibold leading-none tracking-[-0.04em] text-[#111111]">4.9</p>
+                  {learnerReviewCountLabel(content.slug) ? (
+                    <p className="mt-2 text-[15px] leading-6 text-[#6B6B6B]">from {learnerReviewCountLabel(content.slug)} reviews</p>
+                  ) : null}
                   {isSafePartner ? (
                     <p className="mt-0.5 text-xs text-[#64748b]">Highest feedback score on Scaled Agile</p>
                   ) : null}
@@ -1095,11 +1107,11 @@ export default function PopmCourseLanding({
             <div className="space-y-5">
               <FlowCanvas content={content} showClaudePartner={showClaudePartner} />
               {tuition ? (
-                <div className="grid gap-5 rounded-[1.5rem] border border-[#1f2c4a]/10 bg-white p-5 shadow-[0_22px_55px_-38px_rgba(31,44,74,.55)] sm:grid-cols-[auto_1fr_auto] sm:items-center">
-                  <div className="sm:border-r sm:border-[#1f2c4a]/10 sm:pr-5">
+                <div className="grid gap-5 rounded-[1.5rem] border border-[#111111]/10 bg-white p-5 shadow-[0_22px_55px_-38px_rgba(17, 17, 17,.55)] sm:grid-cols-[auto_1fr_auto] sm:items-center">
+                  <div className="sm:border-r sm:border-[#111111]/10 sm:pr-5">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]">Tuition</p>
                     <div className="mt-1 flex items-baseline gap-2">
-                      <span className="text-3xl font-semibold tracking-[-0.05em] text-[#1f2c4a]">
+                      <span className="text-3xl font-semibold tracking-[-0.05em] text-[#111111]">
                         ${tuition.current.toLocaleString()}
                       </span>
                       <span className="text-xs text-[#94a3b8] line-through">
@@ -1108,7 +1120,7 @@ export default function PopmCourseLanding({
                     </div>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[#1f2c4a]">Everything you need is included.</p>
+                    <p className="text-sm font-semibold text-[#111111]">Everything you need is included.</p>
                     <p className="mt-1 text-xs leading-5 text-[#64748b]">
                       {content.includesLine}
                     </p>
@@ -1131,7 +1143,7 @@ export default function PopmCourseLanding({
                     <button
                       type="button"
                       onClick={() => setShowCorporateQuote(true)}
-                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white transition hover:bg-[#000000]"
                     >
                       Request a private cohort
                       <ArrowIcon />
@@ -1139,7 +1151,7 @@ export default function PopmCourseLanding({
                   ) : (
                     <a
                       href="#dates"
-                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white transition hover:bg-[#000000]"
                     >
                       Choose a cohort
                       <ArrowIcon />
@@ -1154,18 +1166,18 @@ export default function PopmCourseLanding({
 
       <TrustedByStrip />
 
-      <nav className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/10 bg-white/95 backdrop-blur-xl" aria-label="On this page">
+      <nav className="sticky top-[4.25rem] z-40 border-b border-[#111111]/10 bg-white/95 backdrop-blur-xl" aria-label="On this page">
         <div className="mx-auto flex max-w-7xl overflow-x-auto px-2 sm:px-6">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               className={`relative shrink-0 px-4 py-4 text-sm font-semibold transition ${
-                activeSection === item.id ? "text-[#1f2c4a]" : "text-[#94a3b8] hover:text-[#475569]"
+                activeSection === item.id ? "text-[#111111]" : "text-[#94a3b8] hover:text-[#475569]"
               }`}
             >
               {item.label}
-              <span className={`absolute inset-x-4 bottom-0 h-0.5 ${activeSection === item.id ? "bg-[#d97706]" : "bg-transparent"}`} />
+              <span className={`absolute inset-x-4 bottom-0 h-0.5 ${activeSection === item.id ? "bg-[#B8860B]" : "bg-transparent"}`} />
             </a>
           ))}
         </div>
@@ -1181,7 +1193,7 @@ export default function PopmCourseLanding({
           <div className="mt-12 grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
             <div className="grid gap-4 sm:grid-cols-2">
               {featureItems.map((item, index) => (
-                <div key={item.title} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5 transition hover:-translate-y-1 hover:border-[#d97706]/25 hover:shadow-lg">
+                <div key={item.title} className="rounded-2xl border border-[#111111]/10 bg-white p-5 transition hover:-translate-y-1 hover:border-[#B8860B]/25 hover:shadow-lg">
                   <Icon tone={item.tone}>
                     {index % 3 === 0 ? (
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="M12 8v4l3 2" /><circle cx="12" cy="12" r="9" /></svg>
@@ -1191,7 +1203,7 @@ export default function PopmCourseLanding({
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="m12 2 3 6 7 .9-5 4.8 1.2 6.8L12 17.3l-6.2 3.2L7 13.7 2 8.9 9 8Z" /></svg>
                     )}
                   </Icon>
-                  <h3 className="mt-5 font-semibold text-[#1f2c4a]">{item.title}</h3>
+                  <h3 className="mt-5 font-semibold text-[#111111]">{item.title}</h3>
                   <p className="mt-1 text-sm leading-6 text-[#64748b]">{item.copy}</p>
                 </div>
               ))}
@@ -1203,7 +1215,7 @@ export default function PopmCourseLanding({
 
       {content.slug === "product-owner-manager" ? <PopmFit /> : null}
 
-      <section id="why" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <section id="why" className="scroll-mt-32 border-y border-[#111111]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Why Agile36"
@@ -1214,33 +1226,33 @@ export default function PopmCourseLanding({
                 : "What to check before you book, and how this class is built differently."
             }
           />
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-white">
-            <div className="hidden border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
+          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-[#111111]/10 bg-white">
+            <div className="hidden border-b border-[#111111]/10 bg-[#111111]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
               <span>What to check</span>
-              <span className="text-[#1f2c4a]">Agile36</span>
+              <span className="text-[#111111]">Agile36</span>
               <span>{content.whyOtherLabel || "Other training providers"}</span>
             </div>
             {content.whyRows.map((row) => (
               <div
                 key={row.n}
-                className={`grid gap-4 border-b border-[#1f2c4a]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
+                className={`grid gap-4 border-b border-[#111111]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
                   row.featured
-                    ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07] py-7 lg:py-8"
+                    ? "border-l-[3px] border-l-[#B8860B] bg-[#B8860B]/[0.07] py-7 lg:py-8"
                     : "bg-white"
                 }`}
               >
                 <div className="flex items-baseline gap-3">
-                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#d97706]">
+                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#B8860B]">
                     {row.n}
                   </span>
-                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#1f2c4a]">{row.check}</h3>
+                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#111111]">{row.check}</h3>
                 </div>
                 <div>
-                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706] lg:hidden">
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B8860B] lg:hidden">
                     Agile36
                   </p>
                   <p className="text-[15px] leading-relaxed text-[#475569]">
-                    <span className="font-semibold text-[#1f2c4a]">{row.usLead}</span> {row.usRest}
+                    <span className="font-semibold text-[#111111]">{row.usLead}</span> {row.usRest}
                   </p>
                 </div>
                 <div>
@@ -1255,7 +1267,7 @@ export default function PopmCourseLanding({
         </div>
       </section>
 
-      <section id="skills" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <section id="skills" className="scroll-mt-32 border-y border-[#111111]/10 bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Skills you will build"
@@ -1293,14 +1305,14 @@ export default function PopmCourseLanding({
                   : "Your class is led live by a SAFe® Practice Consultant and enterprise coach who connects the official curriculum to real decisions, team dynamics, and transformation challenges."
               }
             />
-            <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white text-center">
+            <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-[#111111]/10 bg-white text-center">
               {[
                 ["SPC®", "certified"],
                 ["Enterprise", "experience"],
                 ["Live", "Q&A"],
               ].map(([value, label], index) => (
-                <div key={value} className={`px-3 py-4 sm:px-5 ${index ? "border-l border-[#1f2c4a]/10" : ""}`}>
-                  <p className="text-sm font-semibold text-[#1f2c4a]">{value}</p>
+                <div key={value} className={`px-3 py-4 sm:px-5 ${index ? "border-l border-[#111111]/10" : ""}`}>
+                  <p className="text-sm font-semibold text-[#111111]">{value}</p>
                   <p className="mt-0.5 text-[9px] uppercase tracking-[0.12em] text-[#94a3b8]">{label}</p>
                 </div>
               ))}
@@ -1309,12 +1321,12 @@ export default function PopmCourseLanding({
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {instructors.map((profile, index) => (
-              <article key={profile.name} className={`group overflow-hidden rounded-[1.75rem] border bg-white transition hover:-translate-y-1 hover:shadow-xl ${index === 0 ? "border-[#d97706]/30" : "border-[#1f2c4a]/10"}`}>
-                <div className={`h-1 ${index === 0 ? "bg-gradient-to-r from-[#d97706] to-[#fbbf24]" : "bg-[#1f2c4a]"}`} />
+              <article key={profile.name} className={`group overflow-hidden rounded-[1.75rem] border bg-white transition hover:-translate-y-1 hover:shadow-xl ${index === 0 ? "border-[#B8860B]/30" : "border-[#111111]/10"}`}>
+                <div className={`h-1 ${index === 0 ? "bg-gradient-to-r from-[#B8860B] to-[#B8860B]" : "bg-[#111111]"}`} />
                 <div className="p-5 sm:p-6">
                   <div className="flex items-start gap-4 sm:gap-5">
                     <div className="relative shrink-0">
-                      <div className="absolute -inset-1.5 rounded-2xl bg-[#d97706]/10 transition group-hover:bg-[#d97706]/20" />
+                      <div className="absolute -inset-1.5 rounded-2xl bg-[#B8860B]/10 transition group-hover:bg-[#B8860B]/20" />
                       <Image
                         src={profile.image}
                         alt={`${profile.name}, Agile36 instructor`}
@@ -1324,8 +1336,8 @@ export default function PopmCourseLanding({
                       />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">Agile36 instructor</p>
-                      <h3 className="mt-1.5 text-xl font-semibold tracking-[-0.025em] text-[#1f2c4a]">{profile.name}</h3>
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">Agile36 instructor</p>
+                      <h3 className="mt-1.5 text-xl font-semibold tracking-[-0.025em] text-[#111111]">{profile.name}</h3>
                       <p className="mt-1 text-xs leading-5 text-[#64748b]">{profile.title}</p>
                       {profile.linkedin ? (
                         <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[#0a66c2] hover:underline">
@@ -1339,11 +1351,11 @@ export default function PopmCourseLanding({
                   <p className="mt-5 line-clamp-5 text-sm leading-6 text-[#475569] sm:line-clamp-none">{profile.bio[0]}</p>
 
                   {profile.clients.length ? (
-                    <div className="mt-5 border-t border-[#1f2c4a]/10 pt-4">
+                    <div className="mt-5 border-t border-[#111111]/10 pt-4">
                       <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#94a3b8]">Experience across organizations including</p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {profile.clients.slice(0, 5).map((client) => (
-                          <span key={client.name} className="flex h-9 min-w-16 items-center justify-center rounded-lg border border-[#1f2c4a]/10 bg-[#f8fafc] px-2.5">
+                          <span key={client.name} className="flex h-9 min-w-16 items-center justify-center rounded-lg border border-[#111111]/10 bg-[#f8fafc] px-2.5">
                             <Image src={client.logo} alt={client.name} width={72} height={24} className="max-h-5 w-auto max-w-full object-contain" />
                           </span>
                         ))}
@@ -1353,7 +1365,7 @@ export default function PopmCourseLanding({
 
                   {profile.testimonials[0] ? (
                     <blockquote className="mt-5 line-clamp-5 rounded-xl bg-[#f8fafc] p-4 text-[13px] leading-5 text-[#64748b] sm:line-clamp-none">
-                      <span className="mr-1 text-[#d97706]">★★★★★</span>
+                      <span className="mr-1 text-[#B8860B]">★★★★★</span>
                       “{profile.testimonials[0].quote}”
                     </blockquote>
                   ) : null}
@@ -1377,14 +1389,14 @@ export default function PopmCourseLanding({
           />
           <div className="mt-10">
             {isPrivateClass ? (
-              <div className="grid overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/15 bg-white shadow-[0_24px_60px_-40px_rgba(31,44,74,.6)] lg:grid-cols-[1fr_auto] lg:items-center">
+              <div className="grid overflow-hidden rounded-[1.75rem] border border-[#111111]/15 bg-white shadow-[0_24px_60px_-40px_rgba(17, 17, 17,.6)] lg:grid-cols-[1fr_auto] lg:items-center">
                 <div className="p-6 sm:p-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Built around your ART</p>
-                  <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a]">Choose dates, team size, and organizational focus.</h3>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Built around your ART</p>
+                  <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-[#111111]">Choose dates, team size, and organizational focus.</h3>
                   <p className="mt-3 max-w-2xl text-sm leading-6 text-[#64748b]">We will shape the private cohort with you and provide a clear group proposal before anything is booked.</p>
                 </div>
-                <div className="border-t border-[#1f2c4a]/10 bg-[#eef3f8] p-6 lg:border-l lg:border-t-0 lg:p-8">
-                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1f2c4a] px-6 text-sm font-semibold text-white hover:bg-[#16243f]">
+                <div className="border-t border-[#111111]/10 bg-[#eef3f8] p-6 lg:border-l lg:border-t-0 lg:p-8">
+                  <button type="button" onClick={() => setShowCorporateQuote(true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#111111] px-6 text-sm font-semibold text-white hover:bg-[#000000]">
                     Request private training
                     <ArrowIcon />
                   </button>
@@ -1404,13 +1416,37 @@ export default function PopmCourseLanding({
         </div>
       </section>
 
-      <section id="curriculum" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#eef3f8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <section id="curriculum" className="scroll-mt-32 border-y border-[#111111]/10 bg-[#eef3f8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Course curriculum"
             title={`${content.durationLabel.split("·")[0]?.trim() || "Live training"} from concepts to confident application.`}
             copy={content.curriculumLede || "Official SAFe content, exam preparation, and practical AI applications woven into one live experience."}
           />
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+            <div>
+              <h3 className="text-xl font-semibold text-[#111111]">Exam details</h3>
+              <dl className="mt-4 space-y-3">
+                {examDetailLines(content).map((line) => (
+                  <div key={line.label}>
+                    <dt className="text-sm font-semibold text-[#111111]">{line.label}</dt>
+                    <dd className="text-[15px] leading-6 text-[#475569]">{line.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-[#111111]">Policies</h3>
+              <dl className="mt-4 space-y-4">
+                {policyLines(content).map((line) => (
+                  <div key={line.label}>
+                    <dt className="text-sm font-semibold text-[#111111]">{line.label}</dt>
+                    <dd className="text-[15px] leading-6 text-[#475569]">{line.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
           <Curriculum content={content} />
         </div>
       </section>
@@ -1434,13 +1470,13 @@ export default function PopmCourseLanding({
             />
             <div className="mt-9 grid gap-3 sm:grid-cols-2">
               {content.examDetails?.format.map((line) => (
-                <div key={`${line.before}${line.highlight}${line.after}`} className="rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-4">
+                <div key={`${line.before}${line.highlight}${line.after}`} className="rounded-xl border border-[#111111]/10 bg-[#f8fafc] p-4">
                   <span className="mb-3 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
                     <span className="h-4 w-4">{CHECK}</span>
                   </span>
                   <p className="text-sm leading-6 text-[#64748b]">
                     {line.before}
-                    <strong className="font-semibold text-[#1f2c4a]">{line.highlight}</strong>
+                    <strong className="font-semibold text-[#111111]">{line.highlight}</strong>
                     {line.after}
                   </p>
                 </div>
@@ -1448,12 +1484,12 @@ export default function PopmCourseLanding({
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               {content.assessmentHref ? (
-                <button type="button" onClick={() => setShowAssessmentModal(true)} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f]">
+                <button type="button" onClick={() => setShowAssessmentModal(true)} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white hover:bg-[#000000]">
                   {content.assessmentLabel || "Take the free assessment"}
                 </button>
               ) : null}
               {content.examGuidelinesHref ? (
-                <a href={content.examGuidelinesHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-[#d97706]">
+                <a href={content.examGuidelinesHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-[#B8860B]">
                   Official exam guidelines
                   <ArrowIcon />
                 </a>
@@ -1461,8 +1497,8 @@ export default function PopmCourseLanding({
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#d97706]/10 to-[#1f2c4a]/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-5 shadow-xl">
+            <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#B8860B]/10 to-[#111111]/10 blur-2xl" />
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-[#111111]/10 bg-[#f8fafc] p-5 shadow-xl">
               <Image
                 src={content.certificateSrc || content.badgeSrc}
                 alt={content.certificateTitle || content.badgeAlt}
@@ -1474,7 +1510,7 @@ export default function PopmCourseLanding({
                 <div className="mt-4 flex items-center gap-3">
                   <Image src="/Silver.png" alt="Scaled Agile Silver Partner" width={40} height={40} className="h-10 w-10 object-contain" />
                   <div>
-                    <p className="text-sm font-semibold text-[#1f2c4a]">Official Scaled Agile certification</p>
+                    <p className="text-sm font-semibold text-[#111111]">Official Scaled Agile certification</p>
                     <p className="mt-0.5 text-xs text-[#64748b]">Delivered by an authorized Silver Partner</p>
                   </div>
                 </div>
@@ -1488,7 +1524,7 @@ export default function PopmCourseLanding({
                     className="h-[4.5rem] w-[4.5rem] object-contain"
                   />
                   <div>
-                    <p className="text-sm font-semibold text-[#1f2c4a]">
+                    <p className="text-sm font-semibold text-[#111111]">
                       {content.certificateTitle || content.cardTitle}
                     </p>
                     <p className="mt-0.5 text-xs text-[#64748b]">Claude Partner · issued through Accredible · no exam</p>
@@ -1496,7 +1532,7 @@ export default function PopmCourseLanding({
                 </div>
               ) : (
                 <div className="mt-4 rounded-xl bg-white px-4 py-3">
-                  <p className="text-sm font-semibold text-[#1f2c4a]">
+                  <p className="text-sm font-semibold text-[#111111]">
                     {content.certificateTitle || content.cardTitle}
                   </p>
                   <p className="mt-0.5 text-xs text-[#64748b]">Issued through Accredible · no exam</p>
@@ -1513,12 +1549,12 @@ export default function PopmCourseLanding({
             <SectionHeading eyebrow="After this course" title="Keep building your career path." copy={content.careerPath.lede} />
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {content.careerPath.next.map((next, index) => (
-                <Link key={next.href} href={next.href} className="group rounded-[1.5rem] border border-[#1f2c4a]/10 bg-[#f8fafc] p-6 transition hover:-translate-y-1 hover:border-[#d97706]/30 hover:bg-white hover:shadow-xl">
+                <Link key={next.href} href={next.href} className="group rounded-[1.5rem] border border-[#111111]/10 bg-[#f8fafc] p-6 transition hover:-translate-y-1 hover:border-[#B8860B]/30 hover:bg-white hover:shadow-xl">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-[#d97706]">0{index + 1}</span>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#1f2c4a] transition group-hover:rotate-45 group-hover:text-[#d97706]"><ArrowIcon /></span>
+                    <span className="text-[10px] font-semibold text-[#B8860B]">0{index + 1}</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#111111] transition group-hover:rotate-45 group-hover:text-[#B8860B]"><ArrowIcon /></span>
                   </div>
-                  <h3 className="mt-8 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a]">{next.name}</h3>
+                  <h3 className="mt-8 text-lg font-semibold tracking-[-0.02em] text-[#111111]">{next.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-[#64748b]">{next.forWho}</p>
                 </Link>
               ))}
@@ -1527,27 +1563,30 @@ export default function PopmCourseLanding({
         </section>
       ) : null}
 
-      <section id="reviews" className="scroll-mt-32 border-y border-[#1f2c4a]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <section id="reviews" className="scroll-mt-32 border-y border-[#111111]/10 bg-[#f8fafc] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeading eyebrow="Learner reviews" title="Taught for the work—not just the test." />
             <div className="flex items-end gap-3">
-              <span className="text-6xl font-normal tracking-[-0.06em] text-[#1f2c4a]">4.9</span>
+              <span className="text-6xl font-normal tracking-[-0.06em] text-[#111111]">4.9</span>
               <div className="pb-1">
-                <p className="tracking-[0.15em] text-[#d97706]">★★★★★</p>
-                <p className="mt-1 text-xs text-[#64748b]">{learnerReviewCountLabel(content.slug)} learner reviews</p>
+                <p className="tracking-[0.15em] text-[#B8860B]">★★★★★</p>
+                <p className="mt-1 text-xs text-[#64748b]">{learnerReviewCountLabel(content.slug) ? `${learnerReviewCountLabel(content.slug)} reviews` : "4.9/5"}</p>
               </div>
             </div>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {reviews.map((review, index) => (
-              <article key={`${review.name}-${index}`} className={`rounded-[1.5rem] border p-6 ${index === 0 ? "border-[#d97706]/30 bg-[#fff7ed]" : "border-[#1f2c4a]/10 bg-white"}`}>
-                <p className="text-sm tracking-[0.12em] text-[#d97706]">★★★★★</p>
-                <blockquote className="mt-5 text-[15px] leading-7 text-[#475569]">“{review.review}”</blockquote>
-                <div className="mt-6 border-t border-[#1f2c4a]/10 pt-4">
-                  <p className="font-semibold text-[#1f2c4a]">{review.name}</p>
-                  <p className="mt-0.5 text-xs text-[#94a3b8]">{review.role}</p>
+              <article key={review.id} className={`rounded-[1.5rem] border p-6 ${index === 0 ? "border-[#B8860B]/30 bg-[#fff7ed]" : "border-[#111111]/10 bg-white"}`}>
+                <div className="flex items-center gap-3">
+                  <Image src={review.avatar} alt="" width={64} height={64} className="h-16 w-16 rounded-full object-cover" />
+                  <div>
+                    <p className="font-semibold text-[#111111]">{review.name}</p>
+                    <p className="mt-0.5 text-xs text-[#94a3b8]">{review.title}</p>
+                  </div>
                 </div>
+                <p className="mt-4 text-sm tracking-[0.12em] text-[#B8860B]">★★★★★</p>
+                <blockquote className="mt-3 text-[15px] leading-7 text-[#475569]">“{review.review}”</blockquote>
               </article>
             ))}
           </div>
@@ -1566,14 +1605,14 @@ export default function PopmCourseLanding({
       </section>
 
       <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#1f2c4a] px-6 py-12 text-white sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-14">
-          <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#d97706]/20 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#111111] px-6 py-12 text-white sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-14">
+          <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#B8860B]/20 blur-3xl" />
           <div className="relative max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#fbbf24]">Your next step starts here</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Your next step starts here</p>
             <h2 className="mt-3 text-3xl font-normal tracking-[-0.04em] sm:text-4xl">Build the {content.crumb} capability your work needs.</h2>
             <p className="mt-4 text-base leading-7 text-white/65">Live instruction. Official courseware. Hands-on practice. Skills you can use immediately.</p>
           </div>
-          <a href="#dates" className="relative mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#d97706] px-6 text-sm font-semibold text-white transition hover:bg-[#b45309] lg:mt-0">
+          <a href="#dates" className="relative mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F5B942] px-6 text-sm font-semibold text-[#111111] transition hover:bg-[#e0a82e] lg:mt-0">
             Choose your cohort
             <ArrowIcon />
           </a>
@@ -1588,47 +1627,47 @@ export default function PopmCourseLanding({
       />
 
       {showAssessmentModal && content.assessmentHref ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2c4a]/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="assessment-title">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#111111]/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="assessment-title">
           <div className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-white/20 bg-white p-6 shadow-2xl sm:p-8">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#B8860B] via-[#f59e0b] to-[#111111]" />
             <button
               type="button"
               onClick={() => {
                 setShowAssessmentModal(false);
                 setAssessmentFormData({ name: "", email: "" });
               }}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#eef3f8] text-xl text-[#475569] hover:bg-[#1f2c4a]/10"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#eef3f8] text-xl text-[#475569] hover:bg-[#111111]/10"
               aria-label="Close assessment form"
             >
               ×
             </button>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d97706]">Free practice assessment</p>
-            <h3 id="assessment-title" className="mt-3 text-2xl font-normal tracking-[-0.035em] text-[#1f2c4a]">Start your practice test</h3>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free practice assessment</p>
+            <h3 id="assessment-title" className="mt-3 text-2xl font-normal tracking-[-0.035em] text-[#111111]">Start your practice test</h3>
             <p className="mt-2 pr-8 text-sm leading-6 text-[#64748b]">Enter your details to access the {content.examName || content.practiceTestTitle}.</p>
             <form onSubmit={handleAssessmentSubmit} className="mt-6 space-y-4">
-              <label className="block text-sm font-semibold text-[#1f2c4a]">
+              <label className="block text-sm font-semibold text-[#111111]">
                 Full name
                 <input
                   type="text"
                   required
                   value={assessmentFormData.name}
                   onChange={(event) => setAssessmentFormData((current) => ({ ...current, name: event.target.value }))}
-                  className="mt-2 w-full rounded-xl border border-[#1f2c4a]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#1f2c4a] outline-none transition focus:border-[#d97706]/50 focus:ring-4 focus:ring-[#d97706]/10"
+                  className="mt-2 w-full rounded-xl border border-[#111111]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#111111] outline-none transition focus:border-[#B8860B]/50 focus:ring-4 focus:ring-[#B8860B]/10"
                   placeholder="Enter your full name"
                 />
               </label>
-              <label className="block text-sm font-semibold text-[#1f2c4a]">
+              <label className="block text-sm font-semibold text-[#111111]">
                 Email address
                 <input
                   type="email"
                   required
                   value={assessmentFormData.email}
                   onChange={(event) => setAssessmentFormData((current) => ({ ...current, email: event.target.value }))}
-                  className="mt-2 w-full rounded-xl border border-[#1f2c4a]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#1f2c4a] outline-none transition focus:border-[#d97706]/50 focus:ring-4 focus:ring-[#d97706]/10"
+                  className="mt-2 w-full rounded-xl border border-[#111111]/15 bg-[#f8fafc] px-4 py-3 font-normal text-[#111111] outline-none transition focus:border-[#B8860B]/50 focus:ring-4 focus:ring-[#B8860B]/10"
                   placeholder="you@company.com"
                 />
               </label>
-              <button type="submit" disabled={isSubmittingAssessment} className="flex min-h-12 w-full items-center justify-center rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f] disabled:cursor-not-allowed disabled:opacity-60">
+              <button type="submit" disabled={isSubmittingAssessment} className="flex min-h-12 w-full items-center justify-center rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white hover:bg-[#000000] disabled:cursor-not-allowed disabled:opacity-60">
                 {isSubmittingAssessment ? "Preparing assessment…" : "Start practice test"}
               </button>
             </form>

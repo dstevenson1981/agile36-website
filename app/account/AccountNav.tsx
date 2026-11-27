@@ -48,9 +48,9 @@ export default function AccountNav({
   };
 
   return (
-    <nav className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-4 shadow-sm sticky top-8 text-[#1f2c4a]">
+    <nav className="rounded-2xl border border-[#111111]/10 bg-white p-4 shadow-sm sticky top-8 text-[#111111]">
       {userEmail && (
-        <p className="text-sm text-[#1f2c4a]/70 mb-4 truncate" title={userEmail}>
+        <p className="text-sm text-[#111111]/70 mb-4 truncate" title={userEmail}>
           {userEmail}
         </p>
       )}
@@ -65,8 +65,8 @@ export default function AccountNav({
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                   isActive
-                    ? 'bg-[#1f2c4a] text-white'
-                    : 'text-[#1f2c4a] hover:bg-[#1f2c4a]/10'
+                    ? 'bg-[#111111] text-white'
+                    : 'text-[#111111] hover:bg-[#111111]/10'
                 }`}
               >
                 <span aria-hidden="true">{item.icon}</span>
@@ -76,16 +76,16 @@ export default function AccountNav({
           );
         })}
       </ul>
-      <div className="mt-6 pt-4 border-t border-[#1f2c4a]/10 space-y-1">
+      <div className="mt-6 pt-4 border-t border-[#111111]/10 space-y-1">
         <Link
           href="/"
-          className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-lg transition-colors"
+          className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-[#111111] hover:bg-[#111111]/10 rounded-lg transition-colors"
         >
           ← Back to Courses
         </Link>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-[#1f2c4a] hover:bg-red-50 hover:text-red-700 w-full text-left rounded-lg transition-colors"
+          className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-[#111111] hover:bg-red-50 hover:text-red-700 w-full text-left rounded-lg transition-colors"
         >
           Log out
         </button>

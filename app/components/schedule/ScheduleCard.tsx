@@ -46,10 +46,10 @@ function BrochureLink({
   label: string;
 }) {
   const className =
-    "inline-flex items-center gap-2 text-sm font-medium text-[#d97706] hover:text-[#b45309] hover:underline transition-colors";
+    "inline-flex items-center gap-2 text-sm font-medium text-[#B8860B] hover:text-[#B8860B] hover:underline transition-colors";
 
   const icon = (
-    <svg className="h-4 w-4 shrink-0 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <svg className="h-4 w-4 shrink-0 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -94,7 +94,7 @@ export default function ScheduleCard({
   onGroupInquiry,
   brochureHref,
   onBrochureClick,
-  brochureLabel = "Download Curriculum",
+  brochureLabel = "Download brochure",
   examLabel,
   showSafeBadges = false,
   premium = false,
@@ -139,16 +139,16 @@ export default function ScheduleCard({
   };
 
   const columnDivider = premium
-    ? "relative lg:border-l lg:border-solid lg:border-[#1f2c4a]/10"
+    ? "relative lg:border-l lg:border-solid lg:border-[#111111]/10"
     : "relative lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-5 lg:before:bottom-5 lg:before:w-0 lg:before:border-l lg:before:border-dotted lg:before:border-gray-300";
 
   return (
     <article className={`relative overflow-hidden bg-white transition-all ${
       premium
-        ? "rounded-2xl border border-[#1f2c4a]/20 shadow-[0_20px_50px_-35px_rgba(31,44,74,.55)] hover:-translate-y-0.5 hover:border-[#d97706]/35 hover:shadow-[0_28px_60px_-34px_rgba(31,44,74,.6)]"
+        ? "rounded-2xl border border-[#111111]/20 shadow-[0_20px_50px_-35px_rgba(17, 17, 17,.55)] hover:-translate-y-0.5 hover:border-[#B8860B]/35 hover:shadow-[0_28px_60px_-34px_rgba(17, 17, 17,.6)]"
         : "rounded-[10px] border border-[#e0e0e0] shadow-[0_2px_10px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)]"
     }`}>
-      {premium ? <div className="absolute inset-x-0 top-0 z-10 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" /> : null}
+      {premium ? <div className="absolute inset-x-0 top-0 z-10 h-1 bg-gradient-to-r from-[#B8860B] via-[#f59e0b] to-[#111111]" /> : null}
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
         {/* Left — schedule & instructor */}
         <div className={`flex flex-col gap-4 p-5 lg:p-6 ${premium ? "bg-white lg:p-7" : ""}`}>
@@ -159,17 +159,17 @@ export default function ScheduleCard({
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
                   Live cohort
                 </span>
-                {urgency.show ? <span className="text-[10px] font-semibold text-[#b45309]">{urgency.message}</span> : null}
+                {urgency.show ? <span className="text-[10px] font-semibold text-[#B8860B]">{urgency.message}</span> : null}
               </div>
             ) : null}
-            <h3 className="text-xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            <h3 className="text-xl font-semibold tracking-[-0.03em] text-[#111111]">
               {formatDateRange(schedule.start_date, schedule.end_date, schedule.timezone)}
             </h3>
 
             {(timeRange || tzPill) && (
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 {timeRange && (
-                  <p className="text-[15px] font-semibold tracking-tight text-[#1f2c4a]">
+                  <p className="text-[15px] font-semibold tracking-tight text-[#111111]">
                     {timeRange}
                   </p>
                 )}
@@ -277,7 +277,7 @@ export default function ScheduleCard({
         <div
           className={`flex flex-col items-center justify-between gap-5 p-5 lg:p-6 ${
             premium
-              ? "border-t border-solid border-[#1f2c4a]/10 bg-[#fffaf2] lg:mx-0 lg:border-t-0"
+              ? "border-t border-solid border-[#111111]/10 bg-[#fffaf2] lg:mx-0 lg:border-t-0"
               : "mx-5 border-t border-dotted border-gray-300 lg:mx-0 lg:border-t-0"
           } ${columnDivider}`}
         >
@@ -287,7 +287,7 @@ export default function ScheduleCard({
             </div>
           )}
 
-          <div className={`flex items-center bg-white px-1 py-1 ${premium ? "rounded-xl border border-[#d97706]/25 shadow-[0_8px_20px_-14px_rgba(217,119,6,.7)]" : "rounded-lg border border-gray-200 shadow-[inset_0_1px_4px_rgba(0,0,0,0.06)]"}`}>
+          <div className={`flex items-center bg-white px-1 py-1 ${premium ? "rounded-xl border border-[#B8860B]/25 shadow-[0_8px_20px_-14px_rgba(217,119,6,.7)]" : "rounded-lg border border-gray-200 shadow-[inset_0_1px_4px_rgba(0,0,0,0.06)]"}`}>
             <button
               type="button"
               onClick={() => onQuantityChange(-1)}
@@ -308,7 +308,7 @@ export default function ScheduleCard({
           </div>
 
           {urgency.show && !premium && (
-            <p className="flex items-center gap-1.5 text-xs font-medium text-[#b45309]">
+            <p className="flex items-center gap-1.5 text-xs font-medium text-[#B8860B]">
               <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -319,7 +319,7 @@ export default function ScheduleCard({
           <button
             type="button"
             onClick={onGroupInquiry}
-            className="text-center text-sm text-[#d97706] hover:underline"
+            className="text-center text-sm text-[#B8860B] hover:underline"
           >
             More than 5 participants? <span className="font-semibold">Enquire Now »</span>
           </button>
@@ -329,7 +329,7 @@ export default function ScheduleCard({
         <div
           className={`flex flex-col gap-4 p-5 lg:p-6 ${
             premium
-              ? "border-t border-solid border-[#1f2c4a]/10 bg-[#eef3f8] lg:mx-0 lg:border-t-0 lg:p-7"
+              ? "border-t border-solid border-[#111111]/10 bg-[#eef3f8] lg:mx-0 lg:border-t-0 lg:p-7"
               : "mx-5 border-t border-dotted border-gray-300 lg:mx-0 lg:border-t-0"
           } ${columnDivider}`}
         >
@@ -340,13 +340,13 @@ export default function ScheduleCard({
             {schedule.original_price && (
               <div className="flex items-center justify-end gap-2">
                 <span className="text-sm text-gray-400 line-through">USD {schedule.original_price}</span>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#d97706]">
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#d97706]/15 text-[10px]">%</span>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#B8860B]">
+                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#B8860B]/15 text-[10px]">%</span>
                   {discount}% OFF
                 </span>
               </div>
             )}
-            <p className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">USD {totalPrice}</p>
+            <p className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-[#111111]">USD {totalPrice}</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -356,10 +356,10 @@ export default function ScheduleCard({
               quantity={quantity}
               label={enrollLabel}
               checkoutBasePath={checkoutBasePath}
-              className={`flex-1 px-4 py-3 text-center text-sm font-semibold text-white transition-all ${
+              className={`flex-1 px-4 py-3 text-center text-sm font-semibold text-[#111111] transition-all ${
                 premium
-                  ? "rounded-xl bg-[#1f2c4a] shadow-[0_10px_24px_-12px_rgba(31,44,74,.8)] hover:bg-[#16243f] hover:shadow-[0_14px_28px_-12px_rgba(31,44,74,.9)]"
-                  : "rounded-lg bg-[#d97706] shadow-sm hover:bg-[#b45309]"
+                  ? "rounded-xl bg-[#111111] shadow-[0_10px_24px_-12px_rgba(17, 17, 17,.8)] hover:bg-[#000000] hover:shadow-[0_14px_28px_-12px_rgba(17, 17, 17,.9)]"
+                  : "rounded-lg bg-[#F5B942] shadow-sm hover:bg-[#e0a82e]"
               }`}
             />
             <button
@@ -367,14 +367,14 @@ export default function ScheduleCard({
               onClick={handleShare}
               className={`flex h-11 w-11 shrink-0 items-center justify-center border text-gray-500 transition-colors ${
                 premium
-                  ? "rounded-xl border-[#1f2c4a]/15 bg-white hover:border-[#d97706]/35 hover:text-[#d97706]"
+                  ? "rounded-xl border-[#111111]/15 bg-white hover:border-[#B8860B]/35 hover:text-[#B8860B]"
                   : "rounded-lg border-gray-200 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
               }`}
               title={shareCopied ? "Link copied!" : "Share enrollment link"}
               aria-label="Share enrollment link"
             >
               {shareCopied ? (
-                <svg className="h-5 w-5 text-[#d97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <svg className="h-5 w-5 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               ) : (

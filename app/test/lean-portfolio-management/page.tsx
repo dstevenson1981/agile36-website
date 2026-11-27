@@ -11,12 +11,12 @@ export const metadata = {
 export default function LeanPortfolioManagementSamplePracticePage() {
   return (
     <>
-      <div className="border-b border-[#1f2c4a]/10 bg-white">
+      <div className="border-b border-[#111111]/10 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-20">
           <p className="text-sm text-[#475569]">
-            <strong className="text-[#1f2c4a]">Free sample practice</strong> — try the format and difficulty.
+            <strong className="text-[#111111]">Free sample practice</strong> — try the format and difficulty.
             Enrolled Pro students get the full LPM practice exam in{' '}
-            <Link href="/account/login?next=/account/practice-exams" className="font-semibold text-[#d97706] underline">
+            <Link href="/account/login?next=/account/practice-exams" className="font-semibold text-[#B8860B] underline">
               My Account → Pro Practice Exams
             </Link>
             .

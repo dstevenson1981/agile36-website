@@ -25,7 +25,7 @@ export async function LocationTrainingCityShell({
       />
       <section className="border-b border-gray-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-20">
-          <h2 className="mb-4 text-2xl font-bold text-[#01203d]">{local.heading}</h2>
+          <h2 className="mb-4 text-2xl font-bold text-[#111111]">{local.heading}</h2>
           <div className="space-y-4 text-base leading-relaxed text-gray-700">
             {local.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
@@ -39,13 +39,13 @@ export async function LocationTrainingCityShell({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
             <Link
               href={local.courseHubCta.href}
-              className="inline-flex w-fit items-center rounded-lg bg-[#01203d] px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-[#134263]"
+              className="inline-flex w-fit items-center rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-[#111111]"
             >
               {local.courseHubCta.label}
             </Link>
             <Link
               href={local.scheduleCta.href}
-              className="inline-flex items-center font-semibold text-[#0e78c2] hover:text-[#01203d] underline-offset-2 hover:underline"
+              className="inline-flex items-center font-semibold text-[#0e78c2] hover:text-[#111111] underline-offset-2 hover:underline"
             >
               {local.scheduleCta.label}
             </Link>

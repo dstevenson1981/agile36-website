@@ -10,8 +10,8 @@ import {
 } from "@/app/lib/site-search";
 
 const TYPE_BADGE: Record<SearchResultType, string> = {
-  course: "bg-[#1f2c4a]/10 text-[#1f2c4a]",
-  combo: "bg-[#d97706]/15 text-[#b45309]",
+  course: "bg-[#111111]/10 text-[#111111]",
+  combo: "bg-[#B8860B]/15 text-[#B8860B]",
   practice: "bg-emerald-50 text-emerald-800",
   page: "bg-slate-100 text-slate-700",
 };
@@ -65,7 +65,7 @@ export default function SiteSearch() {
       <div className="relative w-full min-w-0">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 sm:pl-3.5">
           <svg
-            className="h-4 w-4 sm:h-5 sm:w-5 text-[#64748b]"
+            className="h-4 w-4 sm:h-5 sm:w-5 text-[#6B6B6B]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -99,13 +99,13 @@ export default function SiteSearch() {
               (e.target as HTMLInputElement).blur();
             }
           }}
-          className="w-full min-w-0 h-10 sm:h-11 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-[15px] font-medium rounded-full bg-white border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder:text-[#94a3b8] placeholder:font-normal transition-[border-color,box-shadow] focus:outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/15"
+          className="w-full min-w-0 h-10 sm:h-11 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-[15px] font-medium rounded-full bg-white border border-[#EAEAEA] text-[#111111] placeholder:text-[#6B6B6B] placeholder:font-normal transition-[border-color,box-shadow] focus:outline-none focus:border-[#B8860B] focus:ring-4 focus:ring-[#B8860B]/25"
         />
         {query ? (
           <button
             type="button"
             onClick={clearSearch}
-            className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748b] hover:text-[#1f2c4a]"
+            className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748b] hover:text-[#111111]"
             aria-label="Clear search"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export default function SiteSearch() {
         <div
           id={`${inputId}-results`}
           role="listbox"
-          className="absolute top-full left-0 right-0 mt-2 z-[60] w-full min-w-[16rem] max-w-[min(100vw-1.5rem,28rem)] sm:left-auto sm:right-0 sm:w-[28rem] bg-white border border-[#1f2c4a]/12 rounded-xl shadow-2xl shadow-[#1f2c4a]/20 max-h-[min(70vh,32rem)] overflow-y-auto"
+          className="absolute top-full left-0 right-0 mt-2 z-[60] w-full min-w-[16rem] max-w-[min(100vw-1.5rem,28rem)] sm:left-auto sm:right-0 sm:w-[28rem] bg-white border border-[#111111]/12 rounded-xl shadow-2xl shadow-[#111111]/20 max-h-[min(70vh,32rem)] overflow-y-auto"
         >
           {didYouMean ? (
             <div className="px-4 pt-3 pb-1 text-sm text-[#64748b]">
@@ -127,7 +127,7 @@ export default function SiteSearch() {
               <button
                 type="button"
                 onClick={() => runSearch(didYouMean)}
-                className="font-semibold text-[#d97706] hover:underline"
+                className="font-semibold text-[#B8860B] hover:underline"
               >
                 {didYouMean}
               </button>
@@ -146,7 +146,7 @@ export default function SiteSearch() {
                     <Link
                       href={result.href}
                       onClick={clearSearch}
-                      className="block px-3 py-2.5 rounded-lg hover:bg-[#1f2c4a]/[0.06] transition-colors group"
+                      className="block px-3 py-2.5 rounded-lg hover:bg-[#111111]/[0.06] transition-colors group"
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span
@@ -155,12 +155,12 @@ export default function SiteSearch() {
                           {getSearchTypeLabel(result.type)}
                         </span>
                         {typeof result.price === "number" ? (
-                          <span className="text-xs font-bold text-[#d97706] ml-auto shrink-0">
+                          <span className="text-xs font-bold text-[#B8860B] ml-auto shrink-0">
                             ${result.price}
                           </span>
                         ) : null}
                       </div>
-                      <div className="text-[15px] font-semibold text-[#1f2c4a] group-hover:text-[#d97706] leading-snug">
+                      <div className="text-[15px] font-semibold text-[#111111] group-hover:text-[#B8860B] leading-snug">
                         {result.title}
                       </div>
                       {result.subtitle ? (

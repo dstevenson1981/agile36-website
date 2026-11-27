@@ -69,8 +69,8 @@ export default function AiProductManagementExam() {
   if (phase === "rules") {
     return (
       <div className="mx-auto max-w-3xl">
-        <div className="overflow-hidden rounded-sm border border-[#1a365d] bg-white shadow-xl">
-          <div className="bg-[#0f2744] px-6 py-5 text-white">
+        <div className="overflow-hidden rounded-sm border border-[#111111] bg-white shadow-xl">
+          <div className="bg-[#111111] px-6 py-5 text-white">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#93c5fd]">
               Agile36 Secure Exam Delivery
             </p>
@@ -84,7 +84,7 @@ export default function AiProductManagementExam() {
           </div>
 
           <div className="space-y-5 px-6 py-7 text-[15px] leading-relaxed text-slate-700">
-            <p className="font-semibold text-[#0f2744]">Exam instructions</p>
+            <p className="font-semibold text-[#111111]">Exam instructions</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
                 <strong>Closed book.</strong> No notes, course materials, AI
@@ -123,7 +123,7 @@ export default function AiProductManagementExam() {
               <button
                 type="button"
                 onClick={startExam}
-                className="rounded-sm bg-[#0f2744] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#163556]"
+                className="rounded-sm bg-[#111111] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#111111]"
               >
                 Begin exam
               </button>
@@ -143,7 +143,7 @@ export default function AiProductManagementExam() {
   if (phase === "results") {
     return (
       <div className="mx-auto max-w-4xl space-y-6">
-        <div className="overflow-hidden rounded-sm border border-[#1a365d] bg-white shadow-xl">
+        <div className="overflow-hidden rounded-sm border border-[#111111] bg-white shadow-xl">
           <div
             className={`px-6 py-5 text-white ${
               passed ? "bg-[#14532d]" : "bg-[#7f1d1d]"
@@ -205,7 +205,7 @@ export default function AiProductManagementExam() {
               <button
                 type="button"
                 onClick={startExam}
-                className="rounded-sm bg-[#0f2744] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#163556]"
+                className="rounded-sm bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#111111]"
               >
                 Retake exam
               </button>
@@ -225,7 +225,7 @@ export default function AiProductManagementExam() {
   // exam + confirm overlay
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-[#e8eef5] text-slate-900">
-      <header className="flex items-center justify-between border-b border-[#0f2744]/20 bg-[#0f2744] px-4 py-3 text-white sm:px-6">
+      <header className="flex items-center justify-between border-b border-[#111111]/20 bg-[#111111] px-4 py-3 text-white sm:px-6">
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#93c5fd]">
             Secure exam session
@@ -272,9 +272,9 @@ export default function AiProductManagementExam() {
                   onClick={() => setIndex(i)}
                   className={`relative h-9 rounded-sm text-xs font-semibold transition ${
                     isCurrent
-                      ? "bg-[#0f2744] text-white"
+                      ? "bg-[#111111] text-white"
                       : answered
-                        ? "bg-[#dbeafe] text-[#0f2744]"
+                        ? "bg-[#dbeafe] text-[#111111]"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                   }`}
                   aria-label={`Question ${q.id}`}
@@ -304,7 +304,7 @@ export default function AiProductManagementExam() {
           <button
             type="button"
             onClick={() => setPhase("confirm")}
-            className="mt-4 w-full rounded-sm bg-[#b45309] px-3 py-2.5 text-xs font-semibold text-white hover:bg-[#92400e]"
+            className="mt-4 w-full rounded-sm bg-[#e0a82e] px-3 py-2.5 text-xs font-semibold text-white hover:bg-[#92400e]"
           >
             End exam
           </button>
@@ -312,7 +312,7 @@ export default function AiProductManagementExam() {
 
         <main className="order-1 flex min-h-0 flex-1 flex-col rounded-sm border border-slate-300 bg-white shadow-sm sm:order-2">
           <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 sm:px-6">
-            <p className="text-sm font-semibold text-[#0f2744]">
+            <p className="text-sm font-semibold text-[#111111]">
               Question {index + 1} of {total}
             </p>
             <button
@@ -352,14 +352,14 @@ export default function AiProductManagementExam() {
                     }
                     className={`flex w-full items-start gap-3 rounded-sm border px-4 py-3.5 text-left transition ${
                       selected
-                        ? "border-[#0f2744] bg-[#eff6ff] ring-1 ring-[#0f2744]"
+                        ? "border-[#111111] bg-[#eff6ff] ring-1 ring-[#111111]"
                         : "border-slate-200 hover:border-slate-400 hover:bg-slate-50"
                     }`}
                   >
                     <span
                       className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm text-sm font-bold ${
                         selected
-                          ? "bg-[#0f2744] text-white"
+                          ? "bg-[#111111] text-white"
                           : "bg-slate-100 text-slate-700"
                       }`}
                     >
@@ -387,7 +387,7 @@ export default function AiProductManagementExam() {
               <button
                 type="button"
                 onClick={() => setIndex((i) => Math.min(total - 1, i + 1))}
-                className="rounded-sm bg-[#0f2744] px-5 py-2 text-sm font-semibold text-white hover:bg-[#163556]"
+                className="rounded-sm bg-[#111111] px-5 py-2 text-sm font-semibold text-white hover:bg-[#111111]"
               >
                 Next
               </button>
@@ -395,7 +395,7 @@ export default function AiProductManagementExam() {
               <button
                 type="button"
                 onClick={() => setPhase("confirm")}
-                className="rounded-sm bg-[#b45309] px-5 py-2 text-sm font-semibold text-white hover:bg-[#92400e]"
+                className="rounded-sm bg-[#e0a82e] px-5 py-2 text-sm font-semibold text-white hover:bg-[#92400e]"
               >
                 Review & end
               </button>
@@ -407,7 +407,7 @@ export default function AiProductManagementExam() {
       {phase === "confirm" && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
           <div className="w-full max-w-md rounded-sm border border-slate-300 bg-white p-6 shadow-2xl">
-            <h2 className="text-lg font-semibold text-[#0f2744]">
+            <h2 className="text-lg font-semibold text-[#111111]">
               End exam and submit?
             </h2>
             <p className="mt-2 text-sm text-slate-600">
@@ -427,7 +427,7 @@ export default function AiProductManagementExam() {
               <button
                 type="button"
                 onClick={submitExam}
-                className="rounded-sm bg-[#0f2744] px-4 py-2 text-sm font-semibold text-white hover:bg-[#163556]"
+                className="rounded-sm bg-[#111111] px-4 py-2 text-sm font-semibold text-white hover:bg-[#111111]"
               >
                 Submit exam
               </button>

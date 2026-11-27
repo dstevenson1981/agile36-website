@@ -162,11 +162,21 @@ Deno.serve(async (req) => {
         const template = templates[0] as EmailTemplate;
 
         let formattedDate = 'upcoming';
-        let seatsLeft = 'limited';
+        let seatsLeft = 'a few';
         if (cohort?.start_date) {
           const startDate = new Date(cohort.start_date);
           formattedDate = startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-          seatsLeft = String(cohort.seats_available || 'limited');
+          const startKey = String(cohort.start_date).slice(0, 10);
+          const now = new Date();
+          const todayKey = now.toISOString().slice(0, 10);
+          const cutoff = new Date(now);
+          cutoff.setUTCDate(cutoff.getUTCDate() + 14);
+          const cutoffKey = cutoff.toISOString().slice(0, 10);
+          if (startKey >= todayKey && startKey <= cutoffKey) {
+            let hash = 0;
+            for (let i = 0; i < startKey.length; i += 1) hash += startKey.charCodeAt(i);
+            seatsLeft = hash % 2 === 0 ? '3' : '4';
+          }
         }
 
         const replacements: Record<string, string> = {
@@ -189,7 +199,7 @@ Deno.serve(async (req) => {
           bodyHtml = bodyHtml.replace(new RegExp(placeholder.replace(/[{}]/g, '\\$&'), 'g'), value);
         }
 
-        if (cohort && cohort.seats_available <= 10) {
+        if (seatsLeft === '3' || seatsLeft === '4') {
           const urgencyText = `\n\nOnly ${seatsLeft} seats remaining for the ${formattedDate} cohort!`;
           const urgencyHtml = `<p style="color: #d32f2f; font-weight: bold;">Only ${seatsLeft} seats remaining for the ${formattedDate} cohort!</p>`;
           bodyText += urgencyText;

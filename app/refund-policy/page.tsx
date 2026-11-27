@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
-    <div className="min-h-screen bg-black text-[#1f2c4a]">
+    <div className="min-h-screen bg-black text-[#111111]">
       {/* Header Section */}
-      <div className="border-b border-[#1f2c4a]/10 py-16">
+      <div className="border-b border-[#111111]/10 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs uppercase tracking-[0.3em] text-[#64748b] mb-4">Legal</p>
-          <h1 className="text-4xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
+          <h1 className="text-4xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>
             Refund and Cancellation Policy
           </h1>
         </div>
@@ -24,7 +24,7 @@ export default function RefundPolicyPage() {
         <div className="max-w-none">
           {/* Refunds */}
           <section className="mb-12">
-            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Refunds</h2>
+            <h2 className="text-2xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>Refunds</h2>
             <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Full refunds are available for cancellations submitted thirty (30) or more days before your original scheduled start date.
@@ -43,7 +43,7 @@ export default function RefundPolicyPage() {
 
           {/* Rescheduling */}
           <section className="mb-12">
-            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Rescheduling</h2>
+            <h2 className="text-2xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>Rescheduling</h2>
             <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Participants may reschedule to another session at no additional cost when the request is submitted at least twenty-four (24) hours prior to the original class start time.
@@ -56,7 +56,7 @@ export default function RefundPolicyPage() {
 
           {/* Provider-Initiated Rescheduling */}
           <section className="mb-12">
-            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>
+            <h2 className="text-2xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>
               Provider-Initiated Rescheduling
             </h2>
             <div className="space-y-4 text-[#475569] leading-relaxed">
@@ -74,7 +74,7 @@ export default function RefundPolicyPage() {
 
           {/* No Show Policy */}
           <section className="mb-12">
-            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>No-Show Policy</h2>
+            <h2 className="text-2xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>No-Show Policy</h2>
             <div className="space-y-4 text-[#475569] leading-relaxed">
               <p>
                 Participants who do not attend a scheduled session and do not provide advance notice forfeit all fees paid.
@@ -87,13 +87,13 @@ export default function RefundPolicyPage() {
 
           {/* Contact Us */}
           <section className="mb-12 liquid-glass rounded-2xl p-8">
-            <h2 className="text-2xl font-normal text-[#1f2c4a] mb-4" style={{ letterSpacing: "-0.03em" }}>Contact Us</h2>
+            <h2 className="text-2xl font-normal text-[#111111] mb-4" style={{ letterSpacing: "-0.03em" }}>Contact Us</h2>
             <p className="text-[#475569] leading-relaxed mb-4">
               For questions regarding cancellations or rescheduling, please email:
             </p>
             <a
               href="mailto:d.stevenson@agile36.com"
-              className="text-[#d97706] font-medium text-lg underline hover:no-underline"
+              className="text-[#B8860B] font-medium text-lg underline hover:no-underline"
             >
               d.stevenson@agile36.com
             </a>

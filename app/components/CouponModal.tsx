@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { BANNER_COUPON_CODE } from "@/app/lib/site-promo";
+import { BANNER_COUPON_CODE, BANNER_DISCOUNT_AMOUNT, PROMO_CODE_EXPIRES_IN } from "@/app/lib/site-promo";
 
 interface CouponModalProps {
   isOpen: boolean;
@@ -103,10 +103,10 @@ export default function CouponModal({
               Limited-time offer
             </p>
             <h2 className="text-white text-2xl font-bold mb-3 leading-tight">
-              $100 off your next course
+              ${BANNER_DISCOUNT_AMOUNT} off your next course
             </h2>
             <p className="text-white/90 text-sm">
-              Subscribe below to unlock your code. It expires in 30 minutes.
+              Subscribe below to unlock your code. It expires {PROMO_CODE_EXPIRES_IN}.
             </p>
           </div>
         </div>
@@ -125,10 +125,10 @@ export default function CouponModal({
           <p className="md:hidden text-xs font-bold uppercase tracking-widest text-[#ea3d12] mb-1">
             Limited-time offer
           </p>
-          <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your $100 off code</h3>
+          <h3 className="text-gray-900 text-xl font-semibold mb-1">Get your ${BANNER_DISCOUNT_AMOUNT} off code</h3>
           <p className="text-gray-600 text-sm mb-6">
             Enter your email and course interest — we&apos;ll reveal your code instantly. It
-            expires in 30 minutes.
+            expires {PROMO_CODE_EXPIRES_IN}.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -185,7 +185,7 @@ export default function CouponModal({
               type="submit"
               className="w-full bg-[#e53935] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#c62828] transition-all shadow-lg hover:shadow-xl"
             >
-              Reveal my $100 off code
+              Reveal my ${BANNER_DISCOUNT_AMOUNT} off code
             </button>
 
             <p className="text-xs text-gray-600 flex items-start gap-2">

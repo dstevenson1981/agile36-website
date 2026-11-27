@@ -53,7 +53,7 @@ export default function ScheduleInstructorPanel({ profile }: Props) {
                 height={160}
                 className="h-[120px] w-[120px] rounded-full border border-gray-200 object-cover object-top shadow-sm sm:h-[140px] sm:w-[140px] lg:h-[160px] lg:w-[160px]"
               />
-              <h4 className="mt-4 text-base font-bold leading-snug text-[#01203d] sm:text-lg">
+              <h4 className="mt-4 text-base font-bold leading-snug text-[#111111] sm:text-lg">
                 {profile.name}
               </h4>
               <p className="mt-1.5 text-sm leading-snug text-gray-500">{profile.title}</p>
@@ -62,7 +62,7 @@ export default function ScheduleInstructorPanel({ profile }: Props) {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a66c2] transition-colors hover:text-[#004182] hover:underline"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a66c2] transition-colors hover:text-[#111111] hover:underline"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
                     <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
@@ -143,7 +143,7 @@ export default function ScheduleInstructorPanel({ profile }: Props) {
                     &ldquo;{item.quote}&rdquo;
                   </p>
                   <div className="mt-4 border-t border-gray-200 pt-3">
-                    <p className="text-sm font-semibold text-[#01203d]">{item.name}</p>
+                    <p className="text-sm font-semibold text-[#111111]">{item.name}</p>
                     {item.role && <p className="mt-0.5 text-xs text-gray-500">{item.role}</p>}
                   </div>
                 </li>
@@ -179,7 +179,7 @@ function TabButton({
       onClick={onClick}
       className={
         active
-          ? "rounded-lg bg-[#01203d] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
+          ? "rounded-lg bg-[#111111] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors"
           : "rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
       }
     >

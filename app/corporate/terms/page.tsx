@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 export default function CorporateTermsPage() {
   return (
-    <div className="min-h-screen bg-[#f8f7f3] text-[#1f2c4a]">
-      <div className="border-b border-[#1f2c4a]/10 bg-white py-12">
+    <div className="min-h-screen bg-[#f8f7f3] text-[#111111]">
+      <div className="border-b border-[#111111]/10 bg-white py-12">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <Link href="/corporate/onboard" className="text-sm font-medium text-[#64748b] hover:text-[#1f2c4a]">
+          <Link href="/corporate/onboard" className="text-sm font-medium text-[#64748b] hover:text-[#111111]">
             ← Back to corporate billing setup
           </Link>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-[#d97706]">Legal</p>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-[#B8860B]">Legal</p>
           <h1 className="mt-2 text-3xl font-semibold" style={{ letterSpacing: '-0.03em' }}>
             Agile36 Corporate Training Account Terms &amp; Conditions
           </h1>
@@ -33,7 +33,7 @@ export default function CorporateTermsPage() {
           </p>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">1. Corporate Billing Authorization</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">1. Corporate Billing Authorization</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>
                 The organization authorizes Agile36 to charge the payment method on file for all eligible
@@ -47,7 +47,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">2. Authorized Participants</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">2. Authorized Participants</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>
                 The organization is responsible for identifying who is authorized to register under the
@@ -61,7 +61,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">3. Payment</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">3. Payment</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>Payment is charged to the corporate payment method after an employee successfully registers.</li>
               <li>The organization is responsible for ensuring the payment method remains valid.</li>
@@ -73,7 +73,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">4. Pricing</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">4. Pricing</h2>
             <p className="mt-3">
               Employees are billed at the pricing agreed upon between Agile36 and the organization.
               Promotional pricing offered to the general public may not apply unless otherwise agreed in
@@ -82,7 +82,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">5. Registration Changes</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">5. Registration Changes</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>
                 Participants may reschedule their training in accordance with Agile36&apos;s published
@@ -96,10 +96,10 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">6. Cancellations &amp; Refunds</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">6. Cancellations &amp; Refunds</h2>
             <p className="mt-3">
               All registrations are subject to Agile36&apos;s current{' '}
-              <Link href="/refund-policy" className="font-medium text-[#d97706] underline hover:no-underline">
+              <Link href="/refund-policy" className="font-medium text-[#B8860B] underline hover:no-underline">
                 Cancellation and Refund Policy
               </Link>
               . Unless otherwise stated in a separate corporate agreement:
@@ -112,7 +112,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">7. Employee Separation</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">7. Employee Separation</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>
                 The organization is responsible for notifying Agile36 if an employee should no longer be
@@ -123,7 +123,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">8. Payment Method Updates</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">8. Payment Method Updates</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>The organization agrees to promptly notify Agile36 of any changes to the payment method on file.</li>
               <li>
@@ -134,12 +134,12 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">9. Taxes</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">9. Taxes</h2>
             <p className="mt-3">Applicable taxes will be charged where required by law.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">10. Account Suspension</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">10. Account Suspension</h2>
             <p className="mt-3">Agile36 reserves the right to suspend or terminate a Corporate Account for:</p>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>Repeated payment failures</li>
@@ -150,7 +150,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">11. Limitation of Liability</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">11. Limitation of Liability</h2>
             <p className="mt-3">
               Agile36&apos;s liability is limited to the amount paid for the applicable training registration.
               Agile36 shall not be liable for indirect, incidental, or consequential damages.
@@ -158,7 +158,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">12. Changes to Terms</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">12. Changes to Terms</h2>
             <p className="mt-3">
               Agile36 may update these Terms &amp; Conditions at any time. Updated terms apply to future
               registrations.
@@ -166,7 +166,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">13. Governing Law</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">13. Governing Law</h2>
             <p className="mt-3">
               These Terms &amp; Conditions shall be governed by the laws of the State of Florida, without
               regard to its conflict of law principles.
@@ -174,7 +174,7 @@ export default function CorporateTermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-[#1f2c4a]">14. Acceptance</h2>
+            <h2 className="text-xl font-semibold text-[#111111]">14. Acceptance</h2>
             <p className="mt-3">
               By submitting a Corporate Account request, the organization acknowledges that it has read and
               agrees to these Terms &amp; Conditions and authorizes Agile36 to charge the payment method on
@@ -182,18 +182,18 @@ export default function CorporateTermsPage() {
             </p>
           </section>
 
-          <section className="rounded-xl border border-[#1f2c4a]/10 bg-white p-6">
-            <h2 className="text-lg font-semibold text-[#1f2c4a]">Corporate Account Contact</h2>
+          <section className="rounded-xl border border-[#111111]/10 bg-white p-6">
+            <h2 className="text-lg font-semibold text-[#111111]">Corporate Account Contact</h2>
             <p className="mt-3">
               Agile36, LLC
               <br />
               Email:{' '}
-              <a href="mailto:support@agile36.com" className="text-[#d97706] underline hover:no-underline">
+              <a href="mailto:support@agile36.com" className="text-[#B8860B] underline hover:no-underline">
                 support@agile36.com
               </a>
               <br />
               Website:{' '}
-              <a href="https://www.agile36.com" className="text-[#d97706] underline hover:no-underline">
+              <a href="https://www.agile36.com" className="text-[#B8860B] underline hover:no-underline">
                 https://www.agile36.com
               </a>
             </p>

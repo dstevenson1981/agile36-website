@@ -39,19 +39,19 @@ export default function CourseHeroSocialProof({ enrolledLabel, trailing, classNa
           ))}
         </div>
         <div className="leading-tight">
-          <p className="text-base font-bold tracking-tight text-[#1f2c4a] sm:text-lg">{enrolledLabel}</p>
+          <p className="text-base font-bold tracking-tight text-[#111111] sm:text-lg">{enrolledLabel}</p>
           <p className="text-xs text-[#64748b]">in live cohorts</p>
         </div>
       </div>
 
-      <span className="hidden h-9 w-px bg-[#1f2c4a]/15 sm:block" aria-hidden />
+      <span className="hidden h-9 w-px bg-[#111111]/15 sm:block" aria-hidden />
 
       {/* Rating */}
       <div className="leading-tight">
-        <p className="text-sm tracking-[0.15em] text-[#d97706]" aria-hidden>
+        <p className="text-sm tracking-[0.15em] text-[#B8860B]" aria-hidden>
           ★★★★★
         </p>
-        <p className="text-sm font-semibold text-[#1f2c4a]">
+        <p className="text-sm font-semibold text-[#111111]">
           4.9 · <span className="font-medium text-[#475569]">#1-rated on Scaled Agile</span>
         </p>
       </div>

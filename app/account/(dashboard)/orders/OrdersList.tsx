@@ -15,11 +15,11 @@ type Order = {
 export default function OrdersList({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {
     return (
-      <div className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-12 text-center shadow-sm">
+      <div className="rounded-2xl border border-[#111111]/10 bg-white p-12 text-center shadow-sm">
         <p className="text-[#64748b] mb-4">You haven&apos;t placed any orders yet.</p>
         <a
           href="/"
-          className="inline-flex items-center px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] transition"
+          className="inline-flex items-center px-6 py-3 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] transition"
         >
           Browse courses
         </a>
@@ -32,11 +32,11 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
       {orders.map((order) => (
         <div
           key={order.id}
-          className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 shadow-sm hover:border-[#1f2c4a]/20 transition-colors"
+          className="rounded-2xl border border-[#111111]/10 bg-white p-6 shadow-sm hover:border-[#111111]/20 transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h3 className="font-medium text-[#1f2c4a]">{order.course_name}</h3>
+              <h3 className="font-medium text-[#111111]">{order.course_name}</h3>
               <p className="text-sm text-[#64748b] mt-1">
                 {order.schedule_date && `Class: ${order.schedule_date}`}
                 {!order.schedule_date && new Date(order.created_at).toLocaleDateString('en-US', { dateStyle: 'medium' })}
@@ -50,7 +50,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                 className={`px-3 py-1 rounded-full text-xs font-medium ${
                   order.payment_status === 'succeeded'
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                    : 'bg-[#d97706]/10 text-[#d97706] border border-[#d97706]/20'
+                    : 'bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/20'
                 }`}
               >
                 {order.payment_status}
@@ -59,7 +59,7 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                 href={`/api/receipt?pi=${order.payment_intent_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-[#d97706] hover:underline"
+                className="text-sm font-medium text-[#B8860B] hover:underline"
               >
                 Receipt →
               </a>

@@ -32,24 +32,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706]/40 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B]/40 rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706]/40 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B]/40 rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706]/40 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B]/40 rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706]/40 rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B]/40 rounded-full" />
           ))}
         </div>
       </div>
@@ -155,11 +155,11 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
   return (
     <>
       <BlogPostingStructuredData data={schemaGraph} />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full min-h-[12rem] sm:h-64 bg-black border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden px-4 py-10 sm:py-0">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full min-h-[12rem] sm:h-64 bg-black border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden px-4 py-10 sm:py-0">
           <BlogHeroDots />
           <h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#1f2c4a] text-center relative z-10 max-w-4xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#111111] text-center relative z-10 max-w-4xl"
             style={{ letterSpacing: "-0.03em" }}
           >
             {title}
@@ -168,13 +168,13 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#94a3b8]">
-            <Link href="/" className="hover:text-[#1f2c4a] transition-colors">
+            <Link href="/" className="hover:text-[#111111] transition-colors">
               Home
             </Link>
             <span>/</span>
             <Link
               href="/blog"
-              className="hover:text-[#1f2c4a] transition-colors"
+              className="hover:text-[#111111] transition-colors"
             >
               Blog
             </Link>
@@ -183,7 +183,7 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-            <span className="border border-[#d97706]/30 bg-[#d97706]/10 text-[#d97706] text-xs font-medium uppercase tracking-wider px-4 py-1 rounded-full">
+            <span className="border border-[#B8860B]/30 bg-[#B8860B]/10 text-[#B8860B] text-xs font-medium uppercase tracking-wider px-4 py-1 rounded-full">
               {badge}
             </span>
           </div>
@@ -212,7 +212,7 @@ export default async function GeneratedBlogPage({ params }: PageProps) {
                   </h6>
                 ),
                 table: ({ children }) => (
-                  <div className="my-8 overflow-x-auto rounded-lg border border-[#1f2c4a]/10">
+                  <div className="my-8 overflow-x-auto rounded-lg border border-[#111111]/10">
                     <table>{children}</table>
                   </div>
                 ),

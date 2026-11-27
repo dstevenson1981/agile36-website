@@ -27,7 +27,7 @@ export default async function OrdersPage() {
     console.error('Error loading orders:', error.message, error.code, error.details);
     return (
       <div>
-        <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Orders & Receipts</h1>
+        <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Orders & Receipts</h1>
         <p className="text-red-700">Error loading orders. Please try again.</p>
       </div>
     );
@@ -35,7 +35,7 @@ export default async function OrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Orders & Receipts</h1>
+      <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Orders & Receipts</h1>
       <p className="text-[#64748b] mb-8">View and download your order history.</p>
 
       <OrdersList orders={orders ?? []} />

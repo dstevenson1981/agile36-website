@@ -577,9 +577,9 @@ export default function SafeForTeamsTestPage() {
     const incorrectAnswers = getIncorrectAnswers();
 
     return (
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
+      <main className="min-h-screen bg-black text-[#111111]">
         {/* Header */}
-        <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10 sticky top-0 z-50">
+        <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#111111]/10 sticky top-0 z-50">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
             <div className="flex items-center justify-between h-16">
               <Link href="/" className="flex items-center">
@@ -601,15 +601,15 @@ export default function SafeForTeamsTestPage() {
         {/* Results Section */}
         <section className="w-full py-16 px-4 sm:px-6 lg:px-20">
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-8 mb-6">
-              <h1 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-6 text-center">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-8 mb-6">
+              <h1 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mb-6 text-center">
                 Practice Exam Results
               </h1>
 
               {/* Score Display */}
               <div className="text-center mb-8">
-                <div className="inline-block rounded-full border border-[#d97706]/40 bg-[#1f2c4a]/[0.06] p-8 mb-4">
-                  <div className="text-[#1f2c4a]">
+                <div className="inline-block rounded-full border border-[#B8860B]/40 bg-[#111111]/[0.06] p-8 mb-4">
+                  <div className="text-[#111111]">
                     <div className="text-5xl font-normal tracking-[-0.03em]">{score.percentage}%</div>
                     <div className="text-lg mt-2 text-[#475569]">
                       {score.correct} / {score.total} Correct
@@ -628,7 +628,7 @@ export default function SafeForTeamsTestPage() {
               {/* Wrong Answers Section */}
               {incorrectAnswers.length > 0 && (
                 <div className="mt-8">
-                  <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
+                  <h2 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mb-4">
                     Questions You Got Wrong ({incorrectAnswers.length})
                   </h2>
                   <div className="space-y-6">
@@ -645,7 +645,7 @@ export default function SafeForTeamsTestPage() {
                                 Question {question.id}
                               </span>
                             </div>
-                            <p className="text-lg font-medium text-[#1f2c4a]">
+                            <p className="text-lg font-medium text-[#111111]">
                               {question.question}
                             </p>
                           </div>
@@ -654,8 +654,8 @@ export default function SafeForTeamsTestPage() {
                             {Object.entries(question.options).map(([key, value]) => {
                               const isCorrect = key === question.correct;
                               const isUserAnswer = key === userAnswer;
-                              let bgColor = "bg-[#1f2c4a]/[0.06]";
-                              let borderColor = "border-[#1f2c4a]/15";
+                              let bgColor = "bg-[#111111]/[0.06]";
+                              let borderColor = "border-[#111111]/15";
 
                               if (isCorrect) {
                                 bgColor = "bg-green-500/15";
@@ -717,13 +717,13 @@ export default function SafeForTeamsTestPage() {
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <button
                   onClick={() => setShowRetakeModal(true)}
-                  className="flex-1 bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                  className="flex-1 bg-white hover:bg-[#000000] text-[#111111] font-medium py-3 px-6 rounded-lg transition-colors text-center"
                 >
                   Retake Exam
                 </button>
                 <Link
                   href="/test"
-                  className="flex-1 border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a]/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                  className="flex-1 border border-[#111111]/20 text-[#111111] hover:bg-[#111111]/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
                 >
                   Back to Practice Tests
                 </Link>
@@ -732,17 +732,17 @@ export default function SafeForTeamsTestPage() {
               {/* Retake Exam Modal */}
               {showRetakeModal && (
                 <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                  <div className="rounded-2xl border border-[#1f2c4a]/15 bg-black shadow-2xl max-w-md w-full p-6 relative">
+                  <div className="rounded-2xl border border-[#111111]/15 bg-black shadow-2xl max-w-md w-full p-6 relative">
                     <button
                       onClick={() => setShowRetakeModal(false)}
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20 flex items-center justify-center"
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#111111]/10 hover:bg-[#111111]/20 flex items-center justify-center"
                     >
                       <span className="text-[#475569] text-xl">×</span>
                     </button>
                     <div className="text-center">
                       <div className="mb-4">
                         <svg
-                          className="mx-auto h-12 w-12 text-[#d97706]"
+                          className="mx-auto h-12 w-12 text-[#B8860B]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -755,7 +755,7 @@ export default function SafeForTeamsTestPage() {
                           />
                         </svg>
                       </div>
-                      <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-2">
+                      <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mb-2">
                         One Practice Test Limit
                       </h3>
                       <p className="text-[#475569] mb-6">
@@ -763,7 +763,7 @@ export default function SafeForTeamsTestPage() {
                       </p>
                       <button
                         onClick={() => setShowRetakeModal(false)}
-                        className="w-full bg-white hover:bg-[#16243f] text-[#1f2c4a] font-medium py-3 px-6 rounded-lg transition-colors"
+                        className="w-full bg-white hover:bg-[#000000] text-[#111111] font-medium py-3 px-6 rounded-lg transition-colors"
                       >
                         Understood
                       </button>
@@ -779,9 +779,9 @@ export default function SafeForTeamsTestPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       {/* Header */}
-      <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10 sticky top-0 z-50">
+      <header className="w-full bg-black/60 backdrop-blur-2xl border-b border-[#111111]/10 sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
@@ -807,7 +807,7 @@ export default function SafeForTeamsTestPage() {
       <section className="w-full py-8 px-4 sm:px-6 lg:px-20">
         <div className="max-w-5xl mx-auto">
           {/* Progress Bar */}
-          <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 mb-6">
+          <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 mb-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-[#475569]">
                 Question {currentQuestionIndex + 1} of {totalQuestions}
@@ -816,9 +816,9 @@ export default function SafeForTeamsTestPage() {
                 {answeredQuestions} / {totalQuestions} Answered
               </span>
             </div>
-            <div className="w-full bg-[#1f2c4a]/10 rounded-full h-3">
+            <div className="w-full bg-[#111111]/10 rounded-full h-3">
               <div
-                className="bg-[#d97706] h-3 rounded-full transition-all duration-300"
+                className="bg-[#B8860B] h-3 rounded-full transition-all duration-300"
                 style={{
                   width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`
                 }}
@@ -827,9 +827,9 @@ export default function SafeForTeamsTestPage() {
           </div>
 
           {/* Question Card */}
-          <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-8 mb-6">
+          <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-8 mb-6">
             <div className="mb-6">
-              <h2 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
+              <h2 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mb-4">
                 {currentQuestion.question}
               </h2>
 
@@ -843,27 +843,27 @@ export default function SafeForTeamsTestPage() {
                       className={`w-full text-left p-4 rounded-2xl border transition-all ${
                         isSelected
                           ? "border-white bg-white"
-                          : "border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] hover:bg-[#1f2c4a]/[0.1]"
+                          : "border-[#111111]/15 bg-[#111111]/[0.06] hover:bg-[#111111]/[0.1]"
                       }`}
                     >
                       <div className="flex items-start gap-3">
                         <span
                           className={`font-bold ${
-                            isSelected ? "text-[#1f2c4a]" : "text-[#475569]"
+                            isSelected ? "text-[#111111]" : "text-[#475569]"
                           }`}
                         >
                           {key}.
                         </span>
                         <span
                           className={`flex-1 ${
-                            isSelected ? "text-[#1f2c4a] font-medium" : "text-[#475569]"
+                            isSelected ? "text-[#111111] font-medium" : "text-[#475569]"
                           }`}
                         >
                           {value}
                         </span>
                         {isSelected && (
                           <svg
-                            className="w-5 h-5 text-[#1f2c4a]"
+                            className="w-5 h-5 text-[#111111]"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -883,34 +883,34 @@ export default function SafeForTeamsTestPage() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+          <div className="flex items-center justify-between rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
             <button
               onClick={handlePrevious}
               disabled={currentQuestionIndex === 0}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 currentQuestionIndex === 0
-                  ? "bg-[#1f2c4a]/5 text-[#1f2c4a]/30 cursor-not-allowed"
-                  : "border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a]/10"
+                  ? "bg-[#111111]/5 text-[#111111]/30 cursor-not-allowed"
+                  : "border border-[#111111]/20 text-[#111111] hover:bg-[#111111]/10"
               }`}
             >
               ← Previous
             </button>
 
-            <div className="text-lg font-medium text-[#1f2c4a]">
+            <div className="text-lg font-medium text-[#111111]">
               {currentQuestionIndex + 1} / {totalQuestions}
             </div>
 
             {currentQuestionIndex < totalQuestions - 1 ? (
               <button
                 onClick={handleNext}
-                className="px-6 py-2 bg-white hover:bg-[#16243f] text-[#1f2c4a] rounded-lg font-medium transition-colors"
+                className="px-6 py-2 bg-white hover:bg-[#000000] text-[#111111] rounded-lg font-medium transition-colors"
               >
                 Next →
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="px-6 py-2 bg-[#d97706] hover:bg-[#f59e0b] text-[#1f2c4a] rounded-lg font-medium transition-colors"
+                className="px-6 py-2 bg-[#F5B942] hover:bg-[#f59e0b] text-[#111111] rounded-lg font-medium transition-colors"
               >
                 Submit Exam
               </button>

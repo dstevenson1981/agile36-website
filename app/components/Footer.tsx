@@ -34,7 +34,7 @@ const FOOTER_COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden border-t border-[#1f2c4a]/10 bg-black text-[#1f2c4a] mt-auto">
+    <footer className="relative w-full overflow-hidden border-t border-[#111111]/10 bg-black text-[#111111] mt-auto">
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         {/* Main footer content */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 md:grid-cols-5">
@@ -54,14 +54,14 @@ export default function Footer() {
             <div className="mt-6 space-y-1.5">
               <a
                 href="tel:+13106207966"
-                className="block text-sm text-[#475569] transition-colors hover:text-[#1f2c4a]"
+                className="block text-sm text-[#475569] transition-colors hover:text-[#111111]"
               >
                 (310) 620-7966
               </a>
               <p className="text-xs text-[#94a3b8]">Mon–Fri, 9AM–5PM EST</p>
               <a
                 href="mailto:d.stevenson@agile36.com"
-                className="block text-sm text-[#475569] transition-colors hover:text-[#1f2c4a]"
+                className="block text-sm text-[#475569] transition-colors hover:text-[#111111]"
               >
                 d.stevenson@agile36.com
               </a>
@@ -79,7 +79,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[#64748b] transition-colors duration-200 hover:text-[#1f2c4a]"
+                      className="text-sm text-[#64748b] transition-colors duration-200 hover:text-[#111111]"
                     >
                       {link.label}
                     </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-[#1f2c4a]/10 py-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-[#111111]/10 py-8 md:flex-row">
           <p className="text-xs text-[#94a3b8]">
             © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Agile36. All Rights
             Reserved.

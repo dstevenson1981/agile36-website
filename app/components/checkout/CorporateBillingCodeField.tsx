@@ -18,7 +18,7 @@ export default function CorporateBillingCodeField({ value, onChange }: Props) {
         value={value}
         onChange={(e) => onChange(e.target.value.toUpperCase())}
         placeholder="AGILE-XXXXXX"
-        className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 font-mono text-[#1f2c4a] uppercase placeholder:normal-case placeholder:font-sans focus:border-[#1f2c4a]/40 focus:outline-none"
+        className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 font-mono text-[#111111] uppercase placeholder:normal-case placeholder:font-sans focus:border-[#111111]/40 focus:outline-none"
         autoComplete="off"
       />
       <p className="mt-1 text-xs text-[#94a3b8]">

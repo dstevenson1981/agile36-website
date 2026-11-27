@@ -89,10 +89,10 @@ function AuthConfirmContent() {
   }
 
   return (
-    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4">
+    <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4">
       <div className="text-center">
         <p className="text-[#475569]">Verifying your link...</p>
-        <div className="mt-4 animate-spin rounded-full h-8 w-8 border-b-2 border-[#d97706] mx-auto" />
+        <div className="mt-4 animate-spin rounded-full h-8 w-8 border-b-2 border-[#B8860B] mx-auto" />
       </div>
     </div>
   );

@@ -21,14 +21,14 @@ import { isRtePublicEnrollmentOpen } from "@/app/lib/rte-public-weekend";
 
 function CatalogHero() {
   return (
-    <section className="w-full bg-black text-[#1f2c4a]">
+    <section className="w-full bg-black text-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-16">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-3">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B] mb-3">
             Our certification courses
           </p>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#1f2c4a] leading-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#111111] leading-tight mb-4"
             style={{ letterSpacing: "-0.03em" }}
           >
             Build skills with experts in SAFe, Agile &amp; AI
@@ -41,13 +41,13 @@ function CatalogHero() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#16243f]"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#000000]"
             >
               Contact learning advisor
             </Link>
             <Link
               href="/corporate"
-              className="liquid-glass inline-flex items-center justify-center rounded-lg border border-[#1f2c4a]/20 px-6 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+              className="liquid-glass inline-flex items-center justify-center rounded-lg border border-[#111111]/20 px-6 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
             >
               Corporate training
             </Link>
@@ -65,7 +65,7 @@ function CatalogHero() {
               className="rounded-2xl liquid-glass px-4 py-3"
             >
               <p
-                className="text-xl font-semibold text-[#1f2c4a]"
+                className="text-xl font-semibold text-[#111111]"
                 style={{ letterSpacing: "-0.03em" }}
               >
                 {stat.value}
@@ -82,7 +82,7 @@ function CatalogHero() {
 function StarRating() {
   return (
     <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#475569]">
-      <svg className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+      <svg className="w-4 h-4 text-[#B8860B]" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
       </svg>
       4.9
@@ -124,7 +124,7 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
       : "Contact for pricing";
 
   return (
-    <article className="rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] overflow-hidden flex flex-col h-full">
+    <article className="rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06] overflow-hidden flex flex-col h-full">
       <div className="p-5 sm:p-6 flex flex-col flex-1">
         <div className="flex flex-wrap items-center gap-2 mb-4">
           {badge ? (
@@ -135,14 +135,14 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
             </span>
           ) : null}
           <StarRating />
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#475569] bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/10 px-2.5 py-1 rounded-full ml-auto sm:ml-0">
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#475569] bg-[#111111]/[0.06] border border-[#111111]/10 px-2.5 py-1 rounded-full ml-auto sm:ml-0">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" aria-hidden />
             Live classes · {liveLabel}
           </span>
         </div>
 
         <div className="flex gap-4 mb-3">
-          <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/10 flex items-center justify-center">
+          <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-[#111111]/[0.06] border border-[#111111]/10 flex items-center justify-center">
             <Image
               src={getCatalogCourseImage(course)}
               alt=""
@@ -156,10 +156,10 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
               {acronym}
             </span>
             <h2
-              className="text-base sm:text-lg font-normal text-[#1f2c4a] leading-snug mt-0.5"
+              className="text-base sm:text-lg font-normal text-[#111111] leading-snug mt-0.5"
               style={{ letterSpacing: "-0.03em" }}
             >
-              <Link href={courseUrl} className="hover:text-[#d97706] transition-colors">
+              <Link href={courseUrl} className="hover:text-[#B8860B] transition-colors">
                 {course.title}
               </Link>
             </h2>
@@ -178,27 +178,27 @@ function CourseCard({ course, nextStartDate }: CourseCardProps) {
           <span aria-hidden>·</span>
           <span>{course.enrolled.replace(" Enrolled", " learners")}</span>
           <span aria-hidden>·</span>
-          <span className="text-[#1f2c4a] font-bold">{priceLabel}</span>
+          <span className="text-[#111111] font-bold">{priceLabel}</span>
         </div>
 
         <div className="mt-auto flex flex-col sm:flex-row gap-3">
           <Link
             href={courseUrl}
-            className="liquid-glass flex-1 inline-flex items-center justify-center rounded-lg border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a] hover:text-white px-4 py-2.5 text-sm font-medium transition-colors text-center"
+            className="liquid-glass flex-1 inline-flex items-center justify-center rounded-lg border border-[#111111]/20 text-[#111111] hover:bg-[#111111] hover:text-white px-4 py-2.5 text-sm font-medium transition-colors text-center"
           >
             View course
           </Link>
           {listedPrivate ? (
             <Link
               href={`/contact?course=${getCatalogCourseSlug(course)}`}
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#16243f] text-[#1f2c4a] px-4 py-2.5 text-sm font-medium transition-colors text-center"
+              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#000000] text-[#111111] px-4 py-2.5 text-sm font-medium transition-colors text-center"
             >
               Contact us
             </Link>
           ) : (
             <Link
               href={scheduleUrl}
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#16243f] text-[#1f2c4a] px-4 py-2.5 text-sm font-medium transition-colors text-center"
+              className="flex-1 inline-flex items-center justify-center rounded-lg bg-white hover:bg-[#000000] text-[#111111] px-4 py-2.5 text-sm font-medium transition-colors text-center"
             >
               View schedule
             </Link>
@@ -267,13 +267,13 @@ function CoursesContent() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       <CatalogHero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-10">
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="w-full lg:w-72 flex-shrink-0">
-            <div className="liquid-glass rounded-2xl border border-[#1f2c4a]/10 p-5 lg:sticky lg:top-24">
+            <div className="liquid-glass rounded-2xl border border-[#111111]/10 p-5 lg:sticky lg:top-24">
               <h2 className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8] mb-1">
                 Categories
               </h2>
@@ -288,8 +288,8 @@ function CoursesContent() {
                         href={`/courses?category=${encodeURIComponent(category)}`}
                         className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-between ${
                           active
-                            ? "bg-[#1f2c4a] text-white"
-                            : "text-[#475569] hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+                            ? "bg-[#111111] text-white"
+                            : "text-[#475569] hover:bg-[#111111]/[0.06] hover:text-[#111111]"
                         }`}
                       >
                         <span>{category}</span>
@@ -305,10 +305,10 @@ function CoursesContent() {
                   );
                 })}
               </ul>
-              <div className="mt-6 pt-6 border-t border-[#1f2c4a]/10">
+              <div className="mt-6 pt-6 border-t border-[#111111]/10">
                 <Link
                   href="/combo-courses"
-                  className="text-sm font-medium text-[#d97706] hover:text-[#fcd34d] transition-colors"
+                  className="text-sm font-medium text-[#B8860B] hover:text-[#fcd34d] transition-colors"
                 >
                   View combo courses →
                 </Link>
@@ -319,7 +319,7 @@ function CoursesContent() {
           <div className="flex-1 min-w-0">
             <div className="mb-6">
               <h2
-                className="text-xl md:text-2xl font-normal text-[#1f2c4a]"
+                className="text-xl md:text-2xl font-normal text-[#111111]"
                 style={{ letterSpacing: "-0.03em" }}
               >
                 Choose {selectedCategory === "AI Courses" ? "AI Courses" : `${selectedCategory} courses`}

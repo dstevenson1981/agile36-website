@@ -37,24 +37,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -68,14 +68,14 @@ function ExecutiveSummary() {
   return (
     <section
       aria-label="At a glance"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 md:p-8 my-10"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         At a glance
       </p>
       <ul className="space-y-3 text-[#475569] text-[17px] leading-relaxed">
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">01</span>
+          <span className="text-[#B8860B] font-bold">01</span>
           <span>
             <strong>PI Planning</strong> is a cadence-based, two-day event where
             every team on an Agile Release Train plans the next 8–12 week
@@ -83,14 +83,14 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">02</span>
+          <span className="text-[#B8860B] font-bold">02</span>
           <span>
             Typical scale: <strong>5–12 teams, 50–125 people</strong>, all in
             the same virtual or physical room at the same time.
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">03</span>
+          <span className="text-[#B8860B] font-bold">03</span>
           <span>
             Four outputs matter:{" "}
             <strong>PI objectives, program board, ROAMed risks,</strong> and a
@@ -98,7 +98,7 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">04</span>
+          <span className="text-[#B8860B] font-bold">04</span>
           <span>
             Great PI Planning isn&apos;t about having a perfect plan — it&apos;s
             about having a plan an entire ART believes in and will
@@ -117,7 +117,7 @@ function AgendaTimeline() {
         role="img"
         aria-label="PI Planning 2-day agenda from business context through final plan review"
         viewBox="0 0 960 460"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="460" fill="rgba(255,255,255,0.03)" />
         <text
@@ -144,7 +144,7 @@ function AgendaTimeline() {
         <text
           x="74"
           y="108"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="18"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -190,7 +190,7 @@ function AgendaTimeline() {
         <text
           x="500"
           y="138"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="13"
           fontWeight="600"
           fontFamily="system-ui,sans-serif"
@@ -228,7 +228,7 @@ function AgendaTimeline() {
         <text
           x="74"
           y="294"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="18"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -274,7 +274,7 @@ function AgendaTimeline() {
         <text
           x="500"
           y="324"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="13"
           fontWeight="600"
           fontFamily="system-ui,sans-serif"
@@ -320,7 +320,7 @@ function OutputsGrid() {
         role="img"
         aria-label="Four primary outputs of PI Planning: PI objectives, program board, risks, and confidence vote"
         viewBox="0 0 960 330"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="330" fill="rgba(255,255,255,0.03)" />
         <text
@@ -348,7 +348,7 @@ function OutputsGrid() {
           x="134"
           y="118"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="26"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -399,7 +399,7 @@ function OutputsGrid() {
           x="366"
           y="118"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="26"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -450,7 +450,7 @@ function OutputsGrid() {
           x="598"
           y="118"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="26"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -501,7 +501,7 @@ function OutputsGrid() {
           x="828"
           y="118"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="26"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -556,9 +556,9 @@ function ScaleStats() {
         {stats.map((s, i) => (
           <div
             key={i}
-            className="bg-[#1f2c4a]/[0.06] border border-[#1f2c4a]/15 rounded-2xl p-5 text-center"
+            className="bg-[#111111]/[0.06] border border-[#111111]/15 rounded-2xl p-5 text-center"
           >
-            <p className="text-3xl md:text-4xl font-bold text-[#d97706] leading-none">
+            <p className="text-3xl md:text-4xl font-bold text-[#B8860B] leading-none">
               {s.num}
             </p>
             <p className="text-xs uppercase tracking-wider text-[#64748b] font-semibold mt-3">
@@ -573,7 +573,7 @@ function ScaleStats() {
 
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
-    <blockquote className="my-10 border-l-4 border-[#1f2c4a]/20 pl-6 md:pl-8 py-2">
+    <blockquote className="my-10 border-l-4 border-[#111111]/20 pl-6 md:pl-8 py-2">
       <p className="text-xl md:text-2xl font-semibold text-[#334155] leading-snug italic">
         &ldquo;{children}&rdquo;
       </p>
@@ -592,15 +592,15 @@ function KeyTakeaways() {
   return (
     <section
       aria-label="Key takeaways"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-6 md:p-8 my-10"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         Key takeaways
       </p>
       <ul className="space-y-3">
         {pts.map((p, i) => (
           <li key={i} className="flex gap-3 text-[17px] leading-relaxed">
-            <span className="text-[#d97706] font-bold">
+            <span className="text-[#B8860B] font-bold">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span dangerouslySetInnerHTML={{ __html: p }} />
@@ -621,11 +621,11 @@ function FailureCard({
   body: React.ReactNode;
 }) {
   return (
-    <div className="border border-[#1f2c4a]/15 rounded-2xl p-5 bg-[#1f2c4a]/[0.06]">
-      <p className="text-[#d97706] font-bold text-xs tracking-[0.18em] uppercase mb-2">
+    <div className="border border-[#111111]/15 rounded-2xl p-5 bg-[#111111]/[0.06]">
+      <p className="text-[#B8860B] font-bold text-xs tracking-[0.18em] uppercase mb-2">
         Failure {num}
       </p>
-      <p className="text-[#d97706] font-bold text-lg mb-2">{title}</p>
+      <p className="text-[#B8860B] font-bold text-lg mb-2">{title}</p>
       <p className="text-[#475569] text-[15px] leading-relaxed">{body}</p>
     </div>
   );
@@ -635,21 +635,21 @@ export default async function PiPlanningExplainedBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="pi-planning-explained" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             PI Planning Explained: The 2-Day Event That Makes SAFe Work
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -657,13 +657,13 @@ export default async function PiPlanningExplainedBlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">Guide · 12 min read</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-8 leading-tight">
             PI Planning Explained: The 2-Day Event That Makes SAFe Work
           </h1>
 
@@ -678,7 +678,7 @@ export default async function PiPlanningExplainedBlogPost() {
               depth in the{" "}
               <Link
                 href="/courses/leading-safe"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 Leading SAFe course
               </Link>{" "}
@@ -696,7 +696,7 @@ export default async function PiPlanningExplainedBlogPost() {
               the motions.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What is PI Planning?
             </h2>
             <p className="text-lg text-[#475569] mb-6 leading-relaxed">
@@ -721,7 +721,7 @@ export default async function PiPlanningExplainedBlogPost() {
               it&apos;s the fact that 100 people built it in the same room.
             </PullQuote>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why it matters
             </h2>
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
@@ -751,7 +751,7 @@ export default async function PiPlanningExplainedBlogPost() {
 
             <SafeScrumMasterLink />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The 2-day agenda
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -761,7 +761,7 @@ export default async function PiPlanningExplainedBlogPost() {
 
             <AgendaTimeline />
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Day 1 morning: Set the context
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-[#475569]">
@@ -784,7 +784,7 @@ export default async function PiPlanningExplainedBlogPost() {
               </li>
             </ul>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Day 1 afternoon: First team breakouts
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -795,7 +795,7 @@ export default async function PiPlanningExplainedBlogPost() {
               meets at least once to surface cross-team issues.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Day 1 end: Draft plan review + management review
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -805,7 +805,7 @@ export default async function PiPlanningExplainedBlogPost() {
               — so teams come back Day 2 with the tradeoffs already made.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Day 2 morning: Planning adjustments + second breakouts
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -814,7 +814,7 @@ export default async function PiPlanningExplainedBlogPost() {
               rough plans become committed plans.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Day 2 afternoon: Final plan review + confidence vote
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -825,13 +825,13 @@ export default async function PiPlanningExplainedBlogPost() {
               or above — plan is committed.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-8 leading-relaxed">
+            <p className="text-lg font-semibold text-[#111111] mb-8 leading-relaxed">
               The event closes with a short planning retrospective and a
               &quot;moving forward&quot; section — who&apos;s doing what
               starting Monday.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Who&apos;s in the room
             </h2>
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
@@ -869,7 +869,7 @@ export default async function PiPlanningExplainedBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The 4 outputs that matter
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -903,7 +903,7 @@ export default async function PiPlanningExplainedBlogPost() {
               </li>
             </ol>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is the SAFe Program Board?
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -924,7 +924,7 @@ export default async function PiPlanningExplainedBlogPost() {
               throughout the PI as scope shifts.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Remote and hybrid PI Planning
             </h2>
             <p className="text-lg text-[#475569] mb-6 leading-relaxed">
@@ -952,7 +952,7 @@ export default async function PiPlanningExplainedBlogPost() {
               three half-days rather than two full days.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common failure modes
             </h2>
             <div className="grid md:grid-cols-2 gap-4 my-6">
@@ -1029,11 +1029,11 @@ export default async function PiPlanningExplainedBlogPost() {
 
             <KeyTakeaways />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common questions
             </h2>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How often does PI Planning happen?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1041,7 +1041,7 @@ export default async function PiPlanningExplainedBlogPost() {
               the PI cadence.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How long is PI Planning?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1049,7 +1049,7 @@ export default async function PiPlanningExplainedBlogPost() {
               the total facilitated time is still roughly 16 hours.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Who facilitates PI Planning?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1057,14 +1057,14 @@ export default async function PiPlanningExplainedBlogPost() {
               facilitate team breakouts. The RTE role is covered in depth in the{" "}
               <Link
                 href="/courses/release-train-engineer"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Release Train Engineer course
               </Link>
               .
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               What&apos;s the difference between PI Planning and Sprint
               Planning?
             </p>
@@ -1075,7 +1075,7 @@ export default async function PiPlanningExplainedBlogPost() {
               Planning sets the broader context for all of them.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Can you do PI Planning without SAFe?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1085,14 +1085,14 @@ export default async function PiPlanningExplainedBlogPost() {
               something else. Before you decide on a framework, compare the{" "}
               <Link
                 href="/blog/ssm-vs-csm"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SSM vs CSM certification paths
               </Link>{" "}
               to see which fits your organization.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               What does a successful PI Planning look like?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1103,7 +1103,7 @@ export default async function PiPlanningExplainedBlogPost() {
               any of those are missing, the event didn&apos;t land.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How do remote PI Planning events differ?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -1114,14 +1114,14 @@ export default async function PiPlanningExplainedBlogPost() {
               preparation, not less.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Is PI Planning covered in SSM training?
             </p>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
               Yes. A meaningful portion of{" "}
               <Link
                 href="/blog/safe-scrum-master-exam-questions"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Scrum Master exam questions
               </Link>{" "}
@@ -1129,27 +1129,27 @@ export default async function PiPlanningExplainedBlogPost() {
               certifications cover it in more depth.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Where to go from here
             </h2>
             <p className="text-lg text-[#475569] mb-6 leading-relaxed">
               If this event is the job you need to learn, the next step is{" "}
               <Link
                 href="/courses/leading-safe"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 Leading SAFe
               </Link>
               . Use{" "}
               <Link
                 href="/courses/scrum-master"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Scrum Master
               </Link>{" "}
               only if your seat is team facilitation, not the ART.
             </p>
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 text-center mb-8">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 text-center mb-8">
               <p className="text-xl font-bold mb-3">
                 Learn SAFe from a real SPC
               </p>
@@ -1161,13 +1161,13 @@ export default async function PiPlanningExplainedBlogPost() {
               <div className="flex gap-3 justify-center flex-wrap">
                 <Link
                   href="/courses/leading-safe"
-                  className="inline-block bg-[#1f2c4a] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#16243f]"
+                  className="inline-block bg-[#111111] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#000000]"
                 >
                   Leading SAFe
                 </Link>
                 <Link
                   href="/courses/release-train-engineer"
-                  className="inline-block bg-[#1f2c4a] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#16243f]"
+                  className="inline-block bg-[#111111] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#000000]"
                 >
                   RTE Certification
                 </Link>
@@ -1177,14 +1177,14 @@ export default async function PiPlanningExplainedBlogPost() {
               Related reading:{" "}
               <Link
                 href="/blog/safe-lpm-vs-popm"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 SAFe LPM vs POPM
               </Link>
               {" · "}
               <Link
                 href="/blog/is-safe-certification-worth-it-2026"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 Is SAFe certification worth it
               </Link>
@@ -1198,12 +1198,12 @@ export default async function PiPlanningExplainedBlogPost() {
 
 function SafeScrumMasterLink() {
   return (
-    <p className="text-lg text-[#475569] mb-4 italic border-l-4 border-[#1f2c4a]/20 pl-4">
+    <p className="text-lg text-[#475569] mb-4 italic border-l-4 border-[#111111]/20 pl-4">
       Scrum Masters play a critical facilitation role during PI Planning. Full
       role coverage is in the{" "}
       <Link
         href="/courses/scrum-master"
-        className="text-[#d97706] font-semibold underline hover:no-underline"
+        className="text-[#B8860B] font-semibold underline hover:no-underline"
       >
         SAFe Scrum Master course
       </Link>

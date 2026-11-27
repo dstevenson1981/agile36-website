@@ -532,7 +532,7 @@ export default function Home() {
               </div>
             </div>
           )}
-          <button className={`bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-2 px-6 rounded-md text-sm transition-colors ${course.privateClass ? 'w-full' : ''}`}>
+          <button className={`bg-[#111111] hover:bg-[#111111] text-white font-bold py-2 px-6 rounded-md text-sm transition-colors ${course.privateClass ? 'w-full' : ''}`}>
             {course.privateClass ? 'Contact Us' : 'Enroll →'}
           </button>
         </div>
@@ -708,7 +708,7 @@ export default function Home() {
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={handleSearchChange}
-                  className="w-full pl-9 sm:pl-10 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01203d] focus:border-transparent"
+                  className="w-full pl-9 sm:pl-10 pr-10 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#111111] focus:border-transparent"
                 />
                 {searchQuery && (
                   <button
@@ -777,22 +777,22 @@ export default function Home() {
             
             {/* Navigation Links */}
             <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-              <Link href="/courses" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/courses" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 Courses
               </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/blog" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 Blogs
               </Link>
-              <Link href="/test" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/test" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 Practice Tests
               </Link>
-              <Link href="/testimonials" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/testimonials" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 Testimonials
               </Link>
-              <Link href="/corporate" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/corporate" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 Corporate
               </Link>
-              <Link href="/account" className="text-gray-700 hover:text-[#01203d] font-medium transition-colors text-sm">
+              <Link href="/account" className="text-gray-700 hover:text-[#111111] font-medium transition-colors text-sm">
                 My Account
               </Link>
             </div>
@@ -802,7 +802,7 @@ export default function Home() {
               {/* Mobile Menu Button */}
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
+                className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700 hover:text-[#111111] hover:bg-gray-100 rounded-md transition-colors"
                 aria-label="Toggle menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -815,14 +815,14 @@ export default function Home() {
               </button>
               <Link 
                 href="/contact" 
-                className="p-2 text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors"
+                className="p-2 text-gray-700 hover:text-[#111111] hover:bg-gray-100 rounded-md transition-colors"
                 title="Contact Us"
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </Link>
-              <button className="p-2 text-gray-700 hover:text-[#01203d] hover:bg-gray-100 rounded-md transition-colors relative">
+              <button className="p-2 text-gray-700 hover:text-[#111111] hover:bg-gray-100 rounded-md transition-colors relative">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -1024,7 +1024,7 @@ export default function Home() {
               <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#fa4a23]">
                 Free practice tests
               </p>
-              <h2 className="mb-6 text-2xl font-bold leading-tight text-[#01203d] sm:text-3xl">
+              <h2 className="mb-6 text-2xl font-bold leading-tight text-[#111111] sm:text-3xl">
                 Master your certification exams with free practice tests
               </h2>
               <ul className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
@@ -1046,7 +1046,7 @@ export default function Home() {
               </ul>
               <Link
                 href="/test"
-                className="inline-flex items-center gap-2 rounded-md bg-[#01203d] px-6 py-3 font-bold text-white transition-colors hover:bg-[#023a6b]"
+                className="inline-flex items-center gap-2 rounded-md bg-[#111111] px-6 py-3 font-bold text-white transition-colors hover:bg-[#111111]"
               >
                 Start test
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -1110,7 +1110,7 @@ export default function Home() {
               
               <button 
                 onClick={() => setShowConsultationModal(true)}
-                className="w-full mt-8 bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 rounded-md transition-colors"
+                className="w-full mt-8 bg-[#111111] hover:bg-[#111111] text-white font-bold py-3 rounded-md transition-colors"
               >
                 Contact Course Advisor
               </button>
@@ -1216,7 +1216,7 @@ export default function Home() {
                       />
                     </div>
                   <div>
-                      <h4 className="font-semibold text-[#01203d]">{member.name}</h4>
+                      <h4 className="font-semibold text-[#111111]">{member.name}</h4>
                       <p className="text-sm text-[#34595f]">{member.title}</p>
                       {member.subtitle && (
                         <p className="text-xs text-[#34595f] mt-1">{member.subtitle}</p>
@@ -1310,8 +1310,8 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#01203d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#B8860B]/[0.12] to-[#B8860B]/[0.03] ring-1 ring-[#B8860B]/15 mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -1319,8 +1319,8 @@ export default function Home() {
               <p className="text-sm font-semibold text-[#4f6882]">Delivering Enterprise Agile Excellence</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#01203d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#B8860B]/[0.12] to-[#B8860B]/[0.03] ring-1 ring-[#B8860B]/15 mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
@@ -1328,8 +1328,8 @@ export default function Home() {
               <p className="text-sm font-semibold text-[#4f6882]">Led Across Fortune 100 & Global Organizations</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#01203d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#B8860B]/[0.12] to-[#B8860B]/[0.03] ring-1 ring-[#B8860B]/15 mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
@@ -1337,8 +1337,8 @@ export default function Home() {
               <p className="text-sm font-semibold text-[#4f6882]">Trained and Certified Worldwide</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d97706]/[0.12] to-[#d97706]/[0.03] ring-1 ring-[#d97706]/15 mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#01203d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#B8860B]/[0.12] to-[#B8860B]/[0.03] ring-1 ring-[#B8860B]/15 mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#111111]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
@@ -1372,7 +1372,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900">Take a Look at Our Clients</h2>
           </div>
           
-          <div className="bg-gray-100 rounded-lg border-2 border-[#01203d] p-6 md:p-8">
+          <div className="bg-gray-100 rounded-lg border-2 border-[#111111] p-6 md:p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center">
               {TRUSTED_BY_LOGOS.map((logo) => (
                 <div key={logo.alt} className="flex items-center justify-center h-10 w-full">
@@ -1413,7 +1413,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* AI Transformation Blog Post */}
             <Link href="/blog/ai-transformation" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 {/* Decorative golden dots - top left */}
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
@@ -1459,7 +1459,7 @@ export default function Home() {
 
             {/* AI Tools for Product Managers Blog Post */}
             <Link href="/blog/ai-tools-product-managers" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 {/* Decorative golden dots - top left */}
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
@@ -1505,7 +1505,7 @@ export default function Home() {
 
             {/* Lean Portfolio Management Blog Post */}
             <Link href="/blog/lean-portfolio-management" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 {/* Decorative golden dots - top left */}
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
@@ -1539,7 +1539,7 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="bg-[#111111] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
                   <span className="text-sm text-[#718aa5]">Latest</span>
                 </div>
                 <p className="text-sm text-gray-700 mb-4">
@@ -1551,7 +1551,7 @@ export default function Home() {
 
             {/* Leading SAFe certification cost 2026 */}
             <Link href="/blog/leading-safe-certification-cost-2026" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
                     {[...Array(12)].map((_, i) => (
@@ -1582,7 +1582,7 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="bg-[#111111] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
                   <span className="text-sm text-[#718aa5]">2026</span>
                 </div>
                 <p className="text-sm text-gray-700 mb-4">
@@ -1594,7 +1594,7 @@ export default function Home() {
 
             {/* Is SAFe certification worth it 2026 */}
             <Link href="/blog/is-safe-certification-worth-it-2026" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
                     {[...Array(12)].map((_, i) => (
@@ -1625,7 +1625,7 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="bg-[#111111] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
                   <span className="text-sm text-[#718aa5]">2026</span>
                 </div>
                 <p className="text-sm text-gray-700 mb-4">
@@ -1637,7 +1637,7 @@ export default function Home() {
 
             {/* SAFe LPM vs POPM */}
             <Link href="/blog/safe-lpm-vs-popm" className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-[#01203d] relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 bg-[#111111] relative flex items-center justify-center overflow-hidden">
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <div className="flex gap-1">
                     {[...Array(12)].map((_, i) => (
@@ -1668,7 +1668,7 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-[#134263] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
+                  <span className="bg-[#111111] text-white text-sm font-semibold px-4 py-1 rounded-full">SAFe</span>
                   <span className="text-sm text-[#718aa5]">Guide</span>
                 </div>
                 <p className="text-sm text-gray-700 mb-4">
@@ -1774,7 +1774,7 @@ export default function Home() {
                         required
                         value={consultationForm.fullName}
                         onChange={(e) => setConsultationForm({ ...consultationForm, fullName: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#01203d]"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#111111]"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -1789,7 +1789,7 @@ export default function Home() {
                         required
                         value={consultationForm.email}
                         onChange={(e) => setConsultationForm({ ...consultationForm, email: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#01203d]"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#111111]"
                         placeholder="Enter your email"
                       />
                     </div>
@@ -1809,7 +1809,7 @@ export default function Home() {
                           required
                           value={consultationForm.phone}
                           onChange={(e) => setConsultationForm({ ...consultationForm, phone: e.target.value })}
-                          className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#01203d]"
+                          className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#111111]"
                           placeholder="Enter your phone number"
                         />
                       </div>
@@ -1824,7 +1824,7 @@ export default function Home() {
                         value={consultationForm.message}
                         onChange={(e) => setConsultationForm({ ...consultationForm, message: e.target.value })}
                         rows={4}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#01203d]"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#111111]"
                         placeholder="Enter your message"
                       />
                     </div>

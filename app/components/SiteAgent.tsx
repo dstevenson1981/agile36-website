@@ -121,11 +121,11 @@ export default function SiteAgent() {
     <div className="fixed bottom-5 right-5 z-[80] flex flex-col items-end gap-3">
       {open ? (
         <section
-          className="liquid-glass flex h-[min(560px,calc(100vh-7rem))] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-[#1f2c4a]/15 shadow-[0_18px_50px_rgba(31,44,74,0.18)]"
+          className="liquid-glass flex h-[min(560px,calc(100vh-7rem))] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-[#111111]/15 shadow-[0_18px_50px_rgba(17, 17, 17,0.18)]"
           role="dialog"
           aria-label="GrokBot chat"
         >
-          <header className="flex items-center justify-between border-b border-[#1f2c4a]/10 bg-[#1f2c4a] px-4 py-3 text-white">
+          <header className="flex items-center justify-between border-b border-[#111111]/10 bg-[#111111] px-4 py-3 text-white">
             <div>
               <p className="text-sm font-medium tracking-[-0.02em]">GrokBot</p>
               <p className="text-xs text-white/70">
@@ -151,13 +151,13 @@ export default function SiteAgent() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       mine
-                        ? "bg-[#1f2c4a] text-white"
+                        ? "bg-[#111111] text-white"
                         : owner
-                          ? "bg-[#d97706]/15 text-[#1f2c4a]"
-                          : "bg-[#1f2c4a]/[0.06] text-[#1f2c4a]"
+                          ? "bg-[#B8860B]/15 text-[#111111]"
+                          : "bg-[#111111]/[0.06] text-[#111111]"
                     }`}
                   >
-                    {owner ? <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-[#d97706]">Deadra</p> : null}
+                    {owner ? <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-[#B8860B]">Deadra</p> : null}
                     <p className="whitespace-pre-wrap">{message.content}</p>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function SiteAgent() {
           </div>
 
           <form
-            className="border-t border-[#1f2c4a]/10 bg-white/80 p-3"
+            className="border-t border-[#111111]/10 bg-white/80 p-3"
             onSubmit={(event) => {
               event.preventDefault();
               void send();
@@ -179,12 +179,12 @@ export default function SiteAgent() {
                 onChange={(event) => setInput(event.target.value)}
                 placeholder={takenOver ? "Message the team…" : "Ask about a class or a price…"}
                 maxLength={2000}
-                className="min-w-0 flex-1 rounded-xl border border-[#1f2c4a]/15 bg-white px-3 py-2.5 text-sm text-[#1f2c4a] outline-none placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40"
+                className="min-w-0 flex-1 rounded-xl border border-[#111111]/15 bg-white px-3 py-2.5 text-sm text-[#111111] outline-none placeholder:text-[#94a3b8] focus:border-[#111111]/40"
               />
               <button
                 type="submit"
                 disabled={sending || !input.trim()}
-                className="rounded-xl bg-[#1f2c4a] px-3.5 text-sm text-white hover:bg-[#16243f] disabled:opacity-40"
+                className="rounded-xl bg-[#111111] px-3.5 text-sm text-white hover:bg-[#000000] disabled:opacity-40"
               >
                 Send
               </button>
@@ -196,7 +196,7 @@ export default function SiteAgent() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1f2c4a] text-white shadow-[0_12px_30px_rgba(31,44,74,0.28)] hover:bg-[#16243f]"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#111111] text-white shadow-[0_12px_30px_rgba(17, 17, 17,0.28)] hover:bg-[#000000]"
         aria-label={open ? "Close chat" : "Open chat"}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">

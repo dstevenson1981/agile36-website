@@ -159,10 +159,10 @@ export default function CourseScheduleEmbed({
       onClick={() => toggleFilter(key)}
       className={`${premium ? "rounded-full border px-4 py-2 text-xs font-semibold" : "rounded-md px-3.5 py-1.5 text-sm font-medium"} transition-all ${
         filters[key]
-          ? "border-[#d97706] bg-[#d97706] text-white shadow-[0_6px_16px_-8px_rgba(217,119,6,.8)]"
+          ? "border-[#F5B942] bg-[#F5B942] text-[#111111] shadow-[0_6px_16px_-8px_rgba(217,119,6,.8)]"
           : premium
-            ? "border-[#1f2c4a]/15 bg-white text-[#475569] hover:border-[#d97706]/40 hover:text-[#b45309]"
-            : "bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20"
+            ? "border-[#111111]/15 bg-white text-[#475569] hover:border-[#F5B942]/40 hover:text-[#B8860B]"
+            : "bg-[#111111]/10 text-[#475569] hover:bg-[#111111]/20"
       }`}
     >
       {label}
@@ -171,7 +171,7 @@ export default function CourseScheduleEmbed({
 
   return (
     <div>
-      <div className={`mb-5 flex flex-wrap items-center gap-2 ${premium ? "rounded-2xl border border-[#1f2c4a]/10 bg-[#eef3f8] p-3" : ""}`}>
+      <div className={`mb-5 flex flex-wrap items-center gap-2 ${premium ? "rounded-2xl border border-[#111111]/10 bg-[#eef3f8] p-3" : ""}`}>
         {chip("thisMonth", "This month")}
         {chip("nextMonth", "Next month")}
         {chip("weekdays", "Weekdays")}
@@ -183,27 +183,27 @@ export default function CourseScheduleEmbed({
               setFilters(EMPTY_FILTERS);
               setDisplayedCount(initialCount);
             }}
-            className="px-3 py-1.5 text-sm font-medium text-[#475569] hover:text-[#d97706]"
+            className="px-3 py-1.5 text-sm font-medium text-[#475569] hover:text-[#B8860B]"
           >
             Clear
           </button>
         ) : null}
-        <p className={`ml-auto text-sm text-[#64748b] ${premium ? "rounded-full bg-[#1f2c4a] px-3 py-1.5 text-xs font-semibold text-white" : ""}`}>
-          <span className={premium ? "text-[#fbbf24]" : ""}>{filtered.length}</span> upcoming {filtered.length === 1 ? "cohort" : "cohorts"}
+        <p className={`ml-auto text-sm text-[#64748b] ${premium ? "rounded-full bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white" : ""}`}>
+          <span className={premium ? "text-[#B8860B]" : ""}>{filtered.length}</span> upcoming {filtered.length === 1 ? "cohort" : "cohorts"}
         </p>
       </div>
 
       {isLoading ? (
         <div className="flex items-center justify-center py-16">
-          <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-[#d97706]" />
+          <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-[#B8860B]" />
         </div>
       ) : loadError ? (
-        <div className="rounded-lg border border-[#1f2c4a]/10 bg-white px-6 py-12 text-center">
-          <p className="font-medium text-[#1f2c4a]">{loadError}</p>
+        <div className="rounded-lg border border-[#111111]/10 bg-white px-6 py-12 text-center">
+          <p className="font-medium text-[#111111]">{loadError}</p>
         </div>
       ) : filtered.length === 0 ? (
         <div className="liquid-glass rounded-2xl px-6 py-12 text-center">
-          <p className="font-medium text-[#1f2c4a]">No dates match those filters</p>
+          <p className="font-medium text-[#111111]">No dates match those filters</p>
           <p className="mt-1 text-sm text-[#64748b]">Clear the filters to see every upcoming cohort.</p>
         </div>
       ) : (
@@ -231,7 +231,7 @@ export default function CourseScheduleEmbed({
                 onClick={() =>
                   setDisplayedCount((prev) => Math.min(prev + initialCount, filtered.length))
                 }
-                className="liquid-glass rounded-lg border border-[#1f2c4a]/20 px-8 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                className="liquid-glass rounded-lg border border-[#111111]/20 px-8 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
               >
                 View more dates
               </button>

@@ -218,15 +218,15 @@ function CourseScheduleContent() {
   const hasActiveFilters = Object.values(activeFilters).some(v => v);
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       {/* Header Section */}
-      <section className="w-full bg-black border-b border-[#1f2c4a]/10">
+      <section className="w-full bg-black border-b border-[#111111]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-6">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-4 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
+            <Link href="/" className="hover:text-[#111111]">Home</Link>
             <span>/</span>
-            <Link href="/courses/devops" className="hover:text-[#1f2c4a]">SAFe DevOps Certification Training</Link>
+            <Link href="/courses/devops" className="hover:text-[#111111]">SAFe DevOps Certification Training</Link>
             <span>/</span>
             <span className="text-[#334155]">Schedule</span>
           </div>
@@ -234,7 +234,7 @@ function CourseScheduleContent() {
           {/* Title */}
           <div className="mb-4">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#64748b] mb-1">COURSE SCHEDULES</p>
-            <h1 className="text-2xl md:text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a]">
+            <h1 className="text-2xl md:text-3xl font-normal tracking-[-0.03em] text-[#111111]">
               Schedules for {courseName}
             </h1>
           </div>
@@ -245,8 +245,8 @@ function CourseScheduleContent() {
               onClick={() => toggleFilter('thisMonth')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeFilters.thisMonth
-                  ? 'bg-[#d97706] text-white'
-                  : 'bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20'
+                  ? 'bg-[#F5B942] text-[#111111]'
+                  : 'bg-[#111111]/10 text-[#475569] hover:bg-[#111111]/20'
               }`}
             >
               This Month
@@ -255,8 +255,8 @@ function CourseScheduleContent() {
               onClick={() => toggleFilter('nextMonth')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeFilters.nextMonth
-                  ? 'bg-[#d97706] text-white'
-                  : 'bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20'
+                  ? 'bg-[#F5B942] text-[#111111]'
+                  : 'bg-[#111111]/10 text-[#475569] hover:bg-[#111111]/20'
               }`}
             >
               Next Month
@@ -265,8 +265,8 @@ function CourseScheduleContent() {
               onClick={() => toggleFilter('weekdays')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeFilters.weekdays
-                  ? 'bg-[#d97706] text-white'
-                  : 'bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20'
+                  ? 'bg-[#F5B942] text-[#111111]'
+                  : 'bg-[#111111]/10 text-[#475569] hover:bg-[#111111]/20'
               }`}
             >
               Weekdays
@@ -275,8 +275,8 @@ function CourseScheduleContent() {
               onClick={() => toggleFilter('weekend')}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeFilters.weekend
-                  ? 'bg-[#d97706] text-white'
-                  : 'bg-[#1f2c4a]/10 text-[#475569] hover:bg-[#1f2c4a]/20'
+                  ? 'bg-[#F5B942] text-[#111111]'
+                  : 'bg-[#111111]/10 text-[#475569] hover:bg-[#111111]/20'
               }`}
             >
               Weekend
@@ -284,7 +284,7 @@ function CourseScheduleContent() {
             {hasActiveFilters && (
               <button
                 onClick={clearAllFilters}
-                className="px-4 py-2 rounded-md text-sm font-medium text-[#475569] hover:text-[#d97706] transition-colors"
+                className="px-4 py-2 rounded-md text-sm font-medium text-[#475569] hover:text-[#B8860B] transition-colors"
               >
                 Clear All
               </button>
@@ -322,7 +322,7 @@ function CourseScheduleContent() {
                       </div>
                       <div className="flex items-center gap-1 mb-1">
                         {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-4 h-4 text-[#d97706]" fill="currentColor" viewBox="0 0 20 20">
+                          <svg key={i} className="w-4 h-4 text-[#B8860B]" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
@@ -347,14 +347,14 @@ function CourseScheduleContent() {
             <div className="flex-1">
               {isLoadingSchedules ? (
                 <div className="flex items-center justify-center py-12">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
                 </div>
               ) : filteredSchedules.length === 0 ? (
                 <div className="text-center py-12 liquid-glass rounded-2xl">
                   <svg className="mx-auto h-12 w-12 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <h3 className="mt-2 text-sm font-medium text-[#1f2c4a]">No schedules found</h3>
+                  <h3 className="mt-2 text-sm font-medium text-[#111111]">No schedules found</h3>
                   <p className="mt-1 text-sm text-[#64748b]">Try adjusting your filters</p>
                 </div>
               ) : (
@@ -382,7 +382,7 @@ function CourseScheduleContent() {
                     <div className="flex justify-center pt-6">
                       <button
                         onClick={() => setDisplayedCount(prev => Math.min(prev + 10, filteredSchedules.length))}
-                        className="liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] font-medium px-8 py-3 rounded-lg hover:bg-[#1f2c4a] hover:text-white transition-colors"
+                        className="liquid-glass border border-[#111111]/20 text-[#111111] font-medium px-8 py-3 rounded-lg hover:bg-[#111111] hover:text-white transition-colors"
                       >
                         VIEW MORE SCHEDULES
                       </button>
@@ -416,8 +416,8 @@ function CourseScheduleContent() {
 export default function CourseSchedulePage() {
   return (
     <Suspense fallback={
-      <main className="min-h-screen bg-black text-[#1f2c4a] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+      <main className="min-h-screen bg-black text-[#111111] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
       </main>
     }>
       <CourseScheduleContent />

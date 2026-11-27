@@ -18,7 +18,7 @@ export default function BlogAuthorByline({ updated, className, verb = "Written b
       {verb}{" "}
       <Link
         href={BLOG_LEAD_AUTHOR_LINKEDIN}
-        className="font-semibold text-[#1f2c4a] hover:text-[#d97706] hover:underline"
+        className="font-semibold text-[#111111] hover:text-[#B8860B] hover:underline"
         target="_blank"
         rel="noopener noreferrer"
       >

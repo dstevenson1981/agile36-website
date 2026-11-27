@@ -307,41 +307,49 @@ export type ScheduleUrgency = {
   message: string;
 };
 
+function dateKey(value: string): string | null {
+  const match = value.trim().match(/^(\d{4}-\d{2}-\d{2})/);
+  return match ? match[1] : null;
+}
+
+function todayKey(now = new Date()): string {
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+function addDaysKey(key: string, days: number): string {
+  const [year, month, day] = key.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  date.setDate(date.getDate() + days);
+  const nextMonth = String(date.getMonth() + 1).padStart(2, "0");
+  const nextDay = String(date.getDate()).padStart(2, "0");
+  return `${date.getFullYear()}-${nextMonth}-${nextDay}`;
+}
+
+/** Public seat line. Never the real remaining count. 3 or 4 inside two weeks, otherwise nothing. */
+export function marketedSeatsLeft(schedule: { id?: string | null; start_date?: string | null }): 3 | 4 | null {
+  const start = schedule.start_date ? dateKey(schedule.start_date) : null;
+  if (!start) return null;
+  const today = todayKey();
+  if (start < today || start > addDaysKey(today, 14)) return null;
+  const seed = schedule.id || start;
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) hash += seed.charCodeAt(i);
+  return hash % 2 === 0 ? 3 : 4;
+}
+
 export function getScheduleUrgency(schedule: CourseScheduleRow): ScheduleUrgency {
-  const startDate = new Date(schedule.start_date);
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-
-  const sevenDaysFromNow = new Date(now);
-  sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
-
-  const fourteenDaysFromNow = new Date(now);
-  fourteenDaysFromNow.setDate(fourteenDaysFromNow.getDate() + 14);
-
-  const startDateOnly = new Date(startDate);
-  startDateOnly.setHours(0, 0, 0, 0);
-
-  const isWithinNext7Days = startDateOnly >= now && startDateOnly <= sevenDaysFromNow;
-  const isWithin8to14Days = startDateOnly > sevenDaysFromNow && startDateOnly <= fourteenDaysFromNow;
-  const totalSeats = schedule.total_seats ?? null;
-  const registrants = schedule.total_registrants ?? 0;
-  const seatsLeft =
-    totalSeats !== null && totalSeats !== undefined
-      ? Math.max(totalSeats - registrants, 0)
-      : null;
-  const isLowSeats =
-    !isWithinNext7Days &&
-    !isWithin8to14Days &&
-    seatsLeft !== null &&
-    seatsLeft > 0 &&
-    seatsLeft <= 5;
-
-  const show = isWithinNext7Days || isWithin8to14Days || isLowSeats;
-
-  let message = "";
-  if (isWithinNext7Days) message = "Only 3 seats left";
-  else if (isWithin8to14Days) message = "Sales ending soon";
-  else if (isLowSeats) message = `Only ${seatsLeft} seats left`;
+  const start = dateKey(schedule.start_date);
+  const today = todayKey();
+  const seven = addDaysKey(today, 7);
+  const fourteen = addDaysKey(today, 14);
+  const isWithinNext7Days = start != null && start >= today && start <= seven;
+  const isWithin8to14Days = start != null && start > seven && start <= fourteen;
+  const seats = marketedSeatsLeft(schedule);
+  const isLowSeats = false;
+  const show = seats != null;
+  const message = seats == null ? "" : `Only ${seats} seats left`;
 
   return { show, isWithinNext7Days, isWithin8to14Days, isLowSeats, message };
 }

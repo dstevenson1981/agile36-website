@@ -132,7 +132,7 @@ export default async function SeoProgrammaticPage({
 
   return (
     <div
-      className="bg-black text-[#1f2c4a]"
+      className="bg-black text-[#111111]"
       style={{
         minHeight: '60vh',
       }}
@@ -140,9 +140,9 @@ export default async function SeoProgrammaticPage({
       {/* Dark-theme overrides for the scoped seo-programmatic.css (graphite glass theme) */}
       <style>{`
         .seo-programmatic-page {
-          --seo-primary-blue: #d97706;
+          --seo-primary-blue: #B8860B;
           --seo-primary-blue-dark: #f59e0b;
-          --seo-accent-orange: #d97706;
+          --seo-accent-orange: #B8860B;
           --seo-text-dark: #ffffff;
           --seo-text-medium: #d1d5db;
           --seo-text-light: #9ca3af;
@@ -161,7 +161,7 @@ export default async function SeoProgrammaticPage({
         }
         .seo-programmatic-page .article-tag {
           background-color: rgba(251, 191, 36, 0.12);
-          color: #d97706;
+          color: #B8860B;
         }
         .seo-programmatic-page .comparison-table tbody tr:hover {
           background-color: rgba(255, 255, 255, 0.08);

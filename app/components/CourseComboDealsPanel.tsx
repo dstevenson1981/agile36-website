@@ -142,7 +142,7 @@ export default function CourseComboDealsPanel({ courseSlug, className = "" }: Pr
               type="button"
               aria-label="Previous combo"
               onClick={goPrev}
-              className="absolute left-1 top-[42%] z-10 -translate-y-1/2 rounded-full border border-slate-200/90 bg-white/95 p-2 text-slate-700 shadow-md transition hover:bg-white hover:text-[#01203d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01203d] sm:left-2"
+              className="absolute left-1 top-[42%] z-10 -translate-y-1/2 rounded-full border border-slate-200/90 bg-white/95 p-2 text-slate-700 shadow-md transition hover:bg-white hover:text-[#111111] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111] sm:left-2"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -150,7 +150,7 @@ export default function CourseComboDealsPanel({ courseSlug, className = "" }: Pr
               type="button"
               aria-label="Next combo"
               onClick={goNext}
-              className="absolute right-1 top-[42%] z-10 -translate-y-1/2 rounded-full border border-slate-200/90 bg-white/95 p-2 text-slate-700 shadow-md transition hover:bg-white hover:text-[#01203d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01203d] sm:right-2"
+              className="absolute right-1 top-[42%] z-10 -translate-y-1/2 rounded-full border border-slate-200/90 bg-white/95 p-2 text-slate-700 shadow-md transition hover:bg-white hover:text-[#111111] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111] sm:right-2"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -179,7 +179,7 @@ export default function CourseComboDealsPanel({ courseSlug, className = "" }: Pr
                 aria-label={`Show combo ${i + 1} of ${combos.length}`}
                 aria-current={i === safeIndex ? "true" : undefined}
                 onClick={() => setIndex(i)}
-                className={`h-2 min-h-[8px] rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01203d] ${
+                className={`h-2 min-h-[8px] rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111] ${
                   i === safeIndex ? "w-8 bg-slate-800" : "w-2 bg-slate-400 hover:bg-slate-500"
                 }`}
               />
@@ -190,7 +190,7 @@ export default function CourseComboDealsPanel({ courseSlug, className = "" }: Pr
       <div className="mt-3 text-center sm:text-left">
         <Link
           href="/combo-courses"
-          className="text-sm font-semibold text-[#01203d] underline underline-offset-2 hover:text-[#fa4a23]"
+          className="text-sm font-semibold text-[#111111] underline underline-offset-2 hover:text-[#fa4a23]"
         >
           Explore our combos →
         </Link>

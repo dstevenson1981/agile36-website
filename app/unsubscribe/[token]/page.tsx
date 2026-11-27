@@ -51,17 +51,17 @@ export default function UnsubscribePage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#eef3f8] p-4 text-[#1f2c4a]">
-      <section className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-[#1f2c4a]/15 bg-white p-7 shadow-[0_28px_70px_-45px_rgba(31,44,74,.65)] sm:p-10">
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#1f2c4a]" />
+    <main className="flex min-h-screen items-center justify-center bg-[#eef3f8] p-4 text-[#111111]">
+      <section className="relative w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-[#111111]/15 bg-white p-7 shadow-[0_28px_70px_-45px_rgba(17, 17, 17,.65)] sm:p-10">
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#B8860B] via-[#f59e0b] to-[#111111]" />
         <div className="text-center">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d97706]">Email preferences</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Email preferences</p>
           <h1 className="mt-3 text-3xl font-normal tracking-[-0.04em]">Unsubscribe</h1>
         </div>
 
         {status === 'checking' || status === 'submitting' ? (
           <div className="py-12 text-center" aria-live="polite">
-            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-[#1f2c4a]/10 border-t-[#d97706]" />
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-[#111111]/10 border-t-[#B8860B]" />
             <p className="mt-4 text-sm text-[#64748b]">
               {status === 'checking' ? 'Checking your secure link…' : 'Updating your preferences…'}
             </p>
@@ -70,7 +70,7 @@ export default function UnsubscribePage() {
 
         {status === 'ready' ? (
           <div className="py-9 text-center">
-            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#fff7ed] text-[#d97706]">
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#fff7ed] text-[#B8860B]">
               <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6" />
               </svg>
@@ -82,11 +82,11 @@ export default function UnsubscribePage() {
             <button
               type="button"
               onClick={confirmUnsubscribe}
-              className="mt-7 min-h-12 w-full rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+              className="mt-7 min-h-12 w-full rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white transition hover:bg-[#000000]"
             >
               Confirm unsubscribe
             </button>
-            <button type="button" onClick={() => router.push('/')} className="mt-4 text-sm font-semibold text-[#64748b] hover:text-[#1f2c4a]">
+            <button type="button" onClick={() => router.push('/')} className="mt-4 text-sm font-semibold text-[#64748b] hover:text-[#111111]">
               Keep me subscribed
             </button>
           </div>
@@ -101,7 +101,7 @@ export default function UnsubscribePage() {
             </span>
             <h2 className="mt-5 text-2xl font-normal tracking-[-0.03em]">You are unsubscribed</h2>
             <p className="mt-3 text-sm leading-6 text-[#64748b]">Your email preferences have been updated.</p>
-            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl border border-[#1f2c4a]/15 px-5 text-sm font-semibold hover:bg-[#eef3f8]">
+            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl border border-[#111111]/15 px-5 text-sm font-semibold hover:bg-[#eef3f8]">
               Return home
             </button>
           </div>
@@ -117,7 +117,7 @@ export default function UnsubscribePage() {
                 ? 'Nothing was changed. Use the unsubscribe link in the most recent Agile36 email if you intended to leave the list.'
                 : 'Nothing was changed. Please try again from your most recent Agile36 email.'}
             </p>
-            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl bg-[#1f2c4a] px-5 text-sm font-semibold text-white hover:bg-[#16243f]">
+            <button type="button" onClick={() => router.push('/')} className="mt-7 min-h-11 rounded-xl bg-[#111111] px-5 text-sm font-semibold text-white hover:bg-[#000000]">
               Return home
             </button>
           </div>

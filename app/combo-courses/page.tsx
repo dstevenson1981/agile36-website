@@ -64,29 +64,29 @@ function shortCourseLabel(name: string): string {
 }
 
 const selectClass =
-  "w-full rounded-lg border border-[#1f2c4a]/15 bg-white px-3 py-2.5 text-sm text-[#1f2c4a] outline-none focus-visible:border-[#1f2c4a]/40 focus-visible:ring-2 focus-visible:ring-[#1f2c4a]/20 disabled:cursor-not-allowed disabled:bg-[#1f2c4a]/[0.03] disabled:text-[#94a3b8]";
+  "w-full rounded-lg border border-[#111111]/15 bg-white px-3 py-2.5 text-sm text-[#111111] outline-none focus-visible:border-[#111111]/40 focus-visible:ring-2 focus-visible:ring-[#111111]/20 disabled:cursor-not-allowed disabled:bg-[#111111]/[0.03] disabled:text-[#94a3b8]";
 
 function ComboHero() {
   return (
-    <section className="w-full bg-black text-[#1f2c4a]">
+    <section className="w-full bg-black text-[#111111]">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-20">
         <nav className="mb-6 flex items-center gap-2 text-sm text-[#64748b]">
-          <Link href="/" className="hover:text-[#1f2c4a]">
+          <Link href="/" className="hover:text-[#111111]">
             Home
           </Link>
           <span>/</span>
-          <Link href="/courses" className="hover:text-[#1f2c4a]">
+          <Link href="/courses" className="hover:text-[#111111]">
             Courses
           </Link>
           <span>/</span>
           <span className="text-[#334155]">Combo Courses</span>
         </nav>
         <div className="max-w-3xl">
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B]">
             Combo courses
           </p>
           <h1
-            className="mb-4 text-3xl font-normal leading-tight text-[#1f2c4a] sm:text-4xl md:text-5xl"
+            className="mb-4 text-3xl font-normal leading-tight text-[#111111] sm:text-4xl md:text-5xl"
             style={{ letterSpacing: "-0.03em" }}
           >
             Two certifications. One bundle.
@@ -98,13 +98,13 @@ function ComboHero() {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#combo-catalog"
-              className="inline-flex items-center justify-center rounded-lg bg-[#1f2c4a] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#16243f]"
+              className="inline-flex items-center justify-center rounded-lg bg-[#111111] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#000000]"
             >
               Browse bundles
             </a>
             <Link
               href="/contact"
-              className="liquid-glass inline-flex items-center justify-center rounded-lg border border-[#1f2c4a]/20 px-6 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+              className="liquid-glass inline-flex items-center justify-center rounded-lg border border-[#111111]/20 px-6 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
             >
               Contact learning advisor
             </Link>
@@ -118,7 +118,7 @@ function ComboHero() {
             { value: "2", label: "Certificates when you pass" },
           ].map((stat) => (
             <li key={stat.label} className="liquid-glass rounded-2xl px-4 py-3">
-              <p className="text-xl font-semibold text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+              <p className="text-xl font-semibold text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
                 {stat.value}
               </p>
               <p className="mt-0.5 text-xs text-[#64748b]">{stat.label}</p>
@@ -193,15 +193,15 @@ function BuildYourOwn({ courses }: { courses: { slug: string; label: string }[] 
         </select>
       </label>
       {combo ? (
-        <div className="mt-4 border-t border-[#1f2c4a]/10 pt-4">
-          <p className="text-sm font-medium text-[#1f2c4a]">{combo.name}</p>
+        <div className="mt-4 border-t border-[#111111]/10 pt-4">
+          <p className="text-sm font-medium text-[#111111]">{combo.name}</p>
           <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <span className="text-lg font-semibold text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+            <span className="text-lg font-semibold text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
               ${combo.comboPrice.toLocaleString()}
             </span>
             <span className="text-sm text-[#94a3b8] line-through">${combo.originalPrice.toLocaleString()}</span>
             {pct > 0 ? (
-              <span className="text-xs font-semibold text-[#d97706]">Save {pct}%</span>
+              <span className="text-xs font-semibold text-[#B8860B]">Save {pct}%</span>
             ) : null}
           </div>
           <div className="mt-3 flex flex-col gap-2">
@@ -209,14 +209,14 @@ function BuildYourOwn({ courses }: { courses: { slug: string; label: string }[] 
               <Link
                 key={course.slug}
                 href={`/courses/${course.slug}`}
-                className="liquid-glass inline-flex w-full items-center justify-center rounded-lg border border-[#1f2c4a]/20 px-4 py-2.5 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                className="liquid-glass inline-flex w-full items-center justify-center rounded-lg border border-[#111111]/20 px-4 py-2.5 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
               >
                 View {courseLabel(course.slug, course.name)}
               </Link>
             ))}
             <Link
               href={`/combo-courses/schedule?combo=${combo.id}`}
-              className="inline-flex w-full items-center justify-center rounded-lg bg-[#1f2c4a] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16243f]"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#000000]"
             >
               View schedule
             </Link>
@@ -232,14 +232,14 @@ function ComboCard({ combo }: { combo: Combo }) {
   const labels = combo.courses.map((course) => shortCourseLabel(course.name));
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]">
+    <article className="flex h-full flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06]">
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="mb-4 flex items-center gap-2">
           {combo.courses.map((course) => (
             <Link
               key={course.slug}
               href={`/courses/${course.slug}`}
-              className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.06]"
+              className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-[#111111]/10 bg-[#111111]/[0.06]"
               aria-label={`View ${course.name}`}
             >
               <Image src={course.badge} alt="" width={56} height={56} className="h-full w-full object-cover" />
@@ -251,7 +251,7 @@ function ComboCard({ combo }: { combo: Combo }) {
         </div>
 
         <h3
-          className="text-base font-normal leading-snug text-[#1f2c4a] sm:text-lg"
+          className="text-base font-normal leading-snug text-[#111111] sm:text-lg"
           style={{ letterSpacing: "-0.03em" }}
         >
           {combo.name}
@@ -260,9 +260,9 @@ function ComboCard({ combo }: { combo: Combo }) {
         <div className="mb-5 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[#64748b]">
           <span className="font-medium text-[#475569]">Two live courses</span>
           <span aria-hidden>·</span>
-          <span className="font-bold text-[#1f2c4a]">${combo.comboPrice.toLocaleString()}</span>
+          <span className="font-bold text-[#111111]">${combo.comboPrice.toLocaleString()}</span>
           <span className="text-[#94a3b8] line-through">${combo.originalPrice.toLocaleString()}</span>
-          {pct > 0 ? <span className="font-semibold text-[#d97706]">Save {pct}%</span> : null}
+          {pct > 0 ? <span className="font-semibold text-[#B8860B]">Save {pct}%</span> : null}
         </div>
 
         <div className="mt-auto flex flex-col gap-3">
@@ -271,7 +271,7 @@ function ComboCard({ combo }: { combo: Combo }) {
               <Link
                 key={course.slug}
                 href={`/courses/${course.slug}`}
-                className="liquid-glass inline-flex flex-1 items-center justify-center rounded-lg border border-[#1f2c4a]/20 px-4 py-2.5 text-center text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                className="liquid-glass inline-flex flex-1 items-center justify-center rounded-lg border border-[#111111]/20 px-4 py-2.5 text-center text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
               >
                 View {courseLabel(course.slug, course.name)}
               </Link>
@@ -279,7 +279,7 @@ function ComboCard({ combo }: { combo: Combo }) {
           </div>
           <Link
             href={`/combo-courses/schedule?combo=${combo.id}`}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-[#1f2c4a] px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-[#16243f]"
+            className="inline-flex w-full items-center justify-center rounded-lg bg-[#111111] px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-[#000000]"
           >
             View schedule
           </Link>
@@ -308,9 +308,9 @@ function ComboCatalog() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-20">
         <div className="flex flex-col gap-8 lg:flex-row">
           <aside className="w-full flex-shrink-0 lg:w-72">
-            <div className="liquid-glass self-start rounded-2xl border border-[#1f2c4a]/10 p-5 lg:sticky lg:top-24">
+            <div className="liquid-glass self-start rounded-2xl border border-[#111111]/10 p-5 lg:sticky lg:top-24">
               <BuildYourOwn courses={courses} />
-              <div className="mt-6 border-t border-[#1f2c4a]/10 pt-6">
+              <div className="mt-6 border-t border-[#111111]/10 pt-6">
                 <h2 className="mb-1 text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">Includes</h2>
                 <p className="mb-4 text-xs text-[#64748b]">Show bundles with this course</p>
                 <ul className="max-h-[28rem] space-y-1 overflow-y-auto">
@@ -321,8 +321,8 @@ function ComboCatalog() {
                       onClick={() => setCourseSlug(null)}
                       className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                         courseSlug === null
-                          ? "bg-[#1f2c4a] text-white"
-                          : "text-[#475569] hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+                          ? "bg-[#111111] text-white"
+                          : "text-[#475569] hover:bg-[#111111]/[0.06] hover:text-[#111111]"
                       }`}
                     >
                       Any course
@@ -341,8 +341,8 @@ function ComboCatalog() {
                           onClick={() => setCourseSlug(course.slug)}
                           className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                             active
-                              ? "bg-[#1f2c4a] text-white"
-                              : "text-[#475569] hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+                              ? "bg-[#111111] text-white"
+                              : "text-[#475569] hover:bg-[#111111]/[0.06] hover:text-[#111111]"
                           }`}
                         >
                           <span>{course.label}</span>
@@ -360,7 +360,7 @@ function ComboCatalog() {
 
           <div className="min-w-0 flex-1">
             <div className="mb-6">
-              <h2 className="text-xl font-normal text-[#1f2c4a] md:text-2xl" style={{ letterSpacing: "-0.03em" }}>
+              <h2 className="text-xl font-normal text-[#111111] md:text-2xl" style={{ letterSpacing: "-0.03em" }}>
                 {selectedCourse ? `Bundles with ${selectedCourse.label}` : "All bundles"}
                 <span className="ml-2 text-[#94a3b8]">({visible.length})</span>
               </h2>
@@ -385,9 +385,9 @@ function ComboFaqs() {
   return (
     <section className="w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
       <div className="mx-auto max-w-4xl">
-        <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Questions</p>
+        <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">Questions</p>
         <h2
-          className="mb-8 text-center text-2xl font-normal text-[#1f2c4a] md:text-3xl"
+          className="mb-8 text-center text-2xl font-normal text-[#111111] md:text-3xl"
           style={{ letterSpacing: "-0.03em" }}
         >
           FAQs
@@ -396,9 +396,9 @@ function ComboFaqs() {
           {FAQS.map((faq) => (
             <details
               key={faq.q}
-              className="group rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] transition-colors hover:bg-[#1f2c4a]/[0.1]"
+              className="group rounded-lg border border-[#111111]/15 bg-[#111111]/[0.06] transition-colors hover:bg-[#111111]/[0.1]"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-medium text-[#1f2c4a]">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-medium text-[#111111]">
                 <span>{faq.q}</span>
                 <svg
                   className="h-5 w-5 shrink-0 text-[#94a3b8] transition-transform group-open:rotate-180"
@@ -420,7 +420,7 @@ function ComboFaqs() {
 
 export default function ComboCoursesPage() {
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       <ComboHero />
       <ComboCatalog />
       <ComboFaqs />

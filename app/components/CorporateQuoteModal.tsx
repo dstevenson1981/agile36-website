@@ -93,21 +93,21 @@ function BoardIllustration() {
       className="mx-auto mt-8 w-full max-w-[240px]"
       aria-hidden
     >
-      <rect x="88" y="78" width="104" height="58" rx="10" fill="#1f2c4a" />
+      <rect x="88" y="78" width="104" height="58" rx="10" fill="#111111" />
       <rect x="96" y="86" width="88" height="42" rx="4" fill="#f8fafc" />
       <rect x="104" y="94" width="44" height="6" rx="2" fill="#cbd5e1" />
       <rect x="104" y="106" width="28" height="6" rx="2" fill="#e2e8f0" />
       <circle cx="78" cy="58" r="22" fill="#fff" stroke="#f1d4a8" strokeWidth="1.5" />
-      <path d="M78 42a16 16 0 0116 16H78z" fill="#d97706" />
-      <path d="M78 42a16 16 0 00-10 28 16 16 0 0010-12z" fill="#fbbf24" />
+      <path d="M78 42a16 16 0 0116 16H78z" fill="#B8860B" />
+      <path d="M78 42a16 16 0 00-10 28 16 16 0 0010-12z" fill="#B8860B" />
       <rect x="168" y="28" width="72" height="52" rx="8" fill="#fff" stroke="#ead7b7" />
-      <rect x="178" y="38" width="18" height="8" rx="2" fill="#d97706" />
+      <rect x="178" y="38" width="18" height="8" rx="2" fill="#B8860B" />
       <rect x="200" y="38" width="18" height="8" rx="2" fill="#e2e8f0" />
       <rect x="222" y="38" width="8" height="8" rx="2" fill="#e2e8f0" />
       <rect x="178" y="50" width="52" height="6" rx="2" fill="#cbd5e1" />
       <rect x="178" y="60" width="36" height="6" rx="2" fill="#e2e8f0" />
       <rect x="28" y="36" width="56" height="70" rx="8" fill="#fff" stroke="#ead7b7" />
-      <rect x="38" y="46" width="36" height="5" rx="2" fill="#1f2c4a" />
+      <rect x="38" y="46" width="36" height="5" rx="2" fill="#111111" />
       <rect x="38" y="58" width="28" height="4" rx="2" fill="#cbd5e1" />
       <rect x="38" y="68" width="36" height="16" rx="3" fill="#fef3c7" />
       <rect x="38" y="88" width="36" height="10" rx="3" fill="#e2e8f0" />
@@ -230,24 +230,24 @@ export default function CorporateQuoteModal({
   }
 
   const fieldClass =
-    "w-full rounded-lg border border-[#1f2c4a]/15 bg-white px-3.5 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/15";
+    "w-full rounded-lg border border-[#111111]/15 bg-white px-3.5 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 focus:outline-none focus:ring-2 focus:ring-[#111111]/15";
 
   return (
     <div
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-[#1f2c4a]/45 p-3 backdrop-blur-sm sm:p-6"
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-[#111111]/45 p-3 backdrop-blur-sm sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby={`${formId}-title`}
       onClick={handleClose}
     >
       <div
-        className="relative grid max-h-[92vh] w-full max-w-[52rem] overflow-y-auto rounded-2xl bg-white shadow-[0_24px_80px_rgba(31,44,74,0.22)] md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:overflow-hidden"
+        className="relative grid max-h-[92vh] w-full max-w-[52rem] overflow-y-auto rounded-2xl bg-white shadow-[0_24px_80px_rgba(17, 17, 17,0.22)] md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={handleClose}
-          className="absolute right-3 top-3 z-10 rounded-lg p-1.5 text-[#94a3b8] transition hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+          className="absolute right-3 top-3 z-10 rounded-lg p-1.5 text-[#94a3b8] transition hover:bg-[#111111]/[0.06] hover:text-[#111111]"
           aria-label="Close"
         >
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,12 +256,12 @@ export default function CorporateQuoteModal({
         </button>
 
         <aside className="relative hidden overflow-hidden bg-gradient-to-b from-[#fde8c8]/90 via-[#fef6eb] to-[#fff8f0] px-7 py-8 md:block md:px-8">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#1f2c4a] ring-1 ring-[#1f2c4a]/10">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#d97706]" aria-hidden />
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#111111] ring-1 ring-[#111111]/10">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#B8860B]" aria-hidden />
             Corporate solution
           </span>
           <h2
-            className="mt-5 max-w-[16rem] text-[1.65rem] font-normal leading-[1.15] text-[#1f2c4a]"
+            className="mt-5 max-w-[16rem] text-[1.65rem] font-normal leading-[1.15] text-[#111111]"
             style={{ letterSpacing: "-0.03em" }}
           >
             {copy.heading}
@@ -272,10 +272,10 @@ export default function CorporateQuoteModal({
           <ul className="mt-6 space-y-3.5">
             {features.map((item) => (
               <li key={item.title} className="flex items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#d97706] shadow-[0_1px_4px_rgba(31,44,74,0.08)]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#B8860B] shadow-[0_1px_4px_rgba(17, 17, 17,0.08)]">
                   <FeatureIcon name={item.icon} />
                 </span>
-                <span className="text-sm font-medium text-[#1f2c4a]">{item.title}</span>
+                <span className="text-sm font-medium text-[#111111]">{item.title}</span>
               </li>
             ))}
           </ul>
@@ -285,11 +285,11 @@ export default function CorporateQuoteModal({
         <div className="px-6 py-8 sm:px-8 md:max-h-[92vh] md:overflow-y-auto">
           {status === "success" ? (
             <div className="flex min-h-[22rem] flex-col justify-center">
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
                 Request received
               </p>
               <h2
-                className="mt-2 text-2xl font-normal text-[#1f2c4a]"
+                className="mt-2 text-2xl font-normal text-[#111111]"
                 style={{ letterSpacing: "-0.03em" }}
               >
                 Thanks — a learning advisor will follow up within 24 hours.
@@ -301,7 +301,7 @@ export default function CorporateQuoteModal({
               <button
                 type="button"
                 onClick={handleClose}
-                className="mt-8 w-full rounded-lg bg-[#1f2c4a] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                className="mt-8 w-full rounded-lg bg-[#111111] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#000000]"
               >
                 Done
               </button>
@@ -310,7 +310,7 @@ export default function CorporateQuoteModal({
             <>
               <h2
                 id={`${formId}-title`}
-                className="pr-8 text-[1.35rem] font-normal leading-snug text-[#1f2c4a] sm:text-[1.5rem]"
+                className="pr-8 text-[1.35rem] font-normal leading-snug text-[#111111] sm:text-[1.5rem]"
                 style={{ letterSpacing: "-0.03em" }}
               >
                 Request a custom quote for {copy.shortName}
@@ -318,7 +318,7 @@ export default function CorporateQuoteModal({
               <p className="mt-2 text-sm text-[#64748b]">
                 Your learning advisor will get back to you within 24 hours about private {copy.shortName} training.
               </p>
-              <p className="mt-5 text-sm font-semibold text-[#1f2c4a]">Your details</p>
+              <p className="mt-5 text-sm font-semibold text-[#111111]">Your details</p>
               {contextLine ? (
                 <p className="mt-1 text-xs text-[#64748b]">{contextLine}</p>
               ) : (
@@ -329,7 +329,7 @@ export default function CorporateQuoteModal({
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
                     <span className="mb-1.5 block text-[13px] font-medium text-[#475569]">
-                      Full name <span className="text-[#b45309]">*</span>
+                      Full name <span className="text-[#B8860B]">*</span>
                     </span>
                     <input
                       required
@@ -342,7 +342,7 @@ export default function CorporateQuoteModal({
                   </label>
                   <label className="block">
                     <span className="mb-1.5 block text-[13px] font-medium text-[#475569]">
-                      Email <span className="text-[#b45309]">*</span>
+                      Email <span className="text-[#B8860B]">*</span>
                     </span>
                     <input
                       required
@@ -374,9 +374,9 @@ export default function CorporateQuoteModal({
                   </label>
                   <div>
                     <span className="mb-1.5 block text-[13px] font-medium text-[#475569]">
-                      Phone number <span className="text-[#b45309]">*</span>
+                      Phone number <span className="text-[#B8860B]">*</span>
                     </span>
-                    <div className="flex overflow-hidden rounded-lg border border-[#1f2c4a]/15 focus-within:border-[#1f2c4a]/40 focus-within:ring-2 focus-within:ring-[#1f2c4a]/15">
+                    <div className="flex overflow-hidden rounded-lg border border-[#111111]/15 focus-within:border-[#111111]/40 focus-within:ring-2 focus-within:ring-[#111111]/15">
                       <label className="sr-only" htmlFor={`${formId}-country`}>
                         Country code
                       </label>
@@ -384,7 +384,7 @@ export default function CorporateQuoteModal({
                         id={`${formId}-country`}
                         value={countryIndex}
                         onChange={(e) => setCountryIndex(Number(e.target.value))}
-                        className="shrink-0 border-0 bg-[#1f2c4a]/[0.03] py-2.5 pl-2.5 pr-1 text-sm text-[#1f2c4a] focus:outline-none"
+                        className="shrink-0 border-0 bg-[#111111]/[0.03] py-2.5 pl-2.5 pr-1 text-sm text-[#111111] focus:outline-none"
                       >
                         {COUNTRIES.map((c, i) => (
                           <option key={c.code} value={i} title={c.name}>
@@ -399,7 +399,7 @@ export default function CorporateQuoteModal({
                         autoComplete="tel-national"
                         value={phoneLocal}
                         onChange={(e) => setPhoneLocal(e.target.value)}
-                        className="min-w-0 flex-1 border-0 px-3 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] focus:outline-none"
+                        className="min-w-0 flex-1 border-0 px-3 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] focus:outline-none"
                         placeholder="Phone number"
                       />
                     </div>
@@ -420,18 +420,18 @@ export default function CorporateQuoteModal({
                 </label>
 
                 {status === "error" && errorText ? (
-                  <p className="text-sm text-[#b45309]" role="alert">
+                  <p className="text-sm text-[#B8860B]" role="alert">
                     {errorText}
                   </p>
                 ) : null}
 
                 <p className="text-[11px] leading-relaxed text-[#94a3b8]">
                   By submitting this form, you agree to Agile36&apos;s{" "}
-                  <Link href="/privacy-policy" className="font-medium text-[#1f2c4a] underline underline-offset-2">
+                  <Link href="/privacy-policy" className="font-medium text-[#111111] underline underline-offset-2">
                     Privacy Policy
                   </Link>{" "}
                   and{" "}
-                  <Link href="/corporate/terms" className="font-medium text-[#1f2c4a] underline underline-offset-2">
+                  <Link href="/corporate/terms" className="font-medium text-[#111111] underline underline-offset-2">
                     Corporate Terms
                   </Link>
                   .
@@ -441,7 +441,7 @@ export default function CorporateQuoteModal({
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full rounded-lg bg-[#1f2c4a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#16243f] disabled:opacity-60 sm:w-auto sm:min-w-[11.5rem]"
+                    className="w-full rounded-lg bg-[#111111] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#000000] disabled:opacity-60 sm:w-auto sm:min-w-[11.5rem]"
                   >
                     {status === "loading" ? "Sending…" : "Get custom quote"}
                   </button>

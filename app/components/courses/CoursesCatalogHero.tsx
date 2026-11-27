@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CoursesCatalogHero() {
   return (
-    <section className="w-full bg-gradient-to-br from-[#01203d] via-[#023a6b] to-[#01203d] text-white">
+    <section className="w-full bg-gradient-to-br from-[#111111] via-[#111111] to-[#111111] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-16">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-[#7eb8ff] mb-3">

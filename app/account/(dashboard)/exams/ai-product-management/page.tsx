@@ -17,8 +17,8 @@ export default async function AiProductManagementExamPage() {
   if (!hasAccess) {
     return (
       <div className="mx-auto max-w-xl">
-        <div className="overflow-hidden rounded-sm border border-[#1a365d] bg-white shadow-lg">
-          <div className="bg-[#0f2744] px-6 py-5 text-white">
+        <div className="overflow-hidden rounded-sm border border-[#111111] bg-white shadow-lg">
+          <div className="bg-[#111111] px-6 py-5 text-white">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#93c5fd]">
               Course exam
             </p>
@@ -51,8 +51,8 @@ export default async function AiProductManagementExamPage() {
   if (!AI_PM_PORTAL_EXAM_OPEN) {
     return (
       <div className="mx-auto max-w-xl">
-        <div className="overflow-hidden rounded-sm border border-[#1a365d] bg-white shadow-lg">
-          <div className="bg-[#0f2744] px-6 py-5 text-white">
+        <div className="overflow-hidden rounded-sm border border-[#111111] bg-white shadow-lg">
+          <div className="bg-[#111111] px-6 py-5 text-white">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#93c5fd]">
               Course exam
             </p>
@@ -62,7 +62,7 @@ export default async function AiProductManagementExamPage() {
           </div>
           <div className="space-y-4 px-6 py-6 text-sm text-slate-700">
             <p>This exam is assigned to your account and is not open yet.</p>
-            <p className="rounded-sm border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] px-4 py-3 text-[#1f2c4a]">
+            <p className="rounded-sm border border-[#111111]/15 bg-[#111111]/[0.04] px-4 py-3 text-[#111111]">
               You will be able to start it here when it is unlocked. The
               questions stay hidden until then.
             </p>

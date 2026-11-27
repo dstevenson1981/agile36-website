@@ -35,24 +35,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -64,10 +64,10 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="leading-safe-certification-cost-2026" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             Leading SAFe Certification Cost in 2026: What&apos;s Included and
             What to Expect
           </h1>
@@ -75,11 +75,11 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -87,13 +87,13 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">2026</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-8">
             Leading SAFe Certification Cost in 2026: What&apos;s Included and
             What to Expect
           </h1>
@@ -114,7 +114,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               paying for before you enroll.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is Leading SAFe Certification?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -133,18 +133,18 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               most important ceremonies, read{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 PI Planning explained
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Leading SAFe Certification Cost in 2026
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Training + Exam (All-In)
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -163,7 +163,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               That&apos;s the full cost. No surprise fees at checkout.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               How Does That Compare to the Market?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -178,77 +178,77 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               Always ask before you enroll: <em>is the exam fee included?</em>
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What&apos;s NOT Always Included — Watch for These
             </h2>
             <div className="overflow-x-auto mb-8">
-              <table className="min-w-full border border-[#1f2c4a]/10 text-left text-sm md:text-base">
+              <table className="min-w-full border border-[#111111]/10 text-left text-sm md:text-base">
                 <thead>
-                  <tr className="bg-[#1f2c4a]/[0.04]">
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a]">
+                  <tr className="bg-[#111111]/[0.04]">
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111]">
                       Item
                     </th>
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a]">
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111]">
                       Agile36
                     </th>
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a]">
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111]">
                       Some competitors
                     </th>
                   </tr>
                 </thead>
                 <tbody className="text-[#475569]">
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       First exam attempt
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Included
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Separate fee
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       SAFe membership (1 year)
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Included
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Separate fee
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Practice exams
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Included
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Sometimes extra
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Post-training support
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Included
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Rarely offered
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Exam retake if needed
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       $50 to Scaled Agile
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Same
                     </td>
                   </tr>
@@ -256,7 +256,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               </table>
             </div>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               SAFe Certification Renewal Cost
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -280,7 +280,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               practices.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Is There a Cheaper Way to Get Certified?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -298,7 +298,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               enterprise experience.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is the ROI on Leading SAFe Certification?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -307,7 +307,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               compensation themes, see Scaled Agile&apos;s{" "}
               <a
                 href="https://scaledagile.com/certification/"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
                 rel="noopener noreferrer"
               >
                 SAFe certification
@@ -315,7 +315,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               materials. For government-verified occupational medians, use the{" "}
               <a
                 href="https://www.bls.gov/oes/"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
                 rel="noopener noreferrer"
               >
                 U.S. BLS OEWS
@@ -335,11 +335,11 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               first attempt.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Frequently Asked Questions
             </h2>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Is the Leading SAFe exam hard?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -349,7 +349,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               exams and exam prep support in every course.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Can I take Leading SAFe online?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -358,7 +358,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               breakout sessions, role-plays — without needing to travel.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               What&apos;s the difference between Leading SAFe and other SAFe
               certifications?
             </h3>
@@ -370,7 +370,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               then pursue the certification most relevant to their role.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Does SAFe certification expire?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -378,7 +378,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               paid directly to Scaled Agile.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               What if I don&apos;t pass the exam?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -387,7 +387,7 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
               first-attempt pass.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Ready to Get Certified?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -398,13 +398,13 @@ export default async function LeadingSafeCertificationCost2026BlogPost() {
             <p className="text-lg mb-10">
               <Link
                 href="/courses/leading-safe"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 View upcoming Leading SAFe class dates →
               </Link>
             </p>
 
-            <p className="text-base text-[#64748b] italic border-t border-[#1f2c4a]/10 pt-8">
+            <p className="text-base text-[#64748b] italic border-t border-[#111111]/10 pt-8">
               Agile36 is a SAFe Silver Partner with over 25 years of enterprise
               Agile experience. Our instructors are certified SPCs who have led
               SAFe transformations across Fortune 100 organizations.

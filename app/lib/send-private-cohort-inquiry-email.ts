@@ -75,13 +75,13 @@ export async function sendPrivateCohortInquiryDigest(
       subject: `Private cohort RTE inquiries (${leads.length})`,
       text: ['Existing private cohort RTE inquiries in assessment_emails', '', ...lines].join('\n'),
       html: `
-        <p style="margin:0 0 16px;font-size:16px;color:#1f2c4a"><strong>Existing private cohort RTE inquiries</strong></p>
+        <p style="margin:0 0 16px;font-size:16px;color:#111111"><strong>Existing private cohort RTE inquiries</strong></p>
         <p style="margin:0 0 12px;font-size:14px;color:#64748b">These were already in assessment_emails. New inquiries will email you as they come in.</p>
         <table style="border-collapse:collapse;font-size:14px;color:#475569;width:100%">
           <tr>
-            <th align="left" style="padding:8px 12px;border-bottom:2px solid #1f2c4a;color:#1f2c4a">Name</th>
-            <th align="left" style="padding:8px 12px;border-bottom:2px solid #1f2c4a;color:#1f2c4a">Email</th>
-            <th align="left" style="padding:8px 12px;border-bottom:2px solid #1f2c4a;color:#1f2c4a">Course</th>
+            <th align="left" style="padding:8px 12px;border-bottom:2px solid #111111;color:#111111">Name</th>
+            <th align="left" style="padding:8px 12px;border-bottom:2px solid #111111;color:#111111">Email</th>
+            <th align="left" style="padding:8px 12px;border-bottom:2px solid #111111;color:#111111">Course</th>
           </tr>
           ${rows}
         </table>
@@ -127,7 +127,7 @@ export async function sendPrivateCohortInquiryNotification(
   ].join('\n');
 
   const html = `
-    <p style="margin:0 0 16px;font-size:16px;color:#1f2c4a"><strong>New private cohort RTE inquiry</strong></p>
+    <p style="margin:0 0 16px;font-size:16px;color:#111111"><strong>New private cohort RTE inquiry</strong></p>
     <table style="border-collapse:collapse;font-size:14px;color:#475569">
       <tr><td style="padding:4px 16px 4px 0;color:#64748b">Name</td><td>${escapeHtml(name)}</td></tr>
       <tr><td style="padding:4px 16px 4px 0;color:#64748b">Email</td><td><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></td></tr>

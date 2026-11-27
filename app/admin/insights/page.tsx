@@ -20,9 +20,9 @@ function formatCount(value: number | null): string {
 
 function Stat({ label, value, note }: { label: string; value: string; note: string }) {
   return (
-    <div className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
+    <div className="rounded-2xl border border-[#111111]/10 bg-white p-5">
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#94a3b8]">{label}</p>
-      <p className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-[#1f2c4a]">{value}</p>
+      <p className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-[#111111]">{value}</p>
       <p className="mt-1 text-xs text-[#64748b]">{note}</p>
     </div>
   );
@@ -30,8 +30,8 @@ function Stat({ label, value, note }: { label: string; value: string; note: stri
 
 function Setup({ title, message }: { title: string; message: string }) {
   return (
-    <div className="rounded-2xl border border-[#d97706]/25 bg-[#fff7ed] p-5">
-      <p className="text-sm font-semibold text-[#1f2c4a]">{title}</p>
+    <div className="rounded-2xl border border-[#B8860B]/25 bg-[#fff7ed] p-5">
+      <p className="text-sm font-semibold text-[#111111]">{title}</p>
       <p className="mt-2 text-sm leading-6 text-[#475569]">{message}</p>
     </div>
   );
@@ -47,12 +47,12 @@ function RankList({ rows, empty }: { rows: CountRow[]; empty: string }) {
       {rows.map((row) => (
         <li key={row.name}>
           <div className="flex items-baseline justify-between gap-3 text-sm">
-            <span className="truncate text-[#1f2c4a]">{row.name}</span>
-            <span className="shrink-0 font-semibold text-[#1f2c4a]">{row.sessions.toLocaleString("en-US")}</span>
+            <span className="truncate text-[#111111]">{row.name}</span>
+            <span className="shrink-0 font-semibold text-[#111111]">{row.sessions.toLocaleString("en-US")}</span>
           </div>
-          <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#1f2c4a]/10">
+          <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#111111]/10">
             <div
-              className="h-full rounded-full bg-[#d97706]"
+              className="h-full rounded-full bg-[#B8860B]"
               style={{ width: `${Math.max(6, (row.sessions / max) * 100)}%` }}
             />
           </div>
@@ -67,14 +67,14 @@ function SourceList({ rows, empty }: { rows: SourceRow[]; empty: string }) {
     return <p className="text-sm text-[#64748b]">{empty}</p>;
   }
   return (
-    <ul className="divide-y divide-[#1f2c4a]/10">
+    <ul className="divide-y divide-[#111111]/10">
       {rows.map((row) => (
         <li key={`${row.source}-${row.medium}`} className="flex items-center justify-between gap-3 py-2.5 text-sm">
-          <span className="text-[#1f2c4a]">
+          <span className="text-[#111111]">
             {row.source}
             <span className="text-[#94a3b8]"> / {row.medium}</span>
           </span>
-          <span className="font-semibold text-[#1f2c4a]">{row.sessions.toLocaleString("en-US")}</span>
+          <span className="font-semibold text-[#111111]">{row.sessions.toLocaleString("en-US")}</span>
         </li>
       ))}
     </ul>
@@ -83,8 +83,8 @@ function SourceList({ rows, empty }: { rows: SourceRow[]; empty: string }) {
 
 function Panel({ title, note, children }: { title: string; note: string; children: ReactNode }) {
   return (
-    <section className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-5 sm:p-6">
-      <h2 className="text-lg font-normal tracking-[-0.03em] text-[#1f2c4a]">{title}</h2>
+    <section className="rounded-2xl border border-[#111111]/10 bg-white p-5 sm:p-6">
+      <h2 className="text-lg font-normal tracking-[-0.03em] text-[#111111]">{title}</h2>
       <p className="mt-1 text-xs text-[#64748b]">{note}</p>
       <div className="mt-5">{children}</div>
     </section>
@@ -108,8 +108,8 @@ export default async function InsightsPage() {
   return (
     <main className="min-h-screen bg-[#f6f9fd] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#d97706]">One view</p>
-        <h1 className="mt-2 text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">One view</p>
+        <h1 className="mt-2 text-3xl font-normal tracking-[-0.03em] text-[#111111] sm:text-4xl">
           Site insights
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-[#475569]">
@@ -159,7 +159,7 @@ export default async function InsightsPage() {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a]">What people did on the page</h2>
+          <h2 className="text-xl font-normal tracking-[-0.03em] text-[#111111]">What people did on the page</h2>
           <p className="mt-1 text-sm text-[#64748b]">Clarity, last 3 days. Microsoft only exports this window.</p>
         </div>
 

@@ -26,12 +26,12 @@ export default function BlogAuthorBio({ articleCount }: Props) {
         <div className="min-w-0 flex-1 text-center sm:text-left">
           <h2
             id="blog-author-heading"
-            className="text-lg sm:text-xl font-normal text-[#1f2c4a]"
+            className="text-lg sm:text-xl font-normal text-[#111111]"
             style={{ letterSpacing: "-0.03em" }}
           >
             <Link
               href="/blog"
-              className="underline decoration-[#1f2c4a]/30 underline-offset-2 hover:text-[#d97706] hover:decoration-[#d97706]"
+              className="underline decoration-[#111111]/30 underline-offset-2 hover:text-[#B8860B] hover:decoration-[#B8860B]"
             >
               Agile36
             </Link>

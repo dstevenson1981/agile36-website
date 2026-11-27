@@ -106,7 +106,7 @@ function rowToCohort(row: ScheduleRow): ScheduleCohortJsonLd | null {
 /** Next `limit` future rows from `course_schedules` (same filters as `/api/course-schedules`). */
 export async function fetchScheduleJsonLdCohorts(
   courseSlug: string,
-  limit = 3
+  limit = 10
 ): Promise<ScheduleJsonLdFetchResult> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey =
@@ -181,7 +181,7 @@ export async function fetchScheduleJsonLdCohortsForSegment(
   segment: LocationSegment
 ): Promise<ScheduleJsonLdFetchResult> {
   const slug = SAF_TRAINING_HUBS[segment].courseSlug;
-  return fetchScheduleJsonLdCohorts(slug, 3);
+  return fetchScheduleJsonLdCohorts(slug, 10);
 }
 
 export function scheduleCohortInstructorField(

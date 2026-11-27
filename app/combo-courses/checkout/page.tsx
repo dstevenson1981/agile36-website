@@ -214,7 +214,7 @@ function ComboCheckoutContent() {
       <main className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
           <p className="text-[#64748b] mb-4">Combo not found.</p>
-          <Link href="/combo-courses" className="text-[#d97706] font-medium hover:underline">
+          <Link href="/combo-courses" className="text-[#B8860B] font-medium hover:underline">
             Back to Combo Courses
           </Link>
         </div>
@@ -225,7 +225,7 @@ function ComboCheckoutContent() {
   if (dateCheck === "checking") {
     return (
       <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" />
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]" />
       </main>
     );
   }
@@ -234,8 +234,8 @@ function ComboCheckoutContent() {
     return (
       <main className="min-h-screen bg-black flex items-center justify-center px-4">
         <div className="max-w-md text-center">
-          <p className="text-[#1f2c4a] mb-4">{COMBO_DATE_OVERLAP_MESSAGE}</p>
-          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#d97706] font-medium hover:underline">
+          <p className="text-[#111111] mb-4">{COMBO_DATE_OVERLAP_MESSAGE}</p>
+          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#B8860B] font-medium hover:underline">
             Choose different dates
           </Link>
         </div>
@@ -248,7 +248,7 @@ function ComboCheckoutContent() {
       <main className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
           <p className="text-[#64748b] mb-4">Please select schedules first.</p>
-          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#d97706] font-medium hover:underline">
+          <Link href={`/combo-courses/schedule?combo=${comboId}`} className="text-[#B8860B] font-medium hover:underline">
             Choose schedules
           </Link>
         </div>
@@ -257,9 +257,9 @@ function ComboCheckoutContent() {
   }
 
   const orderSummary = (
-    <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 sticky top-4">
-      <h3 className="text-lg font-medium text-[#1f2c4a] mb-4">Order Summary</h3>
-      <p className="font-semibold text-[#1f2c4a] mb-2">{combo.name}</p>
+    <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 sticky top-4">
+      <h3 className="text-lg font-medium text-[#111111] mb-4">Order Summary</h3>
+      <p className="font-semibold text-[#111111] mb-2">{combo.name}</p>
       <div className="space-y-2 mb-4">
         {combo.courses.map((c) => (
           <p key={c.id} className="text-sm text-[#64748b]">
@@ -267,11 +267,11 @@ function ComboCheckoutContent() {
           </p>
         ))}
       </div>
-      <div className="border-t border-[#1f2c4a]/15 pt-4 flex justify-between items-center">
-        <span className="font-bold text-[#1f2c4a]">Total</span>
-        <span className="text-xl font-bold text-[#d97706]">USD {combo.comboPrice.toLocaleString()}</span>
+      <div className="border-t border-[#111111]/15 pt-4 flex justify-between items-center">
+        <span className="font-bold text-[#111111]">Total</span>
+        <span className="text-xl font-bold text-[#B8860B]">USD {combo.comboPrice.toLocaleString()}</span>
       </div>
-      <div className="mt-4 rounded-lg border border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+      <div className="mt-4 rounded-lg border border-[#111111]/10 bg-[#111111]/[0.04] px-3 py-2.5">
         <p className="text-sm text-[#475569]">
           Promo codes, coupons, and corporate or group discounts are not applicable to combo courses.
         </p>
@@ -280,26 +280,26 @@ function ComboCheckoutContent() {
   );
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-6">
-              <div className={`flex items-center gap-2 ${currentStep >= 1 ? "text-[#d97706]" : "text-[#64748b]"}`}>
+              <div className={`flex items-center gap-2 ${currentStep >= 1 ? "text-[#B8860B]" : "text-[#64748b]"}`}>
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                    currentStep >= 1 ? "bg-[#d97706] text-white" : "bg-[#1f2c4a]/10 text-[#64748b]"
+                    currentStep >= 1 ? "bg-[#B8860B] text-[#111111]" : "bg-[#111111]/10 text-[#64748b]"
                   }`}
                 >
                   1
                 </div>
                 <span className="font-medium">Details</span>
               </div>
-              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#1f2c4a]/20 shrink-0" />
-              <div className={`flex items-center gap-2 ${currentStep >= 2 ? "text-[#d97706]" : "text-[#64748b]"}`}>
+              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#111111]/20 shrink-0" />
+              <div className={`flex items-center gap-2 ${currentStep >= 2 ? "text-[#B8860B]" : "text-[#64748b]"}`}>
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                    currentStep >= 2 ? "bg-[#d97706] text-white" : "bg-[#1f2c4a]/10 text-[#64748b]"
+                    currentStep >= 2 ? "bg-[#B8860B] text-[#111111]" : "bg-[#111111]/10 text-[#64748b]"
                   }`}
                 >
                   2
@@ -309,8 +309,8 @@ function ComboCheckoutContent() {
             </div>
 
             {currentStep === 1 && (
-              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                <h2 className="text-xl font-normal text-[#1f2c4a] tracking-[-0.03em] mb-6">Your Details</h2>
+              <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
+                <h2 className="text-xl font-normal text-[#111111] tracking-[-0.03em] mb-6">Your Details</h2>
                 <div className="space-y-4">
                   <div className="flex gap-4">
                     <label className="flex items-center gap-2 cursor-pointer">
@@ -318,7 +318,7 @@ function ComboCheckoutContent() {
                         type="radio"
                         checked={formData.enrollingFor === "myself"}
                         onChange={() => setFormData({ ...formData, enrollingFor: "myself" })}
-                        className="w-4 h-4 accent-[#d97706]"
+                        className="w-4 h-4 accent-[#B8860B]"
                       />
                       <span className="text-sm text-[#475569]">Myself</span>
                     </label>
@@ -327,7 +327,7 @@ function ComboCheckoutContent() {
                         type="radio"
                         checked={formData.enrollingFor === "someoneElse"}
                         onChange={() => setFormData({ ...formData, enrollingFor: "someoneElse" })}
-                        className="w-4 h-4 accent-[#d97706]"
+                        className="w-4 h-4 accent-[#B8860B]"
                       />
                       <span className="text-sm text-[#475569]">Someone else</span>
                     </label>
@@ -345,7 +345,7 @@ function ComboCheckoutContent() {
                           setFormData({ ...formData, firstName: e.target.value });
                           setFormError(null);
                         }}
-                        className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
+                        className="w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50"
                         placeholder="First name"
                       />
                     </div>
@@ -361,7 +361,7 @@ function ComboCheckoutContent() {
                           setFormData({ ...formData, lastName: e.target.value });
                           setFormError(null);
                         }}
-                        className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
+                        className="w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50"
                         placeholder="Last name"
                       />
                     </div>
@@ -413,7 +413,7 @@ function ComboCheckoutContent() {
                 <button
                   onClick={handleContinue}
                   disabled={!isDetailsComplete || isProcessingPayment}
-                  className="w-full mt-6 bg-[#d97706] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#b45309] transition-colors disabled:bg-[#fed7aa] disabled:text-[#9a3412] disabled:cursor-not-allowed disabled:hover:bg-[#fed7aa]"
+                  className="w-full mt-6 bg-[#F5B942] text-[#111111] font-medium py-3 px-6 rounded-lg hover:bg-[#e0a82e] transition-colors disabled:bg-[#fed7aa] disabled:text-[#9a3412] disabled:cursor-not-allowed disabled:hover:bg-[#fed7aa]"
                 >
                   {isProcessingPayment ? "Preparing payment..." : "Continue to Payment"}
                 </button>
@@ -421,8 +421,8 @@ function ComboCheckoutContent() {
             )}
 
             {currentStep === 2 && clientSecret && paymentIntentId && (
-              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                <h2 className="text-xl font-normal text-[#1f2c4a] tracking-[-0.03em] mb-2">Secure Payment</h2>
+              <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
+                <h2 className="text-xl font-normal text-[#111111] tracking-[-0.03em] mb-2">Secure Payment</h2>
                 <p className="text-sm text-[#64748b] mb-6">
                   Promo codes and other discounts cannot be applied to combo courses. You will be charged the combo
                   price of USD {combo.comboPrice.toLocaleString()}.
@@ -435,7 +435,7 @@ function ComboCheckoutContent() {
                     appearance: {
                       theme: "stripe",
                       variables: {
-                        colorPrimary: "#d97706",
+                        colorPrimary: "#B8860B",
                         colorBackground: "#ffffff",
                         colorText: "#1f2937",
                         colorDanger: "#ef4444",
@@ -469,8 +469,8 @@ function ComboCheckoutContent() {
             )}
 
             {currentStep === 2 && !clientSecret && (
-              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
-                <h2 className="text-xl font-normal text-[#1f2c4a] tracking-[-0.03em] mb-4">Payment</h2>
+              <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
+                <h2 className="text-xl font-normal text-[#111111] tracking-[-0.03em] mb-4">Payment</h2>
                 {paymentError ? (
                   <>
                     <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 text-red-600 rounded-lg">
@@ -481,7 +481,7 @@ function ComboCheckoutContent() {
                         setCurrentStep(1);
                         setPaymentError(null);
                       }}
-                      className="w-full bg-[#d97706] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#b45309] transition-colors"
+                      className="w-full bg-[#F5B942] text-[#111111] font-medium py-3 px-6 rounded-lg hover:bg-[#e0a82e] transition-colors"
                     >
                       Back to Details
                     </button>
@@ -505,7 +505,7 @@ export default function ComboCheckoutPage() {
     <Suspense
       fallback={
         <main className="min-h-screen bg-black flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" />
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]" />
         </main>
       }
     >

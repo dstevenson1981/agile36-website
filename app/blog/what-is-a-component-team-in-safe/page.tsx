@@ -46,24 +46,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -75,21 +75,21 @@ export default async function ComponentTeamInSafeBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="what-is-a-component-team-in-safe" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             {PAGE_SEO.long}
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -97,7 +97,7 @@ export default async function ComponentTeamInSafeBlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               Glossary
             </span>
             <span className="text-sm text-[#64748b]">
@@ -105,7 +105,7 @@ export default async function ComponentTeamInSafeBlogPost() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-4 leading-tight">
             {PAGE_SEO.long}
           </h1>
           <BlogAuthorByline verb="By" updated="August 2026" />
@@ -122,7 +122,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               Release Train builds on top of.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Component Team vs. Feature Team
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -130,13 +130,13 @@ export default async function ComponentTeamInSafeBlogPost() {
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-3 text-lg text-[#475569] leading-relaxed">
               <li>
-                <strong className="text-[#1f2c4a]">Feature teams</strong> are
+                <strong className="text-[#111111]">Feature teams</strong> are
                 cross-functional and long-lived, and they deliver complete,
                 end-to-end customer-facing features on their own — minimizing
                 handoffs and dependencies between teams.
               </li>
               <li>
-                <strong className="text-[#1f2c4a]">Component teams</strong> are
+                <strong className="text-[#111111]">Component teams</strong> are
                 also cross-functional, but they&apos;re organized around a
                 single technology component instead of a feature. They build
                 depth in one part of the system rather than breadth across the
@@ -159,7 +159,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               end-to-end slices.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why Component Teams Create More Coordination Overhead
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -170,12 +170,12 @@ export default async function ComponentTeamInSafeBlogPost() {
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-3 text-lg text-[#475569] leading-relaxed">
               <li>
-                <strong className="text-[#1f2c4a]">Feature teams</strong>{" "}
+                <strong className="text-[#111111]">Feature teams</strong>{" "}
                 minimize dependencies but require broader skill coverage on each
                 team.
               </li>
               <li>
-                <strong className="text-[#1f2c4a]">Component teams</strong>{" "}
+                <strong className="text-[#111111]">Component teams</strong>{" "}
                 allow deeper technical specialization but create more handoffs,
                 more coordination, and more places where one team&apos;s delay
                 blocks another team&apos;s plan.
@@ -186,7 +186,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               Scrum of Scrums, PO Sync, and the{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 Program Board
               </Link>{" "}
@@ -196,7 +196,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               after.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               When Component Teams Make Sense
             </h2>
             <p className="text-lg text-[#475569] mb-4 leading-relaxed">
@@ -226,7 +226,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               slice instead.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Component Teams and SAFe for Teams Training
             </h2>
             <p className="text-lg text-[#475569] mb-6 leading-relaxed">
@@ -234,7 +234,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               whether structured around features or components — is part of what{" "}
               <Link
                 href="/courses/safe-for-teams"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe for Teams
               </Link>{" "}
@@ -242,7 +242,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               within an ART regardless of team topology.
             </p>
 
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 text-center mb-8">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 text-center mb-8">
               <p className="text-xl font-bold mb-3">
                 Learn how ARTs actually run
               </p>
@@ -252,7 +252,7 @@ export default async function ComponentTeamInSafeBlogPost() {
               </p>
               <Link
                 href="/courses/safe-for-teams"
-                className="inline-block bg-[#1f2c4a] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#16243f]"
+                className="inline-block bg-[#111111] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#000000]"
               >
                 SAFe for Teams Certification
               </Link>
@@ -268,14 +268,14 @@ export default async function ComponentTeamInSafeBlogPost() {
               Related reading:{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 PI Planning explained
               </Link>
               {" · "}
               <Link
                 href="/safe-for-teams-vs-leading-safe"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 SAFe for Teams vs Leading SAFe
               </Link>

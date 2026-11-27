@@ -45,9 +45,9 @@ export default function BlogHub({ posts }: Props) {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="text-center mb-10 sm:mb-14">
-        <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706] mb-3">Resources</p>
+        <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B] mb-3">Resources</p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#1f2c4a] mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#111111] mb-4"
           style={{ letterSpacing: "-0.03em" }}
         >
           Discover blogs by category
@@ -73,8 +73,8 @@ export default function BlogHub({ posts }: Props) {
               onClick={() => setActive(tab.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
                 isActive
-                  ? "bg-[#1f2c4a] text-white border-white"
-                  : "bg-[#1f2c4a]/[0.03] text-[#64748b] border-[#1f2c4a]/15 hover:border-[#1f2c4a]/30 hover:text-[#1f2c4a]"
+                  ? "bg-[#111111] text-white border-white"
+                  : "bg-[#111111]/[0.03] text-[#64748b] border-[#111111]/15 hover:border-[#111111]/30 hover:text-[#111111]"
               }`}
             >
               {tab.label}
@@ -84,7 +84,7 @@ export default function BlogHub({ posts }: Props) {
       </div>
 
       <div className="mb-6 flex items-baseline justify-between gap-4">
-        <h2 className="text-xl font-normal text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+        <h2 className="text-xl font-normal text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
           {active === "all"
             ? "Latest articles"
             : categoryLabelForId(active as Exclude<BlogCategoryId, "all">)}
@@ -99,11 +99,11 @@ export default function BlogHub({ posts }: Props) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group rounded-2xl liquid-glass overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06] flex flex-col"
+            className="group rounded-2xl liquid-glass overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06] flex flex-col"
           >
             <div className="p-5 flex flex-col flex-1">
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="inline-flex items-center text-[11px] font-medium uppercase tracking-wider text-[#d97706]">
+                <span className="inline-flex items-center text-[11px] font-medium uppercase tracking-wider text-[#B8860B]">
                   {categoryLabelForId(post.categoryId)}
                 </span>
                 {post.date ? (
@@ -112,13 +112,13 @@ export default function BlogHub({ posts }: Props) {
                   </time>
                 ) : null}
               </div>
-              <h3 className="font-medium text-[#1f2c4a] transition-colors line-clamp-3 mb-2">
+              <h3 className="font-medium text-[#111111] transition-colors line-clamp-3 mb-2">
                 {post.title}
               </h3>
               {post.description ? (
                 <p className="text-sm text-[#64748b] line-clamp-3 flex-1">{post.description}</p>
               ) : (
-                <span className="text-sm text-[#d97706] font-medium mt-auto">Read article →</span>
+                <span className="text-sm text-[#B8860B] font-medium mt-auto">Read article →</span>
               )}
             </div>
           </Link>

@@ -83,7 +83,7 @@ export default function ComboPaymentForm({
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/10 transition-colors"
+            className="flex-1 px-6 py-3 border border-[#111111]/20 rounded-lg text-[#475569] font-medium hover:bg-[#111111]/10 transition-colors"
             disabled={isProcessing}
           >
             Cancel
@@ -91,7 +91,7 @@ export default function ComboPaymentForm({
           <button
             type="submit"
             disabled={!stripe || isProcessing}
-            className="flex-1 bg-[#d97706] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#b45309] transition-colors disabled:bg-[#fed7aa] disabled:text-[#9a3412] disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 bg-[#F5B942] text-[#111111] font-medium py-3 px-6 rounded-lg hover:bg-[#e0a82e] transition-colors disabled:bg-[#fed7aa] disabled:text-[#9a3412] disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isProcessing ? (
               <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ export default function ComboPaymentForm({
           </button>
         </div>
       </form>
-      <div className="border-t border-[#1f2c4a]/15 pt-6 text-sm text-[#64748b] text-center">
+      <div className="border-t border-[#111111]/15 pt-6 text-sm text-[#64748b] text-center">
         <p>Transactions are secure & PCI-DSS compliant.</p>
         <div className="flex justify-center py-4">
           <Image src="/PCI.jpg" alt="PCI-DSS Compliant" width={400} height={200} className="max-w-full h-auto" />

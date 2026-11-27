@@ -97,7 +97,7 @@ export default function N8nWorkflowsBrowser({
               setPage(0);
             }}
             placeholder="Search title, integration, trigger…"
-            className="w-full rounded-xl border border-[#1f2c4a]/15 bg-white px-4 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] outline-none ring-[#1f2c4a]/20 focus:ring-2"
+            className="w-full rounded-xl border border-[#111111]/15 bg-white px-4 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] outline-none ring-[#111111]/20 focus:ring-2"
           />
         </label>
         <p className="text-sm text-[#64748b]">
@@ -118,8 +118,8 @@ export default function N8nWorkflowsBrowser({
               }}
               className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                 active
-                  ? 'bg-[#1f2c4a] text-white'
-                  : 'border border-[#1f2c4a]/12 bg-white text-[#475569] hover:border-[#1f2c4a]/25'
+                  ? 'bg-[#111111] text-white'
+                  : 'border border-[#111111]/12 bg-white text-[#475569] hover:border-[#111111]/25'
               }`}
             >
               {cat}
@@ -135,12 +135,12 @@ export default function N8nWorkflowsBrowser({
           return (
             <article
               key={key}
-              className="flex flex-col rounded-2xl border border-[#1f2c4a]/12 bg-white p-5 shadow-sm"
+              className="flex flex-col rounded-2xl border border-[#111111]/12 bg-white p-5 shadow-sm"
             >
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
                 {w.category}
               </p>
-              <h3 className="mt-1.5 text-[15px] font-semibold leading-snug text-[#1f2c4a]">{w.title}</h3>
+              <h3 className="mt-1.5 text-[15px] font-semibold leading-snug text-[#111111]">{w.title}</h3>
               <p className="mt-2 text-xs text-[#94a3b8]">
                 {w.nodeCount} nodes · {complexityLabel(w.complexity)} · {w.trigger}
               </p>
@@ -148,7 +148,7 @@ export default function N8nWorkflowsBrowser({
                 {w.integrations.slice(0, 5).map((integ) => (
                   <span
                     key={integ}
-                    className="rounded-md bg-[#1f2c4a]/[0.05] px-2 py-0.5 text-[11px] text-[#475569]"
+                    className="rounded-md bg-[#111111]/[0.05] px-2 py-0.5 text-[11px] text-[#475569]"
                   >
                     {integ}
                   </span>
@@ -162,14 +162,14 @@ export default function N8nWorkflowsBrowser({
                   type="button"
                   onClick={() => downloadJson(w)}
                   disabled={isDownloading}
-                  className="inline-flex items-center rounded-lg bg-[#1f2c4a] px-3 py-2 text-xs font-semibold text-white hover:bg-[#16243f] disabled:opacity-60"
+                  className="inline-flex items-center rounded-lg bg-[#111111] px-3 py-2 text-xs font-semibold text-white hover:bg-[#000000] disabled:opacity-60"
                 >
                   {isDownloading ? 'Downloading…' : 'Download JSON'}
                 </button>
                 <button
                   type="button"
                   onClick={() => copyUrl(w)}
-                  className="inline-flex items-center rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-xs font-semibold text-[#1f2c4a] hover:bg-[#1f2c4a]/[0.04]"
+                  className="inline-flex items-center rounded-lg border border-[#111111]/15 px-3 py-2 text-xs font-semibold text-[#111111] hover:bg-[#111111]/[0.04]"
                 >
                   {copiedId === key ? 'Copied link' : 'Copy import URL'}
                 </button>
@@ -180,7 +180,7 @@ export default function N8nWorkflowsBrowser({
       </div>
 
       {filtered.length === 0 && (
-        <p className="rounded-xl border border-dashed border-[#1f2c4a]/20 bg-white px-4 py-10 text-center text-sm text-[#64748b]">
+        <p className="rounded-xl border border-dashed border-[#111111]/20 bg-white px-4 py-10 text-center text-sm text-[#64748b]">
           {emptyMessage}
         </p>
       )}
@@ -191,7 +191,7 @@ export default function N8nWorkflowsBrowser({
             type="button"
             disabled={safePage <= 0}
             onClick={() => setPage((p) => Math.max(0, p - 1))}
-            className="rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-sm font-medium text-[#1f2c4a] disabled:opacity-40"
+            className="rounded-lg border border-[#111111]/15 px-3 py-2 text-sm font-medium text-[#111111] disabled:opacity-40"
           >
             Previous
           </button>
@@ -202,7 +202,7 @@ export default function N8nWorkflowsBrowser({
             type="button"
             disabled={safePage >= pageCount - 1}
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
-            className="rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-sm font-medium text-[#1f2c4a] disabled:opacity-40"
+            className="rounded-lg border border-[#111111]/15 px-3 py-2 text-sm font-medium text-[#111111] disabled:opacity-40"
           >
             Next
           </button>

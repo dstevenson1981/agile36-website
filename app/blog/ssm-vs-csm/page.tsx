@@ -37,24 +37,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -68,14 +68,14 @@ function ExecutiveSummary() {
   return (
     <section
       aria-label="At a glance"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 md:p-8 my-10"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         At a glance
       </p>
       <ul className="space-y-3 text-[#475569] text-[17px] leading-relaxed">
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">01</span>
+          <span className="text-[#B8860B] font-bold">01</span>
           <span>
             <strong>SSM</strong> is issued by Scaled Agile and built for Scrum
             Masters operating on Agile Release Trains — the standard in
@@ -83,7 +83,7 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">02</span>
+          <span className="text-[#B8860B] font-bold">02</span>
           <span>
             <strong>CSM</strong> is issued by Scrum Alliance and teaches single-
             team Scrum as defined by the Scrum Guide — stronger signal for
@@ -91,7 +91,7 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">03</span>
+          <span className="text-[#B8860B] font-bold">03</span>
           <span>
             <strong>Decision rule:</strong> if your employer mentions SAFe, PI
             Planning, or ARTs, go SSM. If the environment is single-team Scrum,
@@ -99,7 +99,7 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">04</span>
+          <span className="text-[#B8860B] font-bold">04</span>
           <span>
             Stacking both is increasingly common among consultants and senior
             Scrum Masters targeting maximum optionality.
@@ -117,7 +117,7 @@ function ComparisonCards() {
         role="img"
         aria-label="Side-by-side comparison of SSM and CSM scrum master certifications"
         viewBox="0 0 960 420"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="420" fill="rgba(255,255,255,0.03)" />
         <rect
@@ -143,7 +143,7 @@ function ComparisonCards() {
           x="240"
           y="82"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="36"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -164,7 +164,7 @@ function ComparisonCards() {
           x="720"
           y="82"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="36"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -249,7 +249,7 @@ function ComparisonCards() {
         <text
           x="82"
           y="350"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="14"
           fontWeight="600"
           fontFamily="system-ui,sans-serif"
@@ -305,7 +305,7 @@ function ComparisonCards() {
         <text
           x="562"
           y="350"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="14"
           fontWeight="600"
           fontFamily="system-ui,sans-serif"
@@ -327,7 +327,7 @@ function DecisionFlow() {
         role="img"
         aria-label="Decision tree: choosing between SSM and CSM based on your team and organization"
         viewBox="0 0 960 460"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="460" fill="rgba(255,255,255,0.03)" />
         <rect
@@ -354,7 +354,7 @@ function DecisionFlow() {
           x="480"
           y="86"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="13"
           fontFamily="system-ui,sans-serif"
         >
@@ -411,7 +411,7 @@ function DecisionFlow() {
           x="250"
           y="228"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="12"
           fontFamily="system-ui,sans-serif"
         >
@@ -432,7 +432,7 @@ function DecisionFlow() {
           x="710"
           y="228"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="12"
           fontFamily="system-ui,sans-serif"
         >
@@ -456,8 +456,8 @@ function DecisionFlow() {
           strokeWidth="3"
         />
 
-        <rect x="140" y="308" width="220" height="90" rx="12" fill="#d97706" />
-        <rect x="600" y="308" width="220" height="90" rx="12" fill="#d97706" />
+        <rect x="140" y="308" width="220" height="90" rx="12" fill="#B8860B" />
+        <rect x="600" y="308" width="220" height="90" rx="12" fill="#B8860B" />
         <text
           x="250"
           y="350"
@@ -513,7 +513,7 @@ function PullQuote({
   attribution: string;
 }) {
   return (
-    <blockquote className="border-l-4 border-[#1f2c4a]/20 pl-6 md:pl-8 my-12">
+    <blockquote className="border-l-4 border-[#111111]/20 pl-6 md:pl-8 my-12">
       <p className="text-xl md:text-2xl font-semibold text-[#334155] leading-snug italic">
         {children}
       </p>
@@ -535,15 +535,15 @@ function KeyTakeaways() {
   return (
     <section
       aria-label="Key takeaways"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 md:p-10 my-12"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 md:p-10 my-12"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-6">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-6">
         Key takeaways
       </p>
       <ol className="space-y-5">
         {items.map((item, i) => (
           <li key={i} className="flex gap-4">
-            <span className="text-[#d97706] font-bold text-lg min-w-[28px]">
+            <span className="text-[#B8860B] font-bold text-lg min-w-[28px]">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-[17px] leading-relaxed text-[#334155]">
@@ -560,21 +560,21 @@ export default async function SsmVsCsmBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="ssm-vs-csm" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             SSM vs CSM: Which Scrum Master Certification Is Right for You?
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -582,7 +582,7 @@ export default async function SsmVsCsmBlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               Scrum
             </span>
             <span className="text-sm text-[#64748b]">
@@ -590,7 +590,7 @@ export default async function SsmVsCsmBlogPost() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-4 leading-tight">
             SSM vs CSM: Which Scrum Master Certification Is Right for You?
           </h1>
           <BlogAuthorByline verb="By" updated="April 2026" />
@@ -609,7 +609,7 @@ export default async function SsmVsCsmBlogPost() {
               different jobs. The{" "}
               <Link
                 href="/courses/scrum-master"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Scrum Master course
               </Link>{" "}
@@ -625,19 +625,19 @@ export default async function SsmVsCsmBlogPost() {
 
             <ExecutiveSummary />
 
-            <p className="text-lg text-[#475569] mb-8 border-l-4 border-[#1f2c4a]/20 pl-4 leading-relaxed">
+            <p className="text-lg text-[#475569] mb-8 border-l-4 border-[#111111]/20 pl-4 leading-relaxed">
               Already CSM-certified and trying to sequence SAFe classes for an
               enterprise move? See our step-by-step guide:{" "}
               <Link
                 href="/blog/csm-to-safe-upgrade-path"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
               >
                 CSM to SAFe upgrade path
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               The 30-Second Answer
             </h2>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -666,12 +666,12 @@ export default async function SsmVsCsmBlogPost() {
               read local job ads.
             </PullQuote>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Side-by-Side
             </h2>
             <ComparisonCards />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               What Is SSM (SAFe Scrum Master)?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -682,7 +682,7 @@ export default async function SsmVsCsmBlogPost() {
               synchronized by PI Planning, coordinated by a Release Train
               Engineer.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               SSM exam at a glance:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -714,14 +714,14 @@ export default async function SsmVsCsmBlogPost() {
               facilitation in particular is covered in our{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 PI Planning explained
               </Link>{" "}
               walkthrough.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               What Is CSM (Certified Scrum Master)?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -730,7 +730,7 @@ export default async function SsmVsCsmBlogPost() {
               teaches single-team Scrum as described in the Scrum Guide — no
               scaling framework assumed.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               CSM exam at a glance:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -760,14 +760,14 @@ export default async function SsmVsCsmBlogPost() {
               employers actually live.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Who Hires for Which?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
               This is the part most comparison articles skip. Certification
               value is downstream of <em>who posts jobs requiring it</em>.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Where SSM dominates:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -780,7 +780,7 @@ export default async function SsmVsCsmBlogPost() {
               <li>Financial services, insurance, and healthcare IT</li>
               <li>Consulting firms with SAFe practice areas</li>
             </ul>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Where CSM dominates:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -804,12 +804,12 @@ export default async function SsmVsCsmBlogPost() {
               events, CSM is the call.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Decision Flow
             </h2>
             <DecisionFlow />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Salary Signal
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -823,7 +823,7 @@ export default async function SsmVsCsmBlogPost() {
               you&apos;ve done the harder work.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Which Should You Get First?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -854,11 +854,11 @@ export default async function SsmVsCsmBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Common Questions
             </h2>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Is SSM harder than CSM?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -869,7 +869,7 @@ export default async function SsmVsCsmBlogPost() {
               SSM is the easier bridge.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Can I take SSM without ever having been a Scrum Master?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -879,14 +879,14 @@ export default async function SsmVsCsmBlogPost() {
               click faster. See the full breakdown on{" "}
               <Link
                 href="/blog/safe-scrum-master-exam-questions"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SSM exam questions and format
               </Link>
               .
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Does CSM qualify me to be a Scrum Master in a SAFe environment?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -896,7 +896,7 @@ export default async function SsmVsCsmBlogPost() {
               System Demo, Inspect &amp; Adapt) that CSM doesn&apos;t cover.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Should I do SSM if my company uses LeSS or Scrum@Scale instead of
               SAFe?
             </p>
@@ -906,7 +906,7 @@ export default async function SsmVsCsmBlogPost() {
               that won&apos;t directly map.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How long does each certification take to earn?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -915,14 +915,14 @@ export default async function SsmVsCsmBlogPost() {
               exam prep. Compare with{" "}
               <Link
                 href="/blog/leading-safe-certification-cost-2026"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 Leading SAFe certification cost and timeline
               </Link>{" "}
               if you&apos;re mapping out a multi-cert path.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               What about PSM (Professional Scrum Master from Scrum.org)?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -933,7 +933,7 @@ export default async function SsmVsCsmBlogPost() {
               training to learn, SSM or CSM are the better choices.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Is SSM worth it if I already have CSM?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -942,7 +942,7 @@ export default async function SsmVsCsmBlogPost() {
               coordination work that CSM leaves out. Pair it with{" "}
               <Link
                 href="/blog/is-safe-certification-worth-it-2026"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 our breakdown of SAFe certification ROI
               </Link>{" "}
@@ -951,7 +951,7 @@ export default async function SsmVsCsmBlogPost() {
 
             <KeyTakeaways />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Ready to Decide?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -961,7 +961,7 @@ export default async function SsmVsCsmBlogPost() {
               classes virtually and in-person, and the Pro plan includes
               practice exams, a free retake, resume rewrite, and interview prep.
             </p>
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 text-center mb-8">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 text-center mb-8">
               <p className="text-xl font-bold mb-3">Take the next step</p>
               <p className="mb-5">
                 Enroll in a SAFe Scrum Master course with a real SPC-certified
@@ -969,7 +969,7 @@ export default async function SsmVsCsmBlogPost() {
               </p>
               <Link
                 href="/courses/scrum-master"
-                className="inline-block bg-[#1f2c4a] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#16243f]"
+                className="inline-block bg-[#111111] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#000000]"
               >
                 View SSM course details
               </Link>
@@ -978,21 +978,21 @@ export default async function SsmVsCsmBlogPost() {
               Related reading:{" "}
               <Link
                 href="/blog/safe-lpm-vs-popm"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 SAFe LPM vs POPM
               </Link>
               {" · "}
               <Link
                 href="/blog/popm-vs-scrum-master"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 POPM vs Scrum Master
               </Link>
               {" · "}
               <Link
                 href="/courses/advanced-scrum-master"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 SAFe Advanced Scrum Master
               </Link>

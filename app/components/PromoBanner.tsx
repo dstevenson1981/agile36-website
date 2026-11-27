@@ -8,6 +8,8 @@ import {
   getPromoCountdown,
   BANNER_COUPON_CODE,
   BANNER_DISCOUNT_AMOUNT,
+  PROMO_UNLOCK_EVENT,
+  PROMO_UNLOCK_KEY,
   PROMO_BANNER_TITLE,
   PROMO_BANNER_CTA,
   PROMO_CODE_EXPIRES_IN,
@@ -38,47 +40,6 @@ export function usePromoBannerActive(): boolean {
 
 function pad2(n: number): string {
   return String(n).padStart(2, "0");
-}
-
-function ConfettiLeft({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path
-        d="M6 8c2 4 1 10-2 14M10 4c4 2 6 8 4 14M22 6c-1 5 2 11 6 14"
-        stroke="url(#pb-gold)"
-        strokeWidth={2.2}
-        strokeLinecap="round"
-        opacity={0.92}
-      />
-      <circle cx="32" cy="10" r="3" fill="#fde68a" opacity={0.95} />
-      <circle cx="8" cy="26" r="2.5" fill="#fa4a23" opacity={0.45} />
-      <defs>
-        <linearGradient id="pb-gold" x1="0" y1="0" x2="36" y2="28" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#fef9c3" />
-          <stop offset="0.5" stopColor="#fbbf24" />
-          <stop offset="1" stopColor="#d97706" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-}
-
-function SparkStar({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path
-        d="M10 1.5l1.8 5.5h5.8l-4.7 3.4 1.8 5.5-4.7-3.4-4.7 3.4 1.8-5.5-4.7-3.4h5.8L10 1.5z"
-        fill="url(#pb-spark)"
-        opacity={0.9}
-      />
-      <defs>
-        <linearGradient id="pb-spark" x1="4" y1="2" x2="16" y2="18" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#fffbeb" />
-          <stop offset="1" stopColor="#fcd34d" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
 }
 
 function ClockOutlineIcon({ className }: { className?: string }) {
@@ -119,9 +80,9 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
       aria-atomic="true"
       aria-label={`Sale ends in ${clock}`}
     >
-      <ClockOutlineIcon className="h-4 w-4 shrink-0 text-[#64748b] sm:h-[18px] sm:w-[18px]" />
-      <span className="text-xs font-normal text-[#475569] sm:text-sm">Sale Ends In:</span>
-      <span className="text-base font-extrabold tabular-nums tracking-tight text-[#d97706] sm:text-xl">
+      <ClockOutlineIcon className="h-4 w-4 shrink-0 text-[#F5B942] sm:h-[18px] sm:w-[18px]" />
+      <span className="text-xs font-normal text-white sm:text-sm">Sale Ends In:</span>
+      <span className="text-base font-extrabold tabular-nums tracking-tight text-[#F5B942] sm:text-xl">
         {clock}
       </span>
     </div>
@@ -129,7 +90,7 @@ function PromoCountdownDisplay({ countdown }: { countdown: PromoCountdown }) {
 }
 
 /**
- * Promo strip — subscribe with email to reveal 100OFF. Code is not shown in-bar.
+ * Black Friday strip — subscribe with email to reveal 150OFF. Hidden after 4:00 PM EST.
  */
 export default function PromoBanner() {
   const [showCouponModal, setShowCouponModal] = useState(false);
@@ -150,40 +111,33 @@ export default function PromoBanner() {
   const handleClaimCoupon = () => {
     setShowCouponModal(false);
     setShowCouponDisplay(true);
+    try {
+      sessionStorage.setItem(PROMO_UNLOCK_KEY, "1");
+    } catch {
+      /* private mode */
+    }
+    window.dispatchEvent(new Event(PROMO_UNLOCK_EVENT));
   };
 
   return (
     <>
-      <div className="sticky top-0 z-[80] bg-[#f8f7f3] px-2 py-2 sm:px-3">
+      <div className="sticky top-0 z-[80] bg-[#111111] px-3 py-2 sm:px-6">
         <button
           type="button"
           onClick={() => setShowCouponModal(true)}
-          className="animate-promo-banner-gradient relative mx-auto box-border flex min-h-[64px] w-full max-w-[1260px] items-center justify-between gap-2 overflow-hidden rounded-2xl border border-[#fa4a23]/25 px-3 py-2 text-left shadow-[0_2px_12px_rgba(250,74,35,.12)] transition hover:border-[#fa4a23]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fa4a23] focus-visible:ring-offset-2 sm:gap-4 sm:px-6"
-          style={{
-            backgroundImage:
-              "linear-gradient(105deg, #fff7f4 0%, #ffffff 28%, #fff1eb 55%, #ffe8df 78%, #fff7f4 100%)",
-          }}
-          aria-label={`${PROMO_BANNER_CTA}. Enter your email to unlock your promo code. Code expires ${PROMO_CODE_EXPIRES_IN}.`}
+          className="relative mx-auto box-border flex min-h-[64px] w-full max-w-[1260px] items-center justify-between gap-2 bg-[#111111] px-1 py-2 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E10600] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:gap-4"
+          aria-label={`${PROMO_BANNER_TITLE}, $${BANNER_DISCOUNT_AMOUNT} off. ${PROMO_BANNER_CTA}. Code expires ${PROMO_CODE_EXPIRES_IN}.`}
         >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_140%_at_8%_0%,rgba(250,74,35,.10),transparent_42%),radial-gradient(70%_100%_at_92%_100%,rgba(250,74,35,.08),transparent_45%)]"
-            aria-hidden
-          />
-
-          <div className="relative flex min-w-0 items-center gap-2 sm:gap-3">
-            <ConfettiLeft className="animate-promo-confetti hidden h-7 w-8 shrink-0 opacity-90 sm:block" />
-            <SparkStar className="animate-promo-spark h-4 w-4 shrink-0 text-[#fa4a23]" />
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold leading-tight text-[#1f2c4a] sm:text-base">
-                {PROMO_BANNER_TITLE}
-              </p>
-              <p className="truncate text-xs font-medium text-[#475569] sm:text-sm">
-                Save{" "}
-                <span className="font-bold text-[#d97706]">${BANNER_DISCOUNT_AMOUNT} off</span>
-                {" — "}
-                code expires {PROMO_CODE_EXPIRES_IN}
-              </p>
-            </div>
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <span className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-md bg-[#E10600] text-[9px] font-extrabold leading-none tracking-wide text-white">
+              <span>BLACK</span>
+              <span>FRIDAY</span>
+            </span>
+            <p className="min-w-0 truncate text-sm font-extrabold leading-tight text-white sm:text-base">
+              <span className="text-[#F5B942]">{PROMO_BANNER_TITLE.toUpperCase()}</span>
+              <span className="font-medium text-white/80"> | </span>
+              <span>${BANNER_DISCOUNT_AMOUNT} OFF</span>
+            </p>
           </div>
 
           <div className="relative flex shrink-0 items-center gap-2 sm:gap-3">
@@ -192,13 +146,10 @@ export default function PromoBanner() {
             ) : (
               <div className="h-6 w-[9.5rem] shrink-0 sm:h-7 sm:w-[11.5rem]" aria-hidden />
             )}
-            <div className="hidden h-8 w-px bg-[#fa4a23]/20 sm:block" aria-hidden />
-            <div className="text-right">
-              <span className="animate-promo-cta inline-flex items-center rounded-full border border-[#fa4a23]/70 bg-[#fa4a23] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white sm:px-4 sm:text-sm">
-                {PROMO_BANNER_CTA}
-              </span>
-              <p className="mt-0.5 text-[11px] font-medium text-neutral-500">email to unlock code</p>
-            </div>
+            <span className="inline-flex items-center gap-1 rounded-md bg-[#E10600] px-3 py-2 text-xs font-extrabold tracking-wide text-white sm:px-4 sm:text-sm">
+              {PROMO_BANNER_CTA}
+              <span aria-hidden>↗</span>
+            </span>
           </div>
         </button>
       </div>

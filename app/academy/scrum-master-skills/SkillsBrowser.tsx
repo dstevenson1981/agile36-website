@@ -69,7 +69,7 @@ function ManualCopy({ text, onClose, filename }: { text: string; onClose: () => 
       role="dialog"
       aria-modal="true"
       aria-label="Copy the text"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1f2c4a]/40 p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111111]/40 p-4"
       onClick={onClose}
     >
       <div
@@ -77,10 +77,10 @@ function ManualCopy({ text, onClose, filename }: { text: string; onClose: () => 
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-[#1f2c4a]">
+          <p className="text-sm font-semibold text-[#111111]">
             Your browser blocked automatic copying. Press Ctrl+C (⌘C on a Mac) to copy.
           </p>
-          <button type="button" onClick={onClose} className="shrink-0 text-sm font-semibold text-[#64748b] hover:text-[#1f2c4a]">
+          <button type="button" onClick={onClose} className="shrink-0 text-sm font-semibold text-[#64748b] hover:text-[#111111]">
             Close
           </button>
         </div>
@@ -90,12 +90,12 @@ function ManualCopy({ text, onClose, filename }: { text: string; onClose: () => 
           autoFocus
           value={text}
           onFocus={(e) => e.currentTarget.select()}
-          className="min-h-[50vh] w-full flex-1 resize-none rounded-lg border border-[#1f2c4a]/15 bg-[#f8fafc] p-3 font-mono text-xs text-[#1f2c4a]"
+          className="min-h-[50vh] w-full flex-1 resize-none rounded-lg border border-[#111111]/15 bg-[#f8fafc] p-3 font-mono text-xs text-[#111111]"
         />
         {filename ? (
           <p className="text-xs text-[#64748b]">
             Or{' '}
-            <a href={filename} download className="font-semibold text-[#1f2c4a] hover:underline">
+            <a href={filename} download className="font-semibold text-[#111111] hover:underline">
               download SKILL.md
             </a>{' '}
             instead.
@@ -110,14 +110,14 @@ const label = (state: CopyState, idle: string) =>
   state === 'done' ? 'Copied' : state === 'failed' ? 'Copy failed' : idle;
 
 const btn =
-  'inline-flex items-center justify-center gap-1.5 rounded-lg border border-[#1f2c4a]/15 bg-white px-3 py-1.5 text-xs font-semibold text-[#1f2c4a] transition hover:border-[#1f2c4a]/35 hover:bg-[#1f2c4a]/[0.03]';
+  'inline-flex items-center justify-center gap-1.5 rounded-lg border border-[#111111]/15 bg-white px-3 py-1.5 text-xs font-semibold text-[#111111] transition hover:border-[#111111]/35 hover:bg-[#111111]/[0.03]';
 const btnPrimary =
-  'inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#16243f]';
+  'inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#000000]';
 
 export function CopyCommand({ command }: { command: string }) {
   const c = useCopy();
   return (
-    <div className="flex min-w-0 items-center gap-3 rounded-xl bg-[#1f2c4a] px-4 py-3 text-white">
+    <div className="flex min-w-0 items-center gap-3 rounded-xl bg-[#111111] px-4 py-3 text-white">
       <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-xs">{command}</code>
       <button
         type="button"
@@ -196,8 +196,8 @@ export function HowToAddSkills() {
             onClick={() => setTab(t.id)}
             className={`rounded-xl border px-4 py-3 text-left transition ${
               t.id === tab
-                ? 'border-[#1f2c4a] bg-[#1f2c4a] text-white'
-                : 'border-[#1f2c4a]/12 bg-white text-[#1f2c4a] hover:border-[#1f2c4a]/30'
+                ? 'border-[#111111] bg-[#111111] text-white'
+                : 'border-[#111111]/12 bg-white text-[#111111] hover:border-[#111111]/30'
             }`}
           >
             <span className="block text-sm font-semibold">{t.name}</span>
@@ -209,12 +209,12 @@ export function HowToAddSkills() {
         role="tabpanel"
         id={`howto-panel-${active.id}`}
         aria-labelledby={`howto-tab-${active.id}`}
-        className="mt-5 rounded-2xl border border-[#1f2c4a]/10 bg-[#f8fafc] p-5 sm:p-6"
+        className="mt-5 rounded-2xl border border-[#111111]/10 bg-[#f8fafc] p-5 sm:p-6"
       >
         <ol className="space-y-3">
           {active.steps.map((s, i) => (
             <li key={i} className="flex gap-3 text-sm leading-relaxed text-[#475569]">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#d97706]/10 text-xs font-semibold text-[#d97706]">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B8860B]/10 text-xs font-semibold text-[#B8860B]">
                 {i + 1}
               </span>
               <span className="min-w-0 pt-0.5">{s}</span>
@@ -248,13 +248,13 @@ function SkillCard({ skill, install }: { skill: ScrumSkill; install: string }) {
   return (
     <article
       id={`skill-${skill.slug}`}
-      className="flex min-w-0 scroll-mt-24 flex-col gap-3 rounded-2xl border border-[#1f2c4a]/12 bg-white p-5 shadow-sm"
+      className="flex min-w-0 scroll-mt-24 flex-col gap-3 rounded-2xl border border-[#111111]/12 bg-white p-5 shadow-sm"
     >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h4 className="break-all font-mono text-sm font-semibold text-[#1f2c4a]">{skill.slug}</h4>
+        <h4 className="break-all font-mono text-sm font-semibold text-[#111111]">{skill.slug}</h4>
         <div className="flex flex-wrap gap-1.5">
           {skill.author === 'Agile36' && (
-            <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#d97706]">
+            <span className="rounded-full bg-[#B8860B]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#B8860B]">
               Agile36
             </span>
           )}
@@ -262,7 +262,7 @@ function SkillCard({ skill, install }: { skill: ScrumSkill; install: string }) {
             {skill.level}
           </span>
           {skill.optional && (
-            <span className="rounded-full bg-[#1f2c4a]/[0.06] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#64748b]">
+            <span className="rounded-full bg-[#111111]/[0.06] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#64748b]">
               Optional
             </span>
           )}
@@ -270,17 +270,17 @@ function SkillCard({ skill, install }: { skill: ScrumSkill; install: string }) {
       </div>
       <p className="text-sm leading-relaxed text-[#475569]">{skill.job}</p>
       <p className="text-xs text-[#64748b]">
-        <span className="font-semibold text-[#1f2c4a]">Needs:</span> {skill.needs}
+        <span className="font-semibold text-[#111111]">Needs:</span> {skill.needs}
       </p>
 
-      <div className="rounded-xl bg-[#1f2c4a]/[0.04] p-3">
+      <div className="rounded-xl bg-[#111111]/[0.04] p-3">
         <div className="flex items-center justify-between gap-2">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">Try this</span>
-          <button type="button" onClick={() => tryCopy.copy(skill.tryPrompt)} className="text-xs font-semibold text-[#1f2c4a] hover:text-[#d97706]">
+          <button type="button" onClick={() => tryCopy.copy(skill.tryPrompt)} className="text-xs font-semibold text-[#111111] hover:text-[#B8860B]">
             {label(tryCopy.state, 'Copy')}
           </button>
         </div>
-        <p className="mt-1.5 text-sm text-[#1f2c4a]">&ldquo;{skill.tryPrompt}&rdquo;</p>
+        <p className="mt-1.5 text-sm text-[#111111]">&ldquo;{skill.tryPrompt}&rdquo;</p>
       </div>
 
       <div className="mt-auto flex flex-wrap gap-2 pt-1">
@@ -323,7 +323,7 @@ function SkillCard({ skill, install }: { skill: ScrumSkill; install: string }) {
         {skill.hasFiles ? (
           <>
             {' · '}
-            <a href={skill.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#1f2c4a] hover:underline">
+            <a href={skill.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] hover:underline">
               source
             </a>
           </>
@@ -355,8 +355,8 @@ export default function SkillsBrowser({ skills, install }: { skills: ScrumSkill[
                 onClick={() => setCat(c)}
                 className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                   on
-                    ? 'border-[#1f2c4a] bg-[#1f2c4a] text-white'
-                    : 'border-[#1f2c4a]/15 bg-white text-[#475569] hover:border-[#1f2c4a]/35'
+                    ? 'border-[#111111] bg-[#111111] text-white'
+                    : 'border-[#111111]/15 bg-white text-[#475569] hover:border-[#111111]/35'
                 }`}
               >
                 {c} <span className={on ? 'text-white/60' : 'text-[#94a3b8]'}>{n}</span>
@@ -370,7 +370,7 @@ export default function SkillsBrowser({ skills, install }: { skills: ScrumSkill[
             type="checkbox"
             checked={onlyCopyable}
             onChange={(e) => setOnlyCopyable(e.target.checked)}
-            className="h-3.5 w-3.5 accent-[#1f2c4a]"
+            className="h-3.5 w-3.5 accent-[#111111]"
           />
           Only show skills I can copy or download here
         </label>
@@ -381,7 +381,7 @@ export default function SkillsBrowser({ skills, install }: { skills: ScrumSkill[
         if (!items.length) return null;
         return (
           <div key={c} className="flex flex-col gap-4">
-            <h3 className="flex items-baseline gap-2 text-lg font-semibold text-[#1f2c4a]" style={{ letterSpacing: '-0.02em' }}>
+            <h3 className="flex items-baseline gap-2 text-lg font-semibold text-[#111111]" style={{ letterSpacing: '-0.02em' }}>
               {c} <span className="font-mono text-xs font-normal text-[#94a3b8]">{items.length}</span>
             </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -87,7 +87,7 @@ export default function UpgradePaymentForm({
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 px-6 py-3 border border-[#1f2c4a]/20 rounded-lg text-[#475569] font-medium hover:bg-[#1f2c4a]/5 transition-colors"
+          className="flex-1 px-6 py-3 border border-[#111111]/20 rounded-lg text-[#475569] font-medium hover:bg-[#111111]/5 transition-colors"
           disabled={isProcessing}
         >
           Cancel
@@ -95,7 +95,7 @@ export default function UpgradePaymentForm({
         <button
           type="submit"
           disabled={!stripe || isProcessing}
-          className="flex-1 bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#16243f] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="flex-1 bg-[#111111] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#000000] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isProcessing ? (
             <>

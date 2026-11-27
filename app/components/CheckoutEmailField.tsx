@@ -8,7 +8,7 @@ import {
 } from "@/app/lib/checkout-lead";
 
 const DEFAULT_CLASS =
-  "w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50";
+  "w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50";
 
 type CaptureContext = Omit<CheckoutLeadPayload, "email" | "createStripeCustomer">;
 

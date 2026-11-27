@@ -9,7 +9,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const nextParam = searchParams.get('next') || '/account';
   const nextUrl = nextParam.startsWith('/') && !nextParam.startsWith('//') ? nextParam : '/account';
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(searchParams.get('email') || '');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -75,10 +75,10 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="liquid-glass rounded-2xl p-8">
-          <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Sign in to your account</h1>
+          <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Sign in to your account</h1>
           <p className="text-[#475569] mb-6">
             Access your orders, receipts, and learning resources.
           </p>
@@ -97,7 +97,7 @@ function LoginForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="you@company.com"
               />
             </div>
@@ -109,7 +109,7 @@ function LoginForm() {
                 </label>
                 <Link
                   href="/account/forgot-password"
-                  className="text-sm text-[#d97706] hover:underline"
+                  className="text-sm text-[#B8860B] hover:underline"
                 >
                   Forgot password?
                 </Link>
@@ -119,7 +119,7 @@ function LoginForm() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="••••••••"
               />
             </div>
@@ -136,7 +136,7 @@ function LoginForm() {
                     type="button"
                     onClick={handleResendConfirmation}
                     disabled={resending}
-                    className="mt-2 block w-full text-left text-[#d97706] font-medium hover:underline disabled:opacity-50"
+                    className="mt-2 block w-full text-left text-[#B8860B] font-medium hover:underline disabled:opacity-50"
                   >
                     {resending ? 'Sending...' : 'Resend confirmation email'}
                   </button>
@@ -147,7 +147,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
+              className="w-full py-3 px-4 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] disabled:opacity-50 transition"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
@@ -156,11 +156,11 @@ function LoginForm() {
 
           <p className="mt-6 text-center text-sm text-[#64748b]">
             New to Agile36?{' '}
-            <Link href="/account/signup" className="text-[#d97706] font-medium hover:underline">
+            <Link href="/account/signup" className="text-[#B8860B] font-medium hover:underline">
               Create account
             </Link>
             {' · '}
-            <Link href="/" className="text-[#d97706] font-medium hover:underline">
+            <Link href="/" className="text-[#B8860B] font-medium hover:underline">
               Browse courses
             </Link>
           </p>

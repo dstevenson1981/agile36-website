@@ -50,15 +50,15 @@ export default async function PracticeExamUpgradePage({
   return (
     <div>
       <div className="mb-6">
-        <Link href="/account/practice-exams" className="text-[#64748b] hover:text-[#1f2c4a] text-sm transition-colors">
+        <Link href="/account/practice-exams" className="text-[#64748b] hover:text-[#111111] text-sm transition-colors">
           ← Back to Practice Exams
         </Link>
       </div>
-      <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Upgrade to Pro – Practice Exam</h1>
+      <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Upgrade to Pro – Practice Exam</h1>
       <p className="text-[#64748b] mb-6">
         Unlock the {courseName} practice exam for $50. Includes full access to all practice questions.
       </p>
-      <div className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 max-w-lg shadow-sm">
+      <div className="rounded-2xl border border-[#111111]/10 bg-white p-6 max-w-lg shadow-sm">
         <UpgradeCheckout courseSlug={courseSlug} courseName={courseName} />
       </div>
     </div>

@@ -142,10 +142,10 @@ function ComboScheduleContent() {
 
   if (!comboId || !combo) {
     return (
-      <main className="min-h-screen bg-black text-[#1f2c4a] flex items-center justify-center">
+      <main className="min-h-screen bg-black text-[#111111] flex items-center justify-center">
         <div className="text-center">
           <p className="text-[#64748b] mb-4">Combo not found.</p>
-          <Link href="/combo-courses" className="text-[#d97706] font-medium hover:underline">
+          <Link href="/combo-courses" className="text-[#B8860B] font-medium hover:underline">
             Back to Combo Courses
           </Link>
         </div>
@@ -166,31 +166,31 @@ function ComboScheduleContent() {
       : 0;
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
-      <section className="w-full border-b border-[#1f2c4a]/10 bg-black">
+    <main className="min-h-screen bg-black text-[#111111]">
+      <section className="w-full border-b border-[#111111]/10 bg-black">
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
           <nav className="mb-4 flex items-center gap-2 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/combo-courses" className="hover:text-[#1f2c4a]">
+            <Link href="/combo-courses" className="hover:text-[#111111]">
               Combo courses
             </Link>
             <span>/</span>
             <span className="text-[#334155]">Schedule</span>
           </nav>
-          <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">Combo schedule</p>
-          <h1 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] md:text-3xl">{combo.name}</h1>
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B]">Combo schedule</p>
+          <h1 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] md:text-3xl">{combo.name}</h1>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#475569]">
             Pick one live date for each course. The dates have to be on different days so you can attend both.
           </p>
           <div className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <span className="text-2xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            <span className="text-2xl font-semibold tracking-[-0.03em] text-[#111111]">
               ${combo.comboPrice.toLocaleString()}
             </span>
             <span className="text-sm text-[#94a3b8] line-through">${combo.originalPrice.toLocaleString()}</span>
-            {savePct > 0 ? <span className="text-xs font-semibold text-[#d97706]">Save {savePct}%</span> : null}
+            {savePct > 0 ? <span className="text-xs font-semibold text-[#B8860B]">Save {savePct}%</span> : null}
           </div>
         </div>
       </section>
@@ -199,7 +199,7 @@ function ComboScheduleContent() {
         {loading ? (
           <div className="space-y-3">
             {combo.courses.map((course) => (
-              <div key={course.id} className="h-24 animate-pulse rounded-2xl bg-[#1f2c4a]/[0.06]" />
+              <div key={course.id} className="h-24 animate-pulse rounded-2xl bg-[#111111]/[0.06]" />
             ))}
           </div>
         ) : (
@@ -216,19 +216,19 @@ function ComboScheduleContent() {
             return (
               <div key={course.slug}>
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#1f2c4a]/10 bg-white">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#111111]/10 bg-white">
                     <Image src={course.badge} alt="" width={48} height={48} className="h-full w-full object-cover" />
                   </span>
                   <div className="min-w-0">
-                    <h2 className="text-lg font-normal tracking-[-0.03em] text-[#1f2c4a]">{course.name}</h2>
-                    <Link href={`/courses/${course.slug}`} className="text-sm font-medium text-[#d97706] hover:underline">
+                    <h2 className="text-lg font-normal tracking-[-0.03em] text-[#111111]">{course.name}</h2>
+                    <Link href={`/courses/${course.slug}`} className="text-sm font-medium text-[#B8860B] hover:underline">
                       View course
                     </Link>
                   </div>
                 </div>
 
                 {schedules.length === 0 ? (
-                  <p className="rounded-2xl border border-dashed border-[#1f2c4a]/20 px-4 py-6 text-sm text-[#64748b]">
+                  <p className="rounded-2xl border border-dashed border-[#111111]/20 px-4 py-6 text-sm text-[#64748b]">
                     No upcoming dates for this course.
                   </p>
                 ) : (
@@ -246,14 +246,14 @@ function ComboScheduleContent() {
                           onClick={() =>
                             setSelectedSchedules((prev) => ({ ...prev, [course.slug]: schedule.id }))
                           }
-                          className={`flex w-full items-center justify-between gap-4 rounded-2xl border bg-white px-4 py-3.5 text-left transition-colors disabled:cursor-not-allowed disabled:bg-[#1f2c4a]/[0.04] disabled:opacity-60 ${
+                          className={`flex w-full items-center justify-between gap-4 rounded-2xl border bg-white px-4 py-3.5 text-left transition-colors disabled:cursor-not-allowed disabled:bg-[#111111]/[0.04] disabled:opacity-60 ${
                             selected
-                              ? "border-[#1f2c4a]"
-                              : "border-[#1f2c4a]/10 hover:border-[#1f2c4a]/30"
+                              ? "border-[#111111]"
+                              : "border-[#111111]/10 hover:border-[#111111]/30"
                           }`}
                         >
                           <span>
-                            <span className="block text-[15px] font-medium tracking-[-0.02em] text-[#1f2c4a]">
+                            <span className="block text-[15px] font-medium tracking-[-0.02em] text-[#111111]">
                               {schedule.displayDate}
                             </span>
                             <span className="mt-0.5 block text-sm text-[#64748b]">
@@ -262,7 +262,7 @@ function ComboScheduleContent() {
                           </span>
                           <span
                             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
-                              selected ? "border-[#1f2c4a] bg-[#1f2c4a]" : "border-[#1f2c4a]/25"
+                              selected ? "border-[#111111] bg-[#111111]" : "border-[#111111]/25"
                             }`}
                             aria-hidden
                           >
@@ -277,7 +277,7 @@ function ComboScheduleContent() {
                   <button
                     type="button"
                     onClick={() => setShowAllDates((prev) => ({ ...prev, [course.slug]: true }))}
-                    className="mt-3 text-sm font-medium text-[#1f2c4a] underline-offset-2 hover:underline"
+                    className="mt-3 text-sm font-medium text-[#111111] underline-offset-2 hover:underline"
                   >
                     Show all {schedules.length} dates
                   </button>
@@ -287,25 +287,25 @@ function ComboScheduleContent() {
           })
         )}
 
-        <div className="border-t border-[#1f2c4a]/10 pt-6">
+        <div className="border-t border-[#111111]/10 pt-6">
           {datesOverlap ? (
-            <p className="mb-3 text-sm text-[#b45309]">{COMBO_DATE_OVERLAP_MESSAGE}</p>
+            <p className="mb-3 text-sm text-[#B8860B]">{COMBO_DATE_OVERLAP_MESSAGE}</p>
           ) : null}
           <button
             type="button"
             onClick={handleProceed}
             disabled={!ready}
-            className="w-full rounded-lg bg-[#1f2c4a] px-6 py-3 font-medium text-white transition-colors hover:bg-[#16243f] disabled:cursor-not-allowed disabled:bg-[#1f2c4a]/30"
+            className="w-full rounded-lg bg-[#111111] px-6 py-3 font-medium text-white transition-colors hover:bg-[#000000] disabled:cursor-not-allowed disabled:bg-[#111111]/30"
           >
             Continue to checkout
           </button>
           <p className="mt-4 text-center text-xs text-[#64748b]">
             By continuing, you agree to our{" "}
-            <Link href="/privacy-policy" className="text-[#d97706] hover:underline">
+            <Link href="/privacy-policy" className="text-[#B8860B] hover:underline">
               Privacy policy
             </Link>{" "}
             and{" "}
-            <Link href="/refund-policy" className="text-[#d97706] hover:underline">
+            <Link href="/refund-policy" className="text-[#B8860B] hover:underline">
               Terms & Conditions
             </Link>
             .
@@ -320,8 +320,8 @@ export default function ComboSchedulePage() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen bg-black text-[#1f2c4a] flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]" />
+        <main className="min-h-screen bg-black text-[#111111] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]" />
         </main>
       }
     >

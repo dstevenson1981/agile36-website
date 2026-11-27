@@ -4,9 +4,9 @@ import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
 
 export default function TrustedByStrip() {
   return (
-    <section className="w-full border-y border-[#1f2c4a]/[0.06] bg-black px-4 py-10 sm:px-6 lg:px-20">
+    <section className="w-full border-b border-[#EAEAEA] bg-[#FFFFFF] px-4 py-10 sm:px-6 lg:px-20">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-8 text-center text-[11px] font-medium uppercase tracking-[0.3em] text-[#94a3b8]">
+        <p className="mb-8 text-center text-[11px] font-medium uppercase tracking-[0.3em] text-[#6B6B6B]">
           Trusted by industry leaders
         </p>
         <div className="marquee-mask marquee-paused overflow-hidden">

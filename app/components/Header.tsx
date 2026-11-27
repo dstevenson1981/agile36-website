@@ -180,12 +180,12 @@ export default function Header() {
         style={{ top: promoBannerActive ? PROMO_BANNER_STICKY_OFFSET_PX : 0 }}
         className={`w-full sticky z-50 overflow-x-clip overflow-y-visible transition-colors duration-300 ${
           isHome && cinematicHero && !scrolledPastHero
-            ? "bg-white/82 backdrop-blur-xl border-b border-[#1f2c4a]/12 shadow-sm shadow-[#1f2c4a]/5"
+            ? "bg-white/82 backdrop-blur-xl border-b border-[#111111]/12 shadow-sm shadow-[#111111]/5"
             : isHome && !scrolledPastHero
-              ? "bg-black/25 backdrop-blur-xl border-b border-[#1f2c4a]/10"
+              ? "bg-black/25 backdrop-blur-xl border-b border-[#111111]/10"
               : isHome
-                ? "bg-black/60 backdrop-blur-2xl border-b border-[#1f2c4a]/10"
-                : "bg-black border-b border-[#1f2c4a]/10"
+                ? "bg-black/60 backdrop-blur-2xl border-b border-[#111111]/10"
+                : "bg-[#FFFFFF] border-b border-[#EAEAEA]"
         }`}
       >
         <nav className="max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-8">
@@ -211,7 +211,7 @@ export default function Header() {
               >
                 <button 
                   type="button"
-                  className="flex items-center gap-2 h-10 px-3.5 rounded-full border border-[#1f2c4a]/20 bg-white text-[#1f2c4a] hover:border-[#1f2c4a]/40 hover:bg-[#1f2c4a]/[0.03] transition-colors"
+                  className="flex items-center gap-2 h-10 px-3.5 rounded-full border border-[#EAEAEA] bg-white text-[#111111] hover:border-[#6B6B6B] transition-colors"
                 >
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -229,10 +229,10 @@ export default function Header() {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="bg-white border border-[#1f2c4a]/10 rounded-xl shadow-2xl shadow-[#1f2c4a]/15 overflow-hidden">
+                    <div className="bg-white border border-[#111111]/10 rounded-xl shadow-2xl shadow-[#111111]/15 overflow-hidden">
                     <div className="flex flex-col sm:flex-row">
                       {/* Left Sidebar - Categories */}
-                      <div className="w-full sm:w-52 shrink-0 bg-[#1f2c4a]/[0.03] border-b sm:border-b-0 sm:border-r border-[#1f2c4a]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4 flex flex-col">
+                      <div className="w-full sm:w-52 shrink-0 bg-[#111111]/[0.03] border-b sm:border-b-0 sm:border-r border-[#111111]/10 rounded-t-xl sm:rounded-t-none sm:rounded-l-xl p-4 flex flex-col">
                         <h3 className="font-medium text-[#94a3b8] mb-3 text-xs uppercase tracking-[0.2em]">Categories</h3>
                         <ul className="space-y-0.5 flex-1">
                           {MEGA_MENU_CATEGORIES.map((category) => (
@@ -242,8 +242,8 @@ export default function Header() {
                                 onClick={() => setShowMegaMenu(false)}
                                 className={`w-full text-left px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                                   selectedMegaMenuCategory === category.id
-                                    ? "bg-[#1f2c4a] text-white"
-                                    : "text-[#475569] hover:bg-[#1f2c4a]/10"
+                                    ? "bg-[#111111] text-white"
+                                    : "text-[#475569] hover:bg-[#111111]/10"
                                 }`}
                               >
                                 <div className="flex items-center justify-between gap-2">
@@ -261,7 +261,7 @@ export default function Header() {
                         <Link
                           href="/courses"
                           onClick={() => setShowMegaMenu(false)}
-                          className="mt-4 pt-3 border-t border-[#1f2c4a]/10 text-sm font-medium text-[#d97706] hover:text-[#b45309] flex items-center gap-1.5"
+                          className="mt-4 pt-3 border-t border-[#111111]/10 text-sm font-medium text-[#B8860B] hover:text-[#B8860B] flex items-center gap-1.5"
                         >
                           Browse All Courses
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -274,7 +274,7 @@ export default function Header() {
                       <div className="flex-1 p-5 sm:p-6 min-w-0">
                         <div className="flex items-start justify-between gap-4 mb-4">
                           <div className="min-w-0">
-                            <h3 className="font-semibold text-[#1f2c4a] text-lg leading-tight">
+                            <h3 className="font-semibold text-[#111111] text-lg leading-tight">
                               {selectedCategoryMeta.label}
                             </h3>
                             <p className="text-sm text-[#64748b] mt-1 leading-snug max-w-xl">
@@ -284,7 +284,7 @@ export default function Header() {
                           <Link
                             href={`/courses?category=${encodeURIComponent(selectedMegaMenuCategory)}`}
                             onClick={() => setShowMegaMenu(false)}
-                            className="text-sm text-[#d97706] hover:text-[#b45309] font-medium whitespace-nowrap shrink-0"
+                            className="text-sm text-[#B8860B] hover:text-[#B8860B] font-medium whitespace-nowrap shrink-0"
                           >
                             View all {selectedCategoryMeta.label === "AI Courses" ? "AI Courses" : `${selectedCategoryMeta.label} Courses`}
                           </Link>
@@ -295,9 +295,9 @@ export default function Header() {
                               <Link
                                 href={getCatalogCourseUrl(course)}
                                 onClick={() => setShowMegaMenu(false)}
-                                className="flex items-start gap-2.5 py-2 px-1.5 -mx-1.5 rounded-md hover:bg-[#1f2c4a]/[0.06] transition-colors group"
+                                className="flex items-start gap-2.5 py-2 px-1.5 -mx-1.5 rounded-md hover:bg-[#111111]/[0.06] transition-colors group"
                               >
-                                <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-[#1f2c4a]/10 ring-1 ring-[#1f2c4a]/10">
+                                <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-[#111111]/10 ring-1 ring-[#111111]/10">
                                   <Image
                                     src={getCatalogCourseImage(course)}
                                     alt=""
@@ -309,11 +309,11 @@ export default function Header() {
                                 </div>
                                 <div className="flex-1 min-w-0 pt-0.5">
                                   <div className="flex items-start gap-1.5 flex-wrap">
-                                    <h4 className="text-[13px] font-medium text-[#1f2c4a] group-hover:text-[#d97706] transition-colors leading-snug">
+                                    <h4 className="text-[13px] font-medium text-[#111111] group-hover:text-[#B8860B] transition-colors leading-snug">
                                       {course.title}
                                     </h4>
                                     {course.popular && (
-                                      <span className="bg-[#d97706]/15 text-[#d97706] text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                                      <span className="bg-[#B8860B]/15 text-[#B8860B] text-[10px] font-semibold px-1.5 py-0.5 rounded-full shrink-0">
                                         Popular
                                       </span>
                                     )}
@@ -354,52 +354,52 @@ export default function Header() {
               <div className="hidden xl:flex items-center gap-2.5 2xl:gap-4">
                 <Link
                   href="/combo-courses"
-                  className="flex items-center gap-1 whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="flex items-center gap-1 whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Combo Courses
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30">
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#FFF9EC] text-[#B8860B] border border-[#B8860B]">
                     New
                   </span>
                 </Link>
                 <Link
                   href="/courses"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Courses
                 </Link>
                 <Link
                   href="/blog"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Blogs
                 </Link>
                 <Link
                   href="/test"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Practice Tests
                 </Link>
                 <Link
                   href="/testimonials"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Testimonials
                 </Link>
                 <Link
                   href="/corporate"
-                  className="whitespace-nowrap text-[#1f2c4a] hover:text-[#d97706] font-medium transition-colors text-[13px] 2xl:text-sm"
+                  className="whitespace-nowrap text-[#111111] hover:text-[#B8860B] font-medium transition-colors text-[13px] 2xl:text-sm"
                 >
                   Corporate
                 </Link>
                 <Link
                   href="/account"
-                  className="inline-flex items-center justify-center h-9 px-3.5 rounded-lg bg-[#1f2c4a] text-white text-[13px] 2xl:text-sm font-semibold hover:bg-[#16243f] transition-colors whitespace-nowrap"
+                  className="inline-flex items-center justify-center h-9 px-3.5 rounded-lg bg-[#111111] text-white text-[13px] 2xl:text-sm font-semibold hover:bg-[#000000] transition-colors whitespace-nowrap"
                 >
                   My Account
                 </Link>
                 <Link
                   href="/contact"
-                  className="p-2 text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                  className="p-2 text-[#111111] hover:bg-[#111111]/5 rounded-md transition-colors"
                   title="Contact Us"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -410,7 +410,7 @@ export default function Header() {
 
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1f2c4a] hover:bg-[#1f2c4a]/10 rounded-md transition-colors"
+                className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#111111] hover:bg-[#111111]/5 rounded-md transition-colors"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -428,64 +428,64 @@ export default function Header() {
 
         {/* Compact menu — below xl so every item is still available on laptop/phone */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t border-[#1f2c4a]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
+          <div className="xl:hidden bg-white border-t border-[#111111]/10 shadow-lg max-h-[min(80vh,32rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               <Link 
                 href="/combo-courses" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="flex items-center gap-2 px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Combo Courses
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#d97706]/15 text-[#d97706] border border-[#d97706]/30">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#B8860B]/15 text-[#B8860B] border border-[#B8860B]/30">
                   New
                 </span>
               </Link>
               <Link 
                 href="/courses" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 All Courses
               </Link>
               <Link 
                 href="/blog" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Blogs
               </Link>
               <Link 
                 href="/test" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Practice Tests
               </Link>
               <Link 
                 href="/testimonials" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Testimonials
               </Link>
               <Link 
                 href="/corporate" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Corporate
               </Link>
               <Link 
                 href="/account" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-semibold"
+                className="mt-2 block rounded-lg bg-[#111111] px-4 py-3 text-center font-semibold text-white hover:bg-[#000000]"
               >
                 My Account
               </Link>
               <Link 
                 href="/contact" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[#1f2c4a] hover:bg-[#1f2c4a]/5 rounded-md font-medium"
+                className="block px-4 py-3 text-[#111111] hover:bg-[#111111]/5 rounded-md font-medium"
               >
                 Contact Us
               </Link>

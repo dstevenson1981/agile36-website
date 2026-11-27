@@ -38,24 +38,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -67,10 +67,10 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="is-safe-certification-worth-it-2026" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             Is SAFe Certification Worth It in 2026? ROI, Salary Data, and the
             Honest Answer
           </h1>
@@ -78,11 +78,11 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -90,13 +90,13 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">2026</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-4">
             Is SAFe Certification Worth It in 2026? ROI, Salary Data, and the
             Honest Answer
           </h1>
@@ -111,7 +111,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               straight answer backed by actual data.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What &quot;Worth It&quot; Depends On
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -140,7 +140,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               With that context, here&apos;s what the data actually shows.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Compensation and SAFe certification (only what we can cite)
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -156,7 +156,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 compensation — see their{" "}
                 <a
                   href="https://scaledagile.com/certification/"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   SAFe certification
@@ -169,7 +169,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 and metro). Use{" "}
                 <a
                   href="https://www.bls.gov/oes/"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   Occupational Employment and Wage Statistics (OEWS)
@@ -177,7 +177,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 and search titles such as{" "}
                 <a
                   href="https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   Project management specialists
@@ -185,7 +185,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 or{" "}
                 <a
                   href="https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   Software developers
@@ -203,7 +203,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               For framework facts (not pay), start with Scaled Agile&apos;s{" "}
               <a
                 href="https://scaledagile.com/what-is-safe/"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
                 rel="noopener noreferrer"
               >
                 What is SAFe?
@@ -214,24 +214,24 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               If you already hold CSM and need a practical class order, read{" "}
               <Link
                 href="/blog/csm-to-safe-upgrade-path"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
               >
                 CSM to SAFe upgrade path
               </Link>{" "}
               — and for POPM vs delivery facilitation roles, see{" "}
               <Link
                 href="/blog/popm-vs-scrum-master"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
               >
                 POPM vs Scrum Master
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Who Gets the Most Value from SAFe Certification
             </h2>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               High ROI situations:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -252,7 +252,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 needs certified internal champions
               </li>
             </ul>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Lower ROI situations:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -277,7 +277,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               back quickly.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Career Mobility Argument
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -300,7 +300,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               directly.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What About the Time Investment?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -317,7 +317,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               pays back in cash depends on your role and market — use the{" "}
               <a
                 href="https://www.bls.gov/oes/"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
                 rel="noopener noreferrer"
               >
                 BLS OEWS tool
@@ -326,11 +326,11 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               not a blog table.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common Objections — Addressed Honestly
             </h2>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               &quot;SAFe is just a certification mill.&quot;
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -343,7 +343,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               studied the material.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               &quot;SAFe is declining in popularity.&quot;
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -355,7 +355,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               a fading one.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               &quot;I can just self-study.&quot;
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -365,28 +365,28 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               matches the job:{" "}
               <Link
                 href="/courses/leading-safe"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 Leading SAFe
               </Link>
               ,{" "}
               <Link
                 href="/courses/scrum-master"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 SSM
               </Link>
               , or{" "}
               <Link
                 href="/courses/product-owner-manager"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 POPM
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Bottom Line
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -410,7 +410,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               responsible for leading the change, the next step is{" "}
               <Link
                 href="/courses/leading-safe"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 Leading SAFe
               </Link>
@@ -418,7 +418,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               step is{" "}
               <Link
                 href="/courses/scrum-master"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 SSM
               </Link>
@@ -426,18 +426,18 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               planning, the next step is{" "}
               <Link
                 href="/courses/product-owner-manager"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 POPM
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Frequently Asked Questions
             </h2>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               How long does it take to get SAFe certified?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -446,7 +446,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               certification immediately upon passing.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Which SAFe certification should I start with?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -456,19 +456,19 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               RTE). If you are comparing Scrum paths, read{" "}
               <Link
                 href="/blog/ssm-vs-csm"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 SSM vs CSM
               </Link>{" "}
               for a side-by-side decision guide.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Does SAFe certification expire?
             </h3>
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] p-6 mb-6">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.04] p-6 mb-6">
               <p className="text-lg text-[#475569] leading-relaxed mb-4">
-                <strong className="font-semibold text-[#1f2c4a]">
+                <strong className="font-semibold text-[#111111]">
                   Checked 2026-09-30.
                 </strong>{" "}
                 Renewal is not 10 PDUs and not a fee this page can state. For
@@ -484,28 +484,28 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 Tuition on the Agile36 course pages that day:{" "}
                 <Link
                   href="/courses/leading-safe"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   Leading SAFe $515
                 </Link>
                 .{" "}
                 <Link
                   href="/courses/scrum-master"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   SAFe Scrum Master $515
                 </Link>
                 .{" "}
                 <Link
                   href="/courses/product-owner-manager"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   POPM $545
                 </Link>
                 .{" "}
                 <Link
                   href="/courses/lean-portfolio-management"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   LPM $950
                 </Link>
@@ -516,7 +516,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 responsible for leading the change, the next step is{" "}
                 <Link
                   href="/courses/leading-safe"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   Leading SAFe
                 </Link>
@@ -524,7 +524,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 step is{" "}
                 <Link
                   href="/courses/scrum-master"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   SSM
                 </Link>
@@ -532,7 +532,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
                 planning, the next step is{" "}
                 <Link
                   href="/courses/product-owner-manager"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   POPM
                 </Link>
@@ -540,7 +540,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               </p>
             </div>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Is SAFe recognized internationally?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -549,7 +549,7 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
               recognized wherever enterprise Agile has a foothold.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Start Your Certification
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -560,13 +560,13 @@ export default async function IsSafeCertificationWorthIt2026BlogPost() {
             <p className="text-lg mb-10">
               <Link
                 href="/safe-certifications"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 View all SAFe certification courses →
               </Link>
             </p>
 
-            <p className="text-base text-[#64748b] italic border-t border-[#1f2c4a]/10 pt-8">
+            <p className="text-base text-[#64748b] italic border-t border-[#111111]/10 pt-8">
               Agile36 is a SAFe Silver Partner. Our instructors are certified
               SAFe Practice Consultants (SPCs) with 15–25 years of enterprise
               experience leading Agile transformations at Fortune 100

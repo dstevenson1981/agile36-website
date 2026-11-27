@@ -58,7 +58,7 @@ function ExamAccessBlock({
       <>
         <Link
           href={testHref}
-          className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+          className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#111111] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#000000]"
         >
           Start Practice Exam
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3.5 w-3.5">
@@ -73,7 +73,7 @@ function ExamAccessBlock({
   if (hasProPlan) {
     return (
       <>
-        <div className="mt-3.5 flex w-full items-center justify-center rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] py-2.5 text-center text-[13px] font-semibold text-[#1f2c4a]">
+        <div className="mt-3.5 flex w-full items-center justify-center rounded-lg border border-[#111111]/15 bg-[#111111]/[0.04] py-2.5 text-center text-[13px] font-semibold text-[#111111]">
           Practice window ended
         </div>
         <p className="mt-2 text-center text-[11px] leading-snug text-[#94a3b8]">
@@ -87,7 +87,7 @@ function ExamAccessBlock({
     <>
       <Link
         href={`/account/practice-exams/upgrade/${upgradeSlug}`}
-        className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+        className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#111111] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#000000]"
       >
         Upgrade to Pro — $50
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3.5 w-3.5">
@@ -286,15 +286,15 @@ export default async function PracticeExamsPage({
       {upgraded && <UpgradeSuccessBanner courseSlug={upgraded} />}
 
       <div className="mb-8">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d97706]">My Account · Enrolled students</p>
-        <h1 className="text-2xl font-bold text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: '-0.03em' }}>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#B8860B]">My Account · Enrolled students</p>
+        <h1 className="text-2xl font-bold text-[#111111] md:text-3xl" style={{ letterSpacing: '-0.03em' }}>
           Pro Practice Exams
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-[#64748b]">
           Full Pro banks for your courses and combo bundles — not the free public mocks on the website.
           Included with a Pro enrollment. Basic plan? Upgrade for $50. Looking for free practice?
           Use{' '}
-          <Link href="/test" className="font-semibold text-[#d97706] underline">
+          <Link href="/test" className="font-semibold text-[#B8860B] underline">
             Practice Tests
           </Link>
           .
@@ -305,15 +305,15 @@ export default async function PracticeExamsPage({
         {visibleExams.map((exam) => (
           <article
             key={exam.courseSlug}
-            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#1f2c4a]/15 bg-white shadow-[0_12px_40px_-18px_rgba(31,44,74,0.35)] transition-shadow duration-300 hover:border-[#1f2c4a]/30 hover:shadow-[0_22px_50px_-16px_rgba(31,44,74,0.4)]"
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#111111]/15 bg-white shadow-[0_12px_40px_-18px_rgba(17, 17, 17,0.35)] transition-shadow duration-300 hover:border-[#111111]/30 hover:shadow-[0_22px_50px_-16px_rgba(17, 17, 17,0.4)]"
           >
-            <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+            <div className="bg-gradient-to-r from-[#111111] to-[#111111] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
               {exam.unlocked ? 'Pro practice exam' : exam.hasProPlan ? 'Pro' : 'Basic · upgrade available'}
             </div>
 
             <div className="flex flex-1 flex-col p-5">
               <div className="mb-4 flex justify-center">
-                <div className="h-14 w-14 overflow-hidden rounded-xl border border-[#1f2c4a]/12 bg-[#f8fafc] shadow-sm transition duration-300 group-hover:scale-105">
+                <div className="h-14 w-14 overflow-hidden rounded-xl border border-[#111111]/12 bg-[#f8fafc] shadow-sm transition duration-300 group-hover:scale-105">
                   <Image
                     src={exam.badge}
                     alt=""
@@ -324,7 +324,7 @@ export default async function PracticeExamsPage({
                 </div>
               </div>
 
-              <h2 className="mb-1 text-center text-[0.95rem] font-semibold leading-snug text-[#1f2c4a]">
+              <h2 className="mb-1 text-center text-[0.95rem] font-semibold leading-snug text-[#111111]">
                 {exam.title}
               </h2>
               <p className="mb-4 text-center text-xs text-[#94a3b8]">{exam.questionCount} · {exam.shortLabel}</p>
@@ -332,19 +332,19 @@ export default async function PracticeExamsPage({
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">Access</p>
               <div className="mt-1">
                 {exam.unlocked ? (
-                  <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                  <span className="text-[1.35rem] font-semibold leading-none text-[#111111]" style={{ letterSpacing: '-0.03em' }}>
                     Ready
                   </span>
                 ) : exam.hasProPlan ? (
-                  <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                  <span className="text-[1.35rem] font-semibold leading-none text-[#111111]" style={{ letterSpacing: '-0.03em' }}>
                     Pending unlock
                   </span>
                 ) : (
                   <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <span className="text-[1.35rem] font-semibold leading-none text-[#1f2c4a]" style={{ letterSpacing: '-0.03em' }}>
+                    <span className="text-[1.35rem] font-semibold leading-none text-[#111111]" style={{ letterSpacing: '-0.03em' }}>
                       $50
                     </span>
-                    <span className="rounded-full bg-[#d97706]/10 px-2 py-0.5 text-[10px] font-bold text-[#d97706]">
+                    <span className="rounded-full bg-[#B8860B]/10 px-2 py-0.5 text-[10px] font-bold text-[#B8860B]">
                       PRO UPGRADE
                     </span>
                   </div>
@@ -358,7 +358,7 @@ export default async function PracticeExamsPage({
                 upgradeSlug={exam.courseSlug}
               />
 
-              <div className="mt-4 border-t border-[#1f2c4a]/10 pt-3.5">
+              <div className="mt-4 border-t border-[#111111]/10 pt-3.5">
                 <p className="mb-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
                   What&apos;s included
                 </p>
@@ -375,7 +375,7 @@ export default async function PracticeExamsPage({
               </div>
 
               <div className="mt-auto pt-4">
-                <div className="flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+                <div className="flex items-center gap-2.5 rounded-lg bg-[#111111]/[0.04] px-3 py-2.5">
                   <Image
                     src="/Silver.png"
                     alt="Scaled Agile Silver Partner"
@@ -385,7 +385,7 @@ export default async function PracticeExamsPage({
                   />
                   <p className="text-[11px] leading-snug text-[#475569]">
                     Official training under our{' '}
-                    <span className="font-semibold text-[#1f2c4a]">Scaled Agile Silver Partnership</span>
+                    <span className="font-semibold text-[#111111]">Scaled Agile Silver Partnership</span>
                   </p>
                 </div>
               </div>
@@ -394,12 +394,12 @@ export default async function PracticeExamsPage({
         ))}
 
         {!hasAnyExam && (
-          <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-[#1f2c4a]/20 bg-white/70 sm:col-span-2 xl:col-span-3">
-            <div className="bg-[#1f2c4a]/10 px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">
+          <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-[#111111]/20 bg-white/70 sm:col-span-2 xl:col-span-3">
+            <div className="bg-[#111111]/10 px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748b]">
               No exams yet
             </div>
             <div className="flex flex-1 flex-col items-center justify-center p-8 text-center">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-[#1f2c4a]/10 bg-[#f8fafc]">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-[#111111]/10 bg-[#f8fafc]">
                 <svg className="h-6 w-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -409,7 +409,7 @@ export default async function PracticeExamsPage({
                   />
                 </svg>
               </div>
-              <h2 className="mb-2 text-[0.95rem] font-semibold text-[#1f2c4a]">
+              <h2 className="mb-2 text-[0.95rem] font-semibold text-[#111111]">
                 No practice exams for this account
               </h2>
               <p className="max-w-md text-sm leading-relaxed text-[#64748b]">
@@ -420,7 +420,7 @@ export default async function PracticeExamsPage({
               </p>
               <Link
                 href="/courses"
-                className="mt-5 inline-flex items-center justify-center rounded-lg bg-[#1f2c4a] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+                className="mt-5 inline-flex items-center justify-center rounded-lg bg-[#111111] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-[#000000]"
               >
                 Browse courses
               </Link>

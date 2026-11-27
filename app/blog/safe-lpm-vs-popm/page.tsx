@@ -34,24 +34,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -63,21 +63,21 @@ export default async function SafeLpmVsPopmBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="safe-lpm-vs-popm" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             SAFe LPM vs POPM: Which Certification Should You Get First?
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -85,13 +85,13 @@ export default async function SafeLpmVsPopmBlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">Guide</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-8">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-8">
             SAFe LPM vs POPM: Which Certification Should You Get First?
           </h1>
 
@@ -111,7 +111,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               Here&apos;s how to figure out which one belongs next on your path.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The 30-Second Answer
             </h2>
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
@@ -130,7 +130,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               If you&apos;re not sure which describes you, keep reading.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is SAFe POPM Certification?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -138,7 +138,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               2-day course that covers the dual role of Product Owner and
               Product Manager within the Scaled Agile Framework.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Product Owner responsibilities covered:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -147,7 +147,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               <li>Accepting team deliverables</li>
               <li>Participating in PI Planning and iteration events</li>
             </ul>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Product Manager responsibilities covered:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -159,7 +159,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               </li>
               <li>Prioritizing features at the ART level</li>
             </ul>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Who is POPM for?
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -183,7 +183,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               product lines.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is SAFe LPM Certification?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -192,7 +192,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               level — meaning across multiple value streams and ARTs, aligned to
               business strategy.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Core topics covered:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -213,7 +213,7 @@ export default async function SafeLpmVsPopmBlogPost() {
                 from ideation to delivery
               </li>
             </ul>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Who is LPM for?
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -234,97 +234,97 @@ export default async function SafeLpmVsPopmBlogPost() {
               portfolio — not the specifics of what individual teams build.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Side-by-Side Comparison
             </h2>
             <div className="overflow-x-auto mb-8">
-              <table className="min-w-full border border-[#1f2c4a]/10 text-left text-sm md:text-base">
+              <table className="min-w-full border border-[#111111]/10 text-left text-sm md:text-base">
                 <thead>
-                  <tr className="bg-[#1f2c4a]/[0.04]">
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a] w-40 md:w-48"></th>
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a]">
+                  <tr className="bg-[#111111]/[0.04]">
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111] w-40 md:w-48"></th>
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111]">
                       POPM
                     </th>
-                    <th className="border border-[#1f2c4a]/10 px-4 py-3 font-semibold text-[#1f2c4a]">
+                    <th className="border border-[#111111]/10 px-4 py-3 font-semibold text-[#111111]">
                       LPM
                     </th>
                   </tr>
                 </thead>
                 <tbody className="text-[#475569]">
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Organizational level
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Team / Program
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Portfolio
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Primary focus
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Product vision, backlogs, features
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Strategy, investment, governance
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Daily activities
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Backlog refinement, PI Planning, stakeholder collaboration
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Portfolio Kanban, epic funding, lean governance
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Typical job titles
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Product Owner, Product Manager, BA
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Portfolio Manager, PMO Director, Agile Coach, CFO/strategy
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Course length
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       2 days
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       2 days
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Prerequisite
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Leading SAFe recommended
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       Leading SAFe recommended
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3 font-medium">
+                    <td className="border border-[#111111]/10 px-4 py-3 font-medium">
                       Salary range (US, 2026)
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       $110,000–$140,000
                     </td>
-                    <td className="border border-[#1f2c4a]/10 px-4 py-3">
+                    <td className="border border-[#111111]/10 px-4 py-3">
                       $130,000–$165,000
                     </td>
                   </tr>
@@ -332,7 +332,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               </table>
             </div>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Most Common Misread
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -357,7 +357,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               — not the one that sounds more impressive.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What If I Need Both?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -376,7 +376,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               just in the courseware.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Recommended Certification Paths by Role
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -411,11 +411,11 @@ export default async function SafeLpmVsPopmBlogPost() {
               upward effectively)
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Frequently Asked Questions
             </h2>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Do I need Leading SAFe before taking POPM or LPM?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -425,7 +425,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               the material builds on core SAFe concepts.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Which has a higher salary ceiling — LPM or POPM?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -435,7 +435,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               seniority than the specific certification held.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               How long does each certification take?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -444,7 +444,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               certification within one week of their training date.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Can I take POPM and LPM together or back to back?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -453,7 +453,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               accommodate this.
             </p>
 
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Which certification is more in demand by employers in 2026?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -465,7 +465,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               with{" "}
               <a
                 href="https://www.bls.gov/oes/"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
                 rel="noopener noreferrer"
               >
                 BLS OEWS
@@ -473,7 +473,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               and live listings for your metro).
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Get Certified with Agile36
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -481,14 +481,14 @@ export default async function SafeLpmVsPopmBlogPost() {
               before moving into portfolio or product roles, start with{" "}
               <Link
                 href="/blog/ssm-vs-csm"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 SSM vs CSM
               </Link>
               . If you are weighing POPM against a Scrum Master track, see{" "}
               <Link
                 href="/blog/popm-vs-scrum-master"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 POPM vs Scrum Master
               </Link>
@@ -503,7 +503,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               <li>
                 <Link
                   href="/courses/product-owner-manager"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   SAFe POPM Certification →
                 </Link>
@@ -511,7 +511,7 @@ export default async function SafeLpmVsPopmBlogPost() {
               <li>
                 <Link
                   href="/courses/lean-portfolio-management"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   SAFe LPM Certification →
                 </Link>
@@ -519,14 +519,14 @@ export default async function SafeLpmVsPopmBlogPost() {
               <li>
                 <Link
                   href="/safe-certifications"
-                  className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                  className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
                 >
                   View all SAFe certifications →
                 </Link>
               </li>
             </ul>
 
-            <p className="text-base text-[#64748b] italic border-t border-[#1f2c4a]/10 pt-8">
+            <p className="text-base text-[#64748b] italic border-t border-[#111111]/10 pt-8">
               Agile36 is a SAFe Silver Partner. Our instructors have led SAFe
               implementations across Fortune 100 organizations with 15–25 years
               of enterprise experience.

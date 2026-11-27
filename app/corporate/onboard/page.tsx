@@ -52,29 +52,29 @@ export default function CorporateOnboardPage() {
   return (
     <div className="min-h-screen bg-[#f8f7f3] py-16 px-4">
       <div className="mx-auto max-w-xl">
-        <Link href="/corporate" className="text-sm font-medium text-[#64748b] hover:text-[#1f2c4a]">
+        <Link href="/corporate" className="text-sm font-medium text-[#64748b] hover:text-[#111111]">
           ← Back to Corporate
         </Link>
 
-        <div className="mt-6 rounded-2xl border border-[#1f2c4a]/10 bg-white p-8 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#d97706]">Corporate billing</p>
-          <h1 className="mt-2 text-3xl font-semibold text-[#1f2c4a]">Set up company billing</h1>
+        <div className="mt-6 rounded-2xl border border-[#111111]/10 bg-white p-8 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#B8860B]">Corporate billing</p>
+          <h1 className="mt-2 text-3xl font-semibold text-[#111111]">Set up company billing</h1>
           <p className="mt-3 text-[#64748b] leading-relaxed">
             For billing contacts and procurement only. You&apos;ll save a corporate card on file, then
             receive a code your employees use at checkout — they never enter your card details.
           </p>
 
-          <div className="mt-6 rounded-xl border border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] p-5">
-            <p className="text-sm font-semibold text-[#1f2c4a]">How it works</p>
+          <div className="mt-6 rounded-xl border border-[#111111]/10 bg-[#111111]/[0.03] p-5">
+            <p className="text-sm font-semibold text-[#111111]">How it works</p>
             <ol className="mt-3 space-y-3 text-sm text-[#64748b] leading-relaxed">
               <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1f2c4a] text-xs font-semibold text-white">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#111111] text-xs font-semibold text-white">
                   1
                 </span>
                 <span>Enter your company details below.</span>
               </li>
               <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1f2c4a] text-xs font-semibold text-white">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#111111] text-xs font-semibold text-white">
                   2
                 </span>
                 <span>
@@ -84,7 +84,7 @@ export default function CorporateOnboardPage() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1f2c4a] text-xs font-semibold text-white">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#111111] text-xs font-semibold text-white">
                   3
                 </span>
                 <span>
@@ -93,7 +93,7 @@ export default function CorporateOnboardPage() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1f2c4a] text-xs font-semibold text-white">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#111111] text-xs font-semibold text-white">
                   4
                 </span>
                 <span>
@@ -120,7 +120,7 @@ export default function CorporateOnboardPage() {
               />
             </svg>
             <div className="text-sm text-[#475569] leading-relaxed">
-              <p className="font-medium text-[#1f2c4a]">Your card is PCI-safe</p>
+              <p className="font-medium text-[#111111]">Your card is PCI-safe</p>
               <p className="mt-1">
                 Card entry happens entirely on Stripe. Agile36 never sees, stores, or processes your full
                 card number — Stripe handles all payment data under PCI DSS standards.
@@ -138,7 +138,7 @@ export default function CorporateOnboardPage() {
                 required
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
             </div>
 
@@ -151,7 +151,7 @@ export default function CorporateOnboardPage() {
                 required
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
             </div>
 
@@ -165,7 +165,7 @@ export default function CorporateOnboardPage() {
                 value={contactTitle}
                 onChange={(e) => setContactTitle(e.target.value)}
                 placeholder="e.g. Procurement Manager"
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
             </div>
 
@@ -179,7 +179,7 @@ export default function CorporateOnboardPage() {
                 required
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
             </div>
 
@@ -192,7 +192,7 @@ export default function CorporateOnboardPage() {
                 type="tel"
                 value={contactPhone}
                 onChange={(e) => setContactPhone(e.target.value)}
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
             </div>
 
@@ -206,7 +206,7 @@ export default function CorporateOnboardPage() {
                 value={authorizedEmailDomains}
                 onChange={(e) => setAuthorizedEmailDomains(e.target.value)}
                 placeholder="company.com"
-                className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/5 px-4 py-3 text-[#1f2c4a] focus:border-[#1f2c4a]/40 focus:outline-none"
+                className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/5 px-4 py-3 text-[#111111] focus:border-[#111111]/40 focus:outline-none"
               />
               <p className="mt-1 text-xs text-[#94a3b8]">
                 Enter the <strong className="font-medium text-[#64748b]">domain only</strong> — e.g.{' '}
@@ -215,22 +215,22 @@ export default function CorporateOnboardPage() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] p-4">
+            <div className="rounded-lg border border-[#111111]/10 bg-[#111111]/[0.03] p-4">
               <label className="flex cursor-pointer items-start gap-3">
                 <input
                   type="checkbox"
                   checked={termsAccepted}
                   onChange={(e) => setTermsAccepted(e.target.checked)}
-                  className="mt-1 h-4 w-4 rounded border-[#1f2c4a]/30"
+                  className="mt-1 h-4 w-4 rounded border-[#111111]/30"
                 />
                 <span className="text-sm text-[#475569] leading-relaxed">
                   I certify that I am authorized to bind my organization and authorize Agile36 to charge the
                   payment method on file for eligible employee registrations in accordance with the{' '}
-                  <Link href="/corporate/terms" className="font-medium text-[#d97706] underline hover:no-underline" target="_blank">
+                  <Link href="/corporate/terms" className="font-medium text-[#B8860B] underline hover:no-underline" target="_blank">
                     Corporate Billing Terms &amp; Conditions
                   </Link>{' '}
                   and{' '}
-                  <Link href="/refund-policy" className="font-medium text-[#d97706] underline hover:no-underline" target="_blank">
+                  <Link href="/refund-policy" className="font-medium text-[#B8860B] underline hover:no-underline" target="_blank">
                     Refund and Cancellation Policy
                   </Link>
                   . *
@@ -247,7 +247,7 @@ export default function CorporateOnboardPage() {
             <button
               type="submit"
               disabled={loading || !termsAccepted}
-              className="w-full rounded-lg bg-[#1f2c4a] py-4 font-medium text-white transition-colors hover:bg-[#16243f] disabled:opacity-60"
+              className="w-full rounded-lg bg-[#111111] py-4 font-medium text-white transition-colors hover:bg-[#000000] disabled:opacity-60"
             >
               {loading ? 'Redirecting to Stripe…' : 'Continue to secure card setup'}
             </button>

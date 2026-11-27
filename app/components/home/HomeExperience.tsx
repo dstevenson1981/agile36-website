@@ -163,7 +163,7 @@ function CourseCard({ course }: { course: CatalogCourse }) {
   return (
     <Link
       href={getCatalogCourseUrl(course)}
-      className="course-card group relative flex flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
+      className="course-card group relative flex flex-col overflow-hidden rounded-2xl liquid-glass transition-all duration-300 hover:-translate-y-1.5 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06]"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -175,11 +175,11 @@ function CourseCard({ course }: { course: CatalogCourse }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute left-4 top-4 flex gap-2">
-          <span className="liquid-glass rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-[#1f2c4a]">
+          <span className="liquid-glass rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-[#111111]">
             {course.category}
           </span>
           {course.popular && (
-            <span className="rounded-full bg-[#1f2c4a] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+            <span className="rounded-full bg-[#111111] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
               Popular
             </span>
           )}
@@ -187,7 +187,7 @@ function CourseCard({ course }: { course: CatalogCourse }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-medium leading-snug text-[#1f2c4a]">
+        <h3 className="text-lg font-medium leading-snug text-[#111111]">
           {course.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#64748b]">
@@ -200,16 +200,16 @@ function CourseCard({ course }: { course: CatalogCourse }) {
           <span>{course.enrolled}</span>
         </div>
 
-        <div className="mt-5 flex items-end justify-between border-t border-[#1f2c4a]/10 pt-4">
+        <div className="mt-5 flex items-end justify-between border-t border-[#111111]/10 pt-4">
           {isPrivate && course.price <= 0 ? (
-            <span className="text-sm font-medium text-[#1f2c4a]">Private cohort</span>
+            <span className="text-sm font-medium text-[#111111]">Private cohort</span>
           ) : isPrivate ? (
-            <span className="text-2xl font-semibold text-[#1f2c4a]">
+            <span className="text-2xl font-semibold text-[#111111]">
               {formatPrice(course.price)}
             </span>
           ) : (
             <span className="flex items-baseline gap-2">
-              <span className="text-2xl font-semibold text-[#1f2c4a]">
+              <span className="text-2xl font-semibold text-[#111111]">
                 {formatPrice(course.price)}
               </span>
               <span className="text-sm text-[#94a3b8] line-through">
@@ -217,7 +217,7 @@ function CourseCard({ course }: { course: CatalogCourse }) {
               </span>
             </span>
           )}
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f2c4a]/20 text-[#1f2c4a] transition-all duration-300 group-hover:bg-[#1f2c4a] group-hover:text-white">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#111111]/20 text-[#111111] transition-all duration-300 group-hover:bg-[#111111] group-hover:text-white">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
             </svg>
@@ -243,7 +243,7 @@ function SectionHeading({
         {eyebrow}
       </p>
       <h2
-        className="text-4xl font-normal leading-[1.08] text-[#1f2c4a] md:text-5xl"
+        className="text-4xl font-normal leading-[1.08] text-[#111111] md:text-5xl"
         style={{ letterSpacing: "-0.03em" }}
       >
         {title}
@@ -383,10 +383,10 @@ export function HomeExperienceBody({
   }, [activeTab]);
 
   return (
-    <div ref={rootRef} className="relative isolate overflow-x-clip bg-gradient-to-b from-white via-[#f3f7fd] to-[#e9f1fa] text-[#1f2c4a]">
+    <div ref={rootRef} className="relative isolate overflow-x-clip bg-gradient-to-b from-white via-[#f3f7fd] to-[#e9f1fa] text-[#111111]">
       {/* Ambient color depth — fixed glows the glass surfaces refract while scrolling */}
       <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute -left-48 -top-48 h-[65vh] w-[65vh] rounded-full bg-[#d97706]/[0.08] blur-[140px]" />
+        <div className="absolute -left-48 -top-48 h-[65vh] w-[65vh] rounded-full bg-[#B8860B]/[0.08] blur-[140px]" />
         <div className="absolute -right-48 top-1/4 h-[75vh] w-[75vh] rounded-full bg-blue-500/[0.10] blur-[160px]" />
         <div className="absolute -bottom-32 left-1/4 h-[55vh] w-[55vh] rounded-full bg-cyan-400/[0.07] blur-[140px]" />
       </div>
@@ -395,14 +395,14 @@ export function HomeExperienceBody({
       <div className="film-grain" aria-hidden="true" />
 
       {/* ========================== TRUSTED BY ============================ */}
-      <section className="-mt-6 border-b border-[#1f2c4a]/10 px-6 pb-16 pt-2 md:-mt-10 md:px-12 md:pb-20 lg:px-16">
+      <section className="-mt-6 border-b border-[#111111]/10 px-6 pb-16 pt-2 md:-mt-10 md:px-12 md:pb-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d97706]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#B8860B]">
               Trusted by professionals from
             </p>
             <h2
-              className="mx-auto mt-4 max-w-3xl text-2xl font-medium text-[#1f2c4a] md:text-4xl"
+              className="mx-auto mt-4 max-w-3xl text-2xl font-medium text-[#111111] md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
             >
               25,000+ certified at the world&apos;s most demanding companies
@@ -442,7 +442,7 @@ export function HomeExperienceBody({
             {/* Feature tile — certified SPC coaches */}
             <div
               data-reveal
-              className="group relative min-h-[340px] overflow-hidden rounded-3xl border border-[#1f2c4a]/10 md:col-span-2 lg:row-span-2 lg:min-h-0"
+              className="group relative min-h-[340px] overflow-hidden rounded-3xl border border-[#111111]/10 md:col-span-2 lg:row-span-2 lg:min-h-0"
             >
               <Image
                 src="/coaches-tile.jpg"
@@ -453,10 +453,10 @@ export function HomeExperienceBody({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/55 to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-8">
-                <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">
+                <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B]">
                   Certified SPC Instructors
                 </p>
-                <h3 className="mt-3 max-w-md text-2xl font-normal text-[#1f2c4a] md:text-3xl" style={{ letterSpacing: "-0.02em" }}>
+                <h3 className="mt-3 max-w-md text-2xl font-normal text-[#111111] md:text-3xl" style={{ letterSpacing: "-0.02em" }}>
                   Coaches who run real enterprise transformations
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-[#475569]">
@@ -467,36 +467,36 @@ export function HomeExperienceBody({
             </div>
 
             {/* Stat — professionals trained */}
-            <div data-reveal className="flex flex-col justify-between rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#1f2c4a]/[0.06]">
+            <div data-reveal className="flex flex-col justify-between rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#111111]/[0.06]">
               <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">
                 Professionals trained
               </p>
-              <p className="text-5xl font-semibold text-[#1f2c4a] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+              <p className="text-5xl font-semibold text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
                 <span data-count={25}>25</span>
-                <span className="text-[#d97706]">K+</span>
+                <span className="text-[#B8860B]">K+</span>
               </p>
             </div>
 
             {/* Stat — instructor rating */}
-            <div data-reveal className="flex flex-col justify-between rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#1f2c4a]/[0.06]">
+            <div data-reveal className="flex flex-col justify-between rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#111111]/[0.06]">
               <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">
                 Average instructor rating
               </p>
               <div>
-                <p className="text-5xl font-semibold text-[#1f2c4a] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+                <p className="text-5xl font-semibold text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
                   <span data-count={4.9} data-decimals={1}>4.9</span>
                 </p>
-                <p className="mt-1 text-sm tracking-[0.2em] text-[#d97706]">★★★★★</p>
+                <p className="mt-1 text-sm tracking-[0.2em] text-[#B8860B]">★★★★★</p>
               </div>
             </div>
 
             {/* Scaled Agile Silver Partner */}
-            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#1f2c4a]/[0.06] md:col-span-2">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">
+            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#111111]/[0.06] md:col-span-2">
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B]">
                 Scaled Agile Silver Partner
               </p>
               <div>
-                <h3 className="text-xl font-normal text-[#1f2c4a] md:text-2xl" style={{ letterSpacing: "-0.02em" }}>
+                <h3 className="text-xl font-normal text-[#111111] md:text-2xl" style={{ letterSpacing: "-0.02em" }}>
                   Official partner, official curriculum
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
@@ -507,12 +507,12 @@ export function HomeExperienceBody({
             </div>
 
             {/* AI woven into every class */}
-            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#1f2c4a]/[0.06] md:col-span-2">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d97706]">
+            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#111111]/[0.06] md:col-span-2">
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#B8860B]">
                 AI in every class
               </p>
               <div>
-                <h3 className="text-xl font-normal text-[#1f2c4a] md:text-2xl" style={{ letterSpacing: "-0.02em" }}>
+                <h3 className="text-xl font-normal text-[#111111] md:text-2xl" style={{ letterSpacing: "-0.02em" }}>
                   Learn the way modern teams actually work
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
@@ -523,14 +523,14 @@ export function HomeExperienceBody({
             </div>
 
             {/* Live, virtual, global */}
-            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#1f2c4a]/[0.06]">
+            <div data-reveal className="flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:bg-[#111111]/[0.06]">
               <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">
                 Live, virtual, global
               </p>
               <div>
-                <p className="text-4xl font-semibold text-[#1f2c4a]" style={{ letterSpacing: "-0.03em" }}>
+                <p className="text-4xl font-semibold text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
                   <span data-count={15}>15</span>
-                  <span className="text-[#d97706]">+</span>
+                  <span className="text-[#B8860B]">+</span>
                 </p>
                 <p className="mt-1 text-sm text-[#64748b]">
                   live courses across time zones — no recordings, ever
@@ -542,7 +542,7 @@ export function HomeExperienceBody({
             <Link
               href="/test"
               data-reveal
-              className="group flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
+              className="group flex flex-col justify-between gap-4 rounded-3xl liquid-glass p-7 transition-colors duration-300 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06]"
             >
               <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">
                 Exam-ready by design
@@ -551,7 +551,7 @@ export function HomeExperienceBody({
                 <p className="text-sm leading-relaxed text-[#64748b]">
                   Free practice exams that mirror the real tests.
                 </p>
-                <span className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[#1f2c4a]">
+                <span className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[#111111]">
                   Try one free
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
@@ -579,8 +579,8 @@ export function HomeExperienceBody({
                 onClick={() => setActiveTab(tab)}
                 className={`rounded-lg px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
                   activeTab === tab
-                    ? "bg-[#1f2c4a] text-white"
-                    : "liquid-glass text-[#475569] hover:text-[#1f2c4a]"
+                    ? "bg-[#111111] text-white"
+                    : "liquid-glass text-[#475569] hover:text-[#111111]"
                 }`}
               >
                 {tab}
@@ -612,7 +612,7 @@ export function HomeExperienceBody({
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">
               Free Practice Exams
             </p>
-            <h2 className="text-4xl font-normal leading-[1.08] text-[#1f2c4a] md:text-5xl" style={{ letterSpacing: "-0.03em" }}>
+            <h2 className="text-4xl font-normal leading-[1.08] text-[#111111] md:text-5xl" style={{ letterSpacing: "-0.03em" }}>
               Walk into the exam already knowing you passed
             </h2>
             <ul className="mt-8 space-y-4">
@@ -623,14 +623,14 @@ export function HomeExperienceBody({
                 "Covers SAFe® Scrum Master, Leading SAFe®, POPM and more",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-base text-[#475569] md:text-lg">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B8860B]" />
                   {item}
                 </li>
               ))}
             </ul>
             <Link
               href="/test"
-              className="mt-9 inline-block rounded-lg bg-white px-8 py-3 font-medium text-[#1f2c4a] transition-colors hover:bg-[#16243f]"
+              className="mt-9 inline-block rounded-lg bg-white px-8 py-3 font-medium text-[#111111] transition-colors hover:bg-[#000000]"
             >
               Try a Practice Exam — Free
             </Link>
@@ -648,7 +648,7 @@ export function HomeExperienceBody({
                 if (el.paused) el.play().catch(() => {});
               }}
               data-parallax
-              className="bg-video w-full rounded-2xl border border-[#1f2c4a]/10 shadow-xl shadow-[#1f2c4a]/10"
+              className="bg-video w-full rounded-2xl border border-[#111111]/10 shadow-xl shadow-[#111111]/10"
             />
           </div>
         </div>
@@ -659,7 +659,7 @@ export function HomeExperienceBody({
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
           <div data-reveal className="liquid-glass rounded-2xl p-10 md:p-12">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">For Individuals</p>
-            <h3 className="mt-4 text-3xl font-normal text-[#1f2c4a] md:text-4xl" style={{ letterSpacing: "-0.03em" }}>
+            <h3 className="mt-4 text-3xl font-normal text-[#111111] md:text-4xl" style={{ letterSpacing: "-0.03em" }}>
               Your next role is one certification away
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-[#475569] md:text-lg">
@@ -669,7 +669,7 @@ export function HomeExperienceBody({
             </p>
             <Link
               href="/courses"
-              className="mt-8 inline-block rounded-lg bg-white px-7 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#16243f]"
+              className="mt-8 inline-block rounded-lg bg-white px-7 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#000000]"
             >
               Browse Upcoming Cohorts
             </Link>
@@ -677,7 +677,7 @@ export function HomeExperienceBody({
 
           <div data-reveal className="liquid-glass rounded-2xl p-10 md:p-12">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#94a3b8]">For Teams & Enterprises</p>
-            <h3 className="mt-4 text-3xl font-normal text-[#1f2c4a] md:text-4xl" style={{ letterSpacing: "-0.03em" }}>
+            <h3 className="mt-4 text-3xl font-normal text-[#111111] md:text-4xl" style={{ letterSpacing: "-0.03em" }}>
               Skill up the whole train, not one wagon
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-[#475569] md:text-lg">
@@ -687,7 +687,7 @@ export function HomeExperienceBody({
             </p>
             <Link
               href="/corporate"
-              className="liquid-glass mt-8 inline-block rounded-lg border border-[#1f2c4a]/20 px-7 py-3 text-sm font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+              className="liquid-glass mt-8 inline-block rounded-lg border border-[#111111]/20 px-7 py-3 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
             >
               Explore Corporate Training
             </Link>
@@ -696,7 +696,7 @@ export function HomeExperienceBody({
       </section>
 
       {/* =========================== INSTRUCTORS ========================== */}
-      <section className="border-t border-[#1f2c4a]/10 px-6 py-24 md:px-12 md:py-32 lg:px-16">
+      <section className="border-t border-[#111111]/10 px-6 py-24 md:px-12 md:py-32 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="The Faculty"
@@ -710,7 +710,7 @@ export function HomeExperienceBody({
               <div
                 key={person.name}
                 data-reveal
-                className="group flex flex-col rounded-2xl liquid-glass p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1f2c4a]/25 hover:bg-[#1f2c4a]/[0.06]"
+                className="group flex flex-col rounded-2xl liquid-glass p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#111111]/25 hover:bg-[#111111]/[0.06]"
               >
                 <div className="flex items-center gap-4">
                   <Image
@@ -718,11 +718,11 @@ export function HomeExperienceBody({
                     alt={person.name}
                     width={64}
                     height={64}
-                    className="h-16 w-16 shrink-0 rounded-full border border-[#1f2c4a]/15 object-cover object-top"
+                    className="h-16 w-16 shrink-0 rounded-full border border-[#111111]/15 object-cover object-top"
                   />
                   <div className="min-w-0">
-                    <h3 className="text-lg font-medium text-[#1f2c4a]">{person.name}</h3>
-                    <p className="text-sm font-medium text-[#d97706]">{person.title}</p>
+                    <h3 className="text-lg font-medium text-[#111111]">{person.name}</h3>
+                    <p className="text-sm font-medium text-[#B8860B]">{person.title}</p>
                   </div>
                 </div>
                 <p className="mt-4 text-xs leading-relaxed text-[#64748b]">{person.subtitle}</p>
@@ -738,12 +738,12 @@ export function HomeExperienceBody({
                     type="button"
                     onClick={() => setExpandedInstructor(isExpanded ? null : i)}
                     aria-expanded={isExpanded}
-                    className="mt-2 text-sm font-semibold text-[#d97706] transition-colors hover:text-[#b45309]"
+                    className="mt-2 text-sm font-semibold text-[#B8860B] transition-colors hover:text-[#B8860B]"
                   >
                     {isExpanded ? "Read Less" : "Read More"}
                   </button>
                 </div>
-                <div className="mt-auto flex items-center justify-between border-t border-[#1f2c4a]/10 pt-4">
+                <div className="mt-auto flex items-center justify-between border-t border-[#111111]/10 pt-4">
                   <span className="text-xs font-medium text-[#64748b]">
                     {person.experience} experience
                   </span>
@@ -753,7 +753,7 @@ export function HomeExperienceBody({
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${person.name} on LinkedIn`}
-                      className="flex h-8 w-8 items-center justify-center rounded-full border border-[#1f2c4a]/20 text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-[#111111]/20 text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
                     >
                       <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
                         <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
@@ -780,7 +780,7 @@ export function HomeExperienceBody({
                   key={faq.q}
                   data-reveal
                   className={`liquid-glass overflow-hidden rounded-2xl transition-colors duration-300 ${
-                    open ? "bg-[#1f2c4a]/[0.06]" : ""
+                    open ? "bg-[#111111]/[0.06]" : ""
                   }`}
                 >
                   <button
@@ -788,10 +788,10 @@ export function HomeExperienceBody({
                     aria-expanded={open}
                     className="flex w-full items-center justify-between gap-4 px-7 py-5 text-left"
                   >
-                    <span className="text-lg font-medium text-[#1f2c4a]">{faq.q}</span>
+                    <span className="text-lg font-medium text-[#111111]">{faq.q}</span>
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#1f2c4a]/20 transition-all duration-300 ${
-                        open ? "rotate-45 bg-[#1f2c4a] text-white" : "text-[#1f2c4a]"
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#111111]/20 transition-all duration-300 ${
+                        open ? "rotate-45 bg-[#111111] text-white" : "text-[#111111]"
                       }`}
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
@@ -819,7 +819,7 @@ export function HomeExperienceBody({
       <section className="px-6 pb-24 md:px-12 md:pb-32 lg:px-16">
         <div
           data-reveal
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-[#1f2c4a]/10 px-8 py-20 text-center md:py-28"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-[#111111]/10 px-8 py-20 text-center md:py-28"
         >
           {/* The same film, returning for the closing scene */}
           <video
@@ -839,7 +839,7 @@ export function HomeExperienceBody({
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#64748b]">
             Cohorts fill weeks in advance
           </p>
-          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-normal leading-[1.05] text-[#1f2c4a] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-normal leading-[1.05] text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
             Your next certification starts here
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base text-[#475569] md:text-lg">
@@ -849,13 +849,13 @@ export function HomeExperienceBody({
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/courses"
-              className="rounded-lg bg-white px-9 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#16243f]"
+              className="rounded-lg bg-white px-9 py-3.5 font-medium text-[#111111] transition-colors hover:bg-[#000000]"
             >
               Find Your Cohort
             </Link>
             <Link
               href="/contact"
-              className="liquid-glass rounded-lg border border-[#1f2c4a]/20 px-9 py-3.5 font-medium text-[#1f2c4a] transition-colors hover:bg-[#1f2c4a] hover:text-white"
+              className="liquid-glass rounded-lg border border-[#111111]/20 px-9 py-3.5 font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
             >
               Ask Us Anything
             </Link>
@@ -954,13 +954,13 @@ function HomeVideoHero() {
                 <Link
                   href="/contact"
                   onClick={openChat}
-                  className="rounded-lg bg-white px-8 py-3 font-medium text-[#1f2c4a] transition-colors hover:bg-white/90"
+                  className="rounded-lg bg-white px-8 py-3 font-medium text-[#111111] transition-colors hover:bg-white/90"
                 >
                   Start a Chat
                 </Link>
                 <a
                   href="#programs"
-                  className="rounded-lg border border-white/30 bg-[#10131c]/40 px-8 py-3 font-medium text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#1f2c4a]"
+                  className="rounded-lg border border-white/30 bg-[#10131c]/40 px-8 py-3 font-medium text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#111111]"
                 >
                   Explore Now
                 </a>

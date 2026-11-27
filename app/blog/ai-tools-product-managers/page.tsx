@@ -36,16 +36,16 @@ export default async function AIToolsProductManagersBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="ai-tools-product-managers" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
+      <main className="min-h-screen bg-black text-[#111111]">
         {/* Header Image */}
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           {/* Decorative golden dots - top left */}
           <div className="absolute top-4 left-4 flex flex-col gap-1">
             <div className="flex gap-1">
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -53,7 +53,7 @@ export default async function AIToolsProductManagersBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -64,7 +64,7 @@ export default async function AIToolsProductManagersBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -72,13 +72,13 @@ export default async function AIToolsProductManagersBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
           </div>
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             {PAGE_SEO.long}
           </h1>
         </div>
@@ -87,11 +87,11 @@ export default async function AIToolsProductManagersBlogPost() {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -100,7 +100,7 @@ export default async function AIToolsProductManagersBlogPost() {
 
           {/* Category and Date */}
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               AI
             </span>
             <span className="text-sm text-[#64748b]">Latest</span>
@@ -120,7 +120,7 @@ export default async function AIToolsProductManagersBlogPost() {
               behind.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why Product Managers Need AI Tools Now
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -143,11 +143,11 @@ export default async function AIToolsProductManagersBlogPost() {
               efficiency.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Product Discovery and Research
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Dovetail - User Interview Analysis
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -165,7 +165,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Starting at $29/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Monterey AI - Customer Feedback Analysis
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -182,7 +182,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Custom pricing
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               AlphaSense - Market Intelligence
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -198,11 +198,11 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Enterprise pricing (typically $10K+/year)
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Product Strategy and Prioritization
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               ChatGPT Plus / Claude Pro - Strategic Analysis
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -225,7 +225,7 @@ export default async function AIToolsProductManagersBlogPost() {
               maximize these tools' impact.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Productboard - Roadmap Prioritization
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -242,7 +242,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Starting at $25/user/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Causal - Scenario Planning
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -258,11 +258,11 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Starting at $50/user/month
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Product Design and Prototyping
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               v0.dev by Vercel - UI/UX Generation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -277,7 +277,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, paid from $20/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Galileo AI - Design Generation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -293,7 +293,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, pro from $19/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Figma AI - Design Refinement
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -310,11 +310,11 @@ export default async function AIToolsProductManagersBlogPost() {
               ($12/editor/month)
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Development and Technical Support
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               GitHub Copilot - Code Understanding
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -332,7 +332,7 @@ export default async function AIToolsProductManagersBlogPost() {
               business
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Cursor - Technical Documentation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -348,7 +348,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, pro from $20/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Zapier AI - API and Integration
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -364,11 +364,11 @@ export default async function AIToolsProductManagersBlogPost() {
               $19.99/month
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Product Analytics and Insights
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Amplitude AI - Behavioral Analytics
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -384,7 +384,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, custom paid plans
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Mixpanel - Product Analytics
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -399,7 +399,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, paid from $20/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Fullstory - Session Replay with AI
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -415,11 +415,11 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Custom enterprise pricing
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Customer Communication
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Intercom Fin AI - Customer Support
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -435,7 +435,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Starting at $39/month, Fin AI additional
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Notion AI - Knowledge Base
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -450,7 +450,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> $10/user/month added to Notion workspace
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Drift Conversational AI - Chatbots
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -465,11 +465,11 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Custom enterprise pricing
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Product Marketing
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Copy.ai - Content Creation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -484,7 +484,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, paid from $49/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Midjourney / DALL-E 3 - Visual Content
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -500,7 +500,7 @@ export default async function AIToolsProductManagersBlogPost() {
               included with ChatGPT Plus
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Descript - Video Creation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -515,11 +515,11 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, paid from $12/month
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               AI Tools for Productivity
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Otter.ai - Meeting Intelligence
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -536,7 +536,7 @@ export default async function AIToolsProductManagersBlogPost() {
               $16.99/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Gamma - Presentation Creation
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -551,7 +551,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> Free tier available, paid from $8/month
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Superhuman AI - Email Management
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-2">
@@ -566,7 +566,7 @@ export default async function AIToolsProductManagersBlogPost() {
               <strong>Price:</strong> $30/month
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               How to Choose the Right AI Tools
             </h2>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -594,7 +594,7 @@ export default async function AIToolsProductManagersBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Building AI Product Management Skills
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -623,7 +623,7 @@ export default async function AIToolsProductManagersBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common Mistakes to Avoid
             </h2>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -649,7 +649,7 @@ export default async function AIToolsProductManagersBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Conclusion
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -662,13 +662,13 @@ export default async function AIToolsProductManagersBlogPost() {
               Start with 3-5 tools addressing your biggest bottlenecks. Master
               them. Then gradually expand your AI toolkit.
             </p>
-            <p className="text-xl font-bold text-[#1f2c4a] mb-8">
+            <p className="text-xl font-bold text-[#111111] mb-8">
               Your competitors are already doing this. The question is whether
               you'll lead or follow.
             </p>
 
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 my-8">
-              <h3 className="text-xl font-bold text-[#1f2c4a] mb-3">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 my-8">
+              <h3 className="text-xl font-bold text-[#111111] mb-3">
                 About Agile36
               </h3>
               <p className="text-[#475569]">
@@ -685,10 +685,10 @@ export default async function AIToolsProductManagersBlogPost() {
             </div>
 
             {/* Back to Blog Link */}
-            <div className="mt-12 pt-8 border-t border-[#1f2c4a]/10">
+            <div className="mt-12 pt-8 border-t border-[#111111]/10">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-[#d97706] font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-[#B8860B] font-semibold hover:underline"
               >
                 <svg
                   className="w-5 h-5"

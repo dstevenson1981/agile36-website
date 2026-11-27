@@ -30,7 +30,7 @@ export default function UpgradeSuccessBanner({ courseSlug }: { courseSlug: strin
       {examPath && (
         <Link
           href={examPath}
-          className="inline-block mt-2 text-[#fbbf24] font-medium hover:underline"
+          className="inline-block mt-2 text-[#B8860B] font-medium hover:underline"
         >
           Start practice exam →
         </Link>

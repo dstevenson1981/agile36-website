@@ -12,6 +12,7 @@ import { isCorporateCodeFormat, normalizeCorporateCode } from '@/app/lib/corpora
 import { findComboById } from '@/app/combo-courses/data';
 import { anySchedulesOverlap, COMBO_DATE_OVERLAP_MESSAGE } from '@/app/lib/schedule-overlap';
 import { isRtePublicEnrollmentOpen, RTE_SCHEDULE_LINK_ENABLED } from '@/app/lib/rte-public-weekend';
+import { DATE_LATER_SCHEDULE_ID, payLaterOffer, priceDateLater } from '@/app/lib/pay-later';
 
 export const dynamic = 'force-dynamic';
 
@@ -125,6 +126,7 @@ export async function POST(request: NextRequest) {
       scheduleId,
       courseSlug,
       courseName,
+      dateLater: dateLaterRaw,
       selectedPlan,
       quantity,
       customerEmail,
@@ -145,9 +147,12 @@ export async function POST(request: NextRequest) {
     const scheduleIdsArr = scheduleIdsRaw
       ? (Array.isArray(scheduleIdsRaw) ? scheduleIdsRaw : String(scheduleIdsRaw).split(',').filter(Boolean))
       : [];
-    const effectiveScheduleId = isCombo && scheduleIdsArr.length
-      ? scheduleIdsArr[0]
-      : scheduleId;
+    const dateLater = dateLaterRaw === true || dateLaterRaw === '1' || dateLaterRaw === 1;
+    const effectiveScheduleId = dateLater
+      ? DATE_LATER_SCHEDULE_ID
+      : isCombo && scheduleIdsArr.length
+        ? scheduleIdsArr[0]
+        : scheduleId;
 
     if (amount == null || amount === '' || !customerEmail) {
       return NextResponse.json(
@@ -155,14 +160,39 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    if (!effectiveScheduleId) {
+    if (dateLater && isCombo) {
+      return NextResponse.json(
+        { error: 'Choose a date for each class in a combo.' },
+        { status: 400 }
+      );
+    }
+    if (dateLater) {
+      const offer = payLaterOffer(typeof courseSlug === 'string' ? courseSlug : '');
+      if (!offer) {
+        return NextResponse.json(
+          { error: 'This course cannot be purchased without a date.' },
+          { status: 400 }
+        );
+      }
+      if (
+        offer.slug === 'release-train-engineer' &&
+        !RTE_SCHEDULE_LINK_ENABLED &&
+        !isRtePublicEnrollmentOpen()
+      ) {
+        return NextResponse.json(
+          { error: 'RTE registration is closed right now.' },
+          { status: 403 }
+        );
+      }
+    }
+    if (!dateLater && !effectiveScheduleId) {
       return NextResponse.json(
         { error: 'Schedule ID is required' },
         { status: 400 }
       );
     }
 
-    if (!isCombo && !RTE_SCHEDULE_LINK_ENABLED && !isRtePublicEnrollmentOpen()) {
+    if (!dateLater && !isCombo && !RTE_SCHEDULE_LINK_ENABLED && !isRtePublicEnrollmentOpen()) {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
       if (!supabaseUrl || !supabaseKey) {
@@ -369,7 +399,8 @@ export async function POST(request: NextRequest) {
       stripeOriginalForMeta = chargeAmountDollars;
     }
 
-    const courseCap = !isCombo ? getCoursePromoCapByCode(String(effectivePromoCode || '')) : null;
+    let dateLaterCourseName = '';
+    const courseCap = !isCombo && !dateLater ? getCoursePromoCapByCode(String(effectivePromoCode || '')) : null;
     if (courseCap && courseSlug === courseCap.courseSlug) {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -408,6 +439,28 @@ export async function POST(request: NextRequest) {
       const baseTotal = roundMoney(linePerSeat * qty);
       chargeAmountDollars = roundMoney(baseTotal - promoDiscountDollars);
       stripeOriginalForMeta = baseTotal;
+    } else if (dateLater) {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!supabaseUrl || !supabaseKey) {
+        return NextResponse.json(
+          { error: 'Server configuration error. Please contact support.' },
+          { status: 500 },
+        );
+      }
+      const priced = await priceDateLater(createClient(supabaseUrl, supabaseKey), {
+        courseSlug: typeof courseSlug === 'string' ? courseSlug.trim() : '',
+        code: String(effectivePromoCode || ''),
+        selectedPlan,
+        quantity,
+      });
+      if ('error' in priced) {
+        return NextResponse.json({ error: priced.error }, { status: 400 });
+      }
+      chargeAmountDollars = priced.charge;
+      promoDiscountDollars = priced.discount;
+      stripeOriginalForMeta = priced.original;
+      dateLaterCourseName = priced.courseName;
     } else if (!isCombo && String(effectivePromoCode || '').trim()) {
       const priced = await priceWithDatabasePromo({
         code: String(effectivePromoCode).trim(),
@@ -425,7 +478,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Get schedule details for better description
-    const scheduleDate = enrollmentData?.scheduleDate || '';
+    const scheduleDate = dateLater ? 'Date not chosen' : (enrollmentData?.scheduleDate || '');
+    const receiptCourseName = dateLaterCourseName || courseName || '';
+    const billedQuantity = quantity;
     const scheduleTime = enrollmentData?.scheduleTime || '';
     const duration = enrollmentData?.duration || '';
     const comboScheduleMap = enrollmentData?.comboScheduleMap && typeof enrollmentData.comboScheduleMap === 'object'
@@ -442,13 +497,13 @@ export async function POST(request: NextRequest) {
     // Create detailed description for receipt
     // This description appears on the Stripe receipt and shows what was purchased
     // Format: "Course Name - Plan (Date) - Quantity"
-    let receiptDescription = `${courseName}`;
+    let receiptDescription = `${receiptCourseName}`;
     receiptDescription += ` - ${planName}`;
     if (scheduleDate) {
       receiptDescription += ` (Class: ${scheduleDate})`;
     }
-    if (quantity > 1) {
-      receiptDescription += ` - ${quantity} enrollments`;
+    if (Number(billedQuantity) > 1) {
+      receiptDescription += ` - ${billedQuantity} enrollments`;
     } else {
       receiptDescription += ` - 1 enrollment`;
     }
@@ -492,9 +547,10 @@ export async function POST(request: NextRequest) {
             scheduleId: effectiveScheduleId,
             scheduleIds: isCombo && scheduleIdsArr.length ? scheduleIdsArr.join(',') : '',
             courseSlug: courseSlug || '',
-            courseName: courseName || '',
+            courseName: receiptCourseName,
+            dateLater: dateLater ? '1' : '',
             selectedPlan: selectedPlan || 'basic',
-            quantity: String(quantity ?? 1),
+            quantity: String(billedQuantity ?? 1),
             promoCode: effectivePromoCode || '',
             promoDiscount: promoDiscountDollars ? promoDiscountDollars.toString() : '0',
           },
@@ -534,10 +590,11 @@ export async function POST(request: NextRequest) {
         scheduleIds: (isCombo && scheduleIdsArr.length) ? scheduleIdsArr.join(',') : '',
         comboId: isCombo ? comboId : '',
         courseSlug: isCombo && comboId ? `combo-${comboId}` : (courseSlug || ''),
-        courseName,
+        courseName: receiptCourseName,
+        dateLater: dateLater ? '1' : '',
         selectedPlan: selectedPlan || 'basic',
         planName,
-        quantity: quantity.toString(),
+        quantity: String(billedQuantity ?? 1),
         customerEmail,
         customerName: customerName || '',
         customerId: customer?.id || '',

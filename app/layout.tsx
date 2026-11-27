@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
@@ -22,14 +22,11 @@ import Footer from "./components/Footer";
 import ClarityAnalytics from "./components/ClarityAnalytics";
 import WebMcpProvider from "./components/WebMcpProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 /** Public GA4 web stream for www.agile36.com. Appears in page source. */
@@ -161,7 +158,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className={`${inter.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
@@ -179,7 +176,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${inter.variable} antialiased flex flex-col min-h-screen`}
       >
         <WebMcpProvider />
         {hideSiteHeader ? null : <Header />}

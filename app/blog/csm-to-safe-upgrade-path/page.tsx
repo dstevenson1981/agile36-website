@@ -39,24 +39,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -68,14 +68,14 @@ function AtAGlance() {
   return (
     <section
       aria-label="At a glance"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 md:p-8 my-10"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         At a glance
       </p>
       <ul className="space-y-3 text-[#475569] text-[17px] leading-relaxed">
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">01</span>
+          <span className="text-[#B8860B] font-bold">01</span>
           <span>
             <strong>CSM does not exempt you from SAFe training.</strong> SAFe
             exams still require an official course completion record from a SAFe
@@ -83,7 +83,7 @@ function AtAGlance() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">02</span>
+          <span className="text-[#B8860B] font-bold">02</span>
           <span>
             <strong>Most practitioners start with Leading SAFe</strong> (SAFe
             Agilist) to learn the full model, then add a role-based class such
@@ -91,7 +91,7 @@ function AtAGlance() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">03</span>
+          <span className="text-[#B8860B] font-bold">03</span>
           <span>
             <strong>Hiring signals differ:</strong> CSM proves single-team
             Scrum; SSM proves you can operate on an Agile Release Train. If job
@@ -100,12 +100,12 @@ function AtAGlance() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">04</span>
+          <span className="text-[#B8860B] font-bold">04</span>
           <span>
             For a straight comparison of Scrum Master credentials, read{" "}
             <Link
               href="/blog/ssm-vs-csm"
-              className="font-semibold text-[#d97706] underline hover:no-underline"
+              className="font-semibold text-[#B8860B] underline hover:no-underline"
             >
               SSM vs CSM
             </Link>
@@ -121,21 +121,21 @@ export default function CsmToSafeUpgradePathPage() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="csm-to-safe-upgrade-path" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             CSM to SAFe Upgrade Path: Which Certifications to Take First
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -143,13 +143,13 @@ export default function CsmToSafeUpgradePathPage() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">Guide · 2026</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-4 leading-tight">
             CSM to SAFe Upgrade Path: Practical Certification Order (2026)
           </h1>
           <BlogAuthorByline verb="By" updated="April 2026" />
@@ -169,7 +169,7 @@ export default function CsmToSafeUpgradePathPage() {
 
             <AtAGlance />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               CSM vs SAFe: what you are comparing
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -182,8 +182,8 @@ export default function CsmToSafeUpgradePathPage() {
               &quot;counts&quot; as SAFe.
             </p>
             <div className="overflow-x-auto mb-10 not-prose">
-              <table className="min-w-full text-left text-base border border-[#1f2c4a]/10">
-                <thead className="bg-[#1f2c4a]/5 text-[#1f2c4a]">
+              <table className="min-w-full text-left text-base border border-[#111111]/10">
+                <thead className="bg-[#111111]/5 text-[#111111]">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Topic</th>
                     <th className="px-4 py-3 font-semibold">CSM</th>
@@ -191,7 +191,7 @@ export default function CsmToSafeUpgradePathPage() {
                   </tr>
                 </thead>
                 <tbody className="text-[#475569]">
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3 font-medium">Scope</td>
                     <td className="px-4 py-3">
                       One Scrum team, Scrum Guide fundamentals
@@ -200,12 +200,12 @@ export default function CsmToSafeUpgradePathPage() {
                       ARTs, PIs, portfolio alignment, SAFe events and roles
                     </td>
                   </tr>
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3 font-medium">Issuing body</td>
                     <td className="px-4 py-3">Scrum Alliance</td>
                     <td className="px-4 py-3">Scaled Agile, Inc.</td>
                   </tr>
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3 font-medium">
                       Typical hiring signal
                     </td>
@@ -216,7 +216,7 @@ export default function CsmToSafeUpgradePathPage() {
                       Employers that name SAFe, PI Planning, RTE, or ARTs
                     </td>
                   </tr>
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3 font-medium">Upgrade takeaway</td>
                     <td className="px-4 py-3">Strong foundation — keep it</td>
                     <td className="px-4 py-3">
@@ -231,14 +231,14 @@ export default function CsmToSafeUpgradePathPage() {
               For product vs facilitation tracks after Leading SAFe, read{" "}
               <Link
                 href="/blog/popm-vs-scrum-master"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
               >
                 POPM vs Scrum Master
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why &quot;CSM first&quot; does not replace a SAFe path
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -254,19 +254,19 @@ export default function CsmToSafeUpgradePathPage() {
               If you are deciding whether SAFe is worth the cost at all, read{" "}
               <Link
                 href="/blog/is-safe-certification-worth-it-2026"
-                className="font-semibold text-[#d97706] underline hover:no-underline"
+                className="font-semibold text-[#B8860B] underline hover:no-underline"
               >
                 Is SAFe certification worth it in 2026?
               </Link>{" "}
               first — then return here for sequencing.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Recommended paths by role
             </h2>
             <div className="overflow-x-auto mb-8">
-              <table className="min-w-full text-left text-base border border-[#1f2c4a]/10">
-                <thead className="bg-[#1f2c4a]/5 text-[#1f2c4a]">
+              <table className="min-w-full text-left text-base border border-[#111111]/10">
+                <thead className="bg-[#111111]/5 text-[#111111]">
                   <tr>
                     <th className="px-4 py-3 font-semibold">You are…</th>
                     <th className="px-4 py-3 font-semibold">Typical order</th>
@@ -274,7 +274,7 @@ export default function CsmToSafeUpgradePathPage() {
                   </tr>
                 </thead>
                 <tbody className="text-[#475569]">
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3">
                       <strong>Scrum Master</strong> moving into SAFe
                     </td>
@@ -288,7 +288,7 @@ export default function CsmToSafeUpgradePathPage() {
                       Planning facilitation, and dependencies.
                     </td>
                   </tr>
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3">
                       <strong>Product Owner / PM</strong> with CSM in the past
                     </td>
@@ -302,7 +302,7 @@ export default function CsmToSafeUpgradePathPage() {
                       portfolio strategy.
                     </td>
                   </tr>
-                  <tr className="border-t border-[#1f2c4a]/10 align-top">
+                  <tr className="border-t border-[#111111]/10 align-top">
                     <td className="px-4 py-3">
                       <strong>Delivery lead / manager</strong> sponsoring the
                       change
@@ -320,7 +320,7 @@ export default function CsmToSafeUpgradePathPage() {
               </table>
             </div>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               A 90-day execution timeline (realistic for busy practitioners)
             </h2>
             <ol className="list-decimal pl-6 mb-8 space-y-4 text-[#475569]">
@@ -351,7 +351,7 @@ export default function CsmToSafeUpgradePathPage() {
               </li>
             </ol>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               CSM vs SAFe exams: what actually changes for you
             </h2>
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
@@ -371,10 +371,10 @@ export default function CsmToSafeUpgradePathPage() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Frequently asked questions
             </h2>
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Do I need Leading SAFe if I only want SSM?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -385,7 +385,7 @@ export default function CsmToSafeUpgradePathPage() {
               Big Picture before class so SSM does not feel like drinking from a
               fire hose.
             </p>
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Is POPM or SSM the better second step after CSM?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -395,7 +395,7 @@ export default function CsmToSafeUpgradePathPage() {
               — pick the certification that matches the majority of your
               calendar.
             </p>
-            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-6 mb-2">
+            <h3 className="text-xl font-normal tracking-[-0.03em] text-[#111111] mt-6 mb-2">
               Can consultants skip straight to SPC?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -406,14 +406,14 @@ export default function CsmToSafeUpgradePathPage() {
               charts from Scaled Agile.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Official references (verify details before you register)
             </h2>
             <ul className="list-disc pl-6 mb-8 space-y-2 text-[#475569]">
               <li>
                 <a
                   href="https://scaledagile.com/what-is-safe/"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   What is SAFe?
@@ -423,7 +423,7 @@ export default function CsmToSafeUpgradePathPage() {
               <li>
                 <a
                   href="https://scaledagile.com/certification/"
-                  className="font-semibold text-[#d97706] underline hover:no-underline"
+                  className="font-semibold text-[#B8860B] underline hover:no-underline"
                   rel="noopener noreferrer"
                 >
                   SAFe certification
@@ -432,7 +432,7 @@ export default function CsmToSafeUpgradePathPage() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Train with Agile36
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -443,20 +443,20 @@ export default function CsmToSafeUpgradePathPage() {
             <p className="text-lg mb-10">
               <Link
                 href="/safe-certifications"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 View SAFe certification courses →
               </Link>
               {" · "}
               <Link
                 href="/courses/scrum-master"
-                className="font-semibold text-[#d97706] underline hover:text-[#b45309]"
+                className="font-semibold text-[#B8860B] underline hover:text-[#B8860B]"
               >
                 SAFe Scrum Master (SSM) schedule →
               </Link>
             </p>
 
-            <p className="text-base text-[#64748b] italic border-t border-[#1f2c4a]/10 pt-8">
+            <p className="text-base text-[#64748b] italic border-t border-[#111111]/10 pt-8">
               Agile36 is a SAFe Silver Partner. Certification names SAFe, Scrum
               Master (SSM), POPM, Leading SAFe, and others are trademarks of
               Scaled Agile, Inc.

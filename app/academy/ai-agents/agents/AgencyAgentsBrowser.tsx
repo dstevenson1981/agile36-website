@@ -63,11 +63,11 @@ export default function AgencyAgentsBrowser({
   return (
     <div className="space-y-6">
       {showInstallHint && (
-        <div className="rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-3 text-sm leading-relaxed text-[#475569]">
-          <strong className="font-semibold text-[#1f2c4a]">Install:</strong> download the agent
-          markdown into <code className="text-[12px] text-[#1f2c4a]">~/.claude/agents/</code> (or
+        <div className="rounded-xl border border-[#111111]/10 bg-white px-4 py-3 text-sm leading-relaxed text-[#475569]">
+          <strong className="font-semibold text-[#111111]">Install:</strong> download the agent
+          markdown into <code className="text-[12px] text-[#111111]">~/.claude/agents/</code> (or
           paste into Codex). Download each skill into{' '}
-          <code className="text-[12px] text-[#1f2c4a]">.claude/skills/&lt;name&gt;/SKILL.md</code>.
+          <code className="text-[12px] text-[#111111]">.claude/skills/&lt;name&gt;/SKILL.md</code>.
           Activate the agent by name, then use its skills for the job at hand.
         </div>
       )}
@@ -83,7 +83,7 @@ export default function AgencyAgentsBrowser({
               setPage(0);
             }}
             placeholder="Search name, role, skill…"
-            className="w-full rounded-xl border border-[#1f2c4a]/15 bg-white px-4 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] outline-none ring-[#1f2c4a]/20 focus:ring-2"
+            className="w-full rounded-xl border border-[#111111]/15 bg-white px-4 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] outline-none ring-[#111111]/20 focus:ring-2"
           />
         </label>
         <p className="text-sm text-[#64748b]">
@@ -104,8 +104,8 @@ export default function AgencyAgentsBrowser({
               }}
               className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                 active
-                  ? 'bg-[#1f2c4a] text-white'
-                  : 'border border-[#1f2c4a]/12 bg-white text-[#475569] hover:border-[#1f2c4a]/25'
+                  ? 'bg-[#111111] text-white'
+                  : 'border border-[#111111]/12 bg-white text-[#475569] hover:border-[#111111]/25'
               }`}
             >
               {div}
@@ -121,12 +121,12 @@ export default function AgencyAgentsBrowser({
           return (
             <article
               key={a.id}
-              className="flex flex-col rounded-2xl border border-[#1f2c4a]/12 bg-white p-5 shadow-sm"
+              className="flex flex-col rounded-2xl border border-[#111111]/12 bg-white p-5 shadow-sm"
             >
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
                 {a.division}
               </p>
-              <h3 className="mt-1.5 text-[15px] font-semibold leading-snug text-[#1f2c4a]">
+              <h3 className="mt-1.5 text-[15px] font-semibold leading-snug text-[#111111]">
                 {a.emoji ? `${a.emoji} ` : ''}
                 {a.name}
               </h3>
@@ -140,7 +140,7 @@ export default function AgencyAgentsBrowser({
                   <button
                     type="button"
                     onClick={() => setExpandedSkills(skillsOpen ? null : a.id)}
-                    className="text-xs font-semibold text-[#1f2c4a] hover:underline"
+                    className="text-xs font-semibold text-[#111111] hover:underline"
                   >
                     {skillsOpen ? 'Hide skills' : `${skills.length} skill${skills.length === 1 ? '' : 's'}`}
                   </button>
@@ -149,14 +149,14 @@ export default function AgencyAgentsBrowser({
                       {skills.map((s) => (
                         <li
                           key={s.id}
-                          className="rounded-lg border border-[#1f2c4a]/10 bg-[#f8fafc] px-3 py-2"
+                          className="rounded-lg border border-[#111111]/10 bg-[#f8fafc] px-3 py-2"
                         >
                           <div className="flex flex-wrap items-center justify-between gap-2">
-                            <p className="text-xs font-semibold text-[#1f2c4a]">{s.name}</p>
+                            <p className="text-xs font-semibold text-[#111111]">{s.name}</p>
                             <a
                               href={s.downloadUrl}
                               download
-                              className="text-[11px] font-semibold text-[#d97706] hover:underline"
+                              className="text-[11px] font-semibold text-[#B8860B] hover:underline"
                             >
                               Download
                             </a>
@@ -174,7 +174,7 @@ export default function AgencyAgentsBrowser({
                       {skills.map((s) => (
                         <span
                           key={s.id}
-                          className="rounded-md bg-[#1f2c4a]/[0.05] px-2 py-0.5 text-[11px] text-[#475569]"
+                          className="rounded-md bg-[#111111]/[0.05] px-2 py-0.5 text-[11px] text-[#475569]"
                         >
                           {s.name}
                         </span>
@@ -190,7 +190,7 @@ export default function AgencyAgentsBrowser({
                   download={isClass ? a.filename : undefined}
                   target={isClass ? undefined : '_blank'}
                   rel={isClass ? undefined : 'noopener noreferrer'}
-                  className="inline-flex items-center rounded-lg bg-[#1f2c4a] px-3 py-2 text-xs font-semibold text-white hover:bg-[#16243f]"
+                  className="inline-flex items-center rounded-lg bg-[#111111] px-3 py-2 text-xs font-semibold text-white hover:bg-[#000000]"
                 >
                   {isClass ? 'Download agent' : 'View agent'}
                 </a>
@@ -205,7 +205,7 @@ export default function AgencyAgentsBrowser({
                           : a.downloadUrl!
                       )
                     }
-                    className="inline-flex items-center rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-xs font-semibold text-[#1f2c4a] hover:bg-[#1f2c4a]/[0.04]"
+                    className="inline-flex items-center rounded-lg border border-[#111111]/15 px-3 py-2 text-xs font-semibold text-[#111111] hover:bg-[#111111]/[0.04]"
                   >
                     {copiedId === `${a.id}:url` ? 'Copied link' : 'Copy download link'}
                   </button>
@@ -215,7 +215,7 @@ export default function AgencyAgentsBrowser({
                     href={a.rawUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-xs font-semibold text-[#1f2c4a] hover:bg-[#1f2c4a]/[0.04]"
+                    className="inline-flex items-center rounded-lg border border-[#111111]/15 px-3 py-2 text-xs font-semibold text-[#111111] hover:bg-[#111111]/[0.04]"
                   >
                     Raw markdown
                   </a>
@@ -227,7 +227,7 @@ export default function AgencyAgentsBrowser({
       </div>
 
       {filtered.length === 0 && (
-        <p className="rounded-xl border border-dashed border-[#1f2c4a]/20 bg-white px-4 py-10 text-center text-sm text-[#64748b]">
+        <p className="rounded-xl border border-dashed border-[#111111]/20 bg-white px-4 py-10 text-center text-sm text-[#64748b]">
           {emptyMessage}
         </p>
       )}
@@ -238,7 +238,7 @@ export default function AgencyAgentsBrowser({
             type="button"
             disabled={safePage <= 0}
             onClick={() => setPage((p) => Math.max(0, p - 1))}
-            className="rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-sm font-medium text-[#1f2c4a] disabled:opacity-40"
+            className="rounded-lg border border-[#111111]/15 px-3 py-2 text-sm font-medium text-[#111111] disabled:opacity-40"
           >
             Previous
           </button>
@@ -249,7 +249,7 @@ export default function AgencyAgentsBrowser({
             type="button"
             disabled={safePage >= pageCount - 1}
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
-            className="rounded-lg border border-[#1f2c4a]/15 px-3 py-2 text-sm font-medium text-[#1f2c4a] disabled:opacity-40"
+            className="rounded-lg border border-[#111111]/15 px-3 py-2 text-sm font-medium text-[#111111] disabled:opacity-40"
           >
             Next
           </button>

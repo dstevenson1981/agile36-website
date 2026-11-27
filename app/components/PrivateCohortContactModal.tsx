@@ -93,7 +93,7 @@ export default function PrivateCohortContactModal({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-lg p-1.5 text-[#94a3b8] transition hover:bg-[#1f2c4a]/[0.06] hover:text-[#1f2c4a]"
+          className="absolute right-3 top-3 rounded-lg p-1.5 text-[#94a3b8] transition hover:bg-[#111111]/[0.06] hover:text-[#111111]"
           aria-label="Close"
         >
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ export default function PrivateCohortContactModal({
           </svg>
         </button>
 
-        <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-6 py-4">
+        <div className="bg-gradient-to-r from-[#111111] to-[#111111] px-6 py-4">
           <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70">
             Private cohort
           </p>
@@ -119,19 +119,19 @@ export default function PrivateCohortContactModal({
             <div className="space-y-4">
               <p className="text-sm leading-relaxed text-[#475569]">
                 Thanks — we received your email and will follow up shortly about{" "}
-                <span className="font-semibold text-[#1f2c4a]">{courseLabel}</span>.
+                <span className="font-semibold text-[#111111]">{courseLabel}</span>.
               </p>
               <button
                 type="button"
                 onClick={speakWithAgent}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#1f2c4a]/20 px-4 py-2.5 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#1f2c4a]/[0.06]"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#111111]/20 px-4 py-2.5 text-sm font-semibold text-[#111111] transition hover:bg-[#111111]/[0.06]"
               >
                 Or speak with an agent now
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full rounded-lg bg-[#1f2c4a] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+                className="w-full rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#000000]"
               >
                 Done
               </button>
@@ -154,7 +154,7 @@ export default function PrivateCohortContactModal({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name (optional)"
-                    className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] px-4 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/15"
+                    className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/[0.04] px-4 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 focus:outline-none focus:ring-2 focus:ring-[#111111]/15"
                   />
                 </div>
                 <div>
@@ -172,13 +172,13 @@ export default function PrivateCohortContactModal({
                       if (status === "error") setStatus("idle");
                     }}
                     placeholder="Email address *"
-                    className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.04] px-4 py-2.5 text-sm text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 focus:outline-none focus:ring-2 focus:ring-[#1f2c4a]/15"
+                    className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/[0.04] px-4 py-2.5 text-sm text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 focus:outline-none focus:ring-2 focus:ring-[#111111]/15"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full rounded-lg bg-[#1f2c4a] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16243f] disabled:opacity-60"
+                  className="w-full rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#000000] disabled:opacity-60"
                 >
                   {status === "loading" ? "Sending…" : "Submit email"}
                 </button>
@@ -190,17 +190,17 @@ export default function PrivateCohortContactModal({
               </form>
 
               <div className="my-5 flex items-center gap-3">
-                <div className="h-px flex-1 bg-[#1f2c4a]/10" />
+                <div className="h-px flex-1 bg-[#111111]/10" />
                 <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#94a3b8]">
                   or
                 </span>
-                <div className="h-px flex-1 bg-[#1f2c4a]/10" />
+                <div className="h-px flex-1 bg-[#111111]/10" />
               </div>
 
               <button
                 type="button"
                 onClick={speakWithAgent}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#1f2c4a]/20 px-4 py-2.5 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#1f2c4a]/[0.06]"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#111111]/20 px-4 py-2.5 text-sm font-semibold text-[#111111] transition hover:bg-[#111111]/[0.06]"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path

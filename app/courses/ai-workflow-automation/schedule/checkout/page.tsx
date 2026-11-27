@@ -1,5 +1,7 @@
 "use client";
 
+import { prepaidCheckoutSchedule } from "@/app/lib/pay-later";
+
 import React, { useState, useEffect, Suspense, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,6 +72,15 @@ function CheckoutContent() {
   useEffect(() => {
     const fetchSchedule = async () => {
       if (!scheduleId) {
+        if (searchParams.get("prepaid") === "1") {
+          const prepaidSchedule = prepaidCheckoutSchedule(courseSlug);
+          if (prepaidSchedule) {
+            setSelectedSchedule(prepaidSchedule);
+            setEnrollmentQuantity(1);
+            setIsLoading(false);
+            return;
+          }
+        }
         // Redirect to schedule page if no schedule ID
         router.push(`/courses/ai-workflow-automation/schedule`);
         return;
@@ -313,6 +324,7 @@ function CheckoutContent() {
         body: JSON.stringify({
           amount: finalAmount,
           scheduleId: selectedSchedule.id,
+          dateLater: Boolean(selectedSchedule.prepaid),
           courseSlug,
           courseName,
           quantity: enrollmentQuantity,
@@ -324,8 +336,8 @@ function CheckoutContent() {
           corporateCode: enrollmentFormData.corporateBillingCode?.trim() || null,
           enrollmentData: {
             ...enrollmentFormData,
-            scheduleDate: formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),
-            scheduleTime: `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}`,
+            scheduleDate: selectedSchedule.prepaid ? "Date not chosen" : formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date),
+            scheduleTime: selectedSchedule.prepaid ? "Date not chosen" : `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}`,
             duration: selectedSchedule.duration,
             timezone: selectedSchedule.timezone,
           },
@@ -341,12 +353,12 @@ function CheckoutContent() {
       const handled = await handleCreatePaymentIntentResult(data, {
         enrollmentData: {
           ...enrollmentFormData,
-          scheduleDate: selectedSchedule ? formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date) : '',
-          scheduleTime: selectedSchedule ? `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}` : '',
+          scheduleDate: selectedSchedule?.prepaid ? "Date not chosen" : selectedSchedule ? formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date) : '',
+          scheduleTime: selectedSchedule?.prepaid ? "Date not chosen" : selectedSchedule ? `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}` : '',
           duration: selectedSchedule?.duration,
           timezone: selectedSchedule?.timezone,
         },
-        successUrl: (paymentIntentId) => `/courses/ai-workflow-automation/schedule/checkout/success?payment_intent=${paymentIntentId}`,
+        successUrl: (paymentIntentId) => selectedSchedule?.prepaid ? `/prepaid-training/success?payment_intent=${paymentIntentId}&email=${encodeURIComponent(enrollmentFormData.email || "")}` : `/courses/ai-workflow-automation/schedule/checkout/success?payment_intent=${paymentIntentId}`,
         onCardReady: (secret, piId) => {
           setClientSecret(secret);
           setPaymentIntentId(piId);
@@ -371,7 +383,7 @@ function CheckoutContent() {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
       </main>
     );
   }
@@ -408,23 +420,23 @@ function CheckoutContent() {
       : 0;
 
   return (
-    <main className="min-h-screen bg-black text-[#1f2c4a]">
+    <main className="min-h-screen bg-black text-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 py-4 sm:py-6 overflow-x-hidden">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Content - Enrollment Form */}
           <div className="flex-1">
             {/* Step Navigation */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8 min-w-0">
-              <div className={`flex items-center gap-2 ${currentStep >= 1 ? 'text-[#d97706]' : 'text-[#64748b]'}`}>
+              <div className={`flex items-center gap-2 ${currentStep >= 1 ? 'text-[#B8860B]' : 'text-[#64748b]'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                  currentStep >= 1 ? 'bg-[#d97706] text-white' : 'bg-[#1f2c4a]/10 text-[#64748b]'
+                  currentStep >= 1 ? 'bg-[#B8860B] text-[#111111]' : 'bg-[#111111]/10 text-[#64748b]'
                 }`}>1</div>
                 <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Basic Details</span>
               </div>
-              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#1f2c4a]/20 shrink-0"></div>
-              <div className={`flex items-center gap-2 ${currentStep >= 2 ? 'text-[#d97706]' : 'text-[#64748b]'}`}>
+              <div className="hidden sm:block w-8 lg:w-12 h-0.5 bg-[#111111]/20 shrink-0"></div>
+              <div className={`flex items-center gap-2 ${currentStep >= 2 ? 'text-[#B8860B]' : 'text-[#64748b]'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                  currentStep >= 2 ? 'bg-[#d97706] text-white' : 'bg-[#1f2c4a]/10 text-[#64748b]'
+                  currentStep >= 2 ? 'bg-[#B8860B] text-[#111111]' : 'bg-[#111111]/10 text-[#64748b]'
                 }`}>2</div>
                 <span className="font-medium text-xs sm:text-sm whitespace-nowrap">Secure Payment</span>
               </div>
@@ -432,10 +444,10 @@ function CheckoutContent() {
 
             {/* Step 1: Basic Details */}
             {currentStep === 1 && (
-              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+              <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-full bg-[#d97706] text-white flex items-center justify-center font-bold">1</div>
-                  <h2 className="text-xl font-normal text-[#1f2c4a] tracking-[-0.03em]">Basic Details</h2>
+                  <div className="w-8 h-8 rounded-full bg-[#B8860B] text-[#111111] flex items-center justify-center font-bold">1</div>
+                  <h2 className="text-xl font-normal text-[#111111] tracking-[-0.03em]">Basic Details</h2>
                 </div>
 
                 <div className="space-y-6">
@@ -450,7 +462,7 @@ function CheckoutContent() {
                           value="myself"
                           checked={enrollmentFormData.enrollingFor === 'myself'}
                           onChange={() => handleEnrollingForChange('myself')}
-                          className="w-4 h-4 accent-[#d97706]"
+                          className="w-4 h-4 accent-[#B8860B]"
                         />
                         <span className="text-sm text-[#475569]">Myself</span>
                       </label>
@@ -461,7 +473,7 @@ function CheckoutContent() {
                           value="someoneElse"
                           checked={enrollmentFormData.enrollingFor === 'someoneElse'}
                           onChange={() => handleEnrollingForChange('someoneElse')}
-                          className="w-4 h-4 accent-[#d97706]"
+                          className="w-4 h-4 accent-[#B8860B]"
                         />
                         <span className="text-sm text-[#475569]">Someone else</span>
                       </label>
@@ -479,7 +491,7 @@ function CheckoutContent() {
                         required
                         value={enrollmentFormData.firstName}
                         onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, firstName: e.target.value })}
-                        className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
+                        className="w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50"
                         placeholder="Enter first name"
                       />
                     </div>
@@ -492,7 +504,7 @@ function CheckoutContent() {
                         required
                         value={enrollmentFormData.lastName}
                         onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, lastName: e.target.value })}
-                        className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
+                        className="w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50"
                         placeholder="Enter last name"
                       />
                     </div>
@@ -540,7 +552,7 @@ function CheckoutContent() {
                     <button
                       type="button"
                       onClick={() => setShowAlternativeContact(!showAlternativeContact)}
-                      className="text-sm text-[#475569] hover:text-[#d97706] flex items-center gap-2 mb-2"
+                      className="text-sm text-[#475569] hover:text-[#B8860B] flex items-center gap-2 mb-2"
                     >
                       {showAlternativeContact ? (
                         <>
@@ -568,7 +580,7 @@ function CheckoutContent() {
                         <textarea
                           value={enrollmentFormData.alternativeContact}
                           onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, alternativeContact: e.target.value })}
-                          className="w-full px-4 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded-lg text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50"
+                          className="w-full px-4 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded-lg text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50"
                           rows={enrollmentFormData.enrollingFor === 'someoneElse' ? 4 : 2}
                           placeholder={
                             enrollmentFormData.enrollingFor === 'someoneElse'
@@ -589,7 +601,7 @@ function CheckoutContent() {
                   {/* Continue Button */}
                   <button
                     onClick={handleContinue}
-                    className="w-full bg-[#1f2c4a] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#16243f] transition-colors flex items-center justify-center gap-2"
+                    className="w-full bg-[#111111] text-white font-medium py-3 px-6 rounded-lg hover:bg-[#000000] transition-colors flex items-center justify-center gap-2"
                   >
                     Continue &gt;
                   </button>
@@ -599,10 +611,10 @@ function CheckoutContent() {
 
             {/* Step 2: Secure Payment */}
             {currentStep === 2 && clientSecret && (
-              <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6">
+              <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-full bg-[#d97706] text-white flex items-center justify-center font-bold">2</div>
-                  <h2 className="text-xl font-normal text-[#1f2c4a] tracking-[-0.03em]">Secure Payment</h2>
+                  <div className="w-8 h-8 rounded-full bg-[#B8860B] text-[#111111] flex items-center justify-center font-bold">2</div>
+                  <h2 className="text-xl font-normal text-[#111111] tracking-[-0.03em]">Secure Payment</h2>
                 </div>
 
                 {paymentError && (
@@ -619,7 +631,7 @@ function CheckoutContent() {
                     appearance: {
                       theme: 'stripe',
                       variables: {
-                        colorPrimary: '#d97706',
+                        colorPrimary: '#B8860B',
                         colorBackground: '#ffffff',
                         colorText: '#1f2937',
                         colorDanger: '#ef4444',
@@ -637,7 +649,11 @@ function CheckoutContent() {
                         course: courseSlug,
                         amount: amountPaid.toFixed(2),
                       });
-                      router.push(`/courses/ai-workflow-automation/schedule/checkout/success?${params.toString()}`);
+                      if (selectedSchedule?.prepaid) {
+                        router.push(`/prepaid-training/success?payment_intent=${paymentIntentId || ""}&email=${encodeURIComponent(enrollmentFormData.email || "")}`);
+                      } else {
+                        router.push(`/courses/ai-workflow-automation/schedule/checkout/success?${params.toString()}`);
+                      }
                     }}
                     onCancel={() => {
                       router.push(`/courses/ai-workflow-automation/schedule?course=${courseSlug}`);
@@ -653,49 +669,49 @@ function CheckoutContent() {
 
           {/* Right Sidebar - Order Summary */}
           <div className="w-full lg:w-96 flex-shrink-0">
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 sticky top-4">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 sticky top-4">
               <div className="flex items-center gap-2 mb-4">
                 <svg className="w-5 h-5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
-                <h3 className="text-lg font-medium text-[#1f2c4a]">Order Summary</h3>
+                <h3 className="text-lg font-medium text-[#111111]">Order Summary</h3>
               </div>
               
               {/* Course Details */}
-              <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-4 mb-4">
+              <div className="bg-[#111111]/[0.04] border border-[#111111]/10 rounded-lg p-4 mb-4">
                 <div className="flex items-start justify-between mb-2">
-                  <span className="text-xs font-semibold text-[#475569] bg-[#1f2c4a]/10 px-2 py-1 rounded">Standard</span>
-                  <button className="text-[#64748b] hover:text-[#1f2c4a]">
+                  <span className="text-xs font-semibold text-[#475569] bg-[#111111]/10 px-2 py-1 rounded">Standard</span>
+                  <button className="text-[#64748b] hover:text-[#111111]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                   </button>
                 </div>
-                <h4 className="font-semibold text-[#1f2c4a] mb-3">{courseName}</h4>
+                <h4 className="font-semibold text-[#111111] mb-3">{courseName}</h4>
                 <div className="space-y-2 text-sm text-[#64748b]">
                   <div className="flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>{formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date)} • {selectedSchedule.duration}</span>
+                    <span>{selectedSchedule.prepaid ? "Date chosen later from My Account" : `${formatDateRange(selectedSchedule.start_date, selectedSchedule.end_date)} • ${selectedSchedule.duration}`}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span>{formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - {formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}</span>
+                    <span>{selectedSchedule.prepaid ? "You pick the date in My Account" : `${formatTime(selectedSchedule.start_time, selectedSchedule.timezone)} - ${formatTime(selectedSchedule.end_time, selectedSchedule.timezone)}`}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-3">
                     <button
                       onClick={() => setEnrollmentQuantity(Math.max(1, enrollmentQuantity - 1))}
-                      className="w-8 h-8 border border-[#1f2c4a]/20 rounded flex items-center justify-center hover:bg-[#1f2c4a]/10"
+                      className="w-8 h-8 border border-[#111111]/20 rounded flex items-center justify-center hover:bg-[#111111]/10"
                     >
                       -
                     </button>
-                    <span className="font-semibold text-[#1f2c4a]">{enrollmentQuantity}</span>
+                    <span className="font-semibold text-[#111111]">{enrollmentQuantity}</span>
                     <button
                       onClick={() => setEnrollmentQuantity(enrollmentQuantity + 1)}
-                      className="w-8 h-8 border border-[#1f2c4a]/20 rounded flex items-center justify-center hover:bg-[#1f2c4a]/10"
+                      className="w-8 h-8 border border-[#111111]/20 rounded flex items-center justify-center hover:bg-[#111111]/10"
                     >
                       +
                     </button>
@@ -704,14 +720,14 @@ function CheckoutContent() {
               </div>
 
               {/* Pricing */}
-              <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-4 mb-4">
+              <div className="bg-[#111111]/[0.04] border border-[#111111]/10 rounded-lg p-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-[#64748b]">Subtotal</span>
                   <div className="flex items-center gap-2">
                     {totalOriginalPrice && (
                       <span className="text-sm text-[#64748b] line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
                     )}
-                    <span className="font-semibold text-[#1f2c4a]">${baseTotal.toFixed(2)}</span>
+                    <span className="font-semibold text-[#111111]">${baseTotal.toFixed(2)}</span>
                   </div>
                 </div>
                 {appliedPromoCode && calculatedPromoDiscount > 0 && (
@@ -720,8 +736,8 @@ function CheckoutContent() {
                     <span className="text-sm font-semibold text-green-700">-${calculatedPromoDiscount.toFixed(2)}</span>
                   </div>
                 )}
-                <div className="border-t border-[#1f2c4a]/15 pt-3 flex items-center justify-between">
-                  <span className="font-bold text-[#1f2c4a]">Total</span>
+                <div className="border-t border-[#111111]/15 pt-3 flex items-center justify-between">
+                  <span className="font-bold text-[#111111]">Total</span>
                   <div className="flex items-center gap-2">
                     {appliedPromoCode && calculatedPromoDiscount > 0 && (
                       <span className="bg-green-500/15 text-green-700 text-xs font-semibold px-2 py-1 rounded">
@@ -729,30 +745,30 @@ function CheckoutContent() {
                       </span>
                     )}
                     {discount > 0 && (
-                      <span className="bg-[#d97706]/15 text-[#d97706] text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
+                      <span className="bg-[#B8860B]/15 text-[#B8860B] text-xs font-semibold px-2 py-1 rounded">{discount}% OFF</span>
                     )}
                     {totalOriginalPrice && (
                       <span className="text-sm text-[#64748b] line-through">${totalOriginalPrice ? totalOriginalPrice.toFixed(2) : '0.00'}</span>
                     )}
-                    <span className="text-xl font-bold text-[#1f2c4a]">${totalPrice.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-[#111111]">${totalPrice.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Payment Methods */}
-              <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-4 mb-4">
+              <div className="bg-[#111111]/[0.04] border border-[#111111]/10 rounded-lg p-4 mb-4">
                 <p className="text-xs font-semibold text-[#475569] mb-2">Accepted Payment Methods:</p>
                 <p className="text-xs text-[#64748b]">Credit/Debit Cards • Apple Pay</p>
               </div>
 
             
               {/* Promo Codes */}
-              <div className="bg-[#1f2c4a]/[0.04] border border-[#1f2c4a]/10 rounded-lg p-4">
+              <div className="bg-[#111111]/[0.04] border border-[#111111]/10 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <svg className="w-5 h-5 text-green-700" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  <h4 className="font-semibold text-[#1f2c4a]">Promo Codes</h4>
+                  <h4 className="font-semibold text-[#111111]">Promo Codes</h4>
                 </div>
                 <AvailablePromoCodes
                   appliedPromoCode={appliedPromoCode}
@@ -767,12 +783,12 @@ function CheckoutContent() {
                     onChange={(e) => setPromoCodeInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleApplyPromoCode()}
                     disabled={isValidatingPromo}
-                    className="flex-1 px-3 py-2 bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 rounded text-sm text-[#1f2c4a] placeholder-[#94a3b8] focus:outline-none focus:border-[#1f2c4a]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-3 py-2 bg-[#111111]/10 border border-[#111111]/20 rounded text-sm text-[#111111] placeholder-[#94a3b8] focus:outline-none focus:border-[#111111]/50 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <button 
                     onClick={() => handleApplyPromoCode()}
                     disabled={isValidatingPromo || !promoCodeInput.trim()}
-                    className="bg-[#1f2c4a] text-white px-4 py-2 rounded text-sm font-medium hover:bg-[#16243f] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-[#111111] text-white px-4 py-2 rounded text-sm font-medium hover:bg-[#000000] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isValidatingPromo ? 'Validating...' : 'Apply'}
                   </button>
@@ -816,7 +832,7 @@ export default function CheckoutPage() {
   return (
     <Suspense fallback={
       <main className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d97706]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B8860B]"></div>
       </main>
     }>
       <CheckoutContent />

@@ -6,7 +6,8 @@ import {
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
-import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
+import { getCatalogLanding } from "@/app/lib/catalog-landing-courses";
+import { mergeCourseAeoGraph } from "@/app/lib/course-aeo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -90,12 +91,12 @@ export default async function GenerativeAIProjectManagersLayout({
     scheduleResult
   );
 
-  const faqSchema = faqPageJsonLd("generative-ai-project-managers");
+
+  const pageSchema = mergeCourseAeoGraph(courseGraphLd, getCatalogLanding("generative-ai-project-managers"));
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       {children}
     </>
   );

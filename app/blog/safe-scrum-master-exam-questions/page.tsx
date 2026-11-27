@@ -37,24 +37,24 @@ function BlogHeroDots() {
       <div className="absolute top-4 left-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
       <div className="absolute bottom-4 right-4 flex flex-col gap-1">
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
         <div className="flex gap-1">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-[#d97706] rounded-full" />
+            <div key={i} className="w-1.5 h-1.5 bg-[#B8860B] rounded-full" />
           ))}
         </div>
       </div>
@@ -68,14 +68,14 @@ function ExecutiveSummary() {
   return (
     <section
       aria-label="At a glance"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 md:p-8 my-10"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 md:p-8 my-10"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         At a glance
       </p>
       <ul className="space-y-3 text-[#475569] text-[17px] leading-relaxed">
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">01</span>
+          <span className="text-[#B8860B] font-bold">01</span>
           <span>
             The SSM exam is{" "}
             <strong>45 multiple-choice questions in 90 minutes</strong>. You
@@ -83,21 +83,21 @@ function ExecutiveSummary() {
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">02</span>
+          <span className="text-[#B8860B] font-bold">02</span>
           <span>
             It is <strong>closed book</strong>. There is no reference lookup
             during the exam. Material must be internalized before you start.
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">03</span>
+          <span className="text-[#B8860B] font-bold">03</span>
           <span>
             Questions are scenario-based, not definition-based. Most items ask
             what a Scrum Master should do <em>first</em> given an ART situation.
           </span>
         </li>
         <li className="flex gap-3">
-          <span className="text-[#d97706] font-bold">04</span>
+          <span className="text-[#B8860B] font-bold">04</span>
           <span>
             Six domains, weighted roughly as shown below. PI Planning
             facilitation and Agile Release Train mechanics carry the most
@@ -119,7 +119,7 @@ function ExamFormatStats() {
         role="img"
         aria-label="SAFe Scrum Master exam format overview showing 45 questions, 90 minutes, 73 percent to pass, and closed-book"
         viewBox="0 0 960 300"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="300" fill="rgba(255,255,255,0.03)" />
         <rect
@@ -163,7 +163,7 @@ function ExamFormatStats() {
           x="132"
           y="100"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="54"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -196,7 +196,7 @@ function ExamFormatStats() {
           x="360"
           y="100"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="54"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -229,7 +229,7 @@ function ExamFormatStats() {
           x="588"
           y="100"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="54"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -262,7 +262,7 @@ function ExamFormatStats() {
           x="822"
           y="94"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="36"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -273,7 +273,7 @@ function ExamFormatStats() {
           x="822"
           y="132"
           textAnchor="middle"
-          fill="#d97706"
+          fill="#B8860B"
           fontSize="36"
           fontWeight="700"
           fontFamily="system-ui,sans-serif"
@@ -305,7 +305,7 @@ function TopicDistribution() {
         role="img"
         aria-label="Approximate distribution of SAFe Scrum Master exam topics across six domains"
         viewBox="0 0 960 430"
-        className="w-full h-auto rounded-xl border border-[#1f2c4a]/10"
+        className="w-full h-auto rounded-xl border border-[#111111]/10"
       >
         <rect width="960" height="430" fill="rgba(255,255,255,0.03)" />
         <text
@@ -504,7 +504,7 @@ function PullQuote({
   attribution: string;
 }) {
   return (
-    <blockquote className="border-l-4 border-[#1f2c4a]/20 pl-6 md:pl-8 my-12">
+    <blockquote className="border-l-4 border-[#111111]/20 pl-6 md:pl-8 my-12">
       <p className="text-xl md:text-2xl font-semibold text-[#334155] leading-snug italic">
         {children}
       </p>
@@ -519,15 +519,15 @@ function SampleQuestionBox() {
   return (
     <section
       aria-label="Sample SAFe Scrum Master style question"
-      className="border border-[#1f2c4a]/15 rounded-2xl overflow-hidden my-10"
+      className="border border-[#111111]/15 rounded-2xl overflow-hidden my-10"
     >
-      <div className="bg-[#1f2c4a]/5 px-6 py-4">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold">
+      <div className="bg-[#111111]/5 px-6 py-4">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold">
           Sample question style
         </p>
       </div>
       <div className="p-6 md:p-8">
-        <p className="text-base md:text-lg text-[#1f2c4a] font-semibold mb-4">
+        <p className="text-base md:text-lg text-[#111111] font-semibold mb-4">
           During PI Planning, a team realizes that three of their PI objectives
           depend on a capability from another team that has not committed to
           delivering it this PI. What should the Scrum Master do first?
@@ -546,8 +546,8 @@ function SampleQuestionBox() {
             risk.
           </li>
         </ol>
-        <div className="border-t border-[#1f2c4a]/10 pt-4">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-2">
+        <div className="border-t border-[#111111]/10 pt-4">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-2">
             Best answer: c
           </p>
           <p className="text-sm text-[#475569] leading-relaxed">
@@ -602,23 +602,23 @@ function SevenDayPlan() {
   ];
   return (
     <section aria-label="Seven day SSM exam preparation plan" className="my-10">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-4">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-4">
         7-day preparation plan
       </p>
       <div className="grid gap-3">
         {days.map((d, i) => (
           <div
             key={i}
-            className="flex items-start gap-5 p-5 border border-[#1f2c4a]/10 rounded-lg hover:border-[#1f2c4a]/30 transition-colors"
+            className="flex items-start gap-5 p-5 border border-[#111111]/10 rounded-lg hover:border-[#111111]/30 transition-colors"
           >
             <div className="flex-shrink-0 w-20 md:w-24">
               <p className="text-xs uppercase tracking-wider text-[#64748b]">
                 Prep
               </p>
-              <p className="text-lg font-bold text-[#d97706]">{d.day}</p>
+              <p className="text-lg font-bold text-[#B8860B]">{d.day}</p>
             </div>
-            <div className="flex-1 border-l border-[#1f2c4a]/10 pl-5">
-              <p className="text-base font-semibold text-[#1f2c4a] mb-1">
+            <div className="flex-1 border-l border-[#111111]/10 pl-5">
+              <p className="text-base font-semibold text-[#111111] mb-1">
                 {d.focus}
               </p>
               <p className="text-sm text-[#475569] leading-relaxed">
@@ -643,15 +643,15 @@ function KeyTakeaways() {
   return (
     <section
       aria-label="Key takeaways"
-      className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 md:p-10 my-12"
+      className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 md:p-10 my-12"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#d97706] font-bold mb-6">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#B8860B] font-bold mb-6">
         Key takeaways
       </p>
       <ol className="space-y-5">
         {items.map((item, i) => (
           <li key={i} className="flex gap-4">
-            <span className="text-[#d97706] font-bold text-lg min-w-[28px]">
+            <span className="text-[#B8860B] font-bold text-lg min-w-[28px]">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-[17px] leading-relaxed text-[#334155]">
@@ -668,21 +668,21 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="safe-scrum-master-exam-questions" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+      <main className="min-h-screen bg-black text-[#111111]">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           <BlogHeroDots />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             SAFe Scrum Master Exam Questions: What to Expect and How to Prepare
           </h1>
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -690,7 +690,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
           </div>
 
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">
@@ -698,7 +698,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-normal tracking-[-0.03em] text-[#111111] mb-4 leading-tight">
             SAFe Scrum Master Exam Questions: What to Expect and How to Prepare
           </h1>
           <BlogAuthorByline verb="By" updated="April 2026" />
@@ -713,7 +713,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               you&apos;re walking into. Full details on the{" "}
               <Link
                 href="/courses/scrum-master"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Scrum Master course
               </Link>{" "}
@@ -730,7 +730,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
 
             <ExecutiveSummary />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Exam Format at a Glance
             </h2>
             <ExamFormatStats />
@@ -764,7 +764,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               on the fly.
             </PullQuote>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               What Topics Do SAFe Scrum Master Exam Questions Cover?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -775,7 +775,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
 
             <TopicDistribution />
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               SAFe principles and Scrum in SAFe context (~9 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -784,7 +784,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               Master&apos;s role in a SAFe environment versus single-team Scrum.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               The Agile Release Train (~10 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -793,7 +793,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               delivery flows from program backlog to team backlog.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Iteration planning and execution (~7 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -802,7 +802,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               Sprint goal connection to PI objectives.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               PI Planning facilitation (~9 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -812,14 +812,14 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               cover this event end-to-end in{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 PI Planning explained
               </Link>
               .
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Coaching and continuous improvement (~6 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -828,7 +828,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               anti-patterns.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Built-in quality and DevOps mindset (~4 questions)
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -837,7 +837,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               their teams.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Sample Question Style
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -857,10 +857,10 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               <em>first</em>?&quot; The word <em>first</em> matters.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Traps and How to Avoid Them
             </h2>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Trap 1: Answering from pre-SAFe Scrum experience
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -869,7 +869,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               answers — ART-aware, PI-aware, dependency-aware. Read every
               question assuming the context is a full Agile Release Train.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Trap 2: Treating it as open book
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -878,7 +878,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               another tab. If your prep plan assumes lookup during the test,
               rebuild it. Study for recall, not reference.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Trap 3: Missing qualifier words
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -886,7 +886,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               change the answer. Two options may both be reasonable — one is the
               reasonable <em>first</em> step.
             </p>
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Trap 4: Choosing the &quot;always escalate&quot; answer
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -895,7 +895,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               explicitly shows coaching has failed.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               7-Day Preparation Plan
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -911,18 +911,18 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               doesn&apos;t land. See the{" "}
               <Link
                 href="/courses/scrum-master"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SAFe Scrum Master course
               </Link>{" "}
               for what&apos;s included.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Common Questions
             </h2>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How many questions are on the SAFe Scrum Master exam?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -930,7 +930,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               answer 33 correctly (73%) to pass.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Is the SSM exam open-book?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -939,7 +939,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               the content from memory.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               What happens if I fail the SSM exam?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -948,7 +948,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               the second after targeted review.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How long should I study?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -958,7 +958,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               already know.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Are there free SSM practice questions online?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -968,14 +968,14 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               Compare options against{" "}
               <Link
                 href="/blog/ssm-vs-csm"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 SSM vs CSM
               </Link>{" "}
               if you&apos;re still choosing a certification.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               How often is the SSM exam updated?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -984,7 +984,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               version you trained on.
             </p>
 
-            <p className="text-lg font-semibold text-[#1f2c4a] mb-2">
+            <p className="text-lg font-semibold text-[#111111] mb-2">
               Is SSM worth taking if I already have another Scrum certification?
             </p>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -993,7 +993,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               Review{" "}
               <Link
                 href="/blog/is-safe-certification-worth-it-2026"
-                className="text-[#d97706] font-semibold underline hover:no-underline"
+                className="text-[#B8860B] font-semibold underline hover:no-underline"
               >
                 our SAFe certification ROI breakdown
               </Link>{" "}
@@ -1002,7 +1002,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
 
             <KeyTakeaways />
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-12 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-12 mb-4">
               Ready to Sit for the Exam?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -1011,7 +1011,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               at Fortune 500 companies and federal agencies through this exact
               process.
             </p>
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#1f2c4a] p-8 text-center mb-8">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] text-[#111111] p-8 text-center mb-8">
               <p className="text-xl font-bold mb-3">
                 Get the SSM with a real trainer
               </p>
@@ -1022,7 +1022,7 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               </p>
               <Link
                 href="/courses/scrum-master"
-                className="inline-block bg-[#1f2c4a] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#16243f]"
+                className="inline-block bg-[#111111] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#000000]"
               >
                 View SSM course details
               </Link>
@@ -1031,14 +1031,14 @@ export default async function SafeScrumMasterExamQuestionsBlogPost() {
               Related reading:{" "}
               <Link
                 href="/blog/pi-planning-explained"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 PI Planning explained
               </Link>
               {" · "}
               <Link
                 href="/blog/leading-safe-certification-cost-2026"
-                className="text-[#d97706] underline hover:no-underline"
+                className="text-[#B8860B] underline hover:no-underline"
               >
                 Leading SAFe cost
               </Link>

@@ -37,16 +37,16 @@ export default async function LeanPortfolioManagementBlogPost() {
   return (
     <>
       <EditorialBlogSchemaBlock slug="lean-portfolio-management" />
-      <main className="min-h-screen bg-black text-[#1f2c4a]">
+      <main className="min-h-screen bg-black text-[#111111]">
         {/* Header Image */}
-        <div className="w-full h-64 bg-[#1f2c4a]/[0.04] border-b border-[#1f2c4a]/10 relative flex items-center justify-center overflow-hidden">
+        <div className="w-full h-64 bg-[#111111]/[0.04] border-b border-[#111111]/10 relative flex items-center justify-center overflow-hidden">
           {/* Decorative golden dots - top left */}
           <div className="absolute top-4 left-4 flex flex-col gap-1">
             <div className="flex gap-1">
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -54,7 +54,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -65,7 +65,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
@@ -73,13 +73,13 @@ export default async function LeanPortfolioManagementBlogPost() {
               {[...Array(12)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#d97706] rounded-full"
+                  className="w-1.5 h-1.5 bg-[#B8860B] rounded-full"
                 ></div>
               ))}
             </div>
           </div>
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#1f2c4a] text-center px-8 relative z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-[#111111] text-center px-8 relative z-10">
             {PAGE_SEO.long}
           </h1>
         </div>
@@ -88,11 +88,11 @@ export default async function LeanPortfolioManagementBlogPost() {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-8 text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1f2c4a]">
+            <Link href="/" className="hover:text-[#111111]">
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-[#1f2c4a]">
+            <Link href="/blog" className="hover:text-[#111111]">
               Blog
             </Link>
             <span>/</span>
@@ -101,7 +101,7 @@ export default async function LeanPortfolioManagementBlogPost() {
 
           {/* Category and Date */}
           <div className="flex items-center justify-between mb-6">
-            <span className="border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] text-[#d97706] text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="border border-[#111111]/15 bg-[#111111]/[0.06] text-[#B8860B] text-sm font-semibold px-4 py-1 rounded-full">
               SAFe
             </span>
             <span className="text-sm text-[#64748b]">Latest</span>
@@ -139,7 +139,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               leaving massive value on the table.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               What Is Lean Portfolio Management?
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -157,7 +157,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               The fundamental shift: from managing projects to funding product{" "}
               <Link
                 href="/blog/what-is-a-value-stream-in-safe"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 value streams
               </Link>
@@ -166,7 +166,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               seven core competencies of the{" "}
               <Link
                 href="/blog/what-is-safe-framework"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 Scaled Agile Framework (SAFe)
               </Link>
@@ -178,7 +178,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               instructor-led{" "}
               <Link
                 href="/courses/lean-portfolio-management"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 SAFe LPM certification training
               </Link>{" "}
@@ -186,7 +186,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               enterprise scale.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Why Traditional Portfolio Management Fails
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -232,14 +232,14 @@ export default async function LeanPortfolioManagementBlogPost() {
               business impact.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Core Principles of Lean Portfolio Management
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
               LPM transforms portfolio management through five core principles:
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               1. Strategy-Driven Investment
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -260,7 +260,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               compelling in isolation.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               2. Decentralized Decision-Making
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -280,7 +280,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               to optimize for value.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               3. Lean Budgeting
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -301,7 +301,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               opportunities quickly.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               4. Agile Portfolio Operations
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -314,7 +314,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               These sync meetings happen quarterly, aligning with{" "}
               <Link
                 href="/blog/what-is-pi-planning"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 PI (Planning Interval) planning
               </Link>{" "}
@@ -327,7 +327,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               preventing work-in-progress overload.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               5. Objective Evaluation with Economic Frameworks
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -346,14 +346,14 @@ export default async function LeanPortfolioManagementBlogPost() {
               which investments deliver maximum economic value?"
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               The Three Dimensions of Lean Portfolio Management
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
               LPM operates across three interconnected dimensions:
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Strategy and Investment Funding
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -383,7 +383,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               with strategic objectives.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Agile Portfolio Operations
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -412,7 +412,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               minimal waste and delay.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Lean Governance
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -447,11 +447,11 @@ export default async function LeanPortfolioManagementBlogPost() {
               slowing value delivery.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Implementing Lean Portfolio Management: A Phased Approach
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 1: Establish Foundations (2-3 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -474,7 +474,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 2: Pilot with One Portfolio (3-6 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -500,7 +500,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Phase 3: Scale Across the Enterprise (6-12 Months)
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -526,11 +526,11 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Key Roles in Lean Portfolio Management
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Lean Portfolio Management Function
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -544,7 +544,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               and ensuring strategic alignment.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Epic Owners
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -558,7 +558,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               by removing obstacles and ensuring alignment.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Enterprise Architects
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -567,7 +567,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               initiatives and prevent technical debt from accumulating.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Value Stream Owners
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -576,7 +576,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               work, and optimize flow to maximize value delivery.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Portfolio Kanban: The Engine of Flow
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -584,7 +584,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               and manages their flow from idea to completion.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Typical Kanban States
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -612,7 +612,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Work-in-Progress Limits
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -626,7 +626,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               paralyzes organizations.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Regular Review
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -636,7 +636,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               reprioritizing based on new information.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Weighted Shortest Job First (WSJF): Economic Prioritization
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -644,7 +644,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               transparent, defensible priority decisions.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               The Formula
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -671,7 +671,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               high cost of delay and short duration scores highest.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Benefits of WSJF
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -693,7 +693,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Lean Budgeting: From Projects to Value Streams
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -701,7 +701,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               budgeting funds value streams dynamically.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               How It Works
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -727,7 +727,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Benefits
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -749,7 +749,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               </li>
             </ul>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Measuring Lean Portfolio Management Success
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -757,7 +757,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               alignment, and business outcomes.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Portfolio Flow Metrics
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -778,7 +778,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               or experiencing bottlenecks.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Strategic Alignment Metrics
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -799,7 +799,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               These metrics ensure the portfolio remains strategically focused.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Business Outcome Metrics
             </h3>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-[#475569]">
@@ -822,11 +822,11 @@ export default async function LeanPortfolioManagementBlogPost() {
               business value.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Common Pitfalls and How to Avoid Them
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Trying to Transform Everything at Once
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -839,7 +839,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               value. Learn. Then scale systematically.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Maintaining Old Processes Alongside LPM
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -851,7 +851,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               rather than layering new ones on top.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Insufficient Leadership Engagement
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -865,7 +865,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               for LPM success.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Weak Economic Frameworks
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -879,7 +879,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               frameworks.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Ignoring Organizational Change
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -892,7 +892,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               new ways of working.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Lean Portfolio Management and SAFe
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -917,7 +917,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               For practitioners, the official credential is the{" "}
               <Link
                 href="/courses/lean-portfolio-management"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 SAFe® Lean Portfolio Management (LPM) certification
               </Link>{" "}
@@ -925,21 +925,21 @@ export default async function LeanPortfolioManagementBlogPost() {
               lean governance, with the exam included. See{" "}
               <Link
                 href="/blog/safe-lpm-certification-cost-2026"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 what LPM certification costs in 2026
               </Link>
               , browse{" "}
               <Link
                 href="/blog/safe-lpm-exam-questions-2026"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 practice exam questions
               </Link>
               , or compare{" "}
               <Link
                 href="/blog/safe-lpm-vs-popm"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 LPM vs POPM
               </Link>{" "}
@@ -950,15 +950,15 @@ export default async function LeanPortfolioManagementBlogPost() {
               step is the live class:{" "}
               <Link
                 href="/courses/lean-portfolio-management"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 SAFe Lean Portfolio Management
               </Link>
               .
             </p>
 
-            <div className="rounded-2xl border border-amber-400/30 bg-[#d97706]/[0.06] p-6 my-8">
-              <h3 className="text-xl font-bold text-[#1f2c4a] mb-2">
+            <div className="rounded-2xl border border-amber-400/30 bg-[#B8860B]/[0.06] p-6 my-8">
+              <h3 className="text-xl font-bold text-[#111111] mb-2">
                 Get LPM certified
               </h3>
               <p className="text-[#475569] mb-4">
@@ -968,13 +968,13 @@ export default async function LeanPortfolioManagementBlogPost() {
               </p>
               <Link
                 href="/courses/lean-portfolio-management"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#d97706] px-5 py-2.5 font-semibold text-[#1f2c4a] hover:bg-amber-300"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#F5B942] px-5 py-2.5 font-semibold text-[#111111] hover:bg-amber-300"
               >
                 View the LPM course →
               </Link>
             </div>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Getting Started with Lean Portfolio Management
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -1014,11 +1014,11 @@ export default async function LeanPortfolioManagementBlogPost() {
               pitfalls.
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Frequently Asked Questions
             </h2>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               What's the difference between LPM and traditional portfolio
               management?
             </h3>
@@ -1030,7 +1030,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               value streams instead of temporary projects.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               How does portfolio Kanban improve decision making?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -1040,7 +1040,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               that leads to context switching and delivery delays.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               What is value stream budgeting and why does it matter?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-6">
@@ -1050,7 +1050,7 @@ export default async function LeanPortfolioManagementBlogPost() {
               opportunities without waiting on project approval processes.
             </p>
 
-            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-8 mb-3">
+            <h3 className="text-2xl font-normal tracking-[-0.03em] text-[#111111] mt-8 mb-3">
               Is the SAFe LPM certification worth it?
             </h3>
             <p className="text-lg text-[#475569] leading-relaxed mb-8">
@@ -1060,28 +1060,28 @@ export default async function LeanPortfolioManagementBlogPost() {
               the next step is the{" "}
               <Link
                 href="/courses/lean-portfolio-management"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 live LPM class
               </Link>
               . See the{" "}
               <Link
                 href="/blog/safe-lpm-certification-cost-2026"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 full cost breakdown
               </Link>{" "}
               and{" "}
               <Link
                 href="/blog/safe-lpm-exam-tips"
-                className="text-[#d97706] hover:underline"
+                className="text-[#B8860B] hover:underline"
               >
                 exam tips
               </Link>
               .
             </p>
 
-            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#1f2c4a] mt-10 mb-4">
+            <h2 className="text-3xl font-normal tracking-[-0.03em] text-[#111111] mt-10 mb-4">
               Conclusion
             </h2>
             <p className="text-lg text-[#475569] leading-relaxed mb-4">
@@ -1101,13 +1101,13 @@ export default async function LeanPortfolioManagementBlogPost() {
               Traditional portfolio management is a competitive liability. Lean
               Portfolio Management is a strategic advantage.
             </p>
-            <p className="text-xl font-bold text-[#1f2c4a] mb-8">
+            <p className="text-xl font-bold text-[#111111] mb-8">
               The question is whether you'll transform proactively or be forced
               to transform reactively as competitors outmaneuver you.
             </p>
 
-            <div className="rounded-2xl border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] p-6 my-8">
-              <h3 className="text-xl font-bold text-[#1f2c4a] mb-3">
+            <div className="rounded-2xl border border-[#111111]/15 bg-[#111111]/[0.06] p-6 my-8">
+              <h3 className="text-xl font-bold text-[#111111] mb-3">
                 About Agile36
               </h3>
               <p className="text-[#475569]">
@@ -1125,10 +1125,10 @@ export default async function LeanPortfolioManagementBlogPost() {
             </div>
 
             {/* Back to Blog Link */}
-            <div className="mt-12 pt-8 border-t border-[#1f2c4a]/10">
+            <div className="mt-12 pt-8 border-t border-[#111111]/10">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-[#d97706] font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-[#B8860B] font-semibold hover:underline"
               >
                 <svg
                   className="w-5 h-5"

@@ -53,7 +53,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 max-w-xl shadow-sm">
+    <form onSubmit={handleSubmit} className="rounded-2xl border border-[#111111]/10 bg-white p-6 max-w-xl shadow-sm">
       <div className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-[#475569] mb-1">Name</label>
@@ -62,7 +62,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#1f2c4a]/15 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#111111]/15 text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 outline-none transition-colors"
           />
         </div>
         <div>
@@ -72,7 +72,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
             type="email"
             value={initialData.email}
             disabled
-            className="w-full px-4 py-3 rounded-lg bg-[#f1f5f9] border border-[#1f2c4a]/10 text-[#64748b]"
+            className="w-full px-4 py-3 rounded-lg bg-[#f1f5f9] border border-[#111111]/10 text-[#64748b]"
           />
           <p className="text-xs text-[#94a3b8] mt-1">Email cannot be changed.</p>
         </div>
@@ -83,7 +83,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#1f2c4a]/15 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#111111]/15 text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 outline-none transition-colors"
           />
         </div>
         <div>
@@ -93,7 +93,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#1f2c4a]/15 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#1f2c4a]/40 outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-[#f8fafc] border border-[#111111]/15 text-[#111111] placeholder:text-[#94a3b8] focus:border-[#111111]/40 outline-none transition-colors"
           />
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function ProfileForm({ userId, initialData }: ProfileFormProps) {
       <button
         type="submit"
         disabled={saving}
-        className="mt-6 px-6 py-3 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
+        className="mt-6 px-6 py-3 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] disabled:opacity-50 transition"
       >
         {saving ? 'Saving...' : 'Save changes'}
       </button>

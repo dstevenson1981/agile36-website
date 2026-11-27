@@ -5,7 +5,8 @@ import { buildSafCourseHubGraphLd } from "@/app/lib/saf-course-hub-graph";
 
 import { DEFAULT_OG_IMAGES, DEFAULT_TWITTER_IMAGES } from "@/app/lib/og-defaults";
 import { courseLong, courseOgTitle, courseTitle } from "@/app/lib/course-seo";
-import { faqPageJsonLd } from "@/app/lib/faq-page-jsonld";
+import { getCatalogLanding } from "@/app/lib/catalog-landing-courses";
+import { mergeCourseAeoGraph } from "@/app/lib/course-aeo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -75,32 +76,18 @@ export default async function ProductOwnerManagerLayout({
       ],
       breadcrumbLeafName: "SAFe Product Owner/Product Manager",
       coursesCrumbLabel: "SAFe Courses",
-      aggregateRating: {
-        ratingValue: 4.9,
-        reviewCount: 2500,
-        bestRating: 5,
-        worstRating: 1,
-      },
+      // TODO: set a real reviewCount in learner-review-count.ts before passing aggregateRating. 4.9 is the published rating; the count is not.
     },
     scheduleResult
   );
 
-  const faqSchema = faqPageJsonLd("product-owner-manager", [
-    {
-      q: "What is SAFe POPM certification training?",
-      a: "A two-day live class that makes you eligible for the SAFe POPM exam. The tuition includes two exam attempts.",
-    },
-    {
-      q: "Product Owner and Product Manager are not the same job",
-      a: "The Product Owner owns the team backlog and splits features into stories. The Product Manager owns the ART backlog, the vision, and the roadmap. The Product Manager names the feature. The Product Owner breaks it into stories and stays with the team until it ships.",
-    },
-  ]);
+
+  const pageSchema = mergeCourseAeoGraph(courseGraphLd, getCatalogLanding("product-owner-manager"));
 
   return (
     <>
       <PracticeExamUpsellBanner courseSlug="product-owner-manager" schedulePath="/courses/product-owner-manager/schedule" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseGraphLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       {children}
     </>
   );

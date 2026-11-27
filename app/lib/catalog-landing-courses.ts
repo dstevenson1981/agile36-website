@@ -9,6 +9,7 @@ import {
   sharedWhyTailMicrocredential,
 } from "@/app/lib/catalog-landing";
 import { COURSE_BROCHURE_HREF } from "@/app/lib/course-brochures";
+import { buildAeoFaqs } from "@/app/lib/course-aeo";
 import { AI_CAREER, AI_CATALOG_LANDING, AI_EXAM_DETAILS } from "@/app/lib/catalog-landing-ai";
 
 type WhyRow = CatalogLandingContent["whyRows"][number];
@@ -309,6 +310,7 @@ const popm: CatalogLandingContent = {
   practiceTestTitle: "SAFe Product Owner/Product Manager Practice Test",
   practiceQuestions: "45 Questions",
   practiceDuration: "1 hours and 30 minutes",
+  lastUpdated: "2026-11-27",
   faqs: faqsFor({
     shortName: "SAFe Product Owner/Product Manager",
     datesTitle: "Upcoming POPM dates",
@@ -3446,11 +3448,15 @@ export function getCatalogLanding(slug: string): CatalogLandingContent {
   }
   const career = CAREER[slug];
   const examDetails = EXAM_DETAILS[slug];
-  return {
+  // TODO: set lastUpdated when the page copy is confirmed.
+  // Banner end lives in site-promo.ts (4:00 PM EST, Nov 27, 2026). promoEndsAt is a separate per-course date.
+  const page: CatalogLandingContent = {
     ...content,
     ...(career
       ? { summary: career.summary, careerPath: { lede: career.lede, next: career.next } }
       : {}),
     ...(examDetails ? { examDetails } : {}),
+    discountStacks: true,
   };
+  return { ...page, faqs: buildAeoFaqs(page) };
 }

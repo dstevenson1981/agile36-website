@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import { sendPrepaidPaidEmail } from '@/app/lib/send-prepaid-training-email';
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -183,6 +184,11 @@ export async function POST(request: NextRequest) {
     if (orderError) {
       console.error('Error storing order:', orderError);
       // Don't fail the request if order storage fails, payment is already successful
+    } else if (paymentIntent.metadata?.dateLater === '1' && orderData.customer_email) {
+      await sendPrepaidPaidEmail(
+        String(orderData.customer_email),
+        orderData.course_name || 'your course',
+      );
     }
 
     // $50 practice-exam-only upgrades insert plan=pro above; exam pages read that order.

@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Open+Sans:wght@400;600;700;800&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
   /* Light theme: "black" resolves to a pale blue-white so every themed page
      background (bg-black), gradient fade (from-black), and overlay flips to
-     the light look in one place. Headings/body use literal navy (#1f2c4a)
+     the light look in one place. Headings and body use literal #111111
      and slate utilities instead of text-black. */
   --color-black: #f6f9fd;
 }
@@ -20,7 +19,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -32,10 +31,10 @@ body {
   /* No manual -webkit- prefix: LightningCSS merges the pair and emits only the
      prefixed form, which drops the standard property. Let it autoprefix. */
   backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(31, 44, 74, 0.08);
+  border: 1px solid rgba(17, 17, 17, 0.08);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.9),
-    0 12px 32px -16px rgba(31, 44, 74, 0.18);
+    0 12px 32px -16px rgba(17, 17, 17, 0.18);
   position: relative;
   overflow: hidden;
 }
@@ -265,7 +264,7 @@ body {
 @layer components {
   .blog-prose {
     @apply prose prose-lg max-w-none text-slate-700;
-    @apply prose-headings:font-normal prose-headings:tracking-tight prose-headings:text-[#1f2c4a] prose-headings:scroll-mt-24;
+    @apply prose-headings:font-normal prose-headings:tracking-tight prose-headings:text-[#111111] prose-headings:scroll-mt-24;
     /* Article hero is the only h1; markdown # → h2, ## → h3 (see app/blog/[slug]/page.tsx). */
     @apply prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-10 prose-h2:mb-4 first:prose-h2:mt-0;
     @apply prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:pb-2 prose-h3:border-b prose-h3:border-slate-200;
@@ -273,9 +272,9 @@ body {
     @apply prose-h5:text-lg prose-h5:font-medium prose-h5:mt-6 prose-h5:mb-2;
     @apply prose-h6:text-base prose-h6:font-medium prose-h6:mt-5 prose-h6:mb-2;
     @apply prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-700 prose-p:mb-6;
-    @apply prose-strong:font-semibold prose-strong:text-[#1f2c4a];
+    @apply prose-strong:font-semibold prose-strong:text-[#111111];
     @apply prose-em:italic prose-em:text-slate-600;
-    @apply prose-a:text-[#d97706] prose-a:font-medium prose-a:underline hover:prose-a:no-underline;
+    @apply prose-a:text-[#B8860B] prose-a:font-medium prose-a:underline hover:prose-a:no-underline;
     @apply prose-ul:my-6 prose-ul:text-lg prose-ul:text-slate-700;
     @apply prose-ol:my-6 prose-ol:text-lg prose-ol:text-slate-700;
     @apply prose-li:my-1 prose-li:leading-relaxed;
@@ -284,7 +283,7 @@ body {
     @apply prose-code:bg-slate-100 prose-code:text-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.9em] prose-code:font-mono;
     @apply prose-pre:bg-slate-50 prose-pre:border prose-pre:border-slate-200 prose-pre:text-slate-800 prose-pre:rounded-lg prose-pre:p-4 prose-pre:my-6;
     @apply prose-table:border-collapse prose-table:border prose-table:border-slate-200 prose-table:text-sm;
-    @apply prose-th:border prose-th:border-slate-200 prose-th:bg-slate-100 prose-th:px-4 prose-th:py-3 prose-th:font-semibold prose-th:text-[#1f2c4a];
+    @apply prose-th:border prose-th:border-slate-200 prose-th:bg-slate-100 prose-th:px-4 prose-th:py-3 prose-th:font-semibold prose-th:text-[#111111];
     @apply prose-td:border prose-td:border-slate-200 prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-slate-700;
   }
 

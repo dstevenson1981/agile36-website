@@ -1,24 +1,26 @@
-/** Site-wide 100OFF flash sale — subscribe on the banner to reveal the code. */
+/** Black Friday banner — subscribe to reveal 150OFF. Ends 4:00 PM EST on Nov 27, 2026. */
 
-export const BANNER_COUPON_CODE = "100OFF";
+export const BANNER_COUPON_CODE = "150OFF";
 
-/** Dollar amount shown in the banner / checkout clip UI. */
-export const BANNER_DISCOUNT_AMOUNT = 100;
+/** Set when the banner subscribe flow reveals the code. The course price listens for this. */
+export const PROMO_UNLOCK_KEY = "agile36-promo-unlocked";
+export const PROMO_UNLOCK_EVENT = "agile36-promo-unlocked";
 
-/** Marketing urgency copy (not enforced at checkout). */
-export const PROMO_CODE_EXPIRES_IN = "in 30 mins";
+/** Dollar amount shown in the banner, course price, and checkout clip UI. */
+export const BANNER_DISCOUNT_AMOUNT = 150;
 
-/**
- * Rolling urgency window: clock never hits a hard end — it resets every 30 minutes.
- * Checkout does not use this; 100OFF stays valid in promo_codes until we turn it off.
- */
-export const PROMO_WINDOW_MS = 30 * 60 * 1000;
+/** 4:00 PM Eastern on Friday, November 27, 2026. */
+export const PROMO_ENDS_AT_ISO = "2026-11-27T16:00:00-05:00";
+export const PROMO_ENDS_AT_MS = Date.parse(PROMO_ENDS_AT_ISO);
+
+/** Shown next to the offer. Checkout enforces the same end on 150OFF. */
+export const PROMO_CODE_EXPIRES_IN = "today at 4:00 PM EST";
 
 /** Banner headline shown in PromoBanner. */
-export const PROMO_BANNER_TITLE = "Flash Sale";
+export const PROMO_BANNER_TITLE = "Black Friday";
 
 /** Visible CTA on the promo strip. */
-export const PROMO_BANNER_CTA = "Subscribe for 100 off";
+export const PROMO_BANNER_CTA = "Claim Coupon";
 
 export type PromoCountdown = {
   days: number;
@@ -28,19 +30,17 @@ export type PromoCountdown = {
   totalMs: number;
 };
 
-function remainingInWindowMs(nowMs: number): number {
-  const elapsedInWindow = nowMs % PROMO_WINDOW_MS;
-  return elapsedInWindow === 0 ? PROMO_WINDOW_MS : PROMO_WINDOW_MS - elapsedInWindow;
+function remainingMs(nowMs: number): number {
+  return Math.max(0, PROMO_ENDS_AT_MS - nowMs);
 }
 
 /**
- * Remaining time in the current 30-minute window.
- * Windows are aligned to the Unix epoch so every client ticks the same clock.
- * When the remainder would be 0, the next window starts immediately (never a 00:00:00 end state).
+ * Time left until 4:00 PM EST on November 27, 2026.
+ * After that instant the clock is 0 and the banner hides.
  */
 export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
-  const totalMs = remainingInWindowMs(nowMs);
-  const totalSecs = Math.max(1, Math.floor(totalMs / 1000));
+  const totalMs = remainingMs(nowMs);
+  const totalSecs = Math.floor(totalMs / 1000);
   return {
     days: Math.floor(totalSecs / 86400),
     hours: Math.floor((totalSecs % 86400) / 3600),
@@ -50,12 +50,12 @@ export function getPromoCountdown(nowMs: number = Date.now()): PromoCountdown {
   };
 }
 
-/** ISO of the current visual window end (rolls every 30 minutes). */
-export function getPromoEndsAtIso(nowMs: number = Date.now()): string {
-  return new Date(nowMs + remainingInWindowMs(nowMs)).toISOString();
+/** ISO of the Black Friday end. */
+export function getPromoEndsAtIso(): string {
+  return PROMO_ENDS_AT_ISO;
 }
 
-/** Banner stays visible while this returns true. Rolling window — always active. */
-export function isSitePromoActive(): boolean {
-  return true;
+/** Banner stays visible until 4:00 PM EST. */
+export function isSitePromoActive(nowMs: number = Date.now()): boolean {
+  return nowMs < PROMO_ENDS_AT_MS;
 }

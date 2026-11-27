@@ -93,7 +93,7 @@ export default function AdminChatPage() {
   const active = conversations.find((row) => row.id === activeId) || null;
 
   return (
-    <div className="min-h-screen bg-[#f6f9fd] text-[#1f2c4a]">
+    <div className="min-h-screen bg-[#f6f9fd] text-[#111111]">
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 md:grid-cols-[320px_1fr]">
         <aside>
           <h1 className="text-2xl font-normal tracking-[-0.03em]">Site chat</h1>
@@ -110,8 +110,8 @@ export default function AdminChatPage() {
                   onClick={() => setActiveId(row.id)}
                   className={`w-full rounded-xl border px-3 py-3 text-left text-sm ${
                     activeId === row.id
-                      ? "border-[#1f2c4a] bg-white"
-                      : "border-[#1f2c4a]/10 bg-white/70 hover:border-[#1f2c4a]/25"
+                      ? "border-[#111111] bg-white"
+                      : "border-[#111111]/10 bg-white/70 hover:border-[#111111]/25"
                   }`}
                 >
                   <span className="block font-medium">
@@ -119,7 +119,7 @@ export default function AdminChatPage() {
                   </span>
                   <span className="mt-1 block text-xs text-[#64748b]">{row.visitor_page || "/"}</span>
                   {row.needs_handoff ? (
-                    <span className="mt-2 inline-block text-[11px] uppercase tracking-[0.14em] text-[#d97706]">
+                    <span className="mt-2 inline-block text-[11px] uppercase tracking-[0.14em] text-[#B8860B]">
                       Needs you
                     </span>
                   ) : null}
@@ -129,7 +129,7 @@ export default function AdminChatPage() {
           </ul>
         </aside>
 
-        <section className="min-h-[70vh] rounded-2xl border border-[#1f2c4a]/10 bg-white p-5">
+        <section className="min-h-[70vh] rounded-2xl border border-[#111111]/10 bg-white p-5">
           {!active ? (
             <p className="text-sm text-[#64748b]">Pick a conversation.</p>
           ) : (
@@ -142,16 +142,16 @@ export default function AdminChatPage() {
                 <button
                   type="button"
                   onClick={() => void takeover()}
-                  className="rounded-lg bg-[#1f2c4a] px-3 py-2 text-sm text-white hover:bg-[#16243f]"
+                  className="rounded-lg bg-[#111111] px-3 py-2 text-sm text-white hover:bg-[#000000]"
                 >
                   {active.taken_over ? "Taken over" : "Take over"}
                 </button>
               </div>
-              <div className="mb-4 h-[48vh] space-y-3 overflow-y-auto rounded-xl bg-[#1f2c4a]/[0.03] p-4">
+              <div className="mb-4 h-[48vh] space-y-3 overflow-y-auto rounded-xl bg-[#111111]/[0.03] p-4">
                 {messages.map((message) => (
                   <div key={message.id} className="text-sm">
                     <p className="text-[11px] uppercase tracking-[0.14em] text-[#94a3b8]">{message.role}</p>
-                    <p className="mt-1 whitespace-pre-wrap text-[#1f2c4a]">{message.content}</p>
+                    <p className="mt-1 whitespace-pre-wrap text-[#111111]">{message.content}</p>
                   </div>
                 ))}
               </div>
@@ -166,9 +166,9 @@ export default function AdminChatPage() {
                   value={reply}
                   onChange={(event) => setReply(event.target.value)}
                   placeholder="Reply as you. This stops the AI."
-                  className="flex-1 rounded-lg border border-[#1f2c4a]/15 px-3 py-2.5 text-sm outline-none focus:border-[#1f2c4a]/40"
+                  className="flex-1 rounded-lg border border-[#111111]/15 px-3 py-2.5 text-sm outline-none focus:border-[#111111]/40"
                 />
-                <button type="submit" className="rounded-lg bg-[#1f2c4a] px-4 text-sm text-white hover:bg-[#16243f]">
+                <button type="submit" className="rounded-lg bg-[#111111] px-4 text-sm text-white hover:bg-[#000000]">
                   Send
                 </button>
               </form>

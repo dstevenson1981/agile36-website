@@ -79,10 +79,10 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="liquid-glass rounded-2xl p-8">
-          <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Create your account</h1>
+          <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Create your account</h1>
           <p className="text-[#475569] mb-6">
             Sign up to access your orders, receipts, and learning resources.
           </p>
@@ -98,7 +98,7 @@ export default function SignupPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="Your name"
               />
             </div>
@@ -110,7 +110,7 @@ export default function SignupPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="you@company.com"
               />
             </div>
@@ -123,7 +123,7 @@ export default function SignupPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="••••••••"
               />
               <p className="text-xs text-[#64748b] mt-1">At least 6 characters</p>
@@ -142,7 +142,7 @@ export default function SignupPage() {
                       type="button"
                       onClick={handleResendConfirmation}
                       disabled={resending}
-                      className="text-[#d97706] font-medium hover:underline disabled:opacity-50"
+                      className="text-[#B8860B] font-medium hover:underline disabled:opacity-50"
                     >
                       {resending ? 'Sending…' : 'Resend confirmation email'}
                     </button>
@@ -150,10 +150,10 @@ export default function SignupPage() {
                 )}
                 {message.type === 'error' && message.text.includes('already exists') && (
                   <div className="mt-2 flex gap-3">
-                    <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
+                    <Link href="/account/login" className="text-[#B8860B] font-medium hover:underline">
                       Sign in
                     </Link>
-                    <Link href="/account/forgot-password" className="text-[#d97706] font-medium hover:underline">
+                    <Link href="/account/forgot-password" className="text-[#B8860B] font-medium hover:underline">
                       Reset password
                     </Link>
                   </div>
@@ -164,7 +164,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
+              className="w-full py-3 px-4 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] disabled:opacity-50 transition"
             >
               {loading ? 'Creating account...' : 'Create account'}
             </button>
@@ -172,7 +172,7 @@ export default function SignupPage() {
 
           <p className="mt-6 text-center text-sm text-[#64748b]">
             Already have an account?{' '}
-            <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
+            <Link href="/account/login" className="text-[#B8860B] font-medium hover:underline">
               Sign in
             </Link>
           </p>

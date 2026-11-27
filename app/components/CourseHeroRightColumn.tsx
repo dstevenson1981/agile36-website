@@ -67,7 +67,7 @@ export default function CourseHeroRightColumn({
       <div className="w-full max-w-[20.5rem] space-y-4">
         {isPrivate || list ? (
           <div className="liquid-glass overflow-hidden rounded-2xl lg:sticky lg:top-24">
-            <div className="bg-gradient-to-r from-[#1f2c4a] to-[#33415f] px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+            <div className="bg-gradient-to-r from-[#111111] to-[#111111] px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
               {isPrivate ? "Private cohort" : "Live, instructor-led cohort"}
             </div>
 
@@ -78,14 +78,14 @@ export default function CourseHeroRightColumn({
                     Tuition
                   </p>
                   <p
-                    className="mt-1 text-[1.35rem] font-semibold leading-none text-[#1f2c4a]"
+                    className="mt-1 text-[1.35rem] font-semibold leading-none text-[#111111]"
                     style={{ letterSpacing: "-0.03em" }}
                   >
                     {list ? `$${list.current.toLocaleString()}` : "Contact for pricing"}
                   </p>
                   {showPartner ? (
                     <div className="mt-2.5">
-                      <p className="text-[13px] font-semibold leading-snug text-[#1f2c4a]">
+                      <p className="text-[13px] font-semibold leading-snug text-[#111111]">
                         Simple pricing. Everything included.
                       </p>
                       <p className="mt-1 text-[12px] leading-snug text-[#64748b]">
@@ -97,7 +97,7 @@ export default function CourseHeroRightColumn({
                   <button
                     type="button"
                     onClick={handlePrivateContact}
-                    className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1f2c4a] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#16243f]"
+                    className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#111111] py-2.5 text-center text-[13px] font-semibold text-white transition hover:bg-[#000000]"
                   >
                     Contact Us to Register
                     <svg
@@ -129,7 +129,7 @@ export default function CourseHeroRightColumn({
               ) : null}
 
               {children != null && children !== false ? (
-                <div className="mt-4 border-t border-[#1f2c4a]/10 pt-3.5">
+                <div className="mt-4 border-t border-[#111111]/10 pt-3.5">
                   <p className="mb-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#94a3b8]">
                     What&apos;s included
                   </p>
@@ -141,7 +141,7 @@ export default function CourseHeroRightColumn({
 
               {showClaudePartner ? <ClaudePartnerBadge /> : null}
               {showPartner ? (
-                <div className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+                <div className="mt-4 flex items-center gap-2.5 rounded-lg bg-[#111111]/[0.04] px-3 py-2.5">
                   <Image
                     src="/Silver.png"
                     alt="Scaled Agile Silver Partner"
@@ -151,7 +151,7 @@ export default function CourseHeroRightColumn({
                   />
                   <p className="text-[11px] leading-snug text-[#475569]">
                     Official training under our{" "}
-                    <span className="font-semibold text-[#1f2c4a]">
+                    <span className="font-semibold text-[#111111]">
                       Scaled Agile Silver Partnership
                     </span>
                   </p>

@@ -50,7 +50,7 @@ export default function BlogConsultationCta() {
     >
       <h2
         id="blog-consultation-heading"
-        className="text-xl sm:text-2xl font-normal text-[#1f2c4a] mb-5"
+        className="text-xl sm:text-2xl font-normal text-[#111111] mb-5"
         style={{ letterSpacing: "-0.03em" }}
       >
         Get Free Consultation
@@ -58,7 +58,7 @@ export default function BlogConsultationCta() {
       {status === "success" ? (
         <p className="text-[#475569] text-sm leading-relaxed">
           Thanks — we&apos;ll be in touch soon. You can also reach us at{" "}
-          <a href="mailto:d.stevenson@agile36.com" className="font-semibold text-[#d97706] underline">
+          <a href="mailto:d.stevenson@agile36.com" className="font-semibold text-[#B8860B] underline">
             d.stevenson@agile36.com
           </a>
           .
@@ -81,13 +81,13 @@ export default function BlogConsultationCta() {
                 if (status === "error") setStatus("idle");
               }}
               placeholder="Email Address *"
-              className="w-full rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.05] px-4 py-3 text-[#1f2c4a] placeholder:text-[#94a3b8] focus:border-[#d97706] focus:outline-none focus:ring-2 focus:ring-[#d97706]/20"
+              className="w-full rounded-lg border border-[#111111]/15 bg-[#111111]/[0.05] px-4 py-3 text-[#111111] placeholder:text-[#94a3b8] focus:border-[#B8860B] focus:outline-none focus:ring-2 focus:ring-[#B8860B]/20"
             />
           </div>
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full rounded-lg bg-[#d97706] px-4 py-3 text-base font-bold text-[#1f2c4a] transition hover:bg-[#f59e0b] disabled:opacity-60"
+            className="w-full rounded-lg bg-[#F5B942] px-4 py-3 text-base font-bold text-[#111111] transition hover:bg-[#f59e0b] disabled:opacity-60"
           >
             {status === "loading" ? "Submitting…" : "Submit"}
           </button>

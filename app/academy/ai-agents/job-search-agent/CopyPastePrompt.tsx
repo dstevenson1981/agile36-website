@@ -41,15 +41,15 @@ export default function CopyPastePrompt() {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/15 bg-white shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-4 py-3 sm:px-5">
+    <div className="overflow-hidden rounded-2xl border border-[#111111]/15 bg-white shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#111111]/10 bg-[#111111]/[0.03] px-4 py-3 sm:px-5">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
             Day 1 · Copy into Claude Code or Codex
           </p>
           <p className="mt-1 text-sm text-[#64748b]">
             Open the build folder first, then paste this prompt. Replace{' '}
-            <code className="rounded bg-[#1f2c4a]/5 px-1 text-[12px] text-[#1f2c4a]">
+            <code className="rounded bg-[#111111]/5 px-1 text-[12px] text-[#111111]">
               [attach resume]
             </code>{' '}
             with yours.
@@ -58,12 +58,12 @@ export default function CopyPastePrompt() {
         <button
           type="button"
           onClick={copyPrompt}
-          className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#1f2c4a] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#16243f]"
+          className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#111111] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#000000]"
         >
           {copied ? 'Copied' : 'Copy prompt'}
         </button>
       </div>
-      <pre className="max-h-[28rem] overflow-auto whitespace-pre-wrap p-4 text-[13px] leading-relaxed text-[#1f2c4a] sm:p-5">
+      <pre className="max-h-[28rem] overflow-auto whitespace-pre-wrap p-4 text-[13px] leading-relaxed text-[#111111] sm:p-5">
         {STUDENT_PROMPT}
       </pre>
     </div>

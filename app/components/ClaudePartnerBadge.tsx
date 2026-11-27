@@ -11,7 +11,7 @@ type Props = {
 export default function ClaudePartnerBadge({ variant = "footer" }: Props) {
   if (variant === "hero") {
     return (
-      <div className="flex items-center gap-4 rounded-2xl border border-[#1f2c4a]/10 bg-white px-4 py-3 shadow-[0_16px_40px_-32px_rgba(31,44,74,.55)]">
+      <div className="flex items-center gap-4 rounded-2xl border border-[#111111]/10 bg-white px-4 py-3 shadow-[0_16px_40px_-32px_rgba(17, 17, 17,.55)]">
         <Image
           src="/claude-partner-badge.png"
           alt="Claude Partner Badge — Claude Code"
@@ -21,10 +21,10 @@ export default function ClaudePartnerBadge({ variant = "footer" }: Props) {
           priority
         />
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d97706]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#B8860B]">
             Partner badge
           </p>
-          <p className="mt-1 text-sm font-semibold text-[#1f2c4a]">Claude Partner</p>
+          <p className="mt-1 text-sm font-semibold text-[#111111]">Claude Partner</p>
           <p className="mt-0.5 text-xs leading-5 text-[#64748b]">Claude Code · issued by Anthropic</p>
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function ClaudePartnerBadge({ variant = "footer" }: Props) {
   }
 
   return (
-    <div className="mt-4 flex items-center gap-3 rounded-lg bg-[#1f2c4a]/[0.04] px-3 py-2.5">
+    <div className="mt-4 flex items-center gap-3 rounded-lg bg-[#111111]/[0.04] px-3 py-2.5">
       <Image
         src="/claude-partner-badge.png"
         alt="Claude Partner Badge — Claude Code"
@@ -57,7 +57,7 @@ export default function ClaudePartnerBadge({ variant = "footer" }: Props) {
       />
       <p className="text-[12px] leading-snug text-[#475569]">
         Taught under our{" "}
-        <span className="font-semibold text-[#1f2c4a]">Claude Partner</span> badge
+        <span className="font-semibold text-[#111111]">Claude Partner</span> badge
       </p>
     </div>
   );

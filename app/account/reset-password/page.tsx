@@ -80,7 +80,7 @@ function ResetPasswordForm() {
 
   if (!ready) {
     return (
-      <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4">
+      <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
           <p className="text-[#475569]">Verifying your reset link...</p>
         </div>
@@ -90,19 +90,19 @@ function ResetPasswordForm() {
 
   if (error && !success) {
     return (
-      <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+      <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="liquid-glass rounded-2xl p-8">
-            <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Link expired</h1>
+            <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Link expired</h1>
             <p className="text-[#475569] mb-6">{error}</p>
             <Link
               href="/account/forgot-password"
-              className="inline-block w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] text-center transition"
+              className="inline-block w-full py-3 px-4 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] text-center transition"
             >
               Request a new reset link
             </Link>
             <p className="mt-6 text-center text-sm text-[#64748b]">
-              <Link href="/account/login" className="text-[#d97706] font-medium hover:underline">
+              <Link href="/account/login" className="text-[#B8860B] font-medium hover:underline">
                 Back to sign in
               </Link>
             </p>
@@ -114,14 +114,14 @@ function ResetPasswordForm() {
 
   if (success) {
     return (
-      <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+      <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="liquid-glass rounded-2xl p-8 text-center">
-            <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Password updated</h1>
+            <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Password updated</h1>
             <p className="text-[#475569] mb-6">
               Your password has been reset. Redirecting you to your account...
             </p>
-            <Link href="/account" className="text-[#d97706] font-medium hover:underline">
+            <Link href="/account" className="text-[#B8860B] font-medium hover:underline">
               Go to account now
             </Link>
           </div>
@@ -131,10 +131,10 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="min-h-[60vh] bg-black text-[#1f2c4a] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[60vh] bg-black text-[#111111] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="liquid-glass rounded-2xl p-8">
-          <h1 className="text-2xl font-normal text-[#1f2c4a] mb-2" style={{ letterSpacing: '-0.03em' }}>Set a new password</h1>
+          <h1 className="text-2xl font-normal text-[#111111] mb-2" style={{ letterSpacing: '-0.03em' }}>Set a new password</h1>
           <p className="text-[#475569] mb-6">
             Enter your new password below. Use at least 6 characters.
           </p>
@@ -151,7 +151,7 @@ function ResetPasswordForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="••••••••"
               />
             </div>
@@ -166,7 +166,7 @@ function ResetPasswordForm() {
                 onChange={(e) => setConfirm(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-[#1f2c4a]/10 border border-[#1f2c4a]/20 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-[#111111]/10 border border-[#111111]/20 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none transition"
                 placeholder="••••••••"
               />
             </div>
@@ -178,7 +178,7 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-[#1f2c4a] text-white font-medium rounded-lg hover:bg-[#16243f] disabled:opacity-50 transition"
+              className="w-full py-3 px-4 bg-[#111111] text-white font-medium rounded-lg hover:bg-[#000000] disabled:opacity-50 transition"
             >
               {loading ? 'Updating...' : 'Update password'}
             </button>

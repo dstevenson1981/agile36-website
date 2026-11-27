@@ -27,9 +27,9 @@ const STOREFRONT_SLUGS = new Set([
 ]);
 
 const HEADING =
-  "text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1f2c4a] sm:text-4xl";
+  "text-[1.85rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#111111] sm:text-4xl";
 const SECTION_HEADING =
-  "text-2xl font-semibold leading-[1.2] tracking-[-0.03em] text-[#1f2c4a] sm:text-[1.85rem]";
+  "text-2xl font-semibold leading-[1.2] tracking-[-0.03em] text-[#111111] sm:text-[1.85rem]";
 const BODY = "text-[15px] leading-relaxed text-[#475569]";
 
 const HERO_AVATARS = [
@@ -161,7 +161,7 @@ function CertifiedTrack({
   return (
     <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
       <div>
-        <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
+        <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#B8860B]">
           Get Certified
         </p>
                 <h2 className={`mt-3 ${SECTION_HEADING}`}>
@@ -169,11 +169,11 @@ function CertifiedTrack({
         </h2>
         <div className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-2">
           <span
-            className="pointer-events-none absolute left-[10%] right-[10%] top-7 hidden h-1 overflow-hidden rounded-full bg-[#1f2c4a]/15 sm:block"
+            className="pointer-events-none absolute left-[10%] right-[10%] top-7 hidden h-1 overflow-hidden rounded-full bg-[#111111]/15 sm:block"
             aria-hidden
           >
             <span
-              className="block h-full rounded-full bg-[#d97706] transition-[width] duration-500 ease-out"
+              className="block h-full rounded-full bg-[#B8860B] transition-[width] duration-500 ease-out"
               style={{ width: `${fill}%` }}
             />
           </span>
@@ -185,17 +185,17 @@ function CertifiedTrack({
                 <span
                   className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-full text-[15px] font-semibold ring-4 ring-[#faf8f4] ${
                     on
-                      ? "cert-station-on bg-[#d97706] text-white"
+                      ? "cert-station-on bg-[#B8860B] text-[#111111]"
                       : done
-                        ? "bg-[#d97706] text-white"
-                        : "bg-[#1f2c4a] text-white"
+                        ? "bg-[#B8860B] text-[#111111]"
+                        : "bg-[#111111] text-[#111111]"
                   }`}
                 >
                   {stop.n}
                 </span>
                 <p
                   className={`mt-3 max-w-[9.5rem] text-[13px] font-medium leading-snug ${
-                    on || done ? "text-[#1f2c4a]" : "text-[#64748b]"
+                    on || done ? "text-[#111111]" : "text-[#64748b]"
                   }`}
                 >
                   {stop.label}
@@ -205,7 +205,7 @@ function CertifiedTrack({
           })}
         </div>
       </div>
-      <ol className="space-y-3 rounded-2xl bg-[#1f2c4a] p-6 sm:p-7">
+      <ol className="space-y-3 rounded-2xl bg-[#111111] p-6 sm:p-7">
         {steps.map((step, index) => {
           const on = index === highlightedStep;
           return (
@@ -217,7 +217,7 @@ function CertifiedTrack({
             >
               <span
                 className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-semibold transition-colors duration-500 ${
-                  on ? "bg-[#d97706] text-white" : "bg-white/15 text-white"
+                  on ? "bg-[#B8860B] text-[#111111]" : "bg-white/15 text-[#111111]"
                 }`}
               >
                 {index + 1}
@@ -333,20 +333,20 @@ export function LegacyCatalogCourseLanding({
   const faqGroups = content.faqs;
 
   return (
-    <main className="min-h-screen bg-[#faf8f4] text-[#1f2c4a]">
+    <main className="min-h-screen bg-[#faf8f4] text-[#111111]">
       <section className="relative w-full px-4 pb-10 pt-8 sm:px-6 lg:px-20 lg:pb-12 lg:pt-10">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#94a3b8]">
-            <Link href="/" className="hover:text-[#1f2c4a]">Home</Link>
+            <Link href="/" className="hover:text-[#111111]">Home</Link>
             <span>/</span>
-            <Link href="/courses" className="hover:text-[#1f2c4a]">SAFe</Link>
+            <Link href="/courses" className="hover:text-[#111111]">SAFe</Link>
             <span>/</span>
             <span className="text-[#64748b]">{content.crumb}</span>
           </nav>
 
           <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-x-14 lg:gap-y-0">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
                 {content.eyebrow || "SAFe® Certification · Live Online"}
               </p>
               <h1 className={`mt-3 ${HEADING}`}>
@@ -360,7 +360,7 @@ export function LegacyCatalogCourseLanding({
                 ))}
               </div>
               {content.attemptsLine === null ? null : (
-                <p className="mt-2 text-[15px] font-medium text-[#1f2c4a]">
+                <p className="mt-2 text-[15px] font-medium text-[#111111]">
                   {content.attemptsLine || "Your first two attempts are included."}
                 </p>
               )}
@@ -400,12 +400,12 @@ export function LegacyCatalogCourseLanding({
                       />
                     ))}
                   </div>
-                  <p className="text-sm font-semibold text-[#1f2c4a]">
+                  <p className="text-sm font-semibold text-[#111111]">
                     {SAFE_COURSE_PARTICIPANTS_VALUE} trained
                   </p>
                 </div>
 
-                <div className="inline-flex items-center gap-2 rounded-md border border-[#1f2c4a]/10 bg-white px-2.5 py-1.5 text-sm">
+                <div className="inline-flex items-center gap-2 rounded-md border border-[#111111]/10 bg-white px-2.5 py-1.5 text-sm">
                   <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" aria-hidden>
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z" />
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -413,17 +413,17 @@ export function LegacyCatalogCourseLanding({
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                   </svg>
                   <span className="font-medium text-[#475569]">Google</span>
-                  <span className="font-semibold text-[#1f2c4a]">4.9/5</span>
+                  <span className="font-semibold text-[#111111]">4.9/5</span>
                 </div>
 
                 <Link
                   href="https://training.scaledagile.com/?sort=feedbackScore&page=1&limit=25"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border border-[#1f2c4a]/10 bg-white px-2.5 py-1.5 text-sm hover:border-[#1f2c4a]/25"
+                  className="inline-flex items-center gap-2 rounded-md border border-[#111111]/10 bg-white px-2.5 py-1.5 text-sm hover:border-[#111111]/25"
                 >
-                  <span className="text-[#d97706]" aria-hidden>★</span>
-                  <span className="font-semibold text-[#1f2c4a]">4.9</span>
+                  <span className="text-[#B8860B]" aria-hidden>★</span>
+                  <span className="font-semibold text-[#111111]">4.9</span>
                   <span className="font-medium text-[#475569]">Highest-rated Scaled Agile partner</span>
                 </Link>
               </div>
@@ -431,7 +431,7 @@ export function LegacyCatalogCourseLanding({
               <ul className="mt-7 space-y-3">
                 {content.highlights.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d97706] text-white">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#B8860B] text-[#111111]">
                       <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -444,14 +444,14 @@ export function LegacyCatalogCourseLanding({
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#class-dates"
-                  className="inline-flex items-center justify-center rounded-md bg-[#d97706] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#b45309]"
+                  className="inline-flex items-center justify-center rounded-md bg-[#F5B942] px-6 py-2.5 text-sm font-semibold text-[#111111] transition hover:bg-[#e0a82e]"
                 >
                   Enroll Now
                 </a>
                 <button
                   type="button"
                   onClick={() => setShowCorporateQuote(true)}
-                  className="inline-flex items-center justify-center rounded-md border border-[#1f2c4a] bg-white px-6 py-2.5 text-sm font-semibold text-[#1f2c4a] transition hover:bg-[#1f2c4a] hover:text-white"
+                  className="inline-flex items-center justify-center rounded-md border border-[#111111] bg-white px-6 py-2.5 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white"
                 >
                   Team / Corporate Training
                 </button>
@@ -464,7 +464,7 @@ export function LegacyCatalogCourseLanding({
                     download
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-[#d97706] underline decoration-[#d97706]/40 underline-offset-2 hover:text-[#b45309]"
+                    className="font-semibold text-[#B8860B] underline decoration-[#B8860B]/40 underline-offset-2 hover:text-[#B8860B]"
                   >
                     Download Brochure
                   </a>
@@ -474,7 +474,7 @@ export function LegacyCatalogCourseLanding({
                   <button
                     type="button"
                     onClick={() => setShowAssessmentModal(true)}
-                    className="font-medium text-[#1f2c4a] underline decoration-[#1f2c4a]/25 underline-offset-2 hover:decoration-[#1f2c4a]"
+                    className="font-medium text-[#111111] underline decoration-[#111111]/25 underline-offset-2 hover:decoration-[#111111]"
                   >
                     {content.assessmentLabel || "Free Assessment"}
                   </button>
@@ -489,7 +489,7 @@ export function LegacyCatalogCourseLanding({
 
       <nav
         aria-label="On this page"
-        className="sticky top-[4.25rem] z-40 border-b border-[#1f2c4a]/15 bg-[#faf8f4]/95 backdrop-blur-md"
+        className="sticky top-[4.25rem] z-40 border-b border-[#111111]/15 bg-[#faf8f4]/95 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl overflow-x-auto px-4 sm:px-6 lg:px-20">
           {pageTabs.map((tab) => {
@@ -501,14 +501,14 @@ export function LegacyCatalogCourseLanding({
                 onClick={(event) => scrollToSection(event, tab.id)}
                 className={`relative shrink-0 px-4 py-4 text-[15px] font-semibold tracking-[-0.02em] transition sm:flex-1 sm:px-2 sm:text-center md:text-base ${
                   active
-                    ? "text-[#1f2c4a]"
-                    : "text-[#64748b] hover:text-[#1f2c4a]"
+                    ? "text-[#111111]"
+                    : "text-[#64748b] hover:text-[#111111]"
                 }`}
               >
                 {tab.label}
                 <span
                   className={`absolute inset-x-3 bottom-0 h-[3px] rounded-full transition sm:inset-x-4 ${
-                    active ? "bg-[#d97706]" : "bg-transparent"
+                    active ? "bg-[#B8860B]" : "bg-transparent"
                   }`}
                   aria-hidden
                 />
@@ -551,13 +551,13 @@ export function LegacyCatalogCourseLanding({
                         const goal = goalParts(outcome);
                         return (
                           <li key={outcome} className="flex items-start gap-3">
-                            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#d97706] text-white">
+                            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#B8860B] text-[#111111]">
                               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
                             </span>
                             <p className="text-[16px] leading-relaxed text-[#334155]">
-                              <span className="font-semibold text-[#1f2c4a]">{goal.title}</span>
+                              <span className="font-semibold text-[#111111]">{goal.title}</span>
                               {goal.rest ? ` ${goal.rest}` : null}
                             </p>
                           </li>
@@ -565,7 +565,7 @@ export function LegacyCatalogCourseLanding({
                       })}
                     </ul>
                   </div>
-                  <div className="overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
+                  <div className="overflow-hidden rounded-2xl border border-[#111111]/10 bg-white">
                     {content.certificateSrc ? (
                       <img
                         src={content.certificateSrc}
@@ -573,7 +573,7 @@ export function LegacyCatalogCourseLanding({
                         className="h-auto w-full"
                       />
                     ) : (
-                      <div className="flex aspect-[4/3] items-center justify-center bg-[#1f2c4a]/[0.04] p-8">
+                      <div className="flex aspect-[4/3] items-center justify-center bg-[#111111]/[0.04] p-8">
                         <Image
                           src={content.badgeSrc}
                           alt={content.badgeAlt}
@@ -589,7 +589,7 @@ export function LegacyCatalogCourseLanding({
             );
           })()}
 
-          <p id="class-dates" className="mt-14 scroll-mt-32 text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          <p id="class-dates" className="mt-14 scroll-mt-32 text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
             Live online cohorts
           </p>
           <h2 className={`mt-3 ${SECTION_HEADING}`}>
@@ -612,7 +612,7 @@ export function LegacyCatalogCourseLanding({
           <div className="mx-auto max-w-7xl">
             <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
-                <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#d97706]">
+                <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-[#B8860B]">
                   Exam Details
                 </p>
                 <h2 className={`mt-3 ${SECTION_HEADING}`}>
@@ -632,14 +632,14 @@ export function LegacyCatalogCourseLanding({
                 <ul className="mt-6 space-y-4">
                   {content.examDetails.format.map((line) => (
                     <li key={`${line.before ?? ""}${line.highlight}${line.after ?? ""}`} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#d97706] text-white">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-[5px] bg-[#B8860B] text-[#111111]">
                         <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </span>
                       <p className="text-[17px] leading-snug text-[#334155]">
                         {line.before}
-                        <span className="font-semibold text-[#d97706]">{line.highlight}</span>
+                        <span className="font-semibold text-[#B8860B]">{line.highlight}</span>
                         {line.after}
                       </p>
                     </li>
@@ -648,9 +648,9 @@ export function LegacyCatalogCourseLanding({
               </div>
             </div>
             {content.attemptsLine === null ? null : (
-              <div className="mt-10 flex items-start gap-4 rounded-2xl bg-[#1f2c4a] px-6 py-6 text-white sm:px-8">
+              <div className="mt-10 flex items-start gap-4 rounded-2xl bg-[#111111] px-6 py-6 text-white sm:px-8">
                 <span
-                  className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#d97706]"
+                  className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B8860B]"
                   aria-hidden
                 >
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -678,7 +678,7 @@ export function LegacyCatalogCourseLanding({
                 href={content.examGuidelinesHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-[#d97706] underline decoration-[#d97706]/30 underline-offset-2 hover:text-[#b45309]"
+                className="font-medium text-[#B8860B] underline decoration-[#B8860B]/30 underline-offset-2 hover:text-[#B8860B]"
               >
                 Scaled Agile exam guidelines
               </a>
@@ -690,37 +690,37 @@ export function LegacyCatalogCourseLanding({
 
       <section id="why-agile36" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Why Agile36</p>
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">Why Agile36</p>
           <h2 className={`mt-3 ${SECTION_HEADING}`}>
             This is why they should choose us
           </h2>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-[#1f2c4a]/10 bg-white">
-            <div className="hidden border-b border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#111111]/10 bg-white">
+            <div className="hidden border-b border-[#111111]/10 bg-[#111111]/[0.03] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8">
               <span>What to check</span>
-              <span className="text-[#1f2c4a]">Agile36</span>
+              <span className="text-[#111111]">Agile36</span>
               <span>{content.whyOtherLabel || "Other SAFe training providers"}</span>
             </div>
             {content.whyRows.map((row) => (
               <div
                 key={row.n}
-                className={`grid gap-4 border-b border-[#1f2c4a]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
+                className={`grid gap-4 border-b border-[#111111]/10 px-5 py-5 last:border-b-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:px-8 ${
                   row.featured
-                    ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07] py-7 lg:py-8"
+                    ? "border-l-[3px] border-l-[#B8860B] bg-[#B8860B]/[0.07] py-7 lg:py-8"
                     : "bg-white"
                 }`}
               >
                 <div className="flex items-baseline gap-3">
-                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#d97706]">
+                  <span className="shrink-0 text-lg font-semibold tabular-nums tracking-tight text-[#B8860B]">
                     {row.n}
                   </span>
-                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#1f2c4a]">{row.check}</h3>
+                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#111111]">{row.check}</h3>
                 </div>
                 <div>
-                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706] lg:hidden">
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B8860B] lg:hidden">
                     Agile36
                   </p>
                   <p className="text-[15px] leading-relaxed text-[#475569]">
-                    <span className="font-semibold text-[#1f2c4a]">{row.usLead}</span> {row.usRest}
+                    <span className="font-semibold text-[#111111]">{row.usLead}</span> {row.usRest}
                   </p>
                 </div>
                 <div>
@@ -737,7 +737,7 @@ export function LegacyCatalogCourseLanding({
 
       <section id="curriculum" className="scroll-mt-32 w-full px-4 py-10 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
             Official outline
           </p>
           <h2 className={`mt-3 ${SECTION_HEADING}`}>
@@ -751,32 +751,32 @@ export function LegacyCatalogCourseLanding({
             {content.outcomes.map((outcome) => (
               <li
                 key={outcome}
-                className="flex items-start gap-3 rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-3"
+                className="flex items-start gap-3 rounded-xl border border-[#111111]/10 bg-white px-4 py-3"
               >
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B8860B]" />
                 <p className="text-[15px] leading-relaxed text-[#475569]">{outcome}</p>
               </li>
             ))}
           </ul>
           <div className={`mt-8 grid gap-6 ${content.curriculum.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
             {content.curriculum.map((block) => (
-              <div key={block.day} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6">
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">{block.day}</p>
-                <h3 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a]">{block.focus}</h3>
+              <div key={block.day} className="rounded-2xl border border-[#111111]/10 bg-white p-6">
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">{block.day}</p>
+                <h3 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-[#111111]">{block.focus}</h3>
                 <div className="mt-5 space-y-5">
                   {block.modules.map((mod) => (
                     <div
                       key={mod.title}
                       className={`rounded-xl px-4 py-4 ${
                         mod.featured
-                          ? "border-l-[3px] border-l-[#d97706] bg-[#d97706]/[0.07]"
-                          : "bg-[#1f2c4a]/[0.03]"
+                          ? "border-l-[3px] border-l-[#B8860B] bg-[#B8860B]/[0.07]"
+                          : "bg-[#111111]/[0.03]"
                       }`}
                     >
                       <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <h4 className="text-[15px] font-semibold text-[#1f2c4a]">{mod.title}</h4>
+                        <h4 className="text-[15px] font-semibold text-[#111111]">{mod.title}</h4>
                         {mod.weight ? (
-                          <span className="text-[12px] font-semibold tabular-nums text-[#d97706]">
+                          <span className="text-[12px] font-semibold tabular-nums text-[#B8860B]">
                             {mod.weight} of exam
                           </span>
                         ) : null}
@@ -784,7 +784,7 @@ export function LegacyCatalogCourseLanding({
                       <ul className="mt-3 space-y-1.5">
                         {mod.topics.map((topic) => (
                           <li key={topic} className="flex gap-2 text-[15px] leading-relaxed text-[#475569]">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d97706]" />
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B8860B]" />
                             {topic}
                           </li>
                         ))}
@@ -802,7 +802,7 @@ export function LegacyCatalogCourseLanding({
                 href={content.examGuidelinesHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-[#d97706] underline decoration-[#d97706]/30 underline-offset-2 hover:text-[#b45309]"
+                className="font-medium text-[#B8860B] underline decoration-[#B8860B]/30 underline-offset-2 hover:text-[#B8860B]"
               >
                 Scaled Agile exam guidelines
               </a>
@@ -815,7 +815,7 @@ export function LegacyCatalogCourseLanding({
       {content.careerPath ? (
         <section id="career-path" className="scroll-mt-32 w-full px-4 py-12 sm:px-6 lg:px-20">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
               After this cert
             </p>
             <h2 className={`mt-3 ${SECTION_HEADING}`}>
@@ -833,16 +833,16 @@ export function LegacyCatalogCourseLanding({
                 <Link
                   key={step.href}
                   href={step.href}
-                  className="group rounded-2xl border border-[#1f2c4a]/10 bg-white p-6 transition hover:border-[#d97706]/40"
+                  className="group rounded-2xl border border-[#111111]/10 bg-white p-6 transition hover:border-[#B8860B]/40"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d97706]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B8860B]">
                     Next {String(index + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[#1f2c4a] group-hover:text-[#d97706]">
+                  <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[#111111] group-hover:text-[#B8860B]">
                     {step.name}
                   </h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-[#475569]">{step.forWho}</p>
-                  <p className="mt-4 text-sm font-semibold text-[#1f2c4a]">
+                  <p className="mt-4 text-sm font-semibold text-[#111111]">
                     View dates
                     <span aria-hidden className="ml-1 transition group-hover:ml-2">
                       →
@@ -857,24 +857,24 @@ export function LegacyCatalogCourseLanding({
 
       <section
         id="student-reviews"
-        className="scroll-mt-32 w-full border-t border-[#1f2c4a]/10 bg-[#1f2c4a]/[0.03] px-4 py-12 sm:px-6 lg:px-20"
+        className="scroll-mt-32 w-full border-t border-[#111111]/10 bg-[#111111]/[0.03] px-4 py-12 sm:px-6 lg:px-20"
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">Google reviews</p>
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">Google reviews</p>
               <h2 className={`mt-3 ${SECTION_HEADING}`}>
                 What students say
               </h2>
             </div>
-            <p className="text-sm font-semibold text-[#1f2c4a]">4.9 Google rating</p>
+            <p className="text-sm font-semibold text-[#111111]">4.9 Google rating</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {content.reviews.map((review) => (
-              <article key={review.name} className="rounded-2xl border border-[#1f2c4a]/10 bg-white p-6">
+              <article key={review.name} className="rounded-2xl border border-[#111111]/10 bg-white p-6">
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="font-semibold text-[#1f2c4a]">{review.name}</h3>
+                    <h3 className="font-semibold text-[#111111]">{review.name}</h3>
                     <p className="text-sm text-[#64748b]">{review.role}</p>
                   </div>
                 </div>
@@ -889,7 +889,7 @@ export function LegacyCatalogCourseLanding({
         <section className="w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
           <div className="mx-auto max-w-2xl">
             <div className="liquid-glass rounded-2xl p-8">
-              <span className="rounded-md border border-[#d97706]/30 bg-[#d97706]/10 px-4 py-1.5 text-sm font-semibold text-[#d97706]">
+              <span className="rounded-md border border-[#B8860B]/30 bg-[#B8860B]/10 px-4 py-1.5 text-sm font-semibold text-[#B8860B]">
                 1 Practice Test
               </span>
               <h2 className={`mt-4 ${SECTION_HEADING}`}>
@@ -902,7 +902,7 @@ export function LegacyCatalogCourseLanding({
               <button
                 type="button"
                 onClick={() => setShowAssessmentModal(true)}
-                className="mt-6 rounded-lg bg-[#d97706] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#b45309]"
+                className="mt-6 rounded-lg bg-[#F5B942] px-8 py-3 text-sm font-semibold text-[#111111] transition-colors hover:bg-[#e0a82e]"
               >
                 Start Test
               </button>
@@ -913,9 +913,9 @@ export function LegacyCatalogCourseLanding({
 
       {content.attemptsLine !== null && !content.examDetails ? (
         <section className="w-full px-4 py-6 sm:px-6 lg:px-20">
-          <div className="mx-auto flex max-w-7xl items-start gap-4 rounded-2xl bg-[#1f2c4a] px-6 py-6 text-white sm:px-8">
+          <div className="mx-auto flex max-w-7xl items-start gap-4 rounded-2xl bg-[#111111] px-6 py-6 text-white sm:px-8">
             <span
-              className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#d97706]"
+              className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B8860B]"
               aria-hidden
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -941,7 +941,7 @@ export function LegacyCatalogCourseLanding({
 
       <section id="faqs" className="scroll-mt-32 w-full bg-black px-4 py-8 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#d97706]">
+          <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-[#B8860B]">
             Questions
           </p>
           <h2 className={`mb-8 text-center ${SECTION_HEADING}`}>
@@ -965,8 +965,8 @@ export function LegacyCatalogCourseLanding({
                 }}
                 className={`rounded-md px-6 py-2 font-semibold transition-colors ${
                   activeFaqCategory === id
-                    ? "bg-[#1f2c4a] text-white"
-                    : "liquid-glass border border-[#1f2c4a]/20 text-[#1f2c4a] hover:bg-[#1f2c4a] hover:text-white"
+                    ? "bg-[#111111] text-white"
+                    : "liquid-glass border border-[#111111]/20 text-[#111111] hover:bg-[#111111] hover:text-white"
                 }`}
               >
                 {label}
@@ -979,7 +979,7 @@ export function LegacyCatalogCourseLanding({
               return (
                 <div
                   key={faq.q}
-                  className="rounded-lg border border-[#1f2c4a]/15 bg-[#1f2c4a]/[0.06] transition-colors hover:bg-[#1f2c4a]/[0.1]"
+                  className="rounded-lg border border-[#111111]/15 bg-[#111111]/[0.06] transition-colors hover:bg-[#111111]/[0.1]"
                 >
                   <button
                     type="button"
@@ -990,11 +990,11 @@ export function LegacyCatalogCourseLanding({
                     }
                     className="flex w-full items-center justify-between p-4 text-left"
                   >
-                    <span className="pr-4 text-[15px] font-semibold text-[#1f2c4a]">
+                    <span className="pr-4 text-[15px] font-semibold text-[#111111]">
                       {index + 1}. {faq.q}
                     </span>
                     <svg
-                      className={`h-5 w-5 shrink-0 text-[#d97706] transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                      className={`h-5 w-5 shrink-0 text-[#B8860B] transition-transform ${isExpanded ? "rotate-180" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1004,7 +1004,7 @@ export function LegacyCatalogCourseLanding({
                   </button>
                   {isExpanded ? (
                     <div className="px-4 pb-4">
-                      <div className="border-t border-[#1f2c4a]/20 pt-4">
+                      <div className="border-t border-[#111111]/20 pt-4">
                         <p className="text-[15px] leading-relaxed text-[#475569]">{faq.a}</p>
                       </div>
                     </div>
@@ -1032,11 +1032,11 @@ export function LegacyCatalogCourseLanding({
                 setShowAssessmentModal(false);
                 setAssessmentFormData({ name: "", email: "" });
               }}
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#1f2c4a]/10 hover:bg-[#1f2c4a]/20"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#111111]/10 hover:bg-[#111111]/20"
             >
               <span className="text-xl text-[#334155]">×</span>
             </button>
-            <h3 className="mb-2 text-xl font-semibold tracking-[-0.03em] text-[#1f2c4a]">
+            <h3 className="mb-2 text-xl font-semibold tracking-[-0.03em] text-[#111111]">
               Start Your Practice Test
             </h3>
             <p className="mb-6 text-sm text-[#64748b]">
@@ -1053,7 +1053,7 @@ export function LegacyCatalogCourseLanding({
                   required
                   value={assessmentFormData.name}
                   onChange={(e) => setAssessmentFormData({ ...assessmentFormData, name: e.target.value })}
-                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/10 px-4 py-2 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
+                  className="w-full rounded-lg border border-[#111111]/20 bg-[#111111]/10 px-4 py-2 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -1067,14 +1067,14 @@ export function LegacyCatalogCourseLanding({
                   required
                   value={assessmentFormData.email}
                   onChange={(e) => setAssessmentFormData({ ...assessmentFormData, email: e.target.value })}
-                  className="w-full rounded-lg border border-[#1f2c4a]/20 bg-[#1f2c4a]/10 px-4 py-2 text-[#1f2c4a] placeholder-[#94a3b8] focus:border-[#1f2c4a]/50 focus:outline-none"
+                  className="w-full rounded-lg border border-[#111111]/20 bg-[#111111]/10 px-4 py-2 text-[#111111] placeholder-[#94a3b8] focus:border-[#111111]/50 focus:outline-none"
                   placeholder="Enter your email address"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full items-center justify-center rounded-lg bg-[#d97706] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#b45309] disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex w-full items-center justify-center rounded-lg bg-[#F5B942] px-6 py-3 font-semibold text-[#111111] transition-colors hover:bg-[#e0a82e] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : "Start Practice Test"}
               </button>

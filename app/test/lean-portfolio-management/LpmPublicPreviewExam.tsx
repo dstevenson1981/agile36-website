@@ -730,7 +730,7 @@ export default function LpmPublicPreviewExam() {
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <button
                   onClick={() => setShowRetakeModal(true)}
-                  className="flex-1 bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 px-6 rounded-md transition-colors text-center"
+                  className="flex-1 bg-[#111111] hover:bg-[#111111] text-white font-bold py-3 px-6 rounded-md transition-colors text-center"
                 >
                   Retake Exam
                 </button>
@@ -776,7 +776,7 @@ export default function LpmPublicPreviewExam() {
                       </p>
                       <button
                         onClick={() => setShowRetakeModal(false)}
-                        className="w-full bg-[#01203d] hover:bg-[#023a6b] text-white font-bold py-3 px-6 rounded-md transition-colors"
+                        className="w-full bg-[#111111] hover:bg-[#111111] text-white font-bold py-3 px-6 rounded-md transition-colors"
                       >
                         Understood
                       </button>
@@ -916,7 +916,7 @@ export default function LpmPublicPreviewExam() {
             {currentQuestionIndex < totalQuestions - 1 ? (
               <button
                 onClick={handleNext}
-                className="px-6 py-2 bg-[#01203d] hover:bg-[#023a6b] text-white rounded-md font-semibold transition-colors"
+                className="px-6 py-2 bg-[#111111] hover:bg-[#111111] text-white rounded-md font-semibold transition-colors"
               >
                 Next →
               </button>

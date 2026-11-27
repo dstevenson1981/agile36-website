@@ -90,7 +90,7 @@ export default function AdminRegistrationsPage() {
           />
           <button
             type="submit"
-            className="rounded-lg bg-[#01203d] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#023a5e]"
+            className="rounded-lg bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#111111]"
           >
             Search
           </button>

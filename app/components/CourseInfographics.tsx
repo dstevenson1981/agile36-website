@@ -8,7 +8,7 @@ export function RadialGauge({
   percent,
   label,
   sublabel,
-  color = "#d97706",
+  color = "#B8860B",
 }: {
   percent: number;
   label: string;
@@ -23,7 +23,7 @@ export function RadialGauge({
     <div className="flex flex-col items-center text-center">
       <div className="relative w-full max-w-[180px]">
         <svg viewBox="0 0 140 140" className="w-full" role="img" aria-label={`${percent}% — ${label}`}>
-          <circle cx="70" cy="70" r={R} fill="none" stroke="#1f2c4a" strokeOpacity="0.08" strokeWidth="12" />
+          <circle cx="70" cy="70" r={R} fill="none" stroke="#111111" strokeOpacity="0.08" strokeWidth="12" />
           <circle
             cx="70"
             cy="70"
@@ -36,7 +36,7 @@ export function RadialGauge({
             strokeDashoffset={offset}
             transform="rotate(-90 70 70)"
           />
-          <text x="70" y="66" textAnchor="middle" fontSize="26" fontWeight="600" fill="#1f2c4a" style={{ letterSpacing: "-0.02em" }}>
+          <text x="70" y="66" textAnchor="middle" fontSize="26" fontWeight="600" fill="#111111" style={{ letterSpacing: "-0.02em" }}>
             {percent}%
           </text>
           <text x="70" y="86" textAnchor="middle" fontSize="9" fontWeight="500" fill="#64748b" style={{ textTransform: "uppercase", letterSpacing: "0.12em" }}>
@@ -68,12 +68,12 @@ export function RangeBar({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-2xl font-semibold text-[#1f2c4a]" style={{ letterSpacing: "-0.02em" }}>
+        <p className="text-2xl font-semibold text-[#111111]" style={{ letterSpacing: "-0.02em" }}>
           {title}
         </p>
       </div>
-      <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-[#1f2c4a]/[0.08]">
-        <div className="h-full w-full rounded-full bg-gradient-to-r from-[#d97706]/60 via-[#d97706] to-[#b45309]" />
+      <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-[#111111]/[0.08]">
+        <div className="h-full w-full rounded-full bg-gradient-to-r from-[#B8860B]/60 via-[#B8860B] to-[#B8860B]" />
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-[#64748b]">
         <span>{minLabel}</span>
@@ -88,12 +88,12 @@ export function RangeBar({
 /** Compact icon stat chip for exam facts (questions, duration, retake). */
 export function FactChip({ icon, value, label }: { icon: ReactNode; value: string; label: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-[#1f2c4a]/10 bg-white px-4 py-3">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#d97706]/10 text-[#d97706]">
+    <div className="flex items-center gap-3 rounded-xl border border-[#111111]/10 bg-white px-4 py-3">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#B8860B]/10 text-[#B8860B]">
         {icon}
       </span>
       <div className="leading-tight">
-        <p className="text-base font-semibold text-[#1f2c4a]">{value}</p>
+        <p className="text-base font-semibold text-[#111111]">{value}</p>
         <p className="text-xs text-[#64748b]">{label}</p>
       </div>
     </div>
@@ -116,8 +116,8 @@ export function DemandMeter({ caption }: { caption: string }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M14 7h7v7" />
         </svg>
       </div>
-      <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-[#1f2c4a]/[0.08]">
-        <div className="h-full w-[94%] rounded-full bg-gradient-to-r from-[#d97706] via-emerald-500 to-emerald-600" />
+      <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-[#111111]/[0.08]">
+        <div className="h-full w-[94%] rounded-full bg-gradient-to-r from-[#B8860B] via-emerald-500 to-emerald-600" />
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-[#94a3b8]">
         <span>Low</span>
