@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import CorporateQuoteModal from "@/app/components/CorporateQuoteModal";
-import { PROMO_BANNER_STICKY_OFFSET_PX, usePromoBannerActive } from "@/app/components/PromoBanner";
+import { usePromoBannerActive } from "@/app/components/PromoBanner";
 import TrustedByStrip from "@/app/components/TrustedByStrip";
 import CourseScheduleEmbed from "@/app/components/schedule/CourseScheduleEmbed";
 import EnrollNowLink from "@/app/components/schedule/EnrollNowLink";
@@ -555,7 +555,7 @@ export default function PopmStorefront({
   const isSafeForTeams = content.slug === "safe-for-teams";
   const hasDualCert = isPopm || isLeadingSafe || isScrumMaster || isRte || isLpm || isSafeForTeams;
   const promoOn = usePromoBannerActive();
-  const courseNavTop = (promoOn ? PROMO_BANNER_STICKY_OFFSET_PX : 0) + 68;
+  const courseNavTop = promoOn ? "calc(var(--promo-banner-height, 72px) + 68px)" : 68;
   const pay = PAY[content.slug];
   const pageReviews = testimonialsForSlug(content.slug);
   const nav = NAV.filter((item) => (item.id !== "roles" || isPopm) && (item.id !== "reviews" || pageReviews.length > 0));

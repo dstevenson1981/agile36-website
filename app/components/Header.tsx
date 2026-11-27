@@ -10,7 +10,7 @@ import {
   getCatalogCourseUrl,
   type CatalogCourse,
 } from "@/app/lib/course-catalog";
-import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./PromoBanner";
+import PromoBanner, { usePromoBannerActive } from "./PromoBanner";
 import SiteSearch from "./SiteSearch";
 
 const MEGA_MENU_SAFE_ORDER: Record<string, number> = {
@@ -177,7 +177,7 @@ export default function Header() {
 
       {/* Navigation Header — offset when thin promo strip is visible */}
       <header
-        style={{ top: promoBannerActive ? PROMO_BANNER_STICKY_OFFSET_PX : 0 }}
+        style={{ top: promoBannerActive ? "var(--promo-banner-height, 72px)" : 0 }}
         className={`w-full sticky z-50 overflow-x-clip overflow-y-visible transition-colors duration-300 ${
           isHome && cinematicHero && !scrolledPastHero
             ? "bg-white/82 backdrop-blur-xl border-b border-[#111111]/12 shadow-sm shadow-[#111111]/5"

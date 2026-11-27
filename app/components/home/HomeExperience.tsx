@@ -204,12 +204,12 @@ function CourseCard({ course }: { course: CatalogCourse }) {
           {isPrivate && course.price <= 0 ? (
             <span className="text-sm font-medium text-[#111111]">Private cohort</span>
           ) : isPrivate ? (
-            <span className="text-2xl font-semibold text-[#111111]">
+            <span className="text-2xl font-normal text-[#111111]">
               {formatPrice(course.price)}
             </span>
           ) : (
             <span className="flex items-baseline gap-2">
-              <span className="text-2xl font-semibold text-[#111111]">
+              <span className="text-2xl font-normal text-[#111111]">
                 {formatPrice(course.price)}
               </span>
               <span className="text-sm text-[#94a3b8] line-through">
@@ -402,7 +402,7 @@ export function HomeExperienceBody({
               Trusted by professionals from
             </p>
             <h2
-              className="mx-auto mt-4 max-w-3xl text-2xl font-medium text-[#111111] md:text-4xl"
+              className="mx-auto mt-4 max-w-3xl text-2xl font-normal text-[#111111] md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
             >
               25,000+ certified at the world&apos;s most demanding companies
@@ -471,7 +471,7 @@ export function HomeExperienceBody({
               <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">
                 Professionals trained
               </p>
-              <p className="text-5xl font-semibold text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+              <p className="text-4xl font-normal text-[#111111] md:text-5xl" style={{ letterSpacing: "-0.03em" }}>
                 <span data-count={25}>25</span>
                 <span className="text-[#B8860B]">K+</span>
               </p>
@@ -483,7 +483,7 @@ export function HomeExperienceBody({
                 Average instructor rating
               </p>
               <div>
-                <p className="text-5xl font-semibold text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+                <p className="text-4xl font-normal text-[#111111] md:text-5xl" style={{ letterSpacing: "-0.03em" }}>
                   <span data-count={4.9} data-decimals={1}>4.9</span>
                 </p>
                 <p className="mt-1 text-sm tracking-[0.2em] text-[#B8860B]">★★★★★</p>
@@ -528,7 +528,7 @@ export function HomeExperienceBody({
                 Live, virtual, global
               </p>
               <div>
-                <p className="text-4xl font-semibold text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
+                <p className="text-4xl font-normal text-[#111111]" style={{ letterSpacing: "-0.03em" }}>
                   <span data-count={15}>15</span>
                   <span className="text-[#B8860B]">+</span>
                 </p>
@@ -839,7 +839,7 @@ export function HomeExperienceBody({
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#64748b]">
             Cohorts fill weeks in advance
           </p>
-          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-normal leading-[1.05] text-[#111111] md:text-6xl" style={{ letterSpacing: "-0.03em" }}>
+          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-normal leading-[1.08] text-[#111111] md:text-5xl" style={{ letterSpacing: "-0.03em" }}>
             Your next certification starts here
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base text-[#475569] md:text-lg">
@@ -941,7 +941,7 @@ function HomeVideoHero() {
           <div>
             <AnimatedHeading
               text={"Shaping tomorrow\nwith Agile and AI."}
-              className="mb-4 text-4xl font-normal md:text-5xl lg:text-6xl xl:text-7xl"
+              className="mb-4 text-4xl font-normal leading-[1.08] md:text-5xl lg:text-6xl"
             />
             <FadeIn delay={800} duration={1000}>
               <p className="mb-5 text-base text-white/90 md:text-lg">

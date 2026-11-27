@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { SAFE_COURSE_PARTICIPANTS_LABEL } from "@/app/lib/course-catalog";
 import { TRUSTED_BY_LOGOS } from "@/app/lib/trusted-by-logos";
-import PromoBanner, { usePromoBannerActive, PROMO_BANNER_STICKY_OFFSET_PX } from "./components/PromoBanner";
+import PromoBanner, { usePromoBannerActive } from "./components/PromoBanner";
 import HeroTrustStrip from "./components/HeroTrustStrip";
 
 interface Course {
@@ -550,7 +550,7 @@ export default function Home() {
 
       {/* Navigation Header with Mega Menu - Only on Home Page */}
       <header
-        style={{ top: promoBannerActive ? PROMO_BANNER_STICKY_OFFSET_PX : 0 }}
+        style={{ top: promoBannerActive ? "var(--promo-banner-height, 72px)" : 0 }}
         className="w-full bg-[#e8f0f5] border-b border-gray-200 sticky z-50 overflow-visible"
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
